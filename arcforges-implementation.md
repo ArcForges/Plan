@@ -3,17 +3,23 @@
 ## Current task
 
 ```text
-Implement ArcForges Substep 00.00 — Product and naming freeze.
+Implement ArcForges Substep 00.04 — Register the completed reference matrices as versioned planning inputs.
 
 Owning document: C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\00-specification-naming-and-rights-freeze.md
-Owning section: WP-00.00; anchor: rule-wp-00.00.
+Owning section: WP-00.04; anchor: rule-wp-00.04.
 Scope: this substep, its nested sections, and applicable package-wide obligations.
 Required upstream work packages: none.
+Earlier substeps in this work package: 00.00, 00.01, 00.02, 00.03. Verify their required stage evidence.
 
 Related formal documents; resolve the relevant rules and follow their references:
 - C:\MyFile\Projects\ArcForges-Design\docs\requirements\00-product-scope-and-portfolio.md
 - C:\MyFile\Projects\ArcForges-Design\docs\requirements\01-normative-glossary-and-invariants.md
 - C:\MyFile\Projects\ArcForges-Design\docs\architecture\27-platform-projects-and-application-assistants.md
+- C:\MyFile\Projects\ArcForges-Design\docs\assurance\reference-coverage-and-provenance.md
+- C:\MyFile\Projects\ArcForges-Design\docs\assurance\open-gates-register.md
+- C:\MyFile\Projects\ArcForges-Design\docs\assurance\reference-coverage\README.md
+- C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-1-foundation-decisions.md
+- C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md
 ```
 
 ## Project background
