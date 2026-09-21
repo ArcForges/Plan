@@ -26,23 +26,14 @@ Resolve the current Design default branch once to a full commit, and read every 
 ## Current task
 
 ```text
-Implement ArcForges Substep 00.04 — Register the completed reference matrices as versioned planning inputs.
+Complete ArcForges Substep 02.04 - Version axis plumbing, with the explicitly authorized repository-wide CI and validation reduction.
 
-Owning document: https://github.com/ArcForges/ArcForges-Design/blob/main/docs/planning/work-packages/00-specification-naming-and-rights-freeze.md
-Owning section: WP-00.04; anchor: rule-wp-00.04.
-Scope: this substep, its nested sections, and applicable package-wide obligations.
-Required upstream work packages: none.
-Earlier substeps in this work package: 00.00, 00.01, 00.02, 00.03. Verify their required stage evidence.
-
-Related formal documents; resolve the relevant rules and follow their references:
-- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/requirements/00-product-scope-and-portfolio.md
-- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/requirements/01-normative-glossary-and-invariants.md
-- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/architecture/27-platform-projects-and-application-assistants.md
-- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/assurance/reference-coverage-and-provenance.md
-- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/assurance/open-gates-register.md
-- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/assurance/reference-coverage/README.md
-- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-1-foundation-decisions.md
-- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md
+Owning document: https://github.com/ArcForges/ArcForges-Design/blob/main/docs/planning/work-packages/02-build-governance-and-analyzer-policy.md
+Owning section: WP-02.04; anchor: rule-wp-02.04.
+Execution authority: Design P2-017 and docs/assurance/ci-and-local-validation-policy.md.
+Scope: all nine implementation repositories, Design and Plan; append to the existing related Mobile PR, create retained worktrees/PRs for other owners, remove obsolete automated gates and correct active documentation.
+Preserve upstream evidence; do not rerun historical runtime/public-download checks.
+Stop after this task. Do not begin WP02.05.
 ```
 
 ## Project background
@@ -108,53 +99,39 @@ Respect per-file licences, provenance and excluded subtrees; a rewrite does not 
 
 StartArcForges is a historical packaged-output tree, not a Git repository. Its publicly available reviewed evidence is [the distribution reference matrix](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/assurance/reference-coverage/distribution-startarcforges.md). No public mirror, branch, tag or commit of the original packaged tree has been verified. Consume the existing matrix as planning evidence; if the selected task requires new direct inspection of that tree, report access to those exact packaged outputs as an unavailable prerequisite rather than inventing a source URL or claiming the matrix is the original artifact. Do not execute, unpack or reverse engineer those binaries.
 
-## Execution boundaries
+## Execution and validation policy
 
-Implement only the current owning substep, including its nested sections. Read the whole parent work package so its inputs, rules, non-goals, impacts, tests, completion gates and appended amendments are not missed. Apply the provisions relevant to this substep; do not implement siblings or later work packages. A .90 substep verifies its assembled stage and does not authorize postponing earlier required behavior until then.
+This policy governs both implementation profiles and every task block. It follows [Design P2-017](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-017) and the [CI/local policy](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/assurance/ci-and-local-validation-policy.md).
 
-Use one main context serially, without subagents. Follow completeness, clarity and convergence together: fulfill the accepted obligations of this substep and make necessary design and implementation decisions yourself, based on verified facts and the goal of a complete, commercially operable product. Preserve explicit user constraints, compatibility and scope. Do not interrupt for routine decisions or approvals, or stop after planning, implementation or PR creation; review, CI fixes and merging are already authorized.
+## Collect, plan and implement
 
-## Collect first, then plan
+Complete only the Current task and its explicitly authorized cross-repository repair. Inspect actual roots, remotes, branches, dirty state, worktrees, related PRs, current Design and invoked workflow scripts. Finish research and decisions, then establish one complete ordered plan before editing. Repair conflicting authoritative documentation before dependent implementation. Preserve product behavior, package IDs, signing continuity, immutable releases and unrelated work.
 
-Map every repository identity above to an actual checkout in the current environment. Verify an existing origin before fetching; clone missing owners from their HTTPS URLs. Resolve relative document references inside the corresponding repository at the selected coherent commit. Preserve the same scope and evidence requirements in local and remote execution.
+Use a retained Git worktree for every change. Append commits to an existing related open PR; otherwise create a new worktree/PR. Do not reopen closed PRs or modify unrelated dependency PRs. Prefix PR titles with the work package and substep, such as `[WP02 · SubStep 02.04]`.
 
-Before editing, establish actual roots, remotes, branches, HEADs, dirty state and existing worktrees. Verify the accepted Design baseline against the current default branch when accessible, and read one coherent commit. Preserve unrelated work and compatible published examples, package identities, application IDs and signing continuity.
+One coordinator owns dependency order, review and merging. Independent repositories may use subagents with non-overlapping ownership. Serialize CPU-heavy local builds/tests and reuse existing caches. Routine decisions and authorized merging require no renewed approval. Do not begin another numbered substep.
 
-Freshly search the current formal documentation during every execution, beyond the documents named in the current task. Those entry points may be incomplete. Search the substep ID, rule IDs, operations, messages, tables, packages, screens, states and failure cases; follow outgoing references and incoming uses across requirements, decisions, architecture, contracts, data models, experience, planning and assurance. Read the concrete definitions and acceptance rules, not just an overview. Inspect the relevant implementation, tests, package configuration and source provenance.
+## Validation restrictions
 
-Verify the actual prerequisites and their evidence from the owning repositories, commits, CI runs and artifact manifests. Distinguish current upstream dependencies from later integration targets. A source file, merged PR or schema fixture does not prove that a required package is published or that a real consumer works. If the formal ID, scope or dependencies have changed, resolve them against the accepted Design before depending on outdated task wording.
+- No macOS CI job, runner or matrix, including self-hosted, scheduled and manual workflows. Local macOS source support may remain; never claim an unproduced macOS artifact or unobserved platform result.
+- No hosted physical-device/emulator, desktop GUI, browser E2E, live service/RPC, real inference/Workflow, installed-package consumer or public-release install/upgrade tests. Remove hidden default check/build/publish invocations and obsolete artifact/status dependencies.
+- Retain necessary Windows/Linux compilation, Native AOT compilation, packaging, static/format/type/lint checks, targeted offline unit tests and non-duplicated security. Do not multiply identical checks across platforms without a platform-specific requirement.
+- Runtime/E2E checks are explicit local opt-in only for affected behavior supported by the existing environment. Run once; repeat only for a new change or concrete unresolved finding. Record untested coverage without inventing success or turning an optional missing environment into a new provisioning task.
+- Do not install/reinstall vcpkg, SDKs, emulators or toolchains solely to expand validation. Git hooks must not silently restore/build/test on every commit/push.
+- No routine public package/archive/image/site downloads, repeated member/hash comparison or consumer execution. Retain lockfile integrity, required signing/licence/provenance checks and one necessary identity/integrity check at an actual publication handoff. Additional downloads require a concrete integrity/publication defect or explicit user request.
+- Promote the original candidate. Use provider upload/deployment receipts and status/coordinate metadata; no public-byte polling. Maven main uses SNAPSHOT, and formal Central publication requires a deliberate tag.
+- Do not create tags, republish, re-sign or allocate replacement versions solely for verification. Diagnose failures before rerunning; no blind retries.
+- Documentation-only edits require consistency/link review, not product builds or runtime tests. Keep AGENTS, active docs, workflow dependencies and actual release inventories synchronized. Preserve historical evidence as history, not as a rerun mandate.
 
-Check relevant changing external facts against current official sources: SDKs, provider behavior, supported versions, limits and release/store requirements. Record the date and impact; a new external default does not authorize changing an accepted design silently.
+## Network and resources
 
-Collect all applicable obligations, gaps, conflicts, affected files and verification requirements for this substep before fixing anything. Then form one bounded implementation plan mapping each obligation to its owner, change and evidence. Routine implementation choices do not need renewed permission.
+Use the normal network path. Do not configure proxy 7890 or another proxy. On a failed network operation, stop and report the exact operation rather than changing networking or repeatedly retrying. Do not invoke wsl.exe or WSL wrappers; use a directly available WSL terminal only if necessary. Parallelize independent source work, not competing heavy local builds.
 
-Planning-repair authority: resolve missing, ambiguous, contradictory or impractical design within the current substep. Before deciding, inspect the complete affected authoritative chain and its relevant code, tests, artifacts, runtime/provider facts and evidence. Choose the resolution that fulfills the accepted commercial-product goals and explicit user constraints; record the decision, rationale, ownership, downstream and compatibility impacts, and verification requirements in the authoritative Design documents. Review and merge that documentation PR using the rules below before implementing dependent changes. Do not change requirements merely to fit existing code, tests or generated artifacts, remove accepted scope to manufacture completion, substitute repositories or begin another substep.
+## Review, merge and stop
 
-## Implement the selected work
+Review each complete PR and fix findings. Merge documentation-only PRs with no CI after review. Automatically merge source PRs after all retained applicable latest-head CI succeeds. Remove obsolete runtime/macOS job references rather than adding fake passing gates. Do not bypass retained build/security/signing failures.
 
-Create each new branch in an isolated worktree with git worktree add in every repository requiring changes, following its .worktree convention. Reuse a verified worktree when resuming the same task. Do not substitute git checkout or git switch for a worktree. Use explicit working directories and keep every owner's changes within its own worktree; preserve primary checkouts and reference repositories.
-
-Execute the collected plan continuously. Follow the authored proto, ABI, schemas, authorization metadata, exact numeric/time behavior, transaction plans, UI states and recovery semantics. Change generated outputs through their owning generator/source and prescribed tracking policy.
-
-For cross-repository integration, produce and verify the required immutable candidate before building its consumer. Consumers restore exact package versions/hashes in an isolated environment, without sibling source, submodules, unpublished project references or accidental developer-cache dependencies. Follow the prescribed build, pack, candidate-test, registry-publication, availability-verification and manifest-promotion order. Record producer and consumer identities separately; partial publication is not a complete release.
-
-Honor the producer stage matrix. An explicitly permitted early fixture has a named later replacement owner. It cannot satisfy a currently required real transport, package, native, AOT, Cloudflare, device, browser, provider or commercial gate. Conversely, do not demand a future producer at an earlier stage that deliberately uses a fixture. Shared gates close only when their combined required evidence exists. Investigate and repair setup or access failures using available tools and permissions; continue all independent work while resolving dependencies. If an externally controlled account, credential, device or service remains unavailable after feasible remedies, report the exact missing prerequisite and evidence without inventing a pass or removing accepted scope.
-
-## Verify, review and finish
-
-Run the substep's stated tests and completion gate, applicable parent-WP obligations, required repository checks and affected consumer verification. Wherever the available environment permits, run real end-to-end tests across the affected application, service and package boundaries, including specified failures and recovery paths, using independent expectations. Keep documentation/schema/unit/fixture checks, clean packaged-consumer execution, real provider/device/runtime evidence and commercial activation distinguishable.
-
-Review the complete change against the collected obligations, including boundaries, compatibility, permissions, data/UI/recovery behavior, package identities, tests and provenance. Fix concrete defects and repeat the affected checks; do not restart an unlimited design expansion. Keep required implementation and test evidence with its owning repository according to the work package's conventions.
-
-Before opening each PR, complete the documentation or implementation it owns, self-review and the locally executable checks required at that stage. A failed required local check must be fixed first. Evidence that requires PR CI, merge or publication remains explicitly pending until verified; it must not prevent the prerequisite PR from progressing through the required sequence.
-
-Commit only this substep's changes and create the necessary scoped PRs, stating cross-repository dependencies and pending gates. Review every PR's complete diff before merging. Fix review and CI findings in this task's open PRs, repeat affected checks and review the final changes. Do not modify unrelated PRs or reopen closed PRs. If existing work already satisfies the substep, verify its current evidence instead of making empty commits or PRs.
-
-Merge automatically in dependency order once required merge conditions are satisfied, without requesting confirmation. For documentation-only PRs with no configured CI, merge after review. For every other PR, wait for all applicable CI checks to succeed on the latest head; code changes without CI require appropriate CI before merging. Diagnose and fix failures instead of stopping, disabling checks or bypassing protections. Keep branches and worktrees after merging.
-
-Continue through applicable post-merge publication, availability and integration checks; verify the actual merged commits and artifacts. Fix failures within this substep, using a new scoped PR when the previous one is already merged. Do not stop at a decision, repairable environment issue, pending CI or merge boundary. Do not place credentials or private data in source, reports or logs.
-
-Report the exact substep, changed owners and files, retained worktrees and branches, merged commit/PR/artifact identities, observed verification results and any genuinely unavailable external prerequisite. State which acceptance gates actually passed and which remain unverified; documentation checks and merged PRs cannot establish product readiness. Finish only after completing the authorized workflow and all independently achievable work for this substep; do not begin the next substep.
+Post-merge verification is limited to the expected merge commit, required build/publication/deployment job result and clean fast-forward primary update. Do not start another public-download/hash/install/device/browser/runtime cycle. Keep branches and worktrees, protect credentials and report actual results and material untested coverage. Deployment success is not a live test, and compilation is not physical-device or full commercial acceptance. Stop after the authorized task.
 
 ## Maintaining the two editions
 
