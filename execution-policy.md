@@ -1,39 +1,4 @@
-# ArcForges implementation
-
-## Current task
-
-```text
-Complete ArcForges Substep 02.04 - Version axis plumbing, with the explicitly authorized repository-wide CI and validation reduction.
-
-Owning document: https://github.com/ArcForges/ArcForges-Design/blob/main/docs/planning/work-packages/02-build-governance-and-analyzer-policy.md
-Owning section: WP-02.04; anchor: rule-wp-02.04.
-Execution authority: Design P2-017 and docs/assurance/ci-and-local-validation-policy.md.
-Scope: all nine implementation repositories, Design and Plan; append to the existing related Mobile PR, create retained worktrees/PRs for other owners, remove obsolete automated gates and correct active documentation.
-Preserve upstream evidence; do not rerun historical runtime/public-download checks.
-Stop after this task. Do not begin WP02.05.
-```
-
-## Project background
-
-ArcForges is a family of commercially operable applications and shared services. ArcNotes provides knowledge management, ArcScope instrument acquisition and analysis, and ArcSlate media production. These are independent Avalonia/C# desktop applications. Each owns its application state, conversations, storage and server session, and embeds reusable assistant UI and mechanisms published by DesktopPlatform. ArcChat is the assistant/companion feature name, not a fourth desktop executable or a shared application hub.
-
-Nine independent repositories integrate immutable published artifacts. DesktopPlatform provides shared managed mechanisms, Avalonia UI packages, native C ABI wrappers and RID runtimes; product domain behavior remains with its product owner. Contracts owns authored proto and generates C# NuGet, TypeScript npm and Kotlin Maven packages. Public business clients use binary gRPC-Web, with the explicit authentication, object-transfer and provider protocol exceptions defined by Design.
-
-The C# Native AOT business host runs in Cloudflare Containers behind Workers. D1 owns authoritative business data, Durable Objects coordinate, and R2 stores objects. The sole AI Harness runs in Cloudflare Workflows with Workers AI. Mobile uses Kotlin/Jetpack Compose for Android; Web uses React/TypeScript for Site, Account, Chat and Operations. Applications have independent sessions without sibling Device SSO. Private parent-owned helpers/extensions alone use the specified gRPC over Named Pipes/UDS. Cross-product collaboration is future-only.
-
-The goal is the complete accepted commercial product: usable client workflows, correct contracts and transactions, permissions, failure recovery, real integration, distribution, support and commercial operation. Existing Hello World scaffolds and published probes are migration inputs; they do not prove completed product behavior.
-
-## Authoritative material and source locations
-
-Formal Design: C:\MyFile\Projects\ArcForges-Design.
-
-Read its applicable repository instructions and current decisions. The planning entry points are docs/planning/README.md, docs/planning/implementation-sequence.md, docs/planning/work-packages/README.md and docs/planning/producer-artifacts-and-integration.md. Concrete behavior is defined across docs/requirements, docs/architecture (including contracts and data-model), docs/experience and docs/assurance. Current accepted amendments govern older text; filenames and historical inventories do not override them. Deprecated-input bodies are excluded from implementation reading.
-
-Implementation repositories are under C:\MyFile\Projects\ArcForges: DesktopPlatform, Contracts, ArcNotes, ArcScope, ArcSlate, Cloud, AI, Web and Mobile. Each is a separate Git repository. Determine which owners this substep actually changes from the formal layout, package registry and work package.
-
-Read-only reference sources are C:\MyFile\Projects\AionUi, C:\MyFile\Projects\AFFiNE, C:\MyFile\Projects\siyuan, C:\MyFile\Projects\Serial-Studio, C:\MyFile\Projects\ArcVideo and C:\MyFile\Projects\ArcVideoFoundation. Start with their completed matrices under Design's docs/assurance/reference-coverage and inspect the relevant source or drift only. Respect per-file licenses, provenance and excluded subtrees; a rewrite does not erase upstream obligations. C:\MyFile\Projects\StartArcForges is a packaged-artifact layout/notice reference only: do not execute, unpack or reverse engineer its binaries. Reference features do not create additional product requirements.
-
-## Execution and validation policy
+# Execution and validation policy
 
 This policy governs both implementation profiles and every task block. It follows [Design P2-017](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-017) and the [CI/local policy](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/assurance/ci-and-local-validation-policy.md).
 
