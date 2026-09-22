@@ -26,21 +26,23 @@ Resolve the current Design default branch once to a full commit, and read every 
 ## Current task
 
 ```text
-Completed ArcForges Substep 03.00 — Create the split project structure.
+Implement ArcForges Substep 03.03 — Capability and resource contract types.
 
 Owning document: https://github.com/ArcForges/ArcForges-Design/blob/main/docs/planning/work-packages/03-contract-foundation-and-licence-split.md
-Owning section: WP-03.00; anchor: rule-wp-03.00.
-Accepted scope: the selected project/package/generator boundaries and substantive schema slices in the WP03.00 implementation profile. Later schemas, semantic vectors, AOT/registration and integration acceptance remain with their assigned WP03 substeps; full WP03 is not accepted.
-Required upstream work package: WP-02, accepted at Design commit 7165187cb2d96aee0f275666eaa19dc6b8001833; evidence index docs/assurance/wp02-stage-acceptance.json. Preserve its independent producer/consumer pins and historical runtime evidence.
+Owning section: WP-03.03; anchor: rule-wp-03.03.
+Scope: this substep, its nested sections, and applicable package-wide obligations.
+Required upstream work packages: WP-02.
+Earlier substeps in this work package: 03.00, 03.01, 03.02. Verify their required stage evidence.
 
-Latest verified Contracts source: 30ddcad2bcb3634e089abb5e29d6c9ce05d38386 (PR 35). All 22 selected outputs were published: 14 NuGet and five npm packages at 1.0.0-ci.86.1, plus three Maven packages through the 1.0.0-SNAPSHOT development channel. All applicable PR/main CI and security checks passed. Main publication: https://github.com/ArcForges/Contracts/actions/runs/35716069370; main security: https://github.com/ArcForges/Contracts/actions/runs/35716069304.
-Completion evidence:
-- https://github.com/ArcForges/ArcForges-Design/blob/26b029cb6d765931c75a63cdf51ef7a6c99b7946/docs/assurance/wp03-00-implementation-evidence.md
-- https://github.com/ArcForges/ArcForges-Design/blob/26b029cb6d765931c75a63cdf51ef7a6c99b7946/docs/assurance/wp03-00-implementation-evidence.json
+Latest accepted Contracts source: e6c4a77f3ba48d70de4bf524623985b29278c784 (PR 37), published as NuGet/npm 1.0.0-ci.92.1 with the separate Maven 1.0.0-SNAPSHOT channel. F-026 remains open for WP06.02.
 
-This normal main publication successfully published all five npm packages through OIDC with GitHub provenance. NPM_PUBLISH_MODE remains oidc. The temporary NPM_BOOTSTRAP_TOKEN secret was deleted from the GitHub npm environment and its absence verified without reading its value. Revocation of the original npm account token was not performed or verified. The receipt preserves the earlier bootstrap publication separately; no verification-only publication was created.
-
-Current execution: none. The user explicitly requested completion of 03.00 followed by stopping. Next: WP03.01 — Foundation contract types, not started. Do not begin it without a new user instruction. No consumer upgrades, artifact-download or runtime revalidation cycle is implied by this completion.
+Related formal documents; resolve the relevant rules and follow their references:
+- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/assurance/wp03-02-implementation-evidence.md
+- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/architecture/02-contracts-and-protocols.md
+- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/architecture/contracts/00-operation-catalogue.md
+- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/architecture/contracts/04-protobuf-wire-registry.md
+- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/architecture/contracts/10-application-scope-and-streams.md
+- https://github.com/ArcForges/ArcForges-Design/blob/main/docs/architecture/contracts/11-operation-scope-manifest.md
 ```
 
 ## Project background
