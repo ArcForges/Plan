@@ -2,7 +2,7 @@
 
 - This repository owns execution profiles and task lists; formal documentation is English.
 - Work in retained Git worktrees; append to related open PRs and leave unrelated PRs alone.
-- Keep local/remote Current task and execution rules synchronized. Do not advance the task list without authorization.
+- Keep local/remote Current task and execution rules synchronized. The user's latest instructions determine whether to start, continue to subsequent steps, or stop; documents are execution guidance, not independent authorization or mandatory single-step stopping rules.
 - Follow [execution-policy.md](execution-policy.md) and Design P2-017. Never prescribe macOS CI, hosted runtime/device/browser/live-service/inference/installed-consumer tests or routine public-download/hash/install revalidation.
 - Preserve necessary Windows/Linux build/offline/static/security and signing/licence/lock checks. Runtime checks are scoped local opt-in using existing tools, once per relevant change; no toolchain reinstall.
 - Independent repository agents are allowed. Serialize heavy local builds and avoid hidden Git-hook builds.

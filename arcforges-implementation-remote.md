@@ -7,7 +7,7 @@ This is the portable counterpart of [the local edition](https://github.com/ArcFo
 To execute the current task, give the coding agent this command:
 
 ```text
-Read https://github.com/ArcForges/Plan/blob/main/arcforges-implementation-remote.md completely and follow it to complete only its Current task. Use its remote repository map and pinned reference revisions. Collect first, plan, implement, review each PR, wait for applicable CI, merge and finish required post-merge verification. Keep branches and worktrees, then stop.
+Read https://github.com/ArcForges/Plan/blob/main/arcforges-implementation-remote.md completely and follow it from its Current task within the scope authorized by the user. Use its remote repository map and pinned reference revisions. Collect first, plan, implement, review each PR, wait for applicable CI, merge and finish required post-merge verification. Keep branches and worktrees. The user's latest instructions determine whether to start, continue or stop.
 ```
 
 For another single task, use one block from [list-remote.md](https://github.com/ArcForges/Plan/blob/main/list-remote.md). An explicitly supplied block replaces only the Current task below for that run; all other instructions in this profile still apply. Reading the list does not authorize executing the whole list.
@@ -33,7 +33,7 @@ Owning section: WP-02.04; anchor: rule-wp-02.04.
 Execution authority: Design P2-017 and docs/assurance/ci-and-local-validation-policy.md.
 Scope: all nine implementation repositories, Design and Plan; append to the existing related Mobile PR, create retained worktrees/PRs for other owners, remove obsolete automated gates and correct active documentation.
 Preserve upstream evidence; do not rerun historical runtime/public-download checks.
-Stop after this task. Do not begin WP02.05.
+Whether to start, continue or stop is determined by the user's latest instructions.
 ```
 
 ## Project background
@@ -105,11 +105,11 @@ This policy governs both implementation profiles and every task block. It follow
 
 ## Collect, plan and implement
 
-Complete only the Current task and its explicitly authorized cross-repository repair. Inspect actual roots, remotes, branches, dirty state, worktrees, related PRs, current Design and invoked workflow scripts. Finish research and decisions, then establish one complete ordered plan before editing. Repair conflicting authoritative documentation before dependent implementation. Preserve product behavior, package IDs, signing continuity, immutable releases and unrelated work.
+Use Current task as the execution entry point. The user's latest instructions determine whether to start, continue to subsequent numbered substeps, or stop; this document neither authorizes starting work by itself nor imposes a mandatory stop after one substep. Inspect actual roots, remotes, branches, dirty state, worktrees, related PRs, current Design and invoked workflow scripts. Finish research and decisions, then establish one complete ordered plan before editing. Repair conflicting authoritative documentation before dependent implementation. Preserve product behavior, package IDs, signing continuity, immutable releases and unrelated work.
 
 Use a retained Git worktree for every change. Append commits to an existing related open PR; otherwise create a new worktree/PR. Do not reopen closed PRs or modify unrelated dependency PRs. Prefix PR titles with the work package and substep, such as `[WP02 · SubStep 02.04]`.
 
-One coordinator owns dependency order, review and merging. Independent repositories may use subagents with non-overlapping ownership. Serialize CPU-heavy local builds/tests and reuse existing caches. Routine decisions and authorized merging require no renewed approval. Do not begin another numbered substep.
+One coordinator owns dependency order, review and merging. Independent repositories may use subagents with non-overlapping ownership. Serialize CPU-heavy local builds/tests and reuse existing caches. Routine decisions and authorized merging require no renewed approval.
 
 ## Validation restrictions
 
@@ -127,11 +127,11 @@ One coordinator owns dependency order, review and merging. Independent repositor
 
 Use the normal network path. Do not configure proxy 7890 or another proxy. On a failed network operation, stop and report the exact operation rather than changing networking or repeatedly retrying. Do not invoke wsl.exe or WSL wrappers; use a directly available WSL terminal only if necessary. Parallelize independent source work, not competing heavy local builds.
 
-## Review, merge and stop
+## Review and merge
 
 Review each complete PR and fix findings. Merge documentation-only PRs with no CI after review. Automatically merge source PRs after all retained applicable latest-head CI succeeds. Remove obsolete runtime/macOS job references rather than adding fake passing gates. Do not bypass retained build/security/signing failures.
 
-Post-merge verification is limited to the expected merge commit, required build/publication/deployment job result and clean fast-forward primary update. Do not start another public-download/hash/install/device/browser/runtime cycle. Keep branches and worktrees, protect credentials and report actual results and material untested coverage. Deployment success is not a live test, and compilation is not physical-device or full commercial acceptance. Stop after the authorized task.
+Post-merge verification is limited to the expected merge commit, required build/publication/deployment job result and clean fast-forward primary update. Do not start another public-download/hash/install/device/browser/runtime cycle. Keep branches and worktrees, protect credentials and report actual results and material untested coverage. Deployment success is not a live test, and compilation is not physical-device or full commercial acceptance.
 
 ## Maintaining the two editions
 
