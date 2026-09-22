@@ -3,22 +3,21 @@
 ## Current task
 
 ```text
-Implement ArcForges Substep 03.00 — Create the split project structure.
+Completed ArcForges Substep 03.00 — Create the split project structure.
 
 Owning document: C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\03-contract-foundation-and-licence-split.md
 Owning section: WP-03.00; anchor: rule-wp-03.00.
-Scope: this substep, its nested sections, and applicable package-wide obligations.
-Required upstream work packages: WP-02. Verify its accepted stage evidence.
-Earlier substeps in this work package: none.
+Accepted scope: the selected project/package/generator boundaries and substantive schema slices in the WP03.00 implementation profile. Later schemas, semantic vectors, AOT/registration and integration acceptance remain with their assigned WP03 substeps; full WP03 is not accepted.
+Required upstream work package: WP-02, accepted at Design commit 7165187cb2d96aee0f275666eaa19dc6b8001833; evidence index docs/assurance/wp02-stage-acceptance.json. Preserve its independent producer/consumer pins and historical runtime evidence.
 
-WP02 is accepted at Design commit 7165187cb2d96aee0f275666eaa19dc6b8001833. Its evidence index is docs/assurance/wp02-stage-acceptance.json. Retain the independent producer/consumer pins and historical runtime evidence; no artifact-download or runtime cycle is implied. WP03.00 establishes the complete selected project/package/generator boundaries. Later numbered substeps own their specified schemas, semantic vectors and integration acceptance.
+Latest verified Contracts source: 30ddcad2bcb3634e089abb5e29d6c9ce05d38386 (PR 35). All 22 selected outputs were published: 14 NuGet and five npm packages at 1.0.0-ci.86.1, plus three Maven packages through the 1.0.0-SNAPSHOT development channel. All applicable PR/main CI and security checks passed. Main publication: https://github.com/ArcForges/Contracts/actions/runs/35716069370; main security: https://github.com/ArcForges/Contracts/actions/runs/35716069304.
+Completion evidence:
+- https://github.com/ArcForges/ArcForges-Design/blob/26b029cb6d765931c75a63cdf51ef7a6c99b7946/docs/assurance/wp03-00-implementation-evidence.md
+- https://github.com/ArcForges/ArcForges-Design/blob/26b029cb6d765931c75a63cdf51ef7a6c99b7946/docs/assurance/wp03-00-implementation-evidence.json
 
-Related formal documents; resolve the relevant rules and follow their references:
-- C:\MyFile\Projects\ArcForges-Design\docs\architecture\01-solution-and-project-layout.md
-- C:\MyFile\Projects\ArcForges-Design\docs\architecture\02-contracts-and-protocols.md
-- C:\MyFile\Projects\ArcForges-Design\docs\architecture\contracts\04-protobuf-wire-registry.md
-- C:\MyFile\Projects\ArcForges-Design\docs\architecture\contracts\05-cloudflare-integration.md
-- C:\MyFile\Projects\ArcForges-Design\docs\planning\producer-artifacts-and-integration.md
+This normal main publication successfully published all five npm packages through OIDC with GitHub provenance. NPM_PUBLISH_MODE remains oidc. The temporary NPM_BOOTSTRAP_TOKEN secret was deleted from the GitHub npm environment and its absence verified without reading its value. Revocation of the original npm account token was not performed or verified. The receipt preserves the earlier bootstrap publication separately; no verification-only publication was created.
+
+Current execution: none. The user explicitly requested completion of 03.00 followed by stopping. Next: WP03.01 — Foundation contract types, not started. Do not begin it without a new user instruction. No consumer upgrades, artifact-download or runtime revalidation cycle is implied by this completion.
 ```
 
 
@@ -64,7 +63,7 @@ One coordinator owns dependency order, review and merging. Independent repositor
 - No routine public package/archive/image/site downloads, repeated member/hash comparison or consumer execution. Retain lockfile integrity, required signing/licence/provenance checks and one necessary identity/integrity check at an actual publication handoff. Additional downloads require a concrete integrity/publication defect or explicit user request.
 - Promote the original candidate. Use provider upload/deployment receipts and status/coordinate metadata; no public-byte polling. Maven main uses SNAPSHOT, and formal Central publication requires a deliberate tag.
 - Do not create tags, republish, re-sign or allocate replacement versions solely for verification. Diagnose failures before rerunning; no blind retries.
-- Documentation-only edits require consistency/link review, not product builds or runtime tests. Keep AGENTS, active docs, workflow dependencies and actual release inventories synchronized. Preserve historical evidence as history, not as a rerun mandate.
+- Documentation-only edits require consistency/link review without an additional local product-build or runtime-test cycle. Code repositories still run their existing applicable CI for documentation-only PRs. Keep AGENTS, active docs, workflow dependencies and actual release inventories synchronized. Preserve historical evidence as history, not as a rerun mandate.
 
 ## Network and resources
 
@@ -72,6 +71,6 @@ Use the normal network path. Do not configure proxy 7890 or another proxy. On a 
 
 ## Review and merge
 
-Review each complete PR and fix findings. Merge documentation-only PRs with no CI after review. Automatically merge source PRs after all retained applicable latest-head CI succeeds. Remove obsolete runtime/macOS job references rather than adding fake passing gates. Do not bypass retained build/security/signing failures.
+Review each complete PR and fix findings. Documentation repositories that have no CI merge directly after review. In code repositories, every PR, including documentation-only changes, must run the existing applicable CI and may merge automatically only after all retained latest-head checks succeed. Do not skip configured checks or weaken branch protection to merge documentation changes. Remove obsolete runtime/macOS job references rather than adding fake passing gates. Do not bypass retained build/security/signing failures.
 
 Post-merge verification is limited to the expected merge commit, required build/publication/deployment job result and clean fast-forward primary update. Do not start another public-download/hash/install/device/browser/runtime cycle. Keep branches and worktrees, protect credentials and report actual results and material untested coverage. Deployment success is not a live test, and compilation is not physical-device or full commercial acceptance.
