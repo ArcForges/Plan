@@ -7,4 +7,4 @@
 - Preserve necessary Windows/Linux build/offline/static/security and signing/licence/lock checks. Runtime checks are scoped local opt-in using existing tools, once per relevant change; no toolchain reinstall.
 - Independent repository agents are allowed. Serialize heavy local builds and avoid hidden Git-hook builds.
 - No explicit proxy or wsl.exe wrapper. Stop and identify a failed network operation instead of retrying or changing network settings.
-- Review every PR and merge after applicable retained CI succeeds, or after review for docs-only PRs without CI. Post-merge: commit/job status and primary fast-forward only. Keep branches/worktrees and stop at the requested boundary.
+- Review every PR. Documentation repositories with no CI merge directly after review; code repositories run existing applicable CI even for documentation-only changes and merge only after all retained latest-head checks succeed. Do not skip checks or weaken branch protection for documentation changes. Post-merge: commit/job status and primary fast-forward only. Keep branches/worktrees and stop at the requested boundary.

@@ -26,14 +26,21 @@ Resolve the current Design default branch once to a full commit, and read every 
 ## Current task
 
 ```text
-Complete ArcForges Substep 02.04 - Version axis plumbing, with the explicitly authorized repository-wide CI and validation reduction.
+Completed ArcForges Substep 03.00 — Create the split project structure.
 
-Owning document: https://github.com/ArcForges/ArcForges-Design/blob/main/docs/planning/work-packages/02-build-governance-and-analyzer-policy.md
-Owning section: WP-02.04; anchor: rule-wp-02.04.
-Execution authority: Design P2-017 and docs/assurance/ci-and-local-validation-policy.md.
-Scope: all nine implementation repositories, Design and Plan; append to the existing related Mobile PR, create retained worktrees/PRs for other owners, remove obsolete automated gates and correct active documentation.
-Preserve upstream evidence; do not rerun historical runtime/public-download checks.
-Whether to start, continue or stop is determined by the user's latest instructions.
+Owning document: https://github.com/ArcForges/ArcForges-Design/blob/main/docs/planning/work-packages/03-contract-foundation-and-licence-split.md
+Owning section: WP-03.00; anchor: rule-wp-03.00.
+Accepted scope: the selected project/package/generator boundaries and substantive schema slices in the WP03.00 implementation profile. Later schemas, semantic vectors, AOT/registration and integration acceptance remain with their assigned WP03 substeps; full WP03 is not accepted.
+Required upstream work package: WP-02, accepted at Design commit 7165187cb2d96aee0f275666eaa19dc6b8001833; evidence index docs/assurance/wp02-stage-acceptance.json. Preserve its independent producer/consumer pins and historical runtime evidence.
+
+Latest verified Contracts source: 30ddcad2bcb3634e089abb5e29d6c9ce05d38386 (PR 35). All 22 selected outputs were published: 14 NuGet and five npm packages at 1.0.0-ci.86.1, plus three Maven packages through the 1.0.0-SNAPSHOT development channel. All applicable PR/main CI and security checks passed. Main publication: https://github.com/ArcForges/Contracts/actions/runs/35716069370; main security: https://github.com/ArcForges/Contracts/actions/runs/35716069304.
+Completion evidence:
+- https://github.com/ArcForges/ArcForges-Design/blob/26b029cb6d765931c75a63cdf51ef7a6c99b7946/docs/assurance/wp03-00-implementation-evidence.md
+- https://github.com/ArcForges/ArcForges-Design/blob/26b029cb6d765931c75a63cdf51ef7a6c99b7946/docs/assurance/wp03-00-implementation-evidence.json
+
+This normal main publication successfully published all five npm packages through OIDC with GitHub provenance. NPM_PUBLISH_MODE remains oidc. The temporary NPM_BOOTSTRAP_TOKEN secret was deleted from the GitHub npm environment and its absence verified without reading its value. Revocation of the original npm account token was not performed or verified. The receipt preserves the earlier bootstrap publication separately; no verification-only publication was created.
+
+Current execution: none. The user explicitly requested completion of 03.00 followed by stopping. Next: WP03.01 — Foundation contract types, not started. Do not begin it without a new user instruction. No consumer upgrades, artifact-download or runtime revalidation cycle is implied by this completion.
 ```
 
 ## Project background
@@ -121,7 +128,7 @@ One coordinator owns dependency order, review and merging. Independent repositor
 - No routine public package/archive/image/site downloads, repeated member/hash comparison or consumer execution. Retain lockfile integrity, required signing/licence/provenance checks and one necessary identity/integrity check at an actual publication handoff. Additional downloads require a concrete integrity/publication defect or explicit user request.
 - Promote the original candidate. Use provider upload/deployment receipts and status/coordinate metadata; no public-byte polling. Maven main uses SNAPSHOT, and formal Central publication requires a deliberate tag.
 - Do not create tags, republish, re-sign or allocate replacement versions solely for verification. Diagnose failures before rerunning; no blind retries.
-- Documentation-only edits require consistency/link review, not product builds or runtime tests. Keep AGENTS, active docs, workflow dependencies and actual release inventories synchronized. Preserve historical evidence as history, not as a rerun mandate.
+- Documentation-only edits require consistency/link review without an additional local product-build or runtime-test cycle. Code repositories still run their existing applicable CI for documentation-only PRs. Keep AGENTS, active docs, workflow dependencies and actual release inventories synchronized. Preserve historical evidence as history, not as a rerun mandate.
 
 ## Network and resources
 
@@ -129,7 +136,7 @@ Use the normal network path. Do not configure proxy 7890 or another proxy. On a 
 
 ## Review and merge
 
-Review each complete PR and fix findings. Merge documentation-only PRs with no CI after review. Automatically merge source PRs after all retained applicable latest-head CI succeeds. Remove obsolete runtime/macOS job references rather than adding fake passing gates. Do not bypass retained build/security/signing failures.
+Review each complete PR and fix findings. Documentation repositories that have no CI merge directly after review. In code repositories, every PR, including documentation-only changes, must run the existing applicable CI and may merge automatically only after all retained latest-head checks succeed. Do not skip configured checks or weaken branch protection to merge documentation changes. Remove obsolete runtime/macOS job references rather than adding fake passing gates. Do not bypass retained build/security/signing failures.
 
 Post-merge verification is limited to the expected merge commit, required build/publication/deployment job result and clean fast-forward primary update. Do not start another public-download/hash/install/device/browser/runtime cycle. Keep branches and worktrees, protect credentials and report actual results and material untested coverage. Deployment success is not a live test, and compilation is not physical-device or full commercial acceptance.
 
