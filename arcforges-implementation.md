@@ -3,13 +3,15 @@
 ## Current task
 
 ```text
-Implement ArcForges Substep 02.05 — Dependency policy.
+Implement ArcForges Substep 02.90 — Verify the owned artifact and real integration.
 
 Owning document: C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\02-build-governance-and-analyzer-policy.md
-Owning section: WP-02.05; anchor: rule-wp-02.05.
+Owning section: WP-02.90; anchor: rule-wp-02.90.
 Scope: this substep, its nested sections, and applicable package-wide obligations.
 Required upstream work packages: WP-01.
-Earlier substeps in this work package: 02.00, 02.01, 02.02, 02.03, 02.04. Verify their required stage evidence.
+Earlier substeps in this work package: 02.00, 02.01, 02.02, 02.03, 02.04, 02.05. Verify their required stage evidence.
+
+WP02.05 is accepted at Design commit f7646d769e5fc67a1f30130d381f907718b4cb01. Its source/result receipt is docs/assurance/wp02-05-implementation-evidence.json. All nine implementation PRs and required main publication/deployment results succeeded; primary checkouts are synchronized. Retain historical runtime/restore evidence without another artifact-download or runtime cycle. WP02.90 assembles the stage acceptance evidence; actual schema/native capability and consumer integration belong to their later owners.
 
 Related formal documents; resolve the relevant rules and follow their references:
 - C:\MyFile\Projects\ArcForges-Design\docs\architecture\14-build-packaging-and-release.md
