@@ -3,15 +3,16 @@
 ## Current task
 
 ```text
-Implement ArcForges Substep 03.01 — Foundation contract types.
+Implement ArcForges Substep 03.02 — Serialization posture.
 
 Owning document: C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\03-contract-foundation-and-licence-split.md
-Owning section: WP-03.01; anchor: rule-wp-03.01.
+Owning section: WP-03.02; anchor: rule-wp-03.02.
 Scope: this substep, its nested sections, and applicable package-wide obligations.
 Required upstream work packages: WP-02.
-Earlier substeps in this work package: 03.00. Verify their required stage evidence.
+Earlier substeps in this work package: 03.00, 03.01. Verify their required stage evidence.
 
 Related formal documents; resolve the relevant rules and follow their references:
+- C:\MyFile\Projects\ArcForges-Design\docs\assurance\wp03-01-implementation-evidence.md
 - C:\MyFile\Projects\ArcForges-Design\docs\architecture\02-contracts-and-protocols.md
 - C:\MyFile\Projects\ArcForges-Design\docs\architecture\contracts\00-operation-catalogue.md
 - C:\MyFile\Projects\ArcForges-Design\docs\architecture\contracts\04-protobuf-wire-registry.md
