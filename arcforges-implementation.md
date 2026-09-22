@@ -3,21 +3,22 @@
 ## Current task
 
 ```text
-Implement ArcForges Substep 02.90 — Verify the owned artifact and real integration.
+Implement ArcForges Substep 03.00 — Create the split project structure.
 
-Owning document: C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\02-build-governance-and-analyzer-policy.md
-Owning section: WP-02.90; anchor: rule-wp-02.90.
+Owning document: C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\03-contract-foundation-and-licence-split.md
+Owning section: WP-03.00; anchor: rule-wp-03.00.
 Scope: this substep, its nested sections, and applicable package-wide obligations.
-Required upstream work packages: WP-01.
-Earlier substeps in this work package: 02.00, 02.01, 02.02, 02.03, 02.04, 02.05. Verify their required stage evidence.
+Required upstream work packages: WP-02. Verify its accepted stage evidence.
+Earlier substeps in this work package: none.
 
-WP02.05 is accepted at Design commit f7646d769e5fc67a1f30130d381f907718b4cb01. Its source/result receipt is docs/assurance/wp02-05-implementation-evidence.json. All nine implementation PRs and required main publication/deployment results succeeded; primary checkouts are synchronized. Retain historical runtime/restore evidence without another artifact-download or runtime cycle. WP02.90 assembles the stage acceptance evidence; actual schema/native capability and consumer integration belong to their later owners.
+WP02 is accepted at Design commit 7165187cb2d96aee0f275666eaa19dc6b8001833. Its evidence index is docs/assurance/wp02-stage-acceptance.json. Retain the independent producer/consumer pins and historical runtime evidence; no artifact-download or runtime cycle is implied. WP03.00 establishes the complete selected project/package/generator boundaries. Later numbered substeps own their specified schemas, semantic vectors and integration acceptance.
 
 Related formal documents; resolve the relevant rules and follow their references:
-- C:\MyFile\Projects\ArcForges-Design\docs\architecture\14-build-packaging-and-release.md
-- C:\MyFile\Projects\ArcForges-Design\docs\architecture\21-platform-and-dependency-matrix.md
-- C:\MyFile\Projects\ArcForges-Design\docs\architecture\25-web-toolchain-and-sdk.md
-- C:\MyFile\Projects\ArcForges-Design\docs\requirements\12-quality-and-compatibility-contract.md
+- C:\MyFile\Projects\ArcForges-Design\docs\architecture\01-solution-and-project-layout.md
+- C:\MyFile\Projects\ArcForges-Design\docs\architecture\02-contracts-and-protocols.md
+- C:\MyFile\Projects\ArcForges-Design\docs\architecture\contracts\04-protobuf-wire-registry.md
+- C:\MyFile\Projects\ArcForges-Design\docs\architecture\contracts\05-cloudflare-integration.md
+- C:\MyFile\Projects\ArcForges-Design\docs\planning\producer-artifacts-and-integration.md
 ```
 
 
