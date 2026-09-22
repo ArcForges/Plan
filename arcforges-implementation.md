@@ -2,6 +2,21 @@
 
 ## Current task
 
+```text
+Implement ArcForges Substep 02.05 — Dependency policy.
+
+Owning document: C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\02-build-governance-and-analyzer-policy.md
+Owning section: WP-02.05; anchor: rule-wp-02.05.
+Scope: this substep, its nested sections, and applicable package-wide obligations.
+Required upstream work packages: WP-01.
+Earlier substeps in this work package: 02.00, 02.01, 02.02, 02.03, 02.04. Verify their required stage evidence.
+
+Related formal documents; resolve the relevant rules and follow their references:
+- C:\MyFile\Projects\ArcForges-Design\docs\architecture\14-build-packaging-and-release.md
+- C:\MyFile\Projects\ArcForges-Design\docs\architecture\21-platform-and-dependency-matrix.md
+- C:\MyFile\Projects\ArcForges-Design\docs\architecture\25-web-toolchain-and-sdk.md
+- C:\MyFile\Projects\ArcForges-Design\docs\requirements\12-quality-and-compatibility-contract.md
+```
 
 
 ## Project background
