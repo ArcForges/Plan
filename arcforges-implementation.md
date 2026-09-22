@@ -2,16 +2,7 @@
 
 ## Current task
 
-```text
-Complete ArcForges Substep 02.04 - Version axis plumbing, with the explicitly authorized repository-wide CI and validation reduction.
 
-Owning document: https://github.com/ArcForges/ArcForges-Design/blob/main/docs/planning/work-packages/02-build-governance-and-analyzer-policy.md
-Owning section: WP-02.04; anchor: rule-wp-02.04.
-Execution authority: Design P2-017 and docs/assurance/ci-and-local-validation-policy.md.
-Scope: all nine implementation repositories, Design and Plan; append to the existing related Mobile PR, create retained worktrees/PRs for other owners, remove obsolete automated gates and correct active documentation.
-Preserve upstream evidence; do not rerun historical runtime/public-download checks.
-Stop after this task. Do not begin WP02.05.
-```
 
 ## Project background
 
