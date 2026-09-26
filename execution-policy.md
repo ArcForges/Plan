@@ -1,14 +1,16 @@
 # Execution and validation policy
 
-This policy governs both implementation profiles and every task block. It follows [Design P2-017](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-017) and the [CI/local policy](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/assurance/ci-and-local-validation-policy.md).
+This policy governs every delivery task and the adoption stage. It follows [Design P2-017](https://github.com/ArcForges/ArcForges-Design-B/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-017), the [CI/local policy](https://github.com/ArcForges/ArcForges-Design-B/blob/main/docs/assurance/ci-and-local-validation-policy.md) and the [delivery model](https://github.com/ArcForges/ArcForges-Design-B/blob/main/docs/planning/delivery/README.md) of [P2-018](https://github.com/ArcForges/ArcForges-Design-B/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-018).
 
 ## Collect, plan and implement
 
-Use Current task as the execution entry point. The user's latest instructions determine whether to start, continue to subsequent numbered substeps, or stop; this document neither authorizes starting work by itself nor imposes a mandatory stop after one substep. Inspect actual roots, remotes, branches, dirty state, worktrees, related PRs, current Design and invoked workflow scripts. Finish research and decisions, then establish one complete ordered plan before editing. Repair conflicting authoritative documentation before dependent implementation. Preserve product behavior, package IDs, signing continuity, immutable releases and unrelated work.
+There is no single Current task. A worker selects a ready task or adoption slice with `python tools/delivery.py ready`, which reads only the merged graph, ledger and claims, claims it atomically with `python tools/delivery.py claim` as described in [arcforges-implementation.md](arcforges-implementation.md), records its handoff checkpoints on the claim, and owns it until it is delivered or complete, released or taken over. Any number of workers may run at once on different tasks, including different tasks in the same repository. The implementation baseline is complete through WP03.02; WP03.03 has not started. The user's latest instructions determine whether to start, continue or stop; this document neither authorizes starting work by itself nor imposes a stop after one task.
 
-Use a retained Git worktree for every change. Append commits to an existing related open PR; otherwise create a new worktree/PR. Do not reopen closed PRs or modify unrelated dependency PRs. Prefix PR titles with the work package and substep, such as `[WP02 · SubStep 02.04]`.
+Inspect actual roots, remotes, branches, dirty state, worktrees, related PRs, current Design and invoked workflow scripts. Finish research and decisions, then establish one complete ordered plan before editing. Repair conflicting authoritative documentation before dependent implementation. Preserve product behavior, package IDs, signing continuity, immutable releases and unrelated work.
 
-One coordinator owns dependency order, review and merging. Independent repositories may use subagents with non-overlapping ownership. Serialize CPU-heavy local builds/tests and reuse existing caches. Routine decisions and authorized merging require no renewed approval.
+Use a retained Git worktree for every change, on branch `task/<key>` (the task ID in lower case with dots replaced by hyphens, such as `task/con-07`). Append commits to the task's open PR; otherwise create a new worktree/PR. Do not reopen closed PRs or modify unrelated dependency PRs. Prefix PR titles with the task identifier, such as `[CON.07]`, and keep it in the merge or squash commit title; a bundle of compatible ready tasks lists each identifier, and planning changes use `[P2-018]` or the affected task identifiers.
+
+Coordination is at the narrowest boundary: each repository's integration owner (the session holding `roles/integration-<repository>`) decides merge order among ready PRs, merges only at the reviewed head of the claimant at the current claim epoch and applies the shared-resource protocols; exclusive phases are held through short leases released before waiting; the Architecture Owner decides contract and planning changes; the Release Engineering Owner runs release tasks. Coordination state lives in claim, lease and role records, pull requests and the ledger, never only in a conversation. Run CPU-heavy local builds/tests one at a time per workstation through the build slot and reuse existing caches. Routine decisions and authorized merging require no renewed approval.
 
 ## Validation restrictions
 
@@ -24,7 +26,7 @@ One coordinator owns dependency order, review and merging. Independent repositor
 
 ## Network and resources
 
-Use the normal network path. Do not configure proxy 7890 or another proxy. On a failed network operation, stop and report the exact operation rather than changing networking or repeatedly retrying. Do not invoke wsl.exe or WSL wrappers; use a directly available WSL terminal only if necessary. Parallelize independent source work, not competing heavy local builds.
+Use the normal network path. On a failed network operation, stop and report the exact operation rather than changing networking or repeatedly retrying. Do not invoke wsl.exe or WSL wrappers; use a directly available WSL terminal only if necessary. Parallelize independent tasks, not competing heavy local builds.
 
 ## Review and merge
 
