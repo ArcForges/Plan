@@ -127,7 +127,7 @@ Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.90 | Contracts | M | — | WP03.00 — split project structure (accepted, historical) |
 | CON.91 | Contracts | L | — | WP03.01 — foundation contract types (accepted, historical) |
 | CON.92 | Contracts | M | — | WP03.02 — serialization posture (accepted, historical) |
-| CON.24 | Contracts | M | CON.02, CON.23, ADOPT.03.contracts (adoption) | ArcScope library read operations and summary records |
+| CON.24 | Contracts | M | CON.02, CON.23, CON.03, ADOPT.03.contracts (adoption) | ArcScope library read operations and summary records |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
@@ -328,7 +328,7 @@ Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | SCOPE.19 | ArcScope | M | SCOPE.12, SCOPE.13, SCOPE.14, SCOPE.15, SCOPE.16, SCOPE.17, SCOPE.18, ADOPT.05.arcscope (adoption) | Owned-artifact verification and real integration |
 | SCOPE.20 | ArcScope | M | SCOPE.06, CON.02, ADOPT.05.arcscope (adoption) | ArcChat capability surface for ArcScope |
 | SCOPE.21 | ArcScope | M | SCOPE.14, SCOPE.16, SCOPE.15, ADOPT.05.arcscope (adoption) | Bounded context provision for AI |
-| SCOPE.22 | ArcScope | M | SCOPE.06, SCOPE.18, SCOPE.17, ADOPT.05.arcscope (adoption) | Cloud sync scope (metadata, not raw capture) |
+| SCOPE.22 | ArcScope | M | SCOPE.06, SCOPE.18, SCOPE.17, CON.03, ADOPT.05.arcscope (adoption) | Cloud sync scope (metadata, not raw capture) |
 | SCOPE.23 | ArcScope | M | SCOPE.07, CLOUD.42, ADOPT.05.arcscope (adoption) | Explicit per-session raw capture upload |
 | SCOPE.24 | ArcScope | L | SCOPE.07, SCOPE.14, ADOPT.05.arcscope (adoption) | Import, export and format fixtures |
 | SCOPE.25 | ArcScope | S | SCOPE.20, SCOPE.07, EXT.02, ADOPT.05.arcscope (adoption) | Extension boundary: no third-party raw-capture write path |

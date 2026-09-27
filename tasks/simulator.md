@@ -71,7 +71,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/sim-03 (python tools/delivery.py claim SIM.03 --worker <name>); task branch task/sim-03 in Cloud; ledger record ledger/tasks/sim-03.md.
 Kind/size: service/XL. Baseline: not-started.
-Outcome: Deterministic committed samples and restart recovery pass under real DO alarm delivery, Container execution and D1 checkpoint/fence; the proposed 5s latency is measured and recorded, never claimed as hard real time; every SimulationPacer state-diagram race (duplicate alarm, exhausted retry, sleeping Container, pause/cancel race, duplicate segment, delayed catch-up, accelerated mode) passes.
+Outcome: Deterministic committed samples and restart recovery pass under real DO alarm delivery, Container execution and D1 checkpoint/fence; the proposed 5s latency is measured and recorded, never claimed as hard real time; every SimulationPacer state-diagram race (duplicate alarm, exhausted retry, sleeping Container, pause/cancel race, duplicate segment, delayed catch-up, accelerated mode) passes. Retained run rows include createdAt and support the workspace-authorized scenario-version/state filters and deterministic paging of simulation.listRuns.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-51.02 (full: architecture-23 DO alarm integration owner plus bounded Container segments, D1 checkpoint/fence/next_due_at, minutely rescue scan; default 1s and 0.25-10s segment bounds; no permanent hosted-service loop): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\51-arcscope-cloud-simulator.md, anchor rule-wp-51.02
@@ -134,10 +134,10 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/sim-05 (python tools/delivery.py claim SIM.05 --worker <name>); task branch task/sim-05 in Cloud; ledger record ledger/tasks/sim-05.md.
 Kind/size: service/M. Baseline: not-started.
-Outcome: The eleven simulation.* operations are durable, idempotent and expected-state; a client can list authorised manifests and fetch segments resumably with hash verification; state polling works with realtime disabled; a run reaching a terminal state emits one durable simulation.runTerminal notification.
+Outcome: The thirteen simulation operations implement the declared query or command semantics; mutations are durable and idempotent, guarded by expectedRev and legal predecessor states. Clients discover retained authorized runs with simulation.listRuns, list committed manifests and fetch segments resumably with hash verification; polling works with realtime disabled and terminal transitions emit one durable simulation.runTerminal notification. Fresh clients require no remembered run ID.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-51.04 (the Cloud API half: the eleven simulation.* operations as durable, idempotent, expected-state commands; authorised manifest listing; resumable hash-verifiable segment fetch over HTTP or object storage; revision-/cursor-based state polling): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\51-arcscope-cloud-simulator.md, anchor rule-wp-51.04
+- WP-51.04 (the Cloud API half: the thirteen simulation.* operations as durable, idempotent, commands guarded by expectedRev and legal predecessor states; authorised manifest listing; resumable hash-verifiable segment fetch over HTTP or object storage; revision-/cursor-based state polling): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\51-arcscope-cloud-simulator.md, anchor rule-wp-51.04
 
 Entry condition: adoption slice ADOPT.07.simulator is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -152,7 +152,7 @@ Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.PublicApi/Scope/**; Cloud
 Shared resources (follow the owner protocol): RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.
 Unblocks: AND.27, SIM.06, SIM.08, SIM.09, WEB.33
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): duplicate/stale/out-of-order commands; terminal-run resists resurrection; hash-mismatched segment rejected; reconnect-with-realtime-disabled proves polling is a complete authoritative fallback — real local Cloud host per P2-017
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): duplicate/stale/out-of-order commands; terminal-run resists resurrection; hash-mismatched segment rejected; reconnect-with-realtime-disabled proves polling is a complete authoritative fallback — real local Cloud host per P2-017; offline run-list authorization/paging and stale-revision/illegal-predecessor vectors
 Completion evidence for the ledger: command idempotency and realtime-disabled fallback results (Cloud-side)
 ```
 
