@@ -16,7 +16,7 @@ This snapshot records instruction alignment and existing publication metadata. I
 
 ## Repository snapshot
 
-Repository details are recorded below after their required main publication completes.
+All seven required main publications succeeded before this baseline was frozen. The repository observations below were collected on 2026-09-27, with the final Mobile publication completing at 17:10:19Z.
 
 ### DesktopPlatform
 
@@ -83,8 +83,10 @@ Repository details are recorded below after their required main publication comp
 - Frozen main / retarget merge: `3267f6c4bbf7a51bde26512cba5895a64502d802`; [PR #15](https://github.com/ArcForges/Mobile/pull/15).
 - Final reviewed head: `7c8e100f20991e912a45a8bc44d75782218ee2a6`; [independent approval](https://github.com/ArcForges/Mobile/pull/15#issuecomment-5857861119). The earlier AGENTS-only head was superseded by the necessary Spotless `8.10.3` CI tooling repair. [Latest-head PR CI 36334917935](https://github.com/ArcForges/Mobile/actions/runs/36334917935) passed all retained Windows/Linux build, policy/security and Verify checks.
 - Repair scope: admitted tooling patch and strict checksum metadata, dependency admission/provenance, and superseding resource profile `r9`. Existing immutable profiles and archive expectations remained unchanged. No Android runtime dependency or product identity changed.
+- Open PRs: none. Complete remote branch inventory: `main` = `3267f6c4bbf7a51bde26512cba5895a64502d802`; `task/adopt-01` = `7c8e100f20991e912a45a8bc44d75782218ee2a6`. Clean primary fast-forwarded; task worktree retained.
 - Local repair validation, using existing JDK `21.0.8`: through the delivery build slot, `gradlew.bat --no-daemon --console=plain --write-verification-metadata sha256 spotlessCheck` passed, then strict `gradlew.bat --no-daemon --console=plain spotlessCheck` passed; `python eng/check_provenance.py --owner Mobile --write-notice`, `python eng/mobile.py check`, and `python -m unittest discover -s eng/tests -v` passed (70 offline tests). No local Android product build or runtime validation was performed.
-- Required main publication [run 36335468538](https://github.com/ArcForges/Mobile/actions/runs/36335468538): pending; candidate not yet frozen as published.
+- Required main publication [run 36335468538](https://github.com/ArcForges/Mobile/actions/runs/36335468538) completed successfully. [Original signing/publication job](https://github.com/ArcForges/Mobile/actions/runs/36335468538/job/108666576568) passed all steps, including signing with the persistent identity.
+- Latest signed Android candidate [android-0.1.0-ci.49.1](https://github.com/ArcForges/Mobile/releases/tag/android-0.1.0-ci.49.1), published 2026-09-27T17:10:19Z, targets frozen main. Original `release.json` asset `593373847`, metadata digest `sha256:c90feafd9de73cc12368741519bb6fa00243a49c3279a152c4a58c74e369db98`; signed resource provenance asset `593373851`; signed APK `593373797` and AAB `593373802`. This is the GitHub Android candidate channel, not an npm/Maven package publication or store release. Provider metadata and original signing receipt only; no published artifact bytes or installed-device acceptance.
 
 ## Interpretation and next work
 
