@@ -84,19 +84,19 @@ Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.01 | DesktopPlatform | XL | — | Specification, naming, licence-boundary and provenance freeze (WP00, accepted) |
 | GOV.02 | DesktopPlatform | XL | GOV.01 | Repository reconciliation and target layout (WP01, accepted) |
 | GOV.03 | DesktopPlatform | XL | GOV.02 | Build governance, packaging policy and analyzers (WP02, accepted) |
-| GOV.04 | DesktopPlatform | L | GOV.03, GOV.01, GOV.18, ADOPT.02.governance (adoption) | Shared architecture/repository policy-test engine and DesktopPlatform enforcement |
+| GOV.04 | DesktopPlatform | L | GOV.03, GOV.01, GOV.18, CON.23, ADOPT.02.governance (adoption) | Shared architecture/repository policy-test engine and DesktopPlatform enforcement |
 | GOV.05 | Contracts | L | GOV.04, CON.90, CON.23, ADOPT.03.governance (adoption) | Contracts policy tests and contract/serialization policy engine |
 | GOV.07 | ArcScope | S | GOV.04, GOV.05, ADOPT.05.governance (adoption) | ArcScope policy tests |
 | GOV.09 | Cloud | M | GOV.04, GOV.05, ADOPT.07.governance (adoption) | Cloud policy tests |
 | GOV.10 | AI | S | GOV.04, GOV.05, ADOPT.08.governance (adoption) | AI (Workflow Harness) policy tests |
-| GOV.11 | Web | M | GOV.03, GOV.01, ADOPT.09.governance (adoption) | Web policy tests (Node/TS mechanism) |
+| GOV.11 | Web | M | GOV.03, GOV.01, CON.23, ADOPT.09.governance (adoption) | Web policy tests (Node/TS mechanism) |
 | GOV.12 | Mobile | M | GOV.03, GOV.04, ADOPT.10.governance (adoption) | Mobile policy tests (Gradle/Kotlin mechanism) |
 | GOV.13 | DesktopPlatform | M | GOV.04, GOV.18, ADOPT.02.governance (adoption) | Invariant enforcement accounting report |
 | GOV.14 | DesktopPlatform | M | GOV.01, GOV.18, ADOPT.02.governance (adoption) | Specification integrity checks over the Design repository |
 | GOV.15 | DesktopPlatform | M | GOV.04, GOV.05, GOV.07, GOV.09, GOV.10, GOV.11, GOV.12, GOV.13, GOV.14, ADOPT.02.governance (adoption) | WP05 stage integration verification |
 | GOV.16 | Contracts | M | CON.18, ADOPT.03.governance (adoption) | Operation-catalogue authorization reachability matrix and identity boundary evidence |
 | GOV.17 | DesktopPlatform | M | ADOPT.02.governance (adoption) | Retire the native families outside the product family and move the still-image shim |
-| GOV.18 | DesktopPlatform | M | ADOPT.02.governance (adoption) | Reduce the DesktopPlatform policy data and re-pin the design-policy export |
+| GOV.18 | DesktopPlatform | M | CON.23, ADOPT.02.governance (adoption) | Reduce the DesktopPlatform policy data and re-pin the design-policy export |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 
@@ -108,15 +108,15 @@ Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.04 | Contracts | L | ADOPT.03.contracts (adoption) | ContentSandbox service schema (15 methods: session/slot/image/PDF) |
 | CON.05 | Contracts | M | ADOPT.03.contracts (adoption) | Extension/Connector/LocalBootstrap service schema (annex09 helper closure minus ContentSandbox) |
 | CON.06 | Contracts | L | CON.02, CON.23, ADOPT.03.contracts (adoption) | Product in-process port completion: IScopeOperations/IChatOperations + infra ports |
-| CON.07 | Contracts | L | ADOPT.03.contracts (adoption) | Identity/session/device operation registry + native-auth and browser HTTP exceptions |
-| CON.08 | Contracts | M | ADOPT.03.contracts (adoption) | Entitlement/commerce operation registry |
+| CON.07 | Contracts | L | CON.02, CON.11, ADOPT.03.contracts (adoption) | Identity/session/device operation registry + native-auth and browser HTTP exceptions |
+| CON.08 | Contracts | M | CON.02, ADOPT.03.contracts (adoption) | Entitlement/commerce operation registry |
 | CON.09 | Contracts | L | CON.03, ADOPT.03.contracts (adoption) | Sync/resource-transfer/objects operation registry + realm-transfer.v1 |
 | CON.10 | Contracts | L | CON.02, ADOPT.03.contracts (adoption) | Task/approval/bridge/chat/agent/automation/search operation registry + ai-internal package |
 | CON.11 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Application/history/execution/events operations (annex10's 13 additions) + EventService |
 | CON.12 | Contracts | M | ADOPT.03.contracts (adoption) | Extension and policy schemas: manifest.v1/workflow.v1/panel.v1/policy body.v1/configuration.v1 |
 | CON.13 | Contracts | S | ADOPT.03.contracts (adoption) | Package catalog operation registry (CatalogService) |
 | CON.14 | Contracts | L | CON.13, ADOPT.03.contracts (adoption) | Operator control service (OperatorService, full §9/9.1/9.2 protocol) |
-| CON.15 | Contracts | M | CON.11, ADOPT.03.contracts (adoption) | Cloudflare-internal HTTP bindings (AI Worker <-> C# ports beyond ai-internal's chat/task family) |
+| CON.15 | Contracts | M | CON.11, ADOPT.03.contracts (adoption) | Cloudflare-internal HTTP and D1 ExecutePlan bindings |
 | CON.16 | Contracts | M | ADOPT.03.contracts (adoption) | Signed catalog/update/realm formats (catalog-index.v1, catalog-revocations.v1, android-update.v1, realm.v1) |
 | CON.17 | Contracts | M | CON.92, ADOPT.03.contracts (adoption) | Cross-language compatibility window + canonical semantic hash |
 | CON.18 | Contracts | S | ADOPT.03.contracts (adoption) | Operation-scope manifest + authorization-reachability matrix generator |
@@ -149,7 +149,7 @@ Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PRF.04 | DesktopPlatform | L | CON.05, ADOPT.02.runtime-proofs (adoption) | Local RPC under AOT: bidirectional named-pipe/UDS probe processes |
 | PRF.05 | DesktopPlatform | M | CON.92, PRF.07, ADOPT.02.runtime-proofs (adoption) | Generated gRPC-Web under AOT against deployed Worker/Container ingress |
 | PRF.06 | DesktopPlatform | M | PRF.07, ADOPT.02.runtime-proofs (adoption) | Realtime (EventService.Watch/Poll) under AOT |
-| PRF.07 | Cloud | XL | CON.92, ADOPT.07.runtime-proofs (adoption) | Cloudflare Native AOT host + D1 + DO/Queue/R2 foundation proof |
+| PRF.07 | Cloud | XL | CON.92, CON.07, CON.15, ADOPT.07.runtime-proofs (adoption) | Cloudflare Native AOT host + D1 + DO/Queue/R2 foundation proof |
 | PRF.08 | Web | L | CON.92, PRF.07, ADOPT.09.runtime-proofs (adoption) | React production build and generated TS SDK proof |
 | PRF.09 | DesktopPlatform | S | PLT.34, ADOPT.02.runtime-proofs (adoption) | Third-party control AOT admission gate and first candidate |
 | PRF.10 | Mobile | L | CON.90, PRF.07, ADOPT.10.runtime-proofs (adoption) | Android Kotlin/Jetpack Compose gRPC-Web and CF proof |
