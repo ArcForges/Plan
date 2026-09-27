@@ -127,6 +127,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] GOV.03: a build that fails on warnings/AOT diagnostics (GOV.03)
 - [artifact] GOV.01: exported glossary-terms.json/invariants.json policy data (GOV.01)
 - [artifact] GOV.18: policy data reduced to the retained repositories
+- [artifact] CON.23: Immutable canonical naming policy/scanner build-time candidate asset
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -292,10 +293,11 @@ Entry condition: adoption slice ADOPT.09.governance is complete in the Plan ledg
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] GOV.03: the one Node/npm workspace and Windows esproj adapter (GOV.03)
 - [artifact] GOV.01: licence boundary declarations (mobile-only/public-SDK Apache set)
+- [artifact] CON.23: Immutable canonical naming policy/scanner build-time candidate asset
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Web:eng/policy/**; Web:.eslintrc*/lint-config for architecture rules
+Permitted write scope: Web:eng/policy/**; Web:.eslintrc*/lint-config for architecture rules; Web:tooling/project.ts (wire owned policy checks into existing PR gate); Web:tests/unit/** (offline policy positive/negative fixtures); Web:eng/provenance/** (owned policy source inventory and new receipts; preserve historical records)
 Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
 Unblocks: GOV.15
 
@@ -327,8 +329,8 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Mobile:gradle/policy/**; Mobile:eng/policy/exceptions.json
-Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
+Permitted write scope: Mobile:gradle/policy/**; Mobile:eng/policy/exceptions.json; Mobile:build.gradle.kts (apply owned Gradle-native policy and formatter target only)
+Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.; RES-mobile-build-config (append): The module skeleton task registers all modules once and holds the lease `leases/res-mobile-build-config` while it restructures the build; later tasks edit only their module; catalog entries are appended and locks regenerated after rebase; dependency additions carry admission receipts.
 Unblocks: GOV.15
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline Gradle-time checks, negative fixtures, PR CI; no device/emulator runtime here, per P2-017 (that is WP06.07/WP30/WP32).
@@ -475,7 +477,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:native/* (retired family directories and the moved still-image directory); DesktopPlatform:native/CMakeLists.txt; DesktopPlatform:src/Native/* (retired family projects and the still-image logical library name); DesktopPlatform:tests/NativeAbiTests/**; DesktopPlatform:win.slnx; DesktopPlatform:eng/packaging/packages.json; DesktopPlatform:docs/native-reconciliation.md; DesktopPlatform:README.md; DesktopPlatform:docs/native-package-release.md; DesktopPlatform:src/BuildingBlocks/ArcForges.NativeInterop/README.md; DesktopPlatform:tests/ArchitectureTests/** (retired native library map); DesktopPlatform:eng/packaging/test_packages.py; DesktopPlatform:eng/packaging/native_consumer.py; DesktopPlatform:eng/packaging/README.md
+Permitted write scope: DesktopPlatform:native/* (retired family directories and the moved still-image directory); DesktopPlatform:native/CMakeLists.txt; DesktopPlatform:src/Native/* (retired family projects and the still-image logical library name); DesktopPlatform:tests/NativeAbiTests/**; DesktopPlatform:win.slnx; DesktopPlatform:eng/packaging/packages.json; DesktopPlatform:docs/native-reconciliation.md; DesktopPlatform:README.md; DesktopPlatform:docs/native-package-release.md; DesktopPlatform:src/BuildingBlocks/ArcForges.NativeInterop/README.md; DesktopPlatform:tests/ArchitectureTests/** (retired native library map); DesktopPlatform:eng/packaging/test_packages.py; DesktopPlatform:eng/packaging/native_consumer.py; DesktopPlatform:eng/packaging/README.md; DesktopPlatform:.github/workflows/native-abi.yml (retired owned-family build inputs only; retain dependencies of retained image/PDF/instrument families); DesktopPlatform:CMakePresets.json (retired build targets only); DesktopPlatform:deploy/README.md (current retained-family build/install inventory); DesktopPlatform:eng/packaging/native.py; DesktopPlatform:eng/native/vcpkg/ports/opentimelineio/** (retired overlay only); DesktopPlatform:eng/native_provenance.py; DesktopPlatform:tests/tooling/test_native_provenance.py; DesktopPlatform:eng/provenance/files.json; DesktopPlatform:eng/provenance/NOTICE.txt; DesktopPlatform:eng/provenance/artifact-profiles/native-win-x64-r4.json (new immutable successor); DesktopPlatform:eng/provenance/records/native-*-r4.json (new immutable successors; preserve historical records); DesktopPlatform:eng/check_provenance.py (validate explicit retirement of previously registered artifact targets only); DesktopPlatform:tests/tooling/test_provenance.py (retirement rejection fixtures); DesktopPlatform:eng/provenance/retired-artifacts.json (exact former project/package/kind targets with retirement authority; reject active or unregistered targets); DesktopPlatform:eng/provenance/records/contracts-provenance-tools-r2.json (new immutable tool successor; preserve previous record); DesktopPlatform:CMakeLists.txt (reject retired native build profiles)
 Shared resources (follow the owner protocol): RES-desktopplatform-package-inventory (append): Each producer task adds its own package entry; every merge to main packs and publishes all packages at one version; consumers pin the candidate produced by the merge of the capability they need, never waiting for a package closure task; one merge queue.; RES-desktopplatform-native-build (append): The vcpkg baseline and overlay ports change only through a dependency-admission change with licence and provenance receipts; each native family adds its own CMake targets and workflow entries; triplet or port changes are rebased and rebuilt by their author; CPU-heavy native builds use the workstation build slot.; RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.; RES-workstation-build-slot (exclusive): Exclusive per workstation for the duration of each CPU-heavy local build or test, through the workstation lock rather than a Plan lease: run the command as `python tools/delivery.py build-slot run --worker <name> --task <task> -- <command>` with the Plan repository tool, which holds the lock directory `.arcforges/build-slot` in the user profile with an owner record and heartbeat and recovers a lock whose holder stopped. Coding and review continue while a build waits; CI capacity is not limited by this rule.; RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
 Unblocks: NAT.06, NAT.11, NAT.13, NAT.14, NAT.30
 
