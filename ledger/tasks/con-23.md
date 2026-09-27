@@ -1,9 +1,9 @@
 ---
 task: CON.23
-status: delivered
+status: complete
 recorded: 2026-09-27
 claimant: w-20260927-contracts-lane
-epoch: 1
+epoch: 2
 ---
 
 # Retired contracts and canonical naming distribution
@@ -20,3 +20,9 @@ epoch: 1
 - Publication: [normal main CI 36341716023](https://github.com/ArcForges/Contracts/actions/runs/36341716023), run 129 attempt 1, succeeded in Build candidate, Verify, Publish NuGet, Publish npm and Publish Maven channel. Main [Security 36341716011](https://github.com/ArcForges/Contracts/actions/runs/36341716011) also succeeded. NuGet/npm version `1.0.0-ci.129.1` binds source commit `05bf7986478440719e3fae944cb4ecdfa5e3cbfc`; Maven `io.github.arcforges:contracts-proto`, `contracts-connect-client`, `contract-fixtures` use `1.0.0-SNAPSHOT` bound to that original candidate/source. The publisher completed all three Sonatype snapshot uploads without public-byte polling.
 - Naming package coordinates: `ArcForges.Contracts.Validation/1.0.0-ci.129.1` and `@arcforges/proto@1.0.0-ci.129.1`. Canonical scanner SHA-256 `7c4cd7041b8b53e1bfb6fc0016befcd50259ffaca512d389456e00d3c26d5eaf`; policy SHA-256 `5be88d3806ee43368c7d54271849caebe38631a8b73cc744a0114746a2679dd5`. Candidate production verifies these exact packaged bytes; source hashes identify the build-only assets, not entire package archives.
 - Original hash authority: candidate manifest retained in `contracts-candidate-36341716023-1`, GitHub artifact ID `10939651014`, artifact digest `sha256:b412f30c5473c2a1d16d105be6caaf43fea11262fba60b4bb8191e6bbc00b62a`. Registry transfer receipts are the successful publication jobs of that same run. The original archive/manifest remains package-hash authority; no public archive was downloaded again. Naming/licence evidence is artifact `10939351813`, `naming-evidence-36341716023-1`, digest `sha256:140bf93b4a8cef31a398f55fc1f2ef84884dc629aff14b532ee623655437d272`.
+
+## Completion follow-up, epoch 2
+
+- The remaining prerequisite is now satisfied by [GOV.18](gov-18.md), whose completion record merged in [Plan PR50](https://github.com/ArcForges/Plan/pull/50) as `c62803a1a2941bac8e84018e733e6f24d8328491`. Its implementation [DesktopPlatform PR66](https://github.com/ArcForges/DesktopPlatform/pull/66) was reviewed at `c5c6ec2ecd228e7d93b06067dc2ddc4c575d2e15` and merged as `111a935e98a6666ec1dd965b095bcb8b95d9b80a`; normal publication [36343608089](https://github.com/ArcForges/DesktopPlatform/actions/runs/36343608089) succeeded for all four packages at `1.0.0-ci.28.1`.
+- GOV.18 consumes the actual existing `ArcForges.Contracts.Validation/1.0.0-ci.129.1` from CON.23 source `05bf7986478440719e3fae944cb4ecdfa5e3cbfc`, with official NuGet archive SHA-512 `Z7sWF7mwp+u39UjVFnuMj6l3CXCET5NekSgE7CdhzYs+5HkmSvw84E1+rIa7wi2d10y5BNEARW0+eAD2/o87Cg==`. Its admitted consumer extracts the packaged canonical scanner/policy and validates all seven owner roots against the same Design `7aa84e69ad6808461b34181de261fab03bede076` export and glossary/alias digests recorded above. This closes the export-binding completion condition; no duplicated authority is substituted.
+- Original CON.23 delivery evidence remains unchanged. This follow-up verifies merged prerequisite and publication/ledger identities only; it performs no new product build, runtime check, artifact redownload or republication. CON.23 has no remaining completion prerequisite.
