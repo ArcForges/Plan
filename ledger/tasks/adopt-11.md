@@ -20,8 +20,8 @@ The historical corpus link findings were rechecked rather than assumed current. 
 | [Plan28](https://github.com/ArcForges/Plan/pull/28) | f146beea7f9c9195513375bfd868f53eaf1c1718 | b330fd6a142f8beb1bfbbfcc0d30b7cf5d84cdea | w-20260927-platform |
 | [Design71](https://github.com/ArcForges/ArcForges-Design/pull/71) | 3bf00578b4e75013504c680e0364608244f98562 | 7aa84e69ad6808461b34181de261fab03bede076 | w-20260927-platform |
 | [Plan29](https://github.com/ArcForges/Plan/pull/29) | cdfe1b953aa3ead683afff2379caf3f3e9a12e9d | 0182bf472f78084e41a43411e1bc252dbc4db2d3 | w-20260927-platform |
-| [Design72](https://github.com/ArcForges/ArcForges-Design/pull/72) | 4efaf91ed8a3b7abb355c5fbc950feec307154ec | 877e8cb50169e40930ccad333fe41fdbf9218828 | w-20260927-web |
-| [Plan31](https://github.com/ArcForges/Plan/pull/31) | 5b0ac63a5dbe002eae52cfda0cc4f3bdbbec8890 | bc284cbc166719a02584915ea4a0abc3a435e81f | w-20260927-web |
+| [Design72](https://github.com/ArcForges/ArcForges-Design/pull/72) | 4efaf91ed8a3b7abb355c5fbc950feec307154ec | 877e8cb50169e40930ccad333fe41fdbf9218828 | w-20260927-web-lane |
+| [Plan31](https://github.com/ArcForges/Plan/pull/31) | 5b0ac63a5dbe002eae52cfda0cc4f3bdbbec8890 | bc284cbc166719a02584915ea4a0abc3a435e81f | w-20260927-web-lane |
 
 This final ledger receipt is reviewed and merged through the ADOPT.11 claim and Plan integration role; its own PR/head/merge are recorded there without a self-referential file amendment.
 
