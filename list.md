@@ -96,7 +96,7 @@ Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.15 | DesktopPlatform | M | GOV.04, GOV.05, GOV.07, GOV.09, GOV.10, GOV.11, GOV.12, GOV.13, GOV.14, ADOPT.02.governance (adoption) | WP05 stage integration verification |
 | GOV.16 | Contracts | M | CON.18, ADOPT.03.governance (adoption) | Operation-catalogue authorization reachability matrix and identity boundary evidence |
 | GOV.17 | DesktopPlatform | M | ADOPT.02.governance (adoption) | Retire the native families outside the product family and move the still-image shim |
-| GOV.18 | DesktopPlatform | M | ADOPT.02.governance (adoption) | Reduce the DesktopPlatform policy data and re-pin the design-policy export |
+| GOV.18 | DesktopPlatform | M | CON.23, ADOPT.02.governance (adoption) | Reduce the DesktopPlatform policy data and re-pin the design-policy export |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 
