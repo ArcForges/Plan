@@ -1,0 +1,35 @@
+---
+task: CON.18
+status: complete
+recorded: 2026-09-27
+claimant: w-20260927-baseline-01
+epoch: 1
+---
+
+## Outcome and owned obligation
+
+The offline operation-scope gate and operation-by-actor reachability matrix satisfy CON.18 and its WP03 section 7 / AZ-04 producer-policy contribution. The pinned manifest contains all 310 authoritative scope rows. Every authored public/internal proto service method must have one closed domain export with all eight effective authorization fields; only the exact retained Hello migration example is excluded from production. Pending operations need no invented implementation, and reserved future operations cannot register.
+
+The gate rejects duplicate or missing declarations, scope/source mismatches, unknown identity profiles, partial or unsupported derived metadata, human-only tool reachability, forbidden PAT/local-presence bindings, nonexistent idempotency examples and public imports of local schemas. Profile identities and surfaces are checked in both directions. Closed export fields cannot overwrite generated matrix status. Invoke preserves the admitted descriptor, original actor/current-grant intersection and launch-role constraints; Bootstrap derives only its exact verified launch profile. The gate is wired into the existing Contracts build.
+
+## Exact implementation and authority
+
+- [Contracts PR45](https://github.com/ArcForges/Contracts/pull/45): reviewed head `8be971167703e119067bcd0558286d71ba1e47be`, independent approval [5858696867](https://github.com/ArcForges/Contracts/pull/45#issuecomment-5858696867), merge `c4173be6c1cd1ebfbe7bf0a161534acabb4871fb`. [CI 36341786953](https://github.com/ArcForges/Contracts/actions/runs/36341786953) and [Security 36341786932](https://github.com/ArcForges/Contracts/actions/runs/36341786932) passed before merge.
+- [Contracts PR51](https://github.com/ArcForges/Contracts/pull/51): reviewed head `e854b41335e7ac90cc2f4ad58d148167207dd24c`, independent approval [5858838501](https://github.com/ArcForges/Contracts/pull/51#issuecomment-5858838501), merge `42878c7b8d32fc2f6dce7f2bc359e337c6a3fa90`. This adds the generated report to the existing evidence artifact; the first implementation run generated the matrix but did not upload it. [CI 36342950363](https://github.com/ArcForges/Contracts/actions/runs/36342950363) and [Security 36342950302](https://github.com/ArcForges/Contracts/actions/runs/36342950302) passed. The exact supporting-file binding was recorded before editing under ADP-07 in the claim and [PR45 comment 5858815902](https://github.com/ArcForges/Contracts/pull/45#issuecomment-5858815902).
+- Oracle: Design commit `4a068c5b8185fd64493a34132b5692f1418c3653`, `docs/architecture/contracts/11-operation-scope-manifest.md`, normalized UTF-8/LF SHA-256 `6c5ef41a9ea09074fbd183275a95c96812b20bcb8db587d661b1c98c1cbfef17`. Exact source rows and digest were independently compared. The oracle is frozen; CI does not fetch a moving Design checkout.
+- Supporting source/profile and scope repair: Design PR74 reviewed `da0fecf8f205534e6fd99916c380564abca5e1d5`, merged `4a068c5b8185fd64493a34132b5692f1418c3653`; Plan PR34 reviewed `15b256cfdc9dd0018bac5c64b57ca932be437fef`, merged `f2d13098b72275f3a548df7491769c4bfb0b5074`.
+
+## Validation and retained evidence
+
+- 37 narrow offline policy tests passed locally and independently, including credential substitution, missing eight-field values, malformed delegation/launch metadata, duplicate keys, source discovery through quoted proto options, report-status spoofing, reserved registration and source/import failures. Current-repository coverage permits future pending rows to become registered without an artificial fixed pending-count test.
+- Full normal producer CI passed generation, compilation, offline checks, packaging, Verify, all retained CodeQL jobs, dependency review and secret scanning. Provenance and formatting checks passed. The local host did not have pinned .NET 10.0.400 for the full licence build; that validation was performed by the successful pinned CI, without provisioning another local runtime.
+- Final normal main [CI 36343337963](https://github.com/ArcForges/Contracts/actions/runs/36343337963), run 143 attempt 1, and [Security 36343337951](https://github.com/ArcForges/Contracts/actions/runs/36343337951) succeeded. Build candidate, Verify, Publish NuGet, Publish npm and Publish Maven channel all succeeded.
+- The actual retained `artifacts/evidence/operation-reachability.json` was downloaded once from `naming-evidence-36343337963-1` and parsed: `operation-reachability.v1`, `result=passed`, 310 rows, **1 registered / 302 pending / 7 reserved**. Its 37,255 bytes have SHA-256 `7660c9f493c5f499c18f887ab63462b710cd77da53092e1e53541949020eee4d`. Evidence artifact ID `10939638456`, digest `sha256:4b9b5f1d51bbb395f3c59030c2487313ca89763621a965d0cdbe8e152a6ffc79`.
+- Final candidate artifact `contracts-candidate-36343337963-1`, ID `10940220859`, digest `sha256:0dd42b831940e34fc3b04eec057796eea0171c92785883219a9110ae27f5dc6d`, retains the original package manifest/hash authority. Successful registry jobs verified and transferred that original candidate; no public archive polling or republishing was performed.
+- The preceding normal implementation main [CI 36342245614](https://github.com/ArcForges/Contracts/actions/runs/36342245614), run 132 attempt 1, also published successfully with main Security 36342245628 successful. It produced NuGet/npm `1.0.0-ci.132.1`; the retention follow-up's final candidate is `1.0.0-ci.143.1`, bound to source `42878c7b8d32fc2f6dce7f2bc359e337c6a3fa90`.
+
+Final published coordinates use NuGet/npm version `1.0.0-ci.143.1`: NuGet `ArcForges.Contracts.Foundation`, `ArcForges.Contracts.PublicApi`, `ArcForges.Contracts.Events`, `ArcForges.Sdk.Contracts`, `ArcForges.Contracts.Validation`, `ArcForges.Sdk.Client`, `ArcForges.Cli`, `ArcForges.Contracts.LocalRpc.Platform`, `ArcForges.Contracts.LocalRpc.Sandbox`, `ArcForges.Contracts.LocalRpc.Chat`, `ArcForges.Contracts.LocalRpc.Scope`, `ArcForges.Contracts.CloudInternal`; npm `@arcforges/proto`, `@arcforges/api-client`, `@arcforges/contract-fixtures`, `@arcforges/ai-internal`, `@arcforges/operator-client`. Maven `io.github.arcforges:contracts-proto`, `io.github.arcforges:contracts-connect-client` and `io.github.arcforges:contract-fixtures` use the normal `1.0.0-SNAPSHOT` channel bound to the same original candidate/source. This task adds no package identity.
+
+## Coverage limits and completion
+
+The matrix is offline metadata policy evidence, not runtime authorization, provider readiness, device/GUI/browser/inference operation or installed-consumer acceptance. Pending domain implementations remain owned by their later closure tasks; none is falsely claimed here. HTTP/in-process bindings use explicit source-backed domain exports rather than arbitrary runtime route introspection. No new runtime substitute or stable release tag was introduced. CON.18 has no remaining completion prerequisite. The ledger PR and task claim retain the final ledger review/merge identity.
