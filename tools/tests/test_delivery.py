@@ -303,9 +303,10 @@ class DeliveryTests(unittest.TestCase):
         self.fx.commit(self.fx.plan, 'inherited record')
         code, out = self.fx.run('ready', '--lane', 'governance')
         self.assertEqual(code, 0, out)
-        self.assertIn('Ready to start (2):', out)
-        self.assertIn('GOV.04\tDesktopPlatform', out)
+        # GOV.04 edits retired policy bindings, so it waits for the GOV.18 cleanup (Design ADP-10).
+        self.assertIn('Ready to start (1):', out)
         self.assertIn('GOV.18\tDesktopPlatform', out)
+        self.assertNotIn('GOV.04\t', out)
         self.assertNotIn('GOV.17\t', out)
 
     # ---- authoritative state and worktrees (finding 7) ----------------------------------------

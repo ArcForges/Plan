@@ -354,7 +354,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Identity/Auth/**; Cloud:src/Cloud/ArcForges.Cloud.Modules.Notification/**
 Permitted substitutes (never real integration evidence): SUB-postmark-ses-test-recordings: Deterministic refusal, unknown-outcome and callback regression cases only; runtime registration is forbidden and live delivery is proven by the same task. Real producer ['CLOUD.12']; removed by CLOUD.12
-Unblocks: CLOUD.15, CLOUD.17, CLOUD.18, CLOUD.20, OPS.09, WEB.10
+Unblocks: CLOUD.15, CLOUD.17, CLOUD.18, CLOUD.20, CLOUD.68, OPS.09, WEB.10
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): actual email delivery/recovery and prepared-secondary tests; PKCE/state/redirect/code-replay, Credential Manager/RP origin fixtures, refresh contention and revocation -- real provider evidence, no CI hosted live-service run (per P2-017, this stays local opt-in)
 Completion evidence for the ledger: real provider identity flow results; required accounts/DNS recorded as external inputs, never replaced by a stub acceptance
@@ -615,7 +615,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] CLOUD.19: the browser cookie-session adapter and native session validation to authenticate requests before they reach a handler
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.PublicApi/Endpoints/**
-Unblocks: AND.04, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.28, CLOUD.29, CLOUD.64, CLOUD.66, COM.13, SIM.05
+Unblocks: AND.04, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.28, CLOUD.29, CLOUD.64, CLOUD.66, CLOUD.68, COM.13, SIM.05
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline + opt-in tests: each method category through native and TS transport, malformed/unknown request values, denied scope before handler
 Completion evidence for the ledger: every selected operation has a concrete typed endpoint and owner; no ad-hoc REST business API
@@ -1100,7 +1100,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Sync/Publisher/**; Cloud:src/Cloud/ArcForges.Cloud.Modules.Sync/Transactions/**
 Shared resources (follow the owner protocol): RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.
-Unblocks: AND.07, CLOUD.10, CLOUD.38, CLOUD.40, CLOUD.41, CLOUD.43, CLOUD.47, SCOPE.27, SRCH.00
+Unblocks: AND.07, CLOUD.10, CLOUD.38, CLOUD.40, CLOUD.41, CLOUD.43, CLOUD.47, CLOUD.68, SCOPE.27, SRCH.00
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): opt-in real-D1 tests: two-writer interleavings, commit between pages, insert below cursor, delete/tombstone, expired pin, lost acknowledgement, old/new revision application with pending edits; non-allowlisted owner body, stale sorted-root revision and cross-owner reference refusals
 Completion evidence for the ledger: real D1 clients converge without PostgreSQL snapshot/locks or lost pending work
@@ -1336,6 +1336,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] CLOUD.44: final candidate
 - [integration] CLOUD.45: final candidate; WP-25.08 must be represented in this task's own evidence and completion gate per the WP text, not treated as optional
 - [integration] CLOUD.46: final candidate
+- [integration] CLOUD.68: package task complete
 
 Permitted write scope: Cloud:artifacts/candidate/**
 Unblocks: REL.06
@@ -1705,4 +1706,33 @@ Unblocks: CLOUD.51
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
 Completion evidence for the ledger: AI services genuinely reopen and function after a real Cloud DR restore, per WP-46.03's own 'then combined AI reopen at 50/52'
+```
+
+```text
+Execute ArcForges delivery task CLOUD.68 — ArcScope library read model and companion notifications.
+
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-68).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
+Claim and handoff record: claims/cloud-68 (python tools/delivery.py claim CLOUD.68 --worker <name>); task branch task/cloud-68 in Cloud; ledger record ledger/tasks/cloud-68.md.
+Kind/size: service/M. Baseline: not-started.
+Outcome: scope.listProjects, scope.listSessions and scope.getSession serve owner-filtered, paged, revision- and commit-time-bearing projections of committed scope.synced_aggregate rows with no mutation and no raw bytes; the Sync commit emits durable scope.reportSynced and sync.conflictNeedsDecision notifications exactly once.
+
+Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
+- WP-25.10 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.10
+
+Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
+Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
+- [contract] CON.24: the generated ScopeService and summary records
+- [artifact] CLOUD.39: the real Sync owner transaction committing ArcScope metadata
+- [artifact] CLOUD.21: public endpoint registration
+Completion prerequisites (may start earlier; cannot complete before these are complete):
+- [integration] CLOUD.12: the Notification module durable rows
+
+Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Scope/Library/**; Cloud:src/Cloud/ArcForges.Cloud.Modules.Sync/Notifications/**
+Unblocks: AND.27, CLOUD.47, WEB.32
+
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline projection and authorization tests; opt-in real-D1 runs for pagination across concurrent commits, minRevision, tombstones, revoked membership, wrong product scope, large-session projection and exactly-once notification on commit and replay (P2-017).
+Completion evidence for the ledger: Real D1 projection results, authorization refusals and notification receipts for a synced ArcScope workspace.
+Notes: Builds as soon as the Sync owner transaction exists; durable notification rows come from the Notification module.
 ```

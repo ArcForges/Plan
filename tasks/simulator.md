@@ -134,7 +134,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/sim-05 (python tools/delivery.py claim SIM.05 --worker <name>); task branch task/sim-05 in Cloud; ledger record ledger/tasks/sim-05.md.
 Kind/size: service/M. Baseline: not-started.
-Outcome: The eleven simulation.* operations are durable, idempotent and expected-state; a client can list authorised manifests and fetch segments resumably with hash verification; state polling works with realtime disabled.
+Outcome: The eleven simulation.* operations are durable, idempotent and expected-state; a client can list authorised manifests and fetch segments resumably with hash verification; state polling works with realtime disabled; a run reaching a terminal state emits one durable simulation.runTerminal notification.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-51.04 (the Cloud API half: the eleven simulation.* operations as durable, idempotent, expected-state commands; authorised manifest listing; resumable hash-verifiable segment fetch over HTTP or object storage; revision-/cursor-based state polling): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\51-arcscope-cloud-simulator.md, anchor rule-wp-51.04
@@ -150,7 +150,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.PublicApi/Scope/**; Cloud:tests/Cloud.Tests.Integration/Scope/Api/**
 Shared resources (follow the owner protocol): RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.
-Unblocks: SIM.06, SIM.08, SIM.09
+Unblocks: AND.27, SIM.06, SIM.08, SIM.09, WEB.33
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): duplicate/stale/out-of-order commands; terminal-run resists resurrection; hash-mismatched segment rejected; reconnect-with-realtime-disabled proves polling is a complete authoritative fallback — real local Cloud host per P2-017
 Completion evidence for the ledger: command idempotency and realtime-disabled fallback results (Cloud-side)
