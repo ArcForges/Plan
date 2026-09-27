@@ -22,7 +22,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 
 Entry condition: adoption slice ADOPT.03.contracts is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- none
+- [artifact] CON.23: retired Contracts elements removed and reserved
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -51,12 +51,13 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.03.contracts is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [contract] CON.91: published Foundation ResourceRef/ResourceVersionRef/ArtifactRef (already generated) as the base EncodedBodyRef.resource field type
+- [artifact] CON.23: retired Contracts elements removed and reserved
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
 Permitted write scope: Contracts:public/proto/arcforges/foundation/v1/foundation.proto; Contracts:public/proto/constraints/foundation-descriptors.json; Contracts:fixtures/public/con-02-descriptors.json
 Shared resources (follow the owner protocol): RES-contracts-generated-baseline (regenerate): Never hand-edited or hand-merged: after rebasing, the author regenerates with the pinned generator and commits the result; CI rejects drift between schemas, descriptors and generated output.; RES-contracts-publication (append): Every merge to main publishes all Contracts packages at one allocated candidate version (Maven main as SNAPSHOT under the publication-channel profile); the integration owner keeps a single merge queue so publications stay ordered; no tag, republication or replacement version is created for verification.; RES-contracts-schema-sources (append): Each closure task edits only its own domain proto or HTTP-schema files and adds its own sharded constraint and fixture files; shared inventories (package inventory, foundation inventory, constraint aggregate) are append-only per closure. A proto file with several contributing tasks (operator, policy/configuration) has one designated author task and the others request changes through it. The integration owner merges closure pull requests one at a time and the next author rebases and regenerates.
-Unblocks: APP.01, CON.03, CON.06, CON.10, CON.19, CON.21, CON.22, SCOPE.20
+Unblocks: APP.01, CON.03, CON.06, CON.10, CON.19, CON.21, CON.22, CON.24, SCOPE.20
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline unit tests for descriptor round-trip (C#/TS), decode-limit fixtures (exact 64MiB boundary and 64MiB+1 refusal) reusing WP03.02's WireLimits constants, deterministic regeneration, generated-header/import checks; no macOS/device/live-service CI per P2-017.
 Completion evidence for the ledger: Independent fixture file con-02-descriptors.json; C#/TS conformance report; descriptor baseline diff.
@@ -79,6 +80,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.03.contracts is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [contract] CON.02: EncodedBodyRef record
+- [artifact] CON.23: retired Contracts elements removed and reserved
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -166,6 +168,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.03.contracts is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [contract] CON.02: CapabilityDescriptor/ContextDescriptor shapes
+- [artifact] CON.23: retired Contracts elements removed and reserved
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -555,6 +558,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] CON.22: closure published
 - [artifact] CON.01: package task delivered
 - [artifact] CON.23: the retired elements removed and reserved
+- [artifact] CON.24: package task delivered
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -587,7 +591,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Contracts:public/proto/arcforges/*/v1/**; Contracts:fixtures/public/con-{i}-*.json; Contracts:src/public/**/Generated/**
 Shared resources (follow the owner protocol): RES-contracts-generated-baseline (regenerate): Never hand-edited or hand-merged: after rebasing, the author regenerates with the pinned generator and commits the result; CI rejects drift between schemas, descriptors and generated output.; RES-contracts-publication (append): Every merge to main publishes all Contracts packages at one allocated candidate version (Maven main as SNAPSHOT under the publication-channel profile); the integration owner keeps a single merge queue so publications stay ordered; no tag, republication or replacement version is created for verification.; RES-contracts-schema-sources (append): Each closure task edits only its own domain proto or HTTP-schema files and adds its own sharded constraint and fixture files; shared inventories (package inventory, foundation inventory, constraint aggregate) are append-only per closure. A proto file with several contributing tasks (operator, policy/configuration) has one designated author task and the others request changes through it. The integration owner merges closure pull requests one at a time and the next author rebases and regenerates.
-Unblocks: CON.19, SIM.01, SIM.05, SIM.06
+Unblocks: AND.27, CON.19, SIM.01, SIM.05, SIM.06, WEB.33
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Deterministic regeneration, descriptor/tag/compatibility checks, closed-schema validators, independent positive and negative vectors in C#, TypeScript and Kotlin; Windows/Linux compilation and packaging only (P2-017).
 Completion evidence for the ledger: Merged pull request, published Contracts candidate identity containing the closure, vector and compatibility results, and the operation-scope manifest rows flipped to verified for these operations.
@@ -634,6 +638,7 @@ Outcome: eng/policy/product-names.json and the naming checks name only the famil
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - P2-019 (retirement of the accepted Contracts naming data, in-process port packages, records, fixtures and generated shapes whose only consumers left the family, with their numbers and names reserved exactly as the wire registry lists): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-019
+- P2-020 (source cleanup of the alignment sequence (ADP-10); blocks only the tasks that edit the retired bindings): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-020
 
 Entry condition: adoption slice ADOPT.03.contracts is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -641,11 +646,11 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] GOV.18: the forbidden-alias declaration re-exported from this Design repository
 
-Permitted write scope: Contracts:eng/policy/product-names.json; Contracts:eng/check_naming.py; Contracts:eng/contract-packages.json; Contracts:public/proto/arcforges/foundation/v1/foundation.proto; Contracts:public/proto/arcforges/publicapi/v1/content.proto; Contracts:internal/proto/arcforges/local/* (retired port directories only); Contracts:src/internal/dotnet/* (retired port packages only); Contracts:fixtures/public/wp03-00.json; Contracts:fixtures/public/wp03-01.json; Contracts:src/public/ts/contract-fixtures/src/index.ts; Contracts:src/public/**/Generated/**
+Permitted write scope: Contracts:eng/policy/product-names.json; Contracts:eng/check_naming.py; Contracts:eng/contract-packages.json; Contracts:public/proto/arcforges/foundation/v1/foundation.proto; Contracts:public/proto/arcforges/publicapi/v1/content.proto; Contracts:internal/proto/arcforges/local/* (retired port directories only); Contracts:src/internal/dotnet/* (retired port packages only); Contracts:fixtures/public/wp03-00.json; Contracts:fixtures/public/wp03-01.json; Contracts:src/public/ts/contract-fixtures/src/index.ts; Contracts:src/public/**/Generated/**; Contracts:eng/policy/contract-access.json; Contracts:eng/foundation-inventory.json; Contracts:eng/foundation-baseline.json; Contracts:eng/check_foundation.py; Contracts:eng/foundation_semantics.py; Contracts:ArcForges.Contracts.slnx; Contracts:public/proto/constraints/** (retired record constraints); Contracts:internal/proto/constraints/** (retired port constraints); Contracts:tests/StructureTests/**; Contracts:tests/public/**; Contracts:tests/tooling/**; Contracts:src/public/ts/proto/src/values.ts; Contracts:README.md
 Shared resources (follow the owner protocol): RES-contracts-generated-baseline (regenerate): Never hand-edited or hand-merged: after rebasing, the author regenerates with the pinned generator and commits the result; CI rejects drift between schemas, descriptors and generated output.; RES-contracts-publication (append): Every merge to main publishes all Contracts packages at one allocated candidate version (Maven main as SNAPSHOT under the publication-channel profile); the integration owner keeps a single merge queue so publications stay ordered; no tag, republication or replacement version is created for verification.; RES-contracts-schema-sources (append): Each closure task edits only its own domain proto or HTTP-schema files and adds its own sharded constraint and fixture files; shared inventories (package inventory, foundation inventory, constraint aggregate) are append-only per closure. A proto file with several contributing tasks (operator, policy/configuration) has one designated author task and the others request changes through it. The integration owner merges closure pull requests one at a time and the next author rebases and regenerates.
-Unblocks: CON.19
+Unblocks: CON.01, CON.02, CON.03, CON.06, CON.19, CON.24, GOV.05
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline: naming, schema, reservation and compatibility checks prove every retired number and name is reserved and unused, no retained record, service or fixture references a retired one, the package set matches the registry and generated shapes regenerate cleanly; the compatibility check accepts only the reviewed retirements.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline: naming, schema, reservation and compatibility checks prove every retired number and name is reserved and unused, no retained record, service or fixture references a retired one, the package set matches the registry and generated shapes regenerate cleanly; the compatibility check accepts only the reviewed retirements. Acceptance: a scan of the repository outside eng/provenance and docs/implementation finds no retired type, package, product value or naming entry; the package set, solution, contract-access policy and foundation inventory list only retained items; structure tests pass without the retired cases.
 Completion evidence for the ledger: Retirement diff against the reserved lists of the wire registry; naming, schema, compatibility and generation results; package-set comparison with the registry.
 Notes: Independent of the new contract closures, with which it shares the schema-source protocol; it completes only after GOV.18 re-exports the forbidden-alias declaration that the naming registration binds.
 ```
@@ -729,4 +734,33 @@ Unblocks: CON.17, PRF.05, PRF.07, PRF.08
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): accepted; see docs/assurance/wp03-02-implementation-evidence.md
 Completion evidence for the ledger: Contracts PR37 merged as e6c4a77f3ba48d70de4bf524623985b29278c784 (= current HEAD); published 1.0.0-ci.92.1
 Notes: This is Contracts' current HEAD. Every task below starts from this baseline. Both the Contracts repo's own docs/wp03-02-serialization.md and Design's evidence doc independently state '03.03 is next and has not started' — and no artifact anywhere (git log --all, all.worktree dirs, gh pr list --state all, fixtures/ directory contents, proto message/service inventory) contradicts that..
+```
+
+```text
+Execute ArcForges delivery task CON.24 — ArcScope library read operations and summary records.
+
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\contracts.md (anchor task-con-24).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\Contracts (integration owner: Contracts integration owner, the holder of roles/integration-contracts).
+Claim and handoff record: claims/con-24 (python tools/delivery.py claim CON.24 --worker <name>); task branch task/con-24 in Contracts; ledger record ledger/tasks/con-24.md.
+Kind/size: contract/M. Baseline: not-started.
+Outcome: ScopeService is generated with scope.listProjects, scope.listSessions and scope.getSession and the ScopeProjectSummary and ScopeSessionSummary records in C#, TypeScript and Kotlin, with exact fields, authorization metadata (R1, Q, AO, product-owner scope) and independent vectors.
+
+Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
+- WP-03.05 (ArcScope library read operations (scope.listProjects, scope.listSessions, scope.getSession), the ScopeProjectSummary and ScopeSessionSummary records, authorization fields and vectors): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\03-contract-foundation-and-licence-split.md, anchor rule-wp-03.05
+
+Entry condition: adoption slice ADOPT.03.contracts is complete in the Plan ledger (DLV-22).
+Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
+- [contract] CON.02: capability/resource descriptor and oversized-body reference records
+- [artifact] CON.23: the retired content records removed and reserved
+Completion prerequisites (may start earlier; cannot complete before these are complete):
+- none
+
+Permitted write scope: Contracts:public/proto/arcforges/publicapi/v1/scope.proto; Contracts:fixtures/public/con-24-scope-library.json; Contracts:src/public/**/Generated/**
+Shared resources (follow the owner protocol): RES-contracts-generated-baseline (regenerate): Never hand-edited or hand-merged: after rebasing, the author regenerates with the pinned generator and commits the result; CI rejects drift between schemas, descriptors and generated output.; RES-contracts-publication (append): Every merge to main publishes all Contracts packages at one allocated candidate version (Maven main as SNAPSHOT under the publication-channel profile); the integration owner keeps a single merge queue so publications stay ordered; no tag, republication or replacement version is created for verification.; RES-contracts-schema-sources (append): Each closure task edits only its own domain proto or HTTP-schema files and adds its own sharded constraint and fixture files; shared inventories (package inventory, foundation inventory, constraint aggregate) are append-only per closure. A proto file with several contributing tasks (operator, policy/configuration) has one designated author task and the others request changes through it. The integration owner merges closure pull requests one at a time and the next author rebases and regenerates.
+Unblocks: AND.27, CLOUD.68, CON.19, WEB.32
+
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline: descriptor/field vectors in three languages, operation-count and scope-manifest checks, regeneration clean, candidate packaging checks (P2-017).
+Completion evidence for the ledger: Generated ScopeService in all three languages; vectors and manifest check results; candidate identity.
+Notes: Independent of the other contract closures except for the shared schema-source protocol.
 ```

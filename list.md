@@ -6,13 +6,13 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
-| ADOPT.01 | Plan | S | — | Freeze the adoption baseline |
+| ADOPT.01 | Plan | M | — | Retarget repository instructions and freeze the adoption baseline |
 | ADOPT.02 | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform |
 | ADOPT.03 | Contracts | S | ADOPT.01 | Adopt Contracts |
 | ADOPT.05 | ArcScope | S | ADOPT.01 | Adopt ArcScope |
@@ -40,7 +40,7 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (22) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (23) |
 | ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (3) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
@@ -51,7 +51,7 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
-| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (57) |
+| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (58) |
 | ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (15) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
@@ -71,8 +71,8 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.09.operations | Web | S | ADOPT.01 | Adopt Web: Operations, support and trust and safety (4) |
 | ADOPT.09.release | Web | S | ADOPT.01 | Adopt Web: Release readiness and family release (1) |
 | ADOPT.09.runtime-proofs | Web | S | ADOPT.01 | Adopt Web: Runtime proofs (1) |
-| ADOPT.09.web | Web | S | ADOPT.01 | Adopt Web: Web (31) |
-| ADOPT.10.android | Mobile | S | ADOPT.01 | Adopt Mobile: Android companion (26) |
+| ADOPT.09.web | Web | S | ADOPT.01 | Adopt Web: Web (33) |
+| ADOPT.10.android | Mobile | S | ADOPT.01 | Adopt Mobile: Android companion (27) |
 | ADOPT.10.governance | Mobile | S | ADOPT.01 | Adopt Mobile: Family governance and policy tests (1) |
 | ADOPT.10.release | Mobile | S | ADOPT.01 | Adopt Mobile: Release readiness and family release (1) |
 | ADOPT.10.runtime-proofs | Mobile | S | ADOPT.01 | Adopt Mobile: Runtime proofs (1) |
@@ -84,8 +84,8 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.01 | DesktopPlatform | XL | — | Specification, naming, licence-boundary and provenance freeze (WP00, accepted) |
 | GOV.02 | DesktopPlatform | XL | GOV.01 | Repository reconciliation and target layout (WP01, accepted) |
 | GOV.03 | DesktopPlatform | XL | GOV.02 | Build governance, packaging policy and analyzers (WP02, accepted) |
-| GOV.04 | DesktopPlatform | L | GOV.03, GOV.01, ADOPT.02.governance (adoption) | Shared architecture/repository policy-test engine and DesktopPlatform enforcement |
-| GOV.05 | Contracts | L | GOV.04, CON.90, ADOPT.03.governance (adoption) | Contracts policy tests and contract/serialization policy engine |
+| GOV.04 | DesktopPlatform | L | GOV.03, GOV.01, GOV.18, ADOPT.02.governance (adoption) | Shared architecture/repository policy-test engine and DesktopPlatform enforcement |
+| GOV.05 | Contracts | L | GOV.04, CON.90, CON.23, ADOPT.03.governance (adoption) | Contracts policy tests and contract/serialization policy engine |
 | GOV.07 | ArcScope | S | GOV.04, GOV.05, ADOPT.05.governance (adoption) | ArcScope policy tests |
 | GOV.09 | Cloud | M | GOV.04, GOV.05, ADOPT.07.governance (adoption) | Cloud policy tests |
 | GOV.10 | AI | S | GOV.04, GOV.05, ADOPT.08.governance (adoption) | AI (Workflow Harness) policy tests |
@@ -102,12 +102,12 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
-| CON.01 | Contracts | S | ADOPT.03.contracts (adoption) | Shard contended eng inventory/constraint files by domain; fix one-owner merge protocol |
-| CON.02 | Contracts | M | CON.91, ADOPT.03.contracts (adoption) | Capability/action/context/version/health descriptor records + immutable oversized-body reference (EncodedBodyRef) |
-| CON.03 | Contracts | M | CON.02, ADOPT.03.contracts (adoption) | Resource/Sync owner-body admission: closed Sync mutation allowlist + cross-owner/wrong-revision/opaque-object/forbidden-path negatives |
+| CON.01 | Contracts | S | CON.23, ADOPT.03.contracts (adoption) | Shard contended eng inventory/constraint files by domain; fix one-owner merge protocol |
+| CON.02 | Contracts | M | CON.91, CON.23, ADOPT.03.contracts (adoption) | Capability/action/context/version/health descriptor records + immutable oversized-body reference (EncodedBodyRef) |
+| CON.03 | Contracts | M | CON.02, CON.23, ADOPT.03.contracts (adoption) | Resource/Sync owner-body admission: closed Sync mutation allowlist + cross-owner/wrong-revision/opaque-object/forbidden-path negatives |
 | CON.04 | Contracts | L | ADOPT.03.contracts (adoption) | ContentSandbox service schema (15 methods: session/slot/image/PDF) |
 | CON.05 | Contracts | M | ADOPT.03.contracts (adoption) | Extension/Connector/LocalBootstrap service schema (annex09 helper closure minus ContentSandbox) |
-| CON.06 | Contracts | L | CON.02, ADOPT.03.contracts (adoption) | Product in-process port completion: IScopeOperations/IChatOperations + infra ports |
+| CON.06 | Contracts | L | CON.02, CON.23, ADOPT.03.contracts (adoption) | Product in-process port completion: IScopeOperations/IChatOperations + infra ports |
 | CON.07 | Contracts | L | ADOPT.03.contracts (adoption) | Identity/session/device operation registry + native-auth and browser HTTP exceptions |
 | CON.08 | Contracts | M | ADOPT.03.contracts (adoption) | Entitlement/commerce operation registry |
 | CON.09 | Contracts | L | CON.03, ADOPT.03.contracts (adoption) | Sync/resource-transfer/objects operation registry + realm-transfer.v1 |
@@ -120,13 +120,14 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.16 | Contracts | M | ADOPT.03.contracts (adoption) | Signed catalog/update/realm formats (catalog-index.v1, catalog-revocations.v1, android-update.v1, realm.v1) |
 | CON.17 | Contracts | M | CON.92, ADOPT.03.contracts (adoption) | Cross-language compatibility window + canonical semantic hash |
 | CON.18 | Contracts | S | ADOPT.03.contracts (adoption) | Operation-scope manifest + authorization-reachability matrix generator |
-| CON.19 | Contracts | M | CON.02, CON.18, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.21, CON.22, CON.01, CON.23, ADOPT.03.contracts (adoption) | WP03.90 — verify the owned Contracts artifact and its real (non-consumer) integration |
+| CON.19 | Contracts | M | CON.02, CON.18, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.21, CON.22, CON.01, CON.23, CON.24, ADOPT.03.contracts (adoption) | WP03.90 — verify the owned Contracts artifact and its real (non-consumer) integration |
 | CON.21 | Contracts | M | CON.02, ADOPT.03.contracts (adoption) | Simulation operation registry |
 | CON.22 | Contracts | M | CON.02, ADOPT.03.contracts (adoption) | Account support, notification, data, preference, policy-bundle and export-job operations |
 | CON.23 | Contracts | M | GOV.01, ADOPT.03.contracts (adoption) | Retire the contract and naming elements outside the product family |
 | CON.90 | Contracts | M | — | WP03.00 — split project structure (accepted, historical) |
 | CON.91 | Contracts | L | — | WP03.01 — foundation contract types (accepted, historical) |
 | CON.92 | Contracts | M | — | WP03.02 — serialization posture (accepted, historical) |
+| CON.24 | Contracts | M | CON.02, CON.23, ADOPT.03.contracts (adoption) | ArcScope library read operations and summary records |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
@@ -220,10 +221,10 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | NAT.01 | DesktopPlatform | M | PLT.18, PLT.09, PRF.04, ADOPT.02.native (adoption) | Probe A: device tool execution under Native AOT |
 | NAT.03 | DesktopPlatform | M | ADOPT.02.native (adoption) | Probe C: high-throughput acquisition over a real transport |
 | NAT.05 | DesktopPlatform | S | NAT.01, NAT.03, ADOPT.02.native (adoption) | Probe evidence, licence positions, conclusions and hardware-lab inventory seed |
-| NAT.06 | DesktopPlatform | L | ADOPT.02.native (adoption) | Common native ABI: preambles, pack8 records, ownership, cancellation, bounded buffers |
+| NAT.06 | DesktopPlatform | L | GOV.17, ADOPT.02.native (adoption) | Common native ABI: preambles, pack8 records, ownership, cancellation, bounded buffers |
 | NAT.11 | DesktopPlatform | M | NAT.06, PLT.45, GOV.17, ADOPT.02.native (adoption) | Image family: still-image codecs (PNG/TIFF/EXR) |
-| NAT.13 | DesktopPlatform | M | NAT.06, ADOPT.02.native (adoption) | Instruments family: serial and USB devices (NEW library) |
-| NAT.14 | DesktopPlatform | L | PLT.45, NAT.06, ADOPT.02.native (adoption) | Pdf family: PDFium and production parser containment in the WP11 helper (NEW library) |
+| NAT.13 | DesktopPlatform | M | NAT.06, GOV.17, ADOPT.02.native (adoption) | Instruments family: serial and USB devices (NEW library) |
+| NAT.14 | DesktopPlatform | L | PLT.45, NAT.06, GOV.17, ADOPT.02.native (adoption) | Pdf family: PDFium and production parser containment in the WP11 helper (NEW library) |
 | NAT.22 | DesktopPlatform | S | NAT.11, ADOPT.02.native (adoption) | Image package production: all 6 RIDs |
 | NAT.24 | DesktopPlatform | S | NAT.13, ADOPT.02.native (adoption) | Instruments package production: all 6 RIDs |
 | NAT.25 | DesktopPlatform | M | NAT.14, PLT.45, ADOPT.02.native (adoption) | Pdf package production: all 6 RIDs + ContentSandbox Runtime.<rid> composition |
@@ -412,6 +413,7 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.64 | Cloud | M | COM.13, POL.05, OPS.05, CLOUD.21, CLOUD.22, ADOPT.07.cloud (adoption) | Full operator contract closure across PublicApi, Commerce, Policy and Console |
 | CLOUD.66 | Cloud | M | CLOUD.15, COM.10, CLOUD.21, CLOUD.22, ADOPT.07.cloud (adoption) | Every enumerated sensitive operation wired to the step-up mechanism |
 | CLOUD.67 | Cloud | M | CLOUD.51, HAR.00, HAR.02, HAR.03, AIR.00, ADOPT.07.cloud (adoption) | Combined AI reopen after Cloud disaster-recovery restore |
+| CLOUD.68 | Cloud | M | CON.24, CLOUD.39, CLOUD.21, ADOPT.07.cloud (adoption) | ArcScope library read model and companion notifications |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 
@@ -530,7 +532,7 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
 | AND.01 | Mobile | M | PRF.10, ADOPT.10.android (adoption) | Android production identity and stable toolchain reconciliation |
-| AND.02 | Mobile | L | AND.01, ADOPT.10.android (adoption) | Real Android module graph and AN01-AN25 route/state contracts |
+| AND.02 | Mobile | L | AND.01, ADOPT.10.android (adoption) | Real Android module graph and AN01-AN28 route/state contracts |
 | AND.03 | Mobile | L | AND.02, ADOPT.10.android (adoption) | Android runtime and OS adapters (Compose, Credential Manager, Keystore wrapper, WorkManager, FCM registration, SAF/MediaStore) |
 | AND.04 | Mobile | M | AND.02, CON.07, CON.11, AND.01, ADOPT.10.android (adoption) | Published gRPC-Web contract consumption (Connect Kotlin client, binary framing, session/stream/retry adapters) |
 | AND.05 | Mobile | L | AND.02, CON.11, ADOPT.10.android (adoption) | Room history, drafts, outbox and receipts |
@@ -543,7 +545,7 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | AND.12 | Mobile | M | CON.22, AND.03, AND.04, AND.06, ADOPT.10.android (adoption) | Presence, push, links and settings (AN20-AN24) |
 | AND.13 | Mobile | L | AND.08, AND.09, AND.10, AND.11, AND.12, ADOPT.10.android (adoption) | Native interaction and recovery: full experience-02 device matrix |
 | AND.14 | Mobile | S | AND.08, AND.09, AND.10, ADOPT.10.android (adoption) | Scope and licence enforcement audit |
-| AND.15 | Mobile | M | AND.08, AND.09, AND.10, AND.11, AND.12, AND.13, AND.14, ADOPT.10.android (adoption) | Complete companion acceptance |
+| AND.15 | Mobile | M | AND.08, AND.09, AND.10, AND.11, AND.12, AND.13, AND.14, AND.27, ADOPT.10.android (adoption) | Complete companion acceptance |
 | AND.16 | Mobile | S | AND.15, ADOPT.10.android (adoption) | Signed Android release artifacts (AAB + direct APK) |
 | AND.17 | Mobile | S | AND.16, ADOPT.10.android (adoption) | Release runtime inspection |
 | AND.18 | Mobile | S | AND.16, ADOPT.10.android (adoption) | Dependency and source rights closure (final artifact) |
@@ -555,6 +557,7 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | AND.24 | Mobile | M | AND.09, AND.10, HAR.00, HAR.03, ADOPT.10.android (adoption) | Real CF Harness generation/tool loop observed end to end on Android |
 | AND.25 | Mobile | M | AND.10, AND.13, DEV.02, DEV.03, DEV.06, DEV.07, DEV.12, ADOPT.10.android (adoption) | Real desktop tool dispatch and unknown-effect reconciliation from Android |
 | AND.26 | Mobile | M | AND.12, AND.23, OPS.10, AND.21, ADOPT.10.android (adoption) | Real FCM sending and physical Android receipt |
+| AND.27 | Mobile | L | AND.11, CON.24, CON.21, ADOPT.10.android (adoption) | ArcScope library, reports and simulation runs on Android |
 
 ## Web — [prompts](tasks/web.md)
 
@@ -585,12 +588,14 @@ Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | WEB.23 | Web | M | WEB.19, ADOPT.09.web (adoption) | One-application remote control |
 | WEB.24 | Web | M | WEB.20, WEB.21, WEB.22, WEB.23, ADOPT.09.web (adoption) | Offline, degradation and accessibility (chat) |
 | WEB.25 | Web | S | WEB.19, ADOPT.09.web (adoption) | Performance budgets (chat) |
-| WEB.26 | Web | M | WEB.20, WEB.21, WEB.22, WEB.23, WEB.24, WEB.25, ADOPT.09.web (adoption) | Verify the owned Chat artifact and real integration |
+| WEB.26 | Web | M | WEB.20, WEB.21, WEB.22, WEB.23, WEB.24, WEB.25, WEB.32, WEB.33, ADOPT.09.web (adoption) | Verify the owned Chat artifact and real integration |
 | WEB.27 | Web | M | WEB.20, WEB.21, HAR.00, HAR.03, ADOPT.09.web (adoption) | Real CF Harness generation/tool loop observed end to end in the browser |
 | WEB.28 | Web | M | WEB.21, WEB.23, DEV.02, DEV.03, DEV.06, DEV.07, DEV.12, ADOPT.09.web (adoption) | Real desktop tool dispatch from the browser companion |
 | WEB.29 | Web | M | WEB.14, COM.14, POL.08, ADOPT.09.web (adoption) | Real commerce/policy provider evidence for the account portal |
 | WEB.30 | Web | M | CLOUD.19, CLOUD.26, CLOUD.29, WEB.07, WEB.14, WEB.19, PRF.08, ADOPT.09.web (adoption) | Real React Web client against deployed browser session/PublicApi/realtime |
 | WEB.31 | Web | M | OPS.05, WEB.07, WEB.14, WEB.19, WEB.30, ADOPT.09.web (adoption) | Full browser-support.v1 matrix across all Web-facing outputs |
+| WEB.32 | Web | L | WEB.19, CON.24, ADOPT.09.web (adoption) | ArcScope workspace in the Web companion: library and reports |
+| WEB.33 | Web | M | WEB.19, CON.21, ADOPT.09.web (adoption) | Cloud simulator console in the Web companion |
 
 ## Desktop distribution and update — [prompts](tasks/updater.md)
 

@@ -37,14 +37,14 @@ Notes: Must also decide the KMP shared/ preview module's fate: arch-27's module 
 ```
 
 ```text
-Execute ArcForges delivery task AND.02 — Real Android module graph and AN01-AN25 route/state contracts.
+Execute ArcForges delivery task AND.02 — Real Android module graph and AN01-AN28 route/state contracts.
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-02).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-02 (python tools/delivery.py claim AND.02 --worker <name>); task branch task/and-02 in Mobile; ledger record ledger/tasks/and-02.md.
 Kind/size: producer/L. Baseline: not-started.
-Outcome: The arch-27 module set (app, core/domain, core/data, core/network, core/security, core/designsystem, feature/home, feature/chat, feature/tasks, feature/library, feature/settings) exists as enforced Gradle modules with typed AN01-AN25 navigation/state contracts; features depend only on typed core ports.
+Outcome: The arch-27 module set (app, core/domain, core/data, core/network, core/security, core/designsystem, feature/home, feature/chat, feature/tasks, feature/library, feature/scope, feature/settings) exists as enforced Gradle modules with typed AN01-AN28 navigation/state contracts; features depend only on typed core ports.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-30.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.01
@@ -60,7 +60,7 @@ Shared resources (follow the owner protocol): RES-mobile-build-config (exclusive
 Unblocks: AND.03, AND.04, AND.05
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Architecture/import boundary tests (no React Native/iOS/AGPL imports, no cross-module leakage) as offline static checks; targeted offline unit tests per module
-Completion evidence for the ledger: Module dependency graph report showing one-way core<-feature<-app dependencies; route ID inventory matching AN01-AN25
+Completion evidence for the ledger: Module dependency graph report showing one-way core<-feature<-app dependencies; route ID inventory matching AN01-AN28
 ```
 
 ```text
@@ -326,7 +326,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] AND.07: foundation candidate proven against the deployed Cloud services
 
 Permitted write scope: Mobile:feature/library/**
-Unblocks: AND.13, AND.15, AND.19
+Unblocks: AND.13, AND.15, AND.19, AND.27
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline transfer-journal unit tests; resumable-upload/hash-mismatch/process-death-during-transfer scenarios are local opt-in on real devices
 Completion evidence for the ledger: No unavailable bytes represented as empty success; resumable journal survives process death
@@ -449,6 +449,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] AND.12: all WP31 substep tasks complete
 - [artifact] AND.13: all WP31 substep tasks complete
 - [artifact] AND.14: all WP31 substep tasks complete
+- [artifact] AND.27: package task delivered
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -777,4 +778,33 @@ Unblocks: AND.12, AND.23, OPS.10, OPS.12
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
 Completion evidence for the ledger: PG-24: a project-bound FCM credential actually sends and a physical arm64 device actually receives, including duplicate/rotation/revocation and denied-permission/no-GMS recovery
 Notes: Merged duplicate integration or closure task formerly proposed as COM.17.
+```
+
+```text
+Execute ArcForges delivery task AND.27 — ArcScope library, reports and simulation runs on Android.
+
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-27).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
+Claim and handoff record: claims/and-27 (python tools/delivery.py claim AND.27 --worker <name>); task branch task/and-27 in Mobile; ledger record ledger/tasks/and-27.md.
+Kind/size: feature/L. Baseline: not-started.
+Outcome: AN14 and AN26-AN28: the read-only ArcScope library, session and report views with provenance and stored chart snapshots, report sharing through the system share sheet, simulation run status with cancel, and the ArcScope notification kinds opening their objects.
+
+Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
+- WP-31.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.07
+
+Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
+Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
+- [artifact] AND.11: the Library route and resource preview surfaces
+- [contract] CON.24: the generated library operations
+- [contract] CON.21: the generated simulation operations
+Completion prerequisites (may start earlier; cannot complete before these are complete):
+- [integration] CLOUD.68: the deployed library read model
+- [integration] SIM.05: the deployed simulation operations
+
+Permitted write scope: Mobile:feature/scope/**
+Unblocks: AND.15
+
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
+Completion evidence for the ledger: A report synced from ArcScope desktop found, read and shared on Android; a Cloud simulation run followed to its terminal state; revocation, unavailable-artifact and raw-data-local cases.
 ```

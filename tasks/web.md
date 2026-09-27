@@ -533,7 +533,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Web:apps/app/app/features/chat/**
 Shared resources (follow the owner protocol): RES-web-app-routing (append): The application shell task owns root route registration; each surface adds its own route module and per-origin edge directory.; RES-web-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.; RES-web-shared-ui (append): The design-system task owns the shared UI package; surfaces request components through it; additions after it are additive.
-Unblocks: WEB.20, WEB.21, WEB.22, WEB.23, WEB.25, WEB.30, WEB.31
+Unblocks: WEB.20, WEB.21, WEB.22, WEB.23, WEB.25, WEB.30, WEB.31, WEB.32, WEB.33
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Production route/profile inspection; approved light/dark/narrow-screen visual baselines; keyboard/touch/long-text states; source/dependency assertion that no provider or Harness implementation enters the browser
 Completion evidence for the ledger: Cross-profile isolation results
@@ -724,6 +724,8 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] WEB.23: remote control
 - [artifact] WEB.24: resilience
 - [artifact] WEB.25: budgets
+- [artifact] WEB.32: package task delivered
+- [artifact] WEB.33: package task delivered
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] WEB.27: real Harness
 
@@ -884,4 +886,58 @@ Permitted write scope:
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
 Completion evidence for the ledger: Supported/degraded/blocked behavior across every output's flows on real browser/OS patches; WP-50 joins all production hashes and real browser evidence
+```
+
+```text
+Execute ArcForges delivery task WEB.32 — ArcScope workspace in the Web companion: library and reports.
+
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\web.md (anchor task-web-32).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\Web (integration owner: Web integration owner, the holder of roles/integration-web).
+Claim and handoff record: claims/web-32 (python tools/delivery.py claim WEB.32 --worker <name>); task branch task/web-32 in Web; ledger record ledger/tasks/web-32.md.
+Kind/size: feature/L. Baseline: not-started.
+Outcome: The Web ArcScope library: projects, sessions, findings and annotations, report reading with provenance and stored chart snapshots, exported-report download through resource tickets, sessions and reports attached to assistant conversations, and the ArcScope notification kinds.
+
+Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
+- WP-49.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\49-arcchat-web-companion.md, anchor rule-wp-49.07
+
+Entry condition: adoption slice ADOPT.09.web is complete in the Plan ledger (DLV-22).
+Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
+- [artifact] WEB.19: the companion route shell and design-system integration
+- [contract] CON.24: the generated library operations
+Completion prerequisites (may start earlier; cannot complete before these are complete):
+- [integration] CLOUD.68: the deployed library read model
+
+Permitted write scope: Web:apps/app/app/features/scope/**
+Unblocks: WEB.26
+
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
+Completion evidence for the ledger: A report synced from ArcScope desktop found, read and downloaded on Web with provenance; revocation, ticket expiry and accessibility results.
+```
+
+```text
+Execute ArcForges delivery task WEB.33 — Cloud simulator console in the Web companion.
+
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\web.md (anchor task-web-33).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\Web (integration owner: Web integration owner, the holder of roles/integration-web).
+Claim and handoff record: claims/web-33 (python tools/delivery.py claim WEB.33 --worker <name>); task branch task/web-33 in Web; ledger record ledger/tasks/web-33.md.
+Kind/size: feature/M. Baseline: not-started.
+Outcome: The simulator console: definitions, immutable scenario versions with validation errors, start, pause, resume and cancel with expected state, run state with complete-or-partial extent, and the committed segment manifest with resumable, hash-verified downloads.
+
+Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
+- WP-49.08 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\49-arcchat-web-companion.md, anchor rule-wp-49.08
+
+Entry condition: adoption slice ADOPT.09.web is complete in the Plan ledger (DLV-22).
+Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
+- [artifact] WEB.19: the companion route shell and design-system integration
+- [contract] CON.21: the generated simulation operations
+Completion prerequisites (may start earlier; cannot complete before these are complete):
+- [integration] SIM.05: the deployed simulation operations
+
+Permitted write scope: Web:apps/app/app/features/simulation/**
+Unblocks: WEB.26
+
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
+Completion evidence for the ledger: A scenario created and run from the browser with every desktop off, completed or cancelled with the correct extent, and its committed segments downloaded and verified.
 ```

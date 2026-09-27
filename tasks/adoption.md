@@ -8,28 +8,29 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ## Adoption stage
 
 ```text
-Execute ArcForges delivery task ADOPT.01 — Freeze the adoption baseline.
+Execute ArcForges delivery task ADOPT.01 — Retarget repository instructions and freeze the adoption baseline.
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-01).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\Plan (integration owner: Plan integration owner, the holder of roles/integration-plan).
+Owning repository: C:\MyFile\Projects\Plan (integration owner: Plan integration owner, the holder of roles/integration-plan). Also touches: DesktopPlatform, Contracts, ArcScope, Cloud, AI, Web, Mobile.
 Claim and handoff record: claims/adopt-01 (python tools/delivery.py claim ADOPT.01 --worker <name>); task branch task/adopt-01 in Plan; ledger record ledger/tasks/adopt-01.md.
-Kind/size: adoption/S. Baseline: not-started.
-Outcome: The Plan ledger records, for every repository, the main head, open pull requests and branches and the latest published candidate per registry, so every adoption slice starts from the same frozen inputs. The baseline is complete through WP-03.02; WP-03.03 has not started.
+Kind/size: adoption/M. Baseline: not-started.
+Outcome: Every implementation repository's AGENTS.md instruction entry links this Design repository's delivery model and the Plan repository's execution entry, never the derivation-baseline pair (ADP-09); then the Plan ledger records, for every repository, the main head, open pull requests and branches and the latest published candidate per registry, so every adoption slice starts from the same frozen inputs. The baseline is complete through WP-03.02; WP-03.03 has not started.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - P2-018 (adoption stage: baseline inputs): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
+- P2-020 (retarget of every implementation repository's AGENTS.md to this Design and Plan pair before the baseline is frozen (ADP-09)): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-020
 
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - none
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Plan:ledger/adoption/baseline.md; Plan:ledger/README.md
+Permitted write scope: Plan:ledger/adoption/baseline.md; Plan:ledger/README.md; DesktopPlatform:AGENTS.md; Contracts:AGENTS.md; ArcScope:AGENTS.md; Cloud:AGENTS.md; AI:AGENTS.md; Web:AGENTS.md; Mobile:AGENTS.md
 Unblocks: ADOPT.02, ADOPT.02.app-composition, ADOPT.02.assistant, ADOPT.02.cloud, ADOPT.02.device-bridge, ADOPT.02.execution, ADOPT.02.extensions, ADOPT.02.foundation, ADOPT.02.governance, ADOPT.02.native, ADOPT.02.platform, ADOPT.02.policy, ADOPT.02.release, ADOPT.02.runtime-proofs, ADOPT.02.updater, ADOPT.03, ADOPT.03.contracts, ADOPT.03.extensions, ADOPT.03.governance, ADOPT.03.release, ADOPT.05, ADOPT.05.app-composition, ADOPT.05.arcscope, ADOPT.05.governance, ADOPT.05.release, ADOPT.05.runtime-proofs, ADOPT.05.simulator, ADOPT.07, ADOPT.07.ai-routing, ADOPT.07.cloud, ADOPT.07.commerce, ADOPT.07.device-bridge, ADOPT.07.extensions, ADOPT.07.governance, ADOPT.07.harness, ADOPT.07.operations, ADOPT.07.policy, ADOPT.07.release, ADOPT.07.runtime-proofs, ADOPT.07.search, ADOPT.07.simulator, ADOPT.08, ADOPT.08.ai-routing, ADOPT.08.extensions, ADOPT.08.governance, ADOPT.08.harness, ADOPT.09, ADOPT.09.governance, ADOPT.09.operations, ADOPT.09.release, ADOPT.09.runtime-proofs, ADOPT.09.web, ADOPT.10, ADOPT.10.android, ADOPT.10.governance, ADOPT.10.release, ADOPT.10.runtime-proofs, ADOPT.11
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Read-only inspection of repositories, pull requests and registry receipts already recorded; no builds, downloads or runtime checks (P2-017).
-Completion evidence for the ledger: Baseline record with exact commit identities per repository, open pull request list and latest candidate identities; reviewed and merged in the Plan repository.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Retarget: each repository's AGENTS.md change is a reviewed documentation-only pull request merged with that repository's existing applicable CI before its head is recorded. Baseline: read-only inspection of repositories, pull requests and registry receipts already recorded; no builds, downloads or runtime checks (P2-017).
+Completion evidence for the ledger: The merged retarget pull request per repository; baseline record with exact commit identities per repository, open pull request list and latest candidate identities; reviewed and merged in the Plan repository.
 ```
 
 ```text
@@ -38,9 +39,9 @@ Execute ArcForges delivery task ADOPT.02 — Adopt DesktopPlatform.
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
-Claim and handoff record: claims/adopt-02 (python tools/delivery.py claim ADOPT.02 --worker <name>); task branch task/adopt-02 in DesktopPlatform; ledger record ledger/tasks/adopt-02.md.
+Claim and handoff record: claims/adopt-02 (python tools/delivery.py claim ADOPT.02 --worker <name>); task branch task/adopt-02 in Plan; ledger record ledger/tasks/adopt-02.md.
 Kind/size: adoption/S. Baseline: not-started.
-Outcome: The repository-wide adoption facts for DesktopPlatform (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the DesktopPlatform classification table is complete when every adoption slice of the repository is complete. The governance slice schedules the replacement of the design-policy graph check that still validates the retired work-package graph. The repository's AGENTS.md instruction entry links this Design repository's delivery model and the Plan repository's execution entry, never the derivation-baseline pair.
+Outcome: The repository-wide adoption facts for DesktopPlatform (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the DesktopPlatform classification table is complete when every adoption slice of the repository is complete. The governance slice schedules the replacement of the design-policy graph check that still validates the retired work-package graph.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - P2-018 (adoption stage: DesktopPlatform repository record): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
@@ -79,7 +80,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] ADOPT.02.runtime-proofs: slice recorded
 - [integration] ADOPT.02.updater: slice recorded
 
-Permitted write scope: Plan:ledger/adoption/DesktopPlatform.md; Plan:ledger/tasks/adopt-02.md; DesktopPlatform:AGENTS.md
+Permitted write scope: Plan:ledger/adoption/DesktopPlatform.md; Plan:ledger/tasks/adopt-02.md
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Review of merged source, retained CI results and receipts only; no new builds, downloads or runtime checks (P2-017).
 Completion evidence for the ledger: Repository adoption record with the repository-wide facts, links to every slice record, the combined classification table and any conflicts raised under D-001.
@@ -91,15 +92,15 @@ Execute ArcForges delivery task ADOPT.03 — Adopt Contracts.
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-03).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Contracts (integration owner: Contracts integration owner, the holder of roles/integration-contracts).
-Claim and handoff record: claims/adopt-03 (python tools/delivery.py claim ADOPT.03 --worker <name>); task branch task/adopt-03 in Contracts; ledger record ledger/tasks/adopt-03.md.
+Claim and handoff record: claims/adopt-03 (python tools/delivery.py claim ADOPT.03 --worker <name>); task branch task/adopt-03 in Plan; ledger record ledger/tasks/adopt-03.md.
 Kind/size: adoption/S. Baseline: not-started.
-Outcome: The repository-wide adoption facts for Contracts (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the Contracts classification table is complete when every adoption slice of the repository is complete. The accepted WP-03.00 to WP-03.02 receipts are recorded as inherited by the contracts slice; every later Contracts task, starting with the WP-03.03 closures, is open. The repository's AGENTS.md instruction entry links this Design repository's delivery model and the Plan repository's execution entry, never the derivation-baseline pair.
+Outcome: The repository-wide adoption facts for Contracts (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the Contracts classification table is complete when every adoption slice of the repository is complete. The accepted WP-03.00 to WP-03.02 receipts are recorded as inherited by the contracts slice; every later Contracts task, starting with the WP-03.03 closures, is open.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - P2-018 (adoption stage: Contracts repository record): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
 
 Adoption slices (claim, review and record each separately as ledger/tasks/<slice key>.md, for example ledger/tasks/adopt-03-contracts.md, plus one ledger/tasks/<key>.md with status inherited per task it classifies as inherited; one pull request may carry several; each slice opens only its own repository lane; each has its own prompt under "Adoption slices" below):
-- ADOPT.03.contracts: Adopt Contracts: Contracts schema closures (opens 22 tasks; records 3 accepted tasks as inherited)
+- ADOPT.03.contracts: Adopt Contracts: Contracts schema closures (opens 23 tasks; records 3 accepted tasks as inherited)
 - ADOPT.03.extensions: Adopt Contracts: Extension platform and integrations (opens 3 tasks)
 - ADOPT.03.governance: Adopt Contracts: Family governance and policy tests (opens 2 tasks)
 - ADOPT.03.release: Adopt Contracts: Release readiness and family release (opens 1 task)
@@ -112,7 +113,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] ADOPT.03.governance: slice recorded
 - [integration] ADOPT.03.release: slice recorded
 
-Permitted write scope: Plan:ledger/adoption/Contracts.md; Plan:ledger/tasks/adopt-03.md; Contracts:AGENTS.md
+Permitted write scope: Plan:ledger/adoption/Contracts.md; Plan:ledger/tasks/adopt-03.md
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Review of merged source, retained CI results and receipts only; no new builds, downloads or runtime checks (P2-017).
 Completion evidence for the ledger: Repository adoption record with the repository-wide facts, links to every slice record, the combined classification table and any conflicts raised under D-001.
@@ -124,9 +125,9 @@ Execute ArcForges delivery task ADOPT.05 — Adopt ArcScope.
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
-Claim and handoff record: claims/adopt-05 (python tools/delivery.py claim ADOPT.05 --worker <name>); task branch task/adopt-05 in ArcScope; ledger record ledger/tasks/adopt-05.md.
+Claim and handoff record: claims/adopt-05 (python tools/delivery.py claim ADOPT.05 --worker <name>); task branch task/adopt-05 in Plan; ledger record ledger/tasks/adopt-05.md.
 Kind/size: adoption/S. Baseline: not-started.
-Outcome: The repository-wide adoption facts for ArcScope (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the ArcScope classification table is complete when every adoption slice of the repository is complete. The repository's AGENTS.md instruction entry links this Design repository's delivery model and the Plan repository's execution entry, never the derivation-baseline pair.
+Outcome: The repository-wide adoption facts for ArcScope (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the ArcScope classification table is complete when every adoption slice of the repository is complete.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - P2-018 (adoption stage: ArcScope repository record): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
@@ -149,7 +150,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] ADOPT.05.runtime-proofs: slice recorded
 - [integration] ADOPT.05.simulator: slice recorded
 
-Permitted write scope: Plan:ledger/adoption/ArcScope.md; Plan:ledger/tasks/adopt-05.md; ArcScope:AGENTS.md
+Permitted write scope: Plan:ledger/adoption/ArcScope.md; Plan:ledger/tasks/adopt-05.md
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Review of merged source, retained CI results and receipts only; no new builds, downloads or runtime checks (P2-017).
 Completion evidence for the ledger: Repository adoption record with the repository-wide facts, links to every slice record, the combined classification table and any conflicts raised under D-001.
@@ -161,16 +162,16 @@ Execute ArcForges delivery task ADOPT.07 — Adopt Cloud.
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
-Claim and handoff record: claims/adopt-07 (python tools/delivery.py claim ADOPT.07 --worker <name>); task branch task/adopt-07 in Cloud; ledger record ledger/tasks/adopt-07.md.
+Claim and handoff record: claims/adopt-07 (python tools/delivery.py claim ADOPT.07 --worker <name>); task branch task/adopt-07 in Plan; ledger record ledger/tasks/adopt-07.md.
 Kind/size: adoption/S. Baseline: not-started.
-Outcome: The repository-wide adoption facts for Cloud (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the Cloud classification table is complete when every adoption slice of the repository is complete. The repository's AGENTS.md instruction entry links this Design repository's delivery model and the Plan repository's execution entry, never the derivation-baseline pair.
+Outcome: The repository-wide adoption facts for Cloud (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the Cloud classification table is complete when every adoption slice of the repository is complete.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - P2-018 (adoption stage: Cloud repository record): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
 
 Adoption slices (claim, review and record each separately as ledger/tasks/<slice key>.md, for example ledger/tasks/adopt-07-ai-routing.md, plus one ledger/tasks/<key>.md with status inherited per task it classifies as inherited; one pull request may carry several; each slice opens only its own repository lane; each has its own prompt under "Adoption slices" below):
 - ADOPT.07.ai-routing: Adopt Cloud: Workers AI routing and metering (opens 6 tasks)
-- ADOPT.07.cloud: Adopt Cloud: Cloud core (opens 57 tasks)
+- ADOPT.07.cloud: Adopt Cloud: Cloud core (opens 58 tasks)
 - ADOPT.07.commerce: Adopt Cloud: Commerce, entitlement and credits (opens 15 tasks)
 - ADOPT.07.device-bridge: Adopt Cloud: Application presence and tool bridge (opens 9 tasks)
 - ADOPT.07.extensions: Adopt Cloud: Extension platform and integrations (opens 1 task)
@@ -200,7 +201,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] ADOPT.07.search: slice recorded
 - [integration] ADOPT.07.simulator: slice recorded
 
-Permitted write scope: Plan:ledger/adoption/Cloud.md; Plan:ledger/tasks/adopt-07.md; Cloud:AGENTS.md
+Permitted write scope: Plan:ledger/adoption/Cloud.md; Plan:ledger/tasks/adopt-07.md
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Review of merged source, retained CI results and receipts only; no new builds, downloads or runtime checks (P2-017).
 Completion evidence for the ledger: Repository adoption record with the repository-wide facts, links to every slice record, the combined classification table and any conflicts raised under D-001.
@@ -212,9 +213,9 @@ Execute ArcForges delivery task ADOPT.08 — Adopt AI.
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-08).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
-Claim and handoff record: claims/adopt-08 (python tools/delivery.py claim ADOPT.08 --worker <name>); task branch task/adopt-08 in AI; ledger record ledger/tasks/adopt-08.md.
+Claim and handoff record: claims/adopt-08 (python tools/delivery.py claim ADOPT.08 --worker <name>); task branch task/adopt-08 in Plan; ledger record ledger/tasks/adopt-08.md.
 Kind/size: adoption/S. Baseline: not-started.
-Outcome: The repository-wide adoption facts for AI (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the AI classification table is complete when every adoption slice of the repository is complete. The repository's AGENTS.md instruction entry links this Design repository's delivery model and the Plan repository's execution entry, never the derivation-baseline pair.
+Outcome: The repository-wide adoption facts for AI (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the AI classification table is complete when every adoption slice of the repository is complete.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - P2-018 (adoption stage: AI repository record): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
@@ -233,7 +234,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] ADOPT.08.governance: slice recorded
 - [integration] ADOPT.08.harness: slice recorded
 
-Permitted write scope: Plan:ledger/adoption/AI.md; Plan:ledger/tasks/adopt-08.md; AI:AGENTS.md
+Permitted write scope: Plan:ledger/adoption/AI.md; Plan:ledger/tasks/adopt-08.md
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Review of merged source, retained CI results and receipts only; no new builds, downloads or runtime checks (P2-017).
 Completion evidence for the ledger: Repository adoption record with the repository-wide facts, links to every slice record, the combined classification table and any conflicts raised under D-001.
@@ -245,9 +246,9 @@ Execute ArcForges delivery task ADOPT.09 — Adopt Web.
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-09).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Web (integration owner: Web integration owner, the holder of roles/integration-web).
-Claim and handoff record: claims/adopt-09 (python tools/delivery.py claim ADOPT.09 --worker <name>); task branch task/adopt-09 in Web; ledger record ledger/tasks/adopt-09.md.
+Claim and handoff record: claims/adopt-09 (python tools/delivery.py claim ADOPT.09 --worker <name>); task branch task/adopt-09 in Plan; ledger record ledger/tasks/adopt-09.md.
 Kind/size: adoption/S. Baseline: not-started.
-Outcome: The repository-wide adoption facts for Web (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the Web classification table is complete when every adoption slice of the repository is complete. The repository's AGENTS.md instruction entry links this Design repository's delivery model and the Plan repository's execution entry, never the derivation-baseline pair.
+Outcome: The repository-wide adoption facts for Web (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the Web classification table is complete when every adoption slice of the repository is complete.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - P2-018 (adoption stage: Web repository record): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
@@ -257,7 +258,7 @@ Adoption slices (claim, review and record each separately as ledger/tasks/<slice
 - ADOPT.09.operations: Adopt Web: Operations, support and trust and safety (opens 4 tasks)
 - ADOPT.09.release: Adopt Web: Release readiness and family release (opens 1 task)
 - ADOPT.09.runtime-proofs: Adopt Web: Runtime proofs (opens 1 task)
-- ADOPT.09.web: Adopt Web: Web (opens 31 tasks)
+- ADOPT.09.web: Adopt Web: Web (opens 33 tasks)
 
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] ADOPT.01: frozen baseline record
@@ -268,7 +269,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] ADOPT.09.runtime-proofs: slice recorded
 - [integration] ADOPT.09.web: slice recorded
 
-Permitted write scope: Plan:ledger/adoption/Web.md; Plan:ledger/tasks/adopt-09.md; Web:AGENTS.md
+Permitted write scope: Plan:ledger/adoption/Web.md; Plan:ledger/tasks/adopt-09.md
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Review of merged source, retained CI results and receipts only; no new builds, downloads or runtime checks (P2-017).
 Completion evidence for the ledger: Repository adoption record with the repository-wide facts, links to every slice record, the combined classification table and any conflicts raised under D-001.
@@ -280,15 +281,15 @@ Execute ArcForges delivery task ADOPT.10 — Adopt Mobile.
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-10).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
-Claim and handoff record: claims/adopt-10 (python tools/delivery.py claim ADOPT.10 --worker <name>); task branch task/adopt-10 in Mobile; ledger record ledger/tasks/adopt-10.md.
+Claim and handoff record: claims/adopt-10 (python tools/delivery.py claim ADOPT.10 --worker <name>); task branch task/adopt-10 in Plan; ledger record ledger/tasks/adopt-10.md.
 Kind/size: adoption/S. Baseline: not-started.
-Outcome: The repository-wide adoption facts for Mobile (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the Mobile classification table is complete when every adoption slice of the repository is complete. The repository's AGENTS.md instruction entry links this Design repository's delivery model and the Plan repository's execution entry, never the derivation-baseline pair.
+Outcome: The repository-wide adoption facts for Mobile (main head, retained CI workflow inventory under P2-017, package identities and pins, shared roots and source inventory) are recorded once for its slices to cite, and the Mobile classification table is complete when every adoption slice of the repository is complete.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - P2-018 (adoption stage: Mobile repository record): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
 
 Adoption slices (claim, review and record each separately as ledger/tasks/<slice key>.md, for example ledger/tasks/adopt-10-android.md, plus one ledger/tasks/<key>.md with status inherited per task it classifies as inherited; one pull request may carry several; each slice opens only its own repository lane; each has its own prompt under "Adoption slices" below):
-- ADOPT.10.android: Adopt Mobile: Android companion (opens 26 tasks)
+- ADOPT.10.android: Adopt Mobile: Android companion (opens 27 tasks)
 - ADOPT.10.governance: Adopt Mobile: Family governance and policy tests (opens 1 task)
 - ADOPT.10.release: Adopt Mobile: Release readiness and family release (opens 1 task)
 - ADOPT.10.runtime-proofs: Adopt Mobile: Runtime proofs (opens 1 task)
@@ -301,7 +302,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] ADOPT.10.release: slice recorded
 - [integration] ADOPT.10.runtime-proofs: slice recorded
 
-Permitted write scope: Plan:ledger/adoption/Mobile.md; Plan:ledger/tasks/adopt-10.md; Mobile:AGENTS.md
+Permitted write scope: Plan:ledger/adoption/Mobile.md; Plan:ledger/tasks/adopt-10.md
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Review of merged source, retained CI results and receipts only; no new builds, downloads or runtime checks (P2-017).
 Completion evidence for the ledger: Repository adoption record with the repository-wide facts, links to every slice record, the combined classification table and any conflicts raised under D-001.
@@ -597,8 +598,8 @@ Claim and handoff record: claims/adopt-03-contracts (python tools/delivery.py cl
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- CON.01, CON.02, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.18, CON.19, CON.21, CON.22, CON.23, CON.90, CON.91, CON.92
-Opens when the record is merged: CON.01, CON.02, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.18, CON.19, CON.21, CON.22, CON.23, except any task this slice classifies as inherited. Every task classified as inherited, including the accepted-baseline tasks CON.90, CON.91, CON.92, gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- CON.01, CON.02, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.18, CON.19, CON.21, CON.22, CON.23, CON.24, CON.90, CON.91, CON.92
+Opens when the record is merged: CON.01, CON.02, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.18, CON.19, CON.21, CON.22, CON.23, CON.24, except any task this slice classifies as inherited. Every task classified as inherited, including the accepted-baseline tasks CON.90, CON.91, CON.92, gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-03-contracts.md; Plan:ledger/tasks/con-90.md; Plan:ledger/tasks/con-91.md; Plan:ledger/tasks/con-92.md; Plan:ledger/tasks/<key>.md (status inherited) for each other task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -795,8 +796,8 @@ Claim and handoff record: claims/adopt-07-cloud (python tools/delivery.py claim 
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- CLOUD.01, CLOUD.02, CLOUD.03, CLOUD.04, CLOUD.05, CLOUD.06, CLOUD.07, CLOUD.08, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.12, CLOUD.13, CLOUD.14, CLOUD.15, CLOUD.16, CLOUD.17, CLOUD.19, CLOUD.20, CLOUD.21, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.26, CLOUD.27, CLOUD.28, CLOUD.29, CLOUD.30, CLOUD.31, CLOUD.32, CLOUD.33, CLOUD.34, CLOUD.35, CLOUD.36, CLOUD.39, CLOUD.40, CLOUD.41, CLOUD.42, CLOUD.43, CLOUD.44, CLOUD.45, CLOUD.46, CLOUD.47, CLOUD.48, CLOUD.49, CLOUD.50, CLOUD.51, CLOUD.52, CLOUD.53, CLOUD.54, CLOUD.55, CLOUD.58, CLOUD.63, CLOUD.64, CLOUD.66, CLOUD.67
-Opens when the record is merged: CLOUD.01, CLOUD.02, CLOUD.03, CLOUD.04, CLOUD.05, CLOUD.06, CLOUD.07, CLOUD.08, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.12, CLOUD.13, CLOUD.14, CLOUD.15, CLOUD.16, CLOUD.17, CLOUD.19, CLOUD.20, CLOUD.21, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.26, CLOUD.27, CLOUD.28, CLOUD.29, CLOUD.30, CLOUD.31, CLOUD.32, CLOUD.33, CLOUD.34, CLOUD.35, CLOUD.36, CLOUD.39, CLOUD.40, CLOUD.41, CLOUD.42, CLOUD.43, CLOUD.44, CLOUD.45, CLOUD.46, CLOUD.47, CLOUD.48, CLOUD.49, CLOUD.50, CLOUD.51, CLOUD.52, CLOUD.53, CLOUD.54, CLOUD.55, CLOUD.58, CLOUD.63, CLOUD.64, CLOUD.66, CLOUD.67, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- CLOUD.01, CLOUD.02, CLOUD.03, CLOUD.04, CLOUD.05, CLOUD.06, CLOUD.07, CLOUD.08, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.12, CLOUD.13, CLOUD.14, CLOUD.15, CLOUD.16, CLOUD.17, CLOUD.19, CLOUD.20, CLOUD.21, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.26, CLOUD.27, CLOUD.28, CLOUD.29, CLOUD.30, CLOUD.31, CLOUD.32, CLOUD.33, CLOUD.34, CLOUD.35, CLOUD.36, CLOUD.39, CLOUD.40, CLOUD.41, CLOUD.42, CLOUD.43, CLOUD.44, CLOUD.45, CLOUD.46, CLOUD.47, CLOUD.48, CLOUD.49, CLOUD.50, CLOUD.51, CLOUD.52, CLOUD.53, CLOUD.54, CLOUD.55, CLOUD.58, CLOUD.63, CLOUD.64, CLOUD.66, CLOUD.67, CLOUD.68
+Opens when the record is merged: CLOUD.01, CLOUD.02, CLOUD.03, CLOUD.04, CLOUD.05, CLOUD.06, CLOUD.07, CLOUD.08, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.12, CLOUD.13, CLOUD.14, CLOUD.15, CLOUD.16, CLOUD.17, CLOUD.19, CLOUD.20, CLOUD.21, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.26, CLOUD.27, CLOUD.28, CLOUD.29, CLOUD.30, CLOUD.31, CLOUD.32, CLOUD.33, CLOUD.34, CLOUD.35, CLOUD.36, CLOUD.39, CLOUD.40, CLOUD.41, CLOUD.42, CLOUD.43, CLOUD.44, CLOUD.45, CLOUD.46, CLOUD.47, CLOUD.48, CLOUD.49, CLOUD.50, CLOUD.51, CLOUD.52, CLOUD.53, CLOUD.54, CLOUD.55, CLOUD.58, CLOUD.63, CLOUD.64, CLOUD.66, CLOUD.67, CLOUD.68, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-07-cloud.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -1155,8 +1156,8 @@ Claim and handoff record: claims/adopt-09-web (python tools/delivery.py claim AD
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- WEB.01, WEB.02, WEB.03, WEB.04, WEB.05, WEB.06, WEB.07, WEB.08, WEB.09, WEB.10, WEB.11, WEB.12, WEB.13, WEB.14, WEB.15, WEB.16, WEB.17, WEB.18, WEB.19, WEB.20, WEB.21, WEB.22, WEB.23, WEB.24, WEB.25, WEB.26, WEB.27, WEB.28, WEB.29, WEB.30, WEB.31
-Opens when the record is merged: WEB.01, WEB.02, WEB.03, WEB.04, WEB.05, WEB.06, WEB.07, WEB.08, WEB.09, WEB.10, WEB.11, WEB.12, WEB.13, WEB.14, WEB.15, WEB.16, WEB.17, WEB.18, WEB.19, WEB.20, WEB.21, WEB.22, WEB.23, WEB.24, WEB.25, WEB.26, WEB.27, WEB.28, WEB.29, WEB.30, WEB.31, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- WEB.01, WEB.02, WEB.03, WEB.04, WEB.05, WEB.06, WEB.07, WEB.08, WEB.09, WEB.10, WEB.11, WEB.12, WEB.13, WEB.14, WEB.15, WEB.16, WEB.17, WEB.18, WEB.19, WEB.20, WEB.21, WEB.22, WEB.23, WEB.24, WEB.25, WEB.26, WEB.27, WEB.28, WEB.29, WEB.30, WEB.31, WEB.32, WEB.33
+Opens when the record is merged: WEB.01, WEB.02, WEB.03, WEB.04, WEB.05, WEB.06, WEB.07, WEB.08, WEB.09, WEB.10, WEB.11, WEB.12, WEB.13, WEB.14, WEB.15, WEB.16, WEB.17, WEB.18, WEB.19, WEB.20, WEB.21, WEB.22, WEB.23, WEB.24, WEB.25, WEB.26, WEB.27, WEB.28, WEB.29, WEB.30, WEB.31, WEB.32, WEB.33, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-09-web.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -1173,8 +1174,8 @@ Claim and handoff record: claims/adopt-10-android (python tools/delivery.py clai
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- AND.01, AND.02, AND.03, AND.04, AND.05, AND.06, AND.07, AND.08, AND.09, AND.10, AND.11, AND.12, AND.13, AND.14, AND.15, AND.16, AND.17, AND.18, AND.19, AND.20, AND.21, AND.22, AND.23, AND.24, AND.25, AND.26
-Opens when the record is merged: AND.01, AND.02, AND.03, AND.04, AND.05, AND.06, AND.07, AND.08, AND.09, AND.10, AND.11, AND.12, AND.13, AND.14, AND.15, AND.16, AND.17, AND.18, AND.19, AND.20, AND.21, AND.22, AND.23, AND.24, AND.25, AND.26, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- AND.01, AND.02, AND.03, AND.04, AND.05, AND.06, AND.07, AND.08, AND.09, AND.10, AND.11, AND.12, AND.13, AND.14, AND.15, AND.16, AND.17, AND.18, AND.19, AND.20, AND.21, AND.22, AND.23, AND.24, AND.25, AND.26, AND.27
+Opens when the record is merged: AND.01, AND.02, AND.03, AND.04, AND.05, AND.06, AND.07, AND.08, AND.09, AND.10, AND.11, AND.12, AND.13, AND.14, AND.15, AND.16, AND.17, AND.18, AND.19, AND.20, AND.21, AND.22, AND.23, AND.24, AND.25, AND.26, AND.27, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-10-android.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.

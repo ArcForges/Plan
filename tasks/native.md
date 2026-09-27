@@ -110,7 +110,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 
 Entry condition: adoption slice ADOPT.02.native is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- none
+- [artifact] GOV.17: retired native families removed and the still-image shim moved
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -131,7 +131,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/nat-11 (python tools/delivery.py claim NAT.11 --worker <name>); task branch task/nat-11 in DesktopPlatform; ledger record ledger/tasks/nat-11.md.
 Kind/size: producer/M. Baseline: not-started.
-Outcome: arc_image_* implemented with PNG/TIFF/EXR metadata and bounded tile reads/writes via OIIO/OpenEXR/Imath; hostile reads execute only in the WP11 helper.
+Outcome: arc_image_* implemented with PNG/TIFF/EXR metadata and bounded tile reads via OIIO/OpenEXR/Imath; hostile reads execute only in the WP11 helper.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-13.10 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\13-high-risk-technical-probes.md, anchor rule-wp-13.10
@@ -173,6 +173,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.02.native is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] NAT.06: compiled common ABI headers/layouts (arc_instrument_options_v1, arc_transfer_v1)
+- [artifact] GOV.17: retired native families removed and the still-image shim moved
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -204,6 +205,7 @@ Entry condition: adoption slice ADOPT.02.native is complete in the Plan ledger (
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] PLT.45: published ArcForges.ContentSandbox.Contracts,.Broker and the foundation Runtime.<rid> package (built around a deliberately hostile first-party TEST parser)
 - [artifact] NAT.06: compiled common ABI headers/layouts (arc_pdf_page_v1)
+- [artifact] GOV.17: retired native families removed and the still-image shim moved
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
