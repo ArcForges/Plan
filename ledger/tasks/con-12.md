@@ -1,0 +1,16 @@
+---
+task: CON.12
+status: complete
+recorded: 2026-09-27
+claimant: w-20260927-arcscope-lane
+epoch: 1
+---
+
+# Extension and policy schema closure
+
+- Implementation: [Contracts PR52](https://github.com/ArcForges/Contracts/pull/52), independently approved source `d1243d31499bf31d92b794b0aa630347d6ac1b2b`, merge `665f0e887dbb1fca61dd3cda1b27d1d8f6c56e71`. [Final review](https://github.com/ArcForges/Contracts/pull/52#issuecomment-5859650438) retains the preceding full source and bounded rebase/security reviews. Earlier PR46 is retained history, not a parallel implementation.
+- Outcome: all five current contracts08 families are authored closed schemas with real generated reflection-free C# and TypeScript codecs: ExtensionManifest, ExtensionWorkflow, DeclarativePanel, PolicyBody and private ConfigurationDocument. Four public fixture families are exported through their public package owners; configuration schema and fixtures stay private. No package identity or access promotion was introduced.
+- Validation: 199 generated codec cases passed in both C# and TypeScript; 208 combined Node tests passed. Targeted dependency, access and immutable provenance checks passed, including 20 dependency admission tests. The exact source passed all retained [CI checks](https://github.com/ArcForges/Contracts/actions/runs/36348619370) and [security checks](https://github.com/ArcForges/Contracts/actions/runs/36348619391). The local C# diagnostic used existing SDK10.0.401 with reflection disabled; authoritative CI retained pinned10.0.400.
+- Independent semantic fixtures cover closed shape limits, static references, lifecycle decisions, deterministic bucket/allocation behavior, lower-limit resolution and failed candidate activation retaining the serving configuration. These prove contract/validator behavior; they do not claim archive-byte verification, broker enforcement, provider behavior, production signing or real configuration activation.
+- Supporting scope: Design PR88 and Plan PR56 bind demonstrated public SHA256 scanner false positives to exact containing path/key/hash/rule/full-line combinations. Independently rehashed metadata and negative cases preserve rejection of other files, keys, values and appended credentials. Immutable earlier dependency and provenance receipts remain intact.
+- Publication: normal main [CI run36355148074](https://github.com/ArcForges/Contracts/actions/runs/36355148074) and [security36355148054](https://github.com/ArcForges/Contracts/actions/runs/36355148054) succeeded. Build, verify and all NuGet/npm/Maven publisher jobs succeeded for candidate `1.0.0-ci.201.1` from the merge above. Maven used the accepted `1.0.0-SNAPSHOT` channel bound to that candidate/source; upload completed without public-byte polling. Original candidate artifact `contracts-candidate-36355148074-1` is10943607531, archive digest `sha256:df43e8ff32fea11f1473009c3c67396b20e397d7b9c2fd5f623b86f7db824b3d`; Maven receipt artifact10944420358 digest `sha256:4b6ba56bbb7a6a7ef1210fb777b3f67c6fcbd44f12a3b3bf4c8c065932282694`. These are original provider metadata/transfer receipts; no tag, republish or public package re-download was performed. Primary Contracts main was cleanly fast-forwarded.
