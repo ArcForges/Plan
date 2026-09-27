@@ -297,8 +297,8 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Web:eng/policy/**; Web:.eslintrc*/lint-config for architecture rules; Web:tooling/project.ts (wire owned policy checks into existing PR gate); Web:tests/unit/** (offline policy positive/negative fixtures); Web:eng/provenance/** (owned policy source inventory and new receipts; preserve historical records)
-Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
+Permitted write scope: Web:eng/policy/**; Web:.eslintrc*/lint-config for architecture rules; Web:tooling/project.ts (wire owned policy checks into existing PR gate); Web:tests/unit/** (offline policy positive/negative fixtures); Web:eng/provenance/** (owned policy source inventory and new receipts; preserve historical records); Web:apps/site/package.json (exact published naming-tool candidate pin and required existing SDK lockstep); Web:package-lock.json (regenerate exact naming-tool candidate lock); Web:eng/policy/dependency-reviews/** (immutable naming-tool pin admission receipt)
+Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.; RES-web-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
 Unblocks: GOV.15
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Node/npm-based static import-rule checks, offline, PR CI; no browser/E2E runtime here - that is WP-06.05/WP-50.06, per P2-017.
@@ -503,7 +503,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 
 Entry condition: adoption slice ADOPT.02.governance is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- none
+- [artifact] CON.23: Published canonical naming data/scanner build-time candidate
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
