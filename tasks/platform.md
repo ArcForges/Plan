@@ -35,7 +35,7 @@ Unblocks: CLOUD.38, FND.02, PLT.05, PLT.07, PLT.08, PLT.39, PLT.43, PLT.44, SCOP
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit + integration tests against a real local SQLite file (no external service): policy test asserting no alternative write path, concurrency tests for serialised writes/concurrent reads, boundary test that no storage type appears in an application signature. AOT/trim diagnostics build-breaking since this library is IsAotCompatible.
 Completion evidence for the ledger: Single-write-path policy test result.
-Notes: Interface-first decoupling recommended: define IJournalWriter/IJournalReader here as the seam PLT.02 implements, so PLT.01 and PLT.02 can be authored in parallel PRs against the same interface rather than serially.
+Notes: Interface-first decoupling recommended: define IJournalWriter/IJournalReader here as the seam PLT.02 implements, so PLT.01 and PLT.02 can be authored in parallel PRs against the same interface rather than serially. Security-exception scope is limited to CA2100 on the internal SqliteReadContext.CreateCommand(string) method in src/BuildingBlocks/ArcForges.Persistence.Sqlite/Store/StoreDatabase.cs. Independent review must establish that every caller supplies literal SQL, a fixed internal identifier, or explicitly trusted owner-authored MigrationStep.Statements, with data values bound as parameters. The SQLite schema authorizer is additional defense, not a sanitizer or permission to accept untrusted SQL. A documented method-only suppression may cover this demonstrated statement-factory false positive; no file-wide, project-wide or repository-wide suppression, new caller trust, or weakened authorizer is authorized. Fix any real injection finding instead; retain targeted offline migration/journal tests and all other security diagnostics. Retain strict boundary negatives for untrusted data, forbidden schema actions and protected tables; the exemption must not extend to any other method or diagnostic.
 ```
 
 ```text
@@ -56,14 +56,15 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] FND.02: CommandId type
 - [artifact] FND.03: Revision/Sequence types
 Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
+- [integration] PLT.03: actual durable verified snapshots and recovery integrated with journal truncation
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Persistence.Sqlite/**
 Shared resources (follow the owner protocol): RES-assistant-store-schema (append): Numbered migrations are allocated at merge by the integration owner (a rebase renumbers pending migrations); each migration is forward-only with its recovery and downgrade-refusal tests; no task edits a merged migration.
 Unblocks: PLT.03, PLT.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: durability test using a simulated process kill between journal write and commit acknowledgement (in-process fault injection, not a real OS-level crash - that remains local opt-in); replay test; truncation-under-read test.
-Completion evidence for the ledger: Durability and replay results.
+Completion evidence for the ledger: Durability and replay results. Completion additionally records exact PLT.03 snapshot artifacts and real snapshot/truncate/replay, concurrent-read and repeated bounded-growth acceptance; fixture-only evidence supports delivery only.
+Notes: Deliver the durable append/replay journal and verified-boundary truncation seam against an explicitly named snapshot fixture before the snapshot producer exists. A fixture never proves durable snapshot validity or the full bounded-growth obligation. Keep the ledger delivered while PLT.03 is pending; after that producer is complete, perform the real snapshot/truncate/replay, concurrent-read and repeated bounded-growth acceptance before completing PLT.02. Preserve every WP-07.01 obligation and PLT.03 existing artifact start edge; this staging does not authorize starting any unclaimed downstream task.
 ```
 
 ```text
@@ -87,7 +88,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Persistence.Sqlite/**
 Shared resources (follow the owner protocol): RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
-Unblocks: PLT.08
+Unblocks: PLT.02, PLT.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: full recovery matrix (clean shutdown, hard kill, kill during snapshot, kill during migration, corrupted snapshot, corrupted journal tail, disk-full during write) using simulated fault injection; native-crash/safe-start scenarios beyond process-level simulation are local opt-in only.
 Completion evidence for the ledger: Full recovery matrix with a named outcome per case.
@@ -311,7 +312,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.LocalRpc/**
-Unblocks: PLT.12, PLT.16
+Unblocks: PLT.12, PLT.16, PRF.02
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline/local tests: expired/stale child cannot call, parent restart requires fresh grants.
 Completion evidence for the ledger: Expired/stale child cannot call; parent restart requires fresh grants.
