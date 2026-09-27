@@ -1,9 +1,9 @@
 ---
 task: FND.02
-status: delivered
-recorded: 2026-09-27
+status: complete
+recorded: 2026-09-28
 claimant: w-20260927-foundation
-epoch: 1
+epoch: 2
 ---
 
 # Storage-free execution identities and application ports
@@ -16,3 +16,13 @@ epoch: 1
 - Ledger review and merge identity are retained by this ledger PR and task claim history.
 - Publication: [normal main run36347078380](https://github.com/ArcForges/DesktopPlatform/actions/runs/36347078380) completed successfully, including candidate verification, OIDC authentication and NuGet publication of the same verified bytes. Both owned coordinates use `1.0.0-ci.29.1` from merge `ace60538849047184954baed09fb05ec7676d367`. No tag or verification-only republish was created.
 - Original candidate receipt: `nuget-candidate-36347078380-1`, GitHub artifact10941456614, archive digest `sha256:e3757f7136b5deccc1d145311db81fba763b1d3348fdfae89bd6b9e6bdf09976`. Its manifest records `ArcForges.Foundation` package SHA256 `c373e7eb8d9e8a1232fb5de06c68b74f50a1f42bde2155eb92ee59980581ab51` and `ArcForges.Application.Abstractions` SHA256 `2f2ef1494db6927b2d7b724c6b59c0685c1a2520d62a24827af30296110c0306`; build identity is `36347078380.1`, source dirty=false. This original CI artifact was retrieved once for the receipt and retained acceptance inputs; no public package bytes were repeatedly downloaded or re-compared. The successful same-run publish job is the registry transfer receipt.
+
+
+## Completion follow-up: durable retry acceptance
+
+- The original delivered producer evidence above remains historical. Its PLT.01 completion prerequisite is now closed by [Plan PR73](https://github.com/ArcForges/Plan/pull/73), reviewed head `02bb53ba236d77ac0b41838a70419174a6baae7c`, independent review `5860963031`, merge `32f91af9d5e7b37f1863a0f790c4afccd2e39d9c`. PLT.01 is authoritatively complete.
+- Real-store implementation: [DesktopPlatform PR71](https://github.com/ArcForges/DesktopPlatform/pull/71), reviewed source `98d9c5ca96f400d45d1e9bc9a146781e64d00837`, independent review `5860838788`, all retained checks passed in [run36358863088](https://github.com/ArcForges/DesktopPlatform/actions/runs/36358863088), merge `48a3ef4fcb5e356d4a50d0317f93a1cb1f314b6e`.
+- The already-executed 47 real-file SQLite tests passed without failure or skip. `EveryBoundaryReopensAtomicallyAndRetryHasOneEffect` covers six injected commit boundaries, disposal/reopen, atomic presence or absence of content/history/origin/journal/outbox/command receipt, retry replay, one sequence and one journal/outbox effect. `ReceiptBindsSemanticCommandAndAuthorizationPrecedesDisclosure` rejects conflicting semantic reuse and unauthorized receipt disclosure while retaining one durable command-log row. These actual durable tests close the storage-free fixture limitation; injected boundary failures do not claim full process-crash/snapshot recovery.
+- Retained local evidence is `DesktopPlatform/.worktree/fnd-04/artifacts/persistence-final-test.log` (47/47), `persistence-final-build.log` (Release full-solution rebuild, zero warnings/errors) and `persistence-architecture-diagnostic.log`, using existing SDK10.0.401 directly. The exact producer SDK10.0.400 remains CI authority. No tests or runtime acceptance were rerun for this ledger follow-up.
+- Normal [publication run36359293616](https://github.com/ArcForges/DesktopPlatform/actions/runs/36359293616) succeeded, version `1.0.0-ci.33.1`, publisher job `108734304036`, including `ArcForges.Persistence.Sqlite` among eight package pushes. Original candidate `nuget-candidate-36359293616-1`, artifact `10944818667`, provider digest `sha256:ca330cca4b1a395534d4609266e7aacf8af47501059adf4664431e39b7ddf225`. Publication metadata was inspected without downloading candidate bytes for this follow-up. The original Foundation producer `1.0.0-ci.29.1` acceptance identity is preserved.
+- This epoch only completes the existing FND.02 acceptance ledger. PLT.02 remains delivered, with completion waiting for the separate unstarted PLT.03 snapshot/recovery prerequisite. No new product scope, installed-consumer CI, runtime proof or verification-only publication is introduced.
