@@ -10,15 +10,15 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ```text
 Execute ArcForges delivery task APP.01 — Assistant.Abstractions host ports and application identity.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\app-composition.md (anchor task-app-01).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\app-composition.md (anchor task-app-01).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/app-01 (python tools/delivery.py claim APP.01 --worker <name>); task branch task/app-01 in DesktopPlatform; ledger record ledger/tasks/app-01.md.
 Kind/size: producer/M. Baseline: not-started.
 Outcome: Assistant.Abstractions published with IHostContext/IHostActions/IHostResources/IHostNavigation/IHostLifecycle/IHostPlatformServices, product/profile identity and lifetime; two independent application identities cannot share stores/registration.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-14.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.00
+- WP-14.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.00
 
 Entry condition: adoption slice ADOPT.02.app-composition is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -30,7 +30,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Assistant.Abstractions/**; DesktopPlatform:tests/AssistantAbstractionsTests/**
 Shared resources (follow the owner protocol): RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
-Unblocks: APP.02, APP.03, APP.05, APP.06, APP.07, APP.08, AST.01, EXE.01, NOTES.03, PLT.57
+Unblocks: APP.02, APP.03, APP.05, APP.06, APP.07, APP.08, AST.01, EXE.01, PLT.57
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests only (two identities/no shared store); Native AOT compile check; no live Cloud/device in CI per P2-017.
 Completion evidence for the ledger: Source commit, Assistant.Abstractions package version/hash, two-identity isolation test results.
@@ -38,19 +38,19 @@ Notes: Root of the whole area's dependency graph; every other WP14 to WP17/26 de
 ```
 
 ```text
-Execute ArcForges delivery task APP.02 — Minimal ArcNotes application services (read/create/append).
+Execute ArcForges delivery task APP.02 — Minimal ArcScope application services (read/create/append annotations).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\app-composition.md (anchor task-app-02).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\ArcNotes (integration owner: ArcNotes integration owner, the holder of roles/integration-arcnotes).
-Claim and handoff record: claims/app-02 (python tools/delivery.py claim APP.02 --worker <name>); task branch task/app-02 in ArcNotes; ledger record ledger/tasks/app-02.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\app-composition.md (anchor task-app-02).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
+Claim and handoff record: claims/app-02 (python tools/delivery.py claim APP.02 --worker <name>); task branch task/app-02 in ArcScope; ledger record ledger/tasks/app-02.md.
 Kind/size: producer/M. Baseline: not-started.
-Outcome: Real read/create/append document commands through typed application handlers and local persistence, with descriptor/risk/context validation and one write path shared by UI and own-app capability invocation. Professional document completion remains WP18.
+Outcome: Real read/create/append annotation commands through typed application handlers and local persistence, with descriptor/risk/context validation and one write path shared by UI and own-app capability invocation. Professional ArcScope completion remains WP33-WP35.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-14.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.01
+- WP-14.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.01
 
-Entry condition: adoption slice ADOPT.04.app-composition is complete in the Plan ledger (DLV-22).
+Entry condition: adoption slice ADOPT.05.app-composition is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] APP.01: published Assistant.Abstractions host ports and product identity
 - [artifact] PLT.24: real ICapabilityProvider.InvokeAsync invocation pipeline (owner-side decode/validate)
@@ -58,37 +58,37 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: ArcNotes:src/ArcForges.ArcNotes.Application/**; ArcNotes:src/ArcForges.ArcNotes.Infrastructure/**; ArcNotes:tests/**
+Permitted write scope: ArcScope:src/ArcForges.ArcScope.Application/**; ArcScope:src/ArcForges.ArcScope.Infrastructure/**; ArcScope:tests/**
 Unblocks: APP.03, APP.04, APP.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests (descriptor/risk/context validation, one write path); no live Cloud in CI.
 Completion evidence for the ledger: Source commit, command receipt samples, validation-failure cases.
-Notes: This is the ONLY product-repo work in WP14 to WP17/26; full ArcNotes document model is WP18, not here.
+Notes: This is the ONLY product-repo work in WP14 to WP17/26; professional ArcScope completion is WP33-WP35, not here.
 ```
 
 ```text
-Execute ArcForges delivery task APP.03 — Clean Native AOT package-consumer composition for ArcNotes.
+Execute ArcForges delivery task APP.03 — Clean Native AOT package-consumer composition for ArcScope.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\app-composition.md (anchor task-app-03).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\ArcNotes (integration owner: ArcNotes integration owner, the holder of roles/integration-arcnotes).
-Claim and handoff record: claims/app-03 (python tools/delivery.py claim APP.03 --worker <name>); task branch task/app-03 in ArcNotes; ledger record ledger/tasks/app-03.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\app-composition.md (anchor task-app-03).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
+Claim and handoff record: claims/app-03 (python tools/delivery.py claim APP.03 --worker <name>); task branch task/app-03 in ArcScope; ledger record ledger/tasks/app-03.md.
 Kind/size: producer/S. Baseline: not-started.
-Outcome: A clean Native AOT ArcNotes consumer built purely from published Platform/Contracts packages and in-process typed host ports; no source reference or local-RPC product loop. Package-only restore, publish/run, command/cancel/result and owner refusal proven.
+Outcome: A clean Native AOT ArcScope consumer built purely from published Platform/Contracts packages and in-process typed host ports; no source reference or local-RPC product loop. Package-only restore, publish/run, command/cancel/result and owner refusal proven.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-14.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.02
+- WP-14.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.02
 
-Entry condition: adoption slice ADOPT.04.app-composition is complete in the Plan ledger (DLV-22).
+Entry condition: adoption slice ADOPT.05.app-composition is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] APP.01: published Assistant.Abstractions package (not project reference)
-- [artifact] APP.02: published ArcNotes application-services package surface
+- [artifact] APP.02: published ArcScope application-services surface
 - [artifact] PRF.04: proven Local RPC under Native AOT pattern
 - [artifact] NAT.01: confirmed Native AOT device-tool/capability-invocation feasibility from the high-risk probe
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: ArcNotes:src/ArcForges.ArcNotes/**; ArcNotes:packaging/**
+Permitted write scope: ArcScope:src/ArcForges.ArcScope/**; ArcScope:packaging/**
 Unblocks: APP.08, HAR.05
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Native AOT publish/run in CI (package-only restore), offline command/cancel/result tests; no installed-package or public-release install/upgrade CI per P2-017.
@@ -99,15 +99,15 @@ Notes: Narrow early-risk proof: first real evidence that the whole Assistant.Abs
 ```text
 Execute ArcForges delivery task APP.04 — Idempotency and revision against the real store.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\app-composition.md (anchor task-app-04).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\app-composition.md (anchor task-app-04).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/app-04 (python tools/delivery.py claim APP.04 --worker <name>); task branch task/app-04 in DesktopPlatform; ledger record ledger/tasks/app-04.md.
 Kind/size: producer/S. Baseline: not-started.
 Outcome: Command receipt and expected local revision exercised against the real store; draft/conflict behavior and unknown-outcome classification preserved under duplicate command, stale revision and process-kill-around-commit.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-14.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.03
+- WP-14.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.03
 
 Entry condition: adoption slice ADOPT.02.app-composition is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -128,15 +128,15 @@ Notes: Shares vocabulary (command identity, revision) with WP16 execution engine
 ```text
 Execute ArcForges delivery task APP.05 — Approval at the owner.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\app-composition.md (anchor task-app-05).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\app-composition.md (anchor task-app-05).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/app-05 (python tools/delivery.py claim APP.05 --worker <name>); task branch task/app-05 in DesktopPlatform; ledger record ledger/tasks/app-05.md.
 Kind/size: producer/M. Baseline: not-started.
 Outcome: Expiry/modified-input/revocation cannot bypass owner checks.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-14.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.04
+- WP-14.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.04
 
 Entry condition: adoption slice ADOPT.02.app-composition is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -156,15 +156,15 @@ Notes: contracts/02-local-rpc-operations.md confirms InvokeAsync performs owner-
 ```text
 Execute ArcForges delivery task APP.06 — Context and artifact integration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\app-composition.md (anchor task-app-06).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\app-composition.md (anchor task-app-06).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/app-06 (python tools/delivery.py claim APP.06 --worker <name>); task branch task/app-06 in DesktopPlatform; ledger record ledger/tasks/app-06.md.
 Kind/size: producer/M. Baseline: not-started.
 Outcome: Own-app resource references frozen at selection time, preview opened through the product port, egress enforced separately, provenance preserved. Selection changes after freeze, missing resource, denied export and bounded artifact all handled.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-14.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.05
+- WP-14.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.05
 
 Entry condition: adoption slice ADOPT.02.app-composition is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -186,15 +186,15 @@ Notes: AST.03 (15.02 attachments) and AST.16 (17.06 preview/host context) both r
 ```text
 Execute ArcForges delivery task APP.07 — Independent lifecycle.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\app-composition.md (anchor task-app-07).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\app-composition.md (anchor task-app-07).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/app-07 (python tools/delivery.py claim APP.07 --worker <name>); task branch task/app-07 in DesktopPlatform; ledger record ledger/tasks/app-07.md.
 Kind/size: producer/S. Baseline: not-started.
 Outcome: Launch/save works with Cloud unavailable and the assistant view closed; views dispose independently from services; two windows with different drafts and independent app crash lose no canonical data.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-14.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.06
+- WP-14.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.06
 
 Entry condition: adoption slice ADOPT.02.app-composition is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -213,15 +213,15 @@ Completion evidence for the ledger: Two-window and crash-recovery test results.
 ```text
 Execute ArcForges delivery task APP.08 — Owned-artifact receipt and UX acceptance.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\app-composition.md (anchor task-app-08).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\app-composition.md (anchor task-app-08).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/app-08 (python tools/delivery.py claim APP.08 --worker <name>); task branch task/app-08 in DesktopPlatform; ledger record ledger/tasks/app-08.md.
 Kind/size: acceptance/M. Baseline: not-started.
 Outcome: WP14 built/packed once from a clean environment; all applicable UX acceptance groups recorded; package/contract/owner/version compatibility and failure/recovery evidence attached; no later-provider fixture used to close a real WP14 gate.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-14.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.90
+- WP-14.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.90
 
 Entry condition: adoption slice ADOPT.02.app-composition is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):

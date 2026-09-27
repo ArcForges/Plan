@@ -10,20 +10,20 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ```text
 Execute ArcForges delivery task SRCH.00 — Source admission and registration for search.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\search.md (anchor task-srch-00).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\search.md (anchor task-srch-00).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/srch-00 (python tools/delivery.py claim SRCH.00 --worker <name>); task branch task/srch-00 in Cloud; ledger record ledger/tasks/srch-00.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Own-product content, explicitly selected uploads and authorized web sources are admitted into the search source registry with origin/egress and consent recorded; other-product, other-realm and private resources are rejected before any index write.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-40.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.00
+- WP-40.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.00
 
 Entry condition: adoption slice ADOPT.07.search is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [contract] CON.10: published SourceRecord/ContentOrigin typed record (origin, consent, egress) in Contracts public schema
-- [artifact] CLOUD.37: durable resource identity/revision for synced product content
+- [artifact] CLOUD.39: durable resource identity/revision for synced ArcScope content
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -40,15 +40,15 @@ Notes: WP-40 has no explicit section 4 project/file table (unlike WP-41, WP-43 a
 ```text
 Execute ArcForges delivery task SRCH.01 — Scoped derived index production (D1 FTS + Vectorize).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\search.md (anchor task-srch-01).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\search.md (anchor task-srch-01).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/srch-01 (python tools/delivery.py claim SRCH.01 --worker <name>); task branch task/srch-01 in Cloud; ledger record ledger/tasks/srch-01.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: D1 FTS scoped queries and per-workspace Vectorize namespaces are produced with mandatory realm/product/model-generation filters, source revision/policy checks, rebuild pointers, tombstone reconciliation and dimensional-change isolation (separate index, atomic reader switch, rollback window).
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-40.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.01
+- WP-40.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.01
 
 Entry condition: adoption slice ADOPT.07.search is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -69,15 +69,15 @@ Completion evidence for the ledger: Cross-product/tenant isolation before topK, 
 ```text
 Execute ArcForges delivery task SRCH.02 — Hybrid retrieval, RRF fusion and budgets.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\search.md (anchor task-srch-02).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\search.md (anchor task-srch-02).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/srch-02 (python tools/delivery.py claim SRCH.02 --worker <name>); task branch task/srch-02 in Cloud; ledger record ledger/tasks/srch-02.md.
 Kind/size: service/L. Baseline: not-started.
-Outcome: Lexical (D1 FTS) and semantic (Vectorize) candidates are fused with RRF(x)=sum(1/(60+rank_i(x))), exact-match priority preserved, the Notes scalar comparator never reordered by vector score, and RetrievalBudget defaults (candidates 200/500, evidence 20/100, contextTokens 8192/24000, perSource 5/20, graphDepth 1/3) enforced.
+Outcome: Lexical (D1 FTS) and semantic (Vectorize) candidates are fused with RRF(x)=sum(1/(60+rank_i(x))), exact-match priority preserved, and RetrievalBudget defaults (candidates 200/500, evidence 20/100, contextTokens 8192/24000, perSource 5/20, graphDepth 1/3) enforced.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-40.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.02
+- WP-40.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.02
 
 Entry condition: adoption slice ADOPT.07.search is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -97,15 +97,15 @@ Completion evidence for the ledger: Budget-bound test matrix; multilingual/no-ma
 ```text
 Execute ArcForges delivery task SRCH.03 — Current permission recheck at query time.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\search.md (anchor task-srch-03).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\search.md (anchor task-srch-03).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/srch-03 (python tools/delivery.py claim SRCH.03 --worker <name>); task branch task/srch-03 in Cloud; ledger record ledger/tasks/srch-03.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: Source owner permission and revision are rechecked after candidate retrieval and before any count/snippet/citation is returned; revocation during a query and a stale index can never expose content.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-40.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.03
+- WP-40.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.03
 
 Entry condition: adoption slice ADOPT.07.search is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -124,15 +124,15 @@ Completion evidence for the ledger: Revocation-during-query and stale-index-cann
 ```text
 Execute ArcForges delivery task SRCH.04 — Evidence and citations.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\search.md (anchor task-srch-04).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\search.md (anchor task-srch-04).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/srch-04 (python tools/delivery.py claim SRCH.04 --worker <name>); task branch task/srch-04 in Cloud; ledger record ledger/tasks/srch-04.md.
 Kind/size: service/M. Baseline: not-started.
-Outcome: Retrieval results retain source kind, immutable reference, anchor, uncertainty/completeness and measurement/media precision; stale or missing sources are labelled and no citation is ever fabricated.
+Outcome: Retrieval results retain source kind, immutable reference, anchor, uncertainty/completeness and measurement precision; stale or missing sources are labelled and no citation is ever fabricated.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-40.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.04
+- WP-40.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.04
 
 Entry condition: adoption slice ADOPT.07.search is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -150,15 +150,15 @@ Completion evidence for the ledger: Stale/missing source label tests; no-fabrica
 ```text
 Execute ArcForges delivery task SRCH.05 — Privacy partitioning and cache isolation.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\search.md (anchor task-srch-05).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\search.md (anchor task-srch-05).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/srch-05 (python tools/delivery.py claim SRCH.05 --worker <name>); task branch task/srch-05 in Cloud; ledger record ledger/tasks/srch-05.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Cache, history and context are partitioned by product/profile per RI-01..03 (workspace+principal key, no cross-workspace reuse); temporary/local Cloud-processing content never enters Cloud search.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-40.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.05
+- WP-40.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.05
 
 Entry condition: adoption slice ADOPT.07.search is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -177,15 +177,15 @@ Completion evidence for the ledger: Marker test, cross-app/account leakage and p
 ```text
 Execute ArcForges delivery task SRCH.06 — Real Cloud query path (fixture-to-real swap).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\search.md (anchor task-srch-06).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\search.md (anchor task-srch-06).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/srch-06 (python tools/delivery.py claim SRCH.06 --worker <name>); task branch task/srch-06 in Cloud; ledger record ledger/tasks/srch-06.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: The retrieval path runs against real Workers AI embeddings/reranker and real D1/Vectorize with C# owner filtering; SUB-embedding-rerank-fixture is retired from the query path, and explicit lexical-only degradation is proven when the semantic path is unavailable.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-40.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.06
+- WP-40.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.06
 
 Entry condition: adoption slice ADOPT.07.search is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -208,15 +208,15 @@ Completion evidence for the ledger: Real compatible client/owner/index versions;
 ```text
 Execute ArcForges delivery task SRCH.90 — Owned artifacts, real integration and index capacity acceptance.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\search.md (anchor task-srch-90).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\search.md (anchor task-srch-90).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/srch-90 (python tools/delivery.py claim SRCH.90 --worker <name>); task branch task/srch-90 in Cloud; ledger record ledger/tasks/srch-90.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Every SRCH substep is built/packed once and consumed as exact candidate bytes from a clean environment; model04 launch-capacity.v1 account/realm vector and namespace budgets are enforced with reservation, old/new index overlap, tombstone reconciliation, threshold refusal before new paid admission, and rebuild pausing/recovery all proven.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-40.90 (full, including index capacity acceptance): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.90
+- WP-40.90 (full, including index capacity acceptance): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.90
 
 Entry condition: adoption slice ADOPT.07.search is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):

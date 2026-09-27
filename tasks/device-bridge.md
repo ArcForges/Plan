@@ -10,15 +10,15 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ```text
 Execute ArcForges delivery task DEV.01 — Application presence (ApplicationService List/Heartbeat/Disconnect).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-01).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-01).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/dev-01 (python tools/delivery.py claim DEV.01 --worker <name>); task branch task/dev-01 in Cloud; ledger record ledger/tasks/dev-01.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: ApplicationService.List/Heartbeat/Disconnect implemented with DO projection of D1 installation authority; separate app rows per device; 30s expiry/10s renewal, restarted epoch, app-offline-without-device-wide-false-availability proven.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-26.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.00
+- WP-26.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.00
 
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -40,15 +40,15 @@ Notes: Exact Cloud-side project path for the WP21 to WP26 service split is not y
 ```text
 Execute ArcForges delivery task DEV.02 — Durable target queue.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-02).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-02).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/dev-02 (python tools/delivery.py claim DEV.02 --worker <name>); task branch task/dev-02 in Cloud; ledger record ledger/tasks/dev-02.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: ToolRequest freezes product/device/installation and current instance epoch; commands/receipts remain in D1. Another application cannot claim; duplicate/lost ack/expiry and per-owner budget proven.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-26.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.01
+- WP-26.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.01
 
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -68,15 +68,15 @@ Completion evidence for the ledger: Claim-isolation, duplicate/lost-ack, expiry 
 ```text
 Execute ArcForges delivery task DEV.03 — Owner reauthorization (Device.Runtime local re-authorization).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-03).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-03).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/dev-03 (python tools/delivery.py claim DEV.03 --worker <name>); task branch task/dev-03 in DesktopPlatform; ledger record ledger/tasks/dev-03.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Device.Runtime invokes registered typed in-process product handlers after current grant/resource/revision/egress checks; no local product RPC, shared database or delegation through a shared integration owner.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-26.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.02
+- WP-26.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.02
 
 Entry condition: adoption slice ADOPT.02.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -87,7 +87,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Communication.DeviceRuntime/**
-Unblocks: AND.25, DEV.05, DEV.06, DEV.09, DEV.13, DEV.14, SLATE.33, WEB.28
+Unblocks: AND.25, DEV.05, DEV.06, DEV.09, DEV.13, DEV.14, WEB.28
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: no local product RPC/shared database/integration owner delegation.
 Completion evidence for the ledger: Negative tests proving no RPC/shared-database/integration owner path exists.
@@ -96,16 +96,16 @@ Completion evidence for the ledger: Negative tests proving no RPC/shared-databas
 ```text
 Execute ArcForges delivery task DEV.04 — Execution and result deduplication -- Cloud D1 attempt/result store.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-04).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-04).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/dev-04 (python tools/delivery.py claim DEV.04 --worker <name>); task branch task/dev-04 in Cloud; ledger record ledger/tasks/dev-04.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Bridge request/result persisted in D1 using full ApplicationTarget and (toolRequestId,attemptId,commandId) plus result hash; multiple tool requests per attempt both persist; identical replay returns its own receipt; changed result hash refuses; stale epoch and cross-application delivery rejected.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-26.03 (Cloud-side D1 attempt-row persistence, hash dedup and cross-application delivery guard): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.03
-- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
+- WP-26.03 (Cloud-side D1 attempt-row persistence, hash dedup and cross-application delivery guard): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.03
+- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -126,16 +126,16 @@ Notes: Split from WP-26.03 by repo; see DEV.05 for the desktop-side half and IM.
 ```text
 Execute ArcForges delivery task DEV.05 — Execution and result deduplication -- Desktop command_log agreement.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-05).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-05).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/dev-05 (python tools/delivery.py claim DEV.05 --worker <name>); task branch task/dev-05 in DesktopPlatform; ledger record ledger/tasks/dev-05.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Owner handler's normal in-process validation records the same (toolRequestId,attemptId,commandId) plus result hash into a local command_log; agrees with the Cloud attempt row (BI-03); duplicate delivery and uncertain external effect handled locally.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-26.03 (Desktop command_log persistence and (toolRequestId,attemptId,commandId) agreement with the Cloud attempt row): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.03
-- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
+- WP-26.03 (Desktop command_log persistence and (toolRequestId,attemptId,commandId) agreement with the Cloud attempt row): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.03
+- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.02.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -156,15 +156,15 @@ Notes: Real cross-repo agreement (this store vs the actual Cloud D1 row) is prov
 ```text
 Execute ArcForges delivery task DEV.06 — Remote approval and steering.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-06).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-06).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/dev-06 (python tools/delivery.py claim DEV.06 --worker <name>); task branch task/dev-06 in Cloud; ledger record ledger/tasks/dev-06.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: One-target approvals, sensitive local-presence requirements and ordinary steering bounds preserved; mobile biometric cannot substitute for target presence; stale approval fails.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-26.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.04
+- WP-26.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.04
 
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -185,15 +185,15 @@ Completion evidence for the ledger: Biometric-substitution-refusal and stale-app
 ```text
 Execute ArcForges delivery task DEV.07 — Offline expiry and recovery.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-07).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-07).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/dev-07 (python tools/delivery.py claim DEV.07 --worker <name>); task branch task/dev-07 in Cloud; ledger record ledger/tasks/dev-07.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: Explicit offline queue expiry/reconciliation; changing the selected app cannot retarget queued work. Disconnect/revoke/reinstall proven with no silent alternate product/device selection.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-26.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.05
+- WP-26.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.05
 
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -212,15 +212,15 @@ Completion evidence for the ledger: Disconnect/revoke/reinstall test results.
 ```text
 Execute ArcForges delivery task DEV.08 — Frozen application locality.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-08).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-08).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/dev-08 (python tools/delivery.py claim DEV.08 --worker <name>); task branch task/dev-08 in Cloud; ledger record ledger/tasks/dev-08.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: Cloud-only steps may run without a desktop; every device step in one execution remains in the frozen product scope. Own-app multi-tool workflow passes; cross-product capability absent/future.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-26.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.06
+- WP-26.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.06
 
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -239,15 +239,15 @@ Completion evidence for the ledger: Multi-tool workflow and cross-product-absenc
 ```text
 Execute ArcForges delivery task DEV.09 — Owned-artifact receipt and real integration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-09).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-09).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/dev-09 (python tools/delivery.py claim DEV.09 --worker <name>); task branch task/dev-09 in Cloud; ledger record ledger/tasks/dev-09.md.
 Kind/size: acceptance/M. Baseline: not-started.
 Outcome: WP26 built/packed once from a clean environment across both repositories; all applicable UX acceptance groups recorded; failure/recovery and the real boundaries above proven; no later-provider fixture closes a real WP26 gate.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-26.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.90
+- WP-26.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.90
 
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -273,15 +273,15 @@ Notes: Own capabilities are real here (device-tool-path mechanics are 'must be r
 ```text
 Execute ArcForges delivery task DEV.12 — Cross-repo (toolRequestId,attemptId,commandId) agreement between Cloud D1 and Desktop command_log.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-12).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-12).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/dev-12 (python tools/delivery.py claim DEV.12 --worker <name>); task branch task/dev-12 in Cloud; ledger record ledger/tasks/dev-12.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: BI-03: the Cloud attempt row and the desktop command_log genuinely agree under concurrent/duplicate/lost-ack delivery, not just each side's own unit tests
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-26.03 (cross-repo agreement proof beyond each side's own unit coverage): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.03
+- WP-26.03 (cross-repo agreement proof beyond each side's own unit coverage): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.03
 
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -300,15 +300,15 @@ Completion evidence for the ledger: BI-03: the Cloud attempt row and the desktop
 ```text
 Execute ArcForges delivery task DEV.13 — Real Harness-planned tool request flowing through the real device bridge end-to-end.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-13).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-13).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/dev-13 (python tools/delivery.py claim DEV.13 --worker <name>); task branch task/dev-13 in Cloud; ledger record ledger/tasks/dev-13.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: an actual Cloud-planned Agent Task step (not a scripted ToolRequest) reaches a real desktop, is locally re-authorized, executed and its result accepted -- the real integration producer-artifacts.md names as closing WP26's remaining fixture-content gap
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-52.05 (all work except the parts mapped to AST.19, HAR.05): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.05
+- WP-52.05 (all work except the parts mapped to AST.19, HAR.05): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.05
 
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -333,15 +333,15 @@ Completion evidence for the ledger: an actual Cloud-planned Agent Task step (not
 ```text
 Execute ArcForges delivery task DEV.14 — Real device tool bridge over the deployed realtime transport.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-14).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\device-bridge.md (anchor task-dev-14).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform). Also touches: Cloud.
 Claim and handoff record: claims/dev-14 (python tools/delivery.py claim DEV.14 --worker <name>); task branch task/dev-14 in DesktopPlatform; ledger record ledger/tasks/dev-14.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: The device tool path (pull, local re-authorisation, generated decode, typed invocation, idempotent result) works over the real deployed stream transport -- this is explicitly must-be-real-early per implementation-sequence §3, owned jointly with the assistant lanes WP-26
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-24.01 (device-targeted feed real integration): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.01
+- WP-24.01 (device-targeted feed real integration): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.01
 
 Entry condition: adoption slice ADOPT.02.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):

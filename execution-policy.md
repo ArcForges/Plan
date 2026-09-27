@@ -1,6 +1,6 @@
 # Execution and validation policy
 
-This policy governs every delivery task and the adoption stage. It follows [Design P2-017](https://github.com/ArcForges/ArcForges-Design-B/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-017), the [CI/local policy](https://github.com/ArcForges/ArcForges-Design-B/blob/main/docs/assurance/ci-and-local-validation-policy.md) and the [delivery model](https://github.com/ArcForges/ArcForges-Design-B/blob/main/docs/planning/delivery/README.md) of [P2-018](https://github.com/ArcForges/ArcForges-Design-B/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-018).
+This policy governs every delivery task and the adoption stage. It follows [Design P2-017](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-017), the [CI/local policy](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/assurance/ci-and-local-validation-policy.md) and the [delivery model](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/planning/delivery/README.md) of [P2-018](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-018).
 
 ## Collect, plan and implement
 

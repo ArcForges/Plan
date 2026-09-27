@@ -10,16 +10,16 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ```text
 Execute ArcForges delivery task AND.01 — Android production identity and stable toolchain reconciliation.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-01).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-01).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-01 (python tools/delivery.py claim AND.01 --worker <name>); task branch task/and-01 in Mobile; ledger record ledger/tasks/and-01.md.
 Kind/size: producer/M. Baseline: not-started.
 Outcome: com.arcforges.mobile applicationId/namespace/source packages adopted, and a mutually compatible stable JDK21/AGP/Kotlin/Compose/Gradle tuple is pinned with wrapper checksums, version-catalog locks and generated-client compatibility evidence.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-30.00 (all work except the parts mapped to AND.04): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.00
-- WP-30:3-binding-rules-apache-2-0-boundary-no-g §3 binding rules: Apache-2.0 boundary, no GPL-family implementation, immutable producer artifacts (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\30-mobile-shared-architecture.md, package-level obligation
+- WP-30.00 (all work except the parts mapped to AND.04): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.00
+- WP-30:3-binding-rules-apache-2-0-boundary-no-g §3 binding rules: Apache-2.0 boundary, no GPL-family implementation, immutable producer artifacts (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -39,15 +39,15 @@ Notes: Must also decide the KMP shared/ preview module's fate: arch-27's module 
 ```text
 Execute ArcForges delivery task AND.02 — Real Android module graph and AN01-AN25 route/state contracts.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-02).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-02).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-02 (python tools/delivery.py claim AND.02 --worker <name>); task branch task/and-02 in Mobile; ledger record ledger/tasks/and-02.md.
 Kind/size: producer/L. Baseline: not-started.
 Outcome: The arch-27 module set (app, core/domain, core/data, core/network, core/security, core/designsystem, feature/home, feature/chat, feature/tasks, feature/library, feature/settings) exists as enforced Gradle modules with typed AN01-AN25 navigation/state contracts; features depend only on typed core ports.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-30.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.01
+- WP-30.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.01
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -66,15 +66,15 @@ Completion evidence for the ledger: Module dependency graph report showing one-w
 ```text
 Execute ArcForges delivery task AND.03 — Android runtime and OS adapters (Compose, Credential Manager, Keystore wrapper, WorkManager, FCM registration, SAF/MediaStore).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-03).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-03).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-03 (python tools/delivery.py claim AND.03 --worker <name>); task branch task/and-03 in Mobile; ledger record ledger/tasks/and-03.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: arm64 release / x64 emulator adapters for Compose, Credential Manager/passkey fallback, Keystore, WorkManager, FCM with non-GMS fallback, and SAF/MediaStore/FileProvider exist in core/security, core/data and core/network, with no unsafe fallback path.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-30.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.02
+- WP-30.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.02
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -94,16 +94,16 @@ Notes: Can proceed in parallel with AND.04 (core/network gRPC client) and AND.05
 ```text
 Execute ArcForges delivery task AND.04 — Published gRPC-Web contract consumption (Connect Kotlin client, binary framing, session/stream/retry adapters).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-04).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-04).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-04 (python tools/delivery.py claim AND.04 --worker <name>); task branch task/and-04 in Mobile; ledger record ledger/tasks/and-04.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: core/network wraps the pinned contracts-proto/contracts-connect-client Maven artifacts behind typed session/stream/retry/exact-value adapters, explicitly selecting binary gRPC-Web.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-30.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.03
-- WP-30.00 (Kotlin Android foundation real package consumption): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.00
+- WP-30.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.03
+- WP-30.00 (Kotlin Android foundation real package consumption): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.00
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -126,15 +126,15 @@ Notes: Merged duplicate integration or closure task formerly proposed as CON.97.
 ```text
 Execute ArcForges delivery task AND.05 — Room history, drafts, outbox and receipts.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-05).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-05).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-05 (python tools/delivery.py claim AND.05 --worker <name>); task branch task/and-05 in Mobile; ledger record ledger/tasks/and-05.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: Room schemas (local_schema, scope_partition, projection, draft, outbox, transfer, cursor, preferences) implement per-profile partitions with a durable, bounded, never-silently-evicted outbox; local canonical history is not evictable cache.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-30.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.04
+- WP-30.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.04
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -155,15 +155,15 @@ Notes: Fully local; remote Task/AI content reconciled through this store may use
 ```text
 Execute ArcForges delivery task AND.06 — Secure per-account lifecycle: Keystore encryption, no-backup policy, purge/quarantine, deep-link validation.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-06).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-06).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-06 (python tools/delivery.py claim AND.06 --worker <name>); task branch task/and-06 in Mobile; ledger record ledger/tasks/and-06.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: Per-account Keystore-encrypted secret/pending-store policy, session/logout/revoke purge vs unsent-work quarantine/export, same-generation deep-link validation and current-foreground consent are implemented in core/security.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-30.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.05
+- WP-30.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.05
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -181,16 +181,16 @@ Completion evidence for the ledger: Secret scan of release logs/backup showing n
 ```text
 Execute ArcForges delivery task AND.07 — Foundation integration evidence: real candidate against deployed 22/23/24/25.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-07).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-07).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-07 (python tools/delivery.py claim AND.07 --worker <name>); task branch task/and-07 in Mobile; ledger record ledger/tasks/and-07.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: A candidate APK is built, installed clean and exercises real sign-in/hydration/upload/reconnect on a physical device against actually deployed Cloud identity/API/realtime/sync; any Task/AI fixtures still present are named and confirmed compiled out of production before WP31.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-30.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.90
-- WP-23.05 (Android real-consumer integration beyond the WP-06 probe): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.05
+- WP-30.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.90
+- WP-23.05 (Android real-consumer integration beyond the WP-06 probe): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.05
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -219,15 +219,15 @@ Notes: Merged duplicate integration or closure task formerly proposed as CLOUD.6
 ```text
 Execute ArcForges delivery task AND.08 — Authentication, Home and workspace (AN01-AN06).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-08).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-08).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-08 (python tools/delivery.py claim AND.08 --worker <name>); task branch task/and-08 in Mobile; ledger record ledger/tasks/and-08.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: System authentication, five-destination navigation and per-device application selection are complete with real Cloud identity/presence and explicit history disclosure.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-31.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.00
+- WP-31.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.00
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -249,15 +249,15 @@ Notes: Does not need WP26 (remote bridge), WP45 (push sender) or WP52 (Harness) 
 ```text
 Execute ArcForges delivery task AND.09 — Conversations and context (AN07-AN10/15/16).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-09).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-09).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-09 (python tools/delivery.py claim AND.09 --worker <name>); task branch task/and-09 in Mobile; ledger record ledger/tasks/and-09.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: Native composer/IME/branch/context, history modes/promotion and real binary output streams work end-to-end for own-application scope, with no desktop local-history access.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-31.01 (all work except the parts mapped to AND.24): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.01
+- WP-31.01 (all work except the parts mapped to AND.24): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.01
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -278,15 +278,15 @@ Completion evidence for the ledger: History/pending-input/stream/final-message c
 ```text
 Execute ArcForges delivery task AND.10 — Tasks, approvals and automation (AN11-AN13/19/25).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-10).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-10).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-10 (python tools/delivery.py claim AND.10 --worker <name>); task branch task/and-10 in Mobile; ledger record ledger/tasks/and-10.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: Task/approval/automation surfaces enforce action, risk, credit-consent and consumption-only rules with one real owner outcome/settlement per command.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-31.02 (all work except the parts mapped to AND.24, AND.25): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.02
+- WP-31.02 (all work except the parts mapped to AND.24, AND.25): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.02
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -308,15 +308,15 @@ Completion evidence for the ledger: One real owner outcome/settlement per comman
 ```text
 Execute ArcForges delivery task AND.11 — Library and resources (AN14-AN18/22).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-11).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-11).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-11 (python tools/delivery.py claim AND.11 --worker <name>); task branch task/and-11 in Mobile; ledger record ledger/tasks/and-11.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: Native preview/import/export/transfer flows handle missing/denied/unsupported states with correct local/cloud copy and deletion semantics.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-31.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.03
+- WP-31.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.03
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -336,16 +336,16 @@ Notes: Independent of WP26/WP45/WP52 — can complete in parallel with AND.09/AN
 ```text
 Execute ArcForges delivery task AND.12 — Presence, push, links and settings (AN20-AN24).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-12).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-12).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-12 (python tools/delivery.py claim AND.12 --worker <name>); task branch task/and-12 in Mobile; ledger record ledger/tasks/and-12.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: Presence/push/deep-link/settings surfaces stay usable through declared polling/notification fallback, with no purchase/store billing surface and no exposure of a revoked resource on background reconnect.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-31.04 (all work except the parts mapped to AND.26): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.04
-- WP-31:pg-24-completion-gate-paragraph-physical PG-24 completion-gate paragraph: physical arm64 push/Doze/background evidence (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, package-level obligation
+- WP-31.04 (all work except the parts mapped to AND.26): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.04
+- WP-31:pg-24-completion-gate-paragraph-physical PG-24 completion-gate paragraph: physical arm64 push/Doze/background evidence (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -368,15 +368,15 @@ Completion evidence for the ledger: Physical device receipt of a real push; deni
 ```text
 Execute ArcForges delivery task AND.13 — Native interaction and recovery: full experience-02 device matrix.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-13).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-13).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-13 (python tools/delivery.py claim AND.13 --worker <name>); task branch task/and-13 in Mobile; ledger record ledger/tasks/and-13.md.
 Kind/size: integration/L. Baseline: not-started.
 Outcome: The complete phone/tablet/back/IME/TalkBack/large-text/process-death/account-switch/denied-permission/no-GMS matrix from experience 02 passes against real services on a release APK, preserving typed effect uncertainty and drafts.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-31.05 (all work except the parts mapped to AND.25): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.05
+- WP-31.05 (all work except the parts mapped to AND.25): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.05
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -399,16 +399,16 @@ Completion evidence for the ledger: Per-scenario pass/fail with device identity 
 ```text
 Execute ArcForges delivery task AND.14 — Scope and licence enforcement audit.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-14).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-14).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-14 (python tools/delivery.py claim AND.14 --worker <name>); task branch task/and-14 in Mobile; ledger record ledger/tasks/and-14.md.
 Kind/size: acceptance/S. Baseline: not-started.
 Outcome: Full companion requirements, consumption-only restrictions, public-Maven-only imports, and absence of desktop secrets/device-local paths/excluded professional-editing surfaces are verified with complete provenance.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-31.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.06
-- WP-30:3-binding-rules-apache-2-0-boundary-no-g §3 binding rules: Apache-2.0 boundary, no GPL-family implementation, immutable producer artifacts (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\30-mobile-shared-architecture.md, package-level obligation
+- WP-31.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.06
+- WP-30:3-binding-rules-apache-2-0-boundary-no-g §3 binding rules: Apache-2.0 boundary, no GPL-family implementation, immutable producer artifacts (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -429,16 +429,16 @@ Completion evidence for the ledger: Complete surface/action inventory cross-chec
 ```text
 Execute ArcForges delivery task AND.15 — Complete companion acceptance.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-15).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-15).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-15 (python tools/delivery.py claim AND.15 --worker <name>); task branch task/and-15 in Mobile; ledger record ledger/tasks/and-15.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: A signed candidate joins real 31.00-31.06 evidence with producer manifests and the full compatible 52/26/25/42/45 integration manifest, verified through injected-failure scenarios with exact device/OS/server/worker/package identities.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-31.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.90
-- WP-31:pg-24-completion-gate-paragraph-physical PG-24 completion-gate paragraph: physical arm64 push/Doze/background evidence (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, package-level obligation
+- WP-31.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.90
+- WP-31:pg-24-completion-gate-paragraph-physical PG-24 completion-gate paragraph: physical arm64 push/Doze/background evidence (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -462,15 +462,15 @@ Completion evidence for the ledger: Owned-artifact-and-real-integration receipt 
 ```text
 Execute ArcForges delivery task AND.16 — Signed Android release artifacts (AAB + direct APK).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-16).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-16).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-16 (python tools/delivery.py claim AND.16 --worker <name>); task branch task/and-16 in Mobile; ledger record ledger/tasks/and-16.md.
 Kind/size: release/S. Baseline: not-started.
 Outcome: AAB (Play) and a separately signed direct APK build automatically from reviewed main with monotonic versionCode, immutable provenance and tested WP03 update-schema compatibility.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-32.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.00
+- WP-32.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.00
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -489,15 +489,15 @@ Completion evidence for the ledger: Signed AAB/APK with recorded provenance and 
 ```text
 Execute ArcForges delivery task AND.17 — Release runtime inspection.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-17).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-17).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-17 (python tools/delivery.py claim AND.17 --worker <name>); task branch task/and-17 in Mobile; ledger record ledger/tasks/and-17.md.
 Kind/size: acceptance/S. Baseline: not-started.
 Outcome: Kotlin/ART, Compose/public grpc-lite closure, min/target API, arm64 assets, R8 rules and required permissions are verified on the actual signed APK/AAB, not source inspection.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-32.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.01
+- WP-32.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.01
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -515,15 +515,15 @@ Completion evidence for the ledger: VG-07 evidence: real Kotlin/ART release arti
 ```text
 Execute ArcForges delivery task AND.18 — Dependency and source rights closure (final artifact).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-18).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-18).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-18 (python tools/delivery.py claim AND.18 --worker <name>); task branch task/and-18 in Mobile; ledger record ledger/tasks/and-18.md.
 Kind/size: acceptance/S. Baseline: not-started.
 Outcome: Direct/transitive Gradle/plugin/runtime/asset closure, licences, provenance and reproducible SBOM/NOTICE are audited against the final companion candidate; public schema/tooling Apache origin and independently original app implementation are verified.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-32.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.02
+- WP-32.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.02
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -542,15 +542,15 @@ Completion evidence for the ledger: F-023 re-closure for the final companion can
 ```text
 Execute ArcForges delivery task AND.19 — Consumption-only enforcement.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-19).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-19).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-19 (python tools/delivery.py claim AND.19 --worker <name>); task branch task/and-19 in Mobile; ledger record ledger/tasks/and-19.md.
 Kind/size: acceptance/M. Baseline: not-started.
 Outcome: Absence of purchase buttons/embedded checkout/store billing/external purchase CTAs/licence-key unlock is enforced by static route/dependency checks and exercised across every state including expired subscription and exhausted credits.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-32.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.03
+- WP-32.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.03
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -572,15 +572,15 @@ Completion evidence for the ledger: VG-13 evidence: no build path can display a 
 ```text
 Execute ArcForges delivery task AND.20 — Play and direct-channel signed update client.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-20).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-20).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-20 (python tools/delivery.py claim AND.20 --worker <name>); task branch task/and-20 in Mobile; ledger record ledger/tasks/and-20.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: arch-11 channel behavior and a notify-only signed update client are complete, consuming WP03's format/fixture keys now; channel-switch export/reinstall guidance is explicit.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-32.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.04
+- WP-32.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.04
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -600,15 +600,15 @@ Notes: Explicitly does NOT wait on WP53 (production feed/signing) — WP-32.04's
 ```text
 Execute ArcForges delivery task AND.21 — Physical device and recovery gates.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-21).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-21).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-21 (python tools/delivery.py claim AND.21 --worker <name>); task branch task/and-21 in Mobile; ledger record ledger/tasks/and-21.md.
 Kind/size: integration/L. Baseline: not-started.
 Outcome: Full companion runs on minimum-supported and current physical-device profiles across weak/offline network, permission denial, no-GMS, key-loss/backup-restore, process kill and OS background limits; forward-rescue release with a higher versionCode is proven (Android never downgrades as routine rollback).
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-32.05 (all work except the parts mapped to AND.26): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.05
+- WP-32.05 (all work except the parts mapped to AND.26): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.05
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -626,15 +626,15 @@ Completion evidence for the ledger: All mandatory scenarios pass; material devic
 ```text
 Execute ArcForges delivery task AND.22 — Android scope statement.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-22).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-22).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-22 (python tools/delivery.py claim AND.22 --worker <name>); task branch task/and-22 in Mobile; ledger record ledger/tasks/and-22.md.
 Kind/size: acceptance/S. Baseline: not-started.
 Outcome: Documentation and store/release/readme/platform matrices state Android-only scope; iOS/Swift/KMP/cross-platform UI are recorded as outside this delivery with no false retained-iOS claim.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-32.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.06
+- WP-32.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.06
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -653,16 +653,16 @@ Notes: Small and independent; can land in the same PR series as AND.18 or AND.19
 ```text
 Execute ArcForges delivery task AND.23 — Distribution acceptance.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-23).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-23).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-23 (python tools/delivery.py claim AND.23 --worker <name>); task branch task/and-23 in Mobile; ledger record ledger/tasks/and-23.md.
 Kind/size: release/M. Baseline: not-started.
 Outcome: The exact signed APK/AAB, manifest/hash/versionCode/certificate identity, compatible server/Contracts release and all gate receipts are archived and published through the automatic main graph; a clean-device download verifies signature/hash and exercises actual services.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-32.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.90
-- WP-32:pg-24-completion-gate-paragraph-recheck PG-24 completion-gate paragraph (recheck on distributed artifact) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\32-mobile-release-and-store-gates.md, package-level obligation
+- WP-32.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.90
+- WP-32:pg-24-completion-gate-paragraph-recheck PG-24 completion-gate paragraph (recheck on distributed artifact) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -686,16 +686,16 @@ Completion evidence for the ledger: Distribution complete only with real receipt
 ```text
 Execute ArcForges delivery task AND.24 — Real CF Harness generation/tool loop observed end to end on Android.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-24).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-24).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-24 (python tools/delivery.py claim AND.24 --worker <name>); task branch task/and-24 in Mobile; ledger record ledger/tasks/and-24.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: real admitted generation, tool proposal and automation execution replace the contract-bound fixture turn endpoint on a physical device
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-31.01 (real-integration closure): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.01
-- WP-31.02 (real-integration closure): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.02
+- WP-31.01 (real-integration closure): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.01
+- WP-31.02 (real-integration closure): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.02
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -716,16 +716,16 @@ Completion evidence for the ledger: real admitted generation, tool proposal and 
 ```text
 Execute ArcForges delivery task AND.25 — Real desktop tool dispatch and unknown-effect reconciliation from Android.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-25).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-25).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-25 (python tools/delivery.py claim AND.25 --worker <name>); task branch task/and-25 in Mobile; ledger record ledger/tasks/and-25.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: an Android-initiated remote task actually reaches a desktop through the durable bridge with correct lease/grant/reconciliation semantics
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-31.02 (device-dispatch closure): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.02
-- WP-31.05 (real-52/26 evidence): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.05
+- WP-31.02 (device-dispatch closure): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.02
+- WP-31.05 (real-52/26 evidence): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.05
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -749,18 +749,18 @@ Completion evidence for the ledger: an Android-initiated remote task actually re
 ```text
 Execute ArcForges delivery task AND.26 — Real FCM sending and physical Android receipt.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\android.md (anchor task-and-26).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-26).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-26 (python tools/delivery.py claim AND.26 --worker <name>); task branch task/and-26 in Mobile; ledger record ledger/tasks/and-26.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: PG-24: a project-bound FCM credential actually sends and a physical arm64 device actually receives, including duplicate/rotation/revocation and denied-permission/no-GMS recovery
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-31.04 (physical receipt closure): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.04
-- WP-32:pg-24-completion-gate-paragraph-recheck PG-24 completion-gate paragraph (recheck on distributed artifact) (PG-24 closure): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\32-mobile-release-and-store-gates.md, package-level obligation
-- WP-45.09 (device-delivery half): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.09
-- WP-32.05 (physical/no-GMS/permission evidence half): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.05
+- WP-31.04 (physical receipt closure): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.04
+- WP-32:pg-24-completion-gate-paragraph-recheck PG-24 completion-gate paragraph (recheck on distributed artifact) (PG-24 closure): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, package-level obligation
+- WP-45.09 (device-delivery half): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.09
+- WP-32.05 (physical/no-GMS/permission evidence half): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.05
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):

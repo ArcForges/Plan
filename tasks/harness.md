@@ -10,15 +10,15 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ```text
 Execute ArcForges delivery task HAR.00 — Turn loop, tool batching and bounds (RunWorkflow core).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\harness.md (anchor task-har-00).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\harness.md (anchor task-har-00).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
 Claim and handoff record: claims/har-00 (python tools/delivery.py claim HAR.00 --worker <name>); task branch task/har-00 in AI; ledger record ledger/tasks/har-00.md.
 Kind/size: service/XL. Baseline: not-started.
 Outcome: The sole RunWorkflow implements deterministic Workflow identity with C# claim/epoch/generation and actual deployed Worker version; iteration/context references and model/tool dispatch intent persist before effects; immutable outcome receipts persist before continuation; model/tool/parallel/progress/time/step budgets and declared conflict sets are enforced, with a 60-second execution lease renewed every 20 seconds during long awaits.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-52.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.00
+- WP-52.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.00
 
 Entry condition: adoption slice ADOPT.08.harness is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -42,15 +42,15 @@ Notes: Foundational early risk proof: if the CF Workflow model cannot actually s
 ```text
 Execute ArcForges delivery task HAR.01 — Context assembly and compaction.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\harness.md (anchor task-har-01).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\harness.md (anchor task-har-01).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
 Claim and handoff record: claims/har-01 (python tools/delivery.py claim HAR.01 --worker <name>); task branch task/har-01 in AI; ledger record ledger/tasks/har-01.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Context assembles through authorized C# ports in a fixed order, pages under one snapshot hash, and retains immutable source pins/content origins; invocable capabilities are filtered before model declaration with budget truncation disclosed; compaction refs are stored derived; source/revision and active grant are revalidated before mutation.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-52.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.01
+- WP-52.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.01
 
 Entry condition: adoption slice ADOPT.08.harness is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -70,15 +70,15 @@ Completion evidence for the ledger: Context permission, staleness and compaction
 ```text
 Execute ArcForges delivery task HAR.02 — Approval, cancellation and crash recovery.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\harness.md (anchor task-har-02).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\harness.md (anchor task-har-02).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
 Claim and handoff record: claims/har-02 (python tools/delivery.py claim HAR.02 --worker <name>); task branch task/har-02 in AI; ledger record ledger/tasks/har-02.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Approval waiting is bounded (selected wait/reconcile steps, seven-day bound) with reauthorization on resume; explicit cancel/pause/steer controls and C# reconciliation exist; wait/cancel/recovery always yields one canonical outcome or an explicit unknownEffect via the intent-to-owner/provider-evidence-to-deadline-to-user-decision ladder; a UI session closing never cancels a durable Task.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-52.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.02
+- WP-52.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.02
 
 Entry condition: adoption slice ADOPT.08.harness is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -98,16 +98,16 @@ Completion evidence for the ledger: Approval-across-restart, cancellation and un
 ```text
 Execute ArcForges delivery task HAR.03 — Generated streaming and durable output.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\harness.md (anchor task-har-03).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\harness.md (anchor task-har-03).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
 Claim and handoff record: claims/har-03 (python tools/delivery.py claim HAR.03 --worker <name>); task branch task/har-03 in AI; ledger record ledger/tasks/har-03.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: execution.readOutput/watchOutput, transient-turn admission/ack/purge and DO projections work per annex 10/model 05; Cloud histories commit canonically while local histories recover verified transient output without a Cloud Chat body; a stream projection never becomes message authority or determines Task state.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-52.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.03
-- WP-52:sec-8-gate-item-9-every-surface-converge Sec.8 gate item 9: every surface converges to the same authoritative final answer/artifact with realtime disabled (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, package-level obligation
+- WP-52.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.03
+- WP-52:sec-8-gate-item-9-every-surface-converge Sec.8 gate item 9: every surface converges to the same authoritative final answer/artifact with realtime disabled (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.08.harness is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -127,15 +127,15 @@ Completion evidence for the ledger: Cross-replica read, miss-is-not-eviction, ta
 ```text
 Execute ArcForges delivery task HAR.04 — Provider failure and effect-certainty classification.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\harness.md (anchor task-har-04).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\harness.md (anchor task-har-04).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/har-04 (python tools/delivery.py claim HAR.04 --worker <name>); task branch task/har-04 in Cloud; ledger record ledger/tasks/har-04.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Failure classification keys on whether dispatch occurred, never on whether bytes returned; the unknown path releases customer holds at the reconciliation deadline while retaining supplier liability; no failure path silently resolves unknown to didNotHappen, and no dispatched request is retried automatically.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-52.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.04
+- WP-52.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.04
 
 Entry condition: adoption slice ADOPT.07.harness is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -155,16 +155,16 @@ Completion evidence for the ledger: Effect-certainty classification and deadline
 ```text
 Execute ArcForges delivery task HAR.05 — Own-application execution proof and fixture turn-endpoint removal.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\harness.md (anchor task-har-05).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\harness.md (anchor task-har-05).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
 Claim and handoff record: claims/har-05 (python tools/delivery.py claim HAR.05 --worker <name>); task branch task/har-05 in AI; ledger record ledger/tasks/har-05.md.
 Kind/size: integration/XL. Baseline: not-started.
-Outcome: Two end-to-end oracles pass: the ArcNotes embedded assistant processes its own selected document plus local/cloud history, and Android/Web explicitly target an authorized ArcNotes installation for an approved Notes command -- covering typed transcript/compaction, promotion/export, binary streams and offline recovery. The WP-17.01 fixture turn endpoint is structurally proven absent from the codebase.
+Outcome: Two end-to-end oracles pass: the ArcScope embedded assistant processes its own selected session range or annotation plus local/cloud history, and Android/Web explicitly target an authorized ArcScope installation for an approved ArcScope command -- covering typed transcript/compaction, promotion/export, binary streams and offline recovery. The WP-17.01 fixture turn endpoint is structurally proven absent from the codebase.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-52.05 (all work except the parts mapped to AST.19, DEV.13): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.05
-- WP-52.90 (structural assertion that the WP-17.01 fixture turn endpoint no longer exists (Sec.8 gate item 10)): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.90
+- WP-52.05 (all work except the parts mapped to AST.19, DEV.13): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.05
+- WP-52.90 (structural assertion that the WP-17.01 fixture turn endpoint no longer exists (Sec.8 gate item 10)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.90
 
 Entry condition: adoption slice ADOPT.08.harness is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -180,8 +180,8 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] AND.24: consumer switched from the fixture turn endpoint to the real Harness
 - [artifact] WEB.27: consumer switched from the fixture turn endpoint to the real Harness
 - [artifact] AIR.00: real Workers AI provider adapters
-- [artifact] NOTES.12: the real ArcNotes capability surface the approved Notes command invokes
-- [artifact] APP.03: ArcNotes composed as a clean Native AOT package consumer
+- [artifact] SCOPE.20: the real ArcScope capability surface the approved ArcScope command invokes
+- [artifact] APP.03: ArcScope composed as a clean Native AOT package consumer
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -191,22 +191,21 @@ Unblocks: HAR.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Protected-context overflow, stale summary/branch, large transient object, forged tool history, interrupted output/final hash, lost ack, app restart, revoke/epoch change, refused cross-product target -- real device/AOT binary tests run locally/affected-scope per P2-017 (no desktop GUI or device CI), not as a hosted CI job.
 Completion evidence for the ledger: Full same-application workflow with every failure variant; structural absence of the WP-17.01 fixture turn endpoint.
-Notes: This is the task that performs implementation-sequence.md Sec.3.1's 'Fixture turn endpoint... No WP-52 substep or gate names an extension/MCP-sourced tool call as oracle evidence anywhere in the WP text; both named oracles are native Notes commands.
+Notes: This is the task that performs implementation-sequence.md Sec.3.1's 'Fixture turn endpoint... No WP-52 substep or gate names an extension/MCP-sourced tool call as oracle evidence anywhere in the WP text; both named oracles are native ArcScope commands.
 ```
 
 ```text
 Execute ArcForges delivery task HAR.06 — Durable Cloud automation, scheduling and automation-fixture removal.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\harness.md (anchor task-har-06).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\harness.md (anchor task-har-06).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/har-06 (python tools/delivery.py claim HAR.06 --worker <name>); task branch task/har-06 in Cloud; ledger record ledger/tasks/har-06.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Automation definition/version, trigger schedule/event cursor, occurrence dedup and grant/budget snapshot live in C# Task-owned tables; bounded leased jobs dispatch the same RunWorkflow identity through the existing outbox; disabled/revoked automation stops future occurrences; the labelled WP-17 automation fixture is removed.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-52.06 (automation definition/version, trigger schedule/event cursor, occurrence dedup, grant/budget snapshot, bounded leased dispatch through the existing outbox, disable/revoke control, and removal of the labelled WP-17 automation fixture -- excluding the Slate transcription closure scenario): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.06
-- WP-52:final-review-closure-paragraph-paid-slat Final-review closure paragraph: paid Slate transcription end-to-end, CF purge inventory paging, seven-day wait guards, post-backup unsafe-effect quarantine, real active/waiting/unknown states for WP-50 recovery (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, package-level obligation
+- WP-52.06 (automation definition/version, trigger schedule/event cursor, occurrence dedup, grant/budget snapshot, bounded leased dispatch through the existing outbox, disable/revoke control, and removal of the labelled WP-17 automation fixture): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.06
 
 Entry condition: adoption slice ADOPT.07.harness is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -220,32 +219,30 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Task/Automation/**
 Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
 Permitted substitutes (never real integration evidence): SUB-automation-fixture: client rendering of schedule/timezone/target/budget and action availability, offline-draft handling only Real producer ['HAR.06']; removed by HAR.06
-Unblocks: AST.20, HAR.90, HAR.91
+Unblocks: AST.20, HAR.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Duplicate schedule/event, catch-up/coalescing, service/grant expiry, disable-during-wait tests; actual CF occurrence/usage with one linked Task at the credentialed gate.
 Completion evidence for the ledger: Real automation scheduling, missed-run policy, occurrence deduplication, cancellation and fixture-removal results (core mechanics).
-Notes: The Slate transcription closure scenario named in WP-52.06's final-review paragraph is deliberately excluded from this task and modeled as IM.slate-transcription-adoption, since it needs WP-39 real audio and this task's core scheduler mechanics do not.
 ```
 
 ```text
 Execute ArcForges delivery task HAR.90 — Verify owned artifact and real integration (Harness).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\harness.md (anchor task-har-90).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\harness.md (anchor task-har-90).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
 Claim and handoff record: claims/har-90 (python tools/delivery.py claim HAR.90 --worker <name>); task branch task/har-90 in AI; ledger record ledger/tasks/har-90.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: The specified Worker/Workflow/DO roles are implemented and verified together; context, model/tool loop, approval, retries, cancel, streams and schedule execution run against real C# transactions/ports and selected Workers AI; the named WP-17 fixtures are confirmed removed; this package owns the first complete AI same-application workflow.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-52.90 (remaining aggregation/receipt beyond HAR.05's structural assertion): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.90
-- WP-52:p2-010-required-behavior-and-closure-ord P2-010 required behavior and closure: ordinary persistent/temporary ChatTurn and AgentTask through the same RunWorkflow, pure-read vs promoted-effectful mode (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, package-level obligation
+- WP-52.90 (remaining aggregation/receipt beyond HAR.05's structural assertion): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.90
+- WP-52:p2-010-required-behavior-and-closure-ord P2-010 required behavior and closure: ordinary persistent/temporary ChatTurn and AgentTask through the same RunWorkflow, pure-read vs promoted-effectful mode (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\52-cloud-harness.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.08.harness is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] HAR.05: own-application execution proof
 - [artifact] HAR.06: real automation evidence
-- [artifact] HAR.91: package task delivered
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -255,36 +252,4 @@ Unblocks: REL.06
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real C#/CF/R2/device integration; duplicate/lost-ack/approval/restart/stream-tail/terminal-commit cases; usage and provenance. One loop, one canonical business outcome, no unexplained provider retry.
 Completion evidence for the ledger: Owned artifact and real-integration receipt: source commit, producer version, candidate hashes, actual runtime/OS/device/provider, scenario, result, real-vs-fixture status.
 Notes: Also carries the P2-010 package closure text (ordinary persistent/temporary ChatTurn and AgentTask through the same real RunWorkflow, pure-read vs promoted-effectful mode, transient source expiry/cleanup, platform-funded protected compaction).
-```
-
-```text
-Execute ArcForges delivery task HAR.91 — Paid Slate transcription end-to-end adoption.
-
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\harness.md (anchor task-har-91).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai). Also touches: ArcSlate.
-Claim and handoff record: claims/har-91 (python tools/delivery.py claim HAR.91 --worker <name>); task branch task/har-91 in AI; ledger record ledger/tasks/har-91.md.
-Kind/size: integration/M. Baseline: not-started.
-Outcome: Actual WP-39 selected-audio upload through CF Whisper, normal C# metering/final artifact and explicit local subtitle adoption; partial/unknown outcome, cancellation, budget bound, origin and no-raw-video-upload; paged exact CF purge inventory, stale controls/late evidence, seven-day wait budget guards, post-backup unsafe-effect quarantine; real active/waiting/unknown states for WP-50 recovery.
-
-Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-52.06 (the Slate transcription closure paragraph from the final-review addendum): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, anchor rule-wp-52.06
-- WP-38.05 (the ASR real-provider closure named explicitly: 'WP43 provides real model output and WP52 closes the paid end-to-end path'): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\38-arcslate-render-and-colour.md, anchor rule-wp-38.05
-- WP-52:final-review-closure-paragraph-paid-slat Final-review closure paragraph: paid Slate transcription end-to-end, CF purge inventory paging, seven-day wait guards, post-backup unsafe-effect quarantine, real active/waiting/unknown states for WP-50 recovery (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\52-cloud-harness.md, package-level obligation
-
-Entry condition: adoption slice ADOPT.08.harness is complete in the Plan ledger (DLV-22).
-Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] HAR.06: real, delivered outcome of HAR.06 (Durable Cloud automation, scheduling and automation-fixture removal)
-- [artifact] AIR.09: real, delivered outcome of AIR.09 (ASR/Whisper capability closure and inference-late-outcome reconciliation)
-- [artifact] SLATE.30: real, delivered outcome of SLATE.30 (Local transcription extraction ProductJob and TranscriptRecord adoption)
-- [artifact] AIR.08: real, delivered outcome of AIR.08 (Real-provider metering evidence and stubbed-path removal)
-Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
-
-Permitted write scope: 
-Unblocks: HAR.90, SLATE.30, SLATE.32
-
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
-Completion evidence for the ledger: Actual WP-39 selected-audio upload through CF Whisper, normal C# metering/final artifact and explicit local subtitle adoption; partial/unknown outcome, cancellation, budget bound, origin and no-raw-video-upload; paged exact CF purge inventory, stale controls/late evidence, seven-day wait budget guards, post-backup unsafe-effect quarantine; real active/waiting/unknown states for WP-50 recovery.
-Notes: Merged duplicate integration or closure task formerly proposed as SLATE.41.
 ```

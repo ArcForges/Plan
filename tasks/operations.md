@@ -10,15 +10,15 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ```text
 Execute ArcForges delivery task OPS.01 — Service levels and alerting.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-01).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-01).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/ops-01 (python tools/delivery.py claim OPS.01 --worker <name>); task branch task/ops-01 in Cloud; ledger record ledger/tasks/ops-01.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Service-level indicators measure user-visible success per capability group with realtime/managed-AI computed independently, error budgets are visible, and every deployed alert routes correctly and names an existing runbook.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.00
+- WP-45.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.00
 
 Entry condition: adoption slice ADOPT.07.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -37,15 +37,15 @@ Completion evidence for the ledger: Alert-to-runbook completeness assertion (eve
 ```text
 Execute ArcForges delivery task OPS.02 — Incident process.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-02).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-02).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/ops-02 (python tools/delivery.py claim OPS.02 --worker <name>); task branch task/ops-02 in Cloud; ledger record ledger/tasks/ops-02.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: A shared four-severity ladder drives incident state tracked independently of production, a possible personal-data breach classifies automatically at the highest severity with the statutory notification clock as a hard deadline, and post-incident review produces runbook updates.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.01
+- WP-45.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.01
 
 Entry condition: adoption slice ADOPT.07.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -63,15 +63,15 @@ Completion evidence for the ledger: Breach-classification-automatic-highest-seve
 ```text
 Execute ArcForges delivery task OPS.03 — Runbooks and rehearsal.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-03).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-03).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/ops-03 (python tools/delivery.py claim OPS.03 --worker <name>); task branch task/ops-03 in Cloud; ledger record ledger/tasks/ops-03.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Every required runbook is written with preconditions, decision points, exact steps, verification and rollback, and every runbook for an implemented owner carries at least one dated rehearsal record.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.02
+- WP-45.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.02
 
 Entry condition: adoption slice ADOPT.07.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -92,17 +92,17 @@ Notes: Contributes to PG-04 (runbook rehearsal, Operations Owner, currently OPEN
 ```text
 Execute ArcForges delivery task OPS.04 — Status page.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-04).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-04).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Web (integration owner: Web integration owner, the holder of roles/integration-web).
 Claim and handoff record: claims/ops-04 (python tools/delivery.py claim OPS.04 --worker <name>); task branch task/ops-04 in Web; ledger record ledger/tasks/ops-04.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: An independently hosted status page publishes only user-facing capability components with an explicit reviewed health-to-component mapping, survives a full Cloud outage, and publishes its emergency alternate URL in at least three places.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.03
-- WP-45:browser-matrix-acceptance-status-page-su browser matrix acceptance; status page supported/degraded/blocked browser behavior, static no-JS readability (browser matrix acceptance; status page supported/degraded/blocked browser behavior, static no-JS readability): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
-- WP-45:browser-matrix-acceptance-browser-suppor Browser matrix acceptance (browser-support.v1 supported/degraded/blocked) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
+- WP-45.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.03
+- WP-45:browser-matrix-acceptance-status-page-su browser matrix acceptance; status page supported/degraded/blocked browser behavior, static no-JS readability (browser matrix acceptance; status page supported/degraded/blocked browser behavior, static no-JS readability): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
+- WP-45:browser-matrix-acceptance-browser-suppor Browser matrix acceptance (browser-support.v1 supported/degraded/blocked) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.09.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -121,18 +121,18 @@ Completion evidence for the ledger: Full-cloud-outage availability test; vendor-
 ```text
 Execute ArcForges delivery task OPS.05 — Operator console and support access.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-05).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-05).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Web (integration owner: Web integration owner, the holder of roles/integration-web).
 Claim and handoff record: claims/ops-05 (python tools/delivery.py claim OPS.05 --worker <name>); task branch task/ops-05 in Web; ledger record ledger/tasks/ops-05.md.
 Kind/size: service/XL. Baseline: not-started.
 Outcome: The operator console runs on a separate origin with a separate identity system, never in public navigation; support access is explicit, scoped, time-bounded, consented and audited; a destructive action needs a second authorised operator; and no parallel unversioned admin API exists.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.04 (all work except the parts mapped to OPS.13): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.04
-- WP-45:operator-contract-closure-the-real-conso Operator contract closure — the real console join (operator contract closure; the real console join — wiring every generated role/method pair into the console UI): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
-- WP-45:browser-matrix-acceptance-supported-degr browser matrix acceptance; supported/degraded/blocked browser behavior for the operator console's own flows (browser matrix acceptance; supported/degraded/blocked browser behavior for the operator console's own flows): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
-- WP-45:browser-matrix-acceptance-browser-suppor Browser matrix acceptance (browser-support.v1 supported/degraded/blocked) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
+- WP-45.04 (all work except the parts mapped to OPS.13): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.04
+- WP-45:operator-contract-closure-the-real-conso Operator contract closure — the real console join (operator contract closure; the real console join — wiring every generated role/method pair into the console UI): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
+- WP-45:browser-matrix-acceptance-supported-degr browser matrix acceptance; supported/degraded/blocked browser behavior for the operator console's own flows (browser matrix acceptance; supported/degraded/blocked browser behavior for the operator console's own flows): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
+- WP-45:browser-matrix-acceptance-browser-suppor Browser matrix acceptance (browser-support.v1 supported/degraded/blocked) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.09.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -153,15 +153,15 @@ Notes: BR-06 ('an operator never silently becomes a user') is a headline securit
 ```text
 Execute ArcForges delivery task OPS.06 — Break-glass.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-06).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-06).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/ops-06 (python tools/delivery.py claim OPS.06 --worker <name>); task branch task/ops-06 in Cloud; ledger record ledger/tasks/ops-06.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: A distinct, alarmed emergency-access path requires justification, expires automatically, alerts immediately, requires mandatory post-hoc review, and is visible to the affected account owner.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.05
+- WP-45.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.05
 
 Entry condition: adoption slice ADOPT.07.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -180,15 +180,15 @@ Completion evidence for the ledger: Expiry-enforcement test; owner-visibility te
 ```text
 Execute ArcForges delivery task OPS.07 — Support cases and in-product reporting.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-07).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-07).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/ops-07 (python tools/delivery.py claim OPS.07 --worker <name>); task branch task/ops-07 in Cloud; ledger record ledger/tasks/ops-07.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: In-product problem reporting produces a support reference without attaching user data by default, support cases link to diagnostic references rather than content, and the case lifecycle carries defined response expectations.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.06
+- WP-45.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.06
 
 Entry condition: adoption slice ADOPT.07.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -207,15 +207,15 @@ Completion evidence for the ledger: No-data-by-default assertion result.
 ```text
 Execute ArcForges delivery task OPS.08 — Trust and safety.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-08).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-08).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/ops-08 (python tools/delivery.py claim OPS.08 --worker <name>); task branch task/ops-08 in Cloud; ledger record ledger/tasks/ops-08.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Community report intake drives a proportionate enforcement ladder with every action recorded and communicated, account enforcement states integrate with the account model, and appeals have a defined path and response expectation.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.07 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.07
+- WP-45.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.07
 
 Entry condition: adoption slice ADOPT.07.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -234,16 +234,16 @@ Completion evidence for the ledger: Ladder-progression test; appeal-path test.
 ```text
 Execute ArcForges delivery task OPS.09 — Operational mail and provider drills.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-09).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-09).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/ops-09 (python tools/delivery.py claim OPS.09 --worker <name>); task branch task/ops-09 in Cloud; ledger record ledger/tasks/ops-09.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Transactional/broadcast email use the real WP-22 Postmark/SES adapters with separated streams; outage and reconciliation drills are rehearsed under a prepared secondary path; and the private security-advisory intake-through-publication process is complete with in-product containment/revocation attention.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.08 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.08
-- WP-45:producer-prerequisites-wp45-08-must-cons Producer prerequisites (WP45.08 must consume real WP22 mail, no fixture) (producer prerequisites; consuming WP-22 real mail artifacts without deferring WP-22's own gate; package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
+- WP-45.08 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.08
+- WP-45:producer-prerequisites-wp45-08-must-cons Producer prerequisites (WP45.08 must consume real WP22 mail, no fixture) (producer prerequisites; consuming WP-22 real mail artifacts without deferring WP-22's own gate; package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -264,15 +264,15 @@ Notes: This task cannot use a mail substitute — WP-45 explicitly states runtim
 ```text
 Execute ArcForges delivery task OPS.10 — Customer push delivery and registration lifecycle.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-10).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-10).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/ops-10 (python tools/delivery.py claim OPS.10 --worker <name>); task branch task/ops-10 in Cloud; ledger record ledger/tasks/ops-10.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Notification.IPushSender sends through a typed FCM HTTP v1 credential adapter with a unique delivery-intent outbox, generation/revocation checks and the exact push.v1 profile, working against an actual isolated Firebase project with bounded, fenced recovery.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.09 (all work except the parts mapped to AND.26): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.09
+- WP-45.09 (all work except the parts mapped to AND.26): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.09
 
 Entry condition: adoption slice ADOPT.07.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -293,15 +293,15 @@ Notes: Named as required-real-early scaffolding in implementation-sequence §3.1
 ```text
 Execute ArcForges delivery task OPS.11 — Package review and revocation console.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-11).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-11).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Web (integration owner: Web integration owner, the holder of roles/integration-web).
 Claim and handoff record: claims/ops-11 (python tools/delivery.py claim OPS.11 --worker <name>); task branch task/ops-11 in Web; ledger record ledger/tasks/ops-11.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: The operator console integrates WP-41 PackageCatalog operator methods (catalogReview/catalogRevoke) with independent operator authentication, step-up/evidence and audit, and review/revocation decisions visibly affect real signed catalog consumers.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.10 (all work except the parts mapped to OPS.13): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.10
+- WP-45.10 (all work except the parts mapped to OPS.13): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.10
 
 Entry condition: adoption slice ADOPT.09.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -322,15 +322,15 @@ Completion evidence for the ledger: Revocation affecting a real signed catalog c
 ```text
 Execute ArcForges delivery task OPS.12 — Owned-artifact receipt.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-12).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-12).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/ops-12 (python tools/delivery.py claim OPS.12 --worker <name>); task branch task/ops-12 in Cloud; ledger record ledger/tasks/ops-12.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: The package-level owned-artifact/real-integration receipt is recorded confirming actual role/redaction/status/support-case behavior and actionable CF/R2 failure diagnostics, with no second Node/operations business host.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.90
+- WP-45.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.90
 
 Entry condition: adoption slice ADOPT.07.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -358,16 +358,16 @@ Completion evidence for the ledger: The owned-artifact/real-integration receipt;
 ```text
 Execute ArcForges delivery task OPS.13 — Operator console exercises real financial-owner and kill-switch RPCs end to end.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\operations.md (anchor task-ops-13).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-13).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Web (integration owner: Web integration owner, the holder of roles/integration-web).
 Claim and handoff record: claims/ops-13 (python tools/delivery.py claim OPS.13 --worker <name>); task branch task/ops-13 in Web; ledger record ledger/tasks/ops-13.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: an authorised operator can actually grant/revoke/issueCredit/adjustCredit/refund and activate a kill switch through the console UI, not just via direct RPC test calls
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.04 (exercise every generated role/method pair via the actual console UI): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.04
-- WP-45.10 (real operator console join): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.10
+- WP-45.04 (exercise every generated role/method pair via the actual console UI): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.04
+- WP-45.10 (real operator console join): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.10
 
 Entry condition: adoption slice ADOPT.09.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):

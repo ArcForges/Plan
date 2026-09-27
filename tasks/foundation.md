@@ -10,15 +10,15 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ```text
 Execute ArcForges delivery task FND.01 — Core identity and version-axis value-type skeleton.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-01).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-01).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/fnd-01 (python tools/delivery.py claim FND.01 --worker <name>); task branch task/fnd-01 in DesktopPlatform; ledger record ledger/tasks/fnd-01.md.
 Kind/size: producer/S. Baseline: not-started.
 Outcome: ArcForges.Foundation exposes the UUID/revision/enum/error primitive types (registry-04 exact values) with generation and validation, adapting Contracts.Foundation wire types rather than redefining them.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-04.00 (all work except the parts mapped to FND.07): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.00
+- WP-04.00 (all work except the parts mapped to FND.07): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.00
 
 Entry condition: adoption slice ADOPT.02.foundation is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -28,7 +28,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Foundation/**
 Shared resources (follow the owner protocol): RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
-Unblocks: APP.01, FND.07, PLT.17, PLT.36, PLT.47, PRF.01, PRF.02, PRF.03
+Unblocks: APP.01, FND.07, PLT.17, PLT.36, PLT.47, PRF.02
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): P2-017 scope: Windows/Linux build + offline unit tests, compile-negative tests for identifier/axis confusion, no macOS/hosted-runtime/device CI.
 Completion evidence for the ledger: Compile-negative suite result for identifier and axis confusion; round-trip vectors for absent/default/unknown values.
@@ -37,15 +37,15 @@ Completion evidence for the ledger: Compile-negative suite result for identifier
 ```text
 Execute ArcForges delivery task FND.02 — Execution identity, idempotency and Application.Abstractions ports.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-02).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-02).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/fnd-02 (python tools/delivery.py claim FND.02 --worker <name>); task branch task/fnd-02 in DesktopPlatform; ledger record ledger/tasks/fnd-02.md.
 Kind/size: producer/S. Baseline: not-started.
 Outcome: Immutable CommandId/InvocationId/AttemptId/RunId, canonical hash, Outcome<T> with typed failure/cancellation distinction, and Application.Abstractions cancellation/lifecycle ports exist as storage-free, memory-fixture-tested types.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-04.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.01
+- WP-04.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.01
 
 Entry condition: adoption slice ADOPT.02.foundation is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -64,15 +64,15 @@ Completion evidence for the ledger: Storage-free command/attempt/effect identity
 ```text
 Execute ArcForges delivery task FND.03 — Revision and sequence types.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-03).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-03).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/fnd-03 (python tools/delivery.py claim FND.03 --worker <name>); task branch task/fnd-03 in DesktopPlatform; ledger record ledger/tasks/fnd-03.md.
 Kind/size: producer/S. Baseline: not-started.
 Outcome: Revision (per-object monotonic, optimistic-concurrency comparable) and SequenceNumber (per-channel, gap-detecting) exist as non-interchangeable types with a compile-negative test proving they cannot be compared.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-04.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.02
+- WP-04.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.02
 
 Entry condition: adoption slice ADOPT.02.foundation is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -90,15 +90,15 @@ Completion evidence for the ledger: Optimistic concurrency and sequence gap test
 ```text
 Execute ArcForges delivery task FND.04 — Clock abstraction and canonical time handling.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-04).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-04).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/fnd-04 (python tools/delivery.py claim FND.04 --worker <name>); task branch task/fnd-04 in DesktopPlatform; ledger record ledger/tasks/fnd-04.md.
 Kind/size: producer/S. Baseline: not-started.
 Outcome: A clock abstraction provides wall-clock Instant and MonotonicTimestamp as distinct types; storage is canonical (instant plus originating zone where meaningful), presentation is localised, durations always use monotonic time.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-04.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.03
+- WP-04.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.03
 
 Entry condition: adoption slice ADOPT.02.foundation is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -116,15 +116,15 @@ Completion evidence for the ledger: Locale, time-zone and daylight-saving test r
 ```text
 Execute ArcForges delivery task FND.05 — Reason-code registry and Outcome result model.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-05).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-05).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/fnd-05 (python tools/delivery.py claim FND.05 --worker <name>); task branch task/fnd-05 in DesktopPlatform; ledger record ledger/tasks/fnd-05.md.
 Kind/size: producer/M. Baseline: not-started.
 Outcome: A single generated reason-code registry (eng/policy/reason-codes.json, generated from source) exists with category, retryability, effect-certainty and message-key per code; Outcome<T> distinguishes success, typed failure and cancellation.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-04.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.04
+- WP-04.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.04
 
 Entry condition: adoption slice ADOPT.02.foundation is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -143,15 +143,15 @@ Completion evidence for the ledger: Reason-code registry with a completeness rep
 ```text
 Execute ArcForges delivery task FND.06 — Version axis value types.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-06).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-06).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/fnd-06 (python tools/delivery.py claim FND.06 --worker <name>); task branch task/fnd-06 in DesktopPlatform; ledger record ledger/tasks/fnd-06.md.
 Kind/size: producer/S. Baseline: not-started.
 Outcome: Each of the nine version axes (AppVersion, ContractSet, CapabilityVersion, NativeFormatVersion, StorageSchemaVersion, NativeAbiVersion, PolicySchemaVersion, ExtensionProtocolVersion, PackageVersion) is a distinct value type with parsing, comparison, range semantics and compile-time cross-assignment prevention.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-04.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.05
+- WP-04.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.05
 
 Entry condition: adoption slice ADOPT.02.foundation is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -170,17 +170,17 @@ Completion evidence for the ledger: Compile-negative test suite for axis confusi
 ```text
 Execute ArcForges delivery task FND.07 — Publish Foundation/Application.Abstractions and verify cross-language round trips.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-07).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\foundation.md (anchor task-fnd-07).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/fnd-07 (python tools/delivery.py claim FND.07 --worker <name>); task branch task/fnd-07 in DesktopPlatform; ledger record ledger/tasks/fnd-07.md.
 Kind/size: acceptance/S. Baseline: not-started.
 Outcome: ArcForges.Foundation and ArcForges.Application.Abstractions are packed, admitted to eng/packaging/packages.json, published from a main-branch candidate, and independently consumed to prove C#/TS round trips (values outside JS safe integers, absence/unknown values, duplicate commands, unknown effects) against Contracts' generated TS/Kotlin projections.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-04.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.90
-- WP-04.00 (first real external consumption of Contracts.Foundation): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.00
-- WP-04:typescript-kotlin-primitive-projection-o TypeScript/Kotlin primitive projection of registry-04 exact-value rules (UUID canonical ordering, TS bigint/Decimal, JSON exceptions) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, package-level obligation
+- WP-04.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.90
+- WP-04.00 (first real external consumption of Contracts.Foundation): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, anchor rule-wp-04.00
+- WP-04:typescript-kotlin-primitive-projection-o TypeScript/Kotlin primitive projection of registry-04 exact-value rules (UUID canonical ordering, TS bigint/Decimal, JSON exceptions) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\04-identity-error-and-versioning-primitives.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.02.foundation is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):

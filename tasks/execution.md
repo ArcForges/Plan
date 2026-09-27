@@ -10,16 +10,16 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ```text
 Execute ArcForges delivery task EXE.01 — Execution chain and its persistence (ProductJob engine core).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\execution.md (anchor task-exe-01).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\execution.md (anchor task-exe-01).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/exe-01 (python tools/delivery.py claim EXE.01 --worker <name>); task branch task/exe-01 in DesktopPlatform; ledger record ledger/tasks/exe-01.md.
 Kind/size: producer/L. Baseline: not-started.
 Outcome: The full ProductJob/JobStep/JobAttempt chain with distinct types and lifecycles, persisted durably at every state transition; invalid transitions rejected; state survives process termination.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-16.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.00
-- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
+- WP-16.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.00
+- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -32,7 +32,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Execution/**; DesktopPlatform:src/BuildingBlocks/ArcForges.Execution.Persistence/**; DesktopPlatform:tests/ExecutionEngineTests/**
 Shared resources (follow the owner protocol): RES-assistant-store-schema (append): Numbered migrations are allocated at merge by the integration owner (a rebase renumbers pending migrations); each migration is forward-only with its recovery and downgrade-refusal tests; no task edits a merged migration.; RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
-Unblocks: AST.10, AST.13, DEV.05, EXE.02, EXE.03, EXE.04, EXE.05, EXE.06, EXE.07, EXE.08, EXE.09, SLATE.28, SLATE.30
+Unblocks: AST.10, AST.13, DEV.05, EXE.02, EXE.03, EXE.04, EXE.05, EXE.06, EXE.07, EXE.08, EXE.09
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: state-machine invalid-transition rejection, kill-at-every-transition-point durability; no live environment.
 Completion evidence for the ledger: State-machine coverage report, kill-at-transition recovery log.
@@ -42,15 +42,15 @@ Notes: Narrow early-risk proof: kill-at-any-transition durability underlies WP16
 ```text
 Execute ArcForges delivery task EXE.02 — Lifecycle states and reason facets.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\execution.md (anchor task-exe-02).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\execution.md (anchor task-exe-02).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/exe-02 (python tools/delivery.py claim EXE.02 --worker <name>); task branch task/exe-02 in DesktopPlatform; ledger record ledger/tasks/exe-02.md.
 Kind/size: producer/S. Baseline: not-started.
 Outcome: Every reachable state carries a reason facet (waiting for approval, waiting for a resource, blocked on limit, paused, retrying) that reaches the UI; never a bare state alone.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-16.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.01
+- WP-16.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.01
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -68,15 +68,15 @@ Completion evidence for the ledger: Reason-facet coverage report.
 ```text
 Execute ArcForges delivery task EXE.03 — Failure classification and retry.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\execution.md (anchor task-exe-03).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\execution.md (anchor task-exe-03).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/exe-03 (python tools/delivery.py claim EXE.03 --worker <name>); task branch task/exe-03 in DesktopPlatform; ledger record ledger/tasks/exe-03.md.
 Kind/size: producer/M. Baseline: not-started.
 Outcome: Failures classify into transient/permanent/refused/cancelled/unknown-effect with effect certainty; an unknown-effect failure on a non-idempotent operation never auto-retries.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-16.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.02
+- WP-16.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.02
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -95,15 +95,15 @@ Notes: Shares vocabulary only (not implementation) with the Cloud AgentTask fail
 ```text
 Execute ArcForges delivery task EXE.04 — Child tasks and ownership.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\execution.md (anchor task-exe-04).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\execution.md (anchor task-exe-04).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/exe-04 (python tools/delivery.py claim EXE.04 --worker <name>); task branch task/exe-04 in DesktopPlatform; ledger record ledger/tasks/exe-04.md.
 Kind/size: producer/M. Baseline: not-started.
 Outcome: A task may spawn children with their own lifecycle/budget/cancellation relationship; cancelling a parent cancels children, a failed child does not necessarily fail its parent, ownership is uniform across the tree.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-16.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.03
+- WP-16.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.03
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -122,16 +122,16 @@ Completion evidence for the ledger: Cancellation/isolation/ownership test result
 ```text
 Execute ArcForges delivery task EXE.05 — Checkpoints and compensation.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\execution.md (anchor task-exe-05).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\execution.md (anchor task-exe-05).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/exe-05 (python tools/delivery.py claim EXE.05 --worker <name>); task branch task/exe-05 in DesktopPlatform; ledger record ledger/tasks/exe-05.md.
 Kind/size: producer/M. Baseline: not-started.
 Outcome: Checkpoints capture resumable state at declared boundaries; compensation actions run in reverse order on abort; an undeclared irreversible effect fails validation.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-16.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.04
-- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
+- WP-16.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.04
+- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -151,15 +151,15 @@ Notes: Same (toolRequestId,attemptId,commandId) dedup key referenced by the WP16
 ```text
 Execute ArcForges delivery task EXE.06 — Approval, steering and budget integration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\execution.md (anchor task-exe-06).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\execution.md (anchor task-exe-06).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/exe-06 (python tools/delivery.py claim EXE.06 --worker <name>); task branch task/exe-06 in DesktopPlatform; ledger record ledger/tasks/exe-06.md.
 Kind/size: producer/M. Baseline: not-started.
 Outcome: Approval gates pause a task durably until resolved/expired; steering adjusts a running task without granting authority; local resource permits (CPU/memory/disk/queue) are acquired before and released after a bounded job step, with no monetary accounting.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-16.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.05
+- WP-16.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.05
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -180,15 +180,15 @@ Notes: BR-07: local resource permits only, D-020 monetary accounting explicitly 
 ```text
 Execute ArcForges delivery task EXE.07 — Progress, outcome and trace.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\execution.md (anchor task-exe-07).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\execution.md (anchor task-exe-07).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/exe-07 (python tools/delivery.py claim EXE.07 --worker <name>); task branch task/exe-07 in DesktopPlatform; ledger record ledger/tasks/exe-07.md.
 Kind/size: producer/M. Baseline: not-started.
 Outcome: Progress is a separate best-effort channel; outcome is durable fact; execution trace, capability trace and audit stay separate (provider-interaction records stay Cloud-only); a user-visible task identifier resolves to its execution trace. Losing all progress never affects the recorded outcome.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-16.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.06
+- WP-16.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.06
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -207,15 +207,15 @@ Notes: Content-origin behavior/carrier schema (requirements/07, requirements/13)
 ```text
 Execute ArcForges delivery task EXE.08 — Concurrency, loops and storms.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\execution.md (anchor task-exe-08).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\execution.md (anchor task-exe-08).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/exe-08 (python tools/delivery.py claim EXE.08 --worker <name>); task branch task/exe-08 in DesktopPlatform; ledger record ledger/tasks/exe-08.md.
 Kind/size: producer/M. Baseline: not-started.
 Outcome: Per-product and per-device/resource concurrency limits; loop detection preventing plan re-entry into the same step; storm protection preventing automation cascade; each limit produces a typed, explained refusal rather than silent unbounded queuing.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-16.07 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.07
+- WP-16.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.07
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -234,16 +234,16 @@ Notes: Storm/cascade protection here is the native counterpart engine-level guar
 ```text
 Execute ArcForges delivery task EXE.09 — Owned-artifact receipt and real integration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\execution.md (anchor task-exe-09).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\execution.md (anchor task-exe-09).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/exe-09 (python tools/delivery.py claim EXE.09 --worker <name>); task branch task/exe-09 in DesktopPlatform; ledger record ledger/tasks/exe-09.md.
 Kind/size: acceptance/M. Baseline: not-started.
 Outcome: ProductJob-only responsibility preserved (no local model loop, no Cloud budget/Task ownership in the shared engine); shared execution vocabulary/package references, dispatch/error profiles and cancellation updated; pending later owners (WP-52) and their closing gates recorded.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-16.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.90
-- WP-16:6-impacts-row-compatibility-task-contrac §6 Impacts row 'Compatibility: Task contract versioning for later cloud and mobile surfaces' (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
+- WP-16.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.90
+- WP-16:6-impacts-row-compatibility-task-contrac §6 Impacts row 'Compatibility: Task contract versioning for later cloud and mobile surfaces' (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):

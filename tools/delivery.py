@@ -1353,11 +1353,11 @@ def primary_checkout(path: Path) -> Path | None:
 
 
 def default_design() -> Path:
-    """$ARCFORGES_DESIGN, else ArcForges-Design-B beside the Plan primary checkout, so the default is
+    """$ARCFORGES_DESIGN, else ArcForges-Design beside the Plan primary checkout, so the default is
     the same whether the tool runs from the primary checkout or from a retained Plan worktree."""
     if os.environ.get('ARCFORGES_DESIGN'):
         return Path(os.environ['ARCFORGES_DESIGN'])
-    return (primary_checkout(PLAN_ROOT) or PLAN_ROOT).parent / 'ArcForges-Design-B'
+    return (primary_checkout(PLAN_ROOT) or PLAN_ROOT).parent / 'ArcForges-Design'
 
 
 def require_graph(design: Path) -> Path:

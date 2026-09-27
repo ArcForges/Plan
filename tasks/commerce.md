@@ -10,15 +10,15 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ```text
 Execute ArcForges delivery task COM.01 — Provider adapter boundary.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-01).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-01).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-01 (python tools/delivery.py claim COM.01 --worker <name>); task branch task/com-01 in Cloud; ledger record ledger/tasks/com-01.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: A provider-agnostic adapter boundary exists in Billing with a typed capability description; no provider type/identifier/webhook shape appears outside it, enforced by an architecture test.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.00
+- WP-42.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.00
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -37,15 +37,15 @@ Completion evidence for the ledger: Architecture-test pass log naming the forbid
 ```text
 Execute ArcForges delivery task COM.02 — Catalogue and versioned policy.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-02).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-02).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-02 (python tools/delivery.py claim COM.02 --worker <name>); task branch task/com-02 in Cloud; ledger record ledger/tasks/com-02.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Offers, prices and policy versions exist as effective-dated policy data with no commercial figure compiled into code, and historical orders are immune to later price changes.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.01
+- WP-42.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.01
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -64,15 +64,15 @@ Completion evidence for the ledger: Retroactivity negative test result; compiled
 ```text
 Execute ArcForges delivery task COM.03 — Purchase pipeline.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-03).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-03).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-03 (python tools/delivery.py claim COM.03 --worker <name>); task branch task/com-03 in Cloud; ledger record ledger/tasks/com-03.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Purchase intent is the idempotency anchor for hosted checkout; one intent yields at most one order, a forged redirect grants nothing, and every checkout attempt carries complete internal metadata with no payment-instrument field anywhere in ArcForges.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.02
+- WP-42.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.02
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -94,15 +94,15 @@ Completion evidence for the ledger: Double-submission test producing exactly one
 ```text
 Execute ArcForges delivery task COM.04 — Provider event inbox.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-04).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-04).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-04 (python tools/delivery.py claim COM.04 --worker <name>); task branch task/com-04 in Cloud; ledger record ledger/tasks/com-04.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Every provider event is persisted before processing, signature-verified, deduplicated, and processed through the fixed eight-step verification chain, with quarantine and alerting for unprocessable events and idempotent full-inbox replay.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.03
+- WP-42.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.03
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -124,15 +124,15 @@ Notes: Webhook idempotency/ordering/signature correctness is named by SQ-08 as o
 ```text
 Execute ArcForges delivery task COM.05 — Entitlement resolver.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-05).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-05).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-05 (python tools/delivery.py claim COM.05 --worker <name>); task branch task/com-05 in Cloud; ledger record ledger/tasks/com-05.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Immutable grants and revocations resolve deterministically into an entitlement snapshot with a per-capability reason and version, and rebuilding the snapshot from its grants/revocations always reproduces the stored snapshot.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.04
+- WP-42.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.04
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -152,15 +152,15 @@ Notes: BR-06 rebuild-equivalence is the core commerce invariant; COM.06/07/08/10
 ```text
 Execute ArcForges delivery task COM.06 — Distribution and enforcement.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-06).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-06).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-06 (python tools/delivery.py claim COM.06 --worker <name>); task branch task/com-06 in Cloud; ledger record ledger/tasks/com-06.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Entitlement is distributed with its version for client caching, realtime notification is only a refresh hint, offline staleness is bounded, all cost-bearing enforcement happens server-side, and losing entitlement never deletes local data.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.05
+- WP-42.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.05
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -180,15 +180,15 @@ Completion evidence for the ledger: Client-bypass negative test result; local-da
 ```text
 Execute ArcForges delivery task COM.07 — Quota, usage and storage accounting.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-07).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-07).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-07 (python tools/delivery.py claim COM.07 --worker <name>); task branch task/com-07 in Cloud; ledger record ledger/tasks/com-07.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Quota (limit) and usage (measurement) live in separate stores keyed to the entitlement period, storage accounting matches committed objects exactly, and an exceeded quota produces a typed, explained refusal.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.06
+- WP-42.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.06
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -208,15 +208,15 @@ Completion evidence for the ledger: Accounting comparison result against actual 
 ```text
 Execute ArcForges delivery task COM.08 — Credits.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-08).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-08).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-08 (python tools/delivery.py claim COM.08 --worker <name>); task branch task/com-08 in Cloud; ledger record ledger/tasks/com-08.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Purchased (no-expiry) and compensation (disclosed-expiry) credit lots exist in integer micro-credits with funding order capacity to compensation to purchased, single-reservation-spans-both-pools accounting, reservation-expiry sweeping and a hard stop at zero with no floating point anywhere in the path.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.07 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.07
+- WP-42.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.07
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -235,17 +235,17 @@ Completion evidence for the ledger: Concurrency test showing no overdraft under 
 ```text
 Execute ArcForges delivery task COM.09 — Ledgers and reconciliation.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-09).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-09).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-09 (python tools/delivery.py claim COM.09 --worker <name>); task branch task/com-09 in Cloud; ledger record ledger/tasks/com-09.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: The three ledgers exist as separate append-only stores with scheduled two-way provider reconciliation expressing repairs as new typed records, never edits, and divergence above threshold alerts.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.08 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.08
-- WP-42:p2-010-required-behavior-and-closure-thr P2-010 required behavior and closure; three ledgers with unresolved holds through their existing deadline (P2-010 required behavior and closure; three ledgers with unresolved holds through their existing deadline): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
-- WP-42:p2-010-required-behavior-and-closure P2-010 required behavior and closure (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
+- WP-42.08 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.08
+- WP-42:p2-010-required-behavior-and-closure-thr P2-010 required behavior and closure; three ledgers with unresolved holds through their existing deadline (P2-010 required behavior and closure; three ledgers with unresolved holds through their existing deadline): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
+- WP-42:p2-010-required-behavior-and-closure P2-010 required behavior and closure (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -265,15 +265,15 @@ Completion evidence for the ledger: Dropped-webhook repair test recovering corre
 ```text
 Execute ArcForges delivery task COM.10 — Refunds, disputes and evidence.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-10).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-10).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-10 (python tools/delivery.py claim COM.10 --worker <name>); task branch task/com-10 in Cloud; ledger record ledger/tasks/com-10.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: A refund verifiably rolls entitlement back, dispute records are tracked, and a commercial evidence export covering order/payment/event/entitlement-history/usage for a period is complete, reproducible and free of payment-instrument data.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.09 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.09
+- WP-42.09 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.09
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -293,15 +293,15 @@ Completion evidence for the ledger: Refund-with-rollback test result; payment-in
 ```text
 Execute ArcForges delivery task COM.11 — Service term interval model.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-11).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-11).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-11 (python tools/delivery.py claim COM.11 --worker <name>); task branch task/com-11 in Cloud; ledger record ledger/tasks/com-11.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: entitlement.service_term exists as an interval keyed on (kind, period_ref) with subscription_ref stable across renewals, a renewal always creating a new period_ref row, a replayed provider event extending nothing twice, and a plan change superseding rather than editing.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.11 (service_term interval model keyed on (kind, period_ref); the three separated identities (subscription_ref stable / period_ref per paid interval / provider-event dedup in commerce.provider_event); union-of-overlap effective term; plan-change supersede. Capacity bucket/refill/reservation half split to COM.12.): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.11
+- WP-42.11 (service_term interval model keyed on (kind, period_ref); the three separated identities (subscription_ref stable / period_ref per paid interval / provider-event dedup in commerce.provider_event); union-of-overlap effective term; plan-change supersede. Capacity bucket/refill/reservation half split to COM.12.): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.11
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -322,15 +322,15 @@ Completion evidence for the ledger: Renewal-without-key-violation test; replay-c
 ```text
 Execute ArcForges delivery task COM.12 — Replenishing capacity bucket, refill and admission.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-12).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-12).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-12 (python tools/delivery.py claim COM.12 --worker <name>); task branch task/com-12 in Cloud; ledger record ledger/tasks/com-12.md.
 Kind/size: service/XL. Baseline: not-started.
 Outcome: The capacity bucket refills by a per-period saturating accrual independent of evaluation frequency, backed by a monotonic durable watermark and exact rational carry, never claws back on a ceiling reduction, initialises exactly once per contiguous run, and admission is atomic with the service-term check first, committing before dispatch.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.11 (entitlement.capacity_bucket refill algorithm (§7.2), capacity_policy_period history, capacity_reservation with three funding sources, idempotent once-per-contiguous-run initialisation, and atomic admission with the service-term check first): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.11
+- WP-42.11 (entitlement.capacity_bucket refill algorithm (§7.2), capacity_policy_period history, capacity_reservation with three funding sources, idempotent once-per-contiguous-run initialisation, and atomic admission with the service-term check first): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.11
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -351,15 +351,15 @@ Notes: The single most algorithmically risky unit in this area (§7.2 saturating
 ```text
 Execute ArcForges delivery task COM.13 — Operator financial-owner proposal/approval operations.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-13).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-13).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-13 (python tools/delivery.py claim COM.13 --worker <name>); task branch task/com-13 in Cloud; ledger record ledger/tasks/com-13.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: The financial-owner operator RPCs (grant/revokeGrant/issueCredit/adjustCredit/refund) are implemented exactly once against the registry04 §9 typed proposal/approval protocol with all eight authorization fields, refusing public customer/PAT/agent access, and one approved proposal cannot execute twice.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42:operator-contract-closure-financial-owne Operator contract closure — financial owners (grant/revokeGrant/issueCredit/adjustCredit/refund) (operator contract closure; financial-owner RPC implementations: grant, revokeGrant, issueCredit, adjustCredit, refund): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
+- WP-42:operator-contract-closure-financial-owne Operator contract closure — financial owners (grant/revokeGrant/issueCredit/adjustCredit/refund) (operator contract closure; financial-owner RPC implementations: grant, revokeGrant, issueCredit, adjustCredit, refund): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -382,16 +382,16 @@ Completion evidence for the ledger: Double-execution negative result (one approv
 ```text
 Execute ArcForges delivery task COM.14 — Technical commerce closure and live-gate staging.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-14).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-14).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-14 (python tools/delivery.py claim COM.14 --worker <name>); task branch task/com-14 in Cloud; ledger record ledger/tasks/com-14.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Deterministic provider normalization and the full sandbox lifecycle are proven with synthetic and Paddle/Payoneer-sandbox vectors, SubscriptionState exactly matches requirements-04, plan changes start next term without proration, and the live-payment/payout/refund/merchant gates are explicitly preserved as pending for WP50.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.10 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.10
-- WP-42:p2-010-required-behavior-and-closure P2-010 required behavior and closure (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
+- WP-42.10 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.10
+- WP-42:p2-010-required-behavior-and-closure P2-010 required behavior and closure (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -416,17 +416,17 @@ Notes: Completion explicitly does not require WP48 (account portal) or WP50 (rea
 ```text
 Execute ArcForges delivery task COM.15 — Owned-artifact receipt and closure.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\commerce.md (anchor task-com-15).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-15).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/com-15 (python tools/delivery.py claim COM.15 --worker <name>); task branch task/com-15 in Cloud; ledger record ledger/tasks/com-15.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: The package-level owned-artifact/real-integration receipt is recorded (source commit, producer version, candidate hashes, actual runtime/provider, scenario, result, real-vs-fixture status) and the P2-010 active-Pass/subscription-exclusivity and ledger-hold-deadline vectors pass.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.90
-- WP-42:p2-010-required-behavior-and-closure-act P2-010 required behavior and closure; active Pass/subscription mutual exclusion, no immediate proration, exact renewal/reset periods (P2-010 required behavior and closure; active Pass/subscription mutual exclusion, no immediate proration, exact renewal/reset periods): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
-- WP-42:p2-010-required-behavior-and-closure P2-010 required behavior and closure (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
+- WP-42.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.90
+- WP-42:p2-010-required-behavior-and-closure-act P2-010 required behavior and closure; active Pass/subscription mutual exclusion, no immediate proration, exact renewal/reset periods (P2-010 required behavior and closure; active Pass/subscription mutual exclusion, no immediate proration, exact renewal/reset periods): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
+- WP-42:p2-010-required-behavior-and-closure P2-010 required behavior and closure (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):

@@ -10,15 +10,15 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ```text
 Execute ArcForges delivery task CLOUD.01 — Ingress and host pipeline.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-01).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-01).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-01 (python tools/delivery.py claim CLOUD.01 --worker <name>); task branch task/cloud-01 in Cloud; ledger record ledger/tasks/cloud-01.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Worker /api routing plus the C# AOT gRPC-Web/auth/current-owner pipeline runs behind the Worker in the real Container image; no buffered stream, no direct public Container port.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-21.00 (all work except the parts mapped to CLOUD.37): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.00
+- WP-21.00 (all work except the parts mapped to CLOUD.39): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.00
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -28,7 +28,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:worker/index.ts; Cloud:worker/router.ts; Cloud:wrangler.json; Cloud:src/ArcForges.Cloud.Host/**; Cloud:Dockerfile
 Shared resources (follow the owner protocol): RES-cloud-deployment (append): Bindings are added by the owning module task in its own section, and the Cloud integration owner resolves ordering conflicts at merge. Any task that runs against the deployed test environment holds the lease `leases/res-cloud-deployment` for that live run only, whatever mode it declares for its binding edits; production deployment belongs to release tasks.
-Unblocks: CLOUD.02, CLOUD.05, CLOUD.08, CLOUD.09, CLOUD.10, CLOUD.19, CLOUD.37, CLOUD.42, HAR.00, PLT.48
+Unblocks: CLOUD.02, CLOUD.05, CLOUD.08, CLOUD.09, CLOUD.10, CLOUD.19, CLOUD.39, CLOUD.42, HAR.00, PLT.48
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline unit tests for routing/validation logic; deployed-environment request/stream/cancel/CSRF/trailer path checks are opt-in local runtime evidence per docs/validation-policy.md, not hosted CI
 Completion evidence for the ledger: source commit, Worker/Container image hash, deployed request/stream/cancel/CSRF/trailer scenario results, confirmation no buffered stream or direct public Container port exists
@@ -36,17 +36,17 @@ Notes: Foundation task. The Hello World router.ts already proves the deadline/ca
 ```
 
 ```text
-Execute ArcForges delivery task CLOUD.02 — Twenty-one module boundaries and D1 named-plan bridge.
+Execute ArcForges delivery task CLOUD.02 — Nineteen module boundaries and D1 named-plan bridge.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-02).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-02).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-02 (python tools/delivery.py claim CLOUD.02 --worker <name>); task branch task/cloud-02 in Cloud; ledger record ledger/tasks/cloud-02.md.
 Kind/size: service/M. Baseline: not-started.
-Outcome: The 21 module projects exist as boundaries and the D1 named-plan bridge mechanism works: C# decides business logic and asks the Worker to execute one exact named/versioned plan; the Worker executes only approved SQL, never ad hoc queries.
+Outcome: The 19 module projects exist as boundaries and the D1 named-plan bridge mechanism works: C# decides business logic and asks the Worker to execute one exact named/versioned plan; the Worker executes only approved SQL, never ad hoc queries.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-21.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.02
+- WP-21.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.02
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -66,16 +66,16 @@ Notes: Foundation task and the security-model proof: if the C#-decides/Worker-ex
 ```text
 Execute ArcForges delivery task CLOUD.03 — D1 migration runner and exact physical mapping.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-03).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-03).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-03 (python tools/delivery.py claim CLOUD.03 --worker <name>); task branch task/cloud-03 in Cloud; ledger record ledger/tasks/cloud-03.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Model-04's full physical manifest is implemented: migrations, typed exact bind/result adapters for D1's signed64/uint64/Decimal/JSON/FTS5 quirks, and expand/backfill/fenced-cutover migration mode support.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-21.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.03
-- WP-21:6-impacts-migration-compatibility-manife §6 Impacts -- migration/compatibility manifests include source/schema/plan/ABI/runtime versions (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, package-level obligation
+- WP-21.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.03
+- WP-21:6-impacts-migration-compatibility-manife §6 Impacts -- migration/compatibility manifests include source/schema/plan/ABI/runtime versions (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -85,25 +85,25 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:src/ArcForges.Cloud.Storage.D1/Migrations/**; Cloud:src/ArcForges.Cloud.Storage.D1/Physical/**
 Shared resources (follow the owner protocol): RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.
-Unblocks: CLOUD.04, CLOUD.07, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.37, CLOUD.48
+Unblocks: CLOUD.04, CLOUD.07, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.39, CLOUD.48
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline unit tests for bind/result adapters; opt-in local runtime tests against a real D1 instance for signed64/uint64/Decimal/JSON/FTS5, interrupted migration, stale backfill and compatible rollback per docs/validation-policy.md
 Completion evidence for the ledger: actual D1 signed64/uint64/decimal/JSON/FTS5 conformance results, interrupted-migration/stale-backfill/rollback test results, source commit
-Notes: Early risk proof: D1's real type/SQL quirks (signed 64-bit only, no native uint64/Decimal, JSON1, FTS5 behavior) affect the physical design of all 21 modules' tables. Getting the bind/result adapters wrong here would force rework across every later module task in every area that stores data in D1.
+Notes: Early risk proof: D1's real type/SQL quirks (signed 64-bit only, no native uint64/Decimal, JSON1, FTS5 behavior) affect the physical design of all 19 modules' tables. Getting the bind/result adapters wrong here would force rework across every later module task in every area that stores data in D1.
 ```
 
 ```text
 Execute ArcForges delivery task CLOUD.04 — Receipts, outbox, inbox dedup and change archive.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-04).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-04).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-04 (python tools/delivery.py claim CLOUD.04 --worker <name>); task branch task/cloud-04 in Cloud; ledger record ledger/tasks/cloud-04.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Every atomic guarded write also produces its owner receipt, outbox entry and change-archive row in the same D1 batch; inbox dedup makes replay a no-op; publication is contiguous (no gaps).
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-21.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.04
+- WP-21.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.04
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -123,15 +123,15 @@ Notes: This generic outbox mechanism is distinct from (a) WP-24.04's DO wake/liv
 ```text
 Execute ArcForges delivery task CLOUD.05 — Finite durable jobs (Cron/Queue/Workflow-woken endpoints).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-05).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-05).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-05 (python tools/delivery.py claim CLOUD.05 --worker <name>); task branch task/cloud-05 in Cloud; ledger record ledger/tasks/cloud-05.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Perpetual hosted loops are replaced by Cron/Queue/Workflow-woken C# endpoints bounded to <=100 items/20s per job with checkpoint/receipt/lease-then-yield semantics.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-21.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.01
+- WP-21.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.01
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -152,43 +152,43 @@ Notes: This is the generic mechanism later background jobs plug into: WP-25.02's
 ```text
 Execute ArcForges delivery task CLOUD.06 — Shared atomic family guarded-batch engine.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-06).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-06).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-06 (python tools/delivery.py claim CLOUD.06 --worker <name>); task branch task/cloud-06 in Cloud; ledger record ledger/tasks/cloud-06.md.
 Kind/size: service/M. Baseline: not-started.
-Outcome: A reusable D1 guarded-batch executor exists that enforces the fixed SU-04 module lock order (Config->Identity->Workspace->Device->Entitlement->Commerce->Policy->Agent->Chat->Notes->Scope->Slate->Task->Search->PackageCatalog->Notification->Resource->Sync->Audit) and provides authorization/revision/policy/balance/lease guard primitives that any shared-transaction family can compose.
+Outcome: A reusable D1 guarded-batch executor exists that enforces the fixed SU-04 module lock order (Config->Identity->Workspace->Device->Entitlement->Commerce->Policy->Agent->Chat->Scope->Task->Search->PackageCatalog->Notification->Resource->Sync->Audit) and provides authorization/revision/policy/balance/lease guard primitives that any shared-transaction family can compose.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-21.05 (generic guarded-batch engine and fixed SU-04 module lock-order enforcement only; each module's own family participant list is a separate obligation carried by that module's own task (see coverage)): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.05
+- WP-21.05 (generic guarded-batch engine and fixed SU-04 module lock-order enforcement only; each module's own family participant list is a separate obligation carried by that module's own task (see coverage)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.05
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] CLOUD.02: the D1 named-plan bridge, since a guarded batch is executed as one named plan
 Completion prerequisites (may start earlier; cannot complete before these are complete):
-- [integration] CLOUD.63: at least two real module family participants exercising the engine under contention (e.g. Identity's auth/enrollment family and Notes/Sync's synced-content-mutation family)
+- [integration] CLOUD.63: at least two real module family participants exercising the engine under contention (e.g. Identity's auth/enrollment family and Sync's synced-content-mutation family)
 
 Permitted write scope: Cloud:src/ArcForges.Cloud.Storage.D1/SharedFamilies/**
 Shared resources (follow the owner protocol): RES-shared-transaction-families (append): Adding a participant to a shared atomic family is a design change through the Architecture Owner; module tasks implement only their declared participation.
-Unblocks: CLOUD.07, CLOUD.10, CLOUD.11, CLOUD.13, CLOUD.37, CLOUD.42, CLOUD.46, CLOUD.63, SIM.03
+Unblocks: CLOUD.07, CLOUD.10, CLOUD.11, CLOUD.13, CLOUD.39, CLOUD.42, CLOUD.46, CLOUD.63, SIM.03
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline unit tests for the guard/lock-order primitives; opt-in local D1 runtime tests: two Containers contend, stale holder cannot finalize
 Completion evidence for the ledger: lock-order enforcement test results, contention/stale-holder test results, source commit
-Notes: Every module task that participates in a named shared-transaction family (CLOUD.11/13 Identity's auth-enrollment/device-revocation families, CLOUD.37/38 Notes' synced-content-mutation family, CLOUD.42 Resource's upload-lifecycle family, CLOUD.53 realm-transfer family) declares a start edge on this task and fills in its own participant logic; WP-21.05 substep coverage therefore spans CLOUD.06 plus those module tasks with differing `part` text.
+Notes: Every module task that participates in a named shared-transaction family (CLOUD.11/13 Identity's auth-enrollment/device-revocation families, CLOUD.39 Sync's synced-content-mutation family, CLOUD.42 Resource's upload-lifecycle family, CLOUD.53 realm-transfer family) declares a start edge on this task and fills in its own participant logic; WP-21.05 substep coverage therefore spans CLOUD.06 plus those module tasks with differing `part` text.
 ```
 
 ```text
 Execute ArcForges delivery task CLOUD.07 — Capacity, Container/D1 integration producer and harness.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-07).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-07).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-07 (python tools/delivery.py claim CLOUD.07 --worker <name>); task branch task/cloud-07 in Cloud; ledger record ledger/tasks/cloud-07.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Model-04 named plans run through guarded-batch fixtures under measured load; the primary-authorization path, route/service-binding/outbound-handler matrix, job-slice and SimulationPacer infrastructure exist; the L-16 measurement harness and a proposed capacity report are produced.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-21.06 (all work except the parts mapped to SIM.10): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.06
+- WP-21.06 (all work except the parts mapped to SIM.10): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.06
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -211,15 +211,15 @@ Notes: Can proceed in parallel with WP-22/23/24/25 module work once CLOUD.01-04/
 ```text
 Execute ArcForges delivery task CLOUD.08 — Failure isolation and readiness surface.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-08).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-08).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-08 (python tools/delivery.py claim CLOUD.08 --worker <name>); task branch task/cloud-08 in Cloud; ledger record ledger/tasks/cloud-08.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: Ingress/Container/D1/DO/R2/Queue health are exposed separately, and a missing binding or plan-hash mismatch fails readiness rather than allowing partial execution to appear successful; logs remain no-content.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-21.07 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.07
+- WP-21.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.07
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -239,15 +239,15 @@ Notes: Can be built in parallel with WP-22/23/24/25 once CLOUD.01/02 exist; read
 ```text
 Execute ArcForges delivery task CLOUD.09 — Selfhost.v1 deployment profile.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-09).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-09).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-09 (python tools/delivery.py claim CLOUD.09 --worker <name>); task branch task/cloud-09 in Cloud; ledger record ledger/tasks/cloud-09.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: An operator-owned Cloudflare deployment/config/realm descriptor exists for self-hosting, with default payment disabled, separate keys/identity/providers from the official realm, immutable artifacts and independent backup requirements preserved.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-21.08 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.08
+- WP-21.08 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.08
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -268,20 +268,20 @@ Notes: WP-21's own completion gate states this task hands WP-46 'a runnable depl
 ```text
 Execute ArcForges delivery task CLOUD.10 — Owned-artifact closure and launch-capacity.v1 acceptance.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-10).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-10).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-10 (python tools/delivery.py claim CLOUD.10 --worker <name>); task branch task/cloud-10 in Cloud; ledger record ledger/tasks/cloud-10.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: Every WP-21 substep is complete, built/packed once, and consumed as exact candidate bytes from a clean environment; launch-capacity.v1 is produced and tested (four fixed standard-2 slots, no per-account instance creation, idle sleep/wake, pre-dispatch refusal vs unknown dispatched outcome, control-slot reserve, Vectorize/R2 reservation thresholds at 60/70/80/90%).
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-21.90 (full, including the Launch configuration acceptance subsection (launch-capacity.v1, PG-26)): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.90
-- WP-21:6-impacts-migration-compatibility-manife §6 Impacts -- migration/compatibility manifests include source/schema/plan/ABI/runtime versions (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, package-level obligation
+- WP-21.90 (full, including the Launch configuration acceptance subsection (launch-capacity.v1, PG-26)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.90
+- WP-21:6-impacts-migration-compatibility-manife §6 Impacts -- migration/compatibility manifests include source/schema/plan/ABI/runtime versions (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] CLOUD.37: package task delivered
+- [artifact] CLOUD.39: package task delivered
 - [artifact] SIM.10: package task delivered
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] CLOUD.01: final candidate build
@@ -306,15 +306,15 @@ Notes: Gate: PG-26. A localhost benchmark cannot close it per WP-21.90's own tex
 ```text
 Execute ArcForges delivery task CLOUD.11 — Core identity model (realm, user, authIdentity, single-owner workspace).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-11).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-11).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-11 (python tools/delivery.py claim CLOUD.11 --worker <name>); task branch task/cloud-11 in Cloud; ledger record ledger/tasks/cloud-11.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Realm, user, authentication identity and single-owner workspace exist with ownership as a direct workspace.owner_user_id check; no membership/role/seat table exists anywhere in schema, contracts or operations.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-22.00 (all work except the parts mapped to CLOUD.20): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.00
+- WP-22.00 (all work except the parts mapped to CLOUD.20): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.00
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -336,15 +336,15 @@ Notes: First real module built on the WP-21 foundation; unlocks the rest of WP-2
 ```text
 Execute ArcForges delivery task CLOUD.12 — Native and browser authentication with real Postmark/SES mail delivery.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-12).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-12).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-12 (python tools/delivery.py claim CLOUD.12 --worker <name>); task branch task/cloud-12 in Cloud; ledger record ledger/tasks/cloud-12.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Native authorize/token PKCE ceremony and minimal browser login UI work with passkey/email and configured self-host OIDC/password; real Postmark-primary/SES-secondary delivery and outcome adapters exist and prove live delivery/recovery, not a stub.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-22.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.01
+- WP-22.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.01
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -364,15 +364,15 @@ Notes: Must-be-real-early per implementation-sequence §3 ('Identity, refresh/se
 ```text
 Execute ArcForges delivery task CLOUD.13 — Device, installation, instance and session (four distinct concepts).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-13).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-13).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-13 (python tools/delivery.py claim CLOUD.13 --worker <name>); task branch task/cloud-13 in Cloud; ledger record ledger/tasks/cloud-13.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Device, installation, instance and session are four distinct concepts with four lifecycles; device identity is stable but not a hardware fingerprint; device revocation cascades to sessions and push registrations.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-22.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.02
+- WP-22.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.02
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -392,15 +392,15 @@ Completion evidence for the ledger: four-concept distinction matrix and revocati
 ```text
 Execute ArcForges delivery task CLOUD.14 — Device trust and remote gating.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-14).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-14).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-14 (python tools/delivery.py claim CLOUD.14 --worker <name>); task branch task/cloud-14 in Cloud; ledger record ledger/tasks/cloud-14.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: Trust levels per device exist with remote access defaulting to off; raising trust requires an explicit act with step-up; remote capability is derived from trust, never from mere session possession.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-22.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.03
+- WP-22.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.03
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -418,15 +418,15 @@ Completion evidence for the ledger: default-off and session-insufficiency result
 ```text
 Execute ArcForges delivery task CLOUD.15 — Step-up challenges for sensitive operations.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-15).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-15).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-15 (python tools/delivery.py claim CLOUD.15 --worker <name>); task branch task/cloud-15 in Cloud; ledger record ledger/tasks/cloud-15.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Step-up challenges exist for the enumerated sensitive operations, bounded validity window, no app-unlock substitution; step-up state is per session and per operation class.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-22.04 (the step-up mechanism itself and coverage for Cloud/Identity-owned sensitive operations (credential change, recovery, deletion, trust elevation); full coverage across every enumerated operation in every module is completed as each owning module wires it in -- see IM.step-up-cross-product-coverage): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.04
+- WP-22.04 (the step-up mechanism itself and coverage for Cloud/Identity-owned sensitive operations (credential change, recovery, deletion, trust elevation); full coverage across every enumerated operation in every module is completed as each owning module wires it in -- see IM.step-up-cross-product-coverage): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.04
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -446,15 +446,15 @@ Notes: Aggregate-gate risk: WP-22.04's completion gate says 'every enumerated op
 ```text
 Execute ArcForges delivery task CLOUD.16 — PAT and actor authorization.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-16).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-16).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-16 (python tools/delivery.py claim CLOUD.16 --worker <name>); task branch task/cloud-16 in Cloud; ledger record ledger/tasks/cloud-16.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: patEligible/scopes metadata, hash-only token storage, expiry/revocation and one-time display after step-up are implemented; the actor chain is preserved and customer tokens are denied on operator/internal/local boundaries.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-22.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.05
+- WP-22.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.05
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -472,15 +472,15 @@ Completion evidence for the ledger: no missing/default PAT metadata, no generic 
 ```text
 Execute ArcForges delivery task CLOUD.17 — Recovery, account states and deletion.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-17).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-17).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-17 (python tools/delivery.py claim CLOUD.17 --worker <name>); task branch task/cloud-17 in Cloud; ledger record ledger/tasks/cloud-17.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Recovery flows resist modelled abuse; account states (active/restricted/suspended/pending-deletion) have defined capability; deletion has a grace period, explicit scope of what is/isn't deleted, and never touches local data.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-22.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.06
+- WP-22.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.06
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -498,15 +498,15 @@ Completion evidence for the ledger: recovery abuse-resistance, state matrix and 
 ```text
 Execute ArcForges delivery task CLOUD.18 — Independent native session integration (Platform client primitives).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-18).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-18).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/cloud-18 (python tools/delivery.py claim CLOUD.18 --worker <name>); task branch task/cloud-18 in DesktopPlatform; ledger record ledger/tasks/cloud-18.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: System browser, per-product redirects, secure storage and installation-bound tokens are integrated into Platform client primitives; each client owns its own session, no token sharing/device SSO.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-22.07 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.07
+- WP-22.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.07
 
 Entry condition: adoption slice ADOPT.02.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -527,16 +527,16 @@ Notes: Cross-repo: owned by WP-22 but lives in DesktopPlatform.
 ```text
 Execute ArcForges delivery task CLOUD.19 — Browser cookie-session adapter and full account-surface closure.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-19).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-19).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-19 (python tools/delivery.py claim CLOUD.19 --worker <name>); task branch task/cloud-19 in Cloud; ledger record ledger/tasks/cloud-19.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: The same-origin browser adapter runs in the AOT host with random hashed session/preauth/CSRF records, exact Origin checks, idle/absolute expiry, lowest-trust browser installation and one-use auth flow, with explicit cookie parsing/writing (no ASP.NET Data Protection/cookie-auth middleware); the full typed account surface is wired through the same owner ports.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-22.08 (full, including the 'Required implementation and closure from the final review' paragraph (complete typed account surface: profile/email, recovery-code set, scoped PAT, credential rename, session listing, four sign-out scopes, per-installation browser authorization, remote capability policy, restricted deletion-cancel reauthentication)): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.08
-- WP-22:browser-session-evidence-note-wp-22-08-m Browser-session evidence note (WP-22.08 must pass before WP-23 consumes its contract; a written P2-003 decision alone is insufficient) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, package-level obligation
+- WP-22.08 (full, including the 'Required implementation and closure from the final review' paragraph (complete typed account surface: profile/email, recovery-code set, scoped PAT, credential rename, session listing, four sign-out scopes, per-installation browser authorization, remote capability policy, restricted deletion-cancel reauthentication)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.08
+- WP-22:browser-session-evidence-note-wp-22-08-m Browser-session evidence note (WP-22.08 must pass before WP-23 consumes its contract; a written P2-003 decision alone is insufficient) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -558,17 +558,17 @@ Notes: Gate: PG-23 (this task's contribution; WP-23.05 contributes the other sid
 ```text
 Execute ArcForges delivery task CLOUD.20 — Owned-artifact closure and real integration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-20).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-20).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-20 (python tools/delivery.py claim CLOUD.20 --worker <name>); task branch task/cloud-20 in Cloud; ledger record ledger/tasks/cloud-20.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: Native/Android bearer sessions, same-origin Web opaque sessions, passkeys/recovery, workspace/device rules and authenticated CF authorization ports work end-to-end using selected AOT-compatible components; real publish-mode auth/session/CSRF/origin/rotation/revocation tests pass including stale CF requests and browser credential secrecy.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-22.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.90
-- WP-22:p2-010-required-behavior-and-closure-app P2-010 required behavior and closure appendix (initial enrollment/recovery/provider/account/SSO methods wired end-to-end in client journeys) (P2-010 required behavior and closure appendix (initial enrollment/recovery/provider/account/SSO methods wired end-to-end in client journeys)): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, package-level obligation
-- WP-22.00 (real identity/session implementation): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.00
+- WP-22.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.90
+- WP-22:p2-010-required-behavior-and-closure-app P2-010 required behavior and closure appendix (initial enrollment/recovery/provider/account/SSO methods wired end-to-end in client journeys) (P2-010 required behavior and closure appendix (initial enrollment/recovery/provider/account/SSO methods wired end-to-end in client journeys)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, package-level obligation
+- WP-22.00 (real identity/session implementation): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.00
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -596,16 +596,16 @@ Notes: Merged duplicate integration or closure task formerly proposed as CON.94.
 ```text
 Execute ArcForges delivery task CLOUD.21 — Public endpoint mapping and validation.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-21).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-21).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-21 (python tools/delivery.py claim CLOUD.21 --worker <name>); task branch task/cloud-21 in Cloud; ledger record ledger/tasks/cloud-21.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Generated proto service methods are registered with exact request/reply/semantic validation from the registry; binary gRPC-Web unary calls and declared server streams go through the same owner handlers; owner mutations and the Sync allowlist are mapped exactly; no ad-hoc REST business API exists.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-23.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.00
-- WP-22:browser-session-evidence-note-wp-22-08-m Browser-session evidence note (WP-22.08 must pass before WP-23 consumes its contract; a written P2-003 decision alone is insufficient) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, package-level obligation
+- WP-23.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.00
+- WP-22:browser-session-evidence-note-wp-22-08-m Browser-session evidence note (WP-22.08 must pass before WP-23 consumes its contract; a written P2-003 decision alone is insufficient) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -624,15 +624,15 @@ Completion evidence for the ledger: every selected operation has a concrete type
 ```text
 Execute ArcForges delivery task CLOUD.22 — Typed protocol and error mapping.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-22).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-22).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-22 (python tools/delivery.py claim CLOUD.22 --worker <name>); task branch task/cloud-22 in Cloud; ledger record ledger/tasks/cloud-22.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Generated ArcResult domain errors and gRPC-Web transport statuses/trailers are mapped exactly under registry 04; ProblemDetails is limited to documented HTTP exceptions.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-23.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.01
+- WP-23.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.01
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -650,20 +650,20 @@ Completion evidence for the ledger: every C#/TS/Kotlin client distinguishes tran
 ```text
 Execute ArcForges delivery task CLOUD.23 — Typed queries and revision preconditions.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-23).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-23).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-23 (python tools/delivery.py claim CLOUD.23 --worker <name>); task branch task/cloud-23 in Cloud; ledger record ledger/tasks/cloud-23.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Opaque scope-bound PageRequest cursors, registered typed filters and RequestMeta expected-owner-revision preconditions work; no ETag/If-Match for business RPC.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-23.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.02
+- WP-23.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.02
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] CLOUD.21: endpoint registration to add query/cursor semantics to
-- [contract] CON.91: the frozen notes.scalar.v1 query profile definition
+- [contract] CON.91: the accepted foundation PageRequest/PageState and exact-value records
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -677,15 +677,15 @@ Completion evidence for the ledger: generated clients exercise the authoritative
 ```text
 Execute ArcForges delivery task CLOUD.24 — Idempotency and rate limiting.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-24).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-24).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-24 (python tools/delivery.py claim CLOUD.24 --worker <name>); task branch task/cloud-24 in Cloud; ledger record ledger/tasks/cloud-24.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: State-changing requests accept a command identity and produce exactly one effect under retry; rate limits apply per identity and per capability class with typed refusals carrying retry guidance.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-23.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.03
+- WP-23.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.03
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -703,15 +703,15 @@ Completion evidence for the ledger: one command produces one effect at the API b
 ```text
 Execute ArcForges delivery task CLOUD.25 — Resource transport schema and future-owner boundary.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-25).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-25).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-25 (python tools/delivery.py claim CLOUD.25 --worker <name>); task branch task/cloud-25 in Cloud; ledger record ledger/tasks/cloud-25.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: The complete generated upload/status/ticket/verification/owner-promotion schema and permission/error envelope is registered and exercised through declared protocol fixtures; every endpoint's real owner/fixture/replacement WP is recorded.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-23.04 (full (schema/transport/fixture boundary only; real R2 multipart behavior is WP-25.05)): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.04
+- WP-23.04 (full (schema/transport/fixture boundary only; real R2 multipart behavior is WP-25.05)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.04
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -731,15 +731,15 @@ Completion evidence for the ledger: no missing resource schema; no claim that WP
 ```text
 Execute ArcForges delivery task CLOUD.26 — Generated C#/TypeScript/Kotlin clients against Identity/Workspace/Device.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-26).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-26).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-26 (python tools/delivery.py claim CLOUD.26 --worker <name>); task branch task/cloud-26 in Cloud; ledger record ledger/tasks/cloud-26.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Released C# native, TypeScript gRPC-Web and Kotlin native clients work against actual Identity/Workspace/Device endpoints with native single-flight refresh, Web cookie/CSRF/Origin handling and generation-scoped callbacks outside generated code.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-23.05 (all work except the parts mapped to AND.07, WEB.30): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.05
+- WP-23.05 (all work except the parts mapped to AND.07, WEB.30): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.05
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -760,15 +760,15 @@ Notes: Gate: PG-23 (this task's client-side contribution; CLOUD.19 contributes t
 ```text
 Execute ArcForges delivery task CLOUD.27 — Compatibility window and bidirectional matrix.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-27).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-27).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-27 (python tools/delivery.py claim CLOUD.27 --worker <name>); task branch task/cloud-27 in Cloud; ledger record ledger/tasks/cloud-27.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: The supported client window is declared with golden wire vectors per contract version; the compatibility matrix runs both directions (previous client vs current server, current client vs minimum supported server) and catches a deliberately breaking change.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-23.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.06
+- WP-23.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.06
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -786,19 +786,19 @@ Completion evidence for the ledger: bidirectional compatibility matrix passes an
 ```text
 Execute ArcForges delivery task CLOUD.28 — Owned-artifact closure and real integration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-28).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-28).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-28 (python tools/delivery.py claim CLOUD.28 --worker <name>); task branch task/cloud-28 in Cloud; ledger record ledger/tasks/cloud-28.md.
 Kind/size: integration/L. Baseline: not-started.
 Outcome: Real C#/browser/Kotlin calls succeed against the AOT image with previous/current compatibility and complete operation mapping including auth, files and webhooks outside gRPC.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-23.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.90
-- WP-23:operator-contract-closure-appendix-cloud Operator contract closure appendix -- Cloud's own share: generate/implement every operation with its eight authorization fields, operator scope and OC-03 role binding, refuse public customer/PAT/agent access, verify distinct approver/stale hash/revision/configuration/role revocation/expiry/concurrent consumption/lost receipt; the financial owners (WP-42), configuration/policy owners (WP-44) and console join (WP-45) are NOT this task's obligation -- see IM.operator-contract-closure (Operator contract closure appendix -- Cloud's own share: generate/implement every operation with its eight authorization fields, operator scope and OC-03 role binding, refuse public customer/PAT/agent access, verify distinct approver/stale hash/revision/configuration/role revocation/expiry/concurrent consumption/lost receipt; the financial owners (WP-42), configuration/policy owners (WP-44) and console join (WP-45) are NOT this task's obligation -- see IM.operator-contract-closure): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, package-level obligation
-- WP-23:browser-matrix-acceptance-appendix-cloud Browser matrix acceptance appendix -- Cloud's own share: prove generated transports support delayed-stream polling, refusal of unavailable required auth/step-up, safe-preview refusal, preserved pending work; WP-45/47/48/49/50's own operations/site/account/chat/production-hash evidence is NOT this task's obligation -- see IM.browser-matrix-acceptance (Browser matrix acceptance appendix -- Cloud's own share: prove generated transports support delayed-stream polling, refusal of unavailable required auth/step-up, safe-preview refusal, preserved pending work; WP-45/47/48/49/50's own operations/site/account/chat/production-hash evidence is NOT this task's obligation -- see IM.browser-matrix-acceptance): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, package-level obligation
-- WP-23:operator-contract-closure-appendix-regis Operator contract closure appendix (registry04 §9 + model01 operator state; eight authorization fields, operator scope, OC-03 role binding) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, package-level obligation
-- WP-23:browser-matrix-acceptance-appendix-brows Browser matrix acceptance appendix (browser-support.v1, supported/degraded/blocked behavior for generated transports) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, package-level obligation
+- WP-23.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, anchor rule-wp-23.90
+- WP-23:operator-contract-closure-appendix-cloud Operator contract closure appendix -- Cloud's own share: generate/implement every operation with its eight authorization fields, operator scope and OC-03 role binding, refuse public customer/PAT/agent access, verify distinct approver/stale hash/revision/configuration/role revocation/expiry/concurrent consumption/lost receipt; the financial owners (WP-42), configuration/policy owners (WP-44) and console join (WP-45) are NOT this task's obligation -- see IM.operator-contract-closure (Operator contract closure appendix -- Cloud's own share: generate/implement every operation with its eight authorization fields, operator scope and OC-03 role binding, refuse public customer/PAT/agent access, verify distinct approver/stale hash/revision/configuration/role revocation/expiry/concurrent consumption/lost receipt; the financial owners (WP-42), configuration/policy owners (WP-44) and console join (WP-45) are NOT this task's obligation -- see IM.operator-contract-closure): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, package-level obligation
+- WP-23:browser-matrix-acceptance-appendix-cloud Browser matrix acceptance appendix -- Cloud's own share: prove generated transports support delayed-stream polling, refusal of unavailable required auth/step-up, safe-preview refusal, preserved pending work; WP-45/47/48/49/50's own operations/site/account/chat/production-hash evidence is NOT this task's obligation -- see IM.browser-matrix-acceptance (Browser matrix acceptance appendix -- Cloud's own share: prove generated transports support delayed-stream polling, refusal of unavailable required auth/step-up, safe-preview refusal, preserved pending work; WP-45/47/48/49/50's own operations/site/account/chat/production-hash evidence is NOT this task's obligation -- see IM.browser-matrix-acceptance): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, package-level obligation
+- WP-23:operator-contract-closure-appendix-regis Operator contract closure appendix (registry04 §9 + model01 operator state; eight authorization fields, operator scope, OC-03 role binding) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, package-level obligation
+- WP-23:browser-matrix-acceptance-appendix-brows Browser matrix acceptance appendix (browser-support.v1, supported/degraded/blocked behavior for generated transports) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -824,15 +824,15 @@ Notes: Gate: PG-23 (joint with CLOUD.19/CLOUD.26).
 ```text
 Execute ArcForges delivery task CLOUD.29 — Stream connection and authentication (EventService.Watch/ExecutionService.WatchOutput shells).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-29).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-29).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-29 (python tools/delivery.py claim CLOUD.29 --worker <name>); task branch task/cloud-29 in Cloud; ledger record ledger/tasks/cloud-29.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Public server-streaming shells for EventService.Watch and ExecutionService.WatchOutput exist with generated StreamFrame, re-authorizing current session/scope every 15s; real C#/browser/Kotlin binary streams work with trailers/cancel/expiry; no WebSocket path.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-24.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.00
+- WP-24.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.00
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -852,15 +852,15 @@ Completion evidence for the ledger: real binary stream trailer/cancel/expiry res
 ```text
 Execute ArcForges delivery task CLOUD.30 — Scoped subscription (owner/product/filter/recovery-generation binding).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-30).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-30).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-30 (python tools/delivery.py claim CLOUD.30 --worker <name>); task branch task/cloud-30 in Cloud; ledger record ledger/tasks/cloud-30.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: The feed is bound to owner/product/filter/recovery generation, one events stream plus two output streams per foreground profile; mixed-product/unauthorized feeds are refused; account-security identifiers stay separate.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-24.01 (all work except the parts mapped to DEV.14): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.01
+- WP-24.01 (all work except the parts mapped to DEV.14): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.01
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -878,15 +878,15 @@ Completion evidence for the ledger: mixed-product/unauthorized refusal and accou
 ```text
 Execute ArcForges delivery task CLOUD.31 — Cursor and gap handling (DO projection backed by D1 outbox).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-31).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-31).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-31 (python tools/delivery.py claim CLOUD.31 --worker <name>); task branch task/cloud-31 in Cloud; ledger record ledger/tasks/cloud-31.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Sequence/hash/offset cursors and snapshot high-water recovery work per annex 10; the DO is a projection backed by the D1 outbox, never a second business authority.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-24.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.02
+- WP-24.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.02
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -905,15 +905,15 @@ Completion evidence for the ledger: duplicate/conflicting-frame, expired-cursor,
 ```text
 Execute ArcForges delivery task CLOUD.32 — Durable unary fallback (Poll/readOutput).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-32).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-32).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-32 (python tools/delivery.py claim CLOUD.32 --worker <name>); task branch task/cloud-32 in Cloud; ledger record ledger/tasks/cloud-32.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: Poll/readOutput works with the same owner/cursor profile as the stream, replacing the old HTTP task-stream endpoint; a blocked stream recovers through a real unary read without inventing completion.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-24.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.03
+- WP-24.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.03
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -932,15 +932,15 @@ Notes: AI terminal bodies (ChatTurn/Task execution output) arrive via WP-52, not
 ```text
 Execute ArcForges delivery task CLOUD.33 — Publication and wake (D1 outbox to bounded DO feed via Queues).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-33).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-33).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-33 (python tools/delivery.py claim CLOUD.33 --worker <name>); task branch task/cloud-33 in Cloud; ledger record ledger/tasks/cloud-33.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: The committed D1 outbox publishes into the bounded DO feed with wake hints delivered via Queues; contiguous watermark, no skipped commit, duplicate queue event is safe; no business ownership lives in the DO.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-24.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.04
+- WP-24.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.04
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -960,15 +960,15 @@ Completion evidence for the ledger: contiguous-watermark and duplicate-safety re
 ```text
 Execute ArcForges delivery task CLOUD.34 — Bounded stream lifecycle.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-34).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-34).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-34 (python tools/delivery.py claim CLOUD.34 --worker <name>); task branch task/cloud-34 in Cloud; ledger record ledger/tasks/cloud-34.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: 5-minute stream, 15s heartbeat, 45s silence and bounded jitter/queue limits are enforced; Android background closes streams and later refetches; slow-reader overflow resets rather than growing unbounded.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-24.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.05
+- WP-24.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.05
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -986,15 +986,15 @@ Completion evidence for the ledger: slow-reader overflow-reset result
 ```text
 Execute ArcForges delivery task CLOUD.35 — Reusable stream consumer adapters.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-35).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-35).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-35 (python tools/delivery.py claim CLOUD.35 --worker <name>); task branch task/cloud-35 in Cloud; ledger record ledger/tasks/cloud-35.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Platform Cloud.Client and Contracts TS/Kotlin stream fixtures are published with typed lifecycle states and no UI-specific transport logic.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-24.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.06
+- WP-24.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.06
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1014,15 +1014,15 @@ Completion evidence for the ledger: clean-consumer and real-ownership-path resul
 ```text
 Execute ArcForges delivery task CLOUD.36 — Owned-artifact closure and real integration (tool-result acceptance).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-36).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-36).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-36 (python tools/delivery.py claim CLOUD.36 --worker <name>); task branch task/cloud-36 in Cloud; ledger record ledger/tasks/cloud-36.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: Every WP-24 substep is complete and packaged; two distinct toolRequestIds in one attempt both persist and replay correctly for both Task and ChatTurn owners; a changed result under the same (toolRequestId, attemptId, commandId) refuses.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-24.90 (full, including the Tool-result acceptance subsection (toolRequestId dedup for Task and ChatTurn owners, command.reused_identifier refusal, wire registry + TK-05 + task.tool_result binding)): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.90
+- WP-24.90 (full, including the Tool-result acceptance subsection (toolRequestId dedup for Task and ChatTurn owners, command.reused_identifier refusal, wire registry + TK-05 + task.tool_result binding)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.90
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1045,52 +1045,17 @@ Completion evidence for the ledger: owned artifact and real-integration receipt 
 ```
 
 ```text
-Execute ArcForges delivery task CLOUD.37 — Cloud Notes authority and sync scopes.
-
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-37).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
-Claim and handoff record: claims/cloud-37 (python tools/delivery.py claim CLOUD.37 --worker <name>); task branch task/cloud-37 in Cloud; ledger record ledger/tasks/cloud-37.md.
-Kind/size: service/L. Baseline: not-started.
-Outcome: The canonical notes schema (notebook-owned folders, document-owned blocks/values, tags, property definitions, saved views, immutable revisions, checkpoints, derived backlinks) exists with typed folder/document/history operations and sorted-root revision checks; Cloud validates the same typed operations as the local domain.
-
-Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.00
-- WP-21.00 (real Sync owner transaction implementation): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.00
-
-Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
-Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] CLOUD.03: D1 physical mapping/migration runner for notes.* tables
-- [artifact] CLOUD.06: the shared atomic family engine, since synced content mutation is a named shared-transaction family
-- [contract] CON.91: published Notes owner-body records (documents, blocks, properties) in the foundation closure
-- [contract] CON.20: published NotesService operations
-- [artifact] CON.03: real, delivered outcome of CON.03 (Resource/Sync owner-body admission: closed Sync mutation allowlist + cross-owner/wrong-revision/opaque-object/forbidden-path negatives)
-- [artifact] CON.09: real, delivered outcome of CON.09 (Sync/resource-transfer/objects operation registry + realm-transfer.v1)
-- [artifact] CLOUD.01: real, delivered outcome of CLOUD.01 (Ingress and host pipeline)
-Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
-
-Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Notes/**
-Shared resources (follow the owner protocol): RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.; RES-cloud-storage-plans (append): Each module owns its own plan directory; the plan-manifest hash is regenerated by the author after rebase and checked in CI.; RES-shared-transaction-families (append): Adding a participant to a shared atomic family is a design change through the Architecture Owner; module tasks implement only their declared participation.
-Unblocks: CLOUD.10, CLOUD.39, CLOUD.45, CLOUD.47, NOTES.01, NOTES.34, NOTES.35, SRCH.00
-
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline + opt-in real-D1 tests: folder cycle/reorder/reparent, cross-notebook move with stable document IDs, concurrent move/delete, ancestor trash/restore, stale revisions, immutable history, revision/attachment pins; verify generated API/SQLite projections against real D1
-Completion evidence for the ledger: one complete server authority model and hierarchy, executable operations, history and resource ownership; no client required to create authoritative schema or assign Cloud revisions
-Notes: Merged duplicate integration or closure task formerly proposed as CON.95.
-```
-
-```text
 Execute ArcForges delivery task CLOUD.38 — Client outbox and conflict lineage (desktop data model).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-38).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-38).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/cloud-38 (python tools/delivery.py claim CLOUD.38 --worker <name>); task branch task/cloud-38 in DesktopPlatform; ledger record ledger/tasks/cloud-38.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: The single sync_outbox schema exists client-side: acked shadow plus pending journal, frozen batch hash/revision/range, explicit supersession lineage; a user conflict resolution appends a new local event and never edits the frozen failed batch.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.01
+- WP-25.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.01
 
 Entry condition: adoption slice ADOPT.02.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1100,7 +1065,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Sync/**
 Shared resources (follow the owner protocol): RES-assistant-store-schema (append): Numbered migrations are allocated at merge by the integration owner (a rebase renumbers pending migrations); each migration is forward-only with its recovery and downgrade-refusal tests; no task edits a merged migration.
-Unblocks: CLOUD.40, CLOUD.44, CLOUD.47, NOTES.35
+Unblocks: CLOUD.40, CLOUD.44, CLOUD.47
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline + opt-in tests: edit during dispatch, conflict followed by keep-local/keep-Cloud/merge, dependent undispatched batches, crash at each resolution write, late old receipt, own-origin feed echo
 Completion evidence for the ledger: every local edit has a durable outcome and exactly one live submission lineage; no conflict silently drops pending content
@@ -1108,47 +1073,52 @@ Notes: Cross-repo: WP-25 names this project explicitly in its own §4 table desp
 ```
 
 ```text
-Execute ArcForges delivery task CLOUD.39 — Guarded publication and convergent bootstrap.
+Execute ArcForges delivery task CLOUD.39 — Guarded publication, convergent bootstrap and the Sync owner transaction.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-39).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-39).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-39 (python tools/delivery.py claim CLOUD.39 --worker <name>); task branch task/cloud-39 in Cloud; ledger record ledger/tasks/cloud-39.md.
 Kind/size: service/L. Baseline: not-started.
-Outcome: Model-04's primary lower-bound W bootstrap, immutable-key pages, retention pin and replay-to-H work; the publisher guards watermark/fence/selected rows in one D1 batch; real D1 clients converge without PostgreSQL snapshot/locks or lost pending work.
+Outcome: Model-04's primary lower-bound W bootstrap, immutable-key pages, retention pin and replay-to-H work; the publisher guards watermark/fence/selected rows in one D1 batch; the real Sync owner transaction commits admitted ArcScope metadata owner bodies with publication, receipts and Resource/Entitlement enlistment in the same commit; real D1 clients converge without PostgreSQL snapshot/locks or lost pending work.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.02
+- WP-25.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.02
+- WP-21.00 (real Sync owner transaction implementation for admitted ArcScope metadata owner bodies): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.00
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] CLOUD.37: the canonical notes schema to publish changes from
 - [artifact] CLOUD.04: the generic receipts/outbox mechanism this publisher reads committed-unpublished rows from
 - [artifact] CLOUD.31: WP-24's cursor/gap-handling concept, since this publisher and the realtime DO feed are related but distinct publication mechanisms consumers must not conflate
+- [artifact] CLOUD.03: D1 physical mapping/migration runner for the Sync owner tables
+- [artifact] CLOUD.06: the shared atomic family engine, since synced content mutation is a named shared-transaction family
+- [artifact] CON.03: the closed Sync owner-body admission for ArcScope metadata
+- [artifact] CON.09: the published SyncService operations
+- [artifact] CLOUD.01: real, delivered outcome of CLOUD.01 (Ingress and host pipeline)
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Sync/Publisher/**
+Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Sync/Publisher/**; Cloud:src/Cloud/ArcForges.Cloud.Modules.Sync/Transactions/**
 Shared resources (follow the owner protocol): RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.
-Unblocks: AND.07, CLOUD.38, CLOUD.40, CLOUD.41, CLOUD.43, CLOUD.47, NOTES.35, SCOPE.27, SLATE.42
+Unblocks: AND.07, CLOUD.10, CLOUD.38, CLOUD.40, CLOUD.41, CLOUD.43, CLOUD.47, SCOPE.27, SRCH.00
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): opt-in real-D1 tests: two-writer interleavings, commit between pages, insert below cursor, delete/tombstone, expired pin, lost acknowledgement, old/new revision application with pending edits
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): opt-in real-D1 tests: two-writer interleavings, commit between pages, insert below cursor, delete/tombstone, expired pin, lost acknowledgement, old/new revision application with pending edits; non-allowlisted owner body, stale sorted-root revision and cross-owner reference refusals
 Completion evidence for the ledger: real D1 clients converge without PostgreSQL snapshot/locks or lost pending work
-Notes: Early risk proof: this is the two-writer D1 guarded-batch algorithm underlying PG-17. Proving it under contention before WP-25.03-07 build on top avoids invalidating that downstream work. PG-17 explicitly 'consumes the publisher from package 21' (CLOUD.04/CLOUD.06) -- this task is where that consumption happens for Notes/Sync specifically.
+Notes: Early risk proof: this is the two-writer D1 guarded-batch algorithm underlying PG-17. Proving it under contention before WP-25.03-07 build on top avoids invalidating that downstream work. PG-17 explicitly 'consumes the publisher from package 21' (CLOUD.04/CLOUD.06) -- this task is where that consumption happens for Sync specifically, together with the real Sync owner transaction.
 ```
 
 ```text
 Execute ArcForges delivery task CLOUD.40 — Conflict detection and five resolution policies.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-40).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-40).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-40 (python tools/delivery.py claim CLOUD.40 --worker <name>); task branch task/cloud-40 in Cloud; ledger record ledger/tasks/cloud-40.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Conflicts are detected by revision, never timestamp; five policies are implemented per the architecture, chosen per scope and object kind; discarded versions remain recoverable; user-facing conflicts present both versions intelligibly.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.03
+- WP-25.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.03
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1158,7 +1128,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Sync/Conflict/**
-Unblocks: CLOUD.44, CLOUD.47, NOTES.35
+Unblocks: CLOUD.44, CLOUD.47
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline + opt-in tests: conflict matrix across object kinds and policies, recoverability test for every discard, user-facing presentation test
 Completion evidence for the ledger: every conflict path covered, every discarded version recoverable, user-facing conflicts present both versions
@@ -1167,15 +1137,15 @@ Completion evidence for the ledger: every conflict path covered, every discarded
 ```text
 Execute ArcForges delivery task CLOUD.41 — Deletion and tombstones.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-41).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-41).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-41 (python tools/delivery.py claim CLOUD.41 --worker <name>); task branch task/cloud-41 in Cloud; ledger record ledger/tasks/cloud-41.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Deletion propagates through tombstones with defined retention; an offline-beyond-retention device resolves deterministically rather than silently resurrecting content; local deletion, cloud deletion and unsync are distinguished.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.04
+- WP-25.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.04
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1184,7 +1154,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Sync/Tombstones/**
-Unblocks: CLOUD.44, CLOUD.47, NOTES.35
+Unblocks: CLOUD.44, CLOUD.47
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline + opt-in tests: offline-beyond-retention convergence, resurrection-prevention test, three-way delete-action distinction test
 Completion evidence for the ledger: deleted content never silently resurrects; the three delete-like actions are distinguishable
@@ -1193,15 +1163,15 @@ Completion evidence for the ledger: deleted content never silently resurrects; t
 ```text
 Execute ArcForges delivery task CLOUD.42 — Blob lifecycle (real R2 staged/verified/committed).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-42).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-42).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-42 (python tools/delivery.py claim CLOUD.42 --worker <name>); task branch task/cloud-42 in Cloud; ledger record ledger/tasks/cloud-42.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Upload happens through a server-issued session, chunked and checksummed, moving Staged -> Verified -> Committed; a reference is only published after commit; orphan cleanup removes uncommitted staging without touching committed data; storage accounting is computed from committed objects.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.05
+- WP-25.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.05
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1213,7 +1183,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Resource/**
 Shared resources (follow the owner protocol): RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.; RES-cloud-storage-plans (append): Each module owns its own plan directory; the plan-manifest hash is regenerated by the author after rebase and checked in CI.; RES-shared-transaction-families (append): Adding a participant to a shared atomic family is a design change through the Architecture Owner; module tasks implement only their declared participation.
-Unblocks: AND.07, CLOUD.43, CLOUD.44, CLOUD.45, CLOUD.46, CLOUD.47, CLOUD.48, EXT.06, NOTES.35, SCOPE.23, SIM.04, WEB.13
+Unblocks: AND.07, CLOUD.43, CLOUD.44, CLOUD.45, CLOUD.46, CLOUD.47, CLOUD.48, EXT.06, SCOPE.23, SIM.04, WEB.13
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): opt-in real-R2 tests: interrupted-upload resumption, verification-failure path, orphan-cleanup safety test, accounting comparison against actual committed storage
 Completion evidence for the ledger: no reference published before commit; orphan cleanup never touches committed data; accounting matches committed storage
@@ -1223,15 +1193,15 @@ Notes: Must-be-real-early per implementation-sequence §3 ('Object storage adapt
 ```text
 Execute ArcForges delivery task CLOUD.43 — Availability, protection, data-health signals and realm-transfer workflow.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-43).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-43).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-43 (python tools/delivery.py claim CLOUD.43 --worker <name>); task branch task/cloud-43 in Cloud; ledger record ledger/tasks/cloud-43.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Hydration/cache pause is distinguished from explicit Cloud deletion; source-consent/transient inputs and health states exist; the full realm-transfer export/preview/commit/status/cancel workflow works from client journeys; missing-object outcomes are rebuilt or verified with irrecoverable data retaining evidence and recovery/export actions.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.06
+- WP-25.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.06
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1244,22 +1214,22 @@ Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Sync/Health/**; C
 Unblocks: CLOUD.47
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): opt-in real-R2/D1 tests: resume after 100-root batch, repeated command, missing object, partial cancellation, denied current scope, transfer credential/ledger exclusion, restore generation
-Completion evidence for the ledger: no Unsync deletion of authoritative Notes/Chat, no empty success for irrecoverable data, no manual migration rule invented
+Completion evidence for the ledger: no Unsync deletion of authoritative Cloud content, no empty success for irrecoverable data, no manual migration rule invented
 Notes: POSSIBLE DESIGN OVERLAP: this task's 'full realm-transfer export/preview/commit/status/cancel workflow from client journeys' (WP-25.06) reads very close to WP-46.05's 'existing explicit realm export/import semantics using compatible D1 physical/schema/plan manifests' (CLOUD.53). They may be genuinely different (user-facing personal-data export vs operator-level realm-to-realm database migration) or may be the same feature described twice.
 ```
 
 ```text
 Execute ArcForges delivery task CLOUD.44 — Multi-device convergence harness.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-44).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-44).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-44 (python tools/delivery.py claim CLOUD.44 --worker <name>); task branch task/cloud-44 in Cloud; ledger record ledger/tasks/cloud-44.md.
 Kind/size: integration/L. Baseline: not-started.
 Outcome: Three devices editing concurrently, one offline for an extended period, converge to verifiably identical state under concurrent edits, attachments, deletions and a mid-sync crash, verified by comparison not absence of errors.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.07 (all work except the parts mapped to NOTES.35): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.07
+- WP-25.07 (all work except the parts mapped to SCOPE.27): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.07
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1269,10 +1239,10 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] CLOUD.40: real conflict policies
 - [integration] CLOUD.41: real tombstones
 - [integration] CLOUD.42: real blob lifecycle
-- [integration] NOTES.37: a real ArcNotes client to run the three-device harness against
+- [integration] SCOPE.27: a real ArcScope client syncing metadata against the deployed Cloud sync engine to run the three-device harness against
 
 Permitted write scope: Cloud:tests/SyncConflictTests/Convergence/**
-Unblocks: CLOUD.47, NOTES.35, SCOPE.27, SLATE.42
+Unblocks: CLOUD.47, SCOPE.27
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): a three-device convergence harness with concurrent edits, an extended offline device, attachments, deletions and a mid-sync crash
 Completion evidence for the ledger: three devices converge to verifiably identical state
@@ -1280,48 +1250,46 @@ Notes: Gate: PG-17 (joint with CLOUD.39). This is the full end-to-end demonstrat
 ```
 
 ```text
-Execute ArcForges delivery task CLOUD.45 — Real Cloud Notes and Chat export producers.
+Execute ArcForges delivery task CLOUD.45 — Real Cloud Chat export producer.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-45).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-45).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-45 (python tools/delivery.py claim CLOUD.45 --worker <name>); task branch task/cloud-45 in Cloud; ledger record ledger/tasks/cloud-45.md.
 Kind/size: service/L. Baseline: not-started.
-Outcome: Bounded leased Cloud export jobs freeze an acknowledged revision manifest, pin content/history/attachment objects, generate Markdown/JSON/text outputs with metadata/link map and fidelity report, and publish a verified expiring download artifact; device-only pending edits are excluded.
+Outcome: Bounded leased Cloud export jobs freeze an acknowledged revision manifest, pin history/attachment objects, generate the declared Markdown/JSON/text outputs with metadata/link map and fidelity report, and publish a verified expiring download artifact; device-only pending edits are excluded.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.08 (all work except the parts mapped to AST.21, CLOUD.58, NOTES.33): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.08
+- WP-25.08 (all work except the parts mapped to AST.21, CLOUD.58): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.08
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] CLOUD.37: the canonical notes schema to snapshot for export
 - [artifact] CLOUD.42: real R2 staging/verification for the export bundle
 - [artifact] CLOUD.05: the finite-durable-job mechanism, since exports are bounded leased jobs
-- [contract] CON.20: published notes.requestExport records
 - [contract] CON.22: published export and data operations
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Notes/Export/**; Cloud:src/Cloud/ArcForges.Cloud.Jobs/Export/**
-Unblocks: AST.21, CLOUD.47, CLOUD.58, NOTES.20, NOTES.33, WEB.15
+Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Chat/Export/**; Cloud:src/Cloud/ArcForges.Cloud.Jobs/Export/**
+Unblocks: AST.21, CLOUD.47, CLOUD.58, WEB.15
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): opt-in real host/database/object-store tests: concurrent edits, notebook moves, deleted attachments, quota limit, expiry, restart, cancellation, paid-term end; compare every delivered manifest/hash and omission; scan for secrets
-Completion evidence for the ledger: both export exit paths work against real Cloud authority, preserve a stable snapshot and honest fidelity, release pins/reservations on all terminal paths
-Notes: This is the CLOUD-side producer for PG-07's Notes/Chat portion. See integration_proposals: IM.notes-chat-export-fixture-removal, which structurally asserts removal of the WP-15.06/WP-19.05 fixture endpoints owned by the assistant lanes/the ArcNotes lane.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): opt-in real host/database/object-store tests: concurrent history writes, branch edits, deleted attachments, quota limit, expiry, restart, cancellation, paid-term end; compare every delivered manifest/hash and omission; scan for secrets
+Completion evidence for the ledger: the Chat export path works against real Cloud authority, preserves a stable snapshot and honest fidelity, and releases pins/reservations on all terminal paths
+Notes: This is the Cloud-side producer for PG-07's Cloud Chat export portion; CLOUD.58 structurally removes the WP-15.06 runtime export fixture.
 ```
 
 ```text
 Execute ArcForges delivery task CLOUD.46 — Application Cloud history and restartable import.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-46).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-46).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-46 (python tools/delivery.py claim CLOUD.46 --worker <name>); task branch task/cloud-46 in Cloud; ledger record ledger/tasks/cloud-46.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: HistoryService.BeginImport/FinalizeImport/GetImport/CancelImport work per annex 10 with fixed product scope, verified staged archive/typed rows and atomic visibility/receipt; local-only history bodies never enter Cloud Chat or search without explicit promotion.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.09 (all work except the parts mapped to AST.22): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.09
+- WP-25.09 (all work except the parts mapped to AST.22): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.09
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1341,26 +1309,24 @@ Notes: Replaces the HistoryService fixture consumed by WP-15/WP-17. See integrat
 ```text
 Execute ArcForges delivery task CLOUD.47 — Owned-artifact closure and real integration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-47).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-47).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-47 (python tools/delivery.py claim CLOUD.47 --worker <name>); task branch task/cloud-47 in Cloud; ledger record ledger/tasks/cloud-47.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: R2 is used for the existing upload admission, multipart resume, Verified pin, owner promotion, quota and release lifecycle; outbox/inbox/tombstones/conflicts/bootstrap/unknown-field behavior and export protocol are retained; three-device convergence and interrupted-upload/failed-content-commit/orphan/delete cases run against actual provider adapters.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.90
-- WP-25:required-implementation-and-closure-from Required implementation and closure from the final review (01-cloud-data-model verification; real structural move/ack/conflict transactions, full native metadata replicas, job-authorized R2 staging/verification/promotion, quarantined old-generation client commands) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, package-level obligation
+- WP-25.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.90
+- WP-25:required-implementation-and-closure-from Required implementation and closure from the final review (01-cloud-data-model verification; real structural move/ack/conflict transactions, full native metadata replicas, job-authorized R2 staging/verification/promotion, quarantined old-generation client commands) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] AST.21: package task delivered
 - [artifact] AST.22: package task delivered
 - [artifact] CLOUD.58: package task delivered
-- [artifact] NOTES.33: package task delivered
-- [artifact] NOTES.35: package task delivered
+- [artifact] SCOPE.27: package task delivered
 Completion prerequisites (may start earlier; cannot complete before these are complete):
-- [integration] CLOUD.37: final candidate
 - [integration] CLOUD.38: final candidate
 - [integration] CLOUD.39: final candidate
 - [integration] CLOUD.40: final candidate
@@ -1381,15 +1347,15 @@ Completion evidence for the ledger: owned artifact and real-integration receipt 
 ```text
 Execute ArcForges delivery task CLOUD.48 — D1 and independent object backup.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-48).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-48).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-48 (python tools/delivery.py claim CLOUD.48 --worker <name>); task branch task/cloud-48 in Cloud; ledger record ledger/tasks/cloud-48.md.
 Kind/size: service/L. Baseline: not-started.
 Outcome: Model-04/backup-manifest-v1 works: matching D1 export/bookmark/base sequence, contiguous replay, verified R2 inventory and an independent S3-COMPLIANCE copy; no PostgreSQL WAL/LSN procedure; measured metadata/blob RPO and RTO pass; Time Travel alone cannot satisfy independent restore.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-46.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.00
+- WP-46.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.00
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1409,15 +1375,15 @@ Completion evidence for the ledger: measured metadata/blob RPO and RTO; Time Tra
 ```text
 Execute ArcForges delivery task CLOUD.49 — Point-in-time and fresh restore.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-49).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-49).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-49 (python tools/delivery.py claim CLOUD.49 --worker <name>); task branch task/cloud-49 in Cloud; ledger record ledger/tasks/cloud-49.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Base bookmark/sequence and contiguous after-image archive are verified; in-place Time Travel and fresh import/replay both use generation fences.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-46.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.01
+- WP-46.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.01
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1435,15 +1401,15 @@ Completion evidence for the ledger: missing-archive/object and unsafe-reopen ref
 ```text
 Execute ArcForges delivery task CLOUD.50 — Fresh environment rebuild.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-50).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-50).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-50 (python tools/delivery.py claim CLOUD.50 --worker <name>); task branch task/cloud-50 in Cloud; ledger record ledger/tasks/cloud-50.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Old ingress/keys are fenced, D1/R2 are restored, the independent restrictive safety journal replays, credentials/leases/cursors are invalidated, external effects are reconciled; a deleted/revoked account cannot reappear and an absent attempt cannot execute twice.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-46.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.02
+- WP-46.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.02
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1462,15 +1428,15 @@ Completion evidence for the ledger: deleted-account and absent-attempt-no-double
 ```text
 Execute ArcForges delivery task CLOUD.51 — Disaster-recovery drill programme.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-51).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-51).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-51 (python tools/delivery.py claim CLOUD.51 --worker <name>); task branch task/cloud-51 in Cloud; ledger record ledger/tasks/cloud-51.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: An actual Container/Worker/DO/R2/D1 restore runs using separate credentials and an immutable archive with RTO<=4h real evidence, not a SQLite/simulator-only restore.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-46.03 (Cloud-side drill: real Container/Worker/DO/R2/D1 restore using separate credentials and immutable archive, RTO<=4h. The combined AI reopen portion is a joint step with the AI lanes/the governance and release lanes -- see IM.dr-drill-combined-ai-reopen): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.03
+- WP-46.03 (Cloud-side drill: real Container/Worker/DO/R2/D1 restore using separate credentials and immutable archive, RTO<=4h. The combined AI reopen portion is a joint step with the AI lanes/the governance and release lanes -- see IM.dr-drill-combined-ai-reopen): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.03
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1488,15 +1454,15 @@ Completion evidence for the ledger: real RTO<=4h evidence
 ```text
 Execute ArcForges delivery task CLOUD.52 — Data health read projection.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-52).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-52).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-52 (python tools/delivery.py claim CLOUD.52 --worker <name>); task branch task/cloud-52 in Cloud; ledger record ledger/tasks/cloud-52.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: Archive watermark, capacity, canonical refs/hash/pins, derived-rebuild state and backup lag/admission state are exposed as a queryable read projection, with 4min/12min warning guards and exceeded-objective incidents made visible.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-46.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.04
+- WP-46.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.04
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1515,15 +1481,15 @@ Notes: DELIBERATELY separable from CLOUD.49/50/51 (point-in-time restore, fresh 
 ```text
 Execute ArcForges delivery task CLOUD.53 — Export and realm migration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-53).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-53).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-53 (python tools/delivery.py claim CLOUD.53 --worker <name>); task branch task/cloud-53 in Cloud; ledger record ledger/tasks/cloud-53.md.
 Kind/size: service/M. Baseline: not-started.
 Outcome: Explicit realm export/import semantics work using compatible D1 physical/schema/plan manifests; no automatic cross-DB transaction; identity/resource/history scope is preserved and unsupported mapping is refused.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-46.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.05
+- WP-46.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.05
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1543,15 +1509,15 @@ Notes: POSSIBLE DESIGN OVERLAP with CLOUD.43 (WP-25.06 realm-transfer workflow) 
 ```text
 Execute ArcForges delivery task CLOUD.54 — Backup release gate.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-54).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-54).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-54 (python tools/delivery.py claim CLOUD.54 --worker <name>); task branch task/cloud-54 in Cloud; ledger record ledger/tasks/cloud-54.md.
 Kind/size: service/S. Baseline: not-started.
 Outcome: Verified independent backup and safety journal are required before paid production admission; no unverified restore, private access or mutation reopens on incomplete inventory.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-46.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.06
+- WP-46.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.06
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1569,15 +1535,15 @@ Completion evidence for the ledger: incomplete-inventory refusal results
 ```text
 Execute ArcForges delivery task CLOUD.55 — Owned-artifact closure and real integration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-55).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-55).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-55 (python tools/delivery.py claim CLOUD.55 --worker <name>); task branch task/cloud-55 in Cloud; ledger record ledger/tasks/cloud-55.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: Every WP-46 substep is complete, built/packed once, and consumed as exact candidate bytes from a clean environment with all applicable UX acceptance groups recorded.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-46.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.90
+- WP-46.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.90
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1599,22 +1565,21 @@ Completion evidence for the ledger: owned artifact and real-integration receipt 
 ```
 
 ```text
-Execute ArcForges delivery task CLOUD.58 — Structural removal of the Notes/Chat export runtime fixtures.
+Execute ArcForges delivery task CLOUD.58 — Structural removal of the Chat export runtime fixture.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-58).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-58).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-58 (python tools/delivery.py claim CLOUD.58 --worker <name>); task branch task/cloud-58 in Cloud; ledger record ledger/tasks/cloud-58.md.
 Kind/size: integration/M. Baseline: not-started.
-Outcome: Both production clients run with no fixture export producer registered; real Cloud export jobs serve both paths
+Outcome: The production clients run with no fixture export producer registered; real Cloud export jobs serve the Chat export path
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-25.08 (full, joint with consumer-side structural fixture-registration removal): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.08
+- WP-25.08 (full, joint with consumer-side structural fixture-registration removal): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.08
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] CLOUD.45: real, delivered outcome of CLOUD.45 (Real Cloud Notes and Chat export producers)
-- [artifact] NOTES.33: real, delivered outcome of NOTES.33 (Real Cloud Notes export join replaces the / fixture endpoint)
+- [artifact] CLOUD.45: real, delivered outcome of CLOUD.45 (Real Cloud Chat export producer)
 - [artifact] AST.21: assistant history export consuming the real Cloud export producer
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
@@ -1623,21 +1588,21 @@ Permitted write scope:
 Unblocks: CLOUD.47
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
-Completion evidence for the ledger: Both production clients run with no fixture export producer registered; real Cloud export jobs serve both paths
+Completion evidence for the ledger: The production clients run with no fixture export producer registered; real Cloud export jobs serve the Chat export path
 ```
 
 ```text
 Execute ArcForges delivery task CLOUD.63 — Real Commerce/Entitlement participation in the shared atomic family engine.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-63).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-63).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-63 (python tools/delivery.py claim CLOUD.63 --worker <name>); task branch task/cloud-63 in Cloud; ledger record ledger/tasks/cloud-63.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: The 'exact credits' half of WP-21.05's own completion gate ('Two Containers contend, stale holder cannot finalize, exact credits and sync cursor safety') -- Commerce's family participation, owned by the commerce, policy and operations lanes
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-21.05 (Commerce/Entitlement family participant evidence for the shared completion gate): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.05
+- WP-21.05 (Commerce/Entitlement family participant evidence for the shared completion gate): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\21-cloud-host-and-persistence.md, anchor rule-wp-21.05
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1657,15 +1622,15 @@ Completion evidence for the ledger: The 'exact credits' half of WP-21.05's own c
 ```text
 Execute ArcForges delivery task CLOUD.64 — Full operator contract closure across PublicApi, Commerce, Policy and Console.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-64).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-64).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-64 (python tools/delivery.py claim CLOUD.64 --worker <name>); task branch task/cloud-64 in Cloud; ledger record ledger/tasks/cloud-64.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: Every operator operation's eight authorization fields, operator scope and OC-03 role binding work end-to-end with the real financial owners (WP-42), configuration/policy owners (WP-44) and console join (WP-45)
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-23:operator-contract-closure-appendix-full Operator contract closure appendix, full cross-area join (Operator contract closure appendix, full cross-area join): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\23-public-api-and-generated-clients.md, package-level obligation
+- WP-23:operator-contract-closure-appendix-full Operator contract closure appendix, full cross-area join (Operator contract closure appendix, full cross-area join): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\23-public-api-and-generated-clients.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1686,15 +1651,15 @@ Completion evidence for the ledger: Every operator operation's eight authorizati
 ```text
 Execute ArcForges delivery task CLOUD.66 — Every enumerated sensitive operation wired to the step-up mechanism.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-66).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-66).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-66 (python tools/delivery.py claim CLOUD.66 --worker <name>); task branch task/cloud-66 in Cloud; ledger record ledger/tasks/cloud-66.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: Full coverage of WP-22.04's completion gate ('every enumerated operation demands step-up') across Commerce refund/purchase operations and any other module-owned sensitive operation, not just Identity's own
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-22.04 (cross-product operation coverage beyond Identity's own operations): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.04
+- WP-22.04 (cross-product operation coverage beyond Identity's own operations): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\22-identity-workspace-and-device.md, anchor rule-wp-22.04
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -1715,15 +1680,15 @@ Completion evidence for the ledger: Full coverage of WP-22.04's completion gate 
 ```text
 Execute ArcForges delivery task CLOUD.67 — Combined AI reopen after Cloud disaster-recovery restore.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-67).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\cloud.md (anchor task-cloud-67).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/cloud-67 (python tools/delivery.py claim CLOUD.67 --worker <name>); task branch task/cloud-67 in Cloud; ledger record ledger/tasks/cloud-67.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: AI services genuinely reopen and function after a real Cloud DR restore, per WP-46.03's own 'then combined AI reopen at 50/52'
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-46.03 (combined AI-reopen portion): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.03
+- WP-46.03 (combined AI-reopen portion): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\46-backup-recovery-and-data-health.md, anchor rule-wp-46.03
 
 Entry condition: adoption slice ADOPT.07.cloud is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):

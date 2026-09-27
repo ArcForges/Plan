@@ -221,7 +221,7 @@ class DeliveryTests(unittest.TestCase):
         self.fx.commit(self.fx.plan, 'ledger')
         self.assertEqual(self.fx.run('update', 'ADOPT.01', '--worker', 'w1', '--epoch', '1', '--state', 'complete')[0], 0)
         code, out = self.fx.run('ready')
-        self.assertIn('Ready to start (68):', out)
+        self.assertIn('Ready to start (58):', out)
         self.assertNotIn('ADOPT.01\t', out)
 
     def test_complete_ledger_requires_completed_integration_prerequisites(self):
@@ -292,20 +292,21 @@ class DeliveryTests(unittest.TestCase):
             for tid in g.slice_tasks(sid):
                 if g.tasks[tid]['baseline']['state'] == 'accepted':
                     self.assertIn(f'Plan:ledger/tasks/{d.key_of(tid)}.md', scope)
-        # The governance slice classifies GOV.14 as inherited: without its record the merged slice makes it ready.
+        # The governance slice classifies GOV.17 as inherited: without its record the merged slice makes it ready.
         for task, status in (('ADOPT.01', 'complete'), ('ADOPT.02.governance', 'complete'), ('GOV.01', 'inherited'),
                              ('GOV.02', 'inherited'), ('GOV.03', 'inherited')):
             self.fx.record(task, status)
         self.fx.commit(self.fx.plan, 'governance slice')
         code, out = self.fx.run('ready', '--lane', 'governance')
-        self.assertIn('GOV.14\tDesktopPlatform', out)
-        self.fx.record('GOV.14', 'inherited')
+        self.assertIn('GOV.17\tDesktopPlatform', out)
+        self.fx.record('GOV.17', 'inherited')
         self.fx.commit(self.fx.plan, 'inherited record')
         code, out = self.fx.run('ready', '--lane', 'governance')
         self.assertEqual(code, 0, out)
-        self.assertIn('Ready to start (1):', out)
+        self.assertIn('Ready to start (2):', out)
         self.assertIn('GOV.04\tDesktopPlatform', out)
-        self.assertNotIn('GOV.14\t', out)
+        self.assertIn('GOV.14\tDesktopPlatform', out)
+        self.assertNotIn('GOV.17\t', out)
 
     # ---- authoritative state and worktrees (finding 7) ----------------------------------------
 
@@ -317,10 +318,10 @@ class DeliveryTests(unittest.TestCase):
         self.assertIn('Ready to start (1):', out)
         code, out = self.fx.run('ready', '--local')
         self.assertIn('UNREVIEWED LOCAL STATE', out)
-        self.assertIn('Ready to start (68):', out)
+        self.assertIn('Ready to start (58):', out)
 
     def test_default_design_is_the_same_from_a_worktree(self):
-        primary = self.fx.root / 'Plan-B'
+        primary = self.fx.root / 'primary' / 'Plan'
         sh(self.fx.root, 'clone', '--quiet', str(self.fx.root / 'plan.git'), str(primary))
         sh(primary, 'worktree', 'add', '--quiet', '-b', 'side', str(primary / '.worktree' / 'side'))
         saved, os.environ['ARCFORGES_DESIGN'] = os.environ.get('ARCFORGES_DESIGN'), ''
@@ -328,7 +329,7 @@ class DeliveryTests(unittest.TestCase):
         try:
             os.environ.pop('ARCFORGES_DESIGN')
             d.PLAN_ROOT = primary / '.worktree' / 'side'
-            self.assertEqual(d.default_design().resolve(), (self.fx.root / 'ArcForges-Design-B').resolve())
+            self.assertEqual(d.default_design().resolve(), (self.fx.root / 'primary' / 'ArcForges-Design').resolve())
             os.environ['ARCFORGES_DESIGN'] = str(self.fx.design)
             self.assertEqual(d.default_design(), self.fx.design)
         finally:

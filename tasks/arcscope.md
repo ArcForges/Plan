@@ -10,15 +10,15 @@ Tasks are ordered by lane for reading; the order is not a schedule.
 ```text
 Execute ArcForges delivery task SCOPE.01 — DataSource/SourceAdapter contract, connection profiles and lease/busy exclusivity.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-01).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-01).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-01 (python tools/delivery.py claim SCOPE.01 --worker <name>); task branch task/scope-01 in ArcScope; ledger record ledger/tasks/scope-01.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: A single adapter contract (DataSource/SourceAdapter/Connection) exists with persisted, reusable connection profiles; editing a profile never rewrites a historical session's recorded configuration; a second claimant on the same source is refused with a busy state.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.00 (shared adapter contract; ConnectionProfile storage/reuse; EffectiveConfigurationSnapshot immutability on profile edit; lease/busy exclusivity model (BR-01..BR-06, BR-09)): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.00
+- WP-33.00 (shared adapter contract; ConnectionProfile storage/reuse; EffectiveConfigurationSnapshot immutability on profile edit; lease/busy exclusivity model (BR-01..BR-06, BR-09)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.00
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -39,15 +39,15 @@ Notes: Foundational; SCOPE.03 (network/replay adapters) and SCOPE.04 (serial/USB
 ```text
 Execute ArcForges delivery task SCOPE.02 — Channel, signal, event and time model.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-02).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-02).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-02 (python tools/delivery.py claim SCOPE.02 --worker <name>); task branch task/scope-02 in ArcScope; ledger record ledger/tasks/scope-02.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: A precise time model spanning signal samples and discrete events with exact rate representation, explicit conversion between domains, and explicit recorded alignment between sources.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.03
+- WP-33.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.03
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -66,15 +66,15 @@ Notes: Pure domain/math task with no native or Cloud dependency; runs fully in p
 ```text
 Execute ArcForges delivery task SCOPE.03 — Network and file-replay source adapters (TCP, UDP, file stream).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-03).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-03).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-03 (python tools/delivery.py claim SCOPE.03 --worker <name>); task branch task/scope-03 in ArcScope; ledger record ledger/tasks/scope-03.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: TCP, UDP and file-stream-replay adapters work over real transports (pure managed sockets/file I/O), pass connect/disconnect/reconnect tests, and share SCOPE.01's profile and exclusivity model.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.00 (TCP/UDP/file-replay concrete adapters over the shared contract; real-transport connect/disconnect/reconnect tests): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.00
+- WP-33.00 (TCP/UDP/file-replay concrete adapters over the shared contract; real-transport connect/disconnect/reconnect tests): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.00
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -93,17 +93,17 @@ Notes: This is the implementation-sequence.md §3 'must be real early' item: rea
 ```text
 Execute ArcForges delivery task SCOPE.04 — Serial and USB instrument adapters.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-04).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-04).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-04 (python tools/delivery.py claim SCOPE.04 --worker <name>); task branch task/scope-04 in ArcScope; ledger record ledger/tasks/scope-04.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: Serial and USB adapters work over real hardware transports via the native ArcInstruments ABI, enumerate/open/transfer/cancel correctly, refuse busy/permission conflicts per Tier-1 RID, and record a hot-unplug as an explicit capture gap.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.00 (serial/USB concrete adapters over the shared contract): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.00
-- WP-33.90 (generic-USB-V1 body text (enumeration, explicit interface/endpoint open, control/bulk/interrupt transfers, partial writes, cancellation, driver/permission/busy refusal per Tier 1 RID; no automatic kernel-driver detach; hot unplug records an explicit capture gap) — this text sits orphaned between WP-33 §6 and §7 in the source doc with no substep id of its own; folded here since it is entirely about the serial/USB adapter, not §33.90's own verify-and-integration content): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.90
-- WP-33:orphaned-generic-usb-is-v1-body-text-enu orphaned 'Generic USB is V1' body text (enumeration/open/transfer/cancel/refusal per Tier-1 RID, no auto kernel-driver detach, hot-unplug=explicit gap) sitting between §6 Impacts and §7 Tests with no substep id (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, package-level obligation
+- WP-33.00 (serial/USB concrete adapters over the shared contract): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.00
+- WP-33.90 (generic-USB-V1 body text (enumeration, explicit interface/endpoint open, control/bulk/interrupt transfers, partial writes, cancellation, driver/permission/busy refusal per Tier 1 RID; no automatic kernel-driver detach; hot unplug records an explicit capture gap) — this text sits orphaned between WP-33 §6 and §7 in the source doc with no substep id of its own; folded here since it is entirely about the serial/USB adapter, not §33.90's own verify-and-integration content): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.90
+- WP-33:orphaned-generic-usb-is-v1-body-text-enu orphaned 'Generic USB is V1' body text (enumeration/open/transfer/cancel/refusal per Tier-1 RID, no auto kernel-driver detach, hot-unplug=explicit gap) sitting between §6 Impacts and §7 Tests with no substep id (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -124,15 +124,15 @@ Notes: This is the one WP-33.00 sub-path that genuinely needs a WP13 native fami
 ```text
 Execute ArcForges delivery task SCOPE.05 — Acquisition pipeline: bounded loop, ring buffer, backpressure and overrun accounting.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-05).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-05).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-05 (python tools/delivery.py claim SCOPE.05 --worker <name>); task branch task/scope-05 in ArcScope; ledger record ledger/tasks/scope-05.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: A bounded, timestamped acquisition loop with explicit backpressure sustains throughput above the product target with bounded memory; every overrun is counted, timestamped and recorded; hardware timestamps are preserved where available and the timing source/uncertainty is recorded otherwise.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.01
+- WP-33.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.01
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -153,15 +153,15 @@ Notes: WP-13.02 ('Probe C: high-throughput acquisition', the native and runtime-
 ```text
 Execute ArcForges delivery task SCOPE.06 — Session and capture lifecycle: segments, gaps and live observation.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-06).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-06).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-06 (python tools/delivery.py claim SCOPE.06 --worker <name>); task branch task/scope-06 in ArcScope; ledger record ledger/tasks/scope-06.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: The session/capture lifecycle (armed, running, paused, stopped, finalised, interrupted) is correct; captures are sequences of segments plus explicit gaps; pausing the view never stops recording; a disconnect produces an explicit gap rather than a truncated capture.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.02 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.02
+- WP-33.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.02
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -181,15 +181,15 @@ Completion evidence for the ledger: lifecycle, pause-view and gap-integrity resu
 ```text
 Execute ArcForges delivery task SCOPE.07 — Durable capture writer, chunked verifiable store and crash recovery.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-07).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-07).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-07 (python tools/delivery.py claim SCOPE.07 --worker <name>); task branch task/scope-07 in ArcScope; ledger record ledger/tasks/scope-07.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: Raw capture is written to the chunked verifiable store with per-chunk checksums and an explicit end marker; a finalised capture is structurally immutable; a crash mid-capture recovers to the last committed boundary with an honest end marker and recorded loss.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.04 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.04
+- WP-33.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.04
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -209,15 +209,15 @@ Notes: WP-07.05 is named precisely (not 'whole WP07') because WP-07.00/.03 (stor
 ```text
 Execute ArcForges delivery task SCOPE.08 — Replay as a source (capture-level).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-08).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-08).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-08 (python tools/delivery.py claim SCOPE.08 --worker <name>); task branch task/scope-08 in ArcScope; ledger record ledger/tasks/scope-08.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: Replay of a recorded, finalised capture feeds the same pipeline as a labelled ReplaySource, always recording its origin, and never presents device-only fields as measured.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.05
+- WP-33.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.05
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -237,15 +237,15 @@ Notes: This is WP-34's repeatable source (SD-09): once this task lands, WP-34's 
 ```text
 Execute ArcForges delivery task SCOPE.09 — Long-running capture in the shell.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-09).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-09).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-09 (python tools/delivery.py claim SCOPE.09 --worker <name>); task branch task/scope-09 in ArcScope; ledger record ledger/tasks/scope-09.md.
 Kind/size: feature/S. Baseline: not-started.
 Outcome: Recording state is permanently visible; closing a window during capture always asks with consequences stated, never silently stopping or continuing; background capture persists only while genuine work is active.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.06 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.06
+- WP-33.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.06
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -255,7 +255,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Presentation/**; ArcScope:src/ArcScope/ArcScope.Desktop/CaptureLifecycle/**
-Unblocks: PLT.56, SCOPE.11
+Unblocks: SCOPE.11
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): window-close-during-capture prompt test; background-residency test; visibility assertion — desktop-GUI-adjacent, kept to the offline/local tier per P2-017 (no desktop GUI CI; local manual/scripted verification)
 Completion evidence for the ledger: window-close, background and visibility results
@@ -265,15 +265,15 @@ Notes: The old upstream edge WP-33<-26 (remote action/tool bridge) does not appl
 ```text
 Execute ArcForges delivery task SCOPE.10 — Reference drift check against Serial-Studio 639daafb.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-10).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-10).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-10 (python tools/delivery.py claim SCOPE.10 --worker <name>); task branch task/scope-10 in Design; ledger record ledger/tasks/scope-10.md.
 Kind/size: feature/S. Baseline: not-started.
 Outcome: A drift report exists comparing the reference against the bound commit, covering changed rows, newly introduced upstream material (mapped to an existing requirement or recorded as an accepted exclusion) and licence re-verification; every changed/new item carries a disposition.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.07 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.07
+- WP-33.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.07
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -293,16 +293,16 @@ Notes: Has no real code dependency on any other SCOPE task; can run at any time,
 ```text
 Execute ArcForges delivery task SCOPE.11 — Owned-artifact verification and real hardware integration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-11).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-11).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-11 (python tools/delivery.py claim SCOPE.11 --worker <name>); task branch task/scope-11 in ArcScope; ledger record ledger/tasks/scope-11.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: The WP-33 candidate closes: real packaged hardware-path and throughput/overrun/recovery acceptance recorded, no automatic upload of raw acquisition data, PG-08 and PG-03 evidence recorded for every producer this package owns.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.90 (full (excluding the generic-USB-V1 body text folded into SCOPE.04)): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.90
-- WP-33:p2-010-required-behavior-and-closure-sec P2-010 required-behavior-and-closure section (acquisition.source/framing/trigger profiles, gap/loss/durable-capture manifests, all accepted serial/network/file/USB sources) (P2-010 required-behavior-and-closure section: acquisition.source/framing/trigger profiles, gap/loss/durable-capture manifests, all accepted serial/network/file/USB sources, independent positive/negative vectors, actual owner integration): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, package-level obligation
+- WP-33.90 (full (excluding the generic-USB-V1 body text folded into SCOPE.04)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.90
+- WP-33:p2-010-required-behavior-and-closure-sec P2-010 required-behavior-and-closure section (acquisition.source/framing/trigger profiles, gap/loss/durable-capture manifests, all accepted serial/network/file/USB sources) (P2-010 required-behavior-and-closure section: acquisition.source/framing/trigger profiles, gap/loss/durable-capture manifests, all accepted serial/network/file/USB sources, independent positive/negative vectors, actual owner integration): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -330,15 +330,15 @@ Completion evidence for the ledger: owned-artifact and real-integration receipt:
 ```text
 Execute ArcForges delivery task SCOPE.12 — Visualisation: virtualised rendering, downsampling, cursors and markers.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-12).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-12).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-12 (python tools/delivery.py claim SCOPE.12 --worker <name>); task branch task/scope-12 in ArcScope; ledger record ledger/tasks/scope-12.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: Time-series and event visualisation meets the responsiveness budget at corpus scale with virtualised rendering and downsampling; the display explicitly discloses when it is downsampled; cursor readings are exact regardless of display resolution.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-34.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.00
+- WP-34.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.00
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -352,21 +352,21 @@ Unblocks: SCOPE.19
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): scale-corpus interaction measurements; downsampling-disclosure assertion; downsampled-vs-full-resolution cursor correctness — desktop rendering kept to local/offline tier per P2-017
 Completion evidence for the ledger: responsiveness, disclosure and cursor-exactness results
-Notes: RESOLVED FINDING, not an edge: the assignment hint suggested this might need the WP-13.14 Graphics native family (arc_graphics_* ABI). Checked 12-native-interop-and-media.md (the ArcScope native-interop authority, §8) directly: zero mentions of Graphics; its native surface is device/transport/high-rate acquisition primitives only. The Graphics native family's real consumer is ArcSlate (per the native and runtime-proof lanes' own contracts note: 'used by ArcSlate mainly'). ArcScope already carries Avalonia (Skia-based managed rendering, see ArcScope third-party/Avalonia.LICENSE.txt), which is sufficient for plotting/downsampling in pure C#.
+Notes: RESOLVED FINDING, not an edge: ArcScope's native surface (12-native-interop-and-media.md section 8) is device, transport and high-rate acquisition primitives only, with no graphics family. ArcScope already carries Avalonia (Skia-based managed rendering, see ArcScope third-party/Avalonia.LICENSE.txt), which is sufficient for plotting/downsampling in pure C#.
 ```
 
 ```text
 Execute ArcForges delivery task SCOPE.13 — Triggers with pre/post windows.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-13).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-13).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-13 (python tools/delivery.py claim SCOPE.13 --worker <name>); task branch task/scope-13 in ArcScope; ledger record ledger/tasks/scope-13.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: Triggers control capture and mark significant time events with exact pre- and post-trigger windows served by the rolling buffer; samples are provably unmodified; trigger storms are bounded.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-34.01 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.01
+- WP-34.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.01
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -385,17 +385,17 @@ Completion evidence for the ledger: trigger window, immutability and storm-bound
 ```text
 Execute ArcForges delivery task SCOPE.14 — Measurements: scope.measurement.v1.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-14).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-14).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-14 (python tools/delivery.py claim SCOPE.14 --worker <name>); task branch task/scope-14 in ArcScope; ledger record ledger/tasks/scope-14.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: Every measurement family in scope.measurement.v1 reproduces under its recorded profile/configuration within the declared numerical tolerance, with units and precision stated; independent reference values (including the Pearson r=1/r=-1 vectors and constant-input-unavailable case) pass.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-34.02 (full, including the required-design-implementation text: every basic family via declared population/sample-weighted formulas, half-open input selection, calibrated units, coverage/status rules, recorded pulse thresholds/interpolation, independent statistical hand-calculation and digital/analog/gap vectors): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.02
-- WP-34:orphaned-6-7-body-text-pearson-independe orphaned §6/§7 body text: 'Pearson independent vectors: x=[1,2,3], y=[2,4,6] gives r=1; y=[3,2,1] gives r=-1. Constant input is unavailable; preserve the declared lag and overlap rules' — a concrete correlation-family acceptance vector with no substep id of its own (orphaned §6/§7 body text: 'Pearson independent vectors: x=[1,2,3], y=[2,4,6] gives r=1; y=[3,2,1] gives r=-1. Constant input is unavailable; preserve the declared lag and overlap rules' — a concrete correlation-family acceptance vector with no substep id of its own; package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
-- WP-34:8-additional-completion-requirement-ever §8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim (§8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim; package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
+- WP-34.02 (full, including the required-design-implementation text: every basic family via declared population/sample-weighted formulas, half-open input selection, calibrated units, coverage/status rules, recorded pulse thresholds/interpolation, independent statistical hand-calculation and digital/analog/gap vectors): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.02
+- WP-34:orphaned-6-7-body-text-pearson-independe orphaned §6/§7 body text: 'Pearson independent vectors: x=[1,2,3], y=[2,4,6] gives r=1; y=[3,2,1] gives r=-1. Constant input is unavailable; preserve the declared lag and overlap rules' — a concrete correlation-family acceptance vector with no substep id of its own (orphaned §6/§7 body text: 'Pearson independent vectors: x=[1,2,3], y=[2,4,6] gives r=1; y=[3,2,1] gives r=-1. Constant input is unavailable; preserve the declared lag and overlap rules' — a concrete correlation-family acceptance vector with no substep id of its own; package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
+- WP-34:8-additional-completion-requirement-ever §8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim (§8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim; package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -415,15 +415,15 @@ Completion evidence for the ledger: measurement reference and reproduction resul
 ```text
 Execute ArcForges delivery task SCOPE.15 — Decoder framework and first-party protocol decoders.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-15).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-15).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-15 (python tools/delivery.py claim SCOPE.15 --worker <name>); task branch task/scope-15 in ArcScope; ledger record ledger/tasks/scope-15.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: A versioned decoder framework produces structured events (never raw channel data); malformed frames, checksum failures and unknown fields are surfaced with counts/locations; no decoder has a device-write path.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-34.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.03
+- WP-34.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.03
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -442,15 +442,15 @@ Notes: Independent of SCOPE.14 (measurements); the two can proceed in parallel. 
 ```text
 Execute ArcForges delivery task SCOPE.16 — Analysis definitions and recipes as native ProductJobs.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-16).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-16).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-16 (python tools/delivery.py claim SCOPE.16 --worker <name>); task branch task/scope-16 in ArcScope; ledger record ledger/tasks/scope-16.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: Versioned analysis definitions compose into recipes; results are derived data reconstructable from evidence plus configuration; long analyses run as long-running product jobs with progress and cancellation; deleting and rebuilding all results matches the profile oracle within tolerance; historical results record their definition version.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-34.04 (full, including the required-design-implementation text: same profile through native ProductJobs over a frozen committed source; persist request/config hashes, resolved levels, per-family quality; delete-and-rebuild must match the profile oracle within tolerance): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.04
+- WP-34.04 (full, including the required-design-implementation text: same profile through native ProductJobs over a frozen committed source; persist request/config hashes, resolved levels, per-family quality; delete-and-rebuild must match the profile oracle within tolerance): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.04
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -470,15 +470,15 @@ Notes: 'Native ProductJobs' reads as ArcScope's own in-process long-running Task
 ```text
 Execute ArcForges delivery task SCOPE.17 — Annotations, findings and session/capture comparison.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-17).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-17).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-17 (python tools/delivery.py claim SCOPE.17 --worker <name>); task branch task/scope-17 in ArcScope; ledger record ledger/tasks/scope-17.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: Annotations and findings exist as authored content with identity and history, never written into raw capture; session-to-session and capture-to-capture comparison states its alignment explicitly.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-34.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.05
+- WP-34.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.05
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -497,16 +497,16 @@ Notes: Independent of SCOPE.14/15/16 (measurements/decoders/recipes); can run in
 ```text
 Execute ArcForges delivery task SCOPE.18 — Reports and reproducibility.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-18).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-18).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-18 (python tools/delivery.py claim SCOPE.18 --worker <name>); task branch task/scope-18 in ArcScope; ledger record ledger/tasks/scope-18.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: Reports compose analyses, measurements, findings and visualisations into a portable exported form; every element traces to session, capture, time range, configuration snapshot, decoder version and analysis version; regenerating from recorded sources produces equivalent results.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-34.06 (full, including both required-design-implementation paragraphs: report/UI/offline-recomputation comparison with rendering/rounding never changing the stored numeric result; report-section origin plus enclosing union; deterministic measurement beside AI narrative never relabelled): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.06
-- WP-34:8-additional-completion-requirement-ever §8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
+- WP-34.06 (full, including both required-design-implementation paragraphs: report/UI/offline-recomputation comparison with rendering/rounding never changing the stored numeric result; report-section origin plus enclosing union; deterministic measurement beside AI narrative never relabelled): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.06
+- WP-34:8-additional-completion-requirement-ever §8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -528,16 +528,16 @@ Notes: Content-origin behavior (requirements/07-security-privacy-and-trust.md) a
 ```text
 Execute ArcForges delivery task SCOPE.19 — Owned-artifact verification and real integration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-19).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-19).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-19 (python tools/delivery.py claim SCOPE.19 --worker <name>); task branch task/scope-19 in ArcScope; ledger record ledger/tasks/scope-19.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: The WP-34 candidate closes: scope.measurement.v1 independent expected results, invalid/status cases and reporting references pass; native acceleration does not redefine the result; PG-08 hardware-based measurement/analysis evidence is recorded.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-34.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.90
-- WP-34:p2-010-required-behavior-and-closure-sec P2-010 required-behavior-and-closure section (every remaining spectrum/correlation/threshold/event-pattern/decoder analysis profile in architecture 26) (P2-010 required-behavior-and-closure section: every remaining spectrum/correlation/threshold/event-pattern/decoder analysis profile in architecture 26, independent numeric and gap/error vectors): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
+- WP-34.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.90
+- WP-34:p2-010-required-behavior-and-closure-sec P2-010 required-behavior-and-closure section (every remaining spectrum/correlation/threshold/event-pattern/decoder analysis profile in architecture 26) (P2-010 required-behavior-and-closure section: every remaining spectrum/correlation/threshold/event-pattern/decoder analysis profile in architecture 26, independent numeric and gap/error vectors): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -562,15 +562,15 @@ Notes: Confirms the design's explicit non-edge: WP-34 does not wait on WP-51 (th
 ```text
 Execute ArcForges delivery task SCOPE.20 — ArcChat capability surface for ArcScope.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-20).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-20).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-20 (python tools/delivery.py claim SCOPE.20 --worker <name>); task branch task/scope-20 in ArcScope; ledger record ledger/tasks/scope-20.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: Query, analysis, authoring and operational capabilities are declared, each with risk level, permission requirement and approval posture; start/stop capture are treated as real-side-effect operations, not read-only conveniences.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-35.00 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.00
+- WP-35.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.00
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -580,7 +580,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] AST.12: real ArcChat security/approval surface actually enforcing these descriptors end to end
 
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.AssistantIntegration/**; ArcScope:tests/ArcScopePipelineTests/Capabilities/**
-Unblocks: SCOPE.25, SCOPE.26
+Unblocks: HAR.05, SCOPE.25, SCOPE.26
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): descriptor validation per capability; owner-side refusal tests; operational-capability risk assertion — offline
 Completion evidence for the ledger: capability descriptor and refusal results
@@ -590,16 +590,16 @@ Notes: The old WP33<-26 edge does not transfer here either: WP-26 is the remote 
 ```text
 Execute ArcForges delivery task SCOPE.21 — Bounded context provision for AI.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-21).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-21).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-21 (python tools/delivery.py claim SCOPE.21 --worker <name>); task branch task/scope-21 in ArcScope; ledger record ledger/tasks/scope-21.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: ArcScope contributes structured results (measurements, analysis outputs, decoded event summaries, selected ranges) as bounded context; raw capture structurally cannot enter a context payload; oversized context is refused explicitly.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-35.01 (full, including required-design-implementation text: project measurement values with profile, immutable source/configuration binding, counts, coverage and status into bounded context/report references; unknown-profile and insufficient results are never silently rendered as numeric zero): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.01
-- WP-35:4-content-origin-content-unit-binding-ob §4 content-origin/content-unit binding obligation applying broadly to WP35's changed files (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
+- WP-35.01 (full, including required-design-implementation text: project measurement values with profile, immutable source/configuration binding, counts, coverage and status into bounded context/report references; unknown-profile and insufficient results are never silently rendered as numeric zero): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.01
+- WP-35:4-content-origin-content-unit-binding-ob §4 content-origin/content-unit binding obligation applying broadly to WP35's changed files (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -619,15 +619,15 @@ Completion evidence for the ledger: structural raw-capture exclusion and boundin
 ```text
 Execute ArcForges delivery task SCOPE.22 — Cloud sync scope (metadata, not raw capture).
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-22).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-22).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-22 (python tools/delivery.py claim SCOPE.22 --worker <name>); task branch task/scope-22 in ArcScope; ledger record ledger/tasks/scope-22.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: The ArcScope sync scope excludes raw capture by default and includes metadata, analysis, annotations, findings, reports and configurations; enabling project sync transfers no raw capture bytes; the policy is visible per project and per session; the included scope converges across devices.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-35.02 (all work except the parts mapped to SCOPE.27): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.02
+- WP-35.02 (all work except the parts mapped to SCOPE.27): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.02
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -648,15 +648,15 @@ Completion evidence for the ledger: no-raw-bytes sync assertion and convergence 
 ```text
 Execute ArcForges delivery task SCOPE.23 — Explicit per-session raw capture upload.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-23).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-23).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-23 (python tools/delivery.py claim SCOPE.23 --worker <name>); task branch task/scope-23 in ArcScope; ledger record ledger/tasks/scope-23.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: Raw upload is an explicit per-session act with size/destination/consequence stated, using the chunked upload path with resumption and verification; no automatic trigger path exists anywhere (not from AI, not from enabling sync).
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-35.03 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.03
+- WP-35.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.03
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -675,17 +675,17 @@ Completion evidence for the ledger: explicit upload, no-auto-trigger and resumpt
 ```text
 Execute ArcForges delivery task SCOPE.24 — Import, export and format fixtures.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-24).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-24).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-24 (python tools/delivery.py claim SCOPE.24 --worker <name>); task branch task/scope-24 in ArcScope; ledger record ledger/tasks/scope-24.md.
 Kind/size: feature/L. Baseline: not-started.
 Outcome: Native full-fidelity bundle export/import round-trips with equivalence; tabular export carries explicit precision warnings; import enters the unified session model with a recorded origin (never disguised as a live device); every claimed import version has a fixture — satisfying PG-07 for ArcScope.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-35.04 (full, including required-design-implementation text: native bundles preserve origin, measurement profile/configuration and simulator provenance separately; CSV/JSON/report export publishes required sidecars atomically; structured context carries selected origins and measurement quality, never raw capture): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.04
-- WP-35:4-content-origin-content-unit-binding-ob §4 content-origin/content-unit binding obligation applying broadly to WP35's changed files (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
-- WP-35:8-additional-completion-requirements-mea §8 additional completion requirements (measurement meaning/numerical profile survives portability; content-origin carrier vectors) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
+- WP-35.04 (full, including required-design-implementation text: native bundles preserve origin, measurement profile/configuration and simulator provenance separately; CSV/JSON/report export publishes required sidecars atomically; structured context carries selected origins and measurement quality, never raw capture): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.04
+- WP-35:4-content-origin-content-unit-binding-ob §4 content-origin/content-unit binding obligation applying broadly to WP35's changed files (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
+- WP-35:8-additional-completion-requirements-mea §8 additional completion requirements (measurement meaning/numerical profile survives portability; content-origin carrier vectors) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -706,15 +706,15 @@ Notes: This task also carries the bundle-side half of WP-51's 'simulator provena
 ```text
 Execute ArcForges delivery task SCOPE.25 — Extension boundary: no third-party raw-capture write path.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-25).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-25).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-25 (python tools/delivery.py claim SCOPE.25 --worker <name>); task branch task/scope-25 in ArcScope; ledger record ledger/tasks/scope-25.md.
 Kind/size: feature/S. Baseline: not-started.
 Outcome: No extension-reachable path can write raw capture; extension access to ArcScope is through capabilities with owner-side validation only.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-35.05 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.05
+- WP-35.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.05
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -734,15 +734,15 @@ Completion evidence for the ledger: extension no-write structural results
 ```text
 Execute ArcForges delivery task SCOPE.26 — Owned-artifact verification and real integration.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-26).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-26).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-26 (python tools/delivery.py claim SCOPE.26 --worker <name>); task branch task/scope-26 in ArcScope; ledger record ledger/tasks/scope-26.md.
 Kind/size: feature/M. Baseline: not-started.
 Outcome: The WP-35 candidate closes: metadata sync and explicit-upload behavior remain distinct; context/report data retain measurement identity and ownership across real service calls; PG-03 licence/provenance evidence recorded.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-35.90 (full): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.90
+- WP-35.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.90
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -765,15 +765,16 @@ Completion evidence for the ledger: owned-artifact and real-integration receipt
 ```text
 Execute ArcForges delivery task SCOPE.27 — Real ArcScope metadata sync against the deployed Cloud sync engine.
 
-Task record: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-27).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design-B\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan-B\arcforges-implementation.md.
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-27).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope). Also touches: Cloud.
 Claim and handoff record: claims/scope-27 (python tools/delivery.py claim SCOPE.27 --worker <name>); task branch task/scope-27 in ArcScope; ledger record ledger/tasks/scope-27.md.
 Kind/size: integration/M. Baseline: not-started.
 Outcome: ArcScope session and capture metadata sync scopes converge across devices against the deployed Cloud sync engine, replacing the contract-bound sync substitute; raw captures stay local unless explicitly uploaded.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-35.02 (real-integration evidence: metadata sync scope converges against deployed Cloud authority): C:\MyFile\Projects\ArcForges-Design-B\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.02
+- WP-35.02 (real-integration evidence: metadata sync scope converges against deployed Cloud authority): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.02
+- WP-25.07 (ArcScope object-kind coverage of the convergence harness; the real ArcScope client participates in the three-device run): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\25-sync-engine-and-blob-lifecycle.md, anchor rule-wp-25.07
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -784,7 +785,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: ArcScope:tests/ArcScope.Tests.Integration/Sync/**
-Unblocks: SCOPE.22
+Unblocks: CLOUD.44, CLOUD.47, SCOPE.22
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run against a deployed test environment, recorded once; offline checks in CI; no hosted live-service CI (P2-017).
 Completion evidence for the ledger: Candidate identities, deployed environment identity, convergence scenario results and untested coverage.
