@@ -107,11 +107,11 @@ Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.03 | Contracts | M | CON.02, CON.23, ADOPT.03.contracts (adoption) | Resource/Sync owner-body admission: closed Sync mutation allowlist + cross-owner/wrong-revision/opaque-object/forbidden-path negatives |
 | CON.04 | Contracts | L | ADOPT.03.contracts (adoption) | ContentSandbox service schema (15 methods: session/slot/image/PDF) |
 | CON.05 | Contracts | M | ADOPT.03.contracts (adoption) | Extension/Connector/LocalBootstrap service schema (annex09 helper closure minus ContentSandbox) |
-| CON.06 | Contracts | L | CON.02, CON.23, ADOPT.03.contracts (adoption) | Product in-process port completion: IScopeOperations/IChatOperations + infra ports |
+| CON.06 | Contracts | L | CON.02, CON.23, CON.05, ADOPT.03.contracts (adoption) | Product in-process port completion: IScopeOperations/IChatOperations + infra ports |
 | CON.07 | Contracts | L | CON.02, CON.11, ADOPT.03.contracts (adoption) | Identity/session/device operation registry + native-auth and browser HTTP exceptions |
-| CON.08 | Contracts | M | CON.02, ADOPT.03.contracts (adoption) | Entitlement/commerce operation registry |
-| CON.09 | Contracts | L | CON.03, ADOPT.03.contracts (adoption) | Sync/resource-transfer/objects operation registry + realm-transfer.v1 |
-| CON.10 | Contracts | L | CON.02, ADOPT.03.contracts (adoption) | Task/approval/bridge/chat/agent/automation/search operation registry + ai-internal package |
+| CON.08 | Contracts | M | CON.02, CON.06, ADOPT.03.contracts (adoption) | Entitlement/commerce operation registry |
+| CON.09 | Contracts | L | CON.03, CON.06, ADOPT.03.contracts (adoption) | Sync/resource-transfer/objects operation registry + realm-transfer.v1 |
+| CON.10 | Contracts | L | CON.02, CON.06, ADOPT.03.contracts (adoption) | Task/approval/bridge/chat/agent/automation/search operation registry + ai-internal package |
 | CON.11 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Application/history/execution/events operations (annex10's 13 additions) + EventService |
 | CON.12 | Contracts | M | ADOPT.03.contracts (adoption) | Extension and policy schemas: manifest.v1/workflow.v1/panel.v1/policy body.v1/configuration.v1 |
 | CON.13 | Contracts | S | CON.02, ADOPT.03.contracts (adoption) | Package catalog operation registry (CatalogService) |
