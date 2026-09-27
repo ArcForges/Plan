@@ -346,7 +346,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/gov-13 (python tools/delivery.py claim GOV.13 --worker <name>); task branch task/gov-13 in DesktopPlatform; ledger record ledger/tasks/gov-13.md.
 Kind/size: governance/M. Baseline: not-started.
-Outcome: A build-produced report classifies all 429 catalogued invariants as enforced-and-passing / enforced-and-failing / not-yet-implemented, every classification derived from an actual test-run result, without re-deriving the design-stage mapping (PG-06, already closed) and without itself closing PG-11.
+Outcome: A build-produced report classifies all current catalogued invariants (406 after reduced-family retirement) as enforced-and-passing / enforced-and-failing / not-yet-implemented, every classification derived from an actual test-run result, without re-deriving the design-stage mapping (PG-06, already closed) and without itself closing PG-11.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-05.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\05-architecture-and-repository-policy-tests.md, anchor rule-wp-05.05
@@ -362,8 +362,8 @@ Permitted write scope: DesktopPlatform:eng/accounting/invariant-report.py or equ
 Unblocks: GOV.15
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Report generation reads real CI test-run results only; offline; re-run as each owning package lands enforcement (not a one-time close), per P2-017's 'runtime checks local, affected-scope, once, existing environment only' spirit.
-Completion evidence for the ledger: 429-row accounting table, every row classified from a real result.
-Notes: Will read as mostly 'not yet implemented' immediately after WP05 since most of the 429 invariants are owned by packages far downstream (WP06...WP53, per invariant-coverage.md's ownerCell). PG-11 stays open per-invariant in its OWNING package; GOV.13 never closes PG-11 or PG-06 itself - it only reports.
+Completion evidence for the ledger: Current-catalogue-complete accounting table, every row classified from a real result.
+Notes: Will read as mostly 'not yet implemented' immediately after WP05 since most current invariants are owned by packages far downstream (WP06...WP53, per invariant-coverage.md's ownerCell). PG-11 stays open per-invariant in its OWNING package; GOV.13 never closes PG-11 or PG-06 itself - it only reports.
 ```
 
 ```text
