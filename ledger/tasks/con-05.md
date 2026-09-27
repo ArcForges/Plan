@@ -1,0 +1,22 @@
+---
+task: CON.05
+status: complete
+recorded: 2026-09-28
+claimant: w-20260927-mobile-lane
+epoch: 1
+---
+
+# Extension and local platform contracts
+
+- Implementation: [Contracts PR57](https://github.com/ArcForges/Contracts/pull/57), final reviewed head `603c94ac079f71cc46d7f93b0b59dee73e1d9d75`, independent final approval [5860706606](https://github.com/ArcForges/Contracts/pull/57#issuecomment-5860706606), merge/source `eb650e5b9ef7fc06f0eb79ee167b896e4252b50e`. Full source review and integration deltas are retained in the PR; the integration owner confirmed a clean primary fast-forward.
+- Outcome: generated public Extension Handshake/Invoke/Stop contracts and internal LocalBootstrap/ConnectorBroker contracts, with existing RenewLease and LocalChunk fields preserved. Invocation uses exclusive expectedRev/expectedNative fields and reserves retired field/name spellings. Twelve operation metadata rows express admitted capability, verified launch profile and owning-parent connector boundaries. Active Hub/SSO retirement checks retain the intended local architecture.
+- Contract acceptance: 12 public and 33 internal constraint-shard messages and 58 independent offline fixture vectors. Generated envelopes, shape validation and roundtrips cover malformed IDs, exclusive alternatives, bounds and operation metadata. Seven CON05 Python test groups passed. Generated CSharp, TypeScript, Java and Kotlin outputs were produced by the official generator over the final CON04 base.
+- Combined validation: final StructureTests include all CON05 cases, 86 inherited shape cases, 199 Extension/policy cases, 353 Foundation cases and CON02 fixtures. Serialization probe passed 31 binary and 51 JSON cases, 215 message records and five bound methods. Release builds passed with the existing SDK10.0.401 invocation-only adapter; CI retains pinned10.0.400 and passed full generation/build/NativeAOT/pack verification. No toolchain installation or proxy change occurred.
+- Support inventories: compiled access237 types, dependency admission145 dependencies/191 inputs, immutable provenance and full formatting passed. Combined Platform and Sandbox catalogues preserve both owners. The current CON05 binding and admission successors retain the CON04 predecessor and all historical receipts; no external dependency coordinate, version or licence boundary changed.
+- Accepted support authority: Design74 merge `4a068c5b8185fd64493a34132b5692f1418c3653` and Plan34 merge `f2d13098b72275f3a548df7491769c4bfb0b5074` clarify launch/connector metadata and affected transitive lock scope. Design87/Plan55 authorize only observed public digest false positives in exact task-owned admission JSON paths. The final exception remains generic-api-key rule plus exact path/key/hash/whole-line matching; immutable source proof and adversarial negative coverage passed within22 admission tests.
+- Exact PR [CI36357786488](https://github.com/ArcForges/Contracts/actions/runs/36357786488) and [Security36357786496](https://github.com/ArcForges/Contracts/actions/runs/36357786496) passed before integration. Original main [publication36358269955](https://github.com/ArcForges/Contracts/actions/runs/36358269955), run216 attempt1 at source `eb650e5b9ef7fc06f0eb79ee167b896e4252b50e`, succeeded: Build candidate, Verify, Publish NuGet, Publish npm and Publish Maven channel. Existing NuGet/npm outputs use `1.0.0-ci.216.1`; existing Maven coordinates use `1.0.0-SNAPSHOT` bound to this exact source and candidate.
+- Coverage limits: contract/static/offline acceptance only. No live local broker, OS identity enforcement, secret custody, provider connection, installed consumer, device, deployment or runtime authorization acceptance is claimed. Corresponding implementation owners retain those obligations. No remaining completion prerequisite after original publication and ledger acceptance.
+- Ledger exact review and merge identities are retained in the claim and Plan PR history; branches and worktrees remain retained.
+
+- Original candidate authority: `contracts-candidate-36358269955-1`, artifact ID `10944059154`, digest `sha256:2101459706fdf38faec51322fd30999a4ddaec444bcbc06c33f04e1e0836e8f5`. Its retained manifest owns individual package hashes; successful publishers verify and transfer those original bytes. Naming evidence artifact `10943884499` has digest `sha256:f303a5ba133974ec7e06c2b0952f14d644f11d136c394908bdb28552f0bfdb57`. Identities were read from original GitHub metadata; no published bytes were downloaded for routine verification.
+
