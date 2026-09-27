@@ -377,7 +377,7 @@ Kind/size: governance/M. Baseline: not-started.
 Outcome: Checks run against the current Design repository and produce zero findings: every internal link resolves; every cited requirement/architecture rule/decision/verification finding/gate identifier exists; no superseded name appears as current outside docs/deprecated-inputs/; every Phase 1 decision is cited by at least one Phase 2 document or its non-applicability is stated; the delivery graph has satisfiable prerequisites, current generated views and complete obligation coverage; and the decision-coverage check passes.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-05.06 (full: six checks over docs/ in ArcForges-Design, plus the 23+8-row Phase-1/Phase-2 decision-coverage check against traceability-matrix.md): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\05-architecture-and-repository-policy-tests.md, anchor rule-wp-05.06
+- WP-05.06 (full: six checks over docs/ in ArcForges-Design, plus semantic coverage of the 22 retained Phase 1 rows, seven retained initial Phase 2 rows and twelve current closure groups; trace retired decisions through P2-019 without recreating removed obligations): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\05-architecture-and-repository-policy-tests.md, anchor rule-wp-05.06
 
 Entry condition: adoption slice ADOPT.02.governance is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -392,7 +392,7 @@ Unblocks: GOV.15
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline documentation-only checks against a pinned, clean Design commit fetched in isolation (no Design program or repository hook is run); zero findings required; PR CI.
 Completion evidence for the ledger: Zero-findings report across all six checks plus the decision-coverage check.
-Notes: Extends the corpus and decision-coverage checks after GOV.18 has migrated the retired graph validator and re-pinned the export. Reuse that migration evidence; this broader integrity task is not a prerequisite for the initial repin.
+Notes: Extends the corpus and decision-coverage checks after GOV.18 has migrated the retired graph validator and re-pinned the export. Reuse that migration evidence; this broader integrity task is not a prerequisite for the initial repin. Current coverage follows the effective reduced-family authority: 22 of the original 23 Phase 1 decisions, seven of the initial eight Phase 2 decisions and twelve current closure groups. Historical acceptance totals remain historical, later amendment records remain traceable, and retirement is accounted through P2-019. Test semantic row identity, successor and producer/consumer mappings, not count equality alone.
 ```
 
 ```text
