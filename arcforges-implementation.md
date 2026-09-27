@@ -32,7 +32,7 @@ The retired serial task list remains in Git history (`list.md` at commit `0fa610
 
 Run the tool by its absolute path from any directory, in Git Bash or PowerShell: `python C:\MyFile\Projects\Plan\tools\delivery.py <command>` (keep the Plan primary checkout fast-forwarded so the tool itself is current). The current directory never selects the Plan or Design checkout the tool reads. Execution commands read no working tree, only the **authoritative state**: the merged `main` of Design and Plan and the Plan record branches, fetched on every call into a private ref namespace, so concurrent workers never move a ref another worker has read. Unmerged commits and uncommitted edits in any checkout, including your own, never count; `ready --local --plan <Plan worktree> --design <Design worktree>` shows such an unreviewed state of the named working trees for review and is never a basis for claiming.
 
-The tool fails closed. An invalid graph or ledger authorizes no work. An invalid claim, lease or role record keeps its item unavailable until a reviewed fix repairs it. A claim that changed concurrently writes nothing (exit 2). A failed network operation stops with the exact operation (exit 3): report it and stop.
+The tool fails closed. An invalid graph or ledger authorizes no work. An invalid claim, lease or role record keeps its item unavailable until a reviewed fix repairs it. A claim that changed concurrently writes nothing (exit 2). A failed network operation exits with the exact operation (exit 3). Diagnose the failure and retry transient failures with bounded backoff under the network policy; before retrying a write, inspect authoritative remote state to avoid duplicating a successful operation.
 
 | Command | Purpose |
 |---|---|
@@ -157,7 +157,7 @@ This policy governs every task and the adoption stage. It follows Design P2-017 
 
 ## Network and resources
 
-Use the normal network connection. On a failed network operation, stop and report the exact operation rather than changing networking or repeatedly retrying. Do not invoke wsl.exe or WSL wrappers; use a directly available WSL terminal only if necessary. Run at most one CPU-heavy local build or test per workstation at a time, through the build slot, and reuse existing caches; coding and review continue in parallel.
+Use the normal network connection. Diagnose transient network failures and retry with bounded backoff, recording the exact operation and error when the failure persists. Inspect remote state before retrying a write that may have succeeded. Do not change proxy or network settings. Continue independent work and request user intervention only when indispensable manual login or credentials are required. Do not invoke wsl.exe or WSL wrappers; use a directly available WSL terminal only if necessary. Run at most one CPU-heavy local build or test per workstation at a time, through the build slot, and reuse existing caches; coding and review continue in parallel.
 
 ## Review and merge
 

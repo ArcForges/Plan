@@ -26,7 +26,7 @@ Coordination is at the narrowest boundary: each repository's integration owner (
 
 ## Network and resources
 
-Use the normal network path. On a failed network operation, stop and report the exact operation rather than changing networking or repeatedly retrying. Do not invoke wsl.exe or WSL wrappers; use a directly available WSL terminal only if necessary. Parallelize independent tasks, not competing heavy local builds.
+Use the normal network path. Under the accepted user clarification of 2026-09-27, diagnose transient network failures and retry with bounded backoff, recording the exact operation and error when the failure persists. Inspect remote state before retrying a write that may have succeeded. Do not change proxy or network settings. Continue independent work and request user intervention only when indispensable manual login or credentials are required. Do not invoke wsl.exe or WSL wrappers; use a directly available WSL terminal only if necessary. Parallelize independent tasks, not competing heavy local builds.
 
 ## Review and merge
 

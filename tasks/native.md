@@ -73,7 +73,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/nat-05 (python tools/delivery.py claim NAT.05 --worker <name>); task branch task/nat-05 in DesktopPlatform; ledger record ledger/tasks/nat-05.md.
 Kind/size: producer/S. Baseline: not-started.
-Outcome: Each of the four probes has a written conclusion (proved / not proved / downstream constraint / open items); every native dependency the probes introduced has a recorded licence position; the tests/HardwareLab device inventory is created (device/firmware/driver versions) -- seeding PG-08 (completed later by NAT.28/WP-13.16).
+Outcome: Each of the two retained probes (A and C) has a written conclusion (proved / not proved / downstream constraint / open items); every native dependency the probes introduced has a recorded licence position; the tests/HardwareLab device inventory is created (device/firmware/driver versions) -- seeding PG-08 (completed later by NAT.28/WP-13.16).
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-13.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\13-high-risk-technical-probes.md, anchor rule-wp-13.04
@@ -89,7 +89,7 @@ Permitted write scope: DesktopPlatform:eng/verification/probe-evidence/**; Deskt
 Unblocks: NAT.30
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Completeness check: every probe has a recorded environment, procedure, result and conclusion
-Completion evidence for the ledger: Four written probe conclusions; licence positions for probe-introduced dependencies; hardware inventory shell
+Completion evidence for the ledger: Two written probe conclusions; licence positions for probe-introduced dependencies; hardware inventory shell
 Notes: Small synthesis task; not itself a risk probe.
 ```
 
@@ -101,7 +101,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/nat-06 (python tools/delivery.py claim NAT.06 --worker <name>); task branch task/nat-06 in DesktopPlatform; ledger record ledger/tasks/nat-06.md.
 Kind/size: producer/L. Baseline: not-started.
-Outcome: annex-06 common preambles, fixed numeric keys, pack8 records, ownership/cancellation/bounded-buffer helpers compile as C17/C++20 headers and C# layouts for all seven families; every field offset and all 17 normative sizes are asserted; wrong-size/version/null/closed-handle cases and zero-leaked-output-on-failure are proven. ArcForges.Native.Abstractions managed package (status/handle types only) is published. The five existing probe-library identities (incl. arc_metal_*) are retained unchanged.
+Outcome: annex-06 common preambles, fixed numeric keys, pack8 records, ownership/cancellation/bounded-buffer helpers compile as C17/C++20 headers and C# layouts for the retained still-image, instrument and PDF families; every field offset and all 17 normative sizes are asserted; wrong-size/version/null/closed-handle cases and zero-leaked-output-on-failure are proven. ArcForges.Native.Abstractions managed package (status/handle types only) is published. The existing arc_image_* probe-library identity is retained unchanged; retired families are removed by GOV.17 before this task starts.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-13.05 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\13-high-risk-technical-probes.md, anchor rule-wp-13.05
