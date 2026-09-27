@@ -1,0 +1,22 @@
+---
+task: PLT.01
+status: complete
+recorded: 2026-09-28
+claimant: w-20260927-foundation
+epoch: 1
+---
+
+# Single atomic SQLite write path
+
+## Evidence
+
+- Implementation: [DesktopPlatform PR71](https://github.com/ArcForges/DesktopPlatform/pull/71), bundled with PLT.02 and PLT.04. Final reviewed head `98d9c5ca96f400d45d1e9bc9a146781e64d00837`, independent mobile approval [5860838788](https://github.com/ArcForges/DesktopPlatform/pull/71#issuecomment-5860838788), following the complete source review and bounded corrections. Implementation merge `48a3ef4fcb5e356d4a50d0317f93a1cb1f314b6e`. Publication: normal main [run36359293616](https://github.com/ArcForges/DesktopPlatform/actions/runs/36359293616) succeeded at source `48a3ef4fcb5e356d4a50d0317f93a1cb1f314b6e`. `ArcForges.Persistence.Sqlite/1.0.0-ci.33.1` is among the eight successful pushes in publisher job `108734304036`. Original provider candidate `nuget-candidate-36359293616-1`, artifact `10944818667`, has archive digest `sha256:ca330cca4b1a395534d4609266e7aacf8af47501059adf4664431e39b7ddf225`. This is provider metadata; no artifact bytes were downloaded for revalidation. Primary clean fast-forward was confirmed; no post-merge runtime cycle ran.
+- WP-07.00 and the content-origin co-commit contribution: one owner-repository IStore/WriteCommand/CommitUnit path validates and authorizes, applies payload/origin, appends the journal, advances the typed source version, enqueues publication, persists the command receipt, commits and then notifies. Provider connections/transactions remain internal. Reads are independent snapshots and SQLite serializes writers across store instances.
+- Durable command IDs bind semantic owner content. Same-command retries return a HAPPENED receipt without repeating effects; changed semantic content or unauthorized receipt access refuses. Interrupted post-commit returns and notification failures reconcile through the same command ID rather than falsely declaring no effect.
+- Cloud, native and composite local projection tokens remain distinct. Pending local edits and remote acknowledgements advance the complete materialized token, rejecting stale work. Native local edit metadata retains a durable owner high watermark independently of journal order and native revision.
+- Payload hashes, typed content-origin profile/IDs/kinds, bounded parent declarations, retained contributing kind unions and immutable origin identities are checked. Protobuf unknown fields survive. Unsupported profiles refuse destructive writes. History roots and transitive lineage use persistent reference counts; fixed per-commit root/origin/edge budgets avoid unbounded garbage collection. Immutable identity checksums survive collection.
+- Real local SQLite failure injection at apply, journal, version, outbox, receipt and post-commit acknowledgement proves rollback or one complete durable commit on reopen; retry leaves one journal/outbox/receipt effect. Concurrency, composite stale-work refusal, origin validation, history/lineage retention and bounded collection, notification reconciliation and public storage-handle boundary tests are retained. The final affected Windows x64 SQLite suite passed 47/47 cases, zero failed or skipped, in Release using existing SDK10.0.401 through the workstation build slot after final integration onto cdd16cf5ed8b505779facf8bb55f18d95ba7cdcd. Local log: artifacts/persistence-final-test.log. All 12 retained exact-head checks passed in [run36358863088](https://github.com/ArcForges/DesktopPlatform/actions/runs/36358863088), including exact SDK10.0.400 Linux compilation/packaging/offline tests and Windows native staging.
+- Dependency admission binds Microsoft.Data.Sqlite/Core 10.0.12 and the four SQLitePCLRaw 2.1.12 packages, exact generated locks, six inspected cached nuspecs and their licences/source metadata. Immutable predecessor receipts remain preserved. The audited internal SQL sink has only the narrowly authorized method-level CA2100 exception from Design PR91 / Plan PR62; request/content data are bound parameters and owner migration SQL is fenced by the SQLite authorizer.
+- No SQLite mock, external service, OS process kill, power-loss hardware, physical device, GUI, browser, installed-consumer CI or product snapshot/recovery acceptance is claimed. PLT.02's actual snapshot integration is separately staged under PLT.03; it does not weaken this task's real-file atomicity acceptance.
+
+No completion prerequisite remains. Ledger review and merge identity are retained by this ledger PR and the task claim history.
