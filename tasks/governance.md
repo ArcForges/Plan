@@ -350,7 +350,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.02.governance is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] GOV.04: at least one owning package's real policy-test run to classify (DesktopPlatform's own AT-*/RP-* results)
-- [artifact] GOV.17: the invariant export regenerated from this Design repository
+- [artifact] GOV.18: the invariant export regenerated from this Design repository
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -379,7 +379,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.02.governance is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] GOV.01: the citation/anchor index and continuing drift check installed by GOV.01 (PG-21)
-- [artifact] GOV.17: the design-policy export re-pinned to this Design repository
+- [artifact] GOV.18: the design-policy export re-pinned to this Design repository
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -455,17 +455,17 @@ Notes: Covers two WP05 package-level obligations that carry no WP-05.MM anchor (
 ```
 
 ```text
-Execute ArcForges delivery task GOV.17 — Retire the DesktopPlatform material outside the product family and re-pin the design-policy export.
+Execute ArcForges delivery task GOV.17 — Retire the native families outside the product family and move the still-image shim.
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\governance.md (anchor task-gov-17).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/gov-17 (python tools/delivery.py claim GOV.17 --worker <name>); task branch task/gov-17 in DesktopPlatform; ledger record ledger/tasks/gov-17.md.
-Kind/size: governance/L. Baseline: not-started.
-Outcome: The Media, Colour and Otio native families and the macOS Metal graphics probe leave DesktopPlatform - ABI directories, overlays, managed and runtime projects, oracle tests, solution entries and package registrations - and no further versions of them are published; the still-image shim moves to native/arcimage-abi under the logical library ArcImageNative while its published arc_image_* symbols stay unchanged; runtime-ownership, licence-boundary and reconciliation policy data drop the retired repositories and families; the design-policy export is re-pinned to a reviewed commit of this Design repository and glossary-terms.json and invariants.json are regenerated from it; provenance records of reused files stay unchanged.
+Kind/size: governance/M. Baseline: not-started.
+Outcome: The Media, Colour and Otio native families and the macOS Metal graphics probe leave DesktopPlatform - ABI directories, overlays, managed and runtime projects, oracle tests, solution entries and package registrations - and no further versions of them are published; the still-image shim moves to native/arcimage-abi under the logical library ArcImageNative while its published arc_image_* symbols stay unchanged; provenance records of reused files stay unchanged.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- P2-019 (retirement of the accepted DesktopPlatform native families, projects, packages, tests and policy data whose only consumers left the family; the neutral identity of the still-image shim; the design-policy export re-pinned to this Design repository): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-019
+- P2-019 (retirement of the accepted DesktopPlatform native families, projects, packages and tests whose only consumers left the family; the neutral identity of the still-image shim): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-019
 
 Entry condition: adoption slice ADOPT.02.governance is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -473,11 +473,39 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:native/* (retired family directories and the moved still-image directory); DesktopPlatform:native/CMakeLists.txt; DesktopPlatform:src/Native/* (retired family projects and the still-image logical library name); DesktopPlatform:tests/NativeAbiTests/**; DesktopPlatform:win.slnx; DesktopPlatform:eng/packaging/packages.json; DesktopPlatform:eng/policy/**; DesktopPlatform:docs/design-policy.md; DesktopPlatform:docs/native-reconciliation.md
-Shared resources (follow the owner protocol): RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.; RES-desktopplatform-package-inventory (append): Each producer task adds its own package entry; every merge to main packs and publishes all packages at one version; consumers pin the candidate produced by the merge of the capability they need, never waiting for a package closure task; one merge queue.; RES-desktopplatform-native-build (append): The vcpkg baseline and overlay ports change only through a dependency-admission change with licence and provenance receipts; each native family adds its own CMake targets and workflow entries; triplet or port changes are rebased and rebuilt by their author; CPU-heavy native builds use the workstation build slot.; RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.; RES-workstation-build-slot (exclusive): Exclusive per workstation for the duration of each CPU-heavy local build or test, through the workstation lock rather than a Plan lease: run the command as `python tools/delivery.py build-slot run --worker <name> --task <task> -- <command>` with the Plan repository tool, which holds the lock directory `.arcforges/build-slot` in the user profile with an owner record and heartbeat and recovers a lock whose holder stopped. Coding and review continue while a build waits; CI capacity is not limited by this rule.
-Unblocks: CON.23, GOV.13, GOV.14, NAT.11, NAT.30
+Permitted write scope: DesktopPlatform:native/* (retired family directories and the moved still-image directory); DesktopPlatform:native/CMakeLists.txt; DesktopPlatform:src/Native/* (retired family projects and the still-image logical library name); DesktopPlatform:tests/NativeAbiTests/**; DesktopPlatform:win.slnx; DesktopPlatform:eng/packaging/packages.json; DesktopPlatform:docs/native-reconciliation.md
+Shared resources (follow the owner protocol): RES-desktopplatform-package-inventory (append): Each producer task adds its own package entry; every merge to main packs and publishes all packages at one version; consumers pin the candidate produced by the merge of the capability they need, never waiting for a package closure task; one merge queue.; RES-desktopplatform-native-build (append): The vcpkg baseline and overlay ports change only through a dependency-admission change with licence and provenance receipts; each native family adds its own CMake targets and workflow entries; triplet or port changes are rebased and rebuilt by their author; CPU-heavy native builds use the workstation build slot.; RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.; RES-workstation-build-slot (exclusive): Exclusive per workstation for the duration of each CPU-heavy local build or test, through the workstation lock rather than a Plan lease: run the command as `python tools/delivery.py build-slot run --worker <name> --task <task> -- <command>` with the Plan repository tool, which holds the lock directory `.arcforges/build-slot` in the user profile with an owner record and heartbeat and recovers a lock whose holder stopped. Coding and review continue while a build waits; CI capacity is not limited by this rule.
+Unblocks: NAT.11, NAT.30
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline: native CMake/solution/package-inventory consistency, architecture and runtime-ownership tests, the design-policy exporter comparing fresh bytes against the re-pinned Design commit, and a scan proving the retired families, libraries and repositories are absent outside provenance history; the existing Windows native build and package consumers run for the retained families where the change requires it (P2-017).
-Completion evidence for the ledger: Retirement diff; re-pinned Design commit and policy-source hashes; exporter comparison; native build and package-consumer results for the retained families.
-Notes: Independent of the retained native families; NAT.11 starts on the moved still-image directory, and GOV.13, GOV.14 and NAT.30 read the re-pinned export or the retained producer set.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline: native CMake/solution/package-inventory consistency and a scan proving the retired families and libraries are absent outside provenance history; the existing Windows native build and package consumers run for the retained families where the change requires it (P2-017).
+Completion evidence for the ledger: Retirement diff; native build and package-consumer results for the retained families; the moved still-image shim with unchanged exported symbols.
+Notes: Independent of the retained native families; NAT.11 starts on the moved still-image directory and NAT.30 verifies the retained producer set. GOV.18 carries the policy-data half, so neither waits on the other.
+```
+
+```text
+Execute ArcForges delivery task GOV.18 — Reduce the DesktopPlatform policy data and re-pin the design-policy export.
+
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\governance.md (anchor task-gov-18).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
+Claim and handoff record: claims/gov-18 (python tools/delivery.py claim GOV.18 --worker <name>); task branch task/gov-18 in DesktopPlatform; ledger record ledger/tasks/gov-18.md.
+Kind/size: governance/M. Baseline: not-started.
+Outcome: Runtime-ownership, licence-boundary and reconciliation policy data drop the retired repositories and families; the design-policy export is re-pinned to a reviewed commit of this Design repository and glossary-terms.json and invariants.json are regenerated from it; provenance records of reused files stay unchanged.
+
+Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
+- P2-019 (retirement of the accepted DesktopPlatform policy data that names repositories or families outside the family; the design-policy export re-pinned to this Design repository): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-019
+
+Entry condition: adoption slice ADOPT.02.governance is complete in the Plan ledger (DLV-22).
+Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
+- none
+Completion prerequisites (may start earlier; cannot complete before these are complete):
+- none
+
+Permitted write scope: DesktopPlatform:eng/policy/**; DesktopPlatform:docs/design-policy.md
+Shared resources (follow the owner protocol): RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
+Unblocks: CON.23, GOV.13, GOV.14
+
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline: architecture and runtime-ownership tests, the design-policy exporter comparing fresh bytes against the re-pinned Design commit, and a scan proving the retired repositories are absent from the policy data outside provenance history.
+Completion evidence for the ledger: Re-pinned Design commit and policy-source hashes; exporter comparison; policy-test results.
+Notes: GOV.13 and GOV.14 read the re-pinned export; CON.23 completes after its forbidden-alias declaration is re-exported.
 ```

@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 430 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 431 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -33,7 +33,7 @@ Tasks: 430 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.execution | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Execution engine (9) |
 | ADOPT.02.extensions | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Extension platform and integrations (7) |
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
-| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (5) |
+| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (6) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (13) |
 | ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (55) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
@@ -91,11 +91,12 @@ Tasks: 430 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.10 | AI | S | GOV.04, GOV.05, ADOPT.08.governance (adoption) | AI (Workflow Harness) policy tests |
 | GOV.11 | Web | M | GOV.03, GOV.01, ADOPT.09.governance (adoption) | Web policy tests (Node/TS mechanism) |
 | GOV.12 | Mobile | M | GOV.03, GOV.04, ADOPT.10.governance (adoption) | Mobile policy tests (Gradle/Kotlin mechanism) |
-| GOV.13 | DesktopPlatform | M | GOV.04, GOV.17, ADOPT.02.governance (adoption) | Invariant enforcement accounting report |
-| GOV.14 | DesktopPlatform | M | GOV.01, GOV.17, ADOPT.02.governance (adoption) | Specification integrity checks over the Design repository |
+| GOV.13 | DesktopPlatform | M | GOV.04, GOV.18, ADOPT.02.governance (adoption) | Invariant enforcement accounting report |
+| GOV.14 | DesktopPlatform | M | GOV.01, GOV.18, ADOPT.02.governance (adoption) | Specification integrity checks over the Design repository |
 | GOV.15 | DesktopPlatform | M | GOV.04, GOV.05, GOV.07, GOV.09, GOV.10, GOV.11, GOV.12, GOV.13, GOV.14, ADOPT.02.governance (adoption) | WP05 stage integration verification |
 | GOV.16 | Contracts | M | CON.18, ADOPT.03.governance (adoption) | Operation-catalogue authorization reachability matrix and identity boundary evidence |
-| GOV.17 | DesktopPlatform | L | ADOPT.02.governance (adoption) | Retire the DesktopPlatform material outside the product family and re-pin the design-policy export |
+| GOV.17 | DesktopPlatform | M | ADOPT.02.governance (adoption) | Retire the native families outside the product family and move the still-image shim |
+| GOV.18 | DesktopPlatform | M | ADOPT.02.governance (adoption) | Reduce the DesktopPlatform policy data and re-pin the design-policy export |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 

@@ -305,7 +305,7 @@ class DeliveryTests(unittest.TestCase):
         self.assertEqual(code, 0, out)
         self.assertIn('Ready to start (2):', out)
         self.assertIn('GOV.04\tDesktopPlatform', out)
-        self.assertIn('GOV.14\tDesktopPlatform', out)
+        self.assertIn('GOV.18\tDesktopPlatform', out)
         self.assertNotIn('GOV.17\t', out)
 
     # ---- authoritative state and worktrees (finding 7) ----------------------------------------

@@ -639,7 +639,7 @@ Entry condition: adoption slice ADOPT.03.contracts is complete in the Plan ledge
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] GOV.01: the accepted WP00 naming data
 Completion prerequisites (may start earlier; cannot complete before these are complete):
-- [integration] GOV.17: the forbidden-alias declaration re-exported from this Design repository
+- [integration] GOV.18: the forbidden-alias declaration re-exported from this Design repository
 
 Permitted write scope: Contracts:eng/policy/product-names.json; Contracts:eng/check_naming.py; Contracts:eng/contract-packages.json; Contracts:public/proto/arcforges/foundation/v1/foundation.proto; Contracts:public/proto/arcforges/publicapi/v1/content.proto; Contracts:internal/proto/arcforges/local/* (retired port directories only); Contracts:src/internal/dotnet/* (retired port packages only); Contracts:fixtures/public/wp03-00.json; Contracts:fixtures/public/wp03-01.json; Contracts:src/public/ts/contract-fixtures/src/index.ts; Contracts:src/public/**/Generated/**
 Shared resources (follow the owner protocol): RES-contracts-generated-baseline (regenerate): Never hand-edited or hand-merged: after rebasing, the author regenerates with the pinned generator and commits the result; CI rejects drift between schemas, descriptors and generated output.; RES-contracts-publication (append): Every merge to main publishes all Contracts packages at one allocated candidate version (Maven main as SNAPSHOT under the publication-channel profile); the integration owner keeps a single merge queue so publications stay ordered; no tag, republication or replacement version is created for verification.; RES-contracts-schema-sources (append): Each closure task edits only its own domain proto or HTTP-schema files and adds its own sharded constraint and fixture files; shared inventories (package inventory, foundation inventory, constraint aggregate) are append-only per closure. A proto file with several contributing tasks (operator, policy/configuration) has one designated author task and the others request changes through it. The integration owner merges closure pull requests one at a time and the next author rebases and regenerates.
@@ -647,7 +647,7 @@ Unblocks: CON.19
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline: naming, schema, reservation and compatibility checks prove every retired number and name is reserved and unused, no retained record, service or fixture references a retired one, the package set matches the registry and generated shapes regenerate cleanly; the compatibility check accepts only the reviewed retirements.
 Completion evidence for the ledger: Retirement diff against the reserved lists of the wire registry; naming, schema, compatibility and generation results; package-set comparison with the registry.
-Notes: Independent of the new contract closures, with which it shares the schema-source protocol; it completes only after GOV.17 re-exports the forbidden-alias declaration that the naming registration binds.
+Notes: Independent of the new contract closures, with which it shares the schema-source protocol; it completes only after GOV.18 re-exports the forbidden-alias declaration that the naming registration binds.
 ```
 
 ```text
