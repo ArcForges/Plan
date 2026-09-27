@@ -23,27 +23,37 @@ Repository details are recorded below after their required main publication comp
 - Frozen main / retarget merge: `e5ce94221c13d0014781a760c0865b942350be4d`; [PR #64](https://github.com/ArcForges/DesktopPlatform/pull/64).
 - Reviewed head: `1657b2e505dec55d5fb60f485c2f727d7091a722`; [independent approval](https://github.com/ArcForges/DesktopPlatform/pull/64#issuecomment-5857666552). All twelve retained PR checks succeeded.
 - Open PRs: none. Complete remote branch inventory: `main` = `e5ce94221c13d0014781a760c0865b942350be4d`; `task/adopt-01` = `1657b2e505dec55d5fb60f485c2f727d7091a722`. Clean primary fast-forwarded; task worktree retained.
-- Main publication [run 36334843593](https://github.com/ArcForges/DesktopPlatform/actions/runs/36334843593): receipt pending; candidate is not yet frozen as published.
+- Main publication [run 36334843593](https://github.com/ArcForges/DesktopPlatform/actions/runs/36334843593) succeeded. [Original upload receipt job](https://github.com/ArcForges/DesktopPlatform/actions/runs/36334843593/job/108664581582) confirms all ten NuGet packages pushed at 2026-09-27T16:58:46Z–16:58:54Z after original-candidate integrity and OIDC exchange succeeded. Latest lockstep candidate: `1.0.0-ci.27.1`, source equal to frozen main.
+- NuGet package identities, each at `1.0.0-ci.27.1`: `ArcForges.Build.Policy`, `ArcForges.Native.Abstractions`, `ArcForges.Native.Media`, `ArcForges.Native.Colour`, `ArcForges.Native.Image`, `ArcForges.Native.Otio`, `ArcForges.Native.Media.Runtime.win-x64`, `ArcForges.Native.Colour.Runtime.win-x64`, `ArcForges.Native.Image.Runtime.win-x64`, `ArcForges.Native.Otio.Runtime.win-x64`. Registry coordinates use `https://www.nuget.org/packages/<identity>/1.0.0-ci.27.1`; the native distributions are these RID NuGet packages, not an additional registry.
+- These identities preserve immutable existing publications. Their presence does not resolve the retired-family cleanup owned by GOV.17/GOV.18. Only metadata and original upload receipts were inspected; no published package bytes or runtime checks.
 
 ### Contracts
 
 - Frozen main / retarget merge: `b10b2f6f316bf0c007e00632c5442fc102ebbe6e`; [PR #44](https://github.com/ArcForges/Contracts/pull/44).
 - Reviewed head: `a3c3e5e48d8da4b3ff2e560d3bb6352cca475156`; [independent approval](https://github.com/ArcForges/Contracts/pull/44#issuecomment-5857667708). All retained applicable PR checks succeeded.
 - Open PRs: none. Complete remote branch inventory: `main` = `b10b2f6f316bf0c007e00632c5442fc102ebbe6e`; `task/adopt-01` = `a3c3e5e48d8da4b3ff2e560d3bb6352cca475156`. Clean primary fast-forwarded; task worktree retained.
-- Main publication [run 36334951174](https://github.com/ArcForges/Contracts/actions/runs/36334951174): receipt pending; candidate is not yet frozen as published.
+- Main publication [run 36334951174](https://github.com/ArcForges/Contracts/actions/runs/36334951174) and [Security run 36334951206](https://github.com/ArcForges/Contracts/actions/runs/36334951206) succeeded. Latest NuGet/npm candidate `1.0.0-ci.113.1`; Maven main channel `1.0.0-SNAPSHOT` produced from that exact candidate/source.
+- Original provider jobs: [NuGet](https://github.com/ArcForges/Contracts/actions/runs/36334951174/job/108664738372), [npm](https://github.com/ArcForges/Contracts/actions/runs/36334951174/job/108664738802), [Maven](https://github.com/ArcForges/Contracts/actions/runs/36334951174/job/108664738760). Maven log confirms Sonatype snapshot upload at 17:00:40Z; original deployment receipt artifact `10936973508`, `maven-deployment-36334951174-1`, metadata digest `sha256:4d607463f347d882b1ada20f986de29d30ffe6f298cbedbe5cd99d178ad23aec`. Original candidate artifact `10936173840`, `contracts-candidate-36334951174-1`, metadata digest `sha256:f94ebbd97423fac24817d831956844c207dda1d6ac100fb689b19a655f7917c3`.
+- NuGet identities at `1.0.0-ci.113.1`: `ArcForges.Contracts.Foundation`, `ArcForges.Contracts.PublicApi`, `ArcForges.Contracts.Events`, `ArcForges.Sdk.Contracts`, `ArcForges.Contracts.Validation`, `ArcForges.Sdk.Client`, `ArcForges.Cli`, `ArcForges.Contracts.LocalRpc.Platform`, `ArcForges.Contracts.LocalRpc.Sandbox`, `ArcForges.Contracts.LocalRpc.Chat`, `ArcForges.Contracts.LocalRpc.Notes`, `ArcForges.Contracts.LocalRpc.Scope`, `ArcForges.Contracts.LocalRpc.Slate`, `ArcForges.Contracts.CloudInternal`.
+- npm identities at `1.0.0-ci.113.1`: `@arcforges/proto`, `@arcforges/api-client`, `@arcforges/contract-fixtures`, `@arcforges/ai-internal`, `@arcforges/operator-client`.
+- Maven coordinates at `1.0.0-SNAPSHOT`: `io.github.arcforges:contracts-proto`, `io.github.arcforges:contracts-connect-client`, `io.github.arcforges:contract-fixtures`. This snapshot is identified by the exact source/candidate and original receipt above, not by the mutable SNAPSHOT label alone. Published history remains immutable; retired Notes/Slate source is owned by CON.23.
 
 ### ArcScope
 
 - Frozen main / retarget merge: `a6899eddc4da7cf338d1a1404f1c0c1b8acc546d`; [PR #17](https://github.com/ArcForges/ArcScope/pull/17).
 - Reviewed head: `4815b61b45a5270c1df8fc90cee55d65e69fa83e`; [independent approval](https://github.com/ArcForges/ArcScope/pull/17#issuecomment-5857667131). All retained applicable PR checks succeeded.
 - Open PRs: none. Complete remote branch inventory: `main` = `a6899eddc4da7cf338d1a1404f1c0c1b8acc546d`; `task/adopt-01` = `4815b61b45a5270c1df8fc90cee55d65e69fa83e`. Clean primary fast-forwarded; task worktree retained.
-- Main publication [run 36335032606](https://github.com/ArcForges/ArcScope/actions/runs/36335032606): receipt pending; candidate is not yet frozen as published.
+- Main publication [run 36335032606](https://github.com/ArcForges/ArcScope/actions/runs/36335032606) succeeded, including Windows x64/ARM64 and Linux x64 Native AOT, CodeQL/static checks, Verify, Publish portable release and Verify publication.
+- Latest GitHub portable candidate [v0.1.0-ci.37.1](https://github.com/ArcForges/ArcScope/releases/tag/v0.1.0-ci.37.1), release ID `397733256`, published 2026-09-27T17:00:05Z, targets frozen main. Asset IDs: Linux x64 archive `593356017` and sidecar `593356028`; Windows ARM64 archive `593356020` and sidecar `593356022`; Windows x64 archive `593356016` and sidecar `593356021`; original publication verification archive `593356126`. All seven provider assets uploaded.
+- ArcScope produces the portable desktop application, not NuGet/npm/Maven packages. Only release metadata and required publication-job receipts were inspected; no archive bytes, local product builds or runtime checks.
 
 ### Cloud
 
 - Frozen main / retarget merge: `60c5c4288b126c81a09fa5d1944671e9acb87495`; [PR #22](https://github.com/ArcForges/Cloud/pull/22).
 - Reviewed head: `4f37ac16ec70ca421bc227c0c448fb424e5df53f`; [independent approval](https://github.com/ArcForges/Cloud/pull/22#issuecomment-5857674197). All eleven retained applicable PR checks succeeded.
-- Main publication [run 36335115598](https://github.com/ArcForges/Cloud/actions/runs/36335115598): receipt pending; candidate is not yet frozen as published.
+- Open PRs: none. Complete remote branch inventory: `main` = `60c5c4288b126c81a09fa5d1944671e9acb87495`; `task/adopt-01` = `4f37ac16ec70ca421bc227c0c448fb424e5df53f`. Clean primary fast-forwarded; task worktree retained.
+- Main publication [run 36335115598](https://github.com/ArcForges/Cloud/actions/runs/36335115598) succeeded including source/security checks, Native AOT container/Worker candidate, Verify and [Deploy Cloudflare](https://github.com/ArcForges/Cloud/actions/runs/36335115598/job/108664927796).
+- Latest candidate [cloud-0.1.0-ci.66.1](https://github.com/ArcForges/Cloud/releases/tag/cloud-0.1.0-ci.66.1), published 2026-09-27T17:01:23Z, targets frozen main. Original candidate archive asset ID `593358356`; provider receipt `deployment.json` asset ID `593358358`, size `430`, metadata digest `sha256:877cf2aab885850c4f79e83ee733350e072af014aa792b3146b8faa466b08b56`. Provider receipt/job metadata only; no artifact-byte download or live-service probe.
 - The private npm workspace does not publish an npm library. Candidate registry scope is the Cloudflare container/Worker and the GitHub release with its original deployment receipt.
 
 ### AI
@@ -67,6 +77,14 @@ Repository details are recorded below after their required main publication comp
 - Provider receipt asset `deployment.json`: ID `593343735`, metadata size `212`, digest `sha256:3a45228eac8af143c132ac0796a7380986a50993c90f2da9ea937b1996a5fc5e`.
 - [Deployment job](https://github.com/ArcForges/Web/actions/runs/36334763241/job/108663627159) confirms upload of `arcforges-web` with provider version `4f9bd451-88de-483b-95a9-a95cf1846ea2`. Original receipt also retained as [action artifact 10936629029](https://github.com/ArcForges/Web/actions/runs/36334763241/artifacts/10936629029), named `cloudflare-evidence-36334763241-1`.
 - Evidence observed 2026-09-27 after publication. Only metadata and original CI/provider logs were inspected; no published bytes, local product build, browser/runtime test or live-service probe. Deployment success is not product acceptance.
+
+### Mobile
+
+- Frozen main / retarget merge: `3267f6c4bbf7a51bde26512cba5895a64502d802`; [PR #15](https://github.com/ArcForges/Mobile/pull/15).
+- Final reviewed head: `7c8e100f20991e912a45a8bc44d75782218ee2a6`; [independent approval](https://github.com/ArcForges/Mobile/pull/15#issuecomment-5857861119). The earlier AGENTS-only head was superseded by the necessary Spotless `8.10.3` CI tooling repair. [Latest-head PR CI 36334917935](https://github.com/ArcForges/Mobile/actions/runs/36334917935) passed all retained Windows/Linux build, policy/security and Verify checks.
+- Repair scope: admitted tooling patch and strict checksum metadata, dependency admission/provenance, and superseding resource profile `r9`. Existing immutable profiles and archive expectations remained unchanged. No Android runtime dependency or product identity changed.
+- Local repair validation, using existing JDK `21.0.8`: through the delivery build slot, `gradlew.bat --no-daemon --console=plain --write-verification-metadata sha256 spotlessCheck` passed, then strict `gradlew.bat --no-daemon --console=plain spotlessCheck` passed; `python eng/check_provenance.py --owner Mobile --write-notice`, `python eng/mobile.py check`, and `python -m unittest discover -s eng/tests -v` passed (70 offline tests). No local Android product build or runtime validation was performed.
+- Required main publication [run 36335468538](https://github.com/ArcForges/Mobile/actions/runs/36335468538): pending; candidate not yet frozen as published.
 
 ## Interpretation and next work
 
