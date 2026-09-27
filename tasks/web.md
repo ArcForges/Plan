@@ -907,6 +907,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [contract] CON.24: the generated library operations
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] CLOUD.68: the deployed library read model
+- [integration] SCOPE.22: the delivered desktop project/session and report publication adapter
 
 Permitted write scope: Web:apps/app/app/features/scope/**
 Unblocks: WEB.26
@@ -923,7 +924,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Web (integration owner: Web integration owner, the holder of roles/integration-web).
 Claim and handoff record: claims/web-33 (python tools/delivery.py claim WEB.33 --worker <name>); task branch task/web-33 in Web; ledger record ledger/tasks/web-33.md.
 Kind/size: feature/M. Baseline: not-started.
-Outcome: The simulator console: definitions, immutable scenario versions with validation errors, start, pause, resume and cancel with expected state, run state with complete-or-partial extent, and the committed segment manifest with resumable, hash-verified downloads.
+Outcome: The simulator console: definitions, immutable scenario versions with validation errors, start, pause, resume and cancel with expectedRev and legal predecessor-state guards, run state with complete-or-partial extent, and the committed segment manifest with resumable, hash-verified downloads. Run history is discovered through simulation.listRuns on a fresh session.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-49.08 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\49-arcchat-web-companion.md, anchor rule-wp-49.08
@@ -939,5 +940,5 @@ Permitted write scope: Web:apps/app/app/features/simulation/**
 Unblocks: WEB.26
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
-Completion evidence for the ledger: A scenario created and run from the browser with every desktop off, completed or cancelled with the correct extent, and its committed segments downloaded and verified.
+Completion evidence for the ledger: A scenario created and run from the browser with every desktop off, completed or cancelled with the correct extent, and its committed segments downloaded and verified. Authorized run discovery, filter paging and denied cross-workspace access.
 ```

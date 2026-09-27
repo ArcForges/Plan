@@ -339,7 +339,7 @@ Each slice is claimed, executed, reviewed and recorded on its own; several may s
 ```text
 Execute ArcForges adoption slice ADOPT.02.app-composition — Adopt DesktopPlatform: Application composition.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-app-composition); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-app-composition); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane app-composition); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-app-composition (python tools/delivery.py claim ADOPT.02.app-composition --worker <name>); task branch task/adopt-02-app-composition in Plan; ledger record ledger/tasks/adopt-02-app-composition.md with status complete.
@@ -357,7 +357,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.assistant — Adopt DesktopPlatform: Embedded assistant.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-assistant); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-assistant); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane assistant); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-assistant (python tools/delivery.py claim ADOPT.02.assistant --worker <name>); task branch task/adopt-02-assistant in Plan; ledger record ledger/tasks/adopt-02-assistant.md with status complete.
@@ -375,7 +375,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.cloud — Adopt DesktopPlatform: Cloud core.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-cloud); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-cloud); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane cloud); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-cloud (python tools/delivery.py claim ADOPT.02.cloud --worker <name>); task branch task/adopt-02-cloud in Plan; ledger record ledger/tasks/adopt-02-cloud.md with status complete.
@@ -393,7 +393,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.device-bridge — Adopt DesktopPlatform: Application presence and tool bridge.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-device-bridge); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-device-bridge); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane device-bridge); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-device-bridge (python tools/delivery.py claim ADOPT.02.device-bridge --worker <name>); task branch task/adopt-02-device-bridge in Plan; ledger record ledger/tasks/adopt-02-device-bridge.md with status complete.
@@ -411,7 +411,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.execution — Adopt DesktopPlatform: Execution engine.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-execution); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-execution); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane execution); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-execution (python tools/delivery.py claim ADOPT.02.execution --worker <name>); task branch task/adopt-02-execution in Plan; ledger record ledger/tasks/adopt-02-execution.md with status complete.
@@ -429,7 +429,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.extensions — Adopt DesktopPlatform: Extension platform and integrations.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-extensions); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-extensions); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane extensions); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-extensions (python tools/delivery.py claim ADOPT.02.extensions --worker <name>); task branch task/adopt-02-extensions in Plan; ledger record ledger/tasks/adopt-02-extensions.md with status complete.
@@ -447,7 +447,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.foundation — Adopt DesktopPlatform: Foundation values.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-foundation); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-foundation); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane foundation); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-foundation (python tools/delivery.py claim ADOPT.02.foundation --worker <name>); task branch task/adopt-02-foundation in Plan; ledger record ledger/tasks/adopt-02-foundation.md with status complete.
@@ -465,7 +465,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.governance — Adopt DesktopPlatform: Family governance and policy tests.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-governance); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-governance); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane governance); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-governance (python tools/delivery.py claim ADOPT.02.governance --worker <name>); task branch task/adopt-02-governance in Plan; ledger record ledger/tasks/adopt-02-governance.md with status complete.
@@ -483,7 +483,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.native — Adopt DesktopPlatform: Native producers and probes.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-native); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-native); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane native); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-native (python tools/delivery.py claim ADOPT.02.native --worker <name>); task branch task/adopt-02-native in Plan; ledger record ledger/tasks/adopt-02-native.md with status complete.
@@ -501,7 +501,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.platform — Adopt DesktopPlatform: Desktop platform mechanisms.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-platform); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-platform); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane platform); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-platform (python tools/delivery.py claim ADOPT.02.platform --worker <name>); task branch task/adopt-02-platform in Plan; ledger record ledger/tasks/adopt-02-platform.md with status complete.
@@ -519,7 +519,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.policy — Adopt DesktopPlatform: Dynamic policy and configuration.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-policy); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-policy); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane policy); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-policy (python tools/delivery.py claim ADOPT.02.policy --worker <name>); task branch task/adopt-02-policy in Plan; ledger record ledger/tasks/adopt-02-policy.md with status complete.
@@ -537,7 +537,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.release — Adopt DesktopPlatform: Release readiness and family release.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-release); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-release); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane release); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-release (python tools/delivery.py claim ADOPT.02.release --worker <name>); task branch task/adopt-02-release in Plan; ledger record ledger/tasks/adopt-02-release.md with status complete.
@@ -555,7 +555,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.runtime-proofs — Adopt DesktopPlatform: Runtime proofs.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-runtime-proofs); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-runtime-proofs); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane runtime-proofs); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-runtime-proofs (python tools/delivery.py claim ADOPT.02.runtime-proofs --worker <name>); task branch task/adopt-02-runtime-proofs in Plan; ledger record ledger/tasks/adopt-02-runtime-proofs.md with status complete.
@@ -573,7 +573,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.02.updater — Adopt DesktopPlatform: Desktop distribution and update.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-updater); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-02-updater); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\DesktopPlatform (lane updater); repository adoption task ADOPT.02 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-02-updater (python tools/delivery.py claim ADOPT.02.updater --worker <name>); task branch task/adopt-02-updater in Plan; ledger record ledger/tasks/adopt-02-updater.md with status complete.
@@ -591,7 +591,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.03.contracts — Adopt Contracts: Contracts schema closures.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-03-contracts); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-03-contracts); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Contracts (lane contracts); repository adoption task ADOPT.03 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-03-contracts (python tools/delivery.py claim ADOPT.03.contracts --worker <name>); task branch task/adopt-03-contracts in Plan; ledger record ledger/tasks/adopt-03-contracts.md with status complete.
@@ -609,7 +609,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.03.extensions — Adopt Contracts: Extension platform and integrations.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-03-extensions); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-03-extensions); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Contracts (lane extensions); repository adoption task ADOPT.03 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-03-extensions (python tools/delivery.py claim ADOPT.03.extensions --worker <name>); task branch task/adopt-03-extensions in Plan; ledger record ledger/tasks/adopt-03-extensions.md with status complete.
@@ -627,7 +627,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.03.governance — Adopt Contracts: Family governance and policy tests.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-03-governance); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-03-governance); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Contracts (lane governance); repository adoption task ADOPT.03 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-03-governance (python tools/delivery.py claim ADOPT.03.governance --worker <name>); task branch task/adopt-03-governance in Plan; ledger record ledger/tasks/adopt-03-governance.md with status complete.
@@ -645,7 +645,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.03.release — Adopt Contracts: Release readiness and family release.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-03-release); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-03-release); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Contracts (lane release); repository adoption task ADOPT.03 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-03-release (python tools/delivery.py claim ADOPT.03.release --worker <name>); task branch task/adopt-03-release in Plan; ledger record ledger/tasks/adopt-03-release.md with status complete.
@@ -663,7 +663,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.05.app-composition — Adopt ArcScope: Application composition.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-app-composition); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-app-composition); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\ArcScope (lane app-composition); repository adoption task ADOPT.05 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-05-app-composition (python tools/delivery.py claim ADOPT.05.app-composition --worker <name>); task branch task/adopt-05-app-composition in Plan; ledger record ledger/tasks/adopt-05-app-composition.md with status complete.
@@ -681,7 +681,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.05.arcscope — Adopt ArcScope: ArcScope.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-arcscope); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-arcscope); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\ArcScope (lane arcscope); repository adoption task ADOPT.05 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-05-arcscope (python tools/delivery.py claim ADOPT.05.arcscope --worker <name>); task branch task/adopt-05-arcscope in Plan; ledger record ledger/tasks/adopt-05-arcscope.md with status complete.
@@ -699,7 +699,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.05.governance — Adopt ArcScope: Family governance and policy tests.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-governance); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-governance); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\ArcScope (lane governance); repository adoption task ADOPT.05 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-05-governance (python tools/delivery.py claim ADOPT.05.governance --worker <name>); task branch task/adopt-05-governance in Plan; ledger record ledger/tasks/adopt-05-governance.md with status complete.
@@ -717,7 +717,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.05.release — Adopt ArcScope: Release readiness and family release.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-release); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-release); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\ArcScope (lane release); repository adoption task ADOPT.05 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-05-release (python tools/delivery.py claim ADOPT.05.release --worker <name>); task branch task/adopt-05-release in Plan; ledger record ledger/tasks/adopt-05-release.md with status complete.
@@ -735,7 +735,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.05.runtime-proofs — Adopt ArcScope: Runtime proofs.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-runtime-proofs); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-runtime-proofs); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\ArcScope (lane runtime-proofs); repository adoption task ADOPT.05 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-05-runtime-proofs (python tools/delivery.py claim ADOPT.05.runtime-proofs --worker <name>); task branch task/adopt-05-runtime-proofs in Plan; ledger record ledger/tasks/adopt-05-runtime-proofs.md with status complete.
@@ -753,7 +753,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.05.simulator — Adopt ArcScope: ArcScope Cloud simulator.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-simulator); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-05-simulator); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\ArcScope (lane simulator); repository adoption task ADOPT.05 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-05-simulator (python tools/delivery.py claim ADOPT.05.simulator --worker <name>); task branch task/adopt-05-simulator in Plan; ledger record ledger/tasks/adopt-05-simulator.md with status complete.
@@ -771,7 +771,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.ai-routing — Adopt Cloud: Workers AI routing and metering.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-ai-routing); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-ai-routing); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane ai-routing); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-ai-routing (python tools/delivery.py claim ADOPT.07.ai-routing --worker <name>); task branch task/adopt-07-ai-routing in Plan; ledger record ledger/tasks/adopt-07-ai-routing.md with status complete.
@@ -789,7 +789,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.cloud — Adopt Cloud: Cloud core.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-cloud); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-cloud); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane cloud); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-cloud (python tools/delivery.py claim ADOPT.07.cloud --worker <name>); task branch task/adopt-07-cloud in Plan; ledger record ledger/tasks/adopt-07-cloud.md with status complete.
@@ -807,7 +807,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.commerce — Adopt Cloud: Commerce, entitlement and credits.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-commerce); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-commerce); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane commerce); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-commerce (python tools/delivery.py claim ADOPT.07.commerce --worker <name>); task branch task/adopt-07-commerce in Plan; ledger record ledger/tasks/adopt-07-commerce.md with status complete.
@@ -825,7 +825,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.device-bridge — Adopt Cloud: Application presence and tool bridge.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-device-bridge); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-device-bridge); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane device-bridge); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-device-bridge (python tools/delivery.py claim ADOPT.07.device-bridge --worker <name>); task branch task/adopt-07-device-bridge in Plan; ledger record ledger/tasks/adopt-07-device-bridge.md with status complete.
@@ -843,7 +843,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.extensions — Adopt Cloud: Extension platform and integrations.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-extensions); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-extensions); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane extensions); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-extensions (python tools/delivery.py claim ADOPT.07.extensions --worker <name>); task branch task/adopt-07-extensions in Plan; ledger record ledger/tasks/adopt-07-extensions.md with status complete.
@@ -861,7 +861,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.governance — Adopt Cloud: Family governance and policy tests.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-governance); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-governance); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane governance); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-governance (python tools/delivery.py claim ADOPT.07.governance --worker <name>); task branch task/adopt-07-governance in Plan; ledger record ledger/tasks/adopt-07-governance.md with status complete.
@@ -879,7 +879,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.harness — Adopt Cloud: Cloud Harness.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-harness); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-harness); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane harness); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-harness (python tools/delivery.py claim ADOPT.07.harness --worker <name>); task branch task/adopt-07-harness in Plan; ledger record ledger/tasks/adopt-07-harness.md with status complete.
@@ -897,7 +897,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.operations — Adopt Cloud: Operations, support and trust and safety.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-operations); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-operations); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane operations); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-operations (python tools/delivery.py claim ADOPT.07.operations --worker <name>); task branch task/adopt-07-operations in Plan; ledger record ledger/tasks/adopt-07-operations.md with status complete.
@@ -915,7 +915,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.policy — Adopt Cloud: Dynamic policy and configuration.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-policy); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-policy); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane policy); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-policy (python tools/delivery.py claim ADOPT.07.policy --worker <name>); task branch task/adopt-07-policy in Plan; ledger record ledger/tasks/adopt-07-policy.md with status complete.
@@ -933,7 +933,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.release — Adopt Cloud: Release readiness and family release.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-release); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-release); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane release); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-release (python tools/delivery.py claim ADOPT.07.release --worker <name>); task branch task/adopt-07-release in Plan; ledger record ledger/tasks/adopt-07-release.md with status complete.
@@ -951,7 +951,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.runtime-proofs — Adopt Cloud: Runtime proofs.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-runtime-proofs); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-runtime-proofs); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane runtime-proofs); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-runtime-proofs (python tools/delivery.py claim ADOPT.07.runtime-proofs --worker <name>); task branch task/adopt-07-runtime-proofs in Plan; ledger record ledger/tasks/adopt-07-runtime-proofs.md with status complete.
@@ -969,7 +969,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.search — Adopt Cloud: Knowledge search and retrieval.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-search); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-search); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane search); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-search (python tools/delivery.py claim ADOPT.07.search --worker <name>); task branch task/adopt-07-search in Plan; ledger record ledger/tasks/adopt-07-search.md with status complete.
@@ -987,7 +987,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.07.simulator — Adopt Cloud: ArcScope Cloud simulator.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-simulator); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-07-simulator); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Cloud (lane simulator); repository adoption task ADOPT.07 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-07-simulator (python tools/delivery.py claim ADOPT.07.simulator --worker <name>); task branch task/adopt-07-simulator in Plan; ledger record ledger/tasks/adopt-07-simulator.md with status complete.
@@ -1005,7 +1005,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.08.ai-routing — Adopt AI: Workers AI routing and metering.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-08-ai-routing); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-08-ai-routing); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\AI (lane ai-routing); repository adoption task ADOPT.08 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-08-ai-routing (python tools/delivery.py claim ADOPT.08.ai-routing --worker <name>); task branch task/adopt-08-ai-routing in Plan; ledger record ledger/tasks/adopt-08-ai-routing.md with status complete.
@@ -1023,7 +1023,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.08.extensions — Adopt AI: Extension platform and integrations.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-08-extensions); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-08-extensions); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\AI (lane extensions); repository adoption task ADOPT.08 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-08-extensions (python tools/delivery.py claim ADOPT.08.extensions --worker <name>); task branch task/adopt-08-extensions in Plan; ledger record ledger/tasks/adopt-08-extensions.md with status complete.
@@ -1041,7 +1041,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.08.governance — Adopt AI: Family governance and policy tests.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-08-governance); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-08-governance); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\AI (lane governance); repository adoption task ADOPT.08 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-08-governance (python tools/delivery.py claim ADOPT.08.governance --worker <name>); task branch task/adopt-08-governance in Plan; ledger record ledger/tasks/adopt-08-governance.md with status complete.
@@ -1059,7 +1059,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.08.harness — Adopt AI: Cloud Harness.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-08-harness); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-08-harness); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\AI (lane harness); repository adoption task ADOPT.08 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-08-harness (python tools/delivery.py claim ADOPT.08.harness --worker <name>); task branch task/adopt-08-harness in Plan; ledger record ledger/tasks/adopt-08-harness.md with status complete.
@@ -1077,7 +1077,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.09.governance — Adopt Web: Family governance and policy tests.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-09-governance); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-09-governance); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Web (lane governance); repository adoption task ADOPT.09 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-09-governance (python tools/delivery.py claim ADOPT.09.governance --worker <name>); task branch task/adopt-09-governance in Plan; ledger record ledger/tasks/adopt-09-governance.md with status complete.
@@ -1095,7 +1095,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.09.operations — Adopt Web: Operations, support and trust and safety.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-09-operations); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-09-operations); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Web (lane operations); repository adoption task ADOPT.09 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-09-operations (python tools/delivery.py claim ADOPT.09.operations --worker <name>); task branch task/adopt-09-operations in Plan; ledger record ledger/tasks/adopt-09-operations.md with status complete.
@@ -1113,7 +1113,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.09.release — Adopt Web: Release readiness and family release.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-09-release); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-09-release); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Web (lane release); repository adoption task ADOPT.09 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-09-release (python tools/delivery.py claim ADOPT.09.release --worker <name>); task branch task/adopt-09-release in Plan; ledger record ledger/tasks/adopt-09-release.md with status complete.
@@ -1131,7 +1131,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.09.runtime-proofs — Adopt Web: Runtime proofs.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-09-runtime-proofs); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-09-runtime-proofs); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Web (lane runtime-proofs); repository adoption task ADOPT.09 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-09-runtime-proofs (python tools/delivery.py claim ADOPT.09.runtime-proofs --worker <name>); task branch task/adopt-09-runtime-proofs in Plan; ledger record ledger/tasks/adopt-09-runtime-proofs.md with status complete.
@@ -1149,7 +1149,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.09.web — Adopt Web: Web.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-09-web); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-09-web); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Web (lane web); repository adoption task ADOPT.09 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-09-web (python tools/delivery.py claim ADOPT.09.web --worker <name>); task branch task/adopt-09-web in Plan; ledger record ledger/tasks/adopt-09-web.md with status complete.
@@ -1167,7 +1167,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.10.android — Adopt Mobile: Android companion.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-10-android); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-10-android); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Mobile (lane android); repository adoption task ADOPT.10 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-10-android (python tools/delivery.py claim ADOPT.10.android --worker <name>); task branch task/adopt-10-android in Plan; ledger record ledger/tasks/adopt-10-android.md with status complete.
@@ -1185,7 +1185,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.10.governance — Adopt Mobile: Family governance and policy tests.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-10-governance); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-10-governance); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Mobile (lane governance); repository adoption task ADOPT.10 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-10-governance (python tools/delivery.py claim ADOPT.10.governance --worker <name>); task branch task/adopt-10-governance in Plan; ledger record ledger/tasks/adopt-10-governance.md with status complete.
@@ -1203,7 +1203,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.10.release — Adopt Mobile: Release readiness and family release.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-10-release); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-10-release); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Mobile (lane release); repository adoption task ADOPT.10 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-10-release (python tools/delivery.py claim ADOPT.10.release --worker <name>); task branch task/adopt-10-release in Plan; ledger record ledger/tasks/adopt-10-release.md with status complete.
@@ -1221,7 +1221,7 @@ Completion evidence for the ledger: one row per task in scope with classificatio
 ```text
 Execute ArcForges adoption slice ADOPT.10.runtime-proofs — Adopt Mobile: Runtime proofs.
 
-Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-10-runtime-proofs); adoption rules ADP-01 to ADP-08: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
+Slice record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\adoption.md (anchor task-adopt-10-runtime-proofs); adoption rules ADP-01 to ADP-10: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\adoption.md.
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Repository reviewed: C:\MyFile\Projects\ArcForges\Mobile (lane runtime-proofs); repository adoption task ADOPT.10 records the repository-wide facts once and closes after all of its slices.
 Claim and handoff record: claims/adopt-10-runtime-proofs (python tools/delivery.py claim ADOPT.10.runtime-proofs --worker <name>); task branch task/adopt-10-runtime-proofs in Plan; ledger record ledger/tasks/adopt-10-runtime-proofs.md with status complete.

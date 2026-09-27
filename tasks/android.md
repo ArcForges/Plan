@@ -788,7 +788,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-27 (python tools/delivery.py claim AND.27 --worker <name>); task branch task/and-27 in Mobile; ledger record ledger/tasks/and-27.md.
 Kind/size: feature/L. Baseline: not-started.
-Outcome: AN14 and AN26-AN28: the read-only ArcScope library, session and report views with provenance and stored chart snapshots, report sharing through the system share sheet, simulation run status with cancel, and the ArcScope notification kinds opening their objects.
+Outcome: AN14 and AN26-AN28: the read-only ArcScope library, session and report views with provenance and stored chart snapshots, report sharing through the system share sheet, simulation run status with cancel, and the ArcScope notification kinds opening their objects. A fresh installation discovers runs with simulation.listRuns before reading details or cancelling.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-31.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.07
@@ -801,10 +801,11 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] CLOUD.68: the deployed library read model
 - [integration] SIM.05: the deployed simulation operations
+- [integration] SCOPE.22: the delivered desktop project/session and report publication adapter
 
 Permitted write scope: Mobile:feature/scope/**
 Unblocks: AND.15
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
-Completion evidence for the ledger: A report synced from ArcScope desktop found, read and shared on Android; a Cloud simulation run followed to its terminal state; revocation, unavailable-artifact and raw-data-local cases.
+Completion evidence for the ledger: A report synced from ArcScope desktop found, read and shared on Android; a Cloud simulation run followed to its terminal state; revocation, unavailable-artifact and raw-data-local cases. Run discovery after reinstall or on another authorized device; no remembered run ID required.
 ```

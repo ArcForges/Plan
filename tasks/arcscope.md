@@ -502,7 +502,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-18 (python tools/delivery.py claim SCOPE.18 --worker <name>); task branch task/scope-18 in ArcScope; ledger record ledger/tasks/scope-18.md.
 Kind/size: feature/L. Baseline: not-started.
-Outcome: Reports compose analyses, measurements, findings and visualisations into a portable exported form; every element traces to session, capture, time range, configuration snapshot, decoder version and analysis version; regenerating from recorded sources produces equivalent results.
+Outcome: Reports compose analyses, measurements, findings and visualisations into a portable exported form; every element traces to session, capture, time range, configuration snapshot, decoder version and analysis version; regenerating from recorded sources produces equivalent results. Companion publication uses arcscope.report.pdf.v1: an atomic ZIP with static report.pdf (stored chart snapshots, textual results and a provenance appendix) and report.pdf.arcforges-origin.json. The immutable bundle is verified before its report reference is synced; preview reads the PDF, while download/share preserves the complete bundle. Companion readers never recompute measurements.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-34.06 (full, including both required-design-implementation paragraphs: report/UI/offline-recomputation comparison with rendering/rounding never changing the stored numeric result; report-section origin plus enclosing union; deterministic measurement beside AI narrative never relabelled): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.06
@@ -521,7 +521,7 @@ Permitted write scope: ArcScope:src/ArcScope/ArcScope.Reporting/**; ArcScope:tes
 Unblocks: SCOPE.19, SCOPE.22, SIM.09
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): traceability completeness test; regeneration-equivalence test; export fidelity check; content-origin carrier vectors including unknown input and failed publication — offline
-Completion evidence for the ledger: traceability completeness and regeneration equivalence results; carrier/propagation/failure vectors with payload and manifest hashes
+Completion evidence for the ledger: traceability completeness and regeneration equivalence results; carrier/propagation/failure vectors with payload and manifest hashes A companion-readable PDF bundle with stored snapshots, provenance appendix and mandatory origin sidecar; verified resource identity and unavailable-artifact behavior.
 Notes: Content-origin behavior (requirements/07-security-privacy-and-trust.md) and the carrier schema (requirements/13-data-formats-and-portability.md) are named as frozen design inputs fixed before this package — already satisfied, not a start edge; implement per spec without choosing a different marking mechanism.
 ```
 
@@ -624,7 +624,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-22 (python tools/delivery.py claim SCOPE.22 --worker <name>); task branch task/scope-22 in ArcScope; ledger record ledger/tasks/scope-22.md.
 Kind/size: feature/M. Baseline: not-started.
-Outcome: The ArcScope sync scope excludes raw capture by default and includes metadata, analysis, annotations, findings, reports and configurations; enabling project sync transfers no raw capture bytes; the policy is visible per project and per session; the included scope converges across devices.
+Outcome: The ArcScope sync scope publishes ScopeProjectMetadata (project identity/name, independent revision and deletion) and ScopeMetadata (session membership and metadata), analyses, annotations, findings, configuration and companion-readable report references. Commit the verified report resource before publishing its reference. Raw capture remains local unless explicitly uploaded; project/session policy is visible and the included scope converges across devices.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-35.02 (all work except the parts mapped to SCOPE.27): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.02
@@ -634,14 +634,15 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] SCOPE.06: session metadata
 - [artifact] SCOPE.18: reports
 - [artifact] SCOPE.17: annotations/findings
+- [contract] CON.03: the generated project/session bodies and owner-body admission profile
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] SCOPE.27: real ArcScope metadata sync against deployed Cloud
 
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.CloudClient/SyncScope/**; ArcScope:tests/SyncConflictTests/ArcScope/**
 Permitted substitutes (never real integration evidence): SUB-scope-sync-fixture: client-side scope-mapping/exclusion logic only Real producer ['CLOUD.39']; removed by SCOPE.27
-Unblocks: SCOPE.26, SCOPE.27
+Unblocks: AND.27, SCOPE.26, SCOPE.27, WEB.32
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): enable-sync test asserting no raw bytes transferred; policy-visibility test; convergence test across devices for included scope — early development against a contract-bound sync fixture, real convergence at WP-35.90
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): enable-sync test asserting no raw bytes transferred; policy-visibility test; convergence test across devices for included scope — early development against a contract-bound sync fixture, real convergence at WP-35.90; offline fixtures cover project rename/delete, parent/session arrival order and withholding a report reference until its resource is verified
 Completion evidence for the ledger: no-raw-bytes sync assertion and convergence results
 ```
 
@@ -770,7 +771,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope). Also touches: Cloud.
 Claim and handoff record: claims/scope-27 (python tools/delivery.py claim SCOPE.27 --worker <name>); task branch task/scope-27 in ArcScope; ledger record ledger/tasks/scope-27.md.
 Kind/size: integration/M. Baseline: not-started.
-Outcome: ArcScope session and capture metadata sync scopes converge across devices against the deployed Cloud sync engine, replacing the contract-bound sync substitute; raw captures stay local unless explicitly uploaded.
+Outcome: ArcScope project, session and capture metadata sync scopes converge against the deployed Cloud sync engine, including project rename/deletion, session membership and companion-readable report references, replacing the contract-bound substitute; raw captures stay local unless explicitly uploaded.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-35.02 (real-integration evidence: metadata sync scope converges against deployed Cloud authority): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.02

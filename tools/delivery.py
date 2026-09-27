@@ -1250,7 +1250,7 @@ def render_slice_prompt(g: Graph, sid: str, design_win: str, plan_win: str) -> l
         '```text',
         f'Execute ArcForges adoption slice {sid} — {s["title"]}.', '',
         f'Slice record: {design_win}\\docs\\planning\\delivery\\lanes\\adoption.md (anchor {slug(sid)}); adoption rules ADP-01 to '
-        f'ADP-08: {design_win}\\docs\\planning\\delivery\\adoption.md.',
+        f'ADP-10: {design_win}\\docs\\planning\\delivery\\adoption.md.',
         f'Delivery rules: {design_win}\\docs\\planning\\delivery\\README.md; execution: {plan_win}\\arcforges-implementation.md.',
         f'Repository reviewed: {repo["root"]} (lane {s["lane"]}); repository adoption task {s["adoptionTask"]} records the '
         'repository-wide facts once and closes after all of its slices.',
