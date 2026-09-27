@@ -114,7 +114,7 @@ Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.10 | Contracts | L | CON.02, ADOPT.03.contracts (adoption) | Task/approval/bridge/chat/agent/automation/search operation registry + ai-internal package |
 | CON.11 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Application/history/execution/events operations (annex10's 13 additions) + EventService |
 | CON.12 | Contracts | M | ADOPT.03.contracts (adoption) | Extension and policy schemas: manifest.v1/workflow.v1/panel.v1/policy body.v1/configuration.v1 |
-| CON.13 | Contracts | S | ADOPT.03.contracts (adoption) | Package catalog operation registry (CatalogService) |
+| CON.13 | Contracts | S | CON.02, ADOPT.03.contracts (adoption) | Package catalog operation registry (CatalogService) |
 | CON.14 | Contracts | L | CON.13, ADOPT.03.contracts (adoption) | Operator control service (OperatorService, full §9/9.1/9.2 protocol) |
 | CON.15 | Contracts | M | CON.11, ADOPT.03.contracts (adoption) | Cloudflare-internal HTTP and D1 ExecutePlan bindings |
 | CON.16 | Contracts | M | ADOPT.03.contracts (adoption) | Signed catalog/update/realm formats (catalog-index.v1, catalog-revocations.v1, android-update.v1, realm.v1) |
