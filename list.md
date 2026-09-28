@@ -551,7 +551,7 @@ Tasks: 437 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | AND.17 | Mobile | S | AND.16, ADOPT.10.android (adoption) | Release runtime inspection |
 | AND.18 | Mobile | S | AND.16, ADOPT.10.android (adoption) | Dependency and source rights closure (final artifact) |
 | AND.19 | Mobile | M | AND.08, AND.09, AND.10, AND.11, AND.12, ADOPT.10.android (adoption) | Consumption-only enforcement |
-| AND.20 | Mobile | M | CON.16, ADOPT.10.android (adoption) | Play and direct-channel signed update client |
+| AND.20 | Mobile | M | CON.16, AND.02, ADOPT.10.android (adoption) | Play and direct-channel signed update client |
 | AND.21 | Mobile | L | AND.16, ADOPT.10.android (adoption) | Physical device and recovery gates |
 | AND.22 | Mobile | S | ADOPT.10.android (adoption) | Android scope statement |
 | AND.23 | Mobile | M | AND.17, AND.18, AND.19, AND.20, AND.21, AND.22, ADOPT.10.android (adoption) | Distribution acceptance |
