@@ -1,0 +1,22 @@
+---
+task: PLT.26
+status: complete
+recorded: 2026-09-28
+claimant: af-20260928-p04
+epoch: 1
+---
+
+# Token system and theming
+
+## Evidence
+
+- Implementation: [DesktopPlatform PR #75](https://github.com/ArcForges/DesktopPlatform/pull/75), reviewed head `ec16f4b6976ac662647ee137e3e32ff124bfd52d`, independently reviewed without findings at [exact-head review comment 5864203941](https://github.com/ArcForges/DesktopPlatform/pull/75#issuecomment-5864203941), merged as `497263e3f2cea3056a502e8f956b099f13a173f7` on base `606e8336a18946551966174b5747f9ff7f5b7eb7`.
+- WP-10.00 (full): introduced a framework-neutral semantic token catalog for light, dark and high-contrast palettes, semantic typography, spacing, radius, elevation and motion. Comfortable, Compact and ProfessionalDense are distinct first-class density modes. The offline suite covers contrast targets for every theme (4.5:1 text/status and 3:1 focus), stable density snapshots, semantic coverage, invalid enum handling, reduced-motion behavior, and rejection/scanning of raw color and measurement literals in current DesignSystem markup.
+- WP-10 / WP-01.02 package-level contribution: `ArcForges.Desktop.Graphics` and `.Text` contain no behavior to migrate; their visual-token responsibility now has the new `ArcForges.DesignSystem` identity. `ArcForges.Desktop.Experience`, `.Preview` and `.RichContent` likewise contain no behavior to move; their future shared-shell mechanisms remain with PLT.27 and later shell tasks. All five old project and assembly identities remain untouched, unreferenced by this library and unpublished until their owners resolve their retained compatibility disposition. No historical package identity was renamed or repurposed.
+- Publication boundary: `ArcForges.DesignSystem.csproj` remains `IsPackable=false` and is not in the package allowlist. PLT.35 exclusively owns its later package activation, manifest entry and real integration. PLT.26 introduced no third-party dependency and does not claim a published DesignSystem package or a real shell consumer/AOT result.
+- Latest-head PR gate [run 36382794587](https://github.com/ArcForges/DesktopPlatform/actions/runs/36382794587) passed all 12 checks at the reviewed head, including aggregate `ci`, managed-packages/pack, native-win-x64 and policy checks. The normal post-merge [Publish NuGet run 36383641836](https://github.com/ArcForges/DesktopPlatform/actions/runs/36383641836) completed successfully on merge commit `497263e3f2cea3056a502e8f956b099f13a173f7`; all candidate gates, aggregate CI and publisher job `108806014977` passed. The publisher rechecked source identity and package hashes, obtained its short-lived credential through OIDC, and pushed the same verified bytes.
+- Publication receipt: the routine main candidate `1.0.0-ci.38.1` published the eight existing packages `ArcForges.Build.Policy`, `ArcForges.Native.Abstractions`, `ArcForges.Native.Image`, `ArcForges.Native.Image.Runtime.win-x64`, `ArcForges.Foundation`, `ArcForges.Application.Abstractions`, `ArcForges.Capabilities` and `ArcForges.Persistence.Sqlite`. Candidate artifact `nuget-candidate-36383641836-1` / artifact `10953199119`, digest `sha256:c819cbbc609ca51595ac58df1039dd0c1b458d147e8f404e87660c17023eb5ab`. These are existing allowlisted packages; the DesignSystem project was not among them.
+- Validation actually performed: pinned .NET SDK 10.0.400 DesignSystem tests passed 7/7; full-solution `dotnet format --verify-no-changes` passed; `git diff --check` and applicable pre-commit passed. Full reconciliation passed after updating the exact active-project blob (7 owner repositories, 67 projects, 326 directory bindings and 166 historical directories). The local ArchitectureTests run was 86/87 because hosted-run receipts RP-01/RP-08/RP-09 and AT-09 native-configure evidence are not generated locally; the latest same-head PR CI passed those checks.
+- Substitutes still in use: none introduced. No shell adapter, UI consumer, or substitute DesignSystem package is claimed. The existing five placeholder projects remain unpublished as described above; subsequent shell tasks own any real consumers, and PLT.35 owns package publication/integration.
+- Untested coverage: no real application/UI integration, installed-consumer test or AOT publish of a DesignSystem consumer was performed or claimed. The current deliverable is the offline semantic-token library and its policy/contrast/density tests; later package activation and real integration remain PLT.35 scope.
+- Completion prerequisites: none remain for PLT.26.
