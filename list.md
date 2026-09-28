@@ -110,19 +110,19 @@ Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.06 | Contracts | L | CON.02, CON.23, CON.05, ADOPT.03.contracts (adoption) | Product in-process port completion: IScopeOperations/IChatOperations + infra ports |
 | CON.07 | Contracts | L | CON.02, CON.11, ADOPT.03.contracts (adoption) | Identity/session/device operation registry + native-auth and browser HTTP exceptions |
 | CON.08 | Contracts | M | CON.02, CON.06, ADOPT.03.contracts (adoption) | Entitlement/commerce operation registry |
-| CON.09 | Contracts | L | CON.03, CON.06, ADOPT.03.contracts (adoption) | Sync/resource-transfer/objects operation registry + realm-transfer.v1 |
+| CON.09 | Contracts | L | CON.03, CON.06, ADOPT.03.contracts (adoption) | Sync/resource-transfer/objects operation registry + realm-transfer.v1 + TransferTicket |
 | CON.10 | Contracts | L | CON.02, CON.06, ADOPT.03.contracts (adoption) | Task/approval/bridge/chat/agent/automation/search operation registry + ai-internal package |
 | CON.11 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Application/history/execution/events operations (annex10's 13 additions) + EventService |
 | CON.12 | Contracts | M | ADOPT.03.contracts (adoption) | Extension and policy schemas: manifest.v1/workflow.v1/panel.v1/policy body.v1/configuration.v1 |
 | CON.13 | Contracts | S | CON.02, ADOPT.03.contracts (adoption) | Package catalog operation registry (CatalogService) |
-| CON.14 | Contracts | L | CON.13, ADOPT.03.contracts (adoption) | Operator control service (OperatorService, full §9/9.1/9.2 protocol) |
+| CON.14 | Contracts | L | CON.13, CON.09, ADOPT.03.contracts (adoption) | Operator control service (OperatorService, full §9/9.1/9.2 protocol) |
 | CON.15 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Cloudflare-internal HTTP and D1 ExecutePlan bindings |
 | CON.16 | Contracts | M | ADOPT.03.contracts (adoption) | Signed catalog/update/realm formats (catalog-index.v1, catalog-revocations.v1, android-update.v1, realm.v1) |
 | CON.17 | Contracts | M | CON.92, ADOPT.03.contracts (adoption) | Cross-language compatibility window + canonical semantic hash |
 | CON.18 | Contracts | S | ADOPT.03.contracts (adoption) | Operation-scope manifest + authorization-reachability matrix generator |
 | CON.19 | Contracts | M | CON.02, CON.18, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.21, CON.22, CON.01, CON.23, CON.24, ADOPT.03.contracts (adoption) | WP03.90 — verify the owned Contracts artifact and its real (non-consumer) integration |
-| CON.21 | Contracts | M | CON.02, ADOPT.03.contracts (adoption) | Simulation operation registry |
-| CON.22 | Contracts | M | CON.02, ADOPT.03.contracts (adoption) | Account support, notification, data, preference, policy-bundle and export-job operations |
+| CON.21 | Contracts | M | CON.02, CON.09, ADOPT.03.contracts (adoption) | Simulation operation registry |
+| CON.22 | Contracts | M | CON.02, CON.09, ADOPT.03.contracts (adoption) | Account support, notification, data, preference, policy-bundle and export-job operations |
 | CON.23 | Contracts | M | GOV.01, ADOPT.03.contracts (adoption) | Retire the contract and naming elements outside the product family |
 | CON.90 | Contracts | M | — | WP03.00 — split project structure (accepted, historical) |
 | CON.91 | Contracts | L | — | WP03.01 — foundation contract types (accepted, historical) |
