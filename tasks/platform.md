@@ -641,12 +641,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Capabilities/**
+Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Capabilities/**; DesktopPlatform:eng/provenance/files.json (append only exact PLT.23-owned firstParty rows for source/test files within the task write scope); DesktopPlatform:eng/policy/architecture-contract-tests.json (append only exact PLT.23 public API to direct-test bindings)
+Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
 Unblocks: PLT.25, PLT.51
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: invalid ownership, missing content, expired child cursor, restart, duplicate hint recovery.
 Completion evidence for the ledger: Deep-link hostile-input, event and health results.
-Notes: HealthDimension is only the closed capability-probe aspect-key type defined by WP-09: reachable, ready, healthy, degraded and capacity. It carries no observation value or snapshot fields. These keys are not Architecture 02 §11's five independent axes (Installation, Presence, Health, Readiness, Compatibility). This clarification changes no Contracts/wire or Foundation HealthSnapshot/InstanceHealth/InstanceReadiness semantics and defines no Cloud presence/heartbeat behavior.
+Notes: HealthDimension is only the closed capability-probe aspect-key type defined by WP-09: reachable, ready, healthy, degraded and capacity. It carries no observation value or snapshot fields. These keys are not Architecture 02 §11's five independent axes (Installation, Presence, Health, Readiness, Compatibility). This clarification changes no Contracts/wire or Foundation HealthSnapshot/InstanceHealth/InstanceReadiness semantics and defines no Cloud presence/heartbeat behavior. ADP-07 support is limited to the two exact supporting paths above: append only PLT.23-owned firstParty source/test inventory rows and exact public-API-to-direct-test rows required by the existing provenance and RP-10 gates. These changes use RES-desktopplatform-policy-data, owned by the DesktopPlatform integration owner: generated policy data is regenerated from its pinned source and never hand-edited; task-owned API/test and inventory rows are additive, and each task adds its own tests/evidence. No evaluator, schema, algorithm, ReasonCode, dependency closure or unrelated policy change is authorized; task outcome, prerequisites and runtime behavior remain unchanged.
 ```
 
 ```text
