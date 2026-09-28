@@ -236,7 +236,7 @@ Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
-| APP.01 | DesktopPlatform | M | CON.02, PLT.17, FND.01, ADOPT.02.app-composition (adoption) | Assistant.Abstractions host ports and application identity |
+| APP.01 | DesktopPlatform | M | CON.02, PLT.17, FND.02, FND.01, ADOPT.02.app-composition (adoption) | Assistant.Abstractions host ports and application identity |
 | APP.02 | ArcScope | M | APP.01, PLT.24, PLT.38, ADOPT.05.app-composition (adoption) | Minimal ArcScope application services (read/create/append annotations) |
 | APP.03 | ArcScope | S | APP.01, APP.02, PRF.04, NAT.01, ADOPT.05.app-composition (adoption) | Clean Native AOT package-consumer composition for ArcScope |
 | APP.04 | DesktopPlatform | S | APP.02, FND.02, FND.03, ADOPT.02.app-composition (adoption) | Idempotency and revision against the real store |
