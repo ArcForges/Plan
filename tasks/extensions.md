@@ -80,13 +80,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Contracts:public/proto/arcforges/extensions/v1/**; DesktopPlatform:src/Extensions/ArcForges.Extensions.Contracts/**
+Permitted write scope: Contracts:public/proto/arcforges/extensions/v1/**; Contracts:tests/StructureTests/ExtensionBoundaryCases.cs (negative containment test for StructuredValue in first-party domain/product contracts); Contracts:tests/StructureTests/Fixtures/structured-value-first-party-domain.proto (task-owned negative test fixture only); Contracts:tests/StructureTests/Program.cs (register exactly ExtensionBoundaryCases.Run(root) in the existing console runner only); DesktopPlatform:src/Extensions/ArcForges.Extensions.Contracts/**
 Shared resources (follow the owner protocol): RES-contracts-schema-sources (append): Each schema closure task edits only its own domain proto or HTTP-schema files and adds its own sharded constraint and fixture files. Schema-closure tasks and Contracts policy tasks that touch package/access/provenance/dependency input registries share this append/rebase protocol: append only task-owned rows and successor receipts to package, compiled access/hash, foundation, operation, constraint, provenance source/output, binding, and dependency-review inventories; preserve prior history and never rewrite another task's rows. Refresh dependency input hashes only for the task-owned closure; do not expand dependency versions or closure. Public Kotlin/Dokka successors are exclusively governed by RES-contracts-dokka-profile. A proto file with several contributing tasks (operator, policy/configuration) has one designated author task and the others request changes through it. Each serialized merge is followed by a rebase and regeneration before integration of the next task.
 Unblocks: EXT.03, EXT.04, EXT.08, EXT.90, SCOPE.25
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Value-model coverage per type; bidirectional validation tests; containment policy test with a negative fixture; an AOT publish with the platform present (native AOT compile check, permitted under P2-017).
 Completion evidence for the ledger: Value-model, validation, containment and AOT results.
-Notes: WP-41 Sec.1 names the AOT-vs-dynamic-value tension as 'the platform's hardest design problem' -- narrow early risk proof.
+Notes: WP-41 Sec.1 names the AOT-vs-dynamic-value tension as 'the platform's hardest design problem' -- narrow early risk proof. The first-party containment test must execute and reject StructuredValue in first-party domain/product contract source, not merely retain a textual fixture; Program.cs may only register ExtensionBoundaryCases.Run(root), without runner refactoring, other registrations, or execution-order/exit-semantics changes. The fixture and test are task-owned evidence; no dependency or package changes are authorized.
 ```
 
 ```text

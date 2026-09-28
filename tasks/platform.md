@@ -31,7 +31,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Persistence.Sqlite/**
 Shared resources (follow the owner protocol): RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
-Unblocks: CLOUD.38, FND.02, PLT.05, PLT.07, PLT.08, PLT.39, PLT.43, PLT.44, SCOPE.01
+Unblocks: APP.08, CLOUD.38, FND.02, PLT.05, PLT.07, PLT.08, PLT.39, PLT.43, PLT.44, SCOPE.01
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit + integration tests against a real local SQLite file (no external service): policy test asserting no alternative write path, concurrency tests for serialised writes/concurrent reads, boundary test that no storage type appears in an application signature. AOT/trim diagnostics build-breaking since this library is IsAotCompatible.
 Completion evidence for the ledger: Single-write-path policy test result.
@@ -478,7 +478,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Capabilities/**
 Shared resources (follow the owner protocol): RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
-Unblocks: APP.01, EXE.01, PLT.18, PLT.19, PLT.21, PLT.22, PLT.25
+Unblocks: APP.01, APP.08, EXE.01, PLT.18, PLT.19, PLT.21, PLT.22, PLT.25
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: two-product separation, forged/missing target refusal.
 Completion evidence for the ledger: Identity lifecycle matrix.
@@ -758,7 +758,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: DesktopPlatform:src/DesignSystem/ArcForges.Desktop.Shell/**
 Shared resources (follow the owner protocol): RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
-Unblocks: PLT.28, PLT.30, PLT.33, PLT.35
+Unblocks: APP.08, PLT.28, PLT.30, PLT.33, PLT.35
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: restore tests across missing panel, changed display arrangement, corrupted layout state; device-local assertion.
 Completion evidence for the ledger: Layout restore matrix.
