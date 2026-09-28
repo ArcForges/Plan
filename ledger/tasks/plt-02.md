@@ -1,8 +1,8 @@
 ---
 task: PLT.02
-status: delivered
+status: complete
 recorded: 2026-09-28
-claimant: w-20260927-ai-lane
+claimant: af-20260928-p01
 epoch: 1
 ---
 
@@ -17,8 +17,12 @@ epoch: 1
 - Substitute: NamedSnapshotFixture implements only the explicitly named PLT.03 seam. It is not a real durable snapshot producer and does not prove repeated snapshot/truncate/replay operation at bounded size.
 - Untested: OS crash/power loss, network/removable filesystem and device/product consumers. No prohibited hosted runtime or installed-consumer execution was added.
 
-## Remaining acceptance
+## Completion follow-up — 2026-09-28
 
-PLT.03 remains the explicit completion prerequisite established by Design PR91 merge `e384301467dd9dd695b54d8ffe236f4bf1a7af38` and Plan PR62 merge `34f50a51ac349c9bb4e005103b9ab34755865aba`. Full PLT.02 completion requires the real durable verified snapshot producer and its repeated bounded snapshot/truncate/replay acceptance. No PLT.03 work was started in this session.
+- PLT.03 is complete in [its ledger](plt-03.md): DesktopPlatform PR [#81](https://github.com/ArcForges/DesktopPlatform/pull/81) merged at `e60348bb39c6bc383980b524271a7fe10d953abb`, with exact-head independent review and hosted run [36392074287](https://github.com/ArcForges/DesktopPlatform/actions/runs/36392074287) terminal success (12/12). Normal publication run [36393746622](https://github.com/ArcForges/DesktopPlatform/actions/runs/36393746622) succeeded and all eight published package indexes were verified.
+- Real snapshot/truncation acceptance was added in DesktopPlatform PR [#85](https://github.com/ArcForges/DesktopPlatform/pull/85): `RepeatedRealSnapshotsBoundJournalAndSnapshotGrowthThenRestoreAndReplayTheTail` exercises repeated durable snapshot, bounded journal/snapshot growth, restore and journal-tail replay; `RealSnapshotTruncationPreservesAnActiveReadersJournalView` exercises truncation while an active SQLite reader retains its journal view.
+- Pinned .NET SDK 10.0.400 `PersistenceTests` focused suite passed 81/81. The source PR exact head `4f1df9cf61dbecd0fa82a84708f3fceadb7f06bd` received independent exact-head CLEAN review [5867860268](https://github.com/ArcForges/DesktopPlatform/pull/85#issuecomment-5867860268); hosted run [36407016787](https://github.com/ArcForges/DesktopPlatform/actions/runs/36407016787) completed terminal SUCCESS (13/13). PR #85 merged at `eb272b0893d42417e9255ab5ba17adc9337ffd69`.
+- Normal post-merge publication run [36408861604](https://github.com/ArcForges/DesktopPlatform/actions/runs/36408861604) succeeded on that merge. Candidate `nuget-candidate-36408861604-1`, artifact `10963427563`, size `5,543,468` bytes, SHA-256 `14795c562cd09b8c155a1bd1f56932081730aea43b5fb81583fcaf4aae82c191`; publisher OIDC validation and all eight package pushes succeeded for `1.0.0-ci.43.1`. Independent index verification confirmed all eight public flat-container indexes list that version; no package bytes were downloaded.
+- The earlier `NamedSnapshotFixture` remains only historical delivery-stage evidence; completion is based on the real producer and acceptance above. The validation scope remains offline/process-level as specified; this does not claim OS power-loss, removable-filesystem, hosted-runtime, or installed-consumer evidence.
 
 Ledger review and merge identity are retained by this ledger PR and the task claim history.
