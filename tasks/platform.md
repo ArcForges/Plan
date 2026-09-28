@@ -646,6 +646,7 @@ Unblocks: PLT.25, PLT.51
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: invalid ownership, missing content, expired child cursor, restart, duplicate hint recovery.
 Completion evidence for the ledger: Deep-link hostile-input, event and health results.
+Notes: HealthDimension is only the closed capability-probe aspect-key type defined by WP-09: reachable, ready, healthy, degraded and capacity. It carries no observation value or snapshot fields. These keys are not Architecture 02 §11's five independent axes (Installation, Presence, Health, Readiness, Compatibility). This clarification changes no Contracts/wire or Foundation HealthSnapshot/InstanceHealth/InstanceReadiness semantics and defines no Cloud presence/heartbeat behavior.
 ```
 
 ```text
@@ -1431,6 +1432,7 @@ Unblocks: PLT.53
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: dependency-outage test asserting readiness fails closed; capability-health test reflecting simulated degradation.
 Completion evidence for the ledger: Health probe fail-closed and degradation results.
+Notes: Consume PLT.23's HealthDimension only as the same closed capability-probe aspect-key type defined by WP-09: reachable, ready, healthy, degraded and capacity. It carries no observation value or snapshot fields and is distinct from Architecture 02 §11's five independent axes (Installation, Presence, Health, Readiness, Compatibility). This clarification changes no Contracts/wire or Foundation HealthSnapshot/InstanceHealth/InstanceReadiness semantics and defines no Cloud presence/heartbeat behavior.
 ```
 
 ```text
