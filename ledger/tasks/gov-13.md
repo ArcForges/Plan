@@ -19,7 +19,7 @@ epoch: 1
 
 - DesktopPlatform [PR #88](https://github.com/ArcForges/DesktopPlatform/pull/88) changed the scoped accounting, roster, audit, tests, workflow, and provenance inventory. Exact reviewed head `f3144a1c7a6023063b8bb87746e9f27813f89ff3` was based on `9e3cff458fbef1ce4326c5d8141e478ac9d11b6b`, independently reviewed GOV.13-only with no findings ([review 5339639222](https://github.com/ArcForges/DesktopPlatform/pull/88#pullrequestreview-5339639222)), and passed all 15 exact-head PR checks in [run 36430027596](https://github.com/ArcForges/DesktopPlatform/actions/runs/36430027596). It was merged as `7cccfcc91f8014c7753e91bcfdef21278b21edda`.
 - Pinned .NET 10.0.400 local validation passed: locked restore, format verification, Release solution build with 0 warnings/errors, and 111 `eng` Python tests. Provenance passed for 528 files/140 records; workflow YAML parse and `git diff --check` passed. The hosted suite also supplies the naming/secret and native configure receipts unavailable in the local environment.
-- Post-merge explicit-root Plan/Design delivery validation passed with 437 tasks, 50 adoption slices, 99 generated views current, 0 warnings, and a valid ledger. This ledger is based on the Plan main including AND.22 merge `4a4247cf4231dfd2461eaaae4fc6595fc444e52d`.
+- Post-merge explicit-root Plan/Design delivery validation passed with 437 tasks, 50 adoption slices, 99 generated views current, 0 warnings, and a valid ledger. The ledger-only PR was rebuilt on current Plan main after EXT.02 companion PR #107 merged as `735983f709e385bf1df4cacc0aaa29147244e9e7`; the final explicit-root check passed with the same 437/50/99/0 counts.
 
 ## Retained hosted accounting evidence
 
