@@ -540,6 +540,7 @@ Unblocks: EXT.00, PLT.20, PLT.24, PLT.25, PLT.37
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: enumerate expected bindings, reject missing/extra methods/unsupported major/inconsistent classification/readiness mismatch/ambiguous target.
 Completion evidence for the ledger: Selection priority, determinism and explainability results.
+Notes: Dependency support is limited to project-name conditional central pins for the existing ArcForges.Capabilities and ArcForges.Capabilities.Tests projects at the already-admitted ArcForges.Contracts.Foundation 1.0.0-ci.216.1; the repository-wide default remains 1.0.0-ci.113.1. Only the existing Capabilities and Tests packages.lock.json files may be regenerated. Preserve the existing 51 NuGet coordinates and 10 Python package closure unchanged, with no coordinate/version/license additions, deletions or changes; the immutable plt-19-r1 receipt must chain from the receipt active at integration. No new project, package, global pin, solution, workflow, package-inventory or licence-boundary change is authorized.
 ```
 
 ```text
