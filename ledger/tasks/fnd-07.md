@@ -1,0 +1,22 @@
+---
+task: FND.07
+status: complete
+recorded: 2026-09-28
+claimant: w-20260927-foundation
+epoch: 1
+---
+
+# Published Foundation cross-language acceptance
+
+## Evidence
+
+- Acceptance implementation and immutable execution receipt: [DesktopPlatform PR74](https://github.com/ArcForges/DesktopPlatform/pull/74), `eng/acceptance/foundation/`. Final reviewed head `8b07513a68698eb443743ceeb06c664016a20f54`, independent exact-head review `5861087375` retaining original full acceptance review `5860928298`. All 12 retained checks passed in [run36360997598](https://github.com/ArcForges/DesktopPlatform/actions/runs/36360997598); merged as `761d7c9801b5ced005fd2a5266a1f38fca827044`.
+- Actual producers are published `ArcForges.Foundation` and `ArcForges.Application.Abstractions` `1.0.0-ci.29.1`, source `ace60538849047184954baed09fb05ec7676d367`; the original successful [publication run36347078380](https://github.com/ArcForges/DesktopPlatform/actions/runs/36347078380) remains authority. Exact Contracts NuGet/npm and published fixture inputs use `1.0.0-ci.113.1`, source `b10b2f6f316bf0c007e00632c5442fc102ebbe6e`. Locks/receipt retain actual package hashes and npm integrity values. No tag, replacement version or verification-only republication was created.
+- WP-04.90 / external Contracts consumption: a standalone local C# consumer references real published packages without project references or copied generated contracts. C# produces protobuf bytes, the independent published TypeScript projection verifies and returns bytes, and C# verifies that return plus independent TypeScript-origin vectors. The published Contracts fixture package is consumed as synthetic test data.
+- Actual Windows x64 execution passed using existing SDK10.0.401 via direct SDK DLL, Node26.7.0, npm11.19.0 and Python3.14.7 through the workstation build slot, with zero build warnings/errors. The repository's exact SDK10.0.400 producer CI pin is unchanged. No toolchain was installed.
+- Verified UUID network ordering; int64/uint64 beyond JavaScript safe integers; exact decimal/rational values; opaque cursors; absent versus explicit zero time; ProtoJSON integer/base64 exceptions; inert unknown fields/enums; all 44 registered reason codes and unknown reader codes; preserved command identity with new retry attempt; and refusal of automatic retry for an unknown effect. The consumer implements the published IExecutionContext port.
+- The runner is explicit local opt-in and fails closed in CI. It is absent from the solution/default builds and does not add hosted installed-consumer execution. Narrow local npm/dependency gate support was authorized by Design PR92 merge `baea397e0af7d4795a85130072e7423c6cc891fc` and Plan PR64 merge `c5c0030bd97fbb2bb7d21f040b0b6bea5b7296ff`; adversarial scope checks and actual dependency/provenance/licence/runtime inventories passed.
+- A focused architecture harness repair preserves equality with the full runtime ownership inventory, validates the one exact local acceptance helper, and excludes it from default hosted evaluation/compilation. Authorized Design PR97 merge `1e3bf6da8a0252e48a28c39986f78f9d3b4b3fd8` and Plan PR75 merge `1fef0ae2f08b70a970a5bd3698415195af12f71b`; Release SDK10.0.401 build completed with zero warnings/errors and all 17 focused positive/adversarial cases passed (zero failed/skipped), retained `artifacts/fnd07-harness-tests.xml`. The actual published consumer runtime proof was not rerun.
+- Kotlin evidence is honestly inherited from CON.91: generated Kotlin compiled, but its test run reported NO-SOURCE. No Kotlin runtime conformance is claimed. This task's actual runtime exchange is C#/TypeScript, not live RPC, authentication, physical devices, product schemas or provider execution. Durable exactly-once persistence belongs to PLT.01/FND.02 acceptance and is not inferred from these identity vectors.
+
+- Normal post-merge [publication run36361528725](https://github.com/ArcForges/DesktopPlatform/actions/runs/36361528725) succeeded for source `761d7c9801b5ced005fd2a5266a1f38fca827044`, publishing all eight packages as `1.0.0-ci.34.1` (publisher job `108740810803`). Candidate `nuget-candidate-36361528725-1`, artifact `10945303520`, provider digest `sha256:dd6cc558eb3e7be41252e61a453a6d0b0d3a4aa7a1e7dae0442142807e35f723`; metadata was inspected without downloading artifact bytes. This routine publication is source integration evidence only; the actual tested acceptance candidate remains original `1.0.0-ci.29.1`.
