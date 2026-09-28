@@ -165,13 +165,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Contracts:tests/ArchitectureTests/**; Contracts:eng/policy/exceptions.json
+Permitted write scope: Contracts:tests/ArchitectureTests/**; Contracts:eng/policy/exceptions.json; Contracts:ArcForges.Contracts.slnx; Contracts:eng/contracts.py; Contracts:Directory.Packages.props; Contracts:tests/ArchitectureTests/packages.lock.json; Contracts:eng/policy/dependency-policy.json; Contracts:eng/policy/dependency-reviews/gov-05-*.json; Contracts:eng/policy/licence-boundary.json; Contracts:eng/provenance/files.json; Contracts:eng/dependency_admission.py; Contracts:tests/tooling/test_dependency_admission.py
 Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
 Unblocks: GOV.07, GOV.09, GOV.10, GOV.15
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests, negative fixtures per assertion, PR CI; no live-service runtime per P2-017.
 Completion evidence for the ledger: Contract/serialization policy results with negative fixtures per assertion; Contracts' own layering/licence/banned-API results.
-Notes: WP05's own §8 completion-gate text states this substep 'makes VG-04's policy-test half enforceable' - a second VG-04 contributor not listed in the README's deferred-gate table (which names only 03.04/06.01).
+Notes: WP05's own §8 completion-gate text states this substep 'makes VG-04's policy-test half enforceable' - a second VG-04 contributor not listed in the README's deferred-gate table (which names only 03.04/06.01). The narrowly required ArcForges.Build.Policy 1.0.0-ci.31.1 AGPL admission is build/test-only: forbid product/runtime and generated-public-package closure leakage, and add regression negatives proving those boundaries; do not broaden the exception. Shared Contracts solution, policy and provenance edits rebase and merge one-at-a-time under the Contracts integration owner after exact-head review.
 ```
 
 ```text
@@ -314,7 +314,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/gov-12 (python tools/delivery.py claim GOV.12 --worker <name>); task branch task/gov-12 in Mobile; ledger record ledger/tasks/gov-12.md.
 Kind/size: governance/M. Baseline: not-started.
-Outcome: Mobile enforces its own layering/licence/naming/banned-API rules independently via a Gradle-native mechanism (dependency verification plus lint/Detekt-style rules) that consumes the same rule DATA as the other repos, not GOV.04's.NET test library directly.
+Outcome: DesktopPlatform owns and publishes a portable, schema-versioned catalog of the seven canonical BAN-* categories with the BannedSymbolScanner that consumes and validates it. Mobile enforces its own layering/licence/naming/banned-API rules independently via a Gradle-native mechanism (dependency verification plus lint/Detekt-style rules), pinning and copying the exact packaged catalog with version, source commit and SHA plus parity tests; it consumes the same data, not GOV.04's .NET test library. The catalog contains no repository-specific paths or status.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-05.00 (Mobile slice, via Gradle dependency-graph verification rather than the.NET engine): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\05-architecture-and-repository-policy-tests.md, anchor rule-wp-05.00
@@ -329,13 +329,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Mobile:gradle/policy/**; Mobile:eng/policy/exceptions.json; Mobile:build.gradle.kts (apply owned Gradle-native policy and formatter target only)
-Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.; RES-mobile-build-config (append): The module skeleton task registers all modules once and holds the lease `leases/res-mobile-build-config` while it restructures the build; later tasks edit only their module; catalog entries are appended and locks regenerated after rebase; dependency additions carry admission receipts.
+Permitted write scope: Mobile:gradle/policy/**; Mobile:eng/policy/exceptions.json; Mobile:build.gradle.kts (apply owned Gradle-native policy and formatter target only); DesktopPlatform:src/Build/ArcForges.Build.Policy/Architecture/banned-api-categories.json; DesktopPlatform:src/Build/ArcForges.Build.Policy/ArcForges.Build.Policy.csproj; DesktopPlatform:src/Build/ArcForges.Build.Policy/Architecture/BannedSymbolScanner.cs; DesktopPlatform:tests/ArchitectureTests/SharedPolicyTests.cs; DesktopPlatform:eng/provenance/files.json
+Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.; RES-mobile-build-config (append): The module skeleton task registers all modules once and holds the lease `leases/res-mobile-build-config` while it restructures the build; later tasks edit only their module; catalog entries are appended and locks regenerated after rebase; dependency additions carry admission receipts.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.; RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
 Unblocks: GOV.15
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline Gradle-time checks, negative fixtures, PR CI; no device/emulator runtime here, per P2-017 (that is WP06.07/WP30/WP32).
 Completion evidence for the ledger: Per-rule pass/fail fixture table for Mobile's Gradle dependency graph.
-Notes: F-023 (mobile provenance) and VG-07 (Android runtime posture) are separately scheduled at WP06.07/WP30/WP32 and are not this task's concern.
+Notes: Deliver two exact-head PRs under the single GOV.12 claim: independently review, CI and merge the DesktopPlatform catalog/scanner producer first, publish its existing package identity, then pin that exact immutable candidate in Mobile and run its parity checks. Preserve provenance and package/source digests across the handoff. No second catalog authority or per-repository path/status fields. F-023 (mobile provenance) and VG-07 (Android runtime posture) are separately scheduled at WP06.07/WP30/WP32 and are not this task's concern.
 ```
 
 ```text
@@ -358,12 +358,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:eng/accounting/invariant-report.py or equivalent; DesktopPlatform:artifacts/evidence/invariant-accounting.json
+Permitted write scope: DesktopPlatform:eng/accounting/invariant-test-cases.json; DesktopPlatform:eng/accounting/**; DesktopPlatform:.github/workflows/package-validation.yml; DesktopPlatform:eng/provenance/files.json
+Shared resources (follow the owner protocol): RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.; RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
 Unblocks: GOV.15
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Report generation reads real CI test-run results only; offline; re-run as each owning package lands enforcement (not a one-time close), per P2-017's 'runtime checks local, affected-scope, once, existing environment only' spirit.
-Completion evidence for the ledger: Current-catalogue-complete accounting table, every row classified from a real result.
-Notes: Will read as mostly 'not yet implemented' immediately after WP05 since most current invariants are owned by packages far downstream (WP06...WP53, per invariant-coverage.md's ownerCell). PG-11 stays open per-invariant in its OWNING package; GOV.13 never closes PG-11 or PG-06 itself - it only reports.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Report generation reads real CI test-run results only. Every invariant maps exactly once: a mapped TRX failure is failing, all mapped tests passed is passing, and no registered coverage is not-yet-implemented. Missing, malformed or incomplete TRX; mapped test absent, skipped or inconclusive; duplicate or unknown invariant IDs; or source/run mismatch all fail closed. Existing six test projects emit unique TRX names. Offline checks and PR CI; rerun as each owning package lands enforcement (not a one-time close), per P2-017.
+Completion evidence for the ledger: Current-catalogue-complete accounting table from CI; the ledger receipt records source SHA, run identity, artifact URL and digest.
+Notes: Will read as mostly 'not yet implemented' immediately after WP05 since most current invariants are owned by packages far downstream (WP06...WP53, per invariant-coverage.md's ownerCell). PG-11 stays open per-invariant in its OWNING package; GOV.13 never closes PG-11 or PG-06 itself - it only reports. `artifacts/evidence/test-results/**` and `artifacts/evidence/invariant-accounting.json` are generated ignored CI artifacts, uploaded together and never checked in; append future stable invariant-to-test-ID mappings as owners register coverage, and bind every ledger artifact receipt to the exact source SHA and CI run.
 ```
 
 ```text
