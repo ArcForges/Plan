@@ -176,7 +176,7 @@ Tasks: 436 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.16 | DesktopPlatform | S | PLT.09, PLT.10, PLT.11, PLT.12, PLT.13, PLT.14, PLT.15, ADOPT.02.platform (adoption) | Publish LocalRpc package and verify real integration |
 | PLT.17 | DesktopPlatform | S | CON.91, FND.01, ADOPT.02.platform (adoption) | Application identity and in-process composition |
 | PLT.18 | DesktopPlatform | M | PLT.17, ADOPT.02.platform (adoption) | Static contribution registration |
-| PLT.19 | DesktopPlatform | L | PLT.17, CON.91, ADOPT.02.platform (adoption) | Capability registry and selection |
+| PLT.19 | DesktopPlatform | L | PLT.17, CON.91, CON.02, ADOPT.02.platform (adoption) | Capability registry and selection |
 | PLT.20 | DesktopPlatform | M | PLT.19, ADOPT.02.platform (adoption) | Actions and availability |
 | PLT.21 | DesktopPlatform | M | PLT.17, ADOPT.02.platform (adoption) | Context providers and freezing |
 | PLT.22 | DesktopPlatform | M | PLT.05, PLT.17, ADOPT.02.platform (adoption) | Resources and artifacts resolution |

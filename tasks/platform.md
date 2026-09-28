@@ -528,7 +528,8 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.02.platform is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] PLT.17: identity/composition
-- [contract] CON.91: CapabilityDescriptor/OperationBinding wire schema
+- [contract] CON.91: accepted Foundation contract profile, including ResourceRef/ResourceVersionRef/ArtifactRef
+- [contract] CON.02: CapabilityDescriptor/OperationBinding wire schema
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -977,7 +978,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:eng/packaging/packages.json
+Permitted write scope: DesktopPlatform:eng/packaging/packages.json; DesktopPlatform:src/DesignSystem/ArcForges.DesignSystem/ArcForges.DesignSystem.csproj (final IsPackable/package activation only; PLT.26 remains non-packable); DesktopPlatform:src/DesignSystem/ArcForges.Desktop.Shell/ArcForges.Desktop.Shell.csproj (final IsPackable/package activation only; PLT.26 remains non-packable)
 Shared resources (follow the owner protocol): RES-desktopplatform-package-inventory (append): Each producer task adds its own package entry; every merge to main packs and publishes all packages at one version; consumers pin the candidate produced by the merge of the capability they need, never waiting for a package closure task; one merge queue.
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): P2-017: offline verify/policy tests plus the retained AOT-publish gate.
