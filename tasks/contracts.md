@@ -266,7 +266,7 @@ Unblocks: CLOUD.39, CON.14, CON.17, CON.19, CON.21, CON.22
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Deterministic regeneration, constraint-shard aggregation and Foundation inventory/EXTRA_SEEDS checks; offline positive/negative TransferTicket shape vectors in the existing C#/TypeScript Foundation tests using the task-owned fixture, plus Sync/resource/realm-transfer vectors incl. stale revision -> preserved conflict proposal, absent-hash-never-promotes and expired-pin-blocks-adoption. Exactly one new Foundation message; preserve the published baseline/version; no runtime behavior, additional Foundation message or real D1/R2 (WP-21/WP-25 own that).
 Completion evidence for the ledger: fixtures/public/con-09-sync-transfer.json.
-Notes: WP-21 (Cloud D1/sync engine, the Cloud lane) is the direct consumer that most needs this + CON.03 to start; it does NOT need CON.07/08/10-16.
+Notes: WP-21 (Cloud D1/sync engine, the Cloud lane) is the direct consumer that most needs this + CON.03 to start; it does NOT need CON.07/08/10-16. TransferTicket boundary: CON.09 is its sole author, and this repair authorizes only this one new Foundation message; CON.14/.21/.22 import it without copies. No second/alias Foundation type, other new Foundation message, runtime handler/authorization/network behavior, R2 credential, or published compatibility-baseline/version mutation is authorized; CON.09's existing domain operation/record scope is otherwise unchanged.
 ```
 
 ```text
