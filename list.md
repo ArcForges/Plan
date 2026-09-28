@@ -244,7 +244,7 @@ Tasks: 437 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | APP.05 | DesktopPlatform | M | APP.01, PLT.39, ADOPT.02.app-composition (adoption) | Approval at the owner |
 | APP.06 | DesktopPlatform | M | APP.01, PLT.21, PLT.22, PLT.41, ADOPT.02.app-composition (adoption) | Context and artifact integration |
 | APP.07 | DesktopPlatform | S | APP.01, PLT.32, ADOPT.02.app-composition (adoption) | Independent lifecycle |
-| APP.08 | DesktopPlatform | M | APP.01, APP.02, APP.03, APP.04, APP.05, APP.06, APP.07, ADOPT.02.app-composition (adoption) | Owned-artifact receipt and UX acceptance |
+| APP.08 | DesktopPlatform | M | APP.01, APP.02, APP.03, APP.04, APP.05, APP.06, APP.07, PLT.17, PLT.27, PLT.01, ADOPT.02.app-composition (adoption) | Owned-artifact receipt and UX acceptance |
 
 ## Embedded assistant — [prompts](tasks/assistant.md)
 

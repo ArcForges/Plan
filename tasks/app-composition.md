@@ -18,7 +18,7 @@ Kind/size: producer/M. Baseline: not-started.
 Outcome: Assistant.Abstractions published with IHostContext/IHostActions/IHostResources/IHostNavigation/IHostLifecycle/IHostPlatformServices, product/profile identity and lifetime; two independent application identities cannot share stores/registration.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-14.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.00
+- WP-14.00 (Host-port signatures, product/profile identity and lifetime, and two-identity unit isolation only; APP.08 owns the WP-14.00 minimal real-integration sample.): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.00
 
 Entry condition: adoption slice ADOPT.02.app-composition is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -219,27 +219,32 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/app-08 (python tools/delivery.py claim APP.08 --worker <name>); task branch task/app-08 in DesktopPlatform; ledger record ledger/tasks/app-08.md.
 Kind/size: acceptance/M. Baseline: not-started.
-Outcome: WP14 built/packed once from a clean environment; all applicable UX acceptance groups recorded; package/contract/owner/version compatibility and failure/recovery evidence attached; no later-provider fixture used to close a real WP14 gate.
+Outcome: A minimal, runnable WP14 integration sample composes the host ports with real ArcForges.Capabilities, ArcForges.Desktop.Shell and ArcForges.Persistence.Sqlite, and demonstrates product/profile identity, lifecycle and isolated local-store use; WP14 is built/packed once from a clean environment with all applicable UX acceptance groups and package/contract/owner/version compatibility and failure/recovery evidence recorded. No later-provider fixture closes a real WP14 gate.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
+- WP-14.00 (Minimal real-integration sample only: compose the WP-14 host ports with real ArcForges.Capabilities, ArcForges.Desktop.Shell and ArcForges.Persistence.Sqlite; no fakes or stand-ins.): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.00
 - WP-14.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.90
 
 Entry condition: adoption slice ADOPT.02.app-composition is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] APP.01: completed WP-14.00
+- [artifact] APP.01: published WP-14.00 host-port signatures and product/profile identity/lifetime
 - [artifact] APP.02: completed WP-14.01
 - [artifact] APP.03: completed WP-14.02
 - [artifact] APP.04: completed WP-14.03
 - [artifact] APP.05: completed WP-14.04
 - [artifact] APP.06: completed WP-14.05
 - [artifact] APP.07: completed WP-14.06
+- [artifact] PLT.17: real ArcForges.Capabilities application identity and composition root
+- [artifact] PLT.27: real ArcForges.Desktop.Shell project and window/panel host
+- [artifact] PLT.01: real single-write-path Persistence.Sqlite store
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:artifacts/evidence/**
-Shared resources (follow the owner protocol): RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
+Permitted write scope: DesktopPlatform:samples/AssistantHost/** (minimal runnable sample only; its packages.lock.json is generated from existing approved dependency identities); DesktopPlatform:DesktopPlatform.slnx (register only the APP.08 sample); DesktopPlatform:.github/workflows/package-validation.yml (build/run only the sample in the existing validation flow; no new job, matrix or deployment); DesktopPlatform:eng/policy/architecture-projects.json (append only the sample project classification); DesktopPlatform:eng/policy/runtime-ownership.json (append only the sample's non-production ownership classification); DesktopPlatform:eng/policy/licence-boundary.json (append only the sample project classification); DesktopPlatform:eng/policy/reconciliation/active-projects.json (append only the sample project); DesktopPlatform:eng/policy/reconciliation/project-updates.json (append only the sample project registration); DesktopPlatform:eng/policy/reconciliation/source.json (append only the sample source inventory); DesktopPlatform:eng/provenance/files.json (classify only the task-owned sample source and project/lock inputs); DesktopPlatform:eng/policy/dependency-policy.json (only exact sample project/lock input bindings for already-admitted dependency identities); DesktopPlatform:eng/policy/dependency-reviews/app-08-r1.json (immutable sample admission receipt only if required by the existing dependency gate; no dependency identity, version or closure changes); DesktopPlatform:artifacts/evidence/**
+Shared resources (follow the owner protocol): RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
 Unblocks: AST.17
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Build/pack once in CI producing the immutable candidate; UX-A/B ledger rows recorded per experience/03; P2-017 scope only (no macOS/E2E/live-service CI).
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Build and run the real minimal sample in the existing package-validation flow under P2-017, alongside the single WP14 CI build/pack producing the immutable candidate; record UX-A/B ledger rows per experience/03. No macOS, E2E or live-service CI.
 Completion evidence for the ledger: Source commit, package/artifact versions and hashes, environment, UX-A/B acceptance rows, named later-fixture list (none expected for WP14 itself).
+Notes: APP.01 owns only WP-14.00 host-port signatures, product/profile identity and lifetime, and two-identity unit isolation; APP.08 owns WP-14.00's minimal real-integration sample plus WP-14.90 acceptance. The sample composes existing host ports with real ArcForges.Capabilities, ArcForges.Desktop.Shell and ArcForges.Persistence.Sqlite; it must not use fakes or fixture stand-ins, implement full AssistantHost UI (WP-17), add a package identity, or require PLT.35. Register only the sample project/build/run path and its exact existing-policy, reconciliation, provenance and lock bindings; preserve all package identities and dependency versions/closure. Shared build-config and policy-data updates are append-only.
 ```
