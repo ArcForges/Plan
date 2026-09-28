@@ -57,7 +57,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Mobile:settings.gradle.kts; Mobile:build.gradle.kts; Mobile:core/domain/**; Mobile:core/data/**; Mobile:core/network/**; Mobile:core/security/**; Mobile:core/designsystem/**; Mobile:feature/home/**; Mobile:feature/chat/**; Mobile:feature/tasks/**; Mobile:feature/library/**; Mobile:feature/settings/**
 Shared resources (follow the owner protocol): RES-mobile-build-config (exclusive): The module skeleton task registers all modules once and holds the lease `leases/res-mobile-build-config` while it restructures the build; later tasks edit only their module; catalog entries are appended and locks regenerated after rebase; dependency additions carry admission receipts.
-Unblocks: AND.03, AND.04, AND.05
+Unblocks: AND.03, AND.04, AND.05, AND.20
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Architecture/import boundary tests (no React Native/iOS/AGPL imports, no cross-module leakage) as offline static checks; targeted offline unit tests per module
 Completion evidence for the ledger: Module dependency graph report showing one-way core<-feature<-app dependencies; route ID inventory matching AN01-AN28
@@ -586,6 +586,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [contract] CON.16: android-update.v1 feed format and fixture signing keys
+- [artifact] AND.02: registered core/network and feature/settings module shells from android-module-boundaries
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
