@@ -23,16 +23,17 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.09.web is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] GOV.03: Node/npm workspace and toolchain pins
+- [artifact] GOV.11: prior Web security-config exception authority and r7 exact-pattern baseline
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Web:apps/site/**
+Permitted write scope: Web:apps/site/**; Web:.gitleaks.toml (only exact-path-and-digest generic-api-key exceptions for the eight observed lines/six unique verified public SHA256 values in the browser resource profile); Web:tests/provenance/candidate.test.ts (only tests for the r8 Gitleaks exact-exception boundary and its positive/negative cases; read the actual config and profile, without changing candidate generation)
 Shared resources (follow the owner protocol): RES-contract-consumer-pins (append): A consumer task updates the pin it needs through a reviewed dependency change to the exact published candidate containing its closure; no consumer pins an unpublished closure or references Contracts source.
 Unblocks: WEB.02, WEB.03, WEB.04, WEB.05, WEB.06, WEB.07
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Two full builds with identical inputs compared byte-for-byte; no-script navigation/content tests; single-content-change diff; build with network disabled after approved restore — CI-eligible offline checks
-Completion evidence for the ledger: Determinism comparison and diff-minimality results
-Notes: Its only real start need (WP00/WP02) is already satisfied; the current serial plan defers WP47 until after WP40, but nothing blocks starting this immediately.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Two full builds with identical inputs compared byte-for-byte; no-script navigation/content tests; single-content-change diff; build with network disabled after approved restore — CI-eligible offline checks. Keep the pinned Gitleaks scan enabled. Its generic-api-key exception may match only the eight observed lines/six unique verified public SHA256 values in eng/provenance/profiles/browser-resources-r8.json, requiring the exact path and digest on the same line (AND); `tests/provenance/candidate.test.ts` must test the actual config/profile exact bindings and positive/negative cases for changed digest, another path, unrelated 64-hex and credential-looking text. Do not allow generic 64-hex patterns, whole-file or commit suppressions, scanner/workflow/rule-algorithm changes, candidate-generation algorithm changes, or new dependencies.
+Completion evidence for the ledger: Determinism comparison and diff-minimality results; pinned Gitleaks results with eight observed findings bound by six exact path/digest pairs and negative path/digest-boundary evidence
+Notes: Its only real start need (WP00/WP02) is already satisfied; the current serial plan defers WP47 until after WP40, but nothing blocks starting this immediately. The candidate provenance test reads the actual .gitleaks.toml and browser-resources-r8.json, verifies the six unique exact path/digest bindings for the eight observed findings, and rejects changed-digest, different-path, unrelated-64-hex and credential-text cases; it must not alter candidate generation.
 ```
 
 ```text
