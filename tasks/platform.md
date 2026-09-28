@@ -534,11 +534,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Capabilities/**
+Permitted write scope: DesktopPlatform:Directory.Packages.props; DesktopPlatform:eng/policy/architecture-contract-tests.json; DesktopPlatform:eng/policy/dependency-policy.json; DesktopPlatform:eng/policy/dependency-reviews/plt-19-r1.json; DesktopPlatform:eng/policy/reconciliation/active-projects.json; DesktopPlatform:eng/provenance/files.json; DesktopPlatform:src/BuildingBlocks/ArcForges.Capabilities/**
+Shared resources (follow the owner protocol): RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
 Unblocks: EXT.00, PLT.20, PLT.24, PLT.25, PLT.37
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: enumerate expected bindings, reject missing/extra methods/unsupported major/inconsistent classification/readiness mismatch/ambiguous target.
 Completion evidence for the ledger: Selection priority, determinism and explainability results.
+Notes: Dependency support is limited to project-name conditional central pins for the existing ArcForges.Capabilities and ArcForges.Capabilities.Tests projects at the already-admitted ArcForges.Contracts.Foundation 1.0.0-ci.216.1; the repository-wide default remains 1.0.0-ci.113.1. Only the existing Capabilities and Tests packages.lock.json files may be regenerated. Preserve the existing 51 NuGet coordinates and 10 Python package closure unchanged, with no coordinate/version/license additions, deletions or changes; the immutable plt-19-r1 receipt must chain from the receipt active at integration. No new project, package, global pin, solution, workflow, package-inventory or licence-boundary change is authorized.
 ```
 
 ```text
