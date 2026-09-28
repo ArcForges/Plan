@@ -534,7 +534,8 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Capabilities/**
+Permitted write scope: DesktopPlatform:Directory.Packages.props; DesktopPlatform:eng/policy/architecture-contract-tests.json; DesktopPlatform:eng/policy/dependency-policy.json; DesktopPlatform:eng/policy/dependency-reviews/plt-19-r1.json; DesktopPlatform:eng/policy/reconciliation/active-projects.json; DesktopPlatform:eng/provenance/files.json; DesktopPlatform:src/BuildingBlocks/ArcForges.Capabilities/**
+Shared resources (follow the owner protocol): RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
 Unblocks: EXT.00, PLT.20, PLT.24, PLT.25, PLT.37
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: enumerate expected bindings, reject missing/extra methods/unsupported major/inconsistent classification/readiness mismatch/ambiguous target.
