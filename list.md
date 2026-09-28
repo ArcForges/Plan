@@ -564,7 +564,7 @@ Tasks: 437 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
-| WEB.01 | Web | L | GOV.03, ADOPT.09.web (adoption) | React static generation and determinism engine |
+| WEB.01 | Web | L | GOV.03, GOV.11, ADOPT.09.web (adoption) | React static generation and determinism engine |
 | WEB.02 | Web | M | WEB.01, ADOPT.09.web (adoption) | Versioned public content and pricing inputs (catalogue.json) |
 | WEB.03 | Web | M | WEB.01, ADOPT.09.web (adoption) | Rendering and performance |
 | WEB.04 | Web | M | WEB.01, ADOPT.09.web (adoption) | Internationalisation |
