@@ -54,7 +54,7 @@ Adoption slices (claim, review and record each separately as ledger/tasks/<slice
 - ADOPT.02.execution: Adopt DesktopPlatform: Execution engine (opens 9 tasks)
 - ADOPT.02.extensions: Adopt DesktopPlatform: Extension platform and integrations (opens 7 tasks)
 - ADOPT.02.foundation: Adopt DesktopPlatform: Foundation values (opens 7 tasks)
-- ADOPT.02.governance: Adopt DesktopPlatform: Family governance and policy tests (opens 6 tasks; records 3 accepted tasks as inherited)
+- ADOPT.02.governance: Adopt DesktopPlatform: Family governance and policy tests (opens 7 tasks; records 3 accepted tasks as inherited)
 - ADOPT.02.native: Adopt DesktopPlatform: Native producers and probes (opens 13 tasks)
 - ADOPT.02.platform: Adopt DesktopPlatform: Desktop platform mechanisms (opens 55 tasks)
 - ADOPT.02.policy: Adopt DesktopPlatform: Dynamic policy and configuration (opens 1 task)
@@ -472,8 +472,8 @@ Claim and handoff record: claims/adopt-02-governance (python tools/delivery.py c
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- GOV.01, GOV.02, GOV.03, GOV.04, GOV.13, GOV.14, GOV.15, GOV.17, GOV.18
-Opens when the record is merged: GOV.04, GOV.13, GOV.14, GOV.15, GOV.17, GOV.18, except any task this slice classifies as inherited. Every task classified as inherited, including the accepted-baseline tasks GOV.01, GOV.02, GOV.03, gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- GOV.01, GOV.02, GOV.03, GOV.04, GOV.06, GOV.13, GOV.14, GOV.15, GOV.17, GOV.18
+Opens when the record is merged: GOV.04, GOV.06, GOV.13, GOV.14, GOV.15, GOV.17, GOV.18, except any task this slice classifies as inherited. Every task classified as inherited, including the accepted-baseline tasks GOV.01, GOV.02, GOV.03, gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-02-governance.md; Plan:ledger/tasks/gov-01.md; Plan:ledger/tasks/gov-02.md; Plan:ledger/tasks/gov-03.md; Plan:ledger/tasks/<key>.md (status inherited) for each other task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
