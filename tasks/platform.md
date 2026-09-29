@@ -1490,7 +1490,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] PLT.51: health probes
 - [artifact] PLT.52: diagnostics/consent
 Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
+- [integration] PLT.48: PLT.48 completion, including the real Cloud HTTP/queue/worker/realtime/provider hop
 
 Permitted write scope: DesktopPlatform:eng/packaging/packages.json
 Shared resources (follow the owner protocol): RES-desktopplatform-package-inventory (append): Each producer task adds its own package entry; every merge to main packs and publishes all packages at one version; consumers pin the candidate produced by the merge of the capability they need, never waiting for a package closure task; one merge queue.
