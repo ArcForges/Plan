@@ -1349,7 +1349,8 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] CLOUD.01: a real Cloud hop to prove the full HTTP/queue/worker/realtime/provider chain
 
-Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Observability/**
+Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Observability/**; DesktopPlatform:eng/policy/architecture-contract-tests.json (append only exact PLT.48 public API-to-test bindings for the existing Observability test project); DesktopPlatform:eng/provenance/files.json (append only first-party paths for new PLT.48 source and test files)
+Shared resources (follow the owner protocol): RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.; RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
 Unblocks: PLT.53
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: synthetic end-to-end action producing one connected trace across available local hop kinds; resolution test from task identifier to trace; validation test rejecting malformed client-supplied correlation.
