@@ -172,8 +172,8 @@ Tasks: 437 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.11 | DesktopPlatform | M | PLT.10, ADOPT.02.platform (adoption) | Child registration lifecycle |
 | PLT.12 | DesktopPlatform | S | PLT.11, ADOPT.02.platform (adoption) | Static routing and version refusal |
 | PLT.13 | DesktopPlatform | M | PLT.09, ADOPT.02.platform (adoption) | Bounds and concurrency |
-| PLT.14 | DesktopPlatform | M | PLT.09, FND.02, ADOPT.02.platform (adoption) | Disconnect, cancel and retry semantics |
-| PLT.15 | DesktopPlatform | M | PLT.09, CON.04, ADOPT.02.platform (adoption) | Brokered large data over the sandbox boundary |
+| PLT.14 | DesktopPlatform | M | PLT.09, FND.02, PLT.13, ADOPT.02.platform (adoption) | Disconnect, cancel and retry semantics |
+| PLT.15 | DesktopPlatform | M | PLT.09, CON.04, PLT.13, ADOPT.02.platform (adoption) | Brokered large data over the sandbox boundary |
 | PLT.16 | DesktopPlatform | S | PLT.09, PLT.10, PLT.11, PLT.12, PLT.13, PLT.14, PLT.15, ADOPT.02.platform (adoption) | Publish LocalRpc package and verify real integration |
 | PLT.17 | DesktopPlatform | S | CON.91, FND.01, ADOPT.02.platform (adoption) | Application identity and in-process composition |
 | PLT.18 | DesktopPlatform | M | PLT.17, ADOPT.02.platform (adoption) | Static contribution registration |
@@ -203,7 +203,7 @@ Tasks: 437 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.42 | DesktopPlatform | L | PLT.21, ADOPT.02.platform (adoption) | Instruction provenance |
 | PLT.43 | DesktopPlatform | M | PLT.38, PLT.01, ADOPT.02.platform (adoption) | Capability leases and trust |
 | PLT.44 | DesktopPlatform | M | PLT.36, PLT.01, ADOPT.02.platform (adoption) | Append-only audit subsystem |
-| PLT.45 | DesktopPlatform | XL | PLT.15, PLT.09, CON.04, ADOPT.02.platform (adoption) | Content helper and OS-enforced isolation (ContentSandbox host) |
+| PLT.45 | DesktopPlatform | XL | PLT.15, PLT.09, PLT.10, CON.04, ADOPT.02.platform (adoption) | Content helper and OS-enforced isolation (ContentSandbox host) |
 | PLT.46 | DesktopPlatform | M | PLT.36, PLT.37, PLT.38, PLT.39, PLT.40, PLT.41, PLT.42, PLT.43, PLT.44, PLT.45, PLT.54, PLT.57, ADOPT.02.platform (adoption) | Publish Security packages and verify real integration |
 | PLT.47 | DesktopPlatform | M | FND.01, ADOPT.02.platform (adoption) | Emission and required dimensions |
 | PLT.48 | DesktopPlatform | M | PLT.47, ADOPT.02.platform (adoption) | Correlation and causation propagation |

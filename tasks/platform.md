@@ -286,7 +286,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.LocalRpc/**
-Unblocks: PLT.11, PLT.16, PLT.38
+Unblocks: PLT.11, PLT.16, PLT.38, PLT.45
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline/local tests: concurrent launch, stale descriptor, forged nonce/build, parent-death cleanup.
 Completion evidence for the ledger: Concurrent launch, stale descriptor, forged nonce/build and parent-death cleanup results.
@@ -353,7 +353,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/plt-13 (python tools/delivery.py claim PLT.13 --worker <name>); task branch task/plt-13 in DesktopPlatform; ledger record ledger/tasks/plt-13.md.
 Kind/size: producer/M. Baseline: not-started.
-Outcome: 16 active/64 queued bounded calls, deadlines and parent-owned callback channels; no recursive saturated callback lane.
+Outcome: 16 active/64 queued bounded data calls, deadlines and parent-owned callback channels, plus exactly two reserved control slots outside the data-call budget for bootstrap, lease renewal, cancellation and health; all four control operations remain serviceable while data dispatch is saturated, with no recursive saturated callback lane.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-08.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\08-local-ipc-and-registration.md, anchor rule-wp-08.04
@@ -365,10 +365,10 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.LocalRpc/**
-Unblocks: PLT.16
+Unblocks: PLT.14, PLT.15, PLT.16
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: queue/memory bound, fairness, timeout and typed overload.
-Completion evidence for the ledger: Queue/memory bound, fairness, timeout and typed overload.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline deterministic tests: queue/memory bound, fairness, timeout and typed overload; hold the ordinary 16-active/64-queued data dispatcher at saturation and prove the exactly two reserved control slots remain outside that budget and service bootstrap, lease renewal, cancellation and health operations (each operation is exercised under saturation), without recursive callback dispatch.
+Completion evidence for the ledger: Queue/memory bound, fairness, timeout and typed overload; saturated data-dispatch results proving the exactly two reserved control slots service bootstrap, lease renewal, cancellation and health.
 ```
 
 ```text
@@ -388,14 +388,15 @@ Entry condition: adoption slice ADOPT.02.platform is complete in the Plan ledger
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] PLT.09: transport
 - [artifact] FND.02: effect-certainty/Outcome types
+- [artifact] PLT.13: two reserved cancellation/control slots under saturated bounded dispatch
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.LocalRpc/**
 Unblocks: PLT.16
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline/local tests: kill before/after commit, lost ack and unknown effect.
-Completion evidence for the ledger: Kill before/after commit, lost ack and unknown effect.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline/local tests: kill before/after commit, lost ack and unknown effect; while ordinary data dispatch is saturated, prove cancellation progresses through one of PLT.13's two reserved control slots.
+Completion evidence for the ledger: Kill before/after commit, lost ack and unknown effect; cancellation succeeds under saturated data dispatch through a reserved control slot.
 ```
 
 ```text
@@ -415,14 +416,15 @@ Entry condition: adoption slice ADOPT.02.platform is complete in the Plan ledger
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] PLT.09: transport
 - [contract] CON.04: ContentSandboxService/slot-grant wire shapes in contracts/09-local-grpc-and-sandbox.md
+- [artifact] PLT.13: two reserved cancellation/control slots under saturated bounded dispatch
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] PLT.45: the real ContentSandbox helper actually using these brokered buffers
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.LocalRpc/**
 Unblocks: PLT.16, PLT.24, PLT.45
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline/local tests: wrong resource grant, range/hash/expiry/cancel and orphan cleanup.
-Completion evidence for the ledger: Wrong resource grant, range/hash/expiry/cancel and orphan cleanup.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline/local tests: wrong resource grant, range/hash/expiry/cancel and orphan cleanup; while ordinary data dispatch is saturated, prove transfer cancellation progresses through one of PLT.13's two reserved control slots.
+Completion evidence for the ledger: Wrong resource grant, range/hash/expiry/cancel and orphan cleanup; transfer cancellation succeeds under saturated data dispatch through a reserved control slot.
 ```
 
 ```text
@@ -450,11 +452,12 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:eng/packaging/packages.json
-Shared resources (follow the owner protocol): RES-desktopplatform-package-inventory (append): Each producer task adds its own package entry; every merge to main packs and publishes all packages at one version; consumers pin the candidate produced by the merge of the capability they need, never waiting for a package closure task; one merge queue.
+Permitted write scope: DesktopPlatform:eng/packaging/packages.json; DesktopPlatform:eng/policy/dependency-policy.json; DesktopPlatform:eng/policy/dependency-reviews/plt-16-r1.json; DesktopPlatform:eng/provenance/files.json
+Shared resources (follow the owner protocol): RES-desktopplatform-package-inventory (append): Each producer task adds its own package entry; every merge to main packs and publishes all packages at one version; consumers pin the candidate produced by the merge of the capability they need, never waiting for a package closure task; one merge queue.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): P2-017: offline verify plus policy tests; real multi-process OS-stream evidence beyond the repo's own build-machine tests is local opt-in.
-Completion evidence for the ledger: Exact artifact/consumer and applicable UX acceptance ledger.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): P2-017: offline package and policy tests plus one independent consumer check against the exact prepublication CI candidate package. The consumer must resolve the recorded package ID/version and SHA256 from the candidate artifact through an isolated temporary package source/cache, with no project reference, sibling-source fallback or substitute package; record source commit, CI run/artifact identity, package identity/digest and consumer restore/build/run result. This existing-environment candidate check is local opt-in and performed once for the affected candidate; do not add a hosted installed-consumer test or a permanent consumer harness. Real multi-process OS-stream evidence beyond the repo's own build-machine tests remains local opt-in.
+Completion evidence for the ledger: Exact CI candidate artifact/source commit and package identity/version/SHA256; independent isolated consumer restore/build/run proving it resolved only that exact candidate with no project/source fallback; package/policy checks and applicable UX acceptance ledger. Record any separately required real OS-stream run once as local opt-in evidence.
+Notes: ADP-07 support is limited to the exact append-only package-inventory row in eng/packaging/packages.json and its required existing-gate bindings: refresh only that file's active input hash and the current dependency-review pointer/active review object in eng/policy/dependency-policy.json; add immutable eng/policy/dependency-reviews/plt-16-r1.json as a successor to the then-current receipt, preserving the admitted dependency coordinates, versions and closure; and append only that receipt as firstParty in eng/provenance/files.json. Use RES-desktopplatform-policy-data for these task-owned policy/provenance bindings and RES-desktopplatform-package-inventory for the package row. Do not invent or predeclare LocalRpc package dependency IDs, version ranges or closure here: derive them only from the reviewed, frozen PLT.09 project references and their separately admitted exact pins; if that frozen graph requires any unadmitted package/version change, obtain authority before changing it. Do not change projects, package locks, reconciliation, architecture classifications or test maps, licences, runtime behavior, policy algorithms or unrelated records. PLT.16 may publish/consume the progressive exact package candidate once its declared PLT.09-15 artifacts exist; it has no PLT.45 completion prerequisite. PLT.15 remains complete only after PLT.45 integrates the brokered-data mechanism.
 ```
 
 ```text
@@ -1253,7 +1256,8 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.02.platform is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] PLT.15: LocalRpc brokered large-data mechanism (WP-08.06)
-- [artifact] PLT.09: LocalRpc transport/restricted launch identity (WP-08.00/08.01)
+- [artifact] PLT.09: LocalRpc transport (WP-08.00)
+- [artifact] PLT.10: restricted endpoint identity and one-use launch secret (WP-08.01)
 - [contract] CON.04: ArcForges.Contracts.LocalRpc.Sandbox generated ContentSandboxService/session/grant schema
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] NAT.14: production PDF/image parser composition rebuilt and signed on top of this same helper
