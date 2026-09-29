@@ -202,7 +202,7 @@ Tasks: 437 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.41 | DesktopPlatform | M | PLT.38, ADOPT.02.platform (adoption) | Egress control |
 | PLT.42 | DesktopPlatform | L | PLT.21, ADOPT.02.platform (adoption) | Instruction provenance |
 | PLT.43 | DesktopPlatform | M | PLT.38, PLT.01, ADOPT.02.platform (adoption) | Capability leases and trust |
-| PLT.44 | DesktopPlatform | M | PLT.36, PLT.01, ADOPT.02.platform (adoption) | Append-only audit subsystem |
+| PLT.44 | DesktopPlatform | M | PLT.36, PLT.01, FND.04, ADOPT.02.platform (adoption) | Append-only audit subsystem |
 | PLT.45 | DesktopPlatform | XL | PLT.15, PLT.09, PLT.10, CON.04, ADOPT.02.platform (adoption) | Content helper and OS-enforced isolation (ContentSandbox host) |
 | PLT.46 | DesktopPlatform | M | PLT.36, PLT.37, PLT.38, PLT.39, PLT.40, PLT.41, PLT.42, PLT.43, PLT.44, PLT.45, PLT.54, PLT.57, ADOPT.02.platform (adoption) | Publish Security packages and verify real integration |
 | PLT.47 | DesktopPlatform | M | FND.01, ADOPT.02.platform (adoption) | Emission and required dimensions |
