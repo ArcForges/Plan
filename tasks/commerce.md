@@ -142,7 +142,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Entitlement/**/Resolver/**
 Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
-Unblocks: COM.06, COM.07, COM.08, COM.10, COM.11, COM.13, COM.14, HAR.06, POL.04, SIM.07
+Unblocks: COM.06, COM.07, COM.08, COM.10, COM.11, COM.13, COM.14, HAR.06, PLT.20, POL.04, SIM.07
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: rebuild-equivalence over fixture accounts, reason-coverage, combination matrix over the four entitlement kinds, clock-determinism against an injected time source.
 Completion evidence for the ledger: Rebuild-equivalence test result (snapshot-from-scratch equals stored snapshot) across fixture accounts.
@@ -171,7 +171,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Entitlement/**/Distribution/**; Cloud:src/Cloud/ArcForges.Cloud.Modules.Entitlement/**/Enforcement/**
 Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.; RES-contract-consumer-pins (append): A consumer task updates the pin it needs through a reviewed dependency change to the exact published candidate containing its closure; no consumer pins an unpublished closure or references Contracts source.
-Unblocks: COM.15
+Unblocks: COM.15, PLT.20
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: hint-not-authority, offline-staleness behavior, client-bypass negative, local-data-survival.
 Completion evidence for the ledger: Client-bypass negative test result; local-data-survival result.
