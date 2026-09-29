@@ -853,11 +853,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:src/DesignSystem/ArcForges.Desktop.Shell/**
+Permitted write scope: DesktopPlatform:src/DesignSystem/ArcForges.Desktop.Shell/**; DesktopPlatform:eng/policy/architecture-contract-tests.json (append only four exact PLT.30 public ordinary API-to-direct-[Fact] bindings); DesktopPlatform:eng/provenance/files.json (append only firstParty classifications for the two PLT.30-owned Attention source and test files)
+Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
 Unblocks: PLT.35
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: missed-notification test asserting durable state survives; sensitivity test on notification content.
 Completion evidence for the ledger: Missed-notification durability result.
+Notes: The only supporting-file additions are four exact public ordinary API-to-direct-[Fact] bindings in eng/policy/architecture-contract-tests.json and two firstParty classifications in eng/provenance/files.json for src/DesignSystem/ArcForges.Desktop.Shell/Attention/AttentionModel.cs and src/DesignSystem/ArcForges.Desktop.Shell/Tests/AttentionModelTests.cs. Bind ArcForges.Desktop.Shell.AttentionModel.Publish(ArcForges.Desktop.Shell.AttentionItem, System.Func<ArcForges.Desktop.Shell.SystemNotificationContent, bool>?, ArcForges.Desktop.Shell.NotificationPreviewConsent), ArcForges.Desktop.Shell.AttentionModel.Snapshot(), and ArcForges.Desktop.Shell.AttentionModel.RemoveResolved(string) directly to ArcForges.Desktop.Shell.Tests.AttentionModelTests.MissedNotificationLeavesDurableAttentionUntilOwnerResolvesIt(); bind ArcForges.Desktop.Shell.AttentionModel.CreateSystemNotificationContent(ArcForges.Desktop.Shell.AttentionItem, ArcForges.Desktop.Shell.NotificationPreviewConsent) directly to ArcForges.Desktop.Shell.Tests.AttentionModelTests.SensitiveSystemNotificationUsesGenericContentUnlessPreviewConsentIsExplicit(). RES-architecture-tests and RES-desktopplatform-policy-data are append-only task-owned rows under their existing protocols. No project, csproj, solution, workflow, lock, dependency input/closure, immutable dependency-admission receipt, licence, runtime ownership, reconciliation, package inventory/identity, NOTICE, checker, algorithm, or unrelated architecture/provenance row changes are authorized. The outcome and prerequisite remain unchanged.
 ```
 
 ```text
