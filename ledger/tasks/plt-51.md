@@ -1,0 +1,23 @@
+---
+task: PLT.51
+status: complete
+recorded: 2026-09-29
+claimant: af-20260928-g02
+epoch: 1
+---
+
+# Health probes
+
+## Evidence
+
+- Planning authority: Design PR [#163](https://github.com/ArcForges/ArcForges-Design/pull/163), exact reviewed head `a7b9c86562ef1b3c2adc88696968876bb48fa7ca`, merged as `6953f9a4d06428b29a28521ece06deaf5d5fd0df`; generated Plan PR [#176](https://github.com/ArcForges/Plan/pull/176), exact reviewed head `a2059ae6348c25457acfb5767dd6f63601d02cad`, merged as `e0750eff2eff0e55bee9bc57f622d0e625421055`. Both had independent exact-head clean reviews. The paired explicit-root check passed with 437 tasks, 50 adoption slices, 99 views current, zero warnings, and a valid ledger.
+- Implementation: DesktopPlatform PR [#105](https://github.com/ArcForges/DesktopPlatform/pull/105), reviewed head `9c4cccdd003d9d4953c5a1c365a373a8877bb869` over base `98c552c2d459ab5b2a7814198fa99169b900f9ee`; independent exact-head clean review [5357029944](https://github.com/ArcForges/DesktopPlatform/pull/105#pullrequestreview-5357029944). It merged as `f84180e89d40081db127c145d83ab18c129af1b1`; the merge tree matches the reviewed head tree and the primary checkout fast-forwarded cleanly.
+- **Obligations satisfied:** WP-12.04 (full). The public `HealthProbe` exposes distinct liveness, readiness, and capability-health probe kinds. Readiness fails closed when any required dependency is missing, unknown, or unavailable; capability-health projection uses the shared closed five-key `HealthDimension` type and reflects simulated degradation. The tests directly cover the three public methods, including all five dimensions and fail-closed cases. This does not add wire health fields, Cloud presence/heartbeat behavior, or a second dimension type.
+- Dependency and metadata scope: the same-repository Capabilities reference consumes PLT.23's `HealthDimension` and adds no external package, package identity, version, or runtime package closure. The two task-owned Observability locks, direct RP-10 mappings, dependency-policy input hashes and immutable receipt, active-project blob, and first-party provenance rows were updated under the approved resource protocols. No package inventory entry was added; PLT.53 owns Observability package admission and publication.
+- Exact-head hosted validation: [run 36612190553](https://github.com/ArcForges/DesktopPlatform/actions/runs/36612190553) completed successfully with all 15 checks green, including managed packaging, architecture policy, native Windows, AOT, provenance/licence, secret scan, and aggregate CI.
+- Local validation on the candidate: pinned .NET SDK 10.0.400 locked Release build of the full solution passed for 35 projects with zero warnings and errors; the repository's exact Observability test command passed 18/18. The managed licence gate passed for 43 projects; dependency-policy tests passed 19/19, licence-boundary tests 12/12, and reconciliation tests 8/8. Dependency policy reported 53 NuGet coordinates, 10 Python tools, and 244 inputs; reconciliation reported 67 active projects and 166 historical records; provenance passed for 607 files/10 reused, and native provenance for 21 components.
+- Local ArchitectureTests reported 99/100: the sole failure was the existing DesignSystem generated-source `CS8795` for `RawColor`/`RawDimension`, reproduced on the clean mainline baseline before the evaluator assertion ran. No out-of-scope change was made. The exact-head hosted architecture and aggregate gates passed.
+- Normal post-merge publication: [Publish NuGet run 36616223704](https://github.com/ArcForges/DesktopPlatform/actions/runs/36616223704) completed successfully on merge `f84180e89d40081db127c145d83ab18c129af1b1`. Candidate artifact `nuget-candidate-36616223704-1` (artifact ID `11055133369`, 5,685,653 bytes, archive digest `sha256:0f384db6f5e46b88581e888f09d836f708e9078c5c9fd7381d72f229f3e457ee`) was produced; the publisher reported successful publication of the ten existing allowlisted packages at `1.0.0-ci.66.1`. No Observability package was published by this task. A read-only flat-container probe at `2026-09-29T19:13:51.4653958Z` had not yet observed `1.0.0-ci.66.1` in those ten indexes; this is feed propagation, not a PLT.51 package acceptance claim. No package payload was downloaded.
+- **Substitutes still in use and removing tasks:** None introduced by PLT.51.
+- **Untested coverage:** No independent installed-package consumer or Observability package publication is claimed; PLT.53 owns that acceptance. No GUI, hosted runtime, device, browser, live-service, or inference scenario was exercised or required for this task.
+- **Remaining completion prerequisites and next action:** None. The PLT.51 graph entry has no completion prerequisites.
