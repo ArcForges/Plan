@@ -1045,8 +1045,9 @@ Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Security/**;
 Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
 Unblocks: PLT.38, PLT.39, PLT.46
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: classification tests across every modifier combination; monotonicity test.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests exhaustively enumerate descriptor baselines R0–R4 and every runtime-modifier combination; verify effective risk equals the maximum of the baseline and active fixed floors, every active modifier is explained, adding a modifier never lowers risk, descriptor risk parsing is closed to canonical R0–R4, and the three explicit R4 interactions are covered.
 Completion evidence for the ledger: Risk classification and monotonicity matrix.
+Notes: Fixed minimum floors: remote origin R3; automation origin/Automation actor R2; unverified package R3; large data volume R2; external egress R3; sensitive resource R2; bulk scope R2; irreversible effect R4. Actor-kind floors: None/direct human adds no floor, InternalService R1, Agent R2, Automation R2, Extension R3. Exactly three two-factor interactions additionally require R4: Automation + external egress; sensitive resource + external egress; Extension + unverified package (the privileged-extension case). Effective risk is the maximum of the declared capability baseline and all active floors; every other combination adds no interaction floor. No configurable weights, additive scoring, third-party lowering, or implicit interactions are introduced.
 ```
 
 ```text
