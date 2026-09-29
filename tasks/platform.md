@@ -565,11 +565,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Capabilities/**
+Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Capabilities/**; DesktopPlatform:eng/policy/architecture-contract-tests.json (append only the exact PLT.20 availability API-to-direct-test binding after source/test names are frozen); DesktopPlatform:eng/provenance/files.json (append only exact PLT.20-owned firstParty rows for source/test files within the existing task source scope, after file names are frozen)
+Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
 Unblocks: PLT.24, PLT.25, PLT.28
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: availability tests across permission/entitlement/health/context/version reasons; purity test asserting no side effect.
 Completion evidence for the ledger: Availability reason matrix and purity assertion.
+Notes: ADP-07 support is limited to the two exact supporting files above and append-only updates. Bind only `ICapabilityProvider.EvaluateAvailabilityAsync(ActionKey, FrozenContext) -> ArcResult<AvailabilityResult>` from architecture/contracts/02-local-rpc-operations.md to its direct PLT.20 test; freeze the actual API symbol, test project and test method after source/test naming is settled, without guessing new filenames in advance. Preserve the existing availability result facts in architecture/02-contracts-and-protocols.md section 4: `Available`, `NotApplicableToContext`, `AppNotInstalled`, `AppNotRunning`, `IncompatibleVersion`, `PermissionRequired`, `EntitlementRequired`, `PolicyDisabled`, and `TemporarilyUnavailable`. `ActionDescriptor.availabilityRule` remains a statically registered predicate; do not add result fields or availability facts. Append firstParty provenance rows only for PLT.20-owned source/test files inside the existing `src/BuildingBlocks/ArcForges.Capabilities/**` scope once their exact names are frozen. Preserve all existing rows and use RES-architecture-tests and RES-desktopplatform-policy-data append protocols. No new project, package, dependency, lock, solution, workflow, licence boundary, runtime ownership, or reconciliation change is authorized; outcome, prerequisite and runtime behavior remain unchanged.
 ```
 
 ```text
