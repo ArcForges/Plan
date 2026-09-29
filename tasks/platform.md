@@ -768,7 +768,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: DesktopPlatform:src/DesignSystem/ArcForges.Desktop.Shell/**; DesktopPlatform:Directory.Packages.props (append only ArcForges.Desktop.Shell and ArcForges.Desktop.Shell.Tests to the existing ArcForges.Contracts.Foundation 1.0.0-ci.216.1 MSBuildProjectName selector; preserve the 1.0.0-ci.113.1 default); DesktopPlatform:eng/policy/architecture-contract-tests.json (append only exact PLT.27 public API to direct-test bindings); DesktopPlatform:eng/policy/architecture-projects.json (append only the PLT.27 Shell production and test project classifications); DesktopPlatform:eng/policy/dependency-policy.json (refresh only exact task-owned input hashes and active receipt pointer); DesktopPlatform:eng/policy/dependency-reviews/plt-27-r1.json (one immutable PLT.27 dependency receipt successor after rebase); DesktopPlatform:eng/policy/licence-boundary.json (append only exact PLT.27 Shell production and test project rows); DesktopPlatform:eng/policy/runtime-ownership.json (append only exact PLT.27 Shell production and test project rows); DesktopPlatform:eng/policy/reconciliation/active-projects.json (append only exact PLT.27 Shell project registrations); DesktopPlatform:eng/policy/reconciliation/directories.json (append only exact PLT.27 Shell directory registrations); DesktopPlatform:eng/policy/reconciliation/source.json (refresh only the exact source inventory snapshot required by the existing reconciliation gate); DesktopPlatform:eng/provenance/files.json (append only exact PLT.27-owned firstParty paths and immutable receipt)
 Shared resources (follow the owner protocol): RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
-Unblocks: APP.08, PLT.28, PLT.30, PLT.33, PLT.35
+Unblocks: APP.08, PLT.28, PLT.29, PLT.30, PLT.31, PLT.33, PLT.35
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: restore tests across missing panel, changed display arrangement, corrupted layout state; device-local assertion.
 Completion evidence for the ledger: Layout restore matrix.
@@ -821,13 +821,15 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] PLT.26: token/theming groundwork
 - [artifact] PLT.04: migration runner pattern (WP-07.03)
 Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
+- [integration] PLT.27: PLT.27 Shell project and test host are integrated
 
-Permitted write scope: DesktopPlatform:src/DesignSystem/ArcForges.Desktop.Shell/**
+Permitted write scope: DesktopPlatform:src/DesignSystem/ArcForges.Desktop.Shell/**; DesktopPlatform:eng/policy/architecture-contract-tests.json (append only six PLT.29 public API to direct-[Fact] test bindings); DesktopPlatform:eng/provenance/files.json (append only four PLT.29 Settings first-party source/test paths)
+Shared resources (follow the owner protocol): RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.; RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
 Unblocks: PLT.35
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: resolution order tests across every scope combination; explainability tests; migration test.
 Completion evidence for the ledger: Settings resolution and explainability results.
+Notes: The only supporting-file additions are six exact public ordinary API-to-direct-[Fact] bindings in eng/policy/architecture-contract-tests.json for DeviceLocalSettingsStore.CreateSyncSnapshot, DeviceLocalSettingsStore.Load, DeviceLocalSettingsStore.Save, ISettingSchema.Migrate, ScopedSettingsResolver.Resolve<T>, and SettingDefinition<T>.ToStoredValue; and four first-party provenance entries in eng/provenance/files.json for src/DesignSystem/ArcForges.Desktop.Shell/Settings/DeviceLocalSettingsStore.cs, src/DesignSystem/ArcForges.Desktop.Shell/Settings/ScopedSettings.cs, src/DesignSystem/ArcForges.Desktop.Shell/Settings/ScopedSettingsResolver.cs, and src/DesignSystem/ArcForges.Desktop.Shell/Tests/Settings/ScopedSettingsTests.cs. The six bindings target the task-owned direct [Fact] methods SynchronizationProjectionNeverIncludesDeviceOrInstanceSettings, StoreMigratesOlderValuesAtomicallyAndRefusesDowngradeWithoutChangingTheFile, and ResolutionCoversEveryScopeCombinationAndExplainsTheWinningSource. No project, csproj, solution, workflow, lock, dependency input/closure, immutable dependency-admission receipt, licence, runtime ownership, reconciliation, package inventory/identity, NOTICE, checker, or algorithm changes are in scope.
 ```
 
 ```text
@@ -874,13 +876,15 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] PLT.26: token system
 - [artifact] FND.05: reason-code registry
 Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
+- [integration] PLT.27: PLT.27 Shell project and test host are integrated
 
-Permitted write scope: DesktopPlatform:src/DesignSystem/ArcForges.Desktop.Shell/**
+Permitted write scope: DesktopPlatform:src/DesignSystem/ArcForges.Desktop.Shell/**; DesktopPlatform:eng/policy/architecture-contract-tests.json (append only the exact PLT.31 ErrorPresenter.Present(TypedFailure) to direct-[Fact] test binding); DesktopPlatform:eng/provenance/files.json (append only the three PLT.31 Errors source/resource/test first-party paths)
+Shared resources (follow the owner protocol): RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.; RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
 Unblocks: PLT.35, PLT.52
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: no raw exception text displayed; coverage that every registered reason code has a message.
 Completion evidence for the ledger: Raw-exception prohibition and reason-code coverage.
+Notes: The only supporting-file additions are one exact ordinary public API-to-direct-[Fact] binding in eng/policy/architecture-contract-tests.json: ArcForges.Desktop.Shell.Errors.ErrorPresenter.Present(ArcForges.Foundation.Errors.TypedFailure) maps to ArcForges.Desktop.Shell.Tests.ErrorPresentationTests.PresentationUsesOnlyRegisteredTextAndNeverEchoesExceptionDetailsOrPaths(). The only first-party provenance additions are src/DesignSystem/ArcForges.Desktop.Shell/Errors/ErrorPresentationStrings.resx, src/DesignSystem/ArcForges.Desktop.Shell/Errors/ErrorPresenter.cs, and src/DesignSystem/ArcForges.Desktop.Shell/Tests/ErrorPresentationTests.cs. No project, csproj, solution, workflow, lock, dependency input/closure, immutable dependency-admission receipt, licence, runtime ownership, reconciliation, package inventory/identity, NOTICE, checker, or algorithm changes are in scope.
 ```
 
 ```text
