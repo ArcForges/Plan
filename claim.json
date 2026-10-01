@@ -6,24 +6,28 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:00Z",
-  "updatedAt": "2026-10-01T08:29:09Z",
-  "leaseUntil": "2026-10-02T08:29:09Z",
+  "updatedAt": "2026-10-01T08:30:31Z",
+  "leaseUntil": "2026-10-02T08:30:31Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-33",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/114"
+    ],
     "merges": [],
     "done": [
       "claimed; read brief/policy/task/WP-10.07; no prior PLT.33 branch/PR/work found (none in Plan/Design/DesktopPlatform history); Avalonia not admitted for shipped shell (docs/third-party-control-admission.md) and AGENTS bans GUI tests",
       "implemented Shell a11y semantics/FocusNavigator/audit/l10n formatter/pseudo-loc/RTL + offline tests; pushed task/plt-33; Design planning repair PR ArcForges-Design#194 + Plan#215 (append-only contract-test/provenance scope, PLT.31 precedent); DesktopUiTests project intentionally not created (GUI-hosted F-09)"
     ],
-    "validation": [],
+    "validation": [
+      "local Shell.Tests 79/79 (build slot, SDK 10.0.400); local ArchitectureTests cannot evaluate RP-10 here (SDK resolution) so CI is the RP-10 gate"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-33",
     "head": "34c1c428a2b545af41246447ef3db02e30f27b2b",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "verify local tests/architecture/format via build slot; open DesktopPlatform PR; await Design#194 merge; CI; request review"
+      "CI on PR #114; Design#194/Plan#215 repair merge; await review"
     ],
     "host": "deku",
     "note": null
