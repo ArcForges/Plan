@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:38Z",
-  "updatedAt": "2026-10-01T18:55:19Z",
-  "leaseUntil": "2026-10-02T18:55:19Z",
+  "updatedAt": "2026-10-01T19:00:12Z",
+  "leaseUntil": "2026-10-02T19:00:12Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-15",
@@ -29,7 +29,7 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-15",
     "head": "6e838537e4948614610259d6fb3aaf6e5fd9d186",
-    "reviewed": null,
+    "reviewed": "a01159caf74bc80f59a4e9f1f5417f4162b9a9c0",
     "blocker": null,
     "next": [
       "await re-review of Design#197 (a8082d7aecc2a9eba9f90e5096d8e8518e30762e) and Plan#218 (0855f5025723dc419e9fe80c42c64fe03f7f8375); merge order Design#197 -> Plan#218 -> Contracts#73 -> rebase Contracts#70"
