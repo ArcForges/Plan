@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Plan",
-  "claimant": "w-c20261001-prf04",
-  "epoch": 1,
-  "state": "released",
-  "claimedAt": "2026-10-01T08:31:44Z",
-  "updatedAt": "2026-10-01T08:33:26Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261001-plt32",
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-01T09:09:04Z",
+  "updatedAt": "2026-10-01T09:09:04Z",
+  "leaseUntil": "2026-10-01T21:09:04Z",
   "handoff": {
     "host": "deku",
-    "note": "Merged Plan#214 (PRF.04 ledger, delivered) at reviewed head 0367927 as 906d139; no other approved Plan PRs known to this holder; vacant."
+    "note": "claimed after released by w-c20261001-prf04 epoch 1; review the earlier handoff and commits"
   }
 }
