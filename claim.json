@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T08:23:38Z",
-  "leaseUntil": "2026-10-02T08:23:38Z",
+  "updatedAt": "2026-10-01T08:24:59Z",
+  "leaseUntil": "2026-10-02T08:24:59Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
@@ -17,17 +17,18 @@
     "merges": [],
     "done": [
       "Recovered closed PR #107 head b41f44b (reviewed, rebased onto main 5e1b8fb); added typed egress/lease intakes (AuditEgressDetail, AuditEventShape, EgressDecisionAuditAdapter, CapabilityLeaseAuditAdapter), R0-R4 AuditRisk, tests",
-      "PR #113 opened; local: locked restore, format, Release build 0 warnings, Audit tests 15/15, Security tests 48/48, python policy gates; AT arch test blocked locally by env (DesignSystem.Tests generated regex) pending hosted CI"
+      "PR #113 opened; local: locked restore, format, Release build 0 warnings, Audit tests 15/15, Security tests 48/48, python policy gates; AT arch test blocked locally by env (DesignSystem.Tests generated regex) pending hosted CI",
+      "Fixed RP-10 bindings (int keyword) found by running the local architecture test; typed intakes + recovered store"
     ],
     "validation": [
       "dotnet SDK 10.0.400 locked restore/format/build/tests as listed"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-44",
-    "head": "7a2d09467b1e739c3ae95809077208a77fe765b7",
+    "head": "7e8175b5fabfd7e87340065ed87d24fa6811f572",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review"
+      "await CI then review at exact head"
     ],
     "host": "deku",
     "note": null
