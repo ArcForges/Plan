@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:57Z",
-  "updatedAt": "2026-10-01T19:03:15Z",
-  "leaseUntil": "2026-10-02T19:03:15Z",
+  "updatedAt": "2026-10-01T19:05:09Z",
+  "leaseUntil": "2026-10-02T19:05:09Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-40",
@@ -16,7 +16,9 @@
       "https://github.com/ArcForges/ArcForges-Design/pull/195",
       "https://github.com/ArcForges/Plan/pull/216"
     ],
-    "merges": [],
+    "merges": [
+      "c0def810f6dba4a5c29bc4fbb5beba199b3664ed"
+    ],
     "done": [
       "Recovered reviewed earlier Security.Secrets sources from dangling commits (eb30d4d lineage; csproj digests match the merged allowlist) onto current main; added SecretStoreIsolation/SecretIsolationPolicy fail-closed broker construction, RevokeAllConnectorGrants, OsSecretStore fail-closed selector; Windows CredMan declares SameUserShared (not an OS sibling boundary); policy/provenance/receipt rebuilt; local tests 19/19 incl. Windows opt-in; architecture tests show only environmental findings",
       "CI run 1 secret-scan failed: gitleaks prefixes added lines (after first of a fragment) with a newline so anchored whole-line allowlist regexes missed 4 of 6 reviewed lines; fixed with optional leading newline + focused tests; squashed and rebased on main 812cdaa (PLT.32 merged); policy/receipt baseline refreshed",
@@ -32,7 +34,8 @@
     "reviewed": "6520b7494402808b29ed7cf2aca1eacadc822095",
     "blocker": null,
     "next": [
-      "merge #115 via integration:DesktopPlatform"
+      "confirm Publish NuGet on main",
+      "record the ledger"
     ],
     "host": "deku",
     "note": null
