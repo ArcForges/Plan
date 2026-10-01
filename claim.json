@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261001-prf04",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-01T08:31:44Z",
-  "updatedAt": "2026-10-01T08:31:44Z",
-  "leaseUntil": "2026-10-01T20:31:44Z",
+  "updatedAt": "2026-10-01T08:33:26Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "Merged Plan#214 (PRF.04 ledger, delivered) at reviewed head 0367927 as 906d139; no other approved Plan PRs known to this holder; vacant."
   }
 }
