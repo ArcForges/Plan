@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T08:24:59Z",
-  "leaseUntil": "2026-10-02T08:24:59Z",
+  "updatedAt": "2026-10-01T08:34:43Z",
+  "leaseUntil": "2026-10-02T08:34:43Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
@@ -18,17 +18,19 @@
     "done": [
       "Recovered closed PR #107 head b41f44b (reviewed, rebased onto main 5e1b8fb); added typed egress/lease intakes (AuditEgressDetail, AuditEventShape, EgressDecisionAuditAdapter, CapabilityLeaseAuditAdapter), R0-R4 AuditRisk, tests",
       "PR #113 opened; local: locked restore, format, Release build 0 warnings, Audit tests 15/15, Security tests 48/48, python policy gates; AT arch test blocked locally by env (DesignSystem.Tests generated regex) pending hosted CI",
-      "Fixed RP-10 bindings (int keyword) found by running the local architecture test; typed intakes + recovered store"
+      "Fixed RP-10 bindings (int keyword) found by running the local architecture test; typed intakes + recovered store",
+      "PR #113 all 15 hosted checks green at 7e8175b (incl. pack job running architecture+Audit tests); review requested at exact head"
     ],
     "validation": [
-      "dotnet SDK 10.0.400 locked restore/format/build/tests as listed"
+      "dotnet SDK 10.0.400 locked restore/format/build/tests as listed",
+      "local SDK10.0.400: locked restore, format, Release build 0 warnings, Audit tests 15/15, Security tests 48/48, python policy gates; local arch test RP-10 clear (RP-01/08/09/AT-09 need CI artifacts); hosted CI 15/15 green"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-44",
     "head": "7e8175b5fabfd7e87340065ed87d24fa6811f572",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await CI then review at exact head"
+      "await independent review of 7e8175b; then integration:DesktopPlatform merge; then ledger (delivered: PLT.41 and PLT.43 integrations open); PLT.46 write scope needs Audit csproj IsPackable"
     ],
     "host": "deku",
     "note": null
