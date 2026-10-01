@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "role",
+  "id": "integration:Plan",
+  "claimant": "w-c20261001-prf04",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-01T08:31:44Z",
+  "updatedAt": "2026-10-01T08:31:44Z",
+  "leaseUntil": "2026-10-01T20:31:44Z",
+  "handoff": {
+    "host": "deku",
+    "note": null
+  }
+}
