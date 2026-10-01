@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T19:35:47Z",
-  "updatedAt": "2026-10-01T23:53:15Z",
-  "leaseUntil": "2026-10-02T23:53:15Z",
+  "updatedAt": "2026-10-01T23:56:51Z",
+  "leaseUntil": "2026-10-02T23:56:51Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-49",
@@ -30,10 +30,10 @@
     ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-49",
     "head": "d08d6ec17ae63db2e88078d3749b1aee3a0d8936",
-    "reviewed": null,
+    "reviewed": "d08d6ec17ae63db2e88078d3749b1aee3a0d8936",
     "blocker": null,
     "next": [
-      "await re-review at d08d6ec17ae63db2e88078d3749b1aee3a0d8936"
+      "merge via integration:DesktopPlatform"
     ],
     "host": "deku",
     "note": "Correction: the ADP-07 bindings for eng/provenance/files.json (17 paths) and Properties/AssemblyInfo.cs were recorded after the files existed, not before editing; only the architecture-contract-tests.json binding was declared before editing. Validation correction: Observability tests are 200/200 at d08d6ec (earlier 189 and 191 figures were for earlier heads)."
