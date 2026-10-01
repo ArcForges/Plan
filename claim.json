@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T19:35:47Z",
-  "updatedAt": "2026-10-01T20:20:43Z",
-  "leaseUntil": "2026-10-02T20:20:43Z",
+  "updatedAt": "2026-10-01T20:30:15Z",
+  "leaseUntil": "2026-10-02T20:30:15Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-49",
@@ -18,17 +18,18 @@
     "done": [
       "Claimed; read brief, Plan, Design WP-12.02, architecture 13 RD/SG rules, existing Observability source/tests; worktree created from main c0def81",
       "Implemented redaction processor, route templates, exception reason mapping, sensitive-content marker, telemetry-policy.json, tests; pushed c4962ef",
-      "ADP-07 supporting bindings applied as declared: 7 RP-10 bindings appended to eng/policy/architecture-contract-tests.json and 17 firstParty paths added to eng/provenance/files.json; Properties/AssemblyInfo.cs InternalsVisibleTo (no csproj/lock/dependency input touched)"
+      "ADP-07 supporting bindings applied as declared: 7 RP-10 bindings appended to eng/policy/architecture-contract-tests.json and 17 firstParty paths added to eng/provenance/files.json; Properties/AssemblyInfo.cs InternalsVisibleTo (no csproj/lock/dependency input touched)",
+      "Rebased onto main d00ccc7; re-appended RP-10 bindings; local full build, Observability tests 191/191, architecture policy test (only environmental findings), format clean re-run"
     ],
     "validation": [
       "Local (SDK 10.0.401 substituted, uncommitted): full slnx Release build 0 warnings/errors; dotnet format clean; Observability tests 189/189; marker-injection report 528 injections, 0 findings; architecture policy test no RP-10/BAN-REFLECTION findings (only environmental); provenance, reconciliation, dependency_policy, licence tests pass"
     ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-49",
-    "head": "9f81b37f8a71bebc1a50b790de106be1a3df6d3b",
+    "head": "032be5e476c00207f2ec85a217cdd3ddeb523152",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review at 9f81b37",
+      "await review at 032be5e476c00207f2ec85a217cdd3ddeb523152",
       "await hosted CI at head"
     ],
     "host": "deku",
