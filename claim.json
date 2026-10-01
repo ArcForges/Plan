@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T20:06:05Z",
-  "leaseUntil": "2026-10-02T20:06:05Z",
+  "updatedAt": "2026-10-01T20:16:15Z",
+  "leaseUntil": "2026-10-02T20:16:15Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
@@ -35,12 +35,12 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-44",
     "head": "239162776dd6d0dab3779b924bad47761a8fb18d",
-    "reviewed": null,
+    "reviewed": "239162776dd6d0dab3779b924bad47761a8fb18d",
     "blocker": null,
     "next": [
       "await reviews: planning pair (#199, #222) and delta of #113 at 2391627; then merge via roles (Design, Plan, DesktopPlatform), then ledger"
     ],
     "host": "deku",
-    "note": null
+    "note": "Reviewed: #113 @2391627 approved (r-c20261001-plt44); Design #199 @4a3ff94 and Plan #222 @3221957 approved (r-c20261001-plt44-plan)"
   }
 }
