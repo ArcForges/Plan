@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:01Z",
-  "updatedAt": "2026-10-01T09:07:47Z",
-  "leaseUntil": "2026-10-02T09:07:47Z",
+  "updatedAt": "2026-10-01T09:28:28Z",
+  "leaseUntil": "2026-10-02T09:28:28Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-14",
@@ -23,17 +23,19 @@
       "Authored eng/operations/con-14.json (31 rows), role matrix and 58 shape vectors in fixture, generated C#/TS outputs, wp03-02 catalogue append, SerializationProbe binders, TS test; local StructureTests, TS tests and Native AOT probe (31 binary/51 JSON/971 messages/189 methods) pass; pushed 66ff7a3",
       "CloudInternal->PublicApi edge was already realized by CON.11: no csproj/lock/contract-packages edit and no new package/lock change; con-14-r1 chains from active con-11-r1",
       "Opened narrow authority pair Design #196 / Plan #217 for exact operator.startBreakGlass R4 checker exception, test_operation_scope.py count+R4 tests, docs/operation-scope.md and eng/contracts.py internal import-owner mapping (observed necessity: checker 'unclassified risk', stale 232/86/7/325, generated operator_pb.ts relative imports)",
-      "Contracts PR #72 opened at 3fd7d74ab6d4cfaa1672cf531b9300dea561b7ba: records commit (contract-access, contract-bindings-con-14-r1, dependency receipt con-14-r1, NOTICE) added; local gates and Native AOT probe pass; CI running"
+      "Contracts PR #72 opened at 3fd7d74ab6d4cfaa1672cf531b9300dea561b7ba: records commit (contract-access, contract-bindings-con-14-r1, dependency receipt con-14-r1, NOTICE) added; local gates and Native AOT probe pass; CI running",
+      "Hosted CI on 3fd7d74: CodeQL x5 and dependency review pass; Build candidate fails only on the two known CON.21/CON.22 history-pinned tests (coordinator-assigned CON.15 repair); Secret scan reported exactly 6 predicted generic-api-key occurrences on the new public digest rows (run 36840680384 job 110298799147)",
+      "Appended exact observed secret-scan authority to Design #196 / Plan #217 and implemented the two exact gitleaks groups plus sibling test at 51b1aa1516bbaeb0e130003c94e6867bb807a376 (no regeneration)"
     ],
     "validation": [
       "Local: StructureTests, 274 node tests, AOT SerializationProbe (31 binary/51 JSON/971 messages/189 methods), operation scope 263/55/7, provenance/dependency/access checks; tooling unittest only the known 11 environmental failures; Linux AOT/Kotlin/pack/Security hosted-only"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-14",
-    "head": "3fd7d74ab6d4cfaa1672cf531b9300dea561b7ba",
+    "head": "51b1aa1516bbaeb0e130003c94e6867bb807a376",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review (needs Design #196/Plan #217 authority merged first); wait for hosted CI; expect exact observed secret-scan authority follow-up if gitleaks flags public digest rows"
+      "await review of Design #196/Plan #217 and Contracts #72; rebase and re-run CI after the CON.15 history-pin repair merges (regenerate shared resources only if main changed them)"
     ],
     "host": "deku",
     "note": "ADP-07 support binding: src/public/ts/contract-fixtures/src/index.ts is a generated output of the authorized wp03-02.json append (generate_fixtures), regenerated mechanically (+34 lines: CloudInternal OperatorService catalogue/methods); no other behavior"
