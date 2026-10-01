@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:36:26Z",
-  "updatedAt": "2026-10-01T19:52:58Z",
-  "leaseUntil": "2026-10-02T19:52:58Z",
+  "updatedAt": "2026-10-01T19:53:58Z",
+  "leaseUntil": "2026-10-02T19:53:58Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-09",
@@ -30,7 +30,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review of #117, Design#200, Plan#223; resolve secret-scan coupling with PLT.44 (merge order or cross-listed allowlists); then CI, integration merge, ledger (delivered? PLT.10/13/14/15 unblock; completion prereqs none)"
+      "per coordinator: wait for PLT.44 durable gitleaks repair (Design#199/Plan#222) to merge to main; then rebase #117 dropping own per-receipt .gitleaks.toml group + test, re-append policy tails, re-chain plt-09-r1, regenerate hashes, close Design#200/Plan#223 as superseded, push, wait managed-packages green, return new head for delta re-review; code review by r-c20261001-plt09 in progress"
     ],
     "host": "deku",
     "note": null
