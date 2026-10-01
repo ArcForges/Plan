@@ -3,13 +3,13 @@
   "kind": "role",
   "id": "integration:Contracts",
   "claimant": "w-c20261001-con15",
-  "epoch": 1,
-  "state": "released",
-  "claimedAt": "2026-10-01T19:00:29Z",
-  "updatedAt": "2026-10-01T19:17:51Z",
-  "leaseUntil": null,
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-01T19:27:31Z",
+  "updatedAt": "2026-10-01T19:27:31Z",
+  "leaseUntil": "2026-10-02T07:27:31Z",
   "handoff": {
     "host": "deku",
-    "note": "merged #73 (3773d57; main CI+publish green). Open Contracts PRs: #70 CON.15 (rebased on 3773d57, CI running, review pending), #72 CON.14, #71 GOV.05 (blocked), CON.07 coming; all must rebase onto 3773d57"
+    "note": "claimed after released by w-c20261001-con15 epoch 1; review the earlier handoff and commits"
   }
 }
