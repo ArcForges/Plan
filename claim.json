@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:01Z",
-  "updatedAt": "2026-10-01T20:34:11Z",
-  "leaseUntil": "2026-10-02T20:34:11Z",
+  "updatedAt": "2026-10-01T23:43:48Z",
+  "leaseUntil": "2026-10-02T23:43:48Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-14",
@@ -35,15 +35,15 @@
     ],
     "validation": [
       "Local: StructureTests, 274 node tests, AOT SerializationProbe (31 binary/51 JSON/971 messages/189 methods), operation scope 263/55/7, provenance/dependency/access checks; tooling unittest only the known 11 environmental failures; Linux AOT/Kotlin/pack/Security hosted-only",
-      "Hosted CI green at 8762132; local StructureTests, 276 node tests, AOT probe 31/51/971/189, tooling dependency_admission and operation_scope pass"
+      "Hosted CI green at 8762132; local StructureTests, 276 node tests, AOT probe 31/51/971/189, tooling dependency_admission and operation_scope pass",
+      "main-push CI 36922469148 and Security 36922469040 on bcd592a succeeded incl. NuGet/npm/Maven publishers; metadata checks 17/17 NuGet+npm visible by 20:54:25Z; Maven snapshot 20261001.204758 build 45"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-14",
     "head": "8762132eb165f4c0747e937e60b4412f789be66c",
     "reviewed": "8762132eb165f4c0747e937e60b4412f789be66c",
     "blocker": null,
     "next": [
-      "confirm main-push CI/Security and NuGet/npm/Maven publisher jobs (provider status only)",
-      "record the ledger"
+      "ledger PR [CON.14] Record"
     ],
     "host": "deku",
     "note": "ADP-07 support binding: src/public/ts/contract-fixtures/src/index.ts is a generated output of the authorized wp03-02.json append (generate_fixtures), regenerated mechanically (+34 lines: CloudInternal OperatorService catalogue/methods); no other behavior"
