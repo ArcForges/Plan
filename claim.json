@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:38Z",
-  "updatedAt": "2026-10-01T19:51:14Z",
-  "leaseUntil": "2026-10-02T19:51:14Z",
+  "updatedAt": "2026-10-01T20:01:21Z",
+  "leaseUntil": "2026-10-02T20:01:21Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-15",
@@ -37,7 +37,7 @@
     "reviewed": "cc87a610a203bb9b8218102c677e1e6229ace0c2",
     "blocker": null,
     "next": [
-      "await ledger review and merge via integration:Plan, then update --state complete"
+      "await re-review of ledger PR 224 (d333fb5c7aa3d02161581d6b0bb1145887381d51)"
     ],
     "host": "deku",
     "note": null
