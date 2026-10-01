@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:DesktopPlatform",
-  "claimant": "w-c20261001-plt40",
-  "epoch": 2,
-  "state": "released",
-  "claimedAt": "2026-10-01T19:03:35Z",
-  "updatedAt": "2026-10-01T19:19:07Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261001-plt44",
+  "epoch": 3,
+  "state": "claimed",
+  "claimedAt": "2026-10-01T20:19:44Z",
+  "updatedAt": "2026-10-01T20:19:44Z",
+  "leaseUntil": "2026-10-02T08:19:44Z",
   "handoff": {
     "host": "deku",
-    "note": "PLT.40 #115 merged c0def81 and main Publish NuGet 36911571279 green (ci.70.1). Open PRs: #113 PLT.44 approved awaiting rebase onto main; #114 PLT.33 in review; PLT.09 in progress"
+    "note": "claimed after released by w-c20261001-plt40 epoch 2; review the earlier handoff and commits"
   }
 }
