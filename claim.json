@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:15Z",
-  "updatedAt": "2026-10-01T08:49:14Z",
-  "leaseUntil": "2026-10-02T08:49:14Z",
+  "updatedAt": "2026-10-01T08:50:47Z",
+  "leaseUntil": "2026-10-02T08:50:47Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-32",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/112"
     ],
-    "merges": [],
+    "merges": [
+      "812cdaa6ad36e1961b0e30dca2a2d2898018ec2e"
+    ],
     "done": [
       "Recovered closed PR #108 head 23e683e, rebased onto main 5e1b8fb (resolved append conflict in eng/policy/architecture-contract-tests.json); reviewed code (sound; gaps: misplaced doc comment, English concatenated prompt strings vs BR-07, activation-memory cap permanently refuses, no real-Shell-component startup path test)",
       "PR #112 opened; fixes over #108 (doc comment, resx prompts, bounded activation memory, real-component startup test, README); local: format, Release build 0 warn, Shell tests 42/42, provenance ok; ArchitectureTests 99/100 (known local DesignSystem.Tests CS8795, hosted authoritative); ADP-07 binding: append 5 rows architecture-contract-tests.json + 1 firstParty entry provenance/files.json",
@@ -29,8 +31,8 @@
     "reviewed": "1bb9c69333a3f820ad94876de88a1a894140577e",
     "blocker": null,
     "next": [
-      "await re-review at 1bb9c69",
-      "after merge: ledger PR as delivered"
+      "confirm publication",
+      "ledger PR (delivered)"
     ],
     "host": "deku",
     "note": null
