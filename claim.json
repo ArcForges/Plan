@@ -4,10 +4,10 @@
   "id": "PLT.44",
   "claimant": "w-c20261001-plt44",
   "epoch": 1,
-  "state": "blocked",
+  "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T19:38:31Z",
-  "leaseUntil": "2026-10-02T19:38:31Z",
+  "updatedAt": "2026-10-01T19:40:05Z",
+  "leaseUntil": "2026-10-02T19:40:05Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
@@ -31,9 +31,9 @@
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-44",
     "head": "851cbd5844574ea455ab36557617e4a7c807f559",
     "reviewed": null,
-    "blocker": ".gitleaks.toml (outside PLT.44 write scope) needs exact allowlist rows for the mirrored Security.Secrets csproj input-hash lines in eng/policy/dependency-reviews/plt-44-r1.json (2 remaining secret-scan leaks, same class as PLT.40 #96); requires coordinator planning/scope decision, not a security-suppression edit by the worker",
+    "blocker": null,
     "next": [
-      "after .gitleaks.toml decision: push, wait hosted CI incl managed-packages, delta re-review"
+      "planning repair pair for .gitleaks.toml exact lines of plt-44-r1; then update #113"
     ],
     "host": "deku",
     "note": null
