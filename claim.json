@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:38Z",
-  "updatedAt": "2026-10-01T19:28:15Z",
-  "leaseUntil": "2026-10-02T19:28:15Z",
+  "updatedAt": "2026-10-01T19:51:14Z",
+  "leaseUntil": "2026-10-02T19:51:14Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-15",
@@ -15,7 +15,8 @@
       "https://github.com/ArcForges/Contracts/pull/70",
       "https://github.com/ArcForges/ArcForges-Design/pull/197",
       "https://github.com/ArcForges/Plan/pull/218",
-      "https://github.com/ArcForges/Contracts/pull/73"
+      "https://github.com/ArcForges/Contracts/pull/73",
+      "https://github.com/ArcForges/Plan/pull/224"
     ],
     "merges": [
       "e816db7da9a3de120511ba2058309f0c7bfac96d"
@@ -28,15 +29,15 @@
       "Design#197 merged 5ffbb81, Plan#218 merged, Contracts#73 merged 3773d57 (main CI, Security and Nuget/npm/Maven publish jobs success); #70 rebased on 3773d57 and regenerated (con15_finalize reset), pushed cc87a61"
     ],
     "validation": [
-      "local offline: con15 python tests, dependency_admission 37 tests, contract_access mjs 17, provenance/naming/opscope/serialization checks, tsc, TS+C# generated validators vs fixtures (53 pos/76 neg); CI pending"
+      "local offline: con15 python tests, dependency_admission 37 tests, contract_access mjs 17, provenance/naming/opscope/serialization checks, tsc, TS+C# generated validators vs fixtures (53 pos/76 neg); CI pending",
+      "main CI 36914480340 + Security 36914480387 + publishers success; v1.0.0-ci.279.1 index checks 12/12 NuGet 5/5 npm 3/3 Maven (metadata only); ledger check passes"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-15",
     "head": "cc87a610a203bb9b8218102c677e1e6229ace0c2",
     "reviewed": "cc87a610a203bb9b8218102c677e1e6229ace0c2",
     "blocker": null,
     "next": [
-      "confirm publication",
-      "record the ledger"
+      "await ledger review and merge via integration:Plan, then update --state complete"
     ],
     "host": "deku",
     "note": null
