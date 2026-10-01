@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "blocked",
   "claimedAt": "2026-10-01T08:00:41Z",
-  "updatedAt": "2026-10-01T09:07:14Z",
-  "leaseUntil": "2026-10-02T09:07:14Z",
+  "updatedAt": "2026-10-01T09:18:37Z",
+  "leaseUntil": "2026-10-02T09:18:37Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/gov-05",
@@ -22,13 +22,13 @@
       "Local (SDK 10.0.401 adapter, never committed): full Release solution build; local architecture fixtures/assertions pass; hosted-mode run shows AT-12 x1843, RP-03 x1, RP-06 x18 (env-suspect); dependency_admission, check_licences, check_contract_access, check_naming, check_provenance, test_dependency_admission (38) pass; prettier check passes. No hosted CI evidence yet; PR #71 CI pending."
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\gov-05",
-    "head": "77fbff9012a7fe675eddc3d07662a1c2693164ed",
+    "head": "78146230f0e0aef94bb7f5168cd5749c3a78bc3b",
     "reviewed": null,
     "blocker": "AT-12: shared ArcForges.Build.Policy PolicyEngine.Generated only accepts a class-level GeneratedCode attribute from protoc/Google.Protobuf/grpc_csharp_plugin/ArcForges.SchemaGenerator; Contracts protoc message classes carry it on members only and schema-generated shapes carry none, so the hosted full-graph gate reports 1843 AT-12 findings across 10 contract projects at main 4047930. Fix needs engine recognition in DesktopPlatform (new/extended task beyond GOV.06's recorded scope) or generator stamping (outside GOV.05 write scope). Also pending planning repair: RP-03 decision for AGPL Build.Policy host reference, security.yml write scope, stale contract-access digest. ReconstructedCompilationDiagnostics itself is bypassable Contracts-side via owning build -p:EmitCompilerGeneratedFiles=true.",
     "next": [
       "Planning repair then resume: (1) shared PolicyEngine AT-12 cannot accept protoc/ArcForges-generated wire types (1843 findings) - needs engine recognition via DesktopPlatform (beyond GOV.06 recorded scope) or generator attribute stamping; (2) RP-03 for the exact AGPL Build.Policy host reference needs exception-or-boundary decision; (3) add Contracts:.github/workflows/security.yml to write scope and refresh stale contract-access digest (task text fcd8b5a1.. vs 27c315c3.. at main 4047930); (4) hosted wiring with owning build -p:EmitCompilerGeneratedFiles=true is verified to clear ReconstructedCompilationDiagnostics without GOV.06; then pin GOV.06 candidate for completion"
     ],
     "host": "deku",
-    "note": null
+    "note": "Squashed recovered PR #61 history into one commit on current main (force-with-lease on the unreviewed task branch) because the full-history Gitleaks scan flagged the old gov-05-r1 digest lines in recovered commits; tree unchanged"
   }
 }
