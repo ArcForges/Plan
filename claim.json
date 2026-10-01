@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:57Z",
-  "updatedAt": "2026-10-01T09:20:23Z",
-  "leaseUntil": "2026-10-02T09:20:23Z",
+  "updatedAt": "2026-10-01T18:51:57Z",
+  "leaseUntil": "2026-10-02T18:51:57Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-40",
@@ -20,17 +20,18 @@
     "done": [
       "Recovered reviewed earlier Security.Secrets sources from dangling commits (eb30d4d lineage; csproj digests match the merged allowlist) onto current main; added SecretStoreIsolation/SecretIsolationPolicy fail-closed broker construction, RevokeAllConnectorGrants, OsSecretStore fail-closed selector; Windows CredMan declares SameUserShared (not an OS sibling boundary); policy/provenance/receipt rebuilt; local tests 19/19 incl. Windows opt-in; architecture tests show only environmental findings",
       "CI run 1 secret-scan failed: gitleaks prefixes added lines (after first of a fragment) with a newline so anchored whole-line allowlist regexes missed 4 of 6 reviewed lines; fixed with optional leading newline + focused tests; squashed and rebased on main 812cdaa (PLT.32 merged); policy/receipt baseline refreshed",
-      "Design #195 merged 2049296; Plan #216 merged 5316354 (reviewed by r-c20261001-plt40-plan); roles released"
+      "Design #195 merged 2049296; Plan #216 merged 5316354 (reviewed by r-c20261001-plt40-plan); roles released",
+      "Review findings addressed at 6520b74: broker guard tests (sibling Delete, grant target defects, grant-time foreground, lifetime/secret bounds), monotonic expiry, expired-grant eviction, Windows opt-in tests skip, README limits; local Secrets tests 36/36 with opt-in; Design #195 2049296 and Plan #216 5316354 merged"
     ],
     "validation": [
       "PR gate 15/15 green at e11a1b8 (run 36839645645) incl. secret-scan, native-win-x64, managed-packages, licence/runtime/provenance/reconciliation/design policy; local: Secrets tests 19/19 (Windows opt-in incl. sibling-process observation), arch tests only environmental findings, python gates"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-40",
-    "head": "e11a1b8ef87bb21245ba5aa569bac133a431987f",
+    "head": "6520b7494402808b29ed7cf2aca1eacadc822095",
     "reviewed": "9c268f4afd750469955b547def8f15133c0ad6b7",
     "blocker": null,
     "next": [
-      "address review findings on DesktopPlatform #115, rebase on main, push, CI, re-request review"
+      "wait for CI at 6520b74, request re-review"
     ],
     "host": "deku",
     "note": null
