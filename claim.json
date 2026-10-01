@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-c20261001-plt44",
   "epoch": 3,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-01T20:19:44Z",
-  "updatedAt": "2026-10-01T20:19:44Z",
-  "leaseUntil": "2026-10-02T08:19:44Z",
+  "updatedAt": "2026-10-01T20:31:10Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-plt40 epoch 2; review the earlier handoff and commits"
+    "note": "queue: PLT.44 #113 merged (d00ccc7), main Publish NuGet 36920848636 success. Open DesktopPlatform PRs: #114 PLT.33 (held for the scan fix, now on main; rebase and re-chain receipt if needed) and #117 PLT.09 (held)"
   }
 }
