@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T19:35:47Z",
-  "updatedAt": "2026-10-01T20:30:15Z",
-  "leaseUntil": "2026-10-02T20:30:15Z",
+  "updatedAt": "2026-10-01T20:39:28Z",
+  "leaseUntil": "2026-10-02T20:39:28Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-49",
@@ -22,15 +22,17 @@
       "Rebased onto main d00ccc7; re-appended RP-10 bindings; local full build, Observability tests 191/191, architecture policy test (only environmental findings), format clean re-run"
     ],
     "validation": [
-      "Local (SDK 10.0.401 substituted, uncommitted): full slnx Release build 0 warnings/errors; dotnet format clean; Observability tests 189/189; marker-injection report 528 injections, 0 findings; architecture policy test no RP-10/BAN-REFLECTION findings (only environmental); provenance, reconciliation, dependency_policy, licence tests pass"
+      "Local (SDK 10.0.401 substituted, uncommitted): full slnx Release build 0 warnings/errors; dotnet format clean; Observability tests 189/189; marker-injection report 528 injections, 0 findings; architecture policy test no RP-10/BAN-REFLECTION findings (only environmental); provenance, reconciliation, dependency_policy, licence tests pass",
+      "Hosted PR run 36922020179 at 032be5e: all 15 jobs success incl. secret-scan, managed-packages (pack, Local RPC AOT win-x64/linux-x64, TableView AOT) and aggregate ci. Earlier head failed secret-scan: one own test line flagged (removed from history), rest from other task branches' receipt lines until rebase onto main d00ccc7."
     ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-49",
     "head": "032be5e476c00207f2ec85a217cdd3ddeb523152",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review at 032be5e476c00207f2ec85a217cdd3ddeb523152",
-      "await hosted CI at head"
+      "await independent exact-head review at 032be5e476c00207f2ec85a217cdd3ddeb523152",
+      "merge via integration:DesktopPlatform after review",
+      "confirm publication status, record ledger (complete if acceptance met; no completion prerequisites)"
     ],
     "host": "deku",
     "note": "Amended once before review to drop a gitleaks-flagged test line from history; secret-scan also sees leaks in other task branches (plt-09 and plt-44 review receipt hash lines)"
