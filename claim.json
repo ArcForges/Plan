@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Contracts",
-  "claimant": "w-c20261001-con15",
-  "epoch": 2,
-  "state": "released",
-  "claimedAt": "2026-10-01T19:27:31Z",
-  "updatedAt": "2026-10-01T19:49:22Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261001-con14",
+  "epoch": 3,
+  "state": "claimed",
+  "claimedAt": "2026-10-01T20:32:49Z",
+  "updatedAt": "2026-10-01T20:32:49Z",
+  "leaseUntil": "2026-10-02T08:32:49Z",
   "handoff": {
     "host": "deku",
-    "note": "merged #70 CON.15 as e816db7 (main CI 36914480340, Security 36914480387, NuGet/npm/Maven publish success; v1.0.0-ci.279.1). Open Contracts PRs: #72 CON.14, #71 GOV.05 (blocked), CON.07 coming; all must rebase onto e816db7 and regenerate shared files (con15 binding record is now the active successor)"
+    "note": "claimed after released by w-c20261001-con15 epoch 2; review the earlier handoff and commits"
   }
 }
