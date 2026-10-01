@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "PLT.49",
+  "claimant": "w-c20261001-plt49",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-01T19:35:47Z",
+  "updatedAt": "2026-10-01T19:35:47Z",
+  "leaseUntil": "2026-10-02T19:35:47Z",
+  "handoff": {
+    "repository": "DesktopPlatform",
+    "branch": "task/plt-49",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "plan the task, then push the task branch at the first checkpoint"
+    ],
+    "host": "deku",
+    "note": null
+  }
+}
