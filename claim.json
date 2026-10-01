@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T20:16:15Z",
-  "leaseUntil": "2026-10-02T20:16:15Z",
+  "updatedAt": "2026-10-01T20:20:50Z",
+  "leaseUntil": "2026-10-02T20:20:50Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
@@ -16,7 +16,9 @@
       "https://github.com/ArcForges/ArcForges-Design/pull/199",
       "https://github.com/ArcForges/Plan/pull/222"
     ],
-    "merges": [],
+    "merges": [
+      "d00ccc721a8b12666a1cc033e8226210dd8ba7c2"
+    ],
     "done": [
       "Recovered closed PR #107 head b41f44b (reviewed, rebased onto main 5e1b8fb); added typed egress/lease intakes (AuditEgressDetail, AuditEventShape, EgressDecisionAuditAdapter, CapabilityLeaseAuditAdapter), R0-R4 AuditRisk, tests",
       "PR #113 opened; local: locked restore, format, Release build 0 warnings, Audit tests 15/15, Security tests 48/48, python policy gates; AT arch test blocked locally by env (DesignSystem.Tests generated regex) pending hosted CI",
@@ -38,7 +40,8 @@
     "reviewed": "239162776dd6d0dab3779b924bad47761a8fb18d",
     "blocker": null,
     "next": [
-      "await reviews: planning pair (#199, #222) and delta of #113 at 2391627; then merge via roles (Design, Plan, DesktopPlatform), then ledger"
+      "confirm main publish status",
+      "record the ledger (PLT.44 ledger PR, status delivered)"
     ],
     "host": "deku",
     "note": "Reviewed: #113 @2391627 approved (r-c20261001-plt44); Design #199 @4a3ff94 and Plan #222 @3221957 approved (r-c20261001-plt44-plan)"
