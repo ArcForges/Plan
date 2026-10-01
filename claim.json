@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:57Z",
-  "updatedAt": "2026-10-01T08:01:57Z",
-  "leaseUntil": "2026-10-02T08:01:57Z",
+  "updatedAt": "2026-10-01T08:39:38Z",
+  "leaseUntil": "2026-10-02T08:39:38Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-40",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Recovered reviewed earlier Security.Secrets sources from dangling commits (eb30d4d lineage; csproj digests match the merged allowlist) onto current main; added SecretStoreIsolation/SecretIsolationPolicy fail-closed broker construction, RevokeAllConnectorGrants, OsSecretStore fail-closed selector; Windows CredMan declares SameUserShared (not an OS sibling boundary); policy/provenance/receipt rebuilt; local tests 19/19 incl. Windows opt-in; architecture tests show only environmental findings"
+    ],
     "validation": [],
-    "worktree": null,
-    "head": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-40",
+    "head": "fd61a2f34ca1f192703a133b683556dcafd52468",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "open Design+Plan planning-repair PRs (Directory.Packages.props selector append authority, branches task/plt-40-write-scope), open DesktopPlatform PR, await CI, request review"
     ],
     "host": "deku",
     "note": null
