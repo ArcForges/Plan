@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261001-plt44",
   "epoch": 10,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-01T20:53:56Z",
-  "updatedAt": "2026-10-01T20:53:56Z",
-  "leaseUntil": "2026-10-02T08:53:56Z",
+  "updatedAt": "2026-10-01T20:55:20Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-con14 epoch 9; review the earlier handoff and commits"
+    "note": "queue: Plan #225 (PLT.44 ledger) merged as 2872396; no other approved Plan PRs known to this worker"
   }
 }
