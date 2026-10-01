@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:38Z",
-  "updatedAt": "2026-10-01T19:00:12Z",
-  "leaseUntil": "2026-10-02T19:00:12Z",
+  "updatedAt": "2026-10-01T19:17:31Z",
+  "leaseUntil": "2026-10-02T19:17:31Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-15",
@@ -22,17 +22,18 @@
       "claimed; recovered prior a7521034 (4 commits: D1 ExecutePlan schema, CF schemas, vectors) rebased on main 4047930 as af24761, UNREVIEWED",
       "recovered a7521034 reviewed critically and substantially reworked (schemas rebuilt to registry04/contracts05: UUID ids, credential|binding authorize union, web-search registry shapes, epoch fence); generator registers cf-http/storage-http with 7 pinned canonical refs; package/access/policy/provenance/receipt/gitleaks bindings; 17-route operation scope + export + 342-row oracle; vectors+oracles; generated TS/C# validators checked locally against fixtures",
       "Contracts#70 open at 6e83853; CI: Secret scan, CodeQL x5, Dependency review pass; Build candidate failed ONLY in tests test_con21/test_con22 (git show of deleted-branch commits a0c9451/727f995 absent in fresh clones after cleanup; pre-existing, affects every Contracts PR); pack/dotnet/AOT/Kotlin/npm and all CON.15 tests passed",
-      "review findings on #197/#218 fixed; CI-history repair PR #73 opened (task/con-15-ci-history, a01159c)"
+      "review findings on #197/#218 fixed; CI-history repair PR #73 opened (task/con-15-ci-history, a01159c)",
+      "Design#197 merged 5ffbb81, Plan#218 merged, Contracts#73 merged 3773d57 (main CI, Security and Nuget/npm/Maven publish jobs success); #70 rebased on 3773d57 and regenerated (con15_finalize reset), pushed cc87a61"
     ],
     "validation": [
       "local offline: con15 python tests, dependency_admission 37 tests, contract_access mjs 17, provenance/naming/opscope/serialization checks, tsc, TS+C# generated validators vs fixtures (53 pos/76 neg); CI pending"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-15",
-    "head": "6e838537e4948614610259d6fb3aaf6e5fd9d186",
+    "head": "cc87a610a203bb9b8218102c677e1e6229ace0c2",
     "reviewed": "a01159caf74bc80f59a4e9f1f5417f4162b9a9c0",
     "blocker": null,
     "next": [
-      "await re-review of Design#197 (a8082d7aecc2a9eba9f90e5096d8e8518e30762e) and Plan#218 (0855f5025723dc419e9fe80c42c64fe03f7f8375); merge order Design#197 -> Plan#218 -> Contracts#73 -> rebase Contracts#70"
+      "await #70 CI and review"
     ],
     "host": "deku",
     "note": null
