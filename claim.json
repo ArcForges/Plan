@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:15Z",
-  "updatedAt": "2026-10-01T08:46:44Z",
-  "leaseUntil": "2026-10-02T08:46:44Z",
+  "updatedAt": "2026-10-01T08:49:14Z",
+  "leaseUntil": "2026-10-02T08:49:14Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-32",
@@ -26,7 +26,7 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-32",
     "head": "1bb9c69333a3f820ad94876de88a1a894140577e",
-    "reviewed": null,
+    "reviewed": "1bb9c69333a3f820ad94876de88a1a894140577e",
     "blocker": null,
     "next": [
       "await re-review at 1bb9c69",
