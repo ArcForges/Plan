@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:00Z",
-  "updatedAt": "2026-10-01T23:47:26Z",
-  "leaseUntil": "2026-10-02T23:47:26Z",
+  "updatedAt": "2026-10-01T23:57:42Z",
+  "leaseUntil": "2026-10-02T23:57:42Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-33",
@@ -38,7 +38,7 @@
     "reviewed": "3fcd3dce35a1fe16145781cc04378cb6b779f7cb",
     "blocker": null,
     "next": [
-      "await review of ledger PR Plan#227 (head 787b356), merge via integration:Plan, then update --state delivered"
+      "await re-review of ledger PR Plan#227 head 4d78851; merge via integration:Plan; then update --state delivered"
     ],
     "host": "deku",
     "note": null
