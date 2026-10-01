@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:00Z",
-  "updatedAt": "2026-10-01T09:07:28Z",
-  "leaseUntil": "2026-10-02T09:07:28Z",
+  "updatedAt": "2026-10-01T09:13:29Z",
+  "leaseUntil": "2026-10-02T09:13:29Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-33",
@@ -21,14 +21,15 @@
       "first CI run failed only dotnet format (diagnosed from log: MessagePattern.cs whitespace, FlowDirectionTests imports) - fixed; rebased onto main after PLT.32 merge (resolved append conflicts); migrated PLT.32 shutdown strings to named plural patterns; catalogued shutdown prompt; Shell.Tests 102/102 + format clean locally"
     ],
     "validation": [
-      "local Shell.Tests 79/79 (build slot, SDK 10.0.400); local ArchitectureTests cannot evaluate RP-10 here (SDK resolution) so CI is the RP-10 gate"
+      "local Shell.Tests 79/79 (build slot, SDK 10.0.400); local ArchitectureTests cannot evaluate RP-10 here (SDK resolution) so CI is the RP-10 gate",
+      "PR gate on b417c05: all jobs green except secret-scan (4 leaks, history scan; not from this diff; same as main Publish run 36838836577); managed-packages skipped; local Shell.Tests 102/102, dotnet format clean"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-33",
     "head": "b417c05e815f112356b1fd0607af7343f518d63e",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "CI on new head; Design#194/Plan#215 updated; await review"
+      "await review"
     ],
     "host": "deku",
     "note": null
