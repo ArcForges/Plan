@@ -6,14 +6,15 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:01Z",
-  "updatedAt": "2026-10-01T08:46:28Z",
-  "leaseUntil": "2026-10-02T08:46:28Z",
+  "updatedAt": "2026-10-01T09:07:47Z",
+  "leaseUntil": "2026-10-02T09:07:47Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-14",
     "prs": [
       "https://github.com/ArcForges/ArcForges-Design/pull/196",
-      "https://github.com/ArcForges/Plan/pull/217"
+      "https://github.com/ArcForges/Plan/pull/217",
+      "https://github.com/ArcForges/Contracts/pull/72"
     ],
     "merges": [],
     "done": [
@@ -21,15 +22,18 @@
       "Recovered prior head fbd3420, source-reviewed it (found and fixed: constraint shard keys lacked arcforges.operator.v1 prefix; StartBreakGlass reason lacked Text bound; wrong method-path assertion; no operation export/role matrix/generated outputs/shape vectors) and rebased on main 4047930",
       "Authored eng/operations/con-14.json (31 rows), role matrix and 58 shape vectors in fixture, generated C#/TS outputs, wp03-02 catalogue append, SerializationProbe binders, TS test; local StructureTests, TS tests and Native AOT probe (31 binary/51 JSON/971 messages/189 methods) pass; pushed 66ff7a3",
       "CloudInternal->PublicApi edge was already realized by CON.11: no csproj/lock/contract-packages edit and no new package/lock change; con-14-r1 chains from active con-11-r1",
-      "Opened narrow authority pair Design #196 / Plan #217 for exact operator.startBreakGlass R4 checker exception, test_operation_scope.py count+R4 tests, docs/operation-scope.md and eng/contracts.py internal import-owner mapping (observed necessity: checker 'unclassified risk', stale 232/86/7/325, generated operator_pb.ts relative imports)"
+      "Opened narrow authority pair Design #196 / Plan #217 for exact operator.startBreakGlass R4 checker exception, test_operation_scope.py count+R4 tests, docs/operation-scope.md and eng/contracts.py internal import-owner mapping (observed necessity: checker 'unclassified risk', stale 232/86/7/325, generated operator_pb.ts relative imports)",
+      "Contracts PR #72 opened at 3fd7d74ab6d4cfaa1672cf531b9300dea561b7ba: records commit (contract-access, contract-bindings-con-14-r1, dependency receipt con-14-r1, NOTICE) added; local gates and Native AOT probe pass; CI running"
     ],
-    "validation": [],
+    "validation": [
+      "Local: StructureTests, 274 node tests, AOT SerializationProbe (31 binary/51 JSON/971 messages/189 methods), operation scope 263/55/7, provenance/dependency/access checks; tooling unittest only the known 11 environmental failures; Linux AOT/Kotlin/pack/Security hosted-only"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-14",
-    "head": "66ff7a36d07edd8f2490c8f111c60a97e2638067",
+    "head": "3fd7d74ab6d4cfaa1672cf531b9300dea561b7ba",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "records commit (contract-access, provenance con-14-r1, dependency receipt con-14-r1, NOTICE) after authority merge; local checks; open Contracts PR; request review"
+      "await review (needs Design #196/Plan #217 authority merged first); wait for hosted CI; expect exact observed secret-scan authority follow-up if gitleaks flags public digest rows"
     ],
     "host": "deku",
     "note": "ADP-07 support binding: src/public/ts/contract-fixtures/src/index.ts is a generated output of the authorized wp03-02.json append (generate_fixtures), regenerated mechanically (+34 lines: CloudInternal OperatorService catalogue/methods); no other behavior"
