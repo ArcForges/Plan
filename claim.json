@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T08:23:04Z",
-  "leaseUntil": "2026-10-02T08:23:04Z",
+  "updatedAt": "2026-10-01T08:23:38Z",
+  "leaseUntil": "2026-10-02T08:23:38Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
@@ -27,7 +27,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await CI; request review; return to coordinator"
+      "await review"
     ],
     "host": "deku",
     "note": null
