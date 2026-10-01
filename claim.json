@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:38Z",
-  "updatedAt": "2026-10-01T08:00:38Z",
-  "leaseUntil": "2026-10-02T08:00:38Z",
+  "updatedAt": "2026-10-01T08:01:26Z",
+  "leaseUntil": "2026-10-02T08:01:26Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-15",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "claimed; recovered prior a7521034 (4 commits: D1 ExecutePlan schema, CF schemas, vectors) rebased on main 4047930 as af24761, UNREVIEWED"
+    ],
     "validation": [],
-    "worktree": null,
-    "head": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-15",
+    "head": "af247612bad3770679bdd891e85d7db6aa9adf40",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "critically review recovered schemas/tests; then generator registration, access root, package/policy rows, generated outputs, dependency receipt con-15-r1, operation scope 17 tuples, oracle rows, export"
     ],
     "host": "deku",
     "note": null
