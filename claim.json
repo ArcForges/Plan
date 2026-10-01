@@ -6,18 +6,21 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:38Z",
-  "updatedAt": "2026-10-01T08:54:12Z",
-  "leaseUntil": "2026-10-02T08:54:12Z",
+  "updatedAt": "2026-10-01T09:11:03Z",
+  "leaseUntil": "2026-10-02T09:11:03Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-15",
     "prs": [
-      "https://github.com/ArcForges/Contracts/pull/70"
+      "https://github.com/ArcForges/Contracts/pull/70",
+      "https://github.com/ArcForges/ArcForges-Design/pull/197",
+      "https://github.com/ArcForges/Plan/pull/218"
     ],
     "merges": [],
     "done": [
       "claimed; recovered prior a7521034 (4 commits: D1 ExecutePlan schema, CF schemas, vectors) rebased on main 4047930 as af24761, UNREVIEWED",
-      "recovered a7521034 reviewed critically and substantially reworked (schemas rebuilt to registry04/contracts05: UUID ids, credential|binding authorize union, web-search registry shapes, epoch fence); generator registers cf-http/storage-http with 7 pinned canonical refs; package/access/policy/provenance/receipt/gitleaks bindings; 17-route operation scope + export + 342-row oracle; vectors+oracles; generated TS/C# validators checked locally against fixtures"
+      "recovered a7521034 reviewed critically and substantially reworked (schemas rebuilt to registry04/contracts05: UUID ids, credential|binding authorize union, web-search registry shapes, epoch fence); generator registers cf-http/storage-http with 7 pinned canonical refs; package/access/policy/provenance/receipt/gitleaks bindings; 17-route operation scope + export + 342-row oracle; vectors+oracles; generated TS/C# validators checked locally against fixtures",
+      "Contracts#70 open at 6e83853; CI: Secret scan, CodeQL x5, Dependency review pass; Build candidate failed ONLY in tests test_con21/test_con22 (git show of deleted-branch commits a0c9451/727f995 absent in fresh clones after cleanup; pre-existing, affects every Contracts PR); pack/dotnet/AOT/Kotlin/npm and all CON.15 tests passed"
     ],
     "validation": [
       "local offline: con15 python tests, dependency_admission 37 tests, contract_access mjs 17, provenance/naming/opscope/serialization checks, tsc, TS+C# generated validators vs fixtures (53 pos/76 neg); CI pending"
@@ -27,7 +30,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await CI; Design #197 and Plan #218 authority pair must be reviewed+merged before the Contracts PR merges; then request review"
+      "await review of Contracts#70, Design#197, Plan#218; merge needs authority pair merged first AND a fix/decision for unreachable historical commits in test_dependency_admission (con21/con22); after other Contracts merges: rebase, run con15_finalize reset, re-push"
     ],
     "host": "deku",
     "note": null
