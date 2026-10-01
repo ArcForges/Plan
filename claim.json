@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261001-plt32",
   "epoch": 2,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-01T09:09:04Z",
-  "updatedAt": "2026-10-01T09:09:04Z",
-  "leaseUntil": "2026-10-01T21:09:04Z",
+  "updatedAt": "2026-10-01T09:10:33Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-prf04 epoch 1; review the earlier handoff and commits"
+    "note": "Merged Plan#219 (PLT.32 ledger, delivered) as a32ebd1; primary fast-forwarded. No other Plan PRs handled by me; queue unknown to me beyond Design#195/Plan#216 (PLT.40 selector authority) and Plan#215 (PLT.33) noted by their workers."
   }
 }
