@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:15Z",
-  "updatedAt": "2026-10-01T08:00:15Z",
-  "leaseUntil": "2026-10-02T08:00:15Z",
+  "updatedAt": "2026-10-01T08:02:45Z",
+  "leaseUntil": "2026-10-02T08:02:45Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-32",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Recovered closed PR #108 head 23e683e, rebased onto main 5e1b8fb (resolved append conflict in eng/policy/architecture-contract-tests.json); reviewed code (sound; gaps: misplaced doc comment, English concatenated prompt strings vs BR-07, activation-memory cap permanently refuses, no real-Shell-component startup path test)"
+    ],
     "validation": [],
-    "worktree": null,
-    "head": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-32",
+    "head": "9c19ce9fb1fefaaa452b03dd388588bd7f60cecf",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "fix gaps, add real-component startup path test, README, local build/test via build slot, open PR, await review"
     ],
     "host": "deku",
     "note": null
