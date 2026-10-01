@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:57Z",
-  "updatedAt": "2026-10-01T19:05:09Z",
-  "leaseUntil": "2026-10-02T19:05:09Z",
+  "updatedAt": "2026-10-01T19:18:14Z",
+  "leaseUntil": "2026-10-02T19:18:14Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-40",
@@ -27,15 +27,15 @@
     ],
     "validation": [
       "PR gate 15/15 green at e11a1b8 (run 36839645645) incl. secret-scan, native-win-x64, managed-packages, licence/runtime/provenance/reconciliation/design policy; local: Secrets tests 19/19 (Windows opt-in incl. sibling-process observation), arch tests only environmental findings, python gates",
-      "PR gate 15/15 green at 6520b74 (run 36909984308); local Secrets tests 36/36 with Windows opt-in"
+      "PR gate 15/15 green at 6520b74 (run 36909984308); local Secrets tests 36/36 with Windows opt-in",
+      "main Publish NuGet run 36911571279 on c0def81 succeeded: 17 jobs incl. secret-scan, candidate ci.70.1 (10 packages)"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-40",
     "head": "6520b7494402808b29ed7cf2aca1eacadc822095",
     "reviewed": "6520b7494402808b29ed7cf2aca1eacadc822095",
     "blocker": null,
     "next": [
-      "confirm Publish NuGet on main",
-      "record the ledger"
+      "ledger PR for PLT.40 (delivered)"
     ],
     "host": "deku",
     "note": null
