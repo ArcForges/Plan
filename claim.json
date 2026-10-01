@@ -6,23 +6,28 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T08:12:47Z",
-  "leaseUntil": "2026-10-02T08:12:47Z",
+  "updatedAt": "2026-10-01T08:23:04Z",
+  "leaseUntil": "2026-10-02T08:23:04Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/113"
+    ],
     "merges": [],
     "done": [
-      "Recovered closed PR #107 head b41f44b (reviewed, rebased onto main 5e1b8fb); added typed egress/lease intakes (AuditEgressDetail, AuditEventShape, EgressDecisionAuditAdapter, CapabilityLeaseAuditAdapter), R0-R4 AuditRisk, tests"
+      "Recovered closed PR #107 head b41f44b (reviewed, rebased onto main 5e1b8fb); added typed egress/lease intakes (AuditEgressDetail, AuditEventShape, EgressDecisionAuditAdapter, CapabilityLeaseAuditAdapter), R0-R4 AuditRisk, tests",
+      "PR #113 opened; local: locked restore, format, Release build 0 warnings, Audit tests 15/15, Security tests 48/48, python policy gates; AT arch test blocked locally by env (DesignSystem.Tests generated regex) pending hosted CI"
     ],
-    "validation": [],
+    "validation": [
+      "dotnet SDK 10.0.400 locked restore/format/build/tests as listed"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-44",
-    "head": "220d835b8b081aef026b9d63acb79f6e295fb4be",
+    "head": "7a2d09467b1e739c3ae95809077208a77fe765b7",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "build/test locally via build-slot; regenerate dependency receipt plt-44-r1 chained from plt-39-r1; open PR; await CI"
+      "await CI; request review; return to coordinator"
     ],
     "host": "deku",
     "note": null
