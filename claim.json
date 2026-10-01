@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:01Z",
-  "updatedAt": "2026-10-01T20:13:11Z",
-  "leaseUntil": "2026-10-02T20:13:11Z",
+  "updatedAt": "2026-10-01T20:24:01Z",
+  "leaseUntil": "2026-10-02T20:24:01Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-14",
@@ -28,7 +28,8 @@
       "Appended exact observed secret-scan authority to Design #196 / Plan #217 and implemented the two exact gitleaks groups plus sibling test at 51b1aa1516bbaeb0e130003c94e6867bb807a376 (no regeneration)",
       "Review r-c20261001-con14 changes applied: sint64 deltaMicro (registry oracle added for all 18 records/31 request+value tables/5 enums in C# and TS tests), catalog decision explicit presence, catalog reason bounded to CON.13 Key/128, tag 4 left unreserved on read responses, R4 stepUp False test, README refreshed; rebased onto main e816db7 (CON.15 merged; receipt chains from con-15-r1, binding successor of con-15 record); regenerated records at edb379e; force-pushed (old 51b1aa1 superseded)",
       "Observed hosted Security on edb379e (6 predicted occurrences, run 36915931079 job 110549768370); amended Design #196 (753b0cf) / Plan #217 (a11a548) with exact tuples and CON.15 sibling rebinding; pushed secret-scan exceptions at 8762132",
-      "Hosted CI on 8762132 all green: Build candidate (incl. Linux AOT probe), Verify, Secret scan, CodeQL x5, Dependency review"
+      "Hosted CI on 8762132 all green: Build candidate (incl. Linux AOT probe), Verify, Secret scan, CodeQL x5, Dependency review",
+      "Planning pair amended per re-review: inventory 280/55/7/342, operator-client README in exact writes; merged current mains; Design #196 edc6d3b517897cb72d682b5fb88a035fbc06f311, Plan #217 5c52f1e5fc469e42832002376bdd7e8f2cdeb786"
     ],
     "validation": [
       "Local: StructureTests, 274 node tests, AOT SerializationProbe (31 binary/51 JSON/971 messages/189 methods), operation scope 263/55/7, provenance/dependency/access checks; tooling unittest only the known 11 environmental failures; Linux AOT/Kotlin/pack/Security hosted-only",
@@ -39,7 +40,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await re-review (Design #196 753b0cf, Plan #217 a11a548, Contracts #72 8762132); merge Design then Plan then Contracts via integration roles; then ledger (complete; receipt chains from con-15-r1)"
+      "await narrow re-review of Design #196/Plan #217; then merge Design, Plan, Contracts #72 (8762132, unchanged) via integration roles"
     ],
     "host": "deku",
     "note": "ADP-07 support binding: src/public/ts/contract-fixtures/src/index.ts is a generated output of the authorized wp03-02.json append (generate_fixtures), regenerated mechanically (+34 lines: CloudInternal OperatorService catalogue/methods); no other behavior"
