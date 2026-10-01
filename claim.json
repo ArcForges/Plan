@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:01Z",
-  "updatedAt": "2026-10-01T20:29:40Z",
-  "leaseUntil": "2026-10-02T20:29:40Z",
+  "updatedAt": "2026-10-01T20:34:11Z",
+  "leaseUntil": "2026-10-02T20:34:11Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-14",
@@ -16,7 +16,9 @@
       "https://github.com/ArcForges/Plan/pull/217",
       "https://github.com/ArcForges/Contracts/pull/72"
     ],
-    "merges": [],
+    "merges": [
+      "bcd592a75c0b540923a77a499a8f82e18bbff743"
+    ],
     "done": [
       "recovered prior SHA fbd3420 (proto/constraints/fixture/StructureTests only) into retained worktree; source review pending",
       "Recovered prior head fbd3420, source-reviewed it (found and fixed: constraint shard keys lacked arcforges.operator.v1 prefix; StartBreakGlass reason lacked Text bound; wrong method-path assertion; no operation export/role matrix/generated outputs/shape vectors) and rebased on main 4047930",
@@ -40,7 +42,8 @@
     "reviewed": "8762132eb165f4c0747e937e60b4412f789be66c",
     "blocker": null,
     "next": [
-      "await narrow re-review of Design #196/Plan #217; then merge Design, Plan, Contracts #72 (8762132, unchanged) via integration roles"
+      "confirm main-push CI/Security and NuGet/npm/Maven publisher jobs (provider status only)",
+      "record the ledger"
     ],
     "host": "deku",
     "note": "ADP-07 support binding: src/public/ts/contract-fixtures/src/index.ts is a generated output of the authorized wp03-02.json append (generate_fixtures), regenerated mechanically (+34 lines: CloudInternal OperatorService catalogue/methods); no other behavior"
