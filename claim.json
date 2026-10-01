@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:38Z",
-  "updatedAt": "2026-10-01T19:17:31Z",
-  "leaseUntil": "2026-10-02T19:17:31Z",
+  "updatedAt": "2026-10-01T19:18:32Z",
+  "leaseUntil": "2026-10-02T19:18:32Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-15",
@@ -33,7 +33,7 @@
     "reviewed": "a01159caf74bc80f59a4e9f1f5417f4162b9a9c0",
     "blocker": null,
     "next": [
-      "await #70 CI and review"
+      "await review"
     ],
     "host": "deku",
     "note": null
