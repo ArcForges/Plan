@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:01Z",
-  "updatedAt": "2026-10-01T20:24:01Z",
-  "leaseUntil": "2026-10-02T20:24:01Z",
+  "updatedAt": "2026-10-01T20:29:40Z",
+  "leaseUntil": "2026-10-02T20:29:40Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-14",
@@ -37,7 +37,7 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-14",
     "head": "8762132eb165f4c0747e937e60b4412f789be66c",
-    "reviewed": null,
+    "reviewed": "8762132eb165f4c0747e937e60b4412f789be66c",
     "blocker": null,
     "next": [
       "await narrow re-review of Design #196/Plan #217; then merge Design, Plan, Contracts #72 (8762132, unchanged) via integration roles"
