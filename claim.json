@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T20:51:29Z",
-  "leaseUntil": "2026-10-02T20:51:29Z",
+  "updatedAt": "2026-10-01T20:53:36Z",
+  "leaseUntil": "2026-10-02T20:53:36Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
@@ -40,12 +40,12 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-44",
     "head": "239162776dd6d0dab3779b924bad47761a8fb18d",
-    "reviewed": "239162776dd6d0dab3779b924bad47761a8fb18d",
+    "reviewed": "e237102a70469fe307185ecf932df60772466c2a",
     "blocker": null,
     "next": [
       "await re-review of ledger PR #225 at e237102a70469fe307185ecf932df60772466c2a, then merge via integration:Plan and record --state delivered"
     ],
     "host": "deku",
-    "note": "Plan ledger PR is #225 (an earlier handoff line named #223 in error)"
+    "note": "Plan #225 approved at e237102 (review 5385381277)"
   }
 }
