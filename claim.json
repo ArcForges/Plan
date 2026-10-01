@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:00Z",
-  "updatedAt": "2026-10-01T19:46:58Z",
-  "leaseUntil": "2026-10-02T19:46:58Z",
+  "updatedAt": "2026-10-01T20:01:44Z",
+  "leaseUntil": "2026-10-02T20:01:44Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-33",
@@ -18,7 +18,8 @@
     "done": [
       "claimed; read brief/policy/task/WP-10.07; no prior PLT.33 branch/PR/work found (none in Plan/Design/DesktopPlatform history); Avalonia not admitted for shipped shell (docs/third-party-control-admission.md) and AGENTS bans GUI tests",
       "implemented Shell a11y semantics/FocusNavigator/audit/l10n formatter/pseudo-loc/RTL + offline tests; pushed task/plt-33; Design planning repair PR ArcForges-Design#194 + Plan#215 (append-only contract-test/provenance scope, PLT.31 precedent); DesktopUiTests project intentionally not created (GUI-hosted F-09)",
-      "first CI run failed only dotnet format (diagnosed from log: MessagePattern.cs whitespace, FlowDirectionTests imports) - fixed; rebased onto main after PLT.32 merge (resolved append conflicts); migrated PLT.32 shutdown strings to named plural patterns; catalogued shutdown prompt; Shell.Tests 102/102 + format clean locally"
+      "first CI run failed only dotnet format (diagnosed from log: MessagePattern.cs whitespace, FlowDirectionTests imports) - fixed; rebased onto main after PLT.32 merge (resolved append conflicts); migrated PLT.32 shutdown strings to named plural patterns; catalogued shutdown prompt; Shell.Tests 102/102 + format clean locally",
+      "Design#194 merged f0b9a13e; Plan#215 merged 88b52137; both primaries ff; roles released; PR body corrected to 108/108"
     ],
     "validation": [
       "local Shell.Tests 79/79 (build slot, SDK 10.0.400); local ArchitectureTests cannot evaluate RP-10 here (SDK resolution) so CI is the RP-10 gate",
@@ -30,7 +31,7 @@
     "reviewed": "d694217c6cef843275d79486d45879f16b789fa8",
     "blocker": null,
     "next": [
-      "await delta re-review of d694217; rerun hosted CI only after the PLT.44-branch gitleaks cause is repaired; then managed-packages (RP-10) must be green; Design#194 head 16aaef0 / Plan#215 head 4daf7c3 rebased and need re-review before merge"
+      "hold #114 (head d694217, reviewed) until hosted secret-scan can pass: PLT.44 .gitleaks.toml repair not yet on main (polled ~10 min, no change); then push a rebase onto new main to get a fresh merge ref and CI, require secret-scan + managed-packages (RP-10) green, claim integration:DesktopPlatform, merge, record --merge, ledger PR (delivered)"
     ],
     "host": "deku",
     "note": null
