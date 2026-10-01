@@ -6,23 +6,28 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:15Z",
-  "updatedAt": "2026-10-01T08:02:45Z",
-  "leaseUntil": "2026-10-02T08:02:45Z",
+  "updatedAt": "2026-10-01T08:12:44Z",
+  "leaseUntil": "2026-10-02T08:12:44Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-32",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/112"
+    ],
     "merges": [],
     "done": [
-      "Recovered closed PR #108 head 23e683e, rebased onto main 5e1b8fb (resolved append conflict in eng/policy/architecture-contract-tests.json); reviewed code (sound; gaps: misplaced doc comment, English concatenated prompt strings vs BR-07, activation-memory cap permanently refuses, no real-Shell-component startup path test)"
+      "Recovered closed PR #108 head 23e683e, rebased onto main 5e1b8fb (resolved append conflict in eng/policy/architecture-contract-tests.json); reviewed code (sound; gaps: misplaced doc comment, English concatenated prompt strings vs BR-07, activation-memory cap permanently refuses, no real-Shell-component startup path test)",
+      "PR #112 opened; fixes over #108 (doc comment, resx prompts, bounded activation memory, real-component startup test, README); local: format, Release build 0 warn, Shell tests 42/42, provenance ok; ArchitectureTests 99/100 (known local DesignSystem.Tests CS8795, hosted authoritative); ADP-07 binding: append 5 rows architecture-contract-tests.json + 1 firstParty entry provenance/files.json"
     ],
-    "validation": [],
+    "validation": [
+      "Shell tests 42/42; task-local startup path ~9ms vs 2500ms budget (not ArcScope product evidence)"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-32",
-    "head": "9c19ce9fb1fefaaa452b03dd388588bd7f60cecf",
+    "head": "5fb9ee0e84dcf5f05dbe189070b7b32298d8b333",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "fix gaps, add real-component startup path test, README, local build/test via build slot, open PR, await review"
+      "await review"
     ],
     "host": "deku",
     "note": null
