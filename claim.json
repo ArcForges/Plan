@@ -6,15 +6,16 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T20:20:50Z",
-  "leaseUntil": "2026-10-02T20:20:50Z",
+  "updatedAt": "2026-10-01T20:33:45Z",
+  "leaseUntil": "2026-10-02T20:33:45Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/113",
       "https://github.com/ArcForges/ArcForges-Design/pull/199",
-      "https://github.com/ArcForges/Plan/pull/222"
+      "https://github.com/ArcForges/Plan/pull/222",
+      "https://github.com/ArcForges/Plan/pull/223"
     ],
     "merges": [
       "d00ccc721a8b12666a1cc033e8226210dd8ba7c2"
@@ -33,15 +34,15 @@
       "dotnet SDK 10.0.400 locked restore/format/build/tests as listed",
       "local SDK10.0.400: locked restore, format, Release build 0 warnings, Audit tests 15/15, Security tests 48/48, python policy gates; local arch test RP-10 clear (RP-01/08/09/AT-09 need CI artifacts); hosted CI 15/15 green",
       "hosted at c6f1d42: 11 jobs green incl design/licence/provenance/reconciliation/runtime/reference/repository-hooks; secret-scan fail (main-level), ci fail (aggregate), managed-packages skipped",
-      "hosted CI 15/15 green on 2391627; local focused tests 22 pass"
+      "hosted CI 15/15 green on 2391627; local focused tests 22 pass",
+      "ledger check passed on explicit roots"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-44",
     "head": "239162776dd6d0dab3779b924bad47761a8fb18d",
     "reviewed": "239162776dd6d0dab3779b924bad47761a8fb18d",
     "blocker": null,
     "next": [
-      "confirm main publish status",
-      "record the ledger (PLT.44 ledger PR, status delivered)"
+      "await review of ledger PR then merge via integration:Plan, then record --state delivered"
     ],
     "host": "deku",
     "note": "Reviewed: #113 @2391627 approved (r-c20261001-plt44); Design #199 @4a3ff94 and Plan #222 @3221957 approved (r-c20261001-plt44-plan)"
