@@ -6,21 +6,24 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:02:05Z",
-  "updatedAt": "2026-10-01T08:02:05Z",
-  "leaseUntil": "2026-10-02T08:02:05Z",
+  "updatedAt": "2026-10-01T08:03:12Z",
+  "leaseUntil": "2026-10-02T08:03:12Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-04",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Verified PR #84 (merge 0514461, reviewed af093ee by prior claim af-20260928-p02) is on main; main Publish NuGet runs incl. Local RPC AOT compile linux-x64+win-x64 green (run 36672523178 at 5e1b8fb)"
+    ],
     "validation": [],
-    "worktree": null,
-    "head": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\prf-04",
+    "head": "5e1b8fbb8acfa980a39b48bf045b8e32a1f7d1cf",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "run Windows AOT two-process probe once on current main via build-slot",
+      "ledger PR for ledger/tasks/prf-04.md as delivered (macOS/Linux runtime unobserved)"
     ],
     "host": "deku",
     "note": null
