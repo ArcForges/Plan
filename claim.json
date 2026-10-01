@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:02:05Z",
-  "updatedAt": "2026-10-01T08:24:15Z",
-  "leaseUntil": "2026-10-02T08:24:15Z",
+  "updatedAt": "2026-10-01T08:31:26Z",
+  "leaseUntil": "2026-10-02T08:31:26Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-04",
@@ -24,12 +24,10 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\prf-04",
     "head": "5e1b8fbb8acfa980a39b48bf045b8e32a1f7d1cf",
-    "reviewed": null,
+    "reviewed": "0367927b43bc2021f66d5fae7d7b23ef4d84622d",
     "blocker": null,
     "next": [
-      "await review",
-      "merge Plan#214 via integration:Plan, then update --state delivered",
-      "follow-up: real Linux/macOS two-process runs for complete"
+      "merge Plan#214 via integration:Plan"
     ],
     "host": "deku",
     "note": null
