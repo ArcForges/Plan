@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "CON.14",
+  "claimant": "w-c20261001-con14",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-01T08:00:01Z",
+  "updatedAt": "2026-10-01T08:00:01Z",
+  "leaseUntil": "2026-10-02T08:00:01Z",
+  "handoff": {
+    "repository": "Contracts",
+    "branch": "task/con-14",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "plan the task, then push the task branch at the first checkpoint"
+    ],
+    "host": "deku",
+    "note": null
+  }
+}
