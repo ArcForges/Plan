@@ -6,21 +6,24 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T19:35:47Z",
-  "updatedAt": "2026-10-01T19:35:47Z",
-  "leaseUntil": "2026-10-02T19:35:47Z",
+  "updatedAt": "2026-10-01T19:42:07Z",
+  "leaseUntil": "2026-10-02T19:42:07Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-49",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Claimed; read brief, Plan, Design WP-12.02, architecture 13 RD/SG rules, existing Observability source/tests; worktree created from main c0def81"
+    ],
     "validation": [],
-    "worktree": null,
+    "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-49",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "Write scope bound: src/BuildingBlocks/ArcForges.Observability/** (new source + Tests/*.cs, README) and eng/policy/telemetry-policy.json (new). ADP-07 supporting binding (declared before editing): eng/policy/architecture-contract-tests.json existing RP-10 public-API-to-test inventory, append-only entries for the new public ordinary methods of the already-in-scope Observability project; no csproj, packages.lock.json, Directory.Packages.props, dependency-policy.json, review receipt or .gitleaks.toml change (no hashed dependency input touched, so no new hash lines)",
+      "implement RedactionProcessor, route templates, exception reason mapping, sensitive-type audit, telemetry policy json, tests, then PR"
     ],
     "host": "deku",
     "note": null
