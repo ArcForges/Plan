@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:57Z",
-  "updatedAt": "2026-10-01T08:40:53Z",
-  "leaseUntil": "2026-10-02T08:40:53Z",
+  "updatedAt": "2026-10-01T08:58:11Z",
+  "leaseUntil": "2026-10-02T08:58:11Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-40",
@@ -18,15 +18,16 @@
     ],
     "merges": [],
     "done": [
-      "Recovered reviewed earlier Security.Secrets sources from dangling commits (eb30d4d lineage; csproj digests match the merged allowlist) onto current main; added SecretStoreIsolation/SecretIsolationPolicy fail-closed broker construction, RevokeAllConnectorGrants, OsSecretStore fail-closed selector; Windows CredMan declares SameUserShared (not an OS sibling boundary); policy/provenance/receipt rebuilt; local tests 19/19 incl. Windows opt-in; architecture tests show only environmental findings"
+      "Recovered reviewed earlier Security.Secrets sources from dangling commits (eb30d4d lineage; csproj digests match the merged allowlist) onto current main; added SecretStoreIsolation/SecretIsolationPolicy fail-closed broker construction, RevokeAllConnectorGrants, OsSecretStore fail-closed selector; Windows CredMan declares SameUserShared (not an OS sibling boundary); policy/provenance/receipt rebuilt; local tests 19/19 incl. Windows opt-in; architecture tests show only environmental findings",
+      "CI run 1 secret-scan failed: gitleaks prefixes added lines (after first of a fragment) with a newline so anchored whole-line allowlist regexes missed 4 of 6 reviewed lines; fixed with optional leading newline + focused tests; squashed and rebased on main 812cdaa (PLT.32 merged); policy/receipt baseline refreshed"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-40",
-    "head": "fd61a2f34ca1f192703a133b683556dcafd52468",
+    "head": "e11a1b8ef87bb21245ba5aa569bac133a431987f",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await CI and review; Design #195 and Plan #216 (selector authority) must merge before DesktopPlatform #115"
+      "wait for CI on e11a1b8, then request review"
     ],
     "host": "deku",
     "note": null
