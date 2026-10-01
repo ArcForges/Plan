@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:38Z",
-  "updatedAt": "2026-10-01T09:33:50Z",
-  "leaseUntil": "2026-10-02T09:33:50Z",
+  "updatedAt": "2026-10-01T18:55:19Z",
+  "leaseUntil": "2026-10-02T18:55:19Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-15",
@@ -32,7 +32,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await reviews: Contracts#73 (a01159c, CI green), Design#197 (6574591), Plan#218 (41f2ca3), Contracts#70; then merge order #73 -> Design#197 -> Plan#218 -> rebase #70 (con15_finalize reset) -> CI"
+      "await re-review of Design#197 (a8082d7aecc2a9eba9f90e5096d8e8518e30762e) and Plan#218 (0855f5025723dc419e9fe80c42c64fe03f7f8375); merge order Design#197 -> Plan#218 -> Contracts#73 -> rebase Contracts#70"
     ],
     "host": "deku",
     "note": null
