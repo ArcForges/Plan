@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:00Z",
-  "updatedAt": "2026-10-01T20:01:44Z",
-  "leaseUntil": "2026-10-02T20:01:44Z",
+  "updatedAt": "2026-10-01T20:36:12Z",
+  "leaseUntil": "2026-10-02T20:36:12Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-33",
@@ -19,7 +19,8 @@
       "claimed; read brief/policy/task/WP-10.07; no prior PLT.33 branch/PR/work found (none in Plan/Design/DesktopPlatform history); Avalonia not admitted for shipped shell (docs/third-party-control-admission.md) and AGENTS bans GUI tests",
       "implemented Shell a11y semantics/FocusNavigator/audit/l10n formatter/pseudo-loc/RTL + offline tests; pushed task/plt-33; Design planning repair PR ArcForges-Design#194 + Plan#215 (append-only contract-test/provenance scope, PLT.31 precedent); DesktopUiTests project intentionally not created (GUI-hosted F-09)",
       "first CI run failed only dotnet format (diagnosed from log: MessagePattern.cs whitespace, FlowDirectionTests imports) - fixed; rebased onto main after PLT.32 merge (resolved append conflicts); migrated PLT.32 shutdown strings to named plural patterns; catalogued shutdown prompt; Shell.Tests 102/102 + format clean locally",
-      "Design#194 merged f0b9a13e; Plan#215 merged 88b52137; both primaries ff; roles released; PR body corrected to 108/108"
+      "Design#194 merged f0b9a13e; Plan#215 merged 88b52137; both primaries ff; roles released; PR body corrected to 108/108",
+      "rebased onto main d00ccc7 (PLT.44 merged); policy JSON tail rows re-appended from main; pure rebase of reviewed d694217"
     ],
     "validation": [
       "local Shell.Tests 79/79 (build slot, SDK 10.0.400); local ArchitectureTests cannot evaluate RP-10 here (SDK resolution) so CI is the RP-10 gate",
@@ -27,11 +28,11 @@
       "d694217: Shell.Tests 108/108, dotnet format clean locally; hosted run 36915460861 all green except secret-scan (2 leaks from other branch history, gitleaks --all); managed-packages skipped"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-33",
-    "head": "d694217c6cef843275d79486d45879f16b789fa8",
+    "head": "3fcd3dce35a1fe16145781cc04378cb6b779f7cb",
     "reviewed": "d694217c6cef843275d79486d45879f16b789fa8",
     "blocker": null,
     "next": [
-      "hold #114 (head d694217, reviewed) until hosted secret-scan can pass: PLT.44 .gitleaks.toml repair not yet on main (polled ~10 min, no change); then push a rebase onto new main to get a fresh merge ref and CI, require secret-scan + managed-packages (RP-10) green, claim integration:DesktopPlatform, merge, record --merge, ledger PR (delivered)"
+      "hosted CI on rebased head incl. secret-scan + managed-packages; delta re-review of pure rebase; then integration:DesktopPlatform merge"
     ],
     "host": "deku",
     "note": null
