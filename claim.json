@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:01Z",
-  "updatedAt": "2026-10-01T08:00:01Z",
-  "leaseUntil": "2026-10-02T08:00:01Z",
+  "updatedAt": "2026-10-01T08:01:16Z",
+  "leaseUntil": "2026-10-02T08:01:16Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-14",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "recovered prior SHA fbd3420 (proto/constraints/fixture/StructureTests only) into retained worktree; source review pending"
+    ],
     "validation": [],
-    "worktree": null,
-    "head": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-14",
+    "head": "fbd34209f07b17108022172e7a3017bb0b17ca06",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "review recovered files vs Registry04 9/9.1/9.2; rebase on main; implement generated/policy/provenance/fixture closure"
     ],
     "host": "deku",
     "note": null
