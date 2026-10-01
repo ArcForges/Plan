@@ -6,12 +6,16 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:57Z",
-  "updatedAt": "2026-10-01T08:39:38Z",
-  "leaseUntil": "2026-10-02T08:39:38Z",
+  "updatedAt": "2026-10-01T08:40:53Z",
+  "leaseUntil": "2026-10-02T08:40:53Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-40",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/115",
+      "https://github.com/ArcForges/ArcForges-Design/pull/195",
+      "https://github.com/ArcForges/Plan/pull/216"
+    ],
     "merges": [],
     "done": [
       "Recovered reviewed earlier Security.Secrets sources from dangling commits (eb30d4d lineage; csproj digests match the merged allowlist) onto current main; added SecretStoreIsolation/SecretIsolationPolicy fail-closed broker construction, RevokeAllConnectorGrants, OsSecretStore fail-closed selector; Windows CredMan declares SameUserShared (not an OS sibling boundary); policy/provenance/receipt rebuilt; local tests 19/19 incl. Windows opt-in; architecture tests show only environmental findings"
@@ -22,7 +26,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "open Design+Plan planning-repair PRs (Directory.Packages.props selector append authority, branches task/plt-40-write-scope), open DesktopPlatform PR, await CI, request review"
+      "await CI and review; Design #195 and Plan #216 (selector authority) must merge before DesktopPlatform #115"
     ],
     "host": "deku",
     "note": null
