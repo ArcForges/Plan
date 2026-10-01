@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T20:46:19Z",
-  "leaseUntil": "2026-10-02T20:46:19Z",
+  "updatedAt": "2026-10-01T20:51:29Z",
+  "leaseUntil": "2026-10-02T20:51:29Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
@@ -43,7 +43,7 @@
     "reviewed": "239162776dd6d0dab3779b924bad47761a8fb18d",
     "blocker": null,
     "next": [
-      "await re-review of ledger PR #225 at e1b598c7641de40e6baaf8675f21ca52d8225874, then merge via integration:Plan and record --state delivered"
+      "await re-review of ledger PR #225 at e237102a70469fe307185ecf932df60772466c2a, then merge via integration:Plan and record --state delivered"
     ],
     "host": "deku",
     "note": "Plan ledger PR is #225 (an earlier handoff line named #223 in error)"
