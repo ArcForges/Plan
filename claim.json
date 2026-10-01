@@ -6,15 +6,16 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:01Z",
-  "updatedAt": "2026-10-01T23:43:48Z",
-  "leaseUntil": "2026-10-02T23:43:48Z",
+  "updatedAt": "2026-10-01T23:46:26Z",
+  "leaseUntil": "2026-10-02T23:46:26Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-14",
     "prs": [
       "https://github.com/ArcForges/ArcForges-Design/pull/196",
       "https://github.com/ArcForges/Plan/pull/217",
-      "https://github.com/ArcForges/Contracts/pull/72"
+      "https://github.com/ArcForges/Contracts/pull/72",
+      "https://github.com/ArcForges/Plan/pull/226"
     ],
     "merges": [
       "bcd592a75c0b540923a77a499a8f82e18bbff743"
@@ -31,7 +32,8 @@
       "Review r-c20261001-con14 changes applied: sint64 deltaMicro (registry oracle added for all 18 records/31 request+value tables/5 enums in C# and TS tests), catalog decision explicit presence, catalog reason bounded to CON.13 Key/128, tag 4 left unreserved on read responses, R4 stepUp False test, README refreshed; rebased onto main e816db7 (CON.15 merged; receipt chains from con-15-r1, binding successor of con-15 record); regenerated records at edb379e; force-pushed (old 51b1aa1 superseded)",
       "Observed hosted Security on edb379e (6 predicted occurrences, run 36915931079 job 110549768370); amended Design #196 (753b0cf) / Plan #217 (a11a548) with exact tuples and CON.15 sibling rebinding; pushed secret-scan exceptions at 8762132",
       "Hosted CI on 8762132 all green: Build candidate (incl. Linux AOT probe), Verify, Secret scan, CodeQL x5, Dependency review",
-      "Planning pair amended per re-review: inventory 280/55/7/342, operator-client README in exact writes; merged current mains; Design #196 edc6d3b517897cb72d682b5fb88a035fbc06f311, Plan #217 5c52f1e5fc469e42832002376bdd7e8f2cdeb786"
+      "Planning pair amended per re-review: inventory 280/55/7/342, operator-client README in exact writes; merged current mains; Design #196 edc6d3b517897cb72d682b5fb88a035fbc06f311, Plan #217 5c52f1e5fc469e42832002376bdd7e8f2cdeb786",
+      "Contracts #72 merged bcd592a; Design #196 7a3c6d9, Plan #217 2640246; main-push CI 36922469148 / Security 36922469040 succeeded; metadata checks recorded; integration roles released"
     ],
     "validation": [
       "Local: StructureTests, 274 node tests, AOT SerializationProbe (31 binary/51 JSON/971 messages/189 methods), operation scope 263/55/7, provenance/dependency/access checks; tooling unittest only the known 11 environmental failures; Linux AOT/Kotlin/pack/Security hosted-only",
@@ -43,7 +45,7 @@
     "reviewed": "8762132eb165f4c0747e937e60b4412f789be66c",
     "blocker": null,
     "next": [
-      "ledger PR [CON.14] Record"
+      "await review of ledger PR Plan #226 (head 4c037f3), merge via integration:Plan, then record --state complete"
     ],
     "host": "deku",
     "note": "ADP-07 support binding: src/public/ts/contract-fixtures/src/index.ts is a generated output of the authorized wp03-02.json append (generate_fixtures), regenerated mechanically (+34 lines: CloudInternal OperatorService catalogue/methods); no other behavior"
