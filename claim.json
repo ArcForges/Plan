@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "role",
+  "id": "integration:Contracts",
+  "claimant": "w-c20261001-con15",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-01T19:00:29Z",
+  "updatedAt": "2026-10-01T19:00:29Z",
+  "leaseUntil": "2026-10-02T07:00:29Z",
+  "handoff": {
+    "host": "deku",
+    "note": null
+  }
+}
