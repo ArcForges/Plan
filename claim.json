@@ -4,10 +4,10 @@
   "id": "PLT.32",
   "claimant": "w-c20261001-plt32",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-01T08:00:15Z",
-  "updatedAt": "2026-10-01T09:08:43Z",
-  "leaseUntil": "2026-10-02T09:08:43Z",
+  "updatedAt": "2026-10-01T09:10:02Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-32",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Plan/pull/219"
     ],
     "merges": [
-      "812cdaa6ad36e1961b0e30dca2a2d2898018ec2e"
+      "812cdaa6ad36e1961b0e30dca2a2d2898018ec2e",
+      "a32ebd165832df48748d94f2f66f51bade76f9a7"
     ],
     "done": [
       "Recovered closed PR #108 head 23e683e, rebased onto main 5e1b8fb (resolved append conflict in eng/policy/architecture-contract-tests.json); reviewed code (sound; gaps: misplaced doc comment, English concatenated prompt strings vs BR-07, activation-memory cap permanently refuses, no real-Shell-component startup path test)",
@@ -35,7 +36,7 @@
     "reviewed": "bb8f42fdb3e6771d3b6c62966782bf0146fce108",
     "blocker": null,
     "next": [
-      "await re-review of Plan#219 at bb8f42fdb3e6771d3b6c62966782bf0146fce108"
+      "completion follow-up needs ArcScope product-host startup P95 (SCOPE.09/APP.07); confirm publication at first green main Publish NuGet containing 812cdaa"
     ],
     "host": "deku",
     "note": null
