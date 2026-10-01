@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:15Z",
-  "updatedAt": "2026-10-01T08:24:11Z",
-  "leaseUntil": "2026-10-02T08:24:11Z",
+  "updatedAt": "2026-10-01T08:46:44Z",
+  "leaseUntil": "2026-10-02T08:46:44Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-32",
@@ -18,18 +18,19 @@
     "done": [
       "Recovered closed PR #108 head 23e683e, rebased onto main 5e1b8fb (resolved append conflict in eng/policy/architecture-contract-tests.json); reviewed code (sound; gaps: misplaced doc comment, English concatenated prompt strings vs BR-07, activation-memory cap permanently refuses, no real-Shell-component startup path test)",
       "PR #112 opened; fixes over #108 (doc comment, resx prompts, bounded activation memory, real-component startup test, README); local: format, Release build 0 warn, Shell tests 42/42, provenance ok; ArchitectureTests 99/100 (known local DesignSystem.Tests CS8795, hosted authoritative); ADP-07 binding: append 5 rows architecture-contract-tests.json + 1 firstParty entry provenance/files.json",
-      "Hosted PR run 36834878391 on head 5fb9ee0 green (15/15 incl. native-win-x64, managed-packages/pack, AOT compiles, architecture policy, secret scan, ci). Plan on completion: ledger as 'delivered' (WP-10.06 product-host startup P95<=2.5s on reference hardware unavailable; ArcScope has no Shell consumer; SCOPE.09/APP.07 own host composition)"
+      "Hosted PR run 36834878391 on head 5fb9ee0 green (15/15 incl. native-win-x64, managed-packages/pack, AOT compiles, architecture policy, secret scan, ci). Plan on completion: ledger as 'delivered' (WP-10.06 product-host startup P95<=2.5s on reference hardware unavailable; ArcScope has no Shell consumer; SCOPE.09/APP.07 own host composition)",
+      "Review r-c20261001-plt32 findings 1-4 fixed at 1bb9c69: 10 new tests (unsafe-to-quit paths, failed resume, keep-working, duplicate-cancellation), delegate XML docs, README notes, wall-clock assertion removed, prompt tests use resources. Hosted run 36837404024 green 15/15. Local Shell tests 52/52, format ok. Ledger draft (status delivered, WP-10.06 product-host P95 unmet and not graph-modelled) in Plan worktree .worktree/plt-32-ledger, check passes, NOT pushed"
     ],
     "validation": [
       "Shell tests 42/42; task-local startup path ~9ms vs 2500ms budget (not ArcScope product evidence)"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-32",
-    "head": "5fb9ee0e84dcf5f05dbe189070b7b32298d8b333",
+    "head": "1bb9c69333a3f820ad94876de88a1a894140577e",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review",
-      "after review: integration:DesktopPlatform merge, publication confirm, ledger PR (delivered), update --state delivered"
+      "await re-review at 1bb9c69",
+      "after merge: ledger PR as delivered"
     ],
     "host": "deku",
     "note": null
