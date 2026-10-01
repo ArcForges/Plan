@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T08:00:36Z",
-  "leaseUntil": "2026-10-02T08:00:36Z",
+  "updatedAt": "2026-10-01T08:12:47Z",
+  "leaseUntil": "2026-10-02T08:12:47Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Recovered closed PR #107 head b41f44b (reviewed, rebased onto main 5e1b8fb); added typed egress/lease intakes (AuditEgressDetail, AuditEventShape, EgressDecisionAuditAdapter, CapabilityLeaseAuditAdapter), R0-R4 AuditRisk, tests"
+    ],
     "validation": [],
-    "worktree": null,
-    "head": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-44",
+    "head": "220d835b8b081aef026b9d63acb79f6e295fb4be",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "build/test locally via build-slot; regenerate dependency receipt plt-44-r1 chained from plt-39-r1; open PR; await CI"
     ],
     "host": "deku",
     "note": null
