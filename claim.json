@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:38Z",
-  "updatedAt": "2026-10-01T19:18:32Z",
-  "leaseUntil": "2026-10-02T19:18:32Z",
+  "updatedAt": "2026-10-01T19:27:08Z",
+  "leaseUntil": "2026-10-02T19:27:08Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-15",
@@ -30,7 +30,7 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-15",
     "head": "cc87a610a203bb9b8218102c677e1e6229ace0c2",
-    "reviewed": "a01159caf74bc80f59a4e9f1f5417f4162b9a9c0",
+    "reviewed": "cc87a610a203bb9b8218102c677e1e6229ace0c2",
     "blocker": null,
     "next": [
       "await review"
