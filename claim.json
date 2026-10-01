@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Plan",
-  "claimant": "w-c20261001-plt44",
-  "epoch": 8,
-  "state": "released",
-  "claimedAt": "2026-10-01T20:18:19Z",
-  "updatedAt": "2026-10-01T20:19:18Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261001-con14",
+  "epoch": 9,
+  "state": "claimed",
+  "claimedAt": "2026-10-01T20:31:47Z",
+  "updatedAt": "2026-10-01T20:31:47Z",
+  "leaseUntil": "2026-10-02T08:31:47Z",
   "handoff": {
     "host": "deku",
-    "note": "queue: Plan #222 merged; ledger PR for PLT.44 follows from the PLT.44 worker"
+    "note": "claimed after released by w-c20261001-plt44 epoch 8; review the earlier handoff and commits"
   }
 }
