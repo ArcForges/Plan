@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:00Z",
-  "updatedAt": "2026-10-01T20:36:12Z",
-  "leaseUntil": "2026-10-02T20:36:12Z",
+  "updatedAt": "2026-10-01T20:46:16Z",
+  "leaseUntil": "2026-10-02T20:46:16Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-33",
@@ -25,14 +25,15 @@
     "validation": [
       "local Shell.Tests 79/79 (build slot, SDK 10.0.400); local ArchitectureTests cannot evaluate RP-10 here (SDK resolution) so CI is the RP-10 gate",
       "PR gate on b417c05: all jobs green except secret-scan (4 leaks, history scan; not from this diff; same as main Publish run 36838836577); managed-packages skipped; local Shell.Tests 102/102, dotnet format clean",
-      "d694217: Shell.Tests 108/108, dotnet format clean locally; hosted run 36915460861 all green except secret-scan (2 leaks from other branch history, gitleaks --all); managed-packages skipped"
+      "d694217: Shell.Tests 108/108, dotnet format clean locally; hosted run 36915460861 all green except secret-scan (2 leaks from other branch history, gitleaks --all); managed-packages skipped",
+      "3fcd3dc hosted run 36922764777 all green incl. secret-scan, managed-packages (pack: format+RP-10+tests), native-win-x64"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-33",
     "head": "3fcd3dce35a1fe16145781cc04378cb6b779f7cb",
     "reviewed": "d694217c6cef843275d79486d45879f16b789fa8",
     "blocker": null,
     "next": [
-      "hosted CI on rebased head incl. secret-scan + managed-packages; delta re-review of pure rebase; then integration:DesktopPlatform merge"
+      "await delta re-review of 3fcd3dc (pure rebase, CI all green); then claim integration:DesktopPlatform and merge #114 --match-head-commit 3fcd3dc; rebase again if PLT.09 merges first"
     ],
     "host": "deku",
     "note": null
