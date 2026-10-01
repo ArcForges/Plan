@@ -6,13 +6,15 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T19:40:05Z",
-  "leaseUntil": "2026-10-02T19:40:05Z",
+  "updatedAt": "2026-10-01T19:51:57Z",
+  "leaseUntil": "2026-10-02T19:51:57Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
     "prs": [
-      "https://github.com/ArcForges/DesktopPlatform/pull/113"
+      "https://github.com/ArcForges/DesktopPlatform/pull/113",
+      "https://github.com/ArcForges/ArcForges-Design/pull/199",
+      "https://github.com/ArcForges/Plan/pull/222"
     ],
     "merges": [],
     "done": [
@@ -21,7 +23,8 @@
       "Fixed RP-10 bindings (int keyword) found by running the local architecture test; typed intakes + recovered store",
       "PR #113 all 15 hosted checks green at 7e8175b (incl. pack job running architecture+Audit tests); review requested at exact head",
       "Review finding 1 fixed with tests (tamper/digest/reopen/R0-R4/raw-SQL), 2-4 disclosed in README+PR, 5 contract rows re-appended at tail and receipt re-chained on main 812cdaa (rebased onto PLT.32); local on rebased head: format clean, Release build 0 warnings, Audit tests 24/24, RP-10 clear",
-      "Rebased as one commit onto main c0def81 (PLT.40); contract rows merged at tail, receipt re-chained plt-40-r1 -> plt-44-r1, hashes regenerated (252 inputs); local on this head: restore, format clean, 0-warning build, Audit tests 24/24, RP-10 clear, python gates pass; hosted: 11 jobs green, secret-scan 2 leaks (down from 4), managed-packages skipped"
+      "Rebased as one commit onto main c0def81 (PLT.40); contract rows merged at tail, receipt re-chained plt-40-r1 -> plt-44-r1, hashes regenerated (252 inputs); local on this head: restore, format clean, 0-warning build, Audit tests 24/24, RP-10 clear, python gates pass; hosted: 11 jobs green, secret-scan 2 leaks (down from 4), managed-packages skipped",
+      "Planning pair opened (Design #199 / Plan #222, check passed); #113 head 40eddcb adds the exact .gitleaks.toml group for plt-44-r1 + focused tests (21 pass); hosted: secret-scan still 2 leaks over 277 commits; evidence indicates cross-branch history contamination from task/plt-09's own receipt (PR #117 run also reports exactly 2 over 278 commits with its own group and my unallowlisted branch)"
     ],
     "validation": [
       "dotnet SDK 10.0.400 locked restore/format/build/tests as listed",
@@ -29,11 +32,11 @@
       "hosted at c6f1d42: 11 jobs green incl design/licence/provenance/reconciliation/runtime/reference/repository-hooks; secret-scan fail (main-level), ci fail (aggregate), managed-packages skipped"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-44",
-    "head": "851cbd5844574ea455ab36557617e4a7c807f559",
+    "head": "40eddcb910f66193b670b4bfbad774678d1dc192",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "planning repair pair for .gitleaks.toml exact lines of plt-44-r1; then update #113"
+      "coordinator decision: merge order or mutual allowlist groups; then re-run hosted CI; managed-packages skipped until secret-scan passes"
     ],
     "host": "deku",
     "note": null
