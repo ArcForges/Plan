@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T19:35:47Z",
-  "updatedAt": "2026-10-01T20:14:39Z",
-  "leaseUntil": "2026-10-02T20:14:39Z",
+  "updatedAt": "2026-10-01T20:20:43Z",
+  "leaseUntil": "2026-10-02T20:20:43Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-49",
@@ -24,14 +24,14 @@
       "Local (SDK 10.0.401 substituted, uncommitted): full slnx Release build 0 warnings/errors; dotnet format clean; Observability tests 189/189; marker-injection report 528 injections, 0 findings; architecture policy test no RP-10/BAN-REFLECTION findings (only environmental); provenance, reconciliation, dependency_policy, licence tests pass"
     ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-49",
-    "head": "c4962ef74b3f5d7f60114904356710bc276d93de",
+    "head": "9f81b37f8a71bebc1a50b790de106be1a3df6d3b",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review",
+      "await review at 9f81b37",
       "await hosted CI at head"
     ],
     "host": "deku",
-    "note": null
+    "note": "Amended once before review to drop a gitleaks-flagged test line from history; secret-scan also sees leaks in other task branches (plt-09 and plt-44 review receipt hash lines)"
   }
 }
