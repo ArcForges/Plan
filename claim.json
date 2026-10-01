@@ -4,12 +4,12 @@
   "id": "integration:Design",
   "claimant": "w-c20261001-plt40",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-01T09:17:30Z",
-  "updatedAt": "2026-10-01T09:17:30Z",
-  "leaseUntil": "2026-10-01T21:17:30Z",
+  "updatedAt": "2026-10-01T09:18:40Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "Design #195 merged as 2049296; queue empty"
   }
 }
