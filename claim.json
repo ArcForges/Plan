@@ -6,24 +6,30 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:02:05Z",
-  "updatedAt": "2026-10-01T08:03:12Z",
-  "leaseUntil": "2026-10-02T08:03:12Z",
+  "updatedAt": "2026-10-01T08:24:15Z",
+  "leaseUntil": "2026-10-02T08:24:15Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-04",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/Plan/pull/214"
+    ],
     "merges": [],
     "done": [
-      "Verified PR #84 (merge 0514461, reviewed af093ee by prior claim af-20260928-p02) is on main; main Publish NuGet runs incl. Local RPC AOT compile linux-x64+win-x64 green (run 36672523178 at 5e1b8fb)"
+      "Verified PR #84 (merge 0514461, reviewed af093ee by prior claim af-20260928-p02) is on main; main Publish NuGet runs incl. Local RPC AOT compile linux-x64+win-x64 green (run 36672523178 at 5e1b8fb)",
+      "PR84 merged 0514461 verified; Windows AOT two-process probe observed on main 5e1b8fb (exit 0, zero publish diagnostics); main CI Linux+Windows AOT compile green; ledger record (delivered) PR Plan#214 head 0367927 opened"
     ],
-    "validation": [],
+    "validation": [
+      "delivery.py check --plan ledger worktree --design Design main: passed; build-slot win-x64 AOT publish + run observed"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\prf-04",
     "head": "5e1b8fbb8acfa980a39b48bf045b8e32a1f7d1cf",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "run Windows AOT two-process probe once on current main via build-slot",
-      "ledger PR for ledger/tasks/prf-04.md as delivered (macOS/Linux runtime unobserved)"
+      "await review",
+      "merge Plan#214 via integration:Plan, then update --state delivered",
+      "follow-up: real Linux/macOS two-process runs for complete"
     ],
     "host": "deku",
     "note": null
