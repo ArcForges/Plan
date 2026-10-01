@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:00Z",
-  "updatedAt": "2026-10-01T09:13:29Z",
-  "leaseUntil": "2026-10-02T09:13:29Z",
+  "updatedAt": "2026-10-01T19:42:49Z",
+  "leaseUntil": "2026-10-02T19:42:49Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-33",
@@ -22,14 +22,15 @@
     ],
     "validation": [
       "local Shell.Tests 79/79 (build slot, SDK 10.0.400); local ArchitectureTests cannot evaluate RP-10 here (SDK resolution) so CI is the RP-10 gate",
-      "PR gate on b417c05: all jobs green except secret-scan (4 leaks, history scan; not from this diff; same as main Publish run 36838836577); managed-packages skipped; local Shell.Tests 102/102, dotnet format clean"
+      "PR gate on b417c05: all jobs green except secret-scan (4 leaks, history scan; not from this diff; same as main Publish run 36838836577); managed-packages skipped; local Shell.Tests 102/102, dotnet format clean",
+      "d694217: Shell.Tests 108/108, dotnet format clean locally; hosted run 36915460861 all green except secret-scan (2 leaks from other branch history, gitleaks --all); managed-packages skipped"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-33",
-    "head": "b417c05e815f112356b1fd0607af7343f518d63e",
+    "head": "d694217c6cef843275d79486d45879f16b789fa8",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review"
+      "await delta re-review of d694217; rerun hosted CI only after the PLT.44-branch gitleaks cause is repaired; then managed-packages (RP-10) must be green; Design#194 head 16aaef0 / Plan#215 head 4daf7c3 rebased and need re-review before merge"
     ],
     "host": "deku",
     "note": null
