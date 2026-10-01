@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:00Z",
-  "updatedAt": "2026-10-01T20:49:23Z",
-  "leaseUntil": "2026-10-02T20:49:23Z",
+  "updatedAt": "2026-10-01T23:44:18Z",
+  "leaseUntil": "2026-10-02T23:44:18Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-33",
@@ -28,15 +28,15 @@
       "local Shell.Tests 79/79 (build slot, SDK 10.0.400); local ArchitectureTests cannot evaluate RP-10 here (SDK resolution) so CI is the RP-10 gate",
       "PR gate on b417c05: all jobs green except secret-scan (4 leaks, history scan; not from this diff; same as main Publish run 36838836577); managed-packages skipped; local Shell.Tests 102/102, dotnet format clean",
       "d694217: Shell.Tests 108/108, dotnet format clean locally; hosted run 36915460861 all green except secret-scan (2 leaks from other branch history, gitleaks --all); managed-packages skipped",
-      "3fcd3dc hosted run 36922764777 all green incl. secret-scan, managed-packages (pack: format+RP-10+tests), native-win-x64"
+      "3fcd3dc hosted run 36922764777 all green incl. secret-scan, managed-packages (pack: format+RP-10+tests), native-win-x64",
+      "main publish run 36924336087 success at 7644e31 (candidate jobs, publish; version 1.0.0-ci.72.1)"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-33",
     "head": "3fcd3dce35a1fe16145781cc04378cb6b779f7cb",
     "reviewed": "3fcd3dce35a1fe16145781cc04378cb6b779f7cb",
     "blocker": null,
     "next": [
-      "confirm publication",
-      "record the ledger"
+      "record the ledger (delivered)"
     ],
     "host": "deku",
     "note": null
