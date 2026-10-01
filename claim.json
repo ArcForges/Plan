@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-c20261001-plt32",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-01T08:49:33Z",
-  "updatedAt": "2026-10-01T08:49:33Z",
-  "leaseUntil": "2026-10-01T20:49:33Z",
+  "updatedAt": "2026-10-01T08:58:37Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "Merged PLT.32 (#112) as 812cdaa. Post-merge Publish NuGet run 36838836577 FAILED in candidate/secret-scan: full-ref gitleaks scan of origin/* found 4 leaks in the unmerged origin/task/plt-40 commit e11a1b8 (non-allowlisted dependency-policy/lock hash lines); main-only history was clean and the PR scan (270 commits) passed. Owner of PLT.40 must allowlist or restructure before the next main push can publish; do not rerun blindly. Queue: #113 PLT.44 awaiting fixes; PLT.09/33/40 in progress; PLT.40 #115 needs Design#195/Plan#216 first."
   }
 }
