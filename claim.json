@@ -4,10 +4,10 @@
   "id": "PRF.04",
   "claimant": "w-c20261001-prf04",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-01T08:02:05Z",
-  "updatedAt": "2026-10-01T08:32:40Z",
-  "leaseUntil": "2026-10-02T08:32:40Z",
+  "updatedAt": "2026-10-01T08:33:01Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-04",
