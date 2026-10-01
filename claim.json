@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-01T20:07:32Z",
-  "leaseUntil": "2026-10-02T20:07:32Z",
+  "updatedAt": "2026-10-01T20:27:50Z",
+  "leaseUntil": "2026-10-02T20:27:50Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -23,13 +23,13 @@
       "local: generate, operation-scope, foundation, serialization gates, node con-07 tests (8/9 passing at WIP), python tooling tests"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-07",
-    "head": "11259fc44a5a912c1db50653f180592275957630",
+    "head": "7039c59e0981457131909101e21eb7688e32f503",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "Dokka reservation RES-contracts-dokka-profile r20 at head 11259fc44a5a912c1db50653f180592275957630 (PR #74); await CI then review; gitleaks Design authority follow-up"
+      "await CI then independent review of Contracts #74; Dokka r20 reserved in PR #74 (lease released); Design #198 + Plan #220 review/merge; Design follow-up for exact .gitleaks rows"
     ],
     "host": "deku",
-    "note": "Dokka r20 profile/resource committed in PR #74 head 11259fc44a5a912c1db50653f180592275957630; resource lease released"
+    "note": "Head 7039c59 after CodeQL email-pattern fix; Dokka r20 profile unchanged"
   }
 }
