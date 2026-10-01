@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-c20261001-plt33",
   "epoch": 4,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-01T20:48:36Z",
-  "updatedAt": "2026-10-01T20:48:36Z",
-  "leaseUntil": "2026-10-02T08:48:36Z",
+  "updatedAt": "2026-10-01T23:45:04Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-plt44 epoch 3; review the earlier handoff and commits"
+    "note": "PLT.33 #114 merged as 7644e31; main publish run 36924336087 success; open PRs #117 (PLT.09) and #118 (PLT.49) rebase onto main 7644e31 and re-append policy-JSON tail rows"
   }
 }
