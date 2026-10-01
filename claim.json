@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T19:35:47Z",
-  "updatedAt": "2026-10-01T23:43:53Z",
-  "leaseUntil": "2026-10-02T23:43:53Z",
+  "updatedAt": "2026-10-01T23:53:15Z",
+  "leaseUntil": "2026-10-02T23:53:15Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-49",
@@ -25,15 +25,15 @@
     "validation": [
       "Local (SDK 10.0.401 substituted, uncommitted): full slnx Release build 0 warnings/errors; dotnet format clean; Observability tests 189/189; marker-injection report 528 injections, 0 findings; architecture policy test no RP-10/BAN-REFLECTION findings (only environmental); provenance, reconciliation, dependency_policy, licence tests pass",
       "Hosted PR run 36922020179 at 032be5e: all 15 jobs success incl. secret-scan, managed-packages (pack, Local RPC AOT win-x64/linux-x64, TableView AOT) and aggregate ci. Earlier head failed secret-scan: one own test line flagged (removed from history), rest from other task branches' receipt lines until rebase onto main d00ccc7.",
-      "Local at d08d6ec (SDK 10.0.401 substituted, uncommitted): full slnx Release build 0 warnings/errors; Observability tests 200/200; marker report 552 injections, 0 findings; architecture policy test no RP-10/BAN-REFLECTION findings (environmental only); dotnet format clean; provenance, reconciliation, dependency_policy pass; mutation check: removing the slot-registry restriction fails 2 tests"
+      "Local at d08d6ec (SDK 10.0.401 substituted, uncommitted): full slnx Release build 0 warnings/errors; Observability tests 200/200; marker report 552 injections, 0 findings; architecture policy test no RP-10/BAN-REFLECTION findings (environmental only); dotnet format clean; provenance, reconciliation, dependency_policy pass; mutation check: removing the slot-registry restriction fails 2 tests",
+      "Hosted PR run 36942269344 at d08d6ec: all 15 jobs success incl. secret-scan, managed-packages (pack, Local RPC AOT win-x64/linux-x64, TableView AOT), native-win-x64, aggregate ci"
     ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-49",
     "head": "d08d6ec17ae63db2e88078d3749b1aee3a0d8936",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await re-review at d08d6ec17ae63db2e88078d3749b1aee3a0d8936",
-      "await hosted CI at head"
+      "await re-review at d08d6ec17ae63db2e88078d3749b1aee3a0d8936"
     ],
     "host": "deku",
     "note": "Correction: the ADP-07 bindings for eng/provenance/files.json (17 paths) and Properties/AssemblyInfo.cs were recorded after the files existed, not before editing; only the architecture-contract-tests.json binding was declared before editing. Validation correction: Observability tests are 200/200 at d08d6ec (earlier 189 and 191 figures were for earlier heads)."
