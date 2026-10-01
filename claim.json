@@ -6,23 +6,24 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:38Z",
-  "updatedAt": "2026-10-01T08:01:26Z",
-  "leaseUntil": "2026-10-02T08:01:26Z",
+  "updatedAt": "2026-10-01T08:49:05Z",
+  "leaseUntil": "2026-10-02T08:49:05Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-15",
     "prs": [],
     "merges": [],
     "done": [
-      "claimed; recovered prior a7521034 (4 commits: D1 ExecutePlan schema, CF schemas, vectors) rebased on main 4047930 as af24761, UNREVIEWED"
+      "claimed; recovered prior a7521034 (4 commits: D1 ExecutePlan schema, CF schemas, vectors) rebased on main 4047930 as af24761, UNREVIEWED",
+      "recovered a7521034 reviewed critically and substantially reworked (schemas rebuilt to registry04/contracts05: UUID ids, credential|binding authorize union, web-search registry shapes, epoch fence); generator registers cf-http/storage-http with 7 pinned canonical refs; package/access/policy/provenance/receipt/gitleaks bindings; 17-route operation scope + export + 342-row oracle; vectors+oracles; generated TS/C# validators checked locally against fixtures"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-15",
-    "head": "af247612bad3770679bdd891e85d7db6aa9adf40",
+    "head": "6e838537e4948614610259d6fb3aaf6e5fd9d186",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "critically review recovered schemas/tests; then generator registration, access root, package/policy rows, generated outputs, dependency receipt con-15-r1, operation scope 17 tuples, oracle rows, export"
+      "Design/Plan authority repair for unlisted-but-required paths (per-root generated outputs, provenance, receipt predecessor, gitleaks, tests); open Contracts PR; CI; await review"
     ],
     "host": "deku",
     "note": null
