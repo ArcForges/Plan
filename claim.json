@@ -6,23 +6,28 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:36:26Z",
-  "updatedAt": "2026-10-01T18:51:36Z",
-  "leaseUntil": "2026-10-02T18:51:36Z",
+  "updatedAt": "2026-10-01T19:37:34Z",
+  "leaseUntil": "2026-10-02T19:37:34Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-09",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/117"
+    ],
     "merges": [],
     "done": [
-      "Claimed; reviewed PRF.04 probe (PR84) and WP-08.00/contracts-09; new project src/BuildingBlocks/ArcForges.LocalRpc (custom IConnectionListenerFactory over named pipe/UDS/supplied streams, ConnectCallback client, explicit AddService, no TCP) + Tests project written; offline tests mostly passing locally. ADP-07 supporting bindings (existing artifacts, RES build-config/policy-data append, needed for the new project): DesktopPlatform.slnx (2 project entries), Directory.Packages.props (append LocalRpc.Tests to existing Foundation conditional Update), .github/workflows/package-validation.yml (one offline dotnet test line), eng/policy/{architecture-projects,licence-boundary,runtime-ownership,architecture-contract-tests}.json + reconciliation/active-projects.json + provenance/files.json rows, dependency-policy.json inputHashes + immutable receipt dependency-reviews/plt-09-r1.json (no new coordinate), project lock files. No new package, version, runtime owner or packages.json entry."
+      "Claimed; reviewed PRF.04 probe (PR84) and WP-08.00/contracts-09; new project src/BuildingBlocks/ArcForges.LocalRpc (custom IConnectionListenerFactory over named pipe/UDS/supplied streams, ConnectCallback client, explicit AddService, no TCP) + Tests project written; offline tests mostly passing locally. ADP-07 supporting bindings (existing artifacts, RES build-config/policy-data append, needed for the new project): DesktopPlatform.slnx (2 project entries), Directory.Packages.props (append LocalRpc.Tests to existing Foundation conditional Update), .github/workflows/package-validation.yml (one offline dotnet test line), eng/policy/{architecture-projects,licence-boundary,runtime-ownership,architecture-contract-tests}.json + reconciliation/active-projects.json + provenance/files.json rows, dependency-policy.json inputHashes + immutable receipt dependency-reviews/plt-09-r1.json (no new coordinate), project lock files. No new package, version, runtime owner or packages.json entry.",
+      "Implemented, rebased on PLT.40 main, offline suite 39/39 + local OS checks 6/6 (Windows), policy checks pass, PR opened"
     ],
-    "validation": [],
+    "validation": [
+      "locked restore+Release build+format pass; offline tests 39 pass/7 skipped; opt-in OS-stream checks 6/6 on Windows only; untested: Linux/macOS, real wrong-user, AOT publish"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-09",
-    "head": "801614efd5367d4eeab1fed0d6eac221c16aa14a",
+    "head": "ffe86a5b17e5fffb3274f8312e578daa06f0ef1b",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "finish local test run, append policy rows/receipt (re-append after rebase), local opt-in OS check once, open PR, request review"
+      "await review"
     ],
     "host": "deku",
     "note": null
