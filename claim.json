@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:00Z",
-  "updatedAt": "2026-10-01T20:48:03Z",
-  "leaseUntil": "2026-10-02T20:48:03Z",
+  "updatedAt": "2026-10-01T20:49:23Z",
+  "leaseUntil": "2026-10-02T20:49:23Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-33",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/114"
     ],
-    "merges": [],
+    "merges": [
+      "7644e3172f6c12845c0b0be8b17de423450a931e"
+    ],
     "done": [
       "claimed; read brief/policy/task/WP-10.07; no prior PLT.33 branch/PR/work found (none in Plan/Design/DesktopPlatform history); Avalonia not admitted for shipped shell (docs/third-party-control-admission.md) and AGENTS bans GUI tests",
       "implemented Shell a11y semantics/FocusNavigator/audit/l10n formatter/pseudo-loc/RTL + offline tests; pushed task/plt-33; Design planning repair PR ArcForges-Design#194 + Plan#215 (append-only contract-test/provenance scope, PLT.31 precedent); DesktopUiTests project intentionally not created (GUI-hosted F-09)",
@@ -33,7 +35,8 @@
     "reviewed": "3fcd3dce35a1fe16145781cc04378cb6b779f7cb",
     "blocker": null,
     "next": [
-      "await delta re-review of 3fcd3dc (pure rebase, CI all green); then claim integration:DesktopPlatform and merge #114 --match-head-commit 3fcd3dc; rebase again if PLT.09 merges first"
+      "confirm publication",
+      "record the ledger"
     ],
     "host": "deku",
     "note": null
