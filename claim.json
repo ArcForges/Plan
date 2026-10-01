@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:02:05Z",
-  "updatedAt": "2026-10-01T08:31:26Z",
-  "leaseUntil": "2026-10-02T08:31:26Z",
+  "updatedAt": "2026-10-01T08:32:40Z",
+  "leaseUntil": "2026-10-02T08:32:40Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-04",
     "prs": [
       "https://github.com/ArcForges/Plan/pull/214"
     ],
-    "merges": [],
+    "merges": [
+      "906d139b23293b460c1d6b78559cf278c1deaf32"
+    ],
     "done": [
       "Verified PR #84 (merge 0514461, reviewed af093ee by prior claim af-20260928-p02) is on main; main Publish NuGet runs incl. Local RPC AOT compile linux-x64+win-x64 green (run 36672523178 at 5e1b8fb)",
       "PR84 merged 0514461 verified; Windows AOT two-process probe observed on main 5e1b8fb (exit 0, zero publish diagnostics); main CI Linux+Windows AOT compile green; ledger record (delivered) PR Plan#214 head 0367927 opened"
@@ -27,7 +29,7 @@
     "reviewed": "0367927b43bc2021f66d5fae7d7b23ef4d84622d",
     "blocker": null,
     "next": [
-      "merge Plan#214 via integration:Plan"
+      "update --state delivered"
     ],
     "host": "deku",
     "note": null
