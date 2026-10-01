@@ -4,12 +4,12 @@
   "id": "integration:Contracts",
   "claimant": "w-c20261001-con14",
   "epoch": 3,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-01T20:32:49Z",
-  "updatedAt": "2026-10-01T20:32:49Z",
-  "leaseUntil": "2026-10-02T08:32:49Z",
+  "updatedAt": "2026-10-01T23:43:28Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-con15 epoch 2; review the earlier handoff and commits"
+    "note": "merged Contracts #72 as bcd592a; primary ff'd; main-push CI/Security and publishers succeeded. Open Contracts PRs: #74 CON.07 (rebase on bcd592a and regenerate shared resources: contract-access, bindings successor, receipt chain from con-14-r1, .gitleaks groups, operation counts now 280/55/7/342), #71 GOV.05 blocked."
   }
 }
