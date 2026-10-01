@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:00Z",
-  "updatedAt": "2026-10-01T19:42:49Z",
-  "leaseUntil": "2026-10-02T19:42:49Z",
+  "updatedAt": "2026-10-01T19:46:58Z",
+  "leaseUntil": "2026-10-02T19:46:58Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-33",
@@ -27,7 +27,7 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-33",
     "head": "d694217c6cef843275d79486d45879f16b789fa8",
-    "reviewed": null,
+    "reviewed": "d694217c6cef843275d79486d45879f16b789fa8",
     "blocker": null,
     "next": [
       "await delta re-review of d694217; rerun hosted CI only after the PLT.44-branch gitleaks cause is repaired; then managed-packages (RP-10) must be green; Design#194 head 16aaef0 / Plan#215 head 4daf7c3 rebased and need re-review before merge"
