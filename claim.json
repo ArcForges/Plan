@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-01T09:08:15Z",
-  "leaseUntil": "2026-10-02T09:08:15Z",
+  "updatedAt": "2026-10-01T09:08:54Z",
+  "leaseUntil": "2026-10-02T09:08:54Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -28,6 +28,6 @@
       "Design repair PRs (write scope + R4 + registry-silent metadata); claim RES-contracts-dokka-profile for r20 after rebase; Dokka run; metadata successors; PR"
     ],
     "host": "deku",
-    "note": null
+    "note": "ADP-07 supporting-file binding (inside CON.07 outcome and RES-contracts-schema-sources append): eng/policy/contract-access.json (append identity.proto/http schema hashes and generated rows; same package owners, no new package), eng/policy/dependency-policy.json + dependency-reviews/con-07-r1.json (input-hash refresh only, previousReceipt con-11-r1, closure unchanged), eng/provenance/files.json + records/contract-bindings-con-07-r1.json (successor of con-11-r1 retaining all 2,381 targets) + NOTICE.txt, Dokka r20 profile/resource pair under RES-contracts-dokka-profile. Needs Design repair (not ADP-07): constraints shard+aggregate, wp03-02 rows, ts barrels, package.json, StructureTests, check_operation_scope R4 exception, operation-scope doc."
   }
 }
