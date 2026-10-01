@@ -4,10 +4,10 @@
   "id": "PLT.44",
   "claimant": "w-c20261001-plt44",
   "epoch": 1,
-  "state": "claimed",
+  "state": "blocked",
   "claimedAt": "2026-10-01T08:00:36Z",
-  "updatedAt": "2026-10-01T09:23:44Z",
-  "leaseUntil": "2026-10-02T09:23:44Z",
+  "updatedAt": "2026-10-01T19:38:31Z",
+  "leaseUntil": "2026-10-02T19:38:31Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-44",
@@ -20,7 +20,8 @@
       "PR #113 opened; local: locked restore, format, Release build 0 warnings, Audit tests 15/15, Security tests 48/48, python policy gates; AT arch test blocked locally by env (DesignSystem.Tests generated regex) pending hosted CI",
       "Fixed RP-10 bindings (int keyword) found by running the local architecture test; typed intakes + recovered store",
       "PR #113 all 15 hosted checks green at 7e8175b (incl. pack job running architecture+Audit tests); review requested at exact head",
-      "Review finding 1 fixed with tests (tamper/digest/reopen/R0-R4/raw-SQL), 2-4 disclosed in README+PR, 5 contract rows re-appended at tail and receipt re-chained on main 812cdaa (rebased onto PLT.32); local on rebased head: format clean, Release build 0 warnings, Audit tests 24/24, RP-10 clear"
+      "Review finding 1 fixed with tests (tamper/digest/reopen/R0-R4/raw-SQL), 2-4 disclosed in README+PR, 5 contract rows re-appended at tail and receipt re-chained on main 812cdaa (rebased onto PLT.32); local on rebased head: format clean, Release build 0 warnings, Audit tests 24/24, RP-10 clear",
+      "Rebased as one commit onto main c0def81 (PLT.40); contract rows merged at tail, receipt re-chained plt-40-r1 -> plt-44-r1, hashes regenerated (252 inputs); local on this head: restore, format clean, 0-warning build, Audit tests 24/24, RP-10 clear, python gates pass; hosted: 11 jobs green, secret-scan 2 leaks (down from 4), managed-packages skipped"
     ],
     "validation": [
       "dotnet SDK 10.0.400 locked restore/format/build/tests as listed",
@@ -28,11 +29,11 @@
       "hosted at c6f1d42: 11 jobs green incl design/licence/provenance/reconciliation/runtime/reference/repository-hooks; secret-scan fail (main-level), ci fail (aggregate), managed-packages skipped"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-44",
-    "head": "c6f1d4266466834d0b14b5dfa10f19a93a30fce7",
+    "head": "851cbd5844574ea455ab36557617e4a7c807f559",
     "reviewed": null,
-    "blocker": null,
+    "blocker": ".gitleaks.toml (outside PLT.44 write scope) needs exact allowlist rows for the mirrored Security.Secrets csproj input-hash lines in eng/policy/dependency-reviews/plt-44-r1.json (2 remaining secret-scan leaks, same class as PLT.40 #96); requires coordinator planning/scope decision, not a security-suppression edit by the worker",
     "next": [
-      "await re-review at c6f1d42; hosted secret-scan red on main-level history scan (4 leaks, same on PLT.33 and main Publish NuGet 812cdaa) so managed-packages is skipped until main is fixed"
+      "after .gitleaks.toml decision: push, wait hosted CI incl managed-packages, delta re-review"
     ],
     "host": "deku",
     "note": null
