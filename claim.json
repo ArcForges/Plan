@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "role",
+  "id": "integration:DesktopPlatform",
+  "claimant": "w-c20261001-plt32",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-01T08:49:33Z",
+  "updatedAt": "2026-10-01T08:49:33Z",
+  "leaseUntil": "2026-10-01T20:49:33Z",
+  "handoff": {
+    "host": "deku",
+    "note": null
+  }
+}
