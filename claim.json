@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:38Z",
-  "updatedAt": "2026-10-02T03:09:38Z",
-  "leaseUntil": "2026-10-03T03:09:38Z",
+  "updatedAt": "2026-10-02T04:43:24Z",
+  "leaseUntil": "2026-10-03T04:43:24Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-13",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "read brief, Plan docs, PLT.09 ledger and reviews, WP-08.04, Design arch 03 and contracts 09; design plan fixed: per-connection FIFO admission gate (16 active/64 queued data, 2 control slots, no control queue), explicit control-method registry verified against the route table at start, deadline default/clamp counted from admission, typed refusals (RESOURCE_EXHAUSTED/DEADLINE_EXCEEDED + x-af-refusal trailer), nested-call marker (callbacks never queue, no recursion), handshake/idle watchdog for silent peers, tests for inherited unguarded guards"
+    ],
     "validation": [],
-    "worktree": null,
-    "head": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-13",
+    "head": "54fb94887c5b8e67753cfe83bae57f372dbbe507",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "implement in src/BuildingBlocks/ArcForges.LocalRpc, tests, README, then PR"
     ],
     "host": "deku",
     "note": null
