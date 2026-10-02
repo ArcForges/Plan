@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:26:17Z",
-  "updatedAt": "2026-10-02T03:08:56Z",
-  "leaseUntil": "2026-10-03T03:08:56Z",
+  "updatedAt": "2026-10-02T04:44:07Z",
+  "leaseUntil": "2026-10-03T04:44:07Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-50",
@@ -22,7 +22,8 @@
       "Local validation: solution build 0 warn/0 err, format clean, Observability tests 231/231, architecture policy no RP-10/BAN finding (environmental findings only), provenance/dependency_policy/reconciliation pass",
       "Hosted PR run 36954797721 at head 4a61bd7 completed success: all 15 checks (secret-scan, managed-packages pack with Observability tests total 231 succeeded 231 on Linux, Local RPC AOT win-x64/linux-x64, Avalonia AOT probe, native-win-x64, ci); PR mergeable CLEAN, main unmoved at 99344df",
       "Correction of the earlier handoff line: main was not unmoved at 99344df; it was 81d53f5 (PLT.35 #119) when run 36954797721 started, and that run tested the merge of 4a61bd7 into 81d53f5",
-      "Review r-c20261002-plt50 requested changes at 4a61bd7 (comment 5944681706); fixed: buffer-bound guard tests, precedence, consent contract wording and instrument-read purge, error-fact counting after write, dead oversize case, lazy window and promotion volume docs, sink thread-safety docs. Rebased onto main 54fb948 (PLT.09 #117 merged) and force-pushed with lease; new head 4ebb77c. Local: Observability tests 239/239 three times, format clean, seven guard mutations each fail a test"
+      "Review r-c20261002-plt50 requested changes at 4a61bd7 (comment 5944681706); fixed: buffer-bound guard tests, precedence, consent contract wording and instrument-read purge, error-fact counting after write, dead oversize case, lazy window and promotion volume docs, sink thread-safety docs. Rebased onto main 54fb948 (PLT.09 #117 merged) and force-pushed with lease; new head 4ebb77c. Local: Observability tests 239/239 three times, format clean, seven guard mutations each fail a test",
+      "Hosted run 36958843887 at 4ebb77c: 15/15 success, Linux Observability tests total 239 succeeded 239; PR CLEAN on main 54fb948; re-review requested with exact delta"
     ],
     "validation": [
       "see PR #120 body"
@@ -32,7 +33,6 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await CI",
       "await re-review"
     ],
     "host": "deku",
