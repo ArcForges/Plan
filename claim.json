@@ -6,21 +6,25 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:29:39Z",
-  "updatedAt": "2026-10-02T19:29:39Z",
-  "leaseUntil": "2026-10-03T19:29:39Z",
+  "updatedAt": "2026-10-02T19:45:30Z",
+  "leaseUntil": "2026-10-03T19:45:30Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-11",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Read batch brief, arcforges-implementation/execution-policy/single-task-command, delivery README, WP-08.02, annex 03 and 09, platform.md PLT.11 prompt, ledger plt-09/plt-10 and the PR 117/123/125 review histories",
+      "Worktree DesktopPlatform/.worktree/plt-11 on task/plt-11 at main d6e158d (PLT.10 merge); no earlier task/plt-11 branch or PR existed",
+      "ADP-07 declaration BEFORE any edit. Supporting files outside src/BuildingBlocks/ArcForges.LocalRpc/**, appends only, resource owner DesktopPlatform: eng/provenance/files.json (RES-desktopplatform-policy-data, mode append; necessity: the provenance gate fails unless every tracked first-party file is listed; sorted insertion in the existing LocalRpc block) and eng/policy/architecture-contract-tests.json (RES-desktopplatform-policy-data, mode append, rows at the tail; necessity: the architecture gate reports RP-10 for each new public method without a contract-test row). No csproj, lock, Directory.Packages.props, dependency-policy, receipt, solution, workflow, native, LibraryImport or .gitleaks.toml change: the library stays contract-free and adds no dependency; the generated LocalBootstrapService adapter is a test fixture. If a package reference to the Platform contract proves necessary it is a planning repair, not an ADP-07 binding."
+    ],
     "validation": [],
-    "worktree": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-11",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "Implement registration core (parent state machine, per-call gate, lease/renew, epoch fencing, revoke on rejected proof), child-side proof and lease helpers, README; tests with mutation checks; rebase onto PLT.13 if merged; open PR; await hosted CI; request review"
     ],
     "host": "deku",
     "note": null
