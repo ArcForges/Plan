@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T00:16:01Z",
-  "leaseUntil": "2026-10-02T12:16:01Z",
+  "updatedAt": "2026-10-02T00:37:14Z",
+  "leaseUntil": "2026-10-02T12:37:14Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -28,9 +28,9 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await independent review of Contracts #74 (CI all green at this head); Design #198 58fc4a2 + Plan #220 69e4a5a review/merge first"
+      "await re-review of Design #198 120eb4e + Plan #220 daa1c6c, then independent review of Contracts #74 (CI green at d0ebf94)"
     ],
     "host": "deku",
-    "note": "Dokka r20 reserved in PR #74; resource lease released"
+    "note": "Design amended per review of 58fc4a2"
   }
 }
