@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261001-con14",
   "epoch": 12,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T00:04:59Z",
-  "updatedAt": "2026-10-02T00:04:59Z",
-  "leaseUntil": "2026-10-02T12:04:59Z",
+  "updatedAt": "2026-10-02T00:05:55Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-plt33 epoch 11; review the earlier handoff and commits"
+    "note": "merged Plan #226 (CON.14 ledger); no queue from this worker"
   }
 }
