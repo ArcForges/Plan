@@ -5,12 +5,12 @@
   "task": "PRF.05",
   "claimant": "w-c20261002-prf05",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T22:04:47Z",
-  "updatedAt": "2026-10-02T22:04:47Z",
-  "leaseUntil": "2026-10-02T23:04:47Z",
+  "updatedAt": "2026-10-02T22:05:35Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "PRF.05 live phase finished: one local run of the Native AOT probe against the existing Hello ingress (23 checks passed); no deployment, secret or configuration touched"
   }
 }
