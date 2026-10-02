@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:26:17Z",
-  "updatedAt": "2026-10-02T04:46:45Z",
-  "leaseUntil": "2026-10-03T04:46:45Z",
+  "updatedAt": "2026-10-02T04:48:25Z",
+  "leaseUntil": "2026-10-03T04:48:25Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-50",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/120"
     ],
-    "merges": [],
+    "merges": [
+      "348492fcb882a192417946bc50d47917986676b9"
+    ],
     "done": [
       "Claimed; read brief, Plan/Design task records, WP-12.03, architecture 13 SG-02/SG-03/CC-01..03, PLT.49 ledger and library on main 99344df; retained worktree created from origin/main",
       "ADP-07 supporting-file binding (declared before editing): serves only artifacts inside the task outcome and write scope (new public types and files under src/BuildingBlocks/ArcForges.Observability/**). Exact paths: eng/policy/architecture-contract-tests.json (RES-architecture-tests, append only RP-10 rows for the new public methods, owner Architecture tests suite, necessity: Build.Policy RP-10 fails on a public method without a direct [Fact] binding); eng/provenance/files.json (RES-desktopplatform-policy-data, append only the new first-party source/test paths, necessity: provenance gate lists every tracked file). No csproj, packages.lock.json, Directory.Packages.props, dependency-policy.json, dependency receipt, active-projects.json, .gitleaks.toml, solution/workflow or packages.json change; no new project reference or package.",
@@ -34,7 +36,8 @@
     "reviewed": "4ebb77c88f2e0ba726ed55247974669a51f2a8e9",
     "blocker": null,
     "next": [
-      "claim integration:DesktopPlatform and merge"
+      "confirm publication",
+      "record the ledger"
     ],
     "host": "deku",
     "note": null
