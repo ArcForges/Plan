@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:26:17Z",
-  "updatedAt": "2026-10-02T06:02:40Z",
-  "leaseUntil": "2026-10-03T06:02:40Z",
+  "updatedAt": "2026-10-02T06:05:06Z",
+  "leaseUntil": "2026-10-03T06:05:06Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-50",
@@ -37,17 +37,18 @@
       "DesktopPlatform #122 approved at 0722e64 (comment 5946316794); implementation PR #120 was approved at 4ebb77c and merged as 348492f",
       "#122 merged as de31658 at 2026-10-02T05:48:38Z (match-head 0722e64)",
       "Publish NuGet run 36970610447 on de31658: success 2026-10-02T05:59:41Z, 17/17 jobs; verified 12 packages at 1.0.0-ci.78.1, 12 pushes, no Observability string in the publish log",
-      "Plan #233 updated to 1749948 (README bullet: attribution fixed, #122 recorded as merged); narrow re-review requested"
+      "Plan #233 updated to 1749948 (README bullet: attribution fixed, #122 recorded as merged); narrow re-review requested",
+      "Plan #233 approved at 1749948 (comment 5946476615)"
     ],
     "validation": [
       "see PR #120 body"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-50",
     "head": "4ebb77c88f2e0ba726ed55247974669a51f2a8e9",
-    "reviewed": "0722e6415553ff2e259be93fa2641e02048c04d8",
+    "reviewed": "1749948a74084d16415828dd638dfc66e2c4447d",
     "blocker": null,
     "next": [
-      "await re-review of Plan #233; merge via integration:Plan then update --state complete"
+      "merge #233 via integration:Plan"
     ],
     "host": "deku",
     "note": null
