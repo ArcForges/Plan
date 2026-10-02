@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T10:53:10Z",
-  "leaseUntil": "2026-10-03T10:53:10Z",
+  "updatedAt": "2026-10-02T11:10:43Z",
+  "leaseUntil": "2026-10-03T11:10:43Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
@@ -22,14 +22,15 @@
       "review of 450e553 addressed: provenance record+receipt, oneof arms, local pins, dates, schema rule labels, tests; rebased on 0491315 (force-with-lease)"
     ],
     "validation": [
-      "hosted CI at 450e553 green; local tooling tests for the matrix 36 OK (claimant-reported)"
+      "hosted CI at 450e553 green; local tooling tests for the matrix 36 OK (claimant-reported)",
+      "hosted CI at 88a1988 green"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-17",
     "head": "88a19888091415a7d2783d72d35731deb53c23bb",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await hosted CI at 88a1988, then re-review"
+      "await re-review of Contracts#76 at 88a1988 (CI green: CI 36997923499, Security 36997923264)"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
