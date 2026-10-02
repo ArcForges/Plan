@@ -6,23 +6,24 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:56:16Z",
-  "updatedAt": "2026-10-02T06:15:16Z",
-  "leaseUntil": "2026-10-03T06:15:16Z",
+  "updatedAt": "2026-10-02T06:46:29Z",
+  "leaseUntil": "2026-10-03T06:46:29Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/prf-07",
     "prs": [],
     "merges": [],
     "done": [
-      "claimed; read Design/Plan/contracts; no Cloudflare credentials, wrangler login or Docker exist here, so live deployment is impossible in this environment; Contracts 1.0.0-ci.287.1 pins and npm/NuGet admission staged locally; planning scope-repair pair (Design b2967fd, Plan 385d597) prepared locally"
+      "claimed; read Design/Plan/contracts; no Cloudflare credentials, wrangler login or Docker exist here, so live deployment is impossible in this environment; Contracts 1.0.0-ci.287.1 pins and npm/NuGet admission staged locally; planning scope-repair pair (Design b2967fd, Plan 385d597) prepared locally",
+      "Worker half implemented with 168 offline node tests (plan vectors on SQLite, executor, handler, signing, R2 facade, Queue/DO logic, proof routes); planning scope-repair pair pushed (Design task/prf-07-write-scope 809414c, Plan task/prf-07-write-scope 403d5b1); C# half in progress via a delegated engineer"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\prf-07",
-    "head": null,
+    "head": "0cbc37f2883a555c7f33b4b7743a0832b39f44e5",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "implement worker D1 named-plan executor, C# storage client, session/CSRF/revoke, bounded job slice, DO/Queue/R2 foundation; open Design+Plan repair PRs and the Cloud PR; wait for hosted CI"
+      "finish C# host, seal dependency admission and release provenance, local AOT publish and local cross-process harness, open Design/Plan repair PRs and the Cloud PR, wait for hosted CI"
     ],
     "host": "deku",
     "note": null
