@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Plan",
-  "claimant": "w-c20261001-plt09",
-  "epoch": 16,
-  "state": "released",
-  "claimedAt": "2026-10-02T03:06:19Z",
-  "updatedAt": "2026-10-02T03:07:38Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261002-plt52",
+  "epoch": 17,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T04:44:44Z",
+  "updatedAt": "2026-10-02T04:44:44Z",
+  "leaseUntil": "2026-10-02T16:44:44Z",
   "handoff": {
     "host": "deku",
-    "note": "PLT.09 ledger #231 merged (fca052c); no other Plan PR queued by this worker; primary fast-forwarded; vacant"
+    "note": "claimed after released by w-c20261001-plt09 epoch 16; review the earlier handoff and commits"
   }
 }
