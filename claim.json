@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:38Z",
-  "updatedAt": "2026-10-02T04:59:11Z",
-  "leaseUntil": "2026-10-03T04:59:11Z",
+  "updatedAt": "2026-10-02T05:57:08Z",
+  "leaseUntil": "2026-10-03T05:57:08Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-13",
@@ -15,15 +15,16 @@
     "merges": [],
     "done": [
       "read brief, Plan docs, PLT.09 ledger and reviews, WP-08.04, Design arch 03 and contracts 09; design plan fixed: per-connection FIFO admission gate (16 active/64 queued data, 2 control slots, no control queue), explicit control-method registry verified against the route table at start, deadline default/clamp counted from admission, typed refusals (RESOURCE_EXHAUSTED/DEADLINE_EXCEEDED + x-af-refusal trailer), nested-call marker (callbacks never queue, no recursion), handshake/idle watchdog for silent peers, tests for inherited unguarded guards",
-      "first implementation and tests committed and pushed (not yet compiled/run): LocalRpcCallGate, peer bounds registry, admission middleware, typed refusal, callback guard/interceptor, handshake/idle watchdog, limits, README; test suites for gate, bounds, peer limits, callbacks, guards. ADP-07 supporting bindings planned (existing files only): eng/provenance/files.json (new source/test files), eng/policy/architecture-contract-tests.json (new public API bindings); no dependency, package or project change"
+      "first implementation and tests committed and pushed (not yet compiled/run): LocalRpcCallGate, peer bounds registry, admission middleware, typed refusal, callback guard/interceptor, handshake/idle watchdog, limits, README; test suites for gate, bounds, peer limits, callbacks, guards. ADP-07 supporting bindings planned (existing files only): eng/provenance/files.json (new source/test files), eng/policy/architecture-contract-tests.json (new public API bindings); no dependency, package or project change",
+      "offline suite green locally (113 pass + 9 opt-in skipped before the latest additions); found and fixed HTTP/2 connection-window starvation by unread queued bodies (control call blocked 8 s with 2 queued 256 KiB bodies; now served in 16 ms at 64 queued); mutation runs of the guards in progress"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-13",
-    "head": "c34ca32ca6a7959d1a640661abfc644a12776b12",
+    "head": "d0c4072ec27e5d2a8f7cbeeca1c147a59ef75803",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "build and run offline suite via build slot, fix, run policy/format checks, bind provenance and contract-test entries, open PR"
+      "finish mutation runs, format/policy/architecture checks, opt-in OS checks, open PR"
     ],
     "host": "deku",
     "note": null
