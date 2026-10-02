@@ -6,15 +6,16 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T05:15:50Z",
-  "leaseUntil": "2026-10-02T17:15:50Z",
+  "updatedAt": "2026-10-02T05:24:46Z",
+  "leaseUntil": "2026-10-02T17:24:46Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
     "prs": [
       "https://github.com/ArcForges/Contracts/pull/74",
       "https://github.com/ArcForges/ArcForges-Design/pull/202",
-      "https://github.com/ArcForges/Plan/pull/232"
+      "https://github.com/ArcForges/Plan/pull/232",
+      "https://github.com/ArcForges/Plan/pull/234"
     ],
     "merges": [
       "ca27cabdb018994de57f065615549ab2b0cee88e",
@@ -37,9 +38,9 @@
     "reviewed": "8c0a40442647d3190384c02dc9480ef16118e1b6",
     "blocker": null,
     "next": [
-      "Contracts #74 merged ca45f36; main CI/Security/publisher jobs green; ledger PR next"
+      "ledger PR https://github.com/ArcForges/Plan/pull/234 awaiting review; no code pending"
     ],
     "host": "deku",
-    "note": "Contracts #74 approved by r-c20261001-con07-code at 8c0a40442647d3190384c02dc9480ef16118e1b6 (comment 5945827374)"
+    "note": "Contracts #74 merged ca45f36, main CI/Security/publisher green, published 1.0.0-ci.287.1; ledger record PR opened"
   }
 }
