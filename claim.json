@@ -4,10 +4,10 @@
   "id": "CON.07",
   "claimant": "w-c20261001-con07",
   "epoch": 1,
-  "state": "claimed",
+  "state": "complete",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T05:51:46Z",
-  "leaseUntil": "2026-10-02T17:51:46Z",
+  "updatedAt": "2026-10-02T05:52:24Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -22,7 +22,8 @@
       "e2558231d377f3663cbd2f7a26e8700d395b852b",
       "7c8a4cf2456ccc6e8c2bea9e2067694cea9ec082",
       "c4a0f973f1d3b36bbc8c480632c98c95b083433d",
-      "ca45f36cccbdd31380f76b8f6cdecc958fdcb430"
+      "ca45f36cccbdd31380f76b8f6cdecc958fdcb430",
+      "7fbd8775879def31145d8ce5ad552e8c65afe45a"
     ],
     "done": [
       "recovered nothing (no prior CON.07 commits/PRs exist); authored identity.proto (3 services, 49 ops), constraints shard, eng/operations/con-07.json, browser+native-auth HTTP schemas with form/route/rule generator support, vectors, tests, regenerated outputs",
@@ -41,6 +42,6 @@
       "ledger PR #234 head f8f9999013019b03dad6f38c8d419e637c550f41 awaiting narrow re-review; no code pending"
     ],
     "host": "deku",
-    "note": "Ledger PR #234 approved at f8f9999013019b03dad6f38c8d419e637c550f41 (comment 5946344587); task head/reviewed remain the merged Contracts head 8c0a404"
+    "note": "Ledger record merged as 7fbd877 (Plan #234); CON.07 complete"
   }
 }
