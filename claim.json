@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:17Z",
-  "updatedAt": "2026-10-02T03:09:17Z",
-  "leaseUntil": "2026-10-03T03:09:17Z",
+  "updatedAt": "2026-10-02T04:43:11Z",
+  "leaseUntil": "2026-10-03T04:43:11Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-10",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "claimed; read brief, WP-08.01, design annex 09/03, PLT.09 ledger+reviews; worktree task/plt-10 from main 54fb948; plan: LocalRpcLaunchAuthority/Launch/Descriptor/Claim (epoch fencing, nonce+build+protocol verify, one-use secret, owner-only atomic per-launch dir with stale sweep), async cancellable connection authorizer; ADP-07 supporting bindings only inside ArcForges.LocalRpc: provenance files.json append, architecture-contract-tests.json rows per new public method (RP-10), no new native binding, no csproj/package/version change"
+    ],
     "validation": [],
-    "worktree": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-10",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "implement in LocalRpc, tests (mutation-resistant), push first commit, open PR"
     ],
     "host": "deku",
     "note": null
