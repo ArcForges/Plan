@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Plan",
-  "claimant": "w-c20261002-plt50",
-  "epoch": 21,
-  "state": "released",
-  "claimedAt": "2026-10-02T06:05:27Z",
-  "updatedAt": "2026-10-02T06:07:06Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261002-plt53",
+  "epoch": 22,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T11:11:53Z",
+  "updatedAt": "2026-10-02T11:11:53Z",
+  "leaseUntil": "2026-10-02T23:11:53Z",
   "handoff": {
     "host": "deku",
-    "note": "PLT.50 ledger #233 merged (acc66a6); no other approved Plan PR of mine pending"
+    "note": "claimed after released by w-c20261002-plt50 epoch 21; review the earlier handoff and commits"
   }
 }
