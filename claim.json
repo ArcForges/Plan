@@ -6,22 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T05:57:48Z",
-  "leaseUntil": "2026-10-03T05:57:48Z",
+  "updatedAt": "2026-10-02T06:07:30Z",
+  "leaseUntil": "2026-10-03T06:07:30Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "claimed as completion follow-up; read task prompt, ledger records CON.07/14/15, window/harness; derived pinned-descriptor plan (ci.287.1 closure)"
+    ],
     "validation": [],
-    "worktree": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-17",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "perform the remaining acceptance for the scenarios the completion prerequisites name",
-      "record completion by editing the ledger record through a reviewed Plan pull request"
+      "implement later-service window pin + matrix in eng/check_compatibility.py + tests; Contracts PR; review; merge; ledger amend"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
