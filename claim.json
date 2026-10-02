@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:DesktopPlatform",
-  "claimant": "w-c20261001-plt49",
-  "epoch": 5,
-  "state": "released",
-  "claimedAt": "2026-10-01T23:57:32Z",
-  "updatedAt": "2026-10-02T00:06:59Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261001-plt35",
+  "epoch": 6,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T02:14:15Z",
+  "updatedAt": "2026-10-02T02:14:15Z",
+  "leaseUntil": "2026-10-02T14:14:15Z",
   "handoff": {
     "host": "deku",
-    "note": "Merged PLT.49 #118 as 99344df (publish run 36943563428 success). Queue: PLT.09 #117 pending (owner rebases onto main 99344df, re-appends policy tails); no other approved DesktopPlatform PR known."
+    "note": "claimed after released by w-c20261001-plt49 epoch 5; review the earlier handoff and commits"
   }
 }
