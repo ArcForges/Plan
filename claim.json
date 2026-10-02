@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-c20261002-plt50",
   "epoch": 8,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T04:47:05Z",
-  "updatedAt": "2026-10-02T04:47:05Z",
-  "leaseUntil": "2026-10-02T16:47:05Z",
+  "updatedAt": "2026-10-02T05:07:42Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-plt09 epoch 7; review the earlier handoff and commits"
+    "note": "PLT.50 #120 merged (348492f); publish run 36966126613 succeeded. No other DesktopPlatform PR was approved or waiting to my knowledge; PLT.52 (#121) may merge next and must rebase onto 348492f, re-appending policy tails"
   }
 }
