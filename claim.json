@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:27:45Z",
-  "updatedAt": "2026-10-02T05:24:39Z",
-  "leaseUntil": "2026-10-03T05:24:39Z",
+  "updatedAt": "2026-10-02T05:26:31Z",
+  "leaseUntil": "2026-10-03T05:26:31Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-52",
@@ -16,7 +16,9 @@
       "https://github.com/ArcForges/ArcForges-Design/pull/201",
       "https://github.com/ArcForges/Plan/pull/229"
     ],
-    "merges": [],
+    "merges": [
+      "452ec15d507e40010d56ec05ac875ae953ce1e2f"
+    ],
     "done": [
       "library: consent, verbose session, local store, report draft/approve/send, crash marker; ConsentTests written (not yet built)",
       "implementation PR opened; planning-repair pair Design #201 + Plan #229 (head bf4cf4d / 92b9386) opened; local validation: build 0 warn, Desktop tests 20/20, Observability 200/200, arch 99/100 environmental only",
@@ -34,7 +36,8 @@
     "reviewed": "e78672b0ba9c7126f9633e19c0059376a6e8bc91",
     "blocker": null,
     "next": [
-      "merge #121 via integration:DesktopPlatform"
+      "confirm publication (Publish NuGet run 36968882005)",
+      "record the ledger"
     ],
     "host": "deku",
     "note": null
