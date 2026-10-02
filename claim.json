@@ -6,25 +6,31 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:46:32Z",
-  "updatedAt": "2026-10-02T19:59:24Z",
-  "leaseUntil": "2026-10-03T19:59:24Z",
+  "updatedAt": "2026-10-02T22:03:00Z",
+  "leaseUntil": "2026-10-03T22:03:00Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/prf-10",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/Mobile/pull/19"
+    ],
     "merges": [],
     "done": [
       "Verified facts: Maven Central contracts-connect-client latest is 1.0.0-ci.60.1 whose JAR holds only HelloServiceClient (unary); Contracts main publishes Maven only as mutable 1.0.0-SNAPSHOT, so no admissible immutable coordinate carries EventService.Watch; PRF.07 foundation exposes no gRPC-Web business service (no Watch) and has no deployed ingress",
       "Scope binding (ADP-07, no new dependency/identity/runtime behavior): edits only Mobile app/src/main CloudHelloClient.kt (extract shared protocolClient factory, behavior unchanged), new app/src/test ConnectStreamingFixtureTest.kt, new app/src/androidTest KeystoreProbeTest.kt, and the factual inventory classification of those two new files in eng/provenance/files.json (existing firstParty list; check_provenance requires every tracked file classified). No gradle/**, catalog, lock or admission change",
       "Pushed first commit cbfa7ed; local offline checks passed (spotlessCheck, shared desktop+android host tests, app unit tests, lintRelease, assembleDebugAndroidTest, assembleRelease, bundleRelease, eng/mobile.py check+bytecode, eng tests)"
     ],
-    "validation": [],
+    "validation": [
+      "Local (Windows 11, JDK 21.0.11, Gradle 9.8.0 offline, build slot): spotlessCheck, shared tests, app unit tests (8 new stream fixture tests), lintRelease, assembleDebugAndroidTest, assembleRelease, bundleRelease, eng/mobile.py check+bytecode, eng unittest 70 passed; mutation checks of new tests",
+      "Local opt-in, existing emulator pixel_7_-_api_36_0 (read-only): KeystoreProbeTest 6/6 passed, securityLevel=0 (software); no physical device",
+      "Hosted CI on bc69ce4 (Mobile PR 19): Build ubuntu+windows, CodeQL x3, Dependency review, Secret scan, Verify passed; Publish Android skipped on PR"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Mobile\\.worktree\\prf-10",
-    "head": "cbfa7ed5e82f646fcbff1abc2335111dfb34b4ca",
+    "head": "bc69ce4f17be35d891278a875ae4fe944170b14d",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "run Keystore probe once on existing local emulator if it boots; open PR; hosted CI; ledger record (delivered, live proof not done)"
+      "await review"
     ],
     "host": "deku",
     "note": null
