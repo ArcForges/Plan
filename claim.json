@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:38Z",
-  "updatedAt": "2026-10-02T17:09:20Z",
-  "leaseUntil": "2026-10-03T17:09:20Z",
+  "updatedAt": "2026-10-02T17:18:01Z",
+  "leaseUntil": "2026-10-03T17:18:01Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-13",
@@ -21,7 +21,8 @@
       "offline suite green locally (113 pass + 9 opt-in skipped before the latest additions); found and fixed HTTP/2 connection-window starvation by unread queued bodies (control call blocked 8 s with 2 queued 256 KiB bodies; now served in 16 ms at 64 queued); mutation runs of the guards in progress",
       "mutation runs: gate, admission classification/deadline/queue, control slots, callbacks killed; continuing remaining batches",
       "PR 125 opened; local validation: build 0 warnings, format, provenance/dependency/reconciliation/licence/runtime-ownership checks, architecture test (only hosted-evidence findings), offline suite 144 (134 run) green 13x incl. contended, opt-in OS 71 runs green, 39 hand mutants killed but one equivalent",
-      "rebased onto main 7316ab8 (no conflicts); earlier head e3e1443 had hosted CI all green (run 37003373154); re-ran local build, offline suite 134 run/0 failed, opt-in 143 run/0 failed, provenance/dependency/reconciliation checks after rebase"
+      "rebased onto main 7316ab8 (no conflicts); earlier head e3e1443 had hosted CI all green (run 37003373154); re-ran local build, offline suite 134 run/0 failed, opt-in 143 run/0 failed, provenance/dependency/reconciliation checks after rebase",
+      "hosted CI run 37038772759 green on all checks at 48164f8 (includes managed-packages pack, Local RPC AOT compile linux-x64/win-x64, secret-scan, policy jobs)"
     ],
     "validation": [
       "dotnet test LocalRpc offline 134 run/10 skipped/0 failed; opt-in OS checks Windows only"
@@ -31,7 +32,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await hosted CI at the rebased head; await review"
+      "await review"
     ],
     "host": "deku",
     "note": null
