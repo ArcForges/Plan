@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T06:09:37Z",
-  "updatedAt": "2026-10-02T11:41:02Z",
-  "leaseUntil": "2026-10-03T11:41:02Z",
+  "updatedAt": "2026-10-02T11:49:25Z",
+  "leaseUntil": "2026-10-03T11:49:25Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-53",
@@ -35,7 +35,8 @@
       "README delta 3849fa3 (transitive Google.Protobuf/Grpc.Core.Api; precise wiring statement); main unmoved at de31658 so receipt plt-53-r1 still chains from active plt-52-r1; hosted run 36999829137 15/15 pass",
       "#124 approved at 3849fa3 by r-c20261002-plt53-code (comment 5951357782)",
       "merged #124 as 7316ab85c70973b2dfd32fc28953c9db9ec0728e (2026-10-02T11:27:15Z); Publish NuGet run 37001091983 succeeded (created 11:27:19Z, updated 11:38:03Z): preflight, all candidate jobs, publish; 'Verified 14 package(s), version 1.0.0-ci.79.1'; 14 pushed lines incl. first pushes of ArcForges.Observability and ArcForges.Observability.Desktop; integration:DesktopPlatform released",
-      "ledger PR Plan #238 opened at 327a91e2bf35d39f28f53a198c5628f7416d76fc; check passed with explicit roots"
+      "ledger PR Plan #238 opened at 327a91e2bf35d39f28f53a198c5628f7416d76fc; check passed with explicit roots",
+      "ledger wording fixes pushed to Plan #238 at 679a1dfcba2c10f0276bb977a1ccc5abacb6a975; narrow re-review requested"
     ],
     "validation": [
       "local pack, tests, python gates, one local opt-in consumer: see PR #124 body"
@@ -45,7 +46,7 @@
     "reviewed": "3849fa3c018bc85667daa661cb49923dd0aad8be",
     "blocker": null,
     "next": [
-      "await review of Plan #238; merge via integration:Plan; update --state delivered"
+      "await re-approval of Plan #238; merge via integration:Plan; update --state delivered"
     ],
     "host": "deku",
     "note": null
