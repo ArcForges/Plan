@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "blocked",
   "claimedAt": "2026-10-02T05:58:42Z",
-  "updatedAt": "2026-10-02T10:21:43Z",
-  "leaseUntil": "2026-10-03T10:21:43Z",
+  "updatedAt": "2026-10-02T10:23:15Z",
+  "leaseUntil": "2026-10-03T10:23:15Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-19",
@@ -28,7 +28,7 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-19",
     "head": "574f0745c4c40b3d70a174410e83e1812fce318b",
-    "reviewed": null,
+    "reviewed": "574f0745c4c40b3d70a174410e83e1812fce318b",
     "blocker": "WP-03.90 cannot be accepted (see Contracts docs/wp03-90-verification.md, PR 75): (1) six public connector.* operations (Registry04 section 5 ConnectorService: ListDefinitions, ListConnections, BeginConnection, CompleteConnection, GetConnection, RevokeConnection) have no authored service and no delivery-graph owner; they are exactly the 6 pending rows of the operation-scope gate (329 registered/6 pending/7 reserved at candidate 1.0.0-ci.287.1), contradicting the CON.19 start-prerequisite text 'zero pending rows'; the local twin ConnectorBrokerService (CON.05) exists but its records are internal-only - needs a Design planning change (Architecture Owner decision, not taken here); (2) Registry04 records LocalCallContext and SimulationDataSegment/SimulationSample/SimulationEvent/SimulationGap are absent by name with no determined owner (same planning decision; the Simulation payload is serialized as canonical JSON and whether a proto message is also needed is part of that decision); (3) the compatibility harness retains only the Foundation/PublicApi ci.113.1 descriptors - the CON.17 completion follow-up is claimed (w-c20261002-con17f, Contracts PR 76 open, unreviewed) and must run and record the complete matrix; (4) the isolated three-ecosystem consumer restore in the task outcome conflicts with P2-017 and needs a recorded decision on how it is evidenced.",
     "next": [
       "await hosted CI and narrow re-review of PR 75 at 574f074",
