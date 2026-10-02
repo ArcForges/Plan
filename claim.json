@@ -3,13 +3,13 @@
   "kind": "role",
   "id": "integration:Design",
   "claimant": "w-c20261002-prf07",
-  "epoch": 10,
-  "state": "released",
-  "claimedAt": "2026-10-02T17:12:12Z",
-  "updatedAt": "2026-10-02T17:13:39Z",
-  "leaseUntil": null,
+  "epoch": 11,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T17:29:56Z",
+  "updatedAt": "2026-10-02T17:29:56Z",
+  "leaseUntil": "2026-10-02T18:29:56Z",
   "handoff": {
     "host": "deku",
-    "note": "planning bases moved; branch rebased, re-review requested before merge"
+    "note": "claimed after released by w-c20261002-prf07 epoch 10; review the earlier handoff and commits"
   }
 }
