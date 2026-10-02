@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:26:17Z",
-  "updatedAt": "2026-10-02T06:05:06Z",
-  "leaseUntil": "2026-10-03T06:05:06Z",
+  "updatedAt": "2026-10-02T06:06:24Z",
+  "leaseUntil": "2026-10-03T06:06:24Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-50",
@@ -18,7 +18,8 @@
     ],
     "merges": [
       "348492fcb882a192417946bc50d47917986676b9",
-      "de31658f9519a8a31025b6f33b30c6df6ce680d3"
+      "de31658f9519a8a31025b6f33b30c6df6ce680d3",
+      "acc66a63d7ced0794479d12b0c5ad4b3e3bf0704"
     ],
     "done": [
       "Claimed; read brief, Plan/Design task records, WP-12.03, architecture 13 SG-02/SG-03/CC-01..03, PLT.49 ledger and library on main 99344df; retained worktree created from origin/main",
@@ -38,7 +39,8 @@
       "#122 merged as de31658 at 2026-10-02T05:48:38Z (match-head 0722e64)",
       "Publish NuGet run 36970610447 on de31658: success 2026-10-02T05:59:41Z, 17/17 jobs; verified 12 packages at 1.0.0-ci.78.1, 12 pushes, no Observability string in the publish log",
       "Plan #233 updated to 1749948 (README bullet: attribution fixed, #122 recorded as merged); narrow re-review requested",
-      "Plan #233 approved at 1749948 (comment 5946476615)"
+      "Plan #233 approved at 1749948 (comment 5946476615)",
+      "Plan #233 merged as acc66a6"
     ],
     "validation": [
       "see PR #120 body"
