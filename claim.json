@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:36:26Z",
-  "updatedAt": "2026-10-01T23:57:44Z",
-  "leaseUntil": "2026-10-02T23:57:44Z",
+  "updatedAt": "2026-10-02T00:34:03Z",
+  "leaseUntil": "2026-10-03T00:34:03Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-09",
@@ -21,18 +21,19 @@
       "Claimed; reviewed PRF.04 probe (PR84) and WP-08.00/contracts-09; new project src/BuildingBlocks/ArcForges.LocalRpc (custom IConnectionListenerFactory over named pipe/UDS/supplied streams, ConnectCallback client, explicit AddService, no TCP) + Tests project written; offline tests mostly passing locally. ADP-07 supporting bindings (existing artifacts, RES build-config/policy-data append, needed for the new project): DesktopPlatform.slnx (2 project entries), Directory.Packages.props (append LocalRpc.Tests to existing Foundation conditional Update), .github/workflows/package-validation.yml (one offline dotnet test line), eng/policy/{architecture-projects,licence-boundary,runtime-ownership,architecture-contract-tests}.json + reconciliation/active-projects.json + provenance/files.json rows, dependency-policy.json inputHashes + immutable receipt dependency-reviews/plt-09-r1.json (no new coordinate), project lock files. No new package, version, runtime owner or packages.json entry.",
       "Implemented, rebased on PLT.40 main, offline suite 39/39 + local OS checks 6/6 (Windows), policy checks pass, PR opened",
       "PR 117 open at 2cdf460e0e4bcf8ec739bf3ae0cdc67ef6dcb5f9; secret-scan red: receipt lines fixed by own allowlist (4->2 findings), remaining 2 are PLT.44's plt-44-r1.json lines on task/plt-44 (cross-branch scan coupling, symmetric with #113); managed-packages skipped behind secret-scan so build/test/arch CI not yet observed on hosted CI; planning repair Design#200/Plan#223 opened (needs independent review+merge before PR 117 merge)",
-      "Review findings 1-10 addressed; rebased on main 7644e31; Design#200/Plan#223 closed superseded; hosted CI all green at head (managed-packages incl.)"
+      "Review findings 1-10 addressed; rebased on main 7644e31; Design#200/Plan#223 closed superseded; hosted CI all green at head (managed-packages incl.)",
+      "Re-review items fixed (one non-parallel collection, README wording); rebased on 99344df; hosted CI green; opt-in suite 40/40 clean"
     ],
     "validation": [
       "locked restore+Release build+format pass; offline tests 39 pass/7 skipped; opt-in OS-stream checks 6/6 on Windows only; untested: Linux/macOS, real wrong-user, AOT publish",
       "hosted CI green at a16878175b7af43ceb50d714fe7e372b4b519501; local: locked restore, build, format, 54 offline tests (45 pass/9 skipped), opt-in OS checks 15 clean runs on Windows only"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-09",
-    "head": "a16878175b7af43ceb50d714fe7e372b4b519501",
+    "head": "b799e83ed8946e78739b866eed4c93191a9cb6d7",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await delta re-review at a16878175b7af43ceb50d714fe7e372b4b519501; then integration:DesktopPlatform merge, ledger PR (delivered not complete)"
+      "await delta re-review at b799e83ed8946e78739b866eed4c93191a9cb6d7; then integration merge, ledger (delivered not complete)"
     ],
     "host": "deku",
     "note": null
