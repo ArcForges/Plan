@@ -6,12 +6,16 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-02T23:02:18Z",
-  "leaseUntil": "2026-10-03T23:02:18Z",
+  "updatedAt": "2026-10-02T23:05:09Z",
+  "leaseUntil": "2026-10-03T23:05:09Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/Web/pull/25",
+      "https://github.com/ArcForges/ArcForges-Design/pull/207",
+      "https://github.com/ArcForges/Plan/pull/246"
+    ],
     "merges": [],
     "done": [
       "claimed; read brief/Plan/Design/task prompt/PRF.07 ledger; baseline npm ci on pinned Node 24.21.0/npm 11.19.0 (fnm); found main npm audit --audit-level=high red (undici via wrangler 4.135.0; 4.143.1 clears it in a scratch install); site build with Contracts 287.1 in scratch emits byte-identical chunks (graph only grows 254 to 299 modules)",
@@ -24,7 +28,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "open Web PR; planning pair (Design graph write scope + Plan generate) ; wait for hosted CI (gitleaks may need exact-line rows for r8 profile -> requires the planning authority); ledger record delivered"
+      "await review (Web 25 at e69b7d5; Design 207 and Plan 246 scope pair must merge before Web); hosted CI running; gitleaks rows for r8 profile may follow"
     ],
     "host": "deku",
     "note": null
