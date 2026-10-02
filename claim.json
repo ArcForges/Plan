@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-c20261002-plt52",
   "epoch": 9,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T05:25:00Z",
-  "updatedAt": "2026-10-02T05:25:00Z",
-  "leaseUntil": "2026-10-02T17:25:00Z",
+  "updatedAt": "2026-10-02T05:37:23Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-plt50 epoch 8; review the earlier handoff and commits"
+    "note": "merged #121 (452ec15); Publish NuGet 36968882005 success; queue: nothing else pending from this worker"
   }
 }
