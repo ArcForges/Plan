@@ -6,13 +6,15 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T03:09:53Z",
-  "leaseUntil": "2026-10-02T15:09:53Z",
+  "updatedAt": "2026-10-02T04:45:17Z",
+  "leaseUntil": "2026-10-02T16:45:17Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
     "prs": [
-      "https://github.com/ArcForges/Contracts/pull/74"
+      "https://github.com/ArcForges/Contracts/pull/74",
+      "https://github.com/ArcForges/ArcForges-Design/pull/202",
+      "https://github.com/ArcForges/Plan/pull/232"
     ],
     "merges": [
       "ca27cabdb018994de57f065615549ab2b0cee88e",
@@ -24,14 +26,15 @@
     ],
     "validation": [
       "local: generate, operation-scope, foundation, serialization gates, node con-07 tests (8/9 passing at WIP), python tooling tests",
-      "Hosted CI green on d0ebf94: Build candidate, Secret scan, CodeQL x5, Dependency review, Verify (run 36943991205)"
+      "Hosted CI green on d0ebf94: Build candidate, Secret scan, CodeQL x5, Dependency review, Verify (run 36943991205)",
+      "Hosted CI green on 8c0a404: Build candidate (run 36958918450), Secret scan job 110688009017, CodeQL x5, Dependency review, Verify"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-07",
     "head": "8c0a40442647d3190384c02dc9480ef16118e1b6",
     "reviewed": "120eb4ebec2bd5a5ff01c02b71a26465dd38fa62",
     "blocker": null,
     "next": [
-      "await CI on 8c0a40442647d3190384c02dc9480ef16118e1b6; Design amendment (new digests, bounds notes) + Plan regen; then re-review of #74 and the Design amendment"
+      "await independent review of Contracts #74 8c0a404 (CI green) and Design #202 2d7ab04 / Plan #232 c573be6; planning amendment merges before #74"
     ],
     "host": "deku",
     "note": "Dokka r20 reserved and re-run at head 8c0a40442647d3190384c02dc9480ef16118e1b6 (PR #74); lease released"
