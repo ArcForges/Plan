@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T05:49:02Z",
-  "leaseUntil": "2026-10-02T17:49:02Z",
+  "updatedAt": "2026-10-02T05:50:38Z",
+  "leaseUntil": "2026-10-02T17:50:38Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -34,8 +34,8 @@
       "Hosted CI green on 8c0a404: Build candidate (run 36958918450), Secret scan job 110688009017, CodeQL x5, Dependency review, Verify"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-07",
-    "head": "8c0a40442647d3190384c02dc9480ef16118e1b6",
-    "reviewed": "8c0a40442647d3190384c02dc9480ef16118e1b6",
+    "head": "f8f9999013019b03dad6f38c8d419e637c550f41",
+    "reviewed": "f8f9999013019b03dad6f38c8d419e637c550f41",
     "blocker": null,
     "next": [
       "ledger PR #234 head f8f9999013019b03dad6f38c8d419e637c550f41 awaiting narrow re-review; no code pending"
