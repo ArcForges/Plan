@@ -6,14 +6,15 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:56:16Z",
-  "updatedAt": "2026-10-02T19:21:57Z",
-  "leaseUntil": "2026-10-03T01:21:57Z",
+  "updatedAt": "2026-10-02T19:25:16Z",
+  "leaseUntil": "2026-10-03T01:25:16Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/prf-07",
     "prs": [
       "https://github.com/ArcForges/Cloud/pull/31",
-      "https://github.com/ArcForges/Cloud/pull/32"
+      "https://github.com/ArcForges/Cloud/pull/32",
+      "https://github.com/ArcForges/Plan/pull/241"
     ],
     "merges": [
       "8954f3024ae77852ea0f55974d659e64b5cbad9b",
@@ -31,7 +32,8 @@
       "Cloud 32 approved at 3cc78ae631ea by r-c20261002-prf07-wrangler; NOT merged pending coordinator/user decision on the main-push deploy",
       "Cloud 32 merged (merge commit 282f2de, approved head 3cc78ae). Main-push run 37041950566 succeeded: all jobs incl. Native AOT image and Worker build, Verify and Deploy Cloudflare; deployed the standard Hello service with unchanged Worker bytes (Current Version ID 630f2082-0ceb-44c9-b631-45c29c0b5334), prerelease cloud-0.1.0-ci.80.1 (release id RE_kwDOUcsXps4X9neU, assets cloud-0.1.0-ci.80.1.tar.gz and deployment.json), evidence artifact cloudflare-evidence-37041950566-1 (id 11241684393). This is the standard Hello deployment, NOT the foundation proof. Cloud 31 rebased onto main at 3320732, tree identical to CI-verified 3d2c81c, hosted CI green",
       "Review of Cloud 31 at 3320732 not approved (1 medium, 4 low, 2 info); all fixed at beec326: production CloudContainer unchanged with FoundationContainer for env.proof and pinned by tests, docs corrected, 2^53 wording corrected, redirect and chunked-body tests added, deploy passes --env empty; hosted CI green on beec326",
-      "Cloud 31 merged as 1a001eaeff310d046d4a556a2b06b7f2037157e2 (merge commit, approved head beec326); main-push run 37053055916 succeeded incl. Deploy Cloudflare (Worker version 2b9c11a1-bea3-4b76-8cc1-4c09a9cb8613, prerelease cloud-0.1.0-ci.86.1)"
+      "Cloud 31 merged as 1a001eaeff310d046d4a556a2b06b7f2037157e2 (merge commit, approved head beec326); main-push run 37053055916 succeeded incl. Deploy Cloudflare (Worker version 2b9c11a1-bea3-4b76-8cc1-4c09a9cb8613, prerelease cloud-0.1.0-ci.86.1)",
+      "Cloud 31 merged (1a001ea); main-push run 37053055916 success; ledger PR Plan 241 opened at a57638ca1542475b355d08d5162d5de8f8867c67"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\prf-07",
@@ -39,7 +41,7 @@
     "reviewed": "beec32699ad7c42eedfa26397f073aebc06f3519",
     "blocker": null,
     "next": [
-      "delta re-review of Cloud 31 at beec326; merge via integration:Cloud with merge commit at the reviewed head (main must still be 282f2de); confirm main-push run; then record delivered (never complete). Ledger limits: replay protection partial (no 120 s nonce store, route-audience allowlist or key-overlap purge); R2 facade and proof migration proof-only; deploy:proof ordering never exercised; docs/provenance.md:56 says Wrangler 4.135.0 (outside scope); InternalsVisibleTo for the test assembly and AGENTS.md wording outside write scope. Live proof needs user-provided Cloudflare account/credentials; PRF.06 EventService.Watch not in WP-06.04 and not implemented"
+      "independent review of Plan 241, merge via integration:Plan, then release the claim as delivered (never complete). Live proof needs user-provided Cloudflare account/credentials and resources"
     ],
     "host": "deku",
     "note": "fixing review findings on Cloud 31"
