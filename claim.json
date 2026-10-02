@@ -4,12 +4,12 @@
   "id": "integration:Cloud",
   "claimant": "w-c20261002-prf07",
   "epoch": 3,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T19:16:21Z",
-  "updatedAt": "2026-10-02T19:16:21Z",
-  "leaseUntil": "2026-10-02T20:16:21Z",
+  "updatedAt": "2026-10-02T19:22:12Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-prf07 epoch 2; review the earlier handoff and commits"
+    "note": "merged Cloud 31 at approved head beec326 into main 1a001ea; main-push run 37053055916 success"
   }
 }
