@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-02T23:09:00Z",
-  "leaseUntil": "2026-10-03T23:09:00Z",
+  "updatedAt": "2026-10-02T23:21:48Z",
+  "leaseUntil": "2026-10-03T23:21:48Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
@@ -26,13 +26,13 @@
       "hosted CI run 37075989133 green on f16e538; local: npm run check (110 unit, 43 provenance), npm audit 0, strict candidate build, esproj Build, profile --twice determinism, 48-mutant run, one local Chromium run against a local Native AOT Hello host (host dirty local build)"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Web\\.worktree\\prf-08",
-    "head": "f16e538daff730bec77f37f5e8947b19cd7cc4f9",
+    "head": "3e6cfacaaf8fccdb87d3bd06fe0ae0a4339d472d",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review of Web 25 at f16e538 and the scope pair Design 207 / Plan 246 (merge order: Design 207, Plan 246, then Web 25 via integration:Web); then ledger record PRF.08 as delivered (no live proof; needs the same user-provided Cloudflare inputs as PRF.07 plus a deployed ingress)"
+      "await re-review: Web 25 at 3e6cfac, Design 207 at 4d0b545, Plan 246 at 95e4df6; merge order Design, Plan, Web; later ledger record (state pre-authority edits outside apps/**; review independence by worker name only)"
     ],
     "host": "deku",
-    "note": null
+    "note": "review findings addressed: removed unneeded seventh gitleaks row; Design text tightened (exact pin, six rows, narrowed tests)"
   }
 }
