@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Plan",
-  "claimant": "w-c20261001-plt49",
-  "epoch": 13,
-  "state": "released",
-  "claimedAt": "2026-10-02T00:22:19Z",
-  "updatedAt": "2026-10-02T00:23:56Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261001-con07",
+  "epoch": 14,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T00:42:10Z",
+  "updatedAt": "2026-10-02T00:42:10Z",
+  "leaseUntil": "2026-10-02T02:42:10Z",
   "handoff": {
     "host": "deku",
-    "note": "Merged Plan #228 (PLT.49 ledger) as 5ffda04; primary fast-forwarded. No other approved Plan PR known to me."
+    "note": "claimed after released by w-c20261001-plt49 epoch 13; review the earlier handoff and commits"
   }
 }
