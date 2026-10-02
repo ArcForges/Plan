@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-c20261002-plt50",
   "epoch": 10,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T05:48:15Z",
-  "updatedAt": "2026-10-02T05:48:15Z",
-  "leaseUntil": "2026-10-02T17:48:15Z",
+  "updatedAt": "2026-10-02T06:01:41Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-plt52 epoch 9; review the earlier handoff and commits"
+    "note": "PLT.50 docs PR #122 merged (de31658); publish run 36970610447 succeeded. No other DesktopPlatform PR held by me; next merger must rebase onto de31658"
   }
 }
