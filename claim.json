@@ -4,10 +4,10 @@
   "id": "CON.14",
   "claimant": "w-c20261001-con14",
   "epoch": 1,
-  "state": "claimed",
+  "state": "complete",
   "claimedAt": "2026-10-01T08:00:01Z",
-  "updatedAt": "2026-10-02T00:04:39Z",
-  "leaseUntil": "2026-10-03T00:04:39Z",
+  "updatedAt": "2026-10-02T00:05:35Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-14",
