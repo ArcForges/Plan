@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:31:40Z",
-  "updatedAt": "2026-10-02T19:51:39Z",
-  "leaseUntil": "2026-10-03T19:51:39Z",
+  "updatedAt": "2026-10-02T22:03:32Z",
+  "leaseUntil": "2026-10-03T22:03:32Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-38",
@@ -17,15 +17,16 @@
     ],
     "merges": [],
     "done": [
-      "Read brief, plans, WP-11.02, architecture 08, PLT.09/10/20/24/36/37/39/40/44 records; claimed epoch 1; opened planning repair pair Design#205 + Plan#242 (exact write scope: one new nested non-packable project src/BuildingBlocks/ArcForges.Security/LocalRpcBoundary binding the Security transport-session port to the real PLT.10 LocalRpcLaunchAuthority, plus the exact solution/selector/policy/provenance/receipt rows; verified locally the planned restore adds no coordinate outside nugetClosure)"
+      "Read brief, plans, WP-11.02, architecture 08, PLT.09/10/20/24/36/37/39/40/44 records; claimed epoch 1; opened planning repair pair Design#205 + Plan#242 (exact write scope: one new nested non-packable project src/BuildingBlocks/ArcForges.Security/LocalRpcBoundary binding the Security transport-session port to the real PLT.10 LocalRpcLaunchAuthority, plus the exact solution/selector/policy/provenance/receipt rows; verified locally the planned restore adds no coordinate outside nugetClosure)",
+      "Pushed WIP head 69b19cb rebased on main d4e8743 (PLT.13 merged): Security.Decisions model/ports/pipeline/permission projection/ticket, LocalRpcBoundary adapter, harness, reason-table and refusal-matrix tests (not yet compiled or run)"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-38",
-    "head": null,
+    "head": "69b19cba10bf0dd09c76a14ee53d5237e5d8e19f",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "independent review and merge of Design#205 and Plan#242; implement Security.Decisions pipeline (14 steps, 4 enforcement points, typed outcomes, unforgeable execution ticket, permission availability projection) and LocalRpcBoundary adapter with mutation-resistant tests; open implementation PR only after the repair merges; no ADP-07 reliance (all supporting rows are inside the repair); Capabilities is not edited (PLT.57 attaches)"
+      "fix test compile; write remaining tests (coverage, profiles, bypass, execution, permission, approval, timeouts, concurrency, LocalRpcBoundary); run mutation checks via build slot; RP-10 bindings, provenance, policy rows, receipt plt-38-r1 chained from active receipt; README; open implementation PR after Design#205 and Plan#242 merge; await review"
     ],
     "host": "deku",
     "note": "ADP-07 declaration: none relied on; every supporting file is named by the planning repair. Receipt plt-38-r1 chains from the receipt active on main at merge (plt-53-r1 at claim time)."
