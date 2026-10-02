@@ -6,21 +6,26 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:59Z",
-  "updatedAt": "2026-10-02T19:44:59Z",
-  "leaseUntil": "2026-10-03T19:44:59Z",
+  "updatedAt": "2026-10-02T19:52:23Z",
+  "leaseUntil": "2026-10-03T19:52:23Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-06",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/ArcForges-Design/pull/206",
+      "https://github.com/ArcForges/Plan/pull/243"
+    ],
     "merges": [],
-    "done": [],
+    "done": [
+      "Researched: PRF.07 does not provide EventService.Watch; the real Watch/Poll/readOutput servers are CLOUD.29/32/34 (none started). Opened the planning repair pair (Design 206, Plan 243): generated Events/PublicApi/Foundation pins at CON.11 candidate 1.0.0-ci.270.1 are outside the write scope; add CON.11 start edge and CLOUD.29/32/34 completion edges"
+    ],
     "validation": [],
-    "worktree": null,
+    "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/prf-06",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "implement the offline RealtimeAotProbe in DesktopPlatform task/prf-06 (client side under AOT, Poll semantics, generated codecs); await independent review of the planning pair before the DesktopPlatform PR can merge"
     ],
     "host": "deku",
     "note": null
