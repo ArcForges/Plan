@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T00:37:14Z",
-  "leaseUntil": "2026-10-02T12:37:14Z",
+  "updatedAt": "2026-10-02T00:40:30Z",
+  "leaseUntil": "2026-10-02T12:40:30Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -25,12 +25,12 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-07",
     "head": "d0ebf94017a3852ea34cde5e3866680aee0ed494",
-    "reviewed": null,
+    "reviewed": "120eb4ebec2bd5a5ff01c02b71a26465dd38fa62",
     "blocker": null,
     "next": [
       "await re-review of Design #198 120eb4e + Plan #220 daa1c6c, then independent review of Contracts #74 (CI green at d0ebf94)"
     ],
     "host": "deku",
-    "note": "Design amended per review of 58fc4a2"
+    "note": "Planning pair approved by r-c20261001-con07-plan: Design #198 120eb4ebec2bd5a5ff01c02b71a26465dd38fa62, Plan #220 daa1c6c16b6ef41b901b61f42eeb15097c4d0643; Contracts #74 d0ebf94 awaits its own code review"
   }
 }
