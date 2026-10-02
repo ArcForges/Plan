@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:DesktopPlatform",
-  "claimant": "w-c20261001-plt35",
-  "epoch": 6,
-  "state": "released",
-  "claimedAt": "2026-10-02T02:14:15Z",
-  "updatedAt": "2026-10-02T02:25:49Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261001-plt09",
+  "epoch": 7,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T02:34:53Z",
+  "updatedAt": "2026-10-02T02:34:53Z",
+  "leaseUntil": "2026-10-02T14:34:53Z",
   "handoff": {
     "host": "deku",
-    "note": "PLT.35 #119 merged (81d53f5) and published (run 36954747514); no other approved DesktopPlatform PR queued by this holder; PLT.09 #117 still open and needs rebase/re-chain from active receipt plt-35-r1"
+    "note": "claimed after released by w-c20261001-plt35 epoch 6; review the earlier handoff and commits"
   }
 }
