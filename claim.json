@@ -6,21 +6,25 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:26:17Z",
-  "updatedAt": "2026-10-02T00:26:17Z",
-  "leaseUntil": "2026-10-03T00:26:17Z",
+  "updatedAt": "2026-10-02T00:30:49Z",
+  "leaseUntil": "2026-10-03T00:30:49Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-50",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Claimed; read brief, Plan/Design task records, WP-12.03, architecture 13 SG-02/SG-03/CC-01..03, PLT.49 ledger and library on main 99344df; retained worktree created from origin/main",
+      "ADP-07 supporting-file binding (declared before editing): serves only artifacts inside the task outcome and write scope (new public types and files under src/BuildingBlocks/ArcForges.Observability/**). Exact paths: eng/policy/architecture-contract-tests.json (RES-architecture-tests, append only RP-10 rows for the new public methods, owner Architecture tests suite, necessity: Build.Policy RP-10 fails on a public method without a direct [Fact] binding); eng/provenance/files.json (RES-desktopplatform-policy-data, append only the new first-party source/test paths, necessity: provenance gate lists every tracked file). No csproj, packages.lock.json, Directory.Packages.props, dependency-policy.json, dependency receipt, active-projects.json, .gitleaks.toml, solution/workflow or packages.json change; no new project reference or package."
+    ],
     "validation": [],
-    "worktree": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-50",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "Implement trace policy (head sampler, bounded diagnostic buffer, promotion, loss counters, consent gate), metric label policy, policy JSON sampling/retention config and offline tests",
+      "Push task/plt-50, open PR, wait for hosted CI, record handoff, await review"
     ],
     "host": "deku",
     "note": null
