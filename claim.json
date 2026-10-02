@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:38Z",
-  "updatedAt": "2026-10-02T11:52:16Z",
-  "leaseUntil": "2026-10-03T11:52:16Z",
+  "updatedAt": "2026-10-02T17:09:20Z",
+  "leaseUntil": "2026-10-03T17:09:20Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-13",
@@ -20,17 +20,18 @@
       "first implementation and tests committed and pushed (not yet compiled/run): LocalRpcCallGate, peer bounds registry, admission middleware, typed refusal, callback guard/interceptor, handshake/idle watchdog, limits, README; test suites for gate, bounds, peer limits, callbacks, guards. ADP-07 supporting bindings planned (existing files only): eng/provenance/files.json (new source/test files), eng/policy/architecture-contract-tests.json (new public API bindings); no dependency, package or project change",
       "offline suite green locally (113 pass + 9 opt-in skipped before the latest additions); found and fixed HTTP/2 connection-window starvation by unread queued bodies (control call blocked 8 s with 2 queued 256 KiB bodies; now served in 16 ms at 64 queued); mutation runs of the guards in progress",
       "mutation runs: gate, admission classification/deadline/queue, control slots, callbacks killed; continuing remaining batches",
-      "PR 125 opened; local validation: build 0 warnings, format, provenance/dependency/reconciliation/licence/runtime-ownership checks, architecture test (only hosted-evidence findings), offline suite 144 (134 run) green 13x incl. contended, opt-in OS 71 runs green, 39 hand mutants killed but one equivalent"
+      "PR 125 opened; local validation: build 0 warnings, format, provenance/dependency/reconciliation/licence/runtime-ownership checks, architecture test (only hosted-evidence findings), offline suite 144 (134 run) green 13x incl. contended, opt-in OS 71 runs green, 39 hand mutants killed but one equivalent",
+      "rebased onto main 7316ab8 (no conflicts); earlier head e3e1443 had hosted CI all green (run 37003373154); re-ran local build, offline suite 134 run/0 failed, opt-in 143 run/0 failed, provenance/dependency/reconciliation checks after rebase"
     ],
     "validation": [
       "dotnet test LocalRpc offline 134 run/10 skipped/0 failed; opt-in OS checks Windows only"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-13",
-    "head": "e3e1443fd16594aacdeff847d167a89697e1101e",
+    "head": "48164f8909c098d37266bb362b3a99a0f00664dc",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await hosted CI; await review"
+      "await hosted CI at the rebased head; await review"
     ],
     "host": "deku",
     "note": null
