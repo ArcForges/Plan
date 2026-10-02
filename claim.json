@@ -6,21 +6,30 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T06:09:37Z",
-  "updatedAt": "2026-10-02T06:09:37Z",
-  "leaseUntil": "2026-10-03T06:09:37Z",
+  "updatedAt": "2026-10-02T06:15:24Z",
+  "leaseUntil": "2026-10-03T06:15:24Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-53",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/ArcForges-Design/pull/203",
+      "https://github.com/ArcForges/Plan/pull/236"
+    ],
     "merges": [],
-    "done": [],
+    "done": [
+      "read brief, policy, Design delivery README, predecessors' ledgers PLT.35/47-52; claimed epoch 1",
+      "found PLT.53 write scope (packages.json only) cannot activate packages: packable-iff-listed test requires IsPackable and no *Placeholder.cs; dependency-admission binds project and packages.json hashes; opened planning repair pair Design #203 + Plan #236 (heads c266407 / 1d4bb3d), check passed with explicit roots",
+      "ADP-07 binding (declared before first DesktopPlatform edit; exact paths in Design #203 graph notes): packages.json; Observability and Observability.Desktop csproj (package activation only); delete Observability/AssemblyPlaceholder.cs; both READMEs; dependency-policy.json hashes+pointer, new dependency-reviews/plt-53-r1.json, eng/provenance/files.json (receipt row, placeholder removal), active-projects.json (2 blobs)"
+    ],
     "validation": [],
-    "worktree": null,
+    "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-53",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "implement in DesktopPlatform worktree after repair merges (or in parallel; DesktopPlatform PR merges only after Design #203 and Plan #236)",
+      "local pack + one opt-in offline consumer outside the repository",
+      "open DesktopPlatform PR, await hosted CI and review"
     ],
     "host": "deku",
     "note": null
