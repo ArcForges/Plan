@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:38Z",
-  "updatedAt": "2026-10-02T22:18:25Z",
-  "leaseUntil": "2026-10-03T22:18:25Z",
+  "updatedAt": "2026-10-02T22:22:01Z",
+  "leaseUntil": "2026-10-03T22:22:01Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-13",
@@ -29,7 +29,8 @@
       "review round 2 fixes pushed as one commit rebased on main d6e158d: early-timer re-arm (+deterministic and real-clock tests), connection window 3x, 80-call burst test, README corrections, PR body ADP-07 declaration (owner RES-desktopplatform-policy-data/build-config append; necessity: provenance and RP-10 gates), mutants N1/N2/N4 killed; hosted CI green 15/15",
       "publication confirmed: Publish NuGet run 37056924397 on d4e8743 success (14 packages ci.81.1, none LocalRpc)",
       "merged d4e8743; Publish NuGet 37056924397 success; role released; ledger PR Plan#244 opened at 19f62b0f03b885de88b2063326092a8d4869af1e, check passed",
-      "ledger review round 1 findings fixed in Plan#244 head fb3db09859de13192f63fd6e17541d0594bdd885; check passed"
+      "ledger review round 1 findings fixed in Plan#244 head fb3db09859de13192f63fd6e17541d0594bdd885; check passed",
+      "ledger review round 2 fixed in Plan#244 head 656713fa4e884f79f7ccc967375a1fbb21e732e8; check passed"
     ],
     "validation": [
       "dotnet test LocalRpc offline 134 run/10 skipped/0 failed; opt-in OS checks Windows only"
