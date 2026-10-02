@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-02T23:27:52Z",
-  "leaseUntil": "2026-10-03T23:27:52Z",
+  "updatedAt": "2026-10-02T23:30:31Z",
+  "leaseUntil": "2026-10-03T23:30:31Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
@@ -16,7 +16,10 @@
       "https://github.com/ArcForges/ArcForges-Design/pull/207",
       "https://github.com/ArcForges/Plan/pull/246"
     ],
-    "merges": [],
+    "merges": [
+      "4dd3f735e70346cfbf3c15b01d5179120f7c7050",
+      "e8c3d1e9c9d7e802e6dd1b94a3105753c750995c"
+    ],
     "done": [
       "claimed; read brief/Plan/Design/task prompt/PRF.07 ledger; baseline npm ci on pinned Node 24.21.0/npm 11.19.0 (fnm); found main npm audit --audit-level=high red (undici via wrangler 4.135.0; 4.143.1 clears it in a scratch install); site build with Contracts 287.1 in scratch emits byte-identical chunks (graph only grows 254 to 299 modules)",
       "resumed after rate-limit interruption; pushed WIP (manifests, lock, wrangler 4.143.1, Contracts 287.1 pin, build-identity sources[] support, apps/app skeleton); admission records, app routes, tests and planning pair still to do; NOT green",
@@ -30,7 +33,7 @@
     "reviewed": "0439ffecf95f6a5f415f40e5ae170be089bf9c9b",
     "blocker": null,
     "next": [
-      "await re-review: Design 207 at 0439ffe, Plan 246 at 95e4df6, Web 25 at 3e6cfac; merge order Design, Plan, Web"
+      "await independent code review of Web 25 at 3e6cfac (planning scope merged); do not merge Web before approval; then ledger record"
     ],
     "host": "deku",
     "note": "planning PRs approved: Design 207 at 0439ffe, Plan 246 at 95e4df6; Web 25 review pending"
