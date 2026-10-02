@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-c20261001-plt09",
   "epoch": 7,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T02:34:53Z",
-  "updatedAt": "2026-10-02T02:34:53Z",
-  "leaseUntil": "2026-10-02T14:34:53Z",
+  "updatedAt": "2026-10-02T02:48:05Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-plt35 epoch 6; review the earlier handoff and commits"
+    "note": "PLT.09 merged (54fb948); no other DesktopPlatform PR queued from this worker; primary fast-forwarded; vacant"
   }
 }
