@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:DesktopPlatform",
-  "claimant": "w-c20261002-plt52",
-  "epoch": 9,
-  "state": "released",
-  "claimedAt": "2026-10-02T05:25:00Z",
-  "updatedAt": "2026-10-02T05:37:23Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261002-plt50",
+  "epoch": 10,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T05:48:15Z",
+  "updatedAt": "2026-10-02T05:48:15Z",
+  "leaseUntil": "2026-10-02T17:48:15Z",
   "handoff": {
     "host": "deku",
-    "note": "merged #121 (452ec15); Publish NuGet 36968882005 success; queue: nothing else pending from this worker"
+    "note": "claimed after released by w-c20261002-plt52 epoch 9; review the earlier handoff and commits"
   }
 }
