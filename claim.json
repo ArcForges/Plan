@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T17:50:37Z",
-  "leaseUntil": "2026-10-03T17:50:37Z",
+  "updatedAt": "2026-10-02T17:51:37Z",
+  "leaseUntil": "2026-10-03T17:51:37Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Plan/pull/239"
     ],
     "merges": [
-      "9fe200def05befd42a245eb01fb1de8bcac59b21"
+      "9fe200def05befd42a245eb01fb1de8bcac59b21",
+      "a51ef73dc014744fe1cdbb126f4b7d580e5dd71a"
     ],
     "done": [
       "claimed as completion follow-up; read task prompt, ledger records CON.07/14/15, window/harness; derived pinned-descriptor plan (ci.287.1 closure)",
@@ -36,7 +37,7 @@
     "reviewed": "c04e175f3fecb9abfba310c4e37797cead376925",
     "blocker": null,
     "next": [
-      "merge via integration:Plan"
+      "update --state complete"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
