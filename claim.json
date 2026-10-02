@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T19:35:47Z",
-  "updatedAt": "2026-10-02T00:21:59Z",
-  "leaseUntil": "2026-10-03T00:21:59Z",
+  "updatedAt": "2026-10-02T00:23:17Z",
+  "leaseUntil": "2026-10-03T00:23:17Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-49",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Plan/pull/228"
     ],
     "merges": [
-      "99344df1ad24b4aaf0dfd288668da419b8d9a987"
+      "99344df1ad24b4aaf0dfd288668da419b8d9a987",
+      "5ffda04a40dd6b4c8a113ee539a42de33db8feff"
     ],
     "done": [
       "Claimed; read brief, Plan, Design WP-12.02, architecture 13 RD/SG rules, existing Observability source/tests; worktree created from main c0def81",
@@ -24,7 +25,8 @@
       "ADP-07 supporting bindings applied as declared: 7 RP-10 bindings appended to eng/policy/architecture-contract-tests.json and 17 firstParty paths added to eng/provenance/files.json; Properties/AssemblyInfo.cs InternalsVisibleTo (no csproj/lock/dependency input touched)",
       "Rebased onto main d00ccc7; re-appended RP-10 bindings; local full build, Observability tests 191/191, architecture policy test (only environmental findings), format clean re-run",
       "Review 5940248986 findings addressed in d08d6ec: route-slot registry, PR wording, audit limits and carriers, real Activity.AddException test; rebased onto main 7644e31",
-      "Merged as 99344df1ad24b4aaf0dfd288668da419b8d9a987; main-push Publish NuGet run 36943563428 completed success (17 jobs incl. publish); primary DesktopPlatform fast-forwarded; integration role released"
+      "Merged as 99344df1ad24b4aaf0dfd288668da419b8d9a987; main-push Publish NuGet run 36943563428 completed success (17 jobs incl. publish); primary DesktopPlatform fast-forwarded; integration role released",
+      "Ledger PR Plan #228 merged as 5ffda04"
     ],
     "validation": [
       "Local (SDK 10.0.401 substituted, uncommitted): full slnx Release build 0 warnings/errors; dotnet format clean; Observability tests 189/189; marker-injection report 528 injections, 0 findings; architecture policy test no RP-10/BAN-REFLECTION findings (only environmental); provenance, reconciliation, dependency_policy, licence tests pass",
