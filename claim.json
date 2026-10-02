@@ -6,13 +6,14 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T17:31:52Z",
-  "leaseUntil": "2026-10-03T17:31:52Z",
+  "updatedAt": "2026-10-02T17:34:41Z",
+  "leaseUntil": "2026-10-03T17:34:41Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
     "prs": [
-      "https://github.com/ArcForges/Contracts/pull/76"
+      "https://github.com/ArcForges/Contracts/pull/76",
+      "https://github.com/ArcForges/Plan/pull/239"
     ],
     "merges": [
       "9fe200def05befd42a245eb01fb1de8bcac59b21"
@@ -26,14 +27,15 @@
     ],
     "validation": [
       "hosted CI at 450e553 green; local tooling tests for the matrix 36 OK (claimant-reported)",
-      "hosted CI at 88a1988 green"
+      "hosted CI at 88a1988 green",
+      "check passed with explicit roots (437 tasks, 99 views current, ledger valid)"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-17",
     "head": "88a19888091415a7d2783d72d35731deb53c23bb",
     "reviewed": "88a19888091415a7d2783d72d35731deb53c23bb",
     "blocker": null,
     "next": [
-      "record the ledger (Plan PR amending con-17.md to complete)"
+      "await independent review of Plan#239 at dfb3dce; merge via integration:Plan; then update --state complete"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
