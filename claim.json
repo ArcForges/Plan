@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:56:16Z",
-  "updatedAt": "2026-10-02T06:46:29Z",
-  "leaseUntil": "2026-10-03T06:46:29Z",
+  "updatedAt": "2026-10-02T09:44:08Z",
+  "leaseUntil": "2026-10-03T09:44:08Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/prf-07",
@@ -15,15 +15,16 @@
     "merges": [],
     "done": [
       "claimed; read Design/Plan/contracts; no Cloudflare credentials, wrangler login or Docker exist here, so live deployment is impossible in this environment; Contracts 1.0.0-ci.287.1 pins and npm/NuGet admission staged locally; planning scope-repair pair (Design b2967fd, Plan 385d597) prepared locally",
-      "Worker half implemented with 168 offline node tests (plan vectors on SQLite, executor, handler, signing, R2 facade, Queue/DO logic, proof routes); planning scope-repair pair pushed (Design task/prf-07-write-scope 809414c, Plan task/prf-07-write-scope 403d5b1); C# half in progress via a delegated engineer"
+      "Worker half implemented with 168 offline node tests (plan vectors on SQLite, executor, handler, signing, R2 facade, Queue/DO logic, proof routes); planning scope-repair pair pushed (Design task/prf-07-write-scope 809414c, Plan task/prf-07-write-scope 403d5b1); C# half in progress via a delegated engineer",
+      "resumed after rate-limit; delegate died leaving unbuilt C# sources under src/ArcForges.Cloud/{Hmac,Storage,Foundation,Composition}; checkpoint pushed"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\prf-07",
-    "head": "0cbc37f2883a555c7f33b4b7743a0832b39f44e5",
+    "head": "3327c4238ad3b442a839688dd688ad9fdefc7d22",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "finish C# host, seal dependency admission and release provenance, local AOT publish and local cross-process harness, open Design/Plan repair PRs and the Cloud PR, wait for hosted CI"
+      "build and test the C# host, write C# tests, seal admission/provenance, local AOT publish, harness, open PRs"
     ],
     "host": "deku",
     "note": null
