@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-02T23:05:09Z",
-  "leaseUntil": "2026-10-03T23:05:09Z",
+  "updatedAt": "2026-10-02T23:09:00Z",
+  "leaseUntil": "2026-10-03T23:09:00Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
@@ -22,13 +22,15 @@
       "resumed after rate-limit interruption; pushed WIP (manifests, lock, wrangler 4.143.1, Contracts 287.1 pin, build-identity sources[] support, apps/app skeleton); admission records, app routes, tests and planning pair still to do; NOT green",
       "implementation complete locally and pushed (history rewritten pre-review: WIP bfbf307 replaced by 2 commits): apps/app profiles, SDK pin 287.1, wrangler 4.143.1, admission records (receipt, profile r8, build-identity r4); npm run check green, strict candidate build verified, npm audit 0 vuln, mutation run 45/48 then 48/48-minus-1-equivalent, local Chromium run against local Native AOT Hello host once"
     ],
-    "validation": [],
+    "validation": [
+      "hosted CI run 37075989133 green on f16e538; local: npm run check (110 unit, 43 provenance), npm audit 0, strict candidate build, esproj Build, profile --twice determinism, 48-mutant run, one local Chromium run against a local Native AOT Hello host (host dirty local build)"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Web\\.worktree\\prf-08",
-    "head": "e69b7d5d49bf523e570a9b345b127f8ca073ae16",
+    "head": "f16e538daff730bec77f37f5e8947b19cd7cc4f9",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review (Web 25 at e69b7d5; Design 207 and Plan 246 scope pair must merge before Web); hosted CI running; gitleaks rows for r8 profile may follow"
+      "await review of Web 25 at f16e538 and the scope pair Design 207 / Plan 246 (merge order: Design 207, Plan 246, then Web 25 via integration:Web); then ledger record PRF.08 as delivered (no live proof; needs the same user-provided Cloudflare inputs as PRF.07 plus a deployed ingress)"
     ],
     "host": "deku",
     "note": null
