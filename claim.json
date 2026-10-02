@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:38Z",
-  "updatedAt": "2026-10-02T19:26:42Z",
-  "leaseUntil": "2026-10-03T19:26:42Z",
+  "updatedAt": "2026-10-02T19:51:36Z",
+  "leaseUntil": "2026-10-03T19:51:36Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-13",
@@ -30,10 +30,10 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-13",
     "head": "2317461f83c0592bc27b91df56c598885f3028c0",
-    "reviewed": null,
+    "reviewed": "2317461f83c0592bc27b91df56c598885f3028c0",
     "blocker": null,
     "next": [
-      "await re-review"
+      "claim integration:DesktopPlatform and merge"
     ],
     "host": "deku",
     "note": null
