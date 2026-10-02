@@ -4,12 +4,12 @@
   "id": "integration:Contracts",
   "claimant": "w-c20261001-con07",
   "epoch": 4,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T04:55:03Z",
-  "updatedAt": "2026-10-02T04:55:03Z",
-  "leaseUntil": "2026-10-02T07:55:03Z",
+  "updatedAt": "2026-10-02T05:22:31Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-con14 epoch 3; review the earlier handoff and commits"
+    "note": "Merged Contracts #74 as ca45f36cccbdd31380f76b8f6cdecc958fdcb430; primary fast-forwarded; main-push CI 36966686225 and Security 36966686231 succeeded"
   }
 }
