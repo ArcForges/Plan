@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:04:32Z",
-  "updatedAt": "2026-10-02T00:32:10Z",
-  "leaseUntil": "2026-10-03T00:32:10Z",
+  "updatedAt": "2026-10-02T02:13:54Z",
+  "leaseUntil": "2026-10-03T02:13:54Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-35",
@@ -18,10 +18,12 @@
     "done": [
       "Activated ArcForges.DesignSystem and ArcForges.Desktop.Shell: IsPackable (Shell also PackageId/readme/licence pack items), two packages.json entries, readmes. ADP-07 supporting bindings (exact, no graph edit; categories: current admission input bindings, provenance, reconciliation snapshot, factual docs; no new owner/version/closure/identity beyond the task's two package IDs): eng/policy/dependency-policy.json (inputHashes for packages.json and the two csproj + reviewReceipt), eng/policy/dependency-reviews/plt-35-r1.json (successor chained from ACTIVE plt-44-r1), eng/provenance/files.json (append receipt path), eng/policy/reconciliation/active-projects.json (two csproj blobs), the two package README.md files. Local: pinned SDK 10.0.400 pack of 4 owned packages, nuspec deps match catalogue; one-time local opt-in Shell-only consumer (offline sources) restored exact closure, ran JIT and Native AOT win-x64 zero diagnostics"
     ],
-    "validation": [],
+    "validation": [
+      "PR body corrected per review finding 1 (head unchanged); hosted run 36946456493 15/15 green; local pinned-SDK pack/gates and one-time local consumer as in PR #119"
+    ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-35",
     "head": "8cb87aead8f240d38dd3fbd7f8d78ac080dbb455",
-    "reviewed": null,
+    "reviewed": "8cb87aead8f240d38dd3fbd7f8d78ac080dbb455",
     "blocker": null,
     "next": [
       "await review"
