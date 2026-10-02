@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T09:43:38Z",
-  "leaseUntil": "2026-10-03T09:43:38Z",
+  "updatedAt": "2026-10-02T09:48:36Z",
+  "leaseUntil": "2026-10-03T09:48:36Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
@@ -17,15 +17,16 @@
     "merges": [],
     "done": [
       "claimed as completion follow-up; read task prompt, ledger records CON.07/14/15, window/harness; derived pinned-descriptor plan (ci.287.1 closure)",
-      "Contracts PR 76 opened: pinned ci.287.1 later-service window, both directions, reference-codec exchange, generated-C# leg, closed-schema pins, mutation tests"
+      "Contracts PR 76 opened: pinned ci.287.1 later-service window, both directions, reference-codec exchange, generated-C# leg, closed-schema pins, mutation tests",
+      "multi-pin window (7 published candidates + 11 closed schema pins), per-pin generated C# leg, 36 matrix tests; PR body updated"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-17",
-    "head": "37102a173e9895d6200d19dc625ab031eb9652ef",
+    "head": "450e5534fa31a478c4812775c879fa399c95647d",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "finish multi-pin window refactor, push, hosted CI, then independent review"
+      "await hosted CI at 450e553, then independent review"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
