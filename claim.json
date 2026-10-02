@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-02T23:25:49Z",
-  "leaseUntil": "2026-10-03T23:25:49Z",
+  "updatedAt": "2026-10-02T23:27:52Z",
+  "leaseUntil": "2026-10-03T23:27:52Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
@@ -27,12 +27,12 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Web\\.worktree\\prf-08",
     "head": "3e6cfacaaf8fccdb87d3bd06fe0ae0a4339d472d",
-    "reviewed": null,
+    "reviewed": "0439ffecf95f6a5f415f40e5ae170be089bf9c9b",
     "blocker": null,
     "next": [
       "await re-review: Design 207 at 0439ffe, Plan 246 at 95e4df6, Web 25 at 3e6cfac; merge order Design, Plan, Web"
     ],
     "host": "deku",
-    "note": "Design lane view was uncommitted; fixed, check re-run after final edit"
+    "note": "planning PRs approved: Design 207 at 0439ffe, Plan 246 at 95e4df6; Web 25 review pending"
   }
 }
