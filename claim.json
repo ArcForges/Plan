@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:27:45Z",
-  "updatedAt": "2026-10-02T02:58:32Z",
-  "leaseUntil": "2026-10-03T02:58:32Z",
+  "updatedAt": "2026-10-02T03:09:15Z",
+  "leaseUntil": "2026-10-03T03:09:15Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-52",
@@ -20,7 +20,8 @@
     "done": [
       "library: consent, verbose session, local store, report draft/approve/send, crash marker; ConsentTests written (not yet built)",
       "implementation PR opened; planning-repair pair Design #201 + Plan #229 (head bf4cf4d / 92b9386) opened; local validation: build 0 warn, Desktop tests 20/20, Observability 200/200, arch 99/100 environmental only",
-      "rebased onto main 54fb948 (PLT.09 merged): policy re-appended at tail, receipt plt-52-r1 re-chained from active plt-09-r1; local rebuild, Desktop tests 20/20, arch 99/100 environmental only, policy checks, format all pass"
+      "rebased onto main 54fb948 (PLT.09 merged): policy re-appended at tail, receipt plt-52-r1 re-chained from active plt-09-r1; local rebuild, Desktop tests 20/20, arch 99/100 environmental only, policy checks, format all pass",
+      "hosted PR run green 15/15 at f9d0127 (mergeable); worktree global.json restored to the committed pin (re-substitute 10.0.401 locally and run scratchpad plt52_fix_locks.py before commits if rebuilding)"
     ],
     "validation": [
       "local only; SDK 10.0.401 substituted in uncommitted global.json; locked restore evaluated by hosted CI"
@@ -30,7 +31,8 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await hosted CI at new head; await independent review of #121 (and Design #201 / Plan #229 first)"
+      "await review",
+      "merge order: Design #201, Plan #229, then DesktopPlatform #121 via integration:DesktopPlatform; ledger PR after merge"
     ],
     "host": "deku",
     "note": null
