@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:17Z",
-  "updatedAt": "2026-10-02T18:53:28Z",
-  "leaseUntil": "2026-10-03T18:53:28Z",
+  "updatedAt": "2026-10-02T18:54:44Z",
+  "leaseUntil": "2026-10-03T18:54:44Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-10",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/123"
     ],
-    "merges": [],
+    "merges": [
+      "d6e158de9e8cc3f802a93208b756637b4f432cc8"
+    ],
     "done": [
       "claimed; read brief, WP-08.01, design annex 09/03, PLT.09 ledger+reviews; worktree task/plt-10 from main 54fb948; plan: LocalRpcLaunchAuthority/Launch/Descriptor/Claim (epoch fencing, nonce+build+protocol verify, one-use secret, owner-only atomic per-launch dir with stale sweep), async cancellable connection authorizer; ADP-07 supporting bindings only inside ArcForges.LocalRpc: provenance files.json append, architecture-contract-tests.json rows per new public method (RP-10), no new native binding, no csproj/package/version change",
       "library source pushed (descriptor, identity, claim, authority, launch, owner-only launch dirs, async authorizer); library builds with 0 warnings",
@@ -31,7 +33,8 @@
     "reviewed": "fb5ae47b3bb39008dfd3ca8754727082886a9160",
     "blocker": null,
     "next": [
-      "await re-review"
+      "confirm publication",
+      "record the ledger"
     ],
     "host": "deku",
     "note": null
