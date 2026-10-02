@@ -4,12 +4,12 @@
   "id": "integration:Cloud",
   "claimant": "w-c20261002-prf07",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T17:35:07Z",
-  "updatedAt": "2026-10-02T17:35:07Z",
-  "leaseUntil": "2026-10-02T18:35:07Z",
+  "updatedAt": "2026-10-02T17:35:52Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "not merged: merging a Cloud PR to main triggers the Deploy Cloudflare job (live production deploy of the sealed Hello candidate); coordinator asked that no live deploy run, so the decision is returned"
   }
 }
