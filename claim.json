@@ -6,15 +6,16 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:36:26Z",
-  "updatedAt": "2026-10-02T02:48:26Z",
-  "leaseUntil": "2026-10-03T02:48:26Z",
+  "updatedAt": "2026-10-02T02:50:24Z",
+  "leaseUntil": "2026-10-03T02:50:24Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-09",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/117",
       "https://github.com/ArcForges/ArcForges-Design/pull/200",
-      "https://github.com/ArcForges/Plan/pull/223"
+      "https://github.com/ArcForges/Plan/pull/223",
+      "https://github.com/ArcForges/Plan/pull/231"
     ],
     "merges": [
       "54fb94887c5b8e67753cfe83bae57f372dbbe507"
@@ -30,14 +31,15 @@
     ],
     "validation": [
       "locked restore+Release build+format pass; offline tests 39 pass/7 skipped; opt-in OS-stream checks 6/6 on Windows only; untested: Linux/macOS, real wrong-user, AOT publish",
-      "hosted CI green at a16878175b7af43ceb50d714fe7e372b4b519501; local: locked restore, build, format, 54 offline tests (45 pass/9 skipped), opt-in OS checks 15 clean runs on Windows only"
+      "hosted CI green at a16878175b7af43ceb50d714fe7e372b4b519501; local: locked restore, build, format, 54 offline tests (45 pass/9 skipped), opt-in OS checks 15 clean runs on Windows only",
+      "ledger check passed with explicit roots; Plan PR 231 opened at e76972bcd274"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-09",
     "head": "6373e9459170c7e72f2d1d3204f51e0a2394519d",
     "reviewed": "6373e9459170c7e72f2d1d3204f51e0a2394519d",
     "blocker": null,
     "next": [
-      "ledger PR (delivered)"
+      "await review of Plan PR 231; merge via integration:Plan; then update --state delivered"
     ],
     "host": "deku",
     "note": null
