@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:01Z",
-  "updatedAt": "2026-10-02T00:02:14Z",
-  "leaseUntil": "2026-10-03T00:02:14Z",
+  "updatedAt": "2026-10-02T00:04:39Z",
+  "leaseUntil": "2026-10-03T00:04:39Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-14",
@@ -42,7 +42,7 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-14",
     "head": "8762132eb165f4c0747e937e60b4412f789be66c",
-    "reviewed": "8762132eb165f4c0747e937e60b4412f789be66c",
+    "reviewed": "de62c036236f6fe1b594297818d5c6b10dd5673e",
     "blocker": null,
     "next": [
       "await narrow re-review of ledger PR Plan #226 (head de62c036236f6fe1b594297818d5c6b10dd5673e)"
