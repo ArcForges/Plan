@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "CON.17",
+  "claimant": "w-c20261002-con17f",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T05:57:48Z",
+  "updatedAt": "2026-10-02T05:57:48Z",
+  "leaseUntil": "2026-10-03T05:57:48Z",
+  "handoff": {
+    "repository": "Contracts",
+    "branch": "task/con-17",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "perform the remaining acceptance for the scenarios the completion prerequisites name",
+      "record completion by editing the ledger record through a reviewed Plan pull request"
+    ],
+    "host": "deku",
+    "note": "completion follow-up (DLV-41)"
+  }
+}
