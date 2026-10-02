@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "PRF.07",
+  "claimant": "w-c20261002-prf07",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T05:56:16Z",
+  "updatedAt": "2026-10-02T05:56:16Z",
+  "leaseUntil": "2026-10-03T05:56:16Z",
+  "handoff": {
+    "repository": "Cloud",
+    "branch": "task/prf-07",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "plan the task, then push the task branch at the first checkpoint"
+    ],
+    "host": "deku",
+    "note": null
+  }
+}
