@@ -4,10 +4,10 @@
   "id": "PLT.10",
   "claimant": "w-c20261002-plt10",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-02T03:09:17Z",
-  "updatedAt": "2026-10-02T19:25:03Z",
-  "leaseUntil": "2026-10-03T19:25:03Z",
+  "updatedAt": "2026-10-02T19:25:57Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-10",
