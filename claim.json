@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Plan",
-  "claimant": "w-c20261002-con17f",
-  "epoch": 25,
-  "state": "released",
-  "claimedAt": "2026-10-02T17:50:51Z",
-  "updatedAt": "2026-10-02T17:52:11Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261002-plt10",
+  "epoch": 26,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T19:25:18Z",
+  "updatedAt": "2026-10-02T19:25:18Z",
+  "leaseUntil": "2026-10-03T07:25:18Z",
   "handoff": {
     "host": "deku",
-    "note": "CON.17 ledger #239 merged as a51ef73; queue empty from this worker"
+    "note": "claimed after released by w-c20261002-con17f epoch 25; review the earlier handoff and commits"
   }
 }
