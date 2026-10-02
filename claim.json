@@ -4,10 +4,10 @@
   "id": "PRF.10",
   "claimant": "w-c20261002-prf10",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-02T19:46:32Z",
-  "updatedAt": "2026-10-02T22:46:22Z",
-  "leaseUntil": "2026-10-03T22:46:22Z",
+  "updatedAt": "2026-10-02T22:47:27Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Mobile",
     "branch": "task/prf-10",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Plan/pull/245"
     ],
     "merges": [
-      "377fa5d6e00b7a50d37d2f8434f915850c6d5b9f"
+      "377fa5d6e00b7a50d37d2f8434f915850c6d5b9f",
+      "0de117cf888bd07bad5a40adb2a2dd4981a48615"
     ],
     "done": [
       "Verified facts: Maven Central contracts-connect-client latest is 1.0.0-ci.60.1 whose JAR holds only HelloServiceClient (unary); Contracts main publishes Maven only as mutable 1.0.0-SNAPSHOT, so no admissible immutable coordinate carries EventService.Watch; PRF.07 foundation exposes no gRPC-Web business service (no Watch) and has no deployed ingress",
@@ -30,7 +31,8 @@
       "Ledger PR Plan 245 opened at 5d8b3174039ef8180eb0e0a1cbc3b854b6cae281 (check with explicit roots passed); integration:Mobile released",
       "Ledger PR Plan 245 corrected per review (comment 5962614293); new head e0ba4a24b05b4ebbb70a48d61a4da03e268bdc9d, check with explicit roots passed",
       "Ledger PR Plan 245 round-2 wording fixed (comment 5962642159); new head 2a976aca33d1bedcdc8b66d903277dccc7701197, check with explicit roots passed",
-      "Plan PR 245 approved at 2a976aca33d1bedcdc8b66d903277dccc7701197 (comment 5962656942)"
+      "Plan PR 245 approved at 2a976aca33d1bedcdc8b66d903277dccc7701197 (comment 5962656942)",
+      "Plan PR 245 merged as 0de117cf888bd07bad5a40adb2a2dd4981a48615 via integration:Plan; delivered, not complete (live proof pending)"
     ],
     "validation": [
       "Local (Windows 11, JDK 21.0.11, Gradle 9.8.0 offline, build slot): spotlessCheck, shared tests, app unit tests (8 new stream fixture tests), lintRelease, assembleDebugAndroidTest, assembleRelease, bundleRelease, eng/mobile.py check+bytecode, eng unittest 70 passed; mutation checks of new tests",
@@ -42,7 +44,7 @@
     "reviewed": "2a976aca33d1bedcdc8b66d903277dccc7701197",
     "blocker": null,
     "next": [
-      "merge Plan 245 via integration:Plan; then update --state delivered"
+      "completion follow-up: needs PRF.07 live proof, a deployed streaming service, an admissible Maven streaming client and an Android release run (see ledger record)"
     ],
     "host": "deku",
     "note": null
