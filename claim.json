@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T02:04:13Z",
-  "leaseUntil": "2026-10-02T14:04:13Z",
+  "updatedAt": "2026-10-02T02:27:32Z",
+  "leaseUntil": "2026-10-02T14:27:32Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -31,7 +31,7 @@
     "reviewed": "120eb4ebec2bd5a5ff01c02b71a26465dd38fa62",
     "blocker": null,
     "next": [
-      "planning pair merged (Design ca27cab, Plan e255823); Contracts #74 d0ebf94 awaits independent code review, then merge on coordinator approval"
+      "review changes: explicit enum presence, oracle, vectors; Dokka r20 re-run (lease reclaimed for that phase), metadata, Design amendment"
     ],
     "host": "deku",
     "note": "Design #198 and Plan #220 merged; integration roles released"
