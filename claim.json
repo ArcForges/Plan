@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261001-plt35",
   "epoch": 15,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T02:40:00Z",
-  "updatedAt": "2026-10-02T02:40:00Z",
-  "leaseUntil": "2026-10-02T14:40:00Z",
+  "updatedAt": "2026-10-02T02:41:14Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-con07 epoch 14; review the earlier handoff and commits"
+    "note": "PLT.35 ledger #230 merged (0b11926); no other approved Plan PR queued by this holder"
   }
 }
