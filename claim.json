@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:17Z",
-  "updatedAt": "2026-10-02T04:48:11Z",
-  "leaseUntil": "2026-10-03T04:48:11Z",
+  "updatedAt": "2026-10-02T06:42:50Z",
+  "leaseUntil": "2026-10-03T06:42:50Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-10",
@@ -15,15 +15,16 @@
     "merges": [],
     "done": [
       "claimed; read brief, WP-08.01, design annex 09/03, PLT.09 ledger+reviews; worktree task/plt-10 from main 54fb948; plan: LocalRpcLaunchAuthority/Launch/Descriptor/Claim (epoch fencing, nonce+build+protocol verify, one-use secret, owner-only atomic per-launch dir with stale sweep), async cancellable connection authorizer; ADP-07 supporting bindings only inside ArcForges.LocalRpc: provenance files.json append, architecture-contract-tests.json rows per new public method (RP-10), no new native binding, no csproj/package/version change",
-      "library source pushed (descriptor, identity, claim, authority, launch, owner-only launch dirs, async authorizer); library builds with 0 warnings"
+      "library source pushed (descriptor, identity, claim, authority, launch, owner-only launch dirs, async authorizer); library builds with 0 warnings",
+      "implemented launch descriptor/authority/launch/owner-only launch dirs/async authorizer with offline + opt-in process tests (Windows run: 3/3 process checks pass); ADP-07 supporting bindings (all outside write scope, recorded before PR): eng/provenance/files.json appends the 11 new file paths of this task (owner: LocalRpc artifacts, protocol append, necessity: check_provenance); eng/policy/architecture-contract-tests.json appends 19 rows for the new public methods at the tail (owner: same, protocol append, necessity: RP-10 architecture test). No csproj, package, version, dependency, receipt or workflow change. mutation run queued behind the build slot"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-10",
-    "head": "2bda87b96b006c5141497f7984423dabb9808c73",
+    "head": "428bee551229390d9510f4aa6b5318404c988446",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "write offline tests + opt-in OS/process tests, ADP-07 supporting bindings (provenance files.json, architecture-contract-tests.json), README, open PR"
+      "mutation checks, rebase on main (PLT.13 overlaps listener/limits/server/README), hosted CI, PR, review request"
     ],
     "host": "deku",
     "note": null
