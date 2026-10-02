@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:27:45Z",
-  "updatedAt": "2026-10-02T05:20:31Z",
-  "leaseUntil": "2026-10-03T05:20:31Z",
+  "updatedAt": "2026-10-02T05:24:39Z",
+  "leaseUntil": "2026-10-03T05:24:39Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-52",
@@ -31,10 +31,10 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-52",
     "head": "e78672b0ba9c7126f9633e19c0059376a6e8bc91",
-    "reviewed": "bf4cf4d112bd9f54ada2e49a85dad8d5405cf263",
+    "reviewed": "e78672b0ba9c7126f9633e19c0059376a6e8bc91",
     "blocker": null,
     "next": [
-      "await re-review"
+      "merge #121 via integration:DesktopPlatform"
     ],
     "host": "deku",
     "note": null
