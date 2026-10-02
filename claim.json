@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Plan",
-  "claimant": "w-c20261002-prf07",
-  "epoch": 27,
-  "state": "released",
-  "claimedAt": "2026-10-02T19:39:19Z",
-  "updatedAt": "2026-10-02T19:40:11Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261002-plt13",
+  "epoch": 28,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T22:25:49Z",
+  "updatedAt": "2026-10-02T22:25:49Z",
+  "leaseUntil": "2026-10-03T10:25:49Z",
   "handoff": {
     "host": "deku",
-    "note": "merged Plan 241 at approved head cc82de8 as de508ac"
+    "note": "claimed after released by w-c20261002-prf07 epoch 27; review the earlier handoff and commits"
   }
 }
