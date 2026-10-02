@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T17:09:58Z",
-  "leaseUntil": "2026-10-03T17:09:58Z",
+  "updatedAt": "2026-10-02T17:31:52Z",
+  "leaseUntil": "2026-10-03T17:31:52Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
@@ -21,7 +21,8 @@
       "claimed as completion follow-up; read task prompt, ledger records CON.07/14/15, window/harness; derived pinned-descriptor plan (ci.287.1 closure)",
       "Contracts PR 76 opened: pinned ci.287.1 later-service window, both directions, reference-codec exchange, generated-C# leg, closed-schema pins, mutation tests",
       "multi-pin window (7 published candidates + 11 closed schema pins), per-pin generated C# leg, 36 matrix tests; PR body updated",
-      "review of 450e553 addressed: provenance record+receipt, oneof arms, local pins, dates, schema rule labels, tests; rebased on 0491315 (force-with-lease)"
+      "review of 450e553 addressed: provenance record+receipt, oneof arms, local pins, dates, schema rule labels, tests; rebased on 0491315 (force-with-lease)",
+      "merged 9fe200d; main CI 37038810575 and Security 37038810657 green; publication of 1.0.0-ci.295.1 confirmed by index metadata (NuGet 12/12 at 17:30:46Z, npm 5/5 at 17:25:01Z, Maven snapshot metadata 3/3 HTTP 200 at 17:31Z)"
     ],
     "validation": [
       "hosted CI at 450e553 green; local tooling tests for the matrix 36 OK (claimant-reported)",
@@ -32,8 +33,7 @@
     "reviewed": "88a19888091415a7d2783d72d35731deb53c23bb",
     "blocker": null,
     "next": [
-      "confirm publication",
-      "record the ledger"
+      "record the ledger (Plan PR amending con-17.md to complete)"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
