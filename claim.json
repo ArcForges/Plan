@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:56:16Z",
-  "updatedAt": "2026-10-02T17:07:17Z",
-  "leaseUntil": "2026-10-02T23:07:17Z",
+  "updatedAt": "2026-10-02T17:11:57Z",
+  "leaseUntil": "2026-10-03T17:11:57Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/prf-07",
@@ -18,7 +18,8 @@
     "done": [
       "claimed; read Design/Plan/contracts; no Cloudflare credentials, wrangler login or Docker exist here, so live deployment is impossible in this environment; Contracts 1.0.0-ci.287.1 pins and npm/NuGet admission staged locally; planning scope-repair pair (Design b2967fd, Plan 385d597) prepared locally",
       "Worker half implemented with 168 offline node tests (plan vectors on SQLite, executor, handler, signing, R2 facade, Queue/DO logic, proof routes); planning scope-repair pair pushed (Design task/prf-07-write-scope 809414c, Plan task/prf-07-write-scope 403d5b1); C# half in progress via a delegated engineer",
-      "resumed after rate-limit; delegate died leaving unbuilt C# sources under src/ArcForges.Cloud/{Hmac,Storage,Foundation,Composition}; checkpoint pushed"
+      "resumed after rate-limit; delegate died leaving unbuilt C# sources under src/ArcForges.Cloud/{Hmac,Storage,Foundation,Composition}; checkpoint pushed",
+      "Design 204 head 809414c56129451b03a10acff1049c243e208f30 and Plan 237 head 403d5b17488688ad63814191b5eae6291576c686 approved by reviewer r-c20261002-prf07-plan (comments 5957417171, 5957418007); wrangler admission PR Cloud 32 opened"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\prf-07",
@@ -26,7 +27,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "coordinator decides wrangler bump; then independent review of Cloud PR 31 at head fab55b7; live proof needs user-supplied Cloudflare account/credentials"
+      "merge planning pair; rebase Cloud 31 on merged wrangler admission; independent review of Cloud 31 when CI is green; live proof needs user-provided Cloudflare account/credentials"
     ],
     "host": "deku",
     "note": "resumed; preparing wrangler admission PR"
