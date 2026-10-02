@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T04:45:17Z",
-  "leaseUntil": "2026-10-02T16:45:17Z",
+  "updatedAt": "2026-10-02T04:51:10Z",
+  "leaseUntil": "2026-10-02T16:51:10Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -31,12 +31,12 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-07",
     "head": "8c0a40442647d3190384c02dc9480ef16118e1b6",
-    "reviewed": "120eb4ebec2bd5a5ff01c02b71a26465dd38fa62",
+    "reviewed": "2d7ab0483213827d25878f79fc246add0f727356",
     "blocker": null,
     "next": [
       "await independent review of Contracts #74 8c0a404 (CI green) and Design #202 2d7ab04 / Plan #232 c573be6; planning amendment merges before #74"
     ],
     "host": "deku",
-    "note": "Dokka r20 reserved and re-run at head 8c0a40442647d3190384c02dc9480ef16118e1b6 (PR #74); lease released"
+    "note": "Planning amendment approved by r-c20261001-con07-plan: Design #202 2d7ab0483213827d25878f79fc246add0f727356, Plan #232 c573be60659b0f0deb1537f7ed5a9211a41a7487"
   }
 }
