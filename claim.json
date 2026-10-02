@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:36:26Z",
-  "updatedAt": "2026-10-02T00:34:03Z",
-  "leaseUntil": "2026-10-03T00:34:03Z",
+  "updatedAt": "2026-10-02T02:14:52Z",
+  "leaseUntil": "2026-10-03T02:14:52Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-09",
@@ -30,7 +30,7 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-09",
     "head": "b799e83ed8946e78739b866eed4c93191a9cb6d7",
-    "reviewed": null,
+    "reviewed": "b799e83ed8946e78739b866eed4c93191a9cb6d7",
     "blocker": null,
     "next": [
       "await delta re-review at b799e83ed8946e78739b866eed4c93191a9cb6d7; then integration merge, ledger (delivered not complete)"
