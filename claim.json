@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T06:37:01Z",
-  "leaseUntil": "2026-10-03T06:37:01Z",
+  "updatedAt": "2026-10-02T09:43:38Z",
+  "leaseUntil": "2026-10-03T09:43:38Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
@@ -25,7 +25,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await hosted CI at head, then independent review"
+      "finish multi-pin window refactor, push, hosted CI, then independent review"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
