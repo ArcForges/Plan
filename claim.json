@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:26:17Z",
-  "updatedAt": "2026-10-02T05:45:10Z",
-  "leaseUntil": "2026-10-03T05:45:10Z",
+  "updatedAt": "2026-10-02T05:47:53Z",
+  "leaseUntil": "2026-10-03T05:47:53Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-50",
@@ -32,17 +32,18 @@
       "Publish NuGet run 36966126613 on merge 348492f: completed success 2026-10-02T05:04:09Z, publish job success; verified 12 packages at 1.0.0-ci.76.1, none is Observability (non-packable); provider status from the job log only",
       "Ledger PR Plan #233 opened at ef96927 (status complete); check passed with explicit roots",
       "Plan #233 updated to e6b4cdb after review (comment 5946031090); docs-only DesktopPlatform PR #122 opened at 85705e1 (README instrument claim), hosted run 36968320040 15/15; not to be merged until the coordinator says so. Note: the earlier statement that the DesktopPlatform primary checkout was fast-forwarded was wrong at the time; it was fast-forwarded to 348492f later",
-      "Round 2: DesktopPlatform #122 updated to 0722e64 (hosted run 36969485737 15/15, README and one XML-comment line); Plan #233 updated to 4bd547e; re-review requested on both"
+      "Round 2: DesktopPlatform #122 updated to 0722e64 (hosted run 36969485737 15/15, README and one XML-comment line); Plan #233 updated to 4bd547e; re-review requested on both",
+      "DesktopPlatform #122 approved at 0722e64 (comment 5946316794); implementation PR #120 was approved at 4ebb77c and merged as 348492f"
     ],
     "validation": [
       "see PR #120 body"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-50",
     "head": "4ebb77c88f2e0ba726ed55247974669a51f2a8e9",
-    "reviewed": "4ebb77c88f2e0ba726ed55247974669a51f2a8e9",
+    "reviewed": "0722e6415553ff2e259be93fa2641e02048c04d8",
     "blocker": null,
     "next": [
-      "await re-review of #233 and #122; merge #122 only on coordinator instruction; merge #233 via integration:Plan then update --state complete"
+      "merge #122 via integration:DesktopPlatform"
     ],
     "host": "deku",
     "note": null
