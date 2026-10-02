@@ -6,14 +6,15 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:26:17Z",
-  "updatedAt": "2026-10-02T05:07:22Z",
-  "leaseUntil": "2026-10-03T05:07:22Z",
+  "updatedAt": "2026-10-02T05:29:08Z",
+  "leaseUntil": "2026-10-03T05:29:08Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-50",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/120",
-      "https://github.com/ArcForges/Plan/pull/233"
+      "https://github.com/ArcForges/Plan/pull/233",
+      "https://github.com/ArcForges/DesktopPlatform/pull/122"
     ],
     "merges": [
       "348492fcb882a192417946bc50d47917986676b9"
@@ -29,7 +30,8 @@
       "Hosted run 36958843887 at 4ebb77c: 15/15 success, Linux Observability tests total 239 succeeded 239; PR CLEAN on main 54fb948; re-review requested with exact delta",
       "Approved at 4ebb77c (comment 5945757857)",
       "Publish NuGet run 36966126613 on merge 348492f: completed success 2026-10-02T05:04:09Z, publish job success; verified 12 packages at 1.0.0-ci.76.1, none is Observability (non-packable); provider status from the job log only",
-      "Ledger PR Plan #233 opened at ef96927 (status complete); check passed with explicit roots"
+      "Ledger PR Plan #233 opened at ef96927 (status complete); check passed with explicit roots",
+      "Plan #233 updated to e6b4cdb after review (comment 5946031090); docs-only DesktopPlatform PR #122 opened at 85705e1 (README instrument claim), hosted run 36968320040 15/15; not to be merged until the coordinator says so. Note: the earlier statement that the DesktopPlatform primary checkout was fast-forwarded was wrong at the time; it was fast-forwarded to 348492f later"
     ],
     "validation": [
       "see PR #120 body"
@@ -39,7 +41,7 @@
     "reviewed": "4ebb77c88f2e0ba726ed55247974669a51f2a8e9",
     "blocker": null,
     "next": [
-      "await ledger review, merge via integration:Plan, then update --state complete"
+      "await ledger re-review; #122 review and merge on coordinator instruction; merge Plan #233 via integration:Plan then update --state complete"
     ],
     "host": "deku",
     "note": null
