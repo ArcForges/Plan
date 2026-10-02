@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:56:16Z",
-  "updatedAt": "2026-10-02T17:43:07Z",
-  "leaseUntil": "2026-10-02T23:43:07Z",
+  "updatedAt": "2026-10-02T18:10:07Z",
+  "leaseUntil": "2026-10-03T00:10:07Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/prf-07",
@@ -39,6 +39,6 @@
       "independent code review of Cloud 31 at 3320732 incl. explicit default-Worker exposure judgement (merge deploys foundation modules to the default Worker, proof surface only under env.proof); merge via integration:Cloud; then record delivered (never complete). Open item: docs/provenance.md:56 says Wrangler 4.135.0 (outside write scope). Live proof needs user-provided Cloudflare account id, API token, resources, secrets, Docker, RES-cloud-deployment lease; PRF.06 EventService.Watch not in WP-06.04 and not implemented"
     ],
     "host": "deku",
-    "note": "resumed; preparing wrangler admission PR"
+    "note": "fixing review findings on Cloud 31"
   }
 }
