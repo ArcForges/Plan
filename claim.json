@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261002-plt10",
   "epoch": 26,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T19:25:18Z",
-  "updatedAt": "2026-10-02T19:25:18Z",
-  "leaseUntil": "2026-10-03T07:25:18Z",
+  "updatedAt": "2026-10-02T19:26:18Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-con17f epoch 25; review the earlier handoff and commits"
+    "note": "queue: PLT.10 ledger Plan#240 merged as 270c975; no other approved Plan PR known to be waiting from this worker."
   }
 }
