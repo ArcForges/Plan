@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T04:51:10Z",
-  "leaseUntil": "2026-10-02T16:51:10Z",
+  "updatedAt": "2026-10-02T04:54:14Z",
+  "leaseUntil": "2026-10-02T16:54:14Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -18,7 +18,9 @@
     ],
     "merges": [
       "ca27cabdb018994de57f065615549ab2b0cee88e",
-      "e2558231d377f3663cbd2f7a26e8700d395b852b"
+      "e2558231d377f3663cbd2f7a26e8700d395b852b",
+      "7c8a4cf2456ccc6e8c2bea9e2067694cea9ec082",
+      "c4a0f973f1d3b36bbc8c480632c98c95b083433d"
     ],
     "done": [
       "recovered nothing (no prior CON.07 commits/PRs exist); authored identity.proto (3 services, 49 ops), constraints shard, eng/operations/con-07.json, browser+native-auth HTTP schemas with form/route/rule generator support, vectors, tests, regenerated outputs",
@@ -34,7 +36,7 @@
     "reviewed": "2d7ab0483213827d25878f79fc246add0f727356",
     "blocker": null,
     "next": [
-      "await independent review of Contracts #74 8c0a404 (CI green) and Design #202 2d7ab04 / Plan #232 c573be6; planning amendment merges before #74"
+      "planning amendment merged (Design 7c8a4cf, Plan c4a0f97); Contracts #74 8c0a404 awaits independent re-review, then merge on coordinator approval"
     ],
     "host": "deku",
     "note": "Planning amendment approved by r-c20261001-con07-plan: Design #202 2d7ab0483213827d25878f79fc246add0f727356, Plan #232 c573be60659b0f0deb1537f7ed5a9211a41a7487"
