@@ -4,10 +4,10 @@
   "id": "PRF.07",
   "claimant": "w-c20261002-prf07",
   "epoch": 1,
-  "state": "blocked",
+  "state": "claimed",
   "claimedAt": "2026-10-02T05:56:16Z",
-  "updatedAt": "2026-10-02T11:55:47Z",
-  "leaseUntil": "2026-10-02T17:55:47Z",
+  "updatedAt": "2026-10-02T17:07:17Z",
+  "leaseUntil": "2026-10-02T23:07:17Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/prf-07",
@@ -24,11 +24,11 @@
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\prf-07",
     "head": "fab55b73d537663e8486989042464bb1633e342d",
     "reviewed": null,
-    "blocker": "Hosted CI red on npm audit (new undici advisories via locked wrangler 4.135.0/miniflare, unrelated to this change; main was green 2026-09-28), so the candidate job (Linux AOT image + Worker bundle) is skipped. Needs a wrangler bump (4.147.0 per npm audit; Dependabot PR 24 only goes to 4.141.0, still in the vulnerable range) decided and admitted outside this PR. Live Cloudflare proof also needs user-provided account, API token and resources.",
+    "blocker": null,
     "next": [
       "coordinator decides wrangler bump; then independent review of Cloud PR 31 at head fab55b7; live proof needs user-supplied Cloudflare account/credentials"
     ],
     "host": "deku",
-    "note": "offline foundation delivered in PR; live evidence unobserved"
+    "note": "resumed; preparing wrangler admission PR"
   }
 }
