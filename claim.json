@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:59Z",
-  "updatedAt": "2026-10-02T19:52:23Z",
-  "leaseUntil": "2026-10-03T19:52:23Z",
+  "updatedAt": "2026-10-02T22:02:52Z",
+  "leaseUntil": "2026-10-03T22:02:52Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-06",
@@ -17,15 +17,16 @@
     ],
     "merges": [],
     "done": [
-      "Researched: PRF.07 does not provide EventService.Watch; the real Watch/Poll/readOutput servers are CLOUD.29/32/34 (none started). Opened the planning repair pair (Design 206, Plan 243): generated Events/PublicApi/Foundation pins at CON.11 candidate 1.0.0-ci.270.1 are outside the write scope; add CON.11 start edge and CLOUD.29/32/34 completion edges"
+      "Researched: PRF.07 does not provide EventService.Watch; the real Watch/Poll/readOutput servers are CLOUD.29/32/34 (none started). Opened the planning repair pair (Design 206, Plan 243): generated Events/PublicApi/Foundation pins at CON.11 candidate 1.0.0-ci.270.1 are outside the write scope; add CON.11 start edge and CLOUD.29/32/34 completion edges",
+      "Pushed WIP of DesktopPlatform task/prf-06: RealtimeAotProbe project, exact pins, policy/sequence/classification/transport/stream/event/output logic; still to write: paged readers, self-test, Program, policy bindings, receipt, workflow job"
     ],
     "validation": [],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/prf-06",
-    "head": null,
+    "head": "c4dd128cbb79567b61cc65628d215c5bf591e90a",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "implement the offline RealtimeAotProbe in DesktopPlatform task/prf-06 (client side under AOT, Poll semantics, generated codecs); await independent review of the planning pair before the DesktopPlatform PR can merge"
+      "finish readers/self-test/Program; build + mutation checks through build slot; policy bindings and prf-06-r1 receipt; open DesktopPlatform PR; await review of planning pair Design 206 / Plan 243"
     ],
     "host": "deku",
     "note": null
