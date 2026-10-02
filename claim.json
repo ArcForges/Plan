@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T00:03:19Z",
-  "leaseUntil": "2026-10-02T12:03:19Z",
+  "updatedAt": "2026-10-02T00:16:01Z",
+  "leaseUntil": "2026-10-02T12:16:01Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -20,16 +20,17 @@
       "source snapshot complete: 3 services/49 ops, constraints, export, HTTP schemas+codecs+routes, 3-language vectors; local gates: node 9/9, python gates, C# structure tests (CON.07: 95 shape + 115 HTTP vectors), JIT serialization probe (31 binary, 51 JSON, 207 bound methods)"
     ],
     "validation": [
-      "local: generate, operation-scope, foundation, serialization gates, node con-07 tests (8/9 passing at WIP), python tooling tests"
+      "local: generate, operation-scope, foundation, serialization gates, node con-07 tests (8/9 passing at WIP), python tooling tests",
+      "Hosted CI green on d0ebf94: Build candidate, Secret scan, CodeQL x5, Dependency review, Verify (run 36943991205)"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-07",
     "head": "d0ebf94017a3852ea34cde5e3866680aee0ed494",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await CI then independent review of Contracts #74 (rebased on main bcd592a, Dokka r20 + heap fix); Design #198/Plan #220 review/merge"
+      "await independent review of Contracts #74 (CI all green at this head); Design #198 58fc4a2 + Plan #220 69e4a5a review/merge first"
     ],
     "host": "deku",
-    "note": "Rebased after CON.14; hosted Dokka OOM fixed by 6g generator heap"
+    "note": "Dokka r20 reserved in PR #74; resource lease released"
   }
 }
