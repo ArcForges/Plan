@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:36:26Z",
-  "updatedAt": "2026-10-02T02:36:01Z",
-  "leaseUntil": "2026-10-03T02:36:01Z",
+  "updatedAt": "2026-10-02T02:48:26Z",
+  "leaseUntil": "2026-10-03T02:48:26Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-09",
@@ -25,7 +25,8 @@
       "PR 117 open at 2cdf460e0e4bcf8ec739bf3ae0cdc67ef6dcb5f9; secret-scan red: receipt lines fixed by own allowlist (4->2 findings), remaining 2 are PLT.44's plt-44-r1.json lines on task/plt-44 (cross-branch scan coupling, symmetric with #113); managed-packages skipped behind secret-scan so build/test/arch CI not yet observed on hosted CI; planning repair Design#200/Plan#223 opened (needs independent review+merge before PR 117 merge)",
       "Review findings 1-10 addressed; rebased on main 7644e31; Design#200/Plan#223 closed superseded; hosted CI all green at head (managed-packages incl.)",
       "Re-review items fixed (one non-parallel collection, README wording); rebased on 99344df; hosted CI green; opt-in suite 40/40 clean",
-      "Approved b799e83; main moved (PLT.35 81d53f5, role held by plt35); rebased, policy tails re-appended, plt-09-r1 re-chained from plt-35-r1, hosted CI green at 6373e9459170c7e72f2d1d3204f51e0a2394519d"
+      "Approved b799e83; main moved (PLT.35 81d53f5, role held by plt35); rebased, policy tails re-appended, plt-09-r1 re-chained from plt-35-r1, hosted CI green at 6373e9459170c7e72f2d1d3204f51e0a2394519d",
+      "Merged 54fb94887c5b (PR 117, reviewed 6373e94); main-push Publish NuGet run 36956355678 success; primary ff; integration role released"
     ],
     "validation": [
       "locked restore+Release build+format pass; offline tests 39 pass/7 skipped; opt-in OS-stream checks 6/6 on Windows only; untested: Linux/macOS, real wrong-user, AOT publish",
@@ -36,8 +37,7 @@
     "reviewed": "6373e9459170c7e72f2d1d3204f51e0a2394519d",
     "blocker": null,
     "next": [
-      "confirm publication",
-      "record the ledger"
+      "ledger PR (delivered)"
     ],
     "host": "deku",
     "note": null
