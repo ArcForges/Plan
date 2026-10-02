@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261002-plt53",
   "epoch": 23,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T11:51:23Z",
-  "updatedAt": "2026-10-02T11:51:23Z",
-  "leaseUntil": "2026-10-02T23:51:23Z",
+  "updatedAt": "2026-10-02T11:52:39Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-plt53 epoch 22; review the earlier handoff and commits"
+    "note": "merged Plan #238 [PLT.53] as d9baa2cbc1ecf18280db6b9178c0d9dbf3238a1b; primary fast-forwarded, check passed; no other approved Plan PRs known to this worker"
   }
 }
