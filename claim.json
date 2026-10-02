@@ -6,23 +6,24 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:38Z",
-  "updatedAt": "2026-10-02T04:43:24Z",
-  "leaseUntil": "2026-10-03T04:43:24Z",
+  "updatedAt": "2026-10-02T04:59:11Z",
+  "leaseUntil": "2026-10-03T04:59:11Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-13",
     "prs": [],
     "merges": [],
     "done": [
-      "read brief, Plan docs, PLT.09 ledger and reviews, WP-08.04, Design arch 03 and contracts 09; design plan fixed: per-connection FIFO admission gate (16 active/64 queued data, 2 control slots, no control queue), explicit control-method registry verified against the route table at start, deadline default/clamp counted from admission, typed refusals (RESOURCE_EXHAUSTED/DEADLINE_EXCEEDED + x-af-refusal trailer), nested-call marker (callbacks never queue, no recursion), handshake/idle watchdog for silent peers, tests for inherited unguarded guards"
+      "read brief, Plan docs, PLT.09 ledger and reviews, WP-08.04, Design arch 03 and contracts 09; design plan fixed: per-connection FIFO admission gate (16 active/64 queued data, 2 control slots, no control queue), explicit control-method registry verified against the route table at start, deadline default/clamp counted from admission, typed refusals (RESOURCE_EXHAUSTED/DEADLINE_EXCEEDED + x-af-refusal trailer), nested-call marker (callbacks never queue, no recursion), handshake/idle watchdog for silent peers, tests for inherited unguarded guards",
+      "first implementation and tests committed and pushed (not yet compiled/run): LocalRpcCallGate, peer bounds registry, admission middleware, typed refusal, callback guard/interceptor, handshake/idle watchdog, limits, README; test suites for gate, bounds, peer limits, callbacks, guards. ADP-07 supporting bindings planned (existing files only): eng/provenance/files.json (new source/test files), eng/policy/architecture-contract-tests.json (new public API bindings); no dependency, package or project change"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-13",
-    "head": "54fb94887c5b8e67753cfe83bae57f372dbbe507",
+    "head": "c34ca32ca6a7959d1a640661abfc644a12776b12",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "implement in src/BuildingBlocks/ArcForges.LocalRpc, tests, README, then PR"
+      "build and run offline suite via build slot, fix, run policy/format checks, bind provenance and contract-test entries, open PR"
     ],
     "host": "deku",
     "note": null
