@@ -4,10 +4,10 @@
   "id": "PRF.07",
   "claimant": "w-c20261002-prf07",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-02T05:56:16Z",
-  "updatedAt": "2026-10-02T19:39:05Z",
-  "leaseUntil": "2026-10-03T01:39:05Z",
+  "updatedAt": "2026-10-02T19:39:52Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Cloud",
     "branch": "task/prf-07",
@@ -20,7 +20,8 @@
       "8954f3024ae77852ea0f55974d659e64b5cbad9b",
       "90a14b1a7ba6a4a5e4681460639a472078586d96",
       "282f2ded560019e64872a1a10ffb09836d3305f8",
-      "1a001eaeff310d046d4a556a2b06b7f2037157e2"
+      "1a001eaeff310d046d4a556a2b06b7f2037157e2",
+      "de508ac17921424f9dde59cb1b4091498105a502"
     ],
     "done": [
       "claimed; read Design/Plan/contracts; no Cloudflare credentials, wrangler login or Docker exist here, so live deployment is impossible in this environment; Contracts 1.0.0-ci.287.1 pins and npm/NuGet admission staged locally; planning scope-repair pair (Design b2967fd, Plan 385d597) prepared locally",
@@ -34,7 +35,8 @@
       "Review of Cloud 31 at 3320732 not approved (1 medium, 4 low, 2 info); all fixed at beec326: production CloudContainer unchanged with FoundationContainer for env.proof and pinned by tests, docs corrected, 2^53 wording corrected, redirect and chunked-body tests added, deploy passes --env empty; hosted CI green on beec326",
       "Cloud 31 merged as 1a001eaeff310d046d4a556a2b06b7f2037157e2 (merge commit, approved head beec326); main-push run 37053055916 succeeded incl. Deploy Cloudflare (Worker version 2b9c11a1-bea3-4b76-8cc1-4c09a9cb8613, prerelease cloud-0.1.0-ci.86.1)",
       "Cloud 31 merged (1a001ea); main-push run 37053055916 success; ledger PR Plan 241 opened at a57638ca1542475b355d08d5162d5de8f8867c67",
-      "Plan 241 not approved at a57638c (1 medium, 7 low/info); fixed at cc82de8721fa52cc2e2118d430accfc3e064949c, re-review requested"
+      "Plan 241 not approved at a57638c (1 medium, 7 low/info); fixed at cc82de8721fa52cc2e2118d430accfc3e064949c, re-review requested",
+      "Plan 241 merged as de508ac17921424f9dde59cb1b4091498105a502; ledger record ledger/tasks/prf-07.md status delivered"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\prf-07",
@@ -42,7 +44,7 @@
     "reviewed": "cc82de8721fa52cc2e2118d430accfc3e064949c",
     "blocker": null,
     "next": [
-      "independent re-review of Plan 241, merge via integration:Plan, then release the claim as delivered (never complete)"
+      "completion follow-up needs user-provided Cloudflare account, API token, resources, secrets, Docker and RES-cloud-deployment lease (see ledger record); not complete"
     ],
     "host": "deku",
     "note": "fixing review findings on Cloud 31"
