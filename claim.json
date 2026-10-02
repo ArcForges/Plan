@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Contracts",
-  "claimant": "w-c20261001-con07",
-  "epoch": 4,
-  "state": "released",
-  "claimedAt": "2026-10-02T04:55:03Z",
-  "updatedAt": "2026-10-02T05:22:31Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261002-con19",
+  "epoch": 5,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T10:23:30Z",
+  "updatedAt": "2026-10-02T10:23:30Z",
+  "leaseUntil": "2026-10-02T22:23:30Z",
   "handoff": {
     "host": "deku",
-    "note": "Merged Contracts #74 as ca45f36cccbdd31380f76b8f6cdecc958fdcb430; primary fast-forwarded; main-push CI 36966686225 and Security 36966686231 succeeded"
+    "note": "claimed after released by w-c20261001-con07 epoch 4; review the earlier handoff and commits"
   }
 }
