@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:46:32Z",
-  "updatedAt": "2026-10-02T22:25:04Z",
-  "leaseUntil": "2026-10-03T22:25:04Z",
+  "updatedAt": "2026-10-02T22:33:11Z",
+  "leaseUntil": "2026-10-03T22:33:11Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/prf-10",
@@ -24,7 +24,8 @@
       "Review approved at bc69ce4f17be35d891278a875ae4fe944170b14d (Mobile PR 19 comment 5962401154, reviewer r-c20261002-prf10, same GitHub account as claimant)",
       "ADP-07 correction: the scope-binding declaration was recorded after the first commit cbfa7ed (not before the edit) and omitted docs/development.md, which commit bc69ce4 changed (factual two-line description of the two new tests); eng/provenance/files.json and docs/development.md are the two supporting paths outside app/**",
       "Reviewer non-blocking findings: (1) hosted CI only compiles app unit tests (.github/workflows/ci.yml:72 :app:compileDebugUnitTestKotlin), so the 8 stream tests and 5 existing client tests run only locally and the BR-06 'continuously on main builds' obligation is not met for them; (3) test clientCloseCancelsAnOpenStreamWithoutBlockingTheCaller does not test non-blocking; (4) exact wire deadline value and OkHttp retryOnConnectionFailure not pinned (surviving mutants: 4 s deadline, retry flag true, synchronous close()); (5) cosmetic comment split",
-      "Merged Mobile PR 19 as 377fa5d6e00b7a50d37d2f8434f915850c6d5b9f at reviewed head bc69ce4 via integration:Mobile (--merge, match-head-commit)"
+      "Merged Mobile PR 19 as 377fa5d6e00b7a50d37d2f8434f915850c6d5b9f at reviewed head bc69ce4 via integration:Mobile (--merge, match-head-commit)",
+      "Main-push run 37072330027 on 377fa5d succeeded (Build ubuntu+windows, CodeQL x3, Secret scan, Verify, Publish Android; Dependency review skipped on push); provider status only"
     ],
     "validation": [
       "Local (Windows 11, JDK 21.0.11, Gradle 9.8.0 offline, build slot): spotlessCheck, shared tests, app unit tests (8 new stream fixture tests), lintRelease, assembleDebugAndroidTest, assembleRelease, bundleRelease, eng/mobile.py check+bytecode, eng unittest 70 passed; mutation checks of new tests",
