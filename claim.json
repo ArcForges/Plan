@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:17Z",
-  "updatedAt": "2026-10-02T17:38:09Z",
-  "leaseUntil": "2026-10-03T17:38:09Z",
+  "updatedAt": "2026-10-02T18:23:45Z",
+  "leaseUntil": "2026-10-03T18:23:45Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-10",
@@ -22,11 +22,12 @@
       "rebased onto main de31658 (policy JSON rows re-appended at the tail); PR opened; hosted CI running; local verification of rebased head and mutation checks queued behind the build slot (held by PLT.13)",
       "PR 123 open at abd0e6d; hosted CI 15/15 green (run 36992430477; managed-packages/pack on ubuntu-24.04 LocalRpc suite 131 total/118 passed/13 skipped/0 failed); local Windows run pre-rebase: 112 passed/19 skipped, process checks 3/3; rebased-head local verification and mutation run queued behind the build slot held by PLT.13",
       "review findings 1-7 fixed in source and tests (pushed); own mutation runs through the build slot: 139-entry batch (117 killed, 9 rejected by the compiler/analyzers, rest survivors analysed) and a 12-entry follow-up; rebase onto main 7316ab8 and hosted CI next",
-      "review round 1 findings fixed; rebased onto main 7316ab8; hosted CI 15/15 green at 32572fd95e2f134d465b852bc9fbf297d7242d03 (run 37039150806 attempt 3; LocalRpc suite on ubuntu 163 total/147 passed/16 skipped/0 failed); local Windows build/format/offline 144 passed 19 skipped, opt-in full suite 155 passed 8 skipped 0 failed; own mutation batch 139 edits: 117 killed, 8 compiler-rejected, 14 survivors analysed (7 killed after added tests, rest equivalent/untestable here)"
+      "review round 1 findings fixed; rebased onto main 7316ab8; hosted CI 15/15 green at 32572fd95e2f134d465b852bc9fbf297d7242d03 (run 37039150806 attempt 3; LocalRpc suite on ubuntu 163 total/147 passed/16 skipped/0 failed); local Windows build/format/offline 144 passed 19 skipped, opt-in full suite 155 passed 8 skipped 0 failed; own mutation batch 139 edits: 117 killed, 8 compiler-rejected, 14 survivors analysed (7 killed after added tests, rest equivalent/untestable here)",
+      "round-2 review items fixed (secret copy zeroing observed by test, monotonic+wall expiry with latch, secret destroyed at expiry, Revoked callback failures isolated, README); hosted CI 15/15 green at fb5ae47b3bb39008dfd3ca8754727082886a9160 (run 37045883630; ubuntu LocalRpc suite 171 total/155 passed/16 skipped/0 failed); local Windows 152 passed 19 skipped, opt-in 163 passed 8 skipped; round-2 mutations 10/10 killed"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-10",
-    "head": "32572fd95e2f134d465b852bc9fbf297d7242d03",
+    "head": "fb5ae47b3bb39008dfd3ca8754727082886a9160",
     "reviewed": null,
     "blocker": null,
     "next": [
