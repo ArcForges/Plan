@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T06:09:37Z",
-  "updatedAt": "2026-10-02T11:26:37Z",
-  "leaseUntil": "2026-10-03T11:26:37Z",
+  "updatedAt": "2026-10-02T11:27:35Z",
+  "leaseUntil": "2026-10-03T11:27:35Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-53",
@@ -18,7 +18,8 @@
     ],
     "merges": [
       "d89fd5c854498b30de7bd853f7844394e78dbd79",
-      "bfd46670146c9402bb7d28cd98ef6d5d2ec2760f"
+      "bfd46670146c9402bb7d28cd98ef6d5d2ec2760f",
+      "7316ab85c70973b2dfd32fc28953c9db9ec0728e"
     ],
     "done": [
       "read brief, policy, Design delivery README, predecessors' ledgers PLT.35/47-52; claimed epoch 1",
@@ -41,7 +42,8 @@
     "reviewed": "3849fa3c018bc85667daa661cb49923dd0aad8be",
     "blocker": null,
     "next": [
-      "await delta re-review of #124 at 3849fa3 (approved earlier head c82055a); merge only after coordinator message; then confirm Publish NuGet (expect 14 packages), ledger delivered"
+      "confirm Publish NuGet run on 7316ab8 (provider status only)",
+      "record the ledger (delivered)"
     ],
     "host": "deku",
     "note": null
