@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:04:32Z",
-  "updatedAt": "2026-10-02T02:37:57Z",
-  "leaseUntil": "2026-10-03T02:37:57Z",
+  "updatedAt": "2026-10-02T02:39:40Z",
+  "leaseUntil": "2026-10-03T02:39:40Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-35",
@@ -27,7 +27,7 @@
     ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-35",
     "head": "8cb87aead8f240d38dd3fbd7f8d78ac080dbb455",
-    "reviewed": "8cb87aead8f240d38dd3fbd7f8d78ac080dbb455",
+    "reviewed": "b0752509624a34bef2dfc6dec4487124381f0947",
     "blocker": null,
     "next": [
       "await re-review of ledger PR Plan#230 head b0752509624a34bef2dfc6dec4487124381f0947; merge via integration:Plan; then update --state delivered"
