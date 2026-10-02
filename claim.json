@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261002-prf10",
   "epoch": 29,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T22:46:39Z",
-  "updatedAt": "2026-10-02T22:46:39Z",
-  "leaseUntil": "2026-10-03T10:46:39Z",
+  "updatedAt": "2026-10-02T22:47:42Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-plt13 epoch 28; review the earlier handoff and commits"
+    "note": "Merged Plan PR 245 (PRF.10 ledger) as 0de117c; no other Plan PR handled by this worker; primary fast-forwarded"
   }
 }
