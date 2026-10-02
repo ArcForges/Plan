@@ -6,21 +6,25 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:46:32Z",
-  "updatedAt": "2026-10-02T19:46:32Z",
-  "leaseUntil": "2026-10-03T19:46:32Z",
+  "updatedAt": "2026-10-02T19:59:24Z",
+  "leaseUntil": "2026-10-03T19:59:24Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/prf-10",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Verified facts: Maven Central contracts-connect-client latest is 1.0.0-ci.60.1 whose JAR holds only HelloServiceClient (unary); Contracts main publishes Maven only as mutable 1.0.0-SNAPSHOT, so no admissible immutable coordinate carries EventService.Watch; PRF.07 foundation exposes no gRPC-Web business service (no Watch) and has no deployed ingress",
+      "Scope binding (ADP-07, no new dependency/identity/runtime behavior): edits only Mobile app/src/main CloudHelloClient.kt (extract shared protocolClient factory, behavior unchanged), new app/src/test ConnectStreamingFixtureTest.kt, new app/src/androidTest KeystoreProbeTest.kt, and the factual inventory classification of those two new files in eng/provenance/files.json (existing firstParty list; check_provenance requires every tracked file classified). No gradle/**, catalog, lock or admission change",
+      "Pushed first commit cbfa7ed; local offline checks passed (spotlessCheck, shared desktop+android host tests, app unit tests, lintRelease, assembleDebugAndroidTest, assembleRelease, bundleRelease, eng/mobile.py check+bytecode, eng tests)"
+    ],
     "validation": [],
-    "worktree": null,
-    "head": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\Mobile\\.worktree\\prf-10",
+    "head": "cbfa7ed5e82f646fcbff1abc2335111dfb34b4ca",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "run Keystore probe once on existing local emulator if it boots; open PR; hosted CI; ledger record (delivered, live proof not done)"
     ],
     "host": "deku",
     "note": null
