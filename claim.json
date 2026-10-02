@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:DesktopPlatform",
-  "claimant": "w-c20261002-plt53",
-  "epoch": 11,
-  "state": "released",
-  "claimedAt": "2026-10-02T11:26:52Z",
-  "updatedAt": "2026-10-02T11:27:59Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261002-plt10",
+  "epoch": 12,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T18:53:42Z",
+  "updatedAt": "2026-10-02T18:53:42Z",
+  "leaseUntil": "2026-10-03T06:53:42Z",
   "handoff": {
     "host": "deku",
-    "note": "merged DesktopPlatform #124 [PLT.53] as 7316ab85c70973b2dfd32fc28953c9db9ec0728e; primary fast-forwarded; Publish NuGet run 37001091983 in progress; PLT.10 #123 and PLT.13 PRs, if approved, must rebase onto 7316ab8 (provenance files.json and receipt chain: active receipt is now plt-53-r1)"
+    "note": "claimed after released by w-c20261002-plt53 epoch 11; review the earlier handoff and commits"
   }
 }
