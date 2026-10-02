@@ -4,10 +4,10 @@
   "id": "PLT.13",
   "claimant": "w-c20261002-plt13",
   "epoch": 1,
-  "state": "claimed",
+  "state": "complete",
   "claimedAt": "2026-10-02T03:09:38Z",
-  "updatedAt": "2026-10-02T22:25:35Z",
-  "leaseUntil": "2026-10-03T22:25:35Z",
+  "updatedAt": "2026-10-02T22:26:37Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-13",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Plan/pull/244"
     ],
     "merges": [
-      "d4e874374a737012b174904e25d49c8fdf05714c"
+      "d4e874374a737012b174904e25d49c8fdf05714c",
+      "c577dc59a1aa607523a7027697643f3004d79e31"
     ],
     "done": [
       "read brief, Plan docs, PLT.09 ledger and reviews, WP-08.04, Design arch 03 and contracts 09; design plan fixed: per-connection FIFO admission gate (16 active/64 queued data, 2 control slots, no control queue), explicit control-method registry verified against the route table at start, deadline default/clamp counted from admission, typed refusals (RESOURCE_EXHAUSTED/DEADLINE_EXCEEDED + x-af-refusal trailer), nested-call marker (callbacks never queue, no recursion), handshake/idle watchdog for silent peers, tests for inherited unguarded guards",
