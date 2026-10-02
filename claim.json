@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:17Z",
-  "updatedAt": "2026-10-02T10:04:23Z",
-  "leaseUntil": "2026-10-03T10:04:23Z",
+  "updatedAt": "2026-10-02T17:07:34Z",
+  "leaseUntil": "2026-10-03T17:07:34Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-10",
@@ -20,15 +20,16 @@
       "library source pushed (descriptor, identity, claim, authority, launch, owner-only launch dirs, async authorizer); library builds with 0 warnings",
       "implemented launch descriptor/authority/launch/owner-only launch dirs/async authorizer with offline + opt-in process tests (Windows run: 3/3 process checks pass); ADP-07 supporting bindings (all outside write scope, recorded before PR): eng/provenance/files.json appends the 11 new file paths of this task (owner: LocalRpc artifacts, protocol append, necessity: check_provenance); eng/policy/architecture-contract-tests.json appends 19 rows for the new public methods at the tail (owner: same, protocol append, necessity: RP-10 architecture test). No csproj, package, version, dependency, receipt or workflow change. mutation run queued behind the build slot",
       "rebased onto main de31658 (policy JSON rows re-appended at the tail); PR opened; hosted CI running; local verification of rebased head and mutation checks queued behind the build slot (held by PLT.13)",
-      "PR 123 open at abd0e6d; hosted CI 15/15 green (run 36992430477; managed-packages/pack on ubuntu-24.04 LocalRpc suite 131 total/118 passed/13 skipped/0 failed); local Windows run pre-rebase: 112 passed/19 skipped, process checks 3/3; rebased-head local verification and mutation run queued behind the build slot held by PLT.13"
+      "PR 123 open at abd0e6d; hosted CI 15/15 green (run 36992430477; managed-packages/pack on ubuntu-24.04 LocalRpc suite 131 total/118 passed/13 skipped/0 failed); local Windows run pre-rebase: 112 passed/19 skipped, process checks 3/3; rebased-head local verification and mutation run queued behind the build slot held by PLT.13",
+      "review findings 1-7 fixed in source and tests (pushed); own mutation runs through the build slot: 139-entry batch (117 killed, 9 rejected by the compiler/analyzers, rest survivors analysed) and a 12-entry follow-up; rebase onto main 7316ab8 and hosted CI next"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-10",
-    "head": "abd0e6dd830c357adaed60633b10d17f9ce15975",
+    "head": "510cb12faa368b5248ba8b1d2f9a7aed0da80563",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review"
+      "investigate surviving link-guard mutants, rebase, hosted CI, request re-review"
     ],
     "host": "deku",
     "note": null
