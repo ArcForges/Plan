@@ -6,25 +6,31 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:26:17Z",
-  "updatedAt": "2026-10-02T02:04:13Z",
-  "leaseUntil": "2026-10-03T02:04:13Z",
+  "updatedAt": "2026-10-02T02:15:54Z",
+  "leaseUntil": "2026-10-03T02:15:54Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-50",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/120"
+    ],
     "merges": [],
     "done": [
       "Claimed; read brief, Plan/Design task records, WP-12.03, architecture 13 SG-02/SG-03/CC-01..03, PLT.49 ledger and library on main 99344df; retained worktree created from origin/main",
       "ADP-07 supporting-file binding (declared before editing): serves only artifacts inside the task outcome and write scope (new public types and files under src/BuildingBlocks/ArcForges.Observability/**). Exact paths: eng/policy/architecture-contract-tests.json (RES-architecture-tests, append only RP-10 rows for the new public methods, owner Architecture tests suite, necessity: Build.Policy RP-10 fails on a public method without a direct [Fact] binding); eng/provenance/files.json (RES-desktopplatform-policy-data, append only the new first-party source/test paths, necessity: provenance gate lists every tracked file). No csproj, packages.lock.json, Directory.Packages.props, dependency-policy.json, dependency receipt, active-projects.json, .gitleaks.toml, solution/workflow or packages.json change; no new project reference or package.",
-      "First commit pushed: TracePolicy, DiagnosticSpanBuffer, TracePolicyOptions, TelemetryConsent, MetricLabelPolicy, policy JSON sampling/retention, offline tests, ADP-07 RP-10 rows and provenance paths"
+      "First commit pushed: TracePolicy, DiagnosticSpanBuffer, TracePolicyOptions, TelemetryConsent, MetricLabelPolicy, policy JSON sampling/retention, offline tests, ADP-07 RP-10 rows and provenance paths",
+      "Local validation: solution build 0 warn/0 err, format clean, Observability tests 231/231, architecture policy no RP-10/BAN finding (environmental findings only), provenance/dependency_policy/reconciliation pass"
     ],
-    "validation": [],
+    "validation": [
+      "see PR #120 body"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-50",
-    "head": "7ce59ab8d912b1b0bab6e3d6e3ec5a283631724a",
+    "head": "4a61bd739f741ce2cfcf8f3d81fa0046df774104",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "Local validation of Observability tests, architecture policy, provenance, format; rebase; open PR; wait for hosted CI"
+      "await CI",
+      "await review"
     ],
     "host": "deku",
     "note": null
