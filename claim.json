@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T17:34:41Z",
-  "leaseUntil": "2026-10-03T17:34:41Z",
+  "updatedAt": "2026-10-02T17:48:51Z",
+  "leaseUntil": "2026-10-03T17:48:51Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
@@ -28,14 +28,15 @@
     "validation": [
       "hosted CI at 450e553 green; local tooling tests for the matrix 36 OK (claimant-reported)",
       "hosted CI at 88a1988 green",
-      "check passed with explicit roots (437 tasks, 99 views current, ledger valid)"
+      "check passed with explicit roots (437 tasks, 99 views current, ledger valid)",
+      "check passed with explicit roots at c04e175"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-17",
     "head": "88a19888091415a7d2783d72d35731deb53c23bb",
     "reviewed": "88a19888091415a7d2783d72d35731deb53c23bb",
     "blocker": null,
     "next": [
-      "await independent review of Plan#239 at dfb3dce; merge via integration:Plan; then update --state complete"
+      "await narrow re-review of Plan#239 at c04e175; merge via integration:Plan; then update --state complete"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
