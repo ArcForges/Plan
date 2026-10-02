@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-01T20:27:50Z",
-  "leaseUntil": "2026-10-02T20:27:50Z",
+  "updatedAt": "2026-10-02T00:03:19Z",
+  "leaseUntil": "2026-10-02T12:03:19Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -23,13 +23,13 @@
       "local: generate, operation-scope, foundation, serialization gates, node con-07 tests (8/9 passing at WIP), python tooling tests"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-07",
-    "head": "7039c59e0981457131909101e21eb7688e32f503",
+    "head": "d0ebf94017a3852ea34cde5e3866680aee0ed494",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await CI then independent review of Contracts #74; Dokka r20 reserved in PR #74 (lease released); Design #198 + Plan #220 review/merge; Design follow-up for exact .gitleaks rows"
+      "await CI then independent review of Contracts #74 (rebased on main bcd592a, Dokka r20 + heap fix); Design #198/Plan #220 review/merge"
     ],
     "host": "deku",
-    "note": "Head 7039c59 after CodeQL email-pattern fix; Dokka r20 profile unchanged"
+    "note": "Rebased after CON.14; hosted Dokka OOM fixed by 6g generator heap"
   }
 }
