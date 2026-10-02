@@ -6,21 +6,25 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:58:42Z",
-  "updatedAt": "2026-10-02T05:58:42Z",
-  "leaseUntil": "2026-10-03T05:58:42Z",
+  "updatedAt": "2026-10-02T06:12:01Z",
+  "leaseUntil": "2026-10-03T06:12:01Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-19",
     "prs": [],
     "merges": [],
-    "done": [],
-    "validation": [],
-    "worktree": null,
+    "done": [
+      "claimed; read brief, policy, task, con-07/14/15 and adoption records; independent Registry04 coverage cross-check run offline; hosted CI/publication evidence for ca45f36 (run 36966686225) read"
+    ],
+    "validation": [
+      "findings so far (offline, claimant-observed): Registry04 has 297 operation rows; 246 bound to authored proto methods, 38 are CON.06 in-process ports, 7 are Hub FUTURE reserved, 6 connector.* (public ConnectorService) have no authored service, no task owner and are the 6 pending rows of the operation-scope gate (329 registered/6 pending/7 reserved); records LocalCallContext and SimulationDataSegment/Sample/Event/Gap absent by name"
+    ],
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-19",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "write docs/wp03-90-verification.md; ADP-07 supporting binding before editing: append only the path docs/wp03-90-verification.md to Contracts:eng/provenance/files.json firstParty (check_provenance requires every tracked file classified; no receipt/record/hash/dependency/closure change; artifacts/ is gitignored so artifacts/contracts/** carries no tracked output); open PR; wait for CI"
     ],
     "host": "deku",
     "note": null
