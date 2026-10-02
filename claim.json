@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261001-con07",
   "epoch": 14,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T00:42:10Z",
-  "updatedAt": "2026-10-02T00:42:10Z",
-  "leaseUntil": "2026-10-02T02:42:10Z",
+  "updatedAt": "2026-10-02T02:03:47Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-plt49 epoch 13; review the earlier handoff and commits"
+    "note": "Merged Plan #220 as e2558231d377f3663cbd2f7a26e8700d395b852b; primary checkout at e255823 and clean. Queue: none pending from CON.07"
   }
 }
