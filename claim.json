@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-02T23:30:31Z",
-  "leaseUntil": "2026-10-03T23:30:31Z",
+  "updatedAt": "2026-10-02T23:56:36Z",
+  "leaseUntil": "2026-10-03T23:56:36Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
@@ -29,11 +29,11 @@
       "hosted CI run 37075989133 green on f16e538; local: npm run check (110 unit, 43 provenance), npm audit 0, strict candidate build, esproj Build, profile --twice determinism, 48-mutant run, one local Chromium run against a local Native AOT Hello host (host dirty local build)"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Web\\.worktree\\prf-08",
-    "head": "3e6cfacaaf8fccdb87d3bd06fe0ae0a4339d472d",
+    "head": "d46533ce7b02803ac80560ef238245ce0bf1b514",
     "reviewed": "0439ffecf95f6a5f415f40e5ae170be089bf9c9b",
     "blocker": null,
     "next": [
-      "await independent code review of Web 25 at 3e6cfac (planning scope merged); do not merge Web before approval; then ledger record"
+      "await delta re-review of Web 25 at d46533c; then merge via integration:Web with --match-head-commit; then ledger record delivered (name pre-authority edits, review independence by worker name, pre-existing candidate.test.ts failures, esproj and interaction-budget parts open)"
     ],
     "host": "deku",
     "note": "planning PRs approved: Design 207 at 0439ffe, Plan 246 at 95e4df6; Web 25 review pending"
