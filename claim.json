@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Contracts",
-  "claimant": "w-c20261002-con19",
-  "epoch": 5,
-  "state": "released",
-  "claimedAt": "2026-10-02T10:23:30Z",
-  "updatedAt": "2026-10-02T10:43:15Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261002-con17f",
+  "epoch": 6,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T17:08:58Z",
+  "updatedAt": "2026-10-02T17:08:58Z",
+  "leaseUntil": "2026-10-03T05:08:58Z",
   "handoff": {
     "host": "deku",
-    "note": "merged Contracts 75 only ([CON.19] verification record, 0491315); main CI 36995252366 and Security 36995252429 succeeded; queue: Contracts 76 (CON.17 follow-up) open and must rebase and re-append eng/provenance/files.json after 0491315"
+    "note": "claimed after released by w-c20261002-con19 epoch 5; review the earlier handoff and commits"
   }
 }
