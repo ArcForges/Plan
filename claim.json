@@ -4,10 +4,10 @@
   "id": "PLT.53",
   "claimant": "w-c20261002-plt53",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-02T06:09:37Z",
-  "updatedAt": "2026-10-02T11:51:07Z",
-  "leaseUntil": "2026-10-03T11:51:07Z",
+  "updatedAt": "2026-10-02T11:52:09Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-53",
