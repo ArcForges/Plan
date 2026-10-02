@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:26:17Z",
-  "updatedAt": "2026-10-02T05:47:53Z",
-  "leaseUntil": "2026-10-03T05:47:53Z",
+  "updatedAt": "2026-10-02T05:49:06Z",
+  "leaseUntil": "2026-10-03T05:49:06Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-50",
@@ -17,7 +17,8 @@
       "https://github.com/ArcForges/DesktopPlatform/pull/122"
     ],
     "merges": [
-      "348492fcb882a192417946bc50d47917986676b9"
+      "348492fcb882a192417946bc50d47917986676b9",
+      "de31658f9519a8a31025b6f33b30c6df6ce680d3"
     ],
     "done": [
       "Claimed; read brief, Plan/Design task records, WP-12.03, architecture 13 SG-02/SG-03/CC-01..03, PLT.49 ledger and library on main 99344df; retained worktree created from origin/main",
@@ -33,7 +34,8 @@
       "Ledger PR Plan #233 opened at ef96927 (status complete); check passed with explicit roots",
       "Plan #233 updated to e6b4cdb after review (comment 5946031090); docs-only DesktopPlatform PR #122 opened at 85705e1 (README instrument claim), hosted run 36968320040 15/15; not to be merged until the coordinator says so. Note: the earlier statement that the DesktopPlatform primary checkout was fast-forwarded was wrong at the time; it was fast-forwarded to 348492f later",
       "Round 2: DesktopPlatform #122 updated to 0722e64 (hosted run 36969485737 15/15, README and one XML-comment line); Plan #233 updated to 4bd547e; re-review requested on both",
-      "DesktopPlatform #122 approved at 0722e64 (comment 5946316794); implementation PR #120 was approved at 4ebb77c and merged as 348492f"
+      "DesktopPlatform #122 approved at 0722e64 (comment 5946316794); implementation PR #120 was approved at 4ebb77c and merged as 348492f",
+      "#122 merged as de31658 at 2026-10-02T05:48:38Z (match-head 0722e64)"
     ],
     "validation": [
       "see PR #120 body"
@@ -43,7 +45,8 @@
     "reviewed": "0722e6415553ff2e259be93fa2641e02048c04d8",
     "blocker": null,
     "next": [
-      "merge #122 via integration:DesktopPlatform"
+      "confirm publication of de31658",
+      "ledger fix"
     ],
     "host": "deku",
     "note": null
