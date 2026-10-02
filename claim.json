@@ -6,25 +6,29 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:58:42Z",
-  "updatedAt": "2026-10-02T06:12:01Z",
-  "leaseUntil": "2026-10-03T06:12:01Z",
+  "updatedAt": "2026-10-02T06:18:14Z",
+  "leaseUntil": "2026-10-03T06:18:14Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-19",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/Contracts/pull/75"
+    ],
     "merges": [],
     "done": [
-      "claimed; read brief, policy, task, con-07/14/15 and adoption records; independent Registry04 coverage cross-check run offline; hosted CI/publication evidence for ca45f36 (run 36966686225) read"
+      "claimed; read brief, policy, task, con-07/14/15 and adoption records; independent Registry04 coverage cross-check run offline; hosted CI/publication evidence for ca45f36 (run 36966686225) read",
+      "verification record docs/wp03-90-verification.md pushed and PR 75 opened; ADP-07 binding recorded: only the path docs/wp03-90-verification.md appended to eng/provenance/files.json"
     ],
     "validation": [
       "findings so far (offline, claimant-observed): Registry04 has 297 operation rows; 246 bound to authored proto methods, 38 are CON.06 in-process ports, 7 are Hub FUTURE reserved, 6 connector.* (public ConnectorService) have no authored service, no task owner and are the 6 pending rows of the operation-scope gate (329 registered/6 pending/7 reserved); records LocalCallContext and SimulationDataSegment/Sample/Event/Gap absent by name"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-19",
-    "head": null,
+    "head": "e1e8c4ae464e96ca1e805691ac846bd959839edf",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "write docs/wp03-90-verification.md; ADP-07 supporting binding before editing: append only the path docs/wp03-90-verification.md to Contracts:eng/provenance/files.json firstParty (check_provenance requires every tracked file classified; no receipt/record/hash/dependency/closure change; artifacts/ is gitignored so artifacts/contracts/** carries no tracked output); open PR; wait for CI"
+      "await hosted CI on e1e8c4a",
+      "await review"
     ],
     "host": "deku",
     "note": null
