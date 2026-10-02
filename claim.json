@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "role",
+  "id": "integration:Cloud",
+  "claimant": "w-c20261002-prf07",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T17:35:07Z",
+  "updatedAt": "2026-10-02T17:35:07Z",
+  "leaseUntil": "2026-10-02T18:35:07Z",
+  "handoff": {
+    "host": "deku",
+    "note": null
+  }
+}
