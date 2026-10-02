@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T17:08:42Z",
-  "leaseUntil": "2026-10-03T17:08:42Z",
+  "updatedAt": "2026-10-02T17:09:58Z",
+  "leaseUntil": "2026-10-03T17:09:58Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
     "prs": [
       "https://github.com/ArcForges/Contracts/pull/76"
     ],
-    "merges": [],
+    "merges": [
+      "9fe200def05befd42a245eb01fb1de8bcac59b21"
+    ],
     "done": [
       "claimed as completion follow-up; read task prompt, ledger records CON.07/14/15, window/harness; derived pinned-descriptor plan (ci.287.1 closure)",
       "Contracts PR 76 opened: pinned ci.287.1 later-service window, both directions, reference-codec exchange, generated-C# leg, closed-schema pins, mutation tests",
@@ -30,7 +32,8 @@
     "reviewed": "88a19888091415a7d2783d72d35731deb53c23bb",
     "blocker": null,
     "next": [
-      "merge via integration:Contracts"
+      "confirm publication",
+      "record the ledger"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
