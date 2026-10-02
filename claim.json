@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:26:17Z",
-  "updatedAt": "2026-10-02T04:48:25Z",
-  "leaseUntil": "2026-10-03T04:48:25Z",
+  "updatedAt": "2026-10-02T05:05:37Z",
+  "leaseUntil": "2026-10-03T05:05:37Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-50",
@@ -26,7 +26,8 @@
       "Correction of the earlier handoff line: main was not unmoved at 99344df; it was 81d53f5 (PLT.35 #119) when run 36954797721 started, and that run tested the merge of 4a61bd7 into 81d53f5",
       "Review r-c20261002-plt50 requested changes at 4a61bd7 (comment 5944681706); fixed: buffer-bound guard tests, precedence, consent contract wording and instrument-read purge, error-fact counting after write, dead oversize case, lazy window and promotion volume docs, sink thread-safety docs. Rebased onto main 54fb948 (PLT.09 #117 merged) and force-pushed with lease; new head 4ebb77c. Local: Observability tests 239/239 three times, format clean, seven guard mutations each fail a test",
       "Hosted run 36958843887 at 4ebb77c: 15/15 success, Linux Observability tests total 239 succeeded 239; PR CLEAN on main 54fb948; re-review requested with exact delta",
-      "Approved at 4ebb77c (comment 5945757857)"
+      "Approved at 4ebb77c (comment 5945757857)",
+      "Publish NuGet run 36966126613 on merge 348492f: completed success 2026-10-02T05:04:09Z, publish job success; verified 12 packages at 1.0.0-ci.76.1, none is Observability (non-packable); provider status from the job log only"
     ],
     "validation": [
       "see PR #120 body"
@@ -36,7 +37,6 @@
     "reviewed": "4ebb77c88f2e0ba726ed55247974669a51f2a8e9",
     "blocker": null,
     "next": [
-      "confirm publication",
       "record the ledger"
     ],
     "host": "deku",
