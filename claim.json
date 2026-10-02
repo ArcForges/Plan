@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:DesktopPlatform",
-  "claimant": "w-c20261002-plt10",
-  "epoch": 12,
-  "state": "released",
-  "claimedAt": "2026-10-02T18:53:42Z",
-  "updatedAt": "2026-10-02T19:05:47Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261002-plt13",
+  "epoch": 13,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T19:51:51Z",
+  "updatedAt": "2026-10-02T19:51:51Z",
+  "leaseUntil": "2026-10-03T07:51:51Z",
   "handoff": {
     "host": "deku",
-    "note": "queue: PLT.10 merged as d6e158d (Publish NuGet run 37050575687 succeeded). PLT.13 #125 is under rework: it must rebase onto main d6e158d, re-append the two policy JSON tails (eng/provenance/files.json, eng/policy/architecture-contract-tests.json) and resolve LocalRpcConnectionListener.cs, LocalRpcLimits.cs, LocalRpcServer.cs and README.md against PLT.10 (async cancellable decision AuthorizeConnectionsAsync, LocalRpcConnectionInfo.Endpoint, AuthorizationTimeout), keeping its handshake clock starting right after PLT.10's authorization step. No other approved DesktopPlatform PR is known to be waiting."
+    "note": "claimed after released by w-c20261002-plt10 epoch 12; review the earlier handoff and commits"
   }
 }
