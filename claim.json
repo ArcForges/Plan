@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "blocked",
   "claimedAt": "2026-10-02T05:58:42Z",
-  "updatedAt": "2026-10-02T10:02:05Z",
-  "leaseUntil": "2026-10-03T10:02:05Z",
+  "updatedAt": "2026-10-02T10:04:33Z",
+  "leaseUntil": "2026-10-03T10:04:33Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-19",
@@ -26,11 +26,12 @@
       "hosted CI at exact head a6e5d65 all green: CI run 36991600779 (Build candidate 15m35s, Verify; publish jobs skipped for PR), Security run 36991600858 (Secret scan, 4 CodeQL, Dependency review)"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-19",
-    "head": "a6e5d658667f1ca32daf4d147d81d97bff3cb935",
+    "head": "574f0745c4c40b3d70a174410e83e1812fce318b",
     "reviewed": null,
-    "blocker": "WP-03.90 cannot be accepted (see Contracts docs/wp03-90-verification.md, PR 75): (1) six public connector.* operations (Registry04 section 5 ConnectorService: ListDefinitions, ListConnections, BeginConnection, CompleteConnection, GetConnection, RevokeConnection) have no authored service and no delivery-graph owner; they are exactly the 6 pending rows of the operation-scope gate (329 registered/6 pending/7 reserved at candidate 1.0.0-ci.287.1), contradicting the CON.19 start-prerequisite text 'zero pending rows' - needs a Design planning change assigning an owner task (new Contracts closure or recorded retirement), which is an Architecture Owner decision not taken here; (2) Registry04 records LocalCallContext and SimulationDataSegment/SimulationSample/SimulationEvent/SimulationGap are absent by name with no determined owner (same planning decision); (3) compatibility harness retains only the Foundation/PublicApi ci.113.1 descriptors - CON.17 completion follow-up (ready) must run and record the complete matrix and freeze baselines for the later services; (4) the isolated three-ecosystem consumer restore in the task outcome conflicts with P2-017 and needs a recorded decision on how it is evidenced.",
+    "blocker": "WP-03.90 cannot be accepted (see Contracts docs/wp03-90-verification.md, PR 75): (1) six public connector.* operations (Registry04 section 5 ConnectorService: ListDefinitions, ListConnections, BeginConnection, CompleteConnection, GetConnection, RevokeConnection) have no authored service and no delivery-graph owner; they are exactly the 6 pending rows of the operation-scope gate (329 registered/6 pending/7 reserved at candidate 1.0.0-ci.287.1), contradicting the CON.19 start-prerequisite text 'zero pending rows'; the local twin ConnectorBrokerService (CON.05) exists but its records are internal-only - needs a Design planning change (Architecture Owner decision, not taken here); (2) Registry04 records LocalCallContext and SimulationDataSegment/SimulationSample/SimulationEvent/SimulationGap are absent by name with no determined owner (same planning decision; the Simulation payload is serialized as canonical JSON and whether a proto message is also needed is part of that decision); (3) the compatibility harness retains only the Foundation/PublicApi ci.113.1 descriptors - the CON.17 completion follow-up is claimed (w-c20261002-con17f, Contracts PR 76 open, unreviewed) and must run and record the complete matrix; (4) the isolated three-ecosystem consumer restore in the task outcome conflicts with P2-017 and needs a recorded decision on how it is evidenced.",
     "next": [
-      "await re-review of PR 75 at a6e5d65"
+      "await hosted CI and narrow re-review of PR 75 at 574f074",
+      "planning decisions (connector.*, LocalCallContext, Simulation records, consumer-restore clause); CON.17 follow-up via Contracts PR 76; then re-claim, re-verify, update record"
     ],
     "host": "deku",
     "note": "Do not re-implement: PR 75 holds the verification record. After the planning decisions land, re-claim, rebase on main, re-verify against the then-current candidate, update the record and only then write the Design assurance receipt."
