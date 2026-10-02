@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:46:32Z",
-  "updatedAt": "2026-10-02T22:35:45Z",
-  "leaseUntil": "2026-10-03T22:35:45Z",
+  "updatedAt": "2026-10-02T22:43:07Z",
+  "leaseUntil": "2026-10-03T22:43:07Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/prf-10",
@@ -27,7 +27,8 @@
       "Reviewer non-blocking findings: (1) hosted CI only compiles app unit tests (.github/workflows/ci.yml:72 :app:compileDebugUnitTestKotlin), so the 8 stream tests and 5 existing client tests run only locally and the BR-06 'continuously on main builds' obligation is not met for them; (3) test clientCloseCancelsAnOpenStreamWithoutBlockingTheCaller does not test non-blocking; (4) exact wire deadline value and OkHttp retryOnConnectionFailure not pinned (surviving mutants: 4 s deadline, retry flag true, synchronous close()); (5) cosmetic comment split",
       "Merged Mobile PR 19 as 377fa5d6e00b7a50d37d2f8434f915850c6d5b9f at reviewed head bc69ce4 via integration:Mobile (--merge, match-head-commit)",
       "Main-push run 37072330027 on 377fa5d succeeded (Build ubuntu+windows, CodeQL x3, Secret scan, Verify, Publish Android; Dependency review skipped on push); provider status only",
-      "Ledger PR Plan 245 opened at 5d8b3174039ef8180eb0e0a1cbc3b854b6cae281 (check with explicit roots passed); integration:Mobile released"
+      "Ledger PR Plan 245 opened at 5d8b3174039ef8180eb0e0a1cbc3b854b6cae281 (check with explicit roots passed); integration:Mobile released",
+      "Ledger PR Plan 245 corrected per review (comment 5962614293); new head e0ba4a24b05b4ebbb70a48d61a4da03e268bdc9d, check with explicit roots passed"
     ],
     "validation": [
       "Local (Windows 11, JDK 21.0.11, Gradle 9.8.0 offline, build slot): spotlessCheck, shared tests, app unit tests (8 new stream fixture tests), lintRelease, assembleDebugAndroidTest, assembleRelease, bundleRelease, eng/mobile.py check+bytecode, eng unittest 70 passed; mutation checks of new tests",
@@ -39,7 +40,7 @@
     "reviewed": "bc69ce4f17be35d891278a875ae4fe944170b14d",
     "blocker": null,
     "next": [
-      "await review of Plan PR 245; merge via integration:Plan; then update --state delivered"
+      "await re-review of Plan PR 245 at e0ba4a24b05b4ebbb70a48d61a4da03e268bdc9d; merge via integration:Plan; then update --state delivered"
     ],
     "host": "deku",
     "note": null
