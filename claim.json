@@ -4,12 +4,12 @@
   "id": "integration:Contracts",
   "claimant": "w-c20261002-con17f",
   "epoch": 6,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T17:08:58Z",
-  "updatedAt": "2026-10-02T17:08:58Z",
-  "leaseUntil": "2026-10-03T05:08:58Z",
+  "updatedAt": "2026-10-02T17:32:07Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-con19 epoch 5; review the earlier handoff and commits"
+    "note": "CON.17 #76 merged as 9fe200d; main CI and Security green, 1.0.0-ci.295.1 published; queue empty from this worker"
   }
 }
