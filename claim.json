@@ -6,13 +6,14 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:04:32Z",
-  "updatedAt": "2026-10-02T02:26:15Z",
-  "leaseUntil": "2026-10-03T02:26:15Z",
+  "updatedAt": "2026-10-02T02:28:06Z",
+  "leaseUntil": "2026-10-03T02:28:06Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-35",
     "prs": [
-      "https://github.com/ArcForges/DesktopPlatform/pull/119"
+      "https://github.com/ArcForges/DesktopPlatform/pull/119",
+      "https://github.com/ArcForges/Plan/pull/230"
     ],
     "merges": [
       "81d53f56a47641fb27764ce2c3b5912ee5dfeeb2"
@@ -29,7 +30,7 @@
     "reviewed": "8cb87aead8f240d38dd3fbd7f8d78ac080dbb455",
     "blocker": null,
     "next": [
-      "ledger PR"
+      "await review of ledger PR Plan#230 head 0aebf7190154cd44fd3e3d5639f006e6975b04eb; merge via integration:Plan; then update --state delivered"
     ],
     "host": "deku",
     "note": null
