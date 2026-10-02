@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T04:54:41Z",
-  "leaseUntil": "2026-10-02T16:54:41Z",
+  "updatedAt": "2026-10-02T04:56:40Z",
+  "leaseUntil": "2026-10-02T16:56:40Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -20,7 +20,8 @@
       "ca27cabdb018994de57f065615549ab2b0cee88e",
       "e2558231d377f3663cbd2f7a26e8700d395b852b",
       "7c8a4cf2456ccc6e8c2bea9e2067694cea9ec082",
-      "c4a0f973f1d3b36bbc8c480632c98c95b083433d"
+      "c4a0f973f1d3b36bbc8c480632c98c95b083433d",
+      "ca45f36cccbdd31380f76b8f6cdecc958fdcb430"
     ],
     "done": [
       "recovered nothing (no prior CON.07 commits/PRs exist); authored identity.proto (3 services, 49 ops), constraints shard, eng/operations/con-07.json, browser+native-auth HTTP schemas with form/route/rule generator support, vectors, tests, regenerated outputs",
@@ -36,7 +37,7 @@
     "reviewed": "8c0a40442647d3190384c02dc9480ef16118e1b6",
     "blocker": null,
     "next": [
-      "planning amendment merged (Design 7c8a4cf, Plan c4a0f97); Contracts #74 8c0a404 awaits independent re-review, then merge on coordinator approval"
+      "Contracts #74 merged ca45f36; confirming main CI/Security/publisher jobs, then ledger PR"
     ],
     "host": "deku",
     "note": "Contracts #74 approved by r-c20261001-con07-code at 8c0a40442647d3190384c02dc9480ef16118e1b6 (comment 5945827374)"
