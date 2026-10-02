@@ -6,15 +6,18 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T00:40:30Z",
-  "leaseUntil": "2026-10-02T12:40:30Z",
+  "updatedAt": "2026-10-02T02:04:13Z",
+  "leaseUntil": "2026-10-02T14:04:13Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
     "prs": [
       "https://github.com/ArcForges/Contracts/pull/74"
     ],
-    "merges": [],
+    "merges": [
+      "ca27cabdb018994de57f065615549ab2b0cee88e",
+      "e2558231d377f3663cbd2f7a26e8700d395b852b"
+    ],
     "done": [
       "recovered nothing (no prior CON.07 commits/PRs exist); authored identity.proto (3 services, 49 ops), constraints shard, eng/operations/con-07.json, browser+native-auth HTTP schemas with form/route/rule generator support, vectors, tests, regenerated outputs",
       "source snapshot complete: 3 services/49 ops, constraints, export, HTTP schemas+codecs+routes, 3-language vectors; local gates: node 9/9, python gates, C# structure tests (CON.07: 95 shape + 115 HTTP vectors), JIT serialization probe (31 binary, 51 JSON, 207 bound methods)"
@@ -28,9 +31,9 @@
     "reviewed": "120eb4ebec2bd5a5ff01c02b71a26465dd38fa62",
     "blocker": null,
     "next": [
-      "await re-review of Design #198 120eb4e + Plan #220 daa1c6c, then independent review of Contracts #74 (CI green at d0ebf94)"
+      "planning pair merged (Design ca27cab, Plan e255823); Contracts #74 d0ebf94 awaits independent code review, then merge on coordinator approval"
     ],
     "host": "deku",
-    "note": "Planning pair approved by r-c20261001-con07-plan: Design #198 120eb4ebec2bd5a5ff01c02b71a26465dd38fa62, Plan #220 daa1c6c16b6ef41b901b61f42eeb15097c4d0643; Contracts #74 d0ebf94 awaits its own code review"
+    "note": "Design #198 and Plan #220 merged; integration roles released"
   }
 }
