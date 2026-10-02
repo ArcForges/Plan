@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:26:17Z",
-  "updatedAt": "2026-10-02T02:27:34Z",
-  "leaseUntil": "2026-10-03T02:27:34Z",
+  "updatedAt": "2026-10-02T03:08:56Z",
+  "leaseUntil": "2026-10-03T03:08:56Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-50",
@@ -20,17 +20,20 @@
       "ADP-07 supporting-file binding (declared before editing): serves only artifacts inside the task outcome and write scope (new public types and files under src/BuildingBlocks/ArcForges.Observability/**). Exact paths: eng/policy/architecture-contract-tests.json (RES-architecture-tests, append only RP-10 rows for the new public methods, owner Architecture tests suite, necessity: Build.Policy RP-10 fails on a public method without a direct [Fact] binding); eng/provenance/files.json (RES-desktopplatform-policy-data, append only the new first-party source/test paths, necessity: provenance gate lists every tracked file). No csproj, packages.lock.json, Directory.Packages.props, dependency-policy.json, dependency receipt, active-projects.json, .gitleaks.toml, solution/workflow or packages.json change; no new project reference or package.",
       "First commit pushed: TracePolicy, DiagnosticSpanBuffer, TracePolicyOptions, TelemetryConsent, MetricLabelPolicy, policy JSON sampling/retention, offline tests, ADP-07 RP-10 rows and provenance paths",
       "Local validation: solution build 0 warn/0 err, format clean, Observability tests 231/231, architecture policy no RP-10/BAN finding (environmental findings only), provenance/dependency_policy/reconciliation pass",
-      "Hosted PR run 36954797721 at head 4a61bd7 completed success: all 15 checks (secret-scan, managed-packages pack with Observability tests total 231 succeeded 231 on Linux, Local RPC AOT win-x64/linux-x64, Avalonia AOT probe, native-win-x64, ci); PR mergeable CLEAN, main unmoved at 99344df"
+      "Hosted PR run 36954797721 at head 4a61bd7 completed success: all 15 checks (secret-scan, managed-packages pack with Observability tests total 231 succeeded 231 on Linux, Local RPC AOT win-x64/linux-x64, Avalonia AOT probe, native-win-x64, ci); PR mergeable CLEAN, main unmoved at 99344df",
+      "Correction of the earlier handoff line: main was not unmoved at 99344df; it was 81d53f5 (PLT.35 #119) when run 36954797721 started, and that run tested the merge of 4a61bd7 into 81d53f5",
+      "Review r-c20261002-plt50 requested changes at 4a61bd7 (comment 5944681706); fixed: buffer-bound guard tests, precedence, consent contract wording and instrument-read purge, error-fact counting after write, dead oversize case, lazy window and promotion volume docs, sink thread-safety docs. Rebased onto main 54fb948 (PLT.09 #117 merged) and force-pushed with lease; new head 4ebb77c. Local: Observability tests 239/239 three times, format clean, seven guard mutations each fail a test"
     ],
     "validation": [
       "see PR #120 body"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-50",
-    "head": "4a61bd739f741ce2cfcf8f3d81fa0046df774104",
+    "head": "4ebb77c88f2e0ba726ed55247974669a51f2a8e9",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review"
+      "await CI",
+      "await re-review"
     ],
     "host": "deku",
     "note": null
