@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T19:35:47Z",
-  "updatedAt": "2026-10-02T00:09:29Z",
-  "leaseUntil": "2026-10-03T00:09:29Z",
+  "updatedAt": "2026-10-02T00:20:12Z",
+  "leaseUntil": "2026-10-03T00:20:12Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-49",
@@ -38,7 +38,7 @@
     "reviewed": "d08d6ec17ae63db2e88078d3749b1aee3a0d8936",
     "blocker": null,
     "next": [
-      "await review of ledger PR Plan #228 (head 8e294bb6d682523b46c900da45cef6dd95d46dee), merge via integration:Plan, then record --state complete"
+      "await narrow re-review of ledger PR Plan #228 at fc2003f7596fd17ce9ccc5fea5afd5e96ffe8609, merge via integration:Plan, then record --state complete"
     ],
     "host": "deku",
     "note": "Correction: the ADP-07 bindings for eng/provenance/files.json (17 paths) and Properties/AssemblyInfo.cs were recorded after the files existed, not before editing; only the architecture-contract-tests.json binding was declared before editing. Validation correction: Observability tests are 200/200 at d08d6ec (earlier 189 and 191 figures were for earlier heads)."
