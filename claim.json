@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:56:16Z",
-  "updatedAt": "2026-10-02T17:26:16Z",
-  "leaseUntil": "2026-10-02T23:26:16Z",
+  "updatedAt": "2026-10-02T17:32:03Z",
+  "leaseUntil": "2026-10-02T23:32:03Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/prf-07",
@@ -15,13 +15,17 @@
       "https://github.com/ArcForges/Cloud/pull/31",
       "https://github.com/ArcForges/Cloud/pull/32"
     ],
-    "merges": [],
+    "merges": [
+      "8954f3024ae77852ea0f55974d659e64b5cbad9b",
+      "90a14b1a7ba6a4a5e4681460639a472078586d96"
+    ],
     "done": [
       "claimed; read Design/Plan/contracts; no Cloudflare credentials, wrangler login or Docker exist here, so live deployment is impossible in this environment; Contracts 1.0.0-ci.287.1 pins and npm/NuGet admission staged locally; planning scope-repair pair (Design b2967fd, Plan 385d597) prepared locally",
       "Worker half implemented with 168 offline node tests (plan vectors on SQLite, executor, handler, signing, R2 facade, Queue/DO logic, proof routes); planning scope-repair pair pushed (Design task/prf-07-write-scope 809414c, Plan task/prf-07-write-scope 403d5b1); C# half in progress via a delegated engineer",
       "resumed after rate-limit; delegate died leaving unbuilt C# sources under src/ArcForges.Cloud/{Hmac,Storage,Foundation,Composition}; checkpoint pushed",
       "Design 204 head 809414c56129451b03a10acff1049c243e208f30 and Plan 237 head 403d5b17488688ad63814191b5eae6291576c686 approved by reviewer r-c20261002-prf07-plan (comments 5957417171, 5957418007); wrangler admission PR Cloud 32 opened",
-      "Cloud 32 (wrangler 4.143.1) head 3cc78ae631eaf6a69003e115de7b877819667a80 hosted CI green; Cloud 31 head 3d2c81c0f126 hosted CI green incl. Linux AOT image and Worker candidate; planning pair rebased to Design c2e391a / Plan a348d7f, re-review requested"
+      "Cloud 32 (wrangler 4.143.1) head 3cc78ae631eaf6a69003e115de7b877819667a80 hosted CI green; Cloud 31 head 3d2c81c0f126 hosted CI green incl. Linux AOT image and Worker candidate; planning pair rebased to Design c2e391a / Plan a348d7f, re-review requested",
+      "Design 204 merged (8954f30), Plan 237 merged (90a14b1); integration roles released"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\prf-07",
@@ -29,7 +33,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "independent review of Cloud 32 then merge; rebase Cloud 31 on main and re-verify CI; independent review of Cloud 31; planning pair re-review and merge (Design 204 then Plan 237); then record delivered. Live Cloudflare proof still needs user-provided account id, API token, resources, secrets, Docker and RES-cloud-deployment lease"
+      "await independent review of Cloud 32 then merge via integration:Cloud; rebase Cloud 31 onto main, CI, independent code review of 31; then delivered. Live proof needs user-provided Cloudflare account/credentials"
     ],
     "host": "deku",
     "note": "resumed; preparing wrangler admission PR"
