@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-02T23:21:48Z",
-  "leaseUntil": "2026-10-03T23:21:48Z",
+  "updatedAt": "2026-10-02T23:25:49Z",
+  "leaseUntil": "2026-10-03T23:25:49Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
@@ -30,9 +30,9 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await re-review: Web 25 at 3e6cfac, Design 207 at 4d0b545, Plan 246 at 95e4df6; merge order Design, Plan, Web; later ledger record (state pre-authority edits outside apps/**; review independence by worker name only)"
+      "await re-review: Design 207 at 0439ffe, Plan 246 at 95e4df6, Web 25 at 3e6cfac; merge order Design, Plan, Web"
     ],
     "host": "deku",
-    "note": "review findings addressed: removed unneeded seventh gitleaks row; Design text tightened (exact pin, six rows, narrowed tests)"
+    "note": "Design lane view was uncommitted; fixed, check re-run after final edit"
   }
 }
