@@ -6,15 +6,16 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:27:45Z",
-  "updatedAt": "2026-10-02T05:26:31Z",
-  "leaseUntil": "2026-10-03T05:26:31Z",
+  "updatedAt": "2026-10-02T05:40:36Z",
+  "leaseUntil": "2026-10-03T05:40:36Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-52",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/121",
       "https://github.com/ArcForges/ArcForges-Design/pull/201",
-      "https://github.com/ArcForges/Plan/pull/229"
+      "https://github.com/ArcForges/Plan/pull/229",
+      "https://github.com/ArcForges/Plan/pull/235"
     ],
     "merges": [
       "452ec15d507e40010d56ec05ac875ae953ce1e2f"
@@ -29,15 +30,15 @@
       "hosted CI green 15/15 at e78672b; PR body corrected (receipt chains from plt-09-r1)"
     ],
     "validation": [
-      "local only; SDK 10.0.401 substituted in uncommitted global.json; locked restore evaluated by hosted CI"
+      "local only; SDK 10.0.401 substituted in uncommitted global.json; locked restore evaluated by hosted CI",
+      "ledger check passed with explicit roots; Publish NuGet run 36968882005 success on 452ec15 (12 packages, none Observability)"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-52",
     "head": "e78672b0ba9c7126f9633e19c0059376a6e8bc91",
     "reviewed": "e78672b0ba9c7126f9633e19c0059376a6e8bc91",
     "blocker": null,
     "next": [
-      "confirm publication (Publish NuGet run 36968882005)",
-      "record the ledger"
+      "await review of ledger PR Plan #235 at b5b3764; merge via integration:Plan; then update --state complete"
     ],
     "host": "deku",
     "note": null
