@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:56:16Z",
-  "updatedAt": "2026-10-02T17:32:03Z",
-  "leaseUntil": "2026-10-02T23:32:03Z",
+  "updatedAt": "2026-10-02T17:36:12Z",
+  "leaseUntil": "2026-10-02T23:36:12Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/prf-07",
@@ -25,7 +25,8 @@
       "resumed after rate-limit; delegate died leaving unbuilt C# sources under src/ArcForges.Cloud/{Hmac,Storage,Foundation,Composition}; checkpoint pushed",
       "Design 204 head 809414c56129451b03a10acff1049c243e208f30 and Plan 237 head 403d5b17488688ad63814191b5eae6291576c686 approved by reviewer r-c20261002-prf07-plan (comments 5957417171, 5957418007); wrangler admission PR Cloud 32 opened",
       "Cloud 32 (wrangler 4.143.1) head 3cc78ae631eaf6a69003e115de7b877819667a80 hosted CI green; Cloud 31 head 3d2c81c0f126 hosted CI green incl. Linux AOT image and Worker candidate; planning pair rebased to Design c2e391a / Plan a348d7f, re-review requested",
-      "Design 204 merged (8954f30), Plan 237 merged (90a14b1); integration roles released"
+      "Design 204 merged (8954f30), Plan 237 merged (90a14b1); integration roles released",
+      "Cloud 32 approved at 3cc78ae631ea by r-c20261002-prf07-wrangler; NOT merged pending coordinator/user decision on the main-push deploy"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\prf-07",
@@ -33,7 +34,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await independent review of Cloud 32 then merge via integration:Cloud; rebase Cloud 31 onto main, CI, independent code review of 31; then delivered. Live proof needs user-provided Cloudflare account/credentials"
+      "decide: merging any Cloud PR to main runs Deploy Cloudflare (npm run deploy: pushes the sealed candidate image to the Cloudflare registry, wrangler deploy --containers-rollout immediate to production, creates a GitHub prerelease; environment cloudflare has no required reviewers); then merge 32, rebase 31 onto main, CI, independent code review of 31. Open item: docs/provenance.md:56 still says Wrangler 4.135.0 (outside write scope). Live proof still needs user-provided Cloudflare account/credentials"
     ],
     "host": "deku",
     "note": "resumed; preparing wrangler admission PR"
