@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:00:01Z",
-  "updatedAt": "2026-10-01T23:46:26Z",
-  "leaseUntil": "2026-10-02T23:46:26Z",
+  "updatedAt": "2026-10-02T00:02:14Z",
+  "leaseUntil": "2026-10-03T00:02:14Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-14",
@@ -45,7 +45,7 @@
     "reviewed": "8762132eb165f4c0747e937e60b4412f789be66c",
     "blocker": null,
     "next": [
-      "await review of ledger PR Plan #226 (head 4c037f3), merge via integration:Plan, then record --state complete"
+      "await narrow re-review of ledger PR Plan #226 (head de62c036236f6fe1b594297818d5c6b10dd5673e)"
     ],
     "host": "deku",
     "note": "ADP-07 support binding: src/public/ts/contract-fixtures/src/index.ts is a generated output of the authorized wp03-02.json append (generate_fixtures), regenerated mechanically (+34 lines: CloudInternal OperatorService catalogue/methods); no other behavior"
