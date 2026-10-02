@@ -6,13 +6,14 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:38Z",
-  "updatedAt": "2026-10-02T22:03:58Z",
-  "leaseUntil": "2026-10-03T22:03:58Z",
+  "updatedAt": "2026-10-02T22:07:22Z",
+  "leaseUntil": "2026-10-03T22:07:22Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-13",
     "prs": [
-      "https://github.com/ArcForges/DesktopPlatform/pull/125"
+      "https://github.com/ArcForges/DesktopPlatform/pull/125",
+      "https://github.com/ArcForges/Plan/pull/244"
     ],
     "merges": [
       "d4e874374a737012b174904e25d49c8fdf05714c"
@@ -26,7 +27,8 @@
       "rebased onto main 7316ab8 (no conflicts); earlier head e3e1443 had hosted CI all green (run 37003373154); re-ran local build, offline suite 134 run/0 failed, opt-in 143 run/0 failed, provenance/dependency/reconciliation checks after rebase",
       "hosted CI run 37038772759 green on all checks at 48164f8 (includes managed-packages pack, Local RPC AOT compile linux-x64/win-x64, secret-scan, policy jobs)",
       "review round 2 fixes pushed as one commit rebased on main d6e158d: early-timer re-arm (+deterministic and real-clock tests), connection window 3x, 80-call burst test, README corrections, PR body ADP-07 declaration (owner RES-desktopplatform-policy-data/build-config append; necessity: provenance and RP-10 gates), mutants N1/N2/N4 killed; hosted CI green 15/15",
-      "publication confirmed: Publish NuGet run 37056924397 on d4e8743 success (14 packages ci.81.1, none LocalRpc)"
+      "publication confirmed: Publish NuGet run 37056924397 on d4e8743 success (14 packages ci.81.1, none LocalRpc)",
+      "merged d4e8743; Publish NuGet 37056924397 success; role released; ledger PR Plan#244 opened at 19f62b0f03b885de88b2063326092a8d4869af1e, check passed"
     ],
     "validation": [
       "dotnet test LocalRpc offline 134 run/10 skipped/0 failed; opt-in OS checks Windows only"
@@ -36,7 +38,7 @@
     "reviewed": "2317461f83c0592bc27b91df56c598885f3028c0",
     "blocker": null,
     "next": [
-      "record the ledger"
+      "await ledger review; merge via integration:Plan; then update --state complete"
     ],
     "host": "deku",
     "note": null
