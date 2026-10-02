@@ -6,22 +6,25 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:46:32Z",
-  "updatedAt": "2026-10-02T22:23:47Z",
-  "leaseUntil": "2026-10-03T22:23:47Z",
+  "updatedAt": "2026-10-02T22:25:04Z",
+  "leaseUntil": "2026-10-03T22:25:04Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/prf-10",
     "prs": [
       "https://github.com/ArcForges/Mobile/pull/19"
     ],
-    "merges": [],
+    "merges": [
+      "377fa5d6e00b7a50d37d2f8434f915850c6d5b9f"
+    ],
     "done": [
       "Verified facts: Maven Central contracts-connect-client latest is 1.0.0-ci.60.1 whose JAR holds only HelloServiceClient (unary); Contracts main publishes Maven only as mutable 1.0.0-SNAPSHOT, so no admissible immutable coordinate carries EventService.Watch; PRF.07 foundation exposes no gRPC-Web business service (no Watch) and has no deployed ingress",
       "Scope binding (ADP-07, no new dependency/identity/runtime behavior): edits only Mobile app/src/main CloudHelloClient.kt (extract shared protocolClient factory, behavior unchanged), new app/src/test ConnectStreamingFixtureTest.kt, new app/src/androidTest KeystoreProbeTest.kt, and the factual inventory classification of those two new files in eng/provenance/files.json (existing firstParty list; check_provenance requires every tracked file classified). No gradle/**, catalog, lock or admission change",
       "Pushed first commit cbfa7ed; local offline checks passed (spotlessCheck, shared desktop+android host tests, app unit tests, lintRelease, assembleDebugAndroidTest, assembleRelease, bundleRelease, eng/mobile.py check+bytecode, eng tests)",
       "Review approved at bc69ce4f17be35d891278a875ae4fe944170b14d (Mobile PR 19 comment 5962401154, reviewer r-c20261002-prf10, same GitHub account as claimant)",
       "ADP-07 correction: the scope-binding declaration was recorded after the first commit cbfa7ed (not before the edit) and omitted docs/development.md, which commit bc69ce4 changed (factual two-line description of the two new tests); eng/provenance/files.json and docs/development.md are the two supporting paths outside app/**",
-      "Reviewer non-blocking findings: (1) hosted CI only compiles app unit tests (.github/workflows/ci.yml:72 :app:compileDebugUnitTestKotlin), so the 8 stream tests and 5 existing client tests run only locally and the BR-06 'continuously on main builds' obligation is not met for them; (3) test clientCloseCancelsAnOpenStreamWithoutBlockingTheCaller does not test non-blocking; (4) exact wire deadline value and OkHttp retryOnConnectionFailure not pinned (surviving mutants: 4 s deadline, retry flag true, synchronous close()); (5) cosmetic comment split"
+      "Reviewer non-blocking findings: (1) hosted CI only compiles app unit tests (.github/workflows/ci.yml:72 :app:compileDebugUnitTestKotlin), so the 8 stream tests and 5 existing client tests run only locally and the BR-06 'continuously on main builds' obligation is not met for them; (3) test clientCloseCancelsAnOpenStreamWithoutBlockingTheCaller does not test non-blocking; (4) exact wire deadline value and OkHttp retryOnConnectionFailure not pinned (surviving mutants: 4 s deadline, retry flag true, synchronous close()); (5) cosmetic comment split",
+      "Merged Mobile PR 19 as 377fa5d6e00b7a50d37d2f8434f915850c6d5b9f at reviewed head bc69ce4 via integration:Mobile (--merge, match-head-commit)"
     ],
     "validation": [
       "Local (Windows 11, JDK 21.0.11, Gradle 9.8.0 offline, build slot): spotlessCheck, shared tests, app unit tests (8 new stream fixture tests), lintRelease, assembleDebugAndroidTest, assembleRelease, bundleRelease, eng/mobile.py check+bytecode, eng unittest 70 passed; mutation checks of new tests",
@@ -33,7 +36,8 @@
     "reviewed": "bc69ce4f17be35d891278a875ae4fe944170b14d",
     "blocker": null,
     "next": [
-      "claim integration:Mobile, merge at reviewed head, confirm main-push run, record --merge, ledger PR"
+      "confirm main-push run 37072330027",
+      "record the ledger (delivered, not complete)"
     ],
     "host": "deku",
     "note": null
