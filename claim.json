@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T04:56:40Z",
-  "leaseUntil": "2026-10-02T16:56:40Z",
+  "updatedAt": "2026-10-02T05:15:50Z",
+  "leaseUntil": "2026-10-02T17:15:50Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -37,7 +37,7 @@
     "reviewed": "8c0a40442647d3190384c02dc9480ef16118e1b6",
     "blocker": null,
     "next": [
-      "Contracts #74 merged ca45f36; confirming main CI/Security/publisher jobs, then ledger PR"
+      "Contracts #74 merged ca45f36; main CI/Security/publisher jobs green; ledger PR next"
     ],
     "host": "deku",
     "note": "Contracts #74 approved by r-c20261001-con07-code at 8c0a40442647d3190384c02dc9480ef16118e1b6 (comment 5945827374)"
