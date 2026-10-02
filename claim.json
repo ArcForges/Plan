@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:17Z",
-  "updatedAt": "2026-10-02T18:23:45Z",
-  "leaseUntil": "2026-10-03T18:23:45Z",
+  "updatedAt": "2026-10-02T18:53:28Z",
+  "leaseUntil": "2026-10-03T18:53:28Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-10",
@@ -28,7 +28,7 @@
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-10",
     "head": "fb5ae47b3bb39008dfd3ca8754727082886a9160",
-    "reviewed": null,
+    "reviewed": "fb5ae47b3bb39008dfd3ca8754727082886a9160",
     "blocker": null,
     "next": [
       "await re-review"
