@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T06:09:37Z",
-  "updatedAt": "2026-10-02T11:27:35Z",
-  "leaseUntil": "2026-10-03T11:27:35Z",
+  "updatedAt": "2026-10-02T11:39:21Z",
+  "leaseUntil": "2026-10-03T11:39:21Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-53",
@@ -32,7 +32,8 @@
       "planning PRs approved by r-c20261002-plt53-plan on exact heads: Design #203 c26640721705c9c51ad5c24d0eee8de6ce7c042b (comment 5951010149), Plan #236 1d4bb3da3f7b86d09a288c84cff3646522585969 (comment 5951010682); bases unmoved (Design 7c8a4cf, Plan acc66a6)",
       "merged planning pair: Design #203 d89fd5c, Plan #236 bfd4667; both integration roles released; primaries fast-forwarded",
       "README delta 3849fa3 (transitive Google.Protobuf/Grpc.Core.Api; precise wiring statement); main unmoved at de31658 so receipt plt-53-r1 still chains from active plt-52-r1; hosted run 36999829137 15/15 pass",
-      "#124 approved at 3849fa3 by r-c20261002-plt53-code (comment 5951357782)"
+      "#124 approved at 3849fa3 by r-c20261002-plt53-code (comment 5951357782)",
+      "merged #124 as 7316ab85c70973b2dfd32fc28953c9db9ec0728e (2026-10-02T11:27:15Z); Publish NuGet run 37001091983 succeeded (created 11:27:19Z, updated 11:38:03Z): preflight, all candidate jobs, publish; 'Verified 14 package(s), version 1.0.0-ci.79.1'; 14 pushed lines incl. first pushes of ArcForges.Observability and ArcForges.Observability.Desktop; integration:DesktopPlatform released"
     ],
     "validation": [
       "local pack, tests, python gates, one local opt-in consumer: see PR #124 body"
@@ -42,8 +43,7 @@
     "reviewed": "3849fa3c018bc85667daa661cb49923dd0aad8be",
     "blocker": null,
     "next": [
-      "confirm Publish NuGet run on 7316ab8 (provider status only)",
-      "record the ledger (delivered)"
+      "ledger PR Plan: record delivered (PLT.48 edge open); request review; merge via integration:Plan; update --state delivered"
     ],
     "host": "deku",
     "note": null
