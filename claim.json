@@ -4,13 +4,13 @@
   "id": "RES-contracts-dokka-profile",
   "task": "CON.07",
   "claimant": "w-c20261001-con07",
-  "epoch": 1,
-  "state": "released",
-  "claimedAt": "2026-10-01T09:10:06Z",
-  "updatedAt": "2026-10-01T20:08:06Z",
-  "leaseUntil": null,
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T02:27:53Z",
+  "updatedAt": "2026-10-02T02:27:53Z",
+  "leaseUntil": "2026-10-02T06:27:53Z",
   "handoff": {
     "host": "deku",
-    "note": "Dokka r20 reserved and committed: Contracts PR #74 head 11259fc44a5a912c1db50653f180592275957630 (profile dokka-2-2-0-r20.json, record dokka-documentation-resources-r20.json); next free rN is r21"
+    "note": "claimed after released by w-c20261001-con07 epoch 1; review the earlier handoff and commits"
   }
 }
