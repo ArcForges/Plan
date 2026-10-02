@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T17:48:51Z",
-  "leaseUntil": "2026-10-03T17:48:51Z",
+  "updatedAt": "2026-10-02T17:50:37Z",
+  "leaseUntil": "2026-10-03T17:50:37Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
@@ -33,10 +33,10 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-17",
     "head": "88a19888091415a7d2783d72d35731deb53c23bb",
-    "reviewed": "88a19888091415a7d2783d72d35731deb53c23bb",
+    "reviewed": "c04e175f3fecb9abfba310c4e37797cead376925",
     "blocker": null,
     "next": [
-      "await narrow re-review of Plan#239 at c04e175; merge via integration:Plan; then update --state complete"
+      "merge via integration:Plan"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
