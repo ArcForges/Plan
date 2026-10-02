@@ -6,23 +6,28 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:31:40Z",
-  "updatedAt": "2026-10-02T19:31:40Z",
-  "leaseUntil": "2026-10-03T19:31:40Z",
+  "updatedAt": "2026-10-02T19:51:39Z",
+  "leaseUntil": "2026-10-03T19:51:39Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-38",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/ArcForges-Design/pull/205",
+      "https://github.com/ArcForges/Plan/pull/242"
+    ],
     "merges": [],
-    "done": [],
+    "done": [
+      "Read brief, plans, WP-11.02, architecture 08, PLT.09/10/20/24/36/37/39/40/44 records; claimed epoch 1; opened planning repair pair Design#205 + Plan#242 (exact write scope: one new nested non-packable project src/BuildingBlocks/ArcForges.Security/LocalRpcBoundary binding the Security transport-session port to the real PLT.10 LocalRpcLaunchAuthority, plus the exact solution/selector/policy/provenance/receipt rows; verified locally the planned restore adds no coordinate outside nugetClosure)"
+    ],
     "validation": [],
-    "worktree": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-38",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "independent review and merge of Design#205 and Plan#242; implement Security.Decisions pipeline (14 steps, 4 enforcement points, typed outcomes, unforgeable execution ticket, permission availability projection) and LocalRpcBoundary adapter with mutation-resistant tests; open implementation PR only after the repair merges; no ADP-07 reliance (all supporting rows are inside the repair); Capabilities is not edited (PLT.57 attaches)"
     ],
     "host": "deku",
-    "note": null
+    "note": "ADP-07 declaration: none relied on; every supporting file is named by the planning repair. Receipt plt-38-r1 chains from the receipt active on main at merge (plt-53-r1 at claim time)."
   }
 }
