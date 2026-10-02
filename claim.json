@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-02T22:02:51Z",
-  "leaseUntil": "2026-10-03T22:02:51Z",
+  "updatedAt": "2026-10-02T23:02:18Z",
+  "leaseUntil": "2026-10-03T23:02:18Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
@@ -15,15 +15,16 @@
     "merges": [],
     "done": [
       "claimed; read brief/Plan/Design/task prompt/PRF.07 ledger; baseline npm ci on pinned Node 24.21.0/npm 11.19.0 (fnm); found main npm audit --audit-level=high red (undici via wrangler 4.135.0; 4.143.1 clears it in a scratch install); site build with Contracts 287.1 in scratch emits byte-identical chunks (graph only grows 254 to 299 modules)",
-      "resumed after rate-limit interruption; pushed WIP (manifests, lock, wrangler 4.143.1, Contracts 287.1 pin, build-identity sources[] support, apps/app skeleton); admission records, app routes, tests and planning pair still to do; NOT green"
+      "resumed after rate-limit interruption; pushed WIP (manifests, lock, wrangler 4.143.1, Contracts 287.1 pin, build-identity sources[] support, apps/app skeleton); admission records, app routes, tests and planning pair still to do; NOT green",
+      "implementation complete locally and pushed (history rewritten pre-review: WIP bfbf307 replaced by 2 commits): apps/app profiles, SDK pin 287.1, wrangler 4.143.1, admission records (receipt, profile r8, build-identity r4); npm run check green, strict candidate build verified, npm audit 0 vuln, mutation run 45/48 then 48/48-minus-1-equivalent, local Chromium run against local Native AOT Hello host once"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Web\\.worktree\\prf-08",
-    "head": "bfbf3077bbfaf5e151d529df95e45048574aaf8f",
+    "head": "e69b7d5d49bf523e570a9b345b127f8ca073ae16",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "write probe modules/routes/tests, seal admission (profile r8), planning pair, open PR"
+      "open Web PR; planning pair (Design graph write scope + Plan generate) ; wait for hosted CI (gitleaks may need exact-line rows for r8 profile -> requires the planning authority); ledger record delivered"
     ],
     "host": "deku",
     "note": null
