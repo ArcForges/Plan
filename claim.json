@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T03:09:38Z",
-  "updatedAt": "2026-10-02T20:02:55Z",
-  "leaseUntil": "2026-10-03T20:02:55Z",
+  "updatedAt": "2026-10-02T22:03:58Z",
+  "leaseUntil": "2026-10-03T22:03:58Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-13",
@@ -25,7 +25,8 @@
       "PR 125 opened; local validation: build 0 warnings, format, provenance/dependency/reconciliation/licence/runtime-ownership checks, architecture test (only hosted-evidence findings), offline suite 144 (134 run) green 13x incl. contended, opt-in OS 71 runs green, 39 hand mutants killed but one equivalent",
       "rebased onto main 7316ab8 (no conflicts); earlier head e3e1443 had hosted CI all green (run 37003373154); re-ran local build, offline suite 134 run/0 failed, opt-in 143 run/0 failed, provenance/dependency/reconciliation checks after rebase",
       "hosted CI run 37038772759 green on all checks at 48164f8 (includes managed-packages pack, Local RPC AOT compile linux-x64/win-x64, secret-scan, policy jobs)",
-      "review round 2 fixes pushed as one commit rebased on main d6e158d: early-timer re-arm (+deterministic and real-clock tests), connection window 3x, 80-call burst test, README corrections, PR body ADP-07 declaration (owner RES-desktopplatform-policy-data/build-config append; necessity: provenance and RP-10 gates), mutants N1/N2/N4 killed; hosted CI green 15/15"
+      "review round 2 fixes pushed as one commit rebased on main d6e158d: early-timer re-arm (+deterministic and real-clock tests), connection window 3x, 80-call burst test, README corrections, PR body ADP-07 declaration (owner RES-desktopplatform-policy-data/build-config append; necessity: provenance and RP-10 gates), mutants N1/N2/N4 killed; hosted CI green 15/15",
+      "publication confirmed: Publish NuGet run 37056924397 on d4e8743 success (14 packages ci.81.1, none LocalRpc)"
     ],
     "validation": [
       "dotnet test LocalRpc offline 134 run/10 skipped/0 failed; opt-in OS checks Windows only"
@@ -35,7 +36,6 @@
     "reviewed": "2317461f83c0592bc27b91df56c598885f3028c0",
     "blocker": null,
     "next": [
-      "confirm publication",
       "record the ledger"
     ],
     "host": "deku",
