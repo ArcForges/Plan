@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:12Z",
-  "updatedAt": "2026-10-02T23:11:30Z",
-  "leaseUntil": "2026-10-03T23:11:30Z",
+  "updatedAt": "2026-10-02T23:33:54Z",
+  "leaseUntil": "2026-10-03T23:33:54Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-05",
@@ -21,14 +21,16 @@
       "PR 128 opened; probe, self-test (21 misbehaviors), AOT publish, 53 source mutations (50 caught, 3 survivors), one live run (23/23) against the existing production Hello ingress with RES-cloud-deployment lease released"
     ],
     "validation": [
-      "local win-x64 Native AOT publish no warnings; policy checks (dependency, reconciliation, provenance, runtime ownership, licence, design) pass; ArchitectureTests 99/100 locally, only AT-09 missing native evidence (environmental)"
+      "local win-x64 Native AOT publish no warnings; policy checks (dependency, reconciliation, provenance, runtime ownership, licence, design) pass; ArchitectureTests 99/100 locally, only AT-09 missing native evidence (environmental)",
+      "hosted CI at head 206c4ce: 17/17 checks passed incl. grpc-web-aot linux-x64 and win-x64"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\prf-05",
-    "head": "6840c2cb9df278dd9f723657d25657280178a840",
+    "head": "206c4ce1ca6e406f8827079ab721eb26682bc606",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await hosted CI then independent review"
+      "await review",
+      "after review: merge via integration:DesktopPlatform, then ledger record (delivered, not complete) via Plan PR"
     ],
     "host": "deku",
     "note": "ADP-07 supporting bindings, declared before editing (all inside the task's listed write scope; DesktopPlatform has no dedicated provenance/source-inventory resource, so policy/test/provenance appends use RES-desktopplatform-policy-data (append) and workflow/solution/props use RES-desktopplatform-build-config (append)): solution folder + project entry tests/ReleaseArtifactTests/GrpcWeb/GrpcWebAotProbe.csproj in DesktopPlatform.slnx; root Directory.Packages.props append of Grpc.Net.Client.Web 2.84.0 only; nested tests/ReleaseArtifactTests/GrpcWeb/Directory.Packages.props (imports the root; selects the already-admitted ArcForges.Contracts.PublicApi and Foundation 1.0.0-ci.216.1 for this project only, same pattern as PRF.09 probe-evidence); the project's packages.lock.json; package-validation.yml one locked publish-only AOT job; dependency-policy.json input hashes + one new coordinate grpc.net.client.web/2.84.0 + active review binding; new immutable receipt eng/policy/dependency-reviews/prf-05-r1.json chained from the ACTIVE receipt on main at rebase time (plt-53-r1 now); licence-boundary.json/runtime-ownership.json/architecture-projects.json/reconciliation/active-projects.json append the probe csproj only (kind msbuild / test-or-build-tool / Test owner DesktopPlatform module empty production=false aot=false / exact post-rebase blob); eng/provenance/files.json firstParty rows for task-owned files only; eng/verification/prf-05.md and create_prf05_dependency_receipt.py. No .gitleaks.toml, no Contracts/Cloud edit, no other dependency coordinate. Design: the probe consumes only the already-admitted published Contracts candidate 1.0.0-ci.216.1 (HelloService generated client in ArcForges.Contracts.PublicApi); target is the existing deployed Hello gRPC-Web ingress (Cloud worker/router.ts, https://arcforges.com/api, no credentials) used only in an explicit local opt-in live phase; the env.proof ingress does not exist and nothing is claimed about it."
