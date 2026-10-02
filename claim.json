@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:27:45Z",
-  "updatedAt": "2026-10-02T05:10:48Z",
-  "leaseUntil": "2026-10-03T05:10:48Z",
+  "updatedAt": "2026-10-02T05:20:31Z",
+  "leaseUntil": "2026-10-03T05:20:31Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-52",
@@ -23,7 +23,8 @@
       "rebased onto main 54fb948 (PLT.09 merged): policy re-appended at tail, receipt plt-52-r1 re-chained from active plt-09-r1; local rebuild, Desktop tests 20/20, arch 99/100 environmental only, policy checks, format all pass",
       "hosted PR run green 15/15 at f9d0127 (mergeable); worktree global.json restored to the committed pin (re-substitute 10.0.401 locally and run scratchpad plt52_fix_locks.py before commits if rebuilding)",
       "planning PRs approved by r-c20261002-plt52-plan: Design #201 @bf4cf4d, Plan #229 @92b9386 (reviewed field holds the Design head until #121 is approved)",
-      "planning pair merged (Design 345dc82, Plan 29fb866); review round 1 findings fixed and rebased onto main 348492f (PLT.09, PLT.50 merged); local build/tests/format/policy checks pass; mutation check of the Grant/Revoke race"
+      "planning pair merged (Design 345dc82, Plan 29fb866); review round 1 findings fixed and rebased onto main 348492f (PLT.09, PLT.50 merged); local build/tests/format/policy checks pass; mutation check of the Grant/Revoke race",
+      "hosted CI green 15/15 at e78672b; PR body corrected (receipt chains from plt-09-r1)"
     ],
     "validation": [
       "local only; SDK 10.0.401 substituted in uncommitted global.json; locked restore evaluated by hosted CI"
@@ -33,7 +34,7 @@
     "reviewed": "bf4cf4d112bd9f54ada2e49a85dad8d5405cf263",
     "blocker": null,
     "next": [
-      "await hosted CI at e78672b; await re-review of #121"
+      "await re-review"
     ],
     "host": "deku",
     "note": null
