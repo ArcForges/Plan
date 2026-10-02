@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:04:32Z",
-  "updatedAt": "2026-10-02T00:04:32Z",
-  "leaseUntil": "2026-10-03T00:04:32Z",
+  "updatedAt": "2026-10-02T00:31:22Z",
+  "leaseUntil": "2026-10-03T00:31:22Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-35",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Activated ArcForges.DesignSystem and ArcForges.Desktop.Shell: IsPackable (Shell also PackageId/readme/licence pack items), two packages.json entries, readmes. ADP-07 supporting bindings (exact, no graph edit; categories: current admission input bindings, provenance, reconciliation snapshot, factual docs; no new owner/version/closure/identity beyond the task's two package IDs): eng/policy/dependency-policy.json (inputHashes for packages.json and the two csproj + reviewReceipt), eng/policy/dependency-reviews/plt-35-r1.json (successor chained from ACTIVE plt-44-r1), eng/provenance/files.json (append receipt path), eng/policy/reconciliation/active-projects.json (two csproj blobs), the two package README.md files. Local: pinned SDK 10.0.400 pack of 4 owned packages, nuspec deps match catalogue; one-time local opt-in Shell-only consumer (offline sources) restored exact closure, ran JIT and Native AOT win-x64 zero diagnostics"
+    ],
     "validation": [],
-    "worktree": null,
-    "head": null,
+    "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-35",
+    "head": "8cb87aead8f240d38dd3fbd7f8d78ac080dbb455",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "open PR, hosted CI, await review"
     ],
     "host": "deku",
     "note": null
