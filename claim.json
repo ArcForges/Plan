@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:27:45Z",
-  "updatedAt": "2026-10-02T02:29:16Z",
-  "leaseUntil": "2026-10-03T02:29:16Z",
+  "updatedAt": "2026-10-02T02:58:32Z",
+  "leaseUntil": "2026-10-03T02:58:32Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-52",
@@ -19,17 +19,18 @@
     "merges": [],
     "done": [
       "library: consent, verbose session, local store, report draft/approve/send, crash marker; ConsentTests written (not yet built)",
-      "implementation PR opened; planning-repair pair Design #201 + Plan #229 (head bf4cf4d / 92b9386) opened; local validation: build 0 warn, Desktop tests 20/20, Observability 200/200, arch 99/100 environmental only"
+      "implementation PR opened; planning-repair pair Design #201 + Plan #229 (head bf4cf4d / 92b9386) opened; local validation: build 0 warn, Desktop tests 20/20, Observability 200/200, arch 99/100 environmental only",
+      "rebased onto main 54fb948 (PLT.09 merged): policy re-appended at tail, receipt plt-52-r1 re-chained from active plt-09-r1; local rebuild, Desktop tests 20/20, arch 99/100 environmental only, policy checks, format all pass"
     ],
     "validation": [
       "local only; SDK 10.0.401 substituted in uncommitted global.json; locked restore evaluated by hosted CI"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-52",
-    "head": "aaf4d41aefb882e72f49c04483cbf254da7f0b0f",
+    "head": "f9d01278130546ab333f120a374e0bbba7c9d115",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await hosted CI on #121; await independent review; Design #201 + Plan #229 review and merge BEFORE #121; then integration:DesktopPlatform merge, ledger PR"
+      "await hosted CI at new head; await independent review of #121 (and Design #201 / Plan #229 first)"
     ],
     "host": "deku",
     "note": null
