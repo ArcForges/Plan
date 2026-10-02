@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T06:09:37Z",
-  "updatedAt": "2026-10-02T11:24:26Z",
-  "leaseUntil": "2026-10-03T11:24:26Z",
+  "updatedAt": "2026-10-02T11:26:37Z",
+  "leaseUntil": "2026-10-03T11:26:37Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-53",
@@ -30,14 +30,15 @@
       "hosted PR run 36997739726 at c82055a: 15/15 checks pass (incl. secret-scan, managed-packages/pack, both AOT compiles, Avalonia probe, native-win-x64, ci)",
       "planning PRs approved by r-c20261002-plt53-plan on exact heads: Design #203 c26640721705c9c51ad5c24d0eee8de6ce7c042b (comment 5951010149), Plan #236 1d4bb3da3f7b86d09a288c84cff3646522585969 (comment 5951010682); bases unmoved (Design 7c8a4cf, Plan acc66a6)",
       "merged planning pair: Design #203 d89fd5c, Plan #236 bfd4667; both integration roles released; primaries fast-forwarded",
-      "README delta 3849fa3 (transitive Google.Protobuf/Grpc.Core.Api; precise wiring statement); main unmoved at de31658 so receipt plt-53-r1 still chains from active plt-52-r1; hosted run 36999829137 15/15 pass"
+      "README delta 3849fa3 (transitive Google.Protobuf/Grpc.Core.Api; precise wiring statement); main unmoved at de31658 so receipt plt-53-r1 still chains from active plt-52-r1; hosted run 36999829137 15/15 pass",
+      "#124 approved at 3849fa3 by r-c20261002-plt53-code (comment 5951357782)"
     ],
     "validation": [
       "local pack, tests, python gates, one local opt-in consumer: see PR #124 body"
     ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-53",
     "head": "3849fa3c018bc85667daa661cb49923dd0aad8be",
-    "reviewed": "c26640721705c9c51ad5c24d0eee8de6ce7c042b",
+    "reviewed": "3849fa3c018bc85667daa661cb49923dd0aad8be",
     "blocker": null,
     "next": [
       "await delta re-review of #124 at 3849fa3 (approved earlier head c82055a); merge only after coordinator message; then confirm Publish NuGet (expect 14 packages), ledger delivered"
