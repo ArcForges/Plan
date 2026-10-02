@@ -6,23 +6,26 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T06:07:30Z",
-  "leaseUntil": "2026-10-03T06:07:30Z",
+  "updatedAt": "2026-10-02T06:37:01Z",
+  "leaseUntil": "2026-10-03T06:37:01Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/Contracts/pull/76"
+    ],
     "merges": [],
     "done": [
-      "claimed as completion follow-up; read task prompt, ledger records CON.07/14/15, window/harness; derived pinned-descriptor plan (ci.287.1 closure)"
+      "claimed as completion follow-up; read task prompt, ledger records CON.07/14/15, window/harness; derived pinned-descriptor plan (ci.287.1 closure)",
+      "Contracts PR 76 opened: pinned ci.287.1 later-service window, both directions, reference-codec exchange, generated-C# leg, closed-schema pins, mutation tests"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-17",
-    "head": null,
+    "head": "37102a173e9895d6200d19dc625ab031eb9652ef",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "implement later-service window pin + matrix in eng/check_compatibility.py + tests; Contracts PR; review; merge; ledger amend"
+      "await hosted CI at head, then independent review"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
