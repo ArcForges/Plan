@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "blocked",
   "claimedAt": "2026-10-02T05:58:42Z",
-  "updatedAt": "2026-10-02T06:19:47Z",
-  "leaseUntil": "2026-10-03T06:19:47Z",
+  "updatedAt": "2026-10-02T06:34:26Z",
+  "leaseUntil": "2026-10-03T06:34:26Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-19",
@@ -20,15 +20,16 @@
       "verification record docs/wp03-90-verification.md pushed and PR 75 opened; ADP-07 binding recorded: only the path docs/wp03-90-verification.md appended to eng/provenance/files.json"
     ],
     "validation": [
-      "findings so far (offline, claimant-observed): Registry04 has 297 operation rows; 246 bound to authored proto methods, 38 are CON.06 in-process ports, 7 are Hub FUTURE reserved, 6 connector.* (public ConnectorService) have no authored service, no task owner and are the 6 pending rows of the operation-scope gate (329 registered/6 pending/7 reserved); records LocalCallContext and SimulationDataSegment/Sample/Event/Gap absent by name"
+      "findings so far (offline, claimant-observed): Registry04 has 297 operation rows; 246 bound to authored proto methods, 38 are CON.06 in-process ports, 7 are Hub FUTURE reserved, 6 connector.* (public ConnectorService) have no authored service, no task owner and are the 6 pending rows of the operation-scope gate (329 registered/6 pending/7 reserved); records LocalCallContext and SimulationDataSegment/Sample/Event/Gap absent by name",
+      "hosted CI at exact head e1e8c4a all green: CI run 36972879664 (Build candidate 15m14s, Verify; publish jobs skipped for PR), Security run 36972879698 (Secret scan, 4 CodeQL, Dependency review); review requested on PR 75 (comment 5946644252); claimant-reported local: check_provenance, dependency_admission, check_naming, prettier --check, git diff --check"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-19",
     "head": "e1e8c4ae464e96ca1e805691ac846bd959839edf",
     "reviewed": null,
     "blocker": "WP-03.90 cannot be accepted (see Contracts docs/wp03-90-verification.md, PR 75): (1) six public connector.* operations (Registry04 section 5 ConnectorService: ListDefinitions, ListConnections, BeginConnection, CompleteConnection, GetConnection, RevokeConnection) have no authored service and no delivery-graph owner; they are exactly the 6 pending rows of the operation-scope gate (329 registered/6 pending/7 reserved at candidate 1.0.0-ci.287.1), contradicting the CON.19 start-prerequisite text 'zero pending rows' - needs a Design planning change assigning an owner task (new Contracts closure or recorded retirement), which is an Architecture Owner decision not taken here; (2) Registry04 records LocalCallContext and SimulationDataSegment/SimulationSample/SimulationEvent/SimulationGap are absent by name with no determined owner (same planning decision); (3) compatibility harness retains only the Foundation/PublicApi ci.113.1 descriptors - CON.17 completion follow-up (ready) must run and record the complete matrix and freeze baselines for the later services; (4) the isolated three-ecosystem consumer restore in the task outcome conflicts with P2-017 and needs a recorded decision on how it is evidenced.",
     "next": [
-      "await hosted CI on e1e8c4a",
-      "await review"
+      "await review of PR 75 at e1e8c4a",
+      "planning decision on connector.* / LocalCallContext / af-segment records, CON.17 follow-up, consumer-restore evidence form; then re-claim, re-verify, update record"
     ],
     "host": "deku",
     "note": "Do not re-implement: PR 75 holds the verification record. After the planning decisions land, re-claim, rebase on main, re-verify against the then-current candidate, update the record and only then write the Design assurance receipt."
