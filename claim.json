@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:57:48Z",
-  "updatedAt": "2026-10-02T09:48:36Z",
-  "leaseUntil": "2026-10-03T09:48:36Z",
+  "updatedAt": "2026-10-02T10:04:50Z",
+  "leaseUntil": "2026-10-03T10:04:50Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-17",
@@ -20,13 +20,15 @@
       "Contracts PR 76 opened: pinned ci.287.1 later-service window, both directions, reference-codec exchange, generated-C# leg, closed-schema pins, mutation tests",
       "multi-pin window (7 published candidates + 11 closed schema pins), per-pin generated C# leg, 36 matrix tests; PR body updated"
     ],
-    "validation": [],
+    "validation": [
+      "hosted CI at 450e553 green; local tooling tests for the matrix 36 OK (claimant-reported)"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Contracts\\.worktree\\con-17",
     "head": "450e5534fa31a478c4812775c879fa399c95647d",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await hosted CI at 450e553, then independent review"
+      "await independent review of Contracts#76 at 450e553 (CI green: CI 36991835208, Security 36991835333)"
     ],
     "host": "deku",
     "note": "completion follow-up (DLV-41)"
