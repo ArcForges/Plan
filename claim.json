@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T05:56:16Z",
-  "updatedAt": "2026-10-02T17:36:12Z",
-  "leaseUntil": "2026-10-02T23:36:12Z",
+  "updatedAt": "2026-10-02T17:43:07Z",
+  "leaseUntil": "2026-10-02T23:43:07Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/prf-07",
@@ -17,7 +17,8 @@
     ],
     "merges": [
       "8954f3024ae77852ea0f55974d659e64b5cbad9b",
-      "90a14b1a7ba6a4a5e4681460639a472078586d96"
+      "90a14b1a7ba6a4a5e4681460639a472078586d96",
+      "282f2ded560019e64872a1a10ffb09836d3305f8"
     ],
     "done": [
       "claimed; read Design/Plan/contracts; no Cloudflare credentials, wrangler login or Docker exist here, so live deployment is impossible in this environment; Contracts 1.0.0-ci.287.1 pins and npm/NuGet admission staged locally; planning scope-repair pair (Design b2967fd, Plan 385d597) prepared locally",
@@ -26,15 +27,16 @@
       "Design 204 head 809414c56129451b03a10acff1049c243e208f30 and Plan 237 head 403d5b17488688ad63814191b5eae6291576c686 approved by reviewer r-c20261002-prf07-plan (comments 5957417171, 5957418007); wrangler admission PR Cloud 32 opened",
       "Cloud 32 (wrangler 4.143.1) head 3cc78ae631eaf6a69003e115de7b877819667a80 hosted CI green; Cloud 31 head 3d2c81c0f126 hosted CI green incl. Linux AOT image and Worker candidate; planning pair rebased to Design c2e391a / Plan a348d7f, re-review requested",
       "Design 204 merged (8954f30), Plan 237 merged (90a14b1); integration roles released",
-      "Cloud 32 approved at 3cc78ae631ea by r-c20261002-prf07-wrangler; NOT merged pending coordinator/user decision on the main-push deploy"
+      "Cloud 32 approved at 3cc78ae631ea by r-c20261002-prf07-wrangler; NOT merged pending coordinator/user decision on the main-push deploy",
+      "Cloud 32 merged (merge commit 282f2de, approved head 3cc78ae). Main-push run 37041950566 succeeded: all jobs incl. Native AOT image and Worker build, Verify and Deploy Cloudflare; deployed the standard Hello service with unchanged Worker bytes (Current Version ID 630f2082-0ceb-44c9-b631-45c29c0b5334), prerelease cloud-0.1.0-ci.80.1 (release id RE_kwDOUcsXps4X9neU, assets cloud-0.1.0-ci.80.1.tar.gz and deployment.json), evidence artifact cloudflare-evidence-37041950566-1 (id 11241684393). This is the standard Hello deployment, NOT the foundation proof. Cloud 31 rebased onto main at 3320732, tree identical to CI-verified 3d2c81c, hosted CI green"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\prf-07",
-    "head": "3d2c81c0f1264f7bc62d8a33a2c924520ee5022a",
+    "head": "332073269408d4aa6bfc464686b1eb9db19d896b",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "decide: merging any Cloud PR to main runs Deploy Cloudflare (npm run deploy: pushes the sealed candidate image to the Cloudflare registry, wrangler deploy --containers-rollout immediate to production, creates a GitHub prerelease; environment cloudflare has no required reviewers); then merge 32, rebase 31 onto main, CI, independent code review of 31. Open item: docs/provenance.md:56 still says Wrangler 4.135.0 (outside write scope). Live proof still needs user-provided Cloudflare account/credentials"
+      "independent code review of Cloud 31 at 3320732 incl. explicit default-Worker exposure judgement (merge deploys foundation modules to the default Worker, proof surface only under env.proof); merge via integration:Cloud; then record delivered (never complete). Open item: docs/provenance.md:56 says Wrangler 4.135.0 (outside write scope). Live proof needs user-provided Cloudflare account id, API token, resources, secrets, Docker, RES-cloud-deployment lease; PRF.06 EventService.Watch not in WP-06.04 and not implemented"
     ],
     "host": "deku",
     "note": "resumed; preparing wrangler admission PR"
