@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-01T08:01:43Z",
-  "updatedAt": "2026-10-02T05:46:10Z",
-  "leaseUntil": "2026-10-02T17:46:10Z",
+  "updatedAt": "2026-10-02T05:49:02Z",
+  "leaseUntil": "2026-10-02T17:49:02Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-07",
@@ -38,7 +38,7 @@
     "reviewed": "8c0a40442647d3190384c02dc9480ef16118e1b6",
     "blocker": null,
     "next": [
-      "ledger PR #234 head 4621c0e9cd04ed20f910ecb8b1922a36c72e8ac0 awaiting re-review; no code pending"
+      "ledger PR #234 head f8f9999013019b03dad6f38c8d419e637c550f41 awaiting narrow re-review; no code pending"
     ],
     "host": "deku",
     "note": "Contracts #74 merged ca45f36, main CI/Security/publisher green, published 1.0.0-ci.287.1; ledger record PR opened"
