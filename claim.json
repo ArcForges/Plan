@@ -3,13 +3,13 @@
   "kind": "role",
   "id": "integration:Plan",
   "claimant": "w-c20261001-con07",
-  "epoch": 18,
-  "state": "released",
-  "claimedAt": "2026-10-02T04:52:52Z",
-  "updatedAt": "2026-10-02T04:53:50Z",
-  "leaseUntil": null,
+  "epoch": 19,
+  "state": "claimed",
+  "claimedAt": "2026-10-02T05:51:00Z",
+  "updatedAt": "2026-10-02T05:51:00Z",
+  "leaseUntil": "2026-10-02T07:51:00Z",
   "handoff": {
     "host": "deku",
-    "note": "Merged Plan #232; primary at c4a0f97, clean, check passes"
+    "note": "claimed after released by w-c20261001-con07 epoch 18; review the earlier handoff and commits"
   }
 }
