@@ -4,12 +4,12 @@
   "id": "integration:Design",
   "claimant": "w-c20261001-con07",
   "epoch": 6,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-02T00:40:50Z",
-  "updatedAt": "2026-10-02T00:40:50Z",
-  "leaseUntil": "2026-10-02T02:40:50Z",
+  "updatedAt": "2026-10-02T00:41:43Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261001-con14 epoch 5; review the earlier handoff and commits"
+    "note": "Merged Design #198 as ca27cabdb018994de57f065615549ab2b0cee88e; primary checkout fast-forwarded"
   }
 }
