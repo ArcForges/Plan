@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T00:27:45Z",
-  "updatedAt": "2026-10-02T03:09:15Z",
-  "leaseUntil": "2026-10-03T03:09:15Z",
+  "updatedAt": "2026-10-02T04:43:22Z",
+  "leaseUntil": "2026-10-03T04:43:22Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-52",
@@ -21,18 +21,18 @@
       "library: consent, verbose session, local store, report draft/approve/send, crash marker; ConsentTests written (not yet built)",
       "implementation PR opened; planning-repair pair Design #201 + Plan #229 (head bf4cf4d / 92b9386) opened; local validation: build 0 warn, Desktop tests 20/20, Observability 200/200, arch 99/100 environmental only",
       "rebased onto main 54fb948 (PLT.09 merged): policy re-appended at tail, receipt plt-52-r1 re-chained from active plt-09-r1; local rebuild, Desktop tests 20/20, arch 99/100 environmental only, policy checks, format all pass",
-      "hosted PR run green 15/15 at f9d0127 (mergeable); worktree global.json restored to the committed pin (re-substitute 10.0.401 locally and run scratchpad plt52_fix_locks.py before commits if rebuilding)"
+      "hosted PR run green 15/15 at f9d0127 (mergeable); worktree global.json restored to the committed pin (re-substitute 10.0.401 locally and run scratchpad plt52_fix_locks.py before commits if rebuilding)",
+      "planning PRs approved by r-c20261002-plt52-plan: Design #201 @bf4cf4d, Plan #229 @92b9386 (reviewed field holds the Design head until #121 is approved)"
     ],
     "validation": [
       "local only; SDK 10.0.401 substituted in uncommitted global.json; locked restore evaluated by hosted CI"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-52",
     "head": "f9d01278130546ab333f120a374e0bbba7c9d115",
-    "reviewed": null,
+    "reviewed": "bf4cf4d112bd9f54ada2e49a85dad8d5405cf263",
     "blocker": null,
     "next": [
-      "await review",
-      "merge order: Design #201, Plan #229, then DesktopPlatform #121 via integration:DesktopPlatform; ledger PR after merge"
+      "merge Design #201 then Plan #229 via integration roles; then await #121 code review"
     ],
     "host": "deku",
     "note": null
