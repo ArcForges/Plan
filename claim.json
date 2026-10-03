@@ -4,12 +4,12 @@
   "id": "integration:Design",
   "claimant": "w-c20261002-prf06",
   "epoch": 13,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-03T16:10:20Z",
-  "updatedAt": "2026-10-03T16:10:20Z",
-  "leaseUntil": "2026-10-04T04:10:20Z",
+  "updatedAt": "2026-10-03T16:11:10Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-prf08 epoch 12; review the earlier handoff and commits"
+    "note": "merged Design #206 only; queue otherwise empty"
   }
 }
