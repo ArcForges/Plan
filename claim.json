@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:DesktopPlatform",
-  "claimant": "w-c20261003-plt12",
-  "epoch": 18,
-  "state": "released",
-  "claimedAt": "2026-10-03T21:22:35Z",
-  "updatedAt": "2026-10-03T21:35:47Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261002-plt14",
+  "epoch": 19,
+  "state": "claimed",
+  "claimedAt": "2026-10-03T21:43:43Z",
+  "updatedAt": "2026-10-03T21:43:43Z",
+  "leaseUntil": "2026-10-04T09:43:43Z",
   "handoff": {
     "host": "deku",
-    "note": "PLT.12 #131 merged as 7886f0c, publish run 37154913535 success; queue: PLT.14 #130 (renumber refusal reasons to 8 and 9) and PLT.38 #129 rebase onto 7886f0c"
+    "note": "claimed after released by w-c20261003-plt12 epoch 18; review the earlier handoff and commits"
   }
 }
