@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-03T09:07:23Z",
-  "leaseUntil": "2026-10-04T09:07:23Z",
+  "updatedAt": "2026-10-03T09:08:24Z",
+  "leaseUntil": "2026-10-04T09:08:24Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
@@ -20,7 +20,8 @@
     "merges": [
       "4dd3f735e70346cfbf3c15b01d5179120f7c7050",
       "e8c3d1e9c9d7e802e6dd1b94a3105753c750995c",
-      "794ef933d3dba836c60b29a481091d40ab4a2b1a"
+      "794ef933d3dba836c60b29a481091d40ab4a2b1a",
+      "401e3bafc95f48d9f9ea895fa55fc9d7fd3a55e2"
     ],
     "done": [
       "claimed; read brief/Plan/Design/task prompt/PRF.07 ledger; baseline npm ci on pinned Node 24.21.0/npm 11.19.0 (fnm); found main npm audit --audit-level=high red (undici via wrangler 4.135.0; 4.143.1 clears it in a scratch install); site build with Contracts 287.1 in scratch emits byte-identical chunks (graph only grows 254 to 299 modules)",
@@ -36,7 +37,7 @@
     "reviewed": "d17d7e9ab9afe90df28ad68d7afa852f3a3ff0ca",
     "blocker": null,
     "next": [
-      "await narrow re-review of ledger PR Plan 247 at d17d7e9ab9afe90df28ad68d7afa852f3a3ff0ca; merge via integration:Plan; then update --state delivered"
+      "state delivered; completion follow-up needs deployed same-origin ingress (PRF.07 live run with user-provided Cloudflare inputs), real session/cookie/CSRF and Chat route round trips, esproj/win.slnx scope extension and run, interaction budgets; amend ledger/tasks/prf-08.md"
     ],
     "host": "deku",
     "note": "ledger PR 247 approved at d17d7e9"
