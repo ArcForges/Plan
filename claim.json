@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:12Z",
-  "updatedAt": "2026-10-03T17:01:34Z",
-  "leaseUntil": "2026-10-04T17:01:34Z",
+  "updatedAt": "2026-10-03T17:02:50Z",
+  "leaseUntil": "2026-10-04T17:02:50Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-05",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Plan/pull/249"
     ],
     "merges": [
-      "4d4552c84ddb6c3dddd192bb8c7e7634b2c1f07b"
+      "4d4552c84ddb6c3dddd192bb8c7e7634b2c1f07b",
+      "b4a4b7a3843bd8fce75b932b0a419cc1af4fa45e"
     ],
     "done": [
       "claimed at epoch 1; read brief, Plan docs, PRF.07 ledger, task prompt, WP-06.02; worktree created from main d6e158d; plan fixed (no edits yet)",
