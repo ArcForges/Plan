@@ -4,10 +4,10 @@
   "id": "PRF.06",
   "claimant": "w-c20261002-prf06",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-02T19:44:59Z",
-  "updatedAt": "2026-10-03T17:32:46Z",
-  "leaseUntil": "2026-10-04T17:32:46Z",
+  "updatedAt": "2026-10-03T17:33:03Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-06",
@@ -40,7 +40,7 @@
     "reviewed": "557757b6ed214569802b2fc06bcef284f6502cdf",
     "blocker": null,
     "next": [
-      "await review of ledger PR Plan#250 at 557757b6ed21; merge via integration:Plan; then update --state delivered"
+      "completion follow-up: needs CLOUD.29/32/34 complete plus live deployment inputs (Cloudflare account, token, resources, secrets, Docker) and RES-cloud-deployment lease; run probe --live and amend ledger"
     ],
     "host": "deku",
     "note": "resumed after session reset; worktree clean at pushed head 1fdf368"
