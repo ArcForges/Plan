@@ -6,24 +6,27 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T22:31:40Z",
-  "updatedAt": "2026-10-03T00:20:27Z",
-  "leaseUntil": "2026-10-04T00:20:27Z",
+  "updatedAt": "2026-10-03T09:31:10Z",
+  "leaseUntil": "2026-10-04T09:31:10Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-14",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/130"
+    ],
     "merges": [],
     "done": [
       "Read brief, task prompt, WP-08.05, contracts 09, PLT.09/10/13 ledger records and review histories; verified the pinned Contracts Platform package (LocalRpc.Platform 1.0.0-ci.216.1) has only LocalBootstrapService (Challenge/Confirm/Renew) and ConnectorBrokerService, no Cancel or Health method; Sandbox ContentSandboxService.CancelSession exists in Contracts main but ArcForges.Contracts.LocalRpc.Sandbox is not admitted in DesktopPlatform (dependency admission is outside this task's write scope and ADP-07); worktree .worktree/plt-14 on task/plt-14 from main d4e8743",
-      "first commit pushed: parent-side journal/executor/backoff/classification, helper receipts with commit point, connect-failure marker, unit+e2e+opt-in process tests (compiling; first full-suite local run had 6 failures being fixed)"
+      "first commit pushed: parent-side journal/executor/backoff/classification, helper receipts with commit point, connect-failure marker, unit+e2e+opt-in process tests (compiling; first full-suite local run had 6 failures being fixed)",
+      "PR opened; local run on cbd5179: 478 tests 454 passed 1 failed(test expectation, fixed) 23 skipped; RP-10 rows and provenance appended; README; mutation batches running"
     ],
     "validation": [],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-14",
-    "head": "cbd51798e8d104e722cd8a924cf2ac0b42dd5cf8",
+    "head": "8c32ae7aa39d447de862e1f1c9087df1b2ba2055",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "green local suite, README, provenance+contract-test appends, mutation runs, architecture/policy checks, PR"
+      "await hosted CI; mutation results; local verify (format, architecture, suite); opt-in process checks; then await review"
     ],
     "host": "deku",
     "note": "ADP-07 declaration (before any edit): supporting files, all existing, append-only, outside the write scope but serving artifacts inside it: eng/provenance/files.json (firstParty rows for the new tracked files of the existing ArcForges.LocalRpc project, sorted insertion) and eng/policy/architecture-contract-tests.json (rows appended at the tail, one per new public ordinary method of the existing project, RP-10). Resource owner: DesktopPlatform; protocol RES-desktopplatform-policy-data (append): regenerated/re-appended after any rebase, never hand-merged. Necessity: the provenance gate lists every tracked first-party file and the architecture gate reports RP-10 for a public method with no contract-test row (both observed on PLT.10 and PLT.13). No project, solution, lock, props, package, version, dependency-policy, receipt, workflow or .gitleaks.toml change is planned and none is relied on: the library keeps its Grpc-only closure and does NOT reference ArcForges.Foundation or Contracts.Foundation (a new reference would be dependency/closure expansion that ADP-07 does not authorize and that PLT.16 expects frozen), so effect certainty is a LocalRpc-owned enum whose values are asserted equal to the published EffectCertainty in the test project, which already receives Contracts.Foundation through the admitted Platform package. Cancellation wire: no Cancel/Health method exists in the pinned Platform contract; tests use a hand-written test-only service (as PLT.13) for the cancel method and the real generated ConnectorBroker/LocalBootstrap stubs for command semantics; the real Sandbox CancelSession proof is PLT.15/PLT.45 territory because it needs the Sandbox package admission."
