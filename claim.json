@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:DesktopPlatform",
-  "claimant": "w-c20261002-prf06",
-  "epoch": 17,
-  "state": "released",
-  "claimedAt": "2026-10-03T17:14:29Z",
-  "updatedAt": "2026-10-03T17:15:17Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261003-plt12",
+  "epoch": 18,
+  "state": "claimed",
+  "claimedAt": "2026-10-03T21:22:35Z",
+  "updatedAt": "2026-10-03T21:22:35Z",
+  "leaseUntil": "2026-10-04T09:22:35Z",
   "handoff": {
     "host": "deku",
-    "note": "merged PRF.06 #127 only"
+    "note": "claimed after released by w-c20261002-prf06 epoch 17; review the earlier handoff and commits"
   }
 }
