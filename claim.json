@@ -4,10 +4,10 @@
   "id": "PLT.11",
   "claimant": "w-c20261002-plt11",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-02T19:29:39Z",
-  "updatedAt": "2026-10-03T16:38:51Z",
-  "leaseUntil": "2026-10-04T16:38:51Z",
+  "updatedAt": "2026-10-03T16:39:06Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-11",
@@ -41,7 +41,7 @@
     "reviewed": "f6f6f395f56eb0492b6bc7a1797e1eed0ea20c11",
     "blocker": null,
     "next": [
-      "await narrow re-review of Plan#248 at f6f6f395f56eb0492b6bc7a1797e1eed0ea20c11; do not merge until the coordinator confirms approval; then integration:Plan merge and update --state delivered"
+      "completion follow-up: second OS account (wrong-user denial), Linux and macOS hosts (run LocalRpcRegistrationOsChecks), Native AOT publish of ArcForges.LocalRpc, planning repair for the missing production LocalBootstrapService adapter (needs a Platform contract reference in the library)"
     ],
     "host": "deku",
     "note": "Local unpushed commit on task/plt-11 adds one test (AnEarlyWatchdogReArmsForTheNearerOfTheTwoClocksRemainders) for mutation survivors R66/R67 (Deadline.Remaining ignoring one clock); not yet built or run (build slot starved by other workers); R68 (clamp) is race-only. Sweep at 72/135 verdicts: 55 killed, 5 survived (P06, R32 equivalent; R66-R68 above), remaining queued. Reviewed head is still 4e6f578; pushing the test makes a new head."
