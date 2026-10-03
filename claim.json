@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Plan",
-  "claimant": "w-c20261002-plt15",
-  "epoch": 40,
-  "state": "released",
-  "claimedAt": "2026-10-03T23:13:38Z",
-  "updatedAt": "2026-10-03T23:14:43Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261004-plt16",
+  "epoch": 41,
+  "state": "claimed",
+  "claimedAt": "2026-10-03T23:33:08Z",
+  "updatedAt": "2026-10-03T23:33:08Z",
+  "leaseUntil": "2026-10-04T11:33:08Z",
   "handoff": {
     "host": "deku",
-    "note": "PLT.15 ledger merged; queue empty from this worker"
+    "note": "claimed after released by w-c20261002-plt15 epoch 40; review the earlier handoff and commits"
   }
 }
