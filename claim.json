@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261002-plt11",
   "epoch": 33,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-03T16:38:13Z",
-  "updatedAt": "2026-10-03T16:38:13Z",
-  "leaseUntil": "2026-10-04T04:38:13Z",
+  "updatedAt": "2026-10-03T16:39:22Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-prf06 epoch 32; review the earlier handoff and commits"
+    "note": "queue empty after Plan#248; no other Plan PR held by me"
   }
 }
