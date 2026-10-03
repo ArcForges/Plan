@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:59Z",
-  "updatedAt": "2026-10-03T16:10:56Z",
-  "leaseUntil": "2026-10-04T16:10:56Z",
+  "updatedAt": "2026-10-03T16:13:18Z",
+  "leaseUntil": "2026-10-04T16:13:18Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-06",
@@ -32,7 +32,7 @@
     ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/prf-06",
     "head": "1fdf36888c2a1f7a52bd53d63cd30fea7e5012ce",
-    "reviewed": "436c4bea5ba9c81b6aaec4ae8830888e95750413",
+    "reviewed": "ed0ca12319e01e1020d0aea1210b7c9931df4064",
     "blocker": null,
     "next": [
       "await review (Design 206 -> Plan 243 -> DesktopPlatform 127 merge order); optionally finish the clean mutation pass (scripts in scratchpad/prf06, worktree DesktopPlatform/.worktree/prf-06-mutation2) and rerun the AOT image; then ledger record as delivered"
