@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T22:34:52Z",
-  "updatedAt": "2026-10-03T22:58:42Z",
-  "leaseUntil": "2026-10-04T22:58:42Z",
+  "updatedAt": "2026-10-03T23:00:44Z",
+  "leaseUntil": "2026-10-04T23:00:44Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-41",
@@ -17,13 +17,14 @@
     "merges": [],
     "done": [
       "Egress authority/allowlist/grants/audit/transfer ticket in ArcForges.Security.Egress with 267 new offline tests (605 pass locally)",
-      "PR #133 opened; README, RP-10 bindings and provenance rows added"
+      "PR #133 opened; README, RP-10 bindings and provenance rows added",
+      "Rebased onto main 543ae49 (PLT.15 merged); re-appended 13 RP-10 bindings and provenance rows"
     ],
     "validation": [
       "local: locked solution restore, Release solution build 0 warnings, dotnet format clean, ArcForges.Security.Tests 605 passed (267 new egress tests), eng/check_provenance passed; local ArchitectureTests fails only on the known Security.Secrets CS8795 reconstruction gap so RP-10 is judged by hosted CI"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-41",
-    "head": "8c547b3d8682f90c988a467579ebf5db59777ebb",
+    "head": "d21a9082a5825748b1af953c9394f9970b98ce8e",
     "reviewed": null,
     "blocker": null,
     "next": [
