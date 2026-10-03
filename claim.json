@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-c20261002-prf06",
   "epoch": 17,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-03T17:14:29Z",
-  "updatedAt": "2026-10-03T17:14:29Z",
-  "leaseUntil": "2026-10-04T05:14:29Z",
+  "updatedAt": "2026-10-03T17:15:17Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-prf05 epoch 16; review the earlier handoff and commits"
+    "note": "merged PRF.06 #127 only"
   }
 }
