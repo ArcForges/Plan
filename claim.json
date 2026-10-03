@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:29:39Z",
-  "updatedAt": "2026-10-03T16:30:20Z",
-  "leaseUntil": "2026-10-04T16:30:20Z",
+  "updatedAt": "2026-10-03T16:35:37Z",
+  "leaseUntil": "2026-10-04T16:35:37Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-11",
@@ -27,7 +27,8 @@
       "PR 126 opened at 4e6f578b8188a4f906e6a423d00d1c945a246144; history squashed to two commits (force-with-lease on my own branch before review)",
       "Hosted CI 15/15 green at 4e6f578b8188a4f906e6a423d00d1c945a246144 (run 37075870805); review requested on PR 126",
       "Reviewer approved 4e6f578 (comment 5968143324); pushed 59197a5925e980366b984db2f88762ff2523a412 (test for Deadline.Remaining survivors, stuck-confirmation fix); hosted CI green (run 37135518446); PR body refreshed with final mutation tally 72 applied/64 killed/4 survived/3 rejected/1 not applied",
-      "Merged 33a6476 (Publish NuGet run 37136345281 success, 14 packages, none LocalRpc); role released; primary fast-forwarded; ledger PR Plan#248 at 93caa68 opened"
+      "Merged 33a6476 (Publish NuGet run 37136345281 success, 14 packages, none LocalRpc); role released; primary fast-forwarded; ledger PR Plan#248 at 93caa68 opened",
+      "Plan#248 finding fixed at 8e6f87d (test counts: local 460/25 skipped, hosted 458/438/20)"
     ],
     "validation": [
       "Local Windows: locked restore, solution build 0 warnings, format clean, provenance/dependency/reconciliation/licence/runtime-ownership checks pass, LocalRpc suite 458 tests 0 failed 25 skipped, opt-in OS/process checks 5 passed once",
@@ -38,7 +39,7 @@
     "reviewed": "59197a5925e980366b984db2f88762ff2523a412",
     "blocker": null,
     "next": [
-      "await review of Plan#248; merge via integration:Plan; then update --state delivered"
+      "await narrow re-review of Plan#248 at 8e6f87d3e4f7dc25560bcbc0621df8cbd8da5bf3; merge via integration:Plan; then update --state delivered"
     ],
     "host": "deku",
     "note": "Local unpushed commit on task/plt-11 adds one test (AnEarlyWatchdogReArmsForTheNearerOfTheTwoClocksRemainders) for mutation survivors R66/R67 (Deadline.Remaining ignoring one clock); not yet built or run (build slot starved by other workers); R68 (clamp) is race-only. Sweep at 72/135 verdicts: 55 killed, 5 survived (P06, R32 equivalent; R66-R68 above), remaining queued. Reviewed head is still 4e6f578; pushing the test makes a new head."
