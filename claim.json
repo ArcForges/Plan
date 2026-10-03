@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T22:34:52Z",
-  "updatedAt": "2026-10-03T22:40:24Z",
-  "leaseUntil": "2026-10-04T22:40:24Z",
+  "updatedAt": "2026-10-03T22:52:05Z",
+  "leaseUntil": "2026-10-04T22:52:05Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-41",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Egress authority/allowlist/grants/audit/transfer ticket in ArcForges.Security.Egress with 267 new offline tests (605 pass locally)"
+    ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-41",
-    "head": null,
+    "head": "e4436748c6fa0e5560eed7962f7407e136fe6231",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "implement Egress/ in ArcForges.Security, tests, README, then PR"
+      "README section, RP-10 bindings + provenance rows, hosted-gate RP-10 check, mutation sweep (bounded), PR"
     ],
     "host": "deku",
     "note": "ADP-07 supporting-file binding (recorded before editing; also goes in the PR): the owned artifact is src/BuildingBlocks/ArcForges.Security/** (new Egress/ folder and Tests/Egress*.cs inside the existing projects; no csproj, lock, solution, package or dependency change). Supporting appends only: eng/policy/architecture-contract-tests.json (RP-10 bindings of the new public methods to focused Security.Tests facts; RES-architecture-tests append; PLT.37/PLT.38 precedent) and eng/provenance/files.json (first-party rows for the new source/test files; RES-desktopplatform-policy-data append). Necessity: the RP-10 gate fails on any public ordinary method without a binding, and the provenance check requires each tracked first-party file to be listed. No new runtime owner, dependency, schema or algorithm."
