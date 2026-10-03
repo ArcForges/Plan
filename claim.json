@@ -6,24 +6,28 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T16:41:08Z",
-  "updatedAt": "2026-10-03T17:06:01Z",
-  "leaseUntil": "2026-10-04T17:06:01Z",
+  "updatedAt": "2026-10-03T17:28:48Z",
+  "leaseUntil": "2026-10-04T17:28:48Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-12",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/131"
+    ],
     "merges": [],
     "done": [
       "Planned and wrote declarations, LocalRpcRouter, route guard, RequireDeclaredServices, tests, README (WIP, not yet built). ADP-07 supporting bindings declared before the append: eng/provenance/files.json (sorted path lines for new source/test files) and eng/policy/architecture-contract-tests.json (one row per new public method, RP-10); both appends only, outside the write scope, serving artifacts inside it; no project/lock/props/package/dependency/workflow change",
       "Implemented and pushed; local Windows build 0 warnings/0 errors, LocalRpc suite 489 tests 0 failed 25 skipped, architecture test only RP-10 (now bound) + the known RP-01/08/09/AT-09 evidence gaps"
     ],
-    "validation": [],
+    "validation": [
+      "Windows local at pre-rebase head 2520680: Release slnx build 0 warn/0 err, format clean, LocalRpc suite 489 tests 0 failed 25 skipped, architecture test only RP-10 (since bound) + known RP-01/08/09/AT-09"
+    ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-12",
-    "head": "ad20270fd79bf3d03516156be9e5cdcdcd0cccde",
+    "head": "866fd56843e24d31316088ccf1fb4ad420011bf9",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "mutation sweep, rebase check, open PR"
+      "await review; mutation sweep running"
     ],
     "host": "deku",
     "note": null
