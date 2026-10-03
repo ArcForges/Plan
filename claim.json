@@ -6,23 +6,27 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T22:34:53Z",
-  "updatedAt": "2026-10-03T23:11:21Z",
-  "leaseUntil": "2026-10-04T23:11:21Z",
+  "updatedAt": "2026-10-03T23:47:25Z",
+  "leaseUntil": "2026-10-04T23:47:25Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-43",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/135"
+    ],
     "merges": [],
     "done": [
       "Planned and implemented Leases (manager, durable store port, lifecycle fact sink, ceiling source, use-time validator), pipeline lease step at 6 and 11 (10 new reasons), typed Trust evaluator at the architecture 08 points; 555 offline Security tests pass locally"
     ],
-    "validation": [],
+    "validation": [
+      "Security.Tests 855 passed locally (rebased on main with PLT.41); format, provenance, dependency, licence, runtime, reconciliation checks pass; 66 local mutants: 61 killed, 3 survived, 2 uncompiled"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-43",
-    "head": "065a20d803feb1b8984cf54f6622bf2b074936ac",
+    "head": "5ddebd030da6a3c2a5fbd3d55ee1694511bcf7d1",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "Sqlite durability tests, README, RP-10 bindings and provenance rows, mutation sweep, PR"
+      "await review"
     ],
     "host": "deku",
     "note": null
