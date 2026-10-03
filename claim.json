@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T23:16:32Z",
-  "updatedAt": "2026-10-03T23:16:32Z",
-  "leaseUntil": "2026-10-04T23:16:32Z",
+  "updatedAt": "2026-10-03T23:33:06Z",
+  "leaseUntil": "2026-10-04T23:33:06Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-45",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "claimed; read brief/policy/design (annex 24, 09, WP-11.09); planning repair opened: Design PR 209 + Plan PR 256 (write scope + Sandbox contract admission + native owner map)"
+    ],
     "validation": [],
-    "worktree": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-45",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "implement in worktree plt-45: Contracts facade, Windows AppContainer+Job launcher, helper host, hostile fixture, offline+opt-in tests, Linux profile, policy rows/receipt, AOT workflow job"
     ],
     "host": "deku",
     "note": null
