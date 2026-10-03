@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:31:40Z",
-  "updatedAt": "2026-10-03T21:19:55Z",
-  "leaseUntil": "2026-10-04T21:19:55Z",
+  "updatedAt": "2026-10-03T21:21:04Z",
+  "leaseUntil": "2026-10-04T21:21:04Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-38",
@@ -17,7 +17,8 @@
       "https://github.com/ArcForges/DesktopPlatform/pull/129"
     ],
     "merges": [
-      "94dfb111e42a577114bc996859e6c3245f4ce8ce"
+      "94dfb111e42a577114bc996859e6c3245f4ce8ce",
+      "9e4c2b197fb5f74fa328d7127c89f171340a19f3"
     ],
     "done": [
       "Read brief, plans, WP-11.02, architecture 08, PLT.09/10/20/24/36/37/39/40/44 records; claimed epoch 1; opened planning repair pair Design#205 + Plan#242 (exact write scope: one new nested non-packable project src/BuildingBlocks/ArcForges.Security/LocalRpcBoundary binding the Security transport-session port to the real PLT.10 LocalRpcLaunchAuthority, plus the exact solution/selector/policy/provenance/receipt rows; verified locally the planned restore adds no coordinate outside nugetClosure)",
