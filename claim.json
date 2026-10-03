@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-02T23:56:36Z",
-  "leaseUntil": "2026-10-03T23:56:36Z",
+  "updatedAt": "2026-10-03T08:51:48Z",
+  "leaseUntil": "2026-10-04T08:51:48Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
@@ -30,12 +30,12 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Web\\.worktree\\prf-08",
     "head": "d46533ce7b02803ac80560ef238245ce0bf1b514",
-    "reviewed": "0439ffecf95f6a5f415f40e5ae170be089bf9c9b",
+    "reviewed": "d46533ce7b02803ac80560ef238245ce0bf1b514",
     "blocker": null,
     "next": [
       "await delta re-review of Web 25 at d46533c; then merge via integration:Web with --match-head-commit; then ledger record delivered (name pre-authority edits, review independence by worker name, pre-existing candidate.test.ts failures, esproj and interaction-budget parts open)"
     ],
     "host": "deku",
-    "note": "planning PRs approved: Design 207 at 0439ffe, Plan 246 at 95e4df6; Web 25 review pending"
+    "note": "Web 25 approved at d46533c by r-c20261003-prf08-code"
   }
 }
