@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:59Z",
-  "updatedAt": "2026-10-03T16:13:18Z",
-  "leaseUntil": "2026-10-04T16:13:18Z",
+  "updatedAt": "2026-10-03T16:14:04Z",
+  "leaseUntil": "2026-10-04T16:14:04Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-06",
@@ -17,7 +17,8 @@
       "https://github.com/ArcForges/DesktopPlatform/pull/127"
     ],
     "merges": [
-      "4220aa33ce2b79cd6bf9f42cc0a6c3cf2391933b"
+      "4220aa33ce2b79cd6bf9f42cc0a6c3cf2391933b",
+      "4354a830a71959e9d90087917b898d1e118eff0e"
     ],
     "done": [
       "Researched: PRF.07 does not provide EventService.Watch; the real Watch/Poll/readOutput servers are CLOUD.29/32/34 (none started). Opened the planning repair pair (Design 206, Plan 243): generated Events/PublicApi/Foundation pins at CON.11 candidate 1.0.0-ci.270.1 are outside the write scope; add CON.11 start edge and CLOUD.29/32/34 completion edges",
