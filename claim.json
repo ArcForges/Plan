@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:29:39Z",
-  "updatedAt": "2026-10-03T16:17:23Z",
-  "leaseUntil": "2026-10-04T16:17:23Z",
+  "updatedAt": "2026-10-03T16:18:25Z",
+  "leaseUntil": "2026-10-04T16:18:25Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-11",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/126"
     ],
-    "merges": [],
+    "merges": [
+      "33a647670600fa9163b6a8cf22de6803cc945488"
+    ],
     "done": [
       "Read batch brief, arcforges-implementation/execution-policy/single-task-command, delivery README, WP-08.02, annex 03 and 09, platform.md PLT.11 prompt, ledger plt-09/plt-10 and the PR 117/123/125 review histories",
       "Worktree DesktopPlatform/.worktree/plt-11 on task/plt-11 at main d6e158d (PLT.10 merge); no earlier task/plt-11 branch or PR existed",
@@ -34,7 +36,8 @@
     "reviewed": "59197a5925e980366b984db2f88762ff2523a412",
     "blocker": null,
     "next": [
-      "merge via integration:DesktopPlatform"
+      "confirm publication",
+      "record the ledger"
     ],
     "host": "deku",
     "note": "Local unpushed commit on task/plt-11 adds one test (AnEarlyWatchdogReArmsForTheNearerOfTheTwoClocksRemainders) for mutation survivors R66/R67 (Deadline.Remaining ignoring one clock); not yet built or run (build slot starved by other workers); R68 (clamp) is race-only. Sweep at 72/135 verdicts: 55 killed, 5 survived (P06, R32 equivalent; R66-R68 above), remaining queued. Reviewed head is still 4e6f578; pushing the test makes a new head."
