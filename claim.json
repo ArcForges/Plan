@@ -6,24 +6,29 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T22:29:22Z",
-  "updatedAt": "2026-10-03T08:51:04Z",
-  "leaseUntil": "2026-10-04T08:51:04Z",
+  "updatedAt": "2026-10-03T22:00:32Z",
+  "leaseUntil": "2026-10-04T22:00:32Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-15",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/132"
+    ],
     "merges": [],
     "done": [
       "Read brief, task prompt, WP-08.06, annex 09 sections 3/4/5, Registry 04 sandbox records, CON.04/PLT.09/10/13 ledgers and review histories; claimed; worktree off main d4e8743",
-      "Library (LocalRpcBroker*.cs) and 5 test classes written; 193 broker tests ran locally, 2 failures being fixed (stalled-reader probe, copy-active after digest mismatch)"
+      "Library (LocalRpcBroker*.cs) and 5 test classes written; 193 broker tests ran locally, 2 failures being fixed (stalled-reader probe, copy-active after digest mismatch)",
+      "PR 132 open; hosted CI 19/19 green at cc6cc68; 196 own mutants; broker tests 903 total local pass"
     ],
-    "validation": [],
+    "validation": [
+      "local: LocalRpc.Tests 903 tests 0 failed twice on rebased tree, format clean; hosted run 37156392866 green"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-15",
-    "head": "9c6e62a0060c25c5c27afef898c1923a21439f78",
+    "head": "cc6cc68a525a4f8cbff637c649cdc4866ffb4a85",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "Fix failures, run own mutation set, README results, provenance + RP-10 bindings, squash WIP commit, open PR, await CI"
+      "await review"
     ],
     "host": "deku",
     "note": "ADP-07 declaration, before the first edit. Write scope: DesktopPlatform src/BuildingBlocks/ArcForges.LocalRpc/** (new Broker*.cs files, Tests/, README only; LocalRpcServer/Limits/listener untouched to keep PLT.14 rebase small). Supporting appends outside scope, serving only artifacts inside scope: (1) eng/provenance/files.json, new tracked first-party paths of this task, sorted insertion only; (2) eng/policy/architecture-contract-tests.json, rows appended at the tail for each new public method (RP-10), only if the architecture gate reports them. Resource owner DesktopPlatform: RES-desktopplatform-policy-data (append protocol, regenerate/append after rebase). Necessity: the provenance gate lists every tracked first-party file and the architecture gate reports RP-10 for a public method without a contract-test row (both observed at PLT.10 and PLT.13). No project, lock, props, package, version, dependency-policy, receipt, workflow or .gitleaks.toml change is planned and none is claimed; no new package: the generated ArcForges.Contracts.LocalRpc.Sandbox package is not admitted in DesktopPlatform and admitting it needs dependency authority outside this task, so the mechanism is contract-agnostic and tests use hand-written test-only probe services; contract-fidelity re-proof with the generated ContentSandboxService stays with PLT.45."
