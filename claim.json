@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T22:29:22Z",
-  "updatedAt": "2026-10-03T23:13:22Z",
-  "leaseUntil": "2026-10-04T23:13:22Z",
+  "updatedAt": "2026-10-03T23:14:05Z",
+  "leaseUntil": "2026-10-04T23:14:05Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-15",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Plan/pull/254"
     ],
     "merges": [
-      "543ae491cbbabb85232e0f4e957f7f70012bf8b1"
+      "543ae491cbbabb85232e0f4e957f7f70012bf8b1",
+      "0b11894ae312ee7c8c8a1ba3297649d2e054136f"
     ],
     "done": [
       "Read brief, task prompt, WP-08.06, annex 09 sections 3/4/5, Registry 04 sandbox records, CON.04/PLT.09/10/13 ledgers and review histories; claimed; worktree off main d4e8743",
@@ -24,7 +25,8 @@
       "PR 132 open; hosted CI 19/19 green at cc6cc68; 196 own mutants; broker tests 903 total local pass",
       "Review F1 fixed (30 rows, not 50); rebased on 2ffeba3; CI 19/19 green run 37158897300",
       "merged as 543ae49; main-push Publish NuGet run 37159679321 success",
-      "merged 543ae49, publication run 37159679321 success, role released, primary fast-forwarded"
+      "merged 543ae49, publication run 37159679321 success, role released, primary fast-forwarded",
+      "ledger merged"
     ],
     "validation": [
       "local: LocalRpc.Tests 903 tests 0 failed twice on rebased tree, format clean; hosted run 37156392866 green"
