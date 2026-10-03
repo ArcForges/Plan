@@ -149,7 +149,7 @@ Tasks: 437 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PRF.02 | ArcScope | M | CON.91, FND.01, ADOPT.05.runtime-proofs (adoption) | ArcScope desktop Native AOT package proof |
 | PRF.04 | DesktopPlatform | L | CON.05, ADOPT.02.runtime-proofs (adoption) | Local RPC under AOT: bidirectional named-pipe/UDS probe processes |
 | PRF.05 | DesktopPlatform | M | CON.92, PRF.07, ADOPT.02.runtime-proofs (adoption) | Generated gRPC-Web under AOT against deployed Worker/Container ingress |
-| PRF.06 | DesktopPlatform | M | PRF.07, ADOPT.02.runtime-proofs (adoption) | Realtime (EventService.Watch/Poll) under AOT |
+| PRF.06 | DesktopPlatform | M | PRF.07, CON.11, ADOPT.02.runtime-proofs (adoption) | Realtime (EventService.Watch/Poll) under AOT |
 | PRF.07 | Cloud | XL | CON.92, CON.07, CON.15, ADOPT.07.runtime-proofs (adoption) | Cloudflare Native AOT host + D1 + DO/Queue/R2 foundation proof |
 | PRF.08 | Web | L | CON.92, PRF.07, CON.07, ADOPT.09.runtime-proofs (adoption) | React production build and generated TS SDK proof |
 | PRF.09 | DesktopPlatform | S | PLT.34, ADOPT.02.runtime-proofs (adoption) | Third-party control AOT admission gate and first candidate |

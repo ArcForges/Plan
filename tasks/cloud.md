@@ -843,7 +843,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.PublicApi/Streams/**
-Unblocks: AND.07, CLOUD.30, CLOUD.34, CLOUD.36, DEV.01, DEV.14, WEB.30
+Unblocks: AND.07, CLOUD.30, CLOUD.34, CLOUD.36, DEV.01, DEV.14, PRF.06, WEB.30
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): opt-in real deployed C#/browser/Kotlin binary stream tests: trailers/cancel/expiry, no WebSocket path
 Completion evidence for the ledger: real binary stream trailer/cancel/expiry results
@@ -922,7 +922,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.PublicApi/Streams/Fallback/**
-Unblocks: CLOUD.36
+Unblocks: CLOUD.36, PRF.06
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): opt-in test: blocked stream recovers through real unary read without invented completion
 Completion evidence for the ledger: blocked-stream real-recovery result
@@ -977,7 +977,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.PublicApi/Streams/Lifecycle/**
-Unblocks: CLOUD.35, CLOUD.36, DEV.14
+Unblocks: CLOUD.35, CLOUD.36, DEV.14, PRF.06
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): opt-in test: slow reader overflow resets, no unbounded memory or hibernation-cost claim
 Completion evidence for the ledger: slow-reader overflow-reset result
