@@ -6,15 +6,16 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:59Z",
-  "updatedAt": "2026-10-03T17:15:02Z",
-  "leaseUntil": "2026-10-04T17:15:02Z",
+  "updatedAt": "2026-10-03T17:28:27Z",
+  "leaseUntil": "2026-10-04T17:28:27Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-06",
     "prs": [
       "https://github.com/ArcForges/ArcForges-Design/pull/206",
       "https://github.com/ArcForges/Plan/pull/243",
-      "https://github.com/ArcForges/DesktopPlatform/pull/127"
+      "https://github.com/ArcForges/DesktopPlatform/pull/127",
+      "https://github.com/ArcForges/Plan/pull/250"
     ],
     "merges": [
       "4220aa33ce2b79cd6bf9f42cc0a6c3cf2391933b",
@@ -26,7 +27,8 @@
       "Pushed WIP of DesktopPlatform task/prf-06: RealtimeAotProbe project, exact pins, policy/sequence/classification/transport/stream/event/output logic; still to write: paged readers, self-test, Program, policy bindings, receipt, workflow job",
       "Pushed the working probe (61 offline checks pass under the JIT; mutation batch running). ADP-07 supporting bindings declared BEFORE editing them, all serving the new task-owned project tests/ReleaseArtifactTests/Realtime/RealtimeAotProbe.csproj inside the write scope: eng/policy/architecture-projects.json (Test row), eng/policy/runtime-ownership.json (test-or-build-tool row), eng/policy/licence-boundary.json (msbuild row), eng/policy/reconciliation/active-projects.json (exact blob row), eng/provenance/files.json (firstParty rows for task-owned files only), eng/policy/dependency-policy.json inputHashes/closure rows/active review plus new immutable eng/policy/dependency-reviews/prf-06-r1.json chained from the active receipt on main, DesktopPlatform.slnx and .github/workflows/package-validation.yml (one realtime-aot job). Necessity: repo gates (reconciliation, licence-boundary, runtime-ownership, architecture tests, dependency admission, provenance) fail closed on any unregistered project; resource owners RES-desktopplatform-build-config and RES-desktopplatform-policy-data, append-only.",
       "Opened DesktopPlatform PR 127 at dd61d26: probe, 61 offline checks (JIT and published Native AOT win-x64 both pass), bindings, receipt prf-06-r1, realtime-aot job. Local gates passed (dependency, licence, reconciliation, provenance, runtime-ownership, locked restore of the solution, format). Mutation batch still running.",
-      "DesktopPlatform PR 127 head 1fdf368: hosted CI all 17 checks green (incl. Realtime Native AOT compile linux-x64 and win-x64, pack, secret-scan). Self-test 65 checks under JIT; published win-x64 Native AOT image ran 61 checks at dd61d26 with zero publish warnings. Own mutation pass: first (partly contaminated by a concurrent runner) batch 72 killed, 1 survivor (policy constant, now pinned), 22 mutants did not compile or pattern missed; clean recompile-safe rerun of 88 mutants is queued behind the workstation build slot (scripts under scratchpad/prf06)."
+      "DesktopPlatform PR 127 head 1fdf368: hosted CI all 17 checks green (incl. Realtime Native AOT compile linux-x64 and win-x64, pack, secret-scan). Self-test 65 checks under JIT; published win-x64 Native AOT image ran 61 checks at dd61d26 with zero publish warnings. Own mutation pass: first (partly contaminated by a concurrent runner) batch 72 killed, 1 survivor (policy constant, now pinned), 22 mutants did not compile or pattern missed; clean recompile-safe rerun of 88 mutants is queued behind the workstation build slot (scripts under scratchpad/prf06).",
+      "Merged DesktopPlatform #127 as 62bf7bb; main-push run 37139803327 green; role released; wrote ledger record prf-06 (delivered)"
     ],
     "validation": [
       "Windows 11, SDK 10.0.400 (user-level), build slot: locked restore, Release build, format, Native AOT win-x64 publish exit 0 with zero warnings, published exe ran 61/61 offline checks. No deployed or live result exists or is claimed.",
@@ -37,7 +39,7 @@
     "reviewed": "939bafb28bb95cb87d9dd32dab58f6e6c5a7d3cb",
     "blocker": null,
     "next": [
-      "confirm main-push jobs; record ledger prf-06 as delivered"
+      "await review of ledger PR Plan#250 at 557757b6ed21; merge via integration:Plan; then update --state delivered"
     ],
     "host": "deku",
     "note": "resumed after session reset; worktree clean at pushed head 1fdf368"
