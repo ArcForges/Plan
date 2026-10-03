@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T16:41:08Z",
-  "updatedAt": "2026-10-03T16:41:08Z",
-  "leaseUntil": "2026-10-04T16:41:08Z",
+  "updatedAt": "2026-10-03T16:51:27Z",
+  "leaseUntil": "2026-10-04T16:51:27Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-12",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Planned and wrote declarations, LocalRpcRouter, route guard, RequireDeclaredServices, tests, README (WIP, not yet built). ADP-07 supporting bindings declared before the append: eng/provenance/files.json (sorted path lines for new source/test files) and eng/policy/architecture-contract-tests.json (one row per new public method, RP-10); both appends only, outside the write scope, serving artifacts inside it; no project/lock/props/package/dependency/workflow change"
+    ],
     "validation": [],
-    "worktree": null,
-    "head": null,
+    "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-12",
+    "head": "2c168eda6e1d60e875efb39b294a7104be641e4e",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "build and test through the build slot, append bindings, bounded mutation sweep, open PR"
     ],
     "host": "deku",
     "note": null
