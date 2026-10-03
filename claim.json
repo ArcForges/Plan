@@ -4,10 +4,10 @@
   "id": "PLT.41",
   "claimant": "w-c20261003-plt41",
   "epoch": 1,
-  "state": "claimed",
+  "state": "complete",
   "claimedAt": "2026-10-03T22:34:52Z",
-  "updatedAt": "2026-10-03T23:57:15Z",
-  "leaseUntil": "2026-10-04T23:57:15Z",
+  "updatedAt": "2026-10-03T23:57:30Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-41",
