@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-c20261002-plt38",
   "epoch": 20,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-03T22:10:24Z",
-  "updatedAt": "2026-10-03T22:10:24Z",
-  "leaseUntil": "2026-10-04T10:10:24Z",
+  "updatedAt": "2026-10-03T22:11:27Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-plt14 epoch 19; review the earlier handoff and commits"
+    "note": "merged #129 only; PLT.15 #132 rebases next"
   }
 }
