@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-03T08:51:48Z",
-  "leaseUntil": "2026-10-04T08:51:48Z",
+  "updatedAt": "2026-10-03T08:55:17Z",
+  "leaseUntil": "2026-10-04T08:55:17Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
@@ -18,7 +18,8 @@
     ],
     "merges": [
       "4dd3f735e70346cfbf3c15b01d5179120f7c7050",
-      "e8c3d1e9c9d7e802e6dd1b94a3105753c750995c"
+      "e8c3d1e9c9d7e802e6dd1b94a3105753c750995c",
+      "794ef933d3dba836c60b29a481091d40ab4a2b1a"
     ],
     "done": [
       "claimed; read brief/Plan/Design/task prompt/PRF.07 ledger; baseline npm ci on pinned Node 24.21.0/npm 11.19.0 (fnm); found main npm audit --audit-level=high red (undici via wrangler 4.135.0; 4.143.1 clears it in a scratch install); site build with Contracts 287.1 in scratch emits byte-identical chunks (graph only grows 254 to 299 modules)",
@@ -26,14 +27,15 @@
       "implementation complete locally and pushed (history rewritten pre-review: WIP bfbf307 replaced by 2 commits): apps/app profiles, SDK pin 287.1, wrangler 4.143.1, admission records (receipt, profile r8, build-identity r4); npm run check green, strict candidate build verified, npm audit 0 vuln, mutation run 45/48 then 48/48-minus-1-equivalent, local Chromium run against local Native AOT Hello host once"
     ],
     "validation": [
-      "hosted CI run 37075989133 green on f16e538; local: npm run check (110 unit, 43 provenance), npm audit 0, strict candidate build, esproj Build, profile --twice determinism, 48-mutant run, one local Chromium run against a local Native AOT Hello host (host dirty local build)"
+      "hosted CI run 37075989133 green on f16e538; local: npm run check (110 unit, 43 provenance), npm audit 0, strict candidate build, esproj Build, profile --twice determinism, 48-mutant run, one local Chromium run against a local Native AOT Hello host (host dirty local build)",
+      "Web main-push run 37111148859 on 794ef93 succeeded incl Deploy Cloudflare (wrangler 4.143.1, version b82ecfb4-89a0-440c-b176-6379af4e0619, prerelease web-0.1.0-ci.78.1)"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Web\\.worktree\\prf-08",
     "head": "d46533ce7b02803ac80560ef238245ce0bf1b514",
     "reviewed": "d46533ce7b02803ac80560ef238245ce0bf1b514",
     "blocker": null,
     "next": [
-      "await delta re-review of Web 25 at d46533c; then merge via integration:Web with --match-head-commit; then ledger record delivered (name pre-authority edits, review independence by worker name, pre-existing candidate.test.ts failures, esproj and interaction-budget parts open)"
+      "write ledger record prf-08 as delivered, review, merge via integration:Plan, then update --state delivered"
     ],
     "host": "deku",
     "note": "Web 25 approved at d46533c by r-c20261003-prf08-code"
