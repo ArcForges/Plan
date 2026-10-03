@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-c20261003-plt12",
   "epoch": 18,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-03T21:22:35Z",
-  "updatedAt": "2026-10-03T21:22:35Z",
-  "leaseUntil": "2026-10-04T09:22:35Z",
+  "updatedAt": "2026-10-03T21:35:47Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-prf06 epoch 17; review the earlier handoff and commits"
+    "note": "PLT.12 #131 merged as 7886f0c, publish run 37154913535 success; queue: PLT.14 #130 (renumber refusal reasons to 8 and 9) and PLT.38 #129 rebase onto 7886f0c"
   }
 }
