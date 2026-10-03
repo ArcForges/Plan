@@ -6,13 +6,14 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:12Z",
-  "updatedAt": "2026-10-03T16:44:48Z",
-  "leaseUntil": "2026-10-04T16:44:48Z",
+  "updatedAt": "2026-10-03T16:57:14Z",
+  "leaseUntil": "2026-10-04T16:57:14Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-05",
     "prs": [
-      "https://github.com/ArcForges/DesktopPlatform/pull/128"
+      "https://github.com/ArcForges/DesktopPlatform/pull/128",
+      "https://github.com/ArcForges/Plan/pull/249"
     ],
     "merges": [
       "4d4552c84ddb6c3dddd192bb8c7e7634b2c1f07b"
@@ -21,7 +22,8 @@
       "claimed at epoch 1; read brief, Plan docs, PRF.07 ledger, task prompt, WP-06.02; worktree created from main d6e158d; plan fixed (no edits yet)",
       "probe project, fixture self-test (JIT: all guards and 11 fixture mutants pass), win-x64 Native AOT publish clean; first WIP commit pushed",
       "PR 128 opened; probe, self-test (21 misbehaviors), AOT publish, 53 source mutations (50 caught, 3 survivors), one live run (23/23) against the existing production Hello ingress with RES-cloud-deployment lease released",
-      "review findings of #128 being addressed: cancel scenario split into hand-off and after-response checks, wording corrections, extra self-test guards"
+      "review findings of #128 being addressed: cancel scenario split into hand-off and after-response checks, wording corrections, extra self-test guards",
+      "DesktopPlatform #128 merged as 4d4552c; main-push run 37137954331 green; integration role released; ledger PR opened"
     ],
     "validation": [
       "local win-x64 Native AOT publish no warnings; policy checks (dependency, reconciliation, provenance, runtime ownership, licence, design) pass; ArchitectureTests 99/100 locally, only AT-09 missing native evidence (environmental)",
@@ -34,8 +36,7 @@
     "reviewed": "2d55d5dd2314ac251da11fd72ccfa16b135f3244",
     "blocker": null,
     "next": [
-      "confirm Publish NuGet run 37137954331 on the merge",
-      "record the ledger (Plan PR), delivered not complete"
+      "await review of Plan #249 at f796bfc; merge via integration:Plan; then update --state delivered"
     ],
     "host": "deku",
     "note": "ADP-07 supporting bindings, declared before editing (all inside the task's listed write scope; DesktopPlatform has no dedicated provenance/source-inventory resource, so policy/test/provenance appends use RES-desktopplatform-policy-data (append) and workflow/solution/props use RES-desktopplatform-build-config (append)): solution folder + project entry tests/ReleaseArtifactTests/GrpcWeb/GrpcWebAotProbe.csproj in DesktopPlatform.slnx; root Directory.Packages.props append of Grpc.Net.Client.Web 2.84.0 only; nested tests/ReleaseArtifactTests/GrpcWeb/Directory.Packages.props (imports the root; selects the already-admitted ArcForges.Contracts.PublicApi and Foundation 1.0.0-ci.216.1 for this project only, same pattern as PRF.09 probe-evidence); the project's packages.lock.json; package-validation.yml one locked publish-only AOT job; dependency-policy.json input hashes + one new coordinate grpc.net.client.web/2.84.0 + active review binding; new immutable receipt eng/policy/dependency-reviews/prf-05-r1.json chained from the ACTIVE receipt on main at rebase time (plt-53-r1 now); licence-boundary.json/runtime-ownership.json/architecture-projects.json/reconciliation/active-projects.json append the probe csproj only (kind msbuild / test-or-build-tool / Test owner DesktopPlatform module empty production=false aot=false / exact post-rebase blob); eng/provenance/files.json firstParty rows for task-owned files only; eng/verification/prf-05.md and create_prf05_dependency_receipt.py. No .gitleaks.toml, no Contracts/Cloud edit, no other dependency coordinate. Design: the probe consumes only the already-admitted published Contracts candidate 1.0.0-ci.216.1 (HelloService generated client in ArcForges.Contracts.PublicApi); target is the existing deployed Hello gRPC-Web ingress (Cloud worker/router.ts, https://arcforges.com/api, no credentials) used only in an explicit local opt-in live phase; the env.proof ingress does not exist and nothing is claimed about it."
