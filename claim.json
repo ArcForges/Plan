@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:12Z",
-  "updatedAt": "2026-10-03T17:00:31Z",
-  "leaseUntil": "2026-10-04T17:00:31Z",
+  "updatedAt": "2026-10-03T17:01:34Z",
+  "leaseUntil": "2026-10-04T17:01:34Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-05",
@@ -33,7 +33,7 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\prf-05",
     "head": "2d55d5dd2314ac251da11fd72ccfa16b135f3244",
-    "reviewed": "2d55d5dd2314ac251da11fd72ccfa16b135f3244",
+    "reviewed": "18212d7afaf810db6e0aecf80c97b1ae751f557d",
     "blocker": null,
     "next": [
       "await narrow re-review of Plan #249 at 18212d7; merge via integration:Plan; then update --state delivered"
