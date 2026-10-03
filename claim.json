@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:31:40Z",
-  "updatedAt": "2026-10-02T23:26:16Z",
-  "leaseUntil": "2026-10-03T23:26:16Z",
+  "updatedAt": "2026-10-03T09:01:38Z",
+  "leaseUntil": "2026-10-04T09:01:38Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-38",
@@ -31,6 +31,6 @@
       "wait for hosted CI on #129; post mutation results; independent review of Design#205, Plan#242 and #129; merge Design/Plan first, then rebase #129 (re-chain receipt from active receipt, re-append contract-test rows) before merge; then ledger"
     ],
     "host": "deku",
-    "note": "ADP-07 declaration: none relied on; every supporting file is named by the planning repair. Receipt plt-38-r1 chains from the receipt active on main at merge (plt-53-r1 at claim time)."
+    "note": "resumed after session limit; mutation pass 2 and final test additions in progress on task/plt-38"
   }
 }
