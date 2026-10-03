@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Design",
-  "claimant": "w-c20261002-prf06",
-  "epoch": 13,
-  "state": "released",
-  "claimedAt": "2026-10-03T16:10:20Z",
-  "updatedAt": "2026-10-03T16:11:10Z",
-  "leaseUntil": null,
+  "claimant": "w-c20261002-plt38",
+  "epoch": 14,
+  "state": "claimed",
+  "claimedAt": "2026-10-03T21:19:03Z",
+  "updatedAt": "2026-10-03T21:19:03Z",
+  "leaseUntil": "2026-10-04T09:19:03Z",
   "handoff": {
     "host": "deku",
-    "note": "merged Design #206 only; queue otherwise empty"
+    "note": "claimed after released by w-c20261002-prf06 epoch 13; review the earlier handoff and commits"
   }
 }
