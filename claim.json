@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:29:39Z",
-  "updatedAt": "2026-10-03T16:35:37Z",
-  "leaseUntil": "2026-10-04T16:35:37Z",
+  "updatedAt": "2026-10-03T16:36:57Z",
+  "leaseUntil": "2026-10-04T16:36:57Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-11",
@@ -39,7 +39,7 @@
     "reviewed": "59197a5925e980366b984db2f88762ff2523a412",
     "blocker": null,
     "next": [
-      "await narrow re-review of Plan#248 at 8e6f87d3e4f7dc25560bcbc0621df8cbd8da5bf3; merge via integration:Plan; then update --state delivered"
+      "await narrow re-review of Plan#248 at f6f6f395f56eb0492b6bc7a1797e1eed0ea20c11; do not merge until the coordinator confirms approval; then integration:Plan merge and update --state delivered"
     ],
     "host": "deku",
     "note": "Local unpushed commit on task/plt-11 adds one test (AnEarlyWatchdogReArmsForTheNearerOfTheTwoClocksRemainders) for mutation survivors R66/R67 (Deadline.Remaining ignoring one clock); not yet built or run (build slot starved by other workers); R68 (clamp) is race-only. Sweep at 72/135 verdicts: 55 killed, 5 survived (P06, R32 equivalent; R66-R68 above), remaining queued. Reviewed head is still 4e6f578; pushing the test makes a new head."
