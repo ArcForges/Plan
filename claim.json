@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-03T08:58:25Z",
-  "leaseUntil": "2026-10-04T08:58:25Z",
+  "updatedAt": "2026-10-03T09:05:41Z",
+  "leaseUntil": "2026-10-04T09:05:41Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
@@ -36,7 +36,7 @@
     "reviewed": "d46533ce7b02803ac80560ef238245ce0bf1b514",
     "blocker": null,
     "next": [
-      "await independent review of ledger PR Plan 247 at 5a902854957b868da5c91f4e07579fd0edff4887; merge via integration:Plan; then update --state delivered"
+      "await narrow re-review of ledger PR Plan 247 at d17d7e9ab9afe90df28ad68d7afa852f3a3ff0ca; merge via integration:Plan; then update --state delivered"
     ],
     "host": "deku",
     "note": "Web 25 approved at d46533c by r-c20261003-prf08-code"
