@@ -6,13 +6,14 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:29:39Z",
-  "updatedAt": "2026-10-03T16:18:25Z",
-  "leaseUntil": "2026-10-04T16:18:25Z",
+  "updatedAt": "2026-10-03T16:30:20Z",
+  "leaseUntil": "2026-10-04T16:30:20Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-11",
     "prs": [
-      "https://github.com/ArcForges/DesktopPlatform/pull/126"
+      "https://github.com/ArcForges/DesktopPlatform/pull/126",
+      "https://github.com/ArcForges/Plan/pull/248"
     ],
     "merges": [
       "33a647670600fa9163b6a8cf22de6803cc945488"
@@ -25,7 +26,8 @@
       "Opt-in OS/process checks (named pipe, AF_UNIX, real child process) pass locally on Windows; provenance and contract-test bindings appended; mutation sweep running",
       "PR 126 opened at 4e6f578b8188a4f906e6a423d00d1c945a246144; history squashed to two commits (force-with-lease on my own branch before review)",
       "Hosted CI 15/15 green at 4e6f578b8188a4f906e6a423d00d1c945a246144 (run 37075870805); review requested on PR 126",
-      "Reviewer approved 4e6f578 (comment 5968143324); pushed 59197a5925e980366b984db2f88762ff2523a412 (test for Deadline.Remaining survivors, stuck-confirmation fix); hosted CI green (run 37135518446); PR body refreshed with final mutation tally 72 applied/64 killed/4 survived/3 rejected/1 not applied"
+      "Reviewer approved 4e6f578 (comment 5968143324); pushed 59197a5925e980366b984db2f88762ff2523a412 (test for Deadline.Remaining survivors, stuck-confirmation fix); hosted CI green (run 37135518446); PR body refreshed with final mutation tally 72 applied/64 killed/4 survived/3 rejected/1 not applied",
+      "Merged 33a6476 (Publish NuGet run 37136345281 success, 14 packages, none LocalRpc); role released; primary fast-forwarded; ledger PR Plan#248 at 93caa68 opened"
     ],
     "validation": [
       "Local Windows: locked restore, solution build 0 warnings, format clean, provenance/dependency/reconciliation/licence/runtime-ownership checks pass, LocalRpc suite 458 tests 0 failed 25 skipped, opt-in OS/process checks 5 passed once",
@@ -36,8 +38,7 @@
     "reviewed": "59197a5925e980366b984db2f88762ff2523a412",
     "blocker": null,
     "next": [
-      "confirm publication",
-      "record the ledger"
+      "await review of Plan#248; merge via integration:Plan; then update --state delivered"
     ],
     "host": "deku",
     "note": "Local unpushed commit on task/plt-11 adds one test (AnEarlyWatchdogReArmsForTheNearerOfTheTwoClocksRemainders) for mutation survivors R66/R67 (Deadline.Remaining ignoring one clock); not yet built or run (build slot starved by other workers); R68 (clamp) is race-only. Sweep at 72/135 verdicts: 55 killed, 5 survived (P06, R32 equivalent; R66-R68 above), remaining queued. Reviewed head is still 4e6f578; pushing the test makes a new head."
