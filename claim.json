@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261002-plt15",
   "epoch": 40,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-03T23:13:38Z",
-  "updatedAt": "2026-10-03T23:13:38Z",
-  "leaseUntil": "2026-10-04T11:13:38Z",
+  "updatedAt": "2026-10-03T23:14:43Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-plt38 epoch 39; review the earlier handoff and commits"
+    "note": "PLT.15 ledger merged; queue empty from this worker"
   }
 }
