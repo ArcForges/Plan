@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:29:39Z",
-  "updatedAt": "2026-10-03T08:51:50Z",
-  "leaseUntil": "2026-10-04T08:51:50Z",
+  "updatedAt": "2026-10-03T09:03:23Z",
+  "leaseUntil": "2026-10-04T09:03:23Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-11",
@@ -21,17 +21,21 @@
       "ADP-07 declaration BEFORE any edit. Supporting files outside src/BuildingBlocks/ArcForges.LocalRpc/**, appends only, resource owner DesktopPlatform: eng/provenance/files.json (RES-desktopplatform-policy-data, mode append; necessity: the provenance gate fails unless every tracked first-party file is listed; sorted insertion in the existing LocalRpc block) and eng/policy/architecture-contract-tests.json (RES-desktopplatform-policy-data, mode append, rows at the tail; necessity: the architecture gate reports RP-10 for each new public method without a contract-test row). No csproj, lock, Directory.Packages.props, dependency-policy, receipt, solution, workflow, native, LibraryImport or .gitleaks.toml change: the library stays contract-free and adds no dependency; the generated LocalBootstrapService adapter is a test fixture. If a package reference to the Platform contract proves necessary it is a planning repair, not an ADP-07 binding.",
       "Rebased on main d4e8743 (PLT.13 merged); registration core (LocalRpcRegistration, gate, child bootstrap/credentials/lease keeper), 143 offline tests passing locally; first push of task/plt-11",
       "Opt-in OS/process checks (named pipe, AF_UNIX, real child process) pass locally on Windows; provenance and contract-test bindings appended; mutation sweep running",
-      "PR 126 opened at 4e6f578b8188a4f906e6a423d00d1c945a246144; history squashed to two commits (force-with-lease on my own branch before review)"
+      "PR 126 opened at 4e6f578b8188a4f906e6a423d00d1c945a246144; history squashed to two commits (force-with-lease on my own branch before review)",
+      "Hosted CI 15/15 green at 4e6f578b8188a4f906e6a423d00d1c945a246144 (run 37075870805); review requested on PR 126"
     ],
     "validation": [
-      "Local Windows: locked restore, solution build 0 warnings, format clean, provenance/dependency/reconciliation/licence/runtime-ownership checks pass, LocalRpc suite 458 tests 0 failed 25 skipped, opt-in OS/process checks 5 passed once"
+      "Local Windows: locked restore, solution build 0 warnings, format clean, provenance/dependency/reconciliation/licence/runtime-ownership checks pass, LocalRpc suite 458 tests 0 failed 25 skipped, opt-in OS/process checks 5 passed once",
+      "Hosted: managed-packages/pack LocalRpc suite 456 total 436 passed 20 skipped 0 failed"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-11",
     "head": "4e6f578b8188a4f906e6a423d00d1c945a246144",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await hosted CI; mutation sweep continues on a scratch copy; request review"
+      "await review",
+      "mutation sweep (scratchpad mutate.py --batches, results mutation-results.jsonl) is partial: 46 killed 2 equivalent survivors of ~135; remaining queued behind other workers on the build slot; record final counts in the ledger and close any real survivor with a test (new head needs re-review)",
+      "note for ledger: an early sweep attempt launched the system bash (WSL stub) 82 times from a Python subprocess by mistake; each call failed at its first command (cd into a Windows path) and did nothing; fixed by using Git bash explicitly"
     ],
     "host": "deku",
     "note": "resumed after session limit; PR 126 CI green at 4e6f578; mutation sweep re-running"
