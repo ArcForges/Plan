@@ -6,15 +6,16 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-03T08:55:17Z",
-  "leaseUntil": "2026-10-04T08:55:17Z",
+  "updatedAt": "2026-10-03T08:58:25Z",
+  "leaseUntil": "2026-10-04T08:58:25Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
     "prs": [
       "https://github.com/ArcForges/Web/pull/25",
       "https://github.com/ArcForges/ArcForges-Design/pull/207",
-      "https://github.com/ArcForges/Plan/pull/246"
+      "https://github.com/ArcForges/Plan/pull/246",
+      "https://github.com/ArcForges/Plan/pull/247"
     ],
     "merges": [
       "4dd3f735e70346cfbf3c15b01d5179120f7c7050",
@@ -35,7 +36,7 @@
     "reviewed": "d46533ce7b02803ac80560ef238245ce0bf1b514",
     "blocker": null,
     "next": [
-      "write ledger record prf-08 as delivered, review, merge via integration:Plan, then update --state delivered"
+      "await independent review of ledger PR Plan 247 at 5a902854957b868da5c91f4e07579fd0edff4887; merge via integration:Plan; then update --state delivered"
     ],
     "host": "deku",
     "note": "Web 25 approved at d46533c by r-c20261003-prf08-code"
