@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T16:41:08Z",
-  "updatedAt": "2026-10-03T21:40:26Z",
-  "leaseUntil": "2026-10-04T21:40:26Z",
+  "updatedAt": "2026-10-03T21:41:08Z",
+  "leaseUntil": "2026-10-04T21:41:08Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-12",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Plan/pull/251"
     ],
     "merges": [
-      "7886f0cd7f667c8ff74b62fa6f5eac9348751641"
+      "7886f0cd7f667c8ff74b62fa6f5eac9348751641",
+      "d206267e06b8d0fb0be268c16030393a151d1a3f"
     ],
     "done": [
       "Planned and wrote declarations, LocalRpcRouter, route guard, RequireDeclaredServices, tests, README (WIP, not yet built). ADP-07 supporting bindings declared before the append: eng/provenance/files.json (sorted path lines for new source/test files) and eng/policy/architecture-contract-tests.json (one row per new public method, RP-10); both appends only, outside the write scope, serving artifacts inside it; no project/lock/props/package/dependency/workflow change",
