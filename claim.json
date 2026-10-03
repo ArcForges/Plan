@@ -6,13 +6,14 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T22:34:52Z",
-  "updatedAt": "2026-10-03T23:52:05Z",
-  "leaseUntil": "2026-10-04T23:52:05Z",
+  "updatedAt": "2026-10-03T23:53:56Z",
+  "leaseUntil": "2026-10-04T23:53:56Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-41",
     "prs": [
-      "https://github.com/ArcForges/DesktopPlatform/pull/133"
+      "https://github.com/ArcForges/DesktopPlatform/pull/133",
+      "https://github.com/ArcForges/Plan/pull/257"
     ],
     "merges": [
       "f4827df5f385b5d7a25577c610ab314f0584b8cc"
@@ -23,7 +24,8 @@
       "Rebased onto main 543ae49 (PLT.15 merged); re-appended 13 RP-10 bindings and provenance rows",
       "Hosted PR gate run 37160333965 green (19/19) at d21a908; mutation sweep 64 mutants: 54 killed, 5 compile-rejected, 5 survived (4 equivalent, 1 real gap: audit stamp time); review requested by PR comment",
       "Review round 1 findings F1-F4 fixed at 2db0f5b; hosted CI 19/19 green; delta re-review requested",
-      "merged #133; Publish NuGet run 37162474337 success (all candidate jobs and publish), candidate 1.0.0-ci.89.1"
+      "merged #133; Publish NuGet run 37162474337 success (all candidate jobs and publish), candidate 1.0.0-ci.89.1",
+      "integration role released; ledger PR opened"
     ],
     "validation": [
       "local: locked solution restore, Release solution build 0 warnings, dotnet format clean, ArcForges.Security.Tests 605 passed (267 new egress tests), eng/check_provenance passed; local ArchitectureTests fails only on the known Security.Secrets CS8795 reconstruction gap so RP-10 is judged by hosted CI",
@@ -34,7 +36,7 @@
     "reviewed": "2db0f5b49789fd74de5b36f61f01fd9e5975fc50",
     "blocker": null,
     "next": [
-      "ledger record PR"
+      "ledger review, merge via integration:Plan, then update --state complete"
     ],
     "host": "deku",
     "note": "ADP-07 supporting-file binding (recorded before editing; also goes in the PR): the owned artifact is src/BuildingBlocks/ArcForges.Security/** (new Egress/ folder and Tests/Egress*.cs inside the existing projects; no csproj, lock, solution, package or dependency change). Supporting appends only: eng/policy/architecture-contract-tests.json (RP-10 bindings of the new public methods to focused Security.Tests facts; RES-architecture-tests append; PLT.37/PLT.38 precedent) and eng/provenance/files.json (first-party rows for the new source/test files; RES-desktopplatform-policy-data append). Necessity: the RP-10 gate fails on any public ordinary method without a binding, and the provenance check requires each tracked first-party file to be listed. No new runtime owner, dependency, schema or algorithm."
