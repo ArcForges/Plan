@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:59Z",
-  "updatedAt": "2026-10-03T08:50:27Z",
-  "leaseUntil": "2026-10-04T08:50:27Z",
+  "updatedAt": "2026-10-03T16:02:30Z",
+  "leaseUntil": "2026-10-04T16:02:30Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-06",
@@ -25,14 +25,15 @@
       "DesktopPlatform PR 127 head 1fdf368: hosted CI all 17 checks green (incl. Realtime Native AOT compile linux-x64 and win-x64, pack, secret-scan). Self-test 65 checks under JIT; published win-x64 Native AOT image ran 61 checks at dd61d26 with zero publish warnings. Own mutation pass: first (partly contaminated by a concurrent runner) batch 72 killed, 1 survivor (policy constant, now pinned), 22 mutants did not compile or pattern missed; clean recompile-safe rerun of 88 mutants is queued behind the workstation build slot (scripts under scratchpad/prf06)."
     ],
     "validation": [
-      "Windows 11, SDK 10.0.400 (user-level), build slot: locked restore, Release build, format, Native AOT win-x64 publish exit 0 with zero warnings, published exe ran 61/61 offline checks. No deployed or live result exists or is claimed."
+      "Windows 11, SDK 10.0.400 (user-level), build slot: locked restore, Release build, format, Native AOT win-x64 publish exit 0 with zero warnings, published exe ran 61/61 offline checks. No deployed or live result exists or is claimed.",
+      "Correction: 63 (not 65) offline checks pass under the JIT at 1fdf368; the Native AOT win-x64 image ran 61 checks at dd61d26 only. Clean mutation rerun not completed (build slot starved); first batch partly contaminated."
     ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/prf-06",
     "head": "1fdf36888c2a1f7a52bd53d63cd30fea7e5012ce",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "request independent review of Design 206, Plan 243 and DesktopPlatform 127 at exact heads; merge order Design 206 then Plan 243 then DesktopPlatform 127 (rebase and rerun eng/verification/create_prf06_dependency_receipt.py if main moved the active receipt or Directory.Packages.props); then ledger record (delivered; completion prerequisites CLOUD.29/32/34 after the planning pair)"
+      "await review (Design 206 -> Plan 243 -> DesktopPlatform 127 merge order); optionally finish the clean mutation pass (scripts in scratchpad/prf06, worktree DesktopPlatform/.worktree/prf-06-mutation2) and rerun the AOT image; then ledger record as delivered"
     ],
     "host": "deku",
     "note": "resumed after session reset; worktree clean at pushed head 1fdf368"
