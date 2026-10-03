@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:31:40Z",
-  "updatedAt": "2026-10-03T17:35:06Z",
-  "leaseUntil": "2026-10-04T17:35:06Z",
+  "updatedAt": "2026-10-03T21:15:43Z",
+  "leaseUntil": "2026-10-04T21:15:43Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-38",
@@ -25,14 +25,15 @@
     ],
     "validation": [
       "Hosted PR run 37135399356 at a961077: all 15 checks success (managed-packages/pack, RP-10 architecture gate 100/100, secret-scan, ci)",
-      "Local (Windows, SDK 10.0.400, build slot): Security.Tests 332/332, solution Release build 0 warnings, format clean"
+      "Local (Windows, SDK 10.0.400, build slot): Security.Tests 332/332, solution Release build 0 warnings, format clean",
+      "Hosted run 37153713020 at 3215ac3: all checks success"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-38",
-    "head": "a961077945041464c4166f231b40583ef815d57e",
+    "head": "3215ac31560abc1d2b1ec1e8976c4fb31fbe825b",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review of Design#205, Plan#242 and DesktopPlatform#129 at a961077; after Design/Plan merge, rebase #129, re-chain receipt from active receipt and re-append contract rows"
+      "await review of Design#205 (c7a9ad4), Plan#242 (b78618f), DesktopPlatform#129 (3215ac3); merge pair first, rebase #129 again only if main moves"
     ],
     "host": "deku",
     "note": "resumed after session limit; mutation pass 2 and final test additions in progress on task/plt-38"
