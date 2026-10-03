@@ -4,10 +4,10 @@
   "id": "PRF.05",
   "claimant": "w-c20261002-prf05",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-02T19:44:12Z",
-  "updatedAt": "2026-10-03T17:02:50Z",
-  "leaseUntil": "2026-10-04T17:02:50Z",
+  "updatedAt": "2026-10-03T17:03:06Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-05",
@@ -37,7 +37,7 @@
     "reviewed": "18212d7afaf810db6e0aecf80c97b1ae751f557d",
     "blocker": null,
     "next": [
-      "await narrow re-review of Plan #249 at 18212d7; merge via integration:Plan; then update --state delivered"
+      "completion follow-up: run the probe against a deployed ingress carrying exact int64/uint64/decimal (PRF.07 env.proof or successor; needs user Cloudflare inputs and RES-cloud-deployment) and a real Linux x64 host run; amend ledger/tasks/prf-05.md via reviewed PR"
     ],
     "host": "deku",
     "note": "ADP-07 supporting bindings, declared before editing (all inside the task's listed write scope; DesktopPlatform has no dedicated provenance/source-inventory resource, so policy/test/provenance appends use RES-desktopplatform-policy-data (append) and workflow/solution/props use RES-desktopplatform-build-config (append)): solution folder + project entry tests/ReleaseArtifactTests/GrpcWeb/GrpcWebAotProbe.csproj in DesktopPlatform.slnx; root Directory.Packages.props append of Grpc.Net.Client.Web 2.84.0 only; nested tests/ReleaseArtifactTests/GrpcWeb/Directory.Packages.props (imports the root; selects the already-admitted ArcForges.Contracts.PublicApi and Foundation 1.0.0-ci.216.1 for this project only, same pattern as PRF.09 probe-evidence); the project's packages.lock.json; package-validation.yml one locked publish-only AOT job; dependency-policy.json input hashes + one new coordinate grpc.net.client.web/2.84.0 + active review binding; new immutable receipt eng/policy/dependency-reviews/prf-05-r1.json chained from the ACTIVE receipt on main at rebase time (plt-53-r1 now); licence-boundary.json/runtime-ownership.json/architecture-projects.json/reconciliation/active-projects.json append the probe csproj only (kind msbuild / test-or-build-tool / Test owner DesktopPlatform module empty production=false aot=false / exact post-rebase blob); eng/provenance/files.json firstParty rows for task-owned files only; eng/verification/prf-05.md and create_prf05_dependency_receipt.py. No .gitleaks.toml, no Contracts/Cloud edit, no other dependency coordinate. Design: the probe consumes only the already-admitted published Contracts candidate 1.0.0-ci.216.1 (HelloService generated client in ArcForges.Contracts.PublicApi); target is the existing deployed Hello gRPC-Web ingress (Cloud worker/router.ts, https://arcforges.com/api, no credentials) used only in an explicit local opt-in live phase; the env.proof ingress does not exist and nothing is claimed about it."
