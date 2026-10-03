@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T22:34:52Z",
-  "updatedAt": "2026-10-03T23:00:44Z",
-  "leaseUntil": "2026-10-04T23:00:44Z",
+  "updatedAt": "2026-10-03T23:12:12Z",
+  "leaseUntil": "2026-10-04T23:12:12Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-41",
@@ -18,17 +18,19 @@
     "done": [
       "Egress authority/allowlist/grants/audit/transfer ticket in ArcForges.Security.Egress with 267 new offline tests (605 pass locally)",
       "PR #133 opened; README, RP-10 bindings and provenance rows added",
-      "Rebased onto main 543ae49 (PLT.15 merged); re-appended 13 RP-10 bindings and provenance rows"
+      "Rebased onto main 543ae49 (PLT.15 merged); re-appended 13 RP-10 bindings and provenance rows",
+      "Hosted PR gate run 37160333965 green (19/19) at d21a908; mutation sweep 64 mutants: 54 killed, 5 compile-rejected, 5 survived (4 equivalent, 1 real gap: audit stamp time); review requested by PR comment"
     ],
     "validation": [
-      "local: locked solution restore, Release solution build 0 warnings, dotnet format clean, ArcForges.Security.Tests 605 passed (267 new egress tests), eng/check_provenance passed; local ArchitectureTests fails only on the known Security.Secrets CS8795 reconstruction gap so RP-10 is judged by hosted CI"
+      "local: locked solution restore, Release solution build 0 warnings, dotnet format clean, ArcForges.Security.Tests 605 passed (267 new egress tests), eng/check_provenance passed; local ArchitectureTests fails only on the known Security.Secrets CS8795 reconstruction gap so RP-10 is judged by hosted CI",
+      "mutation sweep local, 64 hand-chosen mutants, bounded"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-41",
     "head": "d21a9082a5825748b1af953c9394f9970b98ce8e",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await hosted CI; mutation sweep (bounded); request review"
+      "await review"
     ],
     "host": "deku",
     "note": "ADP-07 supporting-file binding (recorded before editing; also goes in the PR): the owned artifact is src/BuildingBlocks/ArcForges.Security/** (new Egress/ folder and Tests/Egress*.cs inside the existing projects; no csproj, lock, solution, package or dependency change). Supporting appends only: eng/policy/architecture-contract-tests.json (RP-10 bindings of the new public methods to focused Security.Tests facts; RES-architecture-tests append; PLT.37/PLT.38 precedent) and eng/provenance/files.json (first-party rows for the new source/test files; RES-desktopplatform-policy-data append). Necessity: the RP-10 gate fails on any public ordinary method without a binding, and the provenance check requires each tracked first-party file to be listed. No new runtime owner, dependency, schema or algorithm."
