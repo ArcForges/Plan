@@ -4,13 +4,13 @@
   "id": "RES-cloud-deployment",
   "task": "PRF.05",
   "claimant": "w-c20261002-prf05",
-  "epoch": 1,
-  "state": "released",
-  "claimedAt": "2026-10-02T22:04:47Z",
-  "updatedAt": "2026-10-02T22:05:35Z",
-  "leaseUntil": null,
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-03T09:09:26Z",
+  "updatedAt": "2026-10-03T09:09:26Z",
+  "leaseUntil": "2026-10-03T10:09:26Z",
   "handoff": {
     "host": "deku",
-    "note": "PRF.05 live phase finished: one local run of the Native AOT probe against the existing Hello ingress (23 checks passed); no deployment, secret or configuration touched"
+    "note": "claimed after released by w-c20261002-prf05 epoch 1; review the earlier handoff and commits"
   }
 }
