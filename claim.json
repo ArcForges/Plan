@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:29:39Z",
-  "updatedAt": "2026-10-02T23:05:39Z",
-  "leaseUntil": "2026-10-03T23:05:39Z",
+  "updatedAt": "2026-10-03T08:51:50Z",
+  "leaseUntil": "2026-10-04T08:51:50Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-11",
@@ -34,6 +34,6 @@
       "await hosted CI; mutation sweep continues on a scratch copy; request review"
     ],
     "host": "deku",
-    "note": null
+    "note": "resumed after session limit; PR 126 CI green at 4e6f578; mutation sweep re-running"
   }
 }
