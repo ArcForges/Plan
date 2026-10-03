@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:29:39Z",
-  "updatedAt": "2026-10-03T09:03:23Z",
-  "leaseUntil": "2026-10-04T09:03:23Z",
+  "updatedAt": "2026-10-03T09:58:11Z",
+  "leaseUntil": "2026-10-04T09:58:11Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-11",
@@ -38,6 +38,6 @@
       "note for ledger: an early sweep attempt launched the system bash (WSL stub) 82 times from a Python subprocess by mistake; each call failed at its first command (cd into a Windows path) and did nothing; fixed by using Git bash explicitly"
     ],
     "host": "deku",
-    "note": "resumed after session limit; PR 126 CI green at 4e6f578; mutation sweep re-running"
+    "note": "Local unpushed commit on task/plt-11 adds one test (AnEarlyWatchdogReArmsForTheNearerOfTheTwoClocksRemainders) for mutation survivors R66/R67 (Deadline.Remaining ignoring one clock); not yet built or run (build slot starved by other workers); R68 (clamp) is race-only. Sweep at 72/135 verdicts: 55 killed, 5 survived (P06, R32 equivalent; R66-R68 above), remaining queued. Reviewed head is still 4e6f578; pushing the test makes a new head."
   }
 }
