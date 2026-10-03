@@ -6,13 +6,14 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T22:31:40Z",
-  "updatedAt": "2026-10-03T21:44:37Z",
-  "leaseUntil": "2026-10-04T21:44:37Z",
+  "updatedAt": "2026-10-03T21:58:15Z",
+  "leaseUntil": "2026-10-04T21:58:15Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-14",
     "prs": [
-      "https://github.com/ArcForges/DesktopPlatform/pull/130"
+      "https://github.com/ArcForges/DesktopPlatform/pull/130",
+      "https://github.com/ArcForges/Plan/pull/252"
     ],
     "merges": [
       "f7e5ba8c0823ba985943f4de22c6c838552f06b3"
@@ -25,14 +26,15 @@
       "PR 130 at b59b780 rebased on main 33a6476; hosted run 37137442432 green; local: 675 tests 0 failed, format clean, architecture only gate evidence, 3 opt-in process checks pass, 119 mutants 110 killed 9 equivalent survivors",
       "review F1-F3 fixed, rebased on main with PLT.12, run 37155306388 green, local 709 tests 0 failed"
     ],
-    "validation": [],
+    "validation": [
+      "main-push Publish NuGet run 37156147871 success; ledger check passed with explicit roots"
+    ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-14",
     "head": "142f004dd3734b3f35ba5458d7164158c302ffaa",
     "reviewed": "142f004dd3734b3f35ba5458d7164158c302ffaa",
     "blocker": null,
     "next": [
-      "confirm publication",
-      "record the ledger"
+      "await ledger review; merge via integration:Plan; then update --state complete"
     ],
     "host": "deku",
     "note": "ADP-07 declaration (before any edit): supporting files, all existing, append-only, outside the write scope but serving artifacts inside it: eng/provenance/files.json (firstParty rows for the new tracked files of the existing ArcForges.LocalRpc project, sorted insertion) and eng/policy/architecture-contract-tests.json (rows appended at the tail, one per new public ordinary method of the existing project, RP-10). Resource owner: DesktopPlatform; protocol RES-desktopplatform-policy-data (append): regenerated/re-appended after any rebase, never hand-merged. Necessity: the provenance gate lists every tracked first-party file and the architecture gate reports RP-10 for a public method with no contract-test row (both observed on PLT.10 and PLT.13). No project, solution, lock, props, package, version, dependency-policy, receipt, workflow or .gitleaks.toml change is planned and none is relied on: the library keeps its Grpc-only closure and does NOT reference ArcForges.Foundation or Contracts.Foundation (a new reference would be dependency/closure expansion that ADP-07 does not authorize and that PLT.16 expects frozen), so effect certainty is a LocalRpc-owned enum whose values are asserted equal to the published EffectCertainty in the test project, which already receives Contracts.Foundation through the admitted Platform package. Cancellation wire: no Cancel/Health method exists in the pinned Platform contract; tests use a hand-written test-only service (as PLT.13) for the cancel method and the real generated ConnectorBroker/LocalBootstrap stubs for command semantics; the real Sandbox CancelSession proof is PLT.15/PLT.45 territory because it needs the Sandbox package admission."
