@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:59Z",
-  "updatedAt": "2026-10-02T23:07:03Z",
-  "leaseUntil": "2026-10-03T23:07:03Z",
+  "updatedAt": "2026-10-03T00:54:44Z",
+  "leaseUntil": "2026-10-04T00:54:44Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-06",
@@ -21,17 +21,18 @@
       "Researched: PRF.07 does not provide EventService.Watch; the real Watch/Poll/readOutput servers are CLOUD.29/32/34 (none started). Opened the planning repair pair (Design 206, Plan 243): generated Events/PublicApi/Foundation pins at CON.11 candidate 1.0.0-ci.270.1 are outside the write scope; add CON.11 start edge and CLOUD.29/32/34 completion edges",
       "Pushed WIP of DesktopPlatform task/prf-06: RealtimeAotProbe project, exact pins, policy/sequence/classification/transport/stream/event/output logic; still to write: paged readers, self-test, Program, policy bindings, receipt, workflow job",
       "Pushed the working probe (61 offline checks pass under the JIT; mutation batch running). ADP-07 supporting bindings declared BEFORE editing them, all serving the new task-owned project tests/ReleaseArtifactTests/Realtime/RealtimeAotProbe.csproj inside the write scope: eng/policy/architecture-projects.json (Test row), eng/policy/runtime-ownership.json (test-or-build-tool row), eng/policy/licence-boundary.json (msbuild row), eng/policy/reconciliation/active-projects.json (exact blob row), eng/provenance/files.json (firstParty rows for task-owned files only), eng/policy/dependency-policy.json inputHashes/closure rows/active review plus new immutable eng/policy/dependency-reviews/prf-06-r1.json chained from the active receipt on main, DesktopPlatform.slnx and .github/workflows/package-validation.yml (one realtime-aot job). Necessity: repo gates (reconciliation, licence-boundary, runtime-ownership, architecture tests, dependency admission, provenance) fail closed on any unregistered project; resource owners RES-desktopplatform-build-config and RES-desktopplatform-policy-data, append-only.",
-      "Opened DesktopPlatform PR 127 at dd61d26: probe, 61 offline checks (JIT and published Native AOT win-x64 both pass), bindings, receipt prf-06-r1, realtime-aot job. Local gates passed (dependency, licence, reconciliation, provenance, runtime-ownership, locked restore of the solution, format). Mutation batch still running."
+      "Opened DesktopPlatform PR 127 at dd61d26: probe, 61 offline checks (JIT and published Native AOT win-x64 both pass), bindings, receipt prf-06-r1, realtime-aot job. Local gates passed (dependency, licence, reconciliation, provenance, runtime-ownership, locked restore of the solution, format). Mutation batch still running.",
+      "DesktopPlatform PR 127 head 1fdf368: hosted CI all 17 checks green (incl. Realtime Native AOT compile linux-x64 and win-x64, pack, secret-scan). Self-test 65 checks under JIT; published win-x64 Native AOT image ran 61 checks at dd61d26 with zero publish warnings. Own mutation pass: first (partly contaminated by a concurrent runner) batch 72 killed, 1 survivor (policy constant, now pinned), 22 mutants did not compile or pattern missed; clean recompile-safe rerun of 88 mutants is queued behind the workstation build slot (scripts under scratchpad/prf06)."
     ],
     "validation": [
       "Windows 11, SDK 10.0.400 (user-level), build slot: locked restore, Release build, format, Native AOT win-x64 publish exit 0 with zero warnings, published exe ran 61/61 offline checks. No deployed or live result exists or is claimed."
     ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/prf-06",
-    "head": "dd61d2617cff45d2616764e286a2b5f7765fe10b",
+    "head": "1fdf36888c2a1f7a52bd53d63cd30fea7e5012ce",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await hosted CI on PR 127; post mutation results; request independent review (Design 206, Plan 243, DesktopPlatform 127); DesktopPlatform PR may merge only after the planning pair"
+      "request independent review of Design 206, Plan 243 and DesktopPlatform 127 at exact heads; merge order Design 206 then Plan 243 then DesktopPlatform 127 (rebase and rerun eng/verification/create_prf06_dependency_receipt.py if main moved the active receipt or Directory.Packages.props); then ledger record (delivered; completion prerequisites CLOUD.29/32/34 after the planning pair)"
     ],
     "host": "deku",
     "note": null
