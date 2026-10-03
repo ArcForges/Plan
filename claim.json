@@ -4,10 +4,10 @@
   "id": "PLT.15",
   "claimant": "w-c20261002-plt15",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-02T22:29:22Z",
-  "updatedAt": "2026-10-03T23:14:05Z",
-  "leaseUntil": "2026-10-04T23:14:05Z",
+  "updatedAt": "2026-10-03T23:14:27Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-15",
@@ -36,7 +36,7 @@
     "reviewed": "925d30918d984974972d65e3a7c935b311f520d2",
     "blocker": null,
     "next": [
-      "await review of ledger PR Plan#254 at 925d30918d98; merge via integration:Plan; then update --state delivered"
+      "completion follow-up: PLT.45 integration (real ContentSandbox helper using these buffers via the generated sandbox contract, incl. cancel through RegisterControl); then amend ledger plt-15 and mark complete"
     ],
     "host": "deku",
     "note": "Open follow-up against the PLT.13 call-bounds layer: unread responses of a stalled peer sit outside the 16/64 bounds; worst case about 3.2 GiB by reasoning (100 streams x 4 MiB x 8 connections) vs the recorded 128 MiB per connection; measured 69 MB for 16 calls."
