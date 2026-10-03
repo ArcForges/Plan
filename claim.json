@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T23:16:07Z",
-  "updatedAt": "2026-10-03T23:26:42Z",
-  "leaseUntil": "2026-10-04T23:26:42Z",
+  "updatedAt": "2026-10-03T23:28:42Z",
+  "leaseUntil": "2026-10-04T23:28:42Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-16",
@@ -19,13 +19,15 @@
       "Design PR 208 + Plan PR 255 planning repair (write scope: csproj IsPackable, README, active-projects blob)",
       "implemented admission commit (packages.json entry, IsPackable, README, policy hash/receipt plt-16-r1, provenance, reconciliation blob); python policy/provenance/reconciliation checks pass"
     ],
-    "validation": [],
+    "validation": [
+      "python policy/provenance/reconciliation/licence gates + 5 unittest modules pass; local locked restore + single pack of LocalRpc nuspec deps match catalogue; RepositoryPolicyTests pass; hosted CI pending"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-16",
     "head": "96589d0ed994da2a5699ecb8e6064678ef8fa2b9",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "local pack/policy test via build slot; await hosted CI; await review"
+      "await review"
     ],
     "host": "deku",
     "note": null
