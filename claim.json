@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-c20261002-prf05",
   "epoch": 16,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-03T16:43:51Z",
-  "updatedAt": "2026-10-03T16:43:51Z",
-  "leaseUntil": "2026-10-04T04:43:51Z",
+  "updatedAt": "2026-10-03T16:45:03Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-prf06 epoch 15; review the earlier handoff and commits"
+    "note": "PRF.05 (#128) merged as 4d4552c; role free. Queue: PRF.06 #127 follows (rebase over 4d4552c: it also appends the shared Grpc.Net.Client.Web 2.84.0 pin, reuse mine; regenerate its receipt chained from prf-05-r1 once it is the active receipt on main). Main-push run 37137954331 was still running at release."
   }
 }
