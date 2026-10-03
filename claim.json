@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:31:40Z",
-  "updatedAt": "2026-10-03T22:10:09Z",
-  "leaseUntil": "2026-10-04T22:10:09Z",
+  "updatedAt": "2026-10-03T22:11:12Z",
+  "leaseUntil": "2026-10-04T22:11:12Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-38",
@@ -18,7 +18,8 @@
     ],
     "merges": [
       "94dfb111e42a577114bc996859e6c3245f4ce8ce",
-      "9e4c2b197fb5f74fa328d7127c89f171340a19f3"
+      "9e4c2b197fb5f74fa328d7127c89f171340a19f3",
+      "2ffeba338aa990891f63fd5ed3a32c474a7b9252"
     ],
     "done": [
       "Read brief, plans, WP-11.02, architecture 08, PLT.09/10/20/24/36/37/39/40/44 records; claimed epoch 1; opened planning repair pair Design#205 + Plan#242 (exact write scope: one new nested non-packable project src/BuildingBlocks/ArcForges.Security/LocalRpcBoundary binding the Security transport-session port to the real PLT.10 LocalRpcLaunchAuthority, plus the exact solution/selector/policy/provenance/receipt rows; verified locally the planned restore adds no coordinate outside nugetClosure)",
@@ -38,7 +39,7 @@
     "reviewed": "227ab451a5fe6b57aec63f2fae92a3bd51d4efd4",
     "blocker": null,
     "next": [
-      "await narrow re-review of #129 at 227ab451a5fe6b57aec63f2fae92a3bd51d4efd4"
+      "confirm main-push jobs; record the ledger"
     ],
     "host": "deku",
     "note": "resumed after session limit; mutation pass 2 and final test additions in progress on task/plt-38"
