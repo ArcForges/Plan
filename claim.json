@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T16:41:08Z",
-  "updatedAt": "2026-10-03T21:37:10Z",
-  "leaseUntil": "2026-10-04T21:37:10Z",
+  "updatedAt": "2026-10-03T21:40:26Z",
+  "leaseUntil": "2026-10-04T21:40:26Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-12",
@@ -29,7 +29,7 @@
     ],
     "worktree": "C:/MyFile/Projects/ArcForges/DesktopPlatform/.worktree/plt-12",
     "head": "fcaff17570c5b6e795890a27e44d3876fd57e1cb",
-    "reviewed": "fcaff17570c5b6e795890a27e44d3876fd57e1cb",
+    "reviewed": "30569862fa3973f6b52dec58b71d4e88cae95318",
     "blocker": null,
     "next": [
       "await ledger PR review, merge via integration:Plan, then update --state complete"
