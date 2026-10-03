@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:29:39Z",
-  "updatedAt": "2026-10-03T09:58:11Z",
-  "leaseUntil": "2026-10-04T09:58:11Z",
+  "updatedAt": "2026-10-03T16:15:52Z",
+  "leaseUntil": "2026-10-04T16:15:52Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-11",
@@ -22,20 +22,19 @@
       "Rebased on main d4e8743 (PLT.13 merged); registration core (LocalRpcRegistration, gate, child bootstrap/credentials/lease keeper), 143 offline tests passing locally; first push of task/plt-11",
       "Opt-in OS/process checks (named pipe, AF_UNIX, real child process) pass locally on Windows; provenance and contract-test bindings appended; mutation sweep running",
       "PR 126 opened at 4e6f578b8188a4f906e6a423d00d1c945a246144; history squashed to two commits (force-with-lease on my own branch before review)",
-      "Hosted CI 15/15 green at 4e6f578b8188a4f906e6a423d00d1c945a246144 (run 37075870805); review requested on PR 126"
+      "Hosted CI 15/15 green at 4e6f578b8188a4f906e6a423d00d1c945a246144 (run 37075870805); review requested on PR 126",
+      "Reviewer approved 4e6f578 (comment 5968143324); pushed 59197a5925e980366b984db2f88762ff2523a412 (test for Deadline.Remaining survivors, stuck-confirmation fix); hosted CI green (run 37135518446); PR body refreshed with final mutation tally 72 applied/64 killed/4 survived/3 rejected/1 not applied"
     ],
     "validation": [
       "Local Windows: locked restore, solution build 0 warnings, format clean, provenance/dependency/reconciliation/licence/runtime-ownership checks pass, LocalRpc suite 458 tests 0 failed 25 skipped, opt-in OS/process checks 5 passed once",
       "Hosted: managed-packages/pack LocalRpc suite 456 total 436 passed 20 skipped 0 failed"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-11",
-    "head": "4e6f578b8188a4f906e6a423d00d1c945a246144",
-    "reviewed": null,
+    "head": "59197a5925e980366b984db2f88762ff2523a412",
+    "reviewed": "4e6f578b8188a4f906e6a423d00d1c945a246144",
     "blocker": null,
     "next": [
-      "await review",
-      "mutation sweep (scratchpad mutate.py --batches, results mutation-results.jsonl) is partial: 46 killed 2 equivalent survivors of ~135; remaining queued behind other workers on the build slot; record final counts in the ledger and close any real survivor with a test (new head needs re-review)",
-      "note for ledger: an early sweep attempt launched the system bash (WSL stub) 82 times from a Python subprocess by mistake; each call failed at its first command (cd into a Windows path) and did nothing; fixed by using Git bash explicitly"
+      "await narrow delta re-review at 59197a5925e980366b984db2f88762ff2523a412"
     ],
     "host": "deku",
     "note": "Local unpushed commit on task/plt-11 adds one test (AnEarlyWatchdogReArmsForTheNearerOfTheTwoClocksRemainders) for mutation survivors R66/R67 (Deadline.Remaining ignoring one clock); not yet built or run (build slot starved by other workers); R68 (clamp) is race-only. Sweep at 72/135 verdicts: 55 killed, 5 survived (P06, R32 equivalent; R66-R68 above), remaining queued. Reviewed head is still 4e6f578; pushing the test makes a new head."
