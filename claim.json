@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T23:16:07Z",
-  "updatedAt": "2026-10-03T23:28:42Z",
-  "leaseUntil": "2026-10-04T23:28:42Z",
+  "updatedAt": "2026-10-03T23:31:47Z",
+  "leaseUntil": "2026-10-04T23:31:47Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-16",
@@ -27,7 +27,7 @@
     "reviewed": null,
     "blocker": null,
     "next": [
-      "await review"
+      "merging planning pair (#208, #255) then finish #134"
     ],
     "host": "deku",
     "note": null
