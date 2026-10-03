@@ -4,10 +4,10 @@
   "id": "PRF.08",
   "claimant": "w-c20261002-prf08",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-02T19:47:43Z",
-  "updatedAt": "2026-10-03T09:08:24Z",
-  "leaseUntil": "2026-10-04T09:08:24Z",
+  "updatedAt": "2026-10-03T09:08:44Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-08",
