@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261002-plt14",
   "epoch": 38,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-03T22:01:19Z",
-  "updatedAt": "2026-10-03T22:01:19Z",
-  "leaseUntil": "2026-10-04T10:01:19Z",
+  "updatedAt": "2026-10-03T22:02:29Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261003-plt12 epoch 37; review the earlier handoff and commits"
+    "note": "merged PLT.14 ledger (#252)"
   }
 }
