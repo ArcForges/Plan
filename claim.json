@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-c20261002-plt38",
   "epoch": 39,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-03T22:32:31Z",
-  "updatedAt": "2026-10-03T22:32:31Z",
-  "leaseUntil": "2026-10-04T10:32:31Z",
+  "updatedAt": "2026-10-03T22:33:36Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-c20261002-plt14 epoch 38; review the earlier handoff and commits"
+    "note": "merged Plan #253 only"
   }
 }
