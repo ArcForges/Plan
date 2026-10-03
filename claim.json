@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:44:12Z",
-  "updatedAt": "2026-10-03T16:38:56Z",
-  "leaseUntil": "2026-10-04T16:38:56Z",
+  "updatedAt": "2026-10-03T16:40:48Z",
+  "leaseUntil": "2026-10-04T16:40:48Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/prf-05",
@@ -29,7 +29,7 @@
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\prf-05",
     "head": "2d55d5dd2314ac251da11fd72ccfa16b135f3244",
-    "reviewed": "dab5102db5db9c032e07ac3ad70e6890faeb4061",
+    "reviewed": "2d55d5dd2314ac251da11fd72ccfa16b135f3244",
     "blocker": null,
     "next": [
       "await narrow re-review of the rebased head 2d55d5d (approved dab5102 + rebase over PLT.11)",
