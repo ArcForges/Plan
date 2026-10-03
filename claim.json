@@ -4,12 +4,12 @@
   "id": "integration:Web",
   "claimant": "w-c20261002-prf08",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-03T08:52:02Z",
-  "updatedAt": "2026-10-03T08:52:02Z",
-  "leaseUntil": "2026-10-03T20:52:02Z",
+  "updatedAt": "2026-10-03T08:55:31Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "merged Web 25 (794ef93); main run 37111148859 green; queue empty from this worker"
   }
 }
