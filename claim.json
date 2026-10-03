@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:29:39Z",
-  "updatedAt": "2026-10-03T16:37:58Z",
-  "leaseUntil": "2026-10-04T16:37:58Z",
+  "updatedAt": "2026-10-03T16:38:51Z",
+  "leaseUntil": "2026-10-04T16:38:51Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-11",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Plan/pull/248"
     ],
     "merges": [
-      "33a647670600fa9163b6a8cf22de6803cc945488"
+      "33a647670600fa9163b6a8cf22de6803cc945488",
+      "fd6b21963a71b549ec939bb8b55a7b7b803db67d"
     ],
     "done": [
       "Read batch brief, arcforges-implementation/execution-policy/single-task-command, delivery README, WP-08.02, annex 03 and 09, platform.md PLT.11 prompt, ledger plt-09/plt-10 and the PR 117/123/125 review histories",
@@ -28,7 +29,8 @@
       "Hosted CI 15/15 green at 4e6f578b8188a4f906e6a423d00d1c945a246144 (run 37075870805); review requested on PR 126",
       "Reviewer approved 4e6f578 (comment 5968143324); pushed 59197a5925e980366b984db2f88762ff2523a412 (test for Deadline.Remaining survivors, stuck-confirmation fix); hosted CI green (run 37135518446); PR body refreshed with final mutation tally 72 applied/64 killed/4 survived/3 rejected/1 not applied",
       "Merged 33a6476 (Publish NuGet run 37136345281 success, 14 packages, none LocalRpc); role released; primary fast-forwarded; ledger PR Plan#248 at 93caa68 opened",
-      "Plan#248 finding fixed at 8e6f87d (test counts: local 460/25 skipped, hosted 458/438/20)"
+      "Plan#248 finding fixed at 8e6f87d (test counts: local 460/25 skipped, hosted 458/438/20)",
+      "Plan#248 merged fd6b21963a71b549ec939bb8b55a7b7b803db67d"
     ],
     "validation": [
       "Local Windows: locked restore, solution build 0 warnings, format clean, provenance/dependency/reconciliation/licence/runtime-ownership checks pass, LocalRpc suite 458 tests 0 failed 25 skipped, opt-in OS/process checks 5 passed once",
