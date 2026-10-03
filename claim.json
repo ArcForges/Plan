@@ -6,21 +6,24 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T23:16:07Z",
-  "updatedAt": "2026-10-03T23:16:07Z",
-  "leaseUntil": "2026-10-04T23:16:07Z",
+  "updatedAt": "2026-10-03T23:25:51Z",
+  "leaseUntil": "2026-10-04T23:25:51Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-16",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "Design PR 208 + Plan PR 255 planning repair (write scope: csproj IsPackable, README, active-projects blob)",
+      "implemented admission commit (packages.json entry, IsPackable, README, policy hash/receipt plt-16-r1, provenance, reconciliation blob); python policy/provenance/reconciliation checks pass"
+    ],
     "validation": [],
-    "worktree": null,
-    "head": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-16",
+    "head": "96589d0ed994da2a5699ecb8e6064678ef8fa2b9",
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "build-slot: pack LocalRpc + RepositoryPolicyTests; open PR; await hosted CI; request review"
     ],
     "host": "deku",
     "note": null
