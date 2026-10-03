@@ -6,20 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T22:29:22Z",
-  "updatedAt": "2026-10-03T22:47:45Z",
-  "leaseUntil": "2026-10-04T22:47:45Z",
+  "updatedAt": "2026-10-03T23:04:19Z",
+  "leaseUntil": "2026-10-04T23:04:19Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-15",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/132"
     ],
-    "merges": [],
+    "merges": [
+      "543ae491cbbabb85232e0f4e957f7f70012bf8b1"
+    ],
     "done": [
       "Read brief, task prompt, WP-08.06, annex 09 sections 3/4/5, Registry 04 sandbox records, CON.04/PLT.09/10/13 ledgers and review histories; claimed; worktree off main d4e8743",
       "Library (LocalRpcBroker*.cs) and 5 test classes written; 193 broker tests ran locally, 2 failures being fixed (stalled-reader probe, copy-active after digest mismatch)",
       "PR 132 open; hosted CI 19/19 green at cc6cc68; 196 own mutants; broker tests 903 total local pass",
-      "Review F1 fixed (30 rows, not 50); rebased on 2ffeba3; CI 19/19 green run 37158897300"
+      "Review F1 fixed (30 rows, not 50); rebased on 2ffeba3; CI 19/19 green run 37158897300",
+      "merged as 543ae49; main-push Publish NuGet run 37159679321 success"
     ],
     "validation": [
       "local: LocalRpc.Tests 903 tests 0 failed twice on rebased tree, format clean; hosted run 37156392866 green"
@@ -29,7 +32,7 @@
     "reviewed": "458e8b8ab9e195de7e259a43ccb20a01116098bd",
     "blocker": null,
     "next": [
-      "await narrow re-review"
+      "record the ledger"
     ],
     "host": "deku",
     "note": "Open follow-up against the PLT.13 call-bounds layer: unread responses of a stalled peer sit outside the 16/64 bounds; worst case about 3.2 GiB by reasoning (100 streams x 4 MiB x 8 connections) vs the recorded 128 MiB per connection; measured 69 MB for 16 calls."
