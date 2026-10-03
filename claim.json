@@ -6,15 +6,16 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-02T19:31:40Z",
-  "updatedAt": "2026-10-03T22:11:12Z",
-  "leaseUntil": "2026-10-04T22:11:12Z",
+  "updatedAt": "2026-10-03T22:26:35Z",
+  "leaseUntil": "2026-10-04T22:26:35Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-38",
     "prs": [
       "https://github.com/ArcForges/ArcForges-Design/pull/205",
       "https://github.com/ArcForges/Plan/pull/242",
-      "https://github.com/ArcForges/DesktopPlatform/pull/129"
+      "https://github.com/ArcForges/DesktopPlatform/pull/129",
+      "https://github.com/ArcForges/Plan/pull/253"
     ],
     "merges": [
       "94dfb111e42a577114bc996859e6c3245f4ce8ce",
@@ -39,7 +40,7 @@
     "reviewed": "227ab451a5fe6b57aec63f2fae92a3bd51d4efd4",
     "blocker": null,
     "next": [
-      "confirm main-push jobs; record the ledger"
+      "await review of ledger PR Plan#253 at 6bfdc0c; merge via integration:Plan; then update --state complete"
     ],
     "host": "deku",
     "note": "resumed after session limit; mutation pass 2 and final test additions in progress on task/plt-38"
