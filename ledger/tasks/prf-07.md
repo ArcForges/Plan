@@ -2,13 +2,13 @@
 task: PRF.07
 status: delivered
 recorded: 2026-10-02
-claimant: w-c20261002-prf07
-epoch: 1
+claimant: w-c20261004-prf07f
+epoch: 2
 ---
 
 # Cloudflare Native AOT host + D1 + DO/Queue/R2 foundation proof
 
-Delivered, not complete. The offline implementation is merged and was built and verified in hosted CI. The live acceptance that WP-06.04 requires (the actual deployed Container, private D1 binding, and Durable Object, Queue and R2 behavior) was never performed by anyone, because no Cloudflare credentials, resources or Docker exist in the implementing environment. Nothing below claims a live Cloudflare result.
+Delivered, not complete. The offline implementation is merged and was built and verified in hosted CI. The completion follow-up (epoch 2, 2026-10-04, see the section Completion follow-up below) deployed the `proof` environment to Cloudflare through the existing Cloud CI pipeline and ran the foundation scenarios once against it: most of WP-06.04 was observed live, but one object-facade check failed and several items stay unobserved, so the task is not complete. Everything above that section was written at the first delivery (epoch 1, before any live result existed) and is kept as history; where it says nothing was deployed or run live, the follow-up section supersedes it.
 
 Why `delivered`: the task graph lists no completion prerequisite for PRF.07 (`complete: []`), so the README definition of `delivered` (an open completion prerequisite) does not literally apply. The status is chosen because the task's own acceptance (WP-06.04 against a real deployment) is unmet, and by the precedent of PRF.04, PLT.09 and PLT.10 (delivered with a documented missing real-environment acceptance; DLV-24 treats `delivered` as satisfying the artifact prerequisite of dependents). The status does not mean the foundation proof ran.
 
@@ -57,7 +57,56 @@ All identities below were read from GitHub (pull requests, comments, runs, job l
 - Open documentation items outside the write scope or found after approval: `docs/provenance.md:56` still says "Wrangler 4.135.0" (not hash-bound by any gate); `docs/prf-07-foundation-proof.md:151` says the bundle grew "to 165,123 bytes" while the sealed bundle is 165,267 bytes (the validation table and the release test are correct); Cloud `AGENTS.md` ("the current Hello is anonymous ... do not add authenticated behavior implicitly") and the `InternalsVisibleTo` entry for the test assembly in the shipped AOT assembly were not changed.
 - The pinned Node 24.21 / npm 11.19 toolchain was not available locally; the pinned toolchain check ran only in hosted CI.
 
-## Remaining acceptance and next action
+## Completion follow-up (epoch 2, 2026-10-04)
+
+Worker `w-c20261004-prf07f`, claimed at epoch 2. Times are UTC and were read from the GitHub runs, job logs and the local run. Reviews were written by separate worker identities through the same GitHub account, so independence is by worker identity only. Secrets were never read or printed: the Cloudflare token stayed in GitHub Actions, the proof secrets were generated inside the deploy step, and the operator private key stayed in a local file.
+
+### What was merged and run
+
+- **Pipeline change.** [Cloud PR 34](https://github.com/ArcForges/Cloud/pull/34) (merged as `df52ee2d541e942c452e2410ead0f9ceb7fbb95b`, reviewed head `c2b22159561e46a3a8c135f0fb5d09ecefa5bc21`, approved in [comment 5977753982](https://github.com/ArcForges/Cloud/pull/34#issuecomment-5977753982) after a first approval of `ffdb61e` with low findings that were fixed in one commit) added manual `workflow_dispatch` jobs to `ci.yml` (input `proof`: `access`, `provision`, `deploy`; `main` only; `cloudflare` environment), the custom domain `proof.arcforges.com` for `env.proof` with `workers_dev` and `preview_urls` false, fail-closed provider receipts, a pre-attach DNS hard stop, secrets generated in CI at deploy time, and an Ed25519 operator signature (the Worker holds only the public key; the private key is a local file) so the live scenarios need no shared secret. Hosted CI on the reviewed head: run 37184673101 green. Provenance successors `cloud-release-r16`, `cloud-worker-bundle-r16`, `cloud-runtime-notices-r17`, receipt `prf-07-r3`.
+- **Production, before and after (job logs and provider receipts only).** The main-push [run 37186358563](https://github.com/ArcForges/Cloud/actions/runs/37186358563) on `df52ee2` succeeded in all jobs including `Deploy Cloudflare` (the new bundle carries the dormant proof modules): production Worker `arcforges-cloud`, route `arcforges.com/api/*`, Worker version `0e3cf003-4f28-43ce-b1c4-7e683865b679`, image `ci.92.1`, container application `arcforges-cloud-cloudcontainer` modified. The proof dispatch runs did not run the production deploy job, and the post-deployment receipt of the deploy run asserted that `arcforges.com/api/*` still serves `arcforges-cloud`. The production container image still has not been observed executing.
+- **Dispatch runs.** All on `main` at `df52ee2` through the existing token, which the user extended with D1, R2 and Queues edit and later Zone DNS Read:
+  - `proof=access` [37186642752](https://github.com/ArcForges/Cloud/actions/runs/37186642752): failed on R2 read with Cloudflare error 10042 (R2 not enabled on the account) and DNS read 403; the lease and the claim were released and the claim was blocked until the user enabled R2 and added DNS Read. Nothing was created.
+  - `proof=access` [37187245499](https://github.com/ArcForges/Cloud/actions/runs/37187245499): token verify (active), Workers Scripts, D1, R2, Queues, zone, Workers Routes, DNS read and custom domains read all PASS.
+  - `proof=provision` [37187278711](https://github.com/ArcForges/Cloud/actions/runs/37187278711): created D1 `arcforges-proof-business`, R2 `arcforges-proof-objects`, queues `arcforges-proof-wake` and `arcforges-proof-wake-dlq`.
+  - `proof=deploy` [37187478336](https://github.com/ArcForges/Cloud/actions/runs/37187478336): all jobs succeeded. The job log shows one proof migration applied, container application `arcforges-cloud-proof-foundationcontainer-proof` created (Application ID `a03bb810-6ddf-423d-904e-10ef71fe3406`), `proof.arcforges.com (custom domain)` deployed, proof Worker version `6bbe0311-2048-4ad1-921b-df62f47648ca`, and all four provider receipts PASS: workers.dev and preview URLs disabled (`enabled=false`, `previews_enabled=false`), the custom domain serves `arcforges-cloud-proof`, the production route still serves `arcforges-cloud`, no zone route serves the proof Worker. The deployment record (artifact `proof-evidence-37187478336-1`) names revision `df52ee2d541e942c452e2410ead0f9ceb7fbb95b`, version `0.1.0-ci.99.1`, image ID `sha256:286d3cc38a6991fcd5f1b24766207a094383e6890a5aa9662b81e31520f369a1`, registry digest `sha256:263c2ee25978b1377df1bbf66c6f86ad2aa0c6359772134fb90ba30e11030510`, D1 database id `da08d56a-d59b-41ab-9801-6ab49653b82f`, deployed 08:06:33Z.
+- **Deployed base URL:** `https://proof.arcforges.com` (custom domain only; workers.dev stays disabled).
+- **Lease `RES-cloud-deployment`:** held from 07:42:55Z to the first block at 07:44:31Z (access failure), and again from 07:54:56Z to 08:09:11Z (access, provision, deploy and the live scenarios); released immediately after each window.
+
+### Live scenarios (run locally once, signed with the local operator key, no CI)
+
+`node eng/verification/foundation-live.ts` against `https://proof.arcforges.com` at 08:07:28Z to 08:07:56Z (21 s) aborted at the third-from-last scenario, so it wrote no evidence file and printed nothing for the scenarios before it. What it established, by the order of `runAll` and the assertion that stopped it:
+
+| Scenario | Observed | Evidence |
+|---|---|---|
+| readiness (Worker and Container agree on the plan manifest) | passed, no assertion failed | no per-scenario output was captured, because the run aborted before the evidence was written |
+| exact values (int64, uint64, decimal vectors; stale revision 409; out-of-range 400) | passed, no assertion failed | same |
+| guard rollback (guarded batch, replay, idempotency conflict) | passed, no assertion failed | same |
+| session, CSRF, revoke (issue, bootstrap, five refusals, logout, cookie cleared, revoked handle refused) | passed, no assertion failed | same |
+| R2 objects | **failed**: `mismatchRejected` was `false` | stopped the run; see below |
+
+Because that run left no per-scenario record, the remaining scenarios were run once from a scratch script outside the repository with the same scenario functions and key (08:08:32Z to 08:08:53Z; output in `~/.arcforges/proof-evidence/live-rest.json`, SHA-256 `3cf1a3ec6f3c55d822e2e13340dce2392a3e0973d44a731f0e0985e5a2d732fa`):
+
+| Scenario | Result | Time |
+|---|---|---|
+| checkpoint-restart (250 items, first slice stops at cursor 100, Container stopped through the operator route, remaining slices through the Queue wake, Durable Object admission and the restarted Container; items exactly once; checksum equals the BigInt sum; fence 3) | PASS | 15,643 ms |
+| public-denial (wrong bearer 401, forged signature 401, anonymous 401, `/internal/foundation/...`, `/internal/storage/...`, `/internal/objects/...` from the public origin 404) | PASS | 2,735 ms |
+| one raw `objects/roundtrip` call (diagnostic) | HTTP 200, `fullMatches: true`, `rangeMatches: true` (`contentRangeHeader` `bytes 0-1023/1048576`, 1 MiB object, SHA-256 `19c97bfd1f438b887723b39519aa94bdc7c6bd53144e0c48c87332b61d29de6d`), `mismatchRejected: false` | 2,732 ms |
+
+Local evidence outside the repository, with SHA-256: `~/.arcforges/proof-evidence/proof-deployment.json` `4623bd522972a380897e549809c5edc57c9aabf5f8ed3d8cdd852ab0e2747413`, `live_out.txt` (the aborted run's console) `45d79d97adee8d30cf54505af2564b5485d2d1843a846faf78709e6070d77beb`.
+
+### The failed check
+
+A signed PUT of one megabyte to R2 and the whole and range GETs of it work through the deployed Container outbound handler and R2, with hashes verified. The negative check, a second PUT to the same key with different bytes and the original declared hash, was not rejected in either run (`mismatchRejected: false`). The Worker status of that PUT was not captured (the reply carries only the boolean). Reading the code, the likely cause is that the facade writes with `onlyIf: { etagDoesNotMatch: "*" }`, which on an existing key returns `null` before R2 compares the checksum, and then answers 200 `existing: true` when the length matches, so a non-4xx status reaches the host, which does not count it as rejected; no object is corrupted by it. This is a hypothesis from the code, not an observation, and the offline fake evaluates the checksum first, which is why the offline tests passed. The scenario also never PUTs mismatching bytes to a fresh key, so R2's own checksum rejection was not observed.
+
+### Obligation status
+
+- **WP-06.04**, observed live on Cloudflare: the Native AOT Linux image running as the proof Container with the foundation host module and outbound interception on `storage.internal` and `objects.internal` (all D1 and R2 scenarios above went through it); private D1 named-plan binding with exact 64-bit and decimal values over the wire, atomic guard rollback and idempotency; session, CSRF and revocation across Containers; Durable Object single-flight, Queue wake and bounded checkpoint with a real Container stop and resume; R2 signed PUT, whole GET, range GET and hash verification; public denial of the internal paths and of unsigned operator calls; provider receipts that workers.dev and preview URLs are disabled and production routing was unchanged.
+- **Not met or not observed:** the R2 mismatch-rejection check failed (cause unconfirmed, see above); blocked Container egress to the Internet was not probed (no scenario tests it); the dead-letter queue, queue retry and provider limits were not exercised; per-scenario timings and outputs for readiness, exact values, guard and session were not captured (the first run aborted before writing evidence); a rerun of the whole set against one head was not made, by the one-run policy and because the failure is understood only by hypothesis; the Chrome/browser path through the Web origin and PRF.05's exact-value gRPC-Web scenarios have no target (the proof exposes exact values through its JSON operator surface only); the nonce replay ledger remains unimplemented; the production container image running the dormant host has still not been observed executing; and this follow-up read Worker and job logs, not Cloudflare analytics.
+- **State.** PRF.07 stays `delivered`: WP-06.04's own acceptance is not fully observed. Completion needs a reviewed fix of the R2 mismatch scenario or facade (a new PUT of mismatching bytes to a fresh key, and the facade deciding the checksum before the existence short-circuit if that is the cause), one redeploy through the dispatch jobs, and one live rerun under the lease whose output is written to an evidence file (including the scenarios that passed without a record), plus the explicit decision whether a blocked-egress probe belongs to this task.
+- **Consequence for dependents.** An ingress now exists at `https://proof.arcforges.com` with `/session/v1/*` and the proof surface; whether it serves the Hello `/api` paths was not checked. PRF.08 and PRF.05 may use it for their own live phases, with the operator key file for the session issue step, but PRF.05 still needs a gRPC-Web service that carries exact primitives, which the proof does not provide.
+
+## Remaining acceptance and next action (first delivery, superseded by the follow-up above)
 
 PRF.07 stays `delivered`. Its artifact prerequisite for its dependents is satisfied by `delivered` under DLV-24, but those tasks need a deployed ingress target (`env.proof` or a successor) that does not exist until the live run below is performed. Completion needs a reviewed amendment of this record after the live proof.
 
