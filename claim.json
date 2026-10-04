@@ -6,13 +6,14 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-03T23:16:07Z",
-  "updatedAt": "2026-10-03T23:55:51Z",
-  "leaseUntil": "2026-10-04T23:55:51Z",
+  "updatedAt": "2026-10-04T00:10:27Z",
+  "leaseUntil": "2026-10-05T00:10:27Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/plt-16",
     "prs": [
-      "https://github.com/ArcForges/DesktopPlatform/pull/134"
+      "https://github.com/ArcForges/DesktopPlatform/pull/134",
+      "https://github.com/ArcForges/Plan/pull/258"
     ],
     "merges": [
       "88a89cf30d2ed52ab66b64e7257b54c78e7f2bec"
@@ -24,15 +25,15 @@
     ],
     "validation": [
       "python policy/provenance/reconciliation/licence gates + 5 unittest modules pass; local locked restore + single pack of LocalRpc nuspec deps match catalogue; RepositoryPolicyTests pass; hosted CI pending",
-      "hosted CI run 37162593702 success on c29ccff"
+      "hosted CI run 37162593702 success on c29ccff",
+      "Publish NuGet run 37163298871 success: ArcForges.LocalRpc 1.0.0-ci.90.1 pushed (log only)"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\plt-16",
     "head": "c29ccffa87ccad388652fd6fb004da7849cb52cb",
     "reviewed": "c29ccffa87ccad388652fd6fb004da7849cb52cb",
     "blocker": null,
     "next": [
-      "confirm publication",
-      "record the ledger"
+      "ledger review/merge (Plan), then record --state delivered"
     ],
     "host": "deku",
     "note": null
