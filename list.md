@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 438 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 439 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -65,7 +65,7 @@ Tasks: 438 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.07.simulator | Cloud | S | ADOPT.01 | Adopt Cloud: ArcScope Cloud simulator (9) |
 | ADOPT.08.ai-routing | AI | S | ADOPT.01 | Adopt AI: Workers AI routing and metering (4) |
 | ADOPT.08.extensions | AI | S | ADOPT.01 | Adopt AI: Extension platform and integrations (1) |
-| ADOPT.08.governance | AI | S | ADOPT.01 | Adopt AI: Family governance and policy tests (1) |
+| ADOPT.08.governance | AI | S | ADOPT.01 | Adopt AI: Family governance and policy tests (2) |
 | ADOPT.08.harness | AI | S | ADOPT.01 | Adopt AI: Cloud Harness (6) |
 | ADOPT.09.governance | Web | S | ADOPT.01 | Adopt Web: Family governance and policy tests (1) |
 | ADOPT.09.operations | Web | S | ADOPT.01 | Adopt Web: Operations, support and trust and safety (4) |
@@ -89,7 +89,7 @@ Tasks: 438 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.06 | DesktopPlatform | M | GOV.04, ADOPT.02.governance (adoption) | Build.Policy generated-source reconstruction and generated-type recognition repair |
 | GOV.07 | ArcScope | S | GOV.04, GOV.05, GOV.06, ADOPT.05.governance (adoption) | ArcScope policy tests |
 | GOV.09 | Cloud | M | GOV.04, GOV.05, GOV.06, ADOPT.07.governance (adoption) | Cloud policy tests |
-| GOV.10 | AI | S | CON.23, ADOPT.08.governance (adoption) | AI (Workflow Harness) policy tests |
+| GOV.10 | AI | S | CON.23, GOV.19, ADOPT.08.governance (adoption) | AI (Workflow Harness) policy tests |
 | GOV.11 | Web | M | GOV.03, GOV.01, CON.23, ADOPT.09.governance (adoption) | Web policy tests (Node/TS mechanism) |
 | GOV.12 | Mobile | M | GOV.03, GOV.04, ADOPT.10.governance (adoption) | Mobile policy tests (Gradle/Kotlin mechanism) |
 | GOV.13 | DesktopPlatform | M | GOV.04, GOV.18, ADOPT.02.governance (adoption) | Invariant enforcement accounting report |
@@ -98,6 +98,7 @@ Tasks: 438 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.16 | Contracts | M | CON.18, ADOPT.03.governance (adoption) | Operation-catalogue authorization reachability matrix and identity boundary evidence |
 | GOV.17 | DesktopPlatform | M | ADOPT.02.governance (adoption) | Retire the native families outside the product family and move the still-image shim |
 | GOV.18 | DesktopPlatform | M | CON.23, ADOPT.02.governance (adoption) | Reduce the DesktopPlatform policy data and re-pin the design-policy export |
+| GOV.19 | AI | S | ADOPT.08.governance (adoption) | AI Wrangler and undici dependency admission (clear the repository security gate) |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 
