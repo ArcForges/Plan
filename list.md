@@ -89,7 +89,7 @@ Tasks: 439 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.06 | DesktopPlatform | M | GOV.04, ADOPT.02.governance (adoption) | Build.Policy generated-source reconstruction and generated-type recognition repair |
 | GOV.07 | ArcScope | S | GOV.04, GOV.05, GOV.06, ADOPT.05.governance (adoption) | ArcScope policy tests |
 | GOV.09 | Cloud | M | GOV.04, GOV.05, GOV.06, ADOPT.07.governance (adoption) | Cloud policy tests |
-| GOV.10 | AI | S | CON.23, ADOPT.08.governance (adoption) | AI (Workflow Harness) policy tests |
+| GOV.10 | AI | S | CON.23, GOV.19, ADOPT.08.governance (adoption) | AI (Workflow Harness) policy tests |
 | GOV.11 | Web | M | GOV.03, GOV.01, CON.23, ADOPT.09.governance (adoption) | Web policy tests (Node/TS mechanism) |
 | GOV.12 | Mobile | M | GOV.03, GOV.04, ADOPT.10.governance (adoption) | Mobile policy tests (Gradle/Kotlin mechanism) |
 | GOV.13 | DesktopPlatform | M | GOV.04, GOV.18, ADOPT.02.governance (adoption) | Invariant enforcement accounting report |
