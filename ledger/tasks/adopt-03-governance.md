@@ -19,3 +19,10 @@ No task is classified as inherited in this slice, so no inherited completion rec
 
 Validation: actual source/layout, mapped WP41/WP05/WP50 obligation and receipt consistency review; explicit-root Plan ledger check. No new product/runtime/provider/device/browser/GUI/inference/installed-consumer coverage is claimed. Exact reviewed head and merge identity remain in the slice claim and PR history. See [repository facts](../adoption/Contracts.md) and [schema slice](adopt-03-contracts.md) for accepted evidence and later closure ownership.
 
+## Post-adoption adjustment (2026-10-04)
+
+This is a later adoption adjustment under DLV-22, introduced by the Design governance-chain planning repair [PR 210](https://github.com/ArcForges/ArcForges-Design/pull/210) (Design source head `68827a21b4525660d4f6d2b88c965433ca0dbef6`; the merge commit is retained in the pull request history, since embedding it would change the reviewed head). It does not reopen or replace this completed slice: the front matter, status, recorded date, claimant, epoch and every frozen classification above are unchanged.
+
+| Task | Classification | Evidence and actual source binding | Remaining scope and blockers |
+|---|---|---|---|
+| GOV.05 | inherited with adjustment (classification unchanged) | Contracts PR 71 (blocked claim, head `78146230f0e0`) recorded that its hosted gate needs the repaired shared engine, an RP-03 decision, security.yml wiring and a refreshed digest; the contract-access digest literal in the task text was stale (recomputed value differs at the PR head and again at main). | The graph adds GOV.06 as a start (artifact) prerequisite, records the RP-03 resolution (one exact bounded `eng/policy/exceptions.json` row for the Apache-boundary ArchitectureTests host with a named renewal path; no relabelling), adds `.github/workflows/security.yml` for the hosted gate wiring only, and replaces the stale digest literals by independent recomputation at the reviewed head. Reuse PR 71's work only after independent review at its new head. Wait GOV.04, CON.90, CON.23 and GOV.06. |
