@@ -1,14 +1,16 @@
 ---
 task: PRF.05
 status: delivered
-recorded: 2026-10-03
-claimant: w-c20261002-prf05
-epoch: 1
+recorded: 2026-10-05
+claimant: w-c20261005-prf05c
+epoch: 2
 ---
 
 # Generated gRPC-Web under Native AOT against the deployed Hello ingress
 
 Delivered, not complete. A Native AOT probe of the generated gRPC-Web client is merged and compiled continuously on main for Windows and Linux, and its published Windows executable was run twice against the existing production Hello Worker/Container ingress. The task's own acceptance (WP-06.02: exact primitives, scope/permission, wrong or stale target, loss/retry and expiry against a deployed ingress) is only partly met, so the status is chosen on the precedent of PRF.04, PRF.07, PLT.09 and PLT.10 (delivered with a documented missing real-environment acceptance). The task graph lists no completion prerequisite (`complete: []`), so under DLV-41 it appears in `ready` as a completion follow-up at once. F-026 closure is the Architecture Owner's act and is not recorded here.
+
+How to read this record: the sections below the epoch 2 follow-up are the first-delivery record, kept as history. They are **superseded by the section [Completion follow-up, epoch 2](#completion-follow-up-epoch-2-2026-10-05-worker-w-c20261005-prf05c-still-delivered-not-complete) wherever they say that the `env.proof` ingress does not exist, that no run against it exists, or that the completion follow-up is claimable now**.
 
 Read this before depending on it: AST.11 and NAT.29 (and any other dependent) must not read `delivered` as wire-level exact-value proof. No exact int64, uint64 or decimal value was ever sent over a wire to any ingress, because the only deployed gRPC-Web method (Hello) carries strings. The target was the existing anonymous production Hello ingress, never the PRF.07 `env.proof` ingress, which does not exist.
 
@@ -54,3 +56,55 @@ All identities below were read from GitHub and the local runs by the claimant `w
 ## Remaining acceptance and next action
 
 PRF.05 stays `delivered`. A follow-up worker performs the remaining acceptance of WP-06.02: (1) run the probe against a deployed ingress that carries exact primitives (the PRF.07 `env.proof` or a successor, which needs the user-provided Cloudflare account, token, resources, secrets and Docker listed in the PRF.07 record, and the lease `RES-cloud-deployment` for that phase only) and extend the probe with the exact int64, uint64 and decimal scenarios; (2) run the published Linux x64 executable on a real Linux host (`dotnet publish -c Release -r linux-x64`, then `--self-test`, and `--live` under the lease), recording OS, RID, SDK and the printed PASS lines through a reviewed amendment of this record. Missing optional hosts are not a provisioning task.
+
+## Completion follow-up, epoch 2 (2026-10-05, worker `w-c20261005-prf05c`): still `delivered`, NOT complete
+
+The follow-up looked for the maximal faithful completion possible on 2026-10-05 and found that the task's own remaining acceptance cannot be observed on any deployed ingress yet. It made the one new observation that is possible (the delivered probe against the live PRF.07 proof ingress), recorded the Linux decision, and repaired the plan so that the task now names the real producers of what is missing. Nothing below is a claim that exact int64, uint64 or decimal values crossed a wire.
+
+### What the deployed ingresses serve publicly (read from the Cloud repository at main `b24b0cf`)
+
+- Production `https://arcforges.com/api` serves exactly one public gRPC-Web method, the anonymous Hello `SayHello` (strings only), plus `/api/healthz` (Cloud `docs/cloud-ingress.md`).
+- The PRF.07 proof ingress `https://proof.arcforges.com` (deployed from Cloud main `b24b0cf`, see [the PRF.07 record](prf-07.md)) serves the same Hello method and, only in the isolated proof environment, `arcforges.proof.v1.PipelineProbe` (`Whoami`, `Stream`, `Observation`). Those messages are hand-framed proof bytes, not Contracts records; the methods require a session; and the only way to obtain one is the operator-signed `session/issue` of the Cloud repository's own scripts, which this probe must not hold. Cloud `docs/prf-07-foundation-proof.md` states that its exact `int64`, `uint64` and `decimal` scenarios run through the operator JSON surface, not gRPC-Web, and that PRF.05's exact-value gRPC-Web scenario "is not served here".
+- Contracts already generates public services that carry such values (for example `WorkspaceService.GetHealth` with uint64 counters and `UpdateSettings` with a `Revision` precondition in `ArcForges.Contracts.PublicApi`), but no Cloud task has hosted them yet.
+
+Conclusion: no public gRPC-Web service carrying exact primitives exists on any deployed ingress, and adding one is not a probe change. A proof-only exact-value route (a new Cloud task) was considered and rejected: it would be hand-framed and so would not exercise the generated client the acceptance names, and it would still leave scope/permission, stale revision and expiry unmet (a session is needed for those).
+
+### Planning repair (the owner edge)
+
+PRF.05 listed no completion prerequisite, which made the follow-up claimable at once although it could not be performed. Design PR [239](https://github.com/ArcForges/ArcForges-Design/pull/239) adds two integration completion prerequisites, following the PRF.06 precedent: **CLOUD.21** (the generated public endpoints, registered behind the real session, scope and current-owner gate; CLOUD.21 itself completes only after the sessions of CLOUD.19) and **CLOUD.22** (typed 64-bit values, statuses and trailers). The start prerequisites are unchanged, so AST.11 and NAT.29 are not delayed. This Plan pull request carries the regenerated views. After both merge, PRF.05 is no longer ready; it becomes a completion follow-up again when CLOUD.21 and CLOUD.22 are complete.
+
+### Live observation against the proof ingress (new)
+
+Three runs of the Native AOT win-x64 probe, started directly (network-bound, not the build slot), under the Plan lease `RES-cloud-deployment` (epoch 14, claimed 10:59:26Z, released 11:00:49Z), with no credential, against `https://proof.arcforges.com/api`. Windows 11 Pro for Workstations build 26300, .NET 10.0.11 runtime.
+
+| Run | UTC | Options | Result |
+|---|---|---|---|
+| 1 | 2026-10-05T11:00:00Z | none | PASS, 25 checks |
+| 2 | 2026-10-05T11:00:21Z | `--expect-revision 1a001eaeff310d046d4a556a2b06b7f2037157e2` (the earlier production revision, deliberately not the deployed one) | exit 1, 26 checks, exactly one failure: `identity.expected-revision` ("a stale target would differ"); all 25 other checks passed |
+| 3 | 2026-10-05T11:00:35Z | `--expect-revision b24b0cf2cd83b163514fd5f7fd31a559e73fa18d` (the observed revision) | PASS, 26 checks |
+
+Evidence file sha256 (the files live in the ignored `artifacts/prf-05c` folder of the claimant's worktree, not in the repository): run 1 `4c39495be1b88ad96877fc9ad592c646c17fbd48158a2d3e088f93e3dfaaf144`, run 2 `7bf4708990fc0120160c3c4ffb264425b190b9955026d4cfd31d278939e27b72`, run 3 `2f3fec2430b4c86e9bc6529bec6ad13da8dd7130021412aa0e9c04c063b2e3b0`.
+
+What this shows: the health endpoint of the proof ingress reported Native AOT and revision `b24b0cf2cd83b163514fd5f7fd31a559e73fa18d`, the Cloud merge commit of CLOUD.69 that the PRF.07 record says was deployed. Every Hello check that passed on production (headers, trailer status frame, exact text, errors carried as HTTP 200, hand-off and after-response cancellation, expired deadline, unknown method) passed on this second, independent ingress. Run 2 is the first observation that the probe's stale-target check fails against a live ingress, with the stale revision supplied by the caller. It is a negative control of the probe's `--expect-revision` option; it is not a stale deployment, and no deployment was altered. It is still Hello, so strings only: the four `codec.*` checks remain in process and prove nothing about a wire, and nothing in these runs is exact int64, uint64 or decimal over a wire, scope, permission or expiry on a real ingress.
+
+Executable used: `GrpcWebAotProbe.exe`, sha256 `929e1a3c82a6347be257014177ec98da4dbe50999f7f8b672a9b10c20969be3e`, built on 2026-10-03 for the epoch 1 live run 2 from the code of commit `856163db87cdbf7fbacc04d86a638b16b80cd5a0`. It was not rebuilt: `git diff` of `tests/ReleaseArtifactTests/GrpcWeb` between the merge `4d4552c` and main `0a1dca2` is empty, and the pinned SDK of `global.json` (10.0.400, roll-forward disabled) is no longer the installed SDK (10.0.401), so a pinned rebuild is not possible here and no toolchain was installed. Its offline `--self-test` was run again before the live runs: exit 0, 52 checks.
+
+### Linux x64: not run, deferred
+
+No Linux host is available here and `wsl.exe` is not used. Hosted CI does have an `ubuntu-latest` job for this probe (`Generated gRPC-Web AOT compile (linux-x64)` in `package-validation.yml`), but it is a locked restore and AOT publish only, and the task's own validation text states that CI never executes the probe. Making it execute `--self-test` would change the validation venue (Design `docs/assurance/ci-and-local-validation-policy.md`, boundary 4, does not authorize running packaged artifacts) and the task's workflow write scope, and this follow-up made neither change. The Linux executable therefore remains compiled but never run. A `--live` run is local opt-in only and could not be done by hosted CI in any case.
+
+### Acceptance status after epoch 2
+
+| WP-06.02 item | State |
+|---|---|
+| Headers, trailers, cancellation (client side), scoped errors as HTTP 200 status frames, exact text, expired deadline, unknown method on a deployed Worker/Container ingress | observed on production (epoch 1) and on the proof ingress (epoch 2); Hello only |
+| Exact int64, uint64, decimal over a wire | **not met**: no deployed generated method carries them; owners CLOUD.21 and CLOUD.22 |
+| Scope/permission, session expiry, revoke | **not met**: needs a real session and scoped generated methods (CLOUD.19, CLOUD.21) |
+| Stale target | the probe's check discriminates against a live ingress with a caller-supplied revision (new); a stale revision precondition on a real mutation is **not met** (CLOUD.21) |
+| Loss/retry and boundary failures on a real ingress, server-side observation of a cancellation | **not met** (stand-in only; CLOUD.22) |
+| Linux x64 run | **deferred, not observed** |
+| F-026 closure | the Architecture Owner's act; not recorded here |
+
+## Remaining acceptance and next action (epoch 2)
+
+PRF.05 stays `delivered`. When CLOUD.21 and CLOUD.22 are complete the follow-up worker extends the probe with an exact int64, uint64 and decimal scenario, a scope/permission refusal, a stale `Revision` precondition and an expiry case against the deployed ingress, using a session credential supplied by a procedure that no worker reads or prints (the Cloud repository's operator-signed scripts or a user-provided value), under the lease `RES-cloud-deployment` for that phase only, and records a Linux x64 run if a Linux host is then available (missing optional hosts are not a provisioning task).
