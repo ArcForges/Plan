@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 445 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 446 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -51,7 +51,7 @@ Tasks: 445 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
-| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (60) |
+| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (61) |
 | ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (16) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
@@ -422,6 +422,7 @@ Tasks: 445 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.68 | Cloud | M | CON.24, CLOUD.39, CLOUD.21, ADOPT.07.cloud (adoption) | ArcScope library read model and companion notifications |
 | CLOUD.69 | Cloud | M | CLOUD.01, ADOPT.07.cloud (adoption) | Correlation acceptance and propagation across ingress, response meta and queue wake |
 | CLOUD.70 | Cloud | S | CLOUD.03, CLOUD.01, ADOPT.07.cloud (adoption) | Gated D1 migration deployment step and compatible-rollback flow |
+| CLOUD.71 | Cloud | S | PRF.07, PRF.08, ADOPT.07.cloud (adoption) | Serve the built Web profiles from the proof origin |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 
