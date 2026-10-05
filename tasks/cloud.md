@@ -85,7 +85,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:src/ArcForges.Cloud.Storage.D1/Migrations/** (the numbered, checksum-locked D1 migrations and the append-only migration lock; RES-cloud-d1-migrations); Cloud:src/ArcForges.Cloud.Storage.D1/Physical/** (the checked-in physical manifest, its generated C# column maps, the typed exact bind/result adapters and their shared vectors); Cloud:eng/migrations/** and Cloud:eng/verification/physical-schema.ts (the migration runner with its D1 clients and sequence assignment, and the manifest validator, baseline emitter and migration-to-manifest drift check; Node tooling like eng/verification/storage-plans.ts, because migrations run from the gated deployment job and never from the Container); Cloud:tests/ArcForges.Cloud.Tests/Physical/** and Cloud:tests/ArcForges.Cloud.Tests/Vectors/physical-*.json and Cloud:tests/worker/d1-*.test.ts (adapter, manifest, migration and conformance tests, new files only); Cloud:package.json (only the new npm scripts and the new test files in the test list) and Cloud:tsconfig.json (only the include of eng/migrations); Cloud:eng/policy/dependency-policy.json and Cloud:eng/policy/dependency-reviews/cloud-03-*.json (new immutable successor chained from the then-active receipt, only because hash-bound project and release inputs change; no coordinate, integrity value or closure entry changes); Cloud:eng/provenance/** (immutable successor release profile, Worker bundle and runtime-notice records only where an existing record binds an input this task changes, the first-party inventory files.json and the deterministic NOTICE.txt); Cloud:docs/d1-physical-schema.md (new, factual description of the manifest, the adapters, the migration runner and its modes) and Cloud:docs/storage-plans.md and Cloud:AGENTS.md (only factual pointers if the description of the storage layer changes)
 Shared resources (follow the owner protocol): RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.
-Unblocks: CLOUD.04, CLOUD.07, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.39, CLOUD.48
+Unblocks: CLOUD.04, CLOUD.07, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.39, CLOUD.48, COM.16
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline unit tests for bind/result adapters; opt-in local runtime tests against a real D1 instance for signed64/uint64/Decimal/JSON/FTS5, interrupted migration, stale backfill and compatible rollback per docs/validation-policy.md
 Completion evidence for the ledger: actual D1 signed64/uint64/decimal/JSON/FTS5 conformance results, interrupted-migration/stale-backfill/rollback test results, source commit
@@ -113,7 +113,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/ArcForges.Cloud.Storage.D1/Receipts/**; Cloud:src/ArcForges.Cloud.Storage.D1/Outbox/**
-Unblocks: CLOUD.05, CLOUD.10, CLOUD.31, CLOUD.39, SIM.04
+Unblocks: CLOUD.05, CLOUD.10, CLOUD.31, CLOUD.39, COM.16, SIM.04
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline unit tests plus opt-in local D1 runtime tests: constraint-guard failure rolls back all rows, zero-row CAS cannot publish, duplicate/lost ack reconciles
 Completion evidence for the ledger: constraint-guard rollback, zero-row-CAS and duplicate/lost-ack reconciliation results
@@ -171,7 +171,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:src/ArcForges.Cloud.Storage.D1/SharedFamilies/**
 Shared resources (follow the owner protocol): RES-shared-transaction-families (append): Adding a participant to a shared atomic family is a design change through the Architecture Owner; module tasks implement only their declared participation.
-Unblocks: CLOUD.07, CLOUD.10, CLOUD.11, CLOUD.13, CLOUD.39, CLOUD.42, CLOUD.46, CLOUD.63, SIM.03
+Unblocks: CLOUD.07, CLOUD.10, CLOUD.11, CLOUD.13, CLOUD.39, CLOUD.42, CLOUD.46, CLOUD.63, COM.16, SIM.03
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline unit tests for the guard/lock-order primitives; opt-in local D1 runtime tests: two Containers contend, stale holder cannot finalize
 Completion evidence for the ledger: lock-order enforcement test results, contention/stale-holder test results, source commit
@@ -1613,6 +1613,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] CLOUD.06: real, delivered outcome of CLOUD.06 (Shared atomic family guarded-batch engine)
 - [artifact] CLOUD.16: real, delivered outcome of CLOUD.16 (PAT and actor authorization)
 - [artifact] COM.09: real, delivered outcome of COM.09 (Ledgers and reconciliation)
+- [artifact] COM.16: the real Entitlement D1 store and grant port as the Entitlement participant of the shared families
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
