@@ -370,7 +370,7 @@ Tasks: 446 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.08 | Cloud | S | CLOUD.01, CLOUD.02, ADOPT.07.cloud (adoption) | Failure isolation and readiness surface |
 | CLOUD.09 | Cloud | M | CLOUD.01, CLOUD.03, ADOPT.07.cloud (adoption) | Selfhost.v1 deployment profile |
 | CLOUD.10 | Cloud | M | CLOUD.39, SIM.10, ADOPT.07.cloud (adoption) | Owned-artifact closure and launch-capacity.v1 acceptance |
-| CLOUD.11 | Cloud | M | CLOUD.02, CLOUD.03, CLOUD.06, ADOPT.07.cloud (adoption) | Core identity model (realm, user, authIdentity, single-owner workspace) |
+| CLOUD.11 | Cloud | M | CLOUD.02, CLOUD.03, CLOUD.06, CLOUD.04, ADOPT.07.cloud (adoption) | Core identity model (realm, user, authIdentity, single-owner workspace) |
 | CLOUD.12 | Cloud | L | CLOUD.11, ADOPT.07.cloud (adoption) | Native and browser authentication with real Postmark/SES mail delivery |
 | CLOUD.13 | Cloud | M | CLOUD.11, CLOUD.06, ADOPT.07.cloud (adoption) | Device, installation, instance and session (four distinct concepts) |
 | CLOUD.14 | Cloud | S | CLOUD.13, ADOPT.07.cloud (adoption) | Device trust and remote gating |
