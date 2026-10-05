@@ -457,7 +457,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] GOV.13: the invariant accounting report existing and complete
 - [artifact] GOV.14: the specification-integrity suite green
 Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
+- [integration] GOV.07: ArcScope's own policy suite complete, including its executable's banned-API and production-only rules (the GOV.07 function-pointer deferral repaired through GOV.20)
 
 Permitted write scope: DesktopPlatform:eng/**; DesktopPlatform:.github/workflows/pr-gate.yml (one new offline job that runs the cross-repository integration tests and verification in the pull-request pipeline; the only change to an existing job is appending the new job id to the aggregate ci job needs list so a failure fails the required aggregate gate; no other change to any existing job, trigger, permission, action pin or secret handling); Design:docs/assurance/wp05-90-*.md, wp05-stage-acceptance.md/.json
 Shared resources (follow the owner protocol): RES-design-evidence (append): Receipts and gate records are separate files per task or gate; indexes are appended; historical records are not rewritten.; RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
