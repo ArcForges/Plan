@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 444 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -33,7 +33,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.execution | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Execution engine (9) |
 | ADOPT.02.extensions | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Extension platform and integrations (7) |
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
-| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (7) |
+| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (9) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (14) |
 | ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (55) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
@@ -51,8 +51,8 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
-| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (58) |
-| ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (15) |
+| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (59) |
+| ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (16) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
 | ADOPT.07.governance | Cloud | S | ADOPT.01 | Adopt Cloud: Family governance and policy tests (1) |
@@ -99,6 +99,8 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.17 | DesktopPlatform | M | ADOPT.02.governance (adoption) | Retire the native families outside the product family and move the still-image shim |
 | GOV.18 | DesktopPlatform | M | CON.23, ADOPT.02.governance (adoption) | Reduce the DesktopPlatform policy data and re-pin the design-policy export |
 | GOV.19 | AI | S | ADOPT.08.governance (adoption) | AI Wrangler and undici dependency admission (clear the repository security gate) |
+| GOV.20 | DesktopPlatform | S | GOV.06, ADOPT.02.governance (adoption) | Build.Policy banned-symbol scanner: audit unmanaged function-pointer invocations instead of throwing |
+| GOV.21 | DesktopPlatform | S | GOV.14, GOV.18, ADOPT.02.governance (adoption) | Scheduled and manual policy preview of the Design main branch (post-merge drift watch) |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 
@@ -215,7 +217,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.52 | DesktopPlatform | L | PLT.31, PLT.49, ADOPT.02.platform (adoption) | Desktop diagnostics and consent |
 | PLT.53 | DesktopPlatform | S | PLT.47, PLT.48, PLT.49, PLT.50, PLT.51, PLT.52, ADOPT.02.platform (adoption) | Publish Observability packages and verify real integration |
 | PLT.54 | DesktopPlatform | M | PLT.45, NAT.15, ADOPT.02.platform (adoption) | Real hostile-input containment proof with production parser libraries loaded in ContentSandbox |
-| PLT.57 | DesktopPlatform | M | PLT.24, PLT.38, APP.01, ADOPT.02.platform (adoption) | End-to-end capability invocation with real security enforcement inside one product |
+| PLT.57 | DesktopPlatform | M | PLT.24, PLT.38, APP.01, PLT.44, ADOPT.02.platform (adoption) | End-to-end capability invocation with real security enforcement inside one product |
 
 ## Native producers and probes — [prompts](tasks/native.md)
 
@@ -362,7 +364,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.02 | Cloud | M | CLOUD.01, ADOPT.07.cloud (adoption) | Nineteen module boundaries and D1 named-plan bridge |
 | CLOUD.03 | Cloud | L | CLOUD.02, ADOPT.07.cloud (adoption) | D1 migration runner and exact physical mapping |
 | CLOUD.04 | Cloud | M | CLOUD.02, CLOUD.03, ADOPT.07.cloud (adoption) | Receipts, outbox, inbox dedup and change archive |
-| CLOUD.05 | Cloud | M | CLOUD.01, CLOUD.04, ADOPT.07.cloud (adoption) | Finite durable jobs (Cron/Queue/Workflow-woken endpoints) |
+| CLOUD.05 | Cloud | M | CLOUD.01, CLOUD.04, CLOUD.69, ADOPT.07.cloud (adoption) | Finite durable jobs (Cron/Queue/Workflow-woken endpoints) |
 | CLOUD.06 | Cloud | M | CLOUD.02, ADOPT.07.cloud (adoption) | Shared atomic family guarded-batch engine |
 | CLOUD.07 | Cloud | L | CLOUD.02, CLOUD.03, CLOUD.06, ADOPT.07.cloud (adoption) | Capacity, Container/D1 integration producer and harness |
 | CLOUD.08 | Cloud | S | CLOUD.01, CLOUD.02, ADOPT.07.cloud (adoption) | Failure isolation and readiness surface |
@@ -390,7 +392,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.30 | Cloud | M | CLOUD.29, ADOPT.07.cloud (adoption) | Scoped subscription (owner/product/filter/recovery-generation binding) |
 | CLOUD.31 | Cloud | M | CLOUD.30, CLOUD.04, ADOPT.07.cloud (adoption) | Cursor and gap handling (DO projection backed by D1 outbox) |
 | CLOUD.32 | Cloud | S | CLOUD.31, ADOPT.07.cloud (adoption) | Durable unary fallback (Poll/readOutput) |
-| CLOUD.33 | Cloud | M | CLOUD.31, CLOUD.05, ADOPT.07.cloud (adoption) | Publication and wake (D1 outbox to bounded DO feed via Queues) |
+| CLOUD.33 | Cloud | M | CLOUD.31, CLOUD.05, CLOUD.69, ADOPT.07.cloud (adoption) | Publication and wake (D1 outbox to bounded DO feed via Queues) |
 | CLOUD.34 | Cloud | S | CLOUD.29, ADOPT.07.cloud (adoption) | Bounded stream lifecycle |
 | CLOUD.35 | Cloud | M | CLOUD.33, CLOUD.34, ADOPT.07.cloud (adoption) | Reusable stream consumer adapters |
 | CLOUD.36 | Cloud | M | DEV.14, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration (tool-result acceptance) |
@@ -413,11 +415,12 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.54 | Cloud | S | CLOUD.48, ADOPT.07.cloud (adoption) | Backup release gate |
 | CLOUD.55 | Cloud | M | ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration |
 | CLOUD.58 | Cloud | M | CLOUD.45, AST.21, ADOPT.07.cloud (adoption) | Structural removal of the Chat export runtime fixture |
-| CLOUD.63 | Cloud | M | CLOUD.06, CLOUD.16, COM.09, ADOPT.07.cloud (adoption) | Real Commerce/Entitlement participation in the shared atomic family engine |
+| CLOUD.63 | Cloud | M | CLOUD.06, CLOUD.16, COM.09, COM.16, ADOPT.07.cloud (adoption) | Real Commerce/Entitlement participation in the shared atomic family engine |
 | CLOUD.64 | Cloud | M | COM.13, POL.05, OPS.05, CLOUD.21, CLOUD.22, ADOPT.07.cloud (adoption) | Full operator contract closure across PublicApi, Commerce, Policy and Console |
 | CLOUD.66 | Cloud | M | CLOUD.15, COM.10, CLOUD.21, CLOUD.22, ADOPT.07.cloud (adoption) | Every enumerated sensitive operation wired to the step-up mechanism |
 | CLOUD.67 | Cloud | M | CLOUD.51, HAR.00, HAR.02, HAR.03, AIR.00, ADOPT.07.cloud (adoption) | Combined AI reopen after Cloud disaster-recovery restore |
 | CLOUD.68 | Cloud | M | CON.24, CLOUD.39, CLOUD.21, ADOPT.07.cloud (adoption) | ArcScope library read model and companion notifications |
+| CLOUD.69 | Cloud | M | CLOUD.01, ADOPT.07.cloud (adoption) | Correlation acceptance and propagation across ingress, response meta and queue wake |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 
@@ -426,18 +429,19 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | COM.01 | Cloud | S | ADOPT.07.commerce (adoption) | Provider adapter boundary |
 | COM.02 | Cloud | M | ADOPT.07.commerce (adoption) | Catalogue and versioned policy |
 | COM.03 | Cloud | L | COM.01, COM.02, CLOUD.24, ADOPT.07.commerce (adoption) | Purchase pipeline |
-| COM.04 | Cloud | L | COM.01, COM.03, ADOPT.07.commerce (adoption) | Provider event inbox |
+| COM.04 | Cloud | L | COM.01, COM.03, COM.16, ADOPT.07.commerce (adoption) | Provider event inbox |
 | COM.05 | Cloud | L | ADOPT.07.commerce (adoption) | Entitlement resolver |
-| COM.06 | Cloud | M | COM.05, CLOUD.23, ADOPT.07.commerce (adoption) | Distribution and enforcement |
+| COM.06 | Cloud | M | COM.05, CLOUD.23, COM.16, ADOPT.07.commerce (adoption) | Distribution and enforcement |
 | COM.07 | Cloud | L | CLOUD.07, COM.05, ADOPT.07.commerce (adoption) | Quota, usage and storage accounting |
 | COM.08 | Cloud | L | COM.05, ADOPT.07.commerce (adoption) | Credits |
 | COM.09 | Cloud | L | COM.03, COM.04, ADOPT.07.commerce (adoption) | Ledgers and reconciliation |
-| COM.10 | Cloud | M | COM.05, COM.09, ADOPT.07.commerce (adoption) | Refunds, disputes and evidence |
-| COM.11 | Cloud | L | COM.03, COM.05, COM.04, ADOPT.07.commerce (adoption) | Service term interval model |
+| COM.10 | Cloud | M | COM.05, COM.09, COM.16, ADOPT.07.commerce (adoption) | Refunds, disputes and evidence |
+| COM.11 | Cloud | L | COM.03, COM.05, COM.04, COM.16, ADOPT.07.commerce (adoption) | Service term interval model |
 | COM.12 | Cloud | XL | COM.11, COM.08, ADOPT.07.commerce (adoption) | Replenishing capacity bucket, refill and admission |
-| COM.13 | Cloud | L | CON.14, CLOUD.21, COM.05, COM.08, COM.10, ADOPT.07.commerce (adoption) | Operator financial-owner proposal/approval operations |
+| COM.13 | Cloud | L | CON.14, CLOUD.21, COM.05, COM.08, COM.10, COM.16, ADOPT.07.commerce (adoption) | Operator financial-owner proposal/approval operations |
 | COM.14 | Cloud | L | COM.12, COM.03, COM.04, COM.05, COM.09, COM.10, ADOPT.07.commerce (adoption) | Technical commerce closure and live-gate staging |
 | COM.15 | Cloud | S | COM.14, COM.06, COM.07, ADOPT.07.commerce (adoption) | Owned-artifact receipt and closure |
+| COM.16 | Cloud | L | COM.05, CLOUD.03, CLOUD.04, CLOUD.06, ADOPT.07.commerce (adoption) | Entitlement grant port and durable Entitlement store |
 
 ## Dynamic policy and configuration — [prompts](tasks/policy.md)
 
@@ -511,7 +515,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | AIR.01 | Cloud | M | POL.02, ADOPT.07.ai-routing (adoption) | Tariffs and cost dimensions |
 | AIR.02 | Cloud | L | COM.08, AIR.00, ADOPT.07.ai-routing (adoption) | Metering and settlement |
 | AIR.03 | Cloud | M | AIR.00, ADOPT.07.ai-routing (adoption) | Selected supplier and realm routing (no BYOK) |
-| AIR.04 | Cloud | M | AIR.02, ADOPT.07.ai-routing (adoption) | Provider interaction records, redaction and cost transparency |
+| AIR.04 | Cloud | M | AIR.02, CLOUD.69, ADOPT.07.ai-routing (adoption) | Provider interaction records, redaction and cost transparency |
 | AIR.05 | AI | M | AIR.00, ADOPT.08.ai-routing (adoption) | Content-origin marking at the provider generation boundary |
 | AIR.06 | Cloud | M | AIR.02, ADOPT.07.ai-routing (adoption) | Funding and uncertain-outcome proof |
 | AIR.07 | AI | M | AIR.00, ADOPT.08.ai-routing (adoption) | Provider test-environment coverage |

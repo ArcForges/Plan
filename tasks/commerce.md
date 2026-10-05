@@ -108,6 +108,7 @@ Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] COM.01: adapter signature-verification capability and typed event shape
 - [artifact] COM.03: CheckoutAttempt/Order identifiers to correlate events against
+- [artifact] COM.16: the published IssueGrant and RevokeGrant port and the durable Entitlement store behind it
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -132,7 +133,7 @@ Kind/size: service/L. Baseline: not-started.
 Outcome: Immutable grants and revocations resolve deterministically into an entitlement snapshot with a per-capability reason and version, and rebuilding the snapshot from its grants/revocations always reproduces the stored snapshot.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-42.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.04
+- WP-42.04 (the grant and revocation model, the resolver and the snapshot with per-capability reasons and version, with rebuild equivalence proven over the resolver's store port (the Commerce-facing grant interface in the shared Abstractions project, the GR-05 reason on the grant row, and the durable D1 store with its atomic snapshot commit are mapped to COM.16)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.04
 
 Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -140,9 +141,9 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Entitlement/**/Resolver/**
+Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.Entitlement/Resolver/** (the real layout of the planned src/Cloud/ArcForges.Cloud.Modules.Entitlement/**/Resolver/**: the one Entitlement project CLOUD.02 creates, whose Domain, Application and Infrastructure layers are folders and namespaces; the resolver and the grant and revocation model are folders inside it); Cloud:src/ArcForges.Cloud.Modules.Entitlement/EntitlementModule.cs and Cloud:src/ArcForges.Cloud.Modules.Entitlement/ArcForges.Cloud.Modules.Entitlement.csproj (only the module's own Register entry point listing the resolver services, and InternalsVisibleTo for the existing test assembly so that no public method needs a public-API-to-test mapping; no package, reference or behavior change); Cloud:tests/ArcForges.Cloud.Tests/Entitlement/** and Cloud:tests/ArchitectureTests/** (resolver tests in the existing test projects; the architecture tests only for the reviewed project role and layering binding of the Entitlement project); Cloud:eng/policy/dependency-policy.json and Cloud:eng/policy/dependency-reviews/com-05-*.json (new immutable successor chained from the then-active receipt, only because hash-bound project and release inputs change; no coordinate, integrity value or closure entry changes); Cloud:eng/provenance/** (immutable successor release profile, Worker bundle and runtime-notice records only where an existing record binds an input this task changes, the first-party inventory files.json and the deterministic NOTICE.txt); Cloud:docs/entitlement-resolver.md (new, factual description of the resolver and its fixtures) and Cloud:AGENTS.md (only if the module description changes)
 Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
-Unblocks: COM.06, COM.07, COM.08, COM.10, COM.11, COM.13, COM.14, HAR.06, PLT.20, POL.04, SIM.07
+Unblocks: COM.06, COM.07, COM.08, COM.10, COM.11, COM.13, COM.14, COM.16, HAR.06, PLT.20, POL.04, SIM.07
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: rebuild-equivalence over fixture accounts, reason-coverage, combination matrix over the four entitlement kinds, clock-determinism against an injected time source.
 Completion evidence for the ledger: Rebuild-equivalence test result (snapshot-from-scratch equals stored snapshot) across fixture accounts.
@@ -166,6 +167,7 @@ Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] COM.05: EntitlementSnapshot + EntitlementVersion
 - [artifact] CLOUD.23: typed-query/revision-precondition pattern
+- [artifact] COM.16: the durable Entitlement store that holds the stored snapshot with its EntitlementVersion
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -279,6 +281,7 @@ Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] COM.05: entitlement rollback path
 - [artifact] COM.09: ledger entries to export
+- [artifact] COM.16: the RevokeGrant side of the published grant port
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -308,6 +311,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] COM.03: paid period identifiers (checkout/order confirmation producing a period_ref-worthy paid interval)
 - [artifact] COM.05: offer assignment and entitlement kind
 - [artifact] COM.04: deduplicated ProviderEvent stream
+- [artifact] COM.16: the widened append path of the durable Entitlement store for service terms and term actions, with its D1 plans
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -368,6 +372,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] COM.05: grant/revocation model
 - [artifact] COM.08: credit lot issue/adjust primitives
 - [artifact] COM.10: refund/rollback path
+- [artifact] COM.16: the IssueGrant and RevokeGrant port carrying the GR-05 reason
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] OPS.13: the operator console UI actually calling these RPCs end-to-end
 
@@ -441,4 +446,35 @@ Unblocks: REL.06, REL.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Aggregation only: existing concurrent admission/idempotent settlement/reversal/storage-accounting cases re-asserted at the candidate closure; no new test logic.
 Completion evidence for the ledger: The owned-artifact/real-integration receipt itself, with inapplicable fields explicitly marked.
+```
+
+```text
+Execute ArcForges delivery task COM.16 — Entitlement grant port and durable Entitlement store.
+
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\commerce.md (anchor task-com-16).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
+Claim and handoff record: claims/com-16 (python tools/delivery.py claim COM.16 --worker <name>); task branch task/com-16 in Cloud; ledger record ledger/tasks/com-16.md.
+Kind/size: service/L. Baseline: not-started.
+Outcome: Commerce, the operator path and the refund path reach Entitlement only through one published IssueGrant/RevokeGrant port that lives in ArcForges.Cloud.Modules.Abstractions and is implemented by the Entitlement module (EO-03, MD-03), so no module references Entitlement internals or writes its tables; an administrative, compensation or migration grant carries its reason on the grant row (GR-05); and the Entitlement module has its production D1 store: grants, revocations, service terms, term actions and the derived snapshot are appended and replaced in one guarded named plan under the workspace revision together with the owner receipt and notification outbox row, so a grant or term never exists without the snapshot and EntitlementVersion that reflect it, a stale writer commits nothing, and the snapshot rebuilt from the D1-stored records equals the stored snapshot. The Entitlement store reaches D1 only through a generic plan-execution port that this task creates in ArcForges.Cloud.Modules.Abstractions (outside the Entitlement folder, so every later module reuses it) and a Storage.D1 adapter that implements it over the signed Worker executor; an Entitlement plan names only entitlement_ and platform_ tables. The port commits on its own; joining the same grant statements to the enumerated purchase unit of work is the Entitlement participation of CLOUD.63.
+
+Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
+- WP-42.04 (the Commerce-facing grant interface (EO-03: IssueGrant and RevokeGrant as a public port in the shared Abstractions project, implemented by the Entitlement module), the GR-05 reason carried on the grant row, and the durable D1 Entitlement store: grants, revocations, service terms and term actions committed atomically with the snapshot and its EntitlementVersion under one guarded plan, with rebuild equivalence over D1-stored records (the resolver, its rules and its in-memory-store rebuild equivalence are COM.05)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.04
+
+Entry condition: adoption slice ADOPT.07.commerce is complete in the Plan ledger (DLV-22).
+Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
+- [artifact] COM.05: the grant and revocation model, the EntitlementService admission rules and the IEntitlementStore port contract
+- [artifact] CLOUD.03: the physical entitlement tables (grant with its reason column, revocation, revision, snapshot, service_term and service_term_action), their append-only triggers and the typed bind/result adapters
+- [artifact] CLOUD.04: the owner receipt and notification outbox rows of a guarded write
+- [artifact] CLOUD.06: the guarded-batch executor and its revision guard primitive with the SU-04 module order
+Completion prerequisites (may start earlier; cannot complete before these are complete):
+- none
+
+Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.Abstractions/Entitlement/** (new and public: the IssueGrant and RevokeGrant port with its request, result and refusal types, built from primitives only and referencing no module and no Entitlement internal type; cross-module ports belong to this shared boundary project (architecture 01 section 5, MD-03); no change to IModuleBoundary or ModuleDescriptor; the generic plan-execution port is not part of this folder: see Abstractions/Storage/**); Cloud:src/ArcForges.Cloud.Modules.Abstractions/Storage/** (new and public: the generic plan-execution port, a named plan id with exact typed parameters in, typed rows or a typed refusal out, that a module project may use because a module references only this project and never the storage layer; it names no table, no SQL and no module; CLOUD.02 published none, and CLOUD.04 and CLOUD.06 write only inside Storage.D1 and so cannot publish one); Cloud:src/ArcForges.Cloud.Storage.D1/ModuleBinding/** and Cloud:src/ArcForges.Cloud.Storage.D1/ArcForges.Cloud.Storage.D1.csproj (new folder owned by this task, no overlap with the Migrations, Physical, Receipts, Outbox or SharedFamilies folders of CLOUD.03, CLOUD.04 and CLOUD.06: the adapter that implements the Abstractions plan-execution port over the existing signed Worker executor and refuses a plan id whose owner is not the caller's module descriptor; the project file only for the project reference to Abstractions; later module tasks reuse the adapter and add nothing here); Cloud:src/ArcForges.Cloud.Modules.Entitlement/** except Resolver/Domain (the port adapter over EntitlementService that carries the reason, the widened EntitlementAppend that also carries service terms and term actions, the D1 IEntitlementStore under Persistence/** written against the Abstractions plan-execution port, and the module's own Register entry listing them; the resolver rules, rebuild semantics and admission rules of COM.05 are unchanged); Cloud:storage/plans/entitlement/** and the generated plan manifest in Cloud:src/ArcForges.Cloud.Storage.D1/PlanManifest.g.cs (the Entitlement module's named plans as owner entitlement, naming only entitlement_ and platform_ tables (CM-01 to CM-03); the manifest hash is regenerated by the author after rebase; RES-cloud-storage-plans); Cloud:src/ArcForges.Cloud.Storage.D1/Migrations/** (an append-only expand migration only if the physical manifest delivered by CLOUD.03 lacks entitlement_grant.reason or an index the plans need; numbered at merge by the integration owner; RES-cloud-d1-migrations); Cloud:src/ArcForges.Cloud/Composition/HostModules.cs (only the append that binds the Storage.D1 ModuleBinding adapter to the Abstractions plan-execution port, and the Entitlement store to the Entitlement port, by composition; RES-cloud-host-composition); Cloud:tests/ArcForges.Cloud.Tests/Entitlement/** and Cloud:tests/ArchitectureTests/** (port contract tests and store tests; the architecture tests only to assert that Commerce reaches Entitlement only through the Abstractions port and that the Abstractions project references no module); Cloud:eng/policy/dependency-policy.json and Cloud:eng/policy/dependency-reviews/com-16-*.json (new immutable successor chained from the then-active receipt, only because hash-bound project and release inputs change; no coordinate, integrity value or closure entry changes); Cloud:eng/provenance/** (immutable successor release profile, Worker bundle and runtime-notice records only where an existing record binds an input this task changes, the first-party inventory files.json and the deterministic NOTICE.txt); Cloud:docs/entitlement-resolver.md (the port, the reason column and the store replace the stated limits it records), Cloud:docs/storage-plans.md (the entitlement owner) and Cloud:AGENTS.md (only if the module description changes)
+Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.; RES-cloud-storage-plans (append): Each module owns its own plan directory; the plan-manifest hash is regenerated by the author after rebase and checked in CI.; RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.
+Unblocks: CLOUD.63, COM.04, COM.06, COM.10, COM.11, COM.13
+
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: port contract (idempotent replay by source reference, stale-version refusal, reason required for administrative, compensation and migration grants, no Entitlement type crosses the port), store tests through the plan-bridge fakes and the physical column map (atomic append and snapshot replace, a stale revision commits nothing, concurrent writers, append-only enforcement, reason round trip), rebuild equivalence over D1-stored fixture records, architecture tests for the Commerce-to-Entitlement path; opt-in local runtime run against a real D1 instance for the atomic commit and the concurrent-writer case per docs/validation-policy.md; no hosted runtime, live-service or browser CI (P2-017).
+Completion evidence for the ledger: Port contract and architecture test results; the D1 atomic-commit, stale-revision and concurrent-writer results (the local D1 run recorded once, or recorded as untested); rebuild-equivalence result over D1-stored records; reason round-trip result; source commit.
+Notes: Added by the COM.05 review finding that nothing owned the EO-03 port, the GR-05 reason column or the D1 IEntitlementStore. Decisions: the port type lives in Abstractions (Commerce cannot reference the Entitlement project); the reason column is a model 01 correction made by the planning pair that added this task and is mapped by the CLOUD.03 manifest; the D1 store is the Entitlement module's own persistence (module owners own their plans, architecture 01 section 5), not CLOUD.63, which joins the same statements to the shared families once Commerce exists. Plan execution: a module project references only Abstractions (docs/storage-plans.md), so this task creates the generic plan-execution port in Abstractions/Storage/** and its adapter in Storage.D1/ModuleBinding/**, and an Entitlement plan may name only entitlement_ and platform_ tables. Revision guard: the per-workspace revision COM.05's port commits under is held in the new Entitlement-owned table entitlement.revision (model 01, added by the planning pair that added this task), never in a workspace_ table, and every Entitlement commit guards and increments it in the same batch. One point the model still does not settle is raised by this task through a Design pair before it edits, never decided in code (D-001; ADP-07 forbids new schema meanings): the persistence of the workspace status facts, feature releases and definitions activations that COM.05's record set reads (the model has no table for them; workspace.state and the commerce.subscription fields stay owned by their modules). Until that is settled the store covers the entitlement-owned tables only.
 ```
