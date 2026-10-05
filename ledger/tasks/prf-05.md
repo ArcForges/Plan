@@ -75,7 +75,7 @@ PRF.05 listed no completion prerequisite, which made the follow-up claimable at 
 
 ### Live observation against the proof ingress (new)
 
-Three runs of the Native AOT win-x64 probe, started directly (network-bound, not the build slot), under the Plan lease `RES-cloud-deployment` (epoch 14, claimed 10:59:26Z, released 11:00:49Z), with no credential, against `https://proof.arcforges.com/api`. Windows 11 Pro for Workstations build 26300, .NET 10.0.11 runtime.
+**Claimant-reported** (local runs and evidence files; none of this is in a job log or a provider receipt; the reviewer did not rerun them): three runs of the Native AOT win-x64 probe, started directly (network-bound, not the build slot), under the Plan lease `RES-cloud-deployment` (epoch 14, claimed 10:59:26Z, released 11:00:49Z), with no credential, against `https://proof.arcforges.com/api`. Windows 11 Pro for Workstations build 26300, .NET 10.0.11 runtime.
 
 | Run | UTC | Options | Result |
 |---|---|---|---|
