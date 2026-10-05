@@ -204,11 +204,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Assistant.Abstractions/**; DesktopPlatform:tests/AssistantAbstractionsTests/**
+Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Assistant.Abstractions/**; DesktopPlatform:tests/AssistantAbstractionsTests/**; DesktopPlatform:eng/policy/architecture-contract-tests.json (append only exact APP.07 public API-to-focused-test bindings in the AssistantAbstractionsTests project); DesktopPlatform:eng/provenance/files.json (APP.07 owned-source inventory rows for the new source and test files only)
+Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
 Unblocks: APP.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit/process tests: two windows/different drafts, independent crash, no data loss; no live-environment CI.
 Completion evidence for the ledger: Two-window and crash-recovery test results.
+Notes: Write-scope repair 2026-10-05 (w-c20261005-app07): eng/policy/architecture-contract-tests.json and eng/provenance/files.json are append-only supporting bindings for the new Assistant.Abstractions lifecycle source and tests (RP-10 requires a [Fact] binding for every public API method of the Abstractions project; the provenance inventory lists every owned source file). They add no dependency, package ID, version, project or pin. The task composes no Shell, Capabilities or Persistence.Sqlite (APP.08 owns the real sample); its tests use test-only ports for the local draft store, Cloud link and canonical data.
 ```
 
 ```text
