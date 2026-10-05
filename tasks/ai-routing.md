@@ -133,6 +133,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.07.ai-routing is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] AIR.02: metered attempts to record interactions against
+- [artifact] CLOUD.69: the Cloud-side correlation seam for the provider interaction record
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -141,6 +142,7 @@ Unblocks: AIR.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Trace-separation test; content-redaction test; cost-explainability test -- offline.
 Completion evidence for the ledger: Trace separation, redaction and cost explainability results.
+Notes: Planning repair 2026-10-05: every provider interaction record carries the call's correlation identity and the provider request identifier (CR-05) through the CLOUD.69 seam; this is part of this task's own acceptance and of the real provider hop that PLT.48's correlation scenario names as a later owner (no new write scope).
 ```
 
 ```text

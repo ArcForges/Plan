@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 441 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -51,7 +51,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
-| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (58) |
+| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (59) |
 | ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (15) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
@@ -362,7 +362,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.02 | Cloud | M | CLOUD.01, ADOPT.07.cloud (adoption) | Nineteen module boundaries and D1 named-plan bridge |
 | CLOUD.03 | Cloud | L | CLOUD.02, ADOPT.07.cloud (adoption) | D1 migration runner and exact physical mapping |
 | CLOUD.04 | Cloud | M | CLOUD.02, CLOUD.03, ADOPT.07.cloud (adoption) | Receipts, outbox, inbox dedup and change archive |
-| CLOUD.05 | Cloud | M | CLOUD.01, CLOUD.04, ADOPT.07.cloud (adoption) | Finite durable jobs (Cron/Queue/Workflow-woken endpoints) |
+| CLOUD.05 | Cloud | M | CLOUD.01, CLOUD.04, CLOUD.69, ADOPT.07.cloud (adoption) | Finite durable jobs (Cron/Queue/Workflow-woken endpoints) |
 | CLOUD.06 | Cloud | M | CLOUD.02, ADOPT.07.cloud (adoption) | Shared atomic family guarded-batch engine |
 | CLOUD.07 | Cloud | L | CLOUD.02, CLOUD.03, CLOUD.06, ADOPT.07.cloud (adoption) | Capacity, Container/D1 integration producer and harness |
 | CLOUD.08 | Cloud | S | CLOUD.01, CLOUD.02, ADOPT.07.cloud (adoption) | Failure isolation and readiness surface |
@@ -390,7 +390,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.30 | Cloud | M | CLOUD.29, ADOPT.07.cloud (adoption) | Scoped subscription (owner/product/filter/recovery-generation binding) |
 | CLOUD.31 | Cloud | M | CLOUD.30, CLOUD.04, ADOPT.07.cloud (adoption) | Cursor and gap handling (DO projection backed by D1 outbox) |
 | CLOUD.32 | Cloud | S | CLOUD.31, ADOPT.07.cloud (adoption) | Durable unary fallback (Poll/readOutput) |
-| CLOUD.33 | Cloud | M | CLOUD.31, CLOUD.05, ADOPT.07.cloud (adoption) | Publication and wake (D1 outbox to bounded DO feed via Queues) |
+| CLOUD.33 | Cloud | M | CLOUD.31, CLOUD.05, CLOUD.69, ADOPT.07.cloud (adoption) | Publication and wake (D1 outbox to bounded DO feed via Queues) |
 | CLOUD.34 | Cloud | S | CLOUD.29, ADOPT.07.cloud (adoption) | Bounded stream lifecycle |
 | CLOUD.35 | Cloud | M | CLOUD.33, CLOUD.34, ADOPT.07.cloud (adoption) | Reusable stream consumer adapters |
 | CLOUD.36 | Cloud | M | DEV.14, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration (tool-result acceptance) |
@@ -418,6 +418,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.66 | Cloud | M | CLOUD.15, COM.10, CLOUD.21, CLOUD.22, ADOPT.07.cloud (adoption) | Every enumerated sensitive operation wired to the step-up mechanism |
 | CLOUD.67 | Cloud | M | CLOUD.51, HAR.00, HAR.02, HAR.03, AIR.00, ADOPT.07.cloud (adoption) | Combined AI reopen after Cloud disaster-recovery restore |
 | CLOUD.68 | Cloud | M | CON.24, CLOUD.39, CLOUD.21, ADOPT.07.cloud (adoption) | ArcScope library read model and companion notifications |
+| CLOUD.69 | Cloud | M | CLOUD.01, ADOPT.07.cloud (adoption) | Correlation acceptance and propagation across ingress, response meta and queue wake |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 
@@ -511,7 +512,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | AIR.01 | Cloud | M | POL.02, ADOPT.07.ai-routing (adoption) | Tariffs and cost dimensions |
 | AIR.02 | Cloud | L | COM.08, AIR.00, ADOPT.07.ai-routing (adoption) | Metering and settlement |
 | AIR.03 | Cloud | M | AIR.00, ADOPT.07.ai-routing (adoption) | Selected supplier and realm routing (no BYOK) |
-| AIR.04 | Cloud | M | AIR.02, ADOPT.07.ai-routing (adoption) | Provider interaction records, redaction and cost transparency |
+| AIR.04 | Cloud | M | AIR.02, CLOUD.69, ADOPT.07.ai-routing (adoption) | Provider interaction records, redaction and cost transparency |
 | AIR.05 | AI | M | AIR.00, ADOPT.08.ai-routing (adoption) | Content-origin marking at the provider generation boundary |
 | AIR.06 | Cloud | M | AIR.02, ADOPT.07.ai-routing (adoption) | Funding and uncertain-outcome proof |
 | AIR.07 | AI | M | AIR.00, ADOPT.08.ai-routing (adoption) | Provider test-environment coverage |
