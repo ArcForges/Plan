@@ -616,7 +616,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] CLOUD.19: the browser cookie-session adapter and native session validation to authenticate requests before they reach a handler
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.PublicApi/Endpoints/**
-Unblocks: AND.04, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.28, CLOUD.29, CLOUD.64, CLOUD.66, CLOUD.68, COM.13, SIM.05
+Unblocks: AND.04, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.28, CLOUD.29, CLOUD.64, CLOUD.66, CLOUD.68, COM.13, PRF.05, SIM.05
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline + opt-in tests: each method category through native and TS transport, malformed/unknown request values, denied scope before handler
 Completion evidence for the ledger: every selected operation has a concrete typed endpoint and owner; no ad-hoc REST business API
@@ -642,7 +642,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.PublicApi/Errors/**
-Unblocks: CLOUD.26, CLOUD.28, CLOUD.64, CLOUD.66
+Unblocks: CLOUD.26, CLOUD.28, CLOUD.64, CLOUD.66, PRF.05
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline + opt-in tests: HTTP200-with-error-trailers, partial frame, 64-bit values, deadline/cancel-after-dispatch, command-receipt reconciliation
 Completion evidence for the ledger: every C#/TS/Kotlin client distinguishes transport uncertainty from a domain refusal
