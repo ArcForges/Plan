@@ -70,12 +70,12 @@ PRF.08 stays `delivered`: the live acceptance is still not met. This section rec
 
 ## Remaining acceptance and next action
 
-PRF.08 stays `delivered`. Not met, with the prerequisite and owner of each:
+PRF.08 stays `delivered`. Not met; each item has a graph owner as a completion prerequisite of PRF.08 (Design [pull request 247](https://github.com/ArcForges/ArcForges-Design/pull/247) and Plan [pull request 325](https://github.com/ArcForges/Plan/pull/325), which add the edges and the new task CLOUD.71; until those merge the owners below are the proposed ones):
 
-- **Same-origin deployed ingress for the profiles.** The proof Worker serves no Web assets. Needs a Cloud task that serves the built profiles on the proof origin (and a proof deploy) or WEB.30 against a real deployed producer. Until then the forwarder is a substitute, not same-origin routing.
-- **Real session, cookie and CSRF round trip and Chat round trip from the built profiles in a browser, exact values, typed failures and cancellation on the real path.** Needs a healthy foundation Container (CLOUD.08 diagnosing the 503 flapping) and a repeat of `node apps/app/scripts/proof-run.ts` under `RES-cloud-deployment` on the merged head, once.
-- **Exact int64 and decimal over generated gRPC-Web.** The proof exposes no generated service that carries them; needs a Contracts service plus a Cloud route (Contracts and Cloud owners).
-- **Interaction budgets.** Needs that complete live run; then `apps/app/interaction-budgets.json` is added through a reviewed Web change. Design defines no absolute interaction ceiling; any ceilings are regression guards derived from observation.
-- **Visual Studio IDE (F5) check of the solution**, which `tooling/ide.ts` does not claim.
+- **Same-origin deployed ingress for the profiles: CLOUD.71** (new task: serve the built profiles from the proof origin through an assets binding, the bytes published by the Web main-push build and deployed by the manual proof job). The proof Worker serves no Web assets; no earlier task owned this, and WEB.30 cannot (it consumes PRF.08). Until CLOUD.71 completes, the forwarder is a substitute, not same-origin routing.
+- **A stable deployed ingress for the browser round trips: CLOUD.08** (readiness surfaces and the diagnosis of the foundation Container's 503 flapping). With a healthy ingress and CLOUD.71 done, repeat `node apps/app/scripts/proof-run.ts` once under `RES-cloud-deployment` on the then-current head (real session, cookie and CSRF round trip and Chat round trip from the built profiles in a browser, session expiry and cancellation on the real path).
+- **Exact int64, uint64 and decimal values, typed failures and cancellation over generated gRPC-Web: CLOUD.21 and CLOUD.22** (the same prerequisites PRF.05 carries). The proof exposes no generated service that carries them.
+- **Interaction budgets:** produced by that complete live run and added as `apps/app/interaction-budgets.json` through a reviewed Web change; carried by CLOUD.71's evidence. Design defines no absolute interaction ceiling; any ceilings are regression guards derived from observation.
+- **Visual Studio IDE (F5) check of the solution:** a local human observation of one environment; deliberately without a graph owner. `tooling/ide.ts` does not claim it. Record it in a later amendment if the maintainer performs it; it does not block the other items.
 
-Completion needs a further reviewed amendment of this record after those runs.
+Completion needs a further reviewed amendment of this record after those tasks are complete.
