@@ -34,3 +34,7 @@ No runtime, device, GUI, browser, live-service, inference or installed-consumer 
 ## Closure
 
 Substitutes still in use: none introduced. The claim, reviews and receipts are retained on the PRs above. The GOV.15 completion follow-up (state `complete`) needs GOV.07 complete and a reviewed amendment of this record.
+
+## Amendment: snapshot expiry date and blast radius
+
+The snapshot was collected 2026-10-05 and the 45-day bound makes `verify` fail SI-10 from about 2026-11-19. That failure fails the `stage-integration` job, therefore the aggregate `ci` job and the Publish NuGet main run, for every DesktopPlatform change until the DesktopPlatform integration owner runs `snapshot`, reviews the diff and merges the refreshed `snapshot.json`. Follow-up (not implemented): a warning at about 30 days so the refresh precedes the failure, and a scheduled refresh reminder; the refresh is also needed earlier whenever another repository changes its published metadata.
