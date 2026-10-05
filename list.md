@@ -365,7 +365,7 @@ Tasks: 446 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.03 | Cloud | L | CLOUD.02, ADOPT.07.cloud (adoption) | D1 migration runner and exact physical mapping |
 | CLOUD.04 | Cloud | M | CLOUD.02, CLOUD.03, ADOPT.07.cloud (adoption) | Receipts, outbox, inbox dedup and change archive |
 | CLOUD.05 | Cloud | M | CLOUD.01, CLOUD.04, CLOUD.69, ADOPT.07.cloud (adoption) | Finite durable jobs (Cron/Queue/Workflow-woken endpoints) |
-| CLOUD.06 | Cloud | M | CLOUD.02, ADOPT.07.cloud (adoption) | Shared atomic family guarded-batch engine |
+| CLOUD.06 | Cloud | M | CLOUD.02, CLOUD.03, ADOPT.07.cloud (adoption) | Shared atomic family guarded-batch engine |
 | CLOUD.07 | Cloud | L | CLOUD.02, CLOUD.03, CLOUD.06, ADOPT.07.cloud (adoption) | Capacity, Container/D1 integration producer and harness |
 | CLOUD.08 | Cloud | S | CLOUD.01, CLOUD.02, ADOPT.07.cloud (adoption) | Failure isolation and readiness surface |
 | CLOUD.09 | Cloud | M | CLOUD.01, CLOUD.03, ADOPT.07.cloud (adoption) | Selfhost.v1 deployment profile |
