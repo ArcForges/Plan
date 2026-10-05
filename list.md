@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 446 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 447 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -51,7 +51,7 @@ Tasks: 446 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
-| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (61) |
+| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (62) |
 | ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (16) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
@@ -371,11 +371,11 @@ Tasks: 446 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.09 | Cloud | M | CLOUD.01, CLOUD.03, ADOPT.07.cloud (adoption) | Selfhost.v1 deployment profile |
 | CLOUD.10 | Cloud | M | CLOUD.39, SIM.10, ADOPT.07.cloud (adoption) | Owned-artifact closure and launch-capacity.v1 acceptance |
 | CLOUD.11 | Cloud | M | CLOUD.02, CLOUD.03, CLOUD.06, CLOUD.04, ADOPT.07.cloud (adoption) | Core identity model (realm, user, authIdentity, single-owner workspace) |
-| CLOUD.12 | Cloud | L | CLOUD.11, ADOPT.07.cloud (adoption) | Native and browser authentication with real Postmark/SES mail delivery |
-| CLOUD.13 | Cloud | M | CLOUD.11, CLOUD.06, ADOPT.07.cloud (adoption) | Device, installation, instance and session (four distinct concepts) |
+| CLOUD.12 | Cloud | L | CLOUD.11, CLOUD.72, ADOPT.07.cloud (adoption) | Native and browser authentication with real Postmark/SES mail delivery |
+| CLOUD.13 | Cloud | M | CLOUD.11, CLOUD.06, CLOUD.72, ADOPT.07.cloud (adoption) | Device, installation, instance and session (four distinct concepts) |
 | CLOUD.14 | Cloud | S | CLOUD.13, ADOPT.07.cloud (adoption) | Device trust and remote gating |
 | CLOUD.15 | Cloud | M | CLOUD.12, CLOUD.13, ADOPT.07.cloud (adoption) | Step-up challenges for sensitive operations |
-| CLOUD.16 | Cloud | M | CLOUD.11, ADOPT.07.cloud (adoption) | PAT and actor authorization |
+| CLOUD.16 | Cloud | M | CLOUD.11, COM.16, ADOPT.07.cloud (adoption) | PAT and actor authorization |
 | CLOUD.17 | Cloud | M | CLOUD.12, ADOPT.07.cloud (adoption) | Recovery, account states and deletion |
 | CLOUD.18 | DesktopPlatform | M | CLOUD.12, PLT.40, ADOPT.02.cloud (adoption) | Independent native session integration (Platform client primitives) |
 | CLOUD.19 | Cloud | L | CLOUD.01, CLOUD.11, CLOUD.13, ADOPT.07.cloud (adoption) | Browser cookie-session adapter and full account-surface closure |
@@ -423,6 +423,7 @@ Tasks: 446 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.69 | Cloud | M | CLOUD.01, ADOPT.07.cloud (adoption) | Correlation acceptance and propagation across ingress, response meta and queue wake |
 | CLOUD.70 | Cloud | S | CLOUD.03, CLOUD.01, ADOPT.07.cloud (adoption) | Gated D1 migration deployment step and compatible-rollback flow |
 | CLOUD.71 | Cloud | S | PRF.07, PRF.08, ADOPT.07.cloud (adoption) | Serve the built Web profiles from the proof origin |
+| CLOUD.72 | Cloud | M | CLOUD.11, COM.16, CLOUD.06, CLOUD.04, ADOPT.07.cloud (adoption) | Identity production store, identifier source and enrollment family call over the plan-execution port |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 
