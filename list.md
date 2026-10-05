@@ -33,7 +33,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.execution | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Execution engine (9) |
 | ADOPT.02.extensions | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Extension platform and integrations (7) |
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
-| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (7) |
+| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (8) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (13) |
 | ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (55) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
@@ -99,6 +99,7 @@ Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.17 | DesktopPlatform | M | ADOPT.02.governance (adoption) | Retire the native families outside the product family and move the still-image shim |
 | GOV.18 | DesktopPlatform | M | CON.23, ADOPT.02.governance (adoption) | Reduce the DesktopPlatform policy data and re-pin the design-policy export |
 | GOV.19 | AI | S | ADOPT.08.governance (adoption) | AI Wrangler and undici dependency admission (clear the repository security gate) |
+| GOV.20 | DesktopPlatform | S | GOV.06, ADOPT.02.governance (adoption) | Build.Policy banned-symbol scanner: audit unmanaged function-pointer invocations instead of throwing |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 
