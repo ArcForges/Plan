@@ -217,7 +217,7 @@ Tasks: 443 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.52 | DesktopPlatform | L | PLT.31, PLT.49, ADOPT.02.platform (adoption) | Desktop diagnostics and consent |
 | PLT.53 | DesktopPlatform | S | PLT.47, PLT.48, PLT.49, PLT.50, PLT.51, PLT.52, ADOPT.02.platform (adoption) | Publish Observability packages and verify real integration |
 | PLT.54 | DesktopPlatform | M | PLT.45, NAT.14, ADOPT.02.platform (adoption) | Real hostile-input containment proof with production parser libraries loaded in ContentSandbox |
-| PLT.57 | DesktopPlatform | M | PLT.24, PLT.38, APP.01, ADOPT.02.platform (adoption) | End-to-end capability invocation with real security enforcement inside one product |
+| PLT.57 | DesktopPlatform | M | PLT.24, PLT.38, APP.01, PLT.44, ADOPT.02.platform (adoption) | End-to-end capability invocation with real security enforcement inside one product |
 
 ## Native producers and probes — [prompts](tasks/native.md)
 
