@@ -192,7 +192,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Cloud:src/Modules/PackageCatalog/PackageCatalog.Domain/**; Cloud:src/Modules/PackageCatalog/PackageCatalog.Application/**; Cloud:src/Modules/PackageCatalog/PackageCatalog.Infrastructure/**
+Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.PackageCatalog/** (the one project of the module, CLOUD.02 layout; its Domain, Application and Infrastructure layers are folders and namespaces)
 Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
 Unblocks: EXT.07, EXT.08, EXT.90, OPS.11
 
