@@ -55,7 +55,7 @@ Adoption slices (claim, review and record each separately as ledger/tasks/<slice
 - ADOPT.02.extensions: Adopt DesktopPlatform: Extension platform and integrations (opens 7 tasks)
 - ADOPT.02.foundation: Adopt DesktopPlatform: Foundation values (opens 7 tasks)
 - ADOPT.02.governance: Adopt DesktopPlatform: Family governance and policy tests (opens 9 tasks; records 3 accepted tasks as inherited)
-- ADOPT.02.native: Adopt DesktopPlatform: Native producers and probes (opens 13 tasks)
+- ADOPT.02.native: Adopt DesktopPlatform: Native producers and probes (opens 14 tasks)
 - ADOPT.02.platform: Adopt DesktopPlatform: Desktop platform mechanisms (opens 55 tasks)
 - ADOPT.02.policy: Adopt DesktopPlatform: Dynamic policy and configuration (opens 1 task)
 - ADOPT.02.release: Adopt DesktopPlatform: Release readiness and family release (opens 2 tasks)
@@ -490,8 +490,8 @@ Claim and handoff record: claims/adopt-02-native (python tools/delivery.py claim
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- NAT.01, NAT.03, NAT.05, NAT.06, NAT.11, NAT.13, NAT.14, NAT.22, NAT.24, NAT.25, NAT.28, NAT.29, NAT.30
-Opens when the record is merged: NAT.01, NAT.03, NAT.05, NAT.06, NAT.11, NAT.13, NAT.14, NAT.22, NAT.24, NAT.25, NAT.28, NAT.29, NAT.30, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- NAT.01, NAT.03, NAT.05, NAT.06, NAT.11, NAT.13, NAT.14, NAT.15, NAT.22, NAT.24, NAT.25, NAT.28, NAT.29, NAT.30
+Opens when the record is merged: NAT.01, NAT.03, NAT.05, NAT.06, NAT.11, NAT.13, NAT.14, NAT.15, NAT.22, NAT.24, NAT.25, NAT.28, NAT.29, NAT.30, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-02-native.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
