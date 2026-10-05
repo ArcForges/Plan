@@ -459,7 +459,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:eng/**; Design:docs/assurance/wp05-90-*.md, wp05-stage-acceptance.md/.json
+Permitted write scope: DesktopPlatform:eng/**; DesktopPlatform:.github/workflows/pr-gate.yml (one new offline job that runs the cross-repository integration tests and verification in the pull-request pipeline; no change to any existing job, trigger, permission, action pin or secret handling); Design:docs/assurance/wp05-90-*.md, wp05-stage-acceptance.md/.json
 Shared resources (follow the owner protocol): RES-design-evidence (append): Receipts and gate records are separate files per task or gate; indexes are appended; historical records are not rewritten.
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Reads published package manifests only (no full clone of every repository); offline; PR CI.
