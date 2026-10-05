@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 439 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 440 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -34,7 +34,7 @@ Tasks: 439 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.extensions | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Extension platform and integrations (7) |
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
 | ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (7) |
-| ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (13) |
+| ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (14) |
 | ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (55) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
@@ -214,7 +214,7 @@ Tasks: 439 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.51 | DesktopPlatform | S | PLT.23, ADOPT.02.platform (adoption) | Health probes |
 | PLT.52 | DesktopPlatform | L | PLT.31, PLT.49, ADOPT.02.platform (adoption) | Desktop diagnostics and consent |
 | PLT.53 | DesktopPlatform | S | PLT.47, PLT.48, PLT.49, PLT.50, PLT.51, PLT.52, ADOPT.02.platform (adoption) | Publish Observability packages and verify real integration |
-| PLT.54 | DesktopPlatform | M | PLT.45, NAT.14, ADOPT.02.platform (adoption) | Real hostile-input containment proof with production parser libraries loaded in ContentSandbox |
+| PLT.54 | DesktopPlatform | M | PLT.45, NAT.15, ADOPT.02.platform (adoption) | Real hostile-input containment proof with production parser libraries loaded in ContentSandbox |
 | PLT.57 | DesktopPlatform | M | PLT.24, PLT.38, APP.01, ADOPT.02.platform (adoption) | End-to-end capability invocation with real security enforcement inside one product |
 
 ## Native producers and probes — [prompts](tasks/native.md)
@@ -227,13 +227,14 @@ Tasks: 439 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | NAT.06 | DesktopPlatform | L | GOV.17, ADOPT.02.native (adoption) | Common native ABI: preambles, pack8 records, ownership, cancellation, bounded buffers |
 | NAT.11 | DesktopPlatform | M | NAT.06, PLT.45, GOV.17, ADOPT.02.native (adoption) | Image family: still-image codecs (PNG/TIFF/EXR) |
 | NAT.13 | DesktopPlatform | M | NAT.06, GOV.17, ADOPT.02.native (adoption) | Instruments family: serial and USB devices (NEW library) |
-| NAT.14 | DesktopPlatform | L | PLT.45, NAT.06, GOV.17, ADOPT.02.native (adoption) | Pdf family: PDFium and production parser containment in the WP11 helper (NEW library) |
+| NAT.14 | DesktopPlatform | L | PLT.45, NAT.06, GOV.17, ADOPT.02.native (adoption) | Pdf family: arcpdf-abi export set, ArcForges.Native.Pdf binding and production parser composition seam in the WP11 helper (NEW library; real PDFium is NAT.15) |
+| NAT.15 | DesktopPlatform | L | NAT.14, PLT.45, ADOPT.02.native (adoption) | Pdf family: real PDFium (chromium/8044) build admission, binding and real-parser containment acceptance |
 | NAT.22 | DesktopPlatform | S | NAT.11, ADOPT.02.native (adoption) | Image package production: all 6 RIDs |
 | NAT.24 | DesktopPlatform | S | NAT.13, ADOPT.02.native (adoption) | Instruments package production: all 6 RIDs |
-| NAT.25 | DesktopPlatform | M | NAT.14, PLT.45, ADOPT.02.native (adoption) | Pdf package production: all 6 RIDs + ContentSandbox Runtime.<rid> composition |
+| NAT.25 | DesktopPlatform | M | NAT.15, PLT.45, ADOPT.02.native (adoption) | Pdf package production: all 6 RIDs + ContentSandbox Runtime.<rid> composition |
 | NAT.28 | DesktopPlatform | M | NAT.22, NAT.24, NAT.25, ADOPT.02.native (adoption) | Dependency adoption receipts and hardware-lab closure |
 | NAT.29 | DesktopPlatform | M | PRF.02, PRF.04, PRF.05, PRF.06, PRF.07, PRF.08, PRF.09, PRF.10, ADOPT.02.native (adoption) | Verify the owned WP06 artifact set and real cross-runtime integration |
-| NAT.30 | DesktopPlatform | M | NAT.06, NAT.11, NAT.13, NAT.14, NAT.22, NAT.24, NAT.25, NAT.28, NAT.01, NAT.03, NAT.05, PLT.54, GOV.17, ADOPT.02.native (adoption) | Verify the complete native producer set as one immutable candidate |
+| NAT.30 | DesktopPlatform | M | NAT.06, NAT.11, NAT.13, NAT.14, NAT.15, NAT.22, NAT.24, NAT.25, NAT.28, NAT.01, NAT.03, NAT.05, PLT.54, GOV.17, ADOPT.02.native (adoption) | Verify the complete native producer set as one immutable candidate |
 
 ## Application composition — [prompts](tasks/app-composition.md)
 
