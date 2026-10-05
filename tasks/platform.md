@@ -1055,7 +1055,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Security/**; DesktopPlatform:eng/policy/architecture-contract-tests.json (append only PLT.37 RP-10 direct public-API-to-[Fact] mappings from src/BuildingBlocks/ArcForges.Security/RiskModel.cs to src/BuildingBlocks/ArcForges.Security/Tests/RiskModelTests.cs); DesktopPlatform:eng/provenance/files.json (ADP-07 append only firstParty rows for src/BuildingBlocks/ArcForges.Security/RiskModel.cs and src/BuildingBlocks/ArcForges.Security/Tests/RiskModelTests.cs)
+Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Security/**; DesktopPlatform:eng/policy/architecture-contract-tests.json (append only PLT.37 direct public-API-to-[Fact] mappings from src/BuildingBlocks/ArcForges.Security/RiskModel.cs to src/BuildingBlocks/ArcForges.Security/Tests/RiskModelTests.cs); DesktopPlatform:eng/provenance/files.json (append only firstParty rows, per the adoption rules, for src/BuildingBlocks/ArcForges.Security/RiskModel.cs and src/BuildingBlocks/ArcForges.Security/Tests/RiskModelTests.cs)
 Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
 Unblocks: PLT.38, PLT.39, PLT.46
 
@@ -1369,13 +1369,14 @@ Kind/size: producer/M. Baseline: not-started.
 Outcome: Correlation created at the originating edge or accepted from a validated client value, propagated across HTTP/queue/worker/realtime/provider calls once, in shared infrastructure; causation records which operation caused which; a user-visible task/run identifier resolves to its trace.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-12.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\12-observability-foundation.md, anchor rule-wp-12.01
+- WP-12.01 (the shared telemetry infrastructure and the originating edge: validated typed correlation created or accepted at the origin, propagation across the local hop kinds, causation, task/run resolution (the Cloud ingress, host, ResponseMeta/ArcError and queue-wake share is mapped to CLOUD.69)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\12-observability-foundation.md, anchor rule-wp-12.01
 
 Entry condition: adoption slice ADOPT.02.platform is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] PLT.47: emission surface
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] CLOUD.01: a real Cloud hop to prove the full HTTP/queue/worker/realtime/provider chain
+- [integration] CLOUD.69: the Cloud-side correlation acceptance and propagation across ingress, host, ResponseMeta/ArcError and queue wake, observable in the isolated proof environment
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Observability/**; DesktopPlatform:eng/policy/architecture-contract-tests.json (append only exact PLT.48 public API-to-test bindings for the existing Observability test project); DesktopPlatform:eng/provenance/files.json (append only first-party paths for new PLT.48 source and test files)
 Shared resources (follow the owner protocol): RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.; RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
@@ -1383,6 +1384,7 @@ Unblocks: PLT.53
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: synthetic end-to-end action producing one connected trace across available local hop kinds; resolution test from task identifier to trace; validation test rejecting malformed client-supplied correlation.
 Completion evidence for the ledger: A single connected trace across every available hop kind.
+Notes: Planning repair 2026-10-05 (DLV-34, DLV-41; scope moves only; no obligation or acceptance removed). The completion edge CLOUD.01 alone could never be satisfied by an observation: CLOUD.01 delivered the ingress without any correlation handling, and no Cloud task owned it. CLOUD.69 now owns the Cloud share (HTTP, Worker, host, ResponseMeta/ArcError, queue wake). The completion follow-up, after CLOUD.01 and CLOUD.69 are complete, performs the task's own remaining acceptance as one local opt-in run (P2-017, the PLT.53 precedent): a throwaway consumer outside the repository restores only the published ArcForges.Observability and generated PublicApi packages, creates the typed origin with CorrelationPropagation.BeginOrigin, sends it in RequestMeta.correlationId to the isolated proof environment under the RES-cloud-deployment lease, and records that the identifier returns in ResponseMeta/ArcError and the wake path and that the task identifier resolves to the connected local trace. The evidence says 'every available hop kind': the realtime hop and the outbound provider hop have no Cloud producer yet, are not claimed, and are recorded as pending later owners with their closing gates (WP-12.90 staged integration): CLOUD.33 (event publication, Event.correlationId) and AIR.04 (provider request identifier, CR-05) start from the CLOUD.69 seam and keep that propagation in their own acceptance. PLT.48 write scope is unchanged.
 ```
 
 ```text
