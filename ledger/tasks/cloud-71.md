@@ -75,7 +75,7 @@ Worker `w-c20261006-cloud71b`, claim epoch 2 (claimed 03:43:19Z). The directive:
   - 9 × 504 `RPC deadline exceeded.` on `/api/healthz` after 15.29 to 15.92 s (the route's 15 s bound);
   - 5 × gRPC status 4 on `SayHello` after 10.86 to 11.21 s (the 10 s bound);
   - earlier, 7 × the classified 503 `Cloud container is temporarily unavailable.` with `Retry-After: 2`, after 0.70 to 14.30 s.
-- **Cold starts.** The recurring "cold" Hello start of about 76 s (75,997 and 75,988 ms) is the 60 s idle stop plus one `/api/healthz` attempt. A start with a free instance took 1.6 to 14 s.
+- **Cold starts.** The recurring "cold" Hello start of about 76 s (75,997 and 75,988 ms) is the 60 s idle stop plus one `/api/healthz` attempt. A start with a free instance took 2.15 to 14.42 s (first successes of 2,152, 2,478, 4,318, 10,125 and 14,419 ms in the probe file).
 
 **CPU is not the cause.** A local win-x64 Native AOT build of `b01ff51`, run through the build slot (evidence `cloud-71-diagnosis-local-cpu.json`), showed:
 - start to first `/healthz` took 31 to 63 ms of CPU;
@@ -149,7 +149,7 @@ The `source-map-js` admission that unblocked Web #32 is Web #33 (worker `w-c2026
 - Every live step held `RES-cloud-deployment`, and each lease was released with a note.
 - CI ran only the dispatches named here. A `proof=observe` dispatch only reads the provider's records of the proof Container application.
 - No step touched production.
-- No request was sent to the proof origin outside the steps in this table.
+- From 05:35:59Z on, no request was sent to the proof origin outside the steps in this table. The earlier diagnosis run of lease epoch 20 is described under Diagnosis, and its requests are listed under Disclosures.
 
 **How to read the table.**
 - **Evidence:** the claimant-reported rows name their evidence file, and the job-log-observed rows name their run.
@@ -293,14 +293,19 @@ Each earlier failure has its cause recorded and fixed; the passing run is the re
 ### Disclosures
 
 - **User-ordered stop.** At the user's order the coordinator cancelled run 37421694302, which was complete by 06:06:37Z. Its observe job had already succeeded at 06:04:00Z; Verify of that run failed only because the cancelled jobs did not run. Lease epoch 21 was released at 06:11Z. Nothing was dispatched or sent until the user authorised the follow-up to continue.
-- **Anonymous requests from the workstation.** The diagnosis probes, the requests before the change and both concurrency windows sent anonymous `/api/healthz`, `SayHello` and bootstrap requests, each under the lease. Neither live run of this follow-up was preceded or accompanied by a pre-warm, keep-alive or any other request.
+- **Requests from the workstation outside the live runs.** All were sent under the lease.
+  - The diagnosis run (epoch 20) sent anonymous `/api/healthz`, `SayHello` and bootstrap requests. It also sent:
+    - three operator-signed `POST /proof/v1/readiness` requests, at 03:48:55Z (200), 03:56:11Z (503) and 04:08:02Z (503), signed with the operator key loaded through Cloud's own `eng/verification/proof-operator.ts`;
+    - one anonymous `GET /`, at 04:03:28Z (the root check).
+  - The requests before the change and both concurrency windows sent anonymous `/api/healthz`, `SayHello` and bootstrap requests.
+  - Neither live run of this follow-up was preceded or accompanied by a pre-warm, keep-alive or any other request.
 - **Secrets.** No secret, token, cookie, session handle or account-private value was printed or written. The operator key was read only by the repository's own scripts.
 
 ### Follow-ups and notes (not part of this task's acceptance)
 
 - **TH-02 (interaction budgets).**
   - The ceilings come from one run of five samples, from one workstation, with the Container locations of that run not observed. Earlier observations placed the instances in cmh02, yyz04 and ewr05.
-  - The max ceilings are the most sensitive to noise: the `chat.greeting` maximum was 1,367 ms against 858 to 866 ms for the other samples.
+  - The max ceilings are the most sensitive to noise. The results file keeps only the minimum, median and maximum of each interaction, and for `chat.greeting` these are 858, 863 and 1,367 ms, so its maximum lies far above its median.
   - A single over-ceiling result must be sampled again before it counts as a regression (Design TH-02: a regression gate needs repeated sampling, never a single-machine fluctuation).
 - **For the Architecture Owner (CLOUD.10, PG-26; no production change).**
   - The launch profile's Container allocation (Design `docs/architecture/data-model/04-d1-execution-profile.md`) uses four fixed named slots per realm with `max_instances=4` as the global deployment ceiling. That leaves no headroom between the names and the ceiling, and the profile says only real L-16 measurements can prove sufficiency.
@@ -310,6 +315,7 @@ Each earlier failure has its cause recorded and fixed; the passing run is the re
   - Production keeps `max_instances` 1 for its single Hello instance.
 - **Observation paging** (Cloud #62 review, note 3). The observation reads instances as one page of 100 and does not check `result_info.next_page_token`. Wrangler's default page is 25, and no maximum is documented. This does not matter at a ceiling of 4, and a refused page size fails closed.
 - **Logs permission wording** (Cloud #62 review, note 4). The documented permission of the telemetry query is Workers Observability Write. "May query Workers Logs" therefore means the token holds that write-class permission; a dry query still persists nothing. The token was refused (HTTP 403).
+- **Cloud docs figure.** The merged Cloud `docs/prf-07-foundation-proof.md` says a start with a free instance took 1.6 to 14 seconds. The probe file gives 2.15 to 14.42 s (see Diagnosis), so a later touch of that document can correct the figure.
 - **Web gitleaks allowlist** (owner: the Web dependency maintainer). `.gitleaks.toml` allowlists the browser-resource profiles by `browser-resources-r[123456789]\.json`. That pattern does not match a tenth revision (`r10`), so the next profile revision needs it widened.
 - **Production image observation** (outside CLOUD.71; not investigated; production untouched).
   - The production deployments of main-push runs 37431846044 (about 07:55Z) and 37441726724 both list the current image of `arcforges-cloud-cloudcontainer` as `sha256:4bb6e3e3…`.
