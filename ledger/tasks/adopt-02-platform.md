@@ -101,3 +101,12 @@ Retired native family bindings and legacy policy export remain cleanup owned by 
 Validation: frozen tracked inventory/source inspection, mapped task outcome/obligation/evidence comparison, package inventory and existing baseline receipt reuse, plus `delivery.py check` with explicit Plan worktree and Design roots. No product builds, package downloads, public-byte checks, installed consumers, GUI/runtime, OS containment or live-service checks ran. All platform behavior remains untested until its implementation task supplies evidence. No substitutes are newly introduced or certified here.
 
 Ledger PR review/merge metadata is recorded in the claim and the PR at its exact head; this record makes no self-referential future commit claim.
+
+## Production prerequisite adjustment, 2026-10-06
+
+Added through reviewed production-delivery planning repair. These items are not inherited from the frozen adoption baseline; the existing slice approval opens them subject to their concrete producer prerequisites.
+
+| Task | Classification | Remaining implementation |
+|---|---|---|
+| PLT.58 | not-started | production exporter/composition; complete implementation, ordinary component tests and publication required |
+| PLT.59 | not-started | managed Security/ContentSandbox publication; complete implementation, ordinary component tests and publication required |

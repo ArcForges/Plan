@@ -86,3 +86,11 @@ Existing source is `src/ArcForges.Cloud` (assembly/namespace ArcForges.Cloud), w
 No task is inherited; no inherited task record is created. The slice opens exactly its listed tasks under their normal prerequisites and does not authorize execution outside the selected launcher scope. No new substitute is registered or accepted; no runtime/product gate closes. Removed-product cleanup remains with CON.23/GOV.17/GOV.18, outside these ledger edits.
 
 Validation: source inventory, task/obligation and frozen receipt review, plus explicit-root Plan consistency check. No build, runtime/provider test, artifact download or publication recheck. Untested coverage is every missing outcome and its real integration/acceptance cases. Ledger PR, independent exact-head approval and merge commits are preserved in the PR and claim audit trail.
+
+## Production prerequisite adjustment, 2026-10-06
+
+Added through reviewed production-delivery planning repair. These items are not inherited from the frozen adoption baseline; the existing slice approval opens them subject to their concrete producer prerequisites.
+
+| Task | Classification | Remaining implementation |
+|---|---|---|
+| CLOUD.74 | not-started | restricted commerce provider egress; complete implementation, ordinary component tests and publication required |

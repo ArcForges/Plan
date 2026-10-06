@@ -61,3 +61,12 @@ Only CON.90–CON.92 are inherited, each with its own record. CON.05 and CON.23 
 Validation: inspected merged source, accepted receipt evidence, actual schema/service and fixture inventories, and history; ledger consistency checked with explicit Plan worktree and current Design roots. No new build, runtime, consumer, package download, hash-audit, device, browser, live-service or inference cycle. Historical C#/TS and AOT evidence is reused only within its accepted scope; Kotlin compilation is not three-language behavioral conformance. No substitute proves an owner or commercial scenario.
 
 The ledger PR's exact reviewed head and merge commit are retained in the ADOPT.03.contracts claim and PR review/merge history; no implementation PR is produced by this slice.
+
+## Production prerequisite adjustment, 2026-10-06
+
+Added through reviewed production-delivery planning repair. These items are not inherited from the frozen adoption baseline; the existing slice approval opens them subject to their concrete producer prerequisites.
+
+| Task | Classification | Remaining implementation |
+|---|---|---|
+| CON.26 | not-started | public authorization metadata; complete implementation, ordinary component tests and publication required |
+| CON.27 | not-started | immutable generated Kotlin delivery; complete implementation, ordinary component tests and publication required |
