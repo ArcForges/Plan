@@ -1,14 +1,14 @@
 ---
 task: PLT.33
 status: delivered
-recorded: 2026-10-02
-claimant: w-c20261001-plt33
+recorded: 2026-10-06
+claimant: w-codex-20261006-platform
 epoch: 1
 ---
 
 # Accessibility and localisation baseline
 
-## Evidence
+## Original delivery evidence (2026-10-02)
 
 - Pull requests and merge commits:
   - DesktopPlatform [#114](https://github.com/ArcForges/DesktopPlatform/pull/114), merged as `7644e3172f6c12845c0b0be8b17de423450a931e` over base `d00ccc72`, reviewed head `3fcd3dce35a1fe16145781cc04378cb6b779f7cb` (approval comment [5940240808](https://github.com/ArcForges/DesktopPlatform/pull/114#issuecomment-5940240808)). Earlier heads, each approved on the PR by comment and then superseded: `b417c05e815f112356b1fd0607af7343f518d63e` ([5938969085](https://github.com/ArcForges/DesktopPlatform/pull/114#issuecomment-5938969085)) and `d694217c6cef843275d79486d45879f16b789fa8` ([5939241301](https://github.com/ArcForges/DesktopPlatform/pull/114#issuecomment-5939241301)). `3fcd3dc` is a rebase of `d694217` onto main after PLT.44 merged; the 15 rows of `eng/policy/architecture-contract-tests.json` were re-appended to main's file rather than hand-merged.
@@ -37,3 +37,19 @@ epoch: 1
   - the right-to-left pass is structural (dock-edge, span and arrow mapping), not a rendered layout;
   - plural rules for languages beyond the listed families, and translated-pattern failure handling (a malformed translated pattern throws rather than falling back), until a locale ships.
 - Remaining completion prerequisites and next action: none in the graph. Next action: when a UI adapter and admitted control set exist (PLT.34/PLT.35 and the APP and SCOPE consumers), run and record the dated manual assistive-technology verification against its exact build and add any real UI-framework tests, then amend this record in place to `complete` through a reviewed pull request.
+
+## Production semantic follow-up (2026-10-06)
+
+This follow-up preserves the original delivery and evidence above. It resolves the historical menu/state implementation gaps; it does not establish a real platform accessibility tree or manual assistive acceptance. The current merged graph now records APP.03's actual Avalonia adapter and dated assistive verification as PLT.33's integration completion prerequisite. The historical statement above that the graph had no completion edge describes the original delivery only.
+
+- DesktopPlatform [PR #149](https://github.com/ArcForges/DesktopPlatform/pull/149) merged as `43c0405273b026541e7d01d27ab3d6dd8d0f050d` at 2026-10-06 22:02:36 UTC. The integrated reviewed head is `4b0897c8ade10eec81fa3e89791ab1ff3460b3fe`. Distinct worker `w-codex-20261006-runtime` independently reviewed the complete source and eligibility correction at `1b6d0b204048a1c0240fbb47e2b97d2d3294b093` ([approval](https://github.com/ArcForges/DesktopPlatform/pull/149#issuecomment-6020968116)), then the final accepted-cohort-only rechain ([exact-head approval](https://github.com/ArcForges/DesktopPlatform/pull/149#issuecomment-6025996748)). The final eight owned source/resource/test paths are byte-identical to the approved semantic implementation. The two Shell lock changes come from accepted parent `aa3ef3b48c3a8eb5ee240f4ffcbdfcf4febbeac3`'s Contracts 324 cohort; this follow-up adds no dependency coordinate, package identity or admission receipt. Review is independent by worker identity; comments use the shared GitHub account.
+- Existing enum values and the original constructor remain compatible. Appended MenuBar/Menu/MenuItem roles support actual command-bearing menu contributions. Immutable complete state carries toggled, selected, expanded, enabled and busy facts; the original constructor defaults to enabled/not busy. Shell declarations include menu contributions and live busy state, while the cancel control remains reachable.
+- The audit checks state applicability, command-bearing menu membership and one menu tab stop with roving items. Focus traversal excludes disabled controls and disabled ancestor subtrees. Disabled roving items remain discoverable but cannot activate. Modal eligibility uses the same enabled traversal as the actual navigator, refusing dialogs whose only tab stops are disabled or below a disabled ancestor. RTL arrow behavior, focus trap/restoration, cancellation reachability, localized menu text and missing/invalid state regressions are ordinary component coverage.
+- Actual Windows local checks on the semantic source: 114/114 Shell tests passed through the workstation build slot; both Shell and Shell.Tests formatter verification passed. Final rechain provenance check passed (1,045 files, 25 reused components, 144 records); `git diff --check` passed. No redundant full-source test run was performed for the byte-identical parent-only rechains.
+- Reviewed-head [CI run 37534243552](https://github.com/ArcForges/DesktopPlatform/actions/runs/37534243552) passed all 22 applicable checks, including managed packaging/formatter/architecture/Shell tests, native compilation, Windows/Linux AOT probes, integrity policies and aggregate CI. The integration owner fenced the merge on that exact approved head; no redundant integration-owner source review was required.
+- Normal [Publish NuGet run 37538018267](https://github.com/ArcForges/DesktopPlatform/actions/runs/37538018267) for merge `43c0405273b026541e7d01d27ab3d6dd8d0f050d` completed successfully. Publish job `112529653962` explicitly verified 24 packages at `1.0.0-ci.112.1` against that exact source, then recorded 24 successful package pushes (2026-10-06 22:19:11 to 22:19:25 UTC). This is the real source/version publication receipt, obtained once at the publication handoff; no public package download, consumer execution, re-signing or verification-only re-publication was performed. The integration owner fast-forwarded the clean primary; later accepted main work is preserved.
+- Existing `ArcForges.Desktop.Shell` and `ArcForges.DesignSystem` identities are now actual packable producers admitted by the prior shared package-closure work; the original non-packable statement above describes the 2026-10-02 delivery. PLT.33 changes their semantic implementation and introduces no new package.
+
+### Remaining acceptance and owners
+
+PLT.33 remains **delivered**. APP.03 owns the actual ArcScope Avalonia shell adapter, keyboard/native automation composition and dated assistive-technology record against an exact product build. PLT.35 owns real Shell integration closure. The manual record must identify OS/assistive versions and cover names, roles, complete state, live announcements, Tab/arrow order, keyboard-only reach, visible focus, modal trap/restoration, high contrast, reduced motion and 200 percent text. Linux/macOS runtime, actual spoken announcements and platform isolation are not established by the offline semantics or AOT compiles. Runtime product strings require the reviewed module-localization seam and their own resource-bound audit; this follow-up does not claim that a Shell-only resource resolver already covers future product/assistant keys. Whole-series acceptance remains separate from the production implementation and publication delivered here.
