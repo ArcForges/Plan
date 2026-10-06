@@ -8,7 +8,7 @@ epoch: 1
 
 # Shared approval-effect binding production API
 
-The real CapabilityEnforcementGate approval-effect digest primitive, ordinary component validation, independent source review, applicable CI, fenced source merge and normal source-bound publication are delivered. PLT.61 has no task completion prerequisites. This factual ledger was prepared by w-codex-20261006-governance on the coordinator's explicit assignment; the coordinator remains the source author and claim owner.
+The real CapabilityEnforcementGate approval-effect digest primitive, ordinary component validation, independent source review, applicable CI, fenced source merge and normal source-bound publication are delivered. PLT.61 requires the PLT.59 production Security/CapabilityEnforcement/Audit package integration; that prerequisite is already complete in its accepted ledger and actual published producer. No completion prerequisite remains unsatisfied. This factual ledger was prepared by w-codex-20261006-governance on the coordinator's explicit assignment; the coordinator remains the source author and claim owner.
 
 ## Production behavior and exact source review
 
