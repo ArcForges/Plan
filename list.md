@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 456 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -40,7 +40,7 @@ Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (26) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (27) |
 | ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (3) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
@@ -51,7 +51,7 @@ Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
-| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (63) |
+| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (64) |
 | ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (16) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
@@ -121,22 +121,23 @@ Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.11 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Application/history/execution/events operations (annex10's 13 additions) + EventService.Poll |
 | CON.12 | Contracts | M | ADOPT.03.contracts (adoption) | Extension and policy schemas: manifest.v1/workflow.v1/panel.v1/policy body.v1/configuration.v1 |
 | CON.13 | Contracts | S | CON.02, ADOPT.03.contracts (adoption) | Package catalog operation registry (CatalogService) |
-| CON.14 | Contracts | L | CON.13, CON.09, CON.22, ADOPT.03.contracts (adoption) | Operator control service (OperatorService, full §9/9.1/9.2 protocol) |
+| CON.14 | Contracts | L | CON.13, CON.09, CON.22, ADOPT.03.contracts (adoption) | Operator control service (OperatorService, full Â§9/9.1/9.2 protocol) |
 | CON.15 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Cloudflare-internal HTTP and D1 ExecutePlan bindings |
 | CON.16 | Contracts | M | ADOPT.03.contracts (adoption) | Signed catalog/update/realm formats (catalog-index.v1, catalog-revocations.v1, android-update.v1, realm.v1) |
 | CON.17 | Contracts | M | CON.92, ADOPT.03.contracts (adoption) | Cross-language compatibility window + canonical semantic hash |
 | CON.18 | Contracts | S | ADOPT.03.contracts (adoption) | Operation-scope manifest + authorization-reachability matrix generator |
-| CON.19 | Contracts | M | CON.02, CON.18, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.21, CON.22, CON.01, CON.23, CON.24, CON.25, ADOPT.03.contracts (adoption) | WP03.90 — verify the owned Contracts artifact and its real (non-consumer) integration |
+| CON.19 | Contracts | M | CON.02, CON.18, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.21, CON.22, CON.01, CON.23, CON.24, CON.25, ADOPT.03.contracts (adoption) | WP03.90 â€” verify the owned Contracts artifact and its real (non-consumer) integration |
 | CON.21 | Contracts | M | CON.02, CON.09, ADOPT.03.contracts (adoption) | Simulation operation registry |
 | CON.22 | Contracts | M | CON.02, CON.09, ADOPT.03.contracts (adoption) | Account support, notification, data, preference, policy-bundle and export-job operations |
 | CON.23 | Contracts | M | GOV.01, ADOPT.03.contracts (adoption) | Retire the contract and naming elements outside the product family |
-| CON.90 | Contracts | M | — | WP03.00 — split project structure (accepted, historical) |
-| CON.91 | Contracts | L | — | WP03.01 — foundation contract types (accepted, historical) |
-| CON.92 | Contracts | M | — | WP03.02 — serialization posture (accepted, historical) |
+| CON.90 | Contracts | M | — | WP03.00 â€” split project structure (accepted, historical) |
+| CON.91 | Contracts | L | — | WP03.01 â€” foundation contract types (accepted, historical) |
+| CON.92 | Contracts | M | — | WP03.02 â€” serialization posture (accepted, historical) |
 | CON.24 | Contracts | M | CON.02, CON.23, CON.03, ADOPT.03.contracts (adoption) | ArcScope library read operations and summary records |
 | CON.25 | Contracts | M | CON.02, CON.05, CON.10, CON.21, ADOPT.03.contracts (adoption) | Public ConnectorService, the local call context and the af-segment records |
 | CON.26 | Contracts | M | CON.18, CON.25, CON.23, CON.07, CON.10, CON.11, ADOPT.03.contracts (adoption) | Generated public operation authorization catalog |
 | CON.27 | Contracts | M | CON.26, CON.11, CON.17, ADOPT.03.contracts (adoption) | Immutable generated streaming contract producer release |
+| CON.28 | Contracts | M | CON.14, ADOPT.03.contracts (adoption) | Bounded immutable configuration-document reference contract |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
@@ -377,8 +378,8 @@ Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.09 | Cloud | M | CLOUD.01, CLOUD.03, ADOPT.07.cloud (adoption) | Selfhost.v1 deployment profile |
 | CLOUD.10 | Cloud | M | CLOUD.39, SIM.10, ADOPT.07.cloud (adoption) | Owned-artifact closure and launch-capacity.v1 acceptance |
 | CLOUD.11 | Cloud | M | CLOUD.02, CLOUD.03, CLOUD.06, CLOUD.04, ADOPT.07.cloud (adoption) | Core identity model (realm, user, authIdentity, single-owner workspace) |
-| CLOUD.12 | Cloud | L | CLOUD.11, CLOUD.72, ADOPT.07.cloud (adoption) | Native and browser authentication with real Postmark/SES mail delivery |
-| CLOUD.13 | Cloud | M | CLOUD.11, CLOUD.06, CLOUD.72, ADOPT.07.cloud (adoption) | Device, installation, instance and session (four distinct concepts) |
+| CLOUD.12 | Cloud | L | CLOUD.11, CLOUD.72, CLOUD.75, ADOPT.07.cloud (adoption) | Native and browser authentication with real Postmark/SES mail delivery |
+| CLOUD.13 | Cloud | M | CLOUD.11, CLOUD.06, CLOUD.72, CLOUD.75, ADOPT.07.cloud (adoption) | Device, installation, instance and session (four distinct concepts) |
 | CLOUD.14 | Cloud | S | CLOUD.13, ADOPT.07.cloud (adoption) | Device trust and remote gating |
 | CLOUD.15 | Cloud | M | CLOUD.12, CLOUD.13, ADOPT.07.cloud (adoption) | Step-up challenges for sensitive operations |
 | CLOUD.16 | Cloud | M | CLOUD.11, COM.16, CLOUD.72, CON.26, ADOPT.07.cloud (adoption) | PAT and actor authorization |
@@ -431,6 +432,7 @@ Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.71 | Cloud | S | PRF.07, PRF.08, ADOPT.07.cloud (adoption) | Serve the built Web profiles from the proof origin |
 | CLOUD.72 | Cloud | M | CLOUD.11, COM.16, CLOUD.06, CLOUD.04, ADOPT.07.cloud (adoption) | Identity production store, identifier source and enrollment family call over the plan-execution port |
 | CLOUD.74 | Cloud | M | CLOUD.01, COM.01, ADOPT.07.cloud (adoption) | Restricted production commerce provider egress |
+| CLOUD.75 | Cloud | M | CLOUD.02, CLOUD.03, ADOPT.07.cloud (adoption) | Authoritative shared realm authentication and persisted recovery epoch source |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 

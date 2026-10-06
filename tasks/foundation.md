@@ -192,7 +192,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] FND.04: clock abstraction
 - [artifact] FND.05: reason-code registry
 - [artifact] FND.06: version axis types
-- [artifact] CON.91: real, delivered outcome of CON.91 (WP03.01 — foundation contract types (accepted, historical))
+- [artifact] CON.91: real, delivered outcome of CON.91 (WP03.01 â€” foundation contract types (accepted, historical))
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 

@@ -19,7 +19,7 @@ Outcome: com.arcforges.mobile applicationId/namespace/source packages adopted, a
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-30.00 (all work except the parts mapped to AND.04): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, anchor rule-wp-30.00
-- WP-30:3-binding-rules-apache-2-0-boundary-no-g §3 binding rules: Apache-2.0 boundary, no GPL-family implementation, immutable producer artifacts (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, package-level obligation
+- WP-30:3-binding-rules-apache-2-0-boundary-no-g Â§3 binding rules: Apache-2.0 boundary, no GPL-family implementation, immutable producer artifacts (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -33,7 +33,7 @@ Unblocks: AND.02, AND.04
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Windows/Linux full build, dependency-verification metadata check, package/certificate inspection under P2-017; device install and App Link fixture-key tests are local opt-in, not CI gates
 Completion evidence for the ledger: Exact pinned tuple + wrapper checksums + regenerated locks; F-023 re-run showing closure holds after the identity change
-Notes: Must also decide the KMP shared/ preview module's fate: arch-27's module map (core/*, feature/*) has no KMP target, so shared/ stays a dev-only convenience outside the shipped app graph, never a second production plan (per WP30 §4).
+Notes: Must also decide the KMP shared/ preview module's fate: arch-27's module map (core/*, feature/*) has no KMP target, so shared/ stays a dev-only convenience outside the shipped app graph, never a second production plan (per WP30 Â§4).
 ```
 
 ```text
@@ -243,7 +243,7 @@ Unblocks: AND.13, AND.14, AND.15, AND.19
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Instrumented UI tests offline where feasible; scope/permission, wrong/stale target, loss/retry and expiry scenarios against real WP22/23 are local opt-in
 Completion evidence for the ledger: Full account/attention path walkthrough against real Cloud endpoints
-Notes: Does not need WP26 (remote bridge), WP45 (push sender) or WP52 (Harness) to start or complete — only WP30's own foundation and the already-deployed WP22/23. Demonstrates that not all Android features wait on the complete Harness.
+Notes: Does not need WP26 (remote bridge), WP45 (push sender) or WP52 (Harness) to start or complete â€” only WP30's own foundation and the already-deployed WP22/23. Demonstrates that not all Android features wait on the complete Harness.
 ```
 
 ```text
@@ -330,7 +330,7 @@ Unblocks: AND.13, AND.15, AND.19, AND.27
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline transfer-journal unit tests; resumable-upload/hash-mismatch/process-death-during-transfer scenarios are local opt-in on real devices
 Completion evidence for the ledger: No unavailable bytes represented as empty success; resumable journal survives process death
-Notes: Independent of WP26/WP45/WP52 — can complete in parallel with AND.09/AND.10 once the foundation (AND.07) lands.
+Notes: Independent of WP26/WP45/WP52 â€” can complete in parallel with AND.09/AND.10 once the foundation (AND.07) lands.
 ```
 
 ```text
@@ -408,7 +408,7 @@ Outcome: Full companion requirements, consumption-only restrictions, public-Mave
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-31.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\31-arcchat-mobile-android.md, anchor rule-wp-31.06
-- WP-30:3-binding-rules-apache-2-0-boundary-no-g §3 binding rules: Apache-2.0 boundary, no GPL-family implementation, immutable producer artifacts (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, package-level obligation
+- WP-30:3-binding-rules-apache-2-0-boundary-no-g Â§3 binding rules: Apache-2.0 boundary, no GPL-family implementation, immutable producer artifacts (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\30-mobile-shared-architecture.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -596,7 +596,7 @@ Unblocks: AND.23
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Expired/rollback/wrong-certificate/URL/hash and offline-stale-feed tests, offline where feasible
 Completion evidence for the ledger: Play primary + direct APK flow complete with no silent install
-Notes: Explicitly does NOT wait on WP53 (production feed/signing) — WP-32.04's own text states WP53's replacement is verified at WP50, not a backward input to this task.
+Notes: Explicitly does NOT wait on WP53 (production feed/signing) â€” WP-32.04's own text states WP53's replacement is verified at WP50, not a backward input to this task.
 ```
 
 ```text
@@ -621,7 +621,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Mobile:eng/mobile.py
 Unblocks: AND.23, AND.26
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Actual local/server unknown-effect replay, encrypted draft/outbox retention through upgrade, signing-key recovery rehearsal — all local opt-in under P2-017
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Actual local/server unknown-effect replay, encrypted draft/outbox retention through upgrade, signing-key recovery rehearsal â€” all local opt-in under P2-017
 Completion evidence for the ledger: All mandatory scenarios pass; material device limits disclosed; no pending user work lost
 ```
 
@@ -681,7 +681,7 @@ Permitted write scope: Mobile:eng/mobile.py
 Shared resources (follow the owner protocol): RES-android-signing-and-store (append): Used only by release tasks through protected CI environments; no task creates replacement keys or listings.
 Unblocks: AND.26, REL.04
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Download public candidate in a clean device path, verify signature/hash, exercise actual services — local opt-in
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Download public candidate in a clean device path, verify signature/hash, exercise actual services â€” local opt-in
 Completion evidence for the ledger: Distribution complete only with real receipts; VG-13 store-submission confirmation
 ```
 

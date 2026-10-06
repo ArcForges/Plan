@@ -55,7 +55,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] DEV.01: the real installation/epoch projection to freeze against
-- [contract] CON.10: published ToolRequest wire shape (contracts/03 §5.1 fields)
+- [contract] CON.10: published ToolRequest wire shape (contracts/03 Â§5.1 fields)
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -107,7 +107,7 @@ Outcome: Bridge request/result persisted in D1 using full ApplicationTarget and 
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-26.03 (Cloud-side D1 attempt-row persistence, hash dedup and cross-application delivery guard): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.03
-- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
+- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between Â§5 and Â§6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -137,7 +137,7 @@ Outcome: Owner handler's normal in-process validation records the same (toolRequ
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-26.03 (Desktop command_log persistence and (toolRequestId,attemptId,commandId) agreement with the Cloud attempt row): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\26-remote-action-and-tool-bridge.md, anchor rule-wp-26.03
-- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
+- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between Â§5 and Â§6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.02.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -270,7 +270,7 @@ Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): 
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Clean-environment build/pack across both repos; P2-017 scope only (no live-service CI); real cross-repo dedup agreement proven per IM.tool-bridge-dedup-agreement.
 Completion evidence for the ledger: Source commits (both repos), artifact versions/hashes, environment, UX-D/E rows, real-boundary test results.
-Notes: Own capabilities are real here (device-tool-path mechanics are 'must be real early' per implementation-sequence §3); the CONTENT of tool requests (model-driven planning) stays fixture/scripted until WP-52 -- see IM.agent-driven-device-tool-use for that separate real-scenario proof.
+Notes: Own capabilities are real here (device-tool-path mechanics are 'must be real early' per implementation-sequence Â§3); the CONTENT of tool requests (model-driven planning) stays fixture/scripted until WP-52 -- see IM.agent-driven-device-tool-use for that separate real-scenario proof.
 ```
 
 ```text
@@ -341,7 +341,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform). Also touches: Cloud.
 Claim and handoff record: claims/dev-14 (python tools/delivery.py claim DEV.14 --worker <name>); task branch task/dev-14 in DesktopPlatform; ledger record ledger/tasks/dev-14.md.
 Kind/size: integration/M. Baseline: not-started.
-Outcome: The device tool path (pull, local re-authorisation, generated decode, typed invocation, idempotent result) works over the real deployed stream transport -- this is explicitly must-be-real-early per implementation-sequence §3, owned jointly with the assistant lanes WP-26
+Outcome: The device tool path (pull, local re-authorisation, generated decode, typed invocation, idempotent result) works over the real deployed stream transport -- this is explicitly must-be-real-early per implementation-sequence Â§3, owned jointly with the assistant lanes WP-26
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-24.01 (device-targeted feed real integration): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\24-realtime-and-reliable-events.md, anchor rule-wp-24.01
@@ -367,5 +367,5 @@ Permitted write scope:
 Unblocks: CLOUD.36
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
-Completion evidence for the ledger: The device tool path (pull, local re-authorisation, generated decode, typed invocation, idempotent result) works over the real deployed stream transport -- this is explicitly must-be-real-early per implementation-sequence §3, owned jointly with the assistant lanes WP-26
+Completion evidence for the ledger: The device tool path (pull, local re-authorisation, generated decode, typed invocation, idempotent result) works over the real deployed stream transport -- this is explicitly must-be-real-early per implementation-sequence Â§3, owned jointly with the assistant lanes WP-26
 ```

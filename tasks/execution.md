@@ -19,7 +19,7 @@ Outcome: The full ProductJob/JobStep/JobAttempt chain with distinct types and li
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-16.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.00
-- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
+- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between Â§5 and Â§6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -131,7 +131,7 @@ Outcome: Checkpoints capture resumable state at declared boundaries; compensatio
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-16.04 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.04
-- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between §5 and §6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
+- WP-16:tool-result-acceptance-paragraph-between Tool-result acceptance paragraph (between Â§5 and Â§6): two distinct toolRequestIds in one attempt both persist and each replay returns its own original receipt; a changed result under the same (toolRequestId,attemptId,commandId) refuses with command.reused_identifier; lost acknowledgement never allocates a fresh command or drops the second result. Bound to the wire registry, TK-05 and task.tool_result -- the same key WP-26.03 uses. (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -200,7 +200,7 @@ Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Execution/**
 Unblocks: EXE.09
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: progress-loss-never-affects-outcome, task-id-to-trace resolution, trace-system separation.
-Completion evidence for the ledger: Conflation-test result, trace-resolution result, trace-separation result; payload/manifest hashes with content-origin carrier per WP16 §7 addition.
+Completion evidence for the ledger: Conflation-test result, trace-resolution result, trace-separation result; payload/manifest hashes with content-origin carrier per WP16 Â§7 addition.
 Notes: Content-origin behavior/carrier schema (requirements/07, requirements/13) is a frozen design input already decided, not a blocking producer task.
 ```
 
@@ -243,7 +243,7 @@ Outcome: ProductJob-only responsibility preserved (no local model loop, no Cloud
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-16.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, anchor rule-wp-16.90
-- WP-16:6-impacts-row-compatibility-task-contrac §6 Impacts row 'Compatibility: Task contract versioning for later cloud and mobile surfaces' (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
+- WP-16:6-impacts-row-compatibility-task-contrac Â§6 Impacts row 'Compatibility: Task contract versioning for later cloud and mobile surfaces' (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\16-unified-execution-engine.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.02.execution is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
