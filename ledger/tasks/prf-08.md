@@ -88,3 +88,42 @@ PRF.08 stays `delivered`; nothing here completes it. The graph now lists CLOUD.0
 - **The PRF.08 live script on the served pages did not complete.** Four runs aborted at the first anonymous bootstrap after the warm-up (HTTP 503) and one run with an uncommitted local harness change aborted in the Hello warm-up; the Chat page's one greeting did not render within the profile's ten second deadline. No interaction timing, no `interaction-budgets.json`, and none of the browser stages of the Account and Chat live round trips were obtained. The earlier statements in this record about the missing same-origin ingress are superseded for the hosting only; the round trips remain unobserved.
 - **CLOUD.08 diagnosis note** (CLOUD.08 is complete; its readiness surface separates the components). As reported to this worker by the coordinator, not re-observed by it: the readiness surface names the Container component as unavailable with the reason `no_instance_available`, and the cause of that state is unconfirmed (instance limit, provisioning or platform capacity could not be told apart from outside). What this worker did observe on 2026-10-06 is consistent with it and no more: the session route (`/session/v1/bootstrap`) answered 503 after about 28 s for the first request after an idle period and 200 afterwards, sometimes through several consecutive 503s of about 28 s each, and the Hello route answered 200 in 1 to 11 s with occasional 503. The stable ingress that this record asks CLOUD.08 for is therefore not yet observed; CLOUD.08's own acceptance (the readiness surface and its failure results) does not depend on it.
 - **Next action (unchanged in kind).** When the Containers start reliably, one `node apps/app/scripts/proof-run.ts` under `RES-cloud-deployment` on the served pages (the CLOUD.71 follow-up), then the interaction budgets through a reviewed Web change, then a reviewed amendment of this record after CLOUD.08, CLOUD.21, CLOUD.22 and CLOUD.71 are complete.
+
+## Amendment 2026-10-06, second (CLOUD.71 complete; worker w-c20261006-cloud71b)
+
+PRF.08 stays `delivered`; nothing here completes it.
+
+Its completion prerequisites and where each stands:
+- **CLOUD.08:** complete.
+- **CLOUD.71:** complete, through the pull request that carries this amendment.
+- **CLOUD.21 and CLOUD.22:** not started.
+
+So DLV-24 keeps PRF.08 open. The earlier amendment's statements that the live script on the served pages did not complete and that the browser round trips remain unobserved are superseded as follows (details and evidence in `ledger/tasks/cloud-71.md`).
+
+**The live script completed on the served pages.** CLOUD.71 fixed two defects:
+- Cloud #62 raised the proof Container ceiling from 2 to 4. At 2 the application kept a single instance for its two named Containers, which caused the 503 flapping.
+- Cloud #63 made a session renewal keep the session's own idle window.
+
+Then one unmodified run of `apps/app/scripts/proof-run.ts` on the served pages passed every scenario:
+- **The run:** 2026-10-06 08:11:03Z to 08:12:15Z, proof Worker `6951f4d7` from Cloud `c59f91c`, under lease `RES-cloud-deployment` epoch 23.
+- **Session:** the session, cookie and CSRF round trip from the built Account profile in Chromium, on the same origin as `/api` and `/session/v1`, and idle session expiry (logout 401).
+- **Chat:** the round trip in the browser, with typed refusals.
+- **Cancellation:** on the real path.
+- **From Node:** the session and Hello scenarios run with the profiles' own clients.
+
+**Interaction timings and budgets.**
+- `account.read`: median 1,034 ms (1,015 to 1,043).
+- `account.signout`: median 846 ms (836 to 857).
+- `chat.greeting`: median 863 ms (858 to 1,367).
+
+Web #32 (merge `016d1239288a0eeb8b81f0cae973088def742635`) added `apps/app/interaction-budgets.json`: each ceiling is the measured value plus 10 percent (TH-01), with at least five samples. It also records the run in Web `docs/prf-08-profile-proof.md`.
+
+The script exited 3 (`PARTIAL`) only because the budgets file did not exist yet, so no run has been checked against the ceilings. Under TH-02, a single over-ceiling result must be sampled again before it counts as a regression.
+
+**The stable deployed ingress item.** The 503s described above came from the proof Container application at `max_instances` 2, not from CLOUD.08's surface. At 4, both Containers served at the same time, and in the passing run both started from cold within 3.4 s.
+
+**Remaining for PRF.08, unchanged in kind:**
+- exact int64, uint64 and decimal values, typed failures and cancellation over generated gRPC-Web (CLOUD.21 and CLOUD.22);
+- the Visual Studio IDE (F5) check of the solution, which has no graph owner.
+
+Completion needs a further reviewed amendment after CLOUD.21 and CLOUD.22 are complete.
