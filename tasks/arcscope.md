@@ -59,9 +59,9 @@ Permitted write scope: ArcScope:src/ArcForges.ArcScope.Domain/ArcForges.ArcScope
 Shared resources (follow the owner protocol): RES-product-solutions (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
 Unblocks: SCOPE.05, SCOPE.06, SCOPE.11, SCOPE.12, SCOPE.14
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline unit tests: precision across rate domains, alignment with two sources, conversion exactness â€” pure math, no external environment
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): offline unit tests: precision across rate domains, alignment with two sources, conversion exactness — pure math, no external environment
 Completion evidence for the ledger: precision/alignment/conversion test results
-Notes: Follow architecture 27 Â§4 and WP-33 Â§5: create the canonical ArcForges.ArcScope.Domain project and put the model in that domain owner, not ArcForges.ArcScope.Core (the published gRPC client) or the desktop host. Add only the Domain project and its Time/Channels source, plus TimeModel tests in the existing CI-executed ArcForges.ArcScope.Tests project; add the exact Domain ProjectReference there and append the Domain project to ArcScope.slnx. The Domain library may depend only on the already-admitted ArcForges.Foundation package or have no package dependency; no third-party dependency, package identity/version/closure change, central package edit, app/AOT-host reference, new test project, workflow/runner registration, migration or shared runtime behavior is authorized. Append the project/solution entry under RES-product-solutions; regenerate required lock files after rebase rather than hand-merging. Update the exact licence and dependency-review inputs and classify new authored files in provenance. The current dependency-review.json and licence-boundary.json targets are bound to immutable ArcNotes provenance r8, so append the exact r9 successor and regenerate NOTICE; preserve all historical r1-r8 records. No other runtime, reconciliation, publication or package inventory changes are authorized.
+Notes: Follow architecture 27 §4 and WP-33 §5: create the canonical ArcForges.ArcScope.Domain project and put the model in that domain owner, not ArcForges.ArcScope.Core (the published gRPC client) or the desktop host. Add only the Domain project and its Time/Channels source, plus TimeModel tests in the existing CI-executed ArcForges.ArcScope.Tests project; add the exact Domain ProjectReference there and append the Domain project to ArcScope.slnx. The Domain library may depend only on the already-admitted ArcForges.Foundation package or have no package dependency; no third-party dependency, package identity/version/closure change, central package edit, app/AOT-host reference, new test project, workflow/runner registration, migration or shared runtime behavior is authorized. Append the project/solution entry under RES-product-solutions; regenerate required lock files after rebase rather than hand-merging. Update the exact licence and dependency-review inputs and classify new authored files in provenance. The current dependency-review.json and licence-boundary.json targets are bound to immutable ArcNotes provenance r8, so append the exact r9 successor and regenerate NOTICE; preserve all historical r1-r8 records. No other runtime, reconciliation, publication or package inventory changes are authorized.
 ```
 
 ```text
@@ -86,9 +86,9 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Acquisition/Adapters/Network/**; ArcScope:src/ArcScope/ArcScope.Acquisition/Adapters/FileReplay/**; ArcScope:tests/ArcScopePipelineTests/Adapters/Network/**
 Unblocks: SCOPE.05, SCOPE.11
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): real-transport tests using.NET Socket/TcpListener/UdpClient loopback and local files â€” no native dependency, no emulator/CI restriction applies; proportionate under P2-017
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): real-transport tests using.NET Socket/TcpListener/UdpClient loopback and local files — no native dependency, no emulator/CI restriction applies; proportionate under P2-017
 Completion evidence for the ledger: per-adapter real-transport connect/disconnect/reconnect results
-Notes: This is the implementation-sequence.md Â§3 'must be real early' item: real serial/TCP/UDP transports must not be mocked.
+Notes: This is the implementation-sequence.md §3 'must be real early' item: real serial/TCP/UDP transports must not be mocked.
 ```
 
 ```text
@@ -103,13 +103,13 @@ Outcome: Serial and USB adapters work over real hardware transports via the nati
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-33.00 (serial/USB concrete adapters over the shared contract): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.00
-- WP-33.90 (generic-USB-V1 body text (enumeration, explicit interface/endpoint open, control/bulk/interrupt transfers, partial writes, cancellation, driver/permission/busy refusal per Tier 1 RID; no automatic kernel-driver detach; hot unplug records an explicit capture gap) â€” this text sits orphaned between WP-33 Â§6 and Â§7 in the source doc with no substep id of its own; folded here since it is entirely about the serial/USB adapter, not Â§33.90's own verify-and-integration content): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.90
-- WP-33:orphaned-generic-usb-is-v1-body-text-enu orphaned 'Generic USB is V1' body text (enumeration/open/transfer/cancel/refusal per Tier-1 RID, no auto kernel-driver detach, hot-unplug=explicit gap) sitting between Â§6 Impacts and Â§7 Tests with no substep id (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, package-level obligation
+- WP-33.90 (generic-USB-V1 body text (enumeration, explicit interface/endpoint open, control/bulk/interrupt transfers, partial writes, cancellation, driver/permission/busy refusal per Tier 1 RID; no automatic kernel-driver detach; hot unplug records an explicit capture gap) — this text sits orphaned between WP-33 §6 and §7 in the source doc with no substep id of its own; folded here since it is entirely about the serial/USB adapter, not §33.90's own verify-and-integration content): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.90
+- WP-33:orphaned-generic-usb-is-v1-body-text-enu orphaned 'Generic USB is V1' body text (enumeration/open/transfer/cancel/refusal per Tier-1 RID, no auto kernel-driver detach, hot-unplug=explicit gap) sitting between §6 Impacts and §7 Tests with no substep id (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] SCOPE.01: DataSource/SourceAdapter contract and connection profile model
-- [artifact] NAT.13: published ArcInstrumentsNative package (arc_instruments_* ABI) â€” at minimum its fixture/simulated-hardware tier build
+- [artifact] NAT.13: published ArcInstrumentsNative package (arc_instruments_* ABI) — at minimum its fixture/simulated-hardware tier build
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -119,7 +119,7 @@ Unblocks: SCOPE.11
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): fixture/simulated-hardware unit tests at this task's own gate; real per-RID hardware acceptance deferred to SCOPE.11/PG-08 per P2-017 (no device/hardware CI)
 Completion evidence for the ledger: enumeration/open/transfer/cancel/refusal results against fixture tier now; real-hardware receipt at SCOPE.11
-Notes: This is the one WP-33.00 sub-path that genuinely needs a WP13 native family, and only WP-13.12 (not the whole WP13 package). It is the correct place to attach PG-08's per-RID USB acceptance text, which the source document places oddly (orphaned paragraph after WP-33 Â§6, before Â§7) with no substep id.
+Notes: This is the one WP-33.00 sub-path that genuinely needs a WP13 native family, and only WP-13.12 (not the whole WP13 package). It is the correct place to attach PG-08's per-RID USB acceptance text, which the source document places oddly (orphaned paragraph after WP-33 §6, before §7) with no substep id.
 ```
 
 ```text
@@ -146,9 +146,9 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Acquisition/Pipeline/**; ArcScope:tests/ArcScopePipelineTests/Throughput/**
 Unblocks: SCOPE.06, SCOPE.11, SCOPE.13
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): sustained-throughput runs with recorded rate/memory/drop counts; induced overrun; timing-source assertions â€” local, offline, repeatable
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): sustained-throughput runs with recorded rate/memory/drop counts; induced overrun; timing-source assertions — local, offline, repeatable
 Completion evidence for the ledger: throughput/memory/overrun/timing-source results
-Notes: WP-13.02 ('Probe C: high-throughput acquisition', the native and runtime-proof lanes/WP13) is a near-identical early risk proof of the same ring-buffer/throughput/overrun approach, done earlier and cheaper. It validates the approach but ships no reusable package (BR-10 keeps the real loop in C# here regardless) â€” treated as an informative precedent, not a start edge.
+Notes: WP-13.02 ('Probe C: high-throughput acquisition', the native and runtime-proof lanes/WP13) is a near-identical early risk proof of the same ring-buffer/throughput/overrun approach, done earlier and cheaper. It validates the approach but ships no reusable package (BR-10 keeps the real loop in C# here regardless) — treated as an informative precedent, not a start edge.
 ```
 
 ```text
@@ -175,7 +175,7 @@ Permitted write scope: ArcScope:src/ArcScope/ArcScope.Domain/Session/**; ArcScop
 Shared resources (follow the owner protocol): RES-arcscope-migrations (append): Numbered migrations are allocated at merge by the integration owner (a rebase renumbers pending migrations); each migration is forward-only with its recovery and downgrade-refusal tests; no task edits a merged migration.
 Unblocks: SCOPE.07, SCOPE.09, SCOPE.11, SCOPE.12, SCOPE.13, SCOPE.14, SCOPE.15, SCOPE.17, SCOPE.20, SCOPE.22
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): lifecycle coverage including interruption; pause-view-while-recording test; segment/gap integrity after disconnect â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): lifecycle coverage including interruption; pause-view-while-recording test; segment/gap integrity after disconnect — offline
 Completion evidence for the ledger: lifecycle, pause-view and gap-integrity results
 ```
 
@@ -202,7 +202,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Recording/**; ArcScope:src/ArcScope/ArcScope.Infrastructure/CaptureStore/**; ArcScope:tests/ArcScopePipelineTests/DurableCapture/**
 Unblocks: SCOPE.08, SCOPE.11, SCOPE.23, SCOPE.24, SCOPE.25
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): kill-during-capture at chunk boundaries and mid-chunk; recovered-prefix verification; immutability test â€” offline, deterministic fault injection, no live environment needed
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): kill-during-capture at chunk boundaries and mid-chunk; recovered-prefix verification; immutability test — offline, deterministic fault injection, no live environment needed
 Completion evidence for the ledger: crash-recovery prefix verification and immutability results
 Notes: WP-07.05 is named precisely (not 'whole WP07') because WP-07.00/.03 (store abstraction, migrations) are consumed earlier by SCOPE.01/06 for ordinary relational state, while raw capture specifically needs the large-append/chunked primitive.
 ```
@@ -258,7 +258,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Presentation/**; ArcScope:src/ArcScope/ArcScope.Desktop/CaptureLifecycle/**
 Unblocks: SCOPE.11
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): window-close-during-capture prompt test; background-residency test; visibility assertion â€” desktop-GUI-adjacent, kept to the offline/local tier per P2-017 (no desktop GUI CI; local manual/scripted verification)
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): window-close-during-capture prompt test; background-residency test; visibility assertion — desktop-GUI-adjacent, kept to the offline/local tier per P2-017 (no desktop GUI CI; local manual/scripted verification)
 Completion evidence for the ledger: window-close, background and visibility results
 Notes: The old upstream edge WP-33<-26 (remote action/tool bridge) does not apply here or anywhere else in WP33: WP-26 is about remote-triggered tool execution on a running instance (durable target queue, owner reauth, remote approval), and none of WP-33.00-33.07's substep bodies mention it..
 ```
@@ -324,7 +324,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:docs/wp-33-integration-receipt.md
 Unblocks: REL.02
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): real packaged hardware-path and throughput/overrun/recovery acceptance; offline-acceptance-matrix rows (fresh shell, hydrated outage, unavailable content, signout, restart) where applicable; no macOS CI, no device/emulator CI per P2-017 â€” evidence is recorded from local/lab runs
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): real packaged hardware-path and throughput/overrun/recovery acceptance; offline-acceptance-matrix rows (fresh shell, hydrated outage, unavailable content, signout, restart) where applicable; no macOS CI, no device/emulator CI per P2-017 — evidence is recorded from local/lab runs
 Completion evidence for the ledger: owned-artifact and real-integration receipt: source commit, producer version, candidate hashes, actual runtime/OS/device/provider, scenario, result, limitations, real-vs-fixture status
 ```
 
@@ -351,7 +351,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Visualization/**; ArcScope:tests/ArcScopePipelineTests/Visualization/**
 Unblocks: SCOPE.19
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): scale-corpus interaction measurements; downsampling-disclosure assertion; downsampled-vs-full-resolution cursor correctness â€” desktop rendering kept to local/offline tier per P2-017
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): scale-corpus interaction measurements; downsampling-disclosure assertion; downsampled-vs-full-resolution cursor correctness — desktop rendering kept to local/offline tier per P2-017
 Completion evidence for the ledger: responsiveness, disclosure and cursor-exactness results
 Notes: RESOLVED FINDING, not an edge: ArcScope's native surface (12-native-interop-and-media.md section 8) is device, transport and high-rate acquisition primitives only, with no graphics family. ArcScope already carries Avalonia (Skia-based managed rendering, see ArcScope third-party/Avalonia.LICENSE.txt), which is sufficient for plotting/downsampling in pure C#.
 ```
@@ -379,7 +379,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Domain/Triggers/**; ArcScope:tests/ArcScopePipelineTests/Triggers/**
 Unblocks: SCOPE.19
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): pre/post-window correctness; data-immutability assertion; trigger-storm bound test â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): pre/post-window correctness; data-immutability assertion; trigger-storm bound test — offline
 Completion evidence for the ledger: trigger window, immutability and storm-bound results
 ```
 
@@ -395,8 +395,8 @@ Outcome: Every measurement family in scope.measurement.v1 reproduces under its r
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-34.02 (full, including the required-design-implementation text: every basic family via declared population/sample-weighted formulas, half-open input selection, calibrated units, coverage/status rules, recorded pulse thresholds/interpolation, independent statistical hand-calculation and digital/analog/gap vectors): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.02
-- WP-34:orphaned-6-7-body-text-pearson-independe orphaned Â§6/Â§7 body text: 'Pearson independent vectors: x=[1,2,3], y=[2,4,6] gives r=1; y=[3,2,1] gives r=-1. Constant input is unavailable; preserve the declared lag and overlap rules' â€” a concrete correlation-family acceptance vector with no substep id of its own (orphaned Â§6/Â§7 body text: 'Pearson independent vectors: x=[1,2,3], y=[2,4,6] gives r=1; y=[3,2,1] gives r=-1. Constant input is unavailable; preserve the declared lag and overlap rules' â€” a concrete correlation-family acceptance vector with no substep id of its own; package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
-- WP-34:8-additional-completion-requirement-ever Â§8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim (Â§8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim; package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
+- WP-34:orphaned-6-7-body-text-pearson-independe orphaned §6/§7 body text: 'Pearson independent vectors: x=[1,2,3], y=[2,4,6] gives r=1; y=[3,2,1] gives r=-1. Constant input is unavailable; preserve the declared lag and overlap rules' — a concrete correlation-family acceptance vector with no substep id of its own (orphaned §6/§7 body text: 'Pearson independent vectors: x=[1,2,3], y=[2,4,6] gives r=1; y=[3,2,1] gives r=-1. Constant input is unavailable; preserve the declared lag and overlap rules' — a concrete correlation-family acceptance vector with no substep id of its own; package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
+- WP-34:8-additional-completion-requirement-ever §8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim (§8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim; package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -409,7 +409,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Analysis/Measurements/**; ArcScope:tests/ArcScopePipelineTests/Measurements/**
 Unblocks: SCOPE.16, SCOPE.18, SCOPE.19, SCOPE.21, SCOPE.24, SIM.06, SIM.09
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): reference-value tests per measurement kind; unit-handling test; reproduction-from-recorded-configuration test â€” offline, deterministic tolerance-based comparison
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): reference-value tests per measurement kind; unit-handling test; reproduction-from-recorded-configuration test — offline, deterministic tolerance-based comparison
 Completion evidence for the ledger: measurement reference and reproduction results, including the Pearson vectors
 ```
 
@@ -435,9 +435,9 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Decoders/**; ArcScope:tests/ArcScopePipelineTests/Decoders/**
 Unblocks: SCOPE.16, SCOPE.18, SCOPE.19, SCOPE.21
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): per-decoder fixture corpora including malformed input; error-visibility assertion; structural no-device-write test â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): per-decoder fixture corpora including malformed input; error-visibility assertion; structural no-device-write test — offline
 Completion evidence for the ledger: per-decoder fixtures, error visibility and no-write assertion
-Notes: Independent of SCOPE.14 (measurements); the two can proceed in parallel. Decoder scope (UART/I2C/SPI) is fixed by the already-frozen analysis.v1 profile in architecture doc 26-product-behavior-profiles.md â€” note this is the ARCHITECTURE document numbered 26, unrelated to WP-26 (Remote action and tool bridge); no start edge needed since the design is already frozen, not missing.
+Notes: Independent of SCOPE.14 (measurements); the two can proceed in parallel. Decoder scope (UART/I2C/SPI) is fixed by the already-frozen analysis.v1 profile in architecture doc 26-product-behavior-profiles.md — note this is the ARCHITECTURE document numbered 26, unrelated to WP-26 (Remote action and tool bridge); no start edge needed since the design is already frozen, not missing.
 ```
 
 ```text
@@ -463,9 +463,9 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Analysis/Recipes/**; ArcScope:tests/ArcScopePipelineTests/Analysis/**
 Unblocks: SCOPE.18, SCOPE.19, SCOPE.21
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): reconstruction test deleting all results and rebuilding; long-analysis cancellation; version-change test â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): reconstruction test deleting all results and rebuilding; long-analysis cancellation; version-change test — offline
 Completion evidence for the ledger: result reconstruction and version-recording results
-Notes: 'Native ProductJobs' reads as ArcScope's own in-process long-running Task/CancellationToken job pattern ('under their product owner'), not a shared cross-repo service; DesktopPlatform already carries a BuildingBlocks ArcForges.Application.Abstractions package this can reuse. Not modelled as a hard external artifact edge â€” checked WP-08 specifically and ruled it out: WP-08 is local IPC/process registration, not a job-execution abstraction.
+Notes: 'Native ProductJobs' reads as ArcScope's own in-process long-running Task/CancellationToken job pattern ('under their product owner'), not a shared cross-repo service; DesktopPlatform already carries a BuildingBlocks ArcForges.Application.Abstractions package this can reuse. Not modelled as a hard external artifact edge — checked WP-08 specifically and ruled it out: WP-08 is local IPC/process registration, not a job-execution abstraction.
 ```
 
 ```text
@@ -490,7 +490,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Domain/Annotations/**; ArcScope:tests/ArcScopePipelineTests/Annotations/**
 Unblocks: SCOPE.18, SCOPE.19, SCOPE.22
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): structural raw-capture-untouched test; comparison correctness with deliberate misalignment; finding history tests â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): structural raw-capture-untouched test; comparison correctness with deliberate misalignment; finding history tests — offline
 Completion evidence for the ledger: raw-capture immutability and comparison alignment results
 Notes: Independent of SCOPE.14/15/16 (measurements/decoders/recipes); can run in parallel with them.
 ```
@@ -507,7 +507,7 @@ Outcome: Reports compose analyses, measurements, findings and visualisations int
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-34.06 (full, including both required-design-implementation paragraphs: report/UI/offline-recomputation comparison with rendering/rounding never changing the stored numeric result; report-section origin plus enclosing union; deterministic measurement beside AI narrative never relabelled): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, anchor rule-wp-34.06
-- WP-34:8-additional-completion-requirement-ever Â§8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
+- WP-34:8-additional-completion-requirement-ever §8 additional completion requirement: every basic family has its formula/status oracle; reproduction uses the defined tolerance rather than an undefined byte-equality claim (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\34-arcscope-analysis-and-reporting.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -521,9 +521,9 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Reporting/**; ArcScope:tests/ArcScopePipelineTests/Reports/**
 Unblocks: SCOPE.19, SCOPE.22, SIM.09
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): traceability completeness test; regeneration-equivalence test; export fidelity check; content-origin carrier vectors including unknown input and failed publication â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): traceability completeness test; regeneration-equivalence test; export fidelity check; content-origin carrier vectors including unknown input and failed publication — offline
 Completion evidence for the ledger: traceability completeness and regeneration equivalence results; carrier/propagation/failure vectors with payload and manifest hashes A companion-readable PDF bundle with stored snapshots, provenance appendix and mandatory origin sidecar; verified resource identity and unavailable-artifact behavior.
-Notes: Content-origin behavior (requirements/07-security-privacy-and-trust.md) and the carrier schema (requirements/13-data-formats-and-portability.md) are named as frozen design inputs fixed before this package â€” already satisfied, not a start edge; implement per spec without choosing a different marking mechanism.
+Notes: Content-origin behavior (requirements/07-security-privacy-and-trust.md) and the carrier schema (requirements/13-data-formats-and-portability.md) are named as frozen design inputs fixed before this package — already satisfied, not a start edge; implement per spec without choosing a different marking mechanism.
 ```
 
 ```text
@@ -583,7 +583,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.AssistantIntegration/**; ArcScope:tests/ArcScopePipelineTests/Capabilities/**
 Unblocks: HAR.05, SCOPE.25, SCOPE.26
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): descriptor validation per capability; owner-side refusal tests; operational-capability risk assertion â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): descriptor validation per capability; owner-side refusal tests; operational-capability risk assertion — offline
 Completion evidence for the ledger: capability descriptor and refusal results
 Notes: The old WP33<-26 edge does not transfer here either: WP-26 is the remote *execution* bridge, which would consume these capability descriptors as a downstream caller, not produce anything WP-35.00 needs to start.
 ```
@@ -600,7 +600,7 @@ Outcome: ArcScope contributes structured results (measurements, analysis outputs
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-35.01 (full, including required-design-implementation text: project measurement values with profile, immutable source/configuration binding, counts, coverage and status into bounded context/report references; unknown-profile and insufficient results are never silently rendered as numeric zero): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.01
-- WP-35:4-content-origin-content-unit-binding-ob Â§4 content-origin/content-unit binding obligation applying broadly to WP35's changed files (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
+- WP-35:4-content-origin-content-unit-binding-ob §4 content-origin/content-unit binding obligation applying broadly to WP35's changed files (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -613,7 +613,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Application/Context/**; ArcScope:tests/ArcScopePipelineTests/Context/**
 Unblocks: SCOPE.26
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): structural test asserting raw capture cannot enter a context payload; bounding test; visibility test â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): structural test asserting raw capture cannot enter a context payload; bounding test; visibility test — offline
 Completion evidence for the ledger: structural raw-capture exclusion and bounding results
 ```
 
@@ -643,7 +643,7 @@ Permitted write scope: ArcScope:src/ArcScope/ArcScope.CloudClient/SyncScope/**; 
 Permitted substitutes (never real integration evidence): SUB-scope-sync-fixture: client-side scope-mapping/exclusion logic only Real producer ['CLOUD.39']; removed by SCOPE.27
 Unblocks: AND.27, SCOPE.26, SCOPE.27, WEB.32
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): enable-sync test asserting no raw bytes transferred; policy-visibility test; convergence test across devices for included scope â€” early development against a contract-bound sync fixture, real convergence at WP-35.90; offline fixtures cover project rename/delete, parent/session arrival order and withholding a report reference until its resource is verified
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): enable-sync test asserting no raw bytes transferred; policy-visibility test; convergence test across devices for included scope — early development against a contract-bound sync fixture, real convergence at WP-35.90; offline fixtures cover project rename/delete, parent/session arrival order and withholding a report reference until its resource is verified
 Completion evidence for the ledger: no-raw-bytes sync assertion and convergence results
 ```
 
@@ -682,12 +682,12 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/scope-24 (python tools/delivery.py claim SCOPE.24 --worker <name>); task branch task/scope-24 in ArcScope; ledger record ledger/tasks/scope-24.md.
 Kind/size: feature/L. Baseline: not-started.
-Outcome: Native full-fidelity bundle export/import round-trips with equivalence; tabular export carries explicit precision warnings; import enters the unified session model with a recorded origin (never disguised as a live device); every claimed import version has a fixture â€” satisfying PG-07 for ArcScope.
+Outcome: Native full-fidelity bundle export/import round-trips with equivalence; tabular export carries explicit precision warnings; import enters the unified session model with a recorded origin (never disguised as a live device); every claimed import version has a fixture — satisfying PG-07 for ArcScope.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-35.04 (full, including required-design-implementation text: native bundles preserve origin, measurement profile/configuration and simulator provenance separately; CSV/JSON/report export publishes required sidecars atomically; structured context carries selected origins and measurement quality, never raw capture): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, anchor rule-wp-35.04
-- WP-35:4-content-origin-content-unit-binding-ob Â§4 content-origin/content-unit binding obligation applying broadly to WP35's changed files (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
-- WP-35:8-additional-completion-requirements-mea Â§8 additional completion requirements (measurement meaning/numerical profile survives portability; content-origin carrier vectors) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
+- WP-35:4-content-origin-content-unit-binding-ob §4 content-origin/content-unit binding obligation applying broadly to WP35's changed files (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
+- WP-35:8-additional-completion-requirements-mea §8 additional completion requirements (measurement meaning/numerical profile survives portability; content-origin carrier vectors) (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\35-arcscope-integration-and-sync.md, package-level obligation
 
 Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -700,9 +700,9 @@ Permitted write scope: ArcScope:src/ArcScope/ArcScope.ImportExport/**; ArcScope:
 Shared resources (follow the owner protocol): RES-arcscope-format-fixtures (append): Fixtures are added per task under its own subdirectory; manifests are append-only.
 Unblocks: SCOPE.26, SIM.06, SIM.09
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): bundle round-trip equivalence; precision-warning assertions; origin-recording test; fixture coverage for every claimed version â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): bundle round-trip equivalence; precision-warning assertions; origin-recording test; fixture coverage for every claimed version — offline
 Completion evidence for the ledger: bundle round-trip, precision warnings, origin and fixture coverage
-Notes: This task also carries the bundle-side half of WP-51's 'simulator provenance separately' requirement â€” SIM.06 (ArcScope-side simulator ingestion) depends on this task so simulated captures round-trip through the same bundle format with their synthetic labelling intact.
+Notes: This task also carries the bundle-side half of WP-51's 'simulator provenance separately' requirement — SIM.06 (ArcScope-side simulator ingestion) depends on this task so simulated captures round-trip through the same bundle format with their synthetic labelling intact.
 ```
 
 ```text
@@ -729,7 +729,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.AssistantIntegration/ExtensionBoundary/**; ArcScope:tests/ArcScopePipelineTests/ExtensionBoundary/**
 Unblocks: SCOPE.26
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): structural test asserting no extension-reachable raw-write path exists; owner-side refusal test from an extension caller â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): structural test asserting no extension-reachable raw-write path exists; owner-side refusal test from an extension caller — offline
 Completion evidence for the ledger: extension no-write structural results
 ```
 
@@ -760,7 +760,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:docs/wp-35-integration-receipt.md
 Unblocks: REL.02
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): metadata sync and explicit-upload behavior remain distinct; context/report data retain measurement identity across real service calls â€” real Cloud integration exercised here, not at earlier SCOPE tasks
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): metadata sync and explicit-upload behavior remain distinct; context/report data retain measurement identity across real service calls — real Cloud integration exercised here, not at earlier SCOPE tasks
 Completion evidence for the ledger: owned-artifact and real-integration receipt
 ```
 

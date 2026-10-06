@@ -200,7 +200,7 @@ Unblocks: AST.09, AST.10, AST.15, AST.21
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline full round-trip tests: malformed/hash/foreign references, draft exclusion, branch cycles, canceled import; no Cloud in CI.
 Completion evidence for the ledger: Round-trip hash manifests, malformed/cycle/cancel test results, named-fixture manifest entry for this substitute.
-Notes: One of the named scaffolding rows in implementation-sequence.md Â§3.1. See integration_proposals IM.history-export-cloud-promotion.
+Notes: One of the named scaffolding rows in implementation-sequence.md §3.1. See integration_proposals IM.history-export-cloud-promotion.
 ```
 
 ```text
@@ -410,7 +410,7 @@ Unblocks: AST.17, AST.20
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: offline edits remain drafts; no live scheduler in CI.
 Completion evidence for the ledger: Named-fixture manifest entry, offline-draft test results.
-Notes: Second of the four named scaffolding rows in implementation-sequence.md Â§3.1.
+Notes: Second of the four named scaffolding rows in implementation-sequence.md §3.1.
 ```
 
 ```text

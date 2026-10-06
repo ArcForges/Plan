@@ -121,18 +121,18 @@ Tasks: 456 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.11 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Application/history/execution/events operations (annex10's 13 additions) + EventService.Poll |
 | CON.12 | Contracts | M | ADOPT.03.contracts (adoption) | Extension and policy schemas: manifest.v1/workflow.v1/panel.v1/policy body.v1/configuration.v1 |
 | CON.13 | Contracts | S | CON.02, ADOPT.03.contracts (adoption) | Package catalog operation registry (CatalogService) |
-| CON.14 | Contracts | L | CON.13, CON.09, CON.22, ADOPT.03.contracts (adoption) | Operator control service (OperatorService, full Â§9/9.1/9.2 protocol) |
+| CON.14 | Contracts | L | CON.13, CON.09, CON.22, ADOPT.03.contracts (adoption) | Operator control service (OperatorService, full §9/9.1/9.2 protocol) |
 | CON.15 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Cloudflare-internal HTTP and D1 ExecutePlan bindings |
 | CON.16 | Contracts | M | ADOPT.03.contracts (adoption) | Signed catalog/update/realm formats (catalog-index.v1, catalog-revocations.v1, android-update.v1, realm.v1) |
 | CON.17 | Contracts | M | CON.92, ADOPT.03.contracts (adoption) | Cross-language compatibility window + canonical semantic hash |
 | CON.18 | Contracts | S | ADOPT.03.contracts (adoption) | Operation-scope manifest + authorization-reachability matrix generator |
-| CON.19 | Contracts | M | CON.02, CON.18, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.21, CON.22, CON.01, CON.23, CON.24, CON.25, ADOPT.03.contracts (adoption) | WP03.90 â€” verify the owned Contracts artifact and its real (non-consumer) integration |
+| CON.19 | Contracts | M | CON.02, CON.18, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.21, CON.22, CON.01, CON.23, CON.24, CON.25, ADOPT.03.contracts (adoption) | WP03.90 — verify the owned Contracts artifact and its real (non-consumer) integration |
 | CON.21 | Contracts | M | CON.02, CON.09, ADOPT.03.contracts (adoption) | Simulation operation registry |
 | CON.22 | Contracts | M | CON.02, CON.09, ADOPT.03.contracts (adoption) | Account support, notification, data, preference, policy-bundle and export-job operations |
 | CON.23 | Contracts | M | GOV.01, ADOPT.03.contracts (adoption) | Retire the contract and naming elements outside the product family |
-| CON.90 | Contracts | M | — | WP03.00 â€” split project structure (accepted, historical) |
-| CON.91 | Contracts | L | — | WP03.01 â€” foundation contract types (accepted, historical) |
-| CON.92 | Contracts | M | — | WP03.02 â€” serialization posture (accepted, historical) |
+| CON.90 | Contracts | M | — | WP03.00 — split project structure (accepted, historical) |
+| CON.91 | Contracts | L | — | WP03.01 — foundation contract types (accepted, historical) |
+| CON.92 | Contracts | M | — | WP03.02 — serialization posture (accepted, historical) |
 | CON.24 | Contracts | M | CON.02, CON.23, CON.03, ADOPT.03.contracts (adoption) | ArcScope library read operations and summary records |
 | CON.25 | Contracts | M | CON.02, CON.05, CON.10, CON.21, ADOPT.03.contracts (adoption) | Public ConnectorService, the local call context and the af-segment records |
 | CON.26 | Contracts | M | CON.18, CON.25, CON.23, CON.07, CON.10, CON.11, ADOPT.03.contracts (adoption) | Generated public operation authorization catalog |
@@ -385,7 +385,7 @@ Tasks: 456 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.16 | Cloud | M | CLOUD.11, COM.16, CLOUD.72, CON.26, ADOPT.07.cloud (adoption) | PAT and actor authorization |
 | CLOUD.17 | Cloud | M | CLOUD.12, ADOPT.07.cloud (adoption) | Recovery, account states and deletion |
 | CLOUD.18 | DesktopPlatform | M | CLOUD.12, PLT.40, ADOPT.02.cloud (adoption) | Independent native session integration (Platform client primitives) |
-| CLOUD.19 | Cloud | L | CLOUD.01, CLOUD.11, CLOUD.13, CON.26, ADOPT.07.cloud (adoption) | Browser cookie-session adapter and full account-surface closure |
+| CLOUD.19 | Cloud | L | CLOUD.01, CLOUD.11, CLOUD.13, CON.26, CLOUD.12, ADOPT.07.cloud (adoption) | Browser cookie-session adapter and full account-surface closure |
 | CLOUD.20 | Cloud | M | CON.07, CLOUD.11, CLOUD.66, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration |
 | CLOUD.21 | Cloud | M | CON.91, CLOUD.13, COM.16, ADOPT.07.cloud (adoption) | Public endpoint mapping and validation |
 | CLOUD.22 | Cloud | M | CLOUD.21, ADOPT.07.cloud (adoption) | Typed protocol and error mapping |

@@ -31,7 +31,7 @@ Permitted write scope: Web:apps/site/**; Web:.gitleaks.toml (only exact-path-and
 Shared resources (follow the owner protocol): RES-contract-consumer-pins (append): A consumer task updates the pin it needs through a reviewed dependency change to the exact published candidate containing its closure; no consumer pins an unpublished closure or references Contracts source.
 Unblocks: WEB.02, WEB.03, WEB.04, WEB.05, WEB.06, WEB.07
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Two full builds with identical inputs compared byte-for-byte; no-script navigation/content tests; single-content-change diff; build with network disabled after approved restore â€” CI-eligible offline checks. Keep the pinned Gitleaks scan enabled. Its generic-api-key exception may match only the eight observed lines/six unique verified public SHA256 values in eng/provenance/profiles/browser-resources-r8.json, requiring the exact path and digest on the same line (AND); `tests/provenance/candidate.test.ts` must test the actual config/profile exact bindings and positive/negative cases for changed digest, another path, unrelated 64-hex and credential-looking text. Do not allow generic 64-hex patterns, whole-file or commit suppressions, scanner/workflow/rule-algorithm changes, candidate-generation algorithm changes, or new dependencies.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Two full builds with identical inputs compared byte-for-byte; no-script navigation/content tests; single-content-change diff; build with network disabled after approved restore — CI-eligible offline checks. Keep the pinned Gitleaks scan enabled. Its generic-api-key exception may match only the eight observed lines/six unique verified public SHA256 values in eng/provenance/profiles/browser-resources-r8.json, requiring the exact path and digest on the same line (AND); `tests/provenance/candidate.test.ts` must test the actual config/profile exact bindings and positive/negative cases for changed digest, another path, unrelated 64-hex and credential-looking text. Do not allow generic 64-hex patterns, whole-file or commit suppressions, scanner/workflow/rule-algorithm changes, candidate-generation algorithm changes, or new dependencies.
 Completion evidence for the ledger: Determinism comparison and diff-minimality results; pinned Gitleaks results with eight observed findings bound by six exact path/digest pairs and negative path/digest-boundary evidence
 Notes: Its only real start need (WP00/WP02) is already satisfied; the current serial plan defers WP47 until after WP40, but nothing blocks starting this immediately. The candidate provenance test reads the actual .gitleaks.toml and browser-resources-r8.json, verifies the six unique exact path/digest bindings for the eight observed findings, and rejects changed-digest, different-path, unrelated-64-hex and credential-text cases; it must not alter candidate generation.
 ```
@@ -58,7 +58,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Web:apps/site/content/**; Web:apps/site/app/catalogue.json
 Unblocks: WEB.09
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Hard-coded-version/price scan; comparison of public projection to the selected approved snapshot â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Hard-coded-version/price scan; comparison of public projection to the selected approved snapshot — offline
 Completion evidence for the ledger: No independently hard-coded product version/private supplier price
 Notes: Private candidate builds may use named test-only offer/release fixtures per WP-47.01; the real WP42/44 numeric join for public promotion is explicitly deferred to WP50, not required to close this task's own gate.
 ```
@@ -86,7 +86,7 @@ Permitted write scope: Web:apps/site/**; Web:tooling/**
 Shared resources (follow the owner protocol): RES-web-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
 Unblocks: WEB.09
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): No-script render test; critical-path resource audit; p75 performance measurement; global-reachability check on every third-party host â€” offline/lab
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): No-script render test; critical-path resource audit; p75 performance measurement; global-reachability check on every third-party host — offline/lab
 Completion evidence for the ledger: No-script render, critical-path audit and performance measurements
 ```
 
@@ -112,7 +112,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Web:apps/site/**
 Unblocks: WEB.09
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Locale routing/annotation tests, no-trap assertion, pseudo-localisation pass â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Locale routing/annotation tests, no-trap assertion, pseudo-localisation pass — offline
 Completion evidence for the ledger: Locale routing, no-trap and pseudo-localisation results
 ```
 
@@ -138,7 +138,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Web:apps/site/content/**; Web:apps/site/app/routes/**
 Unblocks: WEB.09
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Documentation version routing; download integrity verification against published hashes; no-account-gate assertion; legal version-history tests â€” offline against labelled fixtures
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Documentation version routing; download integrity verification against published hashes; no-account-gate assertion; legal version-history tests — offline against labelled fixtures
 Completion evidence for the ledger: Download integrity, no-gate and legal versioning results
 Notes: Private candidate download fixtures are labelled; public promotion with real signed Desktop/Android artifacts is joined at WP50, not required to close this task.
 ```
@@ -165,7 +165,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Web:apps/site/**
 Unblocks: WEB.09
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Automated accessibility checks (axe-core, already a pinned devDependency) plus a dated manual verification; analytics payload audit â€” offline
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Automated accessibility checks (axe-core, already a pinned devDependency) plus a dated manual verification; analytics payload audit — offline
 Completion evidence for the ledger: Accessibility checks pass with a dated manual record; analytics carry no cross-site identifier
 ```
 
@@ -192,7 +192,7 @@ Permitted write scope: Web:wrangler.json; Web:worker/**; Web:.github/workflows/c
 Shared resources (follow the owner protocol): RES-web-app-routing (append): The application shell task owns root route registration; each surface adds its own route module and per-origin edge directory.; RES-web-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
 Unblocks: WEB.09, WEB.30, WEB.31
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Cloud-outage independence test, atomic deployment test, rollback test â€” offline/local against the real Cloudflare account under existing CI secrets
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Cloud-outage independence test, atomic deployment test, rollback test — offline/local against the real Cloudflare account under existing CI secrets
 Completion evidence for the ledger: A full cloud outage leaves the site fully available; deployment is atomic; rollback restores the previous set
 ```
 
@@ -221,7 +221,7 @@ Unblocks: WEB.09, WEB.10, WEB.19
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): React Testing Library behavior tests; production-rendered Playwright visual snapshots for representative viewport/theme/locale combinations (local opt-in per playwright.config.ts's CI guard); automated accessibility and dated human visual/keyboard review; dependency/licence/provenance checks
 Completion evidence for the ledger: Approved consumer layouts and complete accessible states
-Notes: Has NO dependency on WEB.01-WEB.07 (different package, only needs WP02 which is already satisfied) and should be started in parallel with the site generator work, not after it â€” it is the critical-path input for both WEB.10 (account) and WEB.19 (chat).
+Notes: Has NO dependency on WEB.01-WEB.07 (different package, only needs WP02 which is already satisfied) and should be started in parallel with the site generator work, not after it — it is the critical-path input for both WEB.10 (account) and WEB.19 (chat).
 ```
 
 ```text
@@ -282,7 +282,7 @@ Permitted write scope: Web:apps/app/**; Web:package.json
 Shared resources (follow the owner protocol): RES-contract-consumer-pins (append): A consumer task updates the pin it needs through a reviewed dependency change to the exact published candidate containing its closure; no consumer pins an unpublished closure or references Contracts source.; RES-web-app-routing (append): The application shell task owns root route registration; each surface adds its own route module and per-origin edge directory.; RES-web-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.; RES-web-shared-ui (append): The design-system task owns the shared UI package; surfaces request components through it; additions after it are additive.
 Unblocks: WEB.11, WEB.13, WEB.14, WEB.15, WEB.16, WEB.19
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): TypeScript/RTL checks; no-cookie-leakage/state/PKCE/origin-mismatch and Android-verified-links tests; production route/chunk isolation, both themes, keyboard/narrow layouts â€” fixture-backed CI plus local opt-in real-browser evidence
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): TypeScript/RTL checks; no-cookie-leakage/state/PKCE/origin-mismatch and Android-verified-links tests; production route/chunk isolation, both themes, keyboard/narrow layouts — fixture-backed CI plus local opt-in real-browser evidence
 Completion evidence for the ledger: Profile isolation and composition results
 ```
 
@@ -335,7 +335,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Web:apps/app/app/features/account/**
 Unblocks: WEB.17, WEB.18
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Device-revocation-propagation, passkey add/remove, security-event-visibility and step-up-required-per-action tests â€” fixture CI plus local opt-in real-Cloud evidence
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Device-revocation-propagation, passkey add/remove, security-event-visibility and step-up-required-per-action tests — fixture CI plus local opt-in real-Cloud evidence
 Completion evidence for the ledger: Device revocation, passkey and step-up coverage results
 ```
 
@@ -390,7 +390,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Web:apps/app/app/features/commerce/**
 Unblocks: WEB.17, WEB.18, WEB.29, WEB.30, WEB.31
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real C# accounting/checkout-test-environment flows; exact-amount display above JS safe-integer boundaries; duplicate-click/cancelled/failed/late-confirmation/refund/term-expiry/stale-price tests â€” local opt-in against a real test-mode provider
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real C# accounting/checkout-test-environment flows; exact-amount display above JS safe-integer boundaries; duplicate-click/cancelled/failed/late-confirmation/refund/term-expiry/stale-price tests — local opt-in against a real test-mode provider
 Completion evidence for the ledger: Entitlement reason coverage, credit separation and no-payment-field scan
 ```
 
@@ -444,7 +444,7 @@ Permitted write scope: Web:deploy/edge/account/**
 Shared resources (follow the owner protocol): RES-web-app-routing (append): The application shell task owns root route registration; each surface adds its own route module and per-origin edge directory.; RES-web-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
 Unblocks: WEB.18
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Policy header verification; bundle secret scan; sandbox escape test on hostile content; budget measurements with regression gate â€” offline/CI-eligible
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Policy header verification; bundle secret scan; sandbox escape test on hostile content; budget measurements with regression gate — offline/CI-eligible
 Completion evidence for the ledger: Policy headers, bundle secret scan and budget measurements
 ```
 
@@ -508,7 +508,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Web:apps/app/**
 Unblocks: REL.05
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real browser against the AOT release: cookie secrecy, CSRF, expiry/revocation, privacy/export and admission/usage display â€” local opt-in per P2-017
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real browser against the AOT release: cookie secrecy, CSRF, expiry/revocation, privacy/export and admission/usage display — local opt-in per P2-017
 Completion evidence for the ledger: Owned-artifact-and-real-integration receipt; contributes its scoped evidence toward PG-23 (closed later at WP50, not here)
 ```
 
@@ -733,7 +733,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Web:apps/app/**
 Unblocks: REL.05
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Full real admitted CF turn/tool/approval/reconnect in a browser â€” local opt-in per P2-017
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Full real admitted CF turn/tool/approval/reconnect in a browser — local opt-in per P2-017
 Completion evidence for the ledger: Owned-artifact-and-real-integration receipt; contributes its scoped evidence toward PG-23 (closed later at WP50)
 ```
 
