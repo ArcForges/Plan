@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 456 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 458 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -33,9 +33,9 @@ Tasks: 456 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.execution | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Execution engine (9) |
 | ADOPT.02.extensions | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Extension platform and integrations (7) |
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
-| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (10) |
+| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (11) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (14) |
-| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (57) |
+| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (58) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
@@ -103,6 +103,7 @@ Tasks: 456 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.21 | DesktopPlatform | S | GOV.14, GOV.18, ADOPT.02.governance (adoption) | Scheduled and manual policy preview of the Design main branch (post-merge drift watch) |
 | GOV.22 | Cloud | S | GOV.09, ADOPT.07.governance (adoption) | Cloud devtool sharp security admission successor |
 | GOV.23 | DesktopPlatform | S | GOV.09, ADOPT.02.governance (adoption) | Desktop CI virtualenv security admission successor |
+| GOV.24 | DesktopPlatform | M | GOV.06, ADOPT.02.governance (adoption) | Closed non-wire operation metadata classification in shared Build.Policy |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 
@@ -225,6 +226,7 @@ Tasks: 456 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.57 | DesktopPlatform | M | PLT.24, PLT.38, APP.01, PLT.44, ADOPT.02.platform (adoption) | End-to-end capability invocation with real security enforcement inside one product |
 | PLT.58 | DesktopPlatform | M | PLT.47, PLT.48, PLT.49, PLT.50, PLT.51, PLT.52, ADOPT.02.platform (adoption) | Production observability exporter and host composition |
 | PLT.59 | DesktopPlatform | M | PLT.36, PLT.37, PLT.38, PLT.39, PLT.40, PLT.41, PLT.42, PLT.43, PLT.44, PLT.45, PLT.57, ADOPT.02.platform (adoption) | Admit and publish implemented managed Security and ContentSandbox packages |
+| PLT.60 | DesktopPlatform | M | PLT.45, PLT.57, ADOPT.02.platform (adoption) | Early content-helper isolation and guaranteed lifetime cleanup repair |
 
 ## Native producers and probes — [prompts](tasks/native.md)
 
