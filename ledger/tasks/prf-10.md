@@ -1,12 +1,29 @@
 ---
 task: PRF.10
 status: delivered
-recorded: 2026-10-02
-claimant: w-c20261002-prf10
+recorded: 2026-10-06
+claimant: w-codex-20261006-runtime
 epoch: 1
 ---
 
 # Android Kotlin/Jetpack Compose gRPC-Web and Cloudflare proof
+
+
+## Current implementation delivery, 2026-10-06
+
+PRF.10 remains **delivered, not complete**. [Mobile PR21](https://github.com/ArcForges/Mobile/pull/21) merged as `97868de10012252a0cdf057ae0dd41bcfc4b80ce` at independently reviewed exact head `fca4daa26ab37fedab2df89f441d3a04ebe63cd0`. The actual activity-owned client fences new calls and tracks/cancels all concurrent calls, closes HTTP transport off the caller thread, and implements the typed generated-stream adapter with bounded owner deadline, frame delivery, mandatory terminal gRPC status/trailer validation and cancellation-safe cleanup. Unary owner deadlines preserve caller/activity cancellation and return DEADLINE_EXCEEDED only for the owner's timeout. No production custom MethodSpec, stubbed success or copied generated Contracts is used.
+
+Mandatory app component tests now execute in retained CI. Actual Windows/Linux source-head [run37506900363](https://github.com/ArcForges/Mobile/actions/runs/37506900363) and all security/Verify checks passed; nine unary/lifecycle and thirteen stream cases pass with no skips. Actual components cover success and remote errors, missing/malformed/duplicate completion, concurrent close/refusal, callback cancellation, expiry and HTTP cleanup. The loopback service alone substitutes for unavailable real stream endpoints. CI failure diagnosis distinguished an unbounded production unary call (fixed) from cold serializer/IO fixture startup expiring correctly before network dispatch; a real generated SDK/HTTP warmup preserves unchanged500ms owner/3000ms outer/2000ms cleanup assertions and exactly one timed request without replay. [Independent exact review](https://github.com/ArcForges/Mobile/pull/21#issuecomment-6022416327) approves this source and current CI. Source/admission/text/provenance and local22/22 component checks passed; primary Mobile main fast-forwarded cleanly to the expected merge.
+
+The merged-main [run37508863569](https://github.com/ArcForges/Mobile/actions/runs/37508863569) subsequently passed both operating-system builds, all applicable security checks, Verify and the normal Publish Android job. It published [android-0.1.0-ci.63.1](https://github.com/ArcForges/Mobile/releases/tag/android-0.1.0-ci.63.1) at 2026-10-06T18:15:14Z for exact source `97868de10012252a0cdf057ae0dd41bcfc4b80ce`. The existing persistent signing pipeline verified the APK and AAB against public certificate SHA-256 `7a8b3b1402e77c3ec78e7a0b9f99d5358adc321d0e8d2a319c838d1cda181e9c` and retained the legal, source/resource/signing-preservation evidence and SHA256SUMS. Provider run/job/release metadata and the signer verification line were read; no new artifact was downloaded or installed. This is the normal signed development prerelease, not device/live-service acceptance.
+
+An explicit existing-environment Android component run completed on `pixel_7_-_api_36_0`, API36, fingerprint `google/sdk_gphone64_x86_64/emu64xa:16/BE2A.250530.026.D1/13818094:user/release-keys`. Only `io.github.arcforges.mobile.KeystoreProbeTest` ran: **6/6 passed**, no errors/skips. It used actual AndroidKeystore AES-GCM, verified nonexportable keys, fresh IVs, exact realm/user/installation record binding, ciphertext/binding tamper refusal and deleted/replaced-key refusal; test aliases were cleaned. Observed securityLevel0 means **software-backed emulator keys**. Retained local report: `Mobile/.worktree/prf-10/app/build/outputs/androidTest-results/connected/debug/TEST-pixel_7_-_api_36_0(AVD) - 16.xml`; scoped log `artifacts/keystore-api36.log`. The cached offline build ran through the workstation build slot; no SDK/image/toolchain installation or live Hello repetition occurred. The owned emulator stopped after the run. This is actual Keystore component evidence with test-only records, **not** the production credential store, persistence/no-backup/hardware/biometric/physical-device or minified-release/live-RPC acceptance.
+
+Current merged graph explicitly retains completion producers **CON.27 and CLOUD.19/.21/.22/.29/.32/.34**. The stream-capable immutable public Maven producer is CON.27-owned; PRF.10 owns consuming its actual published coordinates/real generated clients with exact locks/admission/legal/resource-profile successors and performing feasible actual proof composition. The corresponding Cloud owners implement authenticated ingress/session, real application event/output producers and authorization/recovery/expiry/stream lifecycle. Wider end-to-end/VG07 acceptance waits for those real deployed APIs and complete composition, and cannot be closed by the loopback fixture or Keystore probe. Complete ordinary adapters/component logic and composition remain required while wider acceptance waits. No claim is made that unavailable accounts or infrastructure prevent implementation: existing Cloud/Worker/Container/D1/DO/R2 infrastructure and credentials were inspected and earlier foundation proofs exist. Current deployment/API and producer state must be checked again at the actual handoff.
+
+## Preserved historical delivery record, 2026-10-02
+
+The following dated record is retained verbatim as prior evidence. Its statements about then-missing accounts, foundation deployment, producer availability, graph completion edges and unexecuted app/Keystore tests describe that date only; the current section and current merged graph supersede them.
 
 Delivered, not complete. The offline part is merged: loopback-fixture tests of the pinned Connect-Kotlin gRPC-Web transport (server stream, trailers, status mapping, connection loss, deadline, cancel) and an opt-in Android Keystore probe. The acceptance that WP-06.07 and the task outcome require (a Kotlin Android release build exercising unary, server-stream, trailers, cancel and Keystore against the real Worker/Container/D1/DO/R2 foundation, closing VG-07, with the compatible toolchain pinned after that proof) was not performed by anyone and cannot be performed today. Nothing below claims a live, deployed, streaming or physical-device result.
 
