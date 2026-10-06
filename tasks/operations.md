@@ -283,6 +283,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [contract] CON.22: published notification operations including push registration
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] AND.26: physical Android device receipt, no-GMS and permission evidence
+- [integration] CLOUD.13: actual guarded Notification registration security core and Device/session/recovery contributions
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Notification/**/Push/**
 Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
@@ -292,6 +293,8 @@ Unblocks: AND.26, OPS.12
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Live isolated Firebase project send (kept outside routine CI per P2-017, real service) plus offline tests for token-rotation race, crash-after-acceptance duplicates, TTL expiry, revoke-before-send, no-secret-logging.
 Completion evidence for the ledger: Recorded invalid-token/payload/project/rate-limit responses; no-secret-logging scan.
 Notes: Named as required-real-early scaffolding in implementation-sequence §3.1 (recorded FCM WP45.09 to WP32 proves device receipt) — unlike payment/mail, no fixture stands in for the server-side send itself; it is real against an isolated Firebase project from the start.
+
+2026-10-06 guarded production follow-up (docs/decisions/guarded-production-followup-2026-10-06.md). Preserve this task as the generated public push RPC and real FCM delivery owner. Adopt CLOUD13 minimum guarded Notification registration security core; do not duplicate create/replace/remove storage or bypass its actual Device/Installation/Session/recovery fences. Original full provider/device acceptance obligations and histories remain intact.
 ```
 
 ```text
