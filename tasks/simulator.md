@@ -28,7 +28,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Scope/Definitions/**; Cloud:src/Cloud/ArcForges.Cloud.Modules.Scope/Ast/**; Cloud:tests/Cloud.Tests.Integration/Scope/Ast/**
-Shared resources (follow the owner protocol): RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.
+Shared resources (follow the owner protocol): RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: SIM.02, SIM.08, SIM.10
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): malformed-AST corpus rejected before any side effect; cyclic-dependency case; each bound exceeded; definition-edit-does-not-affect-existing-runs test; CSV replay with bounded parse report; URL-fetch/host-file-read/cross-workspace-reference each denied — pure in-process unit tests, no D1/R2/host needed yet
@@ -56,6 +56,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Scope/Generators/**; Cloud:src/Cloud/ArcForges.Cloud.Modules.Scope/Faults/**; Cloud:tests/Cloud.Tests.Integration/Scope/Generators/**
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: SIM.03, SIM.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): pure in-process determinism tests (hash equality, seed sensitivity, fault-position exactness, RNG-stream independence) — no host/D1/R2 needed for this half
@@ -88,7 +89,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.BackgroundJobs/SimulationPacer/**; Cloud:tests/Cloud.Tests.Integration/Scope/Pacer/**
-Shared resources (follow the owner protocol): RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.
+Shared resources (follow the owner protocol): RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: SIM.04, SIM.07, SIM.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): at-least-once alarm, exhausted retry, sleeping Container, pause/cancel race, duplicate segment, delayed catch-up, accelerated mode, and the full slice-recovery Container-kill matrix — this genuinely needs a real (local/dev) Cloud host+D1+Container environment, kept to local/affected-scope per P2-017, not hosted CI
@@ -119,7 +120,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Scope/Publication/**; Cloud:tests/Cloud.Tests.Integration/Scope/Publication/**
-Shared resources (follow the owner protocol): RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.; RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.
+Shared resources (follow the owner protocol): RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.; RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: SIM.05, SIM.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): stale-holder-resumes-after-takeover; cancellation racing segment promotion and quota release; pause/resume producing same remaining data; host loss/takeover producing no duplicate/no missing range; crash-between-object-write-and-manifest-commit leaving a swept invisible object; committed manifest row never referencing an unverified object — real local Cloud host/D1/R2 environment, local/affected-scope per P2-017
@@ -149,7 +150,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.PublicApi/Scope/**; Cloud:tests/Cloud.Tests.Integration/Scope/Api/**
-Shared resources (follow the owner protocol): RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.
+Shared resources (follow the owner protocol): RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: AND.27, SIM.06, SIM.08, SIM.09, WEB.33
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): duplicate/stale/out-of-order commands; terminal-run resists resurrection; hash-mismatched segment rejected; reconnect-with-realtime-disabled proves polling is a complete authoritative fallback — real local Cloud host per P2-017; offline run-list authorization/paging and stale-revision/illegal-predecessor vectors
@@ -212,7 +213,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Scope/Limits/**; Cloud:tests/Cloud.Tests.Integration/Scope/Limits/**
-Shared resources (follow the owner protocol): RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.
+Shared resources (follow the owner protocol): RES-cloud-leased-singletons (append): Each publication watermark, Durable Object alarm namespace and R2 prefix has exactly one owning module task; others use its published port; names are reserved in the binding plan before first use.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: SIM.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): quota exhaustion before side effects; cross-workspace denial; term expiring mid-run; suspension mid-run; storage exhaustion; retention pass with active readers; partial-cancellation reporting partial; 24-hour bounded-resource soak — real local Cloud host, local/affected-scope per P2-017 (the 24h soak is the one long-running exception explicitly required by this substep)
@@ -246,6 +247,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] SIM.09: completed end-to-end proof
 
 Permitted write scope: Cloud:docs/wp-51-integration-receipt.md
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: REL.06
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): real AOT simulation -> R2 verified publication -> ArcScope ingest/measurement; no Workers AI dependency; proportionate under P2-017 given this is explicitly a real-service/real-storage/real-native-adapter gate (PG-14b text: 'preview/test fakes are insufficient')

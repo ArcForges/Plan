@@ -134,6 +134,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] REL.09: the combined disaster drill actually exercised against this deployed production topology
 
 Permitted write scope: Cloud:eng/release/**; Cloud:deploy/production/**; Design:docs/assurance/wp50-04-cloud-*.md
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: REL.07, REL.09, REL.11
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Production-shaped migration/rollback rehearsal against real Cloudflare topology; archived launch-capacity.v1 hash, actual standard-2 allocation/four global slots/ten-minute sleep, warm/cold/burst/fallback-read workload, D1/Vectorize/R2 dimensions and provider prices; explicit Product/Operations approval required for L-16/PG-26 - not markable complete from document checks alone.
@@ -193,6 +194,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:eng/release/commercial/**; Design:docs/assurance/wp50-05-commercial-*.md
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: REL.07, REL.11
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Full commercial gate evidence set from WP42; configuration assertion on the regional route; a received payout is required, not merely a successful test transaction, per BR-05.
@@ -222,6 +224,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:eng/release/game-day/**; Design:docs/assurance/wp50-04-gameday-*.md, wp50-07-operational-readiness-*.md
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: REL.06, REL.11
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): A real exercise across the severity ladder against real production topology; alert-to-runbook completeness assertion; on-call verification; support-path end-to-end test; local/opt-in per P2-017, no synthetic-only substitution.

@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 447 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 453 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -35,12 +35,12 @@ Tasks: 447 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
 | ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (9) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (14) |
-| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (55) |
+| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (57) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (24) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (26) |
 | ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (3) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
@@ -51,11 +51,11 @@ Tasks: 447 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
-| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (62) |
+| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (63) |
 | ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (16) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
-| ADOPT.07.governance | Cloud | S | ADOPT.01 | Adopt Cloud: Family governance and policy tests (1) |
+| ADOPT.07.governance | Cloud | S | ADOPT.01 | Adopt Cloud: Family governance and policy tests (2) |
 | ADOPT.07.harness | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud Harness (2) |
 | ADOPT.07.operations | Cloud | S | ADOPT.01 | Adopt Cloud: Operations, support and trust and safety (9) |
 | ADOPT.07.policy | Cloud | S | ADOPT.01 | Adopt Cloud: Dynamic policy and configuration (10) |
@@ -101,6 +101,7 @@ Tasks: 447 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.19 | AI | S | ADOPT.08.governance (adoption) | AI Wrangler and undici dependency admission (clear the repository security gate) |
 | GOV.20 | DesktopPlatform | S | GOV.06, ADOPT.02.governance (adoption) | Build.Policy banned-symbol scanner: audit unmanaged function-pointer invocations instead of throwing |
 | GOV.21 | DesktopPlatform | S | GOV.14, GOV.18, ADOPT.02.governance (adoption) | Scheduled and manual policy preview of the Design main branch (post-merge drift watch) |
+| GOV.22 | Cloud | S | GOV.09, ADOPT.07.governance (adoption) | Cloud devtool sharp security admission successor |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 
@@ -133,6 +134,8 @@ Tasks: 447 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.92 | Contracts | M | — | WP03.02 — serialization posture (accepted, historical) |
 | CON.24 | Contracts | M | CON.02, CON.23, CON.03, ADOPT.03.contracts (adoption) | ArcScope library read operations and summary records |
 | CON.25 | Contracts | M | CON.02, CON.05, CON.10, CON.21, ADOPT.03.contracts (adoption) | Public ConnectorService, the local call context and the af-segment records |
+| CON.26 | Contracts | M | CON.18, CON.25, CON.23, CON.07, CON.10, CON.11, ADOPT.03.contracts (adoption) | Generated public operation authorization catalog |
+| CON.27 | Contracts | M | CON.26, CON.11, CON.17, ADOPT.03.contracts (adoption) | Immutable generated streaming contract producer release |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
@@ -208,7 +211,7 @@ Tasks: 447 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.43 | DesktopPlatform | M | PLT.38, PLT.01, ADOPT.02.platform (adoption) | Capability leases and trust |
 | PLT.44 | DesktopPlatform | M | PLT.36, PLT.01, FND.04, ADOPT.02.platform (adoption) | Append-only audit subsystem |
 | PLT.45 | DesktopPlatform | XL | PLT.15, PLT.09, PLT.10, CON.04, ADOPT.02.platform (adoption) | Content helper and OS-enforced isolation (ContentSandbox host) |
-| PLT.46 | DesktopPlatform | M | PLT.36, PLT.37, PLT.38, PLT.39, PLT.40, PLT.41, PLT.42, PLT.43, PLT.44, PLT.45, PLT.54, PLT.57, ADOPT.02.platform (adoption) | Publish Security packages and verify real integration |
+| PLT.46 | DesktopPlatform | M | PLT.36, PLT.37, PLT.38, PLT.39, PLT.40, PLT.41, PLT.42, PLT.43, PLT.44, PLT.45, PLT.54, PLT.57, PLT.59, ADOPT.02.platform (adoption) | Publish Security packages and verify real integration |
 | PLT.47 | DesktopPlatform | M | FND.01, ADOPT.02.platform (adoption) | Emission and required dimensions |
 | PLT.48 | DesktopPlatform | M | PLT.47, ADOPT.02.platform (adoption) | Correlation and causation propagation |
 | PLT.49 | DesktopPlatform | L | PLT.40, FND.05, ADOPT.02.platform (adoption) | Redaction by construction |
@@ -216,8 +219,10 @@ Tasks: 447 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.51 | DesktopPlatform | S | PLT.23, ADOPT.02.platform (adoption) | Health probes |
 | PLT.52 | DesktopPlatform | L | PLT.31, PLT.49, ADOPT.02.platform (adoption) | Desktop diagnostics and consent |
 | PLT.53 | DesktopPlatform | S | PLT.47, PLT.48, PLT.49, PLT.50, PLT.51, PLT.52, ADOPT.02.platform (adoption) | Publish Observability packages and verify real integration |
-| PLT.54 | DesktopPlatform | M | PLT.45, NAT.15, ADOPT.02.platform (adoption) | Real hostile-input containment proof with production parser libraries loaded in ContentSandbox |
+| PLT.54 | DesktopPlatform | M | PLT.45, NAT.15, NAT.11, ADOPT.02.platform (adoption) | Real hostile-input containment proof with production parser libraries loaded in ContentSandbox |
 | PLT.57 | DesktopPlatform | M | PLT.24, PLT.38, APP.01, PLT.44, ADOPT.02.platform (adoption) | End-to-end capability invocation with real security enforcement inside one product |
+| PLT.58 | DesktopPlatform | M | PLT.47, PLT.48, PLT.49, PLT.50, PLT.51, PLT.52, ADOPT.02.platform (adoption) | Production observability exporter and host composition |
+| PLT.59 | DesktopPlatform | M | PLT.36, PLT.37, PLT.38, PLT.39, PLT.40, PLT.41, PLT.42, PLT.43, PLT.44, PLT.45, PLT.57, ADOPT.02.platform (adoption) | Admit and publish implemented managed Security and ContentSandbox packages |
 
 ## Native producers and probes — [prompts](tasks/native.md)
 
@@ -243,8 +248,8 @@ Tasks: 447 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
 | APP.01 | DesktopPlatform | M | CON.02, PLT.17, FND.02, FND.01, ADOPT.02.app-composition (adoption) | Assistant.Abstractions host ports and application identity |
-| APP.02 | ArcScope | M | APP.01, PLT.24, PLT.38, ADOPT.05.app-composition (adoption) | Minimal ArcScope application services (read/create/append annotations) |
-| APP.03 | ArcScope | S | APP.01, APP.02, PRF.04, NAT.01, ADOPT.05.app-composition (adoption) | Clean Native AOT package-consumer composition for ArcScope |
+| APP.02 | ArcScope | M | APP.01, PLT.24, PLT.38, PLT.59, ADOPT.05.app-composition (adoption) | Minimal ArcScope application services (read/create/append annotations) |
+| APP.03 | ArcScope | S | APP.01, APP.02, PRF.04, PLT.26, PLT.27, PLT.32, PLT.33, APP.07, PLT.58, PLT.59, ADOPT.05.app-composition (adoption) | Clean Native AOT package-consumer composition for ArcScope |
 | APP.04 | DesktopPlatform | S | APP.02, FND.02, FND.03, ADOPT.02.app-composition (adoption) | Idempotency and revision against the real store |
 | APP.05 | DesktopPlatform | M | APP.01, PLT.39, ADOPT.02.app-composition (adoption) | Approval at the owner |
 | APP.06 | DesktopPlatform | M | APP.01, PLT.21, PLT.22, PLT.41, ADOPT.02.app-composition (adoption) | Context and artifact integration |
@@ -375,12 +380,12 @@ Tasks: 447 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.13 | Cloud | M | CLOUD.11, CLOUD.06, CLOUD.72, ADOPT.07.cloud (adoption) | Device, installation, instance and session (four distinct concepts) |
 | CLOUD.14 | Cloud | S | CLOUD.13, ADOPT.07.cloud (adoption) | Device trust and remote gating |
 | CLOUD.15 | Cloud | M | CLOUD.12, CLOUD.13, ADOPT.07.cloud (adoption) | Step-up challenges for sensitive operations |
-| CLOUD.16 | Cloud | M | CLOUD.11, COM.16, ADOPT.07.cloud (adoption) | PAT and actor authorization |
+| CLOUD.16 | Cloud | M | CLOUD.11, COM.16, CLOUD.72, CON.26, ADOPT.07.cloud (adoption) | PAT and actor authorization |
 | CLOUD.17 | Cloud | M | CLOUD.12, ADOPT.07.cloud (adoption) | Recovery, account states and deletion |
 | CLOUD.18 | DesktopPlatform | M | CLOUD.12, PLT.40, ADOPT.02.cloud (adoption) | Independent native session integration (Platform client primitives) |
-| CLOUD.19 | Cloud | L | CLOUD.01, CLOUD.11, CLOUD.13, ADOPT.07.cloud (adoption) | Browser cookie-session adapter and full account-surface closure |
+| CLOUD.19 | Cloud | L | CLOUD.01, CLOUD.11, CLOUD.13, CON.26, ADOPT.07.cloud (adoption) | Browser cookie-session adapter and full account-surface closure |
 | CLOUD.20 | Cloud | M | CON.07, CLOUD.11, CLOUD.66, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration |
-| CLOUD.21 | Cloud | M | CON.91, CLOUD.13, ADOPT.07.cloud (adoption) | Public endpoint mapping and validation |
+| CLOUD.21 | Cloud | M | CON.91, CLOUD.13, COM.16, ADOPT.07.cloud (adoption) | Public endpoint mapping and validation |
 | CLOUD.22 | Cloud | M | CLOUD.21, ADOPT.07.cloud (adoption) | Typed protocol and error mapping |
 | CLOUD.23 | Cloud | M | CLOUD.21, CON.91, ADOPT.07.cloud (adoption) | Typed queries and revision preconditions |
 | CLOUD.24 | Cloud | M | CLOUD.21, ADOPT.07.cloud (adoption) | Idempotency and rate limiting |
@@ -424,14 +429,15 @@ Tasks: 447 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.70 | Cloud | S | CLOUD.03, CLOUD.01, ADOPT.07.cloud (adoption) | Gated D1 migration deployment step and compatible-rollback flow |
 | CLOUD.71 | Cloud | S | PRF.07, PRF.08, ADOPT.07.cloud (adoption) | Serve the built Web profiles from the proof origin |
 | CLOUD.72 | Cloud | M | CLOUD.11, COM.16, CLOUD.06, CLOUD.04, ADOPT.07.cloud (adoption) | Identity production store, identifier source and enrollment family call over the plan-execution port |
+| CLOUD.74 | Cloud | M | CLOUD.01, COM.01, ADOPT.07.cloud (adoption) | Restricted production commerce provider egress |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
 | COM.01 | Cloud | S | ADOPT.07.commerce (adoption) | Provider adapter boundary |
-| COM.02 | Cloud | M | ADOPT.07.commerce (adoption) | Catalogue and versioned policy |
-| COM.03 | Cloud | L | COM.01, COM.02, CLOUD.24, ADOPT.07.commerce (adoption) | Purchase pipeline |
+| COM.02 | Cloud | M | COM.16, ADOPT.07.commerce (adoption) | Catalogue and versioned policy |
+| COM.03 | Cloud | L | COM.01, COM.02, CLOUD.24, CLOUD.74, ADOPT.07.commerce (adoption) | Purchase pipeline |
 | COM.04 | Cloud | L | COM.01, COM.03, COM.16, ADOPT.07.commerce (adoption) | Provider event inbox |
 | COM.05 | Cloud | L | ADOPT.07.commerce (adoption) | Entitlement resolver |
 | COM.06 | Cloud | M | COM.05, CLOUD.23, COM.16, ADOPT.07.commerce (adoption) | Distribution and enforcement |

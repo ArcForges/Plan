@@ -193,7 +193,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.PackageCatalog/** (the one project of the module, CLOUD.02 layout; its Domain, Application and Infrastructure layers are folders and namespaces)
-Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
+Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: EXT.07, EXT.08, EXT.90, OPS.11
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Owner/PAT/operator separation, duplicate-version conflict, invalid archive, review/revoke replay, signed-index rollback/expiry, offline installed-package behavior -- Cloud integration tests against ephemeral D1, no live DNS/public network in CI.

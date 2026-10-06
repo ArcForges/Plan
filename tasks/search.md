@@ -28,7 +28,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/Sources/**; Cloud:tests/Cloud.Tests.Integration/Retrieval/Sources/**
-Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
+Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Permitted substitutes (never real integration evidence): SUB-web-search-fixture: source admission's origin/consent/rejection logic for web sources without a funded external call Real producer ['AIR.06']; removed by SRCH.06
 Unblocks: HAR.01, SRCH.01
 
@@ -58,7 +58,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/Indexing/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
+Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Permitted substitutes (never real integration evidence): SUB-embedding-rerank-fixture: index-write correctness (namespace scoping, filters, tombstones, dimension-change isolation) independent of real model variance Real producer ['AIR.00']; removed by SRCH.06
 Unblocks: SRCH.02, SRCH.05, SRCH.06
 
@@ -86,7 +86,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/Ranking/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
+Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Permitted substitutes (never real integration evidence): SUB-embedding-rerank-fixture: index-write correctness (namespace scoping, filters, tombstones, dimension-change isolation) independent of real model variance Real producer ['AIR.00']; removed by SRCH.06
 Unblocks: SRCH.03, SRCH.06
 
@@ -115,6 +115,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/PermissionRecheck/**
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: SRCH.04, SRCH.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline integration test with a revocation injected mid-query and a deliberately stale index row.
@@ -141,6 +142,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/Citations/**
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: SRCH.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests for stale/missing source labelling and anti-fabrication assertions.
@@ -167,7 +169,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/Privacy/**
-Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
+Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: SRCH.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline marker test, cross-app/account leakage test, purge test.
@@ -198,7 +200,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] SRCH.90: index capacity acceptance evidence
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/Indexing/**; Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/Ranking/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.
+Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: SRCH.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real compatible client/owner/index version test against deployed CF bindings (credentialed candidate gate, not ordinary CI, per P2-017's 'no real AI inference in CI'); explicit lexical-only degradation test.
@@ -228,7 +230,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] POL.02: launch-capacity.v1 signed configuration snapshot
 
 Permitted write scope: Cloud:tests/Cloud.Tests.Integration/Retrieval/**
-Shared resources (follow the owner protocol): RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.
+Shared resources (follow the owner protocol): RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: REL.06, SRCH.06
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Package/contract/owner/version compatibility and failure/recovery tests; P2-017 proportionate (no live paid-provider CI loop; capacity thresholds tested against recorded/replayable fixtures where the real CF budget document is unavailable in CI).

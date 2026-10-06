@@ -27,7 +27,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:deploy/monitoring/**
-Shared resources (follow the owner protocol): RES-cloud-runbooks-and-fixtures (append): One file per runbook, monitor or provider fixture; indexes are append-only; recorded provider fixtures stay test-only.
+Shared resources (follow the owner protocol): RES-cloud-runbooks-and-fixtures (append): One file per runbook, monitor or provider fixture; indexes are append-only; recorded provider fixtures stay test-only.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: OPS.02, OPS.04, OPS.12
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: indicator correctness against synthetic failures, dependency-attribution, alert-routing, alert-to-runbook completeness assertion.
@@ -54,6 +54,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Support/**/Incidents/**
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: OPS.03, OPS.09, OPS.12
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: severity-classification exercise, independence assertion for the incident system, breach-classification test.
@@ -81,7 +82,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] HAR.04: Cloud Harness provider-failure/effect-certainty procedures
 
 Permitted write scope: Cloud:docs/runbooks/**
-Shared resources (follow the owner protocol): RES-cloud-runbooks-and-fixtures (append): One file per runbook, monitor or provider fixture; indexes are append-only; recorded provider fixtures stay test-only.
+Shared resources (follow the owner protocol): RES-cloud-runbooks-and-fixtures (append): One file per runbook, monitor or provider fixture; indexes are append-only; recorded provider fixtures stay test-only.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: OPS.12
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Completeness check against the required runbook set (docs/requirements/products/arcforges-cloud.md §9.1); a dated rehearsal record per runbook, executed under existing environment per P2-017 (no new infra spun up for the rehearsal itself).
@@ -170,7 +171,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Support/**/BreakGlass/**
-Shared resources (follow the owner protocol): RES-cloud-runbooks-and-fixtures (append): One file per runbook, monitor or provider fixture; indexes are append-only; recorded provider fixtures stay test-only.
+Shared resources (follow the owner protocol): RES-cloud-runbooks-and-fixtures (append): One file per runbook, monitor or provider fixture; indexes are append-only; recorded provider fixtures stay test-only.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: OPS.12
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: activation alerting, expiry enforcement, review-requirement, owner-visibility.
@@ -198,6 +199,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Support/**/Cases/**
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: OPS.08, OPS.12
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: no-data-by-default assertion, reference-resolution, lifecycle.
@@ -225,6 +227,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.TrustSafety/**
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: OPS.12
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: ladder-progression, communication-completeness, appeal-path, enforcement-audit.
@@ -253,7 +256,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Notification/**; Cloud:src/Cloud/ArcForges.Cloud.Modules.TrustSafety/**/Advisories/**
-Shared resources (follow the owner protocol): RES-cloud-runbooks-and-fixtures (append): One file per runbook, monitor or provider fixture; indexes are append-only; recorded provider fixtures stay test-only.
+Shared resources (follow the owner protocol): RES-cloud-runbooks-and-fixtures (append): One file per runbook, monitor or provider fixture; indexes are append-only; recorded provider fixtures stay test-only.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: OPS.10, OPS.12
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests where possible (spoofed/replayed callback, bounced/complained suppression, content-redaction) plus recorded live-provider drill evidence (unknown send, DNS readiness, independent status/incident during a real Cloud outage) kept outside routine CI per P2-017.
@@ -282,6 +285,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] AND.26: physical Android device receipt, no-GMS and permission evidence
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Notification/**/Push/**
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Permitted substitutes (never real integration evidence): SUB-fcm-recorded-responses: Sender error, retry and token-invalidation handling only; live sending is proven by the same task and physical receipt by the Android integration task. Real producer ['OPS.10']; removed by AND.26
 Unblocks: AND.26, OPS.12
 
@@ -349,6 +353,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:eng/provenance/records/**
+Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
 Unblocks: REL.06, REL.09
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Aggregation of OPS.01-11 evidence; no-second-host architecture assertion.

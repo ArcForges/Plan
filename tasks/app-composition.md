@@ -56,15 +56,18 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] APP.01: published Assistant.Abstractions host ports and product identity
 - [artifact] PLT.24: real ICapabilityProvider.InvokeAsync invocation pipeline (owner-side decode/validate)
 - [artifact] PLT.38: published security decision pipeline enforcement point
+- [artifact] PLT.59: published production Security/CapabilityEnforcement/Audit package contracts
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: ArcScope:src/ArcForges.ArcScope.Application/**; ArcScope:src/ArcForges.ArcScope.Infrastructure/**; ArcScope:tests/**
+Permitted write scope: ArcScope:src/ArcForges.ArcScope.Application/**; ArcScope:src/ArcForges.ArcScope.Infrastructure/**; ArcScope:tests/**; ArcScope:src/ArcForges.ArcScope.Core/Application/**; ArcScope:src/ArcForges.ArcScope.Core/Infrastructure/**; ArcScope:src/ArcForges.ArcScope.Domain/** (only minimal annotation/session domain ownership); ArcScope:src/ArcForges.ArcScope.Core/ArcForges.ArcScope.Core.csproj; ArcScope:Directory.Packages.props (required exact published producer admission); ArcScope:eng/policy/** (owned project/API/closure/immutable receipt inputs); ArcScope:eng/provenance/** (owned first-party/input successors)
 Unblocks: APP.03, APP.04, APP.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests (descriptor/risk/context validation, one write path); no live Cloud in CI.
 Completion evidence for the ledger: Source commit, command receipt samples, validation-failure cases.
 Notes: This is the ONLY product-repo work in WP14 to WP17/26; professional ArcScope completion is WP33-WP35, not here.
+
+2026-10-06 production-delivery repair (docs/decisions/production-delivery-2026-10-06.md). This amendment governs conflicting historical scope notes; preserve completed evidence, immutable history and package identities. Binds the current Core/Domain project layout, without renaming identities. Owns actual typed read/create/annotation handlers, single durable local write/receipt path, expected-revision and final-owner authorization/approval/context/resource checks shared by UI and own-app capability calls, and the product durable ILeaseStore adapter. Implements cancellation, unknown outcome, replay, concurrency, restart and lifecycle against actual persistence; no Hello/test owner is a real product service. Supporting project/solution/locks/pins are reviewed under ADP-07 and dependency admission. Appending means CreateAnnotation adds a new independently identified annotation to the selected session; no invented AppendAnnotation/UpdateAnnotation wire method. The product owns an internal minimal session bootstrap operation and actual durable IApprovalStore as well as ILeaseStore, with one transactional persistence authority.
 ```
 
 ```text
@@ -85,16 +88,24 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] APP.01: published Assistant.Abstractions package (not project reference)
 - [artifact] APP.02: published ArcScope application-services surface
 - [artifact] PRF.04: proven Local RPC under Native AOT pattern
-- [artifact] NAT.01: confirmed Native AOT device-tool/capability-invocation feasibility from the high-risk probe
+- [artifact] PLT.26: real published producer implementation used by the product
+- [artifact] PLT.27: real published producer implementation used by the product
+- [artifact] PLT.32: real published producer implementation used by the product
+- [artifact] PLT.33: real published producer implementation used by the product
+- [artifact] APP.07: real published producer implementation used by the product
+- [artifact] PLT.58: real published producer implementation used by the product
+- [artifact] PLT.59: published actual security and audit adapters
 Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
+- [integration] NAT.01: actual native device-tool AOT proof
 
-Permitted write scope: ArcScope:src/ArcForges.ArcScope/**; ArcScope:packaging/**
-Unblocks: APP.08, HAR.05
+Permitted write scope: ArcScope:src/ArcForges.ArcScope/**; ArcScope:packaging/**; ArcScope:src/ArcForges.ArcScope.Core/Shell/**; ArcScope:src/ArcForges.ArcScope.Core/Infrastructure/** (host adapter/lifecycle/observability only); ArcScope:tests/** (actual shell/capability/lifecycle component tests); ArcScope:Directory.Packages.props (exact published producer pins with reviewed admission); ArcScope:eng/policy/** (owned project/API/closure/immutable admission inputs); ArcScope:eng/provenance/** (owned first-party/input successors)
+Unblocks: APP.08, HAR.05, PLT.32, PLT.33, PLT.35, PLT.57
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Native AOT publish/run in CI (package-only restore), offline command/cancel/result tests; no installed-package or public-release install/upgrade CI per P2-017.
 Completion evidence for the ledger: AOT publish log, package hash manifest, command/cancel/result and owner-refusal test results.
 Notes: Narrow early-risk proof: first real evidence that the whole Assistant.Abstractions/host-port composition model survives Native AOT package-only consumption for an actual product. Failure here invalidates the composition model assumed by WP15 to WP17.
+
+2026-10-06 production-delivery repair (docs/decisions/production-delivery-2026-10-06.md). This amendment governs conflicting historical scope notes; preserve completed evidence, immutable history and package identities. Owns the actual base Avalonia product shell, shared reusable assistant UI/host/lifecycle integration, menu/focus/state/RTL adapters, real security/audit/lease/observability composition and clean AOT consumer. Product-owned services may be existing own Core/Domain project references; package-only applies to external Platform/Contracts producers, not a nonexistent product-service package. No sibling product RPC/hub, second assistant executable or removal of shared AI capabilities. Native/device/manual assistive/reference-hardware checks remain distinct acceptance; component implementation, tests and feasible local runs continue.
 ```
 
 ```text
@@ -206,7 +217,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Assistant.Abstractions/**; DesktopPlatform:tests/AssistantAbstractionsTests/**; DesktopPlatform:eng/policy/architecture-contract-tests.json (append only exact APP.07 public API-to-focused-test bindings in the AssistantAbstractionsTests project); DesktopPlatform:eng/provenance/files.json (APP.07 owned-source inventory rows for the new source and test files only)
 Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
-Unblocks: APP.08
+Unblocks: APP.03, APP.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit/process tests: two windows/different drafts, independent crash, no data loss; no live-environment CI.
 Completion evidence for the ledger: Two-window and crash-recovery test results.
