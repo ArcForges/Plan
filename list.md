@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 456 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -40,7 +40,7 @@ Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (26) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (27) |
 | ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (3) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
@@ -51,7 +51,7 @@ Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
-| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (63) |
+| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (64) |
 | ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (16) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
@@ -137,6 +137,7 @@ Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.25 | Contracts | M | CON.02, CON.05, CON.10, CON.21, ADOPT.03.contracts (adoption) | Public ConnectorService, the local call context and the af-segment records |
 | CON.26 | Contracts | M | CON.18, CON.25, CON.23, CON.07, CON.10, CON.11, ADOPT.03.contracts (adoption) | Generated public operation authorization catalog |
 | CON.27 | Contracts | M | CON.26, CON.11, CON.17, ADOPT.03.contracts (adoption) | Immutable generated streaming contract producer release |
+| CON.28 | Contracts | M | CON.14, ADOPT.03.contracts (adoption) | Bounded immutable configuration-document reference contract |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
@@ -377,14 +378,14 @@ Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.09 | Cloud | M | CLOUD.01, CLOUD.03, ADOPT.07.cloud (adoption) | Selfhost.v1 deployment profile |
 | CLOUD.10 | Cloud | M | CLOUD.39, SIM.10, ADOPT.07.cloud (adoption) | Owned-artifact closure and launch-capacity.v1 acceptance |
 | CLOUD.11 | Cloud | M | CLOUD.02, CLOUD.03, CLOUD.06, CLOUD.04, ADOPT.07.cloud (adoption) | Core identity model (realm, user, authIdentity, single-owner workspace) |
-| CLOUD.12 | Cloud | L | CLOUD.11, CLOUD.72, ADOPT.07.cloud (adoption) | Native and browser authentication with real Postmark/SES mail delivery |
-| CLOUD.13 | Cloud | M | CLOUD.11, CLOUD.06, CLOUD.72, ADOPT.07.cloud (adoption) | Device, installation, instance and session (four distinct concepts) |
+| CLOUD.12 | Cloud | L | CLOUD.11, CLOUD.72, CLOUD.75, ADOPT.07.cloud (adoption) | Native and browser authentication with real Postmark/SES mail delivery |
+| CLOUD.13 | Cloud | M | CLOUD.11, CLOUD.06, CLOUD.72, CLOUD.75, ADOPT.07.cloud (adoption) | Device, installation, instance and session (four distinct concepts) |
 | CLOUD.14 | Cloud | S | CLOUD.13, ADOPT.07.cloud (adoption) | Device trust and remote gating |
 | CLOUD.15 | Cloud | M | CLOUD.12, CLOUD.13, ADOPT.07.cloud (adoption) | Step-up challenges for sensitive operations |
 | CLOUD.16 | Cloud | M | CLOUD.11, COM.16, CLOUD.72, CON.26, ADOPT.07.cloud (adoption) | PAT and actor authorization |
 | CLOUD.17 | Cloud | M | CLOUD.12, ADOPT.07.cloud (adoption) | Recovery, account states and deletion |
 | CLOUD.18 | DesktopPlatform | M | CLOUD.12, PLT.40, ADOPT.02.cloud (adoption) | Independent native session integration (Platform client primitives) |
-| CLOUD.19 | Cloud | L | CLOUD.01, CLOUD.11, CLOUD.13, CON.26, ADOPT.07.cloud (adoption) | Browser cookie-session adapter and full account-surface closure |
+| CLOUD.19 | Cloud | L | CLOUD.01, CLOUD.11, CLOUD.13, CON.26, CLOUD.12, ADOPT.07.cloud (adoption) | Browser cookie-session adapter and full account-surface closure |
 | CLOUD.20 | Cloud | M | CON.07, CLOUD.11, CLOUD.66, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration |
 | CLOUD.21 | Cloud | M | CON.91, CLOUD.13, COM.16, ADOPT.07.cloud (adoption) | Public endpoint mapping and validation |
 | CLOUD.22 | Cloud | M | CLOUD.21, ADOPT.07.cloud (adoption) | Typed protocol and error mapping |
@@ -431,6 +432,7 @@ Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.71 | Cloud | S | PRF.07, PRF.08, ADOPT.07.cloud (adoption) | Serve the built Web profiles from the proof origin |
 | CLOUD.72 | Cloud | M | CLOUD.11, COM.16, CLOUD.06, CLOUD.04, ADOPT.07.cloud (adoption) | Identity production store, identifier source and enrollment family call over the plan-execution port |
 | CLOUD.74 | Cloud | M | CLOUD.01, COM.01, ADOPT.07.cloud (adoption) | Restricted production commerce provider egress |
+| CLOUD.75 | Cloud | M | COM.16, ADOPT.07.cloud (adoption) | Authoritative shared realm authentication and persisted recovery epoch source |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 
