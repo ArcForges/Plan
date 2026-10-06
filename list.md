@@ -432,7 +432,7 @@ Tasks: 456 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.71 | Cloud | S | PRF.07, PRF.08, ADOPT.07.cloud (adoption) | Serve the built Web profiles from the proof origin |
 | CLOUD.72 | Cloud | M | CLOUD.11, COM.16, CLOUD.06, CLOUD.04, ADOPT.07.cloud (adoption) | Identity production store, identifier source and enrollment family call over the plan-execution port |
 | CLOUD.74 | Cloud | M | CLOUD.01, COM.01, ADOPT.07.cloud (adoption) | Restricted production commerce provider egress |
-| CLOUD.75 | Cloud | M | CLOUD.02, CLOUD.03, ADOPT.07.cloud (adoption) | Authoritative shared realm authentication and persisted recovery epoch source |
+| CLOUD.75 | Cloud | M | COM.16, ADOPT.07.cloud (adoption) | Authoritative shared realm authentication and persisted recovery epoch source |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 
