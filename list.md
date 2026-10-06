@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 458 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 459 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -35,7 +35,7 @@ Tasks: 458 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
 | ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (11) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (14) |
-| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (58) |
+| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (59) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
@@ -227,6 +227,7 @@ Tasks: 458 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.58 | DesktopPlatform | M | PLT.47, PLT.48, PLT.49, PLT.50, PLT.51, PLT.52, ADOPT.02.platform (adoption) | Production observability exporter and host composition |
 | PLT.59 | DesktopPlatform | M | PLT.36, PLT.37, PLT.38, PLT.39, PLT.40, PLT.41, PLT.42, PLT.43, PLT.44, PLT.45, PLT.57, ADOPT.02.platform (adoption) | Admit and publish implemented managed Security and ContentSandbox packages |
 | PLT.60 | DesktopPlatform | M | PLT.45, PLT.57, ADOPT.02.platform (adoption) | Early content-helper isolation and guaranteed lifetime cleanup repair |
+| PLT.61 | DesktopPlatform | S | PLT.38, ADOPT.02.platform (adoption) | Shared capability approval-effect binding producer |
 
 ## Native producers and probes — [prompts](tasks/native.md)
 
@@ -389,7 +390,7 @@ Tasks: 458 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.18 | DesktopPlatform | M | CLOUD.12, PLT.40, ADOPT.02.cloud (adoption) | Independent native session integration (Platform client primitives) |
 | CLOUD.19 | Cloud | L | CLOUD.01, CLOUD.11, CLOUD.13, CON.26, CLOUD.12, ADOPT.07.cloud (adoption) | Browser cookie-session adapter and full account-surface closure |
 | CLOUD.20 | Cloud | M | CON.07, CLOUD.11, CLOUD.66, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration |
-| CLOUD.21 | Cloud | M | CON.91, CLOUD.13, COM.16, ADOPT.07.cloud (adoption) | Public endpoint mapping and validation |
+| CLOUD.21 | Cloud | M | CON.91, COM.16, ADOPT.07.cloud (adoption) | Public endpoint mapping and validation |
 | CLOUD.22 | Cloud | M | CLOUD.21, ADOPT.07.cloud (adoption) | Typed protocol and error mapping |
 | CLOUD.23 | Cloud | M | CLOUD.21, CON.91, ADOPT.07.cloud (adoption) | Typed queries and revision preconditions |
 | CLOUD.24 | Cloud | M | CLOUD.21, ADOPT.07.cloud (adoption) | Idempotency and rate limiting |
