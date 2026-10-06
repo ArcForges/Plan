@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 453 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 454 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -33,7 +33,7 @@ Tasks: 453 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.execution | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Execution engine (9) |
 | ADOPT.02.extensions | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Extension platform and integrations (7) |
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
-| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (9) |
+| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (10) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (14) |
 | ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (57) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
@@ -102,6 +102,7 @@ Tasks: 453 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.20 | DesktopPlatform | S | GOV.06, ADOPT.02.governance (adoption) | Build.Policy banned-symbol scanner: audit unmanaged function-pointer invocations instead of throwing |
 | GOV.21 | DesktopPlatform | S | GOV.14, GOV.18, ADOPT.02.governance (adoption) | Scheduled and manual policy preview of the Design main branch (post-merge drift watch) |
 | GOV.22 | Cloud | S | GOV.09, ADOPT.07.governance (adoption) | Cloud devtool sharp security admission successor |
+| GOV.23 | DesktopPlatform | S | GOV.09, ADOPT.02.governance (adoption) | Desktop CI virtualenv security admission successor |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 
