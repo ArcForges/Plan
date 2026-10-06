@@ -22,7 +22,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 
 Entry condition: adoption slice ADOPT.07.device-bridge is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] CLOUD.13: real device/installation/instance/session authority in D1 (not a placeholder)
+- [artifact] CLOUD.13: actual D1 device/installation/session durable authority and typed instance-target authorization
 - [artifact] CLOUD.29: real Durable-Object-backed connection/authentication substrate
 - [contract] CON.11: published ApplicationService.List/Heartbeat/Disconnect wire definitions
 Completion prerequisites (may start earlier; cannot complete before these are complete):
@@ -35,6 +35,8 @@ Unblocks: DEV.02, DEV.09, DEV.14
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline/local Worker+DO test harness only (per P2-017, no hosted live-service CI): expiry/renewal timers, restarted epoch, offline-without-false-availability.
 Completion evidence for the ledger: Expiry/renewal timer test results, restarted-epoch test, per-device-row isolation proof.
 Notes: Exact Cloud-side project path for the WP21 to WP26 service split is not yet established in-repo; glob is a reasonable placeholder pending that layout decision (the Cloud lane / WP22 to WP23 territory).
+
+2026-10-06 narrow production addendum (docs/decisions/production-delivery-addendum-2026-10-06.md). CLOUD.13 supplies actual durable device/installation/session authority plus typed instance-target authorization. ApplicationPresenceDO instanceEpoch/presence stays DEV.01-owned, never a fictitious D1 instance-presence prerequisite or reverse cycle.
 ```
 
 ```text

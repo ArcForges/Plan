@@ -269,7 +269,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:tests/ArchitectureTests/**; Cloud:eng/policy/exceptions.json; Cloud:Cloud.slnx (add the new host project only); Cloud:Directory.Packages.props (the exact ArcForges.Build.Policy pin moved to the published GOV.06 candidate; no other coordinate, runtime or version change); Cloud:tests/ArchitectureTests/packages.lock.json; Cloud:src/ArcForges.Cloud/packages.lock.json, Cloud:tests/ArcForges.Cloud.Tests/packages.lock.json, Cloud:tests/ArcForges.Cloud.Consumer/packages.lock.json (regenerated only for the central pin change); Cloud:eng/policy/dependency-policy.json; Cloud:eng/policy/dependency-reviews/gov-09-*.json (new immutable successor chained from the then-active receipt); Cloud:eng/policy/licence-boundary.json (the host project row); Cloud:eng/provenance/files.json; Cloud:eng/provenance/records/gov-09-*.json (new immutable successors only where an existing record binds an input this task changes); Cloud:eng/policy/naming-candidate.json (exact published @arcforges/proto naming-tool identity and asset hashes, as in Web); Cloud:tooling/project.ts (wire the forbidden-term scan into the existing check gate only); Cloud:package.json (a policy script and the exact already-locked @arcforges/proto devDependency; no version change); Cloud:package-lock.json (reflect that manifest change only); Cloud:.github/workflows/ci.yml (wire the host build and policy run into the existing pull-request job; no new platform, scheduled or manual workflow, no weakened or removed check)
 Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.; RES-cloud-policy-inputs (append): Append only task-owned source/test bindings and immutable successor receipts. Rebase before integration; regenerate actual input hashes and plan manifests; chain from the receipt active on main; preserve all prior versions and records. This protocol admits no unreviewed coordinate, permission or runtime behavior changes.
-Unblocks: GOV.15, GOV.22
+Unblocks: GOV.15, GOV.22, GOV.23
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests, negative fixtures, PR CI; per P2-017 (Cloud's real AOT publish proof is WP06/WP21, not claimed here).
 Completion evidence for the ledger: Per-rule pass/fail fixture table for Cloud's project graph.
@@ -662,4 +662,31 @@ Shared resources (follow the owner protocol): RES-cloud-policy-inputs (append): 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Actual locked installation, npm high audit and affected retained type/build/offline checks; no broad automatic dependency upgrades or gate suppression.
 Completion evidence for the ledger: Exact advisory/patched coordinate, independent source/admission review, applicable latest-head CI and normal deployment receipt.
 Notes: The advisory was published2026-10-06; current Wrangler4.147.0 still pins vulnerable sharp through Miniflare. Earlier green CI predates disclosure. This is a necessary diagnosed CI/security prerequisite, not optional upgrade churn.
+```
+
+```text
+Execute ArcForges delivery task GOV.23 — Desktop CI virtualenv security admission successor.
+
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\governance.md (anchor task-gov-23).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
+Claim and handoff record: claims/gov-23 (python tools/delivery.py claim GOV.23 --worker <name>); task branch task/gov-23 in DesktopPlatform; ledger record ledger/tasks/gov-23.md.
+Kind/size: producer/S. Baseline: not-started.
+Outcome: Adopt preserved Dependabot PR116 exact virtualenv21.5.1-to-21.7.13 hash-pinned CI patch for high GHSA-p58f-9548-mpm2, with actual Python transitive/licence closure and immutable reviewed input/provenance successors; retain all existing security and release gates.
+
+Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
+- WP-02.05 (minimum current DesktopPlatform CI Python security dependency admission; exact virtualenv patched closure only): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\02-build-governance-and-analyzer-policy.md, anchor rule-wp-02.05
+
+Entry condition: adoption slice ADOPT.02.governance is complete in the Plan ledger (DLV-22).
+Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
+- [artifact] GOV.09: actual completed shared policy/dependency audit and immutable admission mechanism
+Completion prerequisites (may start earlier; cannot complete before these are complete):
+- none
+
+Permitted write scope: DesktopPlatform:eng/requirements-ci.txt (only exact virtualenv21.7.13 pin and verified distribution hashes from preserved PR116); DesktopPlatform:eng/policy/dependency-policy.json (only actual affected Python closure/licence/input bindings); DesktopPlatform:eng/policy/dependency-reviews/gov-23-*.json (new immutable reviewed successors); DesktopPlatform:eng/provenance/files.json (owned input binding only); DesktopPlatform:eng/provenance/records/gov-23-*.json (new immutable owned successors only); DesktopPlatform:eng/provenance/NOTICE.txt (regenerate only if actual affected legal closure requires); DesktopPlatform:eng/test_dependency_policy.py (focused affected Python admission/closure negatives only); DesktopPlatform:docs/ci-python-security-2026-10-06.md
+Shared resources (follow the owner protocol): RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.; RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
+
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Actual hash-pinned affected Python closure/licence admission and focused negative tests; independent exact-head review and all applicable retained latest-head CI. No security suppression or generalized toolchain upgrade.
+Completion evidence for the ledger: Exact reviewed advisory/patched coordinate, preserved PR116 source and actual immutable admission/provenance receipts; passing current CI and normal publication prerequisites.
+Notes: 2026-10-06 narrow production addendum (docs/decisions/production-delivery-addendum-2026-10-06.md). Observed DesktopPlatform requirements-ci21.5.1 vulnerable; existing Dependabot PR116 head57801a0e67799b6d695f0bdc2428e5ec31f09341 already contains exact pin/hash patch. Root owns source/admission adoption in retained worktree and integration. Preserve existing work/history and unrelated versions; do not mark new producer inherited complete. This is a necessary diagnosed release CI security prerequisite, not optional upgrade churn.
 ```
