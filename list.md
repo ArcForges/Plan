@@ -240,7 +240,7 @@ Tasks: 458 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | NAT.13 | DesktopPlatform | M | NAT.06, GOV.17, ADOPT.02.native (adoption) | Instruments family: serial and USB devices (NEW library) |
 | NAT.14 | DesktopPlatform | L | PLT.45, NAT.06, GOV.17, ADOPT.02.native (adoption) | Pdf family: arcpdf-abi export set, ArcForges.Native.Pdf binding and production parser composition seam in the WP11 helper (NEW library; real PDFium is NAT.15) |
 | NAT.15 | DesktopPlatform | L | NAT.14, PLT.45, ADOPT.02.native (adoption) | Pdf family: real PDFium (chromium/8044) build admission, binding and real-parser containment acceptance |
-| NAT.22 | DesktopPlatform | S | NAT.11, ADOPT.02.native (adoption) | Image package production: all 6 RIDs |
+| NAT.22 | DesktopPlatform | S | NAT.15, ADOPT.02.native (adoption) | Image package production: all 6 RIDs |
 | NAT.24 | DesktopPlatform | S | NAT.13, ADOPT.02.native (adoption) | Instruments package production: all 6 RIDs |
 | NAT.25 | DesktopPlatform | M | NAT.15, PLT.45, ADOPT.02.native (adoption) | Pdf package production: all 6 RIDs + ContentSandbox Runtime.<rid> composition |
 | NAT.28 | DesktopPlatform | M | NAT.22, NAT.24, NAT.25, ADOPT.02.native (adoption) | Dependency adoption receipts and hardware-lab closure |
@@ -252,8 +252,8 @@ Tasks: 458 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
 | APP.01 | DesktopPlatform | M | CON.02, PLT.17, FND.02, FND.01, ADOPT.02.app-composition (adoption) | Assistant.Abstractions host ports and application identity |
-| APP.02 | ArcScope | M | APP.01, PLT.24, PLT.38, PLT.59, ADOPT.05.app-composition (adoption) | Minimal ArcScope application services (read/create/append annotations) |
-| APP.03 | ArcScope | S | APP.01, APP.02, PRF.04, PLT.26, PLT.27, PLT.32, PLT.33, APP.07, PLT.58, PLT.59, ADOPT.05.app-composition (adoption) | Clean Native AOT package-consumer composition for ArcScope |
+| APP.02 | ArcScope | M | APP.01, PLT.24, PLT.38, PLT.59, GOV.07, ADOPT.05.app-composition (adoption) | Minimal ArcScope application services (read/create/append annotations) |
+| APP.03 | ArcScope | S | APP.01, APP.02, PRF.04, PLT.26, PLT.27, PLT.32, PLT.33, APP.07, PLT.58, PLT.59, GOV.07, ADOPT.05.app-composition (adoption) | Clean Native AOT package-consumer composition for ArcScope |
 | APP.04 | DesktopPlatform | S | APP.02, FND.02, FND.03, ADOPT.02.app-composition (adoption) | Idempotency and revision against the real store |
 | APP.05 | DesktopPlatform | M | APP.01, PLT.39, ADOPT.02.app-composition (adoption) | Approval at the owner |
 | APP.06 | DesktopPlatform | M | APP.01, PLT.21, PLT.22, PLT.41, ADOPT.02.app-composition (adoption) | Context and artifact integration |
