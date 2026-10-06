@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 459 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -35,12 +35,12 @@ Tasks: 459 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
 | ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (11) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (14) |
-| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (59) |
+| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (60) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (27) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (28) |
 | ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (3) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
@@ -139,6 +139,7 @@ Tasks: 459 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.26 | Contracts | M | CON.18, CON.25, CON.23, CON.07, CON.10, CON.11, ADOPT.03.contracts (adoption) | Generated public operation authorization catalog |
 | CON.27 | Contracts | M | CON.26, CON.11, CON.17, ADOPT.03.contracts (adoption) | Immutable generated streaming contract producer release |
 | CON.28 | Contracts | M | CON.14, ADOPT.03.contracts (adoption) | Bounded immutable configuration-document reference contract |
+| CON.32 | Contracts | S | CON.11, ADOPT.03.contracts (adoption) | Complete archive genuine tool-lineage fields |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
@@ -228,6 +229,7 @@ Tasks: 459 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.59 | DesktopPlatform | M | PLT.36, PLT.37, PLT.38, PLT.39, PLT.40, PLT.41, PLT.42, PLT.43, PLT.44, PLT.45, PLT.57, ADOPT.02.platform (adoption) | Admit and publish implemented managed Security and ContentSandbox packages |
 | PLT.60 | DesktopPlatform | M | PLT.45, PLT.57, ADOPT.02.platform (adoption) | Early content-helper isolation and guaranteed lifetime cleanup repair |
 | PLT.61 | DesktopPlatform | S | PLT.38, ADOPT.02.platform (adoption) | Shared capability approval-effect binding producer |
+| PLT.62 | DesktopPlatform | S | PLT.33, PLT.59, ADOPT.02.platform (adoption) | Shared resource-bound localization and accessibility audit |
 
 ## Native producers and probes — [prompts](tasks/native.md)
 
@@ -274,7 +276,7 @@ Tasks: 459 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | AST.07 | DesktopPlatform | M | AST.01, CON.11, ADOPT.02.assistant (adoption) | Local history export and import (assistant-history.v1) |
 | AST.08 | DesktopPlatform | S | AST.01, ADOPT.02.assistant (adoption) | Reference and package proof (AionUi evidence, clean-app package consumption) |
 | AST.09 | DesktopPlatform | M | AST.01, AST.02, AST.03, AST.04, AST.05, AST.06, AST.07, AST.08, ADOPT.02.assistant (adoption) | Owned-artifact receipt and UX acceptance |
-| AST.10 | DesktopPlatform | L | EXE.01, AST.01, AST.02, AST.04, AST.05, AST.06, AST.07, ADOPT.02.assistant (adoption) | Complete assistant navigation shell |
+| AST.10 | DesktopPlatform | L | APP.01, PLT.59, ADOPT.02.assistant (adoption) | Complete assistant navigation shell |
 | AST.11 | DesktopPlatform | L | CON.10, PRF.05, AST.01, ADOPT.02.assistant (adoption) | Cloud client and device runtime (fixture turn endpoint boundary) |
 | AST.12 | DesktopPlatform | M | AST.10, APP.05, PLT.39, ADOPT.02.assistant (adoption) | Security and approval surface |
 | AST.13 | DesktopPlatform | M | AST.10, EXE.01, EXE.05, AST.11, ADOPT.02.assistant (adoption) | Task centre |
