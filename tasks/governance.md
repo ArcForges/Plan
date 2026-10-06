@@ -648,7 +648,7 @@ Kind/size: producer/S. Baseline: not-started.
 Outcome: Fix the newly disclosed high GHSA-wq5f-xc86-pv6w in Cloud devtool sharp0.35.4 using the exact miniflare sharp0.35.5 override, preserving Wrangler/Miniflare versions and shipped Worker/container closure. Bind the actual lock/optional platform closure and licences to immutable reviewed successors; retain the mandatory npm high audit gate.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-05.06 (current Cloud security dependency admission and retained CI; exact patched devtool transitive closure): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\05-architecture-and-repository-policy-tests.md, anchor rule-wp-05.06
+- WP-02.05 (current Cloud security dependency admission and retained CI; exact patched devtool transitive closure): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\02-build-governance-and-analyzer-policy.md, anchor rule-wp-02.05
 
 Entry condition: adoption slice ADOPT.07.governance is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
