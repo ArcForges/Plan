@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 464 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -51,7 +51,7 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
-| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (64) |
+| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (67) |
 | ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (16) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
@@ -386,9 +386,9 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.12 | Cloud | L | CLOUD.11, CLOUD.72, CLOUD.75, ADOPT.07.cloud (adoption) | Native and browser authentication with real Postmark/SES mail delivery |
 | CLOUD.13 | Cloud | M | CLOUD.11, CLOUD.06, CLOUD.72, CLOUD.75, ADOPT.07.cloud (adoption) | Device, installation, instance and session (four distinct concepts) |
 | CLOUD.14 | Cloud | S | CLOUD.13, ADOPT.07.cloud (adoption) | Device trust and remote gating |
-| CLOUD.15 | Cloud | M | CLOUD.12, CLOUD.13, ADOPT.07.cloud (adoption) | Step-up challenges for sensitive operations |
+| CLOUD.15 | Cloud | M | COM.16, CLOUD.75, ADOPT.07.cloud (adoption) | Step-up challenges for sensitive operations |
 | CLOUD.16 | Cloud | M | CLOUD.11, COM.16, CLOUD.72, CON.26, ADOPT.07.cloud (adoption) | PAT and actor authorization |
-| CLOUD.17 | Cloud | M | CLOUD.12, ADOPT.07.cloud (adoption) | Recovery, account states and deletion |
+| CLOUD.17 | Cloud | M | COM.16, CLOUD.75, ADOPT.07.cloud (adoption) | Recovery, account states and deletion |
 | CLOUD.18 | DesktopPlatform | M | CLOUD.12, PLT.40, ADOPT.02.cloud (adoption) | Independent native session integration (Platform client primitives) |
 | CLOUD.19 | Cloud | L | CLOUD.01, CLOUD.11, CLOUD.13, CON.26, CLOUD.12, ADOPT.07.cloud (adoption) | Browser cookie-session adapter and full account-surface closure |
 | CLOUD.20 | Cloud | M | CON.07, CLOUD.11, CLOUD.66, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration |
@@ -438,6 +438,9 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.72 | Cloud | M | CLOUD.11, COM.16, CLOUD.06, CLOUD.04, ADOPT.07.cloud (adoption) | Identity production store, identifier source and enrollment family call over the plan-execution port |
 | CLOUD.74 | Cloud | M | CLOUD.01, COM.01, ADOPT.07.cloud (adoption) | Restricted production commerce provider egress |
 | CLOUD.75 | Cloud | M | COM.16, ADOPT.07.cloud (adoption) | Authoritative shared realm authentication and persisted recovery epoch source |
+| CLOUD.78 | Cloud | S | CLOUD.72, CLOUD.75, ADOPT.07.cloud (adoption) | Closed transaction-time final security expiry producer |
+| CLOUD.79 | Cloud | S | COM.16, CLOUD.75, ADOPT.07.cloud (adoption) | Immutable disclosed account-deletion lifecycle producer |
+| CLOUD.80 | Cloud | S | CLOUD.12, CLOUD.13, CLOUD.15, ADOPT.07.cloud (adoption) | Actual sensitive credential proof integration adapter |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 
