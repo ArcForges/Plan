@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 479 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 479 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -26,6 +26,7 @@ Tasks: 479 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 | Slice | Repository | Size | Start prerequisites | Title (tasks it opens) |
 |---|---|---|---|---|
+| ADOPT.02.ai-routing | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Model input validation, rendering and token counting (1) |
 | ADOPT.02.app-composition | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Application composition (6) |
 | ADOPT.02.assistant | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Embedded assistant (22) |
 | ADOPT.02.cloud | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Cloud core (2) |
@@ -63,7 +64,7 @@ Tasks: 479 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.07.runtime-proofs | Cloud | S | ADOPT.01 | Adopt Cloud: Runtime proofs (1) |
 | ADOPT.07.search | Cloud | S | ADOPT.01 | Adopt Cloud: Knowledge search and retrieval (8) |
 | ADOPT.07.simulator | Cloud | S | ADOPT.01 | Adopt Cloud: ArcScope Cloud simulator (9) |
-| ADOPT.08.ai-routing | AI | S | ADOPT.01 | Adopt AI: Workers AI routing and metering (5) |
+| ADOPT.08.ai-routing | AI | S | ADOPT.01 | Adopt AI: Workers AI routing and metering (4) |
 | ADOPT.08.extensions | AI | S | ADOPT.01 | Adopt AI: Extension platform and integrations (1) |
 | ADOPT.08.governance | AI | S | ADOPT.01 | Adopt AI: Family governance and policy tests (2) |
 | ADOPT.08.harness | AI | S | ADOPT.01 | Adopt AI: Cloud Harness (6) |
@@ -555,7 +556,7 @@ Tasks: 479 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | AIR.07 | AI | M | AIR.00, ADOPT.08.ai-routing (adoption) | Provider test-environment coverage |
 | AIR.08 | AI | L | AIR.00, AIR.02, AST.15, ADOPT.08.ai-routing (adoption) | Real-provider metering evidence and stubbed-path removal |
 | AIR.90 | Cloud | M | AIR.08, AIR.01, AIR.03, AIR.04, AIR.05, AIR.06, AIR.07, ADOPT.07.ai-routing (adoption) | Verify owned artifact and real integration (AI routing and metering) |
-| AIR.09 | AI | L | CON.10, CON.11, ADOPT.08.ai-routing (adoption) | Complete pinned tokenizer, rendering and model input producer |
+| AIR.09 | DesktopPlatform | L | CON.10, CON.11, ADOPT.02.ai-routing (adoption) | Complete pinned tokenizer, rendering and model input producer |
 
 ## Cloud Harness — [prompts](tasks/harness.md)
 

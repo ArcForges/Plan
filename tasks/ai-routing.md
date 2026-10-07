@@ -308,7 +308,7 @@ Execute ArcForges delivery task AIR.09 — Complete pinned tokenizer, rendering 
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\ai-routing.md (anchor task-air-09).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
+Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/air-09 (python tools/delivery.py claim AIR.09 --worker <name>); task branch task/air-09 in DesktopPlatform; ledger record ledger/tasks/air-09.md.
 Kind/size: producer/L. Baseline: not-started.
 Outcome: Normally publish ArcForges.AI.ModelInput complete pure supported o200k/Harmony tokenizer/render/materializer and semantic bundle validator with exact actual verified artifacts, immutable generated descriptor/pin inputs, original-source spans/token IDs/costs and faithful bounded rendered provider bytes. No approximate count, constructor permission, default unknown template or whole configuration/harness cycle.
@@ -316,7 +316,7 @@ Outcome: Normally publish ArcForges.AI.ModelInput complete pure supported o200k/
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-43.00 (minimum actual independent model tokenizer/render/materializer producer; original AIR00 routing/provider acceptance retained): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\43-managed-ai-routing-and-metering.md, anchor rule-wp-43.00
 
-Entry condition: adoption slice ADOPT.08.ai-routing is complete in the Plan ledger (DLV-22).
+Entry condition: adoption slice ADOPT.02.ai-routing is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] CON.10: actual published complete content/profile/skill/tool records
 - [artifact] CON.11: actual published transcript/source/turn input records
@@ -329,5 +329,5 @@ Unblocks: AIR.00, AST.01, HAR.01, POL.02
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Independently pinned official token IDs/counts/UTF8 rendering and complete Unicode17 scalar tables, all actual artifact hashes/category/pattern/BPE ties/span provenance, signed0 semantic legacy invariance, literal Harmony delimiters/control/astral/U2028/unpaired input, actual tool/context/resource unsupported arms, finite work/admission/cancellation/ignored callback/shutdown/key-buffer disposal. No live provider in ordinary CI; real consumer/provider acceptance remains original AIR00/HAR01/AST ownership.
 Completion evidence for the ledger: Exact independently reviewed source/data/legal/input identities, actual direct components and applicable Windows/Linux CI, real normal managed package publication and safe captured API. Pure success is not Config readiness, current permission or provider acceptance.
-Notes: 2026-10-07 approved model context and exact rendering producer repair (docs/decisions/approved-model-context-and-exact-rendering-producer-2026-10-07.md). Runtime worker w-codex-20261006-runtime owns the real pure producer. Independent package output allows Config Stage and client/server adapters to join without whole-task completion cycle; all consumer current authority and actual acceptance remain separate.
+Notes: 2026-10-07 approved model context and exact rendering producer repair (docs/decisions/approved-model-context-and-exact-rendering-producer-2026-10-07.md). DesktopPlatform worker w-codex-20261006-image is the sole source owner of the real pure producer. Independent package output allows Config Stage and client/server adapters to join without whole-task completion cycle; all consumer current authority and actual acceptance remain separate.
 ```
