@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 467 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 468 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -52,7 +52,7 @@ Tasks: 467 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
 | ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (69) |
-| ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (16) |
+| ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (17) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
 | ADOPT.07.governance | Cloud | S | ADOPT.01 | Adopt Cloud: Family governance and policy tests (2) |
@@ -455,7 +455,7 @@ Tasks: 467 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | COM.04 | Cloud | L | COM.01, COM.03, COM.16, ADOPT.07.commerce (adoption) | Provider event inbox |
 | COM.05 | Cloud | L | ADOPT.07.commerce (adoption) | Entitlement resolver |
 | COM.06 | Cloud | M | COM.05, CLOUD.23, COM.16, ADOPT.07.commerce (adoption) | Distribution and enforcement |
-| COM.07 | Cloud | L | CLOUD.07, COM.05, ADOPT.07.commerce (adoption) | Quota, usage and storage accounting |
+| COM.07 | Cloud | L | CLOUD.07, COM.05, COM.16, ADOPT.07.commerce (adoption) | Quota, usage and storage accounting |
 | COM.08 | Cloud | L | COM.05, ADOPT.07.commerce (adoption) | Credits |
 | COM.09 | Cloud | L | COM.03, COM.04, ADOPT.07.commerce (adoption) | Ledgers and reconciliation |
 | COM.10 | Cloud | M | COM.05, COM.09, COM.16, ADOPT.07.commerce (adoption) | Refunds, disputes and evidence |
@@ -465,6 +465,7 @@ Tasks: 467 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | COM.14 | Cloud | L | COM.12, COM.03, COM.04, COM.05, COM.09, COM.10, ADOPT.07.commerce (adoption) | Technical commerce closure and live-gate staging |
 | COM.15 | Cloud | S | COM.14, COM.06, COM.07, ADOPT.07.commerce (adoption) | Owned-artifact receipt and closure |
 | COM.16 | Cloud | L | COM.05, CLOUD.03, CLOUD.04, CLOUD.06, ADOPT.07.commerce (adoption) | Entitlement grant port and durable Entitlement store |
+| COM.18 | Cloud | M | COM.05, COM.16, CLOUD.72, ADOPT.07.commerce (adoption) | Immutable quota semantics and selected entitlement-period producer |
 
 ## Dynamic policy and configuration — [prompts](tasks/policy.md)
 
