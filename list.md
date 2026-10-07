@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 482 in 25 lanes, plus 51 adoption slices listed in the adoption section.
+Tasks: 484 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -41,7 +41,7 @@ Tasks: 482 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (34) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (36) |
 | ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (3) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
@@ -149,6 +149,8 @@ Tasks: 482 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 | CON.33 | Contracts | L | CON.11, CON.10, ADOPT.03.contracts (adoption) | Complete assistant output snapshots, execution pins and semantic hash producer |
 | CON.37 | Contracts | M | CON.11, CON.10, ADOPT.03.contracts (adoption) | Closed read-only execution admission receipt protocol |
 | CON.36 | Contracts | L | CON.33, CON.10, ADOPT.03.contracts (adoption) | Bound approved model context, artifacts, render pin and semantic profiles |
+| CON.39 | Contracts | S | CON.07, ADOPT.03.contracts (adoption) | Publish original browser logout command input and stable retry intent |
+| CON.40 | Contracts | S | CON.34, CON.07, ADOPT.03.contracts (adoption) | Native refresh original installation-context request producer |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
