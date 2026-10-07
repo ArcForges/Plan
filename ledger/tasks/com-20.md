@@ -1,0 +1,36 @@
+---
+task: COM.20
+status: complete
+recorded: 2026-10-07
+claimant: w-codex-20261006-catalog
+epoch: 1
+---
+
+# Complete versioned Entitlement definition producer
+
+Implementation and production artifact delivery are complete. Entitlement owns the bounded canonical full capability/quota/allowance validator, immutable realm/version profile store, receipt-safe publisher, asynchronous exact/current production readers and existing resolver/grant single-writer composition. The real scoped family joins the Configuration current-head predicate with Entitlement records through CLOUD.82's opaque owner-issued contributions. Caller observations, hashes and constructed DTOs grant no permission.
+
+## Authority and implementation
+
+The independently reviewed minimum producer pair Design275/Plan390 merged as `0854493e75026e9cd9ba5e2c4228364c3515afc4` / `5a43bd64bd803191965d3c3090a70c6f2f77646a`. Reviewed supporting scopes admit the exact generator, neutral primitive, physical correlated fixture and accepted-family selector changes. Start producers COM.05/CLOUD.72 and completion producer CLOUD.82 are already complete in the ledger; no POL.02 completion cycle was introduced.
+
+Full definitions are independent canonical artifacts, bounded to65536 UTF8 bytes and64 descriptors. Expected resolver facts never come from the candidate unit profile. Exact historical and current readers retain the original realm kind/version and fail closed for unknown, missing or unavailable authority. Publication verifies retained approved Configuration/artifact facts; superseded recovery requires an already accepted exact immutable profile. Identical later reuse preserves the first stored publisher as audit provenance while each command binds its actual retained approved publisher identity.
+
+The owner uses the existing named-plan and platform receipt/change-archive protocol, seven-day receipts and bounded retries of the same immutable command after receipt reconciliation. Concurrency, stale heads, reused/expired commands, buffered cancellation and genuine committed-response loss have actual component coverage. The closed `preserveExisting` insertion profile refuses changed primary-key replacement with recursive triggers OFF or ON and ignores an exact duplicate before replacement can erase first provenance; UPDATE/DELETE alone are not claimed sufficient. All exported schema/SQL builders enforce the same closed three-table admission.
+
+The early standalone `QuotaAccountingContracts.cs` primitive depends only on existing full-definition contracts; it includes no COM.07 implementation, pending quota DDL or successful permission substitute. Actual quota families and business authority remain their consumer implementation.
+
+## Independent review, checks and delivery
+
+- [Cloud PR76](https://github.com/ArcForges/Cloud/pull/76) final head `3e9dce5480af46db85141a9b159bc6175a623998` received [independent exact-head approval](https://github.com/ArcForges/Cloud/pull/76#issuecomment-6033198041), preserving the full source, migration, closed-builder, artifact and selector reviews. Identity fenced it as main `e92499a60c23b0db5b01682e001b25e2af5dec9b` at2026-10-07T07:42:52Z. No redundant integration-owner source review occurred.
+- Actual owner suites include58 managed production-store/async/family cases, two neutral-contract cases, architecture containment,26 resolver/physical Node cases, and149 real physical column/key cases. Only unavailable Configuration/artifact/transport dependencies are substituted. Earlier hosted CI passed all1443 managed/architecture cases and the full npm checks before exposing two Linux formatter findings; those genuine findings were corrected by the exact two-file SDK401 formatter, rather than repeating a failed head or relabeling its CI success. [Final candidate CI37587783595](https://github.com/ArcForges/Cloud/actions/runs/37587783595) passed all applicable Source, dependency, four CodeQL, NativeAOT/Worker and Verify gates.
+- Owning migration `0026_entitlement__resolver-definition-profile.sql` adds only the full profile table and preserves accepted migrations0..25. Actual generated inventory has84 plans and163 tables. Additive release profile r55 and COM.20 r2 evidence preserve r54/r1 and all224 incoming immutable records. The actual Worker remains393467 bytes/SHA256 `5dadcb9caa72e39df598b52c511bca8fb9f63c12c14fd844af77feed563627ea`,114 parsed/45 emitted inputs. The222 image input map changed exactly the two formatter-bound managed blobs; the132 dependency coordinates and88 admitted inputs retain their closure and pins.
+- [Normal main CI37589035528](https://github.com/ArcForges/Cloud/actions/runs/37589035528) completed SUCCESS at that exact merge, including production Deploy Cloudflare job112688472973. [Release cloud-0.1.0-ci.305.1](https://github.com/ArcForges/Cloud/releases/tag/cloud-0.1.0-ci.305.1) was published2026-10-07T07:51:25Z with the exact target commit and uploaded sealed image/deployment assets. No public package archive or repeated candidate artifact was downloaded.
+- Allowlisted artifact `cloudflare-evidence-37589035528-1` was downloaded once into Cloud/.worktree/com-20/artifacts/com-20-main-receipt. `deployment.json` binds the exact merge/version, deployed2026-10-07T07:51:20.477Z, imageId `sha256:2c54b632ead9c412ebd5efe8c2b3015d27a5a4914f8e257d1b8afa194afb65b8` and provider digest `registry.cloudflare.com/85a6bb957ba952261f6d177217ca9919/arcforges-cloud@sha256:491a6f180c3b91f723f48a83015e82ab4b4e2287db303235f7da995270f8bc50`. GitHub deployment6904614060 reports SUCCESS at07:51:30Z. Production migration gate is honestly not-applicable because this configuration declares no D1 binding; it does not prove persistent consumer migrations ran or that other infrastructure is absent.
+- A bounded Python urllib health attempt returned HTTP403 before any successful observation. One bounded fallback through the previously working PowerShell HTTP path returned200 with exact merge, nativeAot=true, version305.1 and clean build37589035528.1. The successful response is retained at Cloud/.worktree/com-20/artifacts/com-20-observed-health.json. No subsequent health or runtime cycle was performed; no WAF cause or OS isolation is inferred from the client-path difference.
+
+## Consumer implementation and deferred acceptance
+
+No COM.20 producer implementation or human-only blocker remains. POL.02 owns actual dual-approved signed full-before-unit staging, retained materializer identity and current-head/materialization composition. COM.18 consumes the accepted full producer and separately delivers unit/key migration27; COM.07 composes actual grant/period/Configuration/Workspace/session and accounting authority in one atomic business family. CLOUD.21 owns the signed production executor/configuration binding and live D1 activation. These consumers remain implementation work; this producer completion does not complete them.
+
+Real D1 composition, live operator/account/provider acceptance and the whole commercial series remain deferred to those owners. SQLite, unavailable-dependency fixtures and anonymous deployed health are distinct evidence and do not prove live D1, merchant permission, customer authorization or OS isolation. Existing routes/data are preserved and workers.dev remains disabled. The Final launcher file was not changed.
