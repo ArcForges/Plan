@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 468 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 471 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -35,12 +35,12 @@ Tasks: 468 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
 | ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (12) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (14) |
-| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (60) |
+| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (61) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (28) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (30) |
 | ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (3) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
@@ -141,6 +141,8 @@ Tasks: 468 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.27 | Contracts | M | CON.26, CON.11, CON.17, ADOPT.03.contracts (adoption) | Immutable generated streaming contract producer release |
 | CON.28 | Contracts | M | CON.14, ADOPT.03.contracts (adoption) | Bounded immutable configuration-document reference contract |
 | CON.32 | Contracts | S | CON.11, ADOPT.03.contracts (adoption) | Complete archive genuine tool-lineage fields |
+| CON.31 | Contracts | M | CON.07, CON.15, ADOPT.03.contracts (adoption) | Typed authentication flow, proof snapshot and Operator evidence storage producer |
+| CON.34 | Contracts | M | CON.07, CON.15, ADOPT.03.contracts (adoption) | Genuine native installation key possession transport and canonical transcript producer |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
@@ -231,6 +233,7 @@ Tasks: 468 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.60 | DesktopPlatform | M | PLT.45, PLT.57, ADOPT.02.platform (adoption) | Early content-helper isolation and guaranteed lifetime cleanup repair |
 | PLT.61 | DesktopPlatform | S | PLT.38, ADOPT.02.platform (adoption) | Shared capability approval-effect binding producer |
 | PLT.62 | DesktopPlatform | S | PLT.33, PLT.59, ADOPT.02.platform (adoption) | Shared resource-bound localization and accessibility audit |
+| PLT.64 | DesktopPlatform | M | PLT.40, PLT.59, ADOPT.02.platform (adoption) | Native installation credential custody and closed P256 signer |
 
 ## Native producers and probes — [prompts](tasks/native.md)
 
