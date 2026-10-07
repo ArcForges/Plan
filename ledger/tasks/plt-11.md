@@ -1,12 +1,14 @@
 ---
 task: PLT.11
 status: delivered
-recorded: 2026-10-03
-claimant: w-c20261002-plt11
+recorded: 2026-10-07
+claimant: w-codex-20261006-observability
 epoch: 1
 ---
 
 # Child registration lifecycle
+
+The original 2026-10-03 receipt below is retained as historical evidence. The appended 2026-10-07 follow-up records the now delivered production generated service and parent composition; historical missing-mapping and AOT statements no longer describe the current implementation. Full acceptance remains separate.
 
 Delivered, not complete. The registration lifecycle library is merged and was built and tested offline in hosted Linux CI and locally on Windows (including opt-in real-stream and real-process checks on Windows only). The task has no completion prerequisite in the graph, but its own completion evidence ("expired or stale child cannot call; parent restart requires fresh grants") was observed with a fake clock and fake process table, over in-memory streams, and on Windows with a real Named Pipe, a real AF_UNIX path and real child processes; nothing ran on Linux or macOS beyond hosted offline tests, no wrong-user denial was observed, and the library is not yet usable end to end by a product without an owner-written `LocalBootstrapService` mapping. It therefore opens as a completion follow-up (DLV-41) for a worker with Linux and macOS hosts and a second account.
 
@@ -50,3 +52,38 @@ Delivered, not complete. The registration lifecycle library is merged and was bu
 ## Remaining acceptance and next action
 
 PLT.11 stays `delivered`. A worker with a Linux x64 host and a macOS host runs `LocalRpcRegistrationOsChecks` there (`ARCFORGES_LOCALRPC_OS_STREAMS=1`), a worker with a second OS account observes wrong-user denial on a Named Pipe and a Unix socket, the missing production `LocalBootstrapService` mapping is settled through a planning decision, and the results (OS, RID, SDK, observed outcomes) are recorded through a reviewed amendment, after which the task may be marked `complete`. Missing optional hosts are not a provisioning task. PLT.12, PLT.16 and PRF.02 depend on PLT.11 only as a delivered artifact and are not blocked by this status.
+
+
+## 2026-10-07 production bootstrap implementation follow-up
+
+This appended receipt supersedes the historical missing production mapping and missing Native AOT implementation statements above. The original source, measurements and review history remain retained history. PLT.11 remains `delivered`: the real shared generated service and parent composition are now implemented and delivered; all-OS, wrong-user and installed/full-system acceptance are separate.
+
+### Source, planning and independent review
+
+[DesktopPlatform PR159](https://github.com/ArcForges/DesktopPlatform/pull/159) was fenced merged at independently approved exact head `9926469a0de4339f8e4da933ad8408ff52d3d201` as `b1a599eb8cb61d62ef58d0ca00ba7b6bc0130e7a`. Worker `w-codex-20261006-observability` owns this follow-up at epoch1. Actual merged planning admits the shared generated Platform service, supporting Foundation/Platform324 selectors, exact actual LocalRpc package closure, existing helper/Security locks and required API/provenance bindings. The final one-row repair was paired Design269/Plan381, merged as Design `10652c6753a039e1ef85d24ad32b3ddc7fa8ed5e` and Plan `b189103c9d4c9c6c524ec2b061a6923e495bd5b3`.
+
+Independent reviewer `w-codex-20261006-native-image` approved the full service/host source at `d5903fb6ac5b2323444dc085a30191de1cbdf302`, then verified the later accepted-parent and supporting admission deltas without repeating unchanged functional builds. Final exact992 approval [6028448339](https://github.com/ArcForges/DesktopPlatform/pull/159#issuecomment-6028448339), with canonical task/epoch verdict [6028774290](https://github.com/ArcForges/DesktopPlatform/pull/159#issuecomment-6028774290), preserves all prior source review. Review is a separate agent/session despite the shared GitHub account. All88 LocalRpc owned files and all supporting locks remain unchanged from the previously reviewed source/lock checkpoint; the last delta is only the actual required Boundary package catalogue pin and its owned input/receipt evidence.
+
+### Implemented behavior and real components
+
+- The shared `LocalRpcBootstrapService` maps actual generated Challenge/Confirm/Renew messages to the existing complete registration state machine. It validates generated shapes, actual reference and instance identities, parent PID/start/runtime identity and frozen manifest, canonical big-endian IDs and HMAC transcript. Rejected proof revokes the launch; malformed requests do not fabricate proof or grants. The actual endpoint authorizer retains the closed launch descriptor address/transport check; manifest endpoint remains descriptive under the wire registry.
+- `LocalRpcParentBootstrapHost` composes the actual private transport with registration and generated service. Failed start revokes registration/launch and disposes any built transport. Cached shutdown attempts both registration and transport cleanup, joins concurrent callers and reports faults. Asynchronous draining avoids reentrant ended callbacks joining themselves. Existing Broker bootstrap and legacy composition remain preserved; no second public listener or parsing authority is introduced.
+- The actual default process-start reader checks stable OS process identity before and after the UTC start read; Linux boot-relative ticks are not reinterpreted as UTC. Real registered control traffic, authorization and lifecycle remain delegated to the existing bounds/registration/launch mechanisms.
+- Pinned SDK10.0.400 Release build and owned formatting passed with zero warnings/errors. The full actual LocalRpc component suite passed with28 explicitly skipped OS opt-ins;21 focused generated-bootstrap cases passed. Tests exercise genuine generated messages and real service/private streams for malformed/forged challenge, proof rejection, confirmation/renewal, expiry/disconnect/relaunch, concurrent disposal, failed start and actual public process-start reading. Fake clocks/process ports cover unavailable controlled failures, not real OS or deployment proof.
+- Actual win-x64 Native AOT publication and execution passed with no warnings/errors and `dynamicCodeSupported=false`. This is an actual composed bootstrap producer check over private Windows streams and actual parent identity. PRF.04 owns the broader actual AOT parent/child generated bootstrap probe and historical bidirectional fixture; no Linux/macOS or wrong-user result is inferred from Windows or mocks.
+
+### CI failure diagnosis and exact applicable checks
+
+The older exact736 source run37548805211 failed strict managed package validation because the actual SDK400 Security.LocalRpcBoundary nuspec included `ArcForges.Contracts.LocalRpc.Platform 1.0.0-ci.324.1` missing from its reviewed catalogue. All other applicable native/AOT/runtime/build gates passed. Reviewed planning admitted only that exact existing catalogue dependency; final992 adds it while preserving every previous dependency, strict missing/extra/repin refusal, functional source, locks and immutable accepted history. A metadata-only diagnostic that ended with NU5128 was not package success or publication evidence.
+
+Final actual nuspec validation and9 strict external-dependency guard cases passed. Dependency policy passed62 NuGet/10 Python/289 inputs; clean provenance passed1066 files/144 records. Exact-head [CI37553856050](https://github.com/ArcForges/DesktopPlatform/actions/runs/37553856050) completed successfully with all22 applicable checks, including strict managed packaging, native builds, eight AOT compilation jobs, ordinary components, formatting and source/admission/security gates. No unchanged functional/native build was repeated solely for the final catalogue/receipt delta.
+
+### Actual normal publication
+
+Normal main-push [Publish NuGet37556463501](https://github.com/ArcForges/DesktopPlatform/actions/runs/37556463501) completed successfully with all24 jobs successful, source `b1a599eb8cb61d62ef58d0ca00ba7b6bc0130e7a`. The actual [publish job112587882463](https://github.com/ArcForges/DesktopPlatform/actions/runs/37556463501/job/112587882463) reauthorized the same immutable candidate and verified all24 package identities, contents and hashes before authentication. It published **1.0.0-ci.118.1**, with NuGet Created and successful-push acknowledgements for every package from2026-10-07T01:34:59Z through01:35:14Z. Actual `ArcForges.LocalRpc` was pushed at01:35:09Z and `ArcForges.Security.LocalRpcBoundary` at01:35:12Z. The full release set includes the existing Security/Secrets/Audit/CapabilityEnforcement/ContentSandbox and other admitted identities; no new native RID is inferred. No public package download, install, tag, republish or consumer rerun was used for this receipt.
+
+### Deferred acceptance and follow-up owners
+
+PRF.04 owns actual Windows parent/child full probe integration and its separate final-source receipt. PLT.09/PLT.10/PLT.11 and WP08 closure retain Linux/macOS runtime, genuine second-account wrong-user denial and wider product lifecycle acceptance. Existing alternate Windows accounts were observed, but no owned retained authenticated alternate-account token/harness was found; AppContainer restrictions under the current user SID are not second-user evidence. No missing-account or interactive-login blocker is asserted.
+
+APP.03 and actual host/product owners consume the real published shared parent service and private launch authorization; NAT.25/PLT.54 retain signed packaged parser/OS acceptance. Shared service implementation, component tests, AOT execution and ordinary NuGet delivery do not prove real OS isolation, all-RID execution, signed installed helper or full commercial end-to-end acceptance. Completed historical work is preserved and no new human-only implementation blocker was identified.
