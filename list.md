@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 474 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 475 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -33,7 +33,7 @@ Tasks: 474 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.execution | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Execution engine (9) |
 | ADOPT.02.extensions | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Extension platform and integrations (7) |
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
-| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (12) |
+| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (13) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (14) |
 | ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (61) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
@@ -105,6 +105,7 @@ Tasks: 474 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.23 | DesktopPlatform | S | GOV.09, ADOPT.02.governance (adoption) | Desktop CI virtualenv security admission successor |
 | GOV.24 | DesktopPlatform | M | GOV.06, ADOPT.02.governance (adoption) | Closed non-wire operation metadata classification in shared Build.Policy |
 | GOV.25 | DesktopPlatform | S | GOV.24, ADOPT.02.governance (adoption) | Bounded owner index for non-wire policy evaluation |
+| GOV.26 | DesktopPlatform | S | GOV.25, ADOPT.02.governance (adoption) | Cycle-aware bounded non-wire metadata traversal |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 
