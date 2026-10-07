@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 481 in 25 lanes, plus 51 adoption slices listed in the adoption section.
+Tasks: 482 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -53,7 +53,7 @@ Tasks: 481 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
 | ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (71) |
-| ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (18) |
+| ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (19) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
 | ADOPT.07.governance | Cloud | S | ADOPT.01 | Adopt Cloud: Family governance and policy tests (2) |
@@ -479,6 +479,7 @@ Tasks: 481 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 | COM.16 | Cloud | L | COM.05, CLOUD.03, CLOUD.04, CLOUD.06, ADOPT.07.commerce (adoption) | Entitlement grant port and durable Entitlement store |
 | COM.18 | Cloud | M | COM.05, COM.16, CLOUD.72, ADOPT.07.commerce (adoption) | Immutable quota semantics and selected entitlement-period producer |
 | COM.20 | Cloud | L | COM.05, CLOUD.72, ADOPT.07.commerce (adoption) | Independent immutable versioned full resolver-definition producer |
+| COM.21 | Cloud | L | COM.16, CLOUD.72, ADOPT.07.commerce (adoption) | Bounded authenticated original service-Term production framing |
 
 ## Dynamic policy and configuration — [prompts](tasks/policy.md)
 
