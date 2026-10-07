@@ -172,7 +172,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Adoption slices (claim, review and record each separately as ledger/tasks/<slice key>.md, for example ledger/tasks/adopt-07-ai-routing.md, plus one ledger/tasks/<key>.md with status inherited per task it classifies as inherited; one pull request may carry several; each slice opens only its own repository lane; each has its own prompt under "Adoption slices" below):
 - ADOPT.07.ai-routing: Adopt Cloud: Workers AI routing and metering (opens 6 tasks)
 - ADOPT.07.cloud: Adopt Cloud: Cloud core (opens 69 tasks)
-- ADOPT.07.commerce: Adopt Cloud: Commerce, entitlement and credits (opens 17 tasks)
+- ADOPT.07.commerce: Adopt Cloud: Commerce, entitlement and credits (opens 18 tasks)
 - ADOPT.07.device-bridge: Adopt Cloud: Application presence and tool bridge (opens 9 tasks)
 - ADOPT.07.extensions: Adopt Cloud: Extension platform and integrations (opens 1 task)
 - ADOPT.07.governance: Adopt Cloud: Family governance and policy tests (opens 2 tasks)
@@ -814,8 +814,8 @@ Claim and handoff record: claims/adopt-07-commerce (python tools/delivery.py cla
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- COM.01, COM.02, COM.03, COM.04, COM.05, COM.06, COM.07, COM.08, COM.09, COM.10, COM.11, COM.12, COM.13, COM.14, COM.15, COM.16, COM.18
-Opens when the record is merged: COM.01, COM.02, COM.03, COM.04, COM.05, COM.06, COM.07, COM.08, COM.09, COM.10, COM.11, COM.12, COM.13, COM.14, COM.15, COM.16, COM.18, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- COM.01, COM.02, COM.03, COM.04, COM.05, COM.06, COM.07, COM.08, COM.09, COM.10, COM.11, COM.12, COM.13, COM.14, COM.15, COM.16, COM.18, COM.20
+Opens when the record is merged: COM.01, COM.02, COM.03, COM.04, COM.05, COM.06, COM.07, COM.08, COM.09, COM.10, COM.11, COM.12, COM.13, COM.14, COM.15, COM.16, COM.18, COM.20, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-07-commerce.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
