@@ -315,7 +315,7 @@ Tasks: 476 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
-| DEV.01 | Cloud | M | CLOUD.13, CLOUD.29, CON.11, ADOPT.07.device-bridge (adoption) | Application presence (ApplicationService List/Heartbeat/Disconnect) |
+| DEV.01 | Cloud | M | CON.11, CLOUD.72, CLOUD.75, ADOPT.07.device-bridge (adoption) | Application presence (ApplicationService List/Heartbeat/Disconnect) |
 | DEV.02 | Cloud | M | DEV.01, CON.10, ADOPT.07.device-bridge (adoption) | Durable target queue |
 | DEV.03 | DesktopPlatform | M | AST.11, APP.05, PLT.43, ADOPT.02.device-bridge (adoption) | Owner reauthorization (Device.Runtime local re-authorization) |
 | DEV.04 | Cloud | M | DEV.02, CON.10, ADOPT.07.device-bridge (adoption) | Execution and result deduplication -- Cloud D1 attempt/result store |
