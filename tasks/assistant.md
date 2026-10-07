@@ -52,6 +52,8 @@ Actual lost-admission recovery consumes CON37 Execution.GetAdmissionReceipt unde
 HAR03 terminal source repair preserves actual generated complete MessageDraft Context and received ExecutionOutput/resource/hash/type proof in nullable immutable message/turn companions, co-committed from verified terminal bytes. Actual received body ResourceId is the local canonical MessageId, captured local CID/branch and real local commit revision remain local; no submission-ID substitution/server Chat row, cleared-prefix authority or temporary SQL fallback.
 
 The HAR03 companion amendment preserves legacy schema1 data through an actual additive SQLite migration and leaves legacy-null command/journal semantic-v1 bytes immutable; proof-bearing Complete has explicit separately versioned framing. A genuine metadata-only no-answer seals its actual received owner state only with verified registered reason and complete terminal ExecutionOutput proof, without fabricated message/draft/hash/body receipt. Missing body or completed stream is never no-answer authority.
+
+2026-10-07 factual terminal state/no-answer clarification (docs/decisions/execution-terminal-state-and-no-answer-registry-2026-10-07.md). ExecutionOutput.state is exact genuine Task/Chat owner state, not receipt/body/stream availability. Only execution.no_answer.completed/failed/canceled with the declared factual state and immutable owner/progress/output optional-lineage proof enters metadata-only terminal sealing; generic generated strings establish no registration. Original tags/schema/command frames/migrations, scopes, starts/outcomes and full acceptance remain unchanged.
 ```
 
 ```text
