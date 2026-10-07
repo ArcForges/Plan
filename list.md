@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 481 in 25 lanes, plus 51 adoption slices listed in the adoption section.
+Tasks: 483 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -41,7 +41,7 @@ Tasks: 481 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (34) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (35) |
 | ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (3) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
@@ -59,7 +59,7 @@ Tasks: 481 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 | ADOPT.07.governance | Cloud | S | ADOPT.01 | Adopt Cloud: Family governance and policy tests (2) |
 | ADOPT.07.harness | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud Harness (2) |
 | ADOPT.07.operations | Cloud | S | ADOPT.01 | Adopt Cloud: Operations, support and trust and safety (9) |
-| ADOPT.07.policy | Cloud | S | ADOPT.01 | Adopt Cloud: Dynamic policy and configuration (10) |
+| ADOPT.07.policy | Cloud | S | ADOPT.01 | Adopt Cloud: Dynamic policy and configuration (11) |
 | ADOPT.07.release | Cloud | S | ADOPT.01 | Adopt Cloud: Release readiness and family release (3) |
 | ADOPT.07.runtime-proofs | Cloud | S | ADOPT.01 | Adopt Cloud: Runtime proofs (1) |
 | ADOPT.07.search | Cloud | S | ADOPT.01 | Adopt Cloud: Knowledge search and retrieval (8) |
@@ -148,6 +148,7 @@ Tasks: 481 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 | CON.35 | Contracts | S | CON.23, ADOPT.03.contracts (adoption) | Publish canonical naming support for exact POSIX native filenames |
 | CON.33 | Contracts | L | CON.11, CON.10, ADOPT.03.contracts (adoption) | Complete assistant output snapshots, execution pins and semantic hash producer |
 | CON.37 | Contracts | M | CON.11, CON.10, ADOPT.03.contracts (adoption) | Closed read-only execution admission receipt protocol |
+| CON.38 | Contracts | M | CON.06, CON.11, CON.10, ADOPT.03.contracts (adoption) | Bounded transient input binding and grouping protocol |
 | CON.36 | Contracts | L | CON.33, CON.10, ADOPT.03.contracts (adoption) | Bound approved model context, artifacts, render pin and semantic profiles |
 
 ## Foundation values — [prompts](tasks/foundation.md)
@@ -407,7 +408,7 @@ Tasks: 481 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 | CLOUD.22 | Cloud | M | CLOUD.21, ADOPT.07.cloud (adoption) | Typed protocol and error mapping |
 | CLOUD.23 | Cloud | M | CLOUD.21, CON.91, ADOPT.07.cloud (adoption) | Typed queries and revision preconditions |
 | CLOUD.24 | Cloud | M | CLOUD.21, ADOPT.07.cloud (adoption) | Idempotency and rate limiting |
-| CLOUD.25 | Cloud | M | CLOUD.21, PRF.07, ADOPT.07.cloud (adoption) | Resource transport schema and future-owner boundary |
+| CLOUD.25 | Cloud | M | PRF.07, CON.11, CLOUD.01, ADOPT.07.cloud (adoption) | Resource transport schema and future-owner boundary |
 | CLOUD.26 | Cloud | L | CLOUD.19, CLOUD.22, PRF.10, ADOPT.07.cloud (adoption) | Generated C#/TypeScript/Kotlin clients against Identity/Workspace/Device |
 | CLOUD.27 | Cloud | M | CLOUD.26, ADOPT.07.cloud (adoption) | Compatibility window and bidirectional matrix |
 | CLOUD.28 | Cloud | L | AND.07, WEB.30, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration |
@@ -489,12 +490,13 @@ Tasks: 481 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 | POL.03 | Cloud | M | POL.02, ADOPT.07.policy (adoption) | Compiled hard limits |
 | POL.04 | Cloud | L | POL.01, POL.02, COM.05, ADOPT.07.policy (adoption) | Features, flags and deterministic rollout |
 | POL.05 | Cloud | M | POL.02, CON.14, ADOPT.07.policy (adoption) | Kill switches |
-| POL.06 | Cloud | M | POL.02, ADOPT.07.policy (adoption) | Scoped resolution and explainability (server side) |
+| POL.06 | Cloud | M | POL.01, CON.06, ADOPT.07.policy (adoption) | Scoped resolution and explainability (server side) |
 | POL.07 | Cloud | M | POL.02, ADOPT.07.policy (adoption) | Compatibility policy |
 | POL.08 | Cloud | M | POL.02, ADOPT.07.policy (adoption) | Publication, staleness and last-known-good (server side) |
 | POL.09 | DesktopPlatform | L | POL.04, CON.12, CON.22, ADOPT.02.policy (adoption) | Client-side policy resolution library (native/AOT) |
 | POL.10 | Cloud | S | POL.09, POL.03, POL.05, POL.06, POL.07, ADOPT.07.policy (adoption) | Owned-artifact receipt |
 | POL.11 | Cloud | M | POL.08, POL.09, ADOPT.07.policy (adoption) | First real publish-then-resolve round trip from Cloud Policy authority to the DesktopPlatform client library |
+| POL.12 | Cloud | M | POL.01, CON.12, ADOPT.07.policy (adoption) | Pure signed governing and ephemeral profile semantics |
 
 ## Operations, support and trust and safety — [prompts](tasks/operations.md)
 
