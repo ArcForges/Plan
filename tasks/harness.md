@@ -59,8 +59,10 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] SRCH.00: a retrieval/context source to pull from (fixture-backed lexical-only path is sufficient at start)
 - [integration] CON.33: actual published execution configuration pin and transcript semantic hash producer
+- [integration] AIR.09: actual complete tokenizer/render/count engine
+- [integration] CON.36: actual model-bound descriptor/pin/profiles
 
-Permitted write scope: AI:src/workflows/context.ts; Cloud:src/Cloud/ArcForges.Cloud.Modules.Task/**
+Permitted write scope: AI:src/workflows/context.ts; Cloud:src/Cloud/ArcForges.Cloud.Modules.Task/**; Cloud:src/ArcForges.Cloud.Modules.Task/ModelInput/** (actual each-owner server input assembly/current profile/skill/tool/context/render pin verification; prior src/Cloud placeholder grants no duplicate root); Cloud:src/ArcForges.Cloud.Modules.Chat/ModelInput/** (actual each-owner server input assembly/current profile/skill/tool/context/render pin verification; prior src/Cloud placeholder grants no duplicate root); Cloud:src/ArcForges.Cloud.Modules.Abstractions/Execution/ModelInputPort.cs (required exact generated neutral original input/source/render binding ports; no AssistantProfileGrant or Desktop type); AI:src/workflows/context.ts (actual complete source/tool-pair protection, exact global count/compaction render lineage and pin verification); AI:tests/model-input/context*.test.ts (actual complete source/tool-pair protection, exact global count/compaction render lineage and pin verification); Cloud:tests/ArcForges.Cloud.Tests/ModelInput/** (actual source/permission/branch/current config/pin/compaction refusal; no counted approximate admission)
 Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.
 Unblocks: HAR.05
 
@@ -69,6 +71,8 @@ Completion evidence for the ledger: Context permission, staleness and compaction
 Notes: 
 
 docs/decisions/assistant-output-snapshots-and-semantic-profiles-2026-10-07.md: consume actual CON33 snapshot/configuration pin/shared semantic-v1 profiles. Generation/shape/helper publication does not itself implement real output storage, logical-body authorization/decryption, tokenizer materialization, execution or current permissions. Preserve original producer starts and acceptance; no success stub/private DTO or heuristic model budget.
+
+2026-10-07 approved model context and exact rendering producer repair (docs/decisions/approved-model-context-and-exact-rendering-producer-2026-10-07.md). Server assembly consumes actual published ModelInput engine and complete approved descriptors/materials, preserves original source IDs/ordinals/tool associations/context/resource permission and re-renders exact complete candidate input. Do not count fragments additively, use byte/quota estimates or execute a hidden template; actual compaction/source currentness and no customer compaction debit remain. Correct actual module roots append to the existing placeholder scope without taking another module SQL.
 ```
 
 ```text
@@ -146,6 +150,8 @@ docs/decisions/assistant-output-snapshots-and-semantic-profiles-2026-10-07.md: c
 2026-10-07 real execution output producer repair (docs/decisions/execution-output-and-logical-body-producer-2026-10-07.md). Sole source coordinator w-codex-20261006-runtime. Actual Task/Chat owner state, Chat-owned shared transient receipt/content metadata, Resource logical decoded-body facade and AI private disposable stream are concrete production implementations. Progressive core starts actual owner/generated/Entitlement/current realm primitives; original HAR00/AIR05 and AST15/full provider/accounting/permission integrations remain complete gates. Same guarded owner/verified object/provider/usage/settlement terminal batch, C7 sole quota writer, no new Cloud history for local/temporary or phantom Task. Exact raw logical protobuf hash/length/descriptor versus CON33 final semantic hash and ciphertext are distinct. Current origin/session/installation and owner revision remain actual permission. True ack/purge/key loss/expiry and 256KiB snapshot/envelope/1MiB logical body are mandatory. Owned ordinary correlated fixture/count/sealed artifact maintenance is actual-prefix bound, never a production constraint or test waiver. Full model/tokenizer/framing producer remains independently required; no estimates, interface success or hidden provider template admission.
 
 CON37 receipt encodedBody carries only the actual generated GetAdmissionReceiptValue under the closed Platform-resolved execution-admission-receipt resource kind, <=1MiB logical and <=256KiB inline envelope; no MessageDraft type substitution or new generic result cap. Original generic command fingerprints/replay remain unchanged.
+
+2026-10-07 factual terminal state/no-answer clarification (docs/decisions/execution-terminal-state-and-no-answer-registry-2026-10-07.md). ExecutionOutput.state is exact genuine Task/Chat owner state, not receipt/body/stream availability. Only execution.no_answer.completed/failed/canceled with the declared factual state and immutable owner/progress/output optional-lineage proof enters metadata-only terminal sealing; generic generated strings establish no registration. Original tags/schema/command frames/migrations, scopes, starts/outcomes and full acceptance remain unchanged.
 ```
 
 ```text
