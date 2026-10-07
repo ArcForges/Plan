@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 477 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 479 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -26,6 +26,7 @@ Tasks: 477 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 | Slice | Repository | Size | Start prerequisites | Title (tasks it opens) |
 |---|---|---|---|---|
+| ADOPT.02.ai-routing | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Model input validation, rendering and token counting (1) |
 | ADOPT.02.app-composition | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Application composition (6) |
 | ADOPT.02.assistant | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Embedded assistant (22) |
 | ADOPT.02.cloud | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Cloud core (2) |
@@ -40,7 +41,7 @@ Tasks: 477 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (33) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (34) |
 | ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (3) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
@@ -147,6 +148,7 @@ Tasks: 477 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.35 | Contracts | S | CON.23, ADOPT.03.contracts (adoption) | Publish canonical naming support for exact POSIX native filenames |
 | CON.33 | Contracts | L | CON.11, CON.10, ADOPT.03.contracts (adoption) | Complete assistant output snapshots, execution pins and semantic hash producer |
 | CON.37 | Contracts | M | CON.11, CON.10, ADOPT.03.contracts (adoption) | Closed read-only execution admission receipt protocol |
+| CON.36 | Contracts | L | CON.33, CON.10, ADOPT.03.contracts (adoption) | Bound approved model context, artifacts, render pin and semantic profiles |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
@@ -554,6 +556,7 @@ Tasks: 477 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | AIR.07 | AI | M | AIR.00, ADOPT.08.ai-routing (adoption) | Provider test-environment coverage |
 | AIR.08 | AI | L | AIR.00, AIR.02, AST.15, ADOPT.08.ai-routing (adoption) | Real-provider metering evidence and stubbed-path removal |
 | AIR.90 | Cloud | M | AIR.08, AIR.01, AIR.03, AIR.04, AIR.05, AIR.06, AIR.07, ADOPT.07.ai-routing (adoption) | Verify owned artifact and real integration (AI routing and metering) |
+| AIR.09 | DesktopPlatform | L | CON.10, CON.11, ADOPT.02.ai-routing (adoption) | Complete pinned tokenizer, rendering and model input producer |
 
 ## Cloud Harness — [prompts](tasks/harness.md)
 
