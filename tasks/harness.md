@@ -58,6 +58,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [contract] CON.11: typed TranscriptWindow/CompactionRecord records (model 05)
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] SRCH.00: a retrieval/context source to pull from (fixture-backed lexical-only path is sufficient at start)
+- [integration] CON.33: actual published execution configuration pin and transcript semantic hash producer
 
 Permitted write scope: AI:src/workflows/context.ts; Cloud:src/Cloud/ArcForges.Cloud.Modules.Task/**
 Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.
@@ -65,6 +66,9 @@ Unblocks: HAR.05
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Large-context paging, permission loss, stale source, prior-compaction-version, unsupported-capability tests; no raw prompts in Workflow checkpoints; all four model-05 context vectors (under budget, compaction, protected overflow, changed branch) plus wrong role/tool-pair, hash and origin-installation negatives; HC-09 refusal and no-customer-debit-for-compaction assertions; both inline and transient-object input.
 Completion evidence for the ledger: Context permission, staleness and compaction results.
+Notes: 
+
+docs/decisions/assistant-output-snapshots-and-semantic-profiles-2026-10-07.md: consume actual CON33 snapshot/configuration pin/shared semantic-v1 profiles. Generation/shape/helper publication does not itself implement real output storage, logical-body authorization/decryption, tokenizer materialization, execution or current permissions. Preserve original producer starts and acceptance; no success stub/private DTO or heuristic model budget.
 ```
 
 ```text
@@ -115,6 +119,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] AIR.05: the ContentOrigin marking at the provider generation boundary
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] AST.15: local history recovery of transient output on the client bridge
+- [integration] CON.33: actual published output snapshot and final semantic hash producer
 
 Permitted write scope: AI:src/streams/RunStream.ts
 Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.
@@ -122,6 +127,9 @@ Unblocks: AND.24, AST.19, CLOUD.67, HAR.05, WEB.27
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Scope/permission, wrong/stale target, loss/retry, expiry and applicable native UI cases; cross-replica read, miss-is-not-eviction, takeover, realtime-disabled equivalence, buffer-lifecycle tests; the same four model-05 context vectors and HC-09/no-debit assertions as HAR.01 (shared testing-requirement text in the WP).
 Completion evidence for the ledger: Cross-replica read, miss-is-not-eviction, takeover, realtime-disabled equivalence and buffer-lifecycle results.
+Notes: 
+
+docs/decisions/assistant-output-snapshots-and-semantic-profiles-2026-10-07.md: consume actual CON33 snapshot/configuration pin/shared semantic-v1 profiles. Generation/shape/helper publication does not itself implement real output storage, logical-body authorization/decryption, tokenizer materialization, execution or current permissions. Preserve original producer starts and acceptance; no success stub/private DTO or heuristic model budget.
 ```
 
 ```text
