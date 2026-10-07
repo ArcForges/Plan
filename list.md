@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 480 in 25 lanes, plus 51 adoption slices listed in the adoption section.
+Tasks: 481 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -36,7 +36,7 @@ Tasks: 480 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
 | ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (13) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (14) |
-| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (61) |
+| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (62) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
@@ -239,7 +239,8 @@ Tasks: 480 in 25 lanes, plus 51 adoption slices listed in the adoption section.
 | PLT.60 | DesktopPlatform | M | PLT.45, PLT.57, ADOPT.02.platform (adoption) | Early content-helper isolation and guaranteed lifetime cleanup repair |
 | PLT.61 | DesktopPlatform | S | PLT.38, ADOPT.02.platform (adoption) | Shared capability approval-effect binding producer |
 | PLT.62 | DesktopPlatform | S | PLT.33, PLT.59, ADOPT.02.platform (adoption) | Shared resource-bound localization and accessibility audit |
-| PLT.64 | DesktopPlatform | M | PLT.40, PLT.59, ADOPT.02.platform (adoption) | Native installation credential custody and closed P256 signer |
+| PLT.64 | DesktopPlatform | M | PLT.40, PLT.59, PLT.65, ADOPT.02.platform (adoption) | Native installation credential custody and closed P256 signer |
+| PLT.65 | DesktopPlatform | S | PLT.40, PLT.59, ADOPT.02.platform (adoption) | Published installation credential custody core |
 
 ## Native producers and probes — [prompts](tasks/native.md)
 
