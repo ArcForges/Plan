@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 478 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 479 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -40,7 +40,7 @@ Tasks: 478 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (33) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (34) |
 | ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (3) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
@@ -146,6 +146,7 @@ Tasks: 478 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.34 | Contracts | M | CON.07, CON.15, ADOPT.03.contracts (adoption) | Genuine native installation key possession transport and canonical transcript producer |
 | CON.35 | Contracts | S | CON.23, ADOPT.03.contracts (adoption) | Publish canonical naming support for exact POSIX native filenames |
 | CON.33 | Contracts | L | CON.11, CON.10, ADOPT.03.contracts (adoption) | Complete assistant output snapshots, execution pins and semantic hash producer |
+| CON.37 | Contracts | M | CON.11, CON.10, ADOPT.03.contracts (adoption) | Closed read-only execution admission receipt protocol |
 | CON.36 | Contracts | L | CON.33, CON.10, ADOPT.03.contracts (adoption) | Bound approved model context, artifacts, render pin and semantic profiles |
 
 ## Foundation values — [prompts](tasks/foundation.md)
@@ -563,7 +564,7 @@ Tasks: 478 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | HAR.00 | AI | XL | CLOUD.01, CON.15, CON.10, CLOUD.05, ADOPT.08.harness (adoption) | Turn loop, tool batching and bounds (RunWorkflow core) |
 | HAR.01 | AI | L | HAR.00, CON.11, ADOPT.08.harness (adoption) | Context assembly and compaction |
 | HAR.02 | AI | L | HAR.00, CON.10, ADOPT.08.harness (adoption) | Approval, cancellation and crash recovery |
-| HAR.03 | AI | L | HAR.00, AIR.05, ADOPT.08.harness (adoption) | Generated streaming and durable output |
+| HAR.03 | AI | L | CLOUD.11, COM.16, CLOUD.75, CON.11, CON.10, ADOPT.08.harness (adoption) | Generated streaming and durable output |
 | HAR.04 | Cloud | M | HAR.00, AIR.06, ADOPT.07.harness (adoption) | Provider failure and effect-certainty classification |
 | HAR.05 | AI | XL | HAR.00, HAR.01, HAR.02, HAR.03, HAR.04, AST.11, DEV.08, AST.19, DEV.13, AND.24, WEB.27, AIR.00, SCOPE.20, APP.03, ADOPT.08.harness (adoption) | Own-application execution proof and fixture turn-endpoint removal |
 | HAR.06 | Cloud | L | HAR.00, HAR.04, COM.05, ADOPT.07.harness (adoption) | Durable Cloud automation, scheduling and automation-fixture removal |
