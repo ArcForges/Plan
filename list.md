@@ -51,7 +51,7 @@ Tasks: 473 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
 | ADOPT.05.simulator | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope Cloud simulator (1) |
 | ADOPT.07.ai-routing | Cloud | S | ADOPT.01 | Adopt Cloud: Workers AI routing and metering (6) |
-| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (69) |
+| ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (70) |
 | ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (18) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
 | ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (1) |
@@ -448,6 +448,7 @@ Tasks: 473 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.80 | Cloud | S | CLOUD.12, CLOUD.13, CLOUD.15, ADOPT.07.cloud (adoption) | Actual sensitive credential proof integration adapter |
 | CLOUD.81 | Cloud | S | CLOUD.12, CLOUD.13, CON.26, CLOUD.19, ADOPT.07.cloud (adoption) | Actual browser and Operator authentication source integration |
 | CLOUD.82 | Cloud | S | CLOUD.72, CLOUD.75, COM.16, ADOPT.07.cloud (adoption) | Scope-bound opaque family contribution producer |
+| CLOUD.83 | Cloud | S | CLOUD.72, ADOPT.07.cloud (adoption) | Closed original credential inventory and typed-flow guard producer |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 
