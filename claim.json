@@ -6,17 +6,20 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T19:43:54Z",
-  "updatedAt": "2026-10-08T21:04:34Z",
-  "leaseUntil": "2026-10-09T21:04:34Z",
+  "updatedAt": "2026-10-08T21:21:37Z",
+  "leaseUntil": "2026-10-09T21:21:37Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/gov-32",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/173"
     ],
-    "merges": [],
+    "merges": [
+      "6f21d73e0ef6953138ff264ced195fde3b28fe93"
+    ],
     "done": [
-      "implemented, independently reviewed (2 rounds, full Windows+WSL2 validation), pushed, PR opened"
+      "implemented, independently reviewed (2 rounds, full Windows+WSL2 validation), pushed, PR opened",
+      "merged DesktopPlatform #173 at reviewed head 45343a42 (22/22 checks)"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\gov-32",
@@ -24,7 +27,7 @@
     "reviewed": "45343a42609cc16b319493134bf1d27b122ab18d",
     "blocker": null,
     "next": [
-      "hosted CI green; merge via integration:DesktopPlatform; ledger record"
+      "confirm post-merge publish; ledger record"
     ],
     "host": "deku",
     "note": null
