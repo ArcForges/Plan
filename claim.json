@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "GOV.32",
+  "claimant": "w-deku-20261008-gov-32",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-08T19:43:54Z",
+  "updatedAt": "2026-10-08T19:43:54Z",
+  "leaseUntil": "2026-10-09T19:43:54Z",
+  "handoff": {
+    "repository": "DesktopPlatform",
+    "branch": "task/gov-32",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "plan the task, then push the task branch at the first checkpoint"
+    ],
+    "host": "deku",
+    "note": null
+  }
+}
