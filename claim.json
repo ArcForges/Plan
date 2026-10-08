@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "NAT.11",
+  "claimant": "w-deku-20261008-nat-11",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-08T22:41:03Z",
+  "updatedAt": "2026-10-08T22:41:03Z",
+  "leaseUntil": "2026-10-09T22:41:03Z",
+  "handoff": {
+    "repository": "DesktopPlatform",
+    "branch": "task/nat-11",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "plan the task, then push the task branch at the first checkpoint"
+    ],
+    "host": "deku",
+    "note": null
+  }
+}
