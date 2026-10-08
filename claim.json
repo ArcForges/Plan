@@ -4,10 +4,10 @@
   "id": "NAT.32",
   "claimant": "w-deku-20261008-nat-32",
   "epoch": 1,
-  "state": "claimed",
+  "state": "complete",
   "claimedAt": "2026-10-08T14:40:57Z",
-  "updatedAt": "2026-10-08T18:48:07Z",
-  "leaseUntil": "2026-10-09T18:48:07Z",
+  "updatedAt": "2026-10-08T19:59:00Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/nat-32",
@@ -20,7 +20,8 @@
     "done": [
       "work-in-progress commits pushed (step 1)",
       "implemented, independently reviewed (2 rounds), pushed, PR opened",
-      "merged DesktopPlatform #172 at reviewed head c39ab65c (22/22 checks)"
+      "merged DesktopPlatform #172 at reviewed head c39ab65c (22/22 checks)",
+      "ledger record merged (Plan #459)"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges$repo\\.worktree$key",
