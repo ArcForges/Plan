@@ -574,7 +574,7 @@ Tasks: 460 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | AND.19 | Mobile | M | AND.08, AND.09, AND.10, AND.11, AND.12, ADOPT.10.android (adoption) | Consumption-only enforcement |
 | AND.20 | Mobile | M | CON.16, AND.02, ADOPT.10.android (adoption) | Play and direct-channel signed update client |
 | AND.21 | Mobile | L | AND.16, ADOPT.10.android (adoption) | Physical device and recovery gates |
-| AND.22 | Mobile | S | ADOPT.10.android (adoption) | Android scope statement |
+| AND.22 | Mobile | S | AND.01, ADOPT.10.android (adoption) | Android scope statement |
 | AND.23 | Mobile | M | AND.17, AND.18, AND.19, AND.20, AND.21, AND.22, ADOPT.10.android (adoption) | Distribution acceptance |
 | AND.24 | Mobile | M | AND.09, AND.10, HAR.00, HAR.03, ADOPT.10.android (adoption) | Real CF Harness generation/tool loop observed end to end on Android |
 | AND.25 | Mobile | M | AND.10, AND.13, DEV.02, DEV.03, DEV.06, DEV.07, DEV.12, ADOPT.10.android (adoption) | Real desktop tool dispatch and unknown-effect reconciliation from Android |
