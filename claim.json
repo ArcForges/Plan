@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-deku-20261008-coord",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-08T14:37:52Z",
-  "updatedAt": "2026-10-08T14:37:52Z",
-  "leaseUntil": "2026-10-09T02:37:52Z",
+  "updatedAt": "2026-10-08T14:38:33Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "merged Plan #456 (P2-021 planning repair); queue empty"
   }
 }
