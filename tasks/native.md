@@ -33,8 +33,8 @@ Permitted write scope: DesktopPlatform:benchmarks/probes/agent-aot/**
 Unblocks: APP.03, NAT.05, NAT.30
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): AOT publish log zero diagnostics; end-to-end ToolRequest->decode->typed invocation->result run inside the published binary; containment test confirming the structured value type appears only in the boundary dispatch assembly
-Completion evidence for the ledger: AOT publish log and in-binary device tool request decode/execute trace; explicit note that the model loop itself is NOT probed here (it is the CF Workflow, LS-02/V-03)
-Notes: One of WP13's two canonical early risk proofs (package goal: 'retire the early technical risks'). Parallel with NAT.03 (disjoint write scopes).
+Completion evidence for the ledger: AOT publish log and in-binary device tool request decode/execute trace; explicit note that the model loop itself is NOT probed here (it is the C# Harness of P2-021 item 5, with Workers AI reached through the thin ai.internal adapter)
+Notes: One of WP13's two canonical early risk proofs (package goal: 'retire the early technical risks'). Parallel with NAT.03 (disjoint write scopes). Planning repair 2026-10-08 (DLV-34; P2-021): the evidence note names the C# Harness instead of the Cloudflare Workflow as the model loop that this probe does not cover. The probe itself is unchanged.
 ```
 
 ```text
@@ -375,7 +375,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/nat-29 (python tools/delivery.py claim NAT.29 --worker <name>); task branch task/nat-29 in DesktopPlatform; ledger record ledger/tasks/nat-29.md.
 Kind/size: integration/M. Baseline: not-started.
-Outcome: Actual candidate NuGet restore/native loading and desktop AOT; C# AOT gRPC/gRPC-Web plus selected auth/storage/SQL adapters; Kotlin/Jetpack Compose generated-client calls; React client calls; a minimal deployed CF<->reachable C#<->R2 chain -- a bounded foundation probe, explicitly not the full WP-52 Cloud Harness
+Outcome: Actual candidate NuGet restore/native loading and desktop AOT; C# AOT gRPC/gRPC-Web plus selected auth/storage/SQL adapters; .NET MAUI Android calls through the generated C# Contracts client; Blazor WebAssembly calls through the generated C# Contracts client; a minimal deployed CF<->reachable C#<->R2 chain -- a bounded foundation probe, explicitly not the full WP-52 Cloud Harness
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-06.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\06-aot-jit-and-wasm-publish-proof.md, anchor rule-wp-06.90
@@ -396,7 +396,8 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: 
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
-Completion evidence for the ledger: Actual candidate NuGet restore/native loading and desktop AOT; C# AOT gRPC/gRPC-Web plus selected auth/storage/SQL adapters; Kotlin/Jetpack Compose generated-client calls; React client calls; a minimal deployed CF<->reachable C#<->R2 chain -- a bounded foundation probe, explicitly not the full WP-52 Cloud Harness
+Completion evidence for the ledger: Actual candidate NuGet restore/native loading and desktop AOT; C# AOT gRPC/gRPC-Web plus selected auth/storage/SQL adapters; .NET MAUI Android calls through the generated C# Contracts client; Blazor WebAssembly calls through the generated C# Contracts client; a minimal deployed CF<->reachable C#<->R2 chain -- a bounded foundation probe, explicitly not the full WP-52 Cloud Harness
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): the Kotlin/Jetpack Compose and React client calls of this probe become .NET MAUI Android and Blazor WebAssembly calls through the generated C# Contracts client; the start edges move to PRF.11 and PRF.12. No acceptance is removed.
 ```
 
 ```text
