@@ -6,17 +6,19 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:41:13Z",
-  "updatedAt": "2026-10-08T14:42:39Z",
-  "leaseUntil": "2026-10-09T14:42:39Z",
+  "updatedAt": "2026-10-08T15:36:24Z",
+  "leaseUntil": "2026-10-09T15:36:24Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/gov-30",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "work-in-progress commits pushed (step 1)"
+    ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges$repo\\.worktree$key",
-    "head": null,
+    "head": "abc014bb0fa01fb0163224c810956bc1bb148228",
     "reviewed": null,
     "blocker": null,
     "next": [
