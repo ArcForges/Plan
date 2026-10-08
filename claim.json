@@ -4,10 +4,10 @@
   "id": "GOV.30",
   "claimant": "w-deku-20261008-gov-30",
   "epoch": 1,
-  "state": "claimed",
+  "state": "complete",
   "claimedAt": "2026-10-08T14:41:13Z",
-  "updatedAt": "2026-10-08T23:10:09Z",
-  "leaseUntil": "2026-10-09T23:10:09Z",
+  "updatedAt": "2026-10-08T23:16:21Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/gov-30",
@@ -20,7 +20,8 @@
     "done": [
       "work-in-progress commits pushed (step 1)",
       "implemented with generators create_gov30_reconciliation.py and create_gov30_dependency_receipt.py; main (NAT.32) merged; independently reviewed; PR opened",
-      "merged DesktopPlatform #174 at reviewed head cfd9c33b (22/22)"
+      "merged DesktopPlatform #174 at reviewed head cfd9c33b (22/22)",
+      "post-merge publish run 37854886174 (1.0.0-ci.129.1) confirmed; ledger record merged (Plan #461)"
     ],
     "validation": [
       "reviewer: SDK 10.0.400 locked restore, Release build, tests; policy, provenance, reconciliation, dependency gates; static osx scan"
@@ -30,7 +31,7 @@
     "reviewed": "cfd9c33b1f995c591fa3f013957671e00e306a3a",
     "blocker": null,
     "next": [
-      "confirm post-merge publish; ledger record"
+      ""
     ],
     "host": "deku",
     "note": "ADP-07 supporting bindings: .github/workflows/pr-gate.yml (static scan step), eng/test_desktop_rids.py (new scan), eng/policy/reconciliation/source.json (count), eng/provenance/files.json (new-file rows); generators named above"
