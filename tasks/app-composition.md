@@ -74,8 +74,8 @@ Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\ap
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
 Claim and handoff record: claims/app-03 (python tools/delivery.py claim APP.03 --worker <name>); task branch task/app-03 in ArcScope; ledger record ledger/tasks/app-03.md.
-Kind/size: producer/S. Baseline: not-started.
-Outcome: A clean Native AOT ArcScope consumer built purely from published Platform/Contracts packages and in-process typed host ports; no source reference or local-RPC product loop. Package-only restore, publish/run, command/cancel/result and owner refusal proven.
+Kind/size: producer/M. Baseline: not-started.
+Outcome: A clean Native AOT ArcScope consumer built purely from published Platform/Contracts packages (including the ArcForges.Security.Audit and ArcForges.Security.CapabilityEnforcement packages admitted by PLT.46) and in-process typed host ports; no source or project reference and no local-RPC product loop. Package-only restore, publish/run, command/cancel/result and owner refusal proven. The ArcScope product host (ArcForges.ArcScope) composes every capability binding through CapabilityEnforcementGate.Enforce, with the security and egress audit sinks and the lease event sink writing to ArcForges.Security.Audit, and applies the egress-to-audit mapping decision recorded in ledger plt-44.md (Design architecture/08 EG-06 to EG-09). A binding built without Enforce is not allowed in the host.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-14.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\14-hub-and-minimal-provider-slice.md, anchor rule-wp-14.02
@@ -86,15 +86,18 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] APP.02: published ArcScope application-services surface
 - [artifact] PRF.04: proven Local RPC under Native AOT pattern
 - [artifact] NAT.01: confirmed Native AOT device-tool/capability-invocation feasibility from the high-risk probe
+- [artifact] PLT.44: delivered ArcForges.Security.Audit: the durable AuditStore, EgressAuditSink, CapabilityLeaseEventAuditSink and the AuditRetentionRunner (ledger plt-44.md)
+- [artifact] PLT.24: delivered CapabilityInvocationPipeline (invocation pipeline) that CapabilityEnforcementGate wraps
+- [artifact] PLT.38: delivered decision pipeline and the four enforcement points that CapabilityEnforcementGate.AuthorizeAsync runs
 Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
+- [integration] PLT.46: published ArcForges.Security.Audit and ArcForges.Security.CapabilityEnforcement packages admitted and published by PLT.46 (the CapabilityEnforcement package requires the PLT.46 IsPackable repair)
 
-Permitted write scope: ArcScope:src/ArcForges.ArcScope/**; ArcScope:packaging/**
-Unblocks: APP.08, HAR.05
+Permitted write scope: ArcScope:src/ArcForges.ArcScope/**; ArcScope:packaging/**; ArcScope:Directory.Packages.props (append only the central version rows that the host package references need for ArcForges.Security.Audit and ArcForges.Security.CapabilityEnforcement)
+Unblocks: APP.08, HAR.05, PLT.57
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Native AOT publish/run in CI (package-only restore), offline command/cancel/result tests; no installed-package or public-release install/upgrade CI per P2-017.
-Completion evidence for the ledger: AOT publish log, package hash manifest, command/cancel/result and owner-refusal test results.
-Notes: Narrow early-risk proof: first real evidence that the whole Assistant.Abstractions/host-port composition model survives Native AOT package-only consumption for an actual product. Failure here invalidates the composition model assumed by WP15 to WP17.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Native AOT publish/run in CI (package-only restore), offline command/cancel/result tests; no installed-package or public-release install/upgrade CI per P2-017. Product host acceptance (Planning repair 2026-10-08, DLV-34; P2-021, PLT.57 completion): offline tests in CI prove that every capability binding in the host goes through CapabilityEnforcementGate.Enforce and that the audit sinks write to the audit store; one real local opt-in run of the host composition gates one real capability end to end and reads its audit events back, recorded once (no hosted runtime, device or live-service CI, P2-017).
+Completion evidence for the ledger: AOT publish log, package hash manifest, command/cancel/result and owner-refusal test results. Host composition test results and the one local opt-in run record for the PLT.57 completion acceptance.
+Notes: Narrow early-risk proof: first real evidence that the whole Assistant.Abstractions/host-port composition model survives Native AOT package-only consumption for an actual product. Failure here invalidates the composition model assumed by WP15 to WP17. Planning repair 2026-10-08 (DLV-34; P2-021): the PLT.57 completion acceptance is carried here, because no other patch owned APP.03. Size moves from S to M for the host composition. Route (packaging, not reference; the coordinator must approve it, because it adds the CapabilityEnforcement project to the PLT.46 packaging scope): ArcScope consumes ArcForges.Security.Audit and ArcForges.Security.CapabilityEnforcement as published NuGet packages admitted by PLT.46 (start edge added here). The CapabilityEnforcement project is non-packable at PLT.57 (delivered record), so PLT.46 must make it packable under its IsPackable repair. A project reference to the non-packable project is refused by this task package-only rule. The outcome above names these packages, so it no longer forbids the chosen route.
 ```
 
 ```text
@@ -246,7 +249,7 @@ Permitted write scope: DesktopPlatform:samples/AssistantHost/** (minimal runnabl
 Shared resources (follow the owner protocol): RES-desktopplatform-build-config (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.; RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
 Unblocks: AST.17
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Build and run the real minimal sample in the existing package-validation flow under P2-017, alongside the single WP14 CI build/pack producing the immutable candidate; record UX-A/B ledger rows per experience/03. No macOS, E2E or live-service CI.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Build and run the real minimal sample in the existing package-validation flow under P2-017, alongside the single WP14 CI build/pack producing the immutable candidate; record UX-A/B ledger rows per experience/03. No hosted E2E or live-service CI (P2-017); macOS is outside the delivery scope per P2-023.
 Completion evidence for the ledger: Source commit, package/artifact versions and hashes, environment, UX-A/B acceptance rows, named later-fixture list (none expected for WP14 itself).
 Notes: APP.01 owns only WP-14.00 host-port signatures, product/profile identity and lifetime, and two-identity unit isolation; APP.08 owns WP-14.00's minimal real-integration sample plus WP-14.90 acceptance. The sample composes existing host ports with real ArcForges.Capabilities, ArcForges.Desktop.Shell and ArcForges.Persistence.Sqlite; it must not use fakes or fixture stand-ins, implement full AssistantHost UI (WP-17), add a package identity, or require PLT.35. Register only the sample project/build/run path and its exact existing-policy, reconciliation, provenance and lock bindings; preserve all package identities and dependency versions/closure. Shared build-config and policy-data updates are append-only.
 ```

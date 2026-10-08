@@ -72,7 +72,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/ast-03 (python tools/delivery.py claim AST.03 --worker <name>); task branch task/ast-03 in DesktopPlatform; ledger record ledger/tasks/ast-03.md.
 Kind/size: producer/M. Baseline: not-started.
-Outcome: Typed local refs, authorized file staging/preview, resource ownership and explicit egress; attachment selection is never treated as upload consent. Missing/hostile file, lost URI/path grant, source labels, quota and temporary exclusion covered.
+Outcome: Typed local refs, authorized file staging and still-image preview (PDF attachments are stored, transferred and downloaded as opaque attachments with no parsing or preview, P2-022), resource ownership and explicit egress; attachment selection is never treated as upload consent. Missing/hostile file, lost URI/path grant, source labels, quota and temporary exclusion covered.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-15.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\15-arcchat-conversation-core.md, anchor rule-wp-15.02
@@ -90,6 +90,7 @@ Unblocks: AST.09
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: missing/hostile file, lost URI/path grant, quota, temporary exclusion.
 Completion evidence for the ledger: Attachment provenance and egress-consent test results.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-022): PDF attachments are opaque attachments; image preview is kept. APP.06 owns the shared freeze and preview port and is unchanged.
 ```
 
 ```text
@@ -450,7 +451,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/ast-16 (python tools/delivery.py claim AST.16 --worker <name>); task branch task/ast-16 in DesktopPlatform; ledger record ledger/tasks/ast-16.md.
 Kind/size: producer/M. Baseline: not-started.
-Outcome: AS03/08 own-app selection/preview/navigation implemented using the frozen WP-14.05 host ports, with safe fallback for unsupported native preview; no live-selection mutation, no another-product destination, citations/resources keep ownership.
+Outcome: AS03/08 own-app selection/preview/navigation implemented using the frozen WP-14.05 host ports, with safe fallback for unsupported native preview (a PDF attachment gets an opaque attachment card offering Save As (download) only, with no in-app parsing, rendering or open action, P2-022); still images keep the thin preview; no live-selection mutation, no another-product destination, citations/resources keep ownership.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-17.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\17-arcchat-independent-core.md, anchor rule-wp-17.06
@@ -465,8 +466,9 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Assistant.Avalonia/**
 Unblocks: AST.17
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: no live-selection mutation, no cross-product destination, citation/resource ownership preserved.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: no live-selection mutation, no cross-product destination, citation/resource ownership preserved; PDF attachments expose Save As only (no preview, parse, render or open action).
 Completion evidence for the ledger: Selection-mutation and ownership test results.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-022): the native PDF preview fallback is retired. A PDF attachment shows an opaque attachment card with Save As (download) only. No open-externally action is added: handing an untrusted PDF to the operating-system default handler is outside the opaque-download rule and is not admitted without a separate security decision.
 ```
 
 ```text
@@ -525,7 +527,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: DesktopPlatform:artifacts/evidence/**
 Shared resources (follow the owner protocol): RES-desktopplatform-policy-data (append): Generated policy data is regenerated from its pinned source and never hand-edited; the reason-code registry is append-only with stable codes; each task adds its own test classes and evidence rows.
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): P2-017 scope only; no macOS/E2E/live-service CI.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): P2-017 scope only; no hosted E2E or live-service CI (macOS is outside the delivery scope per P2-023).
 Completion evidence for the ledger: Source commit, artifact versions/hashes, environment, UX ledger rows, named-fixture list for WP-26/41/52.
 Notes: Two orphaned substep anchors (rule-wp-17.08, rule-wp-17.09) exist in the WP17 doc with no substep content and no entry in substeps.json --; not modeled as tasks.
 ```

@@ -58,7 +58,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/Indexing/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
+Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): Held only by HAR.40, for the live run that retires the arcforges-ai-hello deployment (P2-021 item 5). Any other task against the AI deployment environment takes the lease `leases/res-ai-workflow-and-routes` for its live run only. No AI Workflow entry, provider adapter or route-pin table is owned by this resource.; RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
 Permitted substitutes (never real integration evidence): SUB-embedding-rerank-fixture: index-write correctness (namespace scoping, filters, tombstones, dimension-change isolation) independent of real model variance Real producer ['AIR.00']; removed by SRCH.06
 Unblocks: SRCH.02, SRCH.05, SRCH.06
 
@@ -86,7 +86,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/Ranking/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
+Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): Held only by HAR.40, for the live run that retires the arcforges-ai-hello deployment (P2-021 item 5). Any other task against the AI deployment environment takes the lease `leases/res-ai-workflow-and-routes` for its live run only. No AI Workflow entry, provider adapter or route-pin table is owned by this resource.; RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
 Permitted substitutes (never real integration evidence): SUB-embedding-rerank-fixture: index-write correctness (namespace scoping, filters, tombstones, dimension-change isolation) independent of real model variance Real producer ['AIR.00']; removed by SRCH.06
 Unblocks: SRCH.03, SRCH.06
 
@@ -198,7 +198,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] SRCH.90: index capacity acceptance evidence
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/Indexing/**; Cloud:src/Cloud/ArcForges.Cloud.Modules.Retrieval/Ranking/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.
+Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): Held only by HAR.40, for the live run that retires the arcforges-ai-hello deployment (P2-021 item 5). Any other task against the AI deployment environment takes the lease `leases/res-ai-workflow-and-routes` for its live run only. No AI Workflow entry, provider adapter or route-pin table is owned by this resource.; RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.
 Unblocks: SRCH.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real compatible client/owner/index version test against deployed CF bindings (credentialed candidate gate, not ordinary CI, per P2-017's 'no real AI inference in CI'); explicit lexical-only degradation test.

@@ -309,6 +309,39 @@ class DeliveryTests(unittest.TestCase):
         self.assertNotIn('GOV.04\t', out)
         self.assertNotIn('GOV.17\t', out)
 
+    # ---- adoption slices retired by a recorded decision (P2-021) ------------------------------
+
+    def graph_with_slice(self, sid, design=None, **fields):
+        """The Design graph with one adoption slice added or changed in memory; fields override its keys."""
+        g = d.Graph(design or self.fx.design)
+        base = g.slices.get(sid, {'id': sid, 'repo': 'Design', 'lane': 'governance', 'adoptionTask': 'ADOPT.11',
+                                  'title': 'Governance slice with no tasks'})
+        g.slices[sid] = dict(base, **fields)
+        return g
+
+    def test_a_retired_adoption_slice_with_no_tasks_is_valid_and_shows_as_retired(self):
+        g = self.graph_with_slice('ADOPT.11.governance', retired=True, retiredBy='P2-022')
+        self.assertEqual(d.validate(g)[0], [])
+        # Rendering resolves decision IDs against the whole Design checkout, not the planning-only fixture.
+        g = self.graph_with_slice('ADOPT.11.governance', design=DESIGN_SOURCE, retired=True, retiredBy='P2-022')
+        self.assertIn('none (retired by P2-022)', d.render_lane(g, g.lanes['adoption']))
+
+    def test_a_retired_adoption_slice_must_name_its_decision(self):
+        for fields in ({'retired': True}, {'retired': True, 'retiredBy': None}, {'retired': True, 'retiredBy': ''}, {'retired': True, 'retiredBy': '  '}):
+            with self.subTest(fields=fields):
+                errors = d.validate(self.graph_with_slice('ADOPT.11.governance', **fields))[0]
+                self.assertIn('ADOPT.11.governance: retired adoption slice must name its retiredBy decision', errors)
+
+    def test_a_retired_adoption_slice_that_still_has_tasks_is_an_error(self):
+        g = self.graph_with_slice('ADOPT.02.governance', retired=True, retiredBy='P2-022')
+        self.assertIn('retired adoption slice for DesktopPlatform/governance still has tasks', d.validate(g)[0])
+
+    def test_a_non_retired_adoption_slice_with_no_tasks_still_errors(self):
+        for fields in ({}, {'retired': False, 'retiredBy': 'P2-022'}):
+            with self.subTest(fields=fields):
+                errors = d.validate(self.graph_with_slice('ADOPT.11.governance', **fields))[0]
+                self.assertIn('adoption slice for Design/governance has no tasks', errors)
+
     # ---- authoritative state and worktrees (finding 7) ----------------------------------------
 
     def test_unmerged_checkout_changes_never_count(self):

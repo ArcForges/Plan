@@ -1,6 +1,6 @@
 ---
 task: PRF.08
-status: delivered
+status: superseded
 recorded: 2026-10-03
 claimant: w-c20261005-prf08c
 epoch: 2
@@ -127,3 +127,16 @@ The script exited 3 (`PARTIAL`) only because the budgets file did not exist yet,
 - the Visual Studio IDE (F5) check of the solution, which has no graph owner.
 
 Completion needs a further reviewed amendment after CLOUD.21 and CLOUD.22 are complete.
+
+## Superseded 2026-10-08
+
+Superseded by PRF.11 under P2-021 (C#-first implementation architecture). PRF.11 (Web, runtime-proofs) is the Blazor WebAssembly production build and generated C# SDK proof against the deployed ingress; it carries CSP, budgets, exact values, typed failures, cancellation, session, the binary-versus-text streaming decision and the AOT benchmark in place of the React/TypeScript build proved above.
+
+The recorded evidence above, the untested-coverage statement, the completion follow-up and the amendments remain as history and are not edited.
+
+Remaining acceptance not met at supersession, now carried by PRF.11 (restated from the 2026-10-06 second amendment above; CLOUD.71 and CLOUD.08 are complete and the interaction budgets landed through Web #32):
+
+- exact int64, uint64 and decimal values, typed failures and cancellation over generated gRPC-Web on real methods (CLOUD.21 and CLOUD.22), now proved by PRF.11 with the generated C# SDK in Blazor WebAssembly;
+- the Visual Studio IDE (F5) check of the solution, a local human observation with no graph owner; it does not block the other items.
+
+WEB.30 and the other former PRF.08 consumers now start on PRF.11 in the graph.

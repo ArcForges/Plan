@@ -30,7 +30,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: DesktopPlatform:src/Extensions/ArcForges.Extensions.Runtime/Host/**
 Unblocks: EXT.01, EXT.09, EXT.90
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Hostile-package tests against product DB/token paths, network, sibling-package and process APIs on the real target OS per platform (Windows primary; no macOS CI per P2-017); crash/hang/memory-exhaustion/unbounded-output tests; quarantine behaviour; credential-absence assertion. No device/emulator CI -- these run as local/affected-scope checks per P2-017.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Hostile-package tests against product DB/token paths, network, sibling-package and process APIs on the real target OS per platform (Windows primary; macOS is outside the delivery scope per P2-023); crash/hang/memory-exhaustion/unbounded-output tests; quarantine behaviour; credential-absence assertion. No device/emulator CI -- these run as local/affected-scope checks per P2-017.
 Completion evidence for the ledger: Hostile-process behaviour and credential-absence results (PG-22).
 Notes: Narrow early risk proof: if real OS-level sandboxing cannot reach PG-22's bar on the target platforms, the whole out-of-process extension model needs redesign.
 ```
@@ -284,30 +284,31 @@ Completion evidence for the ledger: MCP mapping record, connector secret and no-
 ```
 
 ```text
-Execute ArcForges delivery task EXT.10 — Cloud MCP HTTP through the AI Worker adapter.
+Execute ArcForges delivery task EXT.10 — Cloud MCP HTTP placement in the C# Agent module (thin Worker egress route).
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\extensions.md (anchor task-ext-10).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
-Claim and handoff record: claims/ext-10 (python tools/delivery.py claim EXT.10 --worker <name>); task branch task/ext-10 in AI; ledger record ledger/tasks/ext-10.md.
+Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
+Claim and handoff record: claims/ext-10 (python tools/delivery.py claim EXT.10 --worker <name>); task branch task/ext-10 in Cloud; ledger record ledger/tasks/ext-10.md.
 Kind/size: producer/M. Baseline: not-started.
-Outcome: Cloud-placed MCP connections route HTTP through the AI Worker adapter only; standard MCP protocol is preserved; each connection has one placement/secret owner and exact failure/egress behavior; MCP content is treated as untrusted data.
+Outcome: Cloud-placed MCP connections are owned in C#: the MCP client, connection registry, placement and secret-reference owner live in the Cloud Agent module; standard MCP protocol is preserved; each connection has one placement and one secret owner with exact failure and egress behavior; MCP content is treated as untrusted data (HV-19). Cloud-placed MCP HTTP placement (WP-41.07) is delivered through a separate MCP egress route: C# decides each connection, destination, secret reference and failure mapping, and the Cloud Worker outbound handler is thin transport that enforces only the C#-supplied host allowlist and the transport guards (443 only, no private addresses, no redirects). The route is not the ai.internal adapter, which P2-021 item 5 limits to Workers AI on the env.AI binding.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-41.07 (Cloud MCP HTTP placement through the AI Worker adapter): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\41-extension-platform-and-integrations.md, anchor rule-wp-41.07
+- WP-41.07 (Cloud MCP HTTP placement (functional acceptance kept as written; satisfied by a working placement through the C#-decided MCP egress route, never by a refusal)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\41-extension-platform-and-integrations.md, anchor rule-wp-41.07
 - WP-41:sec-8-gate-item-8-mcp-vocabulary-mapping Sec.8 gate item 8: MCP vocabulary mapping + SDK version pin -- VG-02 (package-level obligation contribution): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\41-extension-platform-and-integrations.md, package-level obligation
 
-Entry condition: adoption slice ADOPT.08.extensions is complete in the Plan ledger (DLV-22).
+Entry condition: adoption slice ADOPT.07.extensions is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [contract] CON.15: the internal AI HTTP port surface to attach an MCP adapter route to
+- [contract] CON.15: the generated internal HTTP registry, to attach the MCP egress route (C#-supplied allowlist) to
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: AI:src/mcp/**
-Unblocks: EXT.90
+Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.Agent/Mcp/**; Cloud:tests/ArcForges.Cloud.Tests/Mcp/**; Cloud:worker/mcp/** (thin outbound transport adapter for the MCP egress route; enforces only the C#-supplied allowlist and transport guards)
+Unblocks: CLOUD.84, EXT.90
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Standard-MCP-transport preservation test; secret-as-reference test; egress-control test -- offline against a local MCP fixture server, no live external MCP endpoint in CI.
-Completion evidence for the ledger: MCP mapping record, connector secret and no-delegation structural results (Cloud half).
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Standard-MCP-transport preservation test over a loopback MCP fixture server reached from the test process only (a test transport, not the production egress path); secret-as-reference test; HTTP placement test that runs a Cloud-placed MCP HTTP connection through the MCP egress route to the same loopback fixture; egress-control tests: a destination outside the C#-supplied allowlist, a non-443 port, a private address and a redirect are each refused fail-closed with the egress-denied failure, and an architecture test shows that the ai.internal adapter carries no MCP traffic; MCP content untrusted-data test. In ArcForges.Cloud.Tests, offline; no live external MCP endpoint and no hosted CI (P2-017).
+Completion evidence for the ledger: MCP mapping record, connector secret and no-delegation structural results (Cloud half); HTTP placement result through the MCP egress route against the loopback fixture (test transport); egress-control and no-ai.internal-MCP architecture results; coordinator adjudication 6 (2026-10-08, brief section 6, MCP and connector egress) as the decision reference.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021; coordinator adjudication 6): the MCP client moves from the AI repository (src/mcp, not on main) to the C# Cloud Agent module. MCP HTTP egress is decided: C# decides, and the Worker outbound handler is thin transport enforcing only the C#-supplied host allowlist and the transport guards (443 only, no private addresses, no redirects). The route cannot reuse the ai.internal adapter (P2-021 item 5). The connection-registry, secret-reference and untrusted-data rules stay C#-owned. WP-41.07 functional acceptance is kept as written, and no obligation is removed.
 ```
 
 ```text

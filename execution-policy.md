@@ -1,6 +1,6 @@
 # Execution and validation policy
 
-This policy governs every delivery task and the adoption stage. It follows [Design P2-017](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-017), the [CI/local policy](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/assurance/ci-and-local-validation-policy.md) and the [delivery model](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/planning/delivery/README.md) of [P2-018](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-018).
+This policy governs every delivery task and the adoption stage. It follows [Design P2-017](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-017), the [CI/local policy](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/assurance/ci-and-local-validation-policy.md) and the [delivery model](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/planning/delivery/README.md) of [P2-018](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-018). The implementation stack is C#-first under P2-021: Blazor WebAssembly Web, .NET MAUI Android, C# NuGet SDKs, the C# Harness in the Cloud host and thin TypeScript Cloudflare adapters.
 
 ## Collect, plan and implement
 
@@ -14,19 +14,21 @@ Coordination is at the narrowest boundary: each repository's integration owner (
 
 ## Validation restrictions
 
+macOS is out of scope under P2-023 and is never claimed.
+
 - No macOS CI job, runner or matrix, including self-hosted, scheduled and manual workflows. Local macOS source support may remain; never claim an unproduced macOS artifact or unobserved platform result.
 - No hosted physical-device/emulator, desktop GUI, browser E2E, live service/RPC, real inference/Workflow, installed-package consumer or public-release install/upgrade tests. Remove hidden default check/build/publish invocations and obsolete artifact/status dependencies.
 - Retain necessary Windows/Linux compilation, Native AOT compilation, packaging, static/format/type/lint checks, targeted offline unit tests and non-duplicated security. Do not multiply identical checks across platforms without a platform-specific requirement.
 - Runtime/E2E checks are explicit local opt-in only for affected behavior supported by the existing environment. Run once; repeat only for a new change or concrete unresolved finding. Record untested coverage without inventing success or turning an optional missing environment into a new provisioning task.
 - Do not install/reinstall vcpkg, SDKs, emulators or toolchains solely to expand validation. Git hooks must not silently restore/build/test on every commit/push.
 - No routine public package/archive/image/site downloads, repeated member/hash comparison or consumer execution. Retain lockfile integrity, required signing/licence/provenance checks and one necessary identity/integrity check at an actual publication handoff. Additional downloads require a concrete integrity/publication defect or explicit user request.
-- Promote the original candidate. Use provider upload/deployment receipts and status/coordinate metadata; no public-byte polling. Maven main uses SNAPSHOT, and formal Central publication requires a deliberate tag.
+- Promote the original candidate. Use provider upload/deployment receipts and status/coordinate metadata; no public-byte polling. Maven main uses SNAPSHOT, and formal Central publication requires a deliberate tag until the Maven channels stop under P2-021.
 - Do not create tags, republish, re-sign or allocate replacement versions solely for verification. Diagnose failures before rerunning; no blind retries.
 - Documentation-only edits require consistency/link review without an additional local product-build or runtime-test cycle. Code repositories still run their existing applicable CI for documentation-only PRs. Keep AGENTS, active docs, workflow dependencies and actual release inventories synchronized. Preserve historical evidence as history, not as a rerun mandate.
 
 ## Network and resources
 
-Use the normal network path. Under the accepted user clarification of 2026-09-27, diagnose transient network failures and retry with bounded backoff, recording the exact operation and error when the failure persists. Inspect remote state before retrying a write that may have succeeded. Do not change proxy or network settings. Continue independent work and request user intervention only when indispensable manual login or credentials are required. Do not invoke wsl.exe or WSL wrappers; use a directly available WSL terminal only if necessary. Parallelize independent tasks, not competing heavy local builds.
+Use the normal network path. Under the accepted user clarification of 2026-09-27, diagnose transient network failures and retry with bounded backoff, recording the exact operation and error when the failure persists. Inspect remote state before retrying a write that may have succeeded. Do not change proxy or network settings. Continue independent work and request user intervention only when indispensable manual login or credentials are required. Linux opt-in checks run in the local WSL2 Debian distribution under P2-024, once and affected-scope: invoke them through PowerShell as `wsl.exe -d Debian -- <command>` on a Linux-native filesystem (not `/mnt/c`), and record the distro, kernel, SDK and toolchain. Toolchain installs inside WSL are performed by the user. Never SSH to remote hosts. A check that genuinely cannot run in WSL2 is documented and deferred individually, with its owner and trigger. Parallelize independent tasks, not competing heavy local builds.
 
 ## Review and merge
 

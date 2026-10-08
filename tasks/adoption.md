@@ -54,8 +54,8 @@ Adoption slices (claim, review and record each separately as ledger/tasks/<slice
 - ADOPT.02.execution: Adopt DesktopPlatform: Execution engine (opens 9 tasks)
 - ADOPT.02.extensions: Adopt DesktopPlatform: Extension platform and integrations (opens 7 tasks)
 - ADOPT.02.foundation: Adopt DesktopPlatform: Foundation values (opens 7 tasks)
-- ADOPT.02.governance: Adopt DesktopPlatform: Family governance and policy tests (opens 9 tasks; records 3 accepted tasks as inherited)
-- ADOPT.02.native: Adopt DesktopPlatform: Native producers and probes (opens 14 tasks)
+- ADOPT.02.governance: Adopt DesktopPlatform: Family governance and policy tests (opens 11 tasks; records 3 accepted tasks as inherited)
+- ADOPT.02.native: Adopt DesktopPlatform: Native producers and probes (opens 16 tasks)
 - ADOPT.02.platform: Adopt DesktopPlatform: Desktop platform mechanisms (opens 55 tasks)
 - ADOPT.02.policy: Adopt DesktopPlatform: Dynamic policy and configuration (opens 1 task)
 - ADOPT.02.release: Adopt DesktopPlatform: Release readiness and family release (opens 2 tasks)
@@ -100,7 +100,7 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 - P2-018 (adoption stage: Contracts repository record): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
 
 Adoption slices (claim, review and record each separately as ledger/tasks/<slice key>.md, for example ledger/tasks/adopt-03-contracts.md, plus one ledger/tasks/<key>.md with status inherited per task it classifies as inherited; one pull request may carry several; each slice opens only its own repository lane; each has its own prompt under "Adoption slices" below):
-- ADOPT.03.contracts: Adopt Contracts: Contracts schema closures (opens 24 tasks; records 3 accepted tasks as inherited)
+- ADOPT.03.contracts: Adopt Contracts: Contracts schema closures (opens 25 tasks; records 3 accepted tasks as inherited)
 - ADOPT.03.extensions: Adopt Contracts: Extension platform and integrations (opens 3 tasks)
 - ADOPT.03.governance: Adopt Contracts: Family governance and policy tests (opens 2 tasks)
 - ADOPT.03.release: Adopt Contracts: Release readiness and family release (opens 1 task)
@@ -170,13 +170,13 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 - P2-018 (adoption stage: Cloud repository record): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
 
 Adoption slices (claim, review and record each separately as ledger/tasks/<slice key>.md, for example ledger/tasks/adopt-07-ai-routing.md, plus one ledger/tasks/<key>.md with status inherited per task it classifies as inherited; one pull request may carry several; each slice opens only its own repository lane; each has its own prompt under "Adoption slices" below):
-- ADOPT.07.ai-routing: Adopt Cloud: Workers AI routing and metering (opens 6 tasks)
-- ADOPT.07.cloud: Adopt Cloud: Cloud core (opens 62 tasks)
+- ADOPT.07.ai-routing: Adopt Cloud: Workers AI routing and metering (opens 10 tasks)
+- ADOPT.07.cloud: Adopt Cloud: Cloud core (opens 64 tasks)
 - ADOPT.07.commerce: Adopt Cloud: Commerce, entitlement and credits (opens 16 tasks)
 - ADOPT.07.device-bridge: Adopt Cloud: Application presence and tool bridge (opens 9 tasks)
-- ADOPT.07.extensions: Adopt Cloud: Extension platform and integrations (opens 1 task)
+- ADOPT.07.extensions: Adopt Cloud: Extension platform and integrations (opens 2 tasks)
 - ADOPT.07.governance: Adopt Cloud: Family governance and policy tests (opens 1 task)
-- ADOPT.07.harness: Adopt Cloud: Cloud Harness (opens 2 tasks)
+- ADOPT.07.harness: Adopt Cloud: Cloud Harness (opens 9 tasks)
 - ADOPT.07.operations: Adopt Cloud: Operations, support and trust and safety (opens 9 tasks)
 - ADOPT.07.policy: Adopt Cloud: Dynamic policy and configuration (opens 10 tasks)
 - ADOPT.07.release: Adopt Cloud: Release readiness and family release (opens 3 tasks)
@@ -221,10 +221,10 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 - P2-018 (adoption stage: AI repository record): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
 
 Adoption slices (claim, review and record each separately as ledger/tasks/<slice key>.md, for example ledger/tasks/adopt-08-ai-routing.md, plus one ledger/tasks/<key>.md with status inherited per task it classifies as inherited; one pull request may carry several; each slice opens only its own repository lane; each has its own prompt under "Adoption slices" below):
-- ADOPT.08.ai-routing: Adopt AI: Workers AI routing and metering (opens 4 tasks)
-- ADOPT.08.extensions: Adopt AI: Extension platform and integrations (opens 1 task)
+- ADOPT.08.ai-routing: Adopt AI: Workers AI routing and metering (opens 0 tasks)
+- ADOPT.08.extensions: Adopt AI: Extension platform and integrations (opens 0 tasks)
 - ADOPT.08.governance: Adopt AI: Family governance and policy tests (opens 2 tasks)
-- ADOPT.08.harness: Adopt AI: Cloud Harness (opens 6 tasks)
+- ADOPT.08.harness: Adopt AI: Cloud Harness (opens 0 tasks)
 
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] ADOPT.01: frozen baseline record
@@ -238,6 +238,7 @@ Permitted write scope: Plan:ledger/adoption/AI.md; Plan:ledger/tasks/adopt-08.md
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Review of merged source, retained CI results and receipts only; no new builds, downloads or runtime checks (P2-017).
 Completion evidence for the ledger: Repository adoption record with the repository-wide facts, links to every slice record, the combined classification table and any conflicts raised under D-001.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): completed record kept as history; no rewrite. The AI repository runtime role ends under HAR.40, and the repository stays read-only history after its last deployment is retired. Re-homed harness, ai-routing and extensions work is adopted through ADOPT.07.harness, ADOPT.07.ai-routing and ADOPT.07.extensions (Cloud, complete); the AI adoption slices stay as history.
 ```
 
 ```text
@@ -257,8 +258,8 @@ Adoption slices (claim, review and record each separately as ledger/tasks/<slice
 - ADOPT.09.governance: Adopt Web: Family governance and policy tests (opens 1 task)
 - ADOPT.09.operations: Adopt Web: Operations, support and trust and safety (opens 4 tasks)
 - ADOPT.09.release: Adopt Web: Release readiness and family release (opens 1 task)
-- ADOPT.09.runtime-proofs: Adopt Web: Runtime proofs (opens 1 task)
-- ADOPT.09.web: Adopt Web: Web (opens 33 tasks)
+- ADOPT.09.runtime-proofs: Adopt Web: Runtime proofs (opens 2 tasks)
+- ADOPT.09.web: Adopt Web: Web (opens 34 tasks)
 
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] ADOPT.01: frozen baseline record
@@ -273,6 +274,7 @@ Permitted write scope: Plan:ledger/adoption/Web.md; Plan:ledger/tasks/adopt-09.m
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Review of merged source, retained CI results and receipts only; no new builds, downloads or runtime checks (P2-017).
 Completion evidence for the ledger: Repository adoption record with the repository-wide facts, links to every slice record, the combined classification table and any conflicts raised under D-001.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): The adopted React/TypeScript Web facts (apps/site, apps/app, packages/ui, Node/TS policy) are migrated by WEB.40 to C#/Blazor. The complete adoption record is not edited.
 ```
 
 ```text
@@ -289,10 +291,10 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 - P2-018 (adoption stage: Mobile repository record): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-018
 
 Adoption slices (claim, review and record each separately as ledger/tasks/<slice key>.md, for example ledger/tasks/adopt-10-android.md, plus one ledger/tasks/<key>.md with status inherited per task it classifies as inherited; one pull request may carry several; each slice opens only its own repository lane; each has its own prompt under "Adoption slices" below):
-- ADOPT.10.android: Adopt Mobile: Android companion (opens 27 tasks)
+- ADOPT.10.android: Adopt Mobile: Android companion (opens 28 tasks)
 - ADOPT.10.governance: Adopt Mobile: Family governance and policy tests (opens 1 task)
 - ADOPT.10.release: Adopt Mobile: Release readiness and family release (opens 1 task)
-- ADOPT.10.runtime-proofs: Adopt Mobile: Runtime proofs (opens 1 task)
+- ADOPT.10.runtime-proofs: Adopt Mobile: Runtime proofs (opens 2 tasks)
 
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] ADOPT.01: frozen baseline record
@@ -306,6 +308,7 @@ Permitted write scope: Plan:ledger/adoption/Mobile.md; Plan:ledger/tasks/adopt-1
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Review of merged source, retained CI results and receipts only; no new builds, downloads or runtime checks (P2-017).
 Completion evidence for the ledger: Repository adoption record with the repository-wide facts, links to every slice record, the combined classification table and any conflicts raised under D-001.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Successor AND.40 retires the Gradle/AGP/Kotlin/Compose tuple recorded here; AND.01 pins the .NET 10 candidate tuple, proven by PRF.12. Adoption facts remain history.
 ```
 
 ```text
@@ -472,8 +475,8 @@ Claim and handoff record: claims/adopt-02-governance (python tools/delivery.py c
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- GOV.01, GOV.02, GOV.03, GOV.04, GOV.06, GOV.13, GOV.14, GOV.15, GOV.17, GOV.18, GOV.20, GOV.21
-Opens when the record is merged: GOV.04, GOV.06, GOV.13, GOV.14, GOV.15, GOV.17, GOV.18, GOV.20, GOV.21, except any task this slice classifies as inherited. Every task classified as inherited, including the accepted-baseline tasks GOV.01, GOV.02, GOV.03, gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- GOV.01, GOV.02, GOV.03, GOV.04, GOV.06, GOV.13, GOV.14, GOV.15, GOV.17, GOV.18, GOV.20, GOV.21, GOV.30, GOV.31
+Opens when the record is merged: GOV.04, GOV.06, GOV.13, GOV.14, GOV.15, GOV.17, GOV.18, GOV.20, GOV.21, GOV.30, GOV.31, except any task this slice classifies as inherited. Every task classified as inherited, including the accepted-baseline tasks GOV.01, GOV.02, GOV.03, gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-02-governance.md; Plan:ledger/tasks/gov-01.md; Plan:ledger/tasks/gov-02.md; Plan:ledger/tasks/gov-03.md; Plan:ledger/tasks/<key>.md (status inherited) for each other task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -490,8 +493,8 @@ Claim and handoff record: claims/adopt-02-native (python tools/delivery.py claim
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- NAT.01, NAT.03, NAT.05, NAT.06, NAT.11, NAT.13, NAT.14, NAT.15, NAT.22, NAT.24, NAT.25, NAT.28, NAT.29, NAT.30
-Opens when the record is merged: NAT.01, NAT.03, NAT.05, NAT.06, NAT.11, NAT.13, NAT.14, NAT.15, NAT.22, NAT.24, NAT.25, NAT.28, NAT.29, NAT.30, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- NAT.01, NAT.03, NAT.05, NAT.06, NAT.11, NAT.13, NAT.14, NAT.15, NAT.22, NAT.24, NAT.25, NAT.28, NAT.29, NAT.30, NAT.31, NAT.32
+Opens when the record is merged: NAT.01, NAT.03, NAT.05, NAT.06, NAT.11, NAT.13, NAT.14, NAT.15, NAT.22, NAT.24, NAT.25, NAT.28, NAT.29, NAT.30, NAT.31, NAT.32, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-02-native.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -598,8 +601,8 @@ Claim and handoff record: claims/adopt-03-contracts (python tools/delivery.py cl
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- CON.01, CON.02, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.18, CON.19, CON.21, CON.22, CON.23, CON.24, CON.25, CON.90, CON.91, CON.92
-Opens when the record is merged: CON.01, CON.02, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.18, CON.19, CON.21, CON.22, CON.23, CON.24, CON.25, except any task this slice classifies as inherited. Every task classified as inherited, including the accepted-baseline tasks CON.90, CON.91, CON.92, gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- CON.01, CON.02, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.18, CON.19, CON.21, CON.22, CON.23, CON.24, CON.25, CON.40, CON.90, CON.91, CON.92
+Opens when the record is merged: CON.01, CON.02, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.18, CON.19, CON.21, CON.22, CON.23, CON.24, CON.25, CON.40, except any task this slice classifies as inherited. Every task classified as inherited, including the accepted-baseline tasks CON.90, CON.91, CON.92, gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-03-contracts.md; Plan:ledger/tasks/con-90.md; Plan:ledger/tasks/con-91.md; Plan:ledger/tasks/con-92.md; Plan:ledger/tasks/<key>.md (status inherited) for each other task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -778,8 +781,8 @@ Claim and handoff record: claims/adopt-07-ai-routing (python tools/delivery.py c
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- AIR.01, AIR.02, AIR.03, AIR.04, AIR.06, AIR.90
-Opens when the record is merged: AIR.01, AIR.02, AIR.03, AIR.04, AIR.06, AIR.90, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- AIR.00, AIR.01, AIR.02, AIR.03, AIR.04, AIR.05, AIR.06, AIR.07, AIR.08, AIR.90
+Opens when the record is merged: AIR.00, AIR.01, AIR.02, AIR.03, AIR.04, AIR.05, AIR.06, AIR.07, AIR.08, AIR.90, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-07-ai-routing.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -796,8 +799,8 @@ Claim and handoff record: claims/adopt-07-cloud (python tools/delivery.py claim 
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- CLOUD.01, CLOUD.02, CLOUD.03, CLOUD.04, CLOUD.05, CLOUD.06, CLOUD.07, CLOUD.08, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.12, CLOUD.13, CLOUD.14, CLOUD.15, CLOUD.16, CLOUD.17, CLOUD.19, CLOUD.20, CLOUD.21, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.26, CLOUD.27, CLOUD.28, CLOUD.29, CLOUD.30, CLOUD.31, CLOUD.32, CLOUD.33, CLOUD.34, CLOUD.35, CLOUD.36, CLOUD.39, CLOUD.40, CLOUD.41, CLOUD.42, CLOUD.43, CLOUD.44, CLOUD.45, CLOUD.46, CLOUD.47, CLOUD.48, CLOUD.49, CLOUD.50, CLOUD.51, CLOUD.52, CLOUD.53, CLOUD.54, CLOUD.55, CLOUD.58, CLOUD.63, CLOUD.64, CLOUD.66, CLOUD.67, CLOUD.68, CLOUD.69, CLOUD.70, CLOUD.71, CLOUD.72
-Opens when the record is merged: CLOUD.01, CLOUD.02, CLOUD.03, CLOUD.04, CLOUD.05, CLOUD.06, CLOUD.07, CLOUD.08, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.12, CLOUD.13, CLOUD.14, CLOUD.15, CLOUD.16, CLOUD.17, CLOUD.19, CLOUD.20, CLOUD.21, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.26, CLOUD.27, CLOUD.28, CLOUD.29, CLOUD.30, CLOUD.31, CLOUD.32, CLOUD.33, CLOUD.34, CLOUD.35, CLOUD.36, CLOUD.39, CLOUD.40, CLOUD.41, CLOUD.42, CLOUD.43, CLOUD.44, CLOUD.45, CLOUD.46, CLOUD.47, CLOUD.48, CLOUD.49, CLOUD.50, CLOUD.51, CLOUD.52, CLOUD.53, CLOUD.54, CLOUD.55, CLOUD.58, CLOUD.63, CLOUD.64, CLOUD.66, CLOUD.67, CLOUD.68, CLOUD.69, CLOUD.70, CLOUD.71, CLOUD.72, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- CLOUD.01, CLOUD.02, CLOUD.03, CLOUD.04, CLOUD.05, CLOUD.06, CLOUD.07, CLOUD.08, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.12, CLOUD.13, CLOUD.14, CLOUD.15, CLOUD.16, CLOUD.17, CLOUD.19, CLOUD.20, CLOUD.21, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.26, CLOUD.27, CLOUD.28, CLOUD.29, CLOUD.30, CLOUD.31, CLOUD.32, CLOUD.33, CLOUD.34, CLOUD.35, CLOUD.36, CLOUD.39, CLOUD.40, CLOUD.41, CLOUD.42, CLOUD.43, CLOUD.44, CLOUD.45, CLOUD.46, CLOUD.47, CLOUD.48, CLOUD.49, CLOUD.50, CLOUD.51, CLOUD.52, CLOUD.53, CLOUD.54, CLOUD.55, CLOUD.58, CLOUD.63, CLOUD.64, CLOUD.66, CLOUD.67, CLOUD.68, CLOUD.69, CLOUD.70, CLOUD.71, CLOUD.72, CLOUD.84, CLOUD.85
+Opens when the record is merged: CLOUD.01, CLOUD.02, CLOUD.03, CLOUD.04, CLOUD.05, CLOUD.06, CLOUD.07, CLOUD.08, CLOUD.09, CLOUD.10, CLOUD.11, CLOUD.12, CLOUD.13, CLOUD.14, CLOUD.15, CLOUD.16, CLOUD.17, CLOUD.19, CLOUD.20, CLOUD.21, CLOUD.22, CLOUD.23, CLOUD.24, CLOUD.25, CLOUD.26, CLOUD.27, CLOUD.28, CLOUD.29, CLOUD.30, CLOUD.31, CLOUD.32, CLOUD.33, CLOUD.34, CLOUD.35, CLOUD.36, CLOUD.39, CLOUD.40, CLOUD.41, CLOUD.42, CLOUD.43, CLOUD.44, CLOUD.45, CLOUD.46, CLOUD.47, CLOUD.48, CLOUD.49, CLOUD.50, CLOUD.51, CLOUD.52, CLOUD.53, CLOUD.54, CLOUD.55, CLOUD.58, CLOUD.63, CLOUD.64, CLOUD.66, CLOUD.67, CLOUD.68, CLOUD.69, CLOUD.70, CLOUD.71, CLOUD.72, CLOUD.84, CLOUD.85, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-07-cloud.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -850,8 +853,8 @@ Claim and handoff record: claims/adopt-07-extensions (python tools/delivery.py c
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- EXT.06
-Opens when the record is merged: EXT.06, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- EXT.06, EXT.10
+Opens when the record is merged: EXT.06, EXT.10, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-07-extensions.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -886,8 +889,8 @@ Claim and handoff record: claims/adopt-07-harness (python tools/delivery.py clai
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- HAR.04, HAR.06
-Opens when the record is merged: HAR.04, HAR.06, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- HAR.00, HAR.01, HAR.02, HAR.03, HAR.04, HAR.05, HAR.06, HAR.40, HAR.90
+Opens when the record is merged: HAR.00, HAR.01, HAR.02, HAR.03, HAR.04, HAR.05, HAR.06, HAR.40, HAR.90, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-07-harness.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -1012,8 +1015,8 @@ Claim and handoff record: claims/adopt-08-ai-routing (python tools/delivery.py c
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- AIR.00, AIR.05, AIR.07, AIR.08
-Opens when the record is merged: AIR.00, AIR.05, AIR.07, AIR.08, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- none
+Opens when the record is merged: no task. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-08-ai-routing.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -1030,8 +1033,8 @@ Claim and handoff record: claims/adopt-08-extensions (python tools/delivery.py c
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- EXT.10
-Opens when the record is merged: EXT.10, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- none
+Opens when the record is merged: no task. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-08-extensions.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -1066,8 +1069,8 @@ Claim and handoff record: claims/adopt-08-harness (python tools/delivery.py clai
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- HAR.00, HAR.01, HAR.02, HAR.03, HAR.05, HAR.90
-Opens when the record is merged: HAR.00, HAR.01, HAR.02, HAR.03, HAR.05, HAR.90, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- none
+Opens when the record is merged: no task. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-08-harness.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -1138,8 +1141,8 @@ Claim and handoff record: claims/adopt-09-runtime-proofs (python tools/delivery.
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- PRF.08
-Opens when the record is merged: PRF.08, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- PRF.08, PRF.11
+Opens when the record is merged: PRF.08, PRF.11, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-09-runtime-proofs.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -1156,8 +1159,8 @@ Claim and handoff record: claims/adopt-09-web (python tools/delivery.py claim AD
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- WEB.01, WEB.02, WEB.03, WEB.04, WEB.05, WEB.06, WEB.07, WEB.08, WEB.09, WEB.10, WEB.11, WEB.12, WEB.13, WEB.14, WEB.15, WEB.16, WEB.17, WEB.18, WEB.19, WEB.20, WEB.21, WEB.22, WEB.23, WEB.24, WEB.25, WEB.26, WEB.27, WEB.28, WEB.29, WEB.30, WEB.31, WEB.32, WEB.33
-Opens when the record is merged: WEB.01, WEB.02, WEB.03, WEB.04, WEB.05, WEB.06, WEB.07, WEB.08, WEB.09, WEB.10, WEB.11, WEB.12, WEB.13, WEB.14, WEB.15, WEB.16, WEB.17, WEB.18, WEB.19, WEB.20, WEB.21, WEB.22, WEB.23, WEB.24, WEB.25, WEB.26, WEB.27, WEB.28, WEB.29, WEB.30, WEB.31, WEB.32, WEB.33, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- WEB.01, WEB.02, WEB.03, WEB.04, WEB.05, WEB.06, WEB.07, WEB.08, WEB.09, WEB.10, WEB.11, WEB.12, WEB.13, WEB.14, WEB.15, WEB.16, WEB.17, WEB.18, WEB.19, WEB.20, WEB.21, WEB.22, WEB.23, WEB.24, WEB.25, WEB.26, WEB.27, WEB.28, WEB.29, WEB.30, WEB.31, WEB.32, WEB.33, WEB.40
+Opens when the record is merged: WEB.01, WEB.02, WEB.03, WEB.04, WEB.05, WEB.06, WEB.07, WEB.08, WEB.09, WEB.10, WEB.11, WEB.12, WEB.13, WEB.14, WEB.15, WEB.16, WEB.17, WEB.18, WEB.19, WEB.20, WEB.21, WEB.22, WEB.23, WEB.24, WEB.25, WEB.26, WEB.27, WEB.28, WEB.29, WEB.30, WEB.31, WEB.32, WEB.33, WEB.40, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-09-web.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -1174,8 +1177,8 @@ Claim and handoff record: claims/adopt-10-android (python tools/delivery.py clai
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- AND.01, AND.02, AND.03, AND.04, AND.05, AND.06, AND.07, AND.08, AND.09, AND.10, AND.11, AND.12, AND.13, AND.14, AND.15, AND.16, AND.17, AND.18, AND.19, AND.20, AND.21, AND.22, AND.23, AND.24, AND.25, AND.26, AND.27
-Opens when the record is merged: AND.01, AND.02, AND.03, AND.04, AND.05, AND.06, AND.07, AND.08, AND.09, AND.10, AND.11, AND.12, AND.13, AND.14, AND.15, AND.16, AND.17, AND.18, AND.19, AND.20, AND.21, AND.22, AND.23, AND.24, AND.25, AND.26, AND.27, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- AND.01, AND.02, AND.03, AND.04, AND.05, AND.06, AND.07, AND.08, AND.09, AND.10, AND.11, AND.12, AND.13, AND.14, AND.15, AND.16, AND.17, AND.18, AND.19, AND.20, AND.21, AND.22, AND.23, AND.24, AND.25, AND.26, AND.27, AND.40
+Opens when the record is merged: AND.01, AND.02, AND.03, AND.04, AND.05, AND.06, AND.07, AND.08, AND.09, AND.10, AND.11, AND.12, AND.13, AND.14, AND.15, AND.16, AND.17, AND.18, AND.19, AND.20, AND.21, AND.22, AND.23, AND.24, AND.25, AND.26, AND.27, AND.40, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-10-android.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
@@ -1228,8 +1231,8 @@ Claim and handoff record: claims/adopt-10-runtime-proofs (python tools/delivery.
 
 Start prerequisites: [artifact] ADOPT.01: frozen baseline record.
 Tasks in scope (classify each exactly once as inherited, inherited with adjustment, gap or conflicting under ADP-02, using only reviewed evidence under ADP-03; bind planned write scopes to the actual layout under ADP-07):
-- PRF.10
-Opens when the record is merged: PRF.10, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
+- PRF.10, PRF.12
+Opens when the record is merged: PRF.10, PRF.12, except any task this slice classifies as inherited. Every task classified as inherited gets its own ledger/tasks/<key>.md with status inherited (<key> is the task ID in lower case with dots replaced by hyphens) in the same pull request as the slice record, so it never becomes ready. A task inherited with adjustment gets no such record and opens with its remaining scope.
 
 Permitted write scope: Plan:ledger/tasks/adopt-10-runtime-proofs.md; Plan:ledger/tasks/<key>.md (status inherited) for each task in scope classified as inherited
 Validation (P2-017, ADP-06): review of merged source, retained CI results and receipts only; no builds, downloads or runtime checks.
