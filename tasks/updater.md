@@ -231,6 +231,7 @@ Permitted write scope: DesktopPlatform:eng/packaging/packages.json
 Shared resources (follow the owner protocol): RES-desktopplatform-package-inventory (append): Each producer task adds its own package entry; every merge to main packs and publishes all packages at one version; consumers pin the candidate produced by the merge of the capability they need, never waiting for a package closure task; one merge queue.
 Unblocks: POL.07, REL.02
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): P2-017: Tier 1 (Windows/Linux) real install/apply/rollback cycle is the kind of local, affected-scope, once, existing-environment runtime check P2-017 permits and expects to be recorded, distinct from hosted CI; Tier 2 (macOS) follows the existing recorded waiver process, never macOS CI.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): P2-017: Tier 1 (Windows/Linux) real install/apply/rollback cycle is the kind of local, affected-scope, once, existing-environment runtime check P2-017 permits and expects to be recorded, distinct from hosted CI; the Linux leg runs in local WSL2 per P2-024. There is no Tier 2 and no macOS waiver or macOS CI (P2-023).
 Completion evidence for the ledger: Owned artifact and real-integration receipt per WP-53.90.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-023): the Tier 2 macOS waiver path is removed; Tier 1 (Windows and Linux) remains the only lifecycle acceptance. The Linux leg runs in local WSL2 per P2-024.
 ```

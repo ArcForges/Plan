@@ -12,28 +12,29 @@ Execute ArcForges delivery task AIR.00 — Provider adapters and routing (Worker
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\ai-routing.md (anchor task-air-00).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
-Claim and handoff record: claims/air-00 (python tools/delivery.py claim AIR.00 --worker <name>); task branch task/air-00 in AI; ledger record ledger/tasks/air-00.md.
+Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
+Claim and handoff record: claims/air-00 (python tools/delivery.py claim AIR.00 --worker <name>); task branch task/air-00 in Cloud; ledger record ledger/tasks/air-00.md.
 Kind/size: service/L. Baseline: not-started.
-Outcome: env.AI.run adapters exist for default/fast text, accepted image context, bge-m3 embedding and bge-reranker-base rerank; model availability/frozen-config/request-limits/tool-stream-shapes are validated before dispatch; C# records admission/routing/supplier version while CF executes the already-admitted intent.
+Outcome: Workers AI provider adapters in the C# Cloud Agent module (default and fast text, accepted image context, bge-m3 embedding and bge-reranker-base rerank) build each request, parse each response and normalise usage in C#; they dispatch only through the HAR.40 ai.internal thin adapter on the env.AI binding; model availability, frozen configuration, request limits and tool-stream shapes are validated in C# before dispatch; C# records admission, routing and supplier version while CF executes the already-admitted intent. No Workers AI token, REST path or AI Gateway is used.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-43.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\43-managed-ai-routing-and-metering.md, anchor rule-wp-43.00
 
-Entry condition: adoption slice ADOPT.08.ai-routing is complete in the Plan ledger (DLV-22).
+Entry condition: adoption slice ADOPT.07.ai-routing is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [contract] CON.10: published internal AI HTTP profile (model-intent/model-outcome/dispatch ports) from internal/ai-http/v1/schema.json
 - [artifact] POL.08: active model/route policy snapshot naming the admitted catalogue subset
+- [artifact] HAR.40: the ai.internal thin adapter and the Hello-slice dispatch path, with the Workers AI binding shapes proven
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: AI:src/providers/workers-ai/**; AI:src/inference/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (exclusive): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.
+Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.Agent/Providers/**; Cloud:src/ArcForges.Cloud.Modules.Agent/Inference/**
+Shared resources (follow the owner protocol): RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.
 Unblocks: AIR.02, AIR.03, AIR.05, AIR.07, AIR.08, CLOUD.67, HAR.00, HAR.05, SRCH.06
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Actual selected model/capability-shape tests, withdrawn/unknown/unsupported request tests, request-size/output-bound tests, version-mismatch tests. Real CF calls only in the credentialed candidate gate, not ordinary CI (P2-017: no real AI inference in CI).
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Actual selected model and capability-shape tests, withdrawn/unknown/unsupported request tests, request-size and output-bound tests, version-mismatch tests in ArcForges.Cloud.Tests against recorded fixtures (offline). Real Workers AI calls only at the credentialed candidate gate, run locally opt-in against the deployed proof origin, never in ordinary CI (P2-017: no real AI inference in CI).
 Completion evidence for the ledger: Routing decision, explainability and streaming results.
-Notes: Narrow early risk proof: if env.AI.run cannot actually deliver the required capability shapes (tool/stream) as specified, the whole AI economics/product model is affected.
+Notes: Narrow early risk proof: if env.AI.run cannot actually deliver the required capability shapes (tool/stream) as specified, the whole AI economics/product model is affected. Planning repair 2026-10-08 (DLV-34; P2-021): the adapter moves from the AI repository (src/providers/workers-ai, not on main) into the C# Cloud Agent module, and the Workers AI invocation is reduced to the HAR.40 ai.internal thin adapter (P2-021 items 1 and 5). Catalogue, routing, admission and version-recording requirements are unchanged. The narrow early risk proof (capability shapes, latency, gpt-oss tier, 429 semantics) runs in HAR.40 before the catalogue adapters are built. Planning repair 2026-10-08 (DLV-34; P2-021; review fix): the exclusive hold on RES-ai-workflow-and-routes is withdrawn. AIR.00 no longer runs against the AI deployment environment and its writes are Cloud paths; its shared list keeps RES-private-configuration only.
 ```
 
 ```text
@@ -55,12 +56,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Agent/Tariffs/**
-Shared resources (follow the owner protocol): RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.
+Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.Agent/Tariffs/**; Cloud:storage/plans/agent/tariffs/**; Cloud:src/ArcForges.Cloud.Storage.D1/Migrations/**
+Shared resources (follow the owner protocol): RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.; RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.; RES-cloud-storage-plans (append): Each module owns its own plan directory; the plan-manifest hash is regenerated by the author after rebase and checked in CI.
 Unblocks: AIR.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Rate-change immutability test, historical-explainability reconstruction test, per-dimension metering tests -- offline.
 Completion evidence for the ledger: Rate-change immutability and historical explainability results.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): write paths corrected from src/Cloud/ArcForges.Cloud.Modules.Agent (not in the real layout) to src/ArcForges.Cloud.Modules.Agent; the tariff tables are Agent-owned D1 tables under storage/plans/agent/tariffs. The locked-snapshot, immutability and separate image-unit rules are unchanged.
 ```
 
 ```text
@@ -83,11 +85,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] COM.12: the real capacity admission participant
 
-Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Agent/Metering/**
+Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.Agent/Metering/**; Cloud:storage/plans/agent/metering/**; Cloud:src/ArcForges.Cloud.Storage.D1/Migrations/**
+Shared resources (follow the owner protocol): RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.; RES-cloud-storage-plans (append): Each module owns its own plan directory; the plan-manifest hash is regenerated by the author after rebase and checked in CI.
 Unblocks: AIR.04, AIR.06, AIR.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Actual CF normal/interrupted/lost outcome with concurrent duplicates and replayed receipts; cancelled/unknown hold sweep; tariff-change and operator-job isolation tests. Real-CF cases only at the credentialed candidate gate.
 Completion evidence for the ledger: Metering accounting, idempotency, sweep and overdraft results.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): write paths corrected to the real Cloud module layout (src/ArcForges.Cloud.Modules.Agent, storage/plans/agent). Reservation before I/O, receipt before settlement, immutable revisions and the no-automatic-resend ladder are unchanged; the dispatch being metered goes through the HAR.40 ai.internal adapter.
 ```
 
 ```text
@@ -109,12 +113,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Agent/Routing/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.; RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.
+Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.Agent/Routing/**
+Shared resources (follow the owner protocol): RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.
 Unblocks: AIR.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Unavailable/withdrawn model, missing price/config, pre-dispatch-refusal-vs-unknown-dispatch, explicit-new-model-request tests -- offline.
 Completion evidence for the ledger: No-BYOK structural assertions and credential-custody results.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): write path corrected to src/ArcForges.Cloud.Modules.Agent/Routing (real layout). Routing invocation is only the HAR.40 Workers AI binding adapter, with no AI Gateway, multiprovider bypass or BYOK (PR-06 unchanged).
 ```
 
 ```text
@@ -137,12 +142,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Agent/InteractionRecords/**
+Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.Agent/InteractionRecords/**; Cloud:storage/plans/agent/interaction-records/**; Cloud:src/ArcForges.Cloud.Storage.D1/Migrations/**
+Shared resources (follow the owner protocol): RES-cloud-d1-migrations (append): One global D1 migration sequence: each module task authors migrations under its module prefix; the integration owner assigns the global sequence number at merge, regenerates the plan manifest and rejects edits to merged migrations; the migrator applies in sequence with receipts.; RES-cloud-storage-plans (append): Each module owns its own plan directory; the plan-manifest hash is regenerated by the author after rebase and checked in CI.
 Unblocks: AIR.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Trace-separation test; content-redaction test; cost-explainability test -- offline.
 Completion evidence for the ledger: Trace separation, redaction and cost explainability results.
-Notes: Planning repair 2026-10-05: every provider interaction record carries the call's correlation identity and the provider request identifier (CR-05) through the CLOUD.69 seam; this is part of this task's own acceptance and of the real provider hop that PLT.48's correlation scenario names as a later owner (no new write scope).
+Notes: Planning repair 2026-10-05: every provider interaction record carries the call's correlation identity and the provider request identifier (CR-05) through the CLOUD.69 seam; this is part of this task's own acceptance and of the real provider hop that PLT.48's correlation scenario names as a later owner (no new write scope). Planning repair 2026-10-08 (DLV-34; P2-021): write paths corrected to the real Cloud module layout (src/ArcForges.Cloud.Modules.Agent, storage/plans/agent). The record, redaction and transparency acceptance is unchanged.
 ```
 
 ```text
@@ -150,27 +156,26 @@ Execute ArcForges delivery task AIR.05 — Content-origin marking at the provide
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\ai-routing.md (anchor task-air-05).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
-Claim and handoff record: claims/air-05 (python tools/delivery.py claim AIR.05 --worker <name>); task branch task/air-05 in AI; ledger record ledger/tasks/air-05.md.
+Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
+Claim and handoff record: claims/air-05 (python tools/delivery.py claim AIR.05 --worker <name>); task branch task/air-05 in Cloud; ledger record ledger/tasks/air-05.md.
 Kind/size: service/M. Baseline: not-started.
-Outcome: The frozen content-origin profile is implemented at the point AI-generated content is produced; every artifact type carries the required transparency marking; malformed/hash-mismatched marks and marking retry are handled; this satisfies VG-01 once the regime determination is recorded.
+Outcome: The frozen content-origin profile is implemented in C# at the point AI-generated content is produced (the Agent module generation boundary, after the ai.internal adapter returns the output); every artifact type carries the required transparency marking; malformed or hash-mismatched marks and marking retry are handled; this satisfies VG-01 once the regime determination is recorded.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-43.04 (transparency marking mechanism at the provider generation boundary; marking-coverage per artifact type): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\43-managed-ai-routing-and-metering.md, anchor rule-wp-43.04
 
-Entry condition: adoption slice ADOPT.08.ai-routing is complete in the Plan ledger (DLV-22).
+Entry condition: adoption slice ADOPT.07.ai-routing is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] AIR.00: generated model output to mark
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: AI:src/providers/workers-ai/ContentOrigin/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.
+Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.Agent/ContentOrigin/**; Cloud:tests/ArcForges.Cloud.Tests/Vectors/AiContentOrigin/**
 Unblocks: AIR.90, HAR.03
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real provider text through durable output and downstream carrier fixtures; deterministic/non-AI and legacy controls; malformed/hash-mismatched mark; marking retry -- offline against fixture carriers, real text only at the AIR.08 credentialed gate.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real provider text through durable output and downstream carrier fixtures; deterministic/non-AI and legacy controls; malformed or hash-mismatched mark; marking retry. Offline in ArcForges.Cloud.Tests against fixture carriers; real text only at the AIR.08 credentialed gate.
 Completion evidence for the ledger: Marking-coverage results per artifact type; carrier/propagation/failure vectors with payload and manifest hashes.
-Notes: HAR.03 (WP-52.03 durable output) consumes this task's ContentOrigin carrier as a start artifact -- internal the AI lanes cross-reference.
+Notes: HAR.03 (WP-52.03 durable output) consumes this task's ContentOrigin carrier as a start artifact -- internal the AI lanes cross-reference. Planning repair 2026-10-08 (DLV-34; P2-021): marking logic moves from the AI repository TypeScript provider boundary (src/providers/workers-ai/ContentOrigin, not on main) to C#, because content-origin compliance is business logic (P2-021 item 1). Coverage per artifact type and the carrier, propagation and failure vectors are unchanged; HAR.03 still consumes this carrier.
 ```
 
 ```text
@@ -192,13 +197,12 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Agent/Metering/UncertainOutcome/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.
+Permitted write scope: Cloud:src/ArcForges.Cloud.Modules.Agent/Metering/UncertainOutcome/**
 Unblocks: AIR.90, HAR.04, SRCH.06
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Search-without-customer-debit, model-debit-once, crash-before/after-dispatch, unknown-deadline, late-usage-after-closed, no-automatic-retry tests -- offline with real-CF-shaped fixtures; real dispatch only at AIR.08's gate.
 Completion evidence for the ledger: Degradation, reservation-release and alert results.
-Notes: HAR.04 (WP-52.04 general effect-certainty classification) treats this task's ledger pattern as its worked precedent -- internal the AI lanes cross-reference.
+Notes: HAR.04 (WP-52.04 general effect-certainty classification) treats this task's ledger pattern as its worked precedent -- internal the AI lanes cross-reference. Planning repair 2026-10-08 (DLV-34; P2-021): write path corrected from src/Cloud/ArcForges.Cloud.Modules.Agent to src/ArcForges.Cloud.Modules.Agent (real layout). The uncertain-outcome, funding-separation and no-automatic-retry acceptance is unchanged.
 ```
 
 ```text
@@ -206,26 +210,26 @@ Execute ArcForges delivery task AIR.07 — Provider test-environment coverage.
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\ai-routing.md (anchor task-air-07).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
-Claim and handoff record: claims/air-07 (python tools/delivery.py claim AIR.07 --worker <name>); task branch task/air-07 in AI; ledger record ledger/tasks/air-07.md.
+Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
+Claim and handoff record: claims/air-07 (python tools/delivery.py claim AIR.07 --worker <name>); task branch task/air-07 in Cloud; ledger record ledger/tasks/air-07.md.
 Kind/size: service/M. Baseline: not-started.
-Outcome: Every provider integration is exercised against the provider's own test environment, with its contract shape frozen as recorded fixtures so ordinary CI never depends on provider availability.
+Outcome: Every provider integration is exercised in C# against the provider's own test environment, with its contract shape frozen as recorded fixtures so ordinary CI never depends on provider availability.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-43.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\43-managed-ai-routing-and-metering.md, anchor rule-wp-43.06
 
-Entry condition: adoption slice ADOPT.08.ai-routing is complete in the Plan ledger (DLV-22).
+Entry condition: adoption slice ADOPT.07.ai-routing is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] AIR.00: the adapter to exercise against the test environment
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: AI:tests/provider-fixtures/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.
+Permitted write scope: Cloud:tests/ArcForges.Cloud.Tests/Vectors/AiProvider/**; Cloud:tests/Cloud.Tests.Integration/AiProviderEnvironment/**
 Unblocks: AIR.90
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Per-provider test-environment run (credentialed, not ordinary CI); fixture-driven CI run with the provider deliberately unreachable, per P2-017.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Per-provider test-environment run (credentialed, local opt-in, never ordinary CI); fixture-driven C# CI run with the provider deliberately unreachable, per P2-017.
 Completion evidence for the ledger: Per-provider test-environment runs and fixture-driven CI results -- PG-10.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): provider fixtures and tests migrate from the AI repository (tests/provider-fixtures, TypeScript) to C# (P2-021 item 1: C# test suites replace the TypeScript ones one-for-one). Fixture shapes, PG-10 evidence and the no-CI-dependency rule are unchanged.
 ```
 
 ```text
@@ -233,15 +237,15 @@ Execute ArcForges delivery task AIR.08 — Real-provider metering evidence and s
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\ai-routing.md (anchor task-air-08).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\AI (integration owner: AI integration owner, the holder of roles/integration-ai).
-Claim and handoff record: claims/air-08 (python tools/delivery.py claim AIR.08 --worker <name>); task branch task/air-08 in AI; ledger record ledger/tasks/air-08.md.
+Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
+Claim and handoff record: claims/air-08 (python tools/delivery.py claim AIR.08 --worker <name>); task branch task/air-08 in Cloud; ledger record ledger/tasks/air-08.md.
 Kind/size: integration/L. Baseline: not-started.
 Outcome: Actual Workers AI responses for each selected capability are recorded and normalized into independent sanitized fixtures; deterministic fixtures run on ordinary CI while the credentialed real-CF candidate gate proves exact Worker/model/config identity; the WP-17.05 stubbed managed provider path is retired.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-43.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\43-managed-ai-routing-and-metering.md, anchor rule-wp-43.07
 
-Entry condition: adoption slice ADOPT.08.ai-routing is complete in the Plan ledger (DLV-22).
+Entry condition: adoption slice ADOPT.07.ai-routing is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] AIR.00: the real adapter to record responses from
 - [artifact] AIR.02: the real settlement engine to reconcile the recorded evidence through
@@ -249,14 +253,13 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: AI:tests/provider-fixtures/**; Cloud:tests/Cloud.Tests.Integration/AiMetering/**
-Shared resources (follow the owner protocol): RES-ai-workflow-and-routes (append): The Workflow entry is owned by the turn-loop task; other Harness tasks add steps through their own modules; the route-pin table changes only with a policy snapshot. Any task that runs against the AI deployment environment holds the lease `leases/res-ai-workflow-and-routes` for that live run only.
+Permitted write scope: Cloud:tests/ArcForges.Cloud.Tests/Vectors/AiEvidence/**; Cloud:tests/Cloud.Tests.Integration/AiMetering/**
 Permitted substitutes (never real integration evidence): SUB-stubbed-provider-path: early client/UI development against a scripted AI response only Real producer ['AIR.00']; removed by AIR.08
 Unblocks: AIR.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Model response drift, missing category, cumulative stream, embedding/rerank result validation tests offline; controlled real-provider run at the credentialed candidate gate only.
 Completion evidence for the ledger: Real-provider normalisation, settlement and worked-fixture results -- PG-13.
-Notes: This task is the structural replacement named in implementation-sequence.md Sec.3.1: 'Stubbed managed provider path (WP-17.05)... Deleted by WP-43.00, WP-43.07' -- AIR.00 builds the real path, AIR.08 proves and removes the stub.
+Notes: This task is the structural replacement named in implementation-sequence.md Sec.3.1: 'Stubbed managed provider path (WP-17.05)... Deleted by WP-43.00, WP-43.07' -- AIR.00 builds the real path, AIR.08 proves and removes the stub. Planning repair 2026-10-08 (DLV-34; P2-021): sanitised real-provider fixtures migrate from the AI repository (tests/provider-fixtures) to the C# test vectors. Normalisation, the stub retirement, the PG-13 reconciliation and the credentialed gate are unchanged.
 ```
 
 ```text
@@ -290,5 +293,5 @@ Unblocks: REL.06
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real selected model/tool/embedding cases and provider refusal/lost-result/usage reconciliation tied to C# admitted call and config identity; P2-017 proportionate.
 Completion evidence for the ledger: Owned artifact and real-integration receipt: source commit, producer version, candidate hashes, actual runtime/provider, scenario, result, real-vs-fixture status.
-Notes: Also carries the P2-010 package closure text (real ExecutionOwner task/turn + operator-funded compaction/search support; durable receipts vs temporary bodies kept outside D1/SQLite history, backups and Workflow checkpoints).
+Notes: Also carries the P2-010 package closure text (real ExecutionOwner task/turn + operator-funded compaction/search support; durable receipts vs temporary bodies kept outside D1/SQLite history, backups and Workflow checkpoints). Planning repair 2026-10-08 (DLV-34; P2-021): the P2-010 closure text names Workflow checkpoints; in this Cloud task they mean executor checkpoints in D1 (P2-021 item 5), and durable receipts stay outside D1/SQLite history, backups and executor checkpoints. No write or acceptance change.
 ```
