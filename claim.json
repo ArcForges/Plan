@@ -6,26 +6,28 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:25Z",
-  "updatedAt": "2026-10-08T15:35:27Z",
-  "leaseUntil": "2026-10-09T15:35:27Z",
+  "updatedAt": "2026-10-08T20:52:04Z",
+  "leaseUntil": "2026-10-09T20:52:04Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/and-01",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/Mobile/pull/22"
+    ],
     "merges": [],
     "done": [
-      "work-in-progress commits pushed (step 1)"
+      "work-in-progress commits pushed (step 1)",
+      "implemented, independently reviewed (4 rounds + deltas), pushed, PR opened"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges$repo\\.worktree$key",
-    "head": "c83b3188819097c5e507cfbd6b46c6bf5e92217d",
-    "reviewed": null,
+    "head": "90ae49140adcec3e558cbe5690a735bb96247df5",
+    "reviewed": "90ae49140adcec3e558cbe5690a735bb96247df5",
     "blocker": null,
     "next": [
-      "implement in the retained worktree (local commits by the execution agent)",
-      "independent review, push, PR, CI, merge via integration role"
+      "hosted CI green; merge via integration:Mobile; ledger record delivered (completion prerequisite PRF.12 and the AND.40 Linux identity build)"
     ],
     "host": "deku",
-    "note": null
+    "note": "ADP-07 supporting edits beyond the record writes: none (fix2 merged the full write scope)"
   }
 }
