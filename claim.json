@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:41:13Z",
-  "updatedAt": "2026-10-08T22:40:10Z",
-  "leaseUntil": "2026-10-09T22:40:10Z",
+  "updatedAt": "2026-10-08T23:10:09Z",
+  "leaseUntil": "2026-10-09T23:10:09Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/gov-30",
@@ -25,7 +25,7 @@
     "validation": [
       "reviewer: SDK 10.0.400 locked restore, Release build, tests; policy, provenance, reconciliation, dependency gates; static osx scan"
     ],
-    "worktree": "C:\\MyFile\\Projects\\ArcForges$repo\\.worktree$key",
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\gov-30",
     "head": "cfd9c33b1f995c591fa3f013957671e00e306a3a",
     "reviewed": "cfd9c33b1f995c591fa3f013957671e00e306a3a",
     "blocker": null,
