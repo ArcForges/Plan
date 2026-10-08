@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:25Z",
-  "updatedAt": "2026-10-08T20:52:04Z",
-  "leaseUntil": "2026-10-09T20:52:04Z",
+  "updatedAt": "2026-10-08T23:12:17Z",
+  "leaseUntil": "2026-10-09T23:12:17Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/and-01",
@@ -20,7 +20,7 @@
       "implemented, independently reviewed (4 rounds + deltas), pushed, PR opened"
     ],
     "validation": [],
-    "worktree": "C:\\MyFile\\Projects\\ArcForges$repo\\.worktree$key",
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\Mobile\\.worktree\\and-01",
     "head": "90ae49140adcec3e558cbe5690a735bb96247df5",
     "reviewed": "90ae49140adcec3e558cbe5690a735bb96247df5",
     "blocker": null,
