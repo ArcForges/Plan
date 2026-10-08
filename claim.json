@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T20:51:06Z",
-  "updatedAt": "2026-10-08T20:51:06Z",
-  "leaseUntil": "2026-10-09T08:51:06Z",
+  "updatedAt": "2026-10-08T23:18:26Z",
+  "leaseUntil": "2026-10-09T11:18:26Z",
   "handoff": {
     "host": "deku",
     "note": null
