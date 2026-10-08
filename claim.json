@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:41Z",
-  "updatedAt": "2026-10-08T15:35:45Z",
-  "leaseUntil": "2026-10-09T15:35:45Z",
+  "updatedAt": "2026-10-08T23:12:00Z",
+  "leaseUntil": "2026-10-09T23:12:00Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/har-40",
@@ -17,7 +17,7 @@
       "work-in-progress commits pushed (step 1)"
     ],
     "validation": [],
-    "worktree": "C:\\MyFile\\Projects\\ArcForges$repo\\.worktree$key",
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\har-40",
     "head": "0020e89d0e8dc1a866c46b8139195f21a7922466",
     "reviewed": null,
     "blocker": null,
