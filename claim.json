@@ -6,21 +6,25 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T19:43:54Z",
-  "updatedAt": "2026-10-08T19:44:19Z",
-  "leaseUntil": "2026-10-09T19:44:19Z",
+  "updatedAt": "2026-10-08T21:04:34Z",
+  "leaseUntil": "2026-10-09T21:04:34Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/gov-32",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/173"
+    ],
     "merges": [],
-    "done": [],
+    "done": [
+      "implemented, independently reviewed (2 rounds, full Windows+WSL2 validation), pushed, PR opened"
+    ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\gov-32",
-    "head": null,
-    "reviewed": null,
+    "head": "45343a42609cc16b319493134bf1d27b122ab18d",
+    "reviewed": "45343a42609cc16b319493134bf1d27b122ab18d",
     "blocker": null,
     "next": [
-      "implement in the retained worktree (local commits by the execution agent); independent review, push, PR, CI, merge via integration role"
+      "hosted CI green; merge via integration:DesktopPlatform; ledger record"
     ],
     "host": "deku",
     "note": null
