@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "role",
+  "id": "integration:DesktopPlatform",
+  "claimant": "w-deku-20261008-coord",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-08T16:27:55Z",
+  "updatedAt": "2026-10-08T16:27:55Z",
+  "leaseUntil": "2026-10-09T04:27:55Z",
+  "handoff": {
+    "host": "deku",
+    "note": null
+  }
+}
