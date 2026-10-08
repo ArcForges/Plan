@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "HAR.40",
+  "claimant": "w-deku-20261008-har-40",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-08T14:40:41Z",
+  "updatedAt": "2026-10-08T14:40:41Z",
+  "leaseUntil": "2026-10-09T14:40:41Z",
+  "handoff": {
+    "repository": "Cloud",
+    "branch": "task/har-40",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "plan the task, then push the task branch at the first checkpoint"
+    ],
+    "host": "deku",
+    "note": null
+  }
+}
