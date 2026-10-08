@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "role",
+  "id": "integration:Mobile",
+  "claimant": "w-deku-20261008-coord",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-08T20:51:06Z",
+  "updatedAt": "2026-10-08T20:51:06Z",
+  "leaseUntil": "2026-10-09T08:51:06Z",
+  "handoff": {
+    "host": "deku",
+    "note": null
+  }
+}
