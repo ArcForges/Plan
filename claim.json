@@ -6,26 +6,29 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:57Z",
-  "updatedAt": "2026-10-08T16:29:12Z",
-  "leaseUntil": "2026-10-09T16:29:12Z",
+  "updatedAt": "2026-10-08T18:48:07Z",
+  "leaseUntil": "2026-10-09T18:48:07Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/nat-32",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/172"
     ],
-    "merges": [],
+    "merges": [
+      "e0f2e563bfb1a134a415b4b085dab121c66d00f9"
+    ],
     "done": [
       "work-in-progress commits pushed (step 1)",
-      "implemented, independently reviewed (2 rounds), pushed, PR opened"
+      "implemented, independently reviewed (2 rounds), pushed, PR opened",
+      "merged DesktopPlatform #172 at reviewed head c39ab65c (22/22 checks)"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges$repo\\.worktree$key",
-    "head": "5cec0b5c6b6c0d43dfbf8895c99e016e903a576d",
-    "reviewed": "5cec0b5c6b6c0d43dfbf8895c99e016e903a576d",
+    "head": "c39ab65c13450f775c8890325e2e1e533c6c1051",
+    "reviewed": "c39ab65c13450f775c8890325e2e1e533c6c1051",
     "blocker": null,
     "next": [
-      "hosted CI green; merge after the Design/Plan planning/p2-021-fix1 pair; update --merge; ledger PR"
+      "confirm post-merge main CI; ledger record (delivered/complete per record); GOV.30 rebases on this merge"
     ],
     "host": "deku",
     "note": null
