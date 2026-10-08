@@ -6,26 +6,30 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:41:13Z",
-  "updatedAt": "2026-10-08T15:36:24Z",
-  "leaseUntil": "2026-10-09T15:36:24Z",
+  "updatedAt": "2026-10-08T21:20:52Z",
+  "leaseUntil": "2026-10-09T21:20:52Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/gov-30",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/174"
+    ],
     "merges": [],
     "done": [
-      "work-in-progress commits pushed (step 1)"
+      "work-in-progress commits pushed (step 1)",
+      "implemented with generators create_gov30_reconciliation.py and create_gov30_dependency_receipt.py; main (NAT.32) merged; independently reviewed; PR opened"
     ],
-    "validation": [],
+    "validation": [
+      "reviewer: SDK 10.0.400 locked restore, Release build, tests; policy, provenance, reconciliation, dependency gates; static osx scan"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges$repo\\.worktree$key",
-    "head": "abc014bb0fa01fb0163224c810956bc1bb148228",
-    "reviewed": null,
+    "head": "b839e63b6085402182e8ae7a03d132306c5b5572",
+    "reviewed": "b839e63b6085402182e8ae7a03d132306c5b5572",
     "blocker": null,
     "next": [
-      "implement in the retained worktree (local commits by the execution agent)",
-      "independent review, push, PR, CI, merge via integration role"
+      "hosted CI green; merge via integration:DesktopPlatform (GOV.32 #173 may merge first; then merge main again); ledger record"
     ],
     "host": "deku",
-    "note": null
+    "note": "ADP-07 supporting bindings: .github/workflows/pr-gate.yml (static scan step), eng/test_desktop_rids.py (new scan), eng/policy/reconciliation/source.json (count), eng/provenance/files.json (new-file rows); generators named above"
   }
 }
