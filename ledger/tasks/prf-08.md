@@ -134,10 +134,9 @@ Superseded by PRF.11 under P2-021 (C#-first implementation architecture). PRF.11
 
 The recorded evidence above, the untested-coverage statement, the completion follow-up and the amendments remain as history and are not edited.
 
-Remaining acceptance not met at supersession, now carried by PRF.11 (copied from "Remaining acceptance and next action" above):
+Remaining acceptance not met at supersession, now carried by PRF.11 (restated from the 2026-10-06 second amendment above; CLOUD.71 and CLOUD.08 are complete and the interaction budgets landed through Web #32):
 
-- **Same-origin deployed ingress for the profiles: CLOUD.71** (new task: serve the built profiles from the proof origin through an assets binding, the bytes published by the Web main-push build and deployed by the manual proof job). The proof Worker serves no Web assets; no earlier task owned this, and WEB.30 cannot (it consumes PRF.08). Until CLOUD.71 completes, the forwarder is a substitute, not same-origin routing.
-- **A stable deployed ingress for the browser round trips: CLOUD.08** (readiness surfaces and the diagnosis of the foundation Container's 503 flapping). With a healthy ingress and CLOUD.71 done, repeat `node apps/app/scripts/proof-run.ts` once under `RES-cloud-deployment` on the then-current head (real session, cookie and CSRF round trip and Chat round trip from the built profiles in a browser, session expiry and cancellation on the real path).
-- **Exact int64, uint64 and decimal values, typed failures and cancellation over generated gRPC-Web: CLOUD.21 and CLOUD.22** (the same prerequisites PRF.05 carries). The proof exposes no generated service that carries them.
-- **Interaction budgets:** produced by that complete live run and added as `apps/app/interaction-budgets.json` through a reviewed Web change; carried by CLOUD.71's evidence. Design defines no absolute interaction ceiling; any ceilings are regression guards derived from observation.
-- **Visual Studio IDE (F5) check of the solution:** a local human observation of one environment; deliberately without a graph owner. `tooling/ide.ts` does not claim it. Record it in a later amendment if the maintainer performs it; it does not block the other items.
+- exact int64, uint64 and decimal values, typed failures and cancellation over generated gRPC-Web on real methods (CLOUD.21 and CLOUD.22), now proved by PRF.11 with the generated C# SDK in Blazor WebAssembly;
+- the Visual Studio IDE (F5) check of the solution, a local human observation with no graph owner; it does not block the other items.
+
+WEB.30 and the other former PRF.08 consumers now start on PRF.11 in the graph.

@@ -327,7 +327,7 @@ class DeliveryTests(unittest.TestCase):
         self.assertIn('none (retired by P2-022)', d.render_lane(g, g.lanes['adoption']))
 
     def test_a_retired_adoption_slice_must_name_its_decision(self):
-        for fields in ({'retired': True}, {'retired': True, 'retiredBy': ''}, {'retired': True, 'retiredBy': '  '}):
+        for fields in ({'retired': True}, {'retired': True, 'retiredBy': None}, {'retired': True, 'retiredBy': ''}, {'retired': True, 'retiredBy': '  '}):
             with self.subTest(fields=fields):
                 errors = d.validate(self.graph_with_slice('ADOPT.11.governance', **fields))[0]
                 self.assertIn('ADOPT.11.governance: retired adoption slice must name its retiredBy decision', errors)

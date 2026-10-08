@@ -488,7 +488,7 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
             errors.append(f'repository {pair[0]} lane {pair[1]}: expected exactly one adoption slice, found {seen_pairs.get(pair, 0)}')
     retired_pairs = {(s['repo'], s['lane']) for s in g.slices.values() if s.get('retired')}
     for sid, s in g.slices.items():
-        if s.get('retired') and not str(s.get('retiredBy', '')).strip():
+        if s.get('retired') and not str(s.get('retiredBy') or '').strip():
             errors.append(f'{sid}: retired adoption slice must name its retiredBy decision')
     for pair in seen_pairs:
         if pair not in pairs and pair not in retired_pairs:

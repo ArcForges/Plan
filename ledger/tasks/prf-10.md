@@ -59,11 +59,11 @@ Identities below were read from GitHub (pull request, comments, runs, releases) 
 
 PRF.10 stays `delivered`. Completion needs a reviewed amendment of this record after all of the following exist; none depends on this repository alone:
 
-- the PRF.07 live proof, or a successor, producing a deployed ingress target (user-provided Cloudflare account, token, resources, secrets and the `RES-cloud-deployment` lease; see the PRF.07 record);
+- the deployed ingress target is already provided by PRF.07 (complete; `https://proof.arcforges.com`), used under the `RES-cloud-deployment` lease for the run only;
 - a deployed service that streams over public gRPC-Web (for example a delivered `EventService.Watch`), since the PRF.07 foundation has none;
-- an admissible immutable Maven coordinate of the Contracts connect client that carries the streaming client (a formal tagged release or a new pinned candidate through Mobile's dependency admission), consumed through a reviewed Mobile dependency change (admission receipts, locks, verification metadata, resource profile);
+- the generated C# Contracts NuGet client carrying the streaming methods, consumed through Grpc.Net.Client.Web under a reviewed Mobile dependency admission (P2-021 item 4 stops the Maven channels);
 - a hosted or local-opt-in run of an Android release build against that target covering unary, server stream, trailers, cancel and Keystore, plus the toolchain compatibility manifest and the VG-07 inspection (existing local environment only; no provisioning), with the amendment stating exactly what was observed on which device and what was not;
-- wiring of `:app:testDebugUnitTest` into the retained Mobile CI if BR-06 is to be met for these tests.
+- execution of the MAUI unit tests in the retained Mobile CI (AND.40), so that BR-06 is met for these tests.
 
 ## Superseded 2026-10-08
 
@@ -71,10 +71,10 @@ Superseded by PRF.12 under P2-021 (C#-first implementation architecture). PRF.12
 
 The recorded offline evidence above, the untested-coverage statement and the "why the live proof is impossible today" statement remain as history and are not edited.
 
-Remaining acceptance not met at supersession, now carried by PRF.12 (copied from "Remaining acceptance and next action" above; the Kotlin and Maven wording is replaced by the MAUI stack under P2-021):
+Remaining acceptance not met at supersession, now carried by PRF.12 (restated for PRF.12 under P2-021 from "Remaining acceptance and next action" above):
 
-- the PRF.07 live proof, or a successor, producing a deployed ingress target (user-provided Cloudflare account, token, resources, secrets and the `RES-cloud-deployment` lease; see the PRF.07 record);
+- the deployed ingress target is already provided by PRF.07 (complete; `https://proof.arcforges.com`), used under the `RES-cloud-deployment` lease for the run only;
 - a deployed service that streams over public gRPC-Web (for example a delivered `EventService.Watch`), since the PRF.07 foundation has none;
-- an admissible immutable Maven coordinate of the Contracts connect client that carries the streaming client (a formal tagged release or a new pinned candidate through Mobile's dependency admission), consumed through a reviewed Mobile dependency change (admission receipts, locks, verification metadata, resource profile);
+- the generated C# Contracts NuGet client carrying the streaming methods, consumed through Grpc.Net.Client.Web under a reviewed Mobile dependency admission (P2-021 item 4 stops the Maven channels);
 - a hosted or local-opt-in run of an Android release build against that target covering unary, server stream, trailers, cancel and Keystore, plus the toolchain compatibility manifest and the VG-07 inspection (existing local environment only; no provisioning), with the amendment stating exactly what was observed on which device and what was not;
-- wiring of `:app:testDebugUnitTest` into the retained Mobile CI if BR-06 is to be met for these tests.
+- execution of the MAUI unit tests in the retained Mobile CI (AND.40), so that BR-06 is met for these tests.

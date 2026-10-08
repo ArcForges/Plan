@@ -2,8 +2,6 @@
 task: NAT.15
 status: superseded
 recorded: 2026-10-08
-claimant: w-deku-20261008-plan-1
-epoch: 0
 ---
 
 # Pdf family: real PDFium (chromium/8044) build admission, binding and real-parser containment acceptance
