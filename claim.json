@@ -3,13 +3,13 @@
   "kind": "role",
   "id": "integration:Plan",
   "claimant": "w-deku-20261008-coord",
-  "epoch": 1,
-  "state": "released",
-  "claimedAt": "2026-10-08T14:37:52Z",
-  "updatedAt": "2026-10-08T14:38:33Z",
-  "leaseUntil": null,
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-08T16:28:11Z",
+  "updatedAt": "2026-10-08T16:28:11Z",
+  "leaseUntil": "2026-10-09T04:28:11Z",
   "handoff": {
     "host": "deku",
-    "note": "merged Plan #456 (P2-021 planning repair); queue empty"
+    "note": "claimed after released by w-deku-20261008-coord epoch 1; review the earlier handoff and commits"
   }
 }
