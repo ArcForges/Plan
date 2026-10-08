@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 459 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 460 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -33,7 +33,7 @@ Tasks: 459 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.02.execution | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Execution engine (9) |
 | ADOPT.02.extensions | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Extension platform and integrations (7) |
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
-| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (11) |
+| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (12) |
 | ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (16) |
 | ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (55) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
@@ -103,6 +103,7 @@ Tasks: 459 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.21 | DesktopPlatform | S | GOV.14, GOV.18, ADOPT.02.governance (adoption) | Scheduled and manual policy preview of the Design main branch (post-merge drift watch) |
 | GOV.30 | DesktopPlatform | M | GOV.18, ADOPT.02.governance (adoption) | DesktopPlatform osx RID removal from the desktop RID set and owned lock and policy files |
 | GOV.31 | DesktopPlatform | M | CON.40, CON.91, ADOPT.02.governance (adoption) | DesktopPlatform TypeScript FND.07 round-trip retirement and npm operator-client policy rows, replaced by C# coverage |
+| GOV.32 | DesktopPlatform | S | PLT.45, ADOPT.02.governance (adoption) | Remove the ContentSandbox macOS launch-profile code and keep the typed fail-closed refusal |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 
@@ -243,7 +244,7 @@ Tasks: 459 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | NAT.29 | DesktopPlatform | M | PRF.02, PRF.04, PRF.05, PRF.06, PRF.07, PRF.11, PRF.09, PRF.12, ADOPT.02.native (adoption) | Verify the owned WP06 artifact set and real cross-runtime integration |
 | NAT.30 | DesktopPlatform | M | NAT.06, NAT.11, NAT.13, NAT.32, NAT.31, NAT.22, NAT.24, NAT.25, NAT.28, NAT.01, NAT.03, NAT.05, PLT.54, GOV.17, GOV.30, ADOPT.02.native (adoption) | Verify the complete native producer set as one immutable candidate |
 | NAT.31 | DesktopPlatform | M | NAT.11, PLT.45, NAT.32, ADOPT.02.native (adoption) | Still-image composition: production still-image parsers (NAT.11 family) composed into the ContentSandbox helper, with real containment re-run |
-| NAT.32 | DesktopPlatform | M | NAT.14, NAT.06, CON.04, PLT.45, GOV.17, GOV.18, ADOPT.02.native (adoption) | PDF engine retirement: remove native/arcpdf-abi, ArcForges.Native.Pdf and the helper PDF parser path; PDF RPCs answered with a closed retired refusal |
+| NAT.32 | DesktopPlatform | M | NAT.14, NAT.06, CON.04, PLT.45, GOV.17, GOV.18, ADOPT.02.native (adoption) | PDF engine retirement: remove native/arcpdf-abi, ArcForges.Native.Pdf and the helper PDF parser path |
 
 ## Application composition — [prompts](tasks/app-composition.md)
 
@@ -432,7 +433,7 @@ Tasks: 459 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.71 | Cloud | S | PRF.07, PRF.11, ADOPT.07.cloud (adoption) | Serve the built Web profiles from the proof origin |
 | CLOUD.72 | Cloud | M | CLOUD.11, COM.16, CLOUD.06, CLOUD.04, ADOPT.07.cloud (adoption) | Identity production store, identifier source and enrollment family call over the plan-execution port |
 | CLOUD.85 | Cloud | S | WEB.40, CLOUD.71, PRF.07, ADOPT.07.cloud (adoption) | Serve the Blazor WebAssembly Account and Chat profiles and the C# static Site from the proof origin |
-| CLOUD.84 | Cloud | L | CLOUD.01, CLOUD.02, CLOUD.03, CLOUD.04, CLOUD.06, CLOUD.08, CLOUD.11, CLOUD.69, CLOUD.70, HAR.40, CLOUD.72, ADOPT.07.cloud (adoption) | Cloud TypeScript reduction: C# generated tables and policy, thin Worker adapters, proof code out of the production bundle |
+| CLOUD.84 | Cloud | L | CLOUD.01, CLOUD.02, CLOUD.03, CLOUD.04, CLOUD.06, CLOUD.08, CLOUD.11, CLOUD.69, CLOUD.70, HAR.40, ADOPT.07.cloud (adoption) | Cloud TypeScript reduction: C# generated tables and policy, thin Worker adapters, proof code out of the production bundle |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
 

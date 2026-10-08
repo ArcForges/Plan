@@ -693,3 +693,30 @@ Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-serv
 Completion evidence for the ledger: Retirement diff; gov-31-r1 successor receipt; C# round-trip record listing every enumerated FND.07 coverage item with its executed result, and the approved coverage change for the cross-language direction; pinned fixture hashes; static scan output showing no retired npm admission or policy row in the owned files; FND.07 record, receipt.json and evidence unchanged as history.
 Notes: Planning repair 2026-10-08 (DLV-34; P2-021): successor record for the FND.07 TypeScript round-trip retirement and the npm operator-client policy rows. The coverage change is approved by the coordinator (2026-10-08) as a consequence of P2-021: no TypeScript consumer remains once @arcforges/proto retires, and the C# golden-bytes check over pinned fixtures is kept. FND.07 is a completion prerequisite under DLV-35, never a start prerequisite; its record, receipt and evidence remain history. The osx RID removal moved to GOV.30 (no CON.40 dependency). Whether the generated policy JSON files named here are regenerated from a pinned source (the policy-data protocol forbids hand edits) is an open coordinator question; if they are not, the removals split into their own task under a new ID. Coordinator adjudication 2026-10-08: files governed by RES-desktopplatform-policy-data are regenerated through the repository’s pinned policy-data generators (as GOV.18 did), never hand-edited; the claimant names each generator in the claim handoff before editing.
 ```
+
+```text
+Execute ArcForges delivery task GOV.32 — Remove the ContentSandbox macOS launch-profile code and keep the typed fail-closed refusal.
+
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\governance.md (anchor task-gov-32).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
+Claim and handoff record: claims/gov-32 (python tools/delivery.py claim GOV.32 --worker <name>); task branch task/gov-32 in DesktopPlatform; ledger record ledger/tasks/gov-32.md.
+Kind/size: governance/S. Baseline: not-started.
+Outcome: The ContentSandbox macOS launch-profile code is removed: the declarative entitlements input (src/DesktopHelpers/ArcForges.ContentSandbox/macos/ArcForges.ContentSandbox.entitlements) is deleted, the MacOsAppSandboxXpc profile-family mapping in Host/ProfileEnforcement.cs is removed, Tests/MacProfileTests.cs and the macOS cases of Tests/ContractFacadeTests.cs are rewritten to assert the typed fail-closed refusal only, and the README macOS lines state that macOS is not supported. The launcher keeps its typed fail-closed refusal on macOS (Broker/ContentSandboxLauncher.cs), and the MacOsAppSandboxXpc enum value in the contracts and broker types stays wire-stable and reserved, documented as not supported and never selected. No Windows or Linux containment behaviour changes.
+
+Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
+- P2-023 (the macOS App-Sandbox and XPC launch-profile deliverable is removed from the ContentSandbox code; the typed fail-closed macOS refusal and the wire-stable enum value stay): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-023
+
+Entry condition: adoption slice ADOPT.02.governance is complete in the Plan ledger (DLV-22).
+Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
+- [artifact] PLT.45: delivered ContentSandbox host, broker and launch profiles
+Completion prerequisites (may start earlier; cannot complete before these are complete):
+- none
+
+Permitted write scope: DesktopPlatform:src/DesktopHelpers/ArcForges.ContentSandbox/macos/ArcForges.ContentSandbox.entitlements (delete); DesktopPlatform:src/DesktopHelpers/ArcForges.ContentSandbox/Host/ProfileEnforcement.cs (remove the macOS profile-family mapping only); DesktopPlatform:src/DesktopHelpers/ArcForges.ContentSandbox/Tests/MacProfileTests.cs (refusal-only); DesktopPlatform:src/DesktopHelpers/ArcForges.ContentSandbox/Tests/ContractFacadeTests.cs (macOS cases only, refusal-only); DesktopPlatform:src/DesktopHelpers/ArcForges.ContentSandbox/README.md (macOS lines only); DesktopPlatform:src/DesktopHelpers/ArcForges.ContentSandbox.Broker/README.md (macOS lines only); DesktopPlatform:src/DesktopHelpers/ArcForges.ContentSandbox.Broker/ContentSandboxTypes.cs and DesktopPlatform:src/DesktopHelpers/ArcForges.ContentSandbox.Contracts/ContentSandboxLaunchFrame.cs (doc comments of the reserved enum value only; the value is unchanged); DesktopPlatform:eng/provenance/files.json (only rows of files this task deletes)
+Shared resources (follow the owner protocol): RES-architecture-tests (append): Each repository policy task owns its suite; rule additions are append-only.
+
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): ContentSandbox offline tests on Windows (hosted CI) and the Linux test run in local WSL2 per P2-024; the refusal tests prove a macOS profile request is refused fail-closed; a static scan shows no App-Sandbox/XPC profile code remains outside the reserved enum value and the refusal; no macOS CI (P2-017).
+Completion evidence for the ledger: Test results, the static scan output and the source commit.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-023): new task carrying the ContentSandbox macOS launch-profile code removal that GOV.30 (RID removal) does not own. No obligation or acceptance is removed; Windows and Linux containment are unchanged.
+```
