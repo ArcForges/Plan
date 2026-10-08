@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T22:41:03Z",
-  "updatedAt": "2026-10-08T22:41:03Z",
-  "leaseUntil": "2026-10-09T22:41:03Z",
+  "updatedAt": "2026-10-08T22:41:22Z",
+  "leaseUntil": "2026-10-09T22:41:22Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/nat-11",
@@ -15,12 +15,12 @@
     "merges": [],
     "done": [],
     "validation": [],
-    "worktree": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\nat-11",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
     ],
     "host": "deku",
     "note": null
