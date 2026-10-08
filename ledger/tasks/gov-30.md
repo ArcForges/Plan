@@ -13,8 +13,8 @@ epoch: 1
 - Implementation: DesktopPlatform PR [#174](https://github.com/ArcForges/DesktopPlatform/pull/174) was reviewed and merged at head `cfd9c33b1f995c591fa3f013957671e00e306a3a` as `6b84ca17f6be64f69107dc3172ac9879ed510dcb` on `main` (`--merge --match-head-commit`, integration role `integration:DesktopPlatform` held by `w-deku-20261008-coord`). The approved head `b839e63b` merged main after NAT.32 (#172). `cfd9c33b` then merged main again after GOV.32 (#173), a clean merge that adds no manual change.
 - Review: independent reviewer session `w-deku-20261008-rev-gov-30`.
   - Round 1 at `abc014bb` requested changes: the static osx scan was not committed, and the policy-data regeneration was not evidenced. Fixed in `6abb1e2e`.
-  - Round 2 requested changes: the merge order was not met. Main, including NAT.32, was merged in at `b839e63b`, and the receipt was re-chained to `nat-32-r1`. Under brief section 10, re-chaining an unmerged receipt is allowed in DesktopPlatform.
-  - Round 3 at `b839e63b` approved.
+  - Round 2 requested changes: the merge order was not met. Fix `4af9860d` made the reconciliation generator accept the rows NAT.32 already retired. Main, including NAT.32, was then merged in at `b839e63b`, and the receipt was re-chained to `nat-32-r1`. Under brief section 10, re-chaining an unmerged receipt is allowed in DesktopPlatform.
+  - Round 3 at `b839e63b` approved. This approval is labelled review:GOV.30:r1 in workflow journal wf_a6f9b145-7d1.
   - The merge head `cfd9c33b` was then verified: its diff from `b839e63b` equals the GOV.32 delta line for line, and the gates pass.
   - The approvals are PR comments from one GitHub account, so independence is by session only.
 - Planning authority: [P2-023](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-023). The `current.json` carve-out was added in Design PR [#341](https://github.com/ArcForges/ArcForges-Design/pull/341) (merge `318e49735ffb1453d7bd63e0589ed1b6c34d0dc0`), with coordinator adjudications in brief section 10.
@@ -26,7 +26,7 @@ epoch: 1
   - **Receipt:** the successor receipt `eng/policy/dependency-reviews/gov-30-r1.json` is chained from `nat-32-r1` through the committed generator `eng/verification/create_gov30_dependency_receipt.py`, and names reviewer `w-deku-20261008-rev-gov-30`.
   - **Reconciliation:** the osx runtime directory rows are removed through `eng/verification/create_gov30_reconciliation.py`, which reproduces the committed files byte for byte.
   - **Static scan:** `eng/test_desktop_rids.py`, run in the PR gate.
-  - **Kept:** the shared fail-closed macOS refusal and the shared Unix-socket code; the immutable review, provenance and patch records; and the `current.json` osx nativeRuns rows of the five published ArcScope prereleases, as immutable history.
+  - **Kept:** the shared fail-closed macOS refusal and the shared Unix-socket code; the immutable review, provenance and patch records; and the two `current.json` osx nativeRuns rows (osx-arm64 and osx-x64) of the ArcScope candidate `0.1.0-ci.8.1` entry, as immutable history. `eng/test_desktop_rids.py` exempts exactly these two rows. The GOV.30 task text and brief section 10 say 'the five published ArcScope prereleases'; that wording is inaccurate for `current.json`, which holds osx rows for that one candidate only. The task text correction is queued for the next planning batch.
   - **ADP-07 supporting bindings:** `.github/workflows/pr-gate.yml` (the scan step), `eng/test_desktop_rids.py`, the `eng/policy/reconciliation/source.json` count, and the `eng/provenance/files.json` rows for the new files.
 - History unchanged: the recorded histories of GOV.17, PRF.04, PRF.05, PRF.06 and PLT.19 are not edited.
 - Candidate identity: main-push [Publish NuGet run 37854886174](https://github.com/ArcForges/DesktopPlatform/actions/runs/37854886174) (run 129, attempt 1) on `6b84ca17` succeeded, with preflight passing. It published the DesktopPlatform cohort `1.0.0-ci.129.1`; its publish job log shows 17 'Your package was pushed' lines. Package hashes and registry receipts were not captured. This is the provider status, and nothing was downloaded.
@@ -44,8 +44,8 @@ epoch: 1
     - full-solution `dotnet restore DesktopPlatform.slnx --locked-mode` passed for 53 projects;
     - ContentSandbox tests: 97 passed, 1 failed (see untested coverage) and 9 skipped.
   - **Merge-head verification at `cfd9c33b`:**
-    - `check_provenance`, `dependency_policy`, `reconciliation`, `design_policy` and `test_desktop_rids` pass, with their unit suites (22, 8 and 21);
-    - with SDK 10.0.400 on Windows, `dotnet restore DesktopPlatform.slnx --locked-mode` passes;
+    - `check_provenance`, `dependency_policy`, `reconciliation`, `design_policy` and `test_desktop_rids` pass, with their unit suites `test_dependency_policy` (22), `test_reconciliation` (8) and `test_design_policy` (21);
+    - under SDK 10.0.400, `dotnet restore DesktopPlatform.slnx --locked-mode` passes, as stated in the PR #174 review comment; the run's host is not recorded;
     - ContentSandbox tests: 110 run, 101 passed, 0 failed, 9 skipped.
 - Substitutes still in use: none introduced or removed.
 
@@ -55,5 +55,9 @@ epoch: 1
 - The 9 opt-in OS isolation tests were skipped.
 - `licence_boundary --evaluate-managed` was not run in round 3. Hosted CI passed it.
 - The RP-01, RP-08, RP-09 and AT-09 architecture evidence is hosted-only.
-- `tests/LocalRpcAotTests/README.md` lines 23-24 still describe macOS peer-PID support. That is outside GOV.30's write scope and is carried to the next planning batch under P2-023.
+- macOS residue outside GOV.30's write scope, carried to the next planning batch under P2-023:
+  - `tests/LocalRpcAotTests/README.md` lines 23-25 still describe macOS peer-PID support;
+  - `tests/LocalRpcAotTests/Program.cs` prints 'PASS: Linux SO_PEERCRED and macOS SOL_LOCAL/LOCAL_PEERPID dispatch' (line 52) and keeps the Darwin dispatch (lines 31-32 and 1269-1281) as shared Unix-socket code.
+
+  These are not a macOS validation. No macOS run exists.
 - No macOS run exists or is claimed (P2-017, P2-023).
