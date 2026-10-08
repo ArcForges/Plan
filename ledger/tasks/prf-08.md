@@ -1,6 +1,6 @@
 ---
 task: PRF.08
-status: delivered
+status: superseded
 recorded: 2026-10-03
 claimant: w-c20261005-prf08c
 epoch: 2
@@ -127,3 +127,17 @@ The script exited 3 (`PARTIAL`) only because the budgets file did not exist yet,
 - the Visual Studio IDE (F5) check of the solution, which has no graph owner.
 
 Completion needs a further reviewed amendment after CLOUD.21 and CLOUD.22 are complete.
+
+## Superseded 2026-10-08
+
+Superseded by PRF.11 under P2-021 (C#-first implementation architecture). PRF.11 (Web, runtime-proofs) is the Blazor WebAssembly production build and generated C# SDK proof against the deployed ingress; it carries CSP, budgets, exact values, typed failures, cancellation, session, the binary-versus-text streaming decision and the AOT benchmark in place of the React/TypeScript build proved above.
+
+The recorded evidence above, the untested-coverage statement, the completion follow-up and the amendments remain as history and are not edited.
+
+Remaining acceptance not met at supersession, now carried by PRF.11 (copied from "Remaining acceptance and next action" above):
+
+- **Same-origin deployed ingress for the profiles: CLOUD.71** (new task: serve the built profiles from the proof origin through an assets binding, the bytes published by the Web main-push build and deployed by the manual proof job). The proof Worker serves no Web assets; no earlier task owned this, and WEB.30 cannot (it consumes PRF.08). Until CLOUD.71 completes, the forwarder is a substitute, not same-origin routing.
+- **A stable deployed ingress for the browser round trips: CLOUD.08** (readiness surfaces and the diagnosis of the foundation Container's 503 flapping). With a healthy ingress and CLOUD.71 done, repeat `node apps/app/scripts/proof-run.ts` once under `RES-cloud-deployment` on the then-current head (real session, cookie and CSRF round trip and Chat round trip from the built profiles in a browser, session expiry and cancellation on the real path).
+- **Exact int64, uint64 and decimal values, typed failures and cancellation over generated gRPC-Web: CLOUD.21 and CLOUD.22** (the same prerequisites PRF.05 carries). The proof exposes no generated service that carries them.
+- **Interaction budgets:** produced by that complete live run and added as `apps/app/interaction-budgets.json` through a reviewed Web change; carried by CLOUD.71's evidence. Design defines no absolute interaction ceiling; any ceilings are regression guards derived from observation.
+- **Visual Studio IDE (F5) check of the solution:** a local human observation of one environment; deliberately without a graph owner. `tooling/ide.ts` does not claim it. Record it in a later amendment if the maintainer performs it; it does not block the other items.
