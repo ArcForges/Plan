@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T19:43:54Z",
-  "updatedAt": "2026-10-08T19:43:54Z",
-  "leaseUntil": "2026-10-09T19:43:54Z",
+  "updatedAt": "2026-10-08T19:44:19Z",
+  "leaseUntil": "2026-10-09T19:44:19Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/gov-32",
@@ -15,12 +15,12 @@
     "merges": [],
     "done": [],
     "validation": [],
-    "worktree": null,
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\gov-32",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "implement in the retained worktree (local commits by the execution agent); independent review, push, PR, CI, merge via integration role"
     ],
     "host": "deku",
     "note": null
