@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "WEB.40",
+  "claimant": "w-deku-20261008-web-40",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-08T14:40:09Z",
+  "updatedAt": "2026-10-08T14:40:09Z",
+  "leaseUntil": "2026-10-09T14:40:09Z",
+  "handoff": {
+    "repository": "Web",
+    "branch": "task/web-40",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "plan the task, then push the task branch at the first checkpoint"
+    ],
+    "host": "deku",
+    "note": null
+  }
+}
