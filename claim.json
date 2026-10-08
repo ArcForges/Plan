@@ -4,10 +4,10 @@
   "id": "GOV.32",
   "claimant": "w-deku-20261008-gov-32",
   "epoch": 1,
-  "state": "claimed",
+  "state": "complete",
   "claimedAt": "2026-10-08T19:43:54Z",
-  "updatedAt": "2026-10-08T21:21:37Z",
-  "leaseUntil": "2026-10-09T21:21:37Z",
+  "updatedAt": "2026-10-08T22:08:28Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/gov-32",
@@ -19,9 +19,12 @@
     ],
     "done": [
       "implemented, independently reviewed (2 rounds, full Windows+WSL2 validation), pushed, PR opened",
-      "merged DesktopPlatform #173 at reviewed head 45343a42 (22/22 checks)"
+      "merged DesktopPlatform #173 at reviewed head 45343a42 (22/22 checks)",
+      "ledger record merged (Plan #460)"
     ],
-    "validation": [],
+    "validation": [
+      "reviewer: Windows+WSL2 SDK 10.0.400 ContentSandbox tests 110/101/0/9; Python gates and unit suites; hosted 22/22"
+    ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\gov-32",
     "head": "45343a42609cc16b319493134bf1d27b122ab18d",
     "reviewed": "45343a42609cc16b319493134bf1d27b122ab18d",
