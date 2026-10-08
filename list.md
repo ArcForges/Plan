@@ -244,7 +244,7 @@ Tasks: 460 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | NAT.29 | DesktopPlatform | M | PRF.02, PRF.04, PRF.05, PRF.06, PRF.07, PRF.11, PRF.09, PRF.12, ADOPT.02.native (adoption) | Verify the owned WP06 artifact set and real cross-runtime integration |
 | NAT.30 | DesktopPlatform | M | NAT.06, NAT.11, NAT.13, NAT.32, NAT.31, NAT.22, NAT.24, NAT.25, NAT.28, NAT.01, NAT.03, NAT.05, PLT.54, GOV.17, GOV.30, ADOPT.02.native (adoption) | Verify the complete native producer set as one immutable candidate |
 | NAT.31 | DesktopPlatform | M | NAT.11, PLT.45, NAT.32, ADOPT.02.native (adoption) | Still-image composition: production still-image parsers (NAT.11 family) composed into the ContentSandbox helper, with real containment re-run |
-| NAT.32 | DesktopPlatform | M | NAT.14, NAT.06, CON.04, PLT.45, GOV.17, GOV.18, ADOPT.02.native (adoption) | PDF engine retirement: remove native/arcpdf-abi, ArcForges.Native.Pdf and the helper PDF parser path |
+| NAT.32 | DesktopPlatform | M | NAT.14, NAT.06, CON.04, PLT.45, GOV.18, ADOPT.02.native (adoption) | PDF engine retirement: remove native/arcpdf-abi, ArcForges.Native.Pdf and the helper PDF parser path |
 
 ## Application composition — [prompts](tasks/app-composition.md)
 
