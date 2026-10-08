@@ -486,9 +486,15 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
     for pair in pairs:
         if g.repos.get(pair[0], {}).get('adoptionTask') and seen_pairs.get(pair, 0) != 1:
             errors.append(f'repository {pair[0]} lane {pair[1]}: expected exactly one adoption slice, found {seen_pairs.get(pair, 0)}')
+    retired_pairs = {(s['repo'], s['lane']) for s in g.slices.values() if s.get('retired')}
+    for sid, s in g.slices.items():
+        if s.get('retired') and not str(s.get('retiredBy', '')).strip():
+            errors.append(f'{sid}: retired adoption slice must name its retiredBy decision')
     for pair in seen_pairs:
-        if pair not in pairs:
+        if pair not in pairs and pair not in retired_pairs:
             errors.append(f'adoption slice for {pair[0]}/{pair[1]} has no tasks')
+        if pair in pairs and pair in retired_pairs:
+            errors.append(f'retired adoption slice for {pair[0]}/{pair[1]} still has tasks')
     # Package acceptance is a roll-up, never a start barrier for work outside the package (DLV-35).
     accept = {t['id']: t['packageAcceptance'] for t in g.data['tasks'] if t.get('packageAcceptance')}
     for tid, wp in accept.items():
@@ -872,8 +878,9 @@ def render_lane(g: Graph, lane: dict) -> str:
             scope = g.slice_tasks(sid)
             accepted = [x for x in scope if g.tasks[x]['baseline']['state'] == 'accepted']
             opens = len(scope) - len(accepted)
+            opens_cell = f'none (retired by {s["retiredBy"]})' if s.get('retired') else f'{opens}'
             out.append(f'| <a id="{slug(sid)}"></a>{sid} | {s["repo"]} | [{md_escape(g.lanes[s["lane"]]["title"])}]({s["lane"]}.md) | '
-                       f'{opens} | {", ".join(task_link(g, x, rel) for x in accepted) or "none"} | '
+                       f'{opens_cell} | {", ".join(task_link(g, x, rel) for x in accepted) or "none"} | '
                        f'{task_link(g, s["adoptionTask"], rel)} |')
         out.append('')
     if L.unknown:
