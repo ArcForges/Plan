@@ -16,8 +16,9 @@ epoch: 1
   - Round 1 at `8c53752`: the lock admission was bound to CRLF bytes.
   - Round 2 at `08e8d02`: notice obligations were ungated, and the workload admission was missing.
   - Round 3 at `380a123`: the write scope, runtime-shaped application source, and Contracts `1.0.0-ci.350.1` from a rolled-back commit.
+  - A further round at `53a3645` requested changes: the receipts lacked the reviewer field, and the write scope was not yet authorized on Design main.
   - Round 4 approved at `c48eb7c`. The deltas `8eef355`, `e18e156` and `90ae491` were then verified.
-  - The first hosted run at `90ae491` failed the Gradle gates `:verifyMobilePolicy` and `:app:verifyAndroidLicences`. The cause was the .NET project row in the Gradle-read `licence-boundary.json`. Fix `8cd770a` was approved after all gates passed, and merge head `c22298fb` was approved.
+  - The first hosted run at `90ae491` (run 37842583583) failed Build on windows-latest and ubuntu-latest, Security / CodeQL (java-kotlin) and Verify. All four failures trace to the Gradle gates `:verifyMobilePolicy` and `:app:verifyAndroidLicences`, which rejected the .NET project row in the Gradle-read `licence-boundary.json`. Fix `8cd770a` was approved after all gates passed, and merge head `c22298fb` was approved.
   - The approvals are PR comments from one GitHub account, so independence is by session only.
 - Planning authority: [P2-021](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/phase-2-specification-decisions.md#rule-p2-021) item 3. The write scope, the rolled-back candidate rule, the Linux identity-build deferral to AND.40 and the AND.22 ordering come from Design PR [#342](https://github.com/ArcForges/ArcForges-Design/pull/342) (merge `c84f8b2f9f5ac41de322598d80893d8f261d8a57`) with Plan PR [#458](https://github.com/ArcForges/Plan/pull/458) (merge `47dd08c7b6907e7aca948fbe76d181050f566772`).
 - Outcome (see `docs/maui-toolchain.md` at `35fdfa63`):
@@ -52,11 +53,13 @@ epoch: 1
   - The P2-024 deferral: the hosted Linux CI run of the identity-only build (Debug and Release, locked restore) that AND.40 adds. A failed Linux build reopens AND.01.
   - PRF.12, the MAUI Android release proof of the exact tuple. This is the completion edge.
   - The F-023 closure for the actual MAUI distribution closure, and the notice deferrals listed in `docs/maui-toolchain.md` (Glide BSD-2, Google.Protobuf, Grpc.Core.Api, the workload-pack licences). Both are owned by AND.40 before the first MAUI release candidate.
+  - The licence evidence the Windows host cannot provide: the Linux host aliases of the Android SDK and Mono AOT packs, and the licence statements of `Microsoft.NET.Runtime.MonoAOTCompiler.Task` and `Microsoft.NET.Runtime.MonoTargets.Sdk`. AND.40 owns it, and it is due at its first hosted Linux CI run that installs the android workload. A licence outside the admitted set reopens AND.01.
 
 ## Untested coverage (stated expressly)
 
 - The committed SDK 10.0.400 pin has never built the MAUI project. Its first build is the AND.40 CI run.
-- No Linux build has been run.
+- No Linux build of the MAUI identity project has been run. The hosted ubuntu-latest Build job builds the unchanged Kotlin baseline.
+- The round-4 reviewer could not reproduce the Debug identity build in a scratch copy, because aapt2 failed on a 247-character path. The Debug evidence rests on the author's builds and the rebuild during the merge session at `c22298fb`.
 - No persistent-key (`--release`) signature has been proven on a MAUI APK.
 - Mono AOT, the 16 KB alignment check, device install and App Link fixture-key tests are not run. They belong to AND.40 and PRF.12.
 - The `Microsoft.Maui.*` nupkg SHA-512 values were checked against the nuget.org catalog only for `Microsoft.Maui.Controls`. The clean locked restore matched every lock contentHash.
