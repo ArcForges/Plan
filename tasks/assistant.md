@@ -205,6 +205,32 @@ Notes: One of the named scaffolding rows in implementation-sequence.md §3.1. Se
 ```
 
 ```text
+Execute ArcForges delivery task AST.08 — Reference and package proof (AionUi evidence, clean-app package consumption).
+
+Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\assistant.md (anchor task-ast-08).
+Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
+Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
+Claim and handoff record: claims/ast-08 (python tools/delivery.py claim AST.08 --worker <name>); task branch task/ast-08 in DesktopPlatform; ledger record ledger/tasks/ast-08.md.
+Kind/size: producer/S. Baseline: not-started.
+Outcome: AionUi component evidence/provenance recorded; the actual candidate Assistant.Core/Assistant.Persistence.Sqlite package consumed from a clean test application with no reference runtime or imported agent scope.
+
+Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
+- WP-15.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\15-arcchat-conversation-core.md, anchor rule-wp-15.07
+
+Entry condition: adoption slice ADOPT.02.assistant is complete in the Plan ledger (DLV-22).
+Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
+- [artifact] AST.01: published Assistant.Core/Assistant.Persistence.Sqlite candidate packages
+Completion prerequisites (may start earlier; cannot complete before these are complete):
+- none
+
+Permitted write scope: DesktopPlatform:tests/AssistantCoreTests/**
+Unblocks: AST.09
+
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Package-only restore in a clean test app; offline behavior tests; exact package hash recorded.
+Completion evidence for the ledger: Package hash manifest, AionUi reference-coverage citation (arcchat-aionui.md, no reused code), clean-app test results.
+```
+
+```text
 Execute ArcForges delivery task AST.09 — Owned-artifact receipt and UX acceptance.
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\assistant.md (anchor task-ast-09).
@@ -226,6 +252,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] AST.05: completed WP-15.04
 - [artifact] AST.06: completed WP-15.05
 - [artifact] AST.07: completed WP-15.06
+- [artifact] AST.08: completed WP-15.07
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -615,11 +642,3 @@ Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-serv
 Completion evidence for the ledger: AST.15's Cloud promotion/copy UI successfully drives a real restartable import, including lost-finalize-ack, changed-local-history and account-switch recovery
 Notes: Merged duplicate integration or closure task formerly proposed as CLOUD.57.
 ```
-
-### Out of scope
-
-Excluded from the active plan. No prompt is issued and these tasks are never claimable; their decision, note and ledger status are listed here.
-
-| Task | Title | Decision | Mode | Note | Ledger status |
-|---|---|---|---|---|---|
-| AST.08 | Reference and package proof (AionUi evidence, clean-app package consumption) | P2-026 | excluded | No concrete necessary ArcScope consumer: the reference-only AionUi drift check adds no product capability and is out of scope, not completed (P2-026 R12); its clean-app package-only consumption check is carried by AST.17. | no record |
