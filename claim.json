@@ -4,10 +4,10 @@
   "id": "HAR.40",
   "claimant": "w-deku-20261008-har-40",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-08T14:40:41Z",
-  "updatedAt": "2026-10-09T18:39:15Z",
-  "leaseUntil": "2026-10-10T18:39:15Z",
+  "updatedAt": "2026-10-09T19:35:24Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Cloud",
     "branch": "task/har-40",
@@ -30,6 +30,6 @@
       "independent review, push, PR, CI, merge via integration role"
     ],
     "host": "deku",
-    "note": "Main CI 37973286130 success: Deploy Cloudflare Version 7dbc77c0 (SOURCE_REVISION ccf7bcdf), container app updated, production D1 not applicable; release cloud-0.1.0-ci.328.1; production /api/healthz 200 revision ccf7bcdf nativeAot true. AI #35 merged ec40ec45 (status text: retirement pending user confirmation)"
+    "note": "Ledger Plan #472 delivered; open: liveNotRun operator proofs, arcforges-ai-hello deletion confirmation (user), test:artifact constant (S29 -> CLOUD.84), HAR.00/HAR.01-owned tests, resume (S24)"
   }
 }
