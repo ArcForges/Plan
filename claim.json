@@ -4,12 +4,12 @@
   "id": "integration:Design",
   "claimant": "w-deku-20261008-coord",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-08T14:17:15Z",
-  "updatedAt": "2026-10-09T10:29:32Z",
-  "leaseUntil": "2026-10-09T22:29:32Z",
+  "updatedAt": "2026-10-09T22:59:33Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "renewed for P2-026 and AND.40 publication"
+    "note": "P2-026 and fix6 merged; re-claim on the next planning repair"
   }
 }
