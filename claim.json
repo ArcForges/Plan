@@ -4,17 +4,20 @@
   "id": "NAT.11",
   "claimant": "w-deku-20261008-nat-11",
   "epoch": 1,
-  "state": "claimed",
+  "state": "complete",
   "claimedAt": "2026-10-08T22:41:03Z",
-  "updatedAt": "2026-10-09T09:43:54Z",
-  "leaseUntil": "2026-10-10T09:43:54Z",
+  "updatedAt": "2026-10-09T11:01:51Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/nat-11",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/175"
     ],
-    "merges": [],
+    "merges": [
+      "c8280488a1203a5c0160bebeba48ae5f20443f9c",
+      "86e22cdd5212a6d2b44e51a7db87743d39abb8f3"
+    ],
     "done": [],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\nat-11",
@@ -25,6 +28,6 @@
       "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
     ],
     "host": "deku",
-    "note": "ADP-07 supporting-file bindings (owner DesktopPlatform integration; append-only rows; necessity: CI packaging and the shared architecture policy accept the delivered ABI 1.1): eng/packaging/native.py, eng/packaging/packages.py, tests/ArchitectureTests/RepositoryPolicyTests.cs, eng/policy/architecture-contract-tests.json"
+    "note": "complete: DesktopPlatform #175 (c8280488), cohort 1.0.0-ci.130.1, ledger Plan #466; DesktopPlatform exception closed"
   }
 }
