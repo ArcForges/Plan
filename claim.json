@@ -6,26 +6,29 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:25Z",
-  "updatedAt": "2026-10-08T23:12:17Z",
-  "leaseUntil": "2026-10-09T23:12:17Z",
+  "updatedAt": "2026-10-09T02:00:45Z",
+  "leaseUntil": "2026-10-10T02:00:45Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/and-01",
     "prs": [
       "https://github.com/ArcForges/Mobile/pull/22"
     ],
-    "merges": [],
+    "merges": [
+      "35fdfa63b8f757670246130133b18ee6e0fe5968"
+    ],
     "done": [
       "work-in-progress commits pushed (step 1)",
-      "implemented, independently reviewed (4 rounds + deltas), pushed, PR opened"
+      "implemented, independently reviewed (4 rounds + deltas), pushed, PR opened",
+      "merged Mobile #22 at reviewed head c22298fb (CI all green)"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Mobile\\.worktree\\and-01",
-    "head": "90ae49140adcec3e558cbe5690a735bb96247df5",
-    "reviewed": "90ae49140adcec3e558cbe5690a735bb96247df5",
+    "head": "c22298fb9f6b1ffc2b6401e9fde177a8a65df4ab",
+    "reviewed": "c22298fb9f6b1ffc2b6401e9fde177a8a65df4ab",
     "blocker": null,
     "next": [
-      "hosted CI green; merge via integration:Mobile; ledger record delivered (completion prerequisite PRF.12 and the AND.40 Linux identity build)"
+      "post-merge main CI; ledger record delivered (completion: AND.40 hosted Linux identity build, PRF.12)"
     ],
     "host": "deku",
     "note": "ADP-07 supporting edits beyond the record writes: none (fix2 merged the full write scope)"
