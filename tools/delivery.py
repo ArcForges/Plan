@@ -6,6 +6,15 @@ The authoritative scheduling data is Design `docs/planning/delivery/delivery-gra
 Design and Plan's `list.md` and `tasks/*.md` is generated from that one file; hand edits to
 generated regions are overwritten and detected by `check`.
 
+Scope (decision P2-026): a task, gate or substitute may carry an `outOfScope` declaration {by, note}, and
+the graph may list `outOfScopeObligations`. Absent means in scope. Out-of-scope tasks are never claimable
+and are left out of readiness, follow-ups, critical-path and schedule measures; their records stay valid
+and the generated views list them in a final section. A live or expired claim on one is released by its holder,
+or finished under its `closeout` declaration. A delivered closeout claim holds no lease and its holder can no longer
+write it, so it may be taken over with --reason to complete the closeout; an expired closeout claim may be taken over
+once its lease is more than the grace past. Other delivered or complete claims are ownerless and owe nothing. No new
+claim is ever made on an out-of-scope task.
+
 Planning commands read working trees (use them to review a planning or ledger change):
   check     [--design PATH] [--plan PATH]   validate graph and ledger; confirm views are current
   generate  [--design PATH] [--plan PATH]   regenerate every view
@@ -37,6 +46,7 @@ Standard library only.
 from __future__ import annotations
 
 import argparse
+import copy
 import errno
 import heapq
 import io
@@ -119,6 +129,102 @@ def key_of(item_id: str) -> str:
 
 def role_id(repo: str) -> str:
     return f'integration:{repo}'
+
+
+def is_out(rec) -> bool:
+    """True when a task, gate or substitute carries an outOfScope object (absent means in scope). A
+    malformed declaration is reported by validate() and never silently treated as in scope."""
+    return isinstance(rec, dict) and isinstance(rec.get('outOfScope'), dict)
+
+
+def closeout_task(g, tid) -> bool:
+    """True when tid is an out-of-scope task whose declaration names a closeout: its held claim may be finished
+    under closeout and, when expired or delivered, taken over for that purpose only."""
+    t = g.tasks.get(tid) if tid is not None else None
+    return is_out(t) and bool(t['outOfScope'].get('closeout'))
+
+
+def count_of(n: int, one: str, many: str | None = None) -> str:
+    """'1 delivery task' or '2 delivery tasks': the noun agrees with the count (generated view wording)."""
+    return f'{n} {one if n == 1 else (many or one + "s")}'
+
+
+def oos_suffix(g, tid: str) -> str:
+    return ' — out of scope' if tid in g.tasks and is_out(g.tasks[tid]) else ''
+
+
+# Ledger statuses whose edges are history (scope rule 2, S16(a) of the coordinator brief): a complete,
+# inherited or superseded task is exempt from the out-of-scope edge rule, as is a baseline-accepted task.
+HISTORY_STATUSES = {'complete', 'inherited', 'superseded'}
+
+
+def edge_rule_applies(rec, kind: str, status: str | None) -> bool:
+    """True when an edge of this kind (start or complete) on an in-scope task may not point at an out-of-scope
+    task (scope rule 2, S16(a)). Open tasks (no delivered, complete, inherited or superseded ledger status, and
+    not baseline-accepted) have every start and complete edge checked. A delivered task's start edges are
+    history, so only its complete edges are checked. Complete, inherited, superseded and accepted tasks are
+    exempt: their edges are history and are not rewritten."""
+    if ((rec.get('baseline') or {}).get('state') == 'accepted') or status in HISTORY_STATUSES:
+        return False
+    if status == 'delivered':
+        return kind == 'complete'
+    return True
+
+
+def exempt_out_edge(g, t: dict, kind: str, target, status: dict) -> bool:
+    """True for a historical edge from an in-scope task to an out-of-scope task (S16(a)): the edge rule and the
+    package-acceptance rule skip it, so history never fails a check. The satisfiability walk needs no such skip,
+    because it runs on the in-scope view, which has no out-of-scope target."""
+    return (not is_out(t) and target in g.tasks and is_out(g.tasks[target])
+            and not edge_rule_applies(t, kind, status.get(t.get('id'))))
+
+
+def covers_as_history(rec, status: str | None) -> bool:
+    """True when an in-scope task's obligation coverage is history (DLV-43, S2, S16(a)): a HISTORY_STATUSES task
+    (complete, inherited or superseded), or a baseline-accepted one. Its excluded parts keep their task-level text,
+    and an out-of-scope entry for the same obligation records that they are no longer required. Any other in-scope
+    covering task (open or delivered) still needs the obligation, so it must not share an entry."""
+    return status in HISTORY_STATUSES or (rec.get('baseline') or {}).get('state') == 'accepted'
+
+
+def ledger_statuses(ledger: dict) -> dict[str, str | None]:
+    """Ledger status of each task with a record (read_ledger output); tasks without one are open."""
+    return {tid: rec.get('status') for tid, rec in ledger.items()}
+
+
+# Decision records that may carry an outOfScope marker (DLV-43). Today that is P2-026 only, and the record must
+# exist as an anchor in the Design decisions files (docs/decisions/) that check reads.
+SCOPE_DECISIONS = ('P2-026',)
+
+
+def scope_decisions(design: Path) -> set[str]:
+    """The SCOPE_DECISIONS that are defined by an anchor in a Design decisions file under docs/decisions/ of the
+    given Design root. check passes the root it checks (its --design worktree), so a planning change may add its
+    decision record and its markers together; execution reads merged Design main instead (State)."""
+    homes = anchor_homes(design)
+    return {dec for dec in SCOPE_DECISIONS
+            if any(h.startswith('docs/decisions/') for h in homes.get(dec.lower(), []))}
+
+
+def check_scope(rec, where: str, errors: list, closeout: bool = False, extra: tuple = (),
+                decisions: set[str] | None = None) -> None:
+    """Shape of an outOfScope declaration: by and note are non-empty text; closeout is a boolean on tasks. With
+    decisions given, by must name one of them (DLV-43: the marker names its decision record)."""
+    if not isinstance(rec, dict):
+        errors.append(f'{where} must be an object with by and note')
+        return
+    allowed = {'by', 'note', *extra} | ({'closeout'} if closeout else set())
+    for k in sorted(set(rec) - allowed):
+        errors.append(f'{where} has unknown field {k}')
+    for f in ('by', 'note', *extra):
+        if not isinstance(rec.get(f), str) or not rec[f].strip():
+            errors.append(f'{where} needs a non-empty {f}')
+    if 'closeout' in rec and not isinstance(rec['closeout'], bool):
+        errors.append(f'{where} closeout must be true or false')
+    by = rec.get('by')
+    if decisions is not None and isinstance(by, str) and by.strip() and by not in decisions:
+        errors.append(f'{where} names {by}, which is not a scope decision record in the Design decisions files '
+                      f'(DLV-43 allows {", ".join(SCOPE_DECISIONS)} only, and it must be present)')
 
 
 def load_json(path: Path):
@@ -247,6 +353,10 @@ class Graph:
         self.res = {r['id']: r for r in self.data.get('sharedResources', [])}
         self.pobs = {p['id']: p for p in self.data.get('packageObligations', [])}
         self.gates = {g['gate']: g for g in self.data.get('gates', [])}
+        # Out-of-scope obligations (scope rule 3), keyed by the substep or package obligation they carry.
+        self.oob = {r['ref']: r for r in self.data.get('outOfScopeObligations', [])
+                    if isinstance(r, dict) and isinstance(r.get('ref'), str)}
+        self.ledger_status: dict[str, str] = {}  # set by views(): ledger status of every task, for the views only
         self.catalogue = substeps(design)
         # Adoption slices (DLV-22): one independently claimable unit per repository and lane. They are
         # scheduling nodes like tasks; the repository adoption task completes after all of its slices.
@@ -309,17 +419,21 @@ class Graph:
 
         D(t) needs D(s) for each contract/artifact/design start prerequisite s (and the adoption entry),
         C(s) for each release prerequisite; C(t) needs D(t) and C(s) for each completion prerequisite s.
+        An edge whose target is not in this graph is left out: on the in-scope view (Graph.in_scope) that is
+        exactly an edge to an out-of-scope task, which is history and cannot block in-scope events.
         """
         adj = defaultdict(set)
         for tid, t in self.tasks.items():
             for e in t.get('start', []):
-                adj[('D', tid)].add(('C' if e['type'] == 'release' else 'D', e['task']))
+                if e['task'] in self.tasks:
+                    adj[('D', tid)].add(('C' if e['type'] == 'release' else 'D', e['task']))
             ent = self.entry(tid)
-            if ent:
+            if ent and ent in self.tasks:
                 adj[('D', tid)].add(('C', ent))
             adj[('C', tid)].add(('D', tid))
             for e in t.get('complete', []):
-                adj[('C', tid)].add(('C', e['task']))
+                if e['task'] in self.tasks:
+                    adj[('C', tid)].add(('C', e['task']))
         return adj
 
     def event_order(self):
@@ -362,19 +476,28 @@ class Graph:
                     q.append(s)
         return order, [t for t, d in indeg.items() if d > 0]
 
-    def ancestors(self, tid, cache={}):
-        key = (id(self), tid)
-        if key in cache:
-            return cache[key]
-        seen, stack = set(), list(self.preds(tid))
-        while stack:
-            p = stack.pop()
-            if p in seen or p not in self.tasks:
-                continue
-            seen.add(p)
-            stack.extend(self.preds(p))
-        cache[key] = seen
-        return seen
+    def ancestors(self, tid):
+        cache = self.__dict__.setdefault('_anc', {})  # per instance: views and graphs never share entries
+        if tid not in cache:
+            seen, stack = set(), list(self.preds(tid))
+            while stack:
+                p = stack.pop()
+                if p in seen or p not in self.tasks:
+                    continue
+                seen.add(p)
+                stack.extend(self.preds(p))
+            cache[tid] = seen
+        return cache[tid]
+
+    def in_scope(self) -> 'Graph':
+        """The scheduling subgraph: every task that is not out of scope, with its own task list for the
+        measures. In-scope tasks never depend on out-of-scope tasks (check rule 2), so every prerequisite
+        inside the view is itself in the view. The full graph is not changed."""
+        view = copy.copy(self)
+        view.tasks = {tid: t for tid, t in self.tasks.items() if not is_out(t)}
+        view.data = dict(self.data, tasks=[t for t in self.data['tasks'] if not is_out(t)])
+        view.__dict__.pop('_anc', None)
+        return view
 
     def obligation_map(self):
         m = defaultdict(list)
@@ -384,8 +507,15 @@ class Graph:
         return m
 
 
-def validate(g: Graph) -> tuple[list[str], list[str]]:
+def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[list[str], list[str]]:
+    """Graph errors and warnings. status maps task IDs to their ledger status (ledger_statuses); without it every
+    task counts as open, which is the strictest reading of the out-of-scope edge rule."""
     errors, warnings = [], []
+    status = status or {}
+    marked = (any('outOfScope' in x for x in [*g.data['tasks'], *(g.data.get('gates') or []),
+                                              *(g.data.get('substitutes') or [])])
+              or bool(g.data.get('outOfScopeObligations')))
+    decisions = scope_decisions(g.design) if marked else set()
     ids = [t['id'] for t in g.data['tasks']]
     for tid, n in Counter(ids).items():
         if n > 1:
@@ -399,6 +529,8 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
                 errors.append(f'{tid}: missing field {f}')
         if not TASK_ID.match(tid):
             errors.append(f'{tid}: invalid task id format')
+        if 'outOfScope' in t:
+            check_scope(t['outOfScope'], f'{tid}: outOfScope', errors, closeout=True, decisions=decisions)
         if CORPUS_ID.search(t.get('title', '')):
             errors.append(f'{tid}: title contains a corpus identifier; keep identifiers in obligations')
         if t.get('lane') not in g.lanes:
@@ -444,6 +576,9 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
                 if tgt in seen:
                     errors.append(f'{tid}: duplicate {kind} edge to {tgt}')
                 seen.add(tgt)
+                if tgt in g.tasks and not is_out(t) and is_out(g.tasks[tgt]) and edge_rule_applies(t, kind, status.get(tid)):
+                    errors.append(f'{tid}: {kind} edge to out-of-scope task {tgt}; in-scope task {tid} cannot depend on it '
+                                  f'({kind} edge, scope rule 2)')
                 if not (e.get('why') or '').strip() or not (e.get('need') or '').strip():
                     errors.append(f'{tid}: {kind} edge to {tgt} lacks need/why')
                 if e.get('type') == 'release' and t.get('kind') not in {'release', 'acceptance'}:
@@ -505,21 +640,61 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
             continue
         for e in t.get('start', []):
             wp = accept.get(e.get('task'))
+            if exempt_out_edge(g, t, 'start', e.get('task'), status):
+                continue
             if wp and not any(o['ref'].startswith((wp + '.', wp + ':')) for o in t.get('obligations', [])):
                 errors.append(f'{t["id"]}: start prerequisite on package acceptance task {e["task"]} ({wp}); depend on the '
                               f'producing tasks or use a completion prerequisite (DLV-35)')
-    _, stuck = g.event_order()
+    # Satisfiability runs on the in-scope subgraph (DLV-24, DLV-43): out-of-scope tasks never block in-scope work, so
+    # a cycle among them is not a deadlock of the plan, and an edge from an in-scope task to an out-of-scope one (history
+    # under S16(a), or a refused edge reported above) is not part of that subgraph.
+    _, stuck = g.in_scope().event_order()
     if stuck:
         errors.append(f'unsatisfiable prerequisites (deadlock) among {len(stuck)} tasks: {stuck[:12]}')
-    # Obligation coverage.
+    # Obligation coverage (scope rule 3): an obligation is covered by an in-scope task or carried by an
+    # outOfScopeObligations entry; out-of-scope tasks alone never cover it.
     om = g.obligation_map()
+    in_refs = {o['ref'] for t in g.data['tasks'] if not is_out(t) for o in t.get('obligations', [])}
+    # An entry may sit beside an in-scope covering task only when that task is history (S2, S16(a)); a live covering
+    # task still needs the obligation, so the entry would contradict it.
+    live_refs = {o['ref'] for t in g.data['tasks'] if not is_out(t) and not covers_as_history(t, status.get(t['id']))
+                 for o in t.get('obligations', [])}
+    entries = [r for r in g.data.get('outOfScopeObligations', []) if isinstance(r, dict)]
+    carried = Counter(r.get('ref') for r in entries if isinstance(r.get('ref'), str))
+    for r in g.data.get('outOfScopeObligations', []):
+        where = f'outOfScopeObligations {r.get("ref") if isinstance(r, dict) else r}'
+        if not isinstance(r, dict) or not isinstance(r.get('ref'), str):
+            errors.append(f'{where}: each entry needs a ref')
+            continue
+        check_scope(r, where, errors, extra=('ref',), decisions=decisions)
+        for ref, n in carried.items():
+            if ref == r['ref'] and n > 1:
+                errors.append(f'{where}: listed {n} times')
+                break
+        if r['ref'] not in g.catalogue and r['ref'] not in g.pobs:
+            errors.append(f'{where}: not an active substep or package obligation')
+        if r['ref'] not in om:  # DLV-43: an excluded obligation still maps to a task, in scope as history or out of scope
+            errors.append(f'{where}: no task maps it; map it to a task (in scope as history, or out of scope) first')
+        if r['ref'] in live_refs:
+            errors.append(f'{where}: also covered by an in-scope task that is not complete, inherited or accepted; remove '
+                          'the entry or move the obligation out of scope')
     for sid in g.catalogue:
-        if sid not in om:
-            errors.append(f'substep {sid} is not mapped to any task')
-        elif len(om[sid]) > 1 and any(p.strip().lower() == 'full' for _, p in om[sid]):
+        if sid in om and len(om[sid]) > 1 and any(p.strip().lower() == 'full' for _, p in om[sid]):
             warnings.append(f'substep {sid} mapped by {len(om[sid])} tasks but one claims "full"')
+        if sid in in_refs or sid in carried:
+            continue
+        if sid in om:
+            errors.append(f'substep {sid} is mapped only by out-of-scope tasks; map it to an in-scope task or add an '
+                          'outOfScopeObligations entry')
+        else:
+            errors.append(f'substep {sid} is not mapped to any task')
     for pid in g.pobs:
-        if pid not in om:
+        if pid in in_refs or pid in carried:
+            continue
+        if pid in om:
+            errors.append(f'package obligation {pid} is mapped only by out-of-scope tasks; map it to an in-scope task or '
+                          'add an outOfScopeObligations entry')
+        else:
             errors.append(f'package obligation {pid} is not mapped to any task')
     for s in g.pobs.values():
         if not POB_ID.match(s['id']):
@@ -529,9 +704,16 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
     for t in g.data['tasks']:
         for s in t.get('substitutes', []):
             users[s].append(t['id'])
+            # S16(a): an in-scope task's use of an out-of-scope substitute is history once the task is delivered,
+            # complete, inherited, superseded or baseline-accepted, so the rule follows the same ledger status.
+            if (not is_out(t) and s in g.subs and is_out(g.subs[s])
+                    and edge_rule_applies(t, 'start', status.get(t['id']))):
+                errors.append(f'{t["id"]}: in-scope task uses out-of-scope substitute {s}')
     for sid, s in g.subs.items():
         if not SUB_ID.match(sid):
             errors.append(f'invalid substitute id {sid}')
+        if 'outOfScope' in s:
+            check_scope(s['outOfScope'], f'{sid}: outOfScope', errors, decisions=decisions)
         for f in ('standsInFor', 'contract', 'proves', 'realProducer', 'replacedBy', 'realEvidence'):
             if not s.get(f):
                 errors.append(f'{sid}: missing {f}')
@@ -540,6 +722,10 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
         rp = s.get('realProducer', [])
         rp = rp if isinstance(rp, list) else [rp]
         rb = s.get('replacedBy')
+        if not is_out(s):  # scope rule 4
+            for p in [*rp, rb]:
+                if p in g.tasks and is_out(g.tasks[p]):
+                    errors.append(f'{sid}: in-scope substitute names out-of-scope task {p}')
         for p in rp:
             if p not in g.tasks:
                 errors.append(f'{sid}: unknown real producer {p}')
@@ -551,7 +737,8 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
             if p in g.tasks and p != rb and p not in anc:
                 errors.append(f'{sid}: replacing task {rb} does not depend on real producer {p}')
         for u in users.get(sid, []):
-            if u != rb and u not in anc:
+            # An out-of-scope consumer is never scheduled, so the removing task need not depend on it.
+            if u != rb and u not in anc and not is_out(g.tasks[u]):
                 errors.append(f'{sid}: replacing task {rb} does not depend on consumer {u}')
         if not users.get(sid):
             warnings.append(f'{sid}: substitute not used by any task')
@@ -566,10 +753,17 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
         for f in ('kind', 'owner', 'protocol', 'title'):
             if not r.get(f):
                 errors.append(f'{rid}: missing {f}')
+    # Scope rule 5 (warning): a shared resource that only out-of-scope tasks use.
+    for rid in g.res:
+        users_of = [t for t in g.data['tasks'] if any(s.get('resource') == rid for s in t.get('shared', []))]
+        if users_of and all(is_out(t) for t in users_of):
+            warnings.append(f'{rid}: shared resource used only by out-of-scope tasks')
     # The same exact file written by two unordered tasks must be a declared shared resource.
     # Different files inside one module directory are ordinary parallel work resolved by Git.
     by_repo = defaultdict(list)
     for t in g.data['tasks']:
+        if is_out(t):  # out-of-scope tasks are never scheduled, so they cannot overlap in-scope work
+            continue
         for w in t.get('writes', []):
             repo, path = w.split(':', 1)
             path = path.split(' (', 1)[0].strip()
@@ -593,9 +787,26 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
                 warnings.append(f'unordered write overlap {a} ~ {b} in {repo}: {pa} / {pb}')
     # Gates.
     for gate, rec in g.gates.items():
+        if 'outOfScope' in rec:
+            check_scope(rec['outOfScope'], f'gate {gate}: outOfScope', errors, decisions=decisions)
         for tid in rec.get('tasks', []):
             if tid not in g.tasks:
                 errors.append(f'gate {gate}: unknown task {tid}')
+            elif is_out(g.tasks[tid]) and not is_out(rec):
+                errors.append(f'gate {gate}: in-scope gate lists out-of-scope task {tid} (scope rule 4)')
+    # Scope rule 5 (warning): an adoption slice whose every task is out of scope.
+    for sid in g.slices:
+        scope = g.slice_tasks(sid)
+        if scope and all(is_out(g.tasks[x]) for x in scope):
+            warnings.append(f'{sid}: every task of this adoption slice is out of scope')
+    # Scope rule 2 through the adoption entry: an in-scope task starts only from in-scope adoption work.
+    for tid, t in g.tasks.items():
+        if is_out(t) or t.get('kind') == 'adoption':
+            continue
+        ent = g.entry(tid)
+        if ent and is_out(g.tasks[ent]) and edge_rule_applies(t, 'start', status.get(tid)):
+            errors.append(f'{tid}: entry (adoption) edge to out-of-scope task {ent}; in-scope task {tid} cannot depend on it '
+                          '(scope rule 2)')
     return errors, warnings
 
 
@@ -704,7 +915,10 @@ def old_model_metrics(design: Path):
 
 
 def analysis(g: Graph, worker_counts=(1, 2, 4, 8, 16, 32, 64, 0)):
-    done = {tid for tid, t in g.tasks.items() if t['baseline']['state'] == 'accepted'}
+    """Schedule measures over the in-scope subgraph; out-of-scope tasks are counted, never scheduled."""
+    excluded = sum(1 for t in g.data['tasks'] if is_out(t))
+    g = g.in_scope()
+    done ={tid for tid, t in g.tasks.items() if t['baseline']['state'] == 'accepted'}
     total = sum(SIZES[t['size']] for tid, t in g.tasks.items() if tid not in done)
     path, length = critical_path(g, done)
     lvl = levels(g, done)
@@ -745,6 +959,7 @@ def analysis(g: Graph, worker_counts=(1, 2, 4, 8, 16, 32, 64, 0)):
                          'examples': examples[:4]})
     return {
         'tasks': len(g.data['tasks']), 'adoptionSlices': len(g.slices), 'acceptedBaseline': len(done),
+        'outOfScopeTasks': excluded,
         'remainingWork': total, 'concurrencyByRepository': per_repo,
         'criticalPath': path, 'criticalPathLength': length,
         'maxLevel': max((v for tid, v in lvl.items() if tid not in done), default=0),
@@ -781,17 +996,98 @@ def generated_header(from_rel: str) -> str:
             f'Rules and definitions: [delivery model]({model}).\n')
 
 
+def task_block(g: Graph, L: Linker, t: dict, rel: str, succ, level: int) -> list[str]:
+    """One task's full record: anchor, heading at `level` and field table, ending with a blank line. The
+    anchor keeps every #task-... link working wherever the record is shown."""
+    out = [f'<a id="{slug(t["id"])}"></a>', '', f'{"#" * level} {t["id"]} — {md_escape(t["title"])}', '',
+           f'**Outcome.** {L.text(t["outcome"])}', '', '| Field | Value |', '|---|---|']
+    if is_out(t):
+        oo = t['outOfScope']
+        out.append(f'| Scope | Out of scope ({oo["by"]}): {L.text(oo["note"])}'
+                   + (' · closeout: the existing claim may be finished, never claimed anew' if oo.get('closeout') else '')
+                   + ' |')
+    repo = g.repos[t['repo']]
+    touches = ', '.join(t.get('alsoTouches', []))
+    out.append(f'| Owning repository | {t["repo"]} (`{repo["root"]}`); integration owner: {repo["integrationOwner"]}, '
+               f'the holder of `roles/{key_of("integration-" + t["repo"])}`'
+               + (f'; also touches {touches}' if touches else '') + ' |')
+    out.append(f'| Claim, branch and ledger | `claims/{key_of(t["id"])}` and ledger record `ledger/tasks/{key_of(t["id"])}.md` in '
+               f'the Plan repository; task branch `task/{key_of(t["id"])}` ([DLV-26](../README.md#rule-dlv-26)) |')
+    out.append(f'| Kind / size | {t["kind"]} / {t["size"]}' + (' · early risk proof' if t.get('earlyRiskProof') else '') + ' |')
+    if t.get('packageAcceptance'):
+        out.append(f'| Package acceptance | Records the {L.link(t["packageAcceptance"])} acceptance receipt after every task mapped to the '
+                   f'package; tasks outside the package never start from it ([DLV-35](../README.md#rule-dlv-35)) |')
+    obl = '<br>'.join(f'{obligation_link(g, L, o["ref"])} — {L.text(o["part"])}' for o in t['obligations'])
+    out.append(f'| Obligations | {obl} |')
+    if t.get('provides'):
+        out.append(f'| Provides | {L.text("; ".join(t["provides"]))} |')
+    st = '<br>'.join(f'**{e["type"]}** {task_link(g, e["task"], rel)} — {L.text(e["need"])}. *Why:* {L.text(e["why"])}'
+                     for e in t['start']) or 'none'
+    out.append(f'| Start prerequisites | {st} |')
+    ent = g.entry(t['id'])
+    if ent:
+        out.append(f'| Entry condition | {task_link(g, ent, rel)} — the adoption slice for this repository and lane is complete ([DLV-22](../README.md#rule-dlv-22)) |')
+    cp = '<br>'.join(f'**{e["type"]}** {task_link(g, e["task"], rel)} — {L.text(e["need"])}. *Why:* {L.text(e["why"])}'
+                     for e in t['complete']) or 'none'
+    out.append(f'| Completion prerequisites | {cp} |')
+    down = sorted(succ.get(t['id'], ()))
+    out.append(f'| Unblocks | {", ".join(task_link(g, d, rel) + oos_suffix(g, d) for d in down) or "none"} |')
+    if t.get('substitutes'):
+        import posixpath
+        srel = posixpath.relpath(f'{DELIVERY_REL}/substitutes.md', str(Path(rel).parent.as_posix()))
+        subs = ', '.join(f'[{s}]({srel}#{s.lower()})' for s in t['substitutes'])
+        out.append(f'| Permitted substitutes | {subs} |')
+    out.append(f'| Write scope | {"<br>".join("`" + w + "`" for w in t["writes"])} |')
+    if t.get('shared'):
+        import posixpath
+        rrel = posixpath.relpath(f'{DELIVERY_REL}/shared-resources.md', str(Path(rel).parent.as_posix()))
+        sh = ', '.join(f'[{s["resource"]}]({rrel}#{s["resource"].lower()}) ({s["mode"]})' for s in t['shared'])
+        out.append(f'| Shared resources | {sh} |')
+    out.append(f'| Validation | {L.text(t["validation"])} |')
+    out.append(f'| Completion evidence | {L.text(t["evidence"])} |')
+    b = t['baseline']
+    btxt = b['state'] + (f' — {L.text(b.get("evidence", ""))}' if b.get('evidence') else '') + \
+        (f' {L.text(b.get("notes", ""))}' if b.get('notes') else '')
+    out.append(f'| Baseline (unreviewed unless accepted) | {btxt} |')
+    if t.get('notes'):
+        out.append(f'| Notes | {L.text(t["notes"])} |')
+    out.append('')
+    return out
+
+
+def out_of_scope_lines(g: Graph, L: Linker, rel: str, excluded: list[dict], succ) -> list[str]:
+    """The final 'Out of scope' section of a lane file: grouped by decision, with each task's note, mode and
+    ledger status, then its full record under its unchanged anchor."""
+    out = ['## Out of scope', '',
+           'Excluded from the active plan by the decision named under each heading. These tasks are not completed, '
+           'are never claimable and are not remaining work; their records and ledger history are kept here.', '']
+    for by in sorted({t['outOfScope']['by'] for t in excluded}):
+        group = [t for t in excluded if t['outOfScope']['by'] == by]
+        out += [f'### {by}', '', '| Task | Title | Note | Mode | Ledger status |', '|---|---|---|---|---|']
+        for t in group:
+            oo = t['outOfScope']
+            out.append(f'| {task_link(g, t["id"], rel)} | {md_escape(t["title"])} | {L.text(oo["note"])} | '
+                       f'{"closeout" if oo.get("closeout") else "excluded"} | {g.ledger_status.get(t["id"], "no record")} |')
+        out.append('')
+        for t in group:
+            out.extend(task_block(g, L, t, rel, succ, 4))
+    return out
+
+
 def render_lane(g: Graph, lane: dict) -> str:
     rel = f'{DELIVERY_REL}/lanes/{lane["id"]}.md'
     L = Linker(g.design, rel)
     succ = g.succ_map()
-    tasks = [t for t in g.data['tasks'] if t['lane'] == lane['id']]
+    every = [t for t in g.data['tasks'] if t['lane'] == lane['id']]
+    tasks = [t for t in every if not is_out(t)]
+    excluded = [t for t in every if is_out(t)]
     out = [f'# {lane["title"]} — delivery tasks', '', generated_header(rel)]
     out.append(L.text(lane.get('description', '')))
     out.append('')
     repos = sorted({t['repo'] for t in tasks})
     out.append(f'Tasks: {len(tasks)} · Owning repositories: {", ".join(repos)} · '
-               f'Integration owner(s): {", ".join(g.repos[r]["integrationOwner"] for r in repos)}')
+               f'Integration owner(s): {", ".join(g.repos[r]["integrationOwner"] for r in repos)}'
+               + (f' · Out of scope: {len(excluded)} (final section)' if excluded else ''))
     out.append('')
     out.append('| Task | Title | Kind | Size | Start prerequisites | Baseline |')
     out.append('|---|---|---|---|---|---|')
@@ -803,60 +1099,7 @@ def render_lane(g: Graph, lane: dict) -> str:
     out.append('## Tasks')
     out.append('')
     for t in tasks:
-        out.append(f'<a id="{slug(t["id"])}"></a>')
-        out.append('')
-        out.append(f'### {t["id"]} — {md_escape(t["title"])}')
-        out.append('')
-        out.append(f'**Outcome.** {L.text(t["outcome"])}')
-        out.append('')
-        out.append('| Field | Value |')
-        out.append('|---|---|')
-        repo = g.repos[t['repo']]
-        touches = ', '.join(t.get('alsoTouches', []))
-        out.append(f'| Owning repository | {t["repo"]} (`{repo["root"]}`); integration owner: {repo["integrationOwner"]}, '
-                   f'the holder of `roles/{key_of("integration-" + t["repo"])}`'
-                   + (f'; also touches {touches}' if touches else '') + ' |')
-        out.append(f'| Claim, branch and ledger | `claims/{key_of(t["id"])}` and ledger record `ledger/tasks/{key_of(t["id"])}.md` in '
-                   f'the Plan repository; task branch `task/{key_of(t["id"])}` ([DLV-26](../README.md#rule-dlv-26)) |')
-        out.append(f'| Kind / size | {t["kind"]} / {t["size"]}' + (' · early risk proof' if t.get('earlyRiskProof') else '') + ' |')
-        if t.get('packageAcceptance'):
-            out.append(f'| Package acceptance | Records the {L.link(t["packageAcceptance"])} acceptance receipt after every task mapped to the '
-                       f'package; tasks outside the package never start from it ([DLV-35](../README.md#rule-dlv-35)) |')
-        obl = '<br>'.join(f'{obligation_link(g, L, o["ref"])} — {L.text(o["part"])}' for o in t['obligations'])
-        out.append(f'| Obligations | {obl} |')
-        if t.get('provides'):
-            out.append(f'| Provides | {L.text("; ".join(t["provides"]))} |')
-        st = '<br>'.join(f'**{e["type"]}** {task_link(g, e["task"], rel)} — {L.text(e["need"])}. *Why:* {L.text(e["why"])}'
-                         for e in t['start']) or 'none'
-        out.append(f'| Start prerequisites | {st} |')
-        ent = g.entry(t['id'])
-        if ent:
-            out.append(f'| Entry condition | {task_link(g, ent, rel)} — the adoption slice for this repository and lane is complete ([DLV-22](../README.md#rule-dlv-22)) |')
-        cp = '<br>'.join(f'**{e["type"]}** {task_link(g, e["task"], rel)} — {L.text(e["need"])}. *Why:* {L.text(e["why"])}'
-                         for e in t['complete']) or 'none'
-        out.append(f'| Completion prerequisites | {cp} |')
-        down = sorted(succ.get(t['id'], ()))
-        out.append(f'| Unblocks | {", ".join(task_link(g, d, rel) for d in down) or "none"} |')
-        if t.get('substitutes'):
-            import posixpath
-            srel = posixpath.relpath(f'{DELIVERY_REL}/substitutes.md', str(Path(rel).parent.as_posix()))
-            subs = ', '.join(f'[{s}]({srel}#{s.lower()})' for s in t['substitutes'])
-            out.append(f'| Permitted substitutes | {subs} |')
-        out.append(f'| Write scope | {"<br>".join("`" + w + "`" for w in t["writes"])} |')
-        if t.get('shared'):
-            import posixpath
-            rrel = posixpath.relpath(f'{DELIVERY_REL}/shared-resources.md', str(Path(rel).parent.as_posix()))
-            sh = ', '.join(f'[{s["resource"]}]({rrel}#{s["resource"].lower()}) ({s["mode"]})' for s in t['shared'])
-            out.append(f'| Shared resources | {sh} |')
-        out.append(f'| Validation | {L.text(t["validation"])} |')
-        out.append(f'| Completion evidence | {L.text(t["evidence"])} |')
-        b = t['baseline']
-        btxt = b['state'] + (f' — {L.text(b.get("evidence", ""))}' if b.get('evidence') else '') + \
-            (f' {L.text(b.get("notes", ""))}' if b.get('notes') else '')
-        out.append(f'| Baseline (unreviewed unless accepted) | {btxt} |')
-        if t.get('notes'):
-            out.append(f'| Notes | {L.text(t["notes"])} |')
-        out.append('')
+        out.extend(task_block(g, L, t, rel, succ, 3))
     if lane['id'] == 'adoption' and g.slices:
         out.append('## Adoption slices')
         out.append('')
@@ -877,12 +1120,14 @@ def render_lane(g: Graph, lane: dict) -> str:
             s = g.slices[sid]
             scope = g.slice_tasks(sid)
             accepted = [x for x in scope if g.tasks[x]['baseline']['state'] == 'accepted']
-            opens = len(scope) - len(accepted)
+            opens = sum(1 for x in scope if x not in accepted and not is_out(g.tasks[x]))
             opens_cell = f'none (retired by {s["retiredBy"]})' if s.get('retired') else f'{opens}'
             out.append(f'| <a id="{slug(sid)}"></a>{sid} | {s["repo"]} | [{md_escape(g.lanes[s["lane"]]["title"])}]({s["lane"]}.md) | '
                        f'{opens_cell} | {", ".join(task_link(g, x, rel) for x in accepted) or "none"} | '
                        f'{task_link(g, s["adoptionTask"], rel)} |')
         out.append('')
+    if excluded:
+        out.extend(out_of_scope_lines(g, L, rel, excluded, succ))
     if L.unknown:
         raise Fail(f'{rel}: unresolved identifiers {sorted(L.unknown)}')
     return '\n'.join(out).rstrip() + '\n'
@@ -896,6 +1141,15 @@ def obligation_link(g: Graph, L: Linker, ref: str) -> str:
     return f'{L.link("WP-" + m[1])} {L.text(p["title"])}'
 
 
+def trace_cell(g: Graph, L: Linker, rel: str, ref: str, om) -> str:
+    """Delivery tasks that satisfy one obligation; out-of-scope tasks and an out-of-scope entry are marked."""
+    parts = [f'{task_link(g, tid, rel)} ({L.text(part)}){oos_suffix(g, tid)}' for tid, part in om.get(ref, [])]
+    if ref in g.oob:
+        r = g.oob[ref]
+        parts.append(f'Out of scope ({r["by"]}): {L.text(r["note"])}')
+    return '<br>'.join(parts)
+
+
 def render_traceability(g: Graph) -> str:
     rel = f'{DELIVERY_REL}/traceability.md'
     L = Linker(g.design, rel)
@@ -904,6 +1158,12 @@ def render_traceability(g: Graph) -> str:
            'Every active numbered substep and every package-level obligation maps to the delivery tasks that '
            'satisfy it. An obligation is satisfied only when every mapped task is complete with its recorded '
            'evidence; a mapped part never substitutes for the whole.', '']
+    excluded = [t for t in g.data['tasks'] if is_out(t)]
+    if excluded or g.oob:
+        decisions = ', '.join(sorted({t['outOfScope']['by'] for t in excluded} | {r['by'] for r in g.oob.values()}))
+        out += [f'Out of scope under {decisions}: {count_of(len(excluded), "delivery task")} and '
+                f'{count_of(len(g.oob), "obligation")}. Their rows '
+                'are marked below; an obligation is covered only by an in-scope task or by its out-of-scope entry.', '']
     by_wp = defaultdict(list)
     for sid, s in g.catalogue.items():
         by_wp[s['wp']].append(sid)
@@ -915,12 +1175,10 @@ def render_traceability(g: Graph) -> str:
         out.append('| Obligation | Title | Delivery tasks (part) |')
         out.append('|---|---|---|')
         for sid in sorted(by_wp[wp]):
-            tasks = '<br>'.join(f'{task_link(g, tid, rel)} ({L.text(part)})' for tid, part in om.get(sid, []))
-            out.append(f'| {L.link(sid)} | {md_escape(g.catalogue[sid]["title"])} | {tasks} |')
+            out.append(f'| {L.link(sid)} | {md_escape(g.catalogue[sid]["title"])} | {trace_cell(g, L, rel, sid, om)} |')
         pobs = [p for p in g.pobs.values() if p['id'].startswith(f'WP-{wp}:')]
         for p in pobs:
-            tasks = '<br>'.join(f'{task_link(g, tid, rel)} ({L.text(part)})' for tid, part in om.get(p['id'], []))
-            out.append(f'| {L.link("WP-" + wp)} package obligation | {L.text(p["title"])} | {tasks} |')
+            out.append(f'| {L.link("WP-" + wp)} package obligation | {L.text(p["title"])} | {trace_cell(g, L, rel, p["id"], om)} |')
         out.append('')
     out.append('## Gates')
     out.append('')
@@ -929,8 +1187,10 @@ def render_traceability(g: Graph) -> str:
     for gate in sorted(g.gates):
         rec = g.gates[gate]
         glabel = L.link(gate) if (L.home(gate) or CORPUS_ID.fullmatch(gate)) else f'[{gate}]({L.rel("docs/experience/03-state-and-acceptance.md")})'
+        if is_out(rec):
+            glabel += f' — out of scope ({rec["outOfScope"]["by"]})'
         out.append(f'| {glabel} | {L.text(rec.get("contribution", ""))} | '
-                   f'{", ".join(task_link(g, t, rel) for t in rec.get("tasks", []))} |')
+                   f'{", ".join(task_link(g, t, rel) + oos_suffix(g, t) for t in rec.get("tasks", []))} |')
     out.append('')
     if L.unknown:
         raise Fail(f'{rel}: unresolved identifiers {sorted(L.unknown)}')
@@ -957,9 +1217,10 @@ def render_substitutes(g: Graph) -> str:
     for sid in sorted(g.subs):
         s = g.subs[sid]
         rp = s['realProducer'] if isinstance(s['realProducer'], list) else [s['realProducer']]
-        out.append(f'| [{sid}](#{sid.lower()}) | {s["class"]} | {L.text(s["standsInFor"])} | '
-                   f'{", ".join(task_link(g, p, rel) for p in rp)} | {task_link(g, s["replacedBy"], rel)} | '
-                   f'{", ".join(task_link(g, u, rel) for u in users.get(sid, []))} |')
+        out.append(f'| [{sid}](#{sid.lower()}){oos_suffix(g, sid)} | {s["class"]} | {L.text(s["standsInFor"])} | '
+                   f'{", ".join(task_link(g, p, rel) + oos_suffix(g, p) for p in rp)} | '
+                   f'{task_link(g, s["replacedBy"], rel)}{oos_suffix(g, s["replacedBy"])} | '
+                   f'{", ".join(task_link(g, u, rel) + oos_suffix(g, u) for u in users.get(sid, []))} |')
     out.append('')
     for sid in sorted(g.subs):
         s = g.subs[sid]
@@ -967,6 +1228,8 @@ def render_substitutes(g: Graph) -> str:
         out.append('')
         out.append('| Field | Value |')
         out.append('|---|---|')
+        if is_out(s):
+            out.append(f'| Scope | Out of scope ({s["outOfScope"]["by"]}): {L.text(s["outOfScope"]["note"])} |')
         out.append(f'| Class | {s["class"]} |')
         out.append(f'| Stands in for | {L.text(s["standsInFor"])} |')
         out.append(f'| Authoritative contract | {L.text(s["contract"])} |')
@@ -1002,7 +1265,7 @@ def render_resources(g: Graph) -> str:
     out.append('|---|---|---|---|')
     for rid in sorted(g.res):
         r = g.res[rid]
-        tasks = ', '.join(f'{task_link(g, t, rel)} ({m})' for t, m in touch.get(rid, []))
+        tasks = ', '.join(f'{task_link(g, t, rel)}{oos_suffix(g, t)} ({m})' for t, m in touch.get(rid, []))
         out.append(f'| [{rid}](#{rid.lower()}) | {r["kind"]} | {L.text(r["owner"])} | {tasks} |')
     out.append('')
     for rid in sorted(g.res):
@@ -1032,6 +1295,9 @@ def render_analysis(g: Graph) -> str:
     out.append('| Measure | Value |')
     out.append('|---|---|')
     out.append(f'| Delivery tasks | {a["tasks"]} ({a["acceptedBaseline"]} carried as accepted baseline), plus {a["adoptionSlices"]} adoption slices |')
+    if a['outOfScopeTasks']:
+        decisions = ', '.join(sorted({t['outOfScope']['by'] for t in g.data['tasks'] if is_out(t)}))
+        out.append(f'| Out of scope (excluded from every measure here; not completed) | {count_of(a["outOfScopeTasks"], "task")} under {decisions} |')
     et = ', '.join(f'{k} {v}' for k, v in sorted(a['edgeTypes'].items()))
     out.append(f'| Dependency edges by type | {et} |')
     out.append(f'| Remaining work (size units: S=1, M=2, L=4, XL=8) | {a["remainingWork"]} |')
@@ -1045,7 +1311,7 @@ def render_analysis(g: Graph) -> str:
     out.append('| Lane | Tasks | Size units | Owning repositories |')
     out.append('|---|---|---|---|')
     for lane in g.data['lanes']:
-        lt = [t for t in g.data['tasks'] if t['lane'] == lane['id']]
+        lt = [t for t in g.in_scope().data['tasks'] if t['lane'] == lane['id']]
         if lt:
             out.append(f'| [{md_escape(lane["title"])}](lanes/{lane["id"]}.md) | {len(lt)} | {sum(SIZES[t["size"]] for t in lt)} | '
                        f'{", ".join(sorted({t["repo"] for t in lt}))} |')
@@ -1124,12 +1390,20 @@ def render_wp_block(g: Graph, wp: str, rel: str) -> str:
         t = g.tasks[tid]
         sat = '<br>'.join(f'{obligation_link(g, L, o["ref"])} ({L.text(o["part"])})' for o in mapped[tid])
         ext = ', '.join(f'{task_link(g, e["task"], rel)} ({e["type"]})' for e in t['start'] if e['task'] not in own_set) or 'none'
-        lines.append(f'| {task_link(g, tid, rel)} | {sat} | {ext} |')
+        lines.append(f'| {task_link(g, tid, rel)}{oos_suffix(g, tid)} | {sat} | {ext} |')
     succ = g.succ_map()
     consumers = sorted({s for tid in own for s in succ.get(tid, ()) if s not in own_set})
     lines.append('')
-    lines.append('**Consumers outside this package:** ' + (', '.join(task_link(g, c, rel) for c in consumers) or 'none') + '.')
+    lines.append('**Consumers outside this package:** ' + (', '.join(task_link(g, c, rel) + oos_suffix(g, c) for c in consumers)
+                                                           or 'none') + '.')
     lines.append('')
+    carried = [ref for ref in g.oob if (SUBSTEP.match(ref) or POB_ID.match(ref))
+               and (SUBSTEP.match(ref) or POB_ID.match(ref))[1] == wp]
+    for ref in carried:
+        r = g.oob[ref]
+        lines.append(f'**Out of scope ({r["by"]}):** {obligation_link(g, L, ref)} — {L.text(r["note"])}')
+    if carried:
+        lines.append('')
     lines.append(END)
     if L.unknown:
         raise Fail(f'{rel}: unresolved identifiers {sorted(L.unknown)}')
@@ -1157,8 +1431,9 @@ def render_prompts(g: Graph, design: Path, plan: Path, only_lane: str | None = N
     for lane in g.data['lanes']:
         if only_lane and lane['id'] != only_lane:
             continue
-        tasks = [t for t in g.data['tasks'] if t['lane'] == lane['id']]
-        if not tasks:
+        every = [t for t in g.data['tasks'] if t['lane'] == lane['id']]
+        tasks = [t for t in every if not is_out(t)]
+        if not every:
             continue
         out.append(f'## {lane["title"]}')
         out.append('')
@@ -1243,6 +1518,18 @@ def render_prompts(g: Graph, design: Path, plan: Path, only_lane: str | None = N
             for sid in sorted(g.slices, key=lambda s: (g.slices[s]['adoptionTask'], s)):
                 out.extend(render_slice_prompt(g, sid, design_win, plan_win))
                 out.append('')
+        excluded = [t for t in every if is_out(t)]
+        if excluded:
+            out += ['### Out of scope', '',
+                    'Excluded from the active plan. No prompt is issued and these tasks are never claimable; their '
+                    'decision, note and ledger status are listed here.', '',
+                    '| Task | Title | Decision | Mode | Note | Ledger status |', '|---|---|---|---|---|---|']
+            for t in excluded:
+                oo = t['outOfScope']
+                out.append(f'| {t["id"]} | {md_escape(t["title"])} | {oo["by"]} | '
+                           f'{"closeout" if oo.get("closeout") else "excluded"} | {md_escape(oo["note"])} | '
+                           f'{g.ledger_status.get(t["id"], "no record")} |')
+            out.append('')
     return '\n'.join(out).rstrip() + '\n'
 
 
@@ -1288,17 +1575,23 @@ def render_slice_prompt(g: Graph, sid: str, design_win: str, plan_win: str) -> l
 
 
 def render_index(g: Graph) -> str:
-    """Plan list.md: compact index of every task with its prompt file."""
+    """Plan list.md: compact index of every in-scope task with its prompt file; out-of-scope tasks come last."""
+    live = [t for t in g.data['tasks'] if not is_out(t)]
+    excluded = [t for t in g.data['tasks'] if is_out(t)]
+    lanes_live = sum(1 for l in g.lanes if any(t['lane'] == l for t in live))
     out = ['# ArcForges delivery task list', '',
            'Generated from Design `docs/planning/delivery/delivery-graph.json` by `tools/delivery.py`; do not edit by hand.',
            'There is no Current task. Any number of workers execute different ready tasks at the same time.',
            'This list is an index for reading and selection; its order is not a schedule. `python tools/delivery.py ready`',
            'lists what may be claimed now from the merged graph, ledger and claims. Each task\'s self-contained prompt is in',
            'the lane file linked from its section, and `arcforges-implementation.md` is the procedure.', '',
-           f'Tasks: {len(g.data["tasks"])} in {sum(1 for l in g.lanes if any(t["lane"] == l for t in g.data["tasks"]))} lanes, '
-           f'plus {len(g.slices)} adoption slices listed in the adoption section.', '']
+           f'Tasks: {len(live)} in {lanes_live} lanes, '
+           f'plus {len(g.slices)} adoption slices listed in the adoption section.'
+           + (f' {len(excluded)} more {"is" if len(excluded) == 1 else "are"} out of scope under '
+              f'{", ".join(sorted({t["outOfScope"]["by"] for t in excluded}))}; '
+              'they are listed at the end and have no prompt.' if excluded else ''), '']
     for lane in g.data['lanes']:
-        tasks = [t for t in g.data['tasks'] if t['lane'] == lane['id']]
+        tasks = [t for t in live if t['lane'] == lane['id']]
         if not tasks:
             continue
         out += [f'## {lane["title"]} — [prompts](tasks/{lane["id"]}.md)', '',
@@ -1316,14 +1609,25 @@ def render_index(g: Graph) -> str:
                     '|---|---|---|---|---|']
             for sid in sorted(g.slices, key=lambda s: (g.slices[s]['adoptionTask'], s)):
                 scope = g.slice_tasks(sid)
-                opens = sum(1 for x in scope if g.tasks[x]['baseline']['state'] != 'accepted')
+                opens = sum(1 for x in scope if g.tasks[x]['baseline']['state'] != 'accepted' and not is_out(g.tasks[x]))
                 out.append(f'| {sid} | {g.slices[sid]["repo"]} | S | {ROOT_ADOPTION} | {md_escape(g.slices[sid]["title"])} '
                            f'({opens}) |')
             out.append('')
+    if excluded:
+        out += ['## Out of scope', '',
+                'Excluded from the active plan: never claimable and not remaining work. Full records and ledger status '
+                'are on the lane pages.', '',
+                '| Task | Repository | Decision | Mode | Ledger status | Title |', '|---|---|---|---|---|---|']
+        for t in excluded:
+            oo = t['outOfScope']
+            out.append(f'| {t["id"]} | {t["repo"]} | {oo["by"]} | {"closeout" if oo.get("closeout") else "excluded"} | '
+                       f'{g.ledger_status.get(t["id"], "no record")} | {md_escape(t["title"])} |')
+        out.append('')
     return '\n'.join(out).rstrip() + '\n'
 
 
 def views(g: Graph, design: Path, plan: Path) -> dict[Path, str]:
+    g.ledger_status = {tid: rec['status'] for tid, rec in read_ledger(plan, g)[0].items()}
     files = {}
     for lane in g.data['lanes']:
         if any(t['lane'] == lane['id'] for t in g.data['tasks']):
@@ -1509,10 +1813,13 @@ def read_ledger(plan: Path, g: Graph) -> tuple[dict[str, dict], list[str]]:
             errors.append(f'{where}: second record for {tid}')
         out[tid] = {'status': fields.get('status'), 'file': p.name}
     for tid, record in out.items():
-        if record['status'] != 'complete':
+        # Scope rule 6: an out-of-scope record stays valid with any status and owes no completion prerequisites.
+        if record['status'] != 'complete' or is_out(g.tasks[tid]):
             continue
+        # S16(a): a complete task's edges are history, so an out-of-scope completion prerequisite never blocks it.
         pending = [edge['task'] for edge in g.tasks[tid].get('complete', [])
-                   if out.get(edge['task'], {}).get('status') not in {'complete', 'inherited'}]
+                   if out.get(edge['task'], {}).get('status') not in {'complete', 'inherited'}
+                   and not is_out(g.tasks.get(edge['task']))]
         if pending:
             errors.append(f"ledger/tasks/{record['file']}: {tid} cannot be complete; completion prerequisites "
                           f"are not complete or inherited: {', '.join(pending)}")
@@ -1631,8 +1938,8 @@ class State:
         self.records: dict[tuple[str, str], Record] = {}
         if local:
             self.graph = Graph(require_graph(design))
-            graph_errors, _ = validate(self.graph)
             self.ledger, ledger_errors = read_ledger(plan, self.graph)
+            graph_errors, _ = validate(self.graph, ledger_statuses(self.ledger))
             self.source = f'UNREVIEWED LOCAL STATE (Design {design}, Plan {plan}; claims not read)'
         else:
             d = fetch_refs(design, [('refs/heads/main', 'main')])
@@ -1643,11 +1950,12 @@ class State:
             if 'main' not in d or 'main' not in p:
                 raise Fail('a remote has no main branch')
             with tempfile.TemporaryDirectory(prefix='delivery-') as tmp:
-                extract(design, d['main'], ['docs/planning'], Path(tmp) / 'design')
+                # docs/decisions: the scope decision record that an outOfScope marker names must be on merged main (DLV-43)
+                extract(design, d['main'], ['docs/planning', 'docs/decisions'], Path(tmp) / 'design')
                 extract(plan, p['main'], ['ledger'], Path(tmp) / 'plan')
                 self.graph = Graph(Path(tmp) / 'design')
-                graph_errors, _ = validate(self.graph)
                 self.ledger, ledger_errors = read_ledger(Path(tmp) / 'plan', self.graph)
+                graph_errors, _ = validate(self.graph, ledger_statuses(self.ledger))
             ids = record_ids(self.graph)
             for name, sha in p.items():
                 if name != 'main':
@@ -1687,6 +1995,8 @@ class State:
         for tid, t in self.graph.tasks.items():
             if (lane and t['lane'] != lane) or (repo and t['repo'].lower() != repo.lower()):
                 continue
+            if is_out(t):  # never ready, never a follow-up, never waiting
+                continue
             status = self.status_of(tid)
             if status in {'complete', 'inherited', 'superseded'} or t['baseline']['state'] == 'accepted':
                 continue
@@ -1704,8 +2014,15 @@ class State:
         return start, follow, waiting
 
     def phase(self, tid: str, avail: str) -> str:
-        """'start' or 'follow-up' when the task may be claimed now; otherwise a Conflict naming why."""
+        """'start' or 'follow-up' when the task may be claimed now; otherwise a Conflict naming why. An out-of-scope
+        task is never claimed anew, except that an expired or delivered claim on a closeout task may be taken over
+        (phase 'closeout') under the expiry, grace and reason rules of cmd_claim, so that its closeout can be
+        finished (DLV-43)."""
         t = self.graph.tasks[tid]
+        if is_out(t):
+            if closeout_task(self.graph, tid) and avail in {'expired', 'delivered'}:
+                return 'closeout'
+            raise Conflict(f'{tid} is out of scope ({t["outOfScope"]["by"]}): {t["outOfScope"]["note"]}')
         status = self.status_of(tid)
         if t['baseline']['state'] == 'accepted' or status in {'complete', 'inherited', 'superseded'}:
             raise Conflict(f'{tid} is {status or "accepted baseline"} and is not claimable')
@@ -1850,12 +2167,18 @@ def cmd_claim(args) -> int:
         raise Conflict(f'{ident} is held: {describe(rec, now)}')
     if avail == 'complete':
         raise Conflict(f'{ident} is complete')
+    closeout = kind == 'task' and closeout_task(st.graph, ident)
     if avail == 'expired' and not args.takeover:
         raise Conflict(f'{ident} has an expired claim: {describe(rec, now)}\nTake it over only under the recovery '
                        'rules, with --takeover --reason')
+    if avail == 'delivered' and closeout and not args.takeover:
+        raise Conflict(f'{ident} is delivered under its closeout; take the claim over to finish the closeout, with '
+                       '--takeover --reason (a delivered record holds no lease, so there is no expiry to wait for)')
     if args.takeover:
-        if avail != 'expired':
-            raise Fail('--takeover applies only to a record whose lease expired more than one hour ago')
+        recoverable = avail == 'expired' or (avail == 'delivered' and closeout)
+        if not recoverable:
+            raise Fail('--takeover applies only to a record whose lease expired more than one hour ago, or to a '
+                       'delivered claim on a closeout task')
         if not (args.reason or '').strip():
             raise Fail('--takeover needs --reason: the idle branch and pull request checks and the unanswered release request')
     phase = st.phase(ident, avail) if kind == 'task' else None
@@ -1973,6 +2296,11 @@ def cmd_show(args) -> int:
         t = st.graph.tasks[ident]
         print(f'Ledger: {st.status_of(ident) or "no record"}; task branch {work_repo(st.graph, ident)}:task/{key}; '
               f'ledger record ledger/tasks/{key}.md')
+        if is_out(t):
+            scope = t['outOfScope']
+            print(f'Scope: out of scope ({scope["by"]}): {scope["note"]}'
+                  + (' · closeout: a held claim may be finished (taken over when expired or delivered), never claimed anew'
+                     if scope.get('closeout') else ''))
         if not st.status_of(ident) and t['baseline']['state'] != 'accepted':
             missing = st.missing_start(ident)
             print('Start rule: ' + ('satisfied' if not missing else 'waiting for ' + ', '.join(missing)))
@@ -2009,6 +2337,31 @@ def cmd_ready(args) -> int:
     return 0
 
 
+def scope_action(g: Graph, tid: str, avail: str = 'live') -> str:
+    """What a non-released claim on an out-of-scope task must do (avail is its live, expired, delivered or complete
+    availability). Only a live or expired record is held: its holder releases it, or, for a closeout task, finishes it
+    under closeout (an expired one is taken over for that purpose once its lease is more than the grace past). A
+    delivered closeout claim holds no lease, the holder can no longer write it, so it is taken over with --reason to
+    complete the closeout. Every other delivered or complete claim is ownerless and owes nothing. Nobody claims or
+    takes over an out-of-scope task as new work."""
+    closeout = closeout_task(g, tid)
+    if avail == 'complete':
+        return 'none owed (the record is complete and has no owner; the task is out of scope)'
+    if avail == 'delivered':
+        if closeout:
+            return ('take over under closeout (claim --takeover --reason; a delivered record holds no lease), then '
+                    'complete under closeout; never claimed anew')
+        return 'none owed (the record is delivered and has no owner; the task is out of scope)'
+    if closeout and avail == 'expired':
+        return ('take over under closeout (claim --takeover --reason, once the lease expired more than one hour ago), '
+                'then finish under closeout; never claimed anew')
+    if closeout:
+        return 'finish under closeout (update, deliver and complete the existing claim; never claimed anew)'
+    if avail == 'expired':
+        return 'release by the holder (the lease expired; nobody takes over an out-of-scope task)'
+    return 'release (the task is out of scope and is never claimed again)'
+
+
 def cmd_status(args) -> int:
     st = State(args.design, args.plan)
     g, now = st.graph, st.now
@@ -2028,6 +2381,11 @@ def cmd_status(args) -> int:
             continue
         a = r.availability(now)
         groups[(r.ns, a)].append(r)
+    # Every non-released claim on an out-of-scope task, live, expired, delivered or complete (only a released record
+    # holds nothing); each one names the action that the holder or a closeout takeover must take, so that no claim
+    # can dead-end unlisted.
+    oos_claims = [r for r in recs if wanted(r) and r.ns == 'claims' and r.ident in g.tasks
+                  and is_out(g.tasks[r.ident]) and r.availability(now) in {'live', 'expired', 'delivered', 'complete'}]
     if args.json:
         print(json.dumps({
             'source': st.source,
@@ -2035,6 +2393,8 @@ def cmd_status(args) -> int:
                          'record': r.data, 'errors': r.errors} for r in recs if wanted(r)],
             'waitingForCompletion': [{'task': t, 'pending': p} for t, p, _ in sorted(waiting)],
             'completionFollowUps': [t for t, _, _ in sorted(follow)],
+            'claimsOnOutOfScope': [{'task': r.ident, 'availability': r.availability(now),
+                                    'action': scope_action(g, r.ident, r.availability(now))} for r in oos_claims],
             'vacantIntegrationRoles': sorted(r for r in g.repos if not any(
                 x.ns == 'roles' and x.ident == role_id(r) and x.availability(now) == 'live' for x in recs)),
             'buildSlot': slot_owner(slot_path())}, indent=1))
@@ -2054,6 +2414,9 @@ def cmd_status(args) -> int:
         print(f'\n{title} ({len(groups[group])}):')
         for r in groups[group]:
             print(f'{r.ident}\t{describe(r, now)}')
+    print(f'\nClaims on out-of-scope tasks ({len(oos_claims)}):')
+    for r in oos_claims:
+        print(f'{r.ident}\t{describe(r, now)}\taction: {scope_action(g, r.ident, r.availability(now))}')
     held = {x.ident for x in recs if x.ns == 'roles' and x.availability(now) == 'live'}
     print('\nVacant integration roles: ' + (', '.join(f'integration:{r}' for r in sorted(g.repos) if role_id(r) not in held) or 'none'))
     print(f'\nDelivered tasks waiting for completion prerequisites ({len(waiting)}):')
@@ -2274,10 +2637,10 @@ def cmd_build_slot(args) -> int:
 
 def cmd_check(args, write: bool = False) -> int:
     g = Graph(require_graph(args.design))
-    errors, warnings = validate(g)
+    ledger, ledger_errors = read_ledger(args.plan, g)
+    errors, warnings = validate(g, ledger_statuses(ledger))
     for w in warnings:
         print('warning:', w)
-    _, ledger_errors = read_ledger(args.plan, g)
     errors += [f'ledger: {e}' for e in ledger_errors]
     if errors:
         for e in errors:
@@ -2295,14 +2658,17 @@ def cmd_check(args, write: bool = False) -> int:
         print('stale view:', p)
     if stale:
         raise Fail(f'{len(stale)} generated views are stale; run generate')
-    print(f'check passed: {len(g.data["tasks"])} tasks, {len(g.slices)} adoption slices, {len(files)} views current, '
+    excluded = sum(1 for t in g.data['tasks'] if is_out(t))
+    scope = f' ({excluded} out of scope)' if excluded else ''
+    print(f'check passed: {len(g.data["tasks"])} tasks{scope}, {len(g.slices)} adoption slices, {len(files)} views current, '
           f'{len(warnings)} warnings, ledger valid')
     return 0
 
 
 def cmd_analyze(args) -> int:
     g = Graph(require_graph(args.design))
-    errors, _ = validate(g)
+    ledger, _ = read_ledger(args.plan, g)
+    errors, _ = validate(g, ledger_statuses(ledger))
     if errors:
         raise Fail(f'{len(errors)} graph errors; run check')
     print(json.dumps(analysis(g), indent=1))

@@ -148,9 +148,9 @@ Permitted write scope: Web:src/ArcForges.Web.Operations/**; Web:tests/ArcForges.
 Shared resources (follow the owner protocol): RES-cloud-runbooks-and-fixtures (append): One file per runbook, monitor or provider fixture; indexes are append-only; recorded provider fixtures stay test-only.; RES-contracts-schema-sources (append): Each schema closure task edits only its own domain proto or HTTP-schema files and adds its own sharded constraint and fixture files. Schema-closure tasks and Contracts policy tasks that touch package/access/provenance/dependency input registries share this append/rebase protocol: append only task-owned rows and successor receipts to package, compiled access/hash, foundation, operation, constraint, provenance source/output, binding, and dependency-review inventories; preserve prior history and never rewrite another task's rows. Refresh dependency input hashes only for the task-owned closure; do not expand dependency versions or closure except for the two exact task-specific exceptions below. One narrow exception applies only to CON.14: it may add the single ArcForges.Contracts.CloudInternal → existing ArcForges.Contracts.PublicApi package/project edge required for generated OperatorService imports to resolve to their canonical owner, implemented only by one ProjectReference in the CloudInternal csproj, its existing packages.lock.json, and the CloudInternal dependency row in eng/contract-packages.json. This expands only CloudInternal's package-specific closure to include the existing PublicApi package and its existing same-version transitive realization; the lock may add the PublicApi project and already-pinned Grpc.Core.Api 2.84.0, while existing Foundation and Google.Protobuf 3.36.1 entries retain their versions and hashes. The exception permits only the matching exact input-hash refreshes and immutable con-14-r1 successor chained from active con-22-r1. Preserve the aggregate dependency coordinate/version set, package IDs and licences, every other package's dependency usage/closure, Foundation/PublicApi ownership, all prior receipt history, and the PublicApi 1.0.0-ci.113.1 PreviousClient-only fixture classification. A second, CON.11-only exception permits only the already-authorized Events → PublicApi and CloudInternal → Events/PublicApi project references to realize in Events and CloudInternal as the corresponding first-party Project lock entries plus the exact centrally pinned Grpc.Core.Api CentralTransitive row: requested [2.84.0, ), resolved 2.84.0, contentHash p2SOMl6q/GZ4/5MLkgboC/z55g4zKUEruRn/g46QgppjQBVnsLZVBU/9VO7n60ll38G3Eo8Zu9b7x+W01GKFVg==. Only the five existing consumer lockfiles tests/StructureTests/packages.lock.json, tests/public/SerializationProbe/packages.lock.json, src/public/dotnet/ArcForges.Sdk.Client/packages.lock.json, src/public/dotnet/ArcForges.Cli/packages.lock.json, and src/public/dotnet/ArcForges.Contracts.Validation/packages.lock.json may add ArcForges.Contracts.PublicApi [1.0.0-ci.0.0, ) to the existing ArcForges.Contracts.Events Project.dependencies field, exactly as SDK restore requires. In only tests/StructureTests/packages.lock.json and tests/public/SerializationProbe/packages.lock.json, SDK restore may also add ArcForges.Contracts.Events and ArcForges.Contracts.PublicApi [1.0.0-ci.0.0, ) to the existing ArcForges.Contracts.CloudInternal Project.dependencies field, exactly as the already-authorized CloudInternal -> Events/PublicApi project references require; no other field, package/project entry, project dependency, target framework, version, hash, or consumer behavior changes. This exception permits only these matching task-owned lock/policy input-hash refreshes and the immutable con-11-r1 successor, and preserves the aggregate coordinate/version/licence union, all other package usage/closures, existing Foundation, Google.Protobuf and Microsoft.NET.ILLink.Tasks rows, previous receipt history, package identities and the PreviousClient-only fixture classification. No direct package reference, PrivateAssets or asset override, other coordinate/version/hash, project, lock row, licence exception or dependency algorithm change is authorized; all other tasks retain the no-closure-expansion rule. Public Kotlin/Dokka successors are exclusively governed by RES-contracts-dokka-profile. A proto file with several contributing tasks (operator, policy/configuration) has one designated author task and the others request changes through it. Each serialized merge is followed by a rebase and regeneration before integration of the next task.; RES-web-app-routing (append): The application shell task owns root route registration; each surface adds its own route module and per-origin edge directory.
 Unblocks: CLOUD.64, OPS.06, OPS.07, OPS.08, OPS.11, OPS.13, WEB.31
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline/staged tests: silent-impersonation negative, scope/expiry, two-operator requirement, audit-completeness, parallel-admin-API-absence assertion, every generated role/method pair (allowed and refused), double-execution-of-one-approval negative; browser-support.v1 supported/degraded/blocked behavior per P2-017 (no live E2E browser matrix in routine CI).
-Completion evidence for the ledger: Silent-impersonation negative result; two-operator requirement result; full role/method matrix exercised (allowed and refused).
-Notes: BR-06 ('an operator never silently becomes a user') is a headline security invariant for the whole package; the silent-impersonation negative test is worth proving early against a minimal console skeleton before building every case-type UI on top. Planning repair 2026-10-08 (DLV-34; P2-021): The operator console is the standalone Blazor WebAssembly Operations profile (P2-021 item 2) on its own origin and identity, not part of the Account or Chat bundles. Its writes move from the React apps/app tree to ArcForges.Web.Operations, whose skeleton WEB.40 creates. The silent-impersonation, two-operator, audit, scope/expiry and role/method criteria are unchanged. Tests are xUnit and bUnit; browser-support.v1 checks stay local opt-in per P2-017.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline/staged tests: silent-impersonation negative, scope/expiry, two-operator requirement, audit-completeness, parallel-admin-API-absence assertion, every generated role/method pair of the retained operator contract (allowed and refused; catalog pairs are out of scope, P2-026), double-execution-of-one-approval negative; browser-support.v1 supported/degraded/blocked behavior per P2-017 (no live E2E browser matrix in routine CI).
+Completion evidence for the ledger: Silent-impersonation negative result; two-operator requirement result; full retained-contract role/method matrix exercised (allowed and refused).
+Notes: BR-06 ('an operator never silently becomes a user') is a headline security invariant for the whole package; the silent-impersonation negative test is worth proving early against a minimal console skeleton before building every case-type UI on top. Planning repair 2026-10-08 (DLV-34; P2-021): The operator console is the standalone Blazor WebAssembly Operations profile (P2-021 item 2) on its own origin and identity, not part of the Account or Chat bundles. Its writes move from the React apps/app tree to ArcForges.Web.Operations, whose skeleton WEB.40 creates. The silent-impersonation, two-operator, audit, scope/expiry and role/method criteria are unchanged. Tests are xUnit and bUnit; browser-support.v1 checks stay local opt-in per P2-017. Planning repair 2026-10-09 (P2-026; scope correction): reduced: the PackageCatalog and catalog operator methods and their role/method pairs, the package-review feature folder and its tests in ArcForges.Web.Operations, and catalog scope in the operator role matrix are out of scope, not completed.
 ```
 
 ```text
@@ -215,7 +215,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/ops-08 (python tools/delivery.py claim OPS.08 --worker <name>); task branch task/ops-08 in Cloud; ledger record ledger/tasks/ops-08.md.
 Kind/size: service/L. Baseline: not-started.
-Outcome: Community report intake drives a proportionate enforcement ladder with every action recorded and communicated, account enforcement states integrate with the account model, and appeals have a defined path and response expectation.
+Outcome: Account-level enforcement (community report intake for public ecosystem objects is out of scope, P2-026) drives a proportionate enforcement ladder with every action recorded and communicated, account enforcement states integrate with the account model, and appeals have a defined path and response expectation.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-45.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.07
@@ -232,6 +232,7 @@ Unblocks: OPS.12
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: ladder-progression, communication-completeness, appeal-path, enforcement-audit.
 Completion evidence for the ledger: Ladder-progression test; appeal-path test.
+Notes: Planning repair 2026-10-09 (P2-026; scope correction): reduced: community report intake and the Community Report to Investigation to Enforcement chain for public ecosystem objects, the community-report case type on OPS.07 reference resolution, and package-version enforcement and binary security-revocation appeals (AP-04) are out of scope, not completed.
 ```
 
 ```text
@@ -242,7 +243,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/ops-09 (python tools/delivery.py claim OPS.09 --worker <name>); task branch task/ops-09 in Cloud; ledger record ledger/tasks/ops-09.md.
 Kind/size: service/M. Baseline: not-started.
-Outcome: Transactional/broadcast email use the real WP-22 Postmark/SES adapters with separated streams; outage and reconciliation drills are rehearsed under a prepared secondary path; and the private security-advisory intake-through-publication process is complete with in-product containment/revocation attention.
+Outcome: Transactional/broadcast email use the real WP-22 Postmark/SES adapters with separated streams; outage and reconciliation drills are rehearsed under a prepared secondary path; and the first-party private security-advisory intake-through-publication process is complete (third-party package advisories and in-product package containment or revocation attention are out of scope, P2-026).
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-45.08 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.08
@@ -261,7 +262,7 @@ Unblocks: OPS.10, OPS.12
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests where possible (spoofed/replayed callback, bounced/complained suppression, content-redaction) plus recorded live-provider drill evidence (unknown send, DNS readiness, independent status/incident during a real Cloud outage) kept outside routine CI per P2-017.
 Completion evidence for the ledger: Live operational evidence and rollback-contact record; signed advisory authenticity and affected-version-matching results; no disclosure before approved publication.
-Notes: This task cannot use a mail substitute — WP-45 explicitly states runtime mail fixtures are absent and that WP-45.08 'is not the first email producer,' i.e. it must consume WP-22's real adapters from day one.
+Notes: This task cannot use a mail substitute — WP-45 explicitly states runtime mail fixtures are absent and that WP-45.08 'is not the first email producer,' i.e. it must consume WP-22's real adapters from day one. Planning repair 2026-10-09 (P2-026; scope correction): reduced: publisher-facing advisories for vulnerabilities in third-party packages (SR-12) and in-product package containment and revocation attention (I-442) are out of scope, not completed; only the first-party advisory process remains.
 ```
 
 ```text
@@ -294,36 +295,6 @@ Notes: Named as required-real-early scaffolding in implementation-sequence §3.1
 ```
 
 ```text
-Execute ArcForges delivery task OPS.11 — Package review and revocation console.
-
-Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-11).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\Web (integration owner: Web integration owner, the holder of roles/integration-web).
-Claim and handoff record: claims/ops-11 (python tools/delivery.py claim OPS.11 --worker <name>); task branch task/ops-11 in Web; ledger record ledger/tasks/ops-11.md.
-Kind/size: service/M. Baseline: not-started.
-Outcome: The operator console integrates WP-41 PackageCatalog operator methods (catalogReview/catalogRevoke) with independent operator authentication, step-up/evidence and audit, and review/revocation decisions visibly affect real signed catalog consumers.
-
-Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-45.10 (all work except the parts mapped to OPS.13): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\45-operations-support-and-trust-safety.md, anchor rule-wp-45.10
-
-Entry condition: adoption slice ADOPT.09.operations is complete in the Plan ledger (DLV-22).
-Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] EXT.06: the PackageCatalog producer's operator methods (GetCatalogSubmission etc.)
-- [contract] CON.14: the catalogReview/catalogRevoke operator RPC shapes
-- [artifact] OPS.05: the operator console's identity/step-up/audit shell
-Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
-
-Permitted write scope: Web:src/ArcForges.Web.Operations/Features/PackageReview/**; Web:tests/ArcForges.Web.Operations.Tests/PackageReview/**
-Shared resources (follow the owner protocol): RES-contracts-schema-sources (append): Each schema closure task edits only its own domain proto or HTTP-schema files and adds its own sharded constraint and fixture files. Schema-closure tasks and Contracts policy tasks that touch package/access/provenance/dependency input registries share this append/rebase protocol: append only task-owned rows and successor receipts to package, compiled access/hash, foundation, operation, constraint, provenance source/output, binding, and dependency-review inventories; preserve prior history and never rewrite another task's rows. Refresh dependency input hashes only for the task-owned closure; do not expand dependency versions or closure except for the two exact task-specific exceptions below. One narrow exception applies only to CON.14: it may add the single ArcForges.Contracts.CloudInternal → existing ArcForges.Contracts.PublicApi package/project edge required for generated OperatorService imports to resolve to their canonical owner, implemented only by one ProjectReference in the CloudInternal csproj, its existing packages.lock.json, and the CloudInternal dependency row in eng/contract-packages.json. This expands only CloudInternal's package-specific closure to include the existing PublicApi package and its existing same-version transitive realization; the lock may add the PublicApi project and already-pinned Grpc.Core.Api 2.84.0, while existing Foundation and Google.Protobuf 3.36.1 entries retain their versions and hashes. The exception permits only the matching exact input-hash refreshes and immutable con-14-r1 successor chained from active con-22-r1. Preserve the aggregate dependency coordinate/version set, package IDs and licences, every other package's dependency usage/closure, Foundation/PublicApi ownership, all prior receipt history, and the PublicApi 1.0.0-ci.113.1 PreviousClient-only fixture classification. A second, CON.11-only exception permits only the already-authorized Events → PublicApi and CloudInternal → Events/PublicApi project references to realize in Events and CloudInternal as the corresponding first-party Project lock entries plus the exact centrally pinned Grpc.Core.Api CentralTransitive row: requested [2.84.0, ), resolved 2.84.0, contentHash p2SOMl6q/GZ4/5MLkgboC/z55g4zKUEruRn/g46QgppjQBVnsLZVBU/9VO7n60ll38G3Eo8Zu9b7x+W01GKFVg==. Only the five existing consumer lockfiles tests/StructureTests/packages.lock.json, tests/public/SerializationProbe/packages.lock.json, src/public/dotnet/ArcForges.Sdk.Client/packages.lock.json, src/public/dotnet/ArcForges.Cli/packages.lock.json, and src/public/dotnet/ArcForges.Contracts.Validation/packages.lock.json may add ArcForges.Contracts.PublicApi [1.0.0-ci.0.0, ) to the existing ArcForges.Contracts.Events Project.dependencies field, exactly as SDK restore requires. In only tests/StructureTests/packages.lock.json and tests/public/SerializationProbe/packages.lock.json, SDK restore may also add ArcForges.Contracts.Events and ArcForges.Contracts.PublicApi [1.0.0-ci.0.0, ) to the existing ArcForges.Contracts.CloudInternal Project.dependencies field, exactly as the already-authorized CloudInternal -> Events/PublicApi project references require; no other field, package/project entry, project dependency, target framework, version, hash, or consumer behavior changes. This exception permits only these matching task-owned lock/policy input-hash refreshes and the immutable con-11-r1 successor, and preserves the aggregate coordinate/version/licence union, all other package usage/closures, existing Foundation, Google.Protobuf and Microsoft.NET.ILLink.Tasks rows, previous receipt history, package identities and the PreviousClient-only fixture classification. No direct package reference, PrivateAssets or asset override, other coordinate/version/hash, project, lock row, licence exception or dependency algorithm change is authorized; all other tasks retain the no-closure-expansion rule. Public Kotlin/Dokka successors are exclusively governed by RES-contracts-dokka-profile. A proto file with several contributing tasks (operator, policy/configuration) has one designated author task and the others request changes through it. Each serialized merge is followed by a rebase and regeneration before integration of the next task.; RES-web-app-routing (append): The application shell task owns root route registration; each surface adds its own route module and per-origin edge directory.
-Unblocks: OPS.12, OPS.13
-
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: customer/PAT denial, changed-proposal-hash, replay, revoked-package, failed-index-publication/retry.
-Completion evidence for the ledger: Revocation affecting a real signed catalog consumer, with recorded operator evidence.
-Notes: Planning repair 2026-10-08 (DLV-34; P2-021): The package review and revocation console is a feature folder of the Blazor Operations profile (ArcForges.Web.Operations) instead of the React apps/app tree. The catalogReview/catalogRevoke integration and the customer/PAT denial, changed-proposal-hash, replay, revoked-package and retry criteria are unchanged; tests are xUnit and bUnit.
-```
-
-```text
 Execute ArcForges delivery task OPS.12 — Owned-artifact receipt.
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\operations.md (anchor task-ops-12).
@@ -338,8 +309,6 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 
 Entry condition: adoption slice ADOPT.07.operations is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] OPS.11: the last domain producer's evidence to attach
-- [artifact] AND.26: package task delivered
 - [artifact] OPS.01: package task delivered
 - [artifact] OPS.02: package task delivered
 - [artifact] OPS.03: package task delivered
@@ -355,8 +324,9 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Cloud:eng/provenance/records/**
 Unblocks: REL.06, REL.09
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Aggregation of OPS.01-11 evidence; no-second-host architecture assertion.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Aggregation of OPS.01-10 evidence; no-second-host architecture assertion.
 Completion evidence for the ledger: The owned-artifact/real-integration receipt; no-second-Node-host assertion.
+Notes: Planning repair 2026-10-09 (P2-026; scope correction): reduced: the receipt aggregates OPS.01-10 only (OPS.11 is out of scope); the physical-device FCM receipt (AND.26) gates the Android release (REL.04), not this receipt.
 ```
 
 ```text
@@ -379,7 +349,6 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] POL.05: real, delivered outcome of POL.05 (Kill switches)
 - [artifact] OPS.05: real, delivered outcome of OPS.05 (Operator console and support access)
 - [artifact] CON.14: real, delivered outcome of CON.14 (Operator control service (OperatorService, full §9/9.1/9.2 protocol))
-- [artifact] OPS.11: real, delivered outcome of OPS.11 (Package review and revocation console)
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -388,5 +357,13 @@ Unblocks: COM.13
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
 Completion evidence for the ledger: an authorised operator can actually grant/revoke/issueCredit/adjustCredit/refund and activate a kill switch through the console UI, not just via direct RPC test calls
-Notes: Merged duplicate integration or closure task formerly proposed as CON.98. Planning repair 2026-10-08 (DLV-34; P2-021): The console this task exercises is the Blazor Operations profile (OPS.05, WEB.40). The end-to-end RPC and kill-switch criteria are stack-neutral and unchanged; OPS.13 has no writes of its own.
+Notes: Merged duplicate integration or closure task formerly proposed as CON.98. Planning repair 2026-10-08 (DLV-34; P2-021): The console this task exercises is the Blazor Operations profile (OPS.05, WEB.40). The end-to-end RPC and kill-switch criteria are stack-neutral and unchanged; OPS.13 has no writes of its own. Planning repair 2026-10-09 (P2-026; scope correction): reduced: the WP-45.10 real operator console join for package review (catalogReview and catalogRevoke through the console) is out of scope, not completed; the OPS.11 start edge is removed.
 ```
+
+### Out of scope
+
+Excluded from the active plan. No prompt is issued and these tasks are never claimable; their decision, note and ledger status are listed here.
+
+| Task | Title | Decision | Mode | Note | Ledger status |
+|---|---|---|---|---|---|
+| OPS.11 | Package review and revocation console | P2-026 | excluded | Out of scope, not completed: no concrete necessary ArcScope consumer; the package review and revocation console depends on the excluded PackageCatalog and catalog ecosystem, which are post-V1 (P2-026 S5). | no record |

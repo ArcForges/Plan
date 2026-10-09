@@ -181,23 +181,24 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/upd-07 (python tools/delivery.py claim UPD.07 --worker <name>); task branch task/upd-07 in DesktopPlatform; ledger record ledger/tasks/upd-07.md.
 Kind/size: producer/M. Baseline: not-started.
-Outcome: Production catalog/revocation and Android direct-update feeds using WP03 formats, with signing custody/rotation and artifact URI/certificate inventory; registers the ArcScope desktop auth URI scheme in its signed installers.
+Outcome: Production Android direct-update feed using the WP03 android-update.v1 format, with signing custody/rotation and artifact URI/certificate inventory; registers the ArcScope desktop auth URI scheme in its signed installers.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-53.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\53-desktop-distribution-and-update.md, anchor rule-wp-53.07
+- WP-53.07 (Android direct-update feed (android-update.v1) only; the catalog-index and catalog-revocation feeds are out of V1 (P2-026 S5, S14)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\53-desktop-distribution-and-update.md, anchor rule-wp-53.07
 
 Entry condition: adoption slice ADOPT.02.updater is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] UPD.01: signed feed mechanics
-- [contract] CON.16: native auth exceptions, catalog/index/revocation/update/realm schemas and independent signed vectors
+- [contract] CON.16: native auth exceptions, android-update.v1 schema and independent signed vectors
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
 Permitted write scope: DesktopPlatform:src/Update/ArcForges.Update/**; DesktopPlatform:eng/packaging/**
 Unblocks: REL.10, UPD.08
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: real signatures/shards/monotonic revision, current/previous trust, Android certificate match and desktop callback registration from installed packages - against test key material; production key custody itself is an operational/local-opt-in concern, not a CI-testable behavior.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: real signatures/monotonic revision, current/previous trust, Android certificate match and desktop callback registration from installed packages - against test key material; production key custody itself is an operational/local-opt-in concern, not a CI-testable behavior.
 Completion evidence for the ledger: WP50 can replace WP32/WP41 fixture keys with production feeds without changing schemas.
+Notes: Planning repair 2026-10-09 (P2-026; scope correction): reduced: the production catalog-index and catalog-revocation feeds, their signing custody, shards and revocation tests, and catalog-domain acceptance are out of scope, not completed (community catalog; CON.13 and EXT.06 to EXT.07 excluded).
 ```
 
 ```text
@@ -221,7 +222,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] UPD.04: rollback/migration interlock
 - [artifact] UPD.05: channels/rollout
 - [artifact] UPD.06: diagnostics/uninstall
-- [artifact] UPD.07: production catalog/trust
+- [artifact] UPD.07: production update-feed trust
 - [artifact] PRF.02: a real signed candidate AOT application to install/update
 - [artifact] POL.09: client policy resolution library
 Completion prerequisites (may start earlier; cannot complete before these are complete):
@@ -233,5 +234,5 @@ Unblocks: POL.07, REL.02
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): P2-017: Tier 1 (Windows/Linux) real install/apply/rollback cycle is the kind of local, affected-scope, once, existing-environment runtime check P2-017 permits and expects to be recorded, distinct from hosted CI; the Linux leg runs in local WSL2 per P2-024. There is no Tier 2 and no macOS waiver or macOS CI (P2-023).
 Completion evidence for the ledger: Owned artifact and real-integration receipt per WP-53.90.
-Notes: Planning repair 2026-10-08 (DLV-34; P2-023): the Tier 2 macOS waiver path is removed; Tier 1 (Windows and Linux) remains the only lifecycle acceptance. The Linux leg runs in local WSL2 per P2-024.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-023): the Tier 2 macOS waiver path is removed; Tier 1 (Windows and Linux) remains the only lifecycle acceptance. The Linux leg runs in local WSL2 per P2-024. Planning repair 2026-10-09 (P2-026; scope correction): narrowed: the UPD.07 need is the Android and desktop update-feed trust; catalog trust is out of scope, not completed.
 ```

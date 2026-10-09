@@ -33,7 +33,7 @@ Unblocks: AND.02, AND.04, AND.22, AND.40
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Windows full build of the identity-only project with locked restore (packages.lock.json content hashes), NuGet audit and dependency-verification check, and the same Linux full build in the hosted Linux CI job that AND.40 adds (P2-024 limitation: the local WSL2 Debian distribution has no JDK or Android SDK and installing them needs the user; owner AND.40, trigger its Linux CI job; AND.01 is not complete before that Linux build passes); F-023-class licence and provenance closure re-run for the pinned MAUI closure; package-identity and certificate inspection of the built manifest under P2-017. The MAUI app release build and its Mono AOT, trimming, R8 and 16 KB checks are an explicit transfer to AND.40 (CI) and PRF.12 (candidate proof), so the Windows and Linux build acceptance is not narrowed here; device install and App Link fixture-key tests are local opt-in, not CI gates.
 Completion evidence for the ledger: Exact pinned tuple in global.json, Directory.Packages.props and packages.lock.json; SDK and workload integrity pins (exact SDK version with rollForward pinned, exact workload manifest versions, packages.lock.json content hashes in place of the former Gradle wrapper checksum); admission records for each new NuGet or workload dependency; built manifest showing applicationId com.arcforges.mobile; reinstall guidance recorded in docs/releasing.md; F-023 re-run showing the closure holds for the MAUI dependency set (the android-0.1.0-ci.14.1 closure does not carry over and reopens on this dependency change); no AGPL DesktopPlatform package in the closure; the hosted Linux CI run (run identifier) of the identity-only build that AND.40 adds, which closes the P2-024 deferral.
-Notes: Must also decide the KMP shared/ preview module's fate: arch-27's module map (core/*, feature/*) has no KMP target, so shared/ stays a dev-only convenience outside the shipped app graph, never a second production plan (per WP30 §4). Planning repair 2026-10-08 (DLV-34; P2-021): Kotlin/AGP/Compose/Gradle tuple replaced by the .NET 10 LTS SDK, Android workload and NuGet candidate pins (P2-021.3); applicationId decision taken from P2-021.3 and IRD-23 (com.arcforges.mobile, reinstall from io.github.arcforges.mobile documented in docs/releasing.md with no data migration). Source packages are adopted as well as applicationId and namespace. Identity-only Windows and Linux build acceptance restored; the MAUI release-build proof transfers explicitly to AND.40 (CI) and PRF.12 (device proof). Start edge on the superseded PRF.10 removed; the exact-tuple proof is a completion edge on PRF.12, not a start gate. Dropped on purpose: the optional development preview in the KMP shared/ module (desktopMain, labelled development-only; AGENTS.md:3) retires with the Kotlin/KMP modules under AND.40, with no replacement preview; the development-only status is restated in AND.22. No acceptance removed. Planning repair 2026-10-08 (DLV-34; coordinator adjudication, brief section 10): the write scope is completed with the paths the outcome already requires (docs/releasing.md for the reinstall guidance; the identity-only project sources, manifest and lock; the identity gate and its tests; the toolchain and licence documentation; the bin/obj ignore). The identity project carries no runtime behaviour: no permission, no launchable activity, only compile-only sources. First-party Contracts packages are admitted only from a candidate published from a commit on the current Contracts main (Contracts main 330e46bd, which the 2026-10-07 baseline rollback kept, published 1.0.0-ci.324.1 on 2026-10-05); 1.0.0-ci.350.1 was published from rolled-back commit 74c298c9 and is not admitted. No obligation or acceptance changes. Planning repair 2026-10-09 (DLV-34; coordinator adjudication, brief section 10 AND.40 decisions): the single-target wording is scoped to the shipped projects (host test targets). Planning repair 2026-10-09 (DLV-34; fix4 review follow-up, non-blocking items): "host-run" is defined in place; no acceptance or evidence changes.
+Notes: Must also decide the KMP shared/ preview module's fate: arch-27's module map (core/*, feature/*) has no KMP target, so shared/ stays a dev-only convenience outside the shipped app graph, never a second production plan (per WP30 §4). Planning repair 2026-10-08 (DLV-34; P2-021): Kotlin/AGP/Compose/Gradle tuple replaced by the .NET 10 LTS SDK, Android workload and NuGet candidate pins (P2-021.3); applicationId decision taken from P2-021.3 and IRD-23 (com.arcforges.mobile, reinstall from io.github.arcforges.mobile documented in docs/releasing.md with no data migration). Source packages are adopted as well as applicationId and namespace. Identity-only Windows and Linux build acceptance restored; the MAUI release-build proof transfers explicitly to AND.40 (CI) and PRF.12 (device proof). Start edge on the superseded PRF.10 removed; the exact-tuple proof is a completion edge on PRF.12, not a start gate. Dropped on purpose: the optional development preview in the KMP shared/ module (desktopMain, labelled development-only; AGENTS.md:3) retires with the Kotlin/KMP modules under AND.40, with no replacement preview; the development-only status is restated in AND.22. No acceptance removed. Planning repair 2026-10-08 (DLV-34; coordinator adjudication, brief section 10): the write scope is completed with the paths the outcome already requires (docs/releasing.md for the reinstall guidance; the identity-only project sources, manifest and lock; the identity gate and its tests; the toolchain and licence documentation; the bin/obj ignore). The identity project carries no runtime behaviour: no permission, no launchable activity, only compile-only sources. First-party Contracts packages are admitted only from a candidate published from a commit on the current Contracts main (Contracts main 330e46bd, which the 2026-10-07 baseline rollback kept, published 1.0.0-ci.324.1 on 2026-10-05); 1.0.0-ci.350.1 was published from rolled-back commit 74c298c9 and is not admitted. No obligation or acceptance changes. Planning repair 2026-10-09 (DLV-34; coordinator adjudication, brief section 10 AND.40 decisions): the single-target wording is scoped to the shipped projects (host test targets). Planning repair 2026-10-09 (DLV-34; fix4 review follow-up, non-blocking items): "host-run" is defined in place; no acceptance or evidence changes. Planning repair 2026-10-09 (P2-026; scope correction): reduced: the Gradle 9.8.1, Kotlin 2.4.21 and Spotless 8.10.4 admissions, the Gradle wrapper, gradle/libs.versions.toml, gradle/locks, verification metadata, the JDK 21 pin and the Kotlin lint gates are out of scope, not completed; completion cites only the .NET identity build and the PRF.12 tuple proof.
 ```
 
 ```text
@@ -272,6 +272,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] AND.24: real CF Harness admission/generation/tool loop
 - [integration] AND.07: foundation candidate proven against the deployed Cloud services
+- [integration] SRCH.90: the owned search artifacts and index capacity acceptance
 
 Permitted write scope: Mobile:src/features/ArcForges.Mobile.Chat/**
 Permitted substitutes (never real integration evidence): SUB-fixture-turn-endpoint: client-side session/event/output/upload handling, typed state transitions, reconnection -- runs no model/planner/admission/metering itself Real producer ['HAR.00', 'HAR.02', 'HAR.03']; removed by HAR.05
@@ -279,7 +280,7 @@ Unblocks: AND.13, AND.14, AND.15, AND.19, AND.24
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline stream-codec/cursor unit tests; real-device streaming/reconnect scenarios against the deployed (fixture-backed until WP52.05) endpoint are local opt-in
 Completion evidence for the ledger: History/pending-input/stream/final-message consistency under every declared recovery outcome
-Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Composer, IME and stream surfaces become MAUI controls on the same stream and cursor semantics; writes moved to the C# feature project. Acceptance unchanged.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Composer, IME and stream surfaces become MAUI controls on the same stream and cursor semantics; writes moved to the C# feature project. Acceptance unchanged. Planning repair 2026-10-09 (P2-026; scope correction): added: start edge on SRCH.90 (S13; companion answers and search).
 ```
 
 ```text
@@ -473,14 +474,14 @@ Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Final join of the MAUI compa
 ```
 
 ```text
-Execute ArcForges delivery task AND.16 — Signed Android release artifacts (AAB + direct APK).
+Execute ArcForges delivery task AND.16 — Signed Android release artifacts (direct APK).
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-16).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-16 (python tools/delivery.py claim AND.16 --worker <name>); task branch task/and-16 in Mobile; ledger record ledger/tasks/and-16.md.
 Kind/size: release/S. Baseline: not-started.
-Outcome: AAB (Play) and a separately signed direct APK build automatically from reviewed main as MAUI outputs, with monotonic versionCode within applicationId com.arcforges.mobile, immutable provenance and tested WP03 update-schema compatibility.
+Outcome: A signed direct APK build automatically from reviewed main as MAUI outputs, with monotonic versionCode within applicationId com.arcforges.mobile, immutable provenance and tested WP03 update-schema compatibility.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-32.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.00
@@ -492,12 +493,12 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: Mobile:.github/workflows/ci.yml; Mobile:eng/mobile.py; Mobile:eng/published.py
-Shared resources (follow the owner protocol): RES-android-signing-and-store (append): Used only by release tasks through protected CI environments; no task creates replacement keys or listings.
+Shared resources (follow the owner protocol): RES-android-signing-and-store (append): Used only by release tasks through protected CI environments; no task creates replacement keys. Store and package-manager listings are out of V1 (P2-026 S11).
 Unblocks: AND.17, AND.18, AND.21
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Actual signature/package/R8/runtime and version-monotonicity checks; clean device install/upgrade is local opt-in
-Completion evidence for the ledger: Signed AAB and APK with recorded provenance; monotonic versionCode for com.arcforges.mobile; reinstall guidance from io.github.arcforges.mobile recorded in docs/releasing.md with no data migration.
-Notes: Planning repair 2026-10-08 (DLV-34; P2-021): The signing pipeline and persistent certificate are kept. The upgrade check in eng/published.py is re-based on the com.arcforges.mobile identity; the io.github line stays immutable history. Acceptance unchanged.
+Completion evidence for the ledger: Signed APK with recorded provenance; monotonic versionCode for com.arcforges.mobile; reinstall guidance from io.github.arcforges.mobile recorded in docs/releasing.md with no data migration.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): The signing pipeline and persistent certificate are kept. The upgrade check in eng/published.py is re-based on the com.arcforges.mobile identity; the io.github line stays immutable history. Acceptance unchanged. Planning repair 2026-10-09 (P2-026; scope correction): reduced: the signed AAB for the Play channel is out of scope, not completed (Play publication is out of V1, P2-026 S11); the signed direct APK channel is unchanged.
 ```
 
 ```text
@@ -508,7 +509,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-17 (python tools/delivery.py claim AND.17 --worker <name>); task branch task/and-17 in Mobile; ledger record ledger/tasks/and-17.md.
 Kind/size: acceptance/S. Baseline: not-started.
-Outcome: Mono and ART runtime, the .NET for Android closure (no Kotlin, Compose or Connect-Kotlin residue), min and target API (26 and 37), arm64 assets with 16 KB alignment, trimming and R8 rules (AndroidLinkTool=r8), and required permissions are verified on the actual signed APK/AAB, not source inspection.
+Outcome: Mono and ART runtime, the .NET for Android closure (no Kotlin, Compose or Connect-Kotlin residue), min and target API (26 and 37), arm64 assets with 16 KB alignment, trimming and R8 rules (AndroidLinkTool=r8), and required permissions are verified on the actual signed APK, not source inspection.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-32.01 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.01
@@ -524,7 +525,7 @@ Unblocks: AND.23
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Install without development server/toolchain; startup/identity/RPC/notifications/lifecycle release tests are local opt-in
 Completion evidence for the ledger: VG-07 evidence: real Mono and ART release artifact inspection, not debug-only or source-only proof.
-Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Kotlin/ART and Compose/grpc-lite inspection rewritten to the Mono/AOT and .NET closure with the same release checks (min/target API, arm64, R8, permissions, no debug-only proof). Rewording, not weakening.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Kotlin/ART and Compose/grpc-lite inspection rewritten to the Mono/AOT and .NET closure with the same release checks (min/target API, arm64, R8, permissions, no debug-only proof). Rewording, not weakening. Planning repair 2026-10-09 (P2-026; scope correction): reduced: release inspection of the AAB is out of scope, not completed (Play publication is out of V1, P2-026 S11); inspection of the signed direct APK is unchanged.
 ```
 
 ```text
@@ -587,7 +588,7 @@ Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Static checks move from Grad
 ```
 
 ```text
-Execute ArcForges delivery task AND.20 — Play and direct-channel signed update client.
+Execute ArcForges delivery task AND.20 — Direct-channel signed update client.
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\android.md (anchor task-and-20).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
@@ -611,8 +612,8 @@ Shared resources (follow the owner protocol): RES-mobile-build-config (append): 
 Unblocks: AND.23
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Expired/rollback/wrong-certificate/URL/hash and offline-stale-feed tests, offline where feasible
-Completion evidence for the ledger: Play primary + direct APK flow complete with no silent install
-Notes: Explicitly does NOT wait on WP53 (production feed/signing) — WP-32.04's own text states WP53's replacement is verified at WP50, not a backward input to this task. Planning repair 2026-10-08 (DLV-34; P2-021): Notify-only update client ported to C# on the same android-update.v1 feed rules. Writes moved to the C# projects. Acceptance unchanged.
+Completion evidence for the ledger: Direct APK flow complete with no silent install
+Notes: Explicitly does NOT wait on WP53 (production feed/signing) — WP-32.04's own text states WP53's replacement is verified at WP50, not a backward input to this task. Planning repair 2026-10-08 (DLV-34; P2-021): Notify-only update client ported to C# on the same android-update.v1 feed rules. Writes moved to the C# projects. Acceptance unchanged. Planning repair 2026-10-09 (P2-026; scope correction): reduced: the Play-primary update flow is out of scope, not completed (Play publication is out of V1, P2-026 S11); the direct-APK notify-only update client is unchanged.
 ```
 
 ```text
@@ -677,7 +678,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/and-23 (python tools/delivery.py claim AND.23 --worker <name>); task branch task/and-23 in Mobile; ledger record ledger/tasks/and-23.md.
 Kind/size: release/M. Baseline: not-started.
-Outcome: The exact signed APK/AAB, manifest/hash/versionCode/certificate identity, compatible server/Contracts release and all gate receipts are archived and published through the automatic main graph; a clean-device download verifies signature/hash and exercises actual services.
+Outcome: The exact signed APK, manifest/hash/versionCode/certificate identity, compatible server/Contracts release and all gate receipts are archived and published through the automatic main graph; a clean-device download verifies signature/hash and exercises actual services.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-32.90 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.90
@@ -695,12 +696,12 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] AND.26: live FCM sender + physical receipt rechecked on the distributed artifact
 
 Permitted write scope: Mobile:eng/mobile.py
-Shared resources (follow the owner protocol): RES-android-signing-and-store (append): Used only by release tasks through protected CI environments; no task creates replacement keys or listings.
+Shared resources (follow the owner protocol): RES-android-signing-and-store (append): Used only by release tasks through protected CI environments; no task creates replacement keys. Store and package-manager listings are out of V1 (P2-026 S11).
 Unblocks: AND.26, REL.04
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Download public candidate in a clean device path, verify signature/hash, exercise actual services — local opt-in
-Completion evidence for the ledger: Distribution complete only with real receipts; VG-13 store-submission confirmation
-Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Distribution receipts bind to the MAUI signed APK and AAB (com.arcforges.mobile). Acceptance unchanged.
+Completion evidence for the ledger: Distribution complete only with real receipts
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Distribution receipts bind to the MAUI signed APK and AAB (com.arcforges.mobile). Acceptance unchanged. Planning repair 2026-10-09 (P2-026; scope correction): reduced: the signed AAB and the store-submission receipt are out of scope, not completed (Play publication and store listings are out of V1, P2-026 S11); the signed APK distribution receipts are unchanged.
 ```
 
 ```text
@@ -758,14 +759,14 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] DEV.07: real offline expiry and unknown-effect recovery
 - [artifact] DEV.12: the cross-repository (toolRequestId, attemptId, commandId) agreement
 Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
+- [integration] DEV.14: the real device tool bridge over the deployed realtime transport
 
 Permitted write scope: 
 Unblocks: AND.10, AND.13
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
 Completion evidence for the ledger: an Android-initiated remote task actually reaches a desktop through the durable bridge with correct lease/grant/reconciliation semantics
-Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Real desktop dispatch unchanged; stack-neutral. Acceptance unchanged.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Real desktop dispatch unchanged; stack-neutral. Acceptance unchanged. Planning repair 2026-10-09 (P2-026; scope correction): added: complete edge on DEV.14 (S13; real desktop dispatch needs the real device tool bridge).
 ```
 
 ```text
@@ -794,7 +795,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: 
-Unblocks: AND.12, AND.23, OPS.10, OPS.12
+Unblocks: AND.12, AND.23, OPS.10, REL.04
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
 Completion evidence for the ledger: PG-24: a project-bound FCM credential actually sends and a physical arm64 device actually receives, including duplicate/rotation/revocation and denied-permission/no-GMS recovery
@@ -823,13 +824,14 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] CLOUD.68: the deployed library read model
 - [integration] SIM.05: the deployed simulation operations
 - [integration] SCOPE.22: the delivered desktop project/session and report publication adapter
+- [integration] SCOPE.18: a desktop-produced report from the reports and reproducibility task
 
 Permitted write scope: Mobile:src/features/ArcForges.Mobile.Scope/**
 Unblocks: AND.15
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017). PDF disposition check (P2-022): the ACTION_VIEW hand-off of arcscope.report.pdf.v1 to the system viewer is exercised in the local run, and the AND.18 closure fixture and AND.19 architecture tests reject any PDF parser or renderer package in the app closure.
 Completion evidence for the ledger: A report synced from ArcScope desktop found, read and shared on Android; a Cloud simulation run followed to its terminal state; revocation, unavailable-artifact and raw-data-local cases. Run discovery after reinstall or on another authorized device; no remembered run ID required. PDF disposition evidence: the exported report opened through ACTION_VIEW in a system viewer on the device, and the closure listing shows no PDF renderer.
-Notes: Planning repair 2026-10-08 (DLV-34; P2-021): ArcScope library, report and simulation views port to MAUI; system share sheet and notification behaviours use MAUI platform equivalents. Writes moved to the C# feature project. The AN27 static PDF preview is retired under P2-022.2 (download or share of the bundle, and an Android ACTION_VIEW hand-off to the system viewer); the other acceptance is unchanged.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): ArcScope library, report and simulation views port to MAUI; system share sheet and notification behaviours use MAUI platform equivalents. Writes moved to the C# feature project. The AN27 static PDF preview is retired under P2-022.2 (download or share of the bundle, and an Android ACTION_VIEW hand-off to the system viewer); the other acceptance is unchanged. Planning repair 2026-10-09 (P2-026; scope correction): added: complete edge on SCOPE.18 (S13; acceptance needs a desktop-produced report).
 ```
 
 ```text
@@ -857,7 +859,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] CLOUD.29: the deployed stream connection and authentication (EventService.Watch shell) that the streaming consumer rules are checked against
 
 Permitted write scope: Mobile:src/ArcForges.Mobile/**; Mobile:src/core/ArcForges.Mobile.Network/**; Mobile:src/core/ArcForges.Mobile.Security/**; Mobile:tests/ArcForges.Mobile.Tests/**; Mobile:tests/ArcForges.Mobile.Policy/**; Mobile:ArcForges.Mobile.slnx; Mobile:global.json; Mobile:Directory.Build.props; Mobile:Directory.Packages.props; Mobile:NuGet.config; Mobile:.github/workflows/ci.yml; Mobile:.github/workflows/security.yml; Mobile:.gitleaks.toml; Mobile:eng/mobile.py; Mobile:eng/published.py; Mobile:eng/policy/**; Mobile:README.md; Mobile:AGENTS.md; Mobile:docs/**; Mobile:app/**; Mobile:shared/**; Mobile:gradle/**; Mobile:build.gradle.kts; Mobile:settings.gradle.kts; Mobile:settings-gradle.lockfile; Mobile:gradle.properties; Mobile:gradlew; Mobile:gradlew.bat; Mobile:.java-version; Mobile:eng/licences.gradle.kts; Mobile:eng/licences.py, Mobile:eng/resources.py, Mobile:eng/build_identity.py, Mobile:eng/dependency_policy.py, Mobile:eng/maui_identity.py, Mobile:eng/device-smoke.py and Mobile:eng/verify_published_fixture.py (the MAUI paths, and the retirement of their Gradle and Kotlin parts in the second pull request); Mobile:eng/check_provenance.py (inventory classification of the new .NET projects and of the retired Gradle and Kotlin paths only); Mobile:eng/tests/** (tests of the eng tools above); Mobile:eng/provenance/** (successor records, inventory rows and the retirement receipt); Mobile:eng/version-sources.json; Mobile:third-party/** and Mobile:THIRD_PARTY_NOTICES.md (the MAUI closure notices, and the Kotlin-only entries retired after review); Mobile:.github/dependabot.yml (the gradle ecosystem replaced by nuget in the second pull request); Mobile:.gitignore (the bin/ and obj/ of the new projects); Mobile:CONTRIBUTING.md and Mobile:.gitattributes (the Gradle and JDK instructions and the gradlew attribute replaced by the .NET workflow in the second pull request)
-Shared resources (follow the owner protocol): RES-mobile-build-config (exclusive): AND.01 pins the candidate .NET tuple (global.json, Directory.Build.props, Directory.Packages.props, NuGet.config and the identity project) and appends to this resource. AND.40 holds the exclusive lease `leases/res-mobile-build-config` for the Gradle-to-.NET restructure of the solution, lock files and policy data; AND.02 then registers the .NET project set under the same exclusive lease. Later tasks edit only their own project, append package versions to Directory.Packages.props, and regenerate packages.lock.json after rebase; dependency additions carry admission receipts.; RES-android-signing-and-store (append): Used only by release tasks through protected CI environments; no task creates replacement keys or listings.
+Shared resources (follow the owner protocol): RES-mobile-build-config (exclusive): AND.01 pins the candidate .NET tuple (global.json, Directory.Build.props, Directory.Packages.props, NuGet.config and the identity project) and appends to this resource. AND.40 holds the exclusive lease `leases/res-mobile-build-config` for the Gradle-to-.NET restructure of the solution, lock files and policy data; AND.02 then registers the .NET project set under the same exclusive lease. Later tasks edit only their own project, append package versions to Directory.Packages.props, and regenerate packages.lock.json after rebase; dependency additions carry admission receipts.; RES-android-signing-and-store (append): Used only by release tasks through protected CI environments; no task creates replacement keys. Store and package-manager listings are out of V1 (P2-026 S11).
 Unblocks: AND.02, AND.04, CLOUD.84, CON.40, PRF.12
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline on Windows and Linux CI only (compile, offline xUnit and policy tests, actionlint, gitleaks, existing eng/*.py tests): restore with locked packages (packages.lock.json), NuGet audit and dependency-admission and provenance records for every package in the closure (Apache-2.0 only; no AGPL DesktopPlatform package and no ArcForges.Build.Policy reference); net10.0-android Release build with Mono AOT, trimming and R8 (AndroidLinkTool=r8), which is the first proof of the AND.01 candidate tuple (a failure reopens AND.01); the Hello transport suite (no cookies, no redirects, no retry, deadline cap 5 s, call timeout 10 s, grpc-timeout format, binary gRPC-Web selected through the configured GrpcWebMode with the configured media type asserted, the observed unary and server-stream mode left to PRF.12, 1..256 name rule) and the streaming suite (ordered frames then one OK trailer; an error trailer after frames keeps the frames and status; a missing trailer is DATA_LOSS; deadline mid-stream keeps frames and gives DEADLINE_EXCEEDED; cancel releases the stream) against loopback fixtures; C# policy tests (layering, licence boundary, forbidden terms, the seven BAN-* categories as Mobile-owned rules) with negative fixtures; F-023-class closure re-proof (licence, provenance, SBOM and NOTICE) for the MAUI closure on the candidate; a NuGet closure check that rejects an unadmitted or unpinned package. Signing and prerelease publication run only in the protected android-release environment on main. Emulator and device runs are local opt-in under P2-017, not CI. The Gradle, Kotlin and KMP retirement lands only after a candidate passes these offline checks and its signed MAUI prerelease is published from main. Every shipped project targets net10.0-android only; host-run test, policy and architecture-test projects (executed by the .NET test host on a Windows or Linux machine, never on an Android device or emulator) target net10.0 so that they run on hosted Windows and Linux runners without an emulator (P2-017), Android device test projects (AND.13) target net10.0-android, and platform-neutral libraries may add net10.0 as a second target used only by the host-run tests; a policy test proves that the resolved closure of the MAUI app targets net10.0-android only.

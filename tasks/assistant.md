@@ -72,7 +72,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/ast-03 (python tools/delivery.py claim AST.03 --worker <name>); task branch task/ast-03 in DesktopPlatform; ledger record ledger/tasks/ast-03.md.
 Kind/size: producer/M. Baseline: not-started.
-Outcome: Typed local refs, authorized file staging and still-image preview (PDF attachments are stored, transferred and downloaded as opaque attachments with no parsing or preview, P2-022), resource ownership and explicit egress; attachment selection is never treated as upload consent. Missing/hostile file, lost URI/path grant, source labels, quota and temporary exclusion covered.
+Outcome: Typed local refs, authorized file staging and still-image metadata cards (magic-byte type, name and size for PNG, JPEG, GIF and WebP, with no decode, P2-026; PDF attachments are stored, transferred and downloaded as opaque attachments with no parsing or preview, P2-022), resource ownership and explicit egress; attachment selection is never treated as upload consent. Missing/hostile file, lost URI/path grant, source labels, quota and temporary exclusion covered.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-15.02 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\15-arcchat-conversation-core.md, anchor rule-wp-15.02
@@ -88,9 +88,9 @@ Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Assistant.Co
 Shared resources (follow the owner protocol): RES-assistant-store-schema (append): Numbered migrations are allocated at merge by the integration owner (a rebase renumbers pending migrations); each migration is forward-only with its recovery and downgrade-refusal tests; no task edits a merged migration.
 Unblocks: AST.09
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: missing/hostile file, lost URI/path grant, quota, temporary exclusion.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: missing/hostile file, lost URI/path grant, quota, temporary exclusion; still-image attachments (PNG, JPEG, GIF and WebP) show a metadata card (type, name and size) from magic-byte sniffing with no decode (P2-026 S1, S16(e)).
 Completion evidence for the ledger: Attachment provenance and egress-consent test results.
-Notes: Planning repair 2026-10-08 (DLV-34; P2-022): PDF attachments are opaque attachments; image preview is kept. APP.06 owns the shared freeze and preview port and is unchanged.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-022): PDF attachments are opaque attachments; still-image preview is reduced to a metadata card (P2-026). APP.06 owns the shared freeze and preview port and is unchanged. Planning repair 2026-10-09 (P2-026; scope correction): reduced: in-app still-image preview and image decoding are out of scope, not completed (a metadata card is kept).
 ```
 
 ```text
@@ -205,32 +205,6 @@ Notes: One of the named scaffolding rows in implementation-sequence.md §3.1. Se
 ```
 
 ```text
-Execute ArcForges delivery task AST.08 — Reference and package proof (AionUi evidence, clean-app package consumption).
-
-Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\assistant.md (anchor task-ast-08).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
-Claim and handoff record: claims/ast-08 (python tools/delivery.py claim AST.08 --worker <name>); task branch task/ast-08 in DesktopPlatform; ledger record ledger/tasks/ast-08.md.
-Kind/size: producer/S. Baseline: not-started.
-Outcome: AionUi component evidence/provenance recorded; the actual candidate Assistant.Core/Assistant.Persistence.Sqlite package consumed from a clean test application with no reference runtime or imported agent scope.
-
-Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-15.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\15-arcchat-conversation-core.md, anchor rule-wp-15.07
-
-Entry condition: adoption slice ADOPT.02.assistant is complete in the Plan ledger (DLV-22).
-Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] AST.01: published Assistant.Core/Assistant.Persistence.Sqlite candidate packages
-Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
-
-Permitted write scope: DesktopPlatform:tests/AssistantCoreTests/**
-Unblocks: AST.09
-
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Package-only restore in a clean test app; offline behavior tests; exact package hash recorded.
-Completion evidence for the ledger: Package hash manifest, AionUi reference-coverage citation (arcchat-aionui.md, no reused code), clean-app test results.
-```
-
-```text
 Execute ArcForges delivery task AST.09 — Owned-artifact receipt and UX acceptance.
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\assistant.md (anchor task-ast-09).
@@ -252,7 +226,6 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] AST.05: completed WP-15.04
 - [artifact] AST.06: completed WP-15.05
 - [artifact] AST.07: completed WP-15.06
-- [artifact] AST.08: completed WP-15.07
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -261,6 +234,7 @@ Shared resources (follow the owner protocol): RES-desktopplatform-policy-data (a
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Build/pack once; UX-C history ledger rows recorded; P2-017 scope only.
 Completion evidence for the ledger: Source commit, package versions/hashes, UX-C rows, named-fixture manifest (assistant-history.v1 export fixture).
+Notes: Planning repair 2026-10-09 (P2-026; review finding): the start edge to AST.08 is removed, because AST.08 is out of scope (no ArcScope consumer); its package-only consumption check is carried by AST.17.
 ```
 
 ```text
@@ -451,7 +425,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/ast-16 (python tools/delivery.py claim AST.16 --worker <name>); task branch task/ast-16 in DesktopPlatform; ledger record ledger/tasks/ast-16.md.
 Kind/size: producer/M. Baseline: not-started.
-Outcome: AS03/08 own-app selection/preview/navigation implemented using the frozen WP-14.05 host ports, with safe fallback for unsupported native preview (a PDF attachment gets an opaque attachment card offering Save As (download) only, with no in-app parsing, rendering or open action, P2-022); still images keep the thin preview; no live-selection mutation, no another-product destination, citations/resources keep ownership.
+Outcome: AS03/08 own-app selection/preview/navigation implemented using the frozen WP-14.05 host ports, with safe fallback for unsupported native preview (a PDF attachment gets an opaque attachment card offering Save As (download) only, with no in-app parsing, rendering or open action, P2-022); still images show a metadata card (magic-byte type, name and size for PNG, JPEG, GIF and WebP, with no decode, P2-026); no live-selection mutation, no another-product destination, citations/resources keep ownership.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-17.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\17-arcchat-independent-core.md, anchor rule-wp-17.06
@@ -466,9 +440,9 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Assistant.Avalonia/**
 Unblocks: AST.17
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: no live-selection mutation, no cross-product destination, citation/resource ownership preserved; PDF attachments expose Save As only (no preview, parse, render or open action).
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: no live-selection mutation, no cross-product destination, citation/resource ownership preserved; PDF attachments expose Save As only (no preview, parse, render or open action); still-image attachments show the magic-byte metadata card (type, name and size; PNG, JPEG, GIF and WebP) with no decode and no in-app preview, in place of the preview test (P2-026 S1, S16(e)).
 Completion evidence for the ledger: Selection-mutation and ownership test results.
-Notes: Planning repair 2026-10-08 (DLV-34; P2-022): the native PDF preview fallback is retired. A PDF attachment shows an opaque attachment card with Save As (download) only. No open-externally action is added: handing an untrusted PDF to the operating-system default handler is outside the opaque-download rule and is not admitted without a separate security decision.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-022): the native PDF preview fallback is retired. A PDF attachment shows an opaque attachment card with Save As (download) only. No open-externally action is added: handing an untrusted PDF to the operating-system default handler is outside the opaque-download rule and is not admitted without a separate security decision. Planning repair 2026-10-09 (P2-026; scope correction): reduced: in-app still-image thumbnail and preview are out of scope, not completed (a metadata card is kept).
 ```
 
 ```text
@@ -642,3 +616,11 @@ Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-serv
 Completion evidence for the ledger: AST.15's Cloud promotion/copy UI successfully drives a real restartable import, including lost-finalize-ack, changed-local-history and account-switch recovery
 Notes: Merged duplicate integration or closure task formerly proposed as CLOUD.57.
 ```
+
+### Out of scope
+
+Excluded from the active plan. No prompt is issued and these tasks are never claimable; their decision, note and ledger status are listed here.
+
+| Task | Title | Decision | Mode | Note | Ledger status |
+|---|---|---|---|---|---|
+| AST.08 | Reference and package proof (AionUi evidence, clean-app package consumption) | P2-026 | excluded | AionUi reference proof has no ArcScope consumer: reference-only work, out of V1 under P2-026 S1 and S2 (coordinator ruling on the review finding, 2026-10-09). Its clean-app package-only consumption check is carried by AST.17. The reference matrix stays as history; the task is out of scope, not completed. | no record |

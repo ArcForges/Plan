@@ -92,6 +92,7 @@ Unblocks: SRCH.03, SRCH.06
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: budget bounds, multilingual/no-match/partial queries, exact decimal vector comparison against fixture vectors.
 Completion evidence for the ledger: Budget-bound test matrix; multilingual/no-match/partial results; decimal-vector exactness.
+Notes: Planning repair 2026-10-09 (P2-026; scope correction): reduced: the reranker path is out of scope, not completed.
 ```
 
 ```text
@@ -182,15 +183,15 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/srch-06 (python tools/delivery.py claim SRCH.06 --worker <name>); task branch task/srch-06 in Cloud; ledger record ledger/tasks/srch-06.md.
 Kind/size: integration/M. Baseline: not-started.
-Outcome: The retrieval path runs against real Workers AI embeddings/reranker and real D1/Vectorize with C# owner filtering; SUB-embedding-rerank-fixture is retired from the query path, and explicit lexical-only degradation is proven when the semantic path is unavailable.
+Outcome: The retrieval path runs against real Workers AI embeddings and real D1/Vectorize with C# owner filtering; SUB-embedding-rerank-fixture is retired from the query path, and explicit lexical-only degradation is proven when the semantic path is unavailable.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-40.06 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\40-knowledge-search-and-retrieval.md, anchor rule-wp-40.06
 
 Entry condition: adoption slice ADOPT.07.search is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- [artifact] AIR.00: deployed Workers AI embed/rerank adapter (real, not fixture)
-- [artifact] POL.08: active policy/config snapshot naming the admitted embedding/rerank model generation
+- [artifact] AIR.00: deployed Workers AI embed adapter (real, not fixture)
+- [artifact] POL.08: active policy/config snapshot naming the admitted embedding model generation
 - [artifact] SRCH.01: scoped derived index production
 - [artifact] SRCH.02: hybrid retrieval and budgets
 - [artifact] AIR.06: the real operator-funded web-search dispatch capability
@@ -203,6 +204,7 @@ Unblocks: SRCH.90
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real compatible client/owner/index version test against deployed CF bindings (credentialed candidate gate, not ordinary CI, per P2-017's 'no real AI inference in CI'); explicit lexical-only degradation test.
 Completion evidence for the ledger: Real compatible client/owner/index versions; explicit lexical-only degradation.
+Notes: Planning repair 2026-10-09 (P2-026; scope correction): reduced: real reranker calls on the query path are out of scope, not completed.
 ```
 
 ```text
@@ -229,9 +231,9 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:tests/Cloud.Tests.Integration/Retrieval/**
 Shared resources (follow the owner protocol): RES-private-configuration (append): Each owning task adds its own configuration section; activation is a signed publication by the policy lane; no task edits another section.
-Unblocks: REL.06, SRCH.06
+Unblocks: AND.09, REL.06, SRCH.06, WEB.20
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Package/contract/owner/version compatibility and failure/recovery tests; P2-017 proportionate (no live paid-provider CI loop; capacity thresholds tested against recorded/replayable fixtures where the real CF budget document is unavailable in CI).
 Completion evidence for the ledger: Index capacity acceptance ledger: reservations, overlap, tombstone reconciliation, threshold refusal, rebuild pause/recovery.
-Notes: WP-40 Sec.9 names 50/52 as downstream consumers of this released artifact; not a completion blocker for SRCH.90 itself. Contributes to PG-26 (launch capacity envelope) as one of its producers.
+Notes: WP-40 Sec.9 names 50/52 as downstream consumers of this released artifact; not a completion blocker for SRCH.90 itself. Contributes to PG-26 (launch capacity envelope) as one of its producers. Planning repair 2026-10-09 (P2-026; scope correction): reduced: reranker paid-admission threshold refusal is out of scope, not completed.
 ```
