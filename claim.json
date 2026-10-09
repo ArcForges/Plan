@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T02:13:27Z",
-  "updatedAt": "2026-10-09T13:01:03Z",
-  "leaseUntil": "2026-10-10T13:01:03Z",
+  "updatedAt": "2026-10-09T13:36:08Z",
+  "leaseUntil": "2026-10-10T13:36:08Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/and-40",
     "prs": [
       "https://github.com/ArcForges/Mobile/pull/24"
     ],
-    "merges": [],
+    "merges": [
+      "43ecb25b48cc5b030d4ef40b398aa216470d103d"
+    ],
     "done": [],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Mobile\\.worktree\\and-40",
@@ -25,6 +27,6 @@
       "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
     ],
     "host": "deku",
-    "note": "PR A hosted fixes: workload set 10.0.401 pin (decision 22), CodeQL net10.0, CI-variable eng test"
+    "note": "PR A merged (43ecb25b); android-maui publish run pending; PR B next"
   }
 }
