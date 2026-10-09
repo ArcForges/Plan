@@ -6,8 +6,8 @@
   "epoch": 2,
   "state": "claimed",
   "claimedAt": "2026-10-09T21:34:02Z",
-  "updatedAt": "2026-10-09T22:58:02Z",
-  "leaseUntil": "2026-10-10T22:58:02Z",
+  "updatedAt": "2026-10-09T23:04:55Z",
+  "leaseUntil": "2026-10-10T23:04:55Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/web-40",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Web/pull/38"
     ],
     "merges": [
-      "c8588681da0c25784ab6d6d82165e2903bd62764"
+      "c8588681da0c25784ab6d6d82165e2903bd62764",
+      "049f6a58583c2b88ed03232d7d18bb975c428a95"
     ],
     "done": [
       "work-in-progress commits pushed (step 1)"
@@ -31,6 +32,6 @@
       "record completion by editing the ledger record through a reviewed Plan pull request"
     ],
     "host": "deku",
-    "note": "Follow-up S36/S37 PR #38 at 6795f18 approved; hosted CI pending"
+    "note": "Follow-up Web #38 merged 049f6a58 (--match-head-commit 6795f18); main run and release being verified"
   }
 }
