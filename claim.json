@@ -4,12 +4,12 @@
   "id": "integration:DesktopPlatform",
   "claimant": "w-deku-20261008-coord",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-08T16:27:55Z",
-  "updatedAt": "2026-10-09T10:30:22Z",
-  "leaseUntil": "2026-10-09T22:30:22Z",
+  "updatedAt": "2026-10-09T11:02:15Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "renewed for the NAT.11 publication closeout"
+    "note": "DesktopPlatform exception closed (P2-026): NAT.11 complete (#175, ledger Plan #466); no further DesktopPlatform work authorized"
   }
 }
