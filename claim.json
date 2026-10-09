@@ -6,23 +6,25 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T02:13:27Z",
-  "updatedAt": "2026-10-09T02:13:44Z",
-  "leaseUntil": "2026-10-10T02:13:44Z",
+  "updatedAt": "2026-10-09T10:31:24Z",
+  "leaseUntil": "2026-10-10T10:31:24Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/and-40",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/Mobile/pull/24"
+    ],
     "merges": [],
     "done": [],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Mobile\\.worktree\\and-40",
-    "head": null,
-    "reviewed": null,
+    "head": "8b49ceeef4d63cd376fa83747443a2adda457c4d",
+    "reviewed": "8b49ceeef4d63cd376fa83747443a2adda457c4d",
     "blocker": null,
     "next": [
       "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
     ],
     "host": "deku",
-    "note": null
+    "note": "PR A (decision 5): MAUI beside Kotlin; PR B retires Kotlin after the android-maui publish is proven"
   }
 }
