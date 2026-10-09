@@ -6,10 +6,10 @@
   "epoch": 2,
   "state": "claimed",
   "claimedAt": "2026-10-08T16:28:11Z",
-  "updatedAt": "2026-10-08T23:17:59Z",
-  "leaseUntil": "2026-10-09T11:17:59Z",
+  "updatedAt": "2026-10-09T10:30:05Z",
+  "leaseUntil": "2026-10-09T22:30:05Z",
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-deku-20261008-coord epoch 1; review the earlier handoff and commits"
+    "note": "renewed for P2-026 and ledger publication"
   }
 }
