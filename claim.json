@@ -3,11 +3,11 @@
   "kind": "task",
   "id": "WEB.40",
   "claimant": "w-deku-20261008-web-40",
-  "epoch": 1,
-  "state": "delivered",
-  "claimedAt": "2026-10-08T14:40:09Z",
-  "updatedAt": "2026-10-09T15:40:49Z",
-  "leaseUntil": null,
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-09T21:34:02Z",
+  "updatedAt": "2026-10-09T21:34:02Z",
+  "leaseUntil": "2026-10-10T21:34:02Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/web-40",
@@ -26,10 +26,10 @@
     "reviewed": "c58e5280f0d54c2c754c1806e41de23360526e45",
     "blocker": null,
     "next": [
-      "implement in the retained worktree (local commits by the execution agent)",
-      "independent review, push, PR, CI, merge via integration role"
+      "perform the remaining acceptance for the scenarios the completion prerequisites name",
+      "record completion by editing the ledger record through a reviewed Plan pull request"
     ],
     "host": "deku",
-    "note": "Ledger Plan #468 (52413fcd) status delivered; S28 rulings; completion follow-ups: CLOUD.71/85 bundle-naming note, doc follow-ups (react-retirement, site-parity), rollback operator run, WSL2 Linux checks and local browser suites at c8588681"
+    "note": "completion follow-up (DLV-41)"
   }
 }
