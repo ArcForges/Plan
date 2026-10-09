@@ -6,13 +6,14 @@
   "epoch": 2,
   "state": "claimed",
   "claimedAt": "2026-10-09T23:01:04Z",
-  "updatedAt": "2026-10-09T23:01:04Z",
-  "leaseUntil": "2026-10-10T23:01:04Z",
+  "updatedAt": "2026-10-09T23:35:10Z",
+  "leaseUntil": "2026-10-10T23:35:10Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/cloud-85",
     "prs": [
-      "https://github.com/ArcForges/Cloud/pull/81"
+      "https://github.com/ArcForges/Cloud/pull/81",
+      "https://github.com/ArcForges/Cloud/pull/82"
     ],
     "merges": [
       "3980212301349c71442cc3eb9bc9f410fbf5458d"
@@ -20,14 +21,14 @@
     "done": [],
     "validation": [],
     "worktree": null,
-    "head": "036e4c4e21ac9cc7a1328650b9cd19fa08e6c7fd",
-    "reviewed": "036e4c4e21ac9cc7a1328650b9cd19fa08e6c7fd",
+    "head": "34aa2f9c9be2a23cb14c59a5abf1f32fa0fa2230",
+    "reviewed": "34aa2f9c9be2a23cb14c59a5abf1f32fa0fa2230",
     "blocker": null,
     "next": [
       "perform the remaining acceptance for the scenarios the completion prerequisites name",
       "record completion by editing the ledger record through a reviewed Plan pull request"
     ],
     "host": "deku",
-    "note": "completion follow-up (DLV-41)"
+    "note": "Follow-up Cloud #82 at 34aa2f9 approved; hosted CI pending; proof redeploy after merge"
   }
 }
