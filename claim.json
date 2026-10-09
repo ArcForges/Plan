@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:41Z",
-  "updatedAt": "2026-10-09T16:24:29Z",
-  "leaseUntil": "2026-10-10T16:24:29Z",
+  "updatedAt": "2026-10-09T17:07:11Z",
+  "leaseUntil": "2026-10-10T17:07:11Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/har-40",
@@ -20,14 +20,14 @@
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\har-40",
-    "head": "ec9afd256120c771ab8b8f3609a26a78459e0143",
-    "reviewed": "ec9afd256120c771ab8b8f3609a26a78459e0143",
+    "head": "3e022f8fe99645fcf030d2040226859fc6b03f8a",
+    "reviewed": "3e022f8fe99645fcf030d2040226859fc6b03f8a",
     "blocker": null,
     "next": [
       "implement in the retained worktree (local commits by the execution agent)",
       "independent review, push, PR, CI, merge via integration role"
     ],
     "host": "deku",
-    "note": "Cloud #80 opened at ec9afd2, approved by w-deku-20261008-rev-har-40 (S24 applied); AI status commit 66348106 approved, published after the Cloud deploy"
+    "note": "S31 gitleaks allowlist (16 false positives on profile digests); delta approved at 3e022f8; hosted CI rerun on push"
   }
 }
