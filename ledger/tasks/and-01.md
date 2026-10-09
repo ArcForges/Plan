@@ -53,13 +53,13 @@ epoch: 1
   - The P2-024 deferral: the hosted Linux CI run of the identity-only build (Debug and Release, locked restore) that AND.40 adds. A failed Linux build reopens AND.01.
   - PRF.12, the MAUI Android release proof of the exact tuple. This is the completion edge.
   - The F-023 closure for the actual MAUI distribution closure, and the notice deferrals listed in `docs/maui-toolchain.md` (Glide BSD-2, Google.Protobuf, Grpc.Core.Api, the workload-pack licences). Both are owned by AND.40 before the first MAUI release candidate.
-  - The licence evidence the Windows host cannot provide: the Linux host aliases of the Android SDK and Mono AOT packs, and the licence statements of `Microsoft.NET.Runtime.MonoAOTCompiler.Task` and `Microsoft.NET.Runtime.MonoTargets.Sdk`. AND.40 owns it, and it is due at its first hosted Linux CI run that installs the android workload. A licence outside the admitted set reopens AND.01.
+  - The licence evidence the Windows host cannot provide: the Linux host aliases of the Android SDK and Mono AOT packs, and the licence statements of `Microsoft.NET.Runtime.MonoAOTCompiler.Task` and `Microsoft.NET.Runtime.MonoTargets.Sdk`. AND.40 owns it, and it is due at its first hosted Linux CI run that installs the android workload. A licence outside the admitted set or a missing licence file reopens AND.01 and AND.40.
 
 ## Untested coverage (stated expressly)
 
 - The committed SDK 10.0.400 pin has never built the MAUI project. Its first build is the AND.40 CI run.
 - No Linux build of the MAUI identity project has been run. The hosted ubuntu-latest Build job builds the unchanged Kotlin baseline.
-- The round-4 reviewer could not reproduce the Debug identity build in a scratch copy, because aapt2 failed on a 247-character path. The Debug evidence rests on the author's builds and the rebuild during the merge session at `c22298fb`.
+- The round-4 reviewer could not reproduce the Debug identity build in a scratch copy: aapt2 failed on a 247-character path. The reviewer judged this a likely path-length environment failure rather than a code defect, but did not prove it. The Debug evidence rests on the author's builds and the rebuild during the merge session at `c22298fb`.
 - No persistent-key (`--release`) signature has been proven on a MAUI APK.
 - Mono AOT, the 16 KB alignment check, device install and App Link fixture-key tests are not run. They belong to AND.40 and PRF.12.
 - The `Microsoft.Maui.*` nupkg SHA-512 values were checked against the nuget.org catalog only for `Microsoft.Maui.Controls`. The clean locked restore matched every lock contentHash.
