@@ -184,7 +184,7 @@ Kind/size: producer/M. Baseline: not-started.
 Outcome: Production Android direct-update feed using the WP03 android-update.v1 format, with signing custody/rotation and artifact URI/certificate inventory; registers the ArcScope desktop auth URI scheme in its signed installers.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-53.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\53-desktop-distribution-and-update.md, anchor rule-wp-53.07
+- WP-53.07 (Android direct-update feed (android-update.v1) only; the catalog-index and catalog-revocation feeds are out of V1 (P2-026 S5, S14)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\53-desktop-distribution-and-update.md, anchor rule-wp-53.07
 
 Entry condition: adoption slice ADOPT.02.updater is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
