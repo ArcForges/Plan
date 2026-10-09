@@ -6,26 +6,28 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:41Z",
-  "updatedAt": "2026-10-08T23:12:00Z",
-  "leaseUntil": "2026-10-09T23:12:00Z",
+  "updatedAt": "2026-10-09T16:24:29Z",
+  "leaseUntil": "2026-10-10T16:24:29Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/har-40",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/Cloud/pull/80"
+    ],
     "merges": [],
     "done": [
       "work-in-progress commits pushed (step 1)"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\har-40",
-    "head": "0020e89d0e8dc1a866c46b8139195f21a7922466",
-    "reviewed": null,
+    "head": "ec9afd256120c771ab8b8f3609a26a78459e0143",
+    "reviewed": "ec9afd256120c771ab8b8f3609a26a78459e0143",
     "blocker": null,
     "next": [
       "implement in the retained worktree (local commits by the execution agent)",
       "independent review, push, PR, CI, merge via integration role"
     ],
     "host": "deku",
-    "note": null
+    "note": "Cloud #80 opened at ec9afd2, approved by w-deku-20261008-rev-har-40 (S24 applied); AI status commit 66348106 approved, published after the Cloud deploy"
   }
 }
