@@ -138,6 +138,36 @@ def oos_suffix(g, tid: str) -> str:
     return ' — out of scope' if tid in g.tasks and is_out(g.tasks[tid]) else ''
 
 
+# Ledger statuses whose edges are history (scope rule 2, S16(a) of the coordinator brief): a complete,
+# inherited or superseded task is exempt from the out-of-scope edge rule, as is a baseline-accepted task.
+HISTORY_STATUSES = {'complete', 'inherited', 'superseded'}
+
+
+def edge_rule_applies(rec, kind: str, status: str | None) -> bool:
+    """True when an edge of this kind (start or complete) on an in-scope task may not point at an out-of-scope
+    task (scope rule 2, S16(a)). Open tasks (no delivered, complete, inherited or superseded ledger status, and
+    not baseline-accepted) have every start and complete edge checked. A delivered task's start edges are
+    history, so only its complete edges are checked. Complete, inherited, superseded and accepted tasks are
+    exempt: their edges are history and are not rewritten."""
+    if ((rec.get('baseline') or {}).get('state') == 'accepted') or status in HISTORY_STATUSES:
+        return False
+    if status == 'delivered':
+        return kind == 'complete'
+    return True
+
+
+def exempt_out_edge(g, t: dict, kind: str, target, status: dict) -> bool:
+    """True for a historical edge from an in-scope task to an out-of-scope task (S16(a)): the edge rule, the
+    other checks and the satisfiability walk all skip it, so history never fails a check."""
+    return (not is_out(t) and target in g.tasks and is_out(g.tasks[target])
+            and not edge_rule_applies(t, kind, status.get(t.get('id'))))
+
+
+def ledger_statuses(ledger: dict) -> dict[str, str | None]:
+    """Ledger status of each task with a record (read_ledger output); tasks without one are open."""
+    return {tid: rec.get('status') for tid, rec in ledger.items()}
+
+
 def check_scope(rec, where: str, errors: list, closeout: bool = False, extra: tuple = ()) -> None:
     """Shape of an outOfScope declaration: by and note are non-empty text; closeout is a boolean on tasks."""
     if not isinstance(rec, dict):
@@ -340,26 +370,33 @@ class Graph:
                 succ[e['task']].add(tid)
         return succ
 
-    def events(self):
+    def events(self, skip=None):
         """Event graph (DLV-21): D(t)=delivered, C(t)=complete.
 
         D(t) needs D(s) for each contract/artifact/design start prerequisite s (and the adoption entry),
         C(s) for each release prerequisite; C(t) needs D(t) and C(s) for each completion prerequisite s.
+        skip(tid, kind, target) -> True leaves that start ('start') or completion ('complete') edge out of
+        the graph; the satisfiability check uses it to ignore historical edges to out-of-scope tasks.
         """
+        # An edge whose target is not in this graph (an out-of-scope task in the scheduling subgraph) is history:
+        # it cannot be reached, so it never blocks the in-scope events.
+        skipped = (lambda tid, kind, target: target not in self.tasks or bool(skip and skip(tid, kind, target)))
         adj = defaultdict(set)
         for tid, t in self.tasks.items():
             for e in t.get('start', []):
-                adj[('D', tid)].add(('C' if e['type'] == 'release' else 'D', e['task']))
+                if not skipped(tid, 'start', e['task']):
+                    adj[('D', tid)].add(('C' if e['type'] == 'release' else 'D', e['task']))
             ent = self.entry(tid)
-            if ent:
+            if ent and not skipped(tid, 'start', ent):
                 adj[('D', tid)].add(('C', ent))
             adj[('C', tid)].add(('D', tid))
             for e in t.get('complete', []):
-                adj[('C', tid)].add(('C', e['task']))
+                if not skipped(tid, 'complete', e['task']):
+                    adj[('C', tid)].add(('C', e['task']))
         return adj
 
-    def event_order(self):
-        adj = self.events()
+    def event_order(self, skip=None):
+        adj = self.events(skip)
         nodes = {(k, t) for t in self.tasks for k in ('D', 'C')}
         indeg = {n: 0 for n in nodes}
         rev = defaultdict(set)
@@ -429,8 +466,11 @@ class Graph:
         return m
 
 
-def validate(g: Graph) -> tuple[list[str], list[str]]:
+def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[list[str], list[str]]:
+    """Graph errors and warnings. status maps task IDs to their ledger status (ledger_statuses); without it every
+    task counts as open, which is the strictest reading of the out-of-scope edge rule."""
     errors, warnings = [], []
+    status = status or {}
     ids = [t['id'] for t in g.data['tasks']]
     for tid, n in Counter(ids).items():
         if n > 1:
@@ -491,7 +531,7 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
                 if tgt in seen:
                     errors.append(f'{tid}: duplicate {kind} edge to {tgt}')
                 seen.add(tgt)
-                if tgt in g.tasks and not is_out(t) and is_out(g.tasks[tgt]):
+                if tgt in g.tasks and not is_out(t) and is_out(g.tasks[tgt]) and edge_rule_applies(t, kind, status.get(tid)):
                     errors.append(f'{tid}: {kind} edge to out-of-scope task {tgt}; in-scope task {tid} cannot depend on it '
                                   f'({kind} edge, scope rule 2)')
                 if not (e.get('why') or '').strip() or not (e.get('need') or '').strip():
@@ -555,10 +595,16 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
             continue
         for e in t.get('start', []):
             wp = accept.get(e.get('task'))
+            if exempt_out_edge(g, t, 'start', e.get('task'), status):
+                continue
             if wp and not any(o['ref'].startswith((wp + '.', wp + ':')) for o in t.get('obligations', [])):
                 errors.append(f'{t["id"]}: start prerequisite on package acceptance task {e["task"]} ({wp}); depend on the '
                               f'producing tasks or use a completion prerequisite (DLV-35)')
-    _, stuck = g.event_order()
+    # Satisfiability ignores historical edges to out-of-scope tasks (S16(a)): they cannot block open work, so a
+    # cycle that runs only through them is not a deadlock of the plan.
+    def historical(tid, kind, target):
+        return tid in g.tasks and exempt_out_edge(g, g.tasks[tid], kind, target, status)
+    _, stuck = g.event_order(historical)
     if stuck:
         errors.append(f'unsatisfiable prerequisites (deadlock) among {len(stuck)} tasks: {stuck[:12]}')
     # Obligation coverage (scope rule 3): an obligation is covered by an in-scope task or carried by an
@@ -704,7 +750,7 @@ def validate(g: Graph) -> tuple[list[str], list[str]]:
         if is_out(t) or t.get('kind') == 'adoption':
             continue
         ent = g.entry(tid)
-        if ent and is_out(g.tasks[ent]):
+        if ent and is_out(g.tasks[ent]) and edge_rule_applies(t, 'start', status.get(tid)):
             errors.append(f'{tid}: entry (adoption) edge to out-of-scope task {ent}; in-scope task {tid} cannot depend on it '
                           '(scope rule 2)')
     return errors, warnings
@@ -1714,8 +1760,10 @@ def read_ledger(plan: Path, g: Graph) -> tuple[dict[str, dict], list[str]]:
         # Scope rule 6: an out-of-scope record stays valid with any status and owes no completion prerequisites.
         if record['status'] != 'complete' or is_out(g.tasks[tid]):
             continue
+        # S16(a): a complete task's edges are history, so an out-of-scope completion prerequisite never blocks it.
         pending = [edge['task'] for edge in g.tasks[tid].get('complete', [])
-                   if out.get(edge['task'], {}).get('status') not in {'complete', 'inherited'}]
+                   if out.get(edge['task'], {}).get('status') not in {'complete', 'inherited'}
+                   and not is_out(g.tasks.get(edge['task']))]
         if pending:
             errors.append(f"ledger/tasks/{record['file']}: {tid} cannot be complete; completion prerequisites "
                           f"are not complete or inherited: {', '.join(pending)}")
@@ -1834,8 +1882,8 @@ class State:
         self.records: dict[tuple[str, str], Record] = {}
         if local:
             self.graph = Graph(require_graph(design))
-            graph_errors, _ = validate(self.graph)
             self.ledger, ledger_errors = read_ledger(plan, self.graph)
+            graph_errors, _ = validate(self.graph, ledger_statuses(self.ledger))
             self.source = f'UNREVIEWED LOCAL STATE (Design {design}, Plan {plan}; claims not read)'
         else:
             d = fetch_refs(design, [('refs/heads/main', 'main')])
@@ -1849,8 +1897,8 @@ class State:
                 extract(design, d['main'], ['docs/planning'], Path(tmp) / 'design')
                 extract(plan, p['main'], ['ledger'], Path(tmp) / 'plan')
                 self.graph = Graph(Path(tmp) / 'design')
-                graph_errors, _ = validate(self.graph)
                 self.ledger, ledger_errors = read_ledger(Path(tmp) / 'plan', self.graph)
+                graph_errors, _ = validate(self.graph, ledger_statuses(self.ledger))
             ids = record_ids(self.graph)
             for name, sha in p.items():
                 if name != 'main':
@@ -2498,10 +2546,10 @@ def cmd_build_slot(args) -> int:
 
 def cmd_check(args, write: bool = False) -> int:
     g = Graph(require_graph(args.design))
-    errors, warnings = validate(g)
+    ledger, ledger_errors = read_ledger(args.plan, g)
+    errors, warnings = validate(g, ledger_statuses(ledger))
     for w in warnings:
         print('warning:', w)
-    _, ledger_errors = read_ledger(args.plan, g)
     errors += [f'ledger: {e}' for e in ledger_errors]
     if errors:
         for e in errors:
@@ -2528,7 +2576,8 @@ def cmd_check(args, write: bool = False) -> int:
 
 def cmd_analyze(args) -> int:
     g = Graph(require_graph(args.design))
-    errors, _ = validate(g)
+    ledger, _ = read_ledger(args.plan, g)
+    errors, _ = validate(g, ledger_statuses(ledger))
     if errors:
         raise Fail(f'{len(errors)} graph errors; run check')
     print(json.dumps(analysis(g), indent=1))

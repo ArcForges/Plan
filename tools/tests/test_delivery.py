@@ -555,7 +555,9 @@ def pick_candidate(g) -> str:
 
 
 def other_task(g, exclude: str) -> str:
-    return next(t for t in g.tasks if t != exclude and not g.tasks[t].get('slice') and g.tasks[t]['kind'] != 'adoption')
+    """An open in-scope task other than exclude (baseline-accepted tasks are exempt from the edge rule)."""
+    return next(t for t in g.tasks if t != exclude and not g.tasks[t].get('slice') and g.tasks[t]['kind'] != 'adoption'
+                and g.tasks[t]['baseline']['state'] != 'accepted')
 
 
 def setattr_task(data: dict, tid: str, key: str, value) -> None:
@@ -835,6 +837,142 @@ class OutOfScopeTests(unittest.TestCase):
         self.assertIn('is out of scope', out)
         code, out = self.fx.run('show', cand)
         self.assertIn('closeout', out)
+
+    # ---- S16(a): the edge rule follows the ledger status ----------------------------------------
+
+    def edge_pair(self, extra=None):
+        """Mark a candidate out and give another in-scope task a start and a complete edge to it."""
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        other = other_task(g0, cand)
+
+        def mutate(data):
+            mark_out(data, cand)
+            t = next(x for x in data['tasks'] if x['id'] == other)
+            t['start'].append({'type': 'artifact', 'task': cand, 'need': 'n', 'why': 'w'})
+            t['complete'].append({'type': 'integration', 'task': cand, 'need': 'n', 'why': 'w'})
+            if extra:
+                extra(data)
+        return cand, other, self.edit_graph(mutate)
+
+    def test_an_open_task_may_not_start_or_complete_on_an_out_of_scope_task(self):
+        cand, other, g = self.edge_pair()
+        for statuses in (None, {}, {other: None}):  # no ledger record: the task is open
+            with self.subTest(statuses=statuses):
+                errors = d.validate(g, statuses)[0]
+                self.assertTrue(any(f'{other}: start edge to out-of-scope task {cand}' in e for e in errors), errors)
+                self.assertTrue(any(f'{other}: complete edge to out-of-scope task {cand}' in e for e in errors), errors)
+
+    def test_a_delivered_task_keeps_its_start_edges_as_history_but_not_its_complete_edges(self):
+        cand, other, g = self.edge_pair()
+        errors = d.validate(g, {other: 'delivered'})[0]
+        self.assertFalse(any(f'{other}: start edge to out-of-scope task' in e for e in errors), errors)
+        self.assertTrue(any(f'{other}: complete edge to out-of-scope task {cand}' in e for e in errors), errors)
+
+    def test_complete_inherited_superseded_and_accepted_tasks_are_exempt_from_the_edge_rule(self):
+        cand, other, g = self.edge_pair()
+        for status in ('complete', 'inherited', 'superseded'):
+            with self.subTest(status=status):
+                errors = d.validate(g, {other: status})[0]
+                self.assertFalse(any(f'{other}: ' in e and 'out-of-scope task' in e for e in errors), errors)
+                # the package-acceptance start rule (DLV-35) skips the same historical edge
+                self.assertFalse(any(f'{other}: start prerequisite on package acceptance' in e for e in errors), errors)
+
+        def accepted(data):
+            next(x for x in data['tasks'] if x['id'] == other)['baseline'] = {'state': 'accepted', 'evidence': 'synthetic'}
+        cand2, other2, g2 = self.edge_pair(accepted)
+        errors = d.validate(g2)[0]  # baseline acceptance exempts the task even without a ledger record
+        self.assertFalse(any(f'{other2}: ' in e and 'out-of-scope task' in e for e in errors), errors)
+
+    def test_a_cycle_through_a_historical_edge_to_an_out_of_scope_task_is_not_a_deadlock(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        other = other_task(g0, cand)
+        # A feeder with no existing dependency path to or from other, so the only cycle is the one the test adds.
+        feeder = next(t for t in g0.tasks if t not in (cand, other) and not g0.tasks[t].get('slice')
+                      and g0.tasks[t]['kind'] != 'adoption' and g0.tasks[t]['baseline']['state'] != 'accepted'
+                      and other not in g0.ancestors(t) and t not in g0.ancestors(other))
+
+        def mutate(data):
+            mark_out(data, cand)
+            by_id = {x['id']: x for x in data['tasks']}
+            by_id[other]['start'].append({'type': 'artifact', 'task': cand, 'need': 'n', 'why': 'w'})
+            by_id[cand]['start'].append({'type': 'artifact', 'task': feeder, 'need': 'n', 'why': 'w'})
+            by_id[feeder]['start'].append({'type': 'artifact', 'task': other, 'need': 'n', 'why': 'w'})
+        g = self.edit_graph(mutate)
+        self.assertTrue(any('unsatisfiable prerequisites' in e for e in d.validate(g)[0]))  # open: a real cycle
+        errors = d.validate(g, {other: 'complete'})[0]  # complete: its start edge to the out task is history
+        self.assertFalse(any('unsatisfiable prerequisites' in e for e in errors), errors)
+        self.assertFalse(any(f'{other}: start edge to out-of-scope task' in e for e in errors), errors)
+
+    def test_a_complete_task_is_not_blocked_by_an_out_of_scope_completion_prerequisite(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        other = next(t for t in g0.tasks if t != cand and not g0.tasks[t].get('slice')
+                     and g0.tasks[t]['kind'] != 'adoption' and not g0.tasks[t]['complete']
+                     and g0.tasks[t]['baseline']['state'] != 'accepted')
+
+        def mutate(data):
+            mark_out(data, cand)
+            next(t for t in data['tasks'] if t['id'] == other)['complete'].append(
+                {'type': 'integration', 'task': cand, 'need': 'n', 'why': 'w'})
+        g = self.edit_graph(mutate, commit=True)
+        self.fx.record(other, 'complete')
+        self.assertEqual(d.read_ledger(self.fx.plan, g)[1], [])
+
+    def test_a_complete_task_still_needs_its_in_scope_completion_prerequisites(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        other = next(t for t in g0.tasks if t != cand and not g0.tasks[t].get('slice')
+                     and g0.tasks[t]['kind'] != 'adoption' and not g0.tasks[t]['complete']
+                     and g0.tasks[t]['baseline']['state'] != 'accepted')
+        prereq = next(t for t in g0.tasks if t not in (cand, other) and not g0.tasks[t].get('slice')
+                      and g0.tasks[t]['kind'] != 'adoption')
+
+        def mutate(data):
+            mark_out(data, cand)
+            next(t for t in data['tasks'] if t['id'] == other)['complete'].append(
+                {'type': 'integration', 'task': prereq, 'need': 'n', 'why': 'w'})
+        g = self.edit_graph(mutate, commit=True)
+        self.fx.record(other, 'complete')
+        errors = d.read_ledger(self.fx.plan, g)[1]
+        self.assertTrue(any(f'{other} cannot be complete' in e and prereq in e for e in errors), errors)
+
+    def test_check_refuses_a_delivered_task_whose_completion_edge_points_out_of_scope(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        other = other_task(g0, cand)
+
+        def mutate(data):
+            mark_out(data, cand)
+            next(t for t in data['tasks'] if t['id'] == other)['complete'].append(
+                {'type': 'integration', 'task': cand, 'need': 'n', 'why': 'w'})
+        self.edit_graph(mutate, commit=True)
+        self.fx.record(other, 'delivered')
+        self.fx.commit(self.fx.plan, 'delivered with a completion edge to an out task')
+        code, out = self.fx.run('check')
+        self.assertNotEqual(code, 0, out)
+        self.assertIn(f'{other}: complete edge to out-of-scope task {cand}', out)
+
+    def test_check_passes_with_historical_edges_from_a_complete_task_to_an_out_of_scope_task(self):
+        self.use_full_design()
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        other = next(t for t in g0.tasks if t != cand and not g0.tasks[t].get('slice')
+                     and g0.tasks[t]['kind'] != 'adoption' and not g0.tasks[t]['complete']
+                     and g0.tasks[t]['baseline']['state'] != 'accepted')
+
+        def mutate(data):
+            mark_out(data, cand)
+            t = next(x for x in data['tasks'] if x['id'] == other)
+            t['start'].append({'type': 'artifact', 'task': cand, 'need': 'n', 'why': 'w'})
+            t['complete'].append({'type': 'integration', 'task': cand, 'need': 'n', 'why': 'w'})
+        self.edit_graph(mutate, commit=True)
+        self.fx.record(other, 'complete')
+        self.fx.commit(self.fx.plan, 'complete with historical edges to an out task')
+        self.assertEqual(self.fx.run('generate')[0], 0)
+        code, out = self.fx.run('check')
+        self.assertEqual(code, 0, out)
 
     # ---- rules E and F: analysis and generated views -------------------------------------------
 
