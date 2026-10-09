@@ -6,18 +6,20 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T22:41:03Z",
-  "updatedAt": "2026-10-08T22:41:22Z",
-  "leaseUntil": "2026-10-09T22:41:22Z",
+  "updatedAt": "2026-10-09T05:39:58Z",
+  "leaseUntil": "2026-10-10T05:39:58Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/nat-11",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/DesktopPlatform/pull/175"
+    ],
     "merges": [],
     "done": [],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\nat-11",
-    "head": null,
-    "reviewed": null,
+    "head": "9061e47d95b496795e0cecfc6ea8925ae4e1a342",
+    "reviewed": "9061e47d95b496795e0cecfc6ea8925ae4e1a342",
     "blocker": null,
     "next": [
       "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
