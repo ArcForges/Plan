@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
+Tasks: 426 in 25 lanes, plus 50 adoption slices listed in the adoption section. 35 more are out of scope under P2-026; they are listed at the end and have no prompt.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -27,25 +27,25 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | Slice | Repository | Size | Start prerequisites | Title (tasks it opens) |
 |---|---|---|---|---|
 | ADOPT.02.app-composition | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Application composition (6) |
-| ADOPT.02.assistant | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Embedded assistant (22) |
+| ADOPT.02.assistant | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Embedded assistant (21) |
 | ADOPT.02.cloud | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Cloud core (2) |
 | ADOPT.02.device-bridge | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Application presence and tool bridge (3) |
 | ADOPT.02.execution | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Execution engine (9) |
-| ADOPT.02.extensions | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Extension platform and integrations (7) |
+| ADOPT.02.extensions | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Extension platform and integrations (0) |
 | ADOPT.02.foundation | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Foundation values (7) |
-| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (13) |
-| ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (16) |
-| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (55) |
+| ADOPT.02.governance | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Family governance and policy tests (9) |
+| ADOPT.02.native | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Native producers and probes (9) |
+| ADOPT.02.platform | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop platform mechanisms (53) |
 | ADOPT.02.policy | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Dynamic policy and configuration (1) |
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
-| ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (4) |
+| ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (3) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (25) |
-| ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (3) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (24) |
+| ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (1) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
 | ADOPT.05.app-composition | ArcScope | S | ADOPT.01 | Adopt ArcScope: Application composition (2) |
-| ADOPT.05.arcscope | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope (27) |
+| ADOPT.05.arcscope | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope (26) |
 | ADOPT.05.governance | ArcScope | S | ADOPT.01 | Adopt ArcScope: Family governance and policy tests (1) |
 | ADOPT.05.release | ArcScope | S | ADOPT.01 | Adopt ArcScope: Release readiness and family release (1) |
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
@@ -54,7 +54,7 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.07.cloud | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud core (64) |
 | ADOPT.07.commerce | Cloud | S | ADOPT.01 | Adopt Cloud: Commerce, entitlement and credits (16) |
 | ADOPT.07.device-bridge | Cloud | S | ADOPT.01 | Adopt Cloud: Application presence and tool bridge (9) |
-| ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (2) |
+| ADOPT.07.extensions | Cloud | S | ADOPT.01 | Adopt Cloud: Extension platform and integrations (0) |
 | ADOPT.07.governance | Cloud | S | ADOPT.01 | Adopt Cloud: Family governance and policy tests (1) |
 | ADOPT.07.harness | Cloud | S | ADOPT.01 | Adopt Cloud: Cloud Harness (9) |
 | ADOPT.07.operations | Cloud | S | ADOPT.01 | Adopt Cloud: Operations, support and trust and safety (9) |
@@ -65,17 +65,17 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | ADOPT.07.simulator | Cloud | S | ADOPT.01 | Adopt Cloud: ArcScope Cloud simulator (9) |
 | ADOPT.08.ai-routing | AI | S | ADOPT.01 | Adopt AI: Workers AI routing and metering (0) |
 | ADOPT.08.extensions | AI | S | ADOPT.01 | Adopt AI: Extension platform and integrations (0) |
-| ADOPT.08.governance | AI | S | ADOPT.01 | Adopt AI: Family governance and policy tests (2) |
+| ADOPT.08.governance | AI | S | ADOPT.01 | Adopt AI: Family governance and policy tests (0) |
 | ADOPT.08.harness | AI | S | ADOPT.01 | Adopt AI: Cloud Harness (0) |
-| ADOPT.09.governance | Web | S | ADOPT.01 | Adopt Web: Family governance and policy tests (1) |
-| ADOPT.09.operations | Web | S | ADOPT.01 | Adopt Web: Operations, support and trust and safety (4) |
+| ADOPT.09.governance | Web | S | ADOPT.01 | Adopt Web: Family governance and policy tests (0) |
+| ADOPT.09.operations | Web | S | ADOPT.01 | Adopt Web: Operations, support and trust and safety (3) |
 | ADOPT.09.release | Web | S | ADOPT.01 | Adopt Web: Release readiness and family release (1) |
-| ADOPT.09.runtime-proofs | Web | S | ADOPT.01 | Adopt Web: Runtime proofs (2) |
+| ADOPT.09.runtime-proofs | Web | S | ADOPT.01 | Adopt Web: Runtime proofs (1) |
 | ADOPT.09.web | Web | S | ADOPT.01 | Adopt Web: Web (34) |
 | ADOPT.10.android | Mobile | S | ADOPT.01 | Adopt Mobile: Android companion (28) |
-| ADOPT.10.governance | Mobile | S | ADOPT.01 | Adopt Mobile: Family governance and policy tests (1) |
+| ADOPT.10.governance | Mobile | S | ADOPT.01 | Adopt Mobile: Family governance and policy tests (0) |
 | ADOPT.10.release | Mobile | S | ADOPT.01 | Adopt Mobile: Release readiness and family release (1) |
-| ADOPT.10.runtime-proofs | Mobile | S | ADOPT.01 | Adopt Mobile: Runtime proofs (2) |
+| ADOPT.10.runtime-proofs | Mobile | S | ADOPT.01 | Adopt Mobile: Runtime proofs (1) |
 
 ## Family governance and policy tests — [prompts](tasks/governance.md)
 
@@ -89,22 +89,14 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | GOV.06 | DesktopPlatform | M | GOV.04, ADOPT.02.governance (adoption) | Build.Policy generated-source reconstruction and generated-type recognition repair |
 | GOV.07 | ArcScope | S | GOV.04, GOV.05, GOV.06, ADOPT.05.governance (adoption) | ArcScope policy tests |
 | GOV.09 | Cloud | M | GOV.04, GOV.05, GOV.06, ADOPT.07.governance (adoption) | Cloud policy tests |
-| GOV.10 | AI | S | CON.23, GOV.19, ADOPT.08.governance (adoption) | AI (Workflow Harness) policy tests |
-| GOV.11 | Web | M | GOV.03, GOV.01, CON.23, ADOPT.09.governance (adoption) | Web policy tests (Node/TS mechanism) |
-| GOV.12 | Mobile | M | GOV.03, GOV.04, ADOPT.10.governance (adoption) | Mobile policy tests (Gradle/Kotlin mechanism) |
 | GOV.13 | DesktopPlatform | M | GOV.04, GOV.18, ADOPT.02.governance (adoption) | Invariant enforcement accounting report |
 | GOV.14 | DesktopPlatform | M | GOV.01, GOV.18, ADOPT.02.governance (adoption) | Specification integrity checks over the Design repository |
 | GOV.15 | DesktopPlatform | M | GOV.04, GOV.05, GOV.07, GOV.09, GOV.10, GOV.11, GOV.12, GOV.13, GOV.14, ADOPT.02.governance (adoption) | WP05 stage integration verification |
 | GOV.16 | Contracts | M | CON.18, ADOPT.03.governance (adoption) | Operation-catalogue authorization reachability matrix and identity boundary evidence |
 | GOV.17 | DesktopPlatform | M | ADOPT.02.governance (adoption) | Retire the native families outside the product family and move the still-image shim |
 | GOV.18 | DesktopPlatform | M | CON.23, ADOPT.02.governance (adoption) | Reduce the DesktopPlatform policy data and re-pin the design-policy export |
-| GOV.19 | AI | S | ADOPT.08.governance (adoption) | AI Wrangler and undici dependency admission (clear the repository security gate) |
 | GOV.20 | DesktopPlatform | S | GOV.06, ADOPT.02.governance (adoption) | Build.Policy banned-symbol scanner: audit unmanaged function-pointer invocations instead of throwing |
-| GOV.21 | DesktopPlatform | S | GOV.14, GOV.18, ADOPT.02.governance (adoption) | Scheduled and manual policy preview of the Design main branch (post-merge drift watch) |
 | GOV.30 | DesktopPlatform | M | GOV.18, ADOPT.02.governance (adoption) | DesktopPlatform osx RID removal from the desktop RID set and owned lock and policy files |
-| GOV.31 | DesktopPlatform | M | CON.40, CON.91, ADOPT.02.governance (adoption) | DesktopPlatform TypeScript FND.07 round-trip retirement and npm operator-client policy rows, replaced by C# coverage |
-| GOV.32 | DesktopPlatform | S | PLT.45, ADOPT.02.governance (adoption) | Remove the ContentSandbox macOS launch-profile code and keep the typed fail-closed refusal |
-| GOV.33 | DesktopPlatform | S | GOV.30, ADOPT.02.governance (adoption) | Remove the macOS validation claims from the LocalRpcAotTests README and PASS message; keep the shared Unix-socket dispatch |
 
 ## Contracts schema closures — [prompts](tasks/contracts.md)
 
@@ -122,7 +114,6 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CON.10 | Contracts | L | CON.02, CON.06, ADOPT.03.contracts (adoption) | Task/approval/bridge/chat/agent/automation/search operation registry + ai-internal package |
 | CON.11 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Application/history/execution/events operations (annex10's 13 additions) + EventService.Poll |
 | CON.12 | Contracts | M | ADOPT.03.contracts (adoption) | Extension and policy schemas: manifest.v1/workflow.v1/panel.v1/policy body.v1/configuration.v1 |
-| CON.13 | Contracts | S | CON.02, ADOPT.03.contracts (adoption) | Package catalog operation registry (CatalogService) |
 | CON.14 | Contracts | L | CON.13, CON.09, CON.22, ADOPT.03.contracts (adoption) | Operator control service (OperatorService, full §9/9.1/9.2 protocol) |
 | CON.15 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Cloudflare-internal HTTP and D1 ExecutePlan bindings |
 | CON.16 | Contracts | M | ADOPT.03.contracts (adoption) | Signed catalog/update/realm formats (catalog-index.v1, catalog-revocations.v1, android-update.v1, realm.v1) |
@@ -155,14 +146,11 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
-| PRF.02 | ArcScope | M | CON.91, FND.01, ADOPT.05.runtime-proofs (adoption) | ArcScope desktop Native AOT package proof |
+| PRF.02 | ArcScope | M | CON.91, FND.01, PLT.11, ADOPT.05.runtime-proofs (adoption) | ArcScope desktop Native AOT package proof |
 | PRF.04 | DesktopPlatform | L | CON.05, ADOPT.02.runtime-proofs (adoption) | Local RPC under AOT: bidirectional named-pipe/UDS probe processes |
 | PRF.05 | DesktopPlatform | M | CON.92, PRF.07, ADOPT.02.runtime-proofs (adoption) | Generated gRPC-Web under AOT against deployed Worker/Container ingress |
 | PRF.06 | DesktopPlatform | M | PRF.07, CON.11, ADOPT.02.runtime-proofs (adoption) | Realtime (EventService.Watch/Poll) under AOT |
 | PRF.07 | Cloud | XL | CON.92, CON.07, CON.15, ADOPT.07.runtime-proofs (adoption) | Cloudflare Native AOT host + D1 + DO/Queue/R2 foundation proof |
-| PRF.08 | Web | L | CON.92, PRF.07, CON.07, ADOPT.09.runtime-proofs (adoption) | React production build and generated TS SDK proof |
-| PRF.09 | DesktopPlatform | S | PLT.34, ADOPT.02.runtime-proofs (adoption) | Third-party control AOT admission gate and first candidate |
-| PRF.10 | Mobile | L | CON.90, PRF.07, ADOPT.10.runtime-proofs (adoption) | Android Kotlin/Jetpack Compose gRPC-Web and CF proof |
 | PRF.11 | Web | L | CON.92, WEB.40, PRF.07, CON.07, ADOPT.09.runtime-proofs (adoption) | Blazor WebAssembly production build and generated C# SDK proof against deployed ingress |
 | PRF.12 | Mobile | L | AND.40, PRF.07, CLOUD.26, ADOPT.10.runtime-proofs (adoption) | MAUI Android release proof: Mono AOT release, trimming and R8, 16 KB alignment, signing, unary, server stream, trailers, cancel and Keystore against the proof ingress |
 
@@ -203,7 +191,6 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.31 | DesktopPlatform | S | PLT.26, FND.05, ADOPT.02.platform (adoption) | Error presentation |
 | PLT.32 | DesktopPlatform | M | PLT.28, ADOPT.02.platform (adoption) | Lifecycle, menus and shutdown |
 | PLT.33 | DesktopPlatform | L | PLT.27, ADOPT.02.platform (adoption) | Accessibility and localisation baseline |
-| PLT.34 | DesktopPlatform | M | PRF.02, ADOPT.02.platform (adoption) | Third-party control admission |
 | PLT.35 | DesktopPlatform | S | PLT.26, PLT.27, PLT.28, PLT.29, PLT.30, PLT.31, PLT.32, PLT.33, PLT.34, ADOPT.02.platform (adoption) | Publish DesignSystem/Shell packages and verify real integration |
 | PLT.36 | DesktopPlatform | M | FND.01, ADOPT.02.platform (adoption) | Principals and the actor chain |
 | PLT.37 | DesktopPlatform | M | PLT.19, ADOPT.02.platform (adoption) | Risk model and classification |
@@ -215,7 +202,7 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.43 | DesktopPlatform | M | PLT.38, PLT.01, ADOPT.02.platform (adoption) | Capability leases and trust |
 | PLT.44 | DesktopPlatform | M | PLT.36, PLT.01, FND.04, ADOPT.02.platform (adoption) | Append-only audit subsystem |
 | PLT.45 | DesktopPlatform | XL | PLT.15, PLT.09, PLT.10, CON.04, ADOPT.02.platform (adoption) | Content helper and OS-enforced isolation (ContentSandbox host) |
-| PLT.46 | DesktopPlatform | M | PLT.36, PLT.37, PLT.38, PLT.39, PLT.40, PLT.41, PLT.42, PLT.43, PLT.44, PLT.45, PLT.54, PLT.57, ADOPT.02.platform (adoption) | Publish Security packages and verify real integration |
+| PLT.46 | DesktopPlatform | M | PLT.36, PLT.37, PLT.38, PLT.39, PLT.40, PLT.41, PLT.42, PLT.43, PLT.44, PLT.45, PLT.57, ADOPT.02.platform (adoption) | Publish Security packages and verify real integration |
 | PLT.47 | DesktopPlatform | M | FND.01, ADOPT.02.platform (adoption) | Emission and required dimensions |
 | PLT.48 | DesktopPlatform | M | PLT.47, ADOPT.02.platform (adoption) | Correlation and causation propagation |
 | PLT.49 | DesktopPlatform | L | PLT.40, FND.05, ADOPT.02.platform (adoption) | Redaction by construction |
@@ -223,7 +210,6 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | PLT.51 | DesktopPlatform | S | PLT.23, ADOPT.02.platform (adoption) | Health probes |
 | PLT.52 | DesktopPlatform | L | PLT.31, PLT.49, ADOPT.02.platform (adoption) | Desktop diagnostics and consent |
 | PLT.53 | DesktopPlatform | S | PLT.47, PLT.48, PLT.49, PLT.50, PLT.51, PLT.52, ADOPT.02.platform (adoption) | Publish Observability packages and verify real integration |
-| PLT.54 | DesktopPlatform | M | PLT.45, NAT.31, ADOPT.02.platform (adoption) | Real hostile-input containment proof with the production still-image parser libraries loaded in ContentSandbox (PDF retired) |
 | PLT.57 | DesktopPlatform | M | PLT.24, PLT.38, APP.01, PLT.44, ADOPT.02.platform (adoption) | End-to-end capability invocation with real security enforcement inside one product |
 
 ## Native producers and probes — [prompts](tasks/native.md)
@@ -234,18 +220,11 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | NAT.03 | DesktopPlatform | M | ADOPT.02.native (adoption) | Probe C: high-throughput acquisition over a real transport |
 | NAT.05 | DesktopPlatform | S | NAT.01, NAT.03, ADOPT.02.native (adoption) | Probe evidence, licence positions, conclusions and hardware-lab inventory seed |
 | NAT.06 | DesktopPlatform | L | GOV.17, ADOPT.02.native (adoption) | Common native ABI: preambles, pack8 records, ownership, cancellation, bounded buffers |
-| NAT.11 | DesktopPlatform | M | NAT.06, PLT.45, GOV.17, ADOPT.02.native (adoption) | Image family: still-image codecs (PNG/TIFF/EXR) |
 | NAT.13 | DesktopPlatform | M | NAT.06, GOV.17, ADOPT.02.native (adoption) | Instruments family: serial and USB devices (NEW library) |
-| NAT.14 | DesktopPlatform | L | PLT.45, NAT.06, GOV.17, ADOPT.02.native (adoption) | Pdf family: arcpdf-abi export set, ArcForges.Native.Pdf binding and production parser composition seam in the WP11 helper (NEW library; real PDFium is NAT.15) |
-| NAT.15 | DesktopPlatform | L | NAT.14, PLT.45, ADOPT.02.native (adoption) | Pdf family: real PDFium (chromium/8044) build admission, binding and real-parser containment acceptance |
-| NAT.22 | DesktopPlatform | S | NAT.11, ADOPT.02.native (adoption) | Image package production: three supported RIDs (win-x64, win-arm64, linux-x64) |
 | NAT.24 | DesktopPlatform | S | NAT.13, ADOPT.02.native (adoption) | Instruments package production: three supported RIDs (win-x64, win-arm64, linux-x64) |
-| NAT.25 | DesktopPlatform | M | NAT.31, PLT.45, PLT.54, ADOPT.02.native (adoption) | ContentSandbox Runtime.<rid> republication from the still-image composition (three supported RIDs; PDF package retired) |
-| NAT.28 | DesktopPlatform | M | NAT.22, NAT.24, NAT.25, ADOPT.02.native (adoption) | Dependency adoption receipts and hardware-lab closure |
-| NAT.29 | DesktopPlatform | M | PRF.02, PRF.04, PRF.05, PRF.06, PRF.07, PRF.11, PRF.09, PRF.12, ADOPT.02.native (adoption) | Verify the owned WP06 artifact set and real cross-runtime integration |
-| NAT.30 | DesktopPlatform | M | NAT.06, NAT.11, NAT.13, NAT.32, NAT.31, NAT.22, NAT.24, NAT.25, NAT.28, NAT.01, NAT.03, NAT.05, PLT.54, GOV.17, GOV.30, ADOPT.02.native (adoption) | Verify the complete native producer set as one immutable candidate |
-| NAT.31 | DesktopPlatform | M | NAT.11, PLT.45, NAT.32, ADOPT.02.native (adoption) | Still-image composition: production still-image parsers (NAT.11 family) composed into the ContentSandbox helper, with real containment re-run |
-| NAT.32 | DesktopPlatform | M | NAT.14, NAT.06, CON.04, PLT.45, GOV.18, ADOPT.02.native (adoption) | PDF engine retirement: remove native/arcpdf-abi, ArcForges.Native.Pdf and the helper PDF parser path |
+| NAT.28 | DesktopPlatform | M | NAT.24, ADOPT.02.native (adoption) | Dependency adoption receipts and hardware-lab closure |
+| NAT.29 | DesktopPlatform | M | PRF.02, PRF.04, PRF.05, PRF.06, PRF.07, PRF.11, PRF.12, ADOPT.02.native (adoption) | Verify the owned WP06 artifact set and real cross-runtime integration |
+| NAT.30 | DesktopPlatform | M | NAT.06, NAT.13, NAT.24, NAT.28, NAT.01, NAT.03, NAT.05, GOV.17, GOV.30, ADOPT.02.native (adoption) | Verify the complete native producer set as one immutable candidate |
 
 ## Application composition — [prompts](tasks/app-composition.md)
 
@@ -271,8 +250,7 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | AST.05 | DesktopPlatform | S | AST.01, PLT.42, ADOPT.02.assistant (adoption) | Skills |
 | AST.06 | DesktopPlatform | M | AST.01, ADOPT.02.assistant (adoption) | Local search |
 | AST.07 | DesktopPlatform | M | AST.01, CON.11, ADOPT.02.assistant (adoption) | Local history export and import (assistant-history.v1) |
-| AST.08 | DesktopPlatform | S | AST.01, ADOPT.02.assistant (adoption) | Reference and package proof (AionUi evidence, clean-app package consumption) |
-| AST.09 | DesktopPlatform | M | AST.01, AST.02, AST.03, AST.04, AST.05, AST.06, AST.07, AST.08, ADOPT.02.assistant (adoption) | Owned-artifact receipt and UX acceptance |
+| AST.09 | DesktopPlatform | M | AST.01, AST.02, AST.03, AST.04, AST.05, AST.06, AST.07, ADOPT.02.assistant (adoption) | Owned-artifact receipt and UX acceptance |
 | AST.10 | DesktopPlatform | L | EXE.01, AST.01, AST.02, AST.04, AST.05, AST.06, AST.07, ADOPT.02.assistant (adoption) | Complete assistant navigation shell |
 | AST.11 | DesktopPlatform | L | CON.10, PRF.05, AST.01, ADOPT.02.assistant (adoption) | Cloud client and device runtime (fixture turn endpoint boundary) |
 | AST.12 | DesktopPlatform | M | AST.10, APP.05, PLT.39, ADOPT.02.assistant (adoption) | Security and approval surface |
@@ -331,8 +309,7 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | SCOPE.07 | ArcScope | L | SCOPE.06, PLT.06, ADOPT.05.arcscope (adoption) | Durable capture writer, chunked verifiable store and crash recovery |
 | SCOPE.08 | ArcScope | M | SCOPE.07, SCOPE.01, ADOPT.05.arcscope (adoption) | Replay as a source (capture-level) |
 | SCOPE.09 | ArcScope | S | SCOPE.06, PLT.32, ADOPT.05.arcscope (adoption) | Long-running capture in the shell |
-| SCOPE.10 | ArcScope | S | ADOPT.05.arcscope (adoption) | Reference drift check against Serial-Studio 639daafb |
-| SCOPE.11 | ArcScope | M | SCOPE.01, SCOPE.02, SCOPE.03, SCOPE.04, SCOPE.05, SCOPE.06, SCOPE.07, SCOPE.08, SCOPE.09, SCOPE.10, NAT.24, ADOPT.05.arcscope (adoption) | Owned-artifact verification and real hardware integration |
+| SCOPE.11 | ArcScope | M | SCOPE.01, SCOPE.02, SCOPE.03, SCOPE.04, SCOPE.05, SCOPE.06, SCOPE.07, SCOPE.08, SCOPE.09, NAT.24, ADOPT.05.arcscope (adoption) | Owned-artifact verification and real hardware integration |
 | SCOPE.12 | ArcScope | L | SCOPE.02, SCOPE.06, ADOPT.05.arcscope (adoption) | Visualisation: virtualised rendering, downsampling, cursors and markers |
 | SCOPE.13 | ArcScope | M | SCOPE.05, SCOPE.06, ADOPT.05.arcscope (adoption) | Triggers with pre/post windows |
 | SCOPE.14 | ArcScope | L | CON.91, SCOPE.02, SCOPE.06, ADOPT.05.arcscope (adoption) | Measurements: scope.measurement.v1 |
@@ -347,7 +324,7 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | SCOPE.23 | ArcScope | M | SCOPE.07, CLOUD.42, ADOPT.05.arcscope (adoption) | Explicit per-session raw capture upload |
 | SCOPE.24 | ArcScope | L | SCOPE.07, SCOPE.14, ADOPT.05.arcscope (adoption) | Import, export and format fixtures |
 | SCOPE.25 | ArcScope | S | SCOPE.20, SCOPE.07, EXT.02, ADOPT.05.arcscope (adoption) | Extension boundary: no third-party raw-capture write path |
-| SCOPE.26 | ArcScope | M | SCOPE.20, SCOPE.21, SCOPE.22, SCOPE.23, SCOPE.24, SCOPE.25, ADOPT.05.arcscope (adoption) | Owned-artifact verification and real integration |
+| SCOPE.26 | ArcScope | M | SCOPE.20, SCOPE.21, SCOPE.22, SCOPE.23, SCOPE.24, SCOPE.25, DEV.05, DEV.14, ADOPT.05.arcscope (adoption) | Owned-artifact verification and real integration |
 | SCOPE.27 | ArcScope | M | SCOPE.22, CLOUD.39, CLOUD.44, ADOPT.05.arcscope (adoption) | Real ArcScope metadata sync against the deployed Cloud sync engine |
 
 ## ArcScope Cloud simulator — [prompts](tasks/simulator.md)
@@ -360,7 +337,7 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | SIM.04 | Cloud | L | SIM.03, CLOUD.42, CLOUD.04, COM.07, ADOPT.07.simulator (adoption) | Canonical publication, checkpoints and recovery |
 | SIM.05 | Cloud | M | SIM.04, CLOUD.21, CLOUD.24, CON.21, ADOPT.07.simulator (adoption) | Cloud-side simulation.* operations, manifest listing and segment fetch |
 | SIM.06 | ArcScope | L | SIM.05, CON.21, SCOPE.01, SCOPE.14, SCOPE.24, ADOPT.05.simulator (adoption) | ArcScope-side simulated DataSource and native ingestion |
-| SIM.07 | Cloud | L | SIM.03, COM.05, COM.07, COM.12, POL.03, ADOPT.07.simulator (adoption) | Limits, entitlement and lifecycle |
+| SIM.07 | Cloud | L | SIM.03, COM.05, COM.07, COM.11, POL.03, ADOPT.07.simulator (adoption) | Limits, entitlement and lifecycle |
 | SIM.08 | Cloud | M | SIM.01, SIM.02, SIM.03, SIM.04, SIM.05, SIM.06, SIM.07, ADOPT.07.simulator (adoption) | Owned-artifact verification and real integration |
 | SIM.09 | Cloud | M | SIM.05, SIM.06, SCOPE.14, SCOPE.18, SCOPE.24, ADOPT.07.simulator (adoption) | Real Cloud->R2->ArcScope-native simulator closure: hash/timebase/provenance proof against WP34 measurement/report and WP35 import/portability |
 | SIM.10 | Cloud | M | CLOUD.07, SIM.01, ADOPT.07.simulator (adoption) | Real ArcScope simulator admission against deployed capacity/SimulationPacer |
@@ -428,7 +405,7 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | CLOUD.64 | Cloud | M | COM.13, POL.05, OPS.05, CLOUD.21, CLOUD.22, ADOPT.07.cloud (adoption) | Full operator contract closure across PublicApi, Commerce, Policy and Console |
 | CLOUD.66 | Cloud | M | CLOUD.15, COM.10, CLOUD.21, CLOUD.22, ADOPT.07.cloud (adoption) | Every enumerated sensitive operation wired to the step-up mechanism |
 | CLOUD.67 | Cloud | M | CLOUD.51, HAR.00, HAR.02, HAR.03, AIR.00, ADOPT.07.cloud (adoption) | Combined AI reopen after Cloud disaster-recovery restore |
-| CLOUD.68 | Cloud | M | CON.24, CLOUD.39, CLOUD.21, ADOPT.07.cloud (adoption) | ArcScope library read model and companion notifications |
+| CLOUD.68 | Cloud | M | CON.24, CLOUD.39, CLOUD.21, CLOUD.12, ADOPT.07.cloud (adoption) | ArcScope library read model and companion notifications |
 | CLOUD.69 | Cloud | M | CLOUD.01, ADOPT.07.cloud (adoption) | Correlation acceptance and propagation across ingress, response meta and queue wake |
 | CLOUD.70 | Cloud | S | CLOUD.03, CLOUD.01, ADOPT.07.cloud (adoption) | Gated D1 migration deployment step and compatible-rollback flow |
 | CLOUD.71 | Cloud | S | PRF.07, PRF.11, ADOPT.07.cloud (adoption) | Serve the built Web profiles from the proof origin |
@@ -469,7 +446,7 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | POL.06 | Cloud | M | POL.02, ADOPT.07.policy (adoption) | Scoped resolution and explainability (server side) |
 | POL.07 | Cloud | M | POL.02, ADOPT.07.policy (adoption) | Compatibility policy |
 | POL.08 | Cloud | M | POL.02, ADOPT.07.policy (adoption) | Publication, staleness and last-known-good (server side) |
-| POL.09 | DesktopPlatform | L | POL.04, CON.12, CON.22, ADOPT.02.policy (adoption) | Client-side policy resolution library (native/AOT) |
+| POL.09 | DesktopPlatform | L | POL.04, CON.12, CON.22, POL.06, ADOPT.02.policy (adoption) | Client-side policy resolution library (native/AOT) |
 | POL.10 | Cloud | S | POL.09, POL.03, POL.05, POL.06, POL.07, ADOPT.07.policy (adoption) | Owned-artifact receipt |
 | POL.11 | Cloud | M | POL.08, POL.09, ADOPT.07.policy (adoption) | First real publish-then-resolve round trip from Cloud Policy authority to the DesktopPlatform client library |
 
@@ -487,9 +464,8 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | OPS.08 | Cloud | L | OPS.07, OPS.05, ADOPT.07.operations (adoption) | Trust and safety |
 | OPS.09 | Cloud | M | CLOUD.12, OPS.02, ADOPT.07.operations (adoption) | Operational mail and provider drills |
 | OPS.10 | Cloud | L | OPS.09, CON.22, ADOPT.07.operations (adoption) | Customer push delivery and registration lifecycle |
-| OPS.11 | Web | M | EXT.06, CON.14, OPS.05, ADOPT.09.operations (adoption) | Package review and revocation console |
-| OPS.12 | Cloud | S | OPS.11, AND.26, OPS.01, OPS.02, OPS.03, OPS.04, OPS.06, OPS.07, OPS.08, OPS.09, OPS.10, ADOPT.07.operations (adoption) | Owned-artifact receipt |
-| OPS.13 | Web | M | COM.13, POL.05, OPS.05, CON.14, OPS.11, ADOPT.09.operations (adoption) | Operator console exercises real financial-owner and kill-switch RPCs end to end |
+| OPS.12 | Cloud | S | OPS.01, OPS.02, OPS.03, OPS.04, OPS.06, OPS.07, OPS.08, OPS.09, OPS.10, ADOPT.07.operations (adoption) | Owned-artifact receipt |
+| OPS.13 | Web | M | COM.13, POL.05, OPS.05, CON.14, ADOPT.09.operations (adoption) | Operator console exercises real financial-owner and kill-switch RPCs end to end |
 
 ## Knowledge search and retrieval — [prompts](tasks/search.md)
 
@@ -508,18 +484,7 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
-| EXT.00 | DesktopPlatform | L | PLT.45, PLT.19, ADOPT.02.extensions (adoption) | Extension host process and supervision |
-| EXT.01 | DesktopPlatform | M | EXT.00, ADOPT.02.extensions (adoption) | Handshake and protocol versioning |
 | EXT.02 | Contracts | L | CON.05, ADOPT.03.extensions (adoption) | Dual capability boundary (typed layer + closed dynamic value model) |
-| EXT.03 | DesktopPlatform | M | EXT.02, ADOPT.02.extensions (adoption) | Declarative UI and settings contribution |
-| EXT.04 | Contracts | M | EXT.02, CON.16, ADOPT.03.extensions (adoption) | Package manifest/workflow/panel validators and lifecycle state machine |
-| EXT.05 | DesktopPlatform | L | EXT.04, ADOPT.02.extensions (adoption) | Six contribution-kind runtime wiring |
-| EXT.06 | Cloud | L | CLOUD.16, CLOUD.42, CON.16, ADOPT.07.extensions (adoption) | Cloud PackageCatalog producer |
-| EXT.07 | DesktopPlatform | M | EXT.06, ADOPT.02.extensions (adoption) | Desktop and CLI catalog consumers |
-| EXT.08 | Contracts | M | EXT.02, CLOUD.16, ADOPT.03.extensions (adoption) | Public SDK and CLI |
-| EXT.09 | DesktopPlatform | M | EXT.00, ADOPT.02.extensions (adoption) | Local MCP stdio behind the owned connector child |
-| EXT.10 | Cloud | M | CON.15, ADOPT.07.extensions (adoption) | Cloud MCP HTTP placement in the C# Agent module (thin Worker egress route) |
-| EXT.90 | DesktopPlatform | M | EXT.00, EXT.01, EXT.02, EXT.03, EXT.04, EXT.05, EXT.06, EXT.07, EXT.08, EXT.09, EXT.10, ADOPT.02.extensions (adoption) | Verify owned artifact and real integration (extension platform) |
 
 ## Workers AI routing and metering — [prompts](tasks/ai-routing.md)
 
@@ -569,11 +534,11 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | AND.13 | Mobile | L | AND.08, AND.09, AND.10, AND.11, AND.12, ADOPT.10.android (adoption) | Native interaction and recovery: full experience-02 device matrix |
 | AND.14 | Mobile | S | AND.08, AND.09, AND.10, ADOPT.10.android (adoption) | Scope and licence enforcement audit |
 | AND.15 | Mobile | M | AND.08, AND.09, AND.10, AND.11, AND.12, AND.13, AND.14, AND.27, ADOPT.10.android (adoption) | Complete companion acceptance |
-| AND.16 | Mobile | S | AND.15, ADOPT.10.android (adoption) | Signed Android release artifacts (AAB + direct APK) |
+| AND.16 | Mobile | S | AND.15, ADOPT.10.android (adoption) | Signed Android release artifacts (direct APK) |
 | AND.17 | Mobile | S | AND.16, ADOPT.10.android (adoption) | Release runtime inspection |
 | AND.18 | Mobile | S | AND.16, ADOPT.10.android (adoption) | Dependency and source rights closure (final artifact) |
 | AND.19 | Mobile | M | AND.08, AND.09, AND.10, AND.11, AND.12, ADOPT.10.android (adoption) | Consumption-only enforcement |
-| AND.20 | Mobile | M | CON.16, AND.02, ADOPT.10.android (adoption) | Play and direct-channel signed update client |
+| AND.20 | Mobile | M | CON.16, AND.02, ADOPT.10.android (adoption) | Direct-channel signed update client |
 | AND.21 | Mobile | L | AND.16, ADOPT.10.android (adoption) | Physical device and recovery gates |
 | AND.22 | Mobile | S | AND.01, ADOPT.10.android (adoption) | Android scope statement |
 | AND.23 | Mobile | M | AND.17, AND.18, AND.19, AND.20, AND.21, AND.22, ADOPT.10.android (adoption) | Distribution acceptance |
@@ -587,14 +552,14 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
-| WEB.01 | Web | L | GOV.03, GOV.11, WEB.40, ADOPT.09.web (adoption) | C# static Site generator (Razor HtmlRenderer) and determinism engine |
+| WEB.01 | Web | L | WEB.40, ADOPT.09.web (adoption) | C# static Site generator (Razor HtmlRenderer) and determinism engine |
 | WEB.02 | Web | M | WEB.01, ADOPT.09.web (adoption) | Versioned public content and pricing inputs (catalogue.json) |
 | WEB.03 | Web | M | WEB.01, ADOPT.09.web (adoption) | Rendering and performance |
 | WEB.04 | Web | M | WEB.01, ADOPT.09.web (adoption) | Internationalisation |
 | WEB.05 | Web | M | WEB.01, ADOPT.09.web (adoption) | Documentation, downloads and legal surfaces |
 | WEB.06 | Web | S | WEB.01, ADOPT.09.web (adoption) | Accessibility and analytics |
 | WEB.07 | Web | S | WEB.01, ADOPT.09.web (adoption) | Independence and atomic deployment |
-| WEB.08 | Web | L | GOV.03, WEB.40, ADOPT.09.web (adoption) | Owned consumer design system (Razor class library ArcForges.Web.Ui) |
+| WEB.08 | Web | L | WEB.40, ADOPT.09.web (adoption) | Owned consumer design system (Razor class library ArcForges.Web.Ui) |
 | WEB.09 | Web | S | WEB.02, WEB.03, WEB.04, WEB.05, WEB.06, WEB.07, WEB.08, ADOPT.09.web (adoption) | Verify the owned Site artifact and real integration |
 | WEB.10 | Web | XL | WEB.08, CON.07, WEB.40, PRF.11, ADOPT.09.web (adoption) | Account Blazor shell: route graph, deployment-profile selection, generated C# SDK wiring |
 | WEB.11 | Web | L | CLOUD.19, WEB.10, ADOPT.09.web (adoption) | Real browser session and step-up acceptance |
@@ -620,7 +585,7 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 | WEB.31 | Web | M | OPS.05, WEB.07, WEB.14, WEB.19, WEB.30, ADOPT.09.web (adoption) | Full browser-support.v1 matrix across all Web-facing outputs |
 | WEB.32 | Web | L | WEB.19, CON.24, ADOPT.09.web (adoption) | ArcScope workspace in the Web companion: library and reports |
 | WEB.33 | Web | M | WEB.19, CON.21, ADOPT.09.web (adoption) | Cloud simulator console in the Web companion |
-| WEB.40 | Web | XL | GOV.03, CON.07, GOV.11, ADOPT.09.web (adoption) | Blazor migration of the existing Web (C# static Site, Blazor WebAssembly profiles, C# policy) |
+| WEB.40 | Web | XL | GOV.03, CON.07, ADOPT.09.web (adoption) | Blazor migration of the existing Web (C# static Site, Blazor WebAssembly profiles, C# policy) |
 
 ## Desktop distribution and update — [prompts](tasks/updater.md)
 
@@ -639,12 +604,54 @@ Tasks: 461 in 25 lanes, plus 50 adoption slices listed in the adoption section.
 
 | Task | Repository | Size | Start prerequisites | Title |
 |---|---|---|---|---|
-| REL.02 | ArcScope | L | SCOPE.26, UPD.08, SCOPE.11, SCOPE.19, ADOPT.05.release (adoption) | ArcScope desktop release readiness |
-| REL.04 | Mobile | M | AND.23, ADOPT.10.release (adoption) | Android release readiness |
+| REL.02 | ArcScope | L | SCOPE.26, UPD.08, SCOPE.11, SCOPE.19, NAT.30, ADOPT.05.release (adoption) | ArcScope desktop release readiness |
+| REL.04 | Mobile | M | AND.23, AND.26, ADOPT.10.release (adoption) | Android release readiness |
 | REL.05 | Web | L | WEB.26, WEB.09, WEB.18, ADOPT.09.release (adoption) | Web outputs release readiness |
-| REL.06 | Cloud | XL | CLOUD.51, AIR.90, GOV.03, CLOUD.10, CLOUD.20, CLOUD.28, CLOUD.36, CLOUD.47, CLOUD.55, COM.15, POL.10, OPS.12, SRCH.90, EXT.90, HAR.90, SIM.08, ADOPT.07.release (adoption) | Cloud/AI production readiness (deployment, migration, backup, self-host) |
+| REL.06 | Cloud | XL | CLOUD.51, AIR.90, GOV.03, CLOUD.10, CLOUD.20, CLOUD.28, CLOUD.36, CLOUD.47, CLOUD.55, COM.15, POL.10, OPS.12, SRCH.90, HAR.90, SIM.08, GOV.09, ADOPT.07.release (adoption) | Cloud/AI production readiness (deployment, migration, backup, self-host) |
 | REL.07 | Contracts | M | REL.02, REL.04, REL.05, REL.06, REL.08, ADOPT.03.release (adoption) | Contracts/SDK release audit (licence, SBOM, provenance rollup) |
 | REL.08 | Cloud | L | COM.15, POL.10, ADOPT.07.release (adoption) | Commercial activation |
 | REL.09 | Cloud | L | REL.06, OPS.12, ADOPT.07.release (adoption) | Combined disaster drill and operational readiness confirmation |
 | REL.10 | DesktopPlatform | M | REL.02, UPD.01, UPD.07, ADOPT.02.release (adoption) | Production update feed and signing switch |
 | REL.11 | DesktopPlatform | L | REL.02, REL.04, REL.05, REL.06, REL.07, REL.08, REL.09, REL.10, ADOPT.02.release (adoption) | Family release readiness audit and honest statement |
+
+## Out of scope
+
+Excluded from the active plan: never claimable and not remaining work. Full records and ledger status are on the lane pages.
+
+| Task | Repository | Decision | Mode | Ledger status | Title |
+|---|---|---|---|---|---|
+| GOV.10 | AI | P2-026 | excluded | complete | AI (Workflow Harness) policy tests |
+| GOV.11 | Web | P2-026 | excluded | complete | Web policy tests (Node/TS mechanism) |
+| GOV.12 | Mobile | P2-026 | excluded | complete | Mobile policy tests (Gradle/Kotlin mechanism) |
+| GOV.19 | AI | P2-026 | excluded | complete | AI Wrangler and undici dependency admission (clear the repository security gate) |
+| GOV.21 | DesktopPlatform | P2-026 | excluded | no record | Scheduled and manual policy preview of the Design main branch (post-merge drift watch) |
+| CON.13 | Contracts | P2-026 | excluded | complete | Package catalog operation registry (CatalogService) |
+| PRF.08 | Web | P2-026 | excluded | superseded | React production build and generated TS SDK proof |
+| PRF.09 | DesktopPlatform | P2-026 | excluded | complete | Third-party control AOT admission gate and first candidate |
+| PRF.10 | Mobile | P2-026 | excluded | superseded | Android Kotlin/Jetpack Compose gRPC-Web and CF proof |
+| PLT.34 | DesktopPlatform | P2-026 | excluded | complete | Third-party control admission |
+| PLT.54 | DesktopPlatform | P2-026 | excluded | no record | Real hostile-input containment proof with the production still-image parser libraries loaded in ContentSandbox (PDF retired) |
+| NAT.11 | DesktopPlatform | P2-026 | closeout | complete | Image family: still-image codecs (PNG/TIFF/EXR) |
+| NAT.14 | DesktopPlatform | P2-026 | excluded | complete | Pdf family: arcpdf-abi export set, ArcForges.Native.Pdf binding and production parser composition seam in the WP11 helper (NEW library; real PDFium is NAT.15) |
+| NAT.15 | DesktopPlatform | P2-026 | excluded | superseded | Pdf family: real PDFium (chromium/8044) build admission, binding and real-parser containment acceptance |
+| NAT.22 | DesktopPlatform | P2-026 | excluded | no record | Image package production: three supported RIDs (win-x64, win-arm64, linux-x64) |
+| NAT.25 | DesktopPlatform | P2-026 | excluded | no record | ContentSandbox Runtime.<rid> republication from the still-image composition (three supported RIDs; PDF package retired) |
+| AST.08 | DesktopPlatform | P2-026 | excluded | no record | Reference and package proof (AionUi evidence, clean-app package consumption) |
+| SCOPE.10 | ArcScope | P2-026 | excluded | complete | Reference drift check against Serial-Studio 639daafb |
+| OPS.11 | Web | P2-026 | excluded | no record | Package review and revocation console |
+| EXT.00 | DesktopPlatform | P2-026 | excluded | no record | Extension host process and supervision |
+| EXT.01 | DesktopPlatform | P2-026 | excluded | no record | Handshake and protocol versioning |
+| EXT.03 | DesktopPlatform | P2-026 | excluded | no record | Declarative UI and settings contribution |
+| EXT.04 | Contracts | P2-026 | excluded | no record | Package manifest/workflow/panel validators and lifecycle state machine |
+| EXT.05 | DesktopPlatform | P2-026 | excluded | no record | Six contribution-kind runtime wiring |
+| EXT.06 | Cloud | P2-026 | excluded | no record | Cloud PackageCatalog producer |
+| EXT.07 | DesktopPlatform | P2-026 | excluded | no record | Desktop and CLI catalog consumers |
+| EXT.08 | Contracts | P2-026 | excluded | no record | Public SDK and CLI |
+| EXT.09 | DesktopPlatform | P2-026 | excluded | no record | Local MCP stdio behind the owned connector child |
+| EXT.10 | Cloud | P2-026 | excluded | no record | Cloud MCP HTTP placement in the C# Agent module (thin Worker egress route) |
+| EXT.90 | DesktopPlatform | P2-026 | excluded | no record | Verify owned artifact and real integration (extension platform) |
+| NAT.31 | DesktopPlatform | P2-026 | excluded | no record | Still-image composition: production still-image parsers (NAT.11 family) composed into the ContentSandbox helper, with real containment re-run |
+| NAT.32 | DesktopPlatform | P2-026 | excluded | complete | PDF engine retirement: remove native/arcpdf-abi, ArcForges.Native.Pdf and the helper PDF parser path |
+| GOV.31 | DesktopPlatform | P2-026 | excluded | no record | DesktopPlatform TypeScript FND.07 round-trip retirement and npm operator-client policy rows, replaced by C# coverage |
+| GOV.32 | DesktopPlatform | P2-026 | excluded | complete | Remove the ContentSandbox macOS launch-profile code and keep the typed fail-closed refusal |
+| GOV.33 | DesktopPlatform | P2-026 | excluded | no record | Remove the macOS validation claims from the LocalRpcAotTests README and PASS message; keep the shared Unix-socket dispatch |

@@ -146,7 +146,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: DesktopPlatform:src/BuildingBlocks/ArcForges.Execution.Persistence/**; DesktopPlatform:src/BuildingBlocks/ArcForges.Communication.DeviceRuntime/**
 Shared resources (follow the owner protocol): RES-assistant-store-schema (append): Numbered migrations are allocated at merge by the integration owner (a rebase renumbers pending migrations); each migration is forward-only with its recovery and downgrade-refusal tests; no task edits a merged migration.
-Unblocks: DEV.09, DEV.12, DEV.13, DEV.14
+Unblocks: DEV.09, DEV.12, DEV.13, DEV.14, SCOPE.26
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline unit tests: duplicate delivery, uncertain external effect, local/Cloud key agreement using a contract-bound fixture for the Cloud side.
 Completion evidence for the ledger: Duplicate-delivery and uncertain-effect test results; local-vs-fixture-Cloud key agreement proof.
@@ -361,7 +361,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - none
 
 Permitted write scope: 
-Unblocks: CLOUD.36
+Unblocks: AND.25, CLOUD.36, SCOPE.26
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
 Completion evidence for the ledger: The device tool path (pull, local re-authorisation, generated decode, typed invocation, idempotent result) works over the real deployed stream transport -- this is explicitly must-be-real-early per implementation-sequence §3, owned jointly with the assistant lanes WP-26

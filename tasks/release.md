@@ -27,6 +27,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] UPD.08: the published ArcForges.Update package/client (the platform lane UPD area)
 - [release] SCOPE.11: ArcScope acquisition package accepted
 - [release] SCOPE.19: ArcScope analysis package accepted
+- [release] NAT.30: complete native producer set verified as one immutable candidate (reduced under P2-026)
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] REL.10: production feed/signing cutover pointing at this proven candidate
 
@@ -37,7 +38,7 @@ Unblocks: REL.07, REL.10, REL.11
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local opt-in runtime observation per supported platform under P2-017 (the Linux leg runs in local WSL2 per P2-024); no macOS CI or macOS matrix row per P2-023.
 Completion evidence for the ledger: Full update-matrix results table per platform; licence/SBOM/provenance/NOTICE closure report for the ArcScope artifact.
-Notes: Planning repair 2026-10-08 (DLV-34; P2-023): the macOS platform leg of the ArcScope update matrix is removed; Windows and Linux are the matrix. No other acceptance changes.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-023): the macOS platform leg of the ArcScope update matrix is removed; Windows and Linux are the matrix. No other acceptance changes. Planning repair 2026-10-09 (P2-026; scope correction): NAT.30 (reduced) is added as a release verification input; the still-image and image chain is out of scope.
 ```
 
 ```text
@@ -48,7 +49,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Mobile (integration owner: Mobile integration owner, the holder of roles/integration-mobile).
 Claim and handoff record: claims/rel-04 (python tools/delivery.py claim REL.04 --worker <name>); task branch task/rel-04 in Mobile; ledger record ledger/tasks/rel-04.md.
 Kind/size: release/M. Baseline: not-started.
-Outcome: The signed MAUI Android artifact (applicationId com.arcforges.mobile) is submitted and live with every mobile gate closed and the store listing consistent with the consumption-only posture; post-release install and update are verified from the store channel.
+Outcome: The signed MAUI Android artifact (applicationId com.arcforges.mobile) is published on the direct-APK channel with every mobile gate closed (Play publication and store listings are out of scope for V1, P2-026); post-release install and update are verified from the direct-APK channel.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-50.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\50-full-platform-production-release.md, anchor rule-wp-50.03
@@ -57,15 +58,16 @@ Obligations (authoritative definitions; satisfy exactly these parts and their te
 Entry condition: adoption slice ADOPT.10.release is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [release] AND.23: every mobile gate satisfied (the Web and Android lanes AND area: signing, distribution, store gates)
+- [artifact] AND.26: physical Android FCM receipt delivered
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
 Permitted write scope: Mobile:eng/release/**; Design:docs/assurance/wp50-03-android-*.md
 Unblocks: REL.07, REL.11
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Post-release store-channel install/update verification, listing-consistency check; no emulator/device CI per P2-017 (real device evidence is WP06.07/WP30/WP32).
-Completion evidence for the ledger: Store install/update verification results; listing-consistency check.
-Notes: F-023 final closure and VG-13 (store category fit) are WP32's own gates, consumed here rather than produced. Planning repair 2026-10-08 (DLV-34; P2-021): Artifact name and identity change to the MAUI build; store, consumption-only and install/update criteria unchanged. Store activation remains gated by the existing README and releasing.md no-listing statement until a reviewed decision.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Post-release direct-APK install/update verification; no emulator/device CI per P2-017 (real device evidence is WP06.07/WP30/WP32).
+Completion evidence for the ledger: Direct-APK install/update verification results.
+Notes: F-023 final closure and VG-13 (store category fit) are WP32's own gates, consumed here rather than produced. Planning repair 2026-10-08 (DLV-34; P2-021): Artifact name and identity change to the MAUI build; store, consumption-only and install/update criteria unchanged. Store activation remains gated by the existing README and releasing.md no-listing statement until a reviewed decision. Planning repair 2026-10-09 (P2-026; scope correction): reduced: Play submission, the store listing and store-channel verification are out of scope, not completed; Android V1 uses the direct-APK channel (PL-03).
 ```
 
 ```text
@@ -128,9 +130,9 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [release] POL.10: obligation package accepted
 - [release] OPS.12: obligation package accepted
 - [release] SRCH.90: obligation package accepted
-- [release] EXT.90: obligation package accepted
 - [release] HAR.90: obligation package accepted
 - [release] SIM.08: obligation package accepted
+- [release] GOV.09: Cloud policy tests delivered, including the standing C# check that worker/ holds no business decision
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] REL.09: the combined disaster drill actually exercised against this deployed production topology
 
@@ -139,7 +141,7 @@ Unblocks: REL.07, REL.09, REL.11
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Production-shaped migration/rollback rehearsal against real Cloudflare topology; archived launch-capacity.v1 hash, actual standard-2 allocation/four global slots/ten-minute sleep, warm/cold/burst/fallback-read workload, D1/Vectorize/R2 dimensions and provider prices; explicit Product/Operations approval required for L-16/PG-26 - not markable complete from document checks alone.
 Completion evidence for the ledger: Per-gate go-live evidence L-01..L-16 (except the drill); backup/restore proof; self-host deployment evidence.
-Notes: The game-day exercise itself is split out to REL.09 per the assignment's explicit 'combined disaster drill' bucket.
+Notes: The game-day exercise itself is split out to REL.09 per the assignment's explicit 'combined disaster drill' bucket. Planning repair 2026-10-09 (P2-026; scope correction): the EXT.90 start edge is removed (extension platform out of scope); the standing C# policy check (GOV.09) is added as a release verification input.
 ```
 
 ```text
@@ -150,7 +152,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Contracts (integration owner: Contracts integration owner, the holder of roles/integration-contracts).
 Claim and handoff record: claims/rel-07 (python tools/delivery.py claim REL.07 --worker <name>); task branch task/rel-07 in Contracts; ledger record ledger/tasks/rel-07.md.
 Kind/size: acceptance/M. Baseline: not-started.
-Outcome: Every shipped artifact across every surface has a licence inventory, SBOM, provenance attestation and verified NOTICE, and every reused item has a completed provenance record, rolled into one closure report.
+Outcome: Every shipped artifact across every retained surface (the excluded public SDK, CLI and retired npm, Kotlin and Maven rows are out of scope, P2-026) has a licence inventory, SBOM, provenance attestation and verified NOTICE, and every reused item has a completed provenance record, rolled into one closure report.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-50.01 (the audit mechanism (licence inventory, SBOM, provenance attestation, NOTICE-generation verification per artifact, copied-content audit) plus Contracts/public-SDK's own candidate audit and the cross-artifact provenance-completeness rollup): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\50-full-platform-production-release.md, anchor rule-wp-50.01
@@ -170,7 +172,7 @@ Unblocks: REL.11
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline document/metadata rollup; no new build or download beyond what each surface already produced, per P2-017.
 Completion evidence for the ledger: Closure report per artifact; NOTICE verification; provenance-completeness check across every recorded reuse.
-Notes: Distributed-responsibility pattern: each surface task produces its OWN artifact's evidence as part of its own completion (WP50.01's per-artifact language); REL.07 owns the audit mechanism and the cross-artifact completeness rollup, mirroring GOV.13's role for PG-11/invariant accounting.
+Notes: Distributed-responsibility pattern: each surface task produces its OWN artifact's evidence as part of its own completion (WP50.01's per-artifact language); REL.07 owns the audit mechanism and the cross-artifact completeness rollup, mirroring GOV.13's role for PG-11/invariant accounting. Planning repair 2026-10-09 (P2-026; scope correction): reduced: the Contracts public SDK and CLI candidate audit, the npm TypeScript SDK audit rows, and the Kotlin and Maven audit rows are out of scope, not completed; the NuGet C# SDK packages are covered by the audit.
 ```
 
 ```text
@@ -209,7 +211,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\Cloud (integration owner: Cloud integration owner, the holder of roles/integration-cloud).
 Claim and handoff record: claims/rel-09 (python tools/delivery.py claim REL.09 --worker <name>); task branch task/rel-09 in Cloud; ledger record ledger/tasks/rel-09.md.
 Kind/size: release/L. Baseline: not-started.
-Outcome: A game-day exercise across the full severity ladder runs against the real deployed production topology with recorded evidence for every go-live gate; every alert maps to a rehearsed runbook, on-call is in place, and support/enforcement/appeal paths are operable.
+Outcome: A game-day exercise across the full severity ladder runs against the real deployed production topology with recorded evidence for every go-live gate; every alert maps to a rehearsed runbook, on-call is in place, and support paths and account-level enforcement and appeal paths are operable (community and public-ecosystem enforcement paths are out of scope, P2-026).
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-50.04 (the game-day exercise across the severity ladder against the real production topology only (the rest of 50.04 is REL.06)): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\50-full-platform-production-release.md, anchor rule-wp-50.04
@@ -227,7 +229,7 @@ Unblocks: REL.06, REL.11
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): A real exercise across the severity ladder against real production topology; alert-to-runbook completeness assertion; on-call verification; support-path end-to-end test; local/opt-in per P2-017, no synthetic-only substitution.
 Completion evidence for the ledger: Game-day record with per-gate go-live evidence; alert-to-runbook, on-call and support-path results.
-Notes: Named explicitly in the assignment as its own bucket ('combined disaster drill'); folds WP50.07 in alongside WP50.04's game-day portion since both are evidence of the same severity-ladder incident-response exercise.
+Notes: Named explicitly in the assignment as its own bucket ('combined disaster drill'); folds WP50.07 in alongside WP50.04's game-day portion since both are evidence of the same severity-ladder incident-response exercise. Planning repair 2026-10-09 (P2-026; scope correction): reduced: rehearsal of community and public-ecosystem enforcement, appeal and support paths, and of publisher or third-party package advisories and package revocation, is out of scope, not completed; only the first-party advisory process is rehearsed.
 ```
 
 ```text
@@ -238,7 +240,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/rel-10 (python tools/delivery.py claim REL.10 --worker <name>); task branch task/rel-10 in DesktopPlatform; ledger record ledger/tasks/rel-10.md.
 Kind/size: release/M. Baseline: not-started.
-Outcome: The production update feed is populated with hashes/compatibility ranges/minimum versions for the ArcScope desktop application across Windows and Linux (macOS is out of scope per P2-023), store and package-manager listings point at the corresponding signed installer, and a blocked bad version is refused by both the feed and compatibility policy.
+Outcome: The production update feed is populated with hashes/compatibility ranges/minimum versions for the ArcScope desktop application across Windows and Linux (macOS is out of scope per P2-023), the corresponding signed installers are referenced by the feed (store and package-manager listings are out of scope for V1, P2-026), and a blocked bad version is refused by both the feed and compatibility policy.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-50.02 (the shared production update-feed population (hashes, compatibility ranges, minimum versions) and code-signing/publication-pointer cutover only; ArcScope update-matrix testing is REL.02): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\50-full-platform-production-release.md, anchor rule-wp-50.02
@@ -247,7 +249,7 @@ Entry condition: adoption slice ADOPT.02.release is complete in the Plan ledger 
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] REL.02: ArcScope's own update matrix proven
 - [artifact] UPD.01: the update client/channel mechanism and feed schema (the platform lane UPD area)
-- [artifact] UPD.07: production catalog and Android distribution trust
+- [artifact] UPD.07: production desktop update-channel and Android distribution trust (catalog trust is out of scope, P2-026)
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -256,8 +258,8 @@ Shared resources (follow the owner protocol): RES-production-release-trust (appe
 Unblocks: REL.02, REL.11, UPD.08
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Blocked-bad-version refusal test against both feed and compatibility policy; no rebuild - promotes the exact already-proven candidate per BR-01; per P2-017 local/opt-in observation only.
-Completion evidence for the ledger: Feed population record; signed-installer listing consistency; blocked-bad-version refusal evidence.
-Notes: Production feed hosting and signing-key invocation follow the updater lane design; key custody is the Release Engineering Owner. Planning repair 2026-10-08 (DLV-34; P2-023): the macOS feed, listing and signing leg is removed; Windows and Linux installers are the populated feed. No other acceptance changes.
+Completion evidence for the ledger: Feed population record; signed-installer feed consistency; blocked-bad-version refusal evidence.
+Notes: Production feed hosting and signing-key invocation follow the updater lane design; key custody is the Release Engineering Owner. Planning repair 2026-10-08 (DLV-34; P2-023): the macOS feed, listing and signing leg is removed; Windows and Linux installers are the populated feed. No other acceptance changes. Planning repair 2026-10-09 (P2-026; scope correction): reduced: store and package-manager listings are out of scope, not completed; the production update feed and signed installers remain, and UPD.07 is narrowed to the desktop update-channel and Android distribution trust roots.
 ```
 
 ```text
@@ -268,7 +270,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/rel-11 (python tools/delivery.py claim REL.11 --worker <name>); task branch task/rel-11 in DesktopPlatform; ledger record ledger/tasks/rel-11.md.
 Kind/size: release/L. Baseline: not-started.
-Outcome: Every gate in release-gates.md is evaluated for every surface with a named, resolvable evidence artifact; every still-open gate's blocking consequence is stated; no cross-system failure row in architecture/20-cross-system-lifecycles.md lacks a run test; every public claim is backed by gate evidence, iOS is explicitly stated as outside current scope, and nothing incomplete is presented as complete.
+Outcome: Every gate in release-gates.md is evaluated for every retained surface with a named, resolvable evidence artifact; every still-open gate's blocking consequence is stated; no cross-system failure row for a retained lifecycle in architecture/20-cross-system-lifecycles.md lacks a run test; every public claim is backed by gate evidence, iOS and macOS are explicitly stated as outside current scope, and nothing incomplete is presented as complete.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-50.00 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\50-full-platform-production-release.md, anchor rule-wp-50.00
@@ -291,7 +293,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: Design:docs/assurance/wp50-00-readiness-audit.md, wp50-08-honest-statement.md, wp50-stage-acceptance.md/.json; DesktopPlatform:eng/release/**
 Shared resources (follow the owner protocol): RES-design-evidence (append): Receipts and gate records are separate files per task or gate; indexes are appended; historical records are not rewritten.
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Gate-coverage report asserting no gate is unevaluated; evidence-resolution check asserting every claimed evidence artifact exists; cross-system failure-row coverage check; claim audit comparing every required feature and owner WP to real gate receipts and public claims; per P2-017 no new runtime beyond what each surface already produced.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Gate-coverage report asserting no gate is unevaluated; evidence-resolution check asserting every claimed evidence artifact exists; cross-system failure-row coverage check; claim audit comparing every required retained feature and owner WP to real gate receipts and public claims; per P2-017 no new runtime beyond what each surface already produced.
 Completion evidence for the ledger: Gate-coverage report; claim audit; WP50 stage-acceptance receipt joining REL.02 and REL.04-REL.10.
-Notes: Terminal task for the entire 51-package sequence (WP50 has no downstream). BR-01/BR-02/BR-03/BR-04 (build once, no partial pass, no waiving integrity/security/licence/regulatory gates, nothing incomplete presented as complete) all bind here directly.
+Notes: Terminal task for the entire 51-package sequence (WP50 has no downstream). BR-01/BR-02/BR-03/BR-04 (build once, no partial pass, no waiving integrity/security/licence/regulatory gates, nothing incomplete presented as complete) all bind here directly. Planning repair 2026-10-09 (P2-026; scope correction): reduced: gate coverage and claim audit for excluded products (ArcSlate, ArcNotes, excluded native families, the catalog and community ecosystem), macOS and Safari claims (except the statement that iOS and macOS are outside current scope), failure rows for excluded lifecycles, and requirement-to-gate accounting for excluded owner work packages (WP-41, WP-45.10) are out of scope, not completed.
 ```

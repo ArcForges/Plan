@@ -206,7 +206,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] SIM.03: real execution loop to enforce limits against
 - [artifact] COM.05: published entitlement resolver
 - [artifact] COM.07: published quota/usage/storage accounting
-- [artifact] COM.12: published service term/replenishing capacity mechanism
+- [artifact] COM.11: service term interval model: term expiry and suspension (SIM-17 service entitlement)
 - [artifact] POL.03: published compiled hard limits mechanism
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none

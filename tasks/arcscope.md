@@ -264,34 +264,6 @@ Notes: The old upstream edge WP-33<-26 (remote action/tool bridge) does not appl
 ```
 
 ```text
-Execute ArcForges delivery task SCOPE.10 — Reference drift check against Serial-Studio 639daafb.
-
-Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-10).
-Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
-Owning repository: C:\MyFile\Projects\ArcForges\ArcScope (integration owner: ArcScope integration owner, the holder of roles/integration-arcscope).
-Claim and handoff record: claims/scope-10 (python tools/delivery.py claim SCOPE.10 --worker <name>); task branch task/scope-10 in Design; ledger record ledger/tasks/scope-10.md.
-Kind/size: feature/S. Baseline: not-started.
-Outcome: A drift report exists comparing the reference against the bound commit, covering changed rows, newly introduced upstream material (mapped to an existing requirement or recorded as an accepted exclusion) and licence re-verification; every changed/new item carries a disposition.
-
-Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
-- WP-33.07 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\33-arcscope-acquisition-and-session.md, anchor rule-wp-33.07
-
-Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger (DLV-22).
-Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
-- none
-Completion prerequisites (may start earlier; cannot complete before these are complete):
-- none
-
-Permitted write scope: Design:docs/assurance/reference-coverage/arcscope-serial-studio.md
-Shared resources (follow the owner protocol): RES-design-evidence (append): Receipts and gate records are separate files per task or gate; indexes are appended; historical records are not rewritten.
-Unblocks: SCOPE.11
-
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): a completeness check that every changed/new item has a disposition; no code build required
-Completion evidence for the ledger: drift report: changed rows, newly introduced material with assessment, licence comparison
-Notes: Has no real code dependency on any other SCOPE task; can run at any time, though it is most useful shortly before SCOPE.11/WP-33.90 closes so any licence correction lands before the package gate.
-```
-
-```text
 Execute ArcForges delivery task SCOPE.11 — Owned-artifact verification and real hardware integration.
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\arcscope.md (anchor task-scope-11).
@@ -316,7 +288,6 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] SCOPE.07: as above
 - [artifact] SCOPE.08: as above
 - [artifact] SCOPE.09: as above
-- [artifact] SCOPE.10: drift report disposition (must be clean or corrected per D-001 before dependent work continues)
 - [artifact] NAT.24: published Instruments runtime packages
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
@@ -435,9 +406,9 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 Permitted write scope: ArcScope:src/ArcScope/ArcScope.Decoders/**; ArcScope:tests/ArcScopePipelineTests/Decoders/**
 Unblocks: SCOPE.16, SCOPE.18, SCOPE.19, SCOPE.21
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): per-decoder fixture corpora including malformed input; error-visibility assertion; structural no-device-write test — offline
-Completion evidence for the ledger: per-decoder fixtures, error visibility and no-write assertion
-Notes: Independent of SCOPE.14 (measurements); the two can proceed in parallel. Decoder scope (UART/I2C/SPI) is fixed by the already-frozen analysis.v1 profile in architecture doc 26-product-behavior-profiles.md — note this is the ARCHITECTURE document numbered 26, unrelated to WP-26 (Remote action and tool bridge); no start edge needed since the design is already frozen, not missing.
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): fixture corpora for each shipped V1 decoder, including malformed input; error-visibility assertion; structural no-device-write test — offline
+Completion evidence for the ledger: fixtures for each shipped V1 decoder, error visibility and no-write assertion
+Notes: Independent of SCOPE.14 (measurements); the two can proceed in parallel. Decoder scope (UART/I2C/SPI) is fixed by the already-frozen analysis.v1 profile in architecture doc 26-product-behavior-profiles.md — note this is the ARCHITECTURE document numbered 26, unrelated to WP-26 (Remote action and tool bridge); no start edge needed since the design is already frozen, not missing. Planning repair 2026-10-09 (P2-026; scope correction): reduced: first-party protocol decoders that V1 does not ship, with their fixture corpora, are out of scope, not completed.
 ```
 
 ```text
@@ -521,7 +492,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: ArcScope:src/ArcForges.ArcScope.Reporting/** (new project, named after the ArcScope src/ArcForges.ArcScope* convention; it does not exist today); ArcScope:tests/ArcForges.ArcScope.Tests/Reports/** (new folder in the existing test project; no ArcScopePipelineTests project exists); ArcScope:ArcScope.slnx (add the new Reporting project entry only); ArcScope:eng/policy/dependency-policy.json (only the chosen PDF writer admission entry and its exact input hashes; this patch chooses no writer); ArcScope:eng/policy/dependency-review.json (only the admission receipt for the chosen writer)
 Shared resources (follow the owner protocol): RES-product-solutions (append): Solution/project lists, central package versions and CI job lists are appended by the task that adds a project, dependency or job; dependency additions follow the dependency-admission policy with a reviewed receipt; lock files are regenerated after rebase and never hand-merged; the integration owner resolves ordering conflicts at merge.
-Unblocks: SCOPE.19, SCOPE.22, SIM.09
+Unblocks: AND.27, SCOPE.19, SCOPE.22, SIM.09
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): traceability completeness test; regeneration-equivalence test; export fidelity check; content-origin carrier vectors including unknown input and failed publication; the PDF writer for report export is admitted under ArcScope dependency admission (eng/policy/dependency-policy.json and eng/policy/dependency-review.json) before the first write, and offline operation is tested separately and does not itself admit the writer; the writer produces report.pdf only, and no shipped product parses or displays a PDF itself (P2-022).
 Completion evidence for the ledger: traceability completeness and regeneration equivalence results; carrier, propagation and failure vectors with payload and manifest hashes; an arcscope.report.pdf.v1 bundle (stored chart snapshots, provenance appendix and mandatory origin sidecar) verified before its report reference is synced and downloaded or shared as a complete bundle; report.pdf is displayed only through the platform's own viewer, and no companion or ArcScope code parses or displays a PDF (P2-022); verified resource identity and unavailable-artifact behaviour.
@@ -756,6 +727,8 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] SCOPE.23: as above
 - [artifact] SCOPE.24: as above
 - [artifact] SCOPE.25: as above
+- [artifact] DEV.05: desktop command_log agreement and execution result deduplication
+- [artifact] DEV.14: approved desktop commands (SF-02, CL-07) over the deployed realtime transport
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -795,3 +768,11 @@ Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-serv
 Completion evidence for the ledger: Candidate identities, deployed environment identity, convergence scenario results and untested coverage.
 Notes: Added during consolidation so the ArcScope sync substitute has a named replacing task.
 ```
+
+### Out of scope
+
+Excluded from the active plan. No prompt is issued and these tasks are never claimable; their decision, note and ledger status are listed here.
+
+| Task | Title | Decision | Mode | Note | Ledger status |
+|---|---|---|---|---|---|
+| SCOPE.10 | Reference drift check against Serial-Studio 639daafb | P2-026 | excluded | Reference-only Serial-Studio drift check is out of the active ArcScope plan; no V1 ArcScope requirement depends on it (P2-026 scope correction). | complete |
