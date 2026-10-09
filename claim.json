@@ -4,10 +4,10 @@
   "id": "AND.40",
   "claimant": "w-deku-20261009-and-40",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-09T02:13:27Z",
-  "updatedAt": "2026-10-09T15:41:49Z",
-  "leaseUntil": "2026-10-10T15:41:49Z",
+  "updatedAt": "2026-10-09T17:13:42Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Mobile",
     "branch": "task/and-40",
@@ -29,6 +29,6 @@
       "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
     ],
     "host": "deku",
-    "note": "PR B Mobile #25 merged 6702e281 (--match-head-commit 1eabc64); all PR checks green; main-push publish (android-VERSION) being verified"
+    "note": "Ledger Plan #471 delivered; completion waits on CLOUD.29 (CLOUD.72 -> CLOUD.13 -> CLOUD.19 -> CLOUD.21); S30 confirmed"
   }
 }
