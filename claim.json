@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "PRF.11",
+  "claimant": "w-deku-20261009-prf-11",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-09T18:37:56Z",
+  "updatedAt": "2026-10-09T18:37:56Z",
+  "leaseUntil": "2026-10-11T00:37:56Z",
+  "handoff": {
+    "repository": "Web",
+    "branch": "task/prf-11",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "plan the task, then push the task branch at the first checkpoint"
+    ],
+    "host": "deku",
+    "note": null
+  }
+}
