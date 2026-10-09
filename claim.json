@@ -3,13 +3,13 @@
   "kind": "role",
   "id": "integration:Web",
   "claimant": "w-deku-20261008-coord",
-  "epoch": 1,
+  "epoch": 2,
   "state": "claimed",
-  "claimedAt": "2026-10-09T08:01:19Z",
-  "updatedAt": "2026-10-09T08:01:19Z",
-  "leaseUntil": "2026-10-09T20:01:19Z",
+  "claimedAt": "2026-10-09T22:58:57Z",
+  "updatedAt": "2026-10-09T22:58:57Z",
+  "leaseUntil": "2026-10-10T06:58:57Z",
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "takeover from w-deku-20261008-coord epoch 1: own expired coordinator role; WEB.40 follow-up merge (S36/S37)"
   }
 }
