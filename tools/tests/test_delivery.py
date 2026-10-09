@@ -525,5 +525,358 @@ class DeliveryTests(unittest.TestCase):
         self.assertTrue(path.with_name(path.name + '.guard').is_file())
 
 
+def load_graph_json(design: Path) -> dict:
+    return json.loads((design / d.GRAPH_REL).read_text(encoding='utf-8'))
+
+
+def pick_candidate(g) -> str:
+    """An in-scope task that nothing depends on: no in-scope task, gate, substitute or shared resource uses it,
+    it is not a package acceptance task, and it maps at least one numbered substep."""
+    succ = g.succ_map()
+    gated = {t for rec in g.gates.values() for t in rec.get('tasks', [])}
+    subbed = set()
+    for s in g.subs.values():
+        rp = s['realProducer'] if isinstance(s['realProducer'], list) else [s['realProducer']]
+        subbed |= set(rp) | {s['replacedBy']}
+    for tid in sorted(g.tasks, reverse=True):
+        t = g.tasks[tid]
+        if t.get('slice') or t.get('kind') == 'adoption':
+            continue
+        if t['baseline']['state'] == 'accepted' or tid in gated or tid in subbed or succ.get(tid):
+            continue
+        if t.get('shared') or t.get('substitutes'):
+            continue
+        if any(d.SUBSTEP.match(o['ref']) for o in t['obligations']):
+            return tid
+    raise AssertionError('no candidate task')
+
+
+def other_task(g, exclude: str) -> str:
+    return next(t for t in g.tasks if t != exclude and not g.tasks[t].get('slice') and g.tasks[t]['kind'] != 'adoption')
+
+
+def setattr_task(data: dict, tid: str, key: str, value) -> None:
+    """Set one field of a task in a graph dict (None is stored as-is, to test malformed shapes)."""
+    next(t for t in data['tasks'] if t['id'] == tid)[key] = value
+
+
+def mark_out(data: dict, tid: str, closeout: bool = False, by: str = 'P2-026', note: str = 'synthetic scope test') -> dict:
+    """Declare tid out of scope in a graph dict, carrying every substep and package obligation that no in-scope
+    task maps (the coordinator's obligation entries)."""
+    task = next(t for t in data['tasks'] if t['id'] == tid)
+    task['outOfScope'] = {'by': by, 'note': note, **({'closeout': True} if closeout else {})}
+    covered = {o['ref'] for t in data['tasks'] if 'outOfScope' not in t for o in t.get('obligations', [])}
+    rows = data.setdefault('outOfScopeObligations', [])
+    for o in task['obligations']:
+        ref = o['ref']
+        if (d.SUBSTEP.match(ref) or d.POB_ID.match(ref)) and ref not in covered and not any(r['ref'] == ref for r in rows):
+            rows.append({'ref': ref, 'by': by, 'note': 'carried by the excluded task'})
+    return task
+
+
+class OutOfScopeTests(unittest.TestCase):
+    """Decision P2-026: out-of-scope tasks, obligations, gates and substitutes (scope rules A to F)."""
+
+    @classmethod
+    def setUpClass(cls):
+        if not (DESIGN_SOURCE / d.GRAPH_REL).is_file():
+            raise unittest.SkipTest(f'no Design checkout at {DESIGN_SOURCE}')
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix='delivery-scope-')
+        self.fx = Fixture(Path(self.tmp))
+        self.pristine = load_graph_json(self.fx.design)
+
+    def tearDown(self):
+        def unlock(func, path, _):  # Git marks object files read-only on Windows
+            os.chmod(path, 0o700)
+            func(path)
+        shutil.rmtree(self.tmp, onexc=unlock) if sys.version_info >= (3, 12) else shutil.rmtree(self.tmp, onerror=unlock)
+
+    def edit_graph(self, mutate, commit: bool = False) -> d.Graph:
+        data = json.loads(json.dumps(self.pristine))  # every edit starts from the committed graph
+        mutate(data)
+        (self.fx.design / d.GRAPH_REL).write_text(json.dumps(data, indent=1), encoding='utf-8')
+        if commit:
+            self.fx.commit(self.fx.design, 'scope change')
+        return d.Graph(self.fx.design)
+
+    def candidate(self) -> str:
+        return pick_candidate(d.Graph(self.fx.design))
+
+    def use_full_design(self):
+        """Render links against the whole Design checkout (decision records are outside docs/planning), as the
+        real views are rendered; the fixture starts with docs/planning only."""
+        for p in (DESIGN_SOURCE / 'docs').iterdir():
+            if p.name == 'planning':
+                continue
+            if p.is_dir():
+                shutil.copytree(p, self.fx.design / 'docs' / p.name, dirs_exist_ok=True)
+            else:
+                shutil.copy2(p, self.fx.design / 'docs' / p.name)
+        self.fx.commit(self.fx.design, 'full design docs')
+
+    # ---- absent means in scope; shape (rule 1) ------------------------------------------------
+
+    def test_absent_declarations_mean_in_scope(self):
+        g = d.Graph(self.fx.design)
+        self.assertFalse(any(d.is_out(t) for t in g.data['tasks']))
+        self.assertEqual(d.validate(g)[0], [])
+        self.assertEqual(d.analysis(g)['outOfScopeTasks'], 0)
+
+    def test_scope_declarations_have_a_valid_shape(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        gate = g0.data['gates'][0]['gate']
+        sub = g0.data['substitutes'][0]['id']
+        ref = next(iter(g0.catalogue))
+        cases = {
+            'task without by': (lambda data: setattr_task(data, cand, 'outOfScope', {'note': 'x'}),
+                                f'{cand}: outOfScope needs a non-empty by'),
+            'task with blank note': (lambda data: setattr_task(data, cand, 'outOfScope', {'by': 'P2-026', 'note': '  '}),
+                                     f'{cand}: outOfScope needs a non-empty note'),
+            'task with text closeout': (lambda data: setattr_task(data, cand, 'outOfScope',
+                                                                  {'by': 'P2-026', 'note': 'x', 'closeout': 'yes'}),
+                                        f'{cand}: outOfScope closeout must be true or false'),
+            'task with unknown field': (lambda data: setattr_task(data, cand, 'outOfScope',
+                                                                  {'by': 'P2-026', 'note': 'x', 'extra': 1}),
+                                        f'{cand}: outOfScope has unknown field extra'),
+            'task with null declaration': (lambda data: setattr_task(data, cand, 'outOfScope', None),
+                                           f'{cand}: outOfScope must be an object'),
+            'gate without note': (lambda data: next(x for x in data['gates'] if x['gate'] == gate).update(
+                outOfScope={'by': 'P2-026'}), f'gate {gate}: outOfScope needs a non-empty note'),
+            'substitute without by': (lambda data: next(x for x in data['substitutes'] if x['id'] == sub).update(
+                outOfScope={'note': 'x'}), f'{sub}: outOfScope needs a non-empty by'),
+            'obligation entry without by': (lambda data: data.update(outOfScopeObligations=[{'ref': ref, 'note': 'x'}]),
+                                            f'outOfScopeObligations {ref} needs a non-empty by'),
+        }
+        for name, (mutate, expected) in cases.items():
+            with self.subTest(case=name):
+                errors = d.validate(self.edit_graph(mutate))[0]
+                self.assertTrue(any(expected in e for e in errors), errors)
+
+    # ---- rule 2: in-scope tasks never depend on out-of-scope tasks ----------------------------
+
+    def test_in_scope_task_may_not_depend_on_an_out_of_scope_task(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        other = other_task(g0, cand)
+
+        def mutate(data):
+            mark_out(data, cand)
+            t = next(x for x in data['tasks'] if x['id'] == other)
+            t['start'].append({'type': 'artifact', 'task': cand, 'need': 'n', 'why': 'w'})
+            t['complete'].append({'type': 'integration', 'task': cand, 'need': 'n', 'why': 'w'})
+        errors = d.validate(self.edit_graph(mutate))[0]
+        self.assertTrue(any(other in e and cand in e and 'start edge' in e for e in errors), errors)
+        self.assertTrue(any(other in e and cand in e and 'complete edge' in e for e in errors), errors)
+
+    def test_an_out_of_scope_task_may_depend_on_in_scope_tasks(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        other = other_task(g0, cand)
+
+        def mutate(data):
+            task = mark_out(data, cand)
+            task['complete'].append({'type': 'integration', 'task': other, 'need': 'n', 'why': 'w'})
+        errors = d.validate(self.edit_graph(mutate))[0]
+        self.assertEqual(errors, [])
+
+    # ---- rule 3: obligation coverage -----------------------------------------------------------
+
+    def test_obligations_only_an_out_of_scope_task_maps_need_an_entry(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        sids = [o['ref'] for o in g0.tasks[cand]['obligations'] if d.SUBSTEP.match(o['ref'])]
+
+        def bare(data):
+            next(t for t in data['tasks'] if t['id'] == cand)['outOfScope'] = {'by': 'P2-026', 'note': 'x'}
+        errors = d.validate(self.edit_graph(bare))[0]
+        for sid in sids:
+            self.assertTrue(any(f'substep {sid} is mapped only by out-of-scope tasks' in e for e in errors), errors)
+        self.assertEqual(d.validate(self.edit_graph(lambda data: mark_out(data, cand)))[0], [])
+
+    def test_an_entry_must_name_a_real_obligation_and_not_one_in_scope_covers(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        in_scope_sid = next(o['ref'] for t in g0.data['tasks'] if t['id'] != cand for o in t['obligations']
+                            if d.SUBSTEP.match(o['ref']))
+
+        def mutate(data):
+            mark_out(data, cand)
+            data['outOfScopeObligations'].append({'ref': 'WP-99.99', 'by': 'P2-026', 'note': 'x'})
+            data['outOfScopeObligations'].append({'ref': in_scope_sid, 'by': 'P2-026', 'note': 'x'})
+        errors = d.validate(self.edit_graph(mutate))[0]
+        self.assertTrue(any('outOfScopeObligations WP-99.99: not an active substep or package obligation' in e
+                            for e in errors), errors)
+        self.assertTrue(any(f'outOfScopeObligations {in_scope_sid}: also covered by an in-scope task' in e
+                            for e in errors), errors)
+
+    # ---- rule 4: gates and substitutes ---------------------------------------------------------
+
+    def test_an_in_scope_gate_or_substitute_may_not_name_an_out_of_scope_task(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        gate = g0.data['gates'][0]['gate']
+        sub = g0.data['substitutes'][0]['id']
+
+        def mutate(data):
+            mark_out(data, cand)
+            next(x for x in data['gates'] if x['gate'] == gate)['tasks'].append(cand)
+            next(x for x in data['substitutes'] if x['id'] == sub)['realProducer'] = [cand]
+        errors = d.validate(self.edit_graph(mutate))[0]
+        self.assertIn(f'gate {gate}: in-scope gate lists out-of-scope task {cand} (scope rule 4)', errors)
+        self.assertIn(f'{sub}: in-scope substitute names out-of-scope task {cand}', errors)
+
+        def out_of_scope_gate(data):
+            mutate(data)
+            next(x for x in data['gates'] if x['gate'] == gate)['outOfScope'] = {'by': 'P2-026', 'note': 'x'}
+            next(x for x in data['substitutes'] if x['id'] == sub)['outOfScope'] = {'by': 'P2-026', 'note': 'x'}
+        errors = d.validate(self.edit_graph(out_of_scope_gate))[0]
+        self.assertFalse(any(f'gate {gate}: in-scope gate' in e for e in errors), errors)
+        self.assertFalse(any(f'{sub}: in-scope substitute' in e for e in errors), errors)
+
+    def test_an_out_of_scope_consumer_does_not_bind_its_substitute_removal(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        sub = g0.data['substitutes'][0]['id']
+
+        def mutate(data):
+            mark_out(data, cand)
+            next(t for t in data['tasks'] if t['id'] == cand)['substitutes'] = [sub]
+        errors = d.validate(self.edit_graph(mutate))[0]
+        self.assertFalse(any(f'{sub}: replacing task' in e and cand in e for e in errors), errors)
+
+    # ---- rule 5: warnings ----------------------------------------------------------------------
+
+    def test_warnings_for_resources_and_slices_used_only_out_of_scope(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        sid = next(s for s in g0.slices if g0.slice_tasks(s))
+
+        def mutate(data):
+            data['sharedResources'].append({'id': 'RES-scope-test', 'title': 'Scope test', 'kind': 'file',
+                                            'ownerRepo': 'multiple', 'owner': 'Plan', 'protocol': 'test'})
+            mark_out(data, cand)
+            next(t for t in data['tasks'] if t['id'] == cand)['shared'] = [{'resource': 'RES-scope-test', 'mode': 'read'}]
+            for tid in g0.slice_tasks(sid):
+                mark_out(data, tid)
+        warnings = d.validate(self.edit_graph(mutate))[1]
+        self.assertIn('RES-scope-test: shared resource used only by out-of-scope tasks', warnings)
+        self.assertIn(f'{sid}: every task of this adoption slice is out of scope', warnings)
+
+    # ---- rule 6: ledger records ----------------------------------------------------------------
+
+    def test_out_of_scope_ledger_records_stay_valid_with_any_status(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        other = other_task(g0, cand)
+
+        def mutate(data):
+            task = mark_out(data, cand)
+            task['complete'].append({'type': 'integration', 'task': other, 'need': 'n', 'why': 'w'})
+        g = self.edit_graph(mutate, commit=True)
+        for status in ('complete', 'delivered', 'superseded', 'inherited'):
+            with self.subTest(status=status):
+                self.fx.record(cand, status)
+                self.assertEqual(d.read_ledger(self.fx.plan, g)[1], [])
+
+    # ---- rule C: scheduling, claims and status -------------------------------------------------
+
+    def test_ready_and_status_never_list_out_of_scope_work(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        other = other_task(g0, cand)
+
+        def mutate(data):
+            task = mark_out(data, cand)
+            task['complete'].append({'type': 'integration', 'task': other, 'need': 'n', 'why': 'w'})
+        self.edit_graph(mutate, commit=True)
+        self.fx.record(cand, 'delivered')
+        self.fx.commit(self.fx.plan, 'delivered out of scope')
+        code, out = self.fx.run('ready')
+        self.assertEqual(code, 0, out)
+        self.assertNotIn(f'{cand}\t', out)
+        self.assertIn('completion follow-ups (0)', out)
+        code, out = self.fx.run('status')
+        self.assertIn('Delivered tasks waiting for completion prerequisites (0):', out)
+
+    def test_a_new_claim_on_an_out_of_scope_task_is_refused(self):
+        cand = pick_candidate(d.Graph(self.fx.design))
+        self.edit_graph(lambda data: mark_out(data, cand), commit=True)
+        code, out = self.fx.run('claim', cand, '--worker', 'w1')
+        self.assertEqual(code, 2, out)
+        self.assertIn(f'{cand} is out of scope (P2-026): synthetic scope test', out)
+
+    def test_live_claim_on_out_of_scope_task_is_listed_with_release_action(self):
+        cand = pick_candidate(d.Graph(self.fx.design))
+        self.edit_graph(lambda data: mark_out(data, cand), commit=True)
+        self.fx.raw_claim(cand, self.fx.claim_data(cand, claimant='w1'))
+        code, out = self.fx.run('status')
+        self.assertEqual(code, 0, out)
+        self.assertIn('Claims on out-of-scope tasks (1):', out)
+        self.assertIn('action: release', out)
+        code, out = self.fx.run('status', '--json')
+        self.assertIn('"action": "release', out)
+
+    def test_closeout_claim_is_finished_but_never_claimed_anew(self):
+        cand = pick_candidate(d.Graph(self.fx.design))
+        self.edit_graph(lambda data: mark_out(data, cand, closeout=True), commit=True)
+        self.fx.raw_claim(cand, self.fx.claim_data(cand, claimant='w1'))
+        code, out = self.fx.run('status')
+        self.assertIn('action: finish under closeout', out)
+        self.assertEqual(self.fx.run('update', cand, '--worker', 'w1', '--epoch', '1', '--done', 'finished evidence')[0], 0)
+        self.assertEqual(self.fx.run('release', cand, '--worker', 'w1', '--epoch', '1', '--note', 'closeout done')[0], 0)
+        code, out = self.fx.run('claim', cand, '--worker', 'w2', plan=self.fx.plan2)
+        self.assertEqual(code, 2, out)
+        self.assertIn('is out of scope', out)
+        code, out = self.fx.run('show', cand)
+        self.assertIn('closeout', out)
+
+    # ---- rules E and F: analysis and generated views -------------------------------------------
+
+    def test_schedule_measures_exclude_out_of_scope_tasks(self):
+        before = d.analysis(d.Graph(self.fx.design))
+        cand = pick_candidate(d.Graph(self.fx.design))
+        size = d.Graph(self.fx.design).tasks[cand]['size']
+        after = d.analysis(self.edit_graph(lambda data: mark_out(data, cand)))
+        self.assertEqual(after['outOfScopeTasks'], 1)
+        self.assertEqual(after['tasks'], before['tasks'] - 1)
+        self.assertEqual(before['remainingWork'] - after['remainingWork'], d.SIZES[size])
+        self.assertNotIn(cand, after['criticalPath'])
+        self.assertNotIn(cand, after['initialReady'])
+
+    def test_generate_renders_the_out_of_scope_section_and_check_passes(self):
+        self.use_full_design()
+        cand = pick_candidate(d.Graph(self.fx.design))
+        g = self.edit_graph(lambda data: mark_out(data, cand), commit=True)
+        self.fx.record(cand, 'delivered')
+        self.fx.commit(self.fx.plan, 'delivered')
+        code, out = self.fx.run('generate')
+        self.assertEqual(code, 0, out)
+        lane = g.tasks[cand]['lane']
+        text = (self.fx.design / d.DELIVERY_REL / 'lanes' / f'{lane}.md').read_text(encoding='utf-8')
+        head, tail = text.split('## Out of scope', 1)
+        self.assertNotIn(f'\n| [{cand}](', head)  # no row in the in-scope table; Unblocks cells may still link it
+        self.assertNotIn(f'<a id="{d.slug(cand)}"></a>', head)
+        self.assertIn(f'<a id="{d.slug(cand)}"></a>', tail)
+        self.assertIn('### P2-026', tail)
+        self.assertIn('| delivered |', tail)
+        self.assertIn('Out of scope (P2-026): synthetic scope test', text)
+        plan_index = (self.fx.plan / 'list.md').read_text(encoding='utf-8')
+        self.assertIn(cand, plan_index.split('## Out of scope', 1)[1])
+        prompts = (self.fx.plan / 'tasks' / f'{lane}.md').read_text(encoding='utf-8')
+        self.assertIn('### Out of scope', prompts)
+        self.assertNotIn(f'Execute ArcForges delivery task {cand}', prompts)
+        code, out = self.fx.run('check')
+        self.assertEqual(code, 0, out)
+        self.assertIn('(1 out of scope)', out)
+
+    def test_generate_leaves_an_unscoped_graph_unchanged(self):
+        self.use_full_design()
+        self.assertEqual(self.fx.run('generate')[0], 0)
+        self.assertEqual(sh(self.fx.design, 'status', '--porcelain'), '')
+
+
 if __name__ == '__main__':
     unittest.main()
