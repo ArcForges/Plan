@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 428 in 25 lanes, plus 50 adoption slices listed in the adoption section. 33 more are out of scope under P2-026; they are listed at the end and have no prompt.
+Tasks: 426 in 25 lanes, plus 50 adoption slices listed in the adoption section. 35 more are out of scope under P2-026; they are listed at the end and have no prompt.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -27,7 +27,7 @@ Tasks: 428 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | Slice | Repository | Size | Start prerequisites | Title (tasks it opens) |
 |---|---|---|---|---|
 | ADOPT.02.app-composition | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Application composition (6) |
-| ADOPT.02.assistant | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Embedded assistant (22) |
+| ADOPT.02.assistant | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Embedded assistant (21) |
 | ADOPT.02.cloud | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Cloud core (2) |
 | ADOPT.02.device-bridge | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Application presence and tool bridge (3) |
 | ADOPT.02.execution | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Execution engine (9) |
@@ -45,7 +45,7 @@ Tasks: 428 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
 | ADOPT.05.app-composition | ArcScope | S | ADOPT.01 | Adopt ArcScope: Application composition (2) |
-| ADOPT.05.arcscope | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope (27) |
+| ADOPT.05.arcscope | ArcScope | S | ADOPT.01 | Adopt ArcScope: ArcScope (26) |
 | ADOPT.05.governance | ArcScope | S | ADOPT.01 | Adopt ArcScope: Family governance and policy tests (1) |
 | ADOPT.05.release | ArcScope | S | ADOPT.01 | Adopt ArcScope: Release readiness and family release (1) |
 | ADOPT.05.runtime-proofs | ArcScope | S | ADOPT.01 | Adopt ArcScope: Runtime proofs (1) |
@@ -116,7 +116,7 @@ Tasks: 428 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | CON.12 | Contracts | M | ADOPT.03.contracts (adoption) | Extension and policy schemas: manifest.v1/workflow.v1/panel.v1/policy body.v1/configuration.v1 |
 | CON.14 | Contracts | L | CON.13, CON.09, CON.22, ADOPT.03.contracts (adoption) | Operator control service (OperatorService, full §9/9.1/9.2 protocol) |
 | CON.15 | Contracts | M | CON.10, ADOPT.03.contracts (adoption) | Cloudflare-internal HTTP and D1 ExecutePlan bindings |
-| CON.16 | Contracts | M | ADOPT.03.contracts (adoption) | Signed update and realm formats (android-update.v1, realm.v1 only if a retained consumer needs it) |
+| CON.16 | Contracts | M | ADOPT.03.contracts (adoption) | Signed catalog/update/realm formats (catalog-index.v1, catalog-revocations.v1, android-update.v1, realm.v1) |
 | CON.17 | Contracts | M | CON.92, ADOPT.03.contracts (adoption) | Cross-language compatibility window + canonical semantic hash |
 | CON.18 | Contracts | S | ADOPT.03.contracts (adoption) | Operation-scope manifest + authorization-reachability matrix generator |
 | CON.19 | Contracts | M | CON.02, CON.18, CON.03, CON.04, CON.05, CON.06, CON.07, CON.08, CON.09, CON.10, CON.11, CON.12, CON.13, CON.14, CON.15, CON.16, CON.17, CON.21, CON.22, CON.01, CON.23, CON.24, CON.25, ADOPT.03.contracts (adoption) | WP03.90 — verify the owned Contracts artifact and its real (non-consumer) integration |
@@ -250,8 +250,7 @@ Tasks: 428 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | AST.05 | DesktopPlatform | S | AST.01, PLT.42, ADOPT.02.assistant (adoption) | Skills |
 | AST.06 | DesktopPlatform | M | AST.01, ADOPT.02.assistant (adoption) | Local search |
 | AST.07 | DesktopPlatform | M | AST.01, CON.11, ADOPT.02.assistant (adoption) | Local history export and import (assistant-history.v1) |
-| AST.08 | DesktopPlatform | S | AST.01, ADOPT.02.assistant (adoption) | Reference and package proof (AionUi evidence, clean-app package consumption) |
-| AST.09 | DesktopPlatform | M | AST.01, AST.02, AST.03, AST.04, AST.05, AST.06, AST.07, AST.08, ADOPT.02.assistant (adoption) | Owned-artifact receipt and UX acceptance |
+| AST.09 | DesktopPlatform | M | AST.01, AST.02, AST.03, AST.04, AST.05, AST.06, AST.07, ADOPT.02.assistant (adoption) | Owned-artifact receipt and UX acceptance |
 | AST.10 | DesktopPlatform | L | EXE.01, AST.01, AST.02, AST.04, AST.05, AST.06, AST.07, ADOPT.02.assistant (adoption) | Complete assistant navigation shell |
 | AST.11 | DesktopPlatform | L | CON.10, PRF.05, AST.01, ADOPT.02.assistant (adoption) | Cloud client and device runtime (fixture turn endpoint boundary) |
 | AST.12 | DesktopPlatform | M | AST.10, APP.05, PLT.39, ADOPT.02.assistant (adoption) | Security and approval surface |
@@ -310,8 +309,7 @@ Tasks: 428 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | SCOPE.07 | ArcScope | L | SCOPE.06, PLT.06, ADOPT.05.arcscope (adoption) | Durable capture writer, chunked verifiable store and crash recovery |
 | SCOPE.08 | ArcScope | M | SCOPE.07, SCOPE.01, ADOPT.05.arcscope (adoption) | Replay as a source (capture-level) |
 | SCOPE.09 | ArcScope | S | SCOPE.06, PLT.32, ADOPT.05.arcscope (adoption) | Long-running capture in the shell |
-| SCOPE.10 | ArcScope | S | ADOPT.05.arcscope (adoption) | Reference drift check against Serial-Studio 639daafb |
-| SCOPE.11 | ArcScope | M | SCOPE.01, SCOPE.02, SCOPE.03, SCOPE.04, SCOPE.05, SCOPE.06, SCOPE.07, SCOPE.08, SCOPE.09, NAT.24, SCOPE.10, ADOPT.05.arcscope (adoption) | Owned-artifact verification and real hardware integration |
+| SCOPE.11 | ArcScope | M | SCOPE.01, SCOPE.02, SCOPE.03, SCOPE.04, SCOPE.05, SCOPE.06, SCOPE.07, SCOPE.08, SCOPE.09, NAT.24, ADOPT.05.arcscope (adoption) | Owned-artifact verification and real hardware integration |
 | SCOPE.12 | ArcScope | L | SCOPE.02, SCOPE.06, ADOPT.05.arcscope (adoption) | Visualisation: virtualised rendering, downsampling, cursors and markers |
 | SCOPE.13 | ArcScope | M | SCOPE.05, SCOPE.06, ADOPT.05.arcscope (adoption) | Triggers with pre/post windows |
 | SCOPE.14 | ArcScope | L | CON.91, SCOPE.02, SCOPE.06, ADOPT.05.arcscope (adoption) | Measurements: scope.measurement.v1 |
@@ -638,6 +636,8 @@ Excluded from the active plan: never claimable and not remaining work. Full reco
 | NAT.15 | DesktopPlatform | P2-026 | excluded | superseded | Pdf family: real PDFium (chromium/8044) build admission, binding and real-parser containment acceptance |
 | NAT.22 | DesktopPlatform | P2-026 | excluded | no record | Image package production: three supported RIDs (win-x64, win-arm64, linux-x64) |
 | NAT.25 | DesktopPlatform | P2-026 | excluded | no record | ContentSandbox Runtime.<rid> republication from the still-image composition (three supported RIDs; PDF package retired) |
+| AST.08 | DesktopPlatform | P2-026 | excluded | no record | Reference and package proof (AionUi evidence, clean-app package consumption) |
+| SCOPE.10 | ArcScope | P2-026 | excluded | complete | Reference drift check against Serial-Studio 639daafb |
 | OPS.11 | Web | P2-026 | excluded | no record | Package review and revocation console |
 | EXT.00 | DesktopPlatform | P2-026 | excluded | no record | Extension host process and supervision |
 | EXT.01 | DesktopPlatform | P2-026 | excluded | no record | Handshake and protocol versioning |

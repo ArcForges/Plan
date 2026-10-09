@@ -416,14 +416,14 @@ Notes: Consumed by WP-21 (D1 execution lease), WP-25 (R2/object lifecycle), and 
 ```
 
 ```text
-Execute ArcForges delivery task CON.16 — Signed update and realm formats (android-update.v1, realm.v1 only if a retained consumer needs it).
+Execute ArcForges delivery task CON.16 — Signed catalog/update/realm formats (catalog-index.v1, catalog-revocations.v1, android-update.v1, realm.v1).
 
 Task record: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\lanes\contracts.md (anchor task-con-16).
 Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\README.md; execution: C:\MyFile\Projects\Plan\arcforges-implementation.md.
 Owning repository: C:\MyFile\Projects\ArcForges\Contracts (integration owner: Contracts integration owner, the holder of roles/integration-contracts).
 Claim and handoff record: claims/con-16 (python tools/delivery.py claim CON.16 --worker <name>); task branch task/con-16 in Contracts; ledger record ledger/tasks/con-16.md.
 Kind/size: contract/M. Baseline: not-started.
-Outcome: The retained signed-format schemas (android-update.v1, and realm.v1 only if a retained consumer needs it; catalog-index.v1 and catalog-revocations.v1 are out under P2-026 S5) are authored under public/http (or a dedicated signed-formats path) with canonical signing-vector fixtures and a deterministic fixture-only trust root (Ed25519, distinct from any production key); malformed/expired/rollback/mixed-shard negative vectors for the retained formats exist per WP-03.07's gate; android-update.v1 matches registry04's tail-section field list exactly (packageId/channel/versionName/versionCode-as-string/minSdk/minSupportedVersionCode/apkUrl/sha256/size/signingCertificateSha256/releaseNotesUrl/publishedAt, expiry<=7 days).
+Outcome: The four signed-format schemas are authored under public/http (or a dedicated signed-formats path) with canonical signing-vector fixtures and a deterministic fixture-only trust root (Ed25519, distinct from any production key); malformed/expired/rollback/mixed-shard negative vectors exist per WP-03.07's gate; android-update.v1 matches registry04's tail-section field list exactly (packageId/channel/versionName/versionCode-as-string/minSdk/minSupportedVersionCode/apkUrl/sha256/size/signingCertificateSha256/releaseNotesUrl/publishedAt, expiry<=7 days).
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-03.07 (full for the retained formats: publish android-update.v1 and, only if a retained consumer needs it, realm.v1 schemas, canonical signing vectors and separate fixture trust roots (catalog-index.v1 and catalog-revocations.v1 are out under P2-026 S5); production keys are explicitly WP-53 output, not a WP-03 input): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\03-contract-foundation-and-licence-split.md, anchor rule-wp-03.07
