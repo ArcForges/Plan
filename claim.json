@@ -3,11 +3,11 @@
   "kind": "task",
   "id": "CLOUD.85",
   "claimant": "w-deku-20261009-cloud-85",
-  "epoch": 1,
-  "state": "delivered",
-  "claimedAt": "2026-10-09T15:59:02Z",
-  "updatedAt": "2026-10-09T20:08:38Z",
-  "leaseUntil": null,
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-09T23:01:04Z",
+  "updatedAt": "2026-10-09T23:01:04Z",
+  "leaseUntil": "2026-10-10T23:01:04Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/cloud-85",
@@ -24,9 +24,10 @@
     "reviewed": "036e4c4e21ac9cc7a1328650b9cd19fa08e6c7fd",
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "perform the remaining acceptance for the scenarios the completion prerequisites name",
+      "record completion by editing the ledger record through a reviewed Plan pull request"
     ],
     "host": "deku",
-    "note": "Ledger Plan #473 delivered; open: PRF.11 deployed-origin record citing CLOUD.85 (then complete)"
+    "note": "completion follow-up (DLV-41)"
   }
 }
