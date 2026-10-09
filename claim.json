@@ -6,13 +6,14 @@
   "epoch": 2,
   "state": "claimed",
   "claimedAt": "2026-10-09T21:34:02Z",
-  "updatedAt": "2026-10-09T21:34:02Z",
-  "leaseUntil": "2026-10-10T21:34:02Z",
+  "updatedAt": "2026-10-09T22:58:02Z",
+  "leaseUntil": "2026-10-10T22:58:02Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/web-40",
     "prs": [
-      "https://github.com/ArcForges/Web/pull/35"
+      "https://github.com/ArcForges/Web/pull/35",
+      "https://github.com/ArcForges/Web/pull/38"
     ],
     "merges": [
       "c8588681da0c25784ab6d6d82165e2903bd62764"
@@ -22,14 +23,14 @@
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Web\\.worktree\\web-40",
-    "head": "c58e5280f0d54c2c754c1806e41de23360526e45",
-    "reviewed": "c58e5280f0d54c2c754c1806e41de23360526e45",
+    "head": "6795f18a30e75ccfb8982544fe54f4b8ecffd540",
+    "reviewed": "6795f18a30e75ccfb8982544fe54f4b8ecffd540",
     "blocker": null,
     "next": [
       "perform the remaining acceptance for the scenarios the completion prerequisites name",
       "record completion by editing the ledger record through a reviewed Plan pull request"
     ],
     "host": "deku",
-    "note": "completion follow-up (DLV-41)"
+    "note": "Follow-up S36/S37 PR #38 at 6795f18 approved; hosted CI pending"
   }
 }
