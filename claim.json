@@ -4,12 +4,12 @@
   "id": "integration:AI",
   "claimant": "w-deku-20261008-coord",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-09T18:36:31Z",
-  "updatedAt": "2026-10-09T18:36:31Z",
-  "leaseUntil": "2026-10-09T22:36:31Z",
+  "updatedAt": "2026-10-09T18:41:05Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "AI #35 merged ec40ec45; main run 37974669993 success (Deploy Cloudflare redeployed the unchanged AI Worker; Verify deployment success). Role released."
   }
 }
