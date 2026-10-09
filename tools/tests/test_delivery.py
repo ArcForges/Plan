@@ -748,6 +748,25 @@ class OutOfScopeTests(unittest.TestCase):
                             in e
                             for e in errors), errors)
 
+    def test_an_excluded_obligation_must_still_map_to_a_task(self):  # N1: DLV-43 keeps excluded obligations mapped
+        g0 = d.Graph(self.fx.design)
+        om = g0.obligation_map()
+        tid, ref = next((t['id'], o['ref']) for t in g0.data['tasks'] if len(t['obligations']) > 1
+                        and not t.get('slice') and t['kind'] != 'adoption' for o in t['obligations']
+                        if d.SUBSTEP.match(o['ref']) and len(om[o['ref']]) == 1)
+
+        def unmapped(data):  # the only mapping goes; the entry carries the obligation with no task at all
+            next(t for t in data['tasks'] if t['id'] == tid)['obligations'] = [
+                o for o in next(t for t in data['tasks'] if t['id'] == tid)['obligations'] if o['ref'] != ref]
+            data['outOfScopeObligations'] = [{'ref': ref, 'by': 'P2-026', 'note': 'x'}]
+        errors = d.validate(self.edit_graph(unmapped))[0]
+        self.assertTrue(any(f'outOfScopeObligations {ref}: no task maps it' in e for e in errors), errors)
+
+    def test_count_wording_agrees_with_the_count(self):  # N6: generated views say 1 task and 2 tasks
+        self.assertEqual(d.count_of(1, 'delivery task'), '1 delivery task')
+        self.assertEqual(d.count_of(2, 'delivery task'), '2 delivery tasks')
+        self.assertEqual(d.count_of(0, 'obligation'), '0 obligations')
+
     def test_an_entry_may_sit_beside_only_a_history_covering_task(self):
         # S2 and DLV-43: an excluded part of a complete task keeps its task-level text, and the entry records that it is
         # no longer required. A covering task that is still live (open or delivered) must not share the entry.
@@ -763,7 +782,7 @@ class OutOfScopeTests(unittest.TestCase):
             with self.subTest(statuses=statuses):
                 errors = d.validate(g, statuses)[0]
                 self.assertTrue(any(msg in e for e in errors), errors)
-        for statuses in ({cover: 'complete'}, {cover: 'inherited'}):
+        for statuses in ({cover: 'complete'}, {cover: 'inherited'}, {cover: 'superseded'}):  # N2: as the edge rule does
             with self.subTest(statuses=statuses):
                 errors = d.validate(g, statuses)[0]
                 self.assertFalse(any(f'{ref}: also covered' in e for e in errors), errors)
@@ -894,6 +913,57 @@ class OutOfScopeTests(unittest.TestCase):
         self.assertEqual(code, 0, out)
         self.assertNotIn(message, out)
 
+    def out_substitute_user(self):
+        """An unused substitute marked out of scope, and an in-scope task that the replacing task depends on, which
+        uses it (so the consumer rule does not bind and only the usage rule is under test)."""
+        g0 = d.Graph(self.fx.design)
+        used = {s for t in g0.data['tasks'] for s in t.get('substitutes', [])}
+        sub = next(s['id'] for s in g0.data['substitutes'] if s['id'] not in used)
+        rb = g0.subs[sub]['replacedBy']
+        cand = pick_candidate(g0)
+        other = next(t for t in sorted(g0.tasks) if t != cand and t in g0.ancestors(rb)
+                     and not g0.tasks[t].get('slice') and g0.tasks[t]['kind'] != 'adoption'
+                     and g0.tasks[t]['baseline']['state'] != 'accepted')
+
+        def mutate(data):
+            next(x for x in data['substitutes'] if x['id'] == sub)['outOfScope'] = {'by': 'P2-026', 'note': 'x'}
+            next(t for t in data['tasks'] if t['id'] == other)['substitutes'] = [sub]
+        return sub, other, self.edit_graph(mutate)
+
+    def test_an_open_user_of_an_out_of_scope_substitute_is_refused(self):  # M1, S16(a)
+        sub, other, g = self.out_substitute_user()
+        message = f'{other}: in-scope task uses out-of-scope substitute {sub}'
+        for statuses in (None, {}, {other: None}, {other: 'not-a-status'}):
+            with self.subTest(statuses=statuses):
+                self.assertIn(message, d.validate(g, statuses)[0])
+
+    def test_a_delivered_user_of_an_out_of_scope_substitute_is_history(self):  # M1, S16(a)
+        sub, other, g = self.out_substitute_user()
+        message = f'{other}: in-scope task uses out-of-scope substitute {sub}'
+        self.assertNotIn(message, d.validate(g, {other: 'delivered'})[0])
+
+    def test_a_complete_user_of_an_out_of_scope_substitute_is_history(self):  # M1, S16(a)
+        sub, other, g = self.out_substitute_user()
+        message = f'{other}: in-scope task uses out-of-scope substitute {sub}'
+        self.assertNotIn(message, d.validate(g, {other: 'complete'})[0])
+
+    def test_a_decision_anchor_is_read_from_the_checked_design_root(self):  # M2: DLV-43 sequencing
+        cand = pick_candidate(d.Graph(self.fx.design))
+        # Merged Design main has no P2-026 record: the committed fixture record goes, and that is pushed.
+        (self.fx.design / 'docs' / 'decisions' / 'scope-record-fixture.md').unlink()
+        self.fx.commit(self.fx.design, 'no decision record on merged main')
+        self.assertEqual(sh(self.fx.design, 'ls-tree', '-r', '--name-only', 'origin/main', 'docs/decisions'), '')
+        # The unmerged planning change adds the record and its markers together, in the checked root only.
+        record = self.fx.design / 'docs' / 'decisions' / 'p2-026-unmerged.md'
+        record.write_text('# P2-026 scope record (unmerged)\n\n<a id="rule-p2-026"></a>\n', encoding='utf-8')
+        g = self.edit_graph(lambda data: mark_out(data, cand))
+        self.assertFalse(any('names P2-026' in e for e in d.validate(g)[0]), d.validate(g)[0])
+        # A missing anchor in the checked root is refused, whatever merged main says.
+        record.unlink()
+        errors = d.validate(d.Graph(self.fx.design))[0]
+        self.assertTrue(any(f'{cand}: outOfScope names P2-026, which is not a scope decision record' in e
+                            for e in errors), errors)
+
     # ---- rule 5: warnings ----------------------------------------------------------------------
 
     def test_warnings_for_resources_and_slices_used_only_out_of_scope(self):
@@ -979,6 +1049,51 @@ class OutOfScopeTests(unittest.TestCase):
         self.assertIn('is out of scope', out)
         code, out = self.fx.run('show', cand)
         self.assertIn('closeout', out)
+
+    def test_an_expired_claim_on_out_of_scope_task_is_listed_and_only_its_holder_releases_it(self):  # N3
+        cand = pick_candidate(d.Graph(self.fx.design))
+        self.edit_graph(lambda data: mark_out(data, cand), commit=True)
+        # expired: the lease ended more than the one-hour grace ago
+        self.fx.raw_claim(cand, self.fx.claim_data(cand, claimant='w1', lease_hours=1.0, age_hours=3.0))
+        code, out = self.fx.run('status')
+        self.assertEqual(code, 0, out)
+        self.assertIn('Claims on out-of-scope tasks (1):', out)
+        self.assertIn('action: release by the holder', out)
+        code, out = self.fx.run('status', '--json')
+        self.assertIn('"availability": "expired"', out)
+        self.assertIn('"action": "release by the holder', out)
+        # no other worker takes it over: a takeover of a non-closeout task is refused even after the grace
+        code, out = self.fx.run('claim', cand, '--worker', 'w2', '--takeover', '--reason', 'idle', plan=self.fx.plan2)
+        self.assertEqual(code, 2, out)
+        self.assertIn('is out of scope', out)
+        self.assertEqual(self.fx.run('release', cand, '--worker', 'w1', '--epoch', '1', '--note', 'stopped')[0], 0)
+        code, out = self.fx.run('status')
+        self.assertIn('Claims on out-of-scope tasks (0):', out)
+
+    def test_an_expired_closeout_claim_is_taken_over_only_to_finish_its_closeout(self):  # N3, DLV-43 closeout
+        cand = pick_candidate(d.Graph(self.fx.design))
+        self.edit_graph(lambda data: mark_out(data, cand, closeout=True), commit=True)
+        self.fx.raw_claim(cand, self.fx.claim_data(cand, claimant='w1', lease_hours=1.0, age_hours=3.0))
+        code, out = self.fx.run('status')
+        self.assertIn('take over under closeout', out)
+        # the normal expiry rules still apply: without --takeover the expired claim is refused ...
+        code, out = self.fx.run('claim', cand, '--worker', 'w2', plan=self.fx.plan2)
+        self.assertEqual(code, 2, out)
+        self.assertIn('expired claim', out)
+        # ... and a takeover needs a reason
+        self.assertEqual(self.fx.run('claim', cand, '--worker', 'w2', '--takeover', plan=self.fx.plan2)[0], 1)
+        code, out = self.fx.run('claim', cand, '--worker', 'w2', '--takeover', '--reason', 'closeout after idle lease',
+                                plan=self.fx.plan2)
+        self.assertEqual(code, 0, out)
+        rec = d.observe(self.fx.plan, 'claims', d.key_of(cand), cand)
+        self.assertEqual((rec.data['claimant'], rec.data['epoch'], rec.data['state']), ('w2', 2, 'claimed'))
+        code, out = self.fx.run('status')
+        self.assertIn('finish under closeout', out)
+        # the taker finishes the closeout; a later worker still cannot claim the task
+        self.assertEqual(self.fx.run('release', cand, '--worker', 'w2', '--epoch', '2', '--note', 'closeout done')[0], 0)
+        code, out = self.fx.run('claim', cand, '--worker', 'w3', plan=self.fx.plan2)
+        self.assertEqual(code, 2, out)
+        self.assertIn('is out of scope', out)
 
     # ---- S16(a): the edge rule follows the ledger status ----------------------------------------
 
@@ -1232,6 +1347,10 @@ class OutOfScopeTests(unittest.TestCase):
         self.assertIn('Out of scope (P2-026): synthetic scope test', text)
         plan_index = (self.fx.plan / 'list.md').read_text(encoding='utf-8')
         self.assertIn(cand, plan_index.split('## Out of scope', 1)[1])
+        self.assertIn('1 more is out of scope under P2-026', plan_index)  # N6: singular for one task
+        trace = (self.fx.design / d.DELIVERY_REL / 'traceability.md').read_text(encoding='utf-8')
+        self.assertIn('Out of scope under P2-026: 1 delivery task and ', trace)
+        self.assertNotIn('1 delivery tasks', trace)
         prompts = (self.fx.plan / 'tasks' / f'{lane}.md').read_text(encoding='utf-8')
         self.assertIn('### Out of scope', prompts)
         self.assertNotIn(f'Execute ArcForges delivery task {cand}', prompts)

@@ -9,8 +9,9 @@ generated regions are overwritten and detected by `check`.
 Scope (decision P2-026): a task, gate or substitute may carry an `outOfScope` declaration {by, note}, and
 the graph may list `outOfScopeObligations`. Absent means in scope. Out-of-scope tasks are never claimable
 and are left out of readiness, follow-ups, critical-path and schedule measures; their records stay valid
-and the generated views list them in a final section. A live claim on one is released, or finished under
-its `closeout` declaration, which never permits a new claim.
+and the generated views list them in a final section. A held claim on one (live, or expired) is released by
+its holder, or finished under its `closeout` declaration; only an expired claim on a closeout task may be taken
+over, and only to finish that closeout. No new claim is ever made on an out-of-scope task.
 
 Planning commands read working trees (use them to review a planning or ledger change):
   check     [--design PATH] [--plan PATH]   validate graph and ledger; confirm views are current
@@ -134,6 +135,11 @@ def is_out(rec) -> bool:
     return isinstance(rec, dict) and isinstance(rec.get('outOfScope'), dict)
 
 
+def count_of(n: int, one: str, many: str | None = None) -> str:
+    """'1 delivery task' or '2 delivery tasks': the noun agrees with the count (generated view wording)."""
+    return f'{n} {one if n == 1 else (many or one + "s")}'
+
+
 def oos_suffix(g, tid: str) -> str:
     return ' — out of scope' if tid in g.tasks and is_out(g.tasks[tid]) else ''
 
@@ -157,18 +163,19 @@ def edge_rule_applies(rec, kind: str, status: str | None) -> bool:
 
 
 def exempt_out_edge(g, t: dict, kind: str, target, status: dict) -> bool:
-    """True for a historical edge from an in-scope task to an out-of-scope task (S16(a)): the edge rule, the
-    other checks and the satisfiability walk all skip it, so history never fails a check."""
+    """True for a historical edge from an in-scope task to an out-of-scope task (S16(a)): the edge rule and the
+    package-acceptance rule skip it, so history never fails a check. The satisfiability walk needs no such skip,
+    because it runs on the in-scope view, which has no out-of-scope target."""
     return (not is_out(t) and target in g.tasks and is_out(g.tasks[target])
             and not edge_rule_applies(t, kind, status.get(t.get('id'))))
 
 
 def covers_as_history(rec, status: str | None) -> bool:
-    """True when an in-scope task's obligation coverage is history (DLV-43, S2, S16(a)): a complete or inherited
-    task, or a baseline-accepted one. Its excluded parts keep their task-level text, and an out-of-scope entry for
-    the same obligation records that they are no longer required. Any other in-scope covering task (open or
-    delivered) still needs the obligation, so it must not share an entry."""
-    return status in {'complete', 'inherited'} or (rec.get('baseline') or {}).get('state') == 'accepted'
+    """True when an in-scope task's obligation coverage is history (DLV-43, S2, S16(a)): a HISTORY_STATUSES task
+    (complete, inherited or superseded), or a baseline-accepted one. Its excluded parts keep their task-level text,
+    and an out-of-scope entry for the same obligation records that they are no longer required. Any other in-scope
+    covering task (open or delivered) still needs the obligation, so it must not share an entry."""
+    return status in HISTORY_STATUSES or (rec.get('baseline') or {}).get('state') == 'accepted'
 
 
 def ledger_statuses(ledger: dict) -> dict[str, str | None]:
@@ -182,7 +189,9 @@ SCOPE_DECISIONS = ('P2-026',)
 
 
 def scope_decisions(design: Path) -> set[str]:
-    """The SCOPE_DECISIONS that are defined by an anchor in a Design decisions file under docs/decisions/."""
+    """The SCOPE_DECISIONS that are defined by an anchor in a Design decisions file under docs/decisions/ of the
+    given Design root. check passes the root it checks (its --design worktree), so a planning change may add its
+    decision record and its markers together; execution reads merged Design main instead (State)."""
     homes = anchor_homes(design)
     return {dec for dec in SCOPE_DECISIONS
             if any(h.startswith('docs/decisions/') for h in homes.get(dec.lower(), []))}
@@ -396,33 +405,30 @@ class Graph:
                 succ[e['task']].add(tid)
         return succ
 
-    def events(self, skip=None):
+    def events(self):
         """Event graph (DLV-21): D(t)=delivered, C(t)=complete.
 
         D(t) needs D(s) for each contract/artifact/design start prerequisite s (and the adoption entry),
         C(s) for each release prerequisite; C(t) needs D(t) and C(s) for each completion prerequisite s.
-        skip(tid, kind, target) -> True leaves that start ('start') or completion ('complete') edge out of
-        the graph; the satisfiability check uses it to ignore historical edges to out-of-scope tasks.
+        An edge whose target is not in this graph is left out: on the in-scope view (Graph.in_scope) that is
+        exactly an edge to an out-of-scope task, which is history and cannot block in-scope events.
         """
-        # An edge whose target is not in this graph (an out-of-scope task in the scheduling subgraph) is history:
-        # it cannot be reached, so it never blocks the in-scope events.
-        skipped = (lambda tid, kind, target: target not in self.tasks or bool(skip and skip(tid, kind, target)))
         adj = defaultdict(set)
         for tid, t in self.tasks.items():
             for e in t.get('start', []):
-                if not skipped(tid, 'start', e['task']):
+                if e['task'] in self.tasks:
                     adj[('D', tid)].add(('C' if e['type'] == 'release' else 'D', e['task']))
             ent = self.entry(tid)
-            if ent and not skipped(tid, 'start', ent):
+            if ent and ent in self.tasks:
                 adj[('D', tid)].add(('C', ent))
             adj[('C', tid)].add(('D', tid))
             for e in t.get('complete', []):
-                if not skipped(tid, 'complete', e['task']):
+                if e['task'] in self.tasks:
                     adj[('C', tid)].add(('C', e['task']))
         return adj
 
-    def event_order(self, skip=None):
-        adj = self.events(skip)
+    def event_order(self):
+        adj = self.events()
         nodes = {(k, t) for t in self.tasks for k in ('D', 'C')}
         indeg = {n: 0 for n in nodes}
         rev = defaultdict(set)
@@ -631,11 +637,9 @@ def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[lis
                 errors.append(f'{t["id"]}: start prerequisite on package acceptance task {e["task"]} ({wp}); depend on the '
                               f'producing tasks or use a completion prerequisite (DLV-35)')
     # Satisfiability runs on the in-scope subgraph (DLV-24, DLV-43): out-of-scope tasks never block in-scope work, so
-    # a cycle among them is not a deadlock of the plan. Historical edges to out-of-scope tasks are skipped as well
-    # (S16(a)); the in-scope view already drops every edge whose target is out of scope.
-    def historical(tid, kind, target):
-        return tid in g.tasks and exempt_out_edge(g, g.tasks[tid], kind, target, status)
-    _, stuck = g.in_scope().event_order(historical)
+    # a cycle among them is not a deadlock of the plan, and an edge from an in-scope task to an out-of-scope one (history
+    # under S16(a), or a refused edge reported above) is not part of that subgraph.
+    _, stuck = g.in_scope().event_order()
     if stuck:
         errors.append(f'unsatisfiable prerequisites (deadlock) among {len(stuck)} tasks: {stuck[:12]}')
     # Obligation coverage (scope rule 3): an obligation is covered by an in-scope task or carried by an
@@ -660,6 +664,8 @@ def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[lis
                 break
         if r['ref'] not in g.catalogue and r['ref'] not in g.pobs:
             errors.append(f'{where}: not an active substep or package obligation')
+        if r['ref'] not in om:  # DLV-43: an excluded obligation still maps to a task, in scope as history or out of scope
+            errors.append(f'{where}: no task maps it; map it to a task (in scope as history, or out of scope) first')
         if r['ref'] in live_refs:
             errors.append(f'{where}: also covered by an in-scope task that is not complete, inherited or accepted; remove '
                           'the entry or move the obligation out of scope')
@@ -1146,7 +1152,8 @@ def render_traceability(g: Graph) -> str:
     excluded = [t for t in g.data['tasks'] if is_out(t)]
     if excluded or g.oob:
         decisions = ', '.join(sorted({t['outOfScope']['by'] for t in excluded} | {r['by'] for r in g.oob.values()}))
-        out += [f'Out of scope under {decisions}: {len(excluded)} delivery tasks and {len(g.oob)} obligations. Their rows '
+        out += [f'Out of scope under {decisions}: {count_of(len(excluded), "delivery task")} and '
+                f'{count_of(len(g.oob), "obligation")}. Their rows '
                 'are marked below; an obligation is covered only by an in-scope task or by its out-of-scope entry.', '']
     by_wp = defaultdict(list)
     for sid, s in g.catalogue.items():
@@ -1281,7 +1288,7 @@ def render_analysis(g: Graph) -> str:
     out.append(f'| Delivery tasks | {a["tasks"]} ({a["acceptedBaseline"]} carried as accepted baseline), plus {a["adoptionSlices"]} adoption slices |')
     if a['outOfScopeTasks']:
         decisions = ', '.join(sorted({t['outOfScope']['by'] for t in g.data['tasks'] if is_out(t)}))
-        out.append(f'| Out of scope (excluded from every measure here; not completed) | {a["outOfScopeTasks"]} tasks under {decisions} |')
+        out.append(f'| Out of scope (excluded from every measure here; not completed) | {count_of(a["outOfScopeTasks"], "task")} under {decisions} |')
     et = ', '.join(f'{k} {v}' for k, v in sorted(a['edgeTypes'].items()))
     out.append(f'| Dependency edges by type | {et} |')
     out.append(f'| Remaining work (size units: S=1, M=2, L=4, XL=8) | {a["remainingWork"]} |')
@@ -1571,7 +1578,8 @@ def render_index(g: Graph) -> str:
            'the lane file linked from its section, and `arcforges-implementation.md` is the procedure.', '',
            f'Tasks: {len(live)} in {lanes_live} lanes, '
            f'plus {len(g.slices)} adoption slices listed in the adoption section.'
-           + (f' {len(excluded)} more are out of scope under {", ".join(sorted({t["outOfScope"]["by"] for t in excluded}))}; '
+           + (f' {len(excluded)} more {"is" if len(excluded) == 1 else "are"} out of scope under '
+              f'{", ".join(sorted({t["outOfScope"]["by"] for t in excluded}))}; '
               'they are listed at the end and have no prompt.' if excluded else ''), '']
     for lane in g.data['lanes']:
         tasks = [t for t in live if t['lane'] == lane['id']]
@@ -1997,9 +2005,13 @@ class State:
         return start, follow, waiting
 
     def phase(self, tid: str, avail: str) -> str:
-        """'start' or 'follow-up' when the task may be claimed now; otherwise a Conflict naming why."""
+        """'start' or 'follow-up' when the task may be claimed now; otherwise a Conflict naming why. An out-of-scope
+        task is never claimed anew, except that an expired claim on a closeout task may be taken over (phase
+        'closeout') under the normal expiry, grace and reason rules, so that its closeout can be finished (DLV-43)."""
         t = self.graph.tasks[tid]
         if is_out(t):
+            if t['outOfScope'].get('closeout') and avail == 'expired':
+                return 'closeout'
             raise Conflict(f'{tid} is out of scope ({t["outOfScope"]["by"]}): {t["outOfScope"]["note"]}')
         status = self.status_of(tid)
         if t['baseline']['state'] == 'accepted' or status in {'complete', 'inherited', 'superseded'}:
@@ -2308,10 +2320,18 @@ def cmd_ready(args) -> int:
     return 0
 
 
-def scope_action(g: Graph, tid: str) -> str:
-    """What a live claim on an out-of-scope task must do: finish it under closeout, or release it."""
-    if g.tasks[tid]['outOfScope'].get('closeout'):
+def scope_action(g: Graph, tid: str, avail: str = 'live') -> str:
+    """What a held claim on an out-of-scope task must do (avail is its live or expired availability). A closeout task's
+    claim is finished under closeout, and once its lease has expired beyond the grace it is taken over for that purpose
+    only. Any other claim is released by its holder; nobody claims or takes over the task."""
+    closeout = g.tasks[tid]['outOfScope'].get('closeout')
+    if closeout and avail == 'expired':
+        return ('take over under closeout (claim --takeover --reason, once the lease expired more than one hour ago), '
+                'then finish under closeout; never claimed anew')
+    if closeout:
         return 'finish under closeout (update, deliver and complete the existing claim; never claimed anew)'
+    if avail == 'expired':
+        return 'release by the holder (the lease expired; nobody takes over an out-of-scope task)'
     return 'release (the task is out of scope and is never claimed again)'
 
 
@@ -2334,8 +2354,10 @@ def cmd_status(args) -> int:
             continue
         a = r.availability(now)
         groups[(r.ns, a)].append(r)
+    # Every held claim on an out-of-scope task, live or with its lease expired (released, delivered and complete
+    # records hold nothing); each one names the action that the holder or a closeout takeover must take.
     oos_claims = [r for r in recs if wanted(r) and r.ns == 'claims' and r.ident in g.tasks
-                  and is_out(g.tasks[r.ident]) and r.availability(now) == 'live']
+                  and is_out(g.tasks[r.ident]) and r.availability(now) in {'live', 'expired'}]
     if args.json:
         print(json.dumps({
             'source': st.source,
@@ -2343,7 +2365,8 @@ def cmd_status(args) -> int:
                          'record': r.data, 'errors': r.errors} for r in recs if wanted(r)],
             'waitingForCompletion': [{'task': t, 'pending': p} for t, p, _ in sorted(waiting)],
             'completionFollowUps': [t for t, _, _ in sorted(follow)],
-            'claimsOnOutOfScope': [{'task': r.ident, 'action': scope_action(g, r.ident)} for r in oos_claims],
+            'claimsOnOutOfScope': [{'task': r.ident, 'availability': r.availability(now),
+                                    'action': scope_action(g, r.ident, r.availability(now))} for r in oos_claims],
             'vacantIntegrationRoles': sorted(r for r in g.repos if not any(
                 x.ns == 'roles' and x.ident == role_id(r) and x.availability(now) == 'live' for x in recs)),
             'buildSlot': slot_owner(slot_path())}, indent=1))
@@ -2365,7 +2388,7 @@ def cmd_status(args) -> int:
             print(f'{r.ident}\t{describe(r, now)}')
     print(f'\nClaims on out-of-scope tasks ({len(oos_claims)}):')
     for r in oos_claims:
-        print(f'{r.ident}\t{describe(r, now)}\taction: {scope_action(g, r.ident)}')
+        print(f'{r.ident}\t{describe(r, now)}\taction: {scope_action(g, r.ident, r.availability(now))}')
     held = {x.ident for x in recs if x.ns == 'roles' and x.availability(now) == 'live'}
     print('\nVacant integration roles: ' + (', '.join(f'integration:{r}' for r in sorted(g.repos) if role_id(r) not in held) or 'none'))
     print(f'\nDelivered tasks waiting for completion prerequisites ({len(waiting)}):')
