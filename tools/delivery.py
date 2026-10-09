@@ -163,6 +163,14 @@ def exempt_out_edge(g, t: dict, kind: str, target, status: dict) -> bool:
             and not edge_rule_applies(t, kind, status.get(t.get('id'))))
 
 
+def covers_as_history(rec, status: str | None) -> bool:
+    """True when an in-scope task's obligation coverage is history (DLV-43, S2, S16(a)): a complete or inherited
+    task, or a baseline-accepted one. Its excluded parts keep their task-level text, and an out-of-scope entry for
+    the same obligation records that they are no longer required. Any other in-scope covering task (open or
+    delivered) still needs the obligation, so it must not share an entry."""
+    return status in {'complete', 'inherited'} or (rec.get('baseline') or {}).get('state') == 'accepted'
+
+
 def ledger_statuses(ledger: dict) -> dict[str, str | None]:
     """Ledger status of each task with a record (read_ledger output); tasks without one are open."""
     return {tid: rec.get('status') for tid, rec in ledger.items()}
@@ -634,6 +642,10 @@ def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[lis
     # outOfScopeObligations entry; out-of-scope tasks alone never cover it.
     om = g.obligation_map()
     in_refs = {o['ref'] for t in g.data['tasks'] if not is_out(t) for o in t.get('obligations', [])}
+    # An entry may sit beside an in-scope covering task only when that task is history (S2, S16(a)); a live covering
+    # task still needs the obligation, so the entry would contradict it.
+    live_refs = {o['ref'] for t in g.data['tasks'] if not is_out(t) and not covers_as_history(t, status.get(t['id']))
+                 for o in t.get('obligations', [])}
     entries = [r for r in g.data.get('outOfScopeObligations', []) if isinstance(r, dict)]
     carried = Counter(r.get('ref') for r in entries if isinstance(r.get('ref'), str))
     for r in g.data.get('outOfScopeObligations', []):
@@ -648,8 +660,9 @@ def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[lis
                 break
         if r['ref'] not in g.catalogue and r['ref'] not in g.pobs:
             errors.append(f'{where}: not an active substep or package obligation')
-        if r['ref'] in in_refs:
-            errors.append(f'{where}: also covered by an in-scope task; remove the entry or move the obligation out of scope')
+        if r['ref'] in live_refs:
+            errors.append(f'{where}: also covered by an in-scope task that is not complete, inherited or accepted; remove '
+                          'the entry or move the obligation out of scope')
     for sid in g.catalogue:
         if sid in om and len(om[sid]) > 1 and any(p.strip().lower() == 'full' for _, p in om[sid]):
             warnings.append(f'substep {sid} mapped by {len(om[sid])} tasks but one claims "full"')

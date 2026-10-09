@@ -733,8 +733,9 @@ class OutOfScopeTests(unittest.TestCase):
     def test_an_entry_must_name_a_real_obligation_and_not_one_in_scope_covers(self):
         g0 = d.Graph(self.fx.design)
         cand = pick_candidate(g0)
-        in_scope_sid = next(o['ref'] for t in g0.data['tasks'] if t['id'] != cand for o in t['obligations']
-                            if d.SUBSTEP.match(o['ref']))
+        # an open covering task: a baseline-accepted one is history and may sit beside an entry (S2, S16(a))
+        in_scope_sid = next(o['ref'] for t in g0.data['tasks'] if t['id'] != cand and t['baseline']['state'] != 'accepted'
+                            for o in t['obligations'] if d.SUBSTEP.match(o['ref']))
 
         def mutate(data):
             mark_out(data, cand)
@@ -743,8 +744,55 @@ class OutOfScopeTests(unittest.TestCase):
         errors = d.validate(self.edit_graph(mutate))[0]
         self.assertTrue(any('outOfScopeObligations WP-99.99: not an active substep or package obligation' in e
                             for e in errors), errors)
-        self.assertTrue(any(f'outOfScopeObligations {in_scope_sid}: also covered by an in-scope task' in e
+        self.assertTrue(any(f'outOfScopeObligations {in_scope_sid}: also covered by an in-scope task that is not complete'
+                            in e
                             for e in errors), errors)
+
+    def test_an_entry_may_sit_beside_only_a_history_covering_task(self):
+        # S2 and DLV-43: an excluded part of a complete task keeps its task-level text, and the entry records that it is
+        # no longer required. A covering task that is still live (open or delivered) must not share the entry.
+        g0 = d.Graph(self.fx.design)
+        cover = pick_candidate(g0)
+        ref = next(o['ref'] for o in g0.tasks[cover]['obligations'] if d.SUBSTEP.match(o['ref']))
+        msg = f'outOfScopeObligations {ref}: also covered by an in-scope task that is not complete'
+
+        def entry(data):
+            data['outOfScopeObligations'] = [{'ref': ref, 'by': 'P2-026', 'note': 'excluded part of a complete task'}]
+        g = self.edit_graph(entry)
+        for statuses in ({}, {cover: 'delivered'}):
+            with self.subTest(statuses=statuses):
+                errors = d.validate(g, statuses)[0]
+                self.assertTrue(any(msg in e for e in errors), errors)
+        for statuses in ({cover: 'complete'}, {cover: 'inherited'}):
+            with self.subTest(statuses=statuses):
+                errors = d.validate(g, statuses)[0]
+                self.assertFalse(any(f'{ref}: also covered' in e for e in errors), errors)
+
+        def accepted(data):
+            entry(data)
+            next(t for t in data['tasks'] if t['id'] == cover)['baseline'] = {'state': 'accepted', 'evidence': 'synthetic'}
+        errors = d.validate(self.edit_graph(accepted))[0]  # baseline acceptance is history without a ledger record
+        self.assertFalse(any(f'{ref}: also covered' in e for e in errors), errors)
+
+    def test_check_passes_with_an_excluded_part_of_a_complete_task(self):
+        self.use_full_design()
+        g0 = d.Graph(self.fx.design)
+        succ = g0.succ_map()
+        cover = next(t for t in sorted(g0.tasks) if not g0.tasks[t].get('slice') and g0.tasks[t]['kind'] != 'adoption'
+                     and not g0.tasks[t]['complete'] and g0.tasks[t]['baseline']['state'] != 'accepted'
+                     and not succ.get(t) and any(d.SUBSTEP.match(o['ref']) for o in g0.tasks[t]['obligations']))
+        ref = next(o['ref'] for o in g0.tasks[cover]['obligations'] if d.SUBSTEP.match(o['ref']))
+
+        def entry(data):
+            data['outOfScopeObligations'] = [{'ref': ref, 'by': 'P2-026', 'note': 'excluded part of a complete task'}]
+        self.edit_graph(entry, commit=True)
+        self.fx.record(cover, 'complete')
+        self.fx.commit(self.fx.plan, 'complete task with an excluded part')
+        self.assertEqual(self.fx.run('generate')[0], 0)
+        code, out = self.fx.run('check')
+        self.assertEqual(code, 0, out)
+        trace = (self.fx.design / d.DELIVERY_REL / 'traceability.md').read_text(encoding='utf-8')
+        self.assertIn('Out of scope (P2-026): excluded part of a complete task', trace)
 
     # ---- rule 4: gates and substitutes ---------------------------------------------------------
 
@@ -780,6 +828,34 @@ class OutOfScopeTests(unittest.TestCase):
             next(t for t in data['tasks'] if t['id'] == cand)['substitutes'] = [sub]
         errors = d.validate(self.edit_graph(mutate))[0]
         self.assertFalse(any(f'{sub}: replacing task' in e and cand in e for e in errors), errors)
+
+    def test_an_in_scope_task_may_not_use_an_out_of_scope_substitute(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        other = other_task(g0, cand)
+        used = {s for t in g0.data['tasks'] for s in t.get('substitutes', [])}
+        sub = next(s['id'] for s in g0.data['substitutes'] if s['id'] not in used)  # no in-scope task uses it yet
+
+        def out_sub(data):
+            next(x for x in data['substitutes'] if x['id'] == sub)['outOfScope'] = {'by': 'P2-026', 'note': 'x'}
+
+        def mutate(data):
+            out_sub(data)
+            next(t for t in data['tasks'] if t['id'] == other)['substitutes'] = [sub]
+        errors = d.validate(self.edit_graph(mutate))[0]
+        self.assertIn(f'{other}: in-scope task uses out-of-scope substitute {sub}', errors)
+
+        def out_consumer(data):  # an out-of-scope consumer, which nothing depends on, may use an out-of-scope substitute
+            out_sub(data)
+            mark_out(data, cand)
+            next(t for t in data['tasks'] if t['id'] == cand)['substitutes'] = [sub]
+        errors = d.validate(self.edit_graph(out_consumer))[0]
+        self.assertFalse(any('uses out-of-scope substitute' in e for e in errors), errors)
+
+        self.edit_graph(mutate, commit=True)  # the same refusal from check, as a planning change would meet it
+        code, out = self.fx.run('check')
+        self.assertNotEqual(code, 0, out)
+        self.assertIn(f'{other}: in-scope task uses out-of-scope substitute {sub}', out)
 
     # ---- rule 5: warnings ----------------------------------------------------------------------
 
@@ -935,6 +1011,30 @@ class OutOfScopeTests(unittest.TestCase):
         errors = d.validate(g, {other: 'complete'})[0]  # complete: its start edge to the out task is history
         self.assertFalse(any('unsatisfiable prerequisites' in e for e in errors), errors)
         self.assertFalse(any(f'{other}: start edge to out-of-scope task' in e for e in errors), errors)
+
+    def test_an_open_task_may_not_start_from_an_out_of_scope_adoption_entry(self):
+        # The adoption entry (DLV-22) is the repository adoption task when no slice serves the task's lane. Every real
+        # repository and lane has a slice, so the test removes that slice from the in-memory index and marks the
+        # adoption task out; the entry rule is then the only thing that can refuse the task.
+        g0 = d.Graph(self.fx.design)
+        t = next(tid for tid in sorted(g0.tasks) if not g0.tasks[tid].get('slice') and g0.tasks[tid]['kind'] != 'adoption'
+                 and g0.tasks[tid]['baseline']['state'] != 'accepted' and g0.repos[g0.tasks[tid]['repo']].get('adoptionTask'))
+        repo, lane = g0.tasks[t]['repo'], g0.tasks[t]['lane']
+        adopt = g0.repos[repo]['adoptionTask']
+        self.assertNotEqual(adopt, t)
+        msg = f'{t}: entry (adoption) edge to out-of-scope task {adopt}'
+
+        g = self.edit_graph(lambda data: mark_out(data, adopt))
+        g.slice_of.pop((repo, lane))
+        self.assertEqual(g.entry(t), adopt)
+        for statuses in ({}, {t: None}):  # open: the entry is a start edge that may not point out
+            with self.subTest(statuses=statuses):
+                errors = d.validate(g, statuses)[0]
+                self.assertTrue(any(msg in e for e in errors), errors)
+        for status in ('delivered', 'complete', 'inherited'):  # the same entry is history for these statuses
+            with self.subTest(status=status):
+                errors = d.validate(g, {t: status})[0]
+                self.assertFalse(any(msg in e for e in errors), errors)
 
     def test_satisfiability_runs_on_the_in_scope_subgraph(self):
         # Out-only cycles cannot block in-scope work, so they are not a deadlock; an in-scope cycle still is.
