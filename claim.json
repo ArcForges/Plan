@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T22:41:03Z",
-  "updatedAt": "2026-10-09T06:55:45Z",
-  "leaseUntil": "2026-10-10T06:55:45Z",
+  "updatedAt": "2026-10-09T09:43:54Z",
+  "leaseUntil": "2026-10-10T09:43:54Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/nat-11",
@@ -18,13 +18,13 @@
     "done": [],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\nat-11",
-    "head": "71a2aec8397a56ae6752fe1a234bda005fb635dc",
-    "reviewed": "71a2aec8397a56ae6752fe1a234bda005fb635dc",
+    "head": "a68092e2c9def5d2ddb4a69bf607f3421a4bf815",
+    "reviewed": "a68092e2c9def5d2ddb4a69bf607f3421a4bf815",
     "blocker": null,
     "next": [
       "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
     ],
     "host": "deku",
-    "note": "packaging export set admits the six ABI 1.1 exports (ADP-07: eng/packaging/native.py, packages.py); hosted stage/pack authoritative (owned CMake 4.3.3/Ninja 1.13.1 pins not installed locally); delta review 3 pending"
+    "note": "ADP-07 supporting-file bindings (owner DesktopPlatform integration; append-only rows; necessity: CI packaging and the shared architecture policy accept the delivered ABI 1.1): eng/packaging/native.py, eng/packaging/packages.py, tests/ArchitectureTests/RepositoryPolicyTests.cs, eng/policy/architecture-contract-tests.json"
   }
 }
