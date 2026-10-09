@@ -4,10 +4,10 @@
   "id": "AND.01",
   "claimant": "w-deku-20261008-and-01",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-08T14:40:25Z",
-  "updatedAt": "2026-10-09T02:00:45Z",
-  "leaseUntil": "2026-10-10T02:00:45Z",
+  "updatedAt": "2026-10-09T02:12:59Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Mobile",
     "branch": "task/and-01",
@@ -20,7 +20,8 @@
     "done": [
       "work-in-progress commits pushed (step 1)",
       "implemented, independently reviewed (4 rounds + deltas), pushed, PR opened",
-      "merged Mobile #22 at reviewed head c22298fb (CI all green)"
+      "merged Mobile #22 at reviewed head c22298fb (CI all green)",
+      "post-merge main CI 37872495035 success; ledger record merged (Plan #462)"
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Mobile\\.worktree\\and-01",
@@ -28,7 +29,7 @@
     "reviewed": "c22298fb9f6b1ffc2b6401e9fde177a8a65df4ab",
     "blocker": null,
     "next": [
-      "post-merge main CI; ledger record delivered (completion: AND.40 hosted Linux identity build, PRF.12)"
+      "completion follow-up after the AND.40 hosted Linux identity build and PRF.12"
     ],
     "host": "deku",
     "note": "ADP-07 supporting edits beyond the record writes: none (fix2 merged the full write scope)"
