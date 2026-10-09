@@ -6,10 +6,10 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T16:27:55Z",
-  "updatedAt": "2026-10-08T23:17:30Z",
-  "leaseUntil": "2026-10-09T11:17:30Z",
+  "updatedAt": "2026-10-09T10:30:22Z",
+  "leaseUntil": "2026-10-09T22:30:22Z",
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "renewed for the NAT.11 publication closeout"
   }
 }
