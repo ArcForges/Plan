@@ -4,10 +4,10 @@
   "id": "WEB.40",
   "claimant": "w-deku-20261008-web-40",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-08T14:40:09Z",
-  "updatedAt": "2026-10-09T14:41:43Z",
-  "leaseUntil": "2026-10-10T14:41:43Z",
+  "updatedAt": "2026-10-09T15:40:49Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Web",
     "branch": "task/web-40",
@@ -30,6 +30,6 @@
       "independent review, push, PR, CI, merge via integration role"
     ],
     "host": "deku",
-    "note": "Web #35 merged c8588681 (--match-head-commit c58e528). Main CI 37945013754 success; Deploy Cloudflare: candidate 0.1.0-ci.111.1 verified (20 members), Current Version ID e8f8cc7c-d0f7-4a84-966b-2f172c59d40d; prerelease web-0.1.0-ci.111.1 with web-profiles-4afc8f28... and web-site-57357561... tars"
+    "note": "Ledger Plan #468 (52413fcd) status delivered; S28 rulings; completion follow-ups: CLOUD.71/85 bundle-naming note, doc follow-ups (react-retirement, site-parity), rollback operator run, WSL2 Linux checks and local browser suites at c8588681"
   }
 }
