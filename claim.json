@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:09Z",
-  "updatedAt": "2026-10-09T13:50:37Z",
-  "leaseUntil": "2026-10-10T13:50:37Z",
+  "updatedAt": "2026-10-09T14:41:43Z",
+  "leaseUntil": "2026-10-10T14:41:43Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/web-40",
     "prs": [
       "https://github.com/ArcForges/Web/pull/35"
     ],
-    "merges": [],
+    "merges": [
+      "c8588681da0c25784ab6d6d82165e2903bd62764"
+    ],
     "done": [
       "work-in-progress commits pushed (step 1)"
     ],
@@ -28,6 +30,6 @@
       "independent review, push, PR, CI, merge via integration role"
     ],
     "host": "deku",
-    "note": "S20(a) Site asset delta pushed; exact-head review pending (reviewer chain running); merge waits for P2-026"
+    "note": "Web #35 merged c8588681 (--match-head-commit c58e528). Main CI 37945013754 success; Deploy Cloudflare: candidate 0.1.0-ci.111.1 verified (20 members), Current Version ID e8f8cc7c-d0f7-4a84-966b-2f172c59d40d; prerelease web-0.1.0-ci.111.1 with web-profiles-4afc8f28... and web-site-57357561... tars"
   }
 }
