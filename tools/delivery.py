@@ -689,7 +689,10 @@ def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[lis
     for t in g.data['tasks']:
         for s in t.get('substitutes', []):
             users[s].append(t['id'])
-            if not is_out(t) and s in g.subs and is_out(g.subs[s]):
+            # S16(a): an in-scope task's use of an out-of-scope substitute is history once the task is delivered,
+            # complete, inherited, superseded or baseline-accepted, so the rule follows the same ledger status.
+            if (not is_out(t) and s in g.subs and is_out(g.subs[s])
+                    and edge_rule_applies(t, 'start', status.get(t['id']))):
                 errors.append(f'{t["id"]}: in-scope task uses out-of-scope substitute {s}')
     for sid, s in g.subs.items():
         if not SUB_ID.match(sid):

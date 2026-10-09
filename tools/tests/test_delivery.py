@@ -857,6 +857,43 @@ class OutOfScopeTests(unittest.TestCase):
         self.assertNotEqual(code, 0, out)
         self.assertIn(f'{other}: in-scope task uses out-of-scope substitute {sub}', out)
 
+    def test_an_out_of_scope_substitute_is_history_for_a_delivered_or_complete_user(self):  # S16(a)
+        self.use_full_design()  # check resolves decision identifiers in the whole Design docs
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        used = {s for t in g0.data['tasks'] for s in t.get('substitutes', [])}
+        sub = next(s['id'] for s in g0.data['substitutes'] if s['id'] not in used)
+        rb = g0.subs[sub]['replacedBy']
+        # A user the replacing task depends on, so the consumer rule does not bind and only the usage rule is under test.
+        other = next(t for t in sorted(g0.tasks) if t != cand and t in g0.ancestors(rb)
+                     and not g0.tasks[t].get('slice') and g0.tasks[t]['kind'] != 'adoption'
+                     and g0.tasks[t]['baseline']['state'] != 'accepted')
+        message = f'{other}: in-scope task uses out-of-scope substitute {sub}'
+
+        def mutate(data):
+            next(x for x in data['substitutes'] if x['id'] == sub)['outOfScope'] = {'by': 'P2-026', 'note': 'x'}
+            next(t for t in data['tasks'] if t['id'] == other)['substitutes'] = [sub]
+        g = self.edit_graph(mutate)
+        for statuses in (None, {}, {other: None}):  # no ledger record: the task is open and the usage is refused
+            with self.subTest(statuses=statuses):
+                self.assertIn(message, d.validate(g, statuses)[0])
+        for status in ('delivered', 'complete', 'inherited', 'superseded'):
+            with self.subTest(status=status):
+                self.assertNotIn(message, d.validate(g, {other: status})[0])
+
+        def accepted(data):
+            next(x for x in data['tasks'] if x['id'] == other)['baseline'] = {'state': 'accepted', 'evidence': 'synthetic'}
+        g2 = self.edit_graph(lambda data: (mutate(data), accepted(data)))
+        self.assertNotIn(message, d.validate(g2)[0])  # baseline acceptance exempts the usage without a ledger record
+
+        self.edit_graph(mutate, commit=True)  # a delivered user passes check, as the S8 graph does once its ledger says so
+        self.fx.record(other, 'delivered')
+        self.fx.commit(self.fx.plan, 'delivered user of an out-of-scope substitute')
+        self.assertEqual(self.fx.run('generate')[0], 0)
+        code, out = self.fx.run('check')
+        self.assertEqual(code, 0, out)
+        self.assertNotIn(message, out)
+
     # ---- rule 5: warnings ----------------------------------------------------------------------
 
     def test_warnings_for_resources_and_slices_used_only_out_of_scope(self):
