@@ -365,4 +365,5 @@ Unblocks: AND.25, CLOUD.36, SCOPE.26
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run of the affected scenario in an existing environment, recorded once; offline and static checks in CI; no hosted runtime, device, browser, live-service or inference CI (P2-017).
 Completion evidence for the ledger: The device tool path (pull, local re-authorisation, generated decode, typed invocation, idempotent result) works over the real deployed stream transport -- this is explicitly must-be-real-early per implementation-sequence §3, owned jointly with the assistant lanes WP-26
+Notes: Planning note 2026-10-09 (P2-026; S3, S16(c)): kept with the stream-transport acceptance over EventService.Watch and ExecutionService.WatchOutput, because streaming is V1; the classifier removal of that acceptance is not applied.
 ```

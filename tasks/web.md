@@ -114,7 +114,7 @@ Unblocks: WEB.09
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Locale routing/annotation tests, no-trap assertion, pseudo-localisation pass — offline
 Completion evidence for the ledger: Locale routing, no-trap and pseudo-localisation results
-Notes: Planning repair 2026-10-08 (DLV-34; P2-021): The mechanism moves from React i18n to .NET localisation (.resx) under the C# static generator. The locale routing, no-trap and pseudo-localisation criteria are unchanged.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): The mechanism moves from React i18n to .NET localisation (.resx) under the C# static generator. The locale routing, no-trap and pseudo-localisation criteria are unchanged. Planning repair 2026-10-09 (P2-026; scope correction, brief section 11 S19(c)): reduced: shipping of non-default locale content and translated public pages beyond the foundation is out of scope, not completed. The locale-scoped URL, alternate-language annotation and .resx foundation remains in scope.
 ```
 
 ```text
