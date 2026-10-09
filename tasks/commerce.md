@@ -317,7 +317,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Entitlement/**/ServiceTerm/**
 Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
-Unblocks: COM.12, SIM.07
+Unblocks: COM.12
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline tests: renewal creating a second term row without violating the (kind,period_ref) key, replayed event creating nothing, plan change superseding not editing, overlap/genuine-gap union-of-interval tests.
 Completion evidence for the ledger: Renewal-without-key-violation test; replay-creates-nothing test; supersede-not-edit test.
@@ -345,7 +345,7 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 
 Permitted write scope: Cloud:src/Cloud/ArcForges.Cloud.Modules.Entitlement/**/Capacity/**
 Shared resources (follow the owner protocol): RES-cloud-host-composition (append): Each module registers through its own module entry point and route fragment; the host composition only lists modules; route and binding conflicts are resolved by the integration owner at merge.
-Unblocks: AIR.02, COM.14, HAR.02
+Unblocks: AIR.02, COM.14, HAR.02, SIM.07
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Offline deterministic tests only (no wall-clock sleep): full-hold-then-consume-then-read fixture, fractional saturation, changed plan, overlap, genuine gap, unchanged renewal, grandfathered above-ceiling balance, the CT-13 refill fixture (identical result whether refill runs once or a thousand times over an interval containing a ceiling raise, reduction and rate change, asserting 11 at t=11), clock rollback/restart/reconnect/second-device/racing-replica watermark tests, ceiling-reduction-preserves-held-funding test, ledger-unit-separation test (customerCredit carries micro-credits with no currency; the other two carry money with currency; no query sums them).
 Completion evidence for the ledger: The CT-13 refill fixture result exactly (11 at t=11, not 21 or 12); watermark non-rewind evidence across restart/second-device/racing-replica; ceiling-reduction-preserves-funding result.

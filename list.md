@@ -337,7 +337,7 @@ Tasks: 426 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | SIM.04 | Cloud | L | SIM.03, CLOUD.42, CLOUD.04, COM.07, ADOPT.07.simulator (adoption) | Canonical publication, checkpoints and recovery |
 | SIM.05 | Cloud | M | SIM.04, CLOUD.21, CLOUD.24, CON.21, ADOPT.07.simulator (adoption) | Cloud-side simulation.* operations, manifest listing and segment fetch |
 | SIM.06 | ArcScope | L | SIM.05, CON.21, SCOPE.01, SCOPE.14, SCOPE.24, ADOPT.05.simulator (adoption) | ArcScope-side simulated DataSource and native ingestion |
-| SIM.07 | Cloud | L | SIM.03, COM.05, COM.07, COM.11, POL.03, ADOPT.07.simulator (adoption) | Limits, entitlement and lifecycle |
+| SIM.07 | Cloud | L | SIM.03, COM.05, COM.07, COM.12, POL.03, ADOPT.07.simulator (adoption) | Limits, entitlement and lifecycle |
 | SIM.08 | Cloud | M | SIM.01, SIM.02, SIM.03, SIM.04, SIM.05, SIM.06, SIM.07, ADOPT.07.simulator (adoption) | Owned-artifact verification and real integration |
 | SIM.09 | Cloud | M | SIM.05, SIM.06, SCOPE.14, SCOPE.18, SCOPE.24, ADOPT.07.simulator (adoption) | Real Cloud->R2->ArcScope-native simulator closure: hash/timebase/provenance proof against WP34 measurement/report and WP35 import/portability |
 | SIM.10 | Cloud | M | CLOUD.07, SIM.01, ADOPT.07.simulator (adoption) | Real ArcScope simulator admission against deployed capacity/SimulationPacer |
