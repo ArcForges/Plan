@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "CLOUD.85",
+  "claimant": "w-deku-20261009-cloud-85",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-09T15:59:02Z",
+  "updatedAt": "2026-10-09T15:59:02Z",
+  "leaseUntil": "2026-10-10T15:59:02Z",
+  "handoff": {
+    "repository": "Cloud",
+    "branch": "task/cloud-85",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "plan the task, then push the task branch at the first checkpoint"
+    ],
+    "host": "deku",
+    "note": null
+  }
+}
