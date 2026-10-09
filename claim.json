@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T02:13:27Z",
-  "updatedAt": "2026-10-09T13:36:08Z",
-  "leaseUntil": "2026-10-10T13:36:08Z",
+  "updatedAt": "2026-10-09T13:51:25Z",
+  "leaseUntil": "2026-10-10T13:51:25Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/and-40",
@@ -27,6 +27,6 @@
       "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
     ],
     "host": "deku",
-    "note": "PR A merged (43ecb25b); android-maui publish run pending; PR B next"
+    "note": "PR A merged 43ecb25b; main CI 37937976324 success; android-maui-0.1.0-ci.74.1 published and verified by the publish job (cert 7a8b3b14...); PR B in progress"
   }
 }
