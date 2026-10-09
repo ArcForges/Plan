@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T22:41:03Z",
-  "updatedAt": "2026-10-09T05:44:30Z",
-  "leaseUntil": "2026-10-10T05:44:30Z",
+  "updatedAt": "2026-10-09T06:09:55Z",
+  "leaseUntil": "2026-10-10T06:09:55Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/nat-11",
@@ -18,13 +18,13 @@
     "done": [],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\nat-11",
-    "head": "e8dff231011d9b1a4b88e0ac8ddf8837dcc068c0",
-    "reviewed": "e8dff231011d9b1a4b88e0ac8ddf8837dcc068c0",
+    "head": "df3cf780ee819b16699a5345069ab62fce9a63ee",
+    "reviewed": "df3cf780ee819b16699a5345069ab62fce9a63ee",
     "blocker": null,
     "next": [
       "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
     ],
     "host": "deku",
-    "note": "clang-format hunk from the repository-hooks job applied; delta review pending"
+    "note": "OIIO limits:imagesize_MB pinned host-independently (hosted limits_bomb failure); delta-reviewed"
   }
 }
