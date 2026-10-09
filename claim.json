@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:41Z",
-  "updatedAt": "2026-10-09T18:27:19Z",
-  "leaseUntil": "2026-10-10T18:27:19Z",
+  "updatedAt": "2026-10-09T18:39:15Z",
+  "leaseUntil": "2026-10-10T18:39:15Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/har-40",
@@ -30,6 +30,6 @@
       "independent review, push, PR, CI, merge via integration role"
     ],
     "host": "deku",
-    "note": "Cloud #80 merged ccf7bcdf (--match-head-commit 3e022f8); all PR checks green; main-push deploy being verified; AI status PR follows"
+    "note": "Main CI 37973286130 success: Deploy Cloudflare Version 7dbc77c0 (SOURCE_REVISION ccf7bcdf), container app updated, production D1 not applicable; release cloud-0.1.0-ci.328.1; production /api/healthz 200 revision ccf7bcdf nativeAot true. AI #35 merged ec40ec45 (status text: retirement pending user confirmation)"
   }
 }
