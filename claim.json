@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T22:41:03Z",
-  "updatedAt": "2026-10-09T06:09:55Z",
-  "leaseUntil": "2026-10-10T06:09:55Z",
+  "updatedAt": "2026-10-09T06:13:19Z",
+  "leaseUntil": "2026-10-10T06:13:19Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "task/nat-11",
@@ -18,13 +18,13 @@
     "done": [],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\DesktopPlatform\\.worktree\\nat-11",
-    "head": "df3cf780ee819b16699a5345069ab62fce9a63ee",
+    "head": "0097442f95344f2eca00d9cd1906779416b313ed",
     "reviewed": "df3cf780ee819b16699a5345069ab62fce9a63ee",
     "blocker": null,
     "next": [
       "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
     ],
     "host": "deku",
-    "note": "OIIO limits:imagesize_MB pinned host-independently (hosted limits_bomb failure); delta-reviewed"
+    "note": "reconciliation blob re-pinned after the OIIO pin change; delta review 2 pending"
   }
 }
