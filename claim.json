@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T02:13:27Z",
-  "updatedAt": "2026-10-09T15:20:16Z",
-  "leaseUntil": "2026-10-10T15:20:16Z",
+  "updatedAt": "2026-10-09T15:41:49Z",
+  "leaseUntil": "2026-10-10T15:41:49Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/and-40",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Mobile/pull/25"
     ],
     "merges": [
-      "43ecb25b48cc5b030d4ef40b398aa216470d103d"
+      "43ecb25b48cc5b030d4ef40b398aa216470d103d",
+      "6702e281d1c670e8f74879b3c19ff8a2c97311ba"
     ],
     "done": [],
     "validation": [],
@@ -28,6 +29,6 @@
       "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
     ],
     "host": "deku",
-    "note": "PR B #25 opened at 1eabc64, approved by w-deku-20261008-rev-and-40 (B gate passed); hosted CI pending"
+    "note": "PR B Mobile #25 merged 6702e281 (--match-head-commit 1eabc64); all PR checks green; main-push publish (android-VERSION) being verified"
   }
 }
