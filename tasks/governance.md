@@ -729,7 +729,7 @@ Delivery rules: C:\MyFile\Projects\ArcForges-Design\docs\planning\delivery\READM
 Owning repository: C:\MyFile\Projects\ArcForges\DesktopPlatform (integration owner: DesktopPlatform integration owner, the holder of roles/integration-desktopplatform).
 Claim and handoff record: claims/gov-33 (python tools/delivery.py claim GOV.33 --worker <name>); task branch task/gov-33 in DesktopPlatform; ledger record ledger/tasks/gov-33.md.
 Kind/size: governance/S. Baseline: not-started.
-Outcome: tests/LocalRpcAotTests/README.md no longer claims macOS peer-PID support (lines 23 to 25 at DesktopPlatform 6b84ca17), and the Program.cs PASS message (line 52) names only the platforms that run (Windows and Linux). The Darwin SOL_LOCAL/LOCAL_PEERPID dispatch (lines 31-32 and 1269-1281) stays unchanged as shared Unix-socket code that is never claimed or tested. No behaviour change on Windows or Linux.
+Outcome: No macOS support or validation is claimed in tests/LocalRpcAotTests (at DesktopPlatform 6b84ca17): the README macOS peer-PID sentence and its XNU header citation (lines 23 to 27) and the statement that a local process-to-process run on macOS is required (lines 57 to 60) are removed or restated without a macOS claim; the Program.cs PASS message (line 52) names only the platforms that run (Windows and Linux); the RunProbeAsync guard message (line 76) no longer names macOS. The Darwin SOL_LOCAL/LOCAL_PEERPID dispatch (lines 31-32 and 1269-1281) and the guard logic stay unchanged as shared Unix-socket code; the existing selector-mapping assertion in VerifyUnixPeerPidBackends (lines 1292-1300) stays as a unit check of that shared mapping, not a macOS validation, and no macOS run is claimed. No behaviour change on Windows or Linux.
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - P2-023 (no macOS support or validation is claimed: the LocalRpcAotTests README macOS peer-PID sentence and the macOS wording of the PASS message are removed; the shared Darwin dispatch code stays as cross-platform code): C:\MyFile\Projects\ArcForges-Design\docs\decisions\phase-2-specification-decisions.md, anchor rule-p2-023
@@ -740,9 +740,9 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
-Permitted write scope: DesktopPlatform:tests/LocalRpcAotTests/README.md (macOS sentence only); DesktopPlatform:tests/LocalRpcAotTests/Program.cs (the PASS message text only)
+Permitted write scope: DesktopPlatform:tests/LocalRpcAotTests/README.md (the macOS sentences at lines 23-27 and 57-60 only); DesktopPlatform:tests/LocalRpcAotTests/Program.cs (the line 52 PASS message and the line 76 exception message text only)
 
-Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): LocalRpcAotTests build and its offline run on Windows and in WSL2 (P2-024); a static scan shows no macOS support or validation claim in the two files while the Darwin dispatch code is unchanged; no macOS CI (P2-017).
+Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): LocalRpcAotTests build and its offline run on Windows and in WSL2 (P2-024); a static scan of the prose and messages of the two files shows no macOS support or validation claim, while the Darwin dispatch code, the guard logic and the selector-mapping unit assertion are unchanged; no macOS CI (P2-017).
 Completion evidence for the ledger: The diff, the scan output and the test results.
-Notes: Planning repair 2026-10-09 (DLV-34; P2-023): macOS residue outside the GOV.30 write scope, found by its independent review.
+Notes: Planning repair 2026-10-09 (DLV-34; P2-023): macOS residue outside the GOV.30 write scope, found by its independent review. Planning repair 2026-10-09 (DLV-34; coordinator adjudication, brief section 10; fix3 review): the scope is widened to every macOS claim in the two files (README 23-27 and 57-60, Program.cs 52 and 76) so that the static scan of prose and messages can pass; the code is unchanged.
 ```
