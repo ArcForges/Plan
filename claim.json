@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T15:59:02Z",
-  "updatedAt": "2026-10-09T18:59:30Z",
-  "leaseUntil": "2026-10-10T18:59:30Z",
+  "updatedAt": "2026-10-09T19:17:00Z",
+  "leaseUntil": "2026-10-10T19:17:00Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/cloud-85",
     "prs": [
       "https://github.com/ArcForges/Cloud/pull/81"
     ],
-    "merges": [],
+    "merges": [
+      "3980212301349c71442cc3eb9bc9f410fbf5458d"
+    ],
     "done": [],
     "validation": [],
     "worktree": null,
@@ -25,6 +27,6 @@
       "plan the task, then push the task branch at the first checkpoint"
     ],
     "host": "deku",
-    "note": "Cloud #81 opened at 036e4c4; approved by w-deku-20261009-rev-cloud-85 (full e8cf8a04 + deltas c08a440, 036e4c4); hosted CI pending; proof deploy after merge"
+    "note": "Cloud #81 merged 39802123 (--match-head-commit 036e4c4); all PR checks green; main-push deploy (production unchanged) then the proof deploy under RES-cloud-deployment"
   }
 }
