@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:09Z",
-  "updatedAt": "2026-10-09T08:01:04Z",
-  "leaseUntil": "2026-10-10T08:01:04Z",
+  "updatedAt": "2026-10-09T12:17:45Z",
+  "leaseUntil": "2026-10-10T12:17:45Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/web-40",
@@ -20,14 +20,14 @@
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Web\\.worktree\\web-40",
-    "head": "6ff8e1eef7412a468431b958087bb7b08ee35160",
-    "reviewed": "6ff8e1eef7412a468431b958087bb7b08ee35160",
+    "head": "efe787254ae64cc8027a6b801b3cbd9080481321",
+    "reviewed": "efe787254ae64cc8027a6b801b3cbd9080481321",
     "blocker": null,
     "next": [
       "implement in the retained worktree (local commits by the execution agent)",
       "independent review, push, PR, CI, merge via integration role"
     ],
     "host": "deku",
-    "note": null
+    "note": "hosted CI fixes + r15; merge waits for P2-026 (S17)"
   }
 }
