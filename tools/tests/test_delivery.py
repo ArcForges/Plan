@@ -227,6 +227,7 @@ class DeliveryTests(unittest.TestCase):
     def test_complete_ledger_requires_completed_integration_prerequisites(self):
         g = d.Graph(self.fx.design)
         self.fx.record('AND.08', 'complete')  # AND.07 is its completion prerequisite
+        self.fx.record('AND.13', 'inherited')  # AND.08 also completes on AND.13 (UI suite); inherited carries no evidence rules
         for status in (None, 'delivered', 'superseded'):
             with self.subTest(prerequisite=status):
                 if status:
@@ -265,6 +266,7 @@ class DeliveryTests(unittest.TestCase):
 
     def test_a_delivered_task_returns_as_a_follow_up_when_its_completion_prerequisites_complete(self):
         self.fx.record('AND.08', 'delivered')
+        self.fx.record('AND.13', 'inherited')  # the second completion prerequisite of AND.08 in the current graph
         self.fx.commit(self.fx.plan, 'delivered')
         code, out = self.fx.run('status')
         self.assertIn('AND.08\twaiting for AND.07', out)
@@ -300,6 +302,7 @@ class DeliveryTests(unittest.TestCase):
         code, out = self.fx.run('ready', '--lane', 'governance')
         self.assertIn('GOV.17\tDesktopPlatform', out)
         self.fx.record('GOV.17', 'inherited')
+        self.fx.record('CON.23', 'delivered')  # GOV.18 starts on the delivered CON.23 naming data in the current graph
         self.fx.commit(self.fx.plan, 'inherited record')
         code, out = self.fx.run('ready', '--lane', 'governance')
         self.assertEqual(code, 0, out)
