@@ -168,8 +168,22 @@ def ledger_statuses(ledger: dict) -> dict[str, str | None]:
     return {tid: rec.get('status') for tid, rec in ledger.items()}
 
 
-def check_scope(rec, where: str, errors: list, closeout: bool = False, extra: tuple = ()) -> None:
-    """Shape of an outOfScope declaration: by and note are non-empty text; closeout is a boolean on tasks."""
+# Decision records that may carry an outOfScope marker (DLV-43). Today that is P2-026 only, and the record must
+# exist as an anchor in the Design decisions files (docs/decisions/) that check reads.
+SCOPE_DECISIONS = ('P2-026',)
+
+
+def scope_decisions(design: Path) -> set[str]:
+    """The SCOPE_DECISIONS that are defined by an anchor in a Design decisions file under docs/decisions/."""
+    homes = anchor_homes(design)
+    return {dec for dec in SCOPE_DECISIONS
+            if any(h.startswith('docs/decisions/') for h in homes.get(dec.lower(), []))}
+
+
+def check_scope(rec, where: str, errors: list, closeout: bool = False, extra: tuple = (),
+                decisions: set[str] | None = None) -> None:
+    """Shape of an outOfScope declaration: by and note are non-empty text; closeout is a boolean on tasks. With
+    decisions given, by must name one of them (DLV-43: the marker names its decision record)."""
     if not isinstance(rec, dict):
         errors.append(f'{where} must be an object with by and note')
         return
@@ -181,6 +195,10 @@ def check_scope(rec, where: str, errors: list, closeout: bool = False, extra: tu
             errors.append(f'{where} needs a non-empty {f}')
     if 'closeout' in rec and not isinstance(rec['closeout'], bool):
         errors.append(f'{where} closeout must be true or false')
+    by = rec.get('by')
+    if decisions is not None and isinstance(by, str) and by.strip() and by not in decisions:
+        errors.append(f'{where} names {by}, which is not a scope decision record in the Design decisions files '
+                      f'(DLV-43 allows {", ".join(SCOPE_DECISIONS)} only, and it must be present)')
 
 
 def load_json(path: Path):
@@ -471,6 +489,10 @@ def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[lis
     task counts as open, which is the strictest reading of the out-of-scope edge rule."""
     errors, warnings = [], []
     status = status or {}
+    marked = (any('outOfScope' in x for x in [*g.data['tasks'], *(g.data.get('gates') or []),
+                                              *(g.data.get('substitutes') or [])])
+              or bool(g.data.get('outOfScopeObligations')))
+    decisions = scope_decisions(g.design) if marked else set()
     ids = [t['id'] for t in g.data['tasks']]
     for tid, n in Counter(ids).items():
         if n > 1:
@@ -485,7 +507,7 @@ def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[lis
         if not TASK_ID.match(tid):
             errors.append(f'{tid}: invalid task id format')
         if 'outOfScope' in t:
-            check_scope(t['outOfScope'], f'{tid}: outOfScope', errors, closeout=True)
+            check_scope(t['outOfScope'], f'{tid}: outOfScope', errors, closeout=True, decisions=decisions)
         if CORPUS_ID.search(t.get('title', '')):
             errors.append(f'{tid}: title contains a corpus identifier; keep identifiers in obligations')
         if t.get('lane') not in g.lanes:
@@ -600,11 +622,12 @@ def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[lis
             if wp and not any(o['ref'].startswith((wp + '.', wp + ':')) for o in t.get('obligations', [])):
                 errors.append(f'{t["id"]}: start prerequisite on package acceptance task {e["task"]} ({wp}); depend on the '
                               f'producing tasks or use a completion prerequisite (DLV-35)')
-    # Satisfiability ignores historical edges to out-of-scope tasks (S16(a)): they cannot block open work, so a
-    # cycle that runs only through them is not a deadlock of the plan.
+    # Satisfiability runs on the in-scope subgraph (DLV-24, DLV-43): out-of-scope tasks never block in-scope work, so
+    # a cycle among them is not a deadlock of the plan. Historical edges to out-of-scope tasks are skipped as well
+    # (S16(a)); the in-scope view already drops every edge whose target is out of scope.
     def historical(tid, kind, target):
         return tid in g.tasks and exempt_out_edge(g, g.tasks[tid], kind, target, status)
-    _, stuck = g.event_order(historical)
+    _, stuck = g.in_scope().event_order(historical)
     if stuck:
         errors.append(f'unsatisfiable prerequisites (deadlock) among {len(stuck)} tasks: {stuck[:12]}')
     # Obligation coverage (scope rule 3): an obligation is covered by an in-scope task or carried by an
@@ -618,7 +641,7 @@ def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[lis
         if not isinstance(r, dict) or not isinstance(r.get('ref'), str):
             errors.append(f'{where}: each entry needs a ref')
             continue
-        check_scope(r, where, errors, extra=('ref',))
+        check_scope(r, where, errors, extra=('ref',), decisions=decisions)
         for ref, n in carried.items():
             if ref == r['ref'] and n > 1:
                 errors.append(f'{where}: listed {n} times')
@@ -659,7 +682,7 @@ def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[lis
         if not SUB_ID.match(sid):
             errors.append(f'invalid substitute id {sid}')
         if 'outOfScope' in s:
-            check_scope(s['outOfScope'], f'{sid}: outOfScope', errors)
+            check_scope(s['outOfScope'], f'{sid}: outOfScope', errors, decisions=decisions)
         for f in ('standsInFor', 'contract', 'proves', 'realProducer', 'replacedBy', 'realEvidence'):
             if not s.get(f):
                 errors.append(f'{sid}: missing {f}')
@@ -734,7 +757,7 @@ def validate(g: Graph, status: dict[str, str | None] | None = None) -> tuple[lis
     # Gates.
     for gate, rec in g.gates.items():
         if 'outOfScope' in rec:
-            check_scope(rec['outOfScope'], f'gate {gate}: outOfScope', errors)
+            check_scope(rec['outOfScope'], f'gate {gate}: outOfScope', errors, decisions=decisions)
         for tid in rec.get('tasks', []):
             if tid not in g.tasks:
                 errors.append(f'gate {gate}: unknown task {tid}')
@@ -1894,7 +1917,8 @@ class State:
             if 'main' not in d or 'main' not in p:
                 raise Fail('a remote has no main branch')
             with tempfile.TemporaryDirectory(prefix='delivery-') as tmp:
-                extract(design, d['main'], ['docs/planning'], Path(tmp) / 'design')
+                # docs/decisions: the scope decision record that an outOfScope marker names must be on merged main (DLV-43)
+                extract(design, d['main'], ['docs/planning', 'docs/decisions'], Path(tmp) / 'design')
                 extract(plan, p['main'], ['ledger'], Path(tmp) / 'plan')
                 self.graph = Graph(Path(tmp) / 'design')
                 self.ledger, ledger_errors = read_ledger(Path(tmp) / 'plan', self.graph)

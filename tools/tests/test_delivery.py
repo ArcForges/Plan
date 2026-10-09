@@ -50,6 +50,11 @@ class Fixture:
             sh(root / name, 'config', 'user.email', 'test@example.invalid')
             sh(root / name, 'checkout', '--quiet', '-b', 'main')
         shutil.copytree(DESIGN_SOURCE / 'docs' / 'planning', self.design / 'docs' / 'planning')
+        # The decision record that outOfScope markers name (DLV-43). Its own file, so use_full_design, which copies
+        # the Design docs, cannot overwrite it while the P2-026 record is still unmerged on Design main.
+        (self.design / 'docs' / 'decisions').mkdir(parents=True)
+        (self.design / 'docs' / 'decisions' / 'scope-record-fixture.md').write_text(
+            '# Scope decision record (fixture)\n\n<a id="rule-p2-026"></a>\n', encoding='utf-8')
         self.commit(self.design, 'design')
         (self.plan / 'ledger' / 'tasks').mkdir(parents=True)
         (self.plan / 'ledger' / 'README.md').write_text('# ledger\n', encoding='utf-8')
@@ -532,6 +537,30 @@ def load_graph_json(design: Path) -> dict:
     return json.loads((design / d.GRAPH_REL).read_text(encoding='utf-8'))
 
 
+def free_tasks(g, count: int) -> list[str]:
+    """The first count open in-scope tasks that nothing depends on and that take no part in gates, substitutes,
+    shared resources or package acceptance, so a test may add edges between them without other effects."""
+    succ = g.succ_map()
+    gated = {t for rec in g.gates.values() for t in rec.get('tasks', [])}
+    subbed = set()
+    for s in g.subs.values():
+        rp = s['realProducer'] if isinstance(s['realProducer'], list) else [s['realProducer']]
+        subbed |= set(rp) | {s['replacedBy']}
+    found = []
+    for tid in sorted(g.tasks):
+        t = g.tasks[tid]
+        if t.get('slice') or t.get('kind') == 'adoption' or t.get('packageAcceptance'):
+            continue
+        if t['baseline']['state'] == 'accepted' or tid in gated or tid in subbed or succ.get(tid):
+            continue
+        if t.get('shared') or t.get('substitutes'):
+            continue
+        found.append(tid)
+        if len(found) == count:
+            return found
+    raise AssertionError(f'fewer than {count} free tasks')
+
+
 def pick_candidate(g) -> str:
     """An in-scope task that nothing depends on: no in-scope task, gate, substitute or shared resource uses it,
     it is not a package acceptance task, and it maps at least one numbered substep."""
@@ -900,10 +929,70 @@ class OutOfScopeTests(unittest.TestCase):
             by_id[cand]['start'].append({'type': 'artifact', 'task': feeder, 'need': 'n', 'why': 'w'})
             by_id[feeder]['start'].append({'type': 'artifact', 'task': other, 'need': 'n', 'why': 'w'})
         g = self.edit_graph(mutate)
-        self.assertTrue(any('unsatisfiable prerequisites' in e for e in d.validate(g)[0]))  # open: a real cycle
+        errors = d.validate(g)[0]  # open: the start edge into the out task is refused by the edge rule ...
+        self.assertTrue(any(f'{other}: start edge to out-of-scope task {cand}' in e for e in errors), errors)
+        self.assertFalse(any('unsatisfiable prerequisites' in e for e in errors), errors)  # ... and the out cycle never blocks
         errors = d.validate(g, {other: 'complete'})[0]  # complete: its start edge to the out task is history
         self.assertFalse(any('unsatisfiable prerequisites' in e for e in errors), errors)
         self.assertFalse(any(f'{other}: start edge to out-of-scope task' in e for e in errors), errors)
+
+    def test_satisfiability_runs_on_the_in_scope_subgraph(self):
+        # Out-only cycles cannot block in-scope work, so they are not a deadlock; an in-scope cycle still is.
+        g0 = d.Graph(self.fx.design)
+        out_a, out_b, in_a, in_b = free_tasks(g0, 4)
+
+        def link(data, frm, to):
+            next(t for t in data['tasks'] if t['id'] == frm)['start'].append(
+                {'type': 'artifact', 'task': to, 'need': 'n', 'why': 'w'})
+
+        def out_cycle(data):
+            mark_out(data, out_a)
+            mark_out(data, out_b)
+            link(data, out_a, out_b)
+            link(data, out_b, out_a)
+        self.assertEqual(d.validate(self.edit_graph(out_cycle))[0], [])
+
+        def in_cycle(data):
+            mark_out(data, out_a)
+            mark_out(data, out_b)
+            link(data, out_a, out_b)
+            link(data, out_b, out_a)
+            link(data, in_a, in_b)
+            link(data, in_b, in_a)
+        errors = d.validate(self.edit_graph(in_cycle))[0]
+        self.assertTrue(any('unsatisfiable prerequisites (deadlock) among 2 tasks' in e for e in errors), errors)
+
+    def test_by_must_name_a_scope_decision_record_present_in_the_design(self):
+        g0 = d.Graph(self.fx.design)
+        cand = pick_candidate(g0)
+        gate = g0.data['gates'][0]['gate']
+        sub = g0.data['substitutes'][0]['id']
+        # a made-up record, and a real decision that is not a scope record
+        for by in ('P9-999', 'P2-021'):
+            with self.subTest(by=by):
+                def mutate(data, by=by):
+                    mark_out(data, cand, by=by)
+                    next(x for x in data['gates'] if x['gate'] == gate)['outOfScope'] = {'by': by, 'note': 'x'}
+                    next(x for x in data['substitutes'] if x['id'] == sub)['outOfScope'] = {'by': by, 'note': 'x'}
+                errors = d.validate(self.edit_graph(mutate))[0]
+                self.assertTrue(any(f'{cand}: outOfScope names {by}, which is not a scope decision record' in e
+                                    for e in errors), errors)
+                self.assertTrue(any(e.startswith('outOfScopeObligations ') and f'names {by}' in e for e in errors), errors)
+                self.assertTrue(any(f'gate {gate}: outOfScope names {by}' in e for e in errors), errors)
+                self.assertTrue(any(f'{sub}: outOfScope names {by}' in e for e in errors), errors)
+
+        # The reviewer's case: a marker naming an unknown record must fail check, not pass with a count.
+        self.assertEqual(d.validate(self.edit_graph(lambda data: mark_out(data, cand)))[0], [])
+        self.edit_graph(lambda data: mark_out(data, cand, by='P9-999'))
+        code, out = self.fx.run('check')
+        self.assertNotEqual(code, 0, out)
+        self.assertIn(f'{cand}: outOfScope names P9-999', out)
+        # The record must be present in the Design checkout that check reads (DLV-43).
+        self.edit_graph(lambda data: mark_out(data, cand))
+        (self.fx.design / 'docs' / 'decisions' / 'scope-record-fixture.md').unlink()
+        errors = d.validate(d.Graph(self.fx.design))[0]
+        self.assertTrue(any(f'{cand}: outOfScope names P2-026, which is not a scope decision record' in e
+                            for e in errors), errors)
 
     def test_a_complete_task_is_not_blocked_by_an_out_of_scope_completion_prerequisite(self):
         g0 = d.Graph(self.fx.design)
