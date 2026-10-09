@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:41Z",
-  "updatedAt": "2026-10-09T17:07:11Z",
-  "leaseUntil": "2026-10-10T17:07:11Z",
+  "updatedAt": "2026-10-09T18:27:19Z",
+  "leaseUntil": "2026-10-10T18:27:19Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/har-40",
     "prs": [
       "https://github.com/ArcForges/Cloud/pull/80"
     ],
-    "merges": [],
+    "merges": [
+      "ccf7bcdf7d8502c7db3fa644738908bf912a7f9f"
+    ],
     "done": [
       "work-in-progress commits pushed (step 1)"
     ],
@@ -28,6 +30,6 @@
       "independent review, push, PR, CI, merge via integration role"
     ],
     "host": "deku",
-    "note": "S31 gitleaks allowlist (16 false positives on profile digests); delta approved at 3e022f8; hosted CI rerun on push"
+    "note": "Cloud #80 merged ccf7bcdf (--match-head-commit 3e022f8); all PR checks green; main-push deploy being verified; AI status PR follows"
   }
 }
