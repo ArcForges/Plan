@@ -4,10 +4,10 @@
   "id": "CLOUD.85",
   "claimant": "w-deku-20261009-cloud-85",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-09T15:59:02Z",
-  "updatedAt": "2026-10-09T19:17:00Z",
-  "leaseUntil": "2026-10-10T19:17:00Z",
+  "updatedAt": "2026-10-09T20:08:38Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Cloud",
     "branch": "task/cloud-85",
@@ -27,6 +27,6 @@
       "plan the task, then push the task branch at the first checkpoint"
     ],
     "host": "deku",
-    "note": "Cloud #81 merged 39802123 (--match-head-commit 036e4c4); all PR checks green; main-push deploy (production unchanged) then the proof deploy under RES-cloud-deployment"
+    "note": "Ledger Plan #473 delivered; open: PRF.11 deployed-origin record citing CLOUD.85 (then complete)"
   }
 }
