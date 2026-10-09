@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-08T14:40:09Z",
-  "updatedAt": "2026-10-09T13:20:40Z",
-  "leaseUntil": "2026-10-10T13:20:40Z",
+  "updatedAt": "2026-10-09T13:40:51Z",
+  "leaseUntil": "2026-10-10T13:40:51Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/web-40",
@@ -20,7 +20,7 @@
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Web\\.worktree\\web-40",
-    "head": "4cca32e4157c97953fd33cafc8022bb4a9b07a62",
+    "head": "c58e5280f0d54c2c754c1806e41de23360526e45",
     "reviewed": "efe787254ae64cc8027a6b801b3cbd9080481321",
     "blocker": null,
     "next": [
