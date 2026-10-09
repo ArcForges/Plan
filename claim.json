@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T02:13:27Z",
-  "updatedAt": "2026-10-09T10:31:24Z",
-  "leaseUntil": "2026-10-10T10:31:24Z",
+  "updatedAt": "2026-10-09T12:08:39Z",
+  "leaseUntil": "2026-10-10T12:08:39Z",
   "handoff": {
     "repository": "Mobile",
     "branch": "task/and-40",
@@ -18,13 +18,13 @@
     "done": [],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\Mobile\\.worktree\\and-40",
-    "head": "8b49ceeef4d63cd376fa83747443a2adda457c4d",
-    "reviewed": "8b49ceeef4d63cd376fa83747443a2adda457c4d",
+    "head": "c4ff91a9a812e58a719468653f041f3aafbe176d",
+    "reviewed": "c4ff91a9a812e58a719468653f041f3aafbe176d",
     "blocker": null,
     "next": [
       "analysis unit, then implementation units by local commits; independent review; push, PR, CI, merge"
     ],
     "host": "deku",
-    "note": "PR A (decision 5): MAUI beside Kotlin; PR B retires Kotlin after the android-maui publish is proven"
+    "note": "PR A hosted fixes: workload set 10.0.401 pin (decision 22), CodeQL net10.0, CI-variable eng test"
   }
 }
