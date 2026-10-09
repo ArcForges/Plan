@@ -9,9 +9,11 @@ generated regions are overwritten and detected by `check`.
 Scope (decision P2-026): a task, gate or substitute may carry an `outOfScope` declaration {by, note}, and
 the graph may list `outOfScopeObligations`. Absent means in scope. Out-of-scope tasks are never claimable
 and are left out of readiness, follow-ups, critical-path and schedule measures; their records stay valid
-and the generated views list them in a final section. A held claim on one (live, or expired) is released by
-its holder, or finished under its `closeout` declaration; only an expired claim on a closeout task may be taken
-over, and only to finish that closeout. No new claim is ever made on an out-of-scope task.
+and the generated views list them in a final section. A live or expired claim on one is released by its holder,
+or finished under its `closeout` declaration. A delivered closeout claim holds no lease and its holder can no longer
+write it, so it may be taken over with --reason to complete the closeout; an expired closeout claim may be taken over
+once its lease is more than the grace past. Other delivered or complete claims are ownerless and owe nothing. No new
+claim is ever made on an out-of-scope task.
 
 Planning commands read working trees (use them to review a planning or ledger change):
   check     [--design PATH] [--plan PATH]   validate graph and ledger; confirm views are current
@@ -133,6 +135,13 @@ def is_out(rec) -> bool:
     """True when a task, gate or substitute carries an outOfScope object (absent means in scope). A
     malformed declaration is reported by validate() and never silently treated as in scope."""
     return isinstance(rec, dict) and isinstance(rec.get('outOfScope'), dict)
+
+
+def closeout_task(g, tid) -> bool:
+    """True when tid is an out-of-scope task whose declaration names a closeout: its held claim may be finished
+    under closeout and, when expired or delivered, taken over for that purpose only."""
+    t = g.tasks.get(tid) if tid is not None else None
+    return is_out(t) and bool(t['outOfScope'].get('closeout'))
 
 
 def count_of(n: int, one: str, many: str | None = None) -> str:
@@ -2006,11 +2015,12 @@ class State:
 
     def phase(self, tid: str, avail: str) -> str:
         """'start' or 'follow-up' when the task may be claimed now; otherwise a Conflict naming why. An out-of-scope
-        task is never claimed anew, except that an expired claim on a closeout task may be taken over (phase
-        'closeout') under the normal expiry, grace and reason rules, so that its closeout can be finished (DLV-43)."""
+        task is never claimed anew, except that an expired or delivered claim on a closeout task may be taken over
+        (phase 'closeout') under the expiry, grace and reason rules of cmd_claim, so that its closeout can be
+        finished (DLV-43)."""
         t = self.graph.tasks[tid]
         if is_out(t):
-            if t['outOfScope'].get('closeout') and avail == 'expired':
+            if closeout_task(self.graph, tid) and avail in {'expired', 'delivered'}:
                 return 'closeout'
             raise Conflict(f'{tid} is out of scope ({t["outOfScope"]["by"]}): {t["outOfScope"]["note"]}')
         status = self.status_of(tid)
@@ -2157,12 +2167,18 @@ def cmd_claim(args) -> int:
         raise Conflict(f'{ident} is held: {describe(rec, now)}')
     if avail == 'complete':
         raise Conflict(f'{ident} is complete')
+    closeout = kind == 'task' and closeout_task(st.graph, ident)
     if avail == 'expired' and not args.takeover:
         raise Conflict(f'{ident} has an expired claim: {describe(rec, now)}\nTake it over only under the recovery '
                        'rules, with --takeover --reason')
+    if avail == 'delivered' and closeout and not args.takeover:
+        raise Conflict(f'{ident} is delivered under its closeout; take the claim over to finish the closeout, with '
+                       '--takeover --reason (a delivered record holds no lease, so there is no expiry to wait for)')
     if args.takeover:
-        if avail != 'expired':
-            raise Fail('--takeover applies only to a record whose lease expired more than one hour ago')
+        recoverable = avail == 'expired' or (avail == 'delivered' and closeout)
+        if not recoverable:
+            raise Fail('--takeover applies only to a record whose lease expired more than one hour ago, or to a '
+                       'delivered claim on a closeout task')
         if not (args.reason or '').strip():
             raise Fail('--takeover needs --reason: the idle branch and pull request checks and the unanswered release request')
     phase = st.phase(ident, avail) if kind == 'task' else None
@@ -2283,7 +2299,8 @@ def cmd_show(args) -> int:
         if is_out(t):
             scope = t['outOfScope']
             print(f'Scope: out of scope ({scope["by"]}): {scope["note"]}'
-                  + (' · closeout: a live claim may be finished, never claimed anew' if scope.get('closeout') else ''))
+                  + (' · closeout: a held claim may be finished (taken over when expired or delivered), never claimed anew'
+                     if scope.get('closeout') else ''))
         if not st.status_of(ident) and t['baseline']['state'] != 'accepted':
             missing = st.missing_start(ident)
             print('Start rule: ' + ('satisfied' if not missing else 'waiting for ' + ', '.join(missing)))
@@ -2321,10 +2338,20 @@ def cmd_ready(args) -> int:
 
 
 def scope_action(g: Graph, tid: str, avail: str = 'live') -> str:
-    """What a held claim on an out-of-scope task must do (avail is its live or expired availability). A closeout task's
-    claim is finished under closeout, and once its lease has expired beyond the grace it is taken over for that purpose
-    only. Any other claim is released by its holder; nobody claims or takes over the task."""
-    closeout = g.tasks[tid]['outOfScope'].get('closeout')
+    """What a non-released claim on an out-of-scope task must do (avail is its live, expired, delivered or complete
+    availability). Only a live or expired record is held: its holder releases it, or, for a closeout task, finishes it
+    under closeout (an expired one is taken over for that purpose once its lease is more than the grace past). A
+    delivered closeout claim holds no lease, the holder can no longer write it, so it is taken over with --reason to
+    complete the closeout. Every other delivered or complete claim is ownerless and owes nothing. Nobody claims or
+    takes over an out-of-scope task as new work."""
+    closeout = closeout_task(g, tid)
+    if avail == 'complete':
+        return 'none owed (the record is complete and has no owner; the task is out of scope)'
+    if avail == 'delivered':
+        if closeout:
+            return ('take over under closeout (claim --takeover --reason; a delivered record holds no lease), then '
+                    'complete under closeout; never claimed anew')
+        return 'none owed (the record is delivered and has no owner; the task is out of scope)'
     if closeout and avail == 'expired':
         return ('take over under closeout (claim --takeover --reason, once the lease expired more than one hour ago), '
                 'then finish under closeout; never claimed anew')
@@ -2354,10 +2381,11 @@ def cmd_status(args) -> int:
             continue
         a = r.availability(now)
         groups[(r.ns, a)].append(r)
-    # Every held claim on an out-of-scope task, live or with its lease expired (released, delivered and complete
-    # records hold nothing); each one names the action that the holder or a closeout takeover must take.
+    # Every non-released claim on an out-of-scope task, live, expired, delivered or complete (only a released record
+    # holds nothing); each one names the action that the holder or a closeout takeover must take, so that no claim
+    # can dead-end unlisted.
     oos_claims = [r for r in recs if wanted(r) and r.ns == 'claims' and r.ident in g.tasks
-                  and is_out(g.tasks[r.ident]) and r.availability(now) in {'live', 'expired'}]
+                  and is_out(g.tasks[r.ident]) and r.availability(now) in {'live', 'expired', 'delivered', 'complete'}]
     if args.json:
         print(json.dumps({
             'source': st.source,

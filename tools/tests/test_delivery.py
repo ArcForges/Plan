@@ -1095,6 +1095,69 @@ class OutOfScopeTests(unittest.TestCase):
         self.assertEqual(code, 2, out)
         self.assertIn('is out of scope', out)
 
+    def test_a_delivered_closeout_claim_is_listed_and_taken_over_to_finish_the_closeout(self):  # N3 (review b67c1e6)
+        cand = pick_candidate(d.Graph(self.fx.design))
+        self.edit_graph(lambda data: mark_out(data, cand, closeout=True), commit=True)
+        self.fx.record(cand, 'delivered')
+        self.fx.commit(self.fx.plan, 'delivered')
+        self.fx.raw_claim(cand, self.fx.claim_data(cand, claimant='w1'))
+        self.assertEqual(self.fx.run('update', cand, '--worker', 'w1', '--epoch', '1', '--state', 'delivered')[0], 0)
+        # the delivered record holds no lease: it is listed with the takeover action, not invisible
+        code, out = self.fx.run('status')
+        self.assertIn('Claims on out-of-scope tasks (1):', out)
+        self.assertIn('action: take over under closeout', out)
+        code, out = self.fx.run('status', '--json')
+        self.assertIn('"availability": "delivered"', out)
+        self.assertIn('"action": "take over under closeout', out)
+        # no plain claim, and the takeover needs a reason
+        code, out = self.fx.run('claim', cand, '--worker', 'w2', plan=self.fx.plan2)
+        self.assertEqual(code, 2, out)
+        self.assertIn('delivered under its closeout', out)
+        self.assertEqual(self.fx.run('claim', cand, '--worker', 'w2', '--takeover', plan=self.fx.plan2)[0], 1)
+        code, out = self.fx.run('claim', cand, '--worker', 'w2', '--takeover', '--reason', 'closeout after delivery',
+                                plan=self.fx.plan2)
+        self.assertEqual(code, 0, out)
+        rec = d.observe(self.fx.plan, 'claims', d.key_of(cand), cand)
+        self.assertEqual((rec.data['claimant'], rec.data['epoch'], rec.data['state']), ('w2', 2, 'claimed'))
+        self.assertIn('takeover from w1 epoch 1', rec.data['handoff']['note'])
+        code, out = self.fx.run('status')
+        self.assertIn('action: finish under closeout', out)
+        # the taker finishes the closeout once the ledger records it complete; the claim then owes nothing
+        self.fx.record(cand, 'complete')
+        self.fx.commit(self.fx.plan, 'complete')
+        self.assertEqual(self.fx.run('update', cand, '--worker', 'w2', '--epoch', '2', '--state', 'complete',
+                                     plan=self.fx.plan2)[0], 0)
+        code, out = self.fx.run('status')
+        self.assertIn('Claims on out-of-scope tasks (1):', out)
+        self.assertIn('none owed', out)
+        code, out = self.fx.run('claim', cand, '--worker', 'w3', plan=self.fx.plan2)
+        self.assertEqual(code, 2, out)
+        self.assertIn('complete', out)
+
+    def test_a_delivered_or_complete_claim_on_a_non_closeout_task_is_listed_and_owes_nothing(self):  # N3
+        cand = pick_candidate(d.Graph(self.fx.design))
+        self.edit_graph(lambda data: mark_out(data, cand), commit=True)
+        delivered = self.fx.claim_data(cand, claimant='w1', state='delivered')
+        pushed = self.fx.raw_claim(cand, delivered)
+        code, out = self.fx.run('status')
+        self.assertIn('Claims on out-of-scope tasks (1):', out)
+        self.assertIn('action: none owed', out)
+        # no closeout: nobody takes it over, and no plain claim is made
+        code, out = self.fx.run('claim', cand, '--worker', 'w2', '--takeover', '--reason', 'idle', plan=self.fx.plan2)
+        self.assertEqual(code, 1, out)
+        code, out = self.fx.run('claim', cand, '--worker', 'w2', plan=self.fx.plan2)
+        self.assertEqual(code, 2, out)
+        self.assertIn('is out of scope', out)
+        # the same claim recorded complete is listed too, still owing nothing
+        complete = dict(delivered, state='complete')
+        d.push_record(self.fx.plan, 'claims', d.key_of(cand), complete, pushed, 'complete')
+        code, out = self.fx.run('status', '--json')
+        self.assertIn('"availability": "complete"', out)
+        self.assertIn('"action": "none owed', out)
+        code, out = self.fx.run('claim', cand, '--worker', 'w2', '--takeover', '--reason', 'idle', plan=self.fx.plan2)
+        self.assertEqual(code, 2, out)
+        self.assertIn('is complete', out)
+
     # ---- S16(a): the edge rule follows the ledger status ----------------------------------------
 
     def edge_pair(self, extra=None):
