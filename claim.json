@@ -4,10 +4,10 @@
   "id": "CLOUD.85",
   "claimant": "w-deku-20261009-cloud-85",
   "epoch": 2,
-  "state": "claimed",
+  "state": "complete",
   "claimedAt": "2026-10-09T23:01:04Z",
-  "updatedAt": "2026-10-10T00:09:39Z",
-  "leaseUntil": "2026-10-11T00:09:39Z",
+  "updatedAt": "2026-10-10T02:01:26Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Cloud",
     "branch": "task/cloud-85",
@@ -30,6 +30,6 @@
       "record completion by editing the ledger record through a reviewed Plan pull request"
     ],
     "host": "deku",
-    "note": "Follow-up Cloud #82 merged; main deploy then proof redeploy"
+    "note": "Ledger Plan #474 complete (PRF.11 record cites CLOUD.85)"
   }
 }
