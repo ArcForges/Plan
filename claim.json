@@ -4,13 +4,13 @@
   "id": "RES-cloud-deployment",
   "task": "CLOUD.85",
   "claimant": "w-deku-20261009-cloud-85",
-  "epoch": 1,
-  "state": "released",
-  "claimedAt": "2026-10-09T19:27:06Z",
-  "updatedAt": "2026-10-09T19:57:32Z",
-  "leaseUntil": null,
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-10T00:20:00Z",
+  "updatedAt": "2026-10-10T00:20:00Z",
+  "leaseUntil": "2026-10-10T03:20:00Z",
   "handoff": {
     "host": "deku",
-    "note": "CLOUD.85 proof: observe 37980332646, deploy 37981418458 (proof Worker 745d5ec7), observe 37982727325; L3 local checks passed. Released; CLOUD.84 re-claims for its proof deploy."
+    "note": "claimed after released by w-deku-20261009-cloud-85 epoch 1; review the earlier handoff and commits"
   }
 }
