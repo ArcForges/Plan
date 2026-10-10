@@ -4,10 +4,10 @@
   "id": "PRF.11",
   "claimant": "w-deku-20261009-prf-11",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-09T18:37:56Z",
-  "updatedAt": "2026-10-10T01:45:55Z",
-  "leaseUntil": "2026-10-11T01:45:55Z",
+  "updatedAt": "2026-10-10T02:01:11Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-11",
@@ -27,6 +27,6 @@
       "plan the task, then push the task branch at the first checkpoint"
     ],
     "host": "deku",
-    "note": "Web #39 merged; main run and release being verified; ledger next"
+    "note": "Ledger Plan #474 delivered; completion waits on CLOUD.21 and CLOUD.22"
   }
 }
