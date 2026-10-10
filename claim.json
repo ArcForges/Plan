@@ -4,10 +4,10 @@
   "id": "CON.40",
   "claimant": "w-deku-20261010-con-40",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-10T09:51:27Z",
-  "updatedAt": "2026-10-10T18:12:14Z",
-  "leaseUntil": "2026-10-11T18:12:14Z",
+  "updatedAt": "2026-10-10T18:35:13Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-40",
@@ -31,6 +31,6 @@
       "Verify main-push CI 38074767207 publication: NuGet + @arcforges/ai-internal only; nothing retired published; ledger fill + Plan PR + delivered"
     ],
     "host": "deku",
-    "note": "Merged; main-push publication being verified"
+    "note": "Ledger Plan #477 (5e3c53e6) delivered (S20(f) decision 3); Contracts #97 56158219; publication 1.0.0-ci.363.1 NuGet x12 + ai-internal; open: complete edges WEB.40/AND.40/CLOUD.84, owner dist-tag note, S50(4) follow-ups"
   }
 }
