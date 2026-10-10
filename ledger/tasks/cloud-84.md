@@ -8,15 +8,18 @@ epoch: 1
 
 # Cloud TypeScript reduction: C# generated tables and policy, thin Worker adapters, proof code out of the production bundle
 
-> **Draft.** The D11 proof redeploy result is pending; see the section "Proof deploy (D11): PENDING" below, which the coordinator fills. Every other section is final as of 2026-10-10.
-
 ## Evidence
 
 - **Implementation, in one Cloud pull request** (brief S20(e), with D1 to D16 and D6 as amended by S41; rulings S29, S33 to S35 and S38 to S46):
   - Cloud [PR #83](https://github.com/ArcForges/Cloud/pull/83), "[CLOUD.84] Cloud TypeScript reduction: thin Worker adapter, C# decisions and generated tables", head branch `task/cloud-84`, was reviewed and merged at head `ffd9cea5b9d40b9a01a3d47683af890edbabb14c` as `837fb29f2509b1fa7117948dbd48fa9f805bd502` on `main` at 2026-10-10T10:31:46Z. The merge commit has two parents, `3c59ce34413c94c86ce400fd2950b6372d45abbd` (the previous main, the CLOUD.85 follow-up merge) and `ffd9cea5`. This is consistent with the `--merge` method (verified from the commit). The `--match-head-commit ffd9cea` flag and the `integration:Cloud` role, held by `w-deku-20261008-coord`, are coordinator-reported. Neither is visible in the PR text.
   - The PR has 42 commits, including one merge of `origin/main` (`8c9ca1f`). The merge changes 211 files (22098 insertions, 7965 deletions) against `3c59ce34`. The `wrangler.json` change is one line: `env.proof.main` is set to `worker/proof/entry.ts` (U6, D1). The production configuration, bindings, migrations and vars are unchanged. `.github/workflows/ci.yml` loses the Kotlin gate steps (U1) and gains a pinned `setup-dotnet` step in the candidate job (S41(3)).
   - The status is `delivered`, not `complete` (D13). See Scope for the open completion prerequisites.
-  - The PR body has one stale line. It says the probe publish is "single-file, with snapshot and restore of the reviewed tool lock". The last commit, `ffd9cea`, replaced that approach with one non-single-file sealed tool archive (see U2 and the hosted failures below). The body was not updated. The commit and the review at `ffd9cea` are the authority.
+  - The PR body predates the three hosted-fix commits (`88cdf70`, `b624943` and `ffd9cea`) and was not updated after them. Its stale lines, read by this author:
+    - it says the probe publish is "single-file, with snapshot and restore of the reviewed tool lock", but `ffd9cea` replaced that approach with one non-single-file sealed tool archive (see U2 and the hosted failures below);
+    - it names release profile successors `r46` to `r49`, but `b624943` added `r50`;
+    - its "Carried" list still names the two proof-route refusal values, which `88cdf70` fixed (see residual 5).
+
+    The commits and the review comments at each head are the authority.
 
 - **Units, with commit SHAs and what each delivered** (Cloud `task/cloud-84`, merged in `837fb29f`; each commit message was read by this author):
   - **U1, Kotlin consumer gate removed** (after AND.40 PR B merged, Mobile `6702e281` at 2026-10-09T15:41:24Z; the U1 commit is dated 2026-10-09T19:53:51Z):
@@ -70,10 +73,11 @@ epoch: 1
     - `88cdf70` orders migration files ordinally and carries the S46(c) items;
     - `b624943` binds profile `r50`;
     - `ffd9cea` seals one non-single-file tool archive.
-  - **Release and review records at the merge** (S25 fields naming `w-deku-20261009-rev-cloud-84`, decision `approved`, reviewedOn 2026-10-10):
-    - dependency receipts `cloud-84-r1` to `cloud-84-r10`, chained, with `r10` bound by `eng/policy/dependency-policy.json`;
-    - release profiles `cloud-release-r46` to `r50`;
-    - provenance records `cloud-84-cloud-worker-bundle-r1` to `r5` and `cloud-84-cloud-runtime-notices-r1` to `r5`, with `r5` named in `artifactRecords`.
+  - **Release and review records at the merge.** The S25 fields differ by record kind (read by this author at `837fb29f`):
+    - dependency receipts `cloud-84-r1` to `cloud-84-r10`, chained, with `r10` bound by `eng/policy/dependency-policy.json`. Each has `review.reviewer` `w-deku-20261009-rev-cloud-84` and `review.decision` `approved`. `review.reviewedOn` is 2026-10-09 for `r1` to `r3` and 2026-10-10 for `r4` to `r10`;
+    - release profiles `cloud-release-r46` to `r50`. They carry no reviewer, decision or reviewedOn field; each has only `ownerCommit` (for `r50`, `88cdf70`);
+    - provenance records `cloud-84-cloud-worker-bundle-r1` to `r5` and `cloud-84-cloud-runtime-notices-r1` to `r5`, with `r5` named in `artifactRecords`. Each has `review.reviewer` `w-deku-20261009-rev-cloud-84`, `review.decision` `approved` and `review.reviewedOn` 2026-10-10.
+
     Earlier records stay as immutable history.
 
 - **One-for-one test ports, with counts.** This author counted the TypeScript `test(` blocks at the base `3c59ce34` and the C# `[Fact]`/`[Theory]` methods at `837fb29f`. A theory can expand to several cases, so method counts are not case counts. The mapping was not re-verified case by case here. The reviewer reports at `a7eb346` that the deleted TS suites "are mapped one for one to C#, with counts".
@@ -138,14 +142,15 @@ epoch: 1
       - Then the failure: `The entry-point file at "worker/proof/entry.ts" was not found.` The job ended with `Error: node exited with code 1`.
       - **Root cause**, as confirmed by the #89 review: U6 gave `env.proof` its own `main`, which overrides the top-level `main` under `--env proof`. `buildProofConfig` rewrote only the top-level `main`, so Wrangler looked for the source entry next to the generated config. The deploy-proof path is hosted-only, and no local run before the merge exercised it.
     - **Closing observe run [38047010320](https://github.com/ArcForges/Cloud/actions/runs/38047010320)** (11:02:39Z) succeeded. It logged the proof Container application still at `version 14` with the same image `sha256:c7ca853d…`. The image `ci.354.1` was pushed to the registry, but the Container application was not rolled to it.
-    - The proof `https://proof.arcforges.com/api/healthz`, read by this author on 2026-10-10 after these runs, returned `revision` `3c59ce34413c94c86ce400fd2950b6372d45abbd`, `artifact.version` `0.1.0-ci.339.1` and `build.buildId` `38009326285.1`. That is the CLOUD.85 follow-up deploy, so the proof Worker was not updated by run 38046437337. The proof Worker version `0de3e45a` is reported by the coordinator and the #89 body.
+    - The proof `https://proof.arcforges.com/api/healthz`, read by this author on 2026-10-10 after these runs, returned `revision` `3c59ce34413c94c86ce400fd2950b6372d45abbd`, `artifact.version` `0.1.0-ci.339.1` and `build.buildId` `38009326285.1`. That is the CLOUD.85 follow-up deploy, so the proof Worker was not updated by run 38046437337. The proof Worker version then serving was `0de3e45a`: the line `Current Version ID: 0de3e45a-adbd-4eb0-ac8a-76a7dc223892` of proof deploy run [38009326285](https://github.com/ArcForges/Cloud/actions/runs/38009326285) (grepped by this author; also cited in the CLOUD.85 record), consistent with the healthz `buildId` `38009326285.1`.
 
 - **Follow-up Cloud [PR #89](https://github.com/ArcForges/Cloud/pull/89)**, "[CLOUD.84] Deploy the sealed proof bundle on the proof environment (follow-up)", head `task/cloud-84` at `b84b31ef7887e5efc690ec03e499a4d1ab8ac9a9` (one commit, 3 files: `eng/verification/proof-cloudflare.ts`, `eng/verification/proof-deploy.ts`, `tests/worker/proof-deploy.test.ts`; 87 insertions, 9 deletions).
   - `buildProofConfig` sets `env.proof.main` to the sealed `./candidate/proof-worker.js`. It refuses a `main` outside `./candidate/<name>.js`, and it refuses a candidate whose `env.proof` lost its own entry.
   - Approved at `b84b31e` by `w-deku-20261009-rev-cloud-84` in comment [6097005880](https://github.com/ArcForges/Cloud/pull/89#issuecomment-6097005880) (2026-10-10T11:26:26Z), as an independent exact-head review.
   - The reviewer reproduced the failure with wrangler dry-runs from scratch exports and an assembled deploy-job layout, with no Docker and no credentials. The proof dry-run fails at `837fb29f` with the hosted error and exits 0 at `b84b31e`. The uploaded `proof-worker.js` (sha256 `0c46fd67…`) is byte-identical to the sealed member. The production dry-run is unchanged on both revisions (`worker.js` `14f6a5df…`, the r50 pin). Nothing changes under `tooling/`, `.github/`, `worker/` or `wrangler.json`, so no successor records are needed.
   - Gates reported: npm test 757, plus `check:generated`, format, lint, typecheck, licence, provenance, policy, plans, physical and dependencies.
-  - At the time of writing, PR #89 is open and unmerged. Its CI run [38048403583](https://github.com/ArcForges/Cloud/actions/runs/38048403583) (created 11:26:17Z) is in progress.
+  - Its CI run [38048403583](https://github.com/ArcForges/Cloud/actions/runs/38048403583) (pull_request at `b84b31e`, created 11:26:17Z, completed 11:34:35Z) succeeded. Every job succeeded except Proof Cloudflare access and both Deploy jobs, which were skipped. The PR check rollup again lists one `CodeQL` check as `NEUTRAL` beside the three CodeQL language jobs, which succeeded.
+  - It was merged as `c291550f73ba64cb9fa4c15d4ec0e731a27dede8` at 2026-10-10T11:43:45Z by `deku2026`. The merge commit has two parents, `837fb29f` and `b84b31ef`, consistent with the `--merge` method. See "Proof deploy (D11)" for the runs that followed.
 
 - **Offline validation clauses** (the graph's evidence list):
   - *generate --check receipts:* `check:generated` (the Worker tables) and `check:plans` (the C# plan generator, three outputs with one manifest hash) run in `npm run check`. That passed in both hosted Source jobs of main run 38045218145.
@@ -156,23 +161,37 @@ epoch: 1
     - `CLOUD84-EX-1` to `CLOUD84-EX-11`, owner CLOUD.05 (D16).
   - *Correlation:* `worker/ingress/correlation.ts` applies the generated guards and forwards (S34(3)). `HAR40-EX-4` (wire-codec, owner CLOUD.69) still covers it.
   - *Edge guards:* `worker/ingress/edge-caller.ts` reads the session cookie name, the CSRF header and the token patterns from the generated module (lines 7 to 14) and only refuses. No test named as a separate edge-guard scan was found. The literal scan covers these files.
-  - *Migration-runner oracle:* `MigrationRunnerTests` runs on the SQLite batch oracle (D8), including the stale-migrator, resume-from-`statements_done` and merged-checksum cases that the reviewer mapped. The live proof D1 step in run 38046437337 ran the sealed C# migrator through the D1 REST API and passed, with nothing to apply.
+  - *Migration-runner oracle:* `MigrationRunnerTests` runs on the SQLite batch oracle (D8), including the stale-migrator, resume-from-`statements_done` and merged-checksum cases that the reviewer mapped. The live proof D1 steps in runs 38046437337 and 38050068108 ran the sealed C# migrator through the D1 REST API and passed, with nothing to apply.
   - *Kotlin gate removal after AND.40:* `0f81b1a`, as above.
   - *Native AOT host build on Windows and WSL2 Debian:* see Scope, gap 4.
 
-## Proof deploy (D11): PENDING
+## Proof deploy (D11)
 
-*Placeholder for the coordinator. Do not read anything in this section as evidence until it is filled.*
+All runs are in `ArcForges/Cloud`. This author checked each conclusion with `gh run view --json`, grepped the job logs with `gh run view --log` for the lines quoted, read the release with `gh release view` (metadata only, nothing downloaded), and printed no secret value.
 
-- PR #89 merge: _pending_ (merge SHA, time, method, `--match-head-commit`).
-- Main CI run for the #89 merge: _pending_. A push to `main` runs Deploy Cloudflare (production) as run 38045218145 did. The #89 review reports the production Worker bundle unchanged (`14f6a5df…`). Record whether this second production deploy changed the production Worker version or the Container image, and whether production `/api/healthz` reports the #89 merge revision.
-- `RES-cloud-deployment` lease (epoch, holder, release): _pending_.
-- Proof observe run: _pending_.
-- Proof deploy run: _pending_. Grep for the migration step, `Pushed image`, the Web verification line, `Current Version ID` and `Proof environment deployed at https://proof.arcforges.com`.
-- Closing observe run: _pending_. Record the proof Container application version and image.
-- Proof `/api/healthz` revision, artifact version and build ID: _pending_.
-- L3 and probe checks on the proof origin: _pending_.
-- Whether D11 is met: _pending_. Until this is filled, D11 is **not met**. The only proof deploy attempt (run 38046437337) failed, and the proof Worker still serves `3c59ce34`.
+- **History: the failed attempt.** Deploy run [38046437337](https://github.com/ArcForges/Cloud/actions/runs/38046437337) at `837fb29f` failed with `The entry-point file at "worker/proof/entry.ts" was not found.` Root cause: `env.proof.main` overrode the top-level `main` that `buildProofConfig` rewrote (see Hosted runs). It stays recorded as history. PR #89 is the fix.
+- **PR #89 merge.** Approved at `b84b31e` in comment [6097005880](https://github.com/ArcForges/Cloud/pull/89#issuecomment-6097005880). Its CI run [38048403583](https://github.com/ArcForges/Cloud/actions/runs/38048403583) succeeded (all checks passed; the deploy and proof jobs were skipped on the pull request). It was merged as `c291550f73ba64cb9fa4c15d4ec0e731a27dede8` at 2026-10-10T11:43:45Z, with parents `837fb29f` and `b84b31ef` (a two-parent merge). The merge flags and the integration role are coordinator-reported.
+- **Main CI run for the #89 merge: [38049435694](https://github.com/ArcForges/Cloud/actions/runs/38049435694)** (push, head `c291550f`, 11:43:47Z to 11:53:48Z) succeeded. Every job succeeded except Dependency review and the two proof jobs, which were skipped on the push. This is the second production deploy of CLOUD.84 (see residual 8). The job Deploy Cloudflare (114206925013) logged:
+  - `migration step: not applicable (production declares no D1 database; there is nothing to migrate)`;
+  - `Pushed image: …arcforges-cloud:ci.357.1`;
+  - the production Container application `arcforges-cloud-cloudcontainer` modified from image `sha256:13e178b0…` to `sha256:e72a4f92…`;
+  - `Current Version ID: 74d7e722-a4dc-4ded-8751-d3360e82a4e9`. The production Worker version changed from `95e026f3` (run 38045218145) to `74d7e722`.
+  - Prerelease `cloud-0.1.0-ci.357.1` (target `c291550f`, published 2026-10-10T11:53:44Z) has the assets `cloud-0.1.0-ci.357.1.tar.gz` (67880125 bytes) and `deployment.json` (431 bytes).
+  - Production `https://arcforges.com/api/healthz`, read by this author on 2026-10-10 after the run, returned `revision` `c291550f73ba64cb9fa4c15d4ec0e731a27dede8`, `artifact.version` `0.1.0-ci.357.1`, `build.buildId` `38049435694.1` and `nativeAot` true.
+  - The #89 review reports the production Worker bundle unchanged (`14f6a5df…`). The new Worker version and Container image are new deployments of the rebuilt candidate at the new revision. This author did not compare the deployed bundle bytes.
+- **`RES-cloud-deployment` lease.** Epoch 3, held by `w-deku-20261009-cloud-84`, was renewed for the proof runs and then released. This is coordinator-reported.
+- **Proof deploy run [38050068108](https://github.com/ArcForges/Cloud/actions/runs/38050068108)** (workflow_dispatch at `c291550f`, 11:54:38Z to 12:03:30Z) succeeded. No separate opening observe run was dispatched for this attempt. The run's own job "Proof Cloudflare access and resources" (114207234506) passed every token-access check and found the proof D1, R2 and both queues existing. The job "Deploy Cloudflare proof environment" (114208584603) logged, in order:
+  - the gated proof D1 step: `migration step: proof database arcforges-proof-business, release c291550f73ba`, then a report with `"status": "passed"`, `"applied": []` and `"schemaVersion": 25`;
+  - in `npm run deploy:proof`: `Pushed image: …arcforges-cloud:ci.358.1`;
+  - `Web web-0.1.0-ci.117.1: profile bundle 2070acd9… and Site 735374a5… verified`;
+  - `No migrations to apply!`;
+  - the proof Container application `arcforges-cloud-proof-foundationcontainer-proof` modified from image `sha256:c7ca853d…` to `sha256:56fbd4f6…` (the `ci.358.1` digest);
+  - `Current Version ID: 84ce5952-e34e-4737-bd6d-92a8e02af03b`. The proof Worker version changed from `0de3e45a` (run 38009326285) to `84ce5952`;
+  - `Proof environment deployed at https://proof.arcforges.com. This is deployment completion, not live acceptance evidence.`
+- **Closing observe run [38050648279](https://github.com/ArcForges/Cloud/actions/runs/38050648279)** (workflow_dispatch at `c291550f`, 12:04:34Z) succeeded. It logged the proof Container application at `version 15`, `max_instances 4`, image `sha256:56fbd4f6…`, with 0 listed instances. The deployment history shows target versions 15, 14, 13 and 12.
+- **Proof `https://proof.arcforges.com/api/healthz`**, read by this author on 2026-10-10 after these runs: HTTP 200, `revision` `c291550f73ba64cb9fa4c15d4ec0e731a27dede8`, `artifact.version` `0.1.0-ci.358.1`, `build.buildId` `38050068108.1` and `nativeAot` true.
+- **Read-only route checks on the proof origin** (unauthenticated GETs by this author): `/account/` 200, `/chat/` 200, `/` 200, `/proof/v1/x` 401 (the signed proof surface refuses an unsigned caller) and `/session/v1/x` 404. No signed proof operation, Hello round trip or HAR.40 live proof was run (see Untested coverage).
+- **D11: met.** One proof deploy of the merged CLOUD.84 code succeeded (run 38050068108) under the lease, at the second attempt and after the #89 fix. The proof origin serves `c291550f`, which contains the `837fb29f` merge. As the deploy log states, this is deployment completion, not live acceptance evidence.
 
 ## Scope (2026-10-10)
 
@@ -182,7 +201,8 @@ epoch: 1
   - Readiness evaluation, storage-plan generation, the D1 migration runner and the deploy decisions are C#.
   - The npm Contracts dependency is `@arcforges/ai-internal` only, and the Kotlin consumer gate is removed.
   - A standing WorkerAdapter literal check runs in `check:dotnet` and in the hosted gate.
-  - Production is deployed at `837fb29f`, the production migration step reports not applicable, and production behaviour (`/api/healthz`, the anonymous Hello) is reported unchanged by the reviewer's dry-run and the worker tests.
+  - Production was deployed at `837fb29f` (run 38045218145, Worker version `95e026f3`) and again at the #89 merge `c291550f` (run 38049435694, Worker version `74d7e722`, release `cloud-0.1.0-ci.357.1`). Both production migration steps report not applicable, and production behaviour (`/api/healthz`, the anonymous Hello) is reported unchanged by the reviewer's dry-run and the worker tests.
+  - The proof environment is deployed at `c291550f` (run 38050068108, proof Worker version `84ce5952`), so D11 is met.
 - **Deviations from the graph text, each authorised:**
   - The generated module is `worker/tables/cloud-tables.generated.ts`, not `worker/generated/cloud-tables.ts` (S35(2)).
   - The live migration path is the D1 REST API, not wrangler (S41(6), a factual correction).
@@ -196,7 +216,7 @@ epoch: 1
 
   The coordinator's list names CLOUD.21, CLOUD.05 and HAR.03. This record adds AND.40, from the check rule.
 - **Gaps against the status rule.** Each gap is named, with its next action.
-  1. **D11 proof deploy: not met (pending).** The proof deploy at `837fb29f` failed (run 38046437337). *Next action:* the coordinator merges #89, runs observe, deploy and observe under the lease, and fills the PENDING section.
+  1. **D11 proof deploy: met (closed).** The proof deploy at `837fb29f` failed (run 38046437337). After the #89 fix, the proof deploy at `c291550f` succeeded (run 38050068108). See "Proof deploy (D11)". *Next action:* none for D11. The live HAR.40 proofs stay untested (see Untested coverage).
   2. **Completion prerequisites: open.**
      - CLOUD.21: the method/route table is generated from its registered C# public endpoints.
      - CLOUD.05: its job slice budgets are generated from the C# finite-job runner, and the D16 rows `CLOUD84-EX-1` to `11` are removed.
@@ -208,7 +228,7 @@ epoch: 1
   4. **Native AOT host build on Windows and WSL2 Debian (validation): not recorded for CLOUD.84.** The PR trail records the dotnet Release build and tests on both hosted runners and locally. It records no win-x64 or WSL2 Native AOT publish of the host at any CLOUD.84 head. The WSL2 run at `ffd9cea` executed the self-contained tool, not the AOT host. The Linux AOT evidence is the hosted candidate image build and production `nativeAot` true at `837fb29f`. *Next action:* an agent runs the win-x64 and WSL2 Debian AOT publish and smoke at the merged head (WSL2 is allowed for Linux tests), or the coordinator rules that the hosted Linux image build satisfies the clause. The HAR.40 record's note on the WSL SDK 10.0.400 versus the pinned 10.0.401 applies.
   5. **Edge-guard scan receipt (evidence): partly met.** See Evidence: the parameters come from the generated module, and the Worker only refuses. No separate edge-guard scan test is named, and the C# host's enforcement of the same rule was not re-verified by this author. *Next action:* the completion follow-up names the test that is the receipt, or adds one.
 - **Rulings applied** (brief section 11):
-  - **S29:** CLOUD.84 refreshes the pre-HAR.40 Worker-digest constant in `tests/worker/release-provenance.test.ts` after its last Worker change. Done in `d443b59` and `0778850`. At the merge the pin is `14f6a5df…`, 92603 bytes, and the reviewer reports `test:artifact` 10/10. This closes gap 3 of the HAR.40 record (test:artifact 9 of 10).
+  - **S29:** CLOUD.84 refreshes the pre-HAR.40 Worker-digest constant in `tests/worker/release-provenance.test.ts` after its last Worker change. Done in `d443b59` and `0778850`. At the merge the pin is `14f6a5df…`, 92603 bytes, and the reviewer reports `test:artifact` 10/10. That result is reviewer-reported only: `test:artifact` is in no `ci.yml` step (residual 5), and this author did not re-run it. It addresses gap 3 of the HAR.40 record (test:artifact 9 of 10), but that gap closes only when it is recorded closed there.
   - **S33:**
     - (1) ADP-07 supporting files for U1 (licence boundary, NOTICE, README, `.gitattributes`, `docs/provenance.md`);
     - (2) the merge-commit receipt defect, fixed with a test before any further receipt;
@@ -289,19 +309,20 @@ epoch: 1
      - The other S46(b) items (the `.gradle/` ignore lines, the dependabot `@connectrpc` and `@bufbuild` patterns, AGENTS.md line 8, `docs/bootstrap-plan.md` line 17, and the proof-route refusal values "Enabled" and "1") were fixed in `88cdf70`.
   6. **Shim extracted-folder cleanup** (reviewer, `ffd9cea`, non-blocking): `eng/migrations/shim.ts` does not remove its extracted tool folder. The probe runner in `tooling/protocol.ts` (line 116) does. This is harmless on ephemeral runners. *Owner:* the CLOUD.84 completion follow-up. *Next action:* remove the folder after the run, with a test.
   7. **Proof guard strictness** (#89 reviewer, non-blocking): the `main` guard regex in `buildProofConfig` would also accept `./candidate/worker.js`. Asserting `=== sealedProofBundle` would be stricter. `deploy()` passes the constant, so this is safe today. *Owner:* the CLOUD.84 completion follow-up. *Next action:* tighten the guard, with a refusing test.
-  8. **D10 note:** D10 asks for one production deploy from one PR. Merging #89 starts a second main push run, and that run deploys production (see the PENDING section). The #89 review reports the production Worker bundle unchanged. *Owner:* the coordinator. *Next action:* record the second deploy's effect in the PENDING section.
+  8. **D10 note:** D10 asks for one production deploy from one PR. Merging #89 started a second main push run, [38049435694](https://github.com/ArcForges/Cloud/actions/runs/38049435694), and that run deployed production again (see "Proof deploy (D11)"). Its effect: the production Worker version changed from `95e026f3` to `74d7e722-a4dc-4ded-8751-d3360e82a4e9`, the production Container image changed from `sha256:13e178b0…` to `sha256:e72a4f92…` (`ci.357.1`), the release is `cloud-0.1.0-ci.357.1`, the migration step reported not applicable, and production `/api/healthz` reports `c291550f`. The #89 review reports the production Worker bundle unchanged. So D10's "one production deploy" is not met literally: CLOUD.84 deployed production twice, the second time for a proof-only fix. *Owner:* the coordinator. *Next action:* the coordinator rules whether the second deploy is accepted under D10.
 
 ## Untested coverage (stated expressly)
 
-- **Live Workers AI and container proofs (HAR.40).** HAR.40's Proofs 1 to 3 (the Workers AI binding, fenced D1 writes under a real lease, the DO alarm wake after restart, and container capacity) were not run. CLOUD.84 changes the proof entry and the readiness path that those proofs use. Until the D11 redeploy lands, the proof origin still serves `3c59ce34`, so no CLOUD.84 proof code is live.
+- **Live Workers AI and container proofs (HAR.40).** HAR.40's Proofs 1 to 3 (the Workers AI binding, fenced D1 writes under a real lease, the DO alarm wake after restart, and container capacity) were not run. CLOUD.84 changes the proof entry and the readiness path that those proofs use. The proof origin now serves `c291550f` (run 38050068108), so the CLOUD.84 proof code is live, but only the unauthenticated route checks in "Proof deploy (D11)" were made against it. No signed proof operation was run.
 - **Docker candidate locally.** The Docker image build in `npm run candidate` was not run locally by the claimant or the reviewer. It is hosted-only. The reviewer reproduced every candidate step that needs neither Docker nor a secret under CI conditions (`ffd9cea`). The hosted candidate job succeeded at `ffd9cea` and `837fb29f`.
 - **Node 24.21 pin.** The local toolchain is Node 24.20 (`npm ci` with `--engine-strict=false`, as recorded in `0e520d9`), so the pin is not met locally. Hosted Source logged `Pinned Node/npm toolchain verified.` at `837fb29f` and is the authority.
 - **The Hello probe against a live container or Worker in CI.** In hosted CI the probe is published and sealed, but no hosted log line shows it run. `tooling/project.ts` `testContainer` and `testWorker`, and the production `smoke` in `tooling/cloudflare.ts`, assert that `CI` is not `"true"` and are local opt-in. The probe ran in the reviewer's WSL2 check at `ffd9cea`. The production check here is `/api/healthz`, read by this author. No Hello round trip was made by this author.
-- **Live D1 migration with pending work.** The C# migrator ran live once, against the proof D1, with nothing to apply (`"applied": []`). The lease, fence, backfill, cutover and contract paths are tested only on the SQLite oracle. Production declares no D1.
+- **Live D1 migration with pending work.** The C# migrator ran live twice, against the proof D1 (runs 38046437337 and 38050068108), each time with nothing to apply (`"applied": []`). The lease, fence, backfill, cutover and contract paths are tested only on the SQLite oracle. Production declares no D1.
 - **Native AOT host on Windows and WSL2 Debian:** not run for CLOUD.84 (Scope, gap 4).
 - **Test-port mapping.** The counts above are block and method counts by this author. The case-by-case one-for-one mapping is reviewer-reported.
 - **Local gates.** The npm, dotnet, policy, provenance, dependency, actionlint and gitleaks figures in the review comments were not re-run by this author. The hosted figures from main run 38045218145 are cited above.
-- **Release size.** The `ci.345.1` release tarball (67872582 bytes) was not downloaded or inspected.
-- **Proof image `ci.354.1`.** It was pushed to the registry by the failed deploy but not rolled out (Container application still at version 14). It is not assessed.
+- **Release size.** The `ci.345.1` (67872582 bytes) and `ci.357.1` (67880125 bytes) release tarballs were not downloaded or inspected.
+- **Proof image `ci.354.1`.** It was pushed to the registry by the failed deploy but never rolled out (the Container application went from version 14 to version 15 with the `ci.358.1` image). It is not assessed.
+- **Deployed bundle bytes.** The production and proof Worker versions `74d7e722` and `84ce5952` were not compared byte for byte with the sealed candidate bundles by this author.
 - **Independence.** The PR, every approval and the merge are under one GitHub account (`deku2026`). Independence rests on the separate reviewer session `w-deku-20261009-rev-cloud-84`.
-- **Coordinator-reported facts.** The `--match-head-commit ffd9cea` flag, the `integration:Cloud` role, the `RES-cloud-deployment` lease (epoch 3) and the proof Worker version `0de3e45a` are coordinator-reported. The two-parent merge commit, the run conclusions, the log lines and the healthz values are verified by this author.
+- **Coordinator-reported facts.** The `--match-head-commit ffd9cea` flag, the `integration:Cloud` role, the #89 merge flags, and the `RES-cloud-deployment` lease (epoch 3, renewed for the proof runs and then released) are coordinator-reported. The two-parent merge commits (`837fb29f` and `c291550f`), the run conclusions, the log lines (including the Worker versions `0de3e45a`, `95e026f3`, `74d7e722` and `84ce5952`), the release metadata and the healthz and route values are verified by this author.
