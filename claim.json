@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Plan",
-  "claimant": "w-deku-20261008-coord",
-  "epoch": 2,
-  "state": "released",
-  "claimedAt": "2026-10-08T16:28:11Z",
-  "updatedAt": "2026-10-10T18:36:47Z",
-  "leaseUntil": null,
+  "claimant": "w-deku-20261010-coord",
+  "epoch": 3,
+  "state": "claimed",
+  "claimedAt": "2026-10-10T20:32:56Z",
+  "updatedAt": "2026-10-10T20:32:56Z",
+  "leaseUntil": "2026-10-11T08:32:56Z",
   "handoff": {
     "host": "deku",
-    "note": "Phase 2 complete: fix7, CLOUD.84 (#476) and CON.40 (#477) ledgers merged; no further Plan merges before the user resumes"
+    "note": "claimed after released by w-deku-20261008-coord epoch 2; review the earlier handoff and commits"
   }
 }
