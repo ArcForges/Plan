@@ -4,12 +4,12 @@
   "id": "integration:Design",
   "claimant": "w-deku-20261008-coord",
   "epoch": 2,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-10T09:49:47Z",
-  "updatedAt": "2026-10-10T09:49:47Z",
-  "leaseUntil": "2026-10-10T17:49:47Z",
+  "updatedAt": "2026-10-10T09:51:55Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-deku-20261008-coord epoch 1; review the earlier handoff and commits"
+    "note": "fix7 merged"
   }
 }
