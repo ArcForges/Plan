@@ -568,6 +568,7 @@ Outcome: Absence of purchase buttons/embedded checkout/store billing/external pu
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-32.03 (full): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\32-mobile-release-and-store-gates.md, anchor rule-wp-32.03
+- WP-42.05 (the Android client half named on this task by planning repair fix8 delta (S59(10)): entitlement caching by version, a re-read on a refresh hint (entitlement is never inferred from the hint), the offline staleness bound per DS-05 and local-data survival when entitlement is lost; COM.06 keeps the Cloud half and PLT.20 the desktop half): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.05
 
 Entry condition: adoption slice ADOPT.10.android is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -580,11 +581,11 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] AND.13: the rendered-state UX tests run in the net10.0-android device test project
 
 Permitted write scope: Mobile:eng/policy/**; Mobile:tests/ArcForges.Mobile.Tests/**
-Unblocks: AND.23
+Unblocks: AND.23, COM.15
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Static route and dependency checks (MC-01..MC-06 build-time and CI assertions, as C# analyzers or xUnit architecture tests) plus all-state UX tests, offline where feasible; UX states that need a rendered MAUI page run in the AND.13 device test project as local opt-in.
 Completion evidence for the ledger: VG-13 evidence: no build path can display a purchase CTA or accept a licence key
-Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Static checks move from Gradle to C# analyzers or architecture tests in tests/ArcForges.Mobile.Tests (added to writes); rendered-state UX tests run in the AND.13 device test project, and AND.19 completes on AND.13 (typed edge). Acceptance unchanged. Planning repair fix8 delta 2026-10-11 (DLV-34; coordinator ruling S59(10)): the Android client half of WP-42.05 (entitlement caching by version, a re-read on a refresh hint, the offline staleness bound and local-data survival when entitlement is lost) is named on this task, the Android consumer that shows existing access, quota and service expiry from the admitted account APIs (WP-32.03). It is recorded here and stays outside the current run; binding it into this task's outcome, validation and evidence is left to a planning repair before claim. No edge changes.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): Static checks move from Gradle to C# analyzers or architecture tests in tests/ArcForges.Mobile.Tests (added to writes); rendered-state UX tests run in the AND.13 device test project, and AND.19 completes on AND.13 (typed edge). Acceptance unchanged. Planning repair fix8 delta 2026-10-11 (DLV-34, DLV-35; coordinator ruling S59(10)): the Android client half of WP-42.05 (entitlement caching by version, a re-read on a refresh hint (entitlement is never inferred from the hint), the offline staleness bound per DS-05 and local-data survival when entitlement is lost) is named on this task, the Android consumer that shows existing access, quota and service expiry from the admitted account APIs (WP-32.03), and a WP-42.05 obligation row records it (the AND.04 WP-24.05 precedent). COM.15, the WP-42 closure, gains an integration completion edge on this task, so the WP-42 receipt waits for it. The half stays outside the current run; binding it into this task's outcome, validation and evidence is left to a planning repair before claim. No edge of this task changes.
 ```
 
 ```text
