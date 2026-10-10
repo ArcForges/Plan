@@ -6,18 +6,21 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-10T09:51:27Z",
-  "updatedAt": "2026-10-10T17:54:15Z",
-  "leaseUntil": "2026-10-11T17:54:15Z",
+  "updatedAt": "2026-10-10T18:12:14Z",
+  "leaseUntil": "2026-10-11T18:12:14Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-40",
     "prs": [
       "https://github.com/ArcForges/Contracts/pull/97"
     ],
-    "merges": [],
+    "merges": [
+      "5615821917922c7c262b8f43bba1285fa9791444"
+    ],
     "done": [
       "C1-C7 committed locally (c1eb778 d64a655 17d16e8 5ac2995 6106207 d078d3b 7aeea9d); 3 Opus review rounds: only material finding gitleaks (S50)",
-      "Owner removed the required check CodeQL (java-kotlin) from Contracts main; verified read-only (S50(5) cleared)"
+      "Owner removed the required check CodeQL (java-kotlin) from Contracts main; verified read-only (S50(5) cleared)",
+      "Contracts #97 merged as 56158219 (merge commit, --match-head-commit 15d94d97; all required checks green: run 38073599030 CI, 38073598978 Security)"
     ],
     "validation": [],
     "worktree": "Contracts/.worktree/con-40",
@@ -25,9 +28,9 @@
     "reviewed": "15d94d97431cfa3676cd4dda5bf3a2737d368d9f",
     "blocker": null,
     "next": [
-      "Hosted CI on #97; merge with a merge commit --match-head-commit 15d94d9 under integration:Contracts; verify main-push NuGet + ai-internal publication; ledger (delivered)"
+      "Verify main-push CI 38074767207 publication: NuGet + @arcforges/ai-internal only; nothing retired published; ledger fill + Plan PR + delivered"
     ],
     "host": "deku",
-    "note": "PR #97 opened; review record posted"
+    "note": "Merged; main-push publication being verified"
   }
 }
