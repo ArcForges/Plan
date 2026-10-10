@@ -4,12 +4,12 @@
   "id": "integration:Plan",
   "claimant": "w-deku-20261008-coord",
   "epoch": 2,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-08T16:28:11Z",
-  "updatedAt": "2026-10-10T09:50:03Z",
-  "leaseUntil": "2026-10-10T21:50:03Z",
+  "updatedAt": "2026-10-10T18:36:47Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "renewed for fix7 and phase-2 ledgers"
+    "note": "Phase 2 complete: fix7, CLOUD.84 (#476) and CON.40 (#477) ledgers merged; no further Plan merges before the user resumes"
   }
 }
