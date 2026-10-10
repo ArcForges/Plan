@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T19:35:38Z",
-  "updatedAt": "2026-10-10T08:45:06Z",
-  "leaseUntil": "2026-10-11T08:45:06Z",
+  "updatedAt": "2026-10-10T09:25:12Z",
+  "leaseUntil": "2026-10-11T09:25:12Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/cloud-84",
@@ -18,13 +18,13 @@
     "done": [],
     "validation": [],
     "worktree": null,
-    "head": "88cdf70ed355f5b23fc6234b7684776d2b19c502",
-    "reviewed": "88cdf70ed355f5b23fc6234b7684776d2b19c502",
+    "head": "b6249435b9c78a712caa18a7e35dfc9446bcd382",
+    "reviewed": "b6249435b9c78a712caa18a7e35dfc9446bcd382",
     "blocker": null,
     "next": [
       "plan the task, then push the task branch at the first checkpoint"
     ],
     "host": "deku",
-    "note": "Hosted CI fix (ordinal migration ordering) approved at 88cdf70; pushed; hosted CI rerunning"
+    "note": "Profile r50 fix approved at b624943; pushed; hosted CI rerunning"
   }
 }
