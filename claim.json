@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "CON.40",
+  "claimant": "w-deku-20261010-con-40",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-10T09:51:27Z",
+  "updatedAt": "2026-10-10T09:51:27Z",
+  "leaseUntil": "2026-10-11T15:51:27Z",
+  "handoff": {
+    "repository": "Contracts",
+    "branch": "task/con-40",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "plan the task, then push the task branch at the first checkpoint"
+    ],
+    "host": "deku",
+    "note": null
+  }
+}
