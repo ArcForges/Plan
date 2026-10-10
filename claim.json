@@ -6,10 +6,10 @@
   "epoch": 2,
   "state": "claimed",
   "claimedAt": "2026-10-08T16:28:11Z",
-  "updatedAt": "2026-10-09T23:00:13Z",
-  "leaseUntil": "2026-10-10T11:00:13Z",
+  "updatedAt": "2026-10-10T09:50:03Z",
+  "leaseUntil": "2026-10-10T21:50:03Z",
   "handoff": {
     "host": "deku",
-    "note": "renewed for phase-2 ledger publication"
+    "note": "renewed for fix7 and phase-2 ledgers"
   }
 }
