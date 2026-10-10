@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-10T20:02:31Z",
-  "updatedAt": "2026-10-10T22:47:42Z",
-  "leaseUntil": "2026-10-11T22:47:42Z",
+  "updatedAt": "2026-10-10T22:48:11Z",
+  "leaseUntil": "2026-10-11T22:48:11Z",
   "handoff": {
     "repository": "ArcScope",
     "branch": "ArcScope:task/app-02",
@@ -18,7 +18,7 @@
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges$3\\.worktree$4",
-    "head": null,
+    "head": "e94d3137c106285d36bde2821b6df551a3a9a53a",
     "reviewed": null,
     "blocker": null,
     "next": [
