@@ -2,12 +2,12 @@
   "schema": 1,
   "kind": "task",
   "id": "HAR.40",
-  "claimant": "w-deku-20261008-har-40",
-  "epoch": 1,
-  "state": "delivered",
-  "claimedAt": "2026-10-08T14:40:41Z",
-  "updatedAt": "2026-10-09T19:35:24Z",
-  "leaseUntil": null,
+  "claimant": "w-deku-20261010-har-40",
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-10T21:21:54Z",
+  "updatedAt": "2026-10-10T21:21:54Z",
+  "leaseUntil": "2026-10-11T21:21:54Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/har-40",
@@ -26,10 +26,10 @@
     "reviewed": "3e022f8fe99645fcf030d2040226859fc6b03f8a",
     "blocker": null,
     "next": [
-      "implement in the retained worktree (local commits by the execution agent)",
-      "independent review, push, PR, CI, merge via integration role"
+      "perform the remaining acceptance for the scenarios the completion prerequisites name",
+      "record completion by editing the ledger record through a reviewed Plan pull request"
     ],
     "host": "deku",
-    "note": "Ledger Plan #472 delivered; open: liveNotRun operator proofs, arcforges-ai-hello deletion confirmation (user), test:artifact constant (S29 -> CLOUD.84), HAR.00/HAR.01-owned tests, resume (S24)"
+    "note": "completion follow-up (DLV-41)"
   }
 }
