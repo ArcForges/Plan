@@ -11,8 +11,8 @@ epoch: 1
 ## Evidence
 
 - **Implementation, in one Contracts pull request** (brief S20(f), S47, S48 and S50):
-  - Contracts [PR #97](https://github.com/ArcForges/Contracts/pull/97), "[CON.40] C#-only SDK standardization: retire TypeScript and Kotlin/Maven publication; keep @arcforges/ai-internal", head branch `task/con-40`, base `main` at `330e46bd158bfbb7cdc94c7006565c87e27b1cc6`. It was opened at 2026-10-10T17:53:45Z by `deku2026`. The reviewed head is `15d94d97431cfa3676cd4dda5bf3a2737d368d9f`. The PR has 10 commits and changes 3005 files (19578 insertions, 890212 deletions), as read with `gh pr view 97`. The merge commit, the PR CI run and the main-push run are pending. See "Pending: merge and publication".
-  - The claim is `claims/con-40`, epoch 1, claimant `w-deku-20261010-con-40`, claimed at 2026-10-10T09:51:27Z. At `20b98c46` its handoff names PR #97 with `head` and `reviewed` both equal to `15d94d97`. The coordinator holds `integration:Contracts` (S20(f) decision 12). That role holding is coordinator-reported.
+  - Contracts [PR #97](https://github.com/ArcForges/Contracts/pull/97), "[CON.40] C#-only SDK standardization: retire TypeScript and Kotlin/Maven publication; keep @arcforges/ai-internal", head branch `task/con-40`, base `main` at `330e46bd158bfbb7cdc94c7006565c87e27b1cc6`. It was opened at 2026-10-10T17:53:45Z by `deku2026`. The reviewed head is `15d94d97431cfa3676cd4dda5bf3a2737d368d9f`. The PR has 10 commits and changes 3005 files (19578 insertions, 890212 deletions), as read with `gh pr view 97`. It merged at 2026-10-10T18:11:17Z as merge commit `5615821917922c7c262b8f43bba1285fa9791444` (parents `330e46bd` and `15d94d97`). See "Merge and publication".
+  - The claim is `claims/con-40`, epoch 1, claimant `w-deku-20261010-con-40`, claimed at 2026-10-10T09:51:27Z. At `20b98c46` its handoff names PR #97 with `head` and `reviewed` both equal to `15d94d97`. The coordinator holds `integration:Contracts` (S20(f) decision 12). That role holding is public state: Plan branch `roles/integration-contracts` at `c7265da0` ("Claim integration:Contracts epoch 1 by w-deku-20261008-coord"), read by this author after a fetch.
   - The status is `delivered`, not `complete` (S20(f) decision 3). See Scope for the open completion prerequisites.
   - The PR body requires a merge commit, not a squash. `test_con40_secret_scan_allowlists_bind_only_exact_public_digest_tuples` reads each receipt at the commit that added it.
 
@@ -43,7 +43,7 @@ epoch: 1
     - The S50(2) erasure probe is now refused by `check_contract_access.mjs` alone, against both the unmarked base and a retired base. The `7aeea9d` code passes the same probe, which is the control.
     - The S50(3) change is a pure append. Each of the 24 findings is covered by exactly one of the 22 regexes, and no regex is unused. The reviewer's positive controls fire 4 of 4. The full-history scan with the hosted flags (image `c00b6bd0aeb3`, `--network none`, 330 commits) reports 0.
     - The gates are listed under "Validation actually performed".
-  - The approval was posted before PR #97's hosted run completed. When this author read `gh pr checks 97` (run 38073599030, with the Security run 38073598978), Dependency review, CodeQL (javascript-typescript) and CodeQL (python) had passed. Build candidate, CodeQL (csharp) and Secret scan were pending. One check named `CodeQL` showed as skipping. The final result is `{{CI_RUN}}` below.
+  - The approval was posted before PR #97's hosted run completed. The hosted run then passed every required context at `15d94d9`. See "PR CI run" under "Merge and publication".
   - The PR author, the review comment and the claimant all run under the one GitHub account `deku2026`, so independence rests on the separate session only.
 
 - **S25 ratification.** The delta approval ratifies the S25 fields of every CON.40 record at `15d94d9`. Each record names reviewer `w-deku-20261008-rev-con-40`, `decision` `approved` and `reviewedOn` 2026-10-10:
@@ -93,10 +93,10 @@ epoch: 1
     - `.github/workflows/ci.yml` has the jobs `candidate`, `verify`, `publish-nuget` and `publish-npm`.
     - A repository grep finds one npm publish call, limited to `NPM_IDS`, and no Maven, Gradle or Sonatype publication step.
     - The receipts are `con-40-npm.json` and `con-40-maven.json`.
-    - The stop takes effect from the first main push after the merge (`{{MAIN_RUN}}`).
+    - The stop takes effect from the first main push after the merge: CI run 38074767207 (#363) at `56158219`, which published no retired identity (see "Merge and publication").
   - **No registry action.** `registryActions` (unpublish, deprecate, delete, distTagChange) is empty. The record states that nothing is unpublished, deprecated or deleted, and that no dist-tag is changed.
 
-- **`@arcforges/ai-internal` retained-package receipt.** The publication-stop record's `retained` block reads: "publication unchanged: eng/contracts.py NPM_IDS is ('@arcforges/ai-internal',) (S20(f) decision 13)". The twelve NuGet packages are also "publication unchanged". The ai-internal sources are unchanged except `src/internal/ts/ai-internal/README.md`. That README now states that the npm pipeline is restricted to this package, that the package is published public (`publishConfig`) and that its contract access stays internal (S47(11)). The local candidate packed by the reviewer and the implementer holds 12 `.nupkg`, one `.tgz` (`@arcforges/ai-internal`), 13 descriptor sets and a manifest, with no `mavenVersion`. The published versions after the merge are `{{PUBLICATION}}`.
+- **`@arcforges/ai-internal` retained-package receipt.** The publication-stop record's `retained` block reads: "publication unchanged: eng/contracts.py NPM_IDS is ('@arcforges/ai-internal',) (S20(f) decision 13)". The twelve NuGet packages are also "publication unchanged". The ai-internal sources are unchanged except `src/internal/ts/ai-internal/README.md`. That README now states that the npm pipeline is restricted to this package, that the package is published public (`publishConfig`) and that its contract access stays internal (S47(11)). The local candidate holds 12 `.nupkg`, one `.tgz` (`@arcforges/ai-internal`), 13 descriptor sets and a manifest, with no `mavenVersion`. The 13-descriptor-set count is the one reported by the GL implementer and by review rounds 1 and 2. Round 3 reported 15 descriptor sets, and the delta round gave no count. The published versions after the merge are `1.0.0-ci.363.1`: the twelve NuGet packages and `@arcforges/ai-internal` (see "Publication").
 
 - **TypeScript and Kotlin to C# test mapping inventory.** `eng/policy/con-40-test-map.json`, as counted by this author at `15d94d9`:
   - 107 retired cases from 29 source files: 93 from `.mjs` suites, 2 from `.ts` files and 12 from the Kotlin case files. They map to 149 C# anchors, 60 of them distinct.
@@ -148,15 +148,15 @@ epoch: 1
   - The access check refuses removing a marking and marking an undeclared operation. `contract_access.test.mjs` pins exactly the five marks (reviewer probes, rounds 1 to 3).
   - **`check_compatibility` for `arcforges.local.sandbox.v1`.** `eng/compatibility/later-services-window.json` pins `local-sandbox-1.0.0-ci.287.1.binpb` as previous and minimum for `ArcForges.Contracts.LocalRpc.Sandbox`, with `ContentSandboxService` at 15 methods. The comparison is additive-only. The `--window` check over it passed in the runs above. No log quoted in the journals prints a per-package line for the sandbox. The no-removed and no-reserved-number result rests on the window pass and on the unchanged `sandbox.proto`.
 
-- **Validation actually performed.** These are local runs under CI conditions: `CI=true`, `GITHUB_ACTIONS=true`, a pull_request context with base `330e46b`, a fresh `NUGET_PACKAGES`, .NET SDK 10.0.400 and the workstation build slot. They are reported by the GL implementer and by the delta reviewer at `15d94d9`, and were not re-run by this author:
+- **Validation actually performed.** These are local runs under CI conditions: `CI=true`, `GITHUB_ACTIONS=true`, a pull_request context with base `330e46b`, a fresh `NUGET_PACKAGES`, .NET SDK 10.0.400 and the workstation build slot. Unless an item says otherwise, they are reported by the GL implementer and by the delta reviewer at `15d94d9`. This author re-ran none of them:
   - `python -I -m unittest discover -s tests/tooling`: 428 tests OK.
   - `dotnet restore --locked-mode` passed, the Release build passed with 0 warnings, and StructureTests (with `Con40SdkCases`) and ArchitectureTests (SDK-01 to SDK-04, and `--hosted` with `GITHUB_JOB=secrets`) passed.
   - `check_naming` (998 files, 0 findings), `check_provenance --owner Contracts --base ''`, `check_licences`, `dependency_admission`, `generate --check`, `check_foundation --generated --self-test` (14 negative cases), `check_serialization`, `check_operation_scope`, `check_compatibility --window` and `node eng/check_contract_access.mjs` all passed. `contract_access.test.mjs` passed 24 of 24, and ai-internal `npm test` 4 of 4.
   - The Native AOT serialization probe on win-x64 passed (31 binary, 51 JSON, 1174 messages).
-  - Pack through the S47(7) shim produced 12 `.nupkg`, the ai-internal `.tgz`, 13 descriptor sets and a manifest, and "Verified candidate contents".
+  - Pack through the S47(7) shim produced 12 `.nupkg`, the ai-internal `.tgz`, 13 descriptor sets and a manifest, and "Verified candidate contents". The descriptor-set count is from the GL implementer and rounds 1 and 2 (round 3 reported 15).
   - gitleaks with the S31 method over the full history, with the hosted flags, found 0 at `15d94d9`.
   - actionlint 1.7.12 reports only the pre-existing `queue` key at `ci.yml:165`.
-  - The scripted `package-lock.json` diff is limited to the removed workspaces, their links, 8 packages only they reached, the root manifest entry and the dev flag of `@bufbuild/protobuf` (S47(7)).
+  - The scripted `package-lock.json` diff is limited to the removed workspaces, their links, 8 packages only they reached, the root manifest entry and the dev flag of `@bufbuild/protobuf` (S47(7)). This diff was run by the C5 implementer and by review rounds 1 to 3 at `7aeea9d`, not at `15d94d9`. It still holds at `15d94d9`, because `package-lock.json` is byte-identical between `7aeea9d` and `15d94d9`.
 
 - **Hosted-only steps** (hosted CI at the reviewed head is authoritative; S47(7)):
   - the Node 24.21.0 and npm 11.19.0 pins (`check_tools`, engine-strict `npm ci`) and the npm 11 pack. Locally, Node 24.20.0 and npm 12.0.2 ran with a shim;
@@ -166,19 +166,52 @@ epoch: 1
   - the artifact uploads;
   - the `publish-nuget` and `publish-npm` jobs, which run on main push only.
 
-  These results are `{{CI_RUN}}` and `{{MAIN_RUN}}` below.
+  These ran in the PR CI run and the main-push run under "Merge and publication". The hosted Build candidate passed at both `15d94d9` and `56158219`, and the publish jobs ran on the main push only.
 
 - **Obligations satisfied** (the graph's parts):
   - WP-03.05 (partial): the C# generated package, descriptor manifest and schema gate stay, and the TypeScript and Kotlin packages retire, with `@arcforges/ai-internal` kept.
   - WP-03.06 (partial): the compatibility window, binpb pins, reserved numbers and golden vectors stay unchanged, and the C# `CanonicalSemanticHash` is the single authority.
 - **Substitutes still in use:** none named by the graph for CON.40. The AI and DesktopPlatform pins are immutable published versions kept under S20(f) decision 2, not substitutes.
 
-## Pending: merge and publication (filled by the coordinator after the merge)
+## Merge and publication
 
-- **PR CI run:** {{CI_RUN}}
-- **Merge commit:** {{MERGE_SHA}}
-- **Main-push run:** {{MAIN_RUN}}
-- **Publication:** {{PUBLICATION}}
+The run, job and PR facts below were read by this author with `gh pr view`, `gh run view` and `gh api` (read-only) on 2026-10-10. The log facts come from the main-push CI job log saved by the coordinator, which this author grepped.
+
+- **PR CI run** at head `15d94d97431cfa3676cd4dda5bf3a2737d368d9f` (pull_request event). The final conclusion of every required context is shown below.
+  - CI run [38073599030](https://github.com/ArcForges/Contracts/actions/runs/38073599030) (#362): success.
+    - Build candidate: success (job 114275856668, 17:53:53Z to 18:02:31Z).
+    - **Verify** (required): success (job 114277562444).
+    - Publish NuGet and Publish npm: skipped, as expected on a pull request.
+  - Security run [38073598978](https://github.com/ArcForges/Contracts/actions/runs/38073598978) (#367): success.
+    - **Secret scan** (required): success (job 114275856312, 17:53:52Z to 18:09:55Z, 16m3s).
+    - **Dependency review** (required): success (job 114275856413).
+    - **CodeQL (csharp)** (required): success (job 114275856585).
+    - **CodeQL (javascript-typescript)** (required): success (job 114275856384).
+    - **CodeQL (python)** (required): success (job 114275856402).
+  - **CodeQL** (required, the code-scanning results check): neutral (check run 114276052570). GitHub counts a neutral conclusion as passing a required check.
+  - The coordinator observed merge state `CLEAN` before merging (coordinator-reported; after the merge `gh` reports `UNKNOWN`).
+- **Merge commit:** `5615821917922c7c262b8f43bba1285fa9791444`, a merge commit, not a squash. Its parents are `330e46bd158bfbb7cdc94c7006565c87e27b1cc6` (main before the merge) and `15d94d97431cfa3676cd4dda5bf3a2737d368d9f` (the reviewed head). Its message is "Merge pull request #97 from ArcForges/task/con-40". PR #97 shows `mergedAt` 2026-10-10T18:11:17Z and `mergedBy` `deku2026`.
+  - The command was `gh pr merge 97 --merge --match-head-commit 15d94d97431cfa3676cd4dda5bf3a2737d368d9f`. It ran under `integration:Contracts`, held by coordinator `w-deku-20261008-coord`, epoch 1 (role branch `roles/integration-contracts`). The command text is coordinator-reported. The merge type, the parents and the head match are public state.
+- **Main-push run** at `56158219` (push event):
+  - CI run [38074767207](https://github.com/ArcForges/Contracts/actions/runs/38074767207) (#363): success.
+    - Build candidate (job 114279330804): success. Its log shows "CON.40 test map: 107 retired TypeScript and Kotlin cases, 149 C# anchors verified", "Ran 428 tests" and "Verified candidate contents: 1.0.0-ci.363.1".
+    - Verify (job 114280399246): success.
+    - Publish NuGet (job 114280419212): success.
+    - Publish npm (job 114280419629): success.
+  - Security run [38074767162](https://github.com/ArcForges/Contracts/actions/runs/38074767162) (#368): success.
+    - CodeQL (csharp), CodeQL (javascript-typescript), CodeQL (python) and Secret scan: success.
+    - Dependency review: skipped, because it runs on pull requests only.
+- **Publication**, version `1.0.0-ci.363.1`, from the main-push CI job log:
+  - **NuGet:** 12 pushes to `https://www.nuget.org/api/v2/package`, each followed by "Your package was pushed.":
+    - `ArcForges.Contracts.Foundation`, `ArcForges.Contracts.PublicApi` and `ArcForges.Contracts.Events`;
+    - `ArcForges.Sdk.Contracts`, `ArcForges.Contracts.Validation`, `ArcForges.Sdk.Client` and `ArcForges.Cli`;
+    - `ArcForges.Contracts.LocalRpc.Platform`, `.LocalRpc.Sandbox`, `.LocalRpc.Chat` and `.LocalRpc.Scope`;
+    - `ArcForges.Contracts.CloudInternal`.
+  - **npm:** exactly one `npm publish` call, and one `+` line: `+ @arcforges/ai-internal@1.0.0-ci.363.1`.
+    - The call was `npm publish .../arcforges-ai-internal-1.0.0-ci.363.1.tgz --access public --tag latest --ignore-scripts`, with Node 24.21.0 and npm 11.19.0 (resolved from `.node-version`).
+    - The log reads "Publishing to https://registry.npmjs.org/ with tag latest and public access". A signed provenance statement was published to the sigstore transparency log (logIndex 3190848548).
+  - **No retired identity published.** The log has no publish step, `+` line or push line for any of the seven retired identities. There is no Maven job and no Maven, Gradle or Sonatype upload step. The retired package names appear only in the WP03.00 gate summary of Build candidate, which lists `retiredPackages` (the seven identities), `retiredDistributionFiles` 2863 and `retiredOperations` (the five PDF RPCs). Other Maven and Gradle words in the log are test names and a fetched archive branch name. The `digest-mismatch: error` lines are the `download-artifact` input setting, not errors.
+  - **No registry action.** Nothing was unpublished, deprecated or deleted, and no dist-tag of a retired identity changed. The `latest` dist-tag of the four retired npm identities is therefore unchanged (see Owner note 1). This rests on the job log; no registry was queried.
 
 ## Scope (2026-10-10)
 
@@ -197,12 +230,17 @@ epoch: 1
 - **Owner notes** (from the PR body; none changed by this task):
   1. **npm `latest` dist-tag.** The `latest` dist-tag of the four retired npm identities still points at `1.0.0-ci.350.1`. That version was published from the rolled-back commit `74c298c9` and is not admitted as a first-party pin (brief section 10, rolled-back package rule). Changing the dist-tag is a registry action that needs the user. *Next action:* the user decides whether to move `latest` to `1.0.0-ci.324.1`, or leave it.
   2. **MAVEN_\* secrets (optional).** The `MAVEN_*` secrets, `MAVEN_PUBLISH_ENABLED` and the `maven-central` environment are no longer read by any workflow. Removing them is an optional owner follow-up (S50(5)).
-  3. **Required CodeQL (java-kotlin) check: done by the user and verified.** Contracts main branch protection required "CodeQL (java-kotlin)", which CON.40 removes, so the check could never report (S50(5)). The user removed it on 2026-10-10. The coordinator read it back with `gh api`: the required contexts are Verify, Dependency review, Secret scan, CodeQL (csharp), CodeQL (javascript-typescript), CodeQL (python) and CodeQL; strict is still true, `enforce_admins` is true, and the `protectmain` ruleset is unchanged. That verification is coordinator-reported (coordinator log, 2026-10-10).
+  3. **Required CodeQL (java-kotlin) check: done by the user and verified.** Contracts main branch protection required "CodeQL (java-kotlin)", which CON.40 removes, so the check could never report (S50(5)). The user removed it on 2026-10-10. The coordinator read it back with `gh api`, and this author read the same public state again after the merge (`gh api repos/ArcForges/Contracts/branches/main/protection` and `.../rulesets`): the required contexts are Verify, Dependency review, Secret scan, CodeQL (csharp), CodeQL (javascript-typescript), CodeQL (python) and CodeQL; strict is true; `enforce_admins` is true; and the `protectmain` ruleset (23009568, active) was last updated 2026-10-07, so it is unchanged.
 - **Dependabot (S47(8) and S51).** State read by this author with `gh pr view` on 2026-10-10, before the merge:
   - **#93** "Bump the protobuf group with 2 updates" (`@bufbuild/protoc-gen-es` and `@bufbuild/protobuf` 2.15.0 to 2.16.0) touches `package.json`, `package-lock.json` and the `package.json` files of the retiring workspaces `src/internal/ts/operator-client`, `src/public/ts/api-client` and `src/public/ts/proto`. It is open, and its Build candidate, Verify and Secret scan checks failed. Under S47(8) it is left to Dependabot's automatic rebase or close after the merge. If it is not auto-closed, it is closed with a scope explanation, but only in a way that keeps its branch (S51: closing can delete the branch, which conflicts with section 0a item 2).
   - **#95** "Bump the actions group across 1 directory with 6 updates" touches `.github/workflows/ci.yml` and `security.yml`, which conflict with C4. It is open, with its checks passing at its own head. Under S47(8) it is left to Dependabot's rebase after the merge, and then the normal admission flow (S51).
   - **#96** "Bump ArcForges.Contracts.PublicApi from 1.0.0-ci.113.1 to 1.0.0-ci.350.1" pins the rolled-back run 350 at `74c298c9`. It is open, and its checks failed. **Never merge** (S50(5), S51). It is not closed by the coordinator; closing it is the user's choice.
-  - *Next action:* after the merge, the coordinator re-reads #93 and #95 and reports their outcome under S47(8).
+  - **Outcome after the merge (S47(8)), read by this author with `gh pr view` and `gh api`:**
+    - #93 was closed by Dependabot at 2026-10-10T18:11:27Z, 10 seconds after the merge, in state `CONFLICTING`. Dependabot's comment says the group that created it was removed from the configuration. Its head branch no longer exists.
+    - #95 was closed by Dependabot at 2026-10-10T18:14:37Z, in state `CONFLICTING`. Dependabot's comment says the dependencies are updatable in another way. Its head branch no longer exists.
+    - Neither was closed by the coordinator, so the S51 branch concern does not arise from any coordinator action.
+    - Dependabot opened two replacements: #98 "Bump @bufbuild/protobuf from 2.15.0 to 2.16.0" (18:12:24Z) and #99 "Bump the actions group across 1 directory with 5 updates" (18:14:41Z). Both follow the normal dependency admission flow and are not part of CON.40.
+    - #96 is still open. It stays never-merge (S51).
 - **Consumer follow-ups (S47(9) and S47(10)), owned by the consumer tasks:**
   - S47(9): the consumer-side binding records that pin digests of Contracts paths, including the Kotlin lockfile digests, stay as immutable history. They are Cloud `eng/generated/contracts-identity.json`, Web `eng/contracts/ArcForges.Contracts.PublicApi/1.0.0-ci.287.1/source.json` and Mobile `eng/policy/contracts-source.json`. *Next action:* re-pinning goes to the completion follow-ups of CLOUD.84, WEB.40 and AND.40.
   - S47(10): Mobile `android-resources-r14` binds the two retired Maven notices. *Next action:* an AND.40 completion follow-up.
@@ -223,12 +261,12 @@ epoch: 1
 
   *Owner:* a later Contracts cleanup task. *Next action:* a coordinator ruling on that task's writes.
 - **Remaining completion prerequisites and next action (delivered only):**
-  1. **Merge and publication (this task):** pending. *Next action:* after hosted CI is green at `15d94d9`, the coordinator merges #97 with a merge commit (`--match-head-commit 15d94d9`) under `integration:Contracts`. It then verifies that the main-push run publishes only the NuGet packages and `@arcforges/ai-internal`, and that no retired identity is published, and fills the pending section.
+  1. **Merge and publication (this task):** done. #97 was merged as `5615821917922c7c262b8f43bba1285fa9791444` with `--match-head-commit 15d94d97431cfa3676cd4dda5bf3a2737d368d9f`, after every required context passed. Main-push run 38074767207 published only the twelve NuGet packages and `@arcforges/ai-internal` at `1.0.0-ci.363.1`, and no retired identity. *Next action:* the ledger merge (this record's Plan PR), then the claim is set to `delivered`.
   2. **WEB.40, AND.40 and CLOUD.84 to `complete`:** open. Each completes through its own DLV-41 follow-up and open gaps (see their records). *Next action:* a CON.40 completion follow-up (DLV-41) once all three are complete. It re-runs the consumer scans at their completion heads and confirms that no retired identity was published since the merge.
 
 ## Untested coverage (stated expressly)
 
-- **Hosted CI, merge and publication:** not yet run or observed at the time of this draft. See the pending section.
+- **Hosted CI, merge and publication:** observed through `gh` and the main-push job log only (see "Merge and publication"). No registry was queried and no published package was downloaded. Whether the twelve NuGet packages and `@arcforges/ai-internal@1.0.0-ci.363.1` are indexed and resolvable rests on the push and publish log lines.
 - **Local gates:** reviewer- and implementer-reported. This author re-ran none of them. The local runs shimmed the Node and npm pins and the npm 12 `pack --json` shape, and ran the AOT probe on win-x64 only. The ArchitectureTests local fixtures once failed on a stale `bin/obj` tree and passed after a rebuild (C8 and round 1), which is not attributed to CON.40.
 - **Publication facts:** the run, job and log facts for runs 60, 324 and 350 are from the C8 author's read-only `gh` reads and the delta reviewer's re-check. This author did not re-read those logs. No registry was queried and no package was downloaded. The npm `latest` dist-tag state rests on the run-350 publish log, not on a live registry read.
 - **Maven `contract-fixtures` 1.0.0-ci.60.1:** this row rests on `docs/releasing.md` at `ef9e0aa` and the run-level `PUBLISHED` line. No module-level line confirms it. `1.0.0-SNAPSHOT` is mutable, and the provider may expire it.
@@ -236,4 +274,4 @@ epoch: 1
 - **gRPC-Web consumer path:** no consumer diagnostic exercises gRPC-Web after the TypeScript and Kotlin consumers retired.
 - **Consumer scans:** the scans are at the heads named in C8 (Cloud `c291550f`, Web `dd0a5de3`, Mobile `6702e281`). Later consumer commits are not scanned here.
 - **Independence:** the PR author, the review comment and the claimant are under one GitHub account (`deku2026`). Independence rests on the separate session `w-deku-20261008-rev-con-40`.
-- **Coordinator-reported facts:** the `integration:Contracts` role, the branch-protection read-back, and the merge flags to come.
+- **Coordinator-reported facts:** the exact merge command text and the `CLEAN` merge state before the merge. The `integration:Contracts` role (Plan `roles/integration-contracts` at `c7265da0`), the branch-protection state and the merge result were confirmed from public state.
