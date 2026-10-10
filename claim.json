@@ -6,8 +6,8 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T19:35:38Z",
-  "updatedAt": "2026-10-10T11:26:37Z",
-  "leaseUntil": "2026-10-11T11:26:37Z",
+  "updatedAt": "2026-10-10T11:43:58Z",
+  "leaseUntil": "2026-10-11T11:43:58Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/cloud-84",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Cloud/pull/89"
     ],
     "merges": [
-      "837fb29f2509b1fa7117948dbd48fa9f805bd502"
+      "837fb29f2509b1fa7117948dbd48fa9f805bd502",
+      "c291550f73ba64cb9fa4c15d4ec0e731a27dede8"
     ],
     "done": [],
     "validation": [],
@@ -28,6 +29,6 @@
       "plan the task, then push the task branch at the first checkpoint"
     ],
     "host": "deku",
-    "note": "Proof deploy failed (env.proof.main source entry); follow-up Cloud #89 at b84b31e approved; CI then merge then proof deploy"
+    "note": "Follow-up Cloud #89 merged; main deploy then proof deploy (D11)"
   }
 }
