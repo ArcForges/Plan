@@ -4,10 +4,10 @@
   "id": "CLOUD.84",
   "claimant": "w-deku-20261009-cloud-84",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-09T19:35:38Z",
-  "updatedAt": "2026-10-10T11:43:58Z",
-  "leaseUntil": "2026-10-11T11:43:58Z",
+  "updatedAt": "2026-10-10T12:24:47Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Cloud",
     "branch": "task/cloud-84",
@@ -29,6 +29,6 @@
       "plan the task, then push the task branch at the first checkpoint"
     ],
     "host": "deku",
-    "note": "Follow-up Cloud #89 merged; main deploy then proof deploy (D11)"
+    "note": "Ledger Plan #476 (335c20fc) delivered (D13); proof deploy D11 38050068108 done; rulings S49; open: HAR.40 live proofs, signed proof ops, residuals per record"
   }
 }
