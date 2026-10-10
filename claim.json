@@ -3,13 +3,13 @@
   "kind": "role",
   "id": "integration:Design",
   "claimant": "w-deku-20261008-coord",
-  "epoch": 1,
-  "state": "released",
-  "claimedAt": "2026-10-08T14:17:15Z",
-  "updatedAt": "2026-10-09T22:59:33Z",
-  "leaseUntil": null,
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-10T09:49:47Z",
+  "updatedAt": "2026-10-10T09:49:47Z",
+  "leaseUntil": "2026-10-10T17:49:47Z",
   "handoff": {
     "host": "deku",
-    "note": "P2-026 and fix6 merged; re-claim on the next planning repair"
+    "note": "claimed after released by w-deku-20261008-coord epoch 1; review the earlier handoff and commits"
   }
 }
