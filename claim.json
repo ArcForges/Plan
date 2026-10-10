@@ -5,12 +5,12 @@
   "task": "CLOUD.84",
   "claimant": "w-deku-20261009-cloud-84",
   "epoch": 3,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-10T10:42:32Z",
-  "updatedAt": "2026-10-10T11:54:28Z",
-  "leaseUntil": "2026-10-10T15:54:28Z",
+  "updatedAt": "2026-10-10T12:14:09Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "renewed for the CLOUD.84 proof deploy re-run"
+    "note": "CLOUD.84 D11: deploy 38046437337 failed (env.proof.main); fixed by #89; deploy 38050068108 success (proof Worker 84ce5952), observe 38050648279 success"
   }
 }
