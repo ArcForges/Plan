@@ -6,7 +6,7 @@ This list is an index for reading and selection; its order is not a schedule. `p
 lists what may be claimed now from the merged graph, ledger and claims. Each task's self-contained prompt is in
 the lane file linked from its section, and `arcforges-implementation.md` is the procedure.
 
-Tasks: 432 in 25 lanes, plus 50 adoption slices listed in the adoption section. 35 more are out of scope under P2-026; they are listed at the end and have no prompt.
+Tasks: 433 in 25 lanes, plus 50 adoption slices listed in the adoption section. 35 more are out of scope under P2-026; they are listed at the end and have no prompt.
 
 ## Adoption stage — [prompts](tasks/adoption.md)
 
@@ -40,7 +40,7 @@ Tasks: 432 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | ADOPT.02.release | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Release readiness and family release (2) |
 | ADOPT.02.runtime-proofs | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Runtime proofs (3) |
 | ADOPT.02.updater | DesktopPlatform | S | ADOPT.01 | Adopt DesktopPlatform: Desktop distribution and update (8) |
-| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (26) |
+| ADOPT.03.contracts | Contracts | S | ADOPT.01 | Adopt Contracts: Contracts schema closures (27) |
 | ADOPT.03.extensions | Contracts | S | ADOPT.01 | Adopt Contracts: Extension platform and integrations (1) |
 | ADOPT.03.governance | Contracts | S | ADOPT.01 | Adopt Contracts: Family governance and policy tests (2) |
 | ADOPT.03.release | Contracts | S | ADOPT.01 | Adopt Contracts: Release readiness and family release (1) |
@@ -131,6 +131,7 @@ Tasks: 432 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | CON.40 | Contracts | L | WEB.40, AND.40, ADOPT.03.contracts (adoption) | C#-only SDK standardization: stop TypeScript and Kotlin/Maven publication after consumer migration; keep @arcforges/ai-internal |
 | CON.41 | Contracts | S | CON.18, CON.07, CON.40, ADOPT.03.contracts (adoption) | Publish the public operation metadata in the PublicApi package |
 | CON.42 | Contracts | S | CON.40, ADOPT.03.contracts (adoption) | Remove the retired Kotlin, Maven and TypeScript pipeline residue from Contracts |
+| CON.43 | Contracts | M | CON.06, CON.04, CON.05, CON.25, CON.18, ADOPT.03.contracts (adoption) | Generated local-operation decoders |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
@@ -213,7 +214,7 @@ Tasks: 432 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | PLT.52 | DesktopPlatform | L | PLT.31, PLT.49, ADOPT.02.platform (adoption) | Desktop diagnostics and consent |
 | PLT.53 | DesktopPlatform | S | PLT.47, PLT.48, PLT.49, PLT.50, PLT.51, PLT.52, ADOPT.02.platform (adoption) | Publish Observability packages and verify real integration |
 | PLT.57 | DesktopPlatform | M | PLT.24, PLT.38, APP.01, PLT.44, ADOPT.02.platform (adoption) | End-to-end capability invocation with real security enforcement inside one product |
-| PLT.58 | DesktopPlatform | M | CON.40, ADOPT.02.platform (adoption) | DesktopPlatform consumes the C#-only Contracts candidate |
+| PLT.58 | DesktopPlatform | M | CON.40, CON.41, CON.43, ADOPT.02.platform (adoption) | DesktopPlatform consumes the C#-only Contracts candidate |
 
 ## Native producers and probes — [prompts](tasks/native.md)
 
@@ -235,7 +236,7 @@ Tasks: 432 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 |---|---|---|---|---|
 | APP.01 | DesktopPlatform | M | CON.02, PLT.17, FND.02, FND.01, ADOPT.02.app-composition (adoption) | Assistant.Abstractions host ports and application identity |
 | APP.02 | ArcScope | M | APP.01, PLT.24, PLT.38, ADOPT.05.app-composition (adoption) | Minimal ArcScope application services (read/create/append annotations) |
-| APP.03 | ArcScope | L | APP.01, APP.02, PRF.04, NAT.01, PLT.44, PLT.24, PLT.38, PLT.57, PLT.58, PLT.32, ADOPT.05.app-composition (adoption) | Clean Native AOT package-consumer composition for ArcScope |
+| APP.03 | ArcScope | L | APP.01, APP.02, PRF.04, NAT.01, PLT.44, PLT.24, PLT.38, PLT.57, PLT.58, PLT.32, CON.43, ADOPT.05.app-composition (adoption) | Clean Native AOT package-consumer composition for ArcScope |
 | APP.04 | DesktopPlatform | S | APP.02, FND.02, FND.03, ADOPT.02.app-composition (adoption) | Idempotency and revision against the real store |
 | APP.05 | DesktopPlatform | M | APP.01, PLT.39, ADOPT.02.app-composition (adoption) | Approval at the owner |
 | APP.06 | DesktopPlatform | M | APP.01, PLT.21, PLT.22, PLT.41, ADOPT.02.app-composition (adoption) | Context and artifact integration |
