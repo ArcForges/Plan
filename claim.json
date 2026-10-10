@@ -6,23 +6,27 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-10T09:51:27Z",
-  "updatedAt": "2026-10-10T09:51:27Z",
-  "leaseUntil": "2026-10-11T15:51:27Z",
+  "updatedAt": "2026-10-10T16:04:31Z",
+  "leaseUntil": "2026-10-11T16:04:31Z",
   "handoff": {
     "repository": "Contracts",
     "branch": "task/con-40",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "C1-C7 committed locally (c1eb778 d64a655 17d16e8 5ac2995 6106207 d078d3b 7aeea9d); 3 Opus review rounds: only material finding gitleaks (S50)",
+      "Owner removed the required check CodeQL (java-kotlin) from Contracts main; verified read-only (S50(5) cleared)"
+    ],
     "validation": [],
-    "worktree": null,
+    "worktree": "Contracts/.worktree/con-40",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan the task, then push the task branch at the first checkpoint"
+      "S50 continuation (workflow wsemyb3p5): C8 eng/policy/publication-stops/con-40.json, S50(2) fixes, S50(3) exact-row gitleaks commit last, delta review by w-deku-20261008-rev-con-40",
+      "Coordinator: push task/con-40, open the PR (DCO, ADP-07 supporting files and follow-ups in the body), post the review record, hosted CI, merge with --match-head-commit under integration:Contracts, verify the main-push NuGet and ai-internal publication (nothing unpublished), ledger (delivered)"
     ],
     "host": "deku",
-    "note": null
+    "note": "CLOUD.84 delivered (Plan #476), so the S47(13) hold is lifted"
   }
 }
