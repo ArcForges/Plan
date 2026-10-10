@@ -4,12 +4,12 @@
   "id": "integration:Cloud",
   "claimant": "w-deku-20261008-coord",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-09T16:23:21Z",
-  "updatedAt": "2026-10-10T10:31:27Z",
-  "leaseUntil": "2026-10-10T22:31:27Z",
+  "updatedAt": "2026-10-10T12:25:09Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "renewed for the CLOUD.84 merge, deploy and proof deploy"
+    "note": "Phase-2 Cloud merges done (CLOUD.84 #83/#89, deploys verified); no further Cloud merges in scope"
   }
 }
