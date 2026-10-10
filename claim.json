@@ -5,12 +5,12 @@
   "task": "CLOUD.85",
   "claimant": "w-deku-20261009-cloud-85",
   "epoch": 2,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-10T00:20:00Z",
-  "updatedAt": "2026-10-10T00:20:00Z",
-  "leaseUntil": "2026-10-10T03:20:00Z",
+  "updatedAt": "2026-10-10T00:49:48Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": "claimed after released by w-deku-20261009-cloud-85 epoch 1; review the earlier handoff and commits"
+    "note": "CLOUD.85 follow-up proof redeploy: observe 38008603235, deploy 38009326285 (proof Worker 0de3e45a, web-0.1.0-ci.117.1), observe 38010034909 success"
   }
 }
