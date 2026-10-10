@@ -6,13 +6,14 @@
   "epoch": 2,
   "state": "claimed",
   "claimedAt": "2026-10-10T21:21:54Z",
-  "updatedAt": "2026-10-10T21:22:58Z",
-  "leaseUntil": "2026-10-11T21:22:58Z",
+  "updatedAt": "2026-10-10T23:00:59Z",
+  "leaseUntil": "2026-10-11T23:00:59Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "AI:task/har-40",
     "prs": [
-      "https://github.com/ArcForges/Cloud/pull/80"
+      "https://github.com/ArcForges/Cloud/pull/80",
+      "https://github.com/ArcForges/AI/pull/36"
     ],
     "merges": [
       "ccf7bcdf7d8502c7db3fa644738908bf912a7f9f"
@@ -22,11 +23,11 @@
     ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\AI\\.worktree\\har-40",
-    "head": "3e022f8fe99645fcf030d2040226859fc6b03f8a",
-    "reviewed": "3e022f8fe99645fcf030d2040226859fc6b03f8a",
+    "head": "600abae0df60cc552a27ade77853c80139fe3d0a",
+    "reviewed": "600abae0df60cc552a27ade77853c80139fe3d0a",
     "blocker": null,
     "next": [
-      "cleanup 5.2 retirement PR in AI (S57(17)); review w-deku-20261010-rev-har-40; merge after fix8; then dry-run and delete dispatch; ledger"
+      "hosted CI; merge after fix8 under integration:AI; then retire-cloudflare dry-run and delete dispatch; ledger"
     ],
     "host": "deku",
     "note": "completion follow-up epoch 2: arcforges-ai-hello retirement under user authority brief 0d 5.2"
