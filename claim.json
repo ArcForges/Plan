@@ -6,10 +6,10 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T16:23:21Z",
-  "updatedAt": "2026-10-09T23:00:29Z",
-  "leaseUntil": "2026-10-10T11:00:29Z",
+  "updatedAt": "2026-10-10T10:31:27Z",
+  "leaseUntil": "2026-10-10T22:31:27Z",
   "handoff": {
     "host": "deku",
-    "note": "renewed for CLOUD.84 and the CLOUD.85 follow-up"
+    "note": "renewed for the CLOUD.84 merge, deploy and proof deploy"
   }
 }
