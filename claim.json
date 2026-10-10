@@ -6,21 +6,23 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-10T20:02:31Z",
-  "updatedAt": "2026-10-10T20:08:25Z",
-  "leaseUntil": "2026-10-11T20:08:25Z",
+  "updatedAt": "2026-10-10T22:47:42Z",
+  "leaseUntil": "2026-10-11T22:47:42Z",
   "handoff": {
     "repository": "ArcScope",
     "branch": "ArcScope:task/app-02",
     "prs": [],
     "merges": [],
-    "done": [],
+    "done": [
+      "part A local commits through e94d313 (closure S56, model, SQLite store; 216 tests)"
+    ],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges$3\\.worktree$4",
     "head": null,
     "reviewed": null,
     "blocker": null,
     "next": [
-      "plan, implement units by local commits (Opus workflow), CI-equivalent gates, independent exact-head review w-deku-20261010-rev-app-02; then coordinator push, PR, CI, merge"
+      "part B after PLT.46 and PLT.58 publish (S53(1), S56(5), S58)"
     ],
     "host": "deku",
     "note": "resume run 2026-10-10 (brief 0d); coordinator-held claim, local-only agent"
