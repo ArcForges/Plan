@@ -4,10 +4,10 @@
   "id": "WEB.40",
   "claimant": "w-deku-20261008-web-40",
   "epoch": 2,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-09T21:34:02Z",
-  "updatedAt": "2026-10-09T23:04:55Z",
-  "leaseUntil": "2026-10-10T23:04:55Z",
+  "updatedAt": "2026-10-10T02:01:41Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Web",
     "branch": "task/web-40",
@@ -32,6 +32,6 @@
       "record completion by editing the ledger record through a reviewed Plan pull request"
     ],
     "host": "deku",
-    "note": "Follow-up Web #38 merged 049f6a58 (--match-head-commit 6795f18); main run and release being verified"
+    "note": "Ledger Plan #474: S36/S37 follow-up recorded; status delivered (other follow-ups open)"
   }
 }
