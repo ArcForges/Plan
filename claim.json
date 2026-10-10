@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Design",
-  "claimant": "w-deku-20261008-coord",
-  "epoch": 2,
-  "state": "released",
-  "claimedAt": "2026-10-10T09:49:47Z",
-  "updatedAt": "2026-10-10T09:51:55Z",
-  "leaseUntil": null,
+  "claimant": "w-deku-20261010-coord",
+  "epoch": 3,
+  "state": "claimed",
+  "claimedAt": "2026-10-10T20:32:38Z",
+  "updatedAt": "2026-10-10T20:32:38Z",
+  "leaseUntil": "2026-10-11T08:32:38Z",
   "handoff": {
     "host": "deku",
-    "note": "fix7 merged"
+    "note": "claimed after released by w-deku-20261008-coord epoch 2; review the earlier handoff and commits"
   }
 }
