@@ -126,3 +126,40 @@ Under the user's scope correction of 2026-10-09 (planning repair P2-026, merged 
 - **Retired tests without successors:** `tests/browser/cloud-hello-fixture.spec.ts` (Gap 2), retired by the brief section 10 adjudication and not tested by any successor.
 - **Write scope and naming carrier:** the write-scope comparison is path-level only. The 40 unbound rows were not reviewed for content or ADP-07 eligibility. I read `ci.yml` at head `c58e528` and the main-push run 37945013754 log only for the Policy.Tests assembly result. I found no separate naming step, and I did not run `check_naming` or `NamingScannerTests` locally. Per-test names of `NamingScannerTests` are not in any log I read.
 - **Candidate seal:** the C# candidate builder and verifier, and the Node `tooling/candidate.ts` verify step, were not run locally. Their hosted runs are the candidate job in run 37945013754 (success). No reproduction of the sealed bytes outside CI was done.
+
+## Completion follow-up (2026-10-10, epoch 2, DLV-41): S36 and S37
+
+Claimant `w-deku-20261008-web-40`, epoch 2. This section appends to the first delivery's record and does not rewrite it. It applies brief section 11, S36(1) and S37: the profile CSP `base-uri` changes from `'none'` to `'self'`, so the Account and Chat shells' `<base href="/">` is admitted, and the vestigial Tailwind preamble of the profile stylesheets is removed. The status stays `delivered`, for the reasons in the last section below.
+
+- **Pull request.** Web [PR #38](https://github.com/ArcForges/Web/pull/38), "[WEB.40] Profile CSP base-uri 'self' and plain profile stylesheets (completion follow-up)":
+  - S36, the profile policy only (`WasmContentSecurityPolicy`): `base-uri 'none'` becomes `base-uri 'self'`. Every other token is unchanged. The Site policy keeps `base-uri 'none'`. The tests and docs that pin the string are updated.
+  - S37, `src/ArcForges.Web.App/wwwroot/app.css` and `src/ArcForges.Web.Operations/wwwroot/app.css`: the `@import "tailwindcss"`, `@source` and `@theme` lines are removed, and the `@theme` variables become plain `:root` custom properties with the same values. A new test asserts that no profile stylesheet carries a Tailwind at-rule.
+  - Approved at head `6795f18a30e75ccfb8982544fe54f4b8ecffd540` by the independent session `w-deku-20261008-rev-web-40` (comment [6090682142](https://github.com/ArcForges/Web/pull/38#issuecomment-6090682142), 2026-10-09T22:57:50Z). The approval is an exact-head review at `2523056` for S36 plus a delta review at `6795f18` for S37. Approvals are comments under one GitHub account, so independence is by session only.
+  - Merged as `049f6a58583c2b88ed03232d7d18bb975c428a95` on `main` at 2026-10-09T23:04:33Z.
+- **Hosted runs** (in `ArcForges/Web`; job conclusions read with `gh run view`, log lines grepped, no secret printed):
+  - Main CI run [38002575489](https://github.com/ArcForges/Web/actions/runs/38002575489) (push, head `049f6a58`) succeeded, including Dependency audit and repository checks, both Source jobs, the CodeQL jobs, the C# restore, build, test and publish jobs, Build and verify the C# static candidate and profile bundle, Verify and Deploy Cloudflare.
+  - Its Deploy Cloudflare job logged `Candidate verified: 0.1.0-ci.117.1 049f6a58583c2b88ed03232d7d18bb975c428a95 (20 members)` and `Current Version ID: 58219e30-53ca-4332-9775-9f368ba3b130`.
+  - Release `web-0.1.0-ci.117.1` (prerelease, not a draft, published 2026-10-09T23:12:27Z, target `049f6a58`) carries `web-profiles-2070acd93565eceb190f872505c85fcd6c40ef71643aff4924ba1f026ff87001.tar` (18636800 bytes), the Account and Chat profile bundle, and `web-site-735374a56bce3e63dabcb0a4abaa25a1d6ae23a0890eade5c8273bf110bfb0a8.tar` (26112 bytes), the C# public Site. Read with `gh release view`. The bytes were not downloaded here.
+  - The CLOUD.85 follow-up pins this release (CLOUD.85 record, completion follow-up).
+- **Browser boot checks** (reviewer-reported in PR #38 and comment 6090682142, installed Chrome 156 headless, no download; this author did not re-run them):
+  - On the parent `c8588681`: one CSP violation per shell, and both shells stay on Loading.
+  - At `2523056` (S36): 0 CSP violations, and both app roots render. The only non-2xx is `/session/v1/bootstrap`, a session API outside this static check.
+  - At `6795f18` (S37): 0 CSP violations, no static-asset 404, no refused stylesheet, the Segoe UI font stack, and both roots rendered.
+- **Gates** (reviewer-reported): at `2523056`, tests Tooling 52, Site 75 with 1 skip, Ui 15, App 72, Operations 5, Policy 108; the twice-built candidate is identical and verifies; the profile bundle verifies; npm test 94; audit 0; gitleaks 0. At `6795f18`, App 73, Operations 6, Ui 15, format, budget, bundle and npm test 94 pass. `npm run policy` was not run locally (Node 24.20 against the 24.21 pin); the hosted Source job is authoritative.
+- **Gap 1** (the CLOUD.71/CLOUD.85 bundle-naming note, S28(j)) is closed by CLOUD.85's record. The first delivery's naming note pinned release `web-0.1.0-ci.111.1`, and the CLOUD.85 completion follow-up moves both pins to `web-0.1.0-ci.117.1`, the release above.
+
+### Status and open follow-ups
+
+`status` stays `delivered`. These S28(j) follow-ups stay open, each with its next action:
+
+- The doc follow-ups of gaps 2 and 3: the cloud-hello fixture retirement record and the app-routes status text (gap 2), and the stale sentence in `docs/web-40-site-parity.md` (gap 3). Next action: correct the three documents in a Web docs change.
+- Gap 4, the rollback operator run: a live operator step for the user, now against the live public Site. Next action: the user runs it.
+- Gap 6, the WSL2 Debian Linux checks at the merged head. Next action: run them once in WSL2 Debian on a Linux-native filesystem.
+- Gap 7, the local opt-in browser suites at the merged head with the installed Chrome. Next action: run them at `049f6a58` or a later merged head and record the Chrome build.
+
+### Untested coverage after this follow-up
+
+- The browser boot checks are reviewer-reported. This author did not run a browser against the release.
+- The release bytes were not downloaded or read here. The digests are the deploy job's verified lines and the release listing.
+- The S37 removal is covered by the new test and the reviewer's boot check. The rendered page was not compared with the first delivery's page beyond the reviewer's notes.
+- Gap 4 and the gap 7 browser suites are not run by this author.

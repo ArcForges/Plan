@@ -1,6 +1,6 @@
 ---
 task: CLOUD.85
-status: delivered
+status: complete
 recorded: 2026-10-09
 claimant: w-deku-20261009-cloud-85
 epoch: 1
@@ -85,3 +85,38 @@ epoch: 1
 - **Independence.** All approvals, the PR and the merge are under one GitHub account (`deku2026`). Independence rests on the separate reviewer session `w-deku-20261009-rev-cloud-85`.
 - **Coordinator-reported facts.** The `--match-head-commit` flag, the `integration:Cloud` role and the `RES-cloud-deployment` lease are coordinator-reported. The two-parent merge commit is verified.
 - **Production.** Production serves no assets, so the static-assets behaviour is not observed in production.
+
+## Completion follow-up (2026-10-10, epoch 2, DLV-41): S36 follow-up evidence
+
+This section appends to the first delivery's record and does not rewrite it. The first delivery's pins to `web-0.1.0-ci.111.1` and its gaps stand as history, except where this section says otherwise. The follow-up is the CLOUD.85 part of brief section 11, S36(2): the verifier's expected profile policy uses `base-uri 'self'`, the Site expectation is unchanged, and the pins move to the corrected Web release. Claimant `w-deku-20261009-cloud-85`, epoch 2.
+
+- **Pull request and merge** (job- and API-observed by this author; approval text read from the PR comment):
+  - Cloud [PR #82](https://github.com/ArcForges/Cloud/pull/82), "[CLOUD.85] Expect base-uri 'self' for profiles and pin web-0.1.0-ci.117.1 (completion follow-up)", head branch `task/cloud-85`, was approved at head `34aa2f9c9be2a23cb14c59a5abf1f32fa0fa2230` (comment [6091077429](https://github.com/ArcForges/Cloud/pull/82#issuecomment-6091077429), 2026-10-09T23:34:58Z) and merged as `3c59ce34413c94c86ce400fd2950b6372d45abbd` on `main` at 2026-10-10T00:09:24Z. The merge commit message is "Merge pull request #82 from ArcForges/task/cloud-85".
+  - The approving comment is an independent exact-head review by the session `w-deku-20261009-rev-cloud-85`. It reports 2 commits and 3 files, all inside the CLOUD.85 writes; no `wrangler.json` or production configuration change; and no `111.1` pin string left. The reviewer ran four mutation checks in a scratch copy, and each made an intended test fail. The approval and the merge are under one GitHub account, so independence rests on the session, as in the first delivery.
+  - Pins on `main` at `3c59ce34`, read with `gh api` and checked by this author: `eng/verification/proof-deploy.ts` names release `web-0.1.0-ci.117.1` at line 29 (profile bundle, digest `2070acd93565eceb190f872505c85fcd6c40ef71643aff4924ba1f026ff87001`, line 30) and at line 39 (Site, digest `735374a56bce3e63dabcb0a4abaa25a1d6ae23a0890eade5c8273bf110bfb0a8`, line 40). The release is Web's `web-0.1.0-ci.117.1` (prerelease, target `049f6a58583c2b88ed03232d7d18bb975c428a95`, published 2026-10-09T23:12:27Z); its profile tar is 18636800 bytes and its Site tar is 26112 bytes. The bytes were not downloaded here.
+  - The reviewer explains the Site digest change from the Web source: `SiteBuilder.SourceUrl` embeds `--source-ref $GITHUB_SHA`, and there is zero Site source diff between Web `c8588681` and `049f6a58`.
+- **Offline gates in Cloud**: the approving comment reports npm test 830, dotnet test 1399 passed and 1 skipped, format, lint, typecheck, policy, provenance, licence and dependency checks, and dotnet build with 0 warnings. These are reviewer-reported; this author did not re-run them.
+- **Hosted runs** (all in `ArcForges/Cloud`; job conclusions read with `gh run view --json`, log lines grepped, no secret printed):
+  - Main CI run [38007806283](https://github.com/ArcForges/Cloud/actions/runs/38007806283) (push, head `3c59ce34`, created 2026-10-10T00:09:26Z) succeeded: Dependency audit and repository checks, both Source jobs, the CodeQL jobs, Native AOT image and Worker build, Verify and Deploy Cloudflare (production). Deploy Cloudflare proof environment was skipped on the push.
+  - Proof observe run [38008603235](https://github.com/ArcForges/Cloud/actions/runs/38008603235) (workflow_dispatch, 2026-10-10T00:20:16Z) succeeded, including Proof Cloudflare access and resources.
+  - Proof deploy run [38009326285](https://github.com/ArcForges/Cloud/actions/runs/38009326285) (workflow_dispatch, 2026-10-10T00:30:14Z) succeeded. Its job "Deploy Cloudflare proof environment" logged, in order: `Web web-0.1.0-ci.117.1: profile bundle 2070acd9… and Site 735374a5… verified`; `No migrations to apply!`; `Read 183 files from the assets directory`; `Found 15 new or modified static assets to upload`; `Success! Uploaded 15 files (161 already uploaded)`; `Pushed image: …arcforges-cloud:ci.339.1`; `Current Version ID: 0de3e45a-adbd-4eb0-ac8a-76a7dc223892`; and `Proof environment deployed at https://proof.arcforges.com. This is deployment completion, not live acceptance evidence.` The Worker version named here is the proof Worker version. The container image `ci.339.1` is a new image from this redeploy. The record reports the rollout and does not assess it, as in the first delivery.
+  - Closing observe run [38010034909](https://github.com/ArcForges/Cloud/actions/runs/38010034909) (workflow_dispatch, 2026-10-10T00:40:11Z) succeeded, including Proof Cloudflare access and resources.
+  - The `RES-cloud-deployment` lease facts (epoch 2, claimant `w-deku-20261009-cloud-85`, released after the run) are coordinator-reported.
+- **Live checks by this author**, read-only `GET` on 2026-10-10 against `https://proof.arcforges.com`:
+  - `/account/` and `/chat/` return 200 `text/html` with exactly one `Content-Security-Policy` header, with `script-src 'self' 'wasm-unsafe-eval'` and `base-uri 'self'`. Each shell carries `<base href="/" />`.
+  - `/` returns 200 with the Site policy: `script-src 'self'` with no WebAssembly token, and `base-uri 'none'`.
+  - `/app.css` returns 200 `text/css`. The coordinator's L3 check reported the same results; this author re-read them.
+- **Browser boot check on the proof origin.** S36 and the validation clause assign the deployed-origin browser run to PRF.11's local opt-in acceptance. That run is recorded in Web `docs/prf-11-profile-proof.md` at Web `dd0a5de3` (merged 2026-10-10T01:45:42Z) and in `ledger/tasks/prf-11.md`. Its result, one local run in installed Chrome 156.0.8078.12: 4 specs, 2 passed and 2 skipped. The passed specs are the HTTP shell check (exact profile CSP, one `<base href="/">`, framework 200 at the root) and the in-browser check (0 CSP violations on `/account/` and `/chat/`, and the heading in `#app h1` rendered on both). The skipped specs are blocked on CLOUD.21 and CLOUD.22.
+- **Gap status after this follow-up** (against the status rule in the first delivery's Scope section):
+  1. **PRF.11 cites this task: met.** The clause is closed by the line below.
+  2. **D4 live check, header level: met.** The composed headers on the profile and Site routes are observed above.
+  3. **Browser-level acceptance of the profiles: met for the local run.** The shells load in Chrome 156, with no CSP violation and the app heading rendered. The same-origin result of the in-browser spec is inferred from the render, because the spec records no request trace. The greeting round trip and interaction timings belong to PRF.11 and are not CLOUD.85 clauses.
+- **Closed evidence clause.** "PRF.11's deployed proof-origin same-origin and base-href record cites this task" is met. Web `docs/prf-11-profile-proof.md` at `dd0a5de3`, line 309, reads: "This record cites CLOUD.85. It is the PRF.11 deployed proof-origin same-origin and base-href record that the CLOUD.85 evidence clause requires (the S36 follow-up, Cloud #82, deployed at `3c59ce34`)."
+- **Status decision.** `status: complete`. The outcome (serving under base href `/`, Worker-first routes, the exact CSP per surface), the validation (offline tests in Cloud CI; deployed-origin checks recorded by PRF.11's local opt-in run) and the evidence clause are each met, and the CLOUD.85 completion-prerequisite list is empty.
+
+### Untested coverage after this follow-up
+
+- The first delivery's untested coverage still stands, except where the bullets above observe the same thing. In particular, the composed `_headers` and the shell body are now observed on the proof origin, but route precedence is not tested live for every route family.
+- The live browser run is one local run by the claimant. The reviewer re-ran it with the same result. It is not a CI result.
+- The proof container image `ci.339.1` from this redeploy is reported and not assessed. The CLOUD.85 write list names no container file.
+- Carried from the first delivery, outside phase 2: the verifier coverage gaps of S32(c). The Node 24.21 pin is not met locally (local Node 24.20); the hosted Source job is the authority.
