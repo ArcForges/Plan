@@ -128,7 +128,7 @@ Tasks: 426 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | CON.92 | Contracts | M | — | WP03.02 — serialization posture (accepted, historical) |
 | CON.24 | Contracts | M | CON.02, CON.23, CON.03, ADOPT.03.contracts (adoption) | ArcScope library read operations and summary records |
 | CON.25 | Contracts | M | CON.02, CON.05, CON.10, CON.21, ADOPT.03.contracts (adoption) | Public ConnectorService, the local call context and the af-segment records |
-| CON.40 | Contracts | L | WEB.40, AND.40, CLOUD.84, ADOPT.03.contracts (adoption) | C#-only SDK standardization: stop TypeScript and Kotlin/Maven publication after consumer migration; keep @arcforges/ai-internal |
+| CON.40 | Contracts | L | WEB.40, AND.40, ADOPT.03.contracts (adoption) | C#-only SDK standardization: stop TypeScript and Kotlin/Maven publication after consumer migration; keep @arcforges/ai-internal |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
