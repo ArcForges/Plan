@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "APP.02",
+  "claimant": "w-deku-20261010-app-02",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-10T20:02:31Z",
+  "updatedAt": "2026-10-10T20:02:31Z",
+  "leaseUntil": "2026-10-11T20:02:31Z",
+  "handoff": {
+    "repository": "ArcScope",
+    "branch": "task/app-02",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "plan the task, then push the task branch at the first checkpoint"
+    ],
+    "host": "deku",
+    "note": null
+  }
+}
