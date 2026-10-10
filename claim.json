@@ -6,23 +6,25 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T19:35:38Z",
-  "updatedAt": "2026-10-09T19:35:38Z",
-  "leaseUntil": "2026-10-11T01:35:38Z",
+  "updatedAt": "2026-10-10T08:12:51Z",
+  "leaseUntil": "2026-10-11T08:12:51Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/cloud-84",
-    "prs": [],
+    "prs": [
+      "https://github.com/ArcForges/Cloud/pull/83"
+    ],
     "merges": [],
     "done": [],
     "validation": [],
     "worktree": null,
-    "head": null,
-    "reviewed": null,
+    "head": "a7eb346327a9fb5d26952f46709cbf09269ed760",
+    "reviewed": "a7eb346327a9fb5d26952f46709cbf09269ed760",
     "blocker": null,
     "next": [
       "plan the task, then push the task branch at the first checkpoint"
     ],
     "host": "deku",
-    "note": null
+    "note": "Cloud #83 opened at a7eb346 (U1-U12; rulings S33-S46), approved by w-deku-20261009-rev-cloud-84; hosted CI pending"
   }
 }
