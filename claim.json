@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T18:37:56Z",
-  "updatedAt": "2026-10-10T01:37:56Z",
-  "leaseUntil": "2026-10-11T01:37:56Z",
+  "updatedAt": "2026-10-10T01:45:55Z",
+  "leaseUntil": "2026-10-11T01:45:55Z",
   "handoff": {
     "repository": "Web",
     "branch": "task/prf-11",
     "prs": [
       "https://github.com/ArcForges/Web/pull/39"
     ],
-    "merges": [],
+    "merges": [
+      "dd0a5de3e625086189a2e7d0fc3f3f4b70013178"
+    ],
     "done": [],
     "validation": [],
     "worktree": null,
@@ -25,6 +27,6 @@
       "plan the task, then push the task branch at the first checkpoint"
     ],
     "host": "deku",
-    "note": "Web #39 opened at 7c668b8, approved (offline U1-U9 plus local live run: 2 shell specs passed on the proof origin; cloud specs blocked on CLOUD.21/22)"
+    "note": "Web #39 merged; main run and release being verified; ledger next"
   }
 }
