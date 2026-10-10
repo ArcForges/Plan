@@ -6,11 +6,11 @@
   "epoch": 2,
   "state": "claimed",
   "claimedAt": "2026-10-10T21:21:54Z",
-  "updatedAt": "2026-10-10T21:21:54Z",
-  "leaseUntil": "2026-10-11T21:21:54Z",
+  "updatedAt": "2026-10-10T21:22:58Z",
+  "leaseUntil": "2026-10-11T21:22:58Z",
   "handoff": {
     "repository": "Cloud",
-    "branch": "task/har-40",
+    "branch": "AI:task/har-40",
     "prs": [
       "https://github.com/ArcForges/Cloud/pull/80"
     ],
@@ -21,15 +21,14 @@
       "work-in-progress commits pushed (step 1)"
     ],
     "validation": [],
-    "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\har-40",
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\AI\\.worktree\\har-40",
     "head": "3e022f8fe99645fcf030d2040226859fc6b03f8a",
     "reviewed": "3e022f8fe99645fcf030d2040226859fc6b03f8a",
     "blocker": null,
     "next": [
-      "perform the remaining acceptance for the scenarios the completion prerequisites name",
-      "record completion by editing the ledger record through a reviewed Plan pull request"
+      "cleanup 5.2 retirement PR in AI (S57(17)); review w-deku-20261010-rev-har-40; merge after fix8; then dry-run and delete dispatch; ledger"
     ],
     "host": "deku",
-    "note": "completion follow-up (DLV-41)"
+    "note": "completion follow-up epoch 2: arcforges-ai-hello retirement under user authority brief 0d 5.2"
   }
 }
