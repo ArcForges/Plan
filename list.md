@@ -373,7 +373,7 @@ Tasks: 432 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | CLOUD.22 | Cloud | M | CLOUD.21, ADOPT.07.cloud (adoption) | Typed protocol and error mapping |
 | CLOUD.23 | Cloud | M | CLOUD.21, CON.91, CLOUD.22, ADOPT.07.cloud (adoption) | Typed queries and revision preconditions |
 | CLOUD.24 | Cloud | M | CLOUD.21, ADOPT.07.cloud (adoption) | Idempotency and rate limiting |
-| CLOUD.25 | Cloud | M | CLOUD.21, PRF.07, ADOPT.07.cloud (adoption) | Resource transport schema and future-owner boundary |
+| CLOUD.25 | Cloud | M | CLOUD.21, PRF.07, CON.09, ADOPT.07.cloud (adoption) | Resource transport schema and future-owner boundary |
 | CLOUD.26 | Cloud | L | CLOUD.19, CLOUD.22, CLOUD.86, ADOPT.07.cloud (adoption) | Generated C# clients (native and Grpc.Net.Client.Web browser) against Identity/Workspace/Device |
 | CLOUD.27 | Cloud | M | CLOUD.26, ADOPT.07.cloud (adoption) | Compatibility window and bidirectional matrix |
 | CLOUD.28 | Cloud | L | AND.07, WEB.30, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration |
