@@ -6,8 +6,8 @@
   "epoch": 2,
   "state": "claimed",
   "claimedAt": "2026-10-09T23:01:04Z",
-  "updatedAt": "2026-10-09T23:35:10Z",
-  "leaseUntil": "2026-10-10T23:35:10Z",
+  "updatedAt": "2026-10-10T00:09:39Z",
+  "leaseUntil": "2026-10-11T00:09:39Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/cloud-85",
@@ -16,7 +16,8 @@
       "https://github.com/ArcForges/Cloud/pull/82"
     ],
     "merges": [
-      "3980212301349c71442cc3eb9bc9f410fbf5458d"
+      "3980212301349c71442cc3eb9bc9f410fbf5458d",
+      "3c59ce34413c94c86ce400fd2950b6372d45abbd"
     ],
     "done": [],
     "validation": [],
@@ -29,6 +30,6 @@
       "record completion by editing the ledger record through a reviewed Plan pull request"
     ],
     "host": "deku",
-    "note": "Follow-up Cloud #82 at 34aa2f9 approved; hosted CI pending; proof redeploy after merge"
+    "note": "Follow-up Cloud #82 merged; main deploy then proof redeploy"
   }
 }
