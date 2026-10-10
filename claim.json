@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-09T19:35:38Z",
-  "updatedAt": "2026-10-10T10:23:11Z",
-  "leaseUntil": "2026-10-11T10:23:11Z",
+  "updatedAt": "2026-10-10T10:31:59Z",
+  "leaseUntil": "2026-10-11T10:31:59Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "task/cloud-84",
     "prs": [
       "https://github.com/ArcForges/Cloud/pull/83"
     ],
-    "merges": [],
+    "merges": [
+      "837fb29f2509b1fa7117948dbd48fa9f805bd502"
+    ],
     "done": [],
     "validation": [],
     "worktree": null,
@@ -25,6 +27,6 @@
       "plan the task, then push the task branch at the first checkpoint"
     ],
     "host": "deku",
-    "note": "NU1004 fix (non-single-file sealed tool) approved at ffd9cea; pushed; hosted CI rerunning"
+    "note": "Cloud #83 merged (--match-head-commit ffd9cea); all checks green; main deploy, proof deploy (D11) and ledger next"
   }
 }
