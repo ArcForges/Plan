@@ -4,12 +4,12 @@
   "id": "integration:Contracts",
   "claimant": "w-deku-20261008-coord",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-10T09:51:40Z",
-  "updatedAt": "2026-10-10T09:51:40Z",
-  "leaseUntil": "2026-10-10T21:51:40Z",
+  "updatedAt": "2026-10-10T18:35:28Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "CON.40 merged (Contracts #97 56158219) and published; no further Contracts merges in phase-2 scope"
   }
 }
