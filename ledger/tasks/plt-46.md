@@ -23,7 +23,7 @@ Sources are marked as follows. **Observed** means this author read it from GitHu
   - Design [#350](https://github.com/ArcForges/ArcForges-Design/pull/350): head `8d961a09fa819991f064a9600f4759acd70d078e`, merged as `f4b2299c1b57fb8a9905b9463680cc7bc4686687` at 2026-10-11T01:56:16Z.
   - Plan [#479](https://github.com/ArcForges/Plan/pull/479): head `fa0943b6442648fb2ab716be806a51087d4b2f7e`, merged as `f7cb511a4b58f8d93aec34cd06a19c2e2317e2da` at 2026-10-11T01:56:22Z.
 
-  Both merged before #176 (01:57:58Z), so #176 merged under the fix8 text. The fix8 delta 2 note (S60, S61(6)) added the PLT.66 completion edge. The PLT.45 completion edge is in the record from S57(7). The brief text of S60 and S61(6) says "PLT.58". S61(1) rules that this means PLT.66.
+  Both merged before #176 (01:57:58Z), so #176 merged under the fix8 text. The fix8 delta 2 note (S60, S61(6)) added the PLT.66 completion edge. The PLT.45 completion edge is in the record from S57(7). The brief text of S60 and S61(6) says "PLT.58". S62(1) rules that this means PLT.66.
 - **Implementation** (observed). DesktopPlatform [PR #176](https://github.com/ArcForges/DesktopPlatform/pull/176), "[PLT.46] Publish the four Security packages and record package-level integration evidence", from `task/plt-46`. It changes 15 files (+1308/−43) in three commits:
   - `4a5e1ee9a1df83608837680ca0290164bb03dd4a` appends one new `[[allowlists]]` block to `.gitleaks.toml`, in the S52(2)/S50(3) form:
     - `targetRules ["generic-api-key"]`, `condition "AND"` and `regexTarget "line"`;
@@ -44,7 +44,7 @@ Sources are marked as follows. **Observed** means this author read it from GitHu
     - its `eng/provenance/files.json` row;
     - four `active-projects.json` blob refreshes;
     - the README status lines.
-  - `61e11b7570ba2009fe8dd10ee3239b03841e911c` records the pack and clean-consumer evidence in `plt-46-r1`.
+  - `61e11b7570ba2009fe8dd10ee3239b03841e911c` records the pack and clean-consumer evidence in `plt-46-r1` (+4/-4), plus the `eng/test_desktop_rids.py` fix (+4/-2) and the `eng/policy/dependency-policy.json` mirror (+4/-4).
 
   The PR body also says (claimant-reported) that `d1bb49c` alone fails `eng/test_desktop_rids.py` and `61e11b7` fixes it, so that one commit is not bisect-clean.
 - **ADP-07 supporting files** (observed in the diff; authorised by S52(2)/(3) and the record writes):
@@ -91,7 +91,7 @@ Sources are marked as follows. **Observed** means this author read it from GitHu
     - 21 distinct "Successfully created package" lines at `1.0.0-ci.131.1`, including `ArcForges.Security`, `ArcForges.Security.Audit`, `ArcForges.Security.CapabilityEnforcement` and `ArcForges.Security.Secrets`;
     - "Verified 21 package(s), version 1.0.0-ci.131.1, source fb8577c3d026966368fd71189f370ea43b77ef73.";
     - the `eng/packaging` unit tests: "Ran 31 tests … OK".
-  - Publish job 114366554148 ("Publish the same verified bytes"): 21 "Your package was pushed." lines to `https://www.nuget.org/api/v2/package`, including the four Security pushes at 02:12:30Z to 02:12:33Z, each followed by `Created` and "Your package was pushed.".
+  - publish job 114366554148, step "Publish the same verified bytes": 21 "Your package was pushed." lines to `https://www.nuget.org/api/v2/package`, including the four Security pushes at 02:12:30Z to 02:12:33Z, each followed by `Created` and "Your package was pushed.".
   - The candidate secret-scan job 114364401951 ran pinned `ghcr.io/gitleaks/gitleaks:v8.30.1@sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f` and logged "427 commits scanned." and "no leaks found".
 
   No registry was queried and nothing was downloaded, so indexing and resolution on nuget.org rest on these log lines.
@@ -110,7 +110,7 @@ Sources are marked as follows. **Observed** means this author read it from GitHu
     - ArchitectureTests passed 134 of 134, with one hosted-only test excluded;
     - Capabilities.Tests 77/77, Security.Tests 920/920, Security.Audit.Tests 47/47, and Security.Secrets.Tests 34 passed and 2 skipped (the Credential Manager opt-in);
     - a pack at `d1bb49c` produced nuspec dependency sets equal to the catalogue rows;
-    - a full-history gitleaks scan (pinned image, WSL Docker) found 0.
+    - a full-history gitleaks scan (pinned image, WSL Docker) found 0 (claimant-reported in the PR #176 body, not in the receipt `upgradeChecks`).
   - **Finding (S60).** Registry capability keys such as `IChatOperations.AppendUserMessage` are not canonical `AuditCapabilityId` keys. With the durable sinks behind the gate, an allowed egress of a registry capability is refused (`decision.s08.unavailable`, owner not run, no row), and a lease issue is refused with `AuditUnavailable`. The composition fails closed, and durable audit of registry capabilities is not proven.
 - **WP-11 package-acceptance statement (S52(4))** (observed on Plan `main` at `e327eb69`):
   - PLT.36, PLT.37, PLT.38, PLT.39, PLT.41, PLT.42 and PLT.43 are `complete`.
@@ -123,7 +123,7 @@ Sources are marked as follows. **Observed** means this author read it from GitHu
 - **Rulings applied:**
   - S52 (1) to (4);
   - S57(7), through fix8;
-  - S60 and S61(1)/(6): the fix is owned by PLT.66, and PLT.46 has a completion edge on PLT.66;
+  - S60, S61(6) and S62(1): the fix is owned by PLT.66, and PLT.46 has a completion edge on PLT.66;
   - the merge-order rules of the fix8 delta notes. PLT.46 merged first among PLT.46, PLT.66 and NAT.01, so PLT.66 and NAT.01 rebase on this receipt, gitleaks block and `active-projects.json` rows.
 - **APP.03 and APP.02 part B** consume the four packages only from this main-push candidate (`1.0.0-ci.131.1`, run 38103586975 at `fb8577c3`) or a later DesktopPlatform main candidate. The rolled-back `1.0.0-ci.110.1` to `1.0.0-ci.124.1` versions are never admitted (S53(1)). Combining these packages with `ArcForges.Contracts.LocalRpc.Scope` 324.1 or later still needs the PLT.66 Contracts move (S56(1)), because the cohort pins `ArcForges.Contracts.Foundation 1.0.0-ci.216.1`.
 - **Out of scope, not completed:** packaging of the signed parent-bound helper, the OS broker and the per-RID helper runtime (S52(1)).
