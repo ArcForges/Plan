@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-10T20:02:18Z",
-  "updatedAt": "2026-10-11T01:34:26Z",
-  "leaseUntil": "2026-10-12T01:34:26Z",
+  "updatedAt": "2026-10-11T01:44:58Z",
+  "leaseUntil": "2026-10-12T01:44:58Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "Cloud:task/cloud-72",
     "prs": [
       "https://github.com/ArcForges/Cloud/pull/90"
     ],
-    "merges": [],
+    "merges": [
+      "92ba1dc9603779943b18bb121687b048a4e77dc1"
+    ],
     "done": [],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges$3\\.worktree$4",
@@ -22,7 +24,8 @@
     "reviewed": "0516e95d3a5ef7a4aada69fe7589fde828bacc0e",
     "blocker": null,
     "next": [
-      "hosted CI; merge commit under integration:Cloud; verify the production deploy (healthz); ledger delivered"
+      "confirm the main-push deploy and healthz",
+      "record the ledger (delivered)"
     ],
     "host": "deku",
     "note": "resume run 2026-10-10 (brief 0d); coordinator-held claim, local-only agent"
