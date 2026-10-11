@@ -6,14 +6,15 @@
   "epoch": 2,
   "state": "claimed",
   "claimedAt": "2026-10-10T21:21:54Z",
-  "updatedAt": "2026-10-11T02:18:09Z",
-  "leaseUntil": "2026-10-12T02:18:09Z",
+  "updatedAt": "2026-10-11T04:23:34Z",
+  "leaseUntil": "2026-10-12T04:23:34Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "AI:task/har-40",
     "prs": [
       "https://github.com/ArcForges/Cloud/pull/80",
-      "https://github.com/ArcForges/AI/pull/36"
+      "https://github.com/ArcForges/AI/pull/36",
+      "https://github.com/ArcForges/AI/pull/37"
     ],
     "merges": [
       "ccf7bcdf7d8502c7db3fa644738908bf912a7f9f",
@@ -28,11 +29,11 @@
       "replacement: production healthz 200 rev 92ba1dc9 nativeAot; SayHello grpc-web 'Hello, deku!' grpc-status 0"
     ],
     "worktree": "C:\\MyFile\\Projects\\ArcForges\\AI\\.worktree\\har-40",
-    "head": "600abae0df60cc552a27ade77853c80139fe3d0a",
-    "reviewed": "600abae0df60cc552a27ade77853c80139fe3d0a",
+    "head": "a664c97a3cc5af294214fb40f9604e54c5510863",
+    "reviewed": "a664c97a3cc5af294214fb40f9604e54c5510863",
     "blocker": null,
     "next": [
-      "AI status-doc follow-up PR (retired); HAR.40 ledger amendment (delivered; live proofs not proven)"
+      "CI; merge; HAR.40 ledger amendment"
     ],
     "host": "deku",
     "note": "completion follow-up epoch 2: arcforges-ai-hello retirement under user authority brief 0d 5.2"
