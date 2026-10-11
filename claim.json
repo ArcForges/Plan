@@ -6,15 +6,17 @@
   "epoch": 1,
   "state": "claimed",
   "claimedAt": "2026-10-10T20:03:00Z",
-  "updatedAt": "2026-10-11T00:13:52Z",
-  "leaseUntil": "2026-10-12T00:13:52Z",
+  "updatedAt": "2026-10-11T01:58:46Z",
+  "leaseUntil": "2026-10-12T01:58:46Z",
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "DesktopPlatform:task/plt-46",
     "prs": [
       "https://github.com/ArcForges/DesktopPlatform/pull/176"
     ],
-    "merges": [],
+    "merges": [
+      "fb8577c3d026966368fd71189f370ea43b77ef73"
+    ],
     "done": [],
     "validation": [],
     "worktree": "C:\\MyFile\\Projects\\ArcForges$3\\.worktree$4",
@@ -22,7 +24,8 @@
     "reviewed": "61e11b7570ba2009fe8dd10ee3239b03841e911c",
     "blocker": null,
     "next": [
-      "hosted CI; merge after fix8 under integration:DesktopPlatform (merge commit); confirm Publish NuGet; ledger delivered (durable audit defect, S60)"
+      "confirm Publish NuGet cohort",
+      "record the ledger (delivered; S60)"
     ],
     "host": "deku",
     "note": "resume run 2026-10-10 (brief 0d); coordinator-held claim, local-only agent"
