@@ -4,22 +4,23 @@
   "id": "CLOUD.72",
   "claimant": "w-deku-20261010-cloud-72",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-10T20:02:18Z",
-  "updatedAt": "2026-10-11T01:44:58Z",
-  "leaseUntil": "2026-10-12T01:44:58Z",
+  "updatedAt": "2026-10-11T02:18:49Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Cloud",
     "branch": "Cloud:task/cloud-72",
     "prs": [
-      "https://github.com/ArcForges/Cloud/pull/90"
+      "https://github.com/ArcForges/Cloud/pull/90",
+      "https://github.com/ArcForges/Plan/pull/480"
     ],
     "merges": [
       "92ba1dc9603779943b18bb121687b048a4e77dc1"
     ],
     "done": [],
     "validation": [],
-    "worktree": "C:\\MyFile\\Projects\\ArcForges$3\\.worktree$4",
+    "worktree": "C:\\MyFile\\Projects\\ArcForges\\Cloud\\.worktree\\cloud-72",
     "head": "0516e95d3a5ef7a4aada69fe7589fde828bacc0e",
     "reviewed": "0516e95d3a5ef7a4aada69fe7589fde828bacc0e",
     "blocker": null,
@@ -28,6 +29,6 @@
       "record the ledger (delivered)"
     ],
     "host": "deku",
-    "note": "resume run 2026-10-10 (brief 0d); coordinator-held claim, local-only agent"
+    "note": "delivered: ledger merged; production resolution blocked on CLOUD.87, not proven"
   }
 }
