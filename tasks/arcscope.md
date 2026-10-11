@@ -638,6 +638,7 @@ Entry condition: adoption slice ADOPT.05.arcscope is complete in the Plan ledger
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
 - [artifact] SCOPE.07: durable capture to upload
 - [artifact] CLOUD.42: published blob lifecycle mechanism (chunked upload, resumption, verification)
+- [artifact] CLOUD.18: the native session client primitive (ArcForges.Security.Sessions) that gives the ArcScope installation its own authenticated Cloud session
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -646,6 +647,7 @@ Unblocks: SCOPE.26
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): explicit-upload flow test; negative test for no automatic trigger path; resumption and verification tests on a large capture
 Completion evidence for the ledger: explicit upload, no-auto-trigger and resumption results
+Notes: Planning repair fix8 2026-10-10 (DLV-34; coordinator ruling S57(11)): starts on CLOUD.18, because the explicit raw upload is an authenticated Cloud call of the ArcScope installation. The ArcScope admission of the ArcForges.Security.Sessions package is part of this task's closure and is ruled at claim time (ADP-07; the S53(2) precedent). No acceptance changes.
 ```
 
 ```text
@@ -759,6 +761,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [artifact] SCOPE.22: ArcScope Cloud sync scope declaration and client
 - [artifact] CLOUD.39: deployed guarded publication and convergent bootstrap
 - [artifact] CLOUD.44: multi-device convergence harness
+- [artifact] CLOUD.18: the native session client primitive (ArcForges.Security.Sessions) that gives the ArcScope installation its own authenticated Cloud session
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - none
 
@@ -767,7 +770,7 @@ Unblocks: CLOUD.44, CLOUD.47, SCOPE.22
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Local real-integration run against a deployed test environment, recorded once; offline checks in CI; no hosted live-service CI (P2-017).
 Completion evidence for the ledger: Candidate identities, deployed environment identity, convergence scenario results and untested coverage.
-Notes: Added during consolidation so the ArcScope sync substitute has a named replacing task.
+Notes: Added during consolidation so the ArcScope sync substitute has a named replacing task. Planning repair fix8 2026-10-10 (DLV-34; coordinator ruling S57(11)): starts on CLOUD.18, the native session client primitive that authenticates the ArcScope installation against the deployed Cloud; the real sync run cannot use a substitute session. The ArcScope admission of the ArcForges.Security.Sessions package is part of this task's closure and is ruled at claim time (ADP-07; the S53(2) precedent). No acceptance changes.
 ```
 
 ### Out of scope

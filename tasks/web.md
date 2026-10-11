@@ -387,6 +387,7 @@ Outcome: Consumer subscription and management views use public server projection
 
 Obligations (authoritative definitions; satisfy exactly these parts and their tests/gates):
 - WP-48.04 (all work except the parts mapped to WEB.29): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\48-account-portal.md, anchor rule-wp-48.04
+- WP-42.05 (the Web client half named on this task by planning repair fix8 delta (S59(10)): entitlement caching by version, a re-read on a refresh hint (entitlement is never inferred from the hint), the offline staleness bound per DS-05 and local-data survival when entitlement is lost, BR-10 of WP-48; COM.06 keeps the Cloud half and PLT.20 the desktop half): C:\MyFile\Projects\ArcForges-Design\docs\planning\work-packages\42-commerce-entitlement-and-credits.md, anchor rule-wp-42.05
 
 Entry condition: adoption slice ADOPT.09.web is complete in the Plan ledger (DLV-22).
 Start prerequisites (before claiming, each contract/artifact/design prerequisite must be delivered or complete and each release prerequisite complete in the Plan ledger; DLV-24):
@@ -397,11 +398,11 @@ Completion prerequisites (may start earlier; cannot complete before these are co
 - [integration] POL.02: real policy projections for rate-limit/recovery reasons
 
 Permitted write scope: Web:src/ArcForges.Web.App/Features/Commerce/**
-Unblocks: WEB.17, WEB.18, WEB.29, WEB.30, WEB.31
+Unblocks: COM.15, WEB.17, WEB.18, WEB.29, WEB.30, WEB.31
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Real C# accounting and checkout test-environment flows; exact-amount display using C# decimal and int64/uint64 values end to end (no double or JavaScript Number conversion), correct above the 2^53 JavaScript safe-integer boundary and across the full int64/uint64 range (xUnit/bUnit, offline); duplicate-click, cancelled, failed, late-confirmation, refund, term-expiry and stale-price tests (local opt-in against a real test-mode provider).
 Completion evidence for the ledger: Entitlement reason coverage, credit separation and no-payment-field scan
-Notes: Planning repair 2026-10-08 (DLV-34; P2-021): The JS safe-integer display boundary is restated as a C# decimal and int64/uint64 boundary (P2-021 item 1 exact-value rule). The acceptance is stronger: the boundary above 2^53 and the full wire range are both tested. Duplicate-click, refund and provider criteria are unchanged.
+Notes: Planning repair 2026-10-08 (DLV-34; P2-021): The JS safe-integer display boundary is restated as a C# decimal and int64/uint64 boundary (P2-021 item 1 exact-value rule). The acceptance is stronger: the boundary above 2^53 and the full wire range are both tested. Duplicate-click, refund and provider criteria are unchanged. Planning repair fix8 delta 2026-10-11 (DLV-34, DLV-35; coordinator ruling S59(10)): the Web client half of WP-42.05 (entitlement caching by version, a re-read on a refresh hint (entitlement is never inferred from the hint), the offline staleness bound per DS-05 and local-data survival when entitlement is lost, BR-10 of WP-48) is named on this task, the Web consumer of the entitlement and subscription projections (WP-48.04), and a WP-42.05 obligation row records it (the AND.04 WP-24.05 precedent). COM.15, the WP-42 closure, gains an integration completion edge on this task, so the WP-42 receipt waits for it. The half stays outside the current run; binding it into this task's outcome, validation and evidence is left to a planning repair before claim. No edge of this task changes.
 ```
 
 ```text

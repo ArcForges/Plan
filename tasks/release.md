@@ -133,6 +133,7 @@ Start prerequisites (before claiming, each contract/artifact/design prerequisite
 - [release] HAR.90: obligation package accepted
 - [release] SIM.08: obligation package accepted
 - [release] GOV.09: Cloud policy tests delivered; the standing worker/ no-business-logic check is CLOUD.84 validation (P2-026 S16(b))
+- [release] CLOUD.87: the production business composition complete: the production plan executor and recovery generation, the business D1 binding, storage.internal on the production CloudContainer and the production credential forwarding, deployed by main push
 Completion prerequisites (may start earlier; cannot complete before these are complete):
 - [integration] REL.09: the combined disaster drill actually exercised against this deployed production topology
 
@@ -141,7 +142,7 @@ Unblocks: REL.07, REL.09, REL.11
 
 Validation (P2-017; no macOS/hosted runtime, device, GUI, browser E2E, live-service, inference or installed-consumer CI): Production-shaped migration/rollback rehearsal against real Cloudflare topology; archived launch-capacity.v1 hash, actual standard-2 allocation/four global slots/ten-minute sleep, warm/cold/burst/fallback-read workload, D1/Vectorize/R2 dimensions and provider prices; explicit Product/Operations approval required for L-16/PG-26 - not markable complete from document checks alone.
 Completion evidence for the ledger: Per-gate go-live evidence L-01..L-16 (except the drill); backup/restore proof; self-host deployment evidence.
-Notes: The game-day exercise itself is split out to REL.09 per the assignment's explicit 'combined disaster drill' bucket. Planning repair 2026-10-09 (P2-026; scope correction): the EXT.90 start edge is removed (extension platform out of scope); the GOV.09 Cloud policy tests are added as a release verification input (S13); the standing worker/ check is a CLOUD.84 validation item (S16(b)).
+Notes: The game-day exercise itself is split out to REL.09 per the assignment's explicit 'combined disaster drill' bucket. Planning repair 2026-10-09 (P2-026; scope correction): the EXT.90 start edge is removed (extension platform out of scope); the GOV.09 Cloud policy tests are added as a release verification input (S13); the standing worker/ check is a CLOUD.84 validation item (S16(b)). Planning repair fix8 2026-10-10 (DLV-34; coordinator ruling S57(14)): REL.06 gains a release start edge on the new task CLOUD.87, which owns the production business composition (plan executor, recovery generation, business D1 binding, storage.internal on the production CloudContainer and production credential forwarding). The production deployment and readiness acceptance of this task are unchanged.
 ```
 
 ```text
