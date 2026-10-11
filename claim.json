@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:Cloud",
-  "claimant": "w-deku-20261008-coord",
-  "epoch": 1,
-  "state": "released",
-  "claimedAt": "2026-10-09T16:23:21Z",
-  "updatedAt": "2026-10-10T12:25:09Z",
-  "leaseUntil": null,
+  "claimant": "w-deku-20261010-coord",
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-11T01:44:13Z",
+  "updatedAt": "2026-10-11T01:44:13Z",
+  "leaseUntil": "2026-10-11T13:44:13Z",
   "handoff": {
     "host": "deku",
-    "note": "Phase-2 Cloud merges done (CLOUD.84 #83/#89, deploys verified); no further Cloud merges in scope"
+    "note": "claimed after released by w-deku-20261008-coord epoch 1; review the earlier handoff and commits"
   }
 }
