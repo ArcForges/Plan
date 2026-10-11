@@ -4,17 +4,18 @@
   "id": "HAR.40",
   "claimant": "w-deku-20261010-har-40",
   "epoch": 2,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-10T21:21:54Z",
-  "updatedAt": "2026-10-11T04:25:44Z",
-  "leaseUntil": "2026-10-12T04:25:44Z",
+  "updatedAt": "2026-10-11T04:37:19Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "Cloud",
     "branch": "AI:task/har-40",
     "prs": [
       "https://github.com/ArcForges/Cloud/pull/80",
       "https://github.com/ArcForges/AI/pull/36",
-      "https://github.com/ArcForges/AI/pull/37"
+      "https://github.com/ArcForges/AI/pull/37",
+      "https://github.com/ArcForges/Plan/pull/484"
     ],
     "merges": [
       "ccf7bcdf7d8502c7db3fa644738908bf912a7f9f",
