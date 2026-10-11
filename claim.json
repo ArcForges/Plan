@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "kind": "task",
+  "id": "PRF.04",
+  "claimant": "w-deku-20261011-dp-transport",
+  "epoch": 1,
+  "state": "claimed",
+  "claimedAt": "2026-10-11T02:01:31Z",
+  "updatedAt": "2026-10-11T02:01:31Z",
+  "leaseUntil": "2026-10-12T02:01:31Z",
+  "handoff": {
+    "repository": "DesktopPlatform",
+    "branch": "task/prf-04",
+    "prs": [],
+    "merges": [],
+    "done": [],
+    "validation": [],
+    "worktree": null,
+    "head": null,
+    "reviewed": null,
+    "blocker": null,
+    "next": [
+      "perform the remaining acceptance for the scenarios the completion prerequisites name",
+      "record completion by editing the ledger record through a reviewed Plan pull request"
+    ],
+    "host": "deku",
+    "note": "completion follow-up (DLV-41)"
+  }
+}
