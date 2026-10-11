@@ -5,12 +5,12 @@
   "task": "HAR.40",
   "claimant": "w-deku-20261010-har-40",
   "epoch": 1,
-  "state": "claimed",
+  "state": "released",
   "claimedAt": "2026-10-11T02:14:37Z",
-  "updatedAt": "2026-10-11T02:14:37Z",
-  "leaseUntil": "2026-10-11T06:14:37Z",
+  "updatedAt": "2026-10-11T02:17:52Z",
+  "leaseUntil": null,
   "handoff": {
     "host": "deku",
-    "note": null
+    "note": "retire-cloudflare dry-run 38104522196 (eligible; GET only) and delete 38104601546 (Workflow and Worker 404) done; lease released"
   }
 }
