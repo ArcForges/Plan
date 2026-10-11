@@ -4,15 +4,16 @@
   "id": "PLT.46",
   "claimant": "w-deku-20261010-plt-46",
   "epoch": 1,
-  "state": "claimed",
+  "state": "delivered",
   "claimedAt": "2026-10-10T20:03:00Z",
-  "updatedAt": "2026-10-11T01:58:46Z",
-  "leaseUntil": "2026-10-12T01:58:46Z",
+  "updatedAt": "2026-10-11T02:37:12Z",
+  "leaseUntil": null,
   "handoff": {
     "repository": "DesktopPlatform",
     "branch": "DesktopPlatform:task/plt-46",
     "prs": [
-      "https://github.com/ArcForges/DesktopPlatform/pull/176"
+      "https://github.com/ArcForges/DesktopPlatform/pull/176",
+      "https://github.com/ArcForges/Plan/pull/481"
     ],
     "merges": [
       "fb8577c3d026966368fd71189f370ea43b77ef73"
