@@ -131,7 +131,7 @@ Tasks: 433 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | CON.40 | Contracts | L | WEB.40, AND.40, ADOPT.03.contracts (adoption) | C#-only SDK standardization: stop TypeScript and Kotlin/Maven publication after consumer migration; keep @arcforges/ai-internal |
 | CON.41 | Contracts | S | CON.18, CON.07, CON.40, ADOPT.03.contracts (adoption) | Publish the public operation metadata in the PublicApi package |
 | CON.42 | Contracts | S | CON.40, ADOPT.03.contracts (adoption) | Remove the retired Kotlin, Maven and TypeScript pipeline residue from Contracts |
-| CON.43 | Contracts | M | CON.06, CON.04, CON.05, CON.25, CON.18, ADOPT.03.contracts (adoption) | Generated local-operation decoders |
+| CON.43 | Contracts | M | CON.06, CON.05, CON.25, CON.18, ADOPT.03.contracts (adoption) | Generated local-operation decoders |
 
 ## Foundation values — [prompts](tasks/foundation.md)
 
@@ -214,7 +214,7 @@ Tasks: 433 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | PLT.52 | DesktopPlatform | L | PLT.31, PLT.49, ADOPT.02.platform (adoption) | Desktop diagnostics and consent |
 | PLT.53 | DesktopPlatform | S | PLT.47, PLT.48, PLT.49, PLT.50, PLT.51, PLT.52, ADOPT.02.platform (adoption) | Publish Observability packages and verify real integration |
 | PLT.57 | DesktopPlatform | M | PLT.24, PLT.38, APP.01, PLT.44, ADOPT.02.platform (adoption) | End-to-end capability invocation with real security enforcement inside one product |
-| PLT.58 | DesktopPlatform | M | CON.40, CON.41, CON.43, ADOPT.02.platform (adoption) | DesktopPlatform consumes the C#-only Contracts candidate |
+| PLT.58 | DesktopPlatform | M | CON.40, CON.41, CON.43, ADOPT.02.platform (adoption) | DesktopPlatform consumes the C#-only Contracts candidate and fixes registry-key audit identities |
 
 ## Native producers and probes — [prompts](tasks/native.md)
 
@@ -369,7 +369,7 @@ Tasks: 433 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | CLOUD.17 | Cloud | M | CLOUD.12, CLOUD.15, CLOUD.05, CLOUD.13, ADOPT.07.cloud (adoption) | Recovery, account states and deletion |
 | CLOUD.18 | DesktopPlatform | M | CLOUD.12, PLT.40, CLOUD.13, CON.07, PLT.58, ADOPT.02.cloud (adoption) | Independent native session integration (Platform client primitives) |
 | CLOUD.19 | Cloud | L | CLOUD.01, CLOUD.11, CLOUD.13, CLOUD.12, CLOUD.14, CLOUD.15, CLOUD.16, CLOUD.17, CLOUD.21, CLOUD.22, CLOUD.23, ADOPT.07.cloud (adoption) | Browser cookie-session adapter and full account-surface closure |
-| CLOUD.20 | Cloud | M | CON.07, CLOUD.11, CLOUD.66, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration |
+| CLOUD.20 | Cloud | M | CON.07, CLOUD.11, CLOUD.66, CLOUD.17, CLOUD.86, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration |
 | CLOUD.21 | Cloud | L | CON.91, CLOUD.13, CON.07, CON.03, CON.41, ADOPT.07.cloud (adoption) | Public endpoint mapping and validation |
 | CLOUD.22 | Cloud | M | CLOUD.21, ADOPT.07.cloud (adoption) | Typed protocol and error mapping |
 | CLOUD.23 | Cloud | M | CLOUD.21, CON.91, CLOUD.22, ADOPT.07.cloud (adoption) | Typed queries and revision preconditions |
@@ -417,7 +417,7 @@ Tasks: 433 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | CLOUD.85 | Cloud | S | WEB.40, CLOUD.71, PRF.07, ADOPT.07.cloud (adoption) | Serve the Blazor WebAssembly Account and Chat profiles and the C# static Site from the proof origin |
 | CLOUD.84 | Cloud | L | CLOUD.01, CLOUD.02, CLOUD.03, CLOUD.04, CLOUD.06, CLOUD.08, CLOUD.11, CLOUD.69, CLOUD.70, HAR.40, ADOPT.07.cloud (adoption) | Cloud TypeScript reduction: C# generated tables and policy, thin Worker adapters, proof code out of the production bundle |
 | CLOUD.86 | Cloud | M | CLOUD.72, CLOUD.21, CON.07, ADOPT.07.cloud (adoption) | WorkspaceService (list, get, settings with revision, health) |
-| CLOUD.87 | Cloud | M | CLOUD.06, COM.16, CLOUD.72, ADOPT.07.cloud (adoption) | Production business composition |
+| CLOUD.87 | Cloud | M | CLOUD.06, COM.16, CLOUD.72, CLOUD.31, CLOUD.33, ADOPT.07.cloud (adoption) | Production business composition |
 | CLOUD.88 | Cloud | S | CLOUD.84, GOV.09, ADOPT.07.cloud (adoption) | Remove the retired Kotlin, Gradle and npm residue from Cloud |
 
 ## Commerce, entitlement and credits — [prompts](tasks/commerce.md)
@@ -429,7 +429,7 @@ Tasks: 433 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | COM.03 | Cloud | L | COM.01, COM.02, CLOUD.24, ADOPT.07.commerce (adoption) | Purchase pipeline |
 | COM.04 | Cloud | L | COM.01, COM.03, COM.16, ADOPT.07.commerce (adoption) | Provider event inbox |
 | COM.05 | Cloud | L | ADOPT.07.commerce (adoption) | Entitlement resolver |
-| COM.06 | Cloud | M | COM.05, CLOUD.23, COM.16, CON.08, ADOPT.07.commerce (adoption) | Distribution and enforcement |
+| COM.06 | Cloud | M | COM.05, CLOUD.23, COM.16, CON.08, POL.02, ADOPT.07.commerce (adoption) | Distribution and enforcement |
 | COM.07 | Cloud | L | CLOUD.07, COM.05, ADOPT.07.commerce (adoption) | Quota, usage and storage accounting |
 | COM.08 | Cloud | L | COM.05, ADOPT.07.commerce (adoption) | Credits |
 | COM.09 | Cloud | L | COM.03, COM.04, ADOPT.07.commerce (adoption) | Ledgers and reconciliation |
