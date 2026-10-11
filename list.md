@@ -214,7 +214,7 @@ Tasks: 433 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | PLT.52 | DesktopPlatform | L | PLT.31, PLT.49, ADOPT.02.platform (adoption) | Desktop diagnostics and consent |
 | PLT.53 | DesktopPlatform | S | PLT.47, PLT.48, PLT.49, PLT.50, PLT.51, PLT.52, ADOPT.02.platform (adoption) | Publish Observability packages and verify real integration |
 | PLT.57 | DesktopPlatform | M | PLT.24, PLT.38, APP.01, PLT.44, ADOPT.02.platform (adoption) | End-to-end capability invocation with real security enforcement inside one product |
-| PLT.58 | DesktopPlatform | M | CON.40, CON.41, CON.43, ADOPT.02.platform (adoption) | DesktopPlatform consumes the C#-only Contracts candidate and fixes registry-key audit identities |
+| PLT.66 | DesktopPlatform | M | CON.40, CON.41, CON.43, ADOPT.02.platform (adoption) | DesktopPlatform consumes the C#-only Contracts candidate and fixes registry-key audit identities |
 
 ## Native producers and probes — [prompts](tasks/native.md)
 
@@ -236,7 +236,7 @@ Tasks: 433 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 |---|---|---|---|---|
 | APP.01 | DesktopPlatform | M | CON.02, PLT.17, FND.02, FND.01, ADOPT.02.app-composition (adoption) | Assistant.Abstractions host ports and application identity |
 | APP.02 | ArcScope | M | APP.01, PLT.24, PLT.38, ADOPT.05.app-composition (adoption) | Minimal ArcScope application services (read/create/append annotations) |
-| APP.03 | ArcScope | L | APP.01, APP.02, PRF.04, NAT.01, PLT.44, PLT.24, PLT.38, PLT.57, PLT.58, PLT.32, CON.43, ADOPT.05.app-composition (adoption) | Clean Native AOT package-consumer composition for ArcScope |
+| APP.03 | ArcScope | L | APP.01, APP.02, PRF.04, NAT.01, PLT.44, PLT.24, PLT.38, PLT.57, PLT.66, PLT.32, CON.43, ADOPT.05.app-composition (adoption) | Clean Native AOT package-consumer composition for ArcScope |
 | APP.04 | DesktopPlatform | S | APP.02, FND.02, FND.03, ADOPT.02.app-composition (adoption) | Idempotency and revision against the real store |
 | APP.05 | DesktopPlatform | M | APP.01, PLT.39, ADOPT.02.app-composition (adoption) | Approval at the owner |
 | APP.06 | DesktopPlatform | M | APP.01, PLT.21, PLT.22, PLT.41, ADOPT.02.app-composition (adoption) | Context and artifact integration |
@@ -367,7 +367,7 @@ Tasks: 433 in 25 lanes, plus 50 adoption slices listed in the adoption section. 
 | CLOUD.15 | Cloud | M | CLOUD.12, CLOUD.13, CON.41, ADOPT.07.cloud (adoption) | Step-up challenges for sensitive operations |
 | CLOUD.16 | Cloud | M | CLOUD.11, COM.16, CLOUD.15, CLOUD.72, CON.41, ADOPT.07.cloud (adoption) | PAT and actor authorization |
 | CLOUD.17 | Cloud | M | CLOUD.12, CLOUD.15, CLOUD.05, CLOUD.13, ADOPT.07.cloud (adoption) | Recovery, account states and deletion |
-| CLOUD.18 | DesktopPlatform | M | CLOUD.12, PLT.40, CLOUD.13, CON.07, PLT.58, ADOPT.02.cloud (adoption) | Independent native session integration (Platform client primitives) |
+| CLOUD.18 | DesktopPlatform | M | CLOUD.12, PLT.40, CLOUD.13, CON.07, PLT.66, ADOPT.02.cloud (adoption) | Independent native session integration (Platform client primitives) |
 | CLOUD.19 | Cloud | L | CLOUD.01, CLOUD.11, CLOUD.13, CLOUD.12, CLOUD.14, CLOUD.15, CLOUD.16, CLOUD.17, CLOUD.21, CLOUD.22, CLOUD.23, ADOPT.07.cloud (adoption) | Browser cookie-session adapter and full account-surface closure |
 | CLOUD.20 | Cloud | M | CON.07, CLOUD.11, CLOUD.66, CLOUD.17, CLOUD.86, ADOPT.07.cloud (adoption) | Owned-artifact closure and real integration |
 | CLOUD.21 | Cloud | L | CON.91, CLOUD.13, CON.07, CON.03, CON.41, ADOPT.07.cloud (adoption) | Public endpoint mapping and validation |
