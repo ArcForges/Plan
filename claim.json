@@ -2,14 +2,14 @@
   "schema": 1,
   "kind": "role",
   "id": "integration:DesktopPlatform",
-  "claimant": "w-deku-20261008-coord",
-  "epoch": 1,
-  "state": "released",
-  "claimedAt": "2026-10-08T16:27:55Z",
-  "updatedAt": "2026-10-09T11:02:15Z",
-  "leaseUntil": null,
+  "claimant": "w-deku-20261010-coord",
+  "epoch": 2,
+  "state": "claimed",
+  "claimedAt": "2026-10-11T01:57:40Z",
+  "updatedAt": "2026-10-11T01:57:40Z",
+  "leaseUntil": "2026-10-11T13:57:40Z",
   "handoff": {
     "host": "deku",
-    "note": "DesktopPlatform exception closed (P2-026): NAT.11 complete (#175, ledger Plan #466); no further DesktopPlatform work authorized"
+    "note": "claimed after released by w-deku-20261008-coord epoch 1; review the earlier handoff and commits"
   }
 }
