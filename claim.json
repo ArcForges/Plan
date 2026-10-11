@@ -6,8 +6,8 @@
   "epoch": 2,
   "state": "claimed",
   "claimedAt": "2026-10-10T21:21:54Z",
-  "updatedAt": "2026-10-11T04:23:34Z",
-  "leaseUntil": "2026-10-12T04:23:34Z",
+  "updatedAt": "2026-10-11T04:25:44Z",
+  "leaseUntil": "2026-10-12T04:25:44Z",
   "handoff": {
     "repository": "Cloud",
     "branch": "AI:task/har-40",
@@ -18,7 +18,8 @@
     ],
     "merges": [
       "ccf7bcdf7d8502c7db3fa644738908bf912a7f9f",
-      "d3eef45e8e6f9c28a97c2595b9cd59bcaff9d7aa"
+      "d3eef45e8e6f9c28a97c2595b9cd59bcaff9d7aa",
+      "70f8b22d56d67abd2a983f8b448846731ee22902"
     ],
     "done": [
       "work-in-progress commits pushed (step 1)"
@@ -33,7 +34,7 @@
     "reviewed": "a664c97a3cc5af294214fb40f9604e54c5510863",
     "blocker": null,
     "next": [
-      "CI; merge; HAR.40 ledger amendment"
+      "HAR.40 ledger amendment (delivered)"
     ],
     "host": "deku",
     "note": "completion follow-up epoch 2: arcforges-ai-hello retirement under user authority brief 0d 5.2"
