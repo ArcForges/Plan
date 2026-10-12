@@ -338,8 +338,7 @@
         "R-API-008"
       ],
       "deliverables": [
-        "Contracts PR merged; cohort published",
-        "ArcForges repository pins the published cohort"
+        "Contracts PR merged; cohort published (the ArcForges repository pins it in AF-NODE-02)"
       ],
       "acceptance": [
         "The published packages contain every service and message of the design protos byte-for-byte identical in schema",
@@ -505,8 +504,7 @@
         "R-SEC-001"
       ],
       "deliverables": [
-        "DesktopPlatform PR merged; cohort published",
-        "ArcForges pins it"
+        "DesktopPlatform PR merged; cohort published (the ArcForges repository pins it in AF-NODE-01)"
       ],
       "acceptance": [
         "All existing LocalRpc tests pass unchanged",
@@ -660,6 +658,7 @@
       ],
       "objective": "Implement the node store of docs/data/node-store.md: schema, migrations, backups, idempotency, sealed secrets and policy defaults.",
       "scope": [
+        "Pin the published Contracts cohort of AF-CON-01 and the DesktopPlatform Security.Secrets cohort of AF-DP-02 (admitted versions only)",
         "Schema version 1 (all tables), forward-only expand-only migration framework, min_reader enforcement, pre-migration backups",
         "command_dedup with payload digests and FULL synchronous commits",
         "task_secret sealing (AES-256-GCM with the task ID as associated data; node data key in the OS secret store) and purge; env_snapshot content addressing",
@@ -767,6 +766,7 @@
       ],
       "objective": "Run the node as a per-user service with its endpoint, lifecycle and handshake, and give the CLI a working connection.",
       "scope": [
+        "Pin the DesktopPlatform cohort with the LocalRpc service-endpoint mode of AF-DP-01",
         "Startup sequence, shutdown, crash recovery hooks (02 section 2); single instance; data root; logging through ArcForges.Observability with redaction",
         "LocalRpc service endpoint; NodeService (Hello, GetNodeInfo, GetHealth, GetCapabilities, RenameNode, StopNode, GetNodeSettings, UpdateNodeSettings, jobs, ListNotifications, MarkNotificationsRead); NodeEventService with event journal, snapshot and cursors",
         "Windows supervisor (GUI subsystem, HKCU Run start, crash restart) and a development systemd user unit for Linux",
@@ -879,7 +879,7 @@
       "objective": "Execute tasks on Windows under job objects with durable output, exit capture, cancellation, timeouts and restart recovery.",
       "scope": [
         "Command resolution, Windows quoting and batch refusal (04 section 2); environment resolution with sealed secrets",
-        "Root and child jobs; suspended launch; `arcforges node exec-wrap` holders outside the job that hold the child and root job handles until the node acknowledges the exit record; exit.json with accounting and limit violations; kill_with_node tasks without a holder (KILL_ON_JOB_CLOSE)",
+        "Root and child jobs (the holder assigns the suspended process to the root job, then the child job); `arcforges node exec-wrap` holders outside the job that hold the child and root job handles until the node acknowledges the exit record; exit.json with accounting and limit violations; kill_with_node tasks without a holder (KILL_ON_JOB_CLOSE)",
         "Completion port clear-then-attach on restart; limit-violation check after restart; node signal CTRL_BREAK helper; leftover handling",
         "Output files and index, ReadTaskOutput, WatchTaskOutput, AttachTask with STREAM stdin; cancel_when_caller_gone",
         "TaskService core: Submit, Get, List, Wait, Attach, Write/CloseTaskInput, Cancel, Retry (manual), Pin, PurgeTaskRecord, GetAttempt, ListAttempts",
@@ -918,7 +918,7 @@
         "Windows execution with CLI"
       ],
       "acceptance": [
-        "Real non-elevated job tests: root hard cap with weighted children, commit limit, kill tree, no breakaway, kill-on-close for kill_with_node tasks (F-W01)",
+        "Real non-elevated job tests: child jobs nested under the root (root-then-child assignment), root hard cap with weighted children, commit limit, kill tree, no breakaway, kill-on-close for kill_with_node tasks (F-W01)",
         "Nested jobs with real dotnet, cargo and cmake builds (F-W02)",
         "Node killed mid-run: executions continue; after restart the node re-opens jobs through the holders, re-associates the completion port, cancels a recovered attempt and reads its accounting (F-W03)",
         "Byte-identical attached output and exit codes vs direct runs",
@@ -1793,7 +1793,6 @@
       "objective": "Extend managed toolchain handling to Cargo, CMake/Ninja/make with sccache/ccache, FASTBuild, npm/pnpm and Python, and run shared daemons in their own containers.",
       "scope": [
         "Adapters of 05 section 3, including FASTBuild (05 section 3.8: cache path, -cache/-cacheread, -cachetrim maintenance, -j from the grant; -dist observed only)",
-        "ccache remote storage helper `arcforges node ccache-storage`",
         "Shared services container (sccache server; optional MSBuild servers)",
         "Failure classifiers"
       ],
@@ -1855,11 +1854,6 @@
         {
           "risk": "FASTBUILD_CACHE_PATH does not override a project's .CachePath (A-T02, F-T02)",
           "mitigation": "Report the cache as observed, not managed, until proven",
-          "owner": "AF-TOOL-02"
-        },
-        {
-          "risk": "ccache removes its built-in HTTP backend",
-          "mitigation": "Helper-based integration through `arcforges node ccache-storage`",
           "owner": "AF-TOOL-02"
         }
       ],
@@ -3025,7 +3019,9 @@
         "Configuration revisions (stage, validate, activate data path), kill switches (relay.live_streaming, relay.new_connections, push.enabled, fleet.commands, support uploads) and limits",
         "Audit event writer with the hash chain, and the reader that backs OperatorReadService.ListAuditEvents; anomaly flags as `anomaly.<kind>` audit events",
         "Operating budget service: reservations per dimension, threshold evaluation (80% alert, 100% kill switches in order), dimensions 8..12 table-rebuild migration, unit prices configuration",
-        "Budget and limit checks as a library for metered paths; rate limits per account and IP"
+        "Budget and limit checks as a library for metered paths; rate limits per account and IP",
+        "Job infrastructure: lease and fence plans over platform_job_lease; a job runner started by a Worker cron trigger that calls the host (added through the repository's reviewed wrangler.json change process); the compact command fence",
+        "Scheduled retention sweeps: expired receipts and inbox rows, expired flows, and the Retention column of data/cloud-store.md"
       ],
       "out_of_scope": [
         "Operator console (AF-OPS-01)",
@@ -3050,7 +3046,9 @@
         "Budget exhaustion trips the kill switches in order in closed loop",
         "Kill switches propagate within one token lifetime",
         "Audit hash chain verified by the reader",
-        "Rate limits return RESOURCE with retry_after"
+        "Rate limits return RESOURCE with retry_after",
+        "A job runs once per lease under contention, and a crashed runner's lease is taken over after expiry",
+        "Retention sweeps delete exactly the rows past their schedule"
       ],
       "verification": {
         "author": [
@@ -3082,6 +3080,11 @@
         {
           "risk": "Kill switch propagation is slower than one token lifetime",
           "mitigation": "Closed-loop timing test",
+          "owner": "AF-PLAT-01"
+        },
+        {
+          "risk": "No job infrastructure exists at Cloud 92ba1dc9 (no lease plans, `crons` empty)",
+          "mitigation": "Built here before any task that schedules work (AF-ID-02 purges, AF-CLD-07 acknowledgement)",
           "owner": "AF-PLAT-01"
         }
       ],
@@ -3629,6 +3632,7 @@
         "Seeded secrets never appear in bundles",
         "Upload refused without consent",
         "An upload whose bytes differ from the declared checksum is refused (F-C03)",
+        "Pending objects move to the final prefix on completion; lifecycle prefixes as in 10 section 3.11",
         "Closed loop against the local Cloud stack"
       ],
       "verification": {
@@ -3653,11 +3657,18 @@
         "F-C03"
       ],
       "acceptance_register": [],
-      "human_prerequisites": [],
+      "human_prerequisites": [
+        "H-16"
+      ],
       "risks": [
         {
           "risk": "R2 presigned PUT may not bind the length and checksum (A-C03, F-C03)",
           "mitigation": "CompleteSupportUpload reads the size and checksum back and refuses mismatches",
+          "owner": "AF-SUP-01"
+        },
+        {
+          "risk": "Miniflare's local S3 endpoint may not support presigned uploads",
+          "mitigation": "Check first in the task (F-C03); otherwise test the flow against a local S3-compatible endpoint and record the gap",
           "owner": "AF-SUP-01"
         },
         {
@@ -3890,7 +3901,8 @@
       "objective": "Share compiler caches with trusted peers through the WebDAV subset and the local proxy.",
       "scope": [
         "WebDAV subset on the peer listener; per-peer read/write and quotas",
-        "Loopback proxy with bearer; sccache and ccache (helper) configuration",
+        "Loopback proxy with bearer; sccache WebDAV configuration",
+        "ccache remote storage: the node serves the helper protocol on a per-user endpoint (`crsh:`), with the loopback HTTP fallback for older ccache (05 section 6)",
         "Entitlement lan.cache"
       ],
       "out_of_scope": [],
@@ -3906,6 +3918,7 @@
       ],
       "acceptance": [
         "Real sccache WebDAV client hits through the proxy between two node processes",
+        "Real ccache hits through the node's helper endpoint (F-T04)",
         "Writes refused without cache_write"
       ],
       "verification": {
@@ -3926,15 +3939,24 @@
       "fakes_allowed": [
         "PeerProcess"
       ],
-      "future_validation": [],
+      "future_validation": [
+        "F-T04"
+      ],
       "acceptance_register": [
         "AR-03"
       ],
-      "human_prerequisites": [],
+      "human_prerequisites": [
+        "H-11"
+      ],
       "risks": [
         {
           "risk": "Cache poisoning through a writable peer cache",
           "mitigation": "cache_write off by default and explicit per trusted peer",
+          "owner": "AF-LAN-03"
+        },
+        {
+          "risk": "The ccache helper protocol differs from the manual, or ccache removes the HTTP backend (A-T03, F-T04)",
+          "mitigation": "Verify against the installed ccache early; the loopback HTTP fallback covers older versions",
           "owner": "AF-LAN-03"
         }
       ],

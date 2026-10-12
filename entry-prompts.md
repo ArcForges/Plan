@@ -10,7 +10,7 @@ Copy-paste prompts for sessions working on this plan. All of them assume [execut
 >
 > Use git worktrees, never main checkouts. Only you push, open PRs, post review records, read CI through the PR tools (never poll), merge at the reviewed head, and record the result in the graph and ledger.
 >
-> Ask me before any outward-facing publication. If the task needs a human prerequisite that is missing, set it `blocked` with the register IDs, tell me exactly what is needed, and stop. Stop after the task is `delivered` (or `complete`) and report: what was delivered, evidence links, acceptance-register entries touched, and the next task.
+> Ask me before any outward-facing publication. If a missing human prerequisite blocks the task's merge (the register's Blocks column), set the task `blocked` with that ID, tell me exactly what is needed, and stop. Other prerequisites never block: use the task's fakes or skip that leg with a stated reason. Stop after the task is `delivered` (or `complete`) and report: what was delivered, evidence links, acceptance-register entries touched, and the next task.
 
 ## P-2 Worker: implement one task (delegated)
 

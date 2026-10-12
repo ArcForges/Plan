@@ -24,7 +24,7 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
 | `blocked` | Waiting on a human prerequisite or an acceptance-register entry (`blocked_by`), for example legal texts, production keys, or the user's approval to publish. Work done so far stays on its branch. A blocked task does not count against the single active task. | Coordinator (`plan.py set-state <id> blocked --blocked-by H-xx --reason …` plus a ledger record) |
 | `superseded` | Replaced by a design decision (with reason) | Coordinator, with a ledger record |
 
-- **Blocked tasks.** A task that cannot continue because a human step is missing is set `blocked` with the register IDs. `next` then continues with the first planned task that does not depend on it. When the prerequisite arrives, the task returns to `active` (or `planned`) and finishes.
+- **Blocked tasks.** A task is set `blocked` only when a prerequisite whose **Blocks** column in the [acceptance register](acceptance-register.md) names that task's merge is missing. Prerequisites that block only `complete` leave the task `delivered`; the rest never block. `next` then continues with the first planned task that does not depend on it. When the prerequisite arrives, the task returns to `active` (or `planned`) and finishes.
 - **Deferred validation is not a block.** A task whose remaining step is a deferred real-world validation completes its development-stage scope, records the procedure in [acceptance-register.md](acceptance-register.md) and becomes `delivered` or `complete`.
 
 ## 3. Verification responsibilities (distinct evidence only)
