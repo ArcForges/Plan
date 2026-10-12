@@ -1,0 +1,7 @@
+.worktree/
+.worktrees/
+__pycache__/
+*.pyc
+.vs/
+.idea/
+.vscode/
