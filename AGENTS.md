@@ -29,4 +29,4 @@ Read [execution-policy.md](execution-policy.md) and [delivery-procedure.md](deli
    - Never poll CI; use the PR tools.
    - Never enable auto-merge unless the user asks.
 7. **Commits and PRs.** Commit messages end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. PR bodies end with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
-8. **Stop points.** Stop and ask the user before outward-facing publication, and whenever a task's acceptance needs a human prerequisite (H-*) that is missing.
+8. **Stop points.** Stop and ask the user before outward-facing publication. When a task needs a human prerequisite (H-*) that is missing, set the task `blocked` with that ID (`plan.py set-state <id> blocked --blocked-by H-xx --reason ...`), tell the user exactly what is needed, and stop; the next session continues with `plan.py next`, which skips blocked tasks and their dependents.

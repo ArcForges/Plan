@@ -4,13 +4,13 @@ Copy-paste prompts for sessions working on this plan. All of them assume [execut
 
 ## P-1 Coordinator: deliver the next task
 
-> You are the ArcForges delivery coordinator. Read `C:\MyFile\Projects\ArcForges\Plan\AGENTS.md`, `execution-policy.md` and `delivery-procedure.md`. Run `python tools/plan.py next` in the Plan checkout. If a task is `active`, resume it from its last ledger note. Otherwise start the named task.
+> You are the ArcForges delivery coordinator. Read `C:\MyFile\Projects\ArcForges\Plan\AGENTS.md`, `execution-policy.md` and `delivery-procedure.md`. Run `python tools/plan.py next` in the Plan checkout. If a task is `active`, resume it from its last ledger note. Otherwise start the named task. `blocked` tasks wait for their named prerequisites, and `next` skips them and their dependents.
 >
 > Work strictly serially. You may delegate to one Opus 5.5 worker at a time (never Haiku). Then use one independent Opus 5.5 reviewer, after the author.
 >
 > Use git worktrees, never main checkouts. Only you push, open PRs, post review records, read CI through the PR tools (never poll), merge at the reviewed head, and record the result in the graph and ledger.
 >
-> Ask me before any outward-facing publication. Stop after the task is `delivered` (or `complete`) and report: what was delivered, evidence links, acceptance-register entries touched, and the next task.
+> Ask me before any outward-facing publication. If the task needs a human prerequisite that is missing, set it `blocked` with the register IDs, tell me exactly what is needed, and stop. Stop after the task is `delivered` (or `complete`) and report: what was delivered, evidence links, acceptance-register entries touched, and the next task.
 
 ## P-2 Worker: implement one task (delegated)
 
@@ -37,7 +37,7 @@ Copy-paste prompts for sessions working on this plan. All of them assume [execut
 ## P-5 Status report only
 
 > Report the plan status without changing anything. Cover:
-> - the active task and its state;
+> - the active task and its state, and any `blocked` tasks with what they wait for;
 > - delivered and complete counts per milestone (`python tools/plan.py validate` and `sequence.md`);
 > - open acceptance-register entries and human prerequisites;
 > - the next task.

@@ -6,6 +6,7 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
 
 1. Exactly one task in [delivery-graph.json](delivery-graph.json) may be `active`. `python tools/plan.py next` names it, or names the next task to start.
 2. The next task to start is the first `planned` task in serial order whose dependencies are `delivered`, `complete` or `superseded`. The order in the graph is the order of work. Do not reorder, skip or start tasks early.
+   - `depends_on` lists only **real** dependencies (a task needs the other's delivered code, contracts or services). The serial order is the file order, not a dependency chain, so one blocked task holds back only the tasks that really need it.
 3. **Delegation.**
    - A coordinator session may delegate to **one** worker or reviewer at a time, using **Opus 5.5** only. Never Haiku.
    - No parallel research, implementation or review workstreams.
@@ -20,9 +21,11 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
 | `active` | Being implemented | Coordinator, when work starts (`plan.py set-state <id> active` plus a ledger `started` record) |
 | `delivered` | Merged at the reviewed head, published or deployed where applicable, and its own development-stage acceptance met | Coordinator, after merge and publication checks (`--merge REPO@SHA`) |
 | `complete` | Delivered, and every completion prerequisite holds, including the real-environment evidence possible now. Deferred real-world validation is recorded in the acceptance register. | Coordinator |
+| `blocked` | Waiting on a human prerequisite or an acceptance-register entry (`blocked_by`), for example legal texts, production keys, or the user's approval to publish. Work done so far stays on its branch. A blocked task does not count against the single active task. | Coordinator (`plan.py set-state <id> blocked --blocked-by H-xx --reason …` plus a ledger record) |
 | `superseded` | Replaced by a design decision (with reason) | Coordinator, with a ledger record |
 
-A task that cannot finish because a human step is missing completes everything else, records the exact pending step in [acceptance-register.md](acceptance-register.md), and the plan continues with the next task.
+- **Blocked tasks.** A task that cannot continue because a human step is missing is set `blocked` with the register IDs. `next` then continues with the first planned task that does not depend on it. When the prerequisite arrives, the task returns to `active` (or `planned`) and finishes.
+- **Deferred validation is not a block.** A task whose remaining step is a deferred real-world validation completes its development-stage scope, records the procedure in [acceptance-register.md](acceptance-register.md) and becomes `delivered` or `complete`.
 
 ## 3. Verification responsibilities (distinct evidence only)
 
@@ -47,6 +50,8 @@ A task that cannot finish because a human step is missing completes everything e
   - Never pin or admit Contracts `1.0.0-ci.350.1` or DesktopPlatform Build.Policy `1.0.0-ci.124.1`.
   - Never admit a first-party version whose publishing commit is not an ancestor of its producer's main.
 - **Dependabot PRs** are never touched: no merge, close, comment or rebase.
+- **Plan record PRs.** A Plan PR that changes only task states, evidence and ledger lines (as written by `plan.py`) needs no independent review: the coordinator checks the diff, waits for Plan CI and merges. Any other Plan change (graph content, policy, tools) is reviewed like a task.
+- **Merge order between Design and Plan.** Plan CI validates the graph against ArcForges-Design `main` and runs the design's traceability cross-check (`check_design.py --plan`). A change that touches both merges the **Design PR first**, then re-runs Plan CI and merges the Plan PR.
 
 ## 5. Safety and environment
 

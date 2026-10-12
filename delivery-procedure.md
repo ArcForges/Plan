@@ -9,7 +9,7 @@ Follow [execution-policy.md](execution-policy.md). These steps take one task fro
 3. **Mark it active.**
    - `python tools/plan.py set-state <id> active`
    - `python tools/plan.py ledger <id> started "<one line>"`
-   - Commit to a Plan branch `plan/<id>-start`, then PR and merge. These Plan records follow the same review rules, kept short.
+   - Commit to a Plan branch `plan/<id>-start`, then PR and merge. State-only record PRs need no independent review (policy §4): the coordinator checks the diff and Plan CI, then merges.
 4. **Create a worktree** per repository in the task's write scope: `<repo>/.worktree/<id-lower>` on branch `task/<id-lower>`, from the repository's current main. Never work in a main checkout.
 
 ## 2. Implement
@@ -58,4 +58,5 @@ Run exactly what the task's `verification.author` names. Record in the PR body:
 
 - **Stopped work.** Leave the worktree and branch in place, and record the exact state (head, uncommitted files, next step) in a ledger `note`. Never discard work.
 - **Resuming.** A later session resumes from that record. Do not restart from scratch if the record is usable.
-- **Blockers.** A blocker needing a human step goes into the acceptance register (or as an H item), and the plan continues with the next task when dependencies allow.
+- **Blockers.** A blocker needing a human step goes into the acceptance register (or as an H item). The coordinator sets the task `blocked` (`python tools/plan.py set-state <id> blocked --blocked-by H-xx --reason "…"`), records it in the ledger, and continues with `python tools/plan.py next`, which skips the blocked task and its dependents.
+- **Production prerequisites at merge.** Cloud tasks deploy on merge. If a production prerequisite (for example H-06 or H-16) is missing at merge time, the reviewed PR stays open and the task is set `blocked`; it merges when the prerequisite exists.

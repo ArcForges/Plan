@@ -49,6 +49,35 @@ class GraphChecks(unittest.TestCase):
         del g["tasks"][3]["acceptance"]
         self.assertTrue(any("missing field acceptance" in e for e in plan.validate(g)))
 
+    def test_every_task_has_risks_covering_its_future_validation(self):
+        g = copy.deepcopy(self.graph)
+        g["tasks"][0]["risks"] = []
+        self.assertTrue(any("risks must not be empty" in e for e in plan.validate(g)))
+        g = copy.deepcopy(self.graph)
+        t = next(x for x in g["tasks"] if x["future_validation"])
+        f = t["future_validation"][0]
+        t["risks"] = [{"risk": "something", "mitigation": "else", "owner": "user"}]
+        self.assertTrue(any(f"future validation {f} is not covered" in e for e in plan.validate(g)))
+        g = copy.deepcopy(self.graph)
+        g["tasks"][0]["risks"][0]["owner"] = "AF-NOPE-99"
+        self.assertTrue(any("risk owner AF-NOPE-99" in e for e in plan.validate(g)))
+
+    def test_dependencies_are_real_not_a_chain(self):
+        # Tasks with no real dependency exist beyond the first, so one blocked task cannot stall the plan (R-08).
+        roots = [t["id"] for t in self.graph["tasks"] if not t["depends_on"]]
+        self.assertGreater(len(roots), 1)
+
+    def test_blocked_needs_register_ids(self):
+        g = copy.deepcopy(self.graph)
+        g["tasks"][0]["state"] = "blocked"
+        self.assertTrue(any("blocked without blocked_by" in e for e in plan.validate(g)))
+        g["tasks"][0]["blocked_by"] = ["H-99"]
+        self.assertTrue(any("blocked_by H-99" in e for e in plan.validate(g)))
+        g["tasks"][0]["blocked_by"] = ["H-10"]
+        self.assertEqual(plan.validate(g), [])
+        g["tasks"][0]["state"] = "planned"
+        self.assertTrue(any("blocked_by set while" in e for e in plan.validate(g)))
+
 
 class StateChanges(unittest.TestCase):
     def setUp(self):
@@ -71,6 +100,30 @@ class StateChanges(unittest.TestCase):
         plan.set_state(self.graph, self.first, "complete")
         with self.assertRaises(SystemExit):
             plan.set_state(self.graph, self.first, "planned")
+
+    def test_blocked_task_is_skipped_and_does_not_count_as_active(self):
+        by_id = {t["id"]: t for t in self.graph["tasks"]}
+        web = "AF-WEB-01"
+        with self.assertRaises(SystemExit):
+            plan.set_state(self.graph, web, "blocked", reason="legal texts")  # needs --blocked-by
+        with self.assertRaises(SystemExit):
+            plan.set_state(self.graph, web, "planned", blocked_by=["H-10"])  # not a blocked transition
+        for t in self.graph["tasks"]:
+            if t["id"] != web and t["order"] < by_id[web]["order"]:
+                t["state"] = "complete"
+                t["evidence"]["merges"].append("X@1")
+        plan.set_state(self.graph, web, "active")
+        plan.set_state(self.graph, web, "blocked", reason="waiting for legal texts", blocked_by=["H-10"])
+        self.assertEqual(by_id[web]["blocked_by"], ["H-10"])
+        nxt = plan.next_task(self.graph)
+        self.assertNotEqual(nxt["id"], web)
+        self.assertNotIn(web, nxt["depends_on"])
+        plan.set_state(self.graph, nxt["id"], "active")  # allowed: the blocked task is not active
+        self.assertEqual(plan.validate(self.graph), [])
+        self.assertIn("blocked (H-10)", plan.render_sequence(self.graph))
+        plan.set_state(self.graph, nxt["id"], "planned")
+        plan.set_state(self.graph, web, "planned")
+        self.assertEqual(by_id[web]["blocked_by"], [])
 
     def test_superseded_needs_reason(self):
         with self.assertRaises(SystemExit):

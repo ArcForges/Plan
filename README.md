@@ -7,7 +7,7 @@ The authoritative delivery plan for **ArcForges**, the flagship resource-control
 | [execution-policy.md](execution-policy.md) | Serial delivery rules: one active task, distinct-evidence verification, publication and safety rules |
 | [delivery-procedure.md](delivery-procedure.md) | Steps for one task, from start to delivered or complete |
 | [entry-prompts.md](entry-prompts.md) | Prompts for coordinator, worker, reviewer, resume and status sessions |
-| [delivery-graph.json](delivery-graph.json) | The 47 tasks (AF-*) in serial order across milestones M0–M14, with full fields |
+| [delivery-graph.json](delivery-graph.json) | The 51 tasks (AF-*) in serial order across milestones M0–M14, with full fields, real dependencies and risks |
 | [sequence.md](sequence.md) | Generated view of the serial sequence and states |
 | [acceptance-register.md](acceptance-register.md) | Deferred real-world validation (AR-*) and human prerequisites (H-*) |
 | [baseline.md](baseline.md) | Repository heads, admitted versions and workstation facts at the start |
