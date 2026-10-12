@@ -55,6 +55,7 @@ Real-world validation that cannot run at development stage, and the human prereq
 | H-17 | A Play-enabled Android emulator image signed in with a licence-test account | AF-AND-03 (optional real billing smoke), AR-06 | Nothing (optional) | Development uses `FakeBillingClient` |
 | H-18 | Docker on the workstation (optional), for the Cloud repository's `test:container` diagnostics | AF-CLD-01 (optional) | Nothing (optional; never a gate) | Never a gate; the local cloud stack runs without Docker |
 | H-19 | Transactional e-mail provider account (Postmark, with Amazon SES as fallback), sending domain with SPF, DKIM and DMARC records, and API credentials in Cloud secrets | AF-ID-01 (live only), AR-14 | Nothing at development stage (live delivery: AR-14) | Development uses `FakeMailSender` |
+| H-20 | Approval to run the Cloud repository's provisioning script against the production account, creating the D1 database, the R2 bucket with its lifecycle rules and the Queue (or the user creates them and supplies their IDs) | AF-CLD-01, AF-SUP-01 (production deploys) | The merge (production deploy) of AF-CLD-01 and AF-SUP-01 | At Cloud `92ba1dc9` only the `proof` environment has these bindings. Request it, with H-05, H-06 and H-16, when M9 starts |
 
 ## 3. Development-stage evidence to record per entry
 

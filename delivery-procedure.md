@@ -15,6 +15,7 @@ Follow [execution-policy.md](execution-policy.md). These steps take one task fro
 ## 2. Implement
 
 1. Stay inside the task's `repositories[].paths` write scope. A needed change outside it is either a new task proposal (stop and record it) or an explicit scope note in the PR when trivial.
+   - **Package files.** A task that pins, adds or updates a package may also change the repository's central package file (`Directory.Packages.props`), its lock files and its dependency admission records.
 2. Follow each repository's `AGENTS.md`: locked restores, dependency admission records for new packages, analyzers, AOT settings.
 3. Build vertically. The task's user-visible outcome works end to end. Do not leave disconnected interface shells.
 4. Write tests at the layers named in ArcForges-Design `docs/architecture/16-testing-strategy.md`. Use fakes only where `fakes_allowed` lists them.
@@ -59,4 +60,4 @@ Run exactly what the task's `verification.author` names. Record in the PR body:
 - **Stopped work.** Leave the worktree and branch in place, and record the exact state (head, uncommitted files, next step) in a ledger `note`. Never discard work.
 - **Resuming.** A later session resumes from that record. Do not restart from scratch if the record is usable.
 - **Blockers.** A blocker needing a human step goes into the acceptance register (or as an H item), with its **Blocks** column. When it blocks the task's merge, the coordinator sets the task `blocked` (`python tools/plan.py set-state <id> blocked --blocked-by H-xx --reason "…"`), records it in the ledger, and continues with `python tools/plan.py next`, which skips the blocked task and its dependents.
-- **Production prerequisites at merge.** Cloud tasks deploy on merge. If a production prerequisite (for example H-06 or H-16) is missing at merge time, the reviewed PR stays open and the task is set `blocked`; it merges when the prerequisite exists. Ask the user for H-05, H-06 and H-16 when M9 starts, so that M10 is not held up.
+- **Production prerequisites at merge.** Cloud tasks deploy on merge. If a production prerequisite (for example H-06 or H-16) is missing at merge time, the reviewed PR stays open and the task is set `blocked`; it merges when the prerequisite exists. Ask the user for H-05, H-06, H-16 and H-20 when M9 starts, so that M10 is not held up.

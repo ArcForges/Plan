@@ -2907,7 +2907,8 @@
             "worker/**",
             "tests/**",
             "eng/**",
-            "docs/**"
+            "docs/**",
+            "wrangler.json"
           ]
         }
       ],
@@ -2919,7 +2920,8 @@
         "Host profile composition (C-10)",
         "Physical/manifest/fleet.json and generated migration; productId table-rebuild migration (arcforges-node, arcforges-mobile)",
         "fleet_signing_key handling (command, entitlement, relay HMAC, Node Issuing CA); secret binding names only",
-        "Local cloud stack (16 section 3.1): native C# host process, workerd under Miniflare, the Container shim forwarding to the host's loopback port; scripts and documentation"
+        "Local cloud stack (16 section 3.1): native C# host process, workerd under Miniflare, the Container shim forwarding to the host's loopback port; scripts and documentation",
+        "Production bindings in wrangler.json (D1, R2, Queue) and a repository provisioning script that creates the D1 database, the R2 bucket with its lifecycle rules (10 section 3.11) and the Queue; running it against production needs the user's approval (H-20)"
       ],
       "out_of_scope": [
         "Platform services (AF-PLAT-01)",
@@ -2967,9 +2969,15 @@
       "human_prerequisites": [
         "H-06",
         "H-16",
-        "H-18"
+        "H-18",
+        "H-20"
       ],
       "risks": [
+        {
+          "risk": "Production resources do not exist at 92ba1dc9 (only the proof environment has bindings)",
+          "mitigation": "Provisioning script plus the user's approval (H-20) before the merge",
+          "owner": "user"
+        },
         {
           "risk": "The local stack differs from production Containers",
           "mitigation": "Same signed internal routes; a production smoke after deploy; Docker diagnostics optional (H-18)",
@@ -3007,7 +3015,10 @@
           "repo": "Cloud",
           "paths": [
             "src/**",
-            "tests/**"
+            "worker/**",
+            "tests/**",
+            "eng/**",
+            "wrangler.json"
           ]
         }
       ],
@@ -3020,7 +3031,7 @@
         "Audit event writer with the hash chain, and the reader that backs OperatorReadService.ListAuditEvents; anomaly flags as `anomaly.<kind>` audit events",
         "Operating budget service: reservations per dimension, threshold evaluation (80% alert, 100% kill switches in order), dimensions 8..12 table-rebuild migration, unit prices configuration",
         "Budget and limit checks as a library for metered paths; rate limits per account and IP",
-        "Job infrastructure: lease and fence plans over platform_job_lease; a job runner started by a Worker cron trigger that calls the host (added through the repository's reviewed wrangler.json change process); the compact command fence",
+        "Job infrastructure: lease and fence plans over platform_job_lease, reusing the shared-families `lease` guard (holder and fence); a job runner started by a Worker cron trigger and scheduled handler that call the host (wrangler.json and its hash-bound receipts updated through the repository's reviewed process); the compact command fence",
         "Scheduled retention sweeps: expired receipts and inbox rows, expired flows, and the Retention column of data/cloud-store.md"
       ],
       "out_of_scope": [
@@ -3588,7 +3599,9 @@
           "repo": "Cloud",
           "paths": [
             "src/**",
-            "tests/**"
+            "tests/**",
+            "eng/**",
+            "wrangler.json"
           ]
         },
         {
@@ -3608,6 +3621,7 @@
         "SupportService (CreateCase, ListCases, AppendMessage, DecideAccess) and SupportAccessService (ListAccessRequests, GetAccessRequest)",
         "Node SupportService bundle builder with redaction",
         "BeginSupportUpload and CompleteSupportUpload with R2 presigned PUT and verification; per-plan limits and the uploads kill switch",
+        "R2 lifecycle rules for the pending and final prefixes through the provisioning script of AF-CLD-01 (H-20)",
         "W-25; Desktop D-19 upload; CLI support commands"
       ],
       "out_of_scope": [
@@ -3658,7 +3672,8 @@
       ],
       "acceptance_register": [],
       "human_prerequisites": [
-        "H-16"
+        "H-16",
+        "H-20"
       ],
       "risks": [
         {
@@ -3982,7 +3997,9 @@
           "paths": [
             "worker/relay/**",
             "src/**",
-            "tests/**"
+            "tests/**",
+            "eng/**",
+            "wrangler.json"
           ]
         },
         {
@@ -4000,6 +4017,7 @@
       "objective": "Connect nodes and viewers through hibernating WebSockets with demand-driven telemetry and bounded costs.",
       "scope": [
         "Relay routes and FleetHub per AD-0009 and 10 sections 3.4-3.5 and 4-5; viewer grants as a WebSocket subprotocol validated before the DO",
+        "FleetHub Durable Object binding and migration in wrangler.json",
         "Node relay client (SM-RELAY), summaries, deltas, snapshots, EntitlementChanged frames",
         "IssueRelayToken, OpenFleetWatch, WatchFleet, ListNodes, GetNode, RenameNode, RevokeNode",
         "Limits, alarm guard, kill switches"
