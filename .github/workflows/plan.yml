@@ -1,0 +1,43 @@
+name: Plan checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  merge_group:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: plan-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CI: "true"
+  PYTHONUTF8: "1"
+
+jobs:
+  check:
+    name: Graph, sequence, register and tool tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: ArcForges/ArcForges-Design
+          path: design
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version-file: .python-version
+      - name: Validate the plan against the design (main)
+        run: python tools/plan.py validate --design design
+      - name: Cross-check requirement-to-task traceability with the design (main)
+        run: python design/tools/check_design.py --plan delivery-graph.json
+      - name: Tool tests
+        run: python -m unittest discover -s tests -v

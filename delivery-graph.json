@@ -1,0 +1,5046 @@
+{
+  "schema": 2,
+  "plan": "ArcForges flagship delivery",
+  "created": "2026-10-12",
+  "revised": "2026-10-12 (independent review findings R-05, R-08, R-24, R-25, R-28, R-29, R-41)",
+  "policy": "execution-policy.md",
+  "design": {
+    "repository": "ArcForges/ArcForges-Design",
+    "note": "design_refs are paths in that repository"
+  },
+  "milestones": [
+    {
+      "id": "M0",
+      "title": "Foundations",
+      "outcome": "The ArcForges repository builds and tests in hosted CI; the flagship contracts and the two DesktopPlatform adaptations are published; implementation repositories point at the new design."
+    },
+    {
+      "id": "M1",
+      "title": "First managed run on Windows",
+      "outcome": "A user runs `arcforges run -- <command>` on Windows: submitted once, persisted, executed in a job object, output and exit code returned, and it survives a node restart."
+    },
+    {
+      "id": "M2",
+      "title": "Linux execution",
+      "outcome": "The same works on Linux and WSL2 through transient systemd units, with durable exit records and survival across node restarts."
+    },
+    {
+      "id": "M3",
+      "title": "Resource control",
+      "outcome": "Many tasks run in parallel under computed budgets with pools, priorities, a parallelism policy and pressure handling; the Windows host and a WSL guest share one fair queue without double counting; origins, permissions and approvals apply."
+    },
+    {
+      "id": "M4",
+      "title": "Records and diagnosis",
+      "outcome": "Users see where time went, findings with evidence and remedies, and learned estimates feed admission."
+    },
+    {
+      "id": "M5",
+      "title": "Toolchains and caches",
+      "outcome": ".NET, Rust, C/C++ (including FASTBuild), Node and Python work uses shared managed caches, with tool concurrency tied to grants."
+    },
+    {
+      "id": "M6",
+      "title": "Storage and workspaces",
+      "outcome": "Disk usage is analyzed and reclaimed safely, and agents get managed worktrees."
+    },
+    {
+      "id": "M7",
+      "title": "AI integration",
+      "outcome": "Claude Code and Codex run work through ArcForges (MCP, hooks, routing) with honest coverage."
+    },
+    {
+      "id": "M8",
+      "title": "Desktop",
+      "outcome": "The Desktop app shows and controls all local features."
+    },
+    {
+      "id": "M9",
+      "title": "Distribution",
+      "outcome": "Users download, install, update and roll back signed artifacts from arcforges.com."
+    },
+    {
+      "id": "M10",
+      "title": "Cloud platform, account and entitlements",
+      "outcome": "The cloud platform services and account authentication exist; nodes sign in through the browser or a device code, entitlements are enforced offline, and support bundles reach cases."
+    },
+    {
+      "id": "M11",
+      "title": "LAN",
+      "outcome": "Paired machines on a LAN share work and compiler caches."
+    },
+    {
+      "id": "M12",
+      "title": "Remote access",
+      "outcome": "Pro users watch and control nodes from the web, and receive push notifications."
+    },
+    {
+      "id": "M13",
+      "title": "Commerce and Android",
+      "outcome": "Users subscribe on the web (Paddle) or in Google Play, and use the Android app."
+    },
+    {
+      "id": "M14",
+      "title": "Operations and release candidate",
+      "outcome": "Operators run the service within budgets, every journey passes in closed loop, and the acceptance register is ready for the user."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "AF-REPO-01",
+      "title": "ArcForges repository foundation",
+      "milestone": "M0",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "*"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "objective": "Create the implementation repository's structure, build policy, CI and test harness so later tasks add behaviour only.",
+      "scope": [
+        "Solution and project layout of architecture 01 (empty projects only where a later task fills them; no placeholder behaviour)",
+        "Directory.Build.props/targets using DesktopPlatform ArcForges.Build.Policy (an admitted version, never 1.0.0-ci.124.1); Native AOT settings; central package management; locked restores",
+        "Hosted CI: Windows and Ubuntu runners; build, unit tests, AOT publish (win-x64, linux-x64), format and analyzers, gitleaks; no GUI/device/browser/live/inference jobs",
+        "tests/ layout and eng/test.ps1, eng/test.sh trait-based suite selection (16 section 4)",
+        "tools/ArcForges.TestLoad and tools/ArcForges.Bench as working tools with their first scenarios (CPU, memory, output, fork) and the binary size and startup benchmarks",
+        "README, AGENTS.md (serial policy, verification responsibilities, standing constraints), CLAUDE.md, SECURITY.md, dependency admission records"
+      ],
+      "out_of_scope": [
+        "Any node behaviour"
+      ],
+      "design_refs": [
+        "docs/architecture/01-system-overview.md",
+        "docs/architecture/16-testing-strategy.md",
+        "docs/architecture/15-performance-targets.md",
+        "docs/decisions/AD-0003-architecture-and-runtimes.md",
+        "docs/decisions/AD-0014-delivery-method.md"
+      ],
+      "requirements": [
+        "R-TEST-001",
+        "R-TEST-002",
+        "R-PERF-001"
+      ],
+      "deliverables": [
+        "Repository scaffold merged",
+        "CI green on main",
+        "TestLoad and Bench usable from the CLI"
+      ],
+      "acceptance": [
+        "CI runs on pull requests and main and passes",
+        "AOT publish of an empty host project succeeds with zero trim warnings on both RIDs",
+        "TestLoad produces each scenario reproducibly"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Run TestLoad scenarios on Windows and in WSL2 Debian"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "A dependency emits AOT or trim warnings and blocks the zero-warning gate",
+          "mitigation": "Admit only AOT-compatible packages; record any exception as a dependency-admission decision",
+          "owner": "AF-REPO-01"
+        },
+        {
+          "risk": "Hosted runner images differ from the workstation",
+          "mitigation": "Pin runner images and tool versions; the workstation's real-OS runs stay authoritative",
+          "owner": "AF-REPO-01"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 1
+    },
+    {
+      "id": "AF-DOCS-01",
+      "title": "Point implementation repositories at the new design authority",
+      "milestone": "M0",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Contracts",
+          "paths": [
+            "AGENTS.md",
+            "README.md",
+            "docs/**"
+          ]
+        },
+        {
+          "repo": "DesktopPlatform",
+          "paths": [
+            "AGENTS.md",
+            "README.md"
+          ]
+        },
+        {
+          "repo": "Cloud",
+          "paths": [
+            "AGENTS.md",
+            "README.md"
+          ]
+        },
+        {
+          "repo": "Web",
+          "paths": [
+            "AGENTS.md",
+            "README.md"
+          ]
+        },
+        {
+          "repo": "Mobile",
+          "paths": [
+            "AGENTS.md",
+            "README.md"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "objective": "Retarget agent and README references so no session follows the superseded corpus or delivery model (AD-0001 consequences).",
+      "scope": [
+        "Replace links into ArcForges/ArcForges-Design (old paths) with ArcForges-Design-Parallel@64173614 citations or the new design",
+        "Replace build-slot, parallel-claim and launcher instructions with a pointer to ArcForges/Plan execution-policy.md",
+        "State the flagship role of each repository (active / retained)"
+      ],
+      "out_of_scope": [
+        "Code changes",
+        "Dependabot PRs (left untouched)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0001-flagship-pivot.md",
+        "docs/decisions/AD-0014-delivery-method.md",
+        "docs/reuse/conflicts.md"
+      ],
+      "requirements": [
+        "R-TEST-001"
+      ],
+      "deliverables": [
+        "One docs-only PR per repository"
+      ],
+      "acceptance": [
+        "No remaining instruction in those repositories tells an agent to claim build slots, run parallel claims or follow ArcForges-Design main paths",
+        "Each repository's CI passes"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "A stale instruction survives and misleads a later session",
+          "mitigation": "Search each repository for build-slot, claim, launcher and old-design references; list the search and its result in each PR",
+          "owner": "AF-DOCS-01"
+        }
+      ],
+      "size": "S",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 2
+    },
+    {
+      "id": "AF-CON-01",
+      "title": "Adopt the flagship contracts into Contracts",
+      "milestone": "M0",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Contracts",
+          "paths": [
+            "public/proto/arcforges/node/**",
+            "public/proto/arcforges/fleet/**",
+            "internal/proto/arcforges/peer/**",
+            "internal/proto/arcforges/relay/**",
+            "public/proto/arcforges/publicapi/v1/support_access.proto",
+            "internal/proto/arcforges/operator/v1/operator_read.proto",
+            "src/**",
+            "eng/**",
+            "tests/**",
+            "docs/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-REPO-01"
+      ],
+      "objective": "Make the design protos the published, versioned contracts with packages ArcForges.Contracts.Node, .Peer, .Fleet and .Relay, plus the two additive files in the reused publicapi and operator packages.",
+      "scope": [
+        "Copy docs/contracts/proto (design) into public/internal per the contracts README placement; no semantic edits",
+        "Additive files in reused packages: publicapi.v1 support_access.proto (SupportAccessService) and operator.v1 operator_read.proto (OperatorReadService), with the packages' existing C# namespaces",
+        "DeviceService: no schema change (product values arcforges-node and arcforges-mobile are data; reuse map section 2)",
+        "Package projects, generated C# (and the existing TypeScript generation only where the repository already produces it)",
+        "Wire-compatibility baselines for the new packages; error-code catalogue fixture",
+        "Publish a cohort through the existing main-push publishing"
+      ],
+      "out_of_scope": [
+        "Implementing services",
+        "Removing or changing retained packages"
+      ],
+      "design_refs": [
+        "docs/contracts/README.md",
+        "docs/contracts/reuse-map.md",
+        "docs/contracts/errors.md",
+        "docs/contracts/proto/arcforges/node/v1/tasks.proto"
+      ],
+      "requirements": [
+        "R-API-001",
+        "R-API-006",
+        "R-API-007",
+        "R-API-008"
+      ],
+      "deliverables": [
+        "Contracts PR merged; cohort published (the ArcForges repository pins it in AF-NODE-02)"
+      ],
+      "acceptance": [
+        "The published packages contain every service and message of the design protos byte-for-byte identical in schema",
+        "Wire-compatibility gate active for the new packages",
+        "Generated C# builds warning-free under IsAotCompatible"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run",
+          "Compare a schema digest of the published descriptors with the design protos"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Generated code differs between the design compile check and the Contracts toolchain",
+          "mitigation": "Compare descriptor digests; the Contracts CI gates are authoritative",
+          "owner": "AF-CON-01"
+        },
+        {
+          "risk": "A rolled-back or non-ancestor cohort is admitted",
+          "mitigation": "Admit only cohorts whose publishing commit is an ancestor of Contracts main; never 1.0.0-ci.350.1",
+          "owner": "AF-CON-01"
+        }
+      ],
+      "size": "M",
+      "notes": "Never admit or pin rolled-back Contracts 1.0.0-ci.350.1; admit only versions whose publishing commit is an ancestor of Contracts main.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 3
+    },
+    {
+      "id": "AF-CON-02",
+      "title": "Rename the ArcForges.Cli tool command (C-03)",
+      "milestone": "M0",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Contracts",
+          "paths": [
+            "src/ArcForges.Cli/**",
+            "docs/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "objective": "Remove the PATH collision between the Contracts developer tool and the product CLI.",
+      "scope": [
+        "Next ArcForges.Cli version declares tool command arcforges-contracts",
+        "Docs and tests updated",
+        "Release note: earlier versions keep the old command (immutable)"
+      ],
+      "out_of_scope": [
+        "Unpublishing or deprecating earlier versions"
+      ],
+      "design_refs": [
+        "docs/reuse/conflicts.md",
+        "docs/contracts/reuse-map.md"
+      ],
+      "requirements": [
+        "R-UX-003"
+      ],
+      "deliverables": [
+        "Contracts PR merged and a new tool version published"
+      ],
+      "acceptance": [
+        "`dotnet tool install` of the new version exposes `arcforges-contracts` only"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Scripts that call the old command break after upgrading the tool",
+          "mitigation": "Earlier versions stay published and immutable; the release note names the new command",
+          "owner": "AF-CON-02"
+        }
+      ],
+      "size": "S",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 4
+    },
+    {
+      "id": "AF-DP-01",
+      "title": "LocalRpc service-endpoint mode",
+      "milestone": "M0",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "DesktopPlatform",
+          "paths": [
+            "src/BuildingBlocks/ArcForges.LocalRpc/**",
+            "tests/**",
+            "eng/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-REPO-01"
+      ],
+      "objective": "Add the service-endpoint mode the node needs (well-known endpoint, stream lane, per-method profiles, peer identity), without changing parent-child behaviour.",
+      "scope": [
+        "Everything in docs/reuse/desktopplatform-refactor.md section 1",
+        "Publish a DesktopPlatform cohort through the existing release set"
+      ],
+      "out_of_scope": [
+        "Other DesktopPlatform packages",
+        "Linux TSYNC, Shell Avalonia adapter, PLT.66"
+      ],
+      "design_refs": [
+        "docs/reuse/desktopplatform-refactor.md",
+        "docs/architecture/02-node-service.md",
+        "docs/architecture/11-security-privacy.md"
+      ],
+      "requirements": [
+        "R-API-002",
+        "R-SEC-001"
+      ],
+      "deliverables": [
+        "DesktopPlatform PR merged; cohort published (the ArcForges repository pins it in AF-NODE-01)"
+      ],
+      "acceptance": [
+        "All existing LocalRpc tests pass unchanged",
+        "New service-mode tests pass on Windows and WSL2 (ACL, 64 connections, 15-minute stream with heartbeats beside 16 data calls, back-pressure reset, per-method deadline, peer identity, idle rules)",
+        "AOT publish with zero trim warnings"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Run the new service-mode tests on Windows and in WSL2 Debian"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-02"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Service mode regresses existing parent-child LocalRpc users",
+          "mitigation": "Existing tests unchanged; the new mode is an explicit option",
+          "owner": "AF-DP-01"
+        },
+        {
+          "risk": "The stream lane starves unary calls under load",
+          "mitigation": "Separate lanes and per-method limits, tested at 64 connections",
+          "owner": "AF-DP-01"
+        }
+      ],
+      "size": "L",
+      "notes": "Never pin DesktopPlatform Build.Policy 1.0.0-ci.124.1.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 5
+    },
+    {
+      "id": "AF-DP-02",
+      "title": "Security.Secrets Linux backends",
+      "milestone": "M0",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "DesktopPlatform",
+          "paths": [
+            "src/BuildingBlocks/ArcForges.Security.Secrets/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "objective": "Store node credentials and the node data key safely on Linux: Secret Service, else a reported 0600-file fallback.",
+      "scope": [
+        "docs/reuse/desktopplatform-refactor.md section 2",
+        "Publish with the next cohort"
+      ],
+      "out_of_scope": [
+        "Windows backend changes"
+      ],
+      "design_refs": [
+        "docs/reuse/desktopplatform-refactor.md",
+        "docs/decisions/AD-0011-identity-and-login.md"
+      ],
+      "requirements": [
+        "R-AUTH-003"
+      ],
+      "deliverables": [
+        "DesktopPlatform PR merged; cohort published"
+      ],
+      "acceptance": [
+        "Real WSL2 tests: file fallback always; Secret Service when gnome-keyring is installed (skipped with reason otherwise)",
+        "Protection level reported correctly"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "WSL2 Debian real tests"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [
+        "H-11"
+      ],
+      "risks": [
+        {
+          "risk": "No Secret Service in WSL2 without extra packages",
+          "mitigation": "0600-file fallback with a reported weaker protection level; the gnome-keyring test runs only when installed (H-11)",
+          "owner": "AF-DP-02"
+        }
+      ],
+      "size": "S",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 6
+    },
+    {
+      "id": "AF-NODE-02",
+      "title": "Node store",
+      "milestone": "M1",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Store/**",
+            "tests/ArcForges.Node.Store.Tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-REPO-01",
+        "AF-CON-01",
+        "AF-DP-02"
+      ],
+      "objective": "Implement the node store of docs/data/node-store.md: schema, migrations, backups, idempotency, sealed secrets and policy defaults.",
+      "scope": [
+        "Pin the published Contracts cohort of AF-CON-01 and the DesktopPlatform Security.Secrets cohort of AF-DP-02 (admitted versions only)",
+        "Schema version 1 (all tables), forward-only expand-only migration framework, min_reader enforcement, pre-migration backups",
+        "command_dedup with payload digests and FULL synchronous commits",
+        "task_secret sealing (AES-256-GCM with the task ID as associated data; node data key in the OS secret store) and purge; env_snapshot content addressing",
+        "Default policy document revision 1",
+        "Expand-only schema diff check in CI",
+        "Re-verify Microsoft.Data.Sqlite under AOT on win-x64 and linux-x64; evaluate ArcForges.Persistence.Sqlite fit and record the decision",
+        "Store growth benchmark (10,000 synthetic attempts submitted from realistic captured environments)"
+      ],
+      "out_of_scope": [
+        "Business logic of later subsystems"
+      ],
+      "design_refs": [
+        "docs/data/node-store.md",
+        "docs/data/node-store.sql",
+        "docs/architecture/13-distribution-updates.md",
+        "docs/architecture/04-execution.md"
+      ],
+      "requirements": [
+        "R-EXE-001",
+        "R-EXE-016",
+        "R-EXE-017"
+      ],
+      "deliverables": [
+        "Store library with tests and benchmark"
+      ],
+      "acceptance": [
+        "Crash-consistency test: kill during writes, reopen, integrity ok",
+        "Idempotent replay returns the stored response; differing payload returns CONFLICT/command_id_reused",
+        "A store with a higher min_reader is refused",
+        "Sealed values round-trip only with the node data key; purge after the retention leaves STATE/secrets_unavailable",
+        "Growth <= 50 MB per 10,000 attempts"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "AOT publish and store tests on Windows and WSL2"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Microsoft.Data.Sqlite regresses under AOT on a new runtime",
+          "mitigation": "Re-verify on both RIDs; keep the ArcForges.Persistence.Sqlite evaluation recorded",
+          "owner": "AF-NODE-02"
+        },
+        {
+          "risk": "Store growth exceeds the target with realistic environments",
+          "mitigation": "Content-addressed env_snapshot; benchmark with captured shells",
+          "owner": "AF-NODE-02"
+        },
+        {
+          "risk": "The OS secret store loses the node data key",
+          "mitigation": "Fail retries with STATE/secrets_unavailable and ask for resubmission; never run with a partial environment",
+          "owner": "AF-NODE-02"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 7
+    },
+    {
+      "id": "AF-NODE-01",
+      "title": "Node host, endpoint, handshake, client library and CLI skeleton",
+      "milestone": "M1",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Host/**",
+            "src/ArcForges.Supervisor/**",
+            "src/ArcForges.Node.Core/**",
+            "src/ArcForges.Node.Api/**",
+            "src/ArcForges.Client/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-NODE-02",
+        "AF-DP-01"
+      ],
+      "objective": "Run the node as a per-user service with its endpoint, lifecycle and handshake, and give the CLI a working connection.",
+      "scope": [
+        "Pin the DesktopPlatform cohort with the LocalRpc service-endpoint mode of AF-DP-01",
+        "Startup sequence, shutdown, crash recovery hooks (02 section 2); single instance; data root; logging through ArcForges.Observability with redaction",
+        "LocalRpc service endpoint; NodeService (Hello, GetNodeInfo, GetHealth, GetCapabilities, RenameNode, StopNode, GetNodeSettings, UpdateNodeSettings, jobs, ListNotifications, MarkNotificationsRead); NodeEventService with event journal, snapshot and cursors",
+        "Windows supervisor (GUI subsystem, HKCU Run start, crash restart) and a development systemd user unit for Linux",
+        "ArcForges.Client: endpoint resolution, auto-start rules, NodeStreamCache, CommandIds, ConnectionState",
+        "CLI parser decision (System.CommandLine AOT or in-house, F-N02); global options, output modes, exit codes; commands status, node *, config *, events, jobs, version, completion",
+        "Interim permission model until AF-SEC-01: same-user peers only (peer identity), origin recorded"
+      ],
+      "out_of_scope": [
+        "Execution (AF-EXEC-01)",
+        "Installers (AF-DIST-01)"
+      ],
+      "design_refs": [
+        "docs/architecture/02-node-service.md",
+        "docs/architecture/12-client-applications.md",
+        "docs/experience/cli.md",
+        "docs/contracts/proto/arcforges/node/v1/node.proto",
+        "docs/contracts/proto/arcforges/node/v1/events.proto",
+        "docs/decisions/AD-0004-contracts-and-state.md"
+      ],
+      "requirements": [
+        "R-API-002",
+        "R-API-003",
+        "R-API-004",
+        "R-API-006",
+        "R-API-007",
+        "R-SEC-001",
+        "R-SEC-003",
+        "R-UX-003"
+      ],
+      "deliverables": [
+        "Node host, supervisor, client library and CLI skeleton"
+      ],
+      "acceptance": [
+        "`arcforges status` auto-starts the node and reports it on Windows and WSL2",
+        "Stream resume by cursor and reset on generation change pass",
+        "Same-user-only endpoint proven on both platforms",
+        "CLI cold start and status round-trip benchmarks recorded against 15 section 1"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Windows and WSL2 real lifecycle tests (start, stop, crash restart)"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [
+        "F-N02"
+      ],
+      "acceptance_register": [
+        "AR-02"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "System.CommandLine misses the AOT size or cold-start target (F-N02)",
+          "mitigation": "Decide by measurement; the in-house parser is the fallback",
+          "owner": "AF-NODE-01"
+        },
+        {
+          "risk": "Stream reset storms on generation change overload clients",
+          "mitigation": "Snapshot plus cursor tests with many subscribers",
+          "owner": "AF-NODE-01"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 8
+    },
+    {
+      "id": "AF-EXEC-01",
+      "title": "Windows execution",
+      "milestone": "M1",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Core/**",
+            "src/ArcForges.Node.Platform/**",
+            "src/ArcForges.Node.Platform.Windows/**",
+            "src/ArcForges.Node.Api/**",
+            "src/ArcForges.Supervisor/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-NODE-01"
+      ],
+      "objective": "Execute tasks on Windows under job objects with durable output, exit capture, cancellation, timeouts and restart recovery.",
+      "scope": [
+        "Command resolution, Windows quoting and batch refusal (04 section 2); environment resolution with sealed secrets",
+        "Root and child jobs (the holder assigns the suspended process to the root job, then the child job); `arcforges node exec-wrap` holders outside the job that hold the child and root job handles until the node acknowledges the exit record; exit.json with accounting and limit violations; kill_with_node tasks without a holder (KILL_ON_JOB_CLOSE)",
+        "Completion port clear-then-attach on restart; limit-violation check after restart; node signal CTRL_BREAK helper; leftover handling",
+        "Output files and index, ReadTaskOutput, WatchTaskOutput, AttachTask with STREAM stdin; cancel_when_caller_gone",
+        "TaskService core: Submit, Get, List, Wait, Attach, Write/CloseTaskInput, Cancel, Retry (manual), Pin, PurgeTaskRecord, GetAttempt, ListAttempts",
+        "Recovery after node restart and machine reboot (LOST)",
+        "Interim admission: global FIFO with global_max_running until AF-SCHED-01",
+        "CLI run and tasks commands with exit codes"
+      ],
+      "out_of_scope": [
+        "Budgets and pools (AF-SCHED-01)",
+        "Linux (AF-EXEC-02)",
+        "Task dependencies and readiness (AF-SCHED-01)"
+      ],
+      "design_refs": [
+        "docs/architecture/04-execution.md",
+        "docs/decisions/AD-0005-resource-enforcement.md",
+        "docs/decisions/AD-0006-execution-semantics.md",
+        "docs/contracts/proto/arcforges/node/v1/tasks.proto",
+        "docs/experience/cli.md"
+      ],
+      "requirements": [
+        "R-EXE-001",
+        "R-EXE-002",
+        "R-EXE-003",
+        "R-EXE-004",
+        "R-EXE-006",
+        "R-EXE-007",
+        "R-EXE-008",
+        "R-EXE-009",
+        "R-EXE-017",
+        "R-EXE-018",
+        "R-RES-006",
+        "R-RES-012",
+        "R-UX-003"
+      ],
+      "deliverables": [
+        "Windows execution with CLI"
+      ],
+      "acceptance": [
+        "Real non-elevated job tests: child jobs nested under the root (root-then-child assignment), root hard cap with weighted children, commit limit, kill tree, no breakaway, kill-on-close for kill_with_node tasks (F-W01)",
+        "Nested jobs with real dotnet, cargo and cmake builds (F-W02)",
+        "Node killed mid-run: executions continue; after restart the node re-opens jobs through the holders, re-associates the completion port, cancels a recovered attempt and reads its accounting (F-W03)",
+        "Byte-identical attached output and exit codes vs direct runs",
+        "Batch argument corpus refused (T-03)"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Windows workstation real execution suite"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [
+        "F-W01",
+        "F-W02",
+        "F-W03",
+        "F-N03"
+      ],
+      "acceptance_register": [],
+      "human_prerequisites": [
+        "H-15"
+      ],
+      "risks": [
+        {
+          "risk": "Named jobs cannot be re-opened once the last handle closes (L-14), so recovery fails",
+          "mitigation": "Holders keep both job handles until acknowledged; F-W03 tests recovery, cancellation and accounting",
+          "owner": "AF-EXEC-01"
+        },
+        {
+          "risk": "Nested-job limits behave differently with real builds (F-W01, F-W02)",
+          "mitigation": "Real dotnet, cargo and cmake builds in the suite",
+          "owner": "AF-EXEC-01"
+        },
+        {
+          "risk": "CTRL_BREAK delivery and the windowless supervisor at logon are unproven (F-N03)",
+          "mitigation": "Hidden-console helper tests now; a logoff/logon cycle with the user (H-15)",
+          "owner": "AF-EXEC-01"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 9
+    },
+    {
+      "id": "AF-EXEC-02",
+      "title": "Linux execution through transient systemd units",
+      "milestone": "M2",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Platform.Linux/**",
+            "src/ArcForges.Node.Core/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-EXEC-01"
+      ],
+      "objective": "Execute tasks on Linux as transient user units in arcforges.slice with durable exit records and restart survival.",
+      "scope": [
+        "D-Bus client (Tmds.DBus.Protocol), StartTransientUnit with fd-passed stdio, exact environment, rlimits, ExecStopPost exit-record role with cgroup accounting",
+        "Slice runtime limits; freeze/thaw; KillUnit cancellation sequence; recovery from units and exit.json",
+        "Capability report and degraded modes (no user manager, missing controllers)",
+        "systemd unit files of 13 section 3.4"
+      ],
+      "out_of_scope": [
+        "WSL host linking (AF-WSL-01)"
+      ],
+      "design_refs": [
+        "docs/architecture/04-execution.md",
+        "docs/architecture/03-resource-control.md",
+        "docs/decisions/AD-0005-resource-enforcement.md",
+        "docs/architecture/13-distribution-updates.md"
+      ],
+      "requirements": [
+        "R-EXE-002",
+        "R-EXE-003",
+        "R-EXE-006",
+        "R-EXE-007",
+        "R-EXE-008",
+        "R-EXE-011",
+        "R-EXE-018",
+        "R-RES-007",
+        "R-RES-008"
+      ],
+      "deliverables": [
+        "Linux execution"
+      ],
+      "acceptance": [
+        "Real WSL2 tests prove each limit (L-07, L-13) from the node",
+        "Executions survive node crash and `systemctl --user restart` with durable exit records (F-L03)",
+        "Degraded mode refuses tasks requiring enforcement and labels others"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "WSL2 Debian real execution suite"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [
+        "F-L03"
+      ],
+      "acceptance_register": [
+        "AR-12"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Transient units lose exit records across node restarts (F-L03)",
+          "mitigation": "ExecStopPost exit-record role; tests kill and restart the node and the user manager",
+          "owner": "AF-EXEC-02"
+        },
+        {
+          "risk": "No user manager on some hosts (lingering off on bare metal)",
+          "mitigation": "Degraded observe-only mode with labels; bare-metal runs in AR-12",
+          "owner": "AF-EXEC-02"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 10
+    },
+    {
+      "id": "AF-RES-01",
+      "title": "Observation, budgets and pressure",
+      "milestone": "M3",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Core/**",
+            "src/ArcForges.Node.Platform*/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-EXEC-02"
+      ],
+      "objective": "Observe the machine and managed work, compute budgets and pressure levels, and expose them.",
+      "scope": [
+        "Samplers of 03 section 1 on both platforms; process classification labels",
+        "Budget formulas, smoothing, guest terms",
+        "Pressure levels and actions hooks",
+        "ResourceService: GetResourceSnapshot, WatchResources, ListProcesses, GetSamples",
+        "Sample storage and downsampling",
+        "CLI resources, ps, samples"
+      ],
+      "out_of_scope": [
+        "Admission (AF-SCHED-01)"
+      ],
+      "design_refs": [
+        "docs/architecture/03-resource-control.md",
+        "docs/contracts/proto/arcforges/node/v1/resources.proto"
+      ],
+      "requirements": [
+        "R-RES-001",
+        "R-RES-002",
+        "R-RES-003",
+        "R-RES-008",
+        "R-RES-009"
+      ],
+      "deliverables": [
+        "Resource observation"
+      ],
+      "acceptance": [
+        "Budget unit tests including the workstation example",
+        "Process labels correct for managed, unmanaged, escaped and guest VM processes",
+        "Idle node CPU within target while sampling"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Windows and WSL2 sampling tests"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Sampling overhead breaks the idle CPU target",
+          "mitigation": "Per-sampler benchmarks; adaptive intervals",
+          "owner": "AF-RES-01"
+        },
+        {
+          "risk": "Guest VM memory is misattributed (A-L01)",
+          "mitigation": "Labelled as a guest consumer with stated uncertainty; reconciled in AF-WSL-01 (F-L01)",
+          "owner": "AF-WSL-01"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 11
+    },
+    {
+      "id": "AF-SCHED-01",
+      "title": "Admission, pools, priorities, parallelism, dependencies, enforcement mapping and policy",
+      "milestone": "M3",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Core/**",
+            "src/ArcForges.Node.Platform*/**",
+            "src/ArcForges.Node.Api/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**",
+            "tools/ArcForges.TestLoad/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-RES-01"
+      ],
+      "objective": "Replace the interim FIFO with the admission algorithm and enforce budgets with root and attempt container limits.",
+      "scope": [
+        "Pools, priorities, DRR fairness, aging, large-task reservation, overcommit rules (03 section 4); exceeds_budget waiting",
+        "Enforcement mapping both platforms (03 section 5); pressure actions (section 7); task dependencies and service readiness; automatic retries (AD-0006)",
+        "QueueService; PolicyService (document, validation, revisions); SetParallelism",
+        "Tool-level concurrency hook for adapters",
+        "TestLoad load scenarios and benchmarks of 15 section 4"
+      ],
+      "out_of_scope": [
+        "Permissions and approvals (AF-SEC-01)",
+        "WSL guest budgets (AF-WSL-01)"
+      ],
+      "design_refs": [
+        "docs/architecture/03-resource-control.md",
+        "docs/decisions/AD-0006-execution-semantics.md",
+        "docs/contracts/proto/arcforges/node/v1/queue.proto",
+        "docs/contracts/proto/arcforges/node/v1/policy.proto"
+      ],
+      "requirements": [
+        "R-EXE-005",
+        "R-EXE-010",
+        "R-EXE-011",
+        "R-EXE-012",
+        "R-EXE-013",
+        "R-EXE-014",
+        "R-RES-003",
+        "R-RES-004",
+        "R-RES-005",
+        "R-RES-006",
+        "R-RES-007",
+        "R-RES-009",
+        "R-PERF-001"
+      ],
+      "deliverables": [
+        "Scheduler and policy"
+      ],
+      "acceptance": [
+        "Headroom probe misses <= 1% of deadlines under saturating managed load on both platforms",
+        "Fairness 50% +/- 10% between two sessions",
+        "No memory overcommit; zero unmanaged OOM in the standard scenario",
+        "Parallelism disabled per scope runs one at a time",
+        "Dependents start only after their dependency's condition, including service readiness (R-EXE-005)"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Windows and WSL2 load tests"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Weights and hard caps fail to protect the reserved headroom under saturating load",
+          "mitigation": "Headroom probe load tests on both platforms before merge",
+          "owner": "AF-SCHED-01"
+        },
+        {
+          "risk": "Fairness regresses with many pools and owners",
+          "mitigation": "DRR unit tests and TestLoad scenarios",
+          "owner": "AF-SCHED-01"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 12
+    },
+    {
+      "id": "AF-WSL-01",
+      "title": "WSL guest node, bridge and coordinated admission",
+      "milestone": "M3",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Peer/**",
+            "src/ArcForges.Node.Core/**",
+            "src/ArcForges.Host/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-SCHED-01"
+      ],
+      "objective": "Link a Windows host node with the guest node in each managed WSL distribution so both share one fair queue without double counting, and the host's reserve stays protected.",
+      "scope": [
+        "`arcforges bridge wsl`; GuestLinkService (OpenLink stream, AnswerGrant, RevokeGrant, SetGuestBudget, GetGuestStatus); link token, host pinning, GetHostLink and TrustHost (guest)",
+        "Host: guest discovery, link state machine, vmmem accounting, guest_other, grant proxy tasks; host root caps reduced by the guest budget",
+        "ResourceService.ListGuestLinks and SetGuestLink; CLI guests (host) and guests host, guests trust-host (guest)"
+      ],
+      "out_of_scope": [
+        "Optional privileged guest I/O control beyond a design probe"
+      ],
+      "design_refs": [
+        "docs/architecture/03-resource-control.md",
+        "docs/architecture/09-lan.md",
+        "docs/decisions/AD-0005-resource-enforcement.md",
+        "docs/contracts/proto/arcforges/peer/v1/peer.proto",
+        "docs/contracts/proto/arcforges/node/v1/resources.proto"
+      ],
+      "requirements": [
+        "R-RES-010",
+        "R-RES-011"
+      ],
+      "deliverables": [
+        "Host-guest linking"
+      ],
+      "acceptance": [
+        "Closed loop through the real wsl.exe bridge: grants, release, link loss and standalone fallback",
+        "vmmem accounting observed and recorded (F-L01)",
+        "Concurrent saturating host and guest load: no double counting, and the host reserve stays protected",
+        "A link from a different host is refused until TrustHost"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Windows plus WSL2 real tests"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [
+        "F-L01",
+        "F-L02"
+      ],
+      "acceptance_register": [
+        "AR-16"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Host and guest caps together exceed capacity minus the reserve",
+          "mitigation": "SetGuestBudget sets the guest slice to the granted total and reduces the host root caps; saturating test",
+          "owner": "AF-WSL-01"
+        },
+        {
+          "risk": "vmmem accounting accuracy, including page cache, is unproven (F-L01)",
+          "mitigation": "Record observed accounting and reconcile with guest reports; state the uncertainty",
+          "owner": "AF-WSL-01"
+        },
+        {
+          "risk": "The guest user manager's lifetime with only the bridge connected is unproven",
+          "mitigation": "Test with lingering off; document the requirement in doctor",
+          "owner": "AF-WSL-01"
+        },
+        {
+          "risk": "Optional privileged guest I/O control needs a root install (F-L02)",
+          "mitigation": "Optional leg only; AR-16",
+          "owner": "user"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 13
+    },
+    {
+      "id": "AF-SEC-01",
+      "title": "Origins, permission matrix, approvals, adoption and local audit",
+      "milestone": "M3",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Api/**",
+            "src/ArcForges.Node.Core/**",
+            "src/ArcForges.Node.Platform.Linux/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-SCHED-01"
+      ],
+      "objective": "Classify callers by origin, apply the permission matrix, raise and execute approvals, and audit privileged actions.",
+      "scope": [
+        "Origin derivation (HUMAN, SCRIPT, AGENT; REMOTE and PEER hooks) as guardrails with documented bypasses (11 section 1); permission matrix and overrides; ExplainPermission",
+        "ApprovalService with captured requests executed under the original command_id",
+        "AdoptProcess and TerminateProcess with escaped-process detection",
+        "Local audit_log",
+        "Read-only version directories with digest checks (AD-0007 section 8); optional Linux unit hardening (ReadOnlyPaths, InaccessiblePaths)"
+      ],
+      "out_of_scope": [
+        "Remote origin enforcement (AF-CLD-05)",
+        "Tamper findings (AF-DIAG-01)"
+      ],
+      "design_refs": [
+        "docs/architecture/11-security-privacy.md",
+        "docs/contracts/proto/arcforges/node/v1/approvals.proto",
+        "docs/contracts/proto/arcforges/node/v1/resources.proto",
+        "docs/decisions/AD-0007-ai-integration.md"
+      ],
+      "requirements": [
+        "R-RES-012",
+        "R-RES-013",
+        "R-AI-009",
+        "R-SEC-002"
+      ],
+      "deliverables": [
+        "Permissions and approvals"
+      ],
+      "acceptance": [
+        "Matrix tests per origin for the supported clients",
+        "Approval round trip returns the executed outcome to a retrying caller",
+        "WMI-escaped process detected and terminated (T-18)",
+        "Audit records for every privileged action",
+        "Linux hardening applied where the user manager supports it, and reported otherwise (F-L04)"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Windows WMI escape test; adoption tests on both platforms"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [
+        "F-L04"
+      ],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Same-user processes can spoof origins",
+          "mitigation": "Documented as guardrails (11 section 1); tests cover only what holds for the supported clients",
+          "owner": "AF-SEC-01"
+        },
+        {
+          "risk": "User units reject ReadOnlyPaths or InaccessiblePaths (F-L04)",
+          "mitigation": "Probe at startup; report hardening as not applied",
+          "owner": "AF-SEC-01"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 14
+    },
+    {
+      "id": "AF-REC-01",
+      "title": "Records, timelines, fingerprints, reports and exports",
+      "milestone": "M4",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Diagnosis/**",
+            "src/ArcForges.Node.Core/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-RES-01"
+      ],
+      "objective": "Record what happened with categorized timelines and expose reports and exports.",
+      "scope": [
+        "Classifier and segments (07 section 1); process records; phase events",
+        "Repeat and stale fingerprints",
+        "GetTimeline; DiagnosisService GetReport and ExportRecords; retention and downsampling",
+        "Redaction of records and exports"
+      ],
+      "out_of_scope": [
+        "Findings (AF-DIAG-01)"
+      ],
+      "design_refs": [
+        "docs/architecture/07-records-diagnosis-memory.md",
+        "docs/contracts/proto/arcforges/node/v1/diagnosis.proto"
+      ],
+      "requirements": [
+        "R-REC-001",
+        "R-REC-002",
+        "R-REC-003",
+        "R-REC-004",
+        "R-REC-005",
+        "R-SEC-003",
+        "R-OPS-003"
+      ],
+      "deliverables": [
+        "Records and reports"
+      ],
+      "acceptance": [
+        "TestLoad scenarios produce expected categories with confidences",
+        "Repeat and stale detection",
+        "Exports validate against the node.v1 JSON mapping",
+        "Seeded secrets never appear in records or exports"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Real build timelines on Windows and WSL2"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Inferred categories mislead users",
+          "mitigation": "Inferred labels and confidences; TestLoad ground truth",
+          "owner": "AF-REC-01"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 15
+    },
+    {
+      "id": "AF-DIAG-01",
+      "title": "Findings, remedies, doctor, tamper detection and operational memory",
+      "milestone": "M4",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Diagnosis/**",
+            "src/ArcForges.Node.Core/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-REC-01",
+        "AF-SCHED-01"
+      ],
+      "objective": "Turn evidence into findings with remedies, and learn facts that improve admission.",
+      "scope": [
+        "Finding catalogue (24 kinds) and SM-FINDING",
+        "Remedy policy and ApplyRemedy",
+        "RunDoctor",
+        "Tamper detection of out-of-band edits to node.json and the store (ENFORCEMENT_DEGRADED)",
+        "MemoryService and use of facts in estimates; staleness",
+        "CLI findings, doctor, memory"
+      ],
+      "out_of_scope": [
+        "Toolchain-specific failure classifiers beyond the generic ones (adapter tasks)"
+      ],
+      "design_refs": [
+        "docs/architecture/07-records-diagnosis-memory.md",
+        "docs/contracts/proto/arcforges/node/v1/diagnosis.proto",
+        "docs/contracts/proto/arcforges/node/v1/memory.proto"
+      ],
+      "requirements": [
+        "R-DIAG-001",
+        "R-DIAG-002",
+        "R-DIAG-003",
+        "R-DIAG-004",
+        "R-MEM-001",
+        "R-MEM-002",
+        "R-MEM-003"
+      ],
+      "deliverables": [
+        "Diagnosis and memory"
+      ],
+      "acceptance": [
+        "Each finding kind has a detection test",
+        "Approval-only remedies never run automatically",
+        "Facts change estimates only when ACTIVE with confidence >= MEDIUM",
+        "An out-of-band edit raises the tamper finding"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "False stall findings during network waits",
+          "mitigation": "Stall needs no CPU, no I/O and no output; network waits are labelled inferred",
+          "owner": "AF-DIAG-01"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 16
+    },
+    {
+      "id": "AF-TOOL-01",
+      "title": "Toolchain registry, adapter contract, .NET and generic adapters",
+      "milestone": "M5",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Toolchains/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-SCHED-01",
+        "AF-DIAG-01"
+      ],
+      "objective": "Detect toolchains and manage .NET work with shared NuGet caches and grant-based parallelism.",
+      "scope": [
+        "Detection of 05 section 1; ToolchainService (List, Detect, ListAdapters, PreviewInvocation)",
+        "Adapter contract; .NET adapter (NuGet redirection with shared scratch, MSBuild node reuse off, -m:N); generic adapter",
+        "Failure classifiers for .NET",
+        "CLI toolchain commands"
+      ],
+      "out_of_scope": [
+        "Other adapters (AF-TOOL-02)"
+      ],
+      "design_refs": [
+        "docs/architecture/05-toolchains-caches.md",
+        "docs/contracts/proto/arcforges/node/v1/toolchains.proto"
+      ],
+      "requirements": [
+        "R-TOOL-001",
+        "R-TOOL-002",
+        "R-TOOL-003",
+        "R-TOOL-004",
+        "R-TOOL-005",
+        "R-CACHE-003"
+      ],
+      "deliverables": [
+        "Toolchains and .NET adapter"
+      ],
+      "acceptance": [
+        "Concurrent real restores share caches without errors and without duplicate downloads",
+        "Each .NET redirection claim proven by a real run (F-T01 .NET)"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Real dotnet builds on Windows and WSL2"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [
+        "F-T01"
+      ],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "A redirection claim is wrong for some tool version (F-T01)",
+          "mitigation": "Each claim is proven by a real run; unproven edits are labelled BEST_EFFORT",
+          "owner": "AF-TOOL-01"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 17
+    },
+    {
+      "id": "AF-TOOL-02",
+      "title": "Rust, C/C++ (with FASTBuild), Node and Python adapters and shared services",
+      "milestone": "M5",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Toolchains/**",
+            "src/ArcForges.Host/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-TOOL-01"
+      ],
+      "objective": "Extend managed toolchain handling to Cargo, CMake/Ninja/make with sccache/ccache, FASTBuild, npm/pnpm and Python, and run shared daemons in their own containers.",
+      "scope": [
+        "Adapters of 05 section 3, including FASTBuild (05 section 3.8: cache path, -cache/-cacheread, -cachetrim maintenance, -j from the grant; -dist observed only)",
+        "Shared services container (sccache server; optional MSBuild servers)",
+        "Failure classifiers"
+      ],
+      "out_of_scope": [
+        "LAN cache sharing (AF-LAN-03)",
+        "Governing FASTBuild remote workers"
+      ],
+      "design_refs": [
+        "docs/architecture/05-toolchains-caches.md"
+      ],
+      "requirements": [
+        "R-TOOL-002",
+        "R-TOOL-003",
+        "R-TOOL-004",
+        "R-TOOL-005",
+        "R-TOOL-006",
+        "R-CACHE-004"
+      ],
+      "deliverables": [
+        "Remaining adapters"
+      ],
+      "acceptance": [
+        "Each redirection and concurrency claim proven by a real run where the tool is installed; missing tools recorded with reason (F-T01)",
+        "FASTBuild cache precedence, -cachetrim and -j proven with a real FASTBuild build (F-T02)"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Real cargo, cmake, FASTBuild, npm and python runs on Windows; WSL2 runs for tools the user installs there"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [
+        "F-T01",
+        "F-T02"
+      ],
+      "acceptance_register": [],
+      "human_prerequisites": [
+        "H-11"
+      ],
+      "risks": [
+        {
+          "risk": "Tools are missing on the workstation (F-T01, F-T02)",
+          "mitigation": "Tests skip with a stated reason; the user installs tools (H-11)",
+          "owner": "user"
+        },
+        {
+          "risk": "FASTBUILD_CACHE_PATH does not override a project's .CachePath (A-T02, F-T02)",
+          "mitigation": "Report the cache as observed, not managed, until proven",
+          "owner": "AF-TOOL-02"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 18
+    },
+    {
+      "id": "AF-CACHE-01",
+      "title": "Cache registry, CAS, maintenance and effectiveness",
+      "milestone": "M5",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Toolchains/**",
+            "src/ArcForges.Node.Storage/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-TOOL-01"
+      ],
+      "objective": "Register caches with compatibility keys, maintain them safely and report their effectiveness and duplicates.",
+      "scope": [
+        "Cache registry, compat keys, maintenance lease, quotas and eviction",
+        "Content-addressed store with digest verification",
+        "CacheService (List, Report, UpdateSettings, Verify); duplicate and per-task restore detection",
+        "Result cache modes per workspace (OFF, OBSERVE, RESTORE)"
+      ],
+      "out_of_scope": [
+        "LAN serving (AF-LAN-03)"
+      ],
+      "design_refs": [
+        "docs/architecture/05-toolchains-caches.md",
+        "docs/architecture/04-execution.md",
+        "docs/contracts/proto/arcforges/node/v1/caches.proto"
+      ],
+      "requirements": [
+        "R-CACHE-001",
+        "R-CACHE-002",
+        "R-CACHE-003",
+        "R-CACHE-004",
+        "R-CACHE-005",
+        "R-CACHE-006",
+        "R-CACHE-008"
+      ],
+      "deliverables": [
+        "Cache management"
+      ],
+      "acceptance": [
+        "Eviction never removes entries in use",
+        "CAS corruption quarantines and refetches",
+        "Report shows hits, misses and duplicates from real tool statistics",
+        "RESTORE mode replays a PURE task as a CACHE_RESTORE attempt, never as an execution"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Eviction races with a cache in use",
+          "mitigation": "Maintenance lease and in-use checks, with tests",
+          "owner": "AF-CACHE-01"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 19
+    },
+    {
+      "id": "AF-STOR-01",
+      "title": "Managed storage, analysis, two-phase cleanup, quarantine and relocation",
+      "milestone": "M6",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Storage/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CACHE-01"
+      ],
+      "objective": "Make disk usage visible and safely reclaimable.",
+      "scope": [
+        "Managed roots, ownership records, quotas, per-attempt tmp",
+        "AnalyzeStorage detectors; PlanCleanup, AddExternalPath, ExecuteCleanup with re-validation; per-volume quarantine roots and restore; UpdateRoot",
+        "CLI storage commands"
+      ],
+      "out_of_scope": [
+        "Worktrees (AF-WS-01) beyond detection"
+      ],
+      "design_refs": [
+        "docs/architecture/06-storage-workspaces.md",
+        "docs/contracts/proto/arcforges/node/v1/storage.proto"
+      ],
+      "requirements": [
+        "R-STOR-001",
+        "R-STOR-002",
+        "R-STOR-004",
+        "R-STOR-005",
+        "R-STOR-006",
+        "R-STOR-007",
+        "R-STOR-008"
+      ],
+      "deliverables": [
+        "Storage management"
+      ],
+      "acceptance": [
+        "Junctions and symlinks never followed (T-04)",
+        "Open files report IN_USE",
+        "No deletion outside a validated plan; bounds enforced",
+        "Items on a volume without a quarantine root need the per-item confirmation",
+        "Relocation copies, verifies, switches and quarantines"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Real file-system tests on Windows (NTFS, Dev Drive when present) and WSL2 ext4"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Cleanup deletes user data through links",
+          "mitigation": "Reparse points never followed; re-validation before acting; quarantine first",
+          "owner": "AF-STOR-01"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 20
+    },
+    {
+      "id": "AF-WS-01",
+      "title": "Workspaces and managed worktrees",
+      "milestone": "M6",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Storage/**",
+            "src/ArcForges.Node.Core/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-STOR-01"
+      ],
+      "objective": "Register workspaces and create or remove node-managed git worktrees safely.",
+      "scope": [
+        "WorkspaceService; SM-WORKTREE; archive-then-remove with approval; locks while in use",
+        "Workspace derivation for tasks; routing override"
+      ],
+      "out_of_scope": [
+        "Remote workspaces (AF-LAN-02)"
+      ],
+      "design_refs": [
+        "docs/architecture/06-storage-workspaces.md",
+        "docs/contracts/proto/arcforges/node/v1/workspaces.proto"
+      ],
+      "requirements": [
+        "R-STOR-003"
+      ],
+      "deliverables": [
+        "Workspaces and worktrees"
+      ],
+      "acceptance": [
+        "Dirty worktrees are never removed silently",
+        "One worktree per branch",
+        "Real git on both platforms"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Real git tests on Windows and WSL2"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Worktree behaviour differs across git versions",
+          "mitigation": "Real git tests; a minimum git version check in doctor",
+          "owner": "AF-WS-01"
+        }
+      ],
+      "size": "S",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 21
+    },
+    {
+      "id": "AF-AI-01",
+      "title": "Sessions, hook handler, routing and coverage",
+      "milestone": "M7",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Integrations/**",
+            "src/ArcForges.Node.Core/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-SEC-01",
+        "AF-WS-01"
+      ],
+      "objective": "Know which AI sessions run what, route heavy commands where safe, detect bypass and report coverage honestly.",
+      "scope": [
+        "`arcforges hook <client> <event>` in exec form for Claude Code and Codex events (no WorktreeCreate or WorktreeRemove hooks); SessionService; correlation through the nearest client-executable ancestor",
+        "ClassifyCommand and rewrite construction (`ask` by default; `--cancel-when-gone`; guidance to MCP when the expected duration exceeds the client timeout); observe and guide modes; bypass detection",
+        "SessionCoverage and session reports; services stopped with their owner session; CLI session commands"
+      ],
+      "out_of_scope": [
+        "Writing client configuration (AF-AI-02)"
+      ],
+      "design_refs": [
+        "docs/architecture/08-ai-integration.md",
+        "docs/decisions/AD-0007-ai-integration.md",
+        "docs/contracts/proto/arcforges/node/v1/sessions.proto"
+      ],
+      "requirements": [
+        "R-AI-005",
+        "R-AI-006",
+        "R-AI-007",
+        "R-EXE-005"
+      ],
+      "deliverables": [
+        "Session and routing engine"
+      ],
+      "acceptance": [
+        "Hook fixtures captured from real clients drive routing tests",
+        "Rewritten commands are byte-identical in output and exit code, and a client timeout or interrupt cancels the task",
+        "Agent roots identified on Windows and WSL2 (F-A02)",
+        "Hook p95 <= 50 ms",
+        "Coverage never claims completeness"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Hook latency benchmark on the workstation"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "HookPayloadFixtures (AI client internals)"
+      ],
+      "future_validation": [
+        "F-A02"
+      ],
+      "acceptance_register": [],
+      "human_prerequisites": [
+        "H-13"
+      ],
+      "risks": [
+        {
+          "risk": "Agent root identification fails for some launch paths (F-A02)",
+          "mitigation": "Exec-form hooks plus nearest-ancestor search; probes on Windows and WSL2 with the clients installed (H-13)",
+          "owner": "AF-AI-01"
+        },
+        {
+          "risk": "Hook payloads change with client updates",
+          "mitigation": "Pin tested client versions, re-capture fixtures, and label coverage gaps",
+          "owner": "AF-AI-01"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 22
+    },
+    {
+      "id": "AF-MCP-01",
+      "title": "MCP adapter",
+      "milestone": "M7",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Mcp/**",
+            "tests/ArcForges.Mcp.Tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-AI-01"
+      ],
+      "objective": "Serve the MCP tools of experience/mcp.md over stdio for both protocol revisions.",
+      "scope": [
+        "SDK AOT decision or in-house stdio JSON-RPC (F-N01)",
+        "Tools M-01..M-19 with output schemas and annotations; bounded waits; progress; tasks extension (no tasks/result; stdin through the adapter's attach); error mapping",
+        "Optional local Streamable HTTP with bearer"
+      ],
+      "out_of_scope": [
+        "Client configuration (AF-AI-02)"
+      ],
+      "design_refs": [
+        "docs/experience/mcp.md",
+        "docs/architecture/08-ai-integration.md"
+      ],
+      "requirements": [
+        "R-AI-001",
+        "R-AI-002",
+        "R-MEM-003"
+      ],
+      "deliverables": [
+        "MCP adapter"
+      ],
+      "acceptance": [
+        "ScriptedMcpClient suites for 2025-11-25 and 2026-07-28 pass",
+        "No call exceeds 55 s",
+        "Adapter idle memory and overhead within 15 section 3"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "ScriptedMcpClient (AI client internals)"
+      ],
+      "future_validation": [
+        "F-N01"
+      ],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "The MCP SDK does not publish under Native AOT (F-N01)",
+          "mitigation": "In-house stdio JSON-RPC subset as the fallback",
+          "owner": "AF-MCP-01"
+        },
+        {
+          "risk": "Protocol revisions churn",
+          "mitigation": "Tests for both revisions; capability negotiation",
+          "owner": "AF-MCP-01"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 23
+    },
+    {
+      "id": "AF-AI-02",
+      "title": "Client integration: plan, apply, remove, probes and plugins",
+      "milestone": "M7",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Integrations/**",
+            "src/ArcForges.CommandLine/**",
+            "packaging/plugins/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-MCP-01"
+      ],
+      "objective": "Configure Claude Code and Codex with consent, detect conflicts, prove reachability per environment and package the plugins.",
+      "scope": [
+        "IntegrationService (ListClients, PlanIntegration, PlanRemoval, ApplyIntegration, StartProbe, ListProbeResults, GetInstructionSnippet); recorded writes",
+        "`arcforges probe`; probe evaluation; rewrite gating",
+        "Claude Code plugin and Codex plugin packages (not published)"
+      ],
+      "out_of_scope": [
+        "Publishing plugins (AR-13)"
+      ],
+      "design_refs": [
+        "docs/architecture/08-ai-integration.md",
+        "docs/decisions/AD-0007-ai-integration.md",
+        "docs/contracts/proto/arcforges/node/v1/integrations.proto"
+      ],
+      "requirements": [
+        "R-AI-003",
+        "R-AI-004",
+        "R-AI-005",
+        "R-AI-008",
+        "R-DIST-004"
+      ],
+      "deliverables": [
+        "Integration management"
+      ],
+      "acceptance": [
+        "Plan/apply/remove against real configuration files preserves unrelated settings",
+        "Real probes in Claude Code and Codex on the workstation recorded (F-A01)",
+        "Plugin without the node prints install guidance"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Real Claude Code and Codex probe sessions on Windows and in WSL2"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [
+        "F-A01"
+      ],
+      "acceptance_register": [
+        "AR-13",
+        "AR-15"
+      ],
+      "human_prerequisites": [
+        "H-13"
+      ],
+      "risks": [
+        {
+          "risk": "A client sandbox blocks reaching the node (F-A01)",
+          "mitigation": "Per-client probes gate rewrite mode; guide mode otherwise",
+          "owner": "AF-AI-02"
+        },
+        {
+          "risk": "Writing client configuration damages unrelated settings",
+          "mitigation": "Plan and apply with recorded writes and exact removal",
+          "owner": "AF-AI-02"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 24
+    },
+    {
+      "id": "AF-DESK-01",
+      "title": "Desktop shell and core pages",
+      "milestone": "M8",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Desktop/**",
+            "src/ArcForges.Desktop.ViewModels/**",
+            "src/ArcForges.Node.Core/**",
+            "tests/ArcForges.Desktop.Tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-REC-01",
+        "AF-SEC-01"
+      ],
+      "objective": "Ship the Avalonia Desktop with the shell, tray, notifications and pages D-00..D-05.",
+      "scope": [
+        "Avalonia view adapter for the reused shell models and design tokens",
+        "Pages D-00 first run, D-01 overview, D-02 tasks with Run dialog, D-03 task detail, D-04 queue and pools, D-05 resources; D-21 drawer with the node notifier",
+        "Tray where supported; single instance; OS notifications"
+      ],
+      "out_of_scope": [
+        "Remaining pages (AF-DESK-02)"
+      ],
+      "design_refs": [
+        "docs/experience/desktop.md",
+        "docs/architecture/12-client-applications.md",
+        "docs/experience/README.md"
+      ],
+      "requirements": [
+        "R-UX-001",
+        "R-UX-002",
+        "R-UX-006",
+        "R-API-005"
+      ],
+      "deliverables": [
+        "Desktop core"
+      ],
+      "acceptance": [
+        "Headless UI tests per page and state",
+        "Automated accessibility assertions",
+        "AOT publish with zero trim warnings (V-N04 obligation)",
+        "Desktop start and idle within 15 section 3",
+        "Closing the window never stops the node"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Manual smoke on the workstation recorded as evidence (no GUI CI)"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-10"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Trimming breaks reflection-based bindings",
+          "mitigation": "Compiled bindings only; trim warnings fail the build",
+          "owner": "AF-DESK-01"
+        },
+        {
+          "risk": "No GUI CI",
+          "mitigation": "Headless tests plus a recorded manual smoke",
+          "owner": "AF-DESK-01"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 25
+    },
+    {
+      "id": "AF-DESK-02",
+      "title": "Desktop remaining local pages",
+      "milestone": "M8",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Desktop/**",
+            "src/ArcForges.Desktop.ViewModels/**",
+            "tests/ArcForges.Desktop.Tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-DESK-01",
+        "AF-AI-02"
+      ],
+      "objective": "Complete the local Desktop pages.",
+      "scope": [
+        "D-06 sessions, D-07 session detail, D-08 findings, D-09 approvals, D-10 workspaces, D-11 storage, D-12 caches, D-13 toolchains, D-14 integrations, D-17 policy, D-19 diagnostics (without upload), D-20 settings, D-22 about"
+      ],
+      "out_of_scope": [
+        "D-15 LAN (AF-LAN-01), D-16 account (AF-CLD-02), D-18 updates (AF-DIST-02), bundle upload (AF-SUP-01)"
+      ],
+      "design_refs": [
+        "docs/experience/desktop.md"
+      ],
+      "requirements": [
+        "R-UX-001",
+        "R-UX-006"
+      ],
+      "deliverables": [
+        "Desktop local pages"
+      ],
+      "acceptance": [
+        "Headless UI tests per page and state",
+        "Accessibility assertions"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Manual smoke on the workstation recorded as evidence"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-10"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "The page set is too large for one reviewable PR",
+          "mitigation": "Split by page group when the diff exceeds the review budget, keeping one task",
+          "owner": "AF-DESK-02"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 26
+    },
+    {
+      "id": "AF-DIST-01",
+      "title": "Installers and release artifacts",
+      "milestone": "M9",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "installer/**",
+            "src/ArcForges.Setup/**",
+            "eng/release/**",
+            ".github/workflows/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-DESK-01"
+      ],
+      "objective": "Install and uninstall per user on Windows and Linux, and build signed release artifacts with test keys.",
+      "scope": [
+        "Per-user setup program `arcforges-setup-<v>-<rid>.exe` (ArcForges.Setup; no MSI): supervisor autostart, PATH, HKCU uninstall entry, install_source, uninstall of every version directory",
+        "install.sh and .deb with user units",
+        "Release artifact pipeline: zips, tarballs, ES256 manifest and signature with test keys, SBOM",
+        "Read-only version directories"
+      ],
+      "out_of_scope": [
+        "Production signing (AR-04); publication to R2 or package managers (AR-13)"
+      ],
+      "design_refs": [
+        "docs/architecture/13-distribution-updates.md",
+        "docs/decisions/AD-0012-distribution-and-updates.md"
+      ],
+      "requirements": [
+        "R-DIST-001",
+        "R-DIST-002",
+        "R-AI-009",
+        "R-AUTH-005"
+      ],
+      "deliverables": [
+        "Installers and artifacts"
+      ],
+      "acceptance": [
+        "Real install, upgrade and uninstall on the workstation (isolated profile root: separate data root, Run key and PATH under test names) and in a clean WSL2 distribution",
+        "Windowless supervisor at logon (F-N03 re-verified with a logoff/logon cycle)",
+        "Managed tasks cannot write the installation (T-05)"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Windows install tests; WSL2 install.sh and .deb tests"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [
+        "F-N03"
+      ],
+      "acceptance_register": [
+        "AR-01",
+        "AR-04",
+        "AR-16"
+      ],
+      "human_prerequisites": [
+        "H-14",
+        "H-15"
+      ],
+      "risks": [
+        {
+          "risk": "Uninstall leaves version directories or registry entries",
+          "mitigation": "Uninstall removes every app version directory; tests on an isolated profile root",
+          "owner": "AF-DIST-01"
+        },
+        {
+          "risk": "Supervisor start at logon unproven (F-N03)",
+          "mitigation": "A logoff/logon cycle with the user (H-15)",
+          "owner": "user"
+        },
+        {
+          "risk": "No clean Linux environment for install tests",
+          "mitigation": "A second clean WSL distribution with sudo (H-14)",
+          "owner": "user"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 27
+    },
+    {
+      "id": "AF-DIST-02",
+      "title": "Updater, rollback, store migration rules, Updates page and package manifests",
+      "milestone": "M9",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Updates/**",
+            "src/ArcForges.Supervisor/**",
+            "src/ArcForges.Desktop/**",
+            "packaging/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-DIST-01"
+      ],
+      "objective": "Update nodes safely with staging, atomic switch, health check and rollback, keeping executions running.",
+      "scope": [
+        "UpdateService and SM-UPDATE; ES256 manifest verification (signature, expiry, rollback protection, revocation)",
+        "Junction retarget in place (FSCTL_SET_REPARSE_POINT) and the Linux symlink switch; update-switch.json phases; rollback with the recent-switch guard",
+        "install_source ownership: setup-program installs self-update; winget, Scoop and apt installs report MANAGED_EXTERNALLY; uninstall-entry DisplayVersion kept current",
+        "Store expand-only migration checks across versions",
+        "Desktop D-18",
+        "winget, Scoop, apt and plugin manifests validated (not published)"
+      ],
+      "out_of_scope": [
+        "Publication (AR-13)"
+      ],
+      "design_refs": [
+        "docs/architecture/13-distribution-updates.md",
+        "docs/decisions/AD-0012-distribution-and-updates.md",
+        "docs/contracts/proto/arcforges/node/v1/updates.proto",
+        "docs/experience/desktop.md"
+      ],
+      "requirements": [
+        "R-DIST-002",
+        "R-DIST-003",
+        "R-DIST-004",
+        "R-DIST-005",
+        "R-EXE-008"
+      ],
+      "deliverables": [
+        "Updater"
+      ],
+      "acceptance": [
+        "Real update and rollback with running executions on both platforms",
+        "Crash injection at each switch phase recovers",
+        "Local HTTP manifest tests for every refusal case"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Windows and WSL2 real update tests"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-13"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "A crash mid-switch leaves no runnable version",
+          "mitigation": "In-place junction retarget; phase file; crash injection per phase",
+          "owner": "AF-DIST-02"
+        },
+        {
+          "risk": "Package-manager installs fight self-update",
+          "mitigation": "install_source ownership and MANAGED_EXTERNALLY",
+          "owner": "AF-DIST-02"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 28
+    },
+    {
+      "id": "AF-WEB-01",
+      "title": "Public site for ArcForges",
+      "milestone": "M9",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Web",
+          "paths": [
+            "src/ArcForges.Web.Site/**",
+            "src/ArcForges.Web.Ui/**",
+            "tests/**",
+            "eng/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-DIST-01"
+      ],
+      "objective": "Present ArcForges on arcforges.com with features, pricing, downloads, docs, security, legal and release notes.",
+      "scope": [
+        "Pages W-01..W-08 per experience/web.md",
+        "Build-time snapshots of the plan catalogue and release manifest",
+        "Legal pages use owner-supplied texts (placeholders refuse to build in production mode)"
+      ],
+      "out_of_scope": [
+        "Account and fleet profiles"
+      ],
+      "design_refs": [
+        "docs/experience/web.md"
+      ],
+      "requirements": [
+        "R-UX-004",
+        "R-UX-006"
+      ],
+      "deliverables": [
+        "Public site"
+      ],
+      "acceptance": [
+        "Site builds with no JavaScript; budgets pass; accessibility checks pass",
+        "Merge deploys through the guarded main-push deploy only after the user approves publishing the new public content"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [
+        "H-05",
+        "H-10"
+      ],
+      "risks": [
+        {
+          "risk": "Legal texts are missing (H-10)",
+          "mitigation": "Production builds refuse placeholders; the task is `blocked` at merge while other tasks continue",
+          "owner": "user"
+        },
+        {
+          "risk": "Publishing is outward-facing",
+          "mitigation": "Merge only after the user approves",
+          "owner": "user"
+        }
+      ],
+      "size": "M",
+      "notes": "Outward-facing change: the coordinator asks the user before merging (main push deploys to production). Nothing depends on this task except the release candidate.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 29
+    },
+    {
+      "id": "AF-CLD-01",
+      "title": "Flagship cloud host profile, fleet D1 module, product ID migration, key handling and local stack",
+      "milestone": "M10",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "worker/**",
+            "tests/**",
+            "eng/**",
+            "docs/**",
+            "wrangler.json"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CON-01"
+      ],
+      "objective": "Prepare the cloud for the flagship: a host profile with only the needed modules, the fleet tables, key material handling and a native local test stack.",
+      "scope": [
+        "Host profile composition (C-10)",
+        "Physical/manifest/fleet.json and generated migration; productId table-rebuild migration (arcforges-node, arcforges-mobile)",
+        "fleet_signing_key handling (command, entitlement, relay HMAC, Node Issuing CA); secret binding names only",
+        "Local cloud stack (16 section 3.1): native C# host process, workerd under Miniflare, the Container shim forwarding to the host's loopback port; scripts and documentation",
+        "Production bindings in wrangler.json (D1, R2, Queue) and a repository provisioning script that creates the D1 database, the R2 bucket with its lifecycle rules (10 section 3.11) and the Queue; running it against production needs the user's approval (H-20)"
+      ],
+      "out_of_scope": [
+        "Platform services (AF-PLAT-01)",
+        "Identity endpoints (AF-ID-01)",
+        "Enrollment APIs (AF-CLD-02)"
+      ],
+      "design_refs": [
+        "docs/data/cloud-store.md",
+        "docs/data/cloud-store.sql",
+        "docs/architecture/10-cloud.md",
+        "docs/architecture/16-testing-strategy.md"
+      ],
+      "requirements": [
+        "R-OPS-004",
+        "R-CLOUD-002"
+      ],
+      "deliverables": [
+        "Cloud foundation for the flagship"
+      ],
+      "acceptance": [
+        "Local D1 verification passes for the new module and migrations",
+        "The local stack runs without Docker or WSL, and the host reaches D1, R2 and the Queue through the signed internal routes",
+        "Main-push deploy succeeds through repository scripts"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [
+        "H-06",
+        "H-16",
+        "H-18",
+        "H-20"
+      ],
+      "risks": [
+        {
+          "risk": "Production resources do not exist at 92ba1dc9 (only the proof environment has bindings)",
+          "mitigation": "Provisioning script plus the user's approval (H-20) before the merge",
+          "owner": "user"
+        },
+        {
+          "risk": "The local stack differs from production Containers",
+          "mitigation": "Same signed internal routes; a production smoke after deploy; Docker diagnostics optional (H-18)",
+          "owner": "AF-CLD-01"
+        },
+        {
+          "risk": "Production deploy needs account settings and key material (H-06, H-16)",
+          "mitigation": "The task waits `blocked` at merge until they exist",
+          "owner": "user"
+        },
+        {
+          "risk": "The productId table rebuild fails on production data",
+          "mitigation": "Repository migration rules; local D1 verification with production-shaped data",
+          "owner": "AF-CLD-01"
+        }
+      ],
+      "size": "M",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 30
+    },
+    {
+      "id": "AF-PLAT-01",
+      "title": "Cloud platform services: configuration, kill switches, audit and operating budgets",
+      "milestone": "M10",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "worker/**",
+            "tests/**",
+            "eng/**",
+            "wrangler.json"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CLD-01"
+      ],
+      "objective": "Provide the platform services every cloud feature uses: configuration revisions with kill switches and limits, the audit writer and reader, and operating budgets with reservations.",
+      "scope": [
+        "Configuration revisions (stage, validate, activate data path), kill switches (relay.live_streaming, relay.new_connections, push.enabled, fleet.commands, support uploads) and limits",
+        "Audit event writer with the hash chain, and the reader that backs OperatorReadService.ListAuditEvents; anomaly flags as `anomaly.<kind>` audit events",
+        "Operating budget service: reservations per dimension, threshold evaluation (80% alert, 100% kill switches in order), dimensions 8..12 table-rebuild migration, unit prices configuration",
+        "Budget and limit checks as a library for metered paths; rate limits per account and IP",
+        "Job infrastructure: lease and fence plans over platform_job_lease, reusing the shared-families `lease` guard (holder and fence); a job runner started by a Worker cron trigger and scheduled handler that call the host (wrangler.json and its hash-bound receipts updated through the repository's reviewed process); the compact command fence",
+        "Scheduled retention sweeps: expired receipts and inbox rows, expired flows, and the Retention column of data/cloud-store.md"
+      ],
+      "out_of_scope": [
+        "Operator console (AF-OPS-01)",
+        "Production alert routing (AR-09)"
+      ],
+      "design_refs": [
+        "docs/architecture/14-commercial-operations.md",
+        "docs/architecture/10-cloud.md",
+        "docs/data/cloud-store.md",
+        "docs/decisions/AD-0009-cloud-relay-and-cost-controls.md"
+      ],
+      "requirements": [
+        "R-CLOUD-006",
+        "R-OPS-002",
+        "R-OPS-006",
+        "R-SEC-002"
+      ],
+      "deliverables": [
+        "Platform services"
+      ],
+      "acceptance": [
+        "Budget exhaustion trips the kill switches in order in closed loop",
+        "Kill switches propagate within one token lifetime",
+        "Audit hash chain verified by the reader",
+        "Rate limits return RESOURCE with retry_after",
+        "A job runs once per lease under contention, and a crashed runner's lease is taken over after expiry",
+        "Retention sweeps delete exactly the rows past their schedule"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Budget accounting drifts from Cloudflare billing (V-C04)",
+          "mitigation": "Conservative unit prices; the monthly report compares with invoices",
+          "owner": "AF-PLAT-01"
+        },
+        {
+          "risk": "Kill switch propagation is slower than one token lifetime",
+          "mitigation": "Closed-loop timing test",
+          "owner": "AF-PLAT-01"
+        },
+        {
+          "risk": "No job infrastructure exists at Cloud 92ba1dc9 (no lease plans, `crons` empty)",
+          "mitigation": "Built here before any task that schedules work (AF-ID-02 purges, AF-CLD-07 acknowledgement)",
+          "owner": "AF-PLAT-01"
+        }
+      ],
+      "size": "M",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 31
+    },
+    {
+      "id": "AF-ID-01",
+      "title": "Account authentication: passkeys, e-mail codes, sessions and step-up",
+      "milestone": "M10",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-PLAT-01"
+      ],
+      "objective": "Implement account authentication on the reused IdentityService contract: passkeys, e-mail codes, cookie and native-bearer sessions with refresh rotation, and step-up.",
+      "scope": [
+        "WebAuthn registration and authentication ceremonies",
+        "E-mail codes through the provider adapter (Postmark, Amazon SES fallback); FakeMailSender for tests",
+        "Cookie sessions with CSRF and Origin checks; native-bearer sessions with refresh rotation and reuse detection; scopes account, mobile.limited, node, push, automation",
+        "Step-up (BeginStepUp/CompleteStepUp) upgrading mobile.limited to account; session listing and revocation; rate limits"
+      ],
+      "out_of_scope": [
+        "Recovery, deletion, export and devices (AF-ID-02)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0011-identity-and-login.md",
+        "docs/architecture/10-cloud.md",
+        "docs/contracts/reuse-map.md"
+      ],
+      "requirements": [
+        "R-OPS-001",
+        "R-AUTH-004",
+        "R-AUTH-005"
+      ],
+      "deliverables": [
+        "Account authentication"
+      ],
+      "acceptance": [
+        "Closed loop with ScriptedBrowser and FakeMailSender for every flow",
+        "Refresh-token reuse revokes the session family",
+        "mobile.limited sessions are refused for medium and high actions until step-up (T-19)"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "ScriptedBrowser (system browser)",
+        "FakeMailSender (e-mail provider)"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-14"
+      ],
+      "human_prerequisites": [
+        "H-19"
+      ],
+      "risks": [
+        {
+          "risk": "WebAuthn details differ across browsers",
+          "mitigation": "ScriptedBrowser ceremonies plus a manual browser check recorded as evidence",
+          "owner": "AF-ID-01"
+        },
+        {
+          "risk": "Live e-mail delivery is unavailable at development stage",
+          "mitigation": "FakeMailSender; live delivery in AR-14 once the provider exists (H-19)",
+          "owner": "user"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 32
+    },
+    {
+      "id": "AF-ID-02",
+      "title": "Account recovery, deletion, export, devices and security activity",
+      "milestone": "M10",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-ID-01"
+      ],
+      "objective": "Complete the account lifecycle on the reused contracts: recovery, deletion with grace, data export, device registry and security activity.",
+      "scope": [
+        "Recovery codes and recovery flow; e-mail change",
+        "RequestAccountDeletion with the 30-day grace, cancellation and purge job",
+        "DataService export jobs",
+        "DeviceService (Register, List, Rename, Revoke with cascade to node certificates and relay tokens); one device per node and per phone",
+        "Security activity listing"
+      ],
+      "out_of_scope": [
+        "Node enrollment flows (AF-CLD-02)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0011-identity-and-login.md",
+        "docs/architecture/10-cloud.md",
+        "docs/architecture/11-security-privacy.md",
+        "docs/data/cloud-store.md"
+      ],
+      "requirements": [
+        "R-OPS-001",
+        "R-OPS-004",
+        "R-AUTH-004"
+      ],
+      "deliverables": [
+        "Account lifecycle"
+      ],
+      "acceptance": [
+        "Deletion purges every table on the retention schedule",
+        "Device revocation cascades",
+        "Export contains the account's data"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Deletion misses data in a module",
+          "mitigation": "Per-table retention tests generated from the cloud-store model",
+          "owner": "AF-ID-02"
+        }
+      ],
+      "size": "M",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 33
+    },
+    {
+      "id": "AF-CLD-02",
+      "title": "Node enrollment and sign-in",
+      "milestone": "M10",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "tests/**"
+          ]
+        },
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.CloudLink/**",
+            "src/ArcForges.Desktop/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-ID-02",
+        "AF-DP-02",
+        "AF-NODE-01"
+      ],
+      "objective": "Sign nodes in through the browser (PKCE loopback) or a device code, issue node credentials, and pair phones by QR on the cloud side.",
+      "scope": [
+        "NodeEnrollmentService: BeginNodeSignIn, GetNodeSignInFlow, ApproveNodeSignIn, CompleteNodeSignIn, StartDeviceAuthorization, PollDeviceAuthorization, LookupDeviceCode, ApproveDeviceCode, RefreshNodeSession, ReportNodeInfo, phone pairing methods (mobile.limited sessions)",
+        "Node AccountService; Desktop D-16 (sign-in and phone QR parts); CLI account"
+      ],
+      "out_of_scope": [
+        "Web pages (AF-WEB-02)",
+        "Android side (AF-AND-01)"
+      ],
+      "design_refs": [
+        "docs/architecture/10-cloud.md",
+        "docs/decisions/AD-0011-identity-and-login.md",
+        "docs/contracts/proto/arcforges/fleet/v1/fleet.proto",
+        "docs/contracts/proto/arcforges/node/v1/account.proto",
+        "docs/experience/desktop.md"
+      ],
+      "requirements": [
+        "R-AUTH-001",
+        "R-AUTH-002",
+        "R-AUTH-003",
+        "R-AUTH-004",
+        "R-AUTH-005",
+        "R-OPS-001"
+      ],
+      "deliverables": [
+        "Enrollment"
+      ],
+      "acceptance": [
+        "ScriptedBrowser closed loop for both flows against the local Cloud stack",
+        "Code reuse revokes the flow",
+        "Credentials stored in the OS secret store; Linux fallback reported",
+        "A phone paired through a node credential holds only mobile.limited (T-19)"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "ScriptedBrowser (system browser)"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "The loopback redirect is blocked by a firewall or browser policy",
+          "mitigation": "Device-code fallback",
+          "owner": "AF-CLD-02"
+        },
+        {
+          "risk": "Code or pairing replay",
+          "mitigation": "Single-use codes; reuse revokes the flow",
+          "owner": "AF-CLD-02"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 34
+    },
+    {
+      "id": "AF-WEB-02",
+      "title": "Account profile",
+      "milestone": "M10",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Web",
+          "paths": [
+            "src/ArcForges.Web.App/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CLD-02"
+      ],
+      "objective": "Serve the account pages users need to sign in, connect nodes, approve device codes and manage devices, security and privacy.",
+      "scope": [
+        "W-20..W-23, W-26..W-28 per experience/web.md (W-24 with AF-CLD-07, W-25 with AF-SUP-01, W-29 with AF-CLD-06)"
+      ],
+      "out_of_scope": [
+        "Fleet profile (AF-WEB-03)"
+      ],
+      "design_refs": [
+        "docs/experience/web.md",
+        "docs/architecture/12-client-applications.md"
+      ],
+      "requirements": [
+        "R-UX-004",
+        "R-UX-006",
+        "R-AUTH-004",
+        "R-OPS-001",
+        "R-OPS-004"
+      ],
+      "deliverables": [
+        "Account profile"
+      ],
+      "acceptance": [
+        "bUnit tests per page and state",
+        "Real /connect and /activate flows against the local Cloud stack with a scripted browser session",
+        "Merge deploys through guarded main-push deploy"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "ScriptedBrowser for browser-only steps"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-10"
+      ],
+      "human_prerequisites": [
+        "H-05"
+      ],
+      "risks": [
+        {
+          "risk": "Production deploy needs the account domain (H-05)",
+          "mitigation": "The task waits `blocked` at merge if the domain is missing",
+          "owner": "user"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 35
+    },
+    {
+      "id": "AF-CLD-03",
+      "title": "Entitlements: endpoints, tokens, offline grace, certificates and gating",
+      "milestone": "M10",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "tests/**"
+          ]
+        },
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.CloudLink/**",
+            "src/ArcForges.Node.Core/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CLD-02"
+      ],
+      "objective": "Gate Pro features on nodes with signed entitlement tokens that work offline for 14 days and carry revocations.",
+      "scope": [
+        "EntitlementService endpoints (GetSnapshot, Check, ListGrants) and the flagship plan catalogue",
+        "RefreshEntitlementToken, GetEntitlementKeys, IssueNodeCertificate (Node Issuing CA)",
+        "Node-side verification, offline grace, gated features, degradation rules and on-demand refresh triggers"
+      ],
+      "out_of_scope": [
+        "Commerce (AF-COM-01, AF-CLD-07)",
+        "Peer revocation checks (AF-LAN-01)",
+        "Relay degradation (AF-CLD-04)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0010-commerce-and-entitlements.md",
+        "docs/architecture/10-cloud.md"
+      ],
+      "requirements": [
+        "R-CLOUD-001",
+        "R-COM-004"
+      ],
+      "deliverables": [
+        "Entitlement enforcement"
+      ],
+      "acceptance": [
+        "Expired tokens degrade only gated features; running tasks unaffected",
+        "Revocation lists ride on token refresh",
+        "Certificates issued only to enrolled nodes"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [
+        "H-16"
+      ],
+      "risks": [
+        {
+          "risk": "Clock skew breaks offline token checks",
+          "mitigation": "Skew tolerance with tests",
+          "owner": "AF-CLD-03"
+        },
+        {
+          "risk": "The production Node Issuing CA root is not yet in custody (H-16)",
+          "mitigation": "Test CA in development; the task waits `blocked` at merge without production keys",
+          "owner": "user"
+        }
+      ],
+      "size": "M",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 36
+    },
+    {
+      "id": "AF-SUP-01",
+      "title": "Support: cases, access grants and bundles end to end",
+      "milestone": "M10",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Diagnosis/**",
+            "src/ArcForges.Node.CloudLink/**",
+            "src/ArcForges.Desktop/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        },
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "tests/**",
+            "eng/**",
+            "wrangler.json"
+          ]
+        },
+        {
+          "repo": "Web",
+          "paths": [
+            "src/ArcForges.Web.App/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CLD-02",
+        "AF-PLAT-01"
+      ],
+      "objective": "Let users open support cases, build redacted bundles locally, upload them with consent, and decide operator access requests.",
+      "scope": [
+        "SupportService (CreateCase, ListCases, AppendMessage, DecideAccess) and SupportAccessService (ListAccessRequests, GetAccessRequest)",
+        "Node SupportService bundle builder with redaction",
+        "BeginSupportUpload and CompleteSupportUpload with R2 presigned PUT and verification; per-plan limits and the uploads kill switch",
+        "R2 lifecycle rules for the pending and final prefixes through the provisioning script of AF-CLD-01 (H-20)",
+        "W-25; Desktop D-19 upload; CLI support commands"
+      ],
+      "out_of_scope": [
+        "Operator access flows (AF-OPS-01)"
+      ],
+      "design_refs": [
+        "docs/architecture/11-security-privacy.md",
+        "docs/architecture/10-cloud.md",
+        "docs/contracts/proto/arcforges/node/v1/support.proto",
+        "docs/contracts/proto/arcforges/publicapi/v1/support_access.proto",
+        "docs/architecture/14-commercial-operations.md",
+        "docs/experience/web.md"
+      ],
+      "requirements": [
+        "R-OPS-005",
+        "R-SEC-003"
+      ],
+      "deliverables": [
+        "Support"
+      ],
+      "acceptance": [
+        "Seeded secrets never appear in bundles",
+        "Upload refused without consent",
+        "An upload whose bytes differ from the declared checksum is refused (F-C03)",
+        "Pending objects move to the final prefix on completion; lifecycle prefixes as in 10 section 3.11",
+        "Closed loop against the local Cloud stack"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [
+        "F-C03"
+      ],
+      "acceptance_register": [],
+      "human_prerequisites": [
+        "H-16",
+        "H-20"
+      ],
+      "risks": [
+        {
+          "risk": "R2 presigned PUT may not bind the length and checksum (A-C03, F-C03)",
+          "mitigation": "CompleteSupportUpload reads the size and checksum back and refuses mismatches",
+          "owner": "AF-SUP-01"
+        },
+        {
+          "risk": "Miniflare's local S3 endpoint may not support presigned uploads",
+          "mitigation": "Check first in the task (F-C03); otherwise test the flow against a local S3-compatible endpoint and record the gap",
+          "owner": "AF-SUP-01"
+        },
+        {
+          "risk": "Bundles leak secrets",
+          "mitigation": "Seeded-secret tests; the user reviews the file list before consenting",
+          "owner": "AF-SUP-01"
+        }
+      ],
+      "size": "M",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 37
+    },
+    {
+      "id": "AF-LAN-01",
+      "title": "LAN listener, identity, discovery, pairing and peer status",
+      "milestone": "M11",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Peer/**",
+            "src/ArcForges.Desktop/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-SEC-01",
+        "AF-CLD-03"
+      ],
+      "objective": "Let users enable LAN features, discover and pair machines, and see peer status.",
+      "scope": [
+        "mTLS listener on 47820 (any well-formed client certificate at TLS; revoked account certificates refused; interceptor limits unpaired identities to Hello and Pairing); node keys and certificates (self-signed and account CA)",
+        "DNS-SD on Windows and the Linux responder on trusted networks; manual addresses; account hints (off by default)",
+        "PeerHandshakeService, PairingService (SAS over fingerprints, no exporter), PeerStatusService; PeerService local API",
+        "Desktop D-15; CLI lan"
+      ],
+      "out_of_scope": [
+        "Placement (AF-LAN-02)"
+      ],
+      "design_refs": [
+        "docs/architecture/09-lan.md",
+        "docs/decisions/AD-0008-lan-trust-and-placement.md",
+        "docs/contracts/proto/arcforges/peer/v1/peer.proto",
+        "docs/contracts/proto/arcforges/node/v1/peers.proto",
+        "docs/experience/desktop.md"
+      ],
+      "requirements": [
+        "R-LAN-001",
+        "R-LAN-002",
+        "R-LAN-003",
+        "R-LAN-004",
+        "R-LAN-009"
+      ],
+      "deliverables": [
+        "LAN pairing"
+      ],
+      "acceptance": [
+        "Multi-node closed loop on one machine with real TLS",
+        "SAS protocol unit tests including an interposed relay (MITM)",
+        "Revoked account certificates fail the TLS handshake after a token refresh; unpaired identities reach only Hello and Pairing",
+        "DNS-SD registration and browsing on Windows 11 and WSL2 (F-T03)",
+        "Rate limiting and blocking"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "PeerProcess (other machines are node processes on the same machine)"
+      ],
+      "future_validation": [
+        "F-T03"
+      ],
+      "acceptance_register": [
+        "AR-03"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "DNS-SD behaves differently across Windows versions and networks (F-T03)",
+          "mitigation": "Manual addresses and account hints; Windows 10 22H2 stays in the register",
+          "owner": "AF-LAN-01"
+        },
+        {
+          "risk": "SAS comparison is skipped by users",
+          "mitigation": "Both sides must confirm; pinning only after confirmation",
+          "owner": "AF-LAN-01"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 38
+    },
+    {
+      "id": "AF-LAN-02",
+      "title": "Placement and transfer",
+      "milestone": "M11",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Peer/**",
+            "src/ArcForges.Node.Core/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-LAN-01",
+        "AF-WS-01"
+      ],
+      "objective": "Place separate tasks on paired peers with content-addressed transfer, leases and honest failure handling.",
+      "scope": [
+        "Scoring (no double-counted cache warmth); PlacementService; TransferService; remote workspaces by copy or block clone; outputs return; SM-REMOTE-ATTEMPT; executor-side REMOTE tasks",
+        "Entitlement checks lan.placement and lan.accept"
+      ],
+      "out_of_scope": [
+        "Cache sharing (AF-LAN-03)"
+      ],
+      "design_refs": [
+        "docs/architecture/09-lan.md",
+        "docs/contracts/proto/arcforges/peer/v1/peer.proto"
+      ],
+      "requirements": [
+        "R-LAN-005",
+        "R-LAN-006",
+        "R-LAN-007",
+        "R-LAN-008",
+        "R-LAN-010",
+        "R-EXE-015"
+      ],
+      "deliverables": [
+        "Placement"
+      ],
+      "acceptance": [
+        "Closed loop: placement, disconnect, retain, release, preemption, cancellation",
+        "Transfer dedup and digest verification",
+        "Remote workspaces never hardlink CAS blobs"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "PeerProcess"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-03"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Placement misestimates duration",
+          "mitigation": "Prefer the candidate's own facts; local wins ties",
+          "owner": "AF-LAN-02"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 39
+    },
+    {
+      "id": "AF-LAN-03",
+      "title": "LAN cache sharing",
+      "milestone": "M11",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Peer/**",
+            "src/ArcForges.Node.Toolchains/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-LAN-01",
+        "AF-CACHE-01",
+        "AF-TOOL-02"
+      ],
+      "objective": "Share compiler caches with trusted peers through the WebDAV subset and the local proxy.",
+      "scope": [
+        "WebDAV subset on the peer listener; per-peer read/write and quotas",
+        "Loopback proxy with bearer; sccache WebDAV configuration",
+        "ccache remote storage: the node serves the helper protocol on a per-user endpoint (`crsh:`), with the loopback HTTP fallback for older ccache (05 section 6)",
+        "Entitlement lan.cache"
+      ],
+      "out_of_scope": [],
+      "design_refs": [
+        "docs/architecture/05-toolchains-caches.md",
+        "docs/architecture/09-lan.md"
+      ],
+      "requirements": [
+        "R-CACHE-007"
+      ],
+      "deliverables": [
+        "Cache sharing"
+      ],
+      "acceptance": [
+        "Real sccache WebDAV client hits through the proxy between two node processes",
+        "Real ccache hits through the node's helper endpoint (F-T04)",
+        "Writes refused without cache_write"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "PeerProcess"
+      ],
+      "future_validation": [
+        "F-T04"
+      ],
+      "acceptance_register": [
+        "AR-03"
+      ],
+      "human_prerequisites": [
+        "H-11"
+      ],
+      "risks": [
+        {
+          "risk": "Cache poisoning through a writable peer cache",
+          "mitigation": "cache_write off by default and explicit per trusted peer",
+          "owner": "AF-LAN-03"
+        },
+        {
+          "risk": "The ccache helper protocol differs from the manual, or ccache removes the HTTP backend (A-T03, F-T04)",
+          "mitigation": "Verify against the installed ccache early; the loopback HTTP fallback covers older versions",
+          "owner": "AF-LAN-03"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 40
+    },
+    {
+      "id": "AF-CLD-04",
+      "title": "Relay: Worker routes, FleetHub Durable Object, node uplink and fleet watch",
+      "milestone": "M12",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "worker/relay/**",
+            "src/**",
+            "tests/**",
+            "eng/**",
+            "wrangler.json"
+          ]
+        },
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.CloudLink/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CLD-03",
+        "AF-PLAT-01"
+      ],
+      "objective": "Connect nodes and viewers through hibernating WebSockets with demand-driven telemetry and bounded costs.",
+      "scope": [
+        "Relay routes and FleetHub per AD-0009 and 10 sections 3.4-3.5 and 4-5; viewer grants as a WebSocket subprotocol validated before the DO",
+        "FleetHub Durable Object binding and migration in wrangler.json",
+        "Node relay client (SM-RELAY), summaries, deltas, snapshots, EntitlementChanged frames",
+        "IssueRelayToken, OpenFleetWatch, WatchFleet, ListNodes, GetNode, RenameNode, RevokeNode",
+        "Limits, alarm guard, kill switches"
+      ],
+      "out_of_scope": [
+        "Commands (AF-CLD-05)"
+      ],
+      "design_refs": [
+        "docs/architecture/10-cloud.md",
+        "docs/decisions/AD-0009-cloud-relay-and-cost-controls.md",
+        "docs/contracts/proto/arcforges/relay/v1/relay.proto",
+        "docs/contracts/proto/arcforges/fleet/v1/fleet.proto"
+      ],
+      "requirements": [
+        "R-CLOUD-002",
+        "R-CLOUD-003",
+        "R-CLOUD-006",
+        "R-OPS-002",
+        "R-OPS-003",
+        "R-COM-003"
+      ],
+      "deliverables": [
+        "Relay"
+      ],
+      "acceptance": [
+        "Closed loop through local workerd: snapshot, deltas, resume, reset, token refresh, close codes",
+        "No command lines or output leave the node by default",
+        "Kill switch degrades to summaries",
+        "An expired entitlement degrades only relay features"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none (local workerd is the real runtime)"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [
+        "H-05"
+      ],
+      "risks": [
+        {
+          "risk": "Durable Object costs from alarm loops or viewer floods",
+          "mitigation": "Wake guard, limits and kill switches; tests count frames",
+          "owner": "AF-CLD-04"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 41
+    },
+    {
+      "id": "AF-CLD-05",
+      "title": "Remote commands",
+      "milestone": "M12",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "tests/**"
+          ]
+        },
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.CloudLink/**",
+            "src/ArcForges.Node.Api/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CLD-04",
+        "AF-SEC-01"
+      ],
+      "objective": "Let viewers send signed, expiring commands that nodes verify against their local remote-control policy.",
+      "scope": [
+        "SendNodeCommand, GetNodeCommand, ListNodeCommands, CancelNodeCommand; risk classes of NodeCommandBody and step-up",
+        "ES256 signing and verification; node remote_command_log; signed results; expiry; output tails only as relay frames",
+        "REMOTE origin enforcement in the node"
+      ],
+      "out_of_scope": [],
+      "design_refs": [
+        "docs/architecture/10-cloud.md",
+        "docs/decisions/AD-0009-cloud-relay-and-cost-controls.md",
+        "docs/architecture/11-security-privacy.md"
+      ],
+      "requirements": [
+        "R-CLOUD-004",
+        "R-SEC-002"
+      ],
+      "deliverables": [
+        "Remote commands"
+      ],
+      "acceptance": [
+        "Forged, expired or retargeted commands are refused (T-11)",
+        "Expired commands never execute late",
+        "Output tails are never stored in D1 or DO storage",
+        "Audit in cloud and node"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [
+        "H-16"
+      ],
+      "risks": [
+        {
+          "risk": "Forged or replayed commands",
+          "mitigation": "ES256 signatures, expiry and target checks, then the node's own policy",
+          "owner": "AF-CLD-05"
+        },
+        {
+          "risk": "Production command keys missing (H-16)",
+          "mitigation": "Test keys in development; the task waits `blocked` at merge",
+          "owner": "user"
+        }
+      ],
+      "size": "M",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 42
+    },
+    {
+      "id": "AF-CLD-06",
+      "title": "Push notifications and preferences",
+      "milestone": "M12",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "tests/**"
+          ]
+        },
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.CloudLink/**",
+            "tests/**"
+          ]
+        },
+        {
+          "repo": "Web",
+          "paths": [
+            "src/ArcForges.Web.App/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CLD-04",
+        "AF-ID-01"
+      ],
+      "objective": "Send node events as FCM pushes under user preferences, deduplication and limits.",
+      "scope": [
+        "NotificationService endpoints (List, Acknowledge, RegisterPush, UnregisterPush); FCM HTTP v1 sender with short-lived service-account tokens",
+        "Node event batches; push kinds",
+        "Get/UpdatePushPreferences; fleet_push_preference; W-29"
+      ],
+      "out_of_scope": [
+        "Android handling (AF-AND-02)"
+      ],
+      "design_refs": [
+        "docs/architecture/10-cloud.md",
+        "docs/experience/web.md"
+      ],
+      "requirements": [
+        "R-CLOUD-005"
+      ],
+      "deliverables": [
+        "Push"
+      ],
+      "acceptance": [
+        "FakeFcm closed loop with dedup and daily limits"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "FakeFcm"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-07"
+      ],
+      "human_prerequisites": [
+        "H-03"
+      ],
+      "risks": [
+        {
+          "risk": "FCM delivery cannot be verified at development stage",
+          "mitigation": "FakeFcm closed loop; physical delivery in AR-07",
+          "owner": "user"
+        }
+      ],
+      "size": "M",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 43
+    },
+    {
+      "id": "AF-WEB-03",
+      "title": "Fleet profile",
+      "milestone": "M12",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Web",
+          "paths": [
+            "src/ArcForges.Web.App/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CLD-05",
+        "AF-WEB-02"
+      ],
+      "objective": "Show live fleet status and node detail with confirmed remote actions in the browser.",
+      "scope": [
+        "W-40, W-41; viewer WebSocket with ViewerFrame decoding in C#; WatchFleet fallback",
+        "Command confirmations with step-up"
+      ],
+      "out_of_scope": [],
+      "design_refs": [
+        "docs/experience/web.md",
+        "docs/architecture/12-client-applications.md"
+      ],
+      "requirements": [
+        "R-UX-004",
+        "R-UX-006",
+        "R-API-005"
+      ],
+      "deliverables": [
+        "Fleet profile"
+      ],
+      "acceptance": [
+        "bUnit tests per page and state",
+        "Closed loop against local workerd relay with a real node"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Browsers cannot set WebSocket headers",
+          "mitigation": "Grant sent as a subprotocol and validated before the DO",
+          "owner": "AF-WEB-03"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 44
+    },
+    {
+      "id": "AF-COM-01",
+      "title": "Commerce on the web: Paddle provider and commerce endpoints",
+      "milestone": "M13",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CLD-03",
+        "AF-PLAT-01",
+        "AF-ID-01"
+      ],
+      "objective": "Sell Pro on the web through Paddle with verified webhooks and the reused commerce contract.",
+      "scope": [
+        "CommerceService endpoints: GetCatalogue, CreateCheckoutAttempt, GetPurchaseState, GetSubscription, CancelSubscription, ReactivateSubscription, ListBillingHistory, RequestRefund",
+        "Paddle provider: hosted checkout, verified webhooks (raw-body HMAC, inbox dedup), subscription lifecycle and dunning, customer portal links, refunds through the Paddle API",
+        "Plan catalogue for free and pro; commerce.sales_open flag; entitlement grants from Paddle state"
+      ],
+      "out_of_scope": [
+        "Google Play (AF-CLD-07)",
+        "Operator refund decisions UI (AF-OPS-01)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0010-commerce-and-entitlements.md",
+        "docs/architecture/14-commercial-operations.md",
+        "docs/architecture/10-cloud.md"
+      ],
+      "requirements": [
+        "R-COM-001"
+      ],
+      "deliverables": [
+        "Web commerce"
+      ],
+      "acceptance": [
+        "FakePaddle closed loops for every lifecycle state, including payment failure and refund",
+        "Webhook replays are deduplicated",
+        "sales_open=false shows Coming soon"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "FakePaddle"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-05"
+      ],
+      "human_prerequisites": [
+        "H-01",
+        "H-07"
+      ],
+      "risks": [
+        {
+          "risk": "Paddle webhook semantics differ from the recorded fixtures",
+          "mitigation": "Fixtures from the historical adapter design; live run in AR-05",
+          "owner": "user"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 45
+    },
+    {
+      "id": "AF-CLD-07",
+      "title": "Commerce: Google Play provider and the subscription page",
+      "milestone": "M13",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "tests/**"
+          ]
+        },
+        {
+          "repo": "Web",
+          "paths": [
+            "src/ArcForges.Web.App/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-COM-01"
+      ],
+      "objective": "Sell Pro in Google Play with one entitlement snapshot across web and Play.",
+      "scope": [
+        "StoreBillingService, RTDN intake, acknowledgement job, subscription normalization (SM-SUBSCRIPTION) and the combined snapshot",
+        "W-24 subscription page for both providers"
+      ],
+      "out_of_scope": [
+        "Android UI (AF-AND-03)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0010-commerce-and-entitlements.md",
+        "docs/architecture/14-commercial-operations.md",
+        "docs/contracts/proto/arcforges/fleet/v1/fleet.proto",
+        "docs/experience/web.md"
+      ],
+      "requirements": [
+        "R-COM-002",
+        "R-COM-003"
+      ],
+      "deliverables": [
+        "Play commerce"
+      ],
+      "acceptance": [
+        "FakePlayDeveloperApi closed loops for every lifecycle state",
+        "Acknowledgement within the window; alert at 24 h",
+        "Web and Play sources never double-grant"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "FakePlayDeveloperApi",
+        "FakePubSubPush"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-06"
+      ],
+      "human_prerequisites": [
+        "H-02",
+        "H-07"
+      ],
+      "risks": [
+        {
+          "risk": "The acknowledgement window is missed",
+          "mitigation": "Job with a lease, retries and an alert at 24 h",
+          "owner": "AF-CLD-07"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 46
+    },
+    {
+      "id": "AF-AND-01",
+      "title": "Android foundation: sign-in, QR pairing, fleet and node views",
+      "milestone": "M13",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Mobile",
+          "paths": [
+            "src/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CLD-04",
+        "AF-CLD-02",
+        "AF-ID-01"
+      ],
+      "objective": "Sign in on Android (Custom Tab or QR) and watch the fleet live while in the foreground.",
+      "scope": [
+        "A-01, A-02, A-03, A-04 (view only), A-09, A-10",
+        "ViewerSocket, offline and background behaviour",
+        "Debug-only loopback callback for the local stack",
+        "QR library decision (F-C02)",
+        "Mobile README and plan updated for the Play channel (C-05)"
+      ],
+      "out_of_scope": [
+        "Actions (AF-AND-02)",
+        "Billing (AF-AND-03)"
+      ],
+      "design_refs": [
+        "docs/experience/android.md",
+        "docs/architecture/12-client-applications.md"
+      ],
+      "requirements": [
+        "R-UX-005",
+        "R-UX-006",
+        "R-AUTH-002"
+      ],
+      "deliverables": [
+        "Android foundation"
+      ],
+      "acceptance": [
+        "Emulator tests for sign-in, pairing and live views",
+        "Accessibility semantics assertions"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Local emulator runs (no device CI)"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [
+        "F-C02"
+      ],
+      "acceptance_register": [
+        "AR-08",
+        "AR-10"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "The QR library fails under trimming (F-C02)",
+          "mitigation": "Manual code entry fallback",
+          "owner": "AF-AND-01"
+        },
+        {
+          "risk": "Verified app links do not work against the local stack",
+          "mitigation": "Debug-only loopback callback; release builds accept only the verified link",
+          "owner": "AF-AND-01"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 47
+    },
+    {
+      "id": "AF-AND-02",
+      "title": "Android actions, approvals, task detail and push",
+      "milestone": "M13",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Mobile",
+          "paths": [
+            "src/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-AND-01",
+        "AF-CLD-05",
+        "AF-CLD-06"
+      ],
+      "objective": "Act on nodes from Android with step-up, approve where allowed, and handle push notifications.",
+      "scope": [
+        "A-04 actions, A-05, A-06, A-07; FCM registration and deep links; step-up upgrading mobile.limited"
+      ],
+      "out_of_scope": [],
+      "design_refs": [
+        "docs/experience/android.md"
+      ],
+      "requirements": [
+        "R-UX-005"
+      ],
+      "deliverables": [
+        "Android actions"
+      ],
+      "acceptance": [
+        "Emulator closed loop against the local Cloud stack and FakeFcm"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "FakeFcm"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-07",
+        "AR-08"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Background push behaviour differs on real devices",
+          "mitigation": "Emulator closed loop now; physical devices in AR-07 and AR-08",
+          "owner": "user"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 48
+    },
+    {
+      "id": "AF-AND-03",
+      "title": "Android subscription with Google Play Billing",
+      "milestone": "M13",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Mobile",
+          "paths": [
+            "src/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-AND-01",
+        "AF-CLD-07"
+      ],
+      "objective": "Subscribe and restore in the Android app through Google Play.",
+      "scope": [
+        "A-08; Play Billing binding under release settings (F-C01); restore and link confirmation",
+        "FakeBillingClient for emulator closed loops",
+        "AAB release configuration and Play App Signing readiness"
+      ],
+      "out_of_scope": [
+        "Publishing to Play tracks (AR-06/AR-08)"
+      ],
+      "design_refs": [
+        "docs/experience/android.md",
+        "docs/decisions/AD-0010-commerce-and-entitlements.md",
+        "docs/architecture/16-testing-strategy.md"
+      ],
+      "requirements": [
+        "R-COM-002",
+        "R-UX-005"
+      ],
+      "deliverables": [
+        "Android billing"
+      ],
+      "acceptance": [
+        "Emulator closed loops with FakeBillingClient and the fake Play backend (labelled closed-loop)",
+        "Release build links the billing binding (F-C01)"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "FakeBillingClient",
+        "FakePlayDeveloperApi"
+      ],
+      "future_validation": [
+        "F-C01"
+      ],
+      "acceptance_register": [
+        "AR-06",
+        "AR-08"
+      ],
+      "human_prerequisites": [
+        "H-02",
+        "H-04",
+        "H-17"
+      ],
+      "risks": [
+        {
+          "risk": "The billing binding fails under release settings (F-C01)",
+          "mitigation": "Build check early; a newer binding version as fallback",
+          "owner": "AF-AND-03"
+        },
+        {
+          "risk": "The real billing flow needs Play and a test account",
+          "mitigation": "FakeBillingClient closed loop; real flow in AR-06 with H-17",
+          "owner": "user"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 49
+    },
+    {
+      "id": "AF-OPS-01",
+      "title": "Operations console, operator APIs, alerts and runbooks",
+      "milestone": "M14",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "src/**",
+            "tests/**",
+            "docs/runbooks/**"
+          ]
+        },
+        {
+          "repo": "Web",
+          "paths": [
+            "src/ArcForges.Web.Operations/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-PLAT-01",
+        "AF-SUP-01",
+        "AF-COM-01"
+      ],
+      "objective": "Operate the service: cases, consented diagnostics, configuration, entitlements, refunds, trust and safety, budgets and runbooks.",
+      "scope": [
+        "Operator sessions with step-up",
+        "OperatorService implementation (cases, access, configuration, kill switches, break-glass, two-person actions, entitlements and compensation, refunds, trust-and-safety enforcement and appeals)",
+        "OperatorReadService (audit events, operating budgets, monthly report)",
+        "W-60..W-67",
+        "Alerts and runbooks of 14 section 8"
+      ],
+      "out_of_scope": [
+        "Production alert wiring (AR-09)"
+      ],
+      "design_refs": [
+        "docs/architecture/14-commercial-operations.md",
+        "docs/experience/web.md",
+        "docs/contracts/proto/arcforges/operator/v1/operator_read.proto"
+      ],
+      "requirements": [
+        "R-CLOUD-006",
+        "R-OPS-002",
+        "R-OPS-006"
+      ],
+      "deliverables": [
+        "Operations"
+      ],
+      "acceptance": [
+        "Operator pages work in closed loop against the local stack",
+        "Two-person approval where configured; self-approval recorded otherwise",
+        "Audit reads are themselves audited"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-09"
+      ],
+      "human_prerequisites": [
+        "H-08",
+        "H-09"
+      ],
+      "risks": [
+        {
+          "risk": "A single operator cannot do two-person approval",
+          "mitigation": "Recorded self-approval with justification",
+          "owner": "user"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 50
+    },
+    {
+      "id": "AF-ACC-01",
+      "title": "Release candidate and acceptance handover",
+      "milestone": "M14",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "tests/**",
+            "docs/**"
+          ]
+        },
+        {
+          "repo": "Plan",
+          "paths": [
+            "acceptance-register.md",
+            "ledger/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-DOCS-01",
+        "AF-CON-02",
+        "AF-WSL-01",
+        "AF-DESK-02",
+        "AF-DIST-02",
+        "AF-WEB-01",
+        "AF-LAN-02",
+        "AF-LAN-03",
+        "AF-WEB-03",
+        "AF-AND-02",
+        "AF-AND-03",
+        "AF-OPS-01"
+      ],
+      "objective": "Prove every journey in closed loop, measure performance, complete the threat-test matrix and hand the acceptance register to the user.",
+      "scope": [
+        "Journey suites J-01..J-10",
+        "Full benchmark run against 15",
+        "Threat model test matrix complete (R-SEC-004)",
+        "Acceptance register updated with exact remaining human steps"
+      ],
+      "out_of_scope": [
+        "Executing deferred real-world validations"
+      ],
+      "design_refs": [
+        "docs/experience/journeys.md",
+        "docs/architecture/15-performance-targets.md",
+        "docs/architecture/16-testing-strategy.md",
+        "docs/architecture/11-security-privacy.md"
+      ],
+      "requirements": [
+        "R-PERF-001",
+        "R-SEC-004",
+        "R-TEST-001",
+        "R-TEST-002",
+        "R-TEST-003",
+        "R-UX-006"
+      ],
+      "deliverables": [
+        "Release-candidate evidence report"
+      ],
+      "acceptance": [
+        "All journey suites pass on Windows and WSL2",
+        "All targets met or justified",
+        "Register lists every deferred validation with prerequisites and owner"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR",
+          "Full real suites on Windows and WSL2"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-01",
+        "AR-02",
+        "AR-03",
+        "AR-04",
+        "AR-05",
+        "AR-06",
+        "AR-07",
+        "AR-08",
+        "AR-09",
+        "AR-10",
+        "AR-11",
+        "AR-12",
+        "AR-13",
+        "AR-14",
+        "AR-15",
+        "AR-16"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Deferred validations hide real defects",
+          "mitigation": "Each register entry states its residual risk and procedure",
+          "owner": "user"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 51
+    }
+  ]
+}
