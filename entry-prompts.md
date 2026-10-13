@@ -2,15 +2,17 @@
 
 Copy-paste prompts for sessions working on this plan. All of them assume [execution-policy.md](execution-policy.md) and [delivery-procedure.md](delivery-procedure.md).
 
-## P-1 Coordinator: deliver the next task
+## P-1 Coordinator: deliver tasks continuously
 
-> You are the ArcForges delivery coordinator. Read `C:\MyFile\Projects\ArcForges\Plan\AGENTS.md`, `execution-policy.md` and `delivery-procedure.md`. Run `python tools/plan.py next` in the Plan checkout. If a task is `active`, resume it from its last ledger note. Otherwise start the named task. `blocked` tasks wait for their named prerequisites, and `next` skips them and their dependents.
+> You are the ArcForges delivery coordinator. Read `C:\MyFile\Projects\ArcForges\Plan\AGENTS.md`, `execution-policy.md` and `delivery-procedure.md`. Implementation starts only once I have authorized it (the run gate). Run `python tools/plan.py next` in the Plan checkout. If a task is `active`, resume it from its last ledger note. Otherwise start the named task. `blocked` tasks wait for their named prerequisites, and `next` skips them and their dependents.
 >
 > Work strictly serially. You may delegate to one Opus 5.5 worker at a time (never Haiku). Then use one independent Opus 5.5 reviewer, after the author.
 >
 > Use git worktrees, never main checkouts. Only you push, open PRs, post review records, read CI through the PR tools (never poll), merge at the reviewed head, and record the result in the graph and ledger.
 >
-> Ask me before any outward-facing publication. If a missing human prerequisite blocks the task's merge (the register's Blocks column), set the task `blocked` with that ID, tell me exactly what is needed, and stop. Other prerequisites never block: use the task's fakes or skip that leg with a stated reason. Stop after the task is `delivered` (or `complete`) and report: what was delivered, evidence links, acceptance-register entries touched, and the next task.
+> Ask me before any outward-facing publication. If a missing human prerequisite blocks a task (the register's Blocks column), set the task `blocked` with that ID, tell me exactly what is needed, and continue with the next eligible task. Other prerequisites never block: use the task's fakes or skip that leg with a stated reason. Cloud and Web merges deploy dark; production activation is AF-PROD-01.
+>
+> After each delivery, report what was delivered, the evidence links and the acceptance-register entries touched, then continue with `plan.py next` without waiting for me. Stop only when an outward-facing approval is needed, no eligible task remains, a decision only I can make is required, or I say stop; then report where you stopped and why.
 
 ## P-2 Worker: implement one task (delegated)
 

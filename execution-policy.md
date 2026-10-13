@@ -12,6 +12,11 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
    - No parallel research, implementation or review workstreams.
    - A delegate works only in its task's worktree and never pushes, posts, merges or deploys. The coordinator does those (§4).
 4. **No build slot.** There is no workstation lock and no "retry for a slot". Long checks run once, in the background when practical, and their results are read rather than polled in loops.
+5. **Run gate, then continuous execution** ([AD-0014](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0014-delivery-method.md) §10).
+   - No implementation starts until the user authorizes it.
+   - Once authorized, the coordinator delivers eligible tasks one after another. Serial means one task at a time, not one task per session: it reports each delivery and continues with `plan.py next` without asking to continue.
+   - A `blocked` task is skipped, not a reason to stop.
+   - It stops only when an outward-facing approval is needed, no eligible task remains, a decision only the user can make is required, or the user says stop. It then reports where it stopped and why.
 
 ## 2. Task states
 
@@ -24,7 +29,7 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
 | `blocked` | Waiting on a human prerequisite or an acceptance-register entry (`blocked_by`), for example legal texts, production keys, or the user's approval to publish. Work done so far stays on its branch. A blocked task does not count against the single active task. | Coordinator (`plan.py set-state <id> blocked --blocked-by H-xx --reason …` plus a ledger record) |
 | `superseded` | Replaced by a design decision (with reason) | Coordinator, with a ledger record |
 
-- **Blocked tasks.** A task is set `blocked` only when a prerequisite whose **Blocks** column in the [acceptance register](acceptance-register.md) names that task's merge is missing. Prerequisites that block only `complete` leave the task `delivered`; the rest never block. `next` then continues with the first planned task that does not depend on it. When the prerequisite arrives, the task returns to `active` (or `planned`) and finishes.
+- **Blocked tasks.** A task is set `blocked` only when a prerequisite whose **Blocks** column in the [acceptance register](acceptance-register.md) names that task is missing. Production prerequisites name only AF-PROD-01: Cloud and Web tasks deploy dark (§4). Prerequisites that block only `complete` leave the task `delivered`; the rest never block. `next` then continues with the first planned task that does not depend on it. When the prerequisite arrives, the task returns to `active` (or `planned`) and finishes.
 - **Deferred validation is not a block.** A task whose remaining step is a deferred real-world validation completes its development-stage scope, records the procedure in [acceptance-register.md](acceptance-register.md) and becomes `delivered` or `complete`.
 
 ## 3. Verification responsibilities (distinct evidence only)
@@ -45,7 +50,9 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
 - **Reading CI.** The coordinator reads CI through the app's PR tools and never polls CI in loops.
 - **Production changes** happen only through main-push deploys of the repositories' guarded scripts.
   - Cloudflare only through repository scripts; `workers.dev` and previews stay off.
-  - Outward-facing changes (public site content, store listings, package-manager or plugin publication) need the user's explicit approval before merge or publish.
+  - **Dark deploys.** Cloud and Web merges deploy with the flagship surfaces disabled (Design 10 §8). Implementation delivery never waits for production key material, domains, provisioning or publication approval.
+  - **Production activation** is task AF-PROD-01: it needs the user's approval and the production prerequisites, and enables the surfaces one at a time.
+  - Outward-facing changes need the user's explicit approval before they become visible: publication of the public site and web profiles (AF-PROD-01), store listings, and package-manager or plugin publication.
 - **Published versions** are never unpublished, deprecated or deleted.
   - Never pin or admit Contracts `1.0.0-ci.350.1` or DesktopPlatform Build.Policy `1.0.0-ci.124.1`.
   - Never admit a first-party version whose publishing commit is not an ancestor of its producer's main.

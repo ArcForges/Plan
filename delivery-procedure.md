@@ -54,10 +54,11 @@ Run exactly what the task's `verification.author` names. Record in the PR body:
    - `python tools/plan.py ledger <id> delivered "<summary>"`
    - Plan PR, then merge.
 5. **Complete.** When every completion prerequisite holds, including real-environment evidence possible now, run `set-state <id> complete` and add a ledger record. Deferred real-world items stay in the acceptance register.
+6. **Continue.** Report the delivery and go back to §1 with `python tools/plan.py next` (execution policy §1.5). Stop only at a stop point: an outward-facing approval, no eligible task, a decision only the user can make, or the user's instruction.
 
 ## 6. Interruptions
 
 - **Stopped work.** Leave the worktree and branch in place, and record the exact state (head, uncommitted files, next step) in a ledger `note`. Never discard work.
 - **Resuming.** A later session resumes from that record. Do not restart from scratch if the record is usable.
-- **Blockers.** A blocker needing a human step goes into the acceptance register (or as an H item), with its **Blocks** column. When it blocks the task's merge, the coordinator sets the task `blocked` (`python tools/plan.py set-state <id> blocked --blocked-by H-xx --reason "…"`), records it in the ledger, and continues with `python tools/plan.py next`, which skips the blocked task and its dependents.
-- **Production prerequisites at merge.** Cloud tasks deploy on merge. If a production prerequisite (for example H-06 or H-16) is missing at merge time, the reviewed PR stays open and the task is set `blocked`; it merges when the prerequisite exists. Ask the user for H-05, H-06, H-16 and H-20 when M9 starts, so that M10 is not held up.
+- **Blockers.** A blocker needing a human step goes into the acceptance register (or as an H item), with its **Blocks** column. When it blocks the task, the coordinator sets the task `blocked` (`python tools/plan.py set-state <id> blocked --blocked-by H-xx --reason "…"`), records it in the ledger, tells the user exactly what is needed, and continues with `python tools/plan.py next`, which skips the blocked task and its dependents.
+- **Production activation.** Cloud and Web tasks deploy dark on merge (Design 10 §8), so no production prerequisite blocks an implementation merge. AF-PROD-01 activates the surfaces with the user's approval. Ask the user for H-05, H-06, H-09, H-10, H-16 and H-20 when AF-ACC-01 starts, so that activation is not held up.

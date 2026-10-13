@@ -2,7 +2,7 @@
   "schema": 2,
   "plan": "ArcForges flagship delivery",
   "created": "2026-10-12",
-  "revised": "2026-10-12 (independent review findings R-05, R-08, R-24, R-25, R-28, R-29, R-41)",
+  "revised": "2026-10-13 (findings review: workspace concurrency, memory and disk guarantees, WSL allocations, infeasible tasks, worktree archives, retry safety, hook hand-off, routing coverage, remote contracts, cloud cost dimensions, console signalling and the Windows 11 floor, continuous serial execution, production activation, release-candidate fakes)",
   "policy": "execution-policy.md",
   "design": {
     "repository": "ArcForges/ArcForges-Design",
@@ -83,6 +83,11 @@
       "id": "M14",
       "title": "Operations and release candidate",
       "outcome": "Operators run the service within budgets, every journey passes in closed loop, and the acceptance register is ready for the user."
+    },
+    {
+      "id": "M15",
+      "title": "Production activation",
+      "outcome": "With the user's approval and the production prerequisites, the delivered surfaces are enabled in production one at a time and the public site is published."
     }
   ],
   "tasks": [
@@ -880,12 +885,12 @@
       "scope": [
         "Command resolution, Windows quoting and batch refusal (04 section 2); environment resolution with sealed secrets",
         "Root and child jobs (the holder assigns the suspended process to the root job, then the child job); `arcforges node exec-wrap` holders outside the job that hold the child and root job handles until the node acknowledges the exit record; exit.json with accounting and limit violations; kill_with_node tasks without a holder (KILL_ON_JOB_CLOSE)",
-        "Completion port clear-then-attach on restart; limit-violation check after restart; node signal CTRL_BREAK helper; leftover handling",
-        "Output files and index, ReadTaskOutput, WatchTaskOutput, AttachTask with STREAM stdin; cancel_when_caller_gone",
+        "Completion port clear-then-attach on restart; limit-violation check after restart; attempt roots started with CREATE_NO_WINDOW | CREATE_NEW_PROCESS_GROUP and the `node signal` helper (FreeConsole, AttachConsole, GenerateConsoleCtrlEvent) per L-18, with the WM_CLOSE and forced fallbacks (04 section 6); leftover handling",
+        "Output files and index, ReadTaskOutput, WatchTaskOutput, AttachTask with STREAM stdin; cancel_when_caller_gone; ReleaseCallerBinding and SubmitTask join_existing (AD-0006 section 7); the output limit max_attempt_output_bytes checked on every tailer read (TERMINATE with OUTPUT_LIMIT, or NOTIFY; 06 section 5)",
         "TaskService core: Submit, Get, List, Wait, Attach, Write/CloseTaskInput, Cancel, Retry (manual), Pin, PurgeTaskRecord, GetAttempt, ListAttempts",
         "Recovery after node restart and machine reboot (LOST)",
         "Interim admission: global FIFO with global_max_running until AF-SCHED-01",
-        "CLI run and tasks commands with exit codes"
+        "CLI run and tasks commands with exit codes, including `run --client-timeout` and `--join-existing` (exit 124 on hand-off) and `tasks wait --output`"
       ],
       "out_of_scope": [
         "Budgets and pools (AF-SCHED-01)",
@@ -897,7 +902,8 @@
         "docs/decisions/AD-0005-resource-enforcement.md",
         "docs/decisions/AD-0006-execution-semantics.md",
         "docs/contracts/proto/arcforges/node/v1/tasks.proto",
-        "docs/experience/cli.md"
+        "docs/experience/cli.md",
+        "docs/architecture/06-storage-workspaces.md"
       ],
       "requirements": [
         "R-EXE-001",
@@ -912,7 +918,10 @@
         "R-EXE-018",
         "R-RES-006",
         "R-RES-012",
-        "R-UX-003"
+        "R-UX-003",
+        "R-AI-010",
+        "R-RES-014",
+        "R-STOR-009"
       ],
       "deliverables": [
         "Windows execution with CLI"
@@ -922,7 +931,11 @@
         "Nested jobs with real dotnet, cargo and cmake builds (F-W02)",
         "Node killed mid-run: executions continue; after restart the node re-opens jobs through the holders, re-associates the completion port, cancels a recovered attempt and reads its accounting (F-W03)",
         "Byte-identical attached output and exit codes vs direct runs",
-        "Batch argument corpus refused (T-03)"
+        "Batch argument corpus refused (T-03)",
+        "CTRL_BREAK reaches the attempt's process group through the helper on Windows 11 (L-18, F-N03); descendants with their own console, GUI processes and a failed attach fall back to WM_CLOSE and the forced phase",
+        "A caller released with ReleaseCallerBinding no longer cancels its task when it disconnects; a resubmission with join_existing returns the live task (joined); an interrupt before the release still cancels it (R-AI-010)",
+        "Output beyond max_attempt_output_bytes stops the attempt with OUTPUT_LIMIT, or is dropped with NOTIFY (R-STOR-009)",
+        "No attempt or root exceeds its commit limit in the mem-ramp scenario (R-RES-014; 15 section 4)"
       ],
       "verification": {
         "author": [
@@ -965,7 +978,7 @@
           "owner": "AF-EXEC-01"
         },
         {
-          "risk": "CTRL_BREAK delivery and the windowless supervisor at logon are unproven (F-N03)",
+          "risk": "CTRL_BREAK delivery through the windowless console was verified once on Windows 11 (L-18), but the documentation is ambiguous; the windowless supervisor at logon is unproven (F-N03)",
           "mitigation": "Hidden-console helper tests now; a logoff/logon cycle with the user (H-15)",
           "owner": "AF-EXEC-01"
         }
@@ -1004,7 +1017,9 @@
         "D-Bus client (Tmds.DBus.Protocol), StartTransientUnit with fd-passed stdio, exact environment, rlimits, ExecStopPost exit-record role with cgroup accounting",
         "Slice runtime limits; freeze/thaw; KillUnit cancellation sequence; recovery from units and exit.json",
         "Capability report and degraded modes (no user manager, missing controllers)",
-        "systemd unit files of 13 section 3.4"
+        "systemd unit files of 13 section 3.4",
+        "Memory bounds of 03 section 5.4: MemoryMax on attempts and the root slice, MemorySwapMax from swap_allowance (default 0), MemoryHigh as the notification limit",
+        "Output limit and caller hand-off shared with AF-EXEC-01, verified on Linux"
       ],
       "out_of_scope": [
         "WSL host linking (AF-WSL-01)"
@@ -1013,7 +1028,8 @@
         "docs/architecture/04-execution.md",
         "docs/architecture/03-resource-control.md",
         "docs/decisions/AD-0005-resource-enforcement.md",
-        "docs/architecture/13-distribution-updates.md"
+        "docs/architecture/13-distribution-updates.md",
+        "docs/architecture/15-performance-targets.md"
       ],
       "requirements": [
         "R-EXE-002",
@@ -1024,7 +1040,10 @@
         "R-EXE-011",
         "R-EXE-018",
         "R-RES-007",
-        "R-RES-008"
+        "R-RES-008",
+        "R-RES-014",
+        "R-STOR-009",
+        "R-AI-010"
       ],
       "deliverables": [
         "Linux execution"
@@ -1032,7 +1051,9 @@
       "acceptance": [
         "Real WSL2 tests prove each limit (L-07, L-13) from the node",
         "Executions survive node crash and `systemctl --user restart` with durable exit records (F-L03)",
-        "Degraded mode refuses tasks requiring enforcement and labels others"
+        "Degraded mode refuses tasks requiring enforcement and labels others",
+        "No attempt or root slice exceeds its MemoryMax in the mem-ramp scenario, and swap stays within swap_allowance (R-RES-014; 15 section 4)",
+        "Output limit, ReleaseCallerBinding and join_existing behave as on Windows"
       ],
       "verification": {
         "author": [
@@ -1109,7 +1130,9 @@
         "Pressure levels and actions hooks",
         "ResourceService: GetResourceSnapshot, WatchResources, ListProcesses, GetSamples",
         "Sample storage and downsampling",
-        "CLI resources, ps, samples"
+        "CLI resources, ps, samples",
+        "peak_observed per attempt without reclaimable cache (Linux memory.current minus inactive_file; Windows private working sets), never decreasing while the attempt runs (03 section 3)",
+        "Pressure response to unmanaged growth with the detection and reaction times of 03 section 5.4"
       ],
       "out_of_scope": [
         "Admission (AF-SCHED-01)"
@@ -1123,7 +1146,8 @@
         "R-RES-002",
         "R-RES-003",
         "R-RES-008",
-        "R-RES-009"
+        "R-RES-009",
+        "R-RES-014"
       ],
       "deliverables": [
         "Resource observation"
@@ -1131,7 +1155,9 @@
       "acceptance": [
         "Budget unit tests including the workstation example",
         "Process labels correct for managed, unmanaged, escaped and guest VM processes",
-        "Idle node CPU within target while sampling"
+        "Idle node CPU within target while sampling",
+        "peak_observed excludes reclaimable page cache and never decreases while an attempt runs",
+        "The pressure response to a synthetic unmanaged allocator acts within the stated times on both platforms (R-RES-014)"
       ],
       "verification": {
         "author": [
@@ -1201,11 +1227,12 @@
       ],
       "objective": "Replace the interim FIFO with the admission algorithm and enforce budgets with root and attempt container limits.",
       "scope": [
-        "Pools, priorities, DRR fairness, aging, large-task reservation, overcommit rules (03 section 4); exceeds_budget waiting",
-        "Enforcement mapping both platforms (03 section 5); pressure actions (section 7); task dependencies and service readiness; automatic retries (AD-0006)",
+        "Pools, priorities, DRR fairness, aging, overcommit rules (03 section 4); accounted memory max(mem_expected, peak_observed); feasibility classes feasible, exceeds_budget and exceeds_capacity, with TASK_INFEASIBLE; one bounded large-task reservation (narrow, backfill from operational memory, lapse after large_task_reservation_max)",
+        "Enforcement mapping both platforms (03 section 5) and the stated memory guarantees (section 5.4); pressure actions (section 7); task dependencies and service readiness; automatic retries only for asserted classes (AD-0006 section 4: side_effect_source, retry_safety rules, agent assertions only with accept_agent_assertions)",
         "QueueService; PolicyService (document, validation, revisions); SetParallelism",
         "Tool-level concurrency hook for adapters",
-        "TestLoad load scenarios and benchmarks of 15 section 4"
+        "TestLoad load scenarios and benchmarks of 15 section 4",
+        "Exclusive keys and workspace access (03 section 4): the conflict rule over directory keys and purposes, the blocking reason exclusive_key, ExplainTask with keys and holders, task_exclusive_key persistence; the workspace concurrency mode applied at admission"
       ],
       "out_of_scope": [
         "Permissions and approvals (AF-SEC-01)",
@@ -1215,7 +1242,9 @@
         "docs/architecture/03-resource-control.md",
         "docs/decisions/AD-0006-execution-semantics.md",
         "docs/contracts/proto/arcforges/node/v1/queue.proto",
-        "docs/contracts/proto/arcforges/node/v1/policy.proto"
+        "docs/contracts/proto/arcforges/node/v1/policy.proto",
+        "docs/contracts/proto/arcforges/node/v1/tasks.proto",
+        "docs/data/node-store.md"
       ],
       "requirements": [
         "R-EXE-005",
@@ -1230,7 +1259,9 @@
         "R-RES-006",
         "R-RES-007",
         "R-RES-009",
-        "R-PERF-001"
+        "R-PERF-001",
+        "R-EXE-019",
+        "R-RES-014"
       ],
       "deliverables": [
         "Scheduler and policy"
@@ -1238,9 +1269,12 @@
       "acceptance": [
         "Headroom probe misses <= 1% of deadlines under saturating managed load on both platforms",
         "Fairness 50% +/- 10% between two sessions",
-        "No memory overcommit; zero unmanaged OOM in the standard scenario",
+        "No memory overcommit at admission (accounted memory); zero unmanaged OOM in the standard scenario; the memory bounds of 15 section 4 hold",
         "Parallelism disabled per scope runs one at a time",
-        "Dependents start only after their dependency's condition, including service readiness (R-EXE-005)"
+        "Dependents start only after their dependency's condition, including service readiness (R-EXE-005)",
+        "An exceeds_capacity task never holds a reservation or blocks feasible work and raises TASK_INFEASIBLE; the large-task reservation lapses after large_task_reservation_max (R-RES-005)",
+        "Two builds of one project in one workspace wait for each other (exclusive_key); builds of different projects run together; SERIAL mode runs one managed task at a time (R-EXE-019)",
+        "Retry policy tests per class and assertion source; an agent's PURE or IDEMPOTENT becomes UNKNOWN without accept_agent_assertions; a side-effecting task is not retried after node loss (R-EXE-010)"
       ],
       "verification": {
         "author": [
@@ -1273,6 +1307,11 @@
         {
           "risk": "Fairness regresses with many pools and owners",
           "mitigation": "DRR unit tests and TestLoad scenarios",
+          "owner": "AF-SCHED-01"
+        },
+        {
+          "risk": "Adapter exclusive keys are too coarse and serialize unrelated work, or too fine and miss shared outputs",
+          "mitigation": "Per-adapter key tests with real builds; the workspace concurrency mode and caller keys override",
           "owner": "AF-SCHED-01"
         }
       ],
@@ -1310,8 +1349,9 @@
       "objective": "Link a Windows host node with the guest node in each managed WSL distribution so both share one fair queue without double counting, and the host's reserve stays protected.",
       "scope": [
         "`arcforges bridge wsl`; GuestLinkService (OpenLink stream, AnswerGrant, RevokeGrant, SetGuestBudget, GetGuestStatus); link token, host pinning, GetHostLink and TrustHost (guest)",
-        "Host: guest discovery, link state machine, vmmem accounting, guest_other, grant proxy tasks; host root caps reduced by the guest budget",
-        "ResourceService.ListGuestLinks and SetGuestLink; CLI guests (host) and guests host, guests trust-host (guest)"
+        "Host: guest discovery, link state machine, vmmem accounting, guest_other, grant proxy tasks; demand admitted and allocations enforced: the CPU split G_cpu and H_cpu with positive floors summing to B_cpu, memory grants never overcommitted (03 section 6)",
+        "ResourceService.ListGuestLinks and SetGuestLink; CLI guests (host) and guests host, guests trust-host (guest)",
+        "Lease (lease_until, renewed at least every 30 s) and the standalone allocation (guest_standalone_fraction of the host budget), persisted on both sides (guest_link, host_link); the host reserves the standalone allocation during an outage and accounts the VM as max(usage, allocation); the never-linked window is reported"
       ],
       "out_of_scope": [
         "Optional privileged guest I/O control beyond a design probe"
@@ -1321,7 +1361,8 @@
         "docs/architecture/09-lan.md",
         "docs/decisions/AD-0005-resource-enforcement.md",
         "docs/contracts/proto/arcforges/peer/v1/peer.proto",
-        "docs/contracts/proto/arcforges/node/v1/resources.proto"
+        "docs/contracts/proto/arcforges/node/v1/resources.proto",
+        "docs/data/node-store.md"
       ],
       "requirements": [
         "R-RES-010",
@@ -1331,9 +1372,9 @@
         "Host-guest linking"
       ],
       "acceptance": [
-        "Closed loop through the real wsl.exe bridge: grants, release, link loss and standalone fallback",
+        "Closed loop through the real wsl.exe bridge: grants and release; a link loss keeps the last allocation until the lease lapses, then the standalone allocation, also across a node restart on either side (R-RES-010)",
         "vmmem accounting observed and recorded (F-L01)",
-        "Concurrent saturating host and guest load: no double counting, and the host reserve stays protected",
+        "Concurrent saturating host and guest load with CPU demand overcommitted: host and guest CPU caps sum to B_cpu, nothing is counted twice, and the host reserve stays protected",
         "A link from a different host is refused until TrustHost"
       ],
       "verification": {
@@ -1366,7 +1407,7 @@
       "risks": [
         {
           "risk": "Host and guest caps together exceed capacity minus the reserve",
-          "mitigation": "SetGuestBudget sets the guest slice to the granted total and reduces the host root caps; saturating test",
+          "mitigation": "The allocation split sums to B_cpu by construction and memory grants are never overcommitted; saturating closed-loop test, including link loss",
           "owner": "AF-WSL-01"
         },
         {
@@ -1422,7 +1463,8 @@
         "ApprovalService with captured requests executed under the original command_id",
         "AdoptProcess and TerminateProcess with escaped-process detection",
         "Local audit_log",
-        "Read-only version directories with digest checks (AD-0007 section 8); optional Linux unit hardening (ReadOnlyPaths, InaccessiblePaths)"
+        "Read-only version directories with digest checks (AD-0007 section 8); optional Linux unit hardening (ReadOnlyPaths, InaccessiblePaths)",
+        "Retry-safety policy (AD-0006 section 4): retry_safety rules edited by HUMAN callers only, accept_agent_assertions (default false), side_effect_source recorded"
       ],
       "out_of_scope": [
         "Remote origin enforcement (AF-CLD-05)",
@@ -1432,13 +1474,15 @@
         "docs/architecture/11-security-privacy.md",
         "docs/contracts/proto/arcforges/node/v1/approvals.proto",
         "docs/contracts/proto/arcforges/node/v1/resources.proto",
-        "docs/decisions/AD-0007-ai-integration.md"
+        "docs/decisions/AD-0007-ai-integration.md",
+        "docs/decisions/AD-0006-execution-semantics.md"
       ],
       "requirements": [
         "R-RES-012",
         "R-RES-013",
         "R-AI-009",
-        "R-SEC-002"
+        "R-SEC-002",
+        "R-EXE-010"
       ],
       "deliverables": [
         "Permissions and approvals"
@@ -1448,7 +1492,8 @@
         "Approval round trip returns the executed outcome to a retrying caller",
         "WMI-escaped process detected and terminated (T-18)",
         "Audit records for every privileged action",
-        "Linux hardening applied where the user manager supports it, and reported otherwise (F-L04)"
+        "Linux hardening applied where the user manager supports it, and reported otherwise (F-L04)",
+        "Only HUMAN callers can edit retry_safety rules; agent assertions follow accept_agent_assertions"
       ],
       "verification": {
         "author": [
@@ -1704,7 +1749,7 @@
       "objective": "Detect toolchains and manage .NET work with shared NuGet caches and grant-based parallelism.",
       "scope": [
         "Detection of 05 section 1; ToolchainService (List, Detect, ListAdapters, PreviewInvocation)",
-        "Adapter contract; .NET adapter (NuGet redirection with shared scratch, MSBuild node reuse off, -m:N); generic adapter",
+        "Adapter contract with side-effect suggestions, assertions only where the adapter can verify them, and exclusive keys (05 section 2); .NET adapter (NuGet redirection with shared scratch, MSBuild node reuse off, -m:N, keys per project directory); generic adapter",
         "Failure classifiers for .NET",
         "CLI toolchain commands"
       ],
@@ -1713,7 +1758,8 @@
       ],
       "design_refs": [
         "docs/architecture/05-toolchains-caches.md",
-        "docs/contracts/proto/arcforges/node/v1/toolchains.proto"
+        "docs/contracts/proto/arcforges/node/v1/toolchains.proto",
+        "docs/decisions/AD-0006-execution-semantics.md"
       ],
       "requirements": [
         "R-TOOL-001",
@@ -1721,14 +1767,18 @@
         "R-TOOL-003",
         "R-TOOL-004",
         "R-TOOL-005",
-        "R-CACHE-003"
+        "R-CACHE-003",
+        "R-EXE-010",
+        "R-EXE-019"
       ],
       "deliverables": [
         "Toolchains and .NET adapter"
       ],
       "acceptance": [
         "Concurrent real restores share caches without errors and without duplicate downloads",
-        "Each .NET redirection claim proven by a real run (F-T01 .NET)"
+        "Each .NET redirection claim proven by a real run (F-T01 .NET)",
+        "No adapter asserts a class it cannot verify: dotnet build, test and restore are UNKNOWN with a suggestion",
+        "Concurrent dotnet builds of one project in one workspace are ordered by the adapter's key; different projects run together"
       ],
       "verification": {
         "author": [
@@ -1794,7 +1844,8 @@
       "scope": [
         "Adapters of 05 section 3, including FASTBuild (05 section 3.8: cache path, -cache/-cacheread, -cachetrim maintenance, -j from the grant; -dist observed only)",
         "Shared services container (sccache server; optional MSBuild servers)",
-        "Failure classifiers"
+        "Failure classifiers",
+        "Side-effect suggestions, verifiable assertions (cargo fetch, git fetch and clone, npm ci --ignore-scripts, pip download --only-binary=:all:, FBuild -cachetrim) and exclusive keys per tool (05 section 3)"
       ],
       "out_of_scope": [
         "LAN cache sharing (AF-LAN-03)",
@@ -1809,14 +1860,17 @@
         "R-TOOL-004",
         "R-TOOL-005",
         "R-TOOL-006",
-        "R-CACHE-004"
+        "R-CACHE-004",
+        "R-EXE-010",
+        "R-EXE-019"
       ],
       "deliverables": [
         "Remaining adapters"
       ],
       "acceptance": [
         "Each redirection and concurrency claim proven by a real run where the tool is installed; missing tools recorded with reason (F-T01)",
-        "FASTBuild cache precedence, -cachetrim and -j proven with a real FASTBuild build (F-T02)"
+        "FASTBuild cache precedence, -cachetrim and -j proven with a real FASTBuild build (F-T02)",
+        "Assertions and keys covered per adapter: npm ci without --ignore-scripts, pip install and plain pip download are UNKNOWN; git commands that write the index take ws:<w>:git"
       ],
       "verification": {
         "author": [
@@ -1979,16 +2033,18 @@
       ],
       "objective": "Make disk usage visible and safely reclaimable.",
       "scope": [
-        "Managed roots, ownership records, quotas, per-attempt tmp",
+        "Managed roots, ownership records, quotas labelled by kind (admission threshold, monitored limit, tool-enforced, report-only; 06 section 5), per-attempt tmp with max_attempt_tmp_bytes checked every 15 s (DISK_LIMIT or NOTIFY)",
         "AnalyzeStorage detectors; PlanCleanup, AddExternalPath, ExecuteCleanup with re-validation; per-volume quarantine roots and restore; UpdateRoot",
-        "CLI storage commands"
+        "CLI storage commands",
+        "Low-space guard per volume (NORMAL, LOW, CRITICAL; every 5 s): blocking reason disk_space at LOW; freeze or disk_limit_action at CRITICAL; the store reserve file (64 MiB) and the node state DEGRADED with store_out_of_space"
       ],
       "out_of_scope": [
         "Worktrees (AF-WS-01) beyond detection"
       ],
       "design_refs": [
         "docs/architecture/06-storage-workspaces.md",
-        "docs/contracts/proto/arcforges/node/v1/storage.proto"
+        "docs/contracts/proto/arcforges/node/v1/storage.proto",
+        "docs/data/node-store.md"
       ],
       "requirements": [
         "R-STOR-001",
@@ -1997,7 +2053,8 @@
         "R-STOR-005",
         "R-STOR-006",
         "R-STOR-007",
-        "R-STOR-008"
+        "R-STOR-008",
+        "R-STOR-009"
       ],
       "deliverables": [
         "Storage management"
@@ -2007,7 +2064,10 @@
         "Open files report IN_USE",
         "No deletion outside a validated plan; bounds enforced",
         "Items on a volume without a quarantine root need the per-item confirmation",
-        "Relocation copies, verifies, switches and quarantines"
+        "Relocation copies, verifies, switches and quarantines",
+        "A temporary-space flood stops the attempt with DISK_LIMIT, or notifies, within the stated interval (R-STOR-009)",
+        "On a nearly full volume new writers wait (disk_space), running writers are acted on at CRITICAL, and the node keeps recording its state (reserve file; DEGRADED with store_out_of_space, then READY)",
+        "Every quota and limit is labelled with its kind; none claims file-system enforcement (R-STOR-005)"
       ],
       "verification": {
         "author": [
@@ -2035,6 +2095,11 @@
         {
           "risk": "Cleanup deletes user data through links",
           "mitigation": "Reparse points never followed; re-validation before acting; quarantine first",
+          "owner": "AF-STOR-01"
+        },
+        {
+          "risk": "A writer outruns a monitoring interval and fills the volume",
+          "mitigation": "The low-space guard every 5 s and the store reserve; the overshoot bound (write rate x interval) is stated",
           "owner": "AF-STOR-01"
         }
       ],
@@ -2070,26 +2135,31 @@
       ],
       "objective": "Register workspaces and create or remove node-managed git worktrees safely.",
       "scope": [
-        "WorkspaceService; SM-WORKTREE; archive-then-remove with approval; locks while in use",
-        "Workspace derivation for tasks; routing override"
+        "WorkspaceService; SM-WORKTREE including ARCHIVING; archive-then-remove with approval: index and working-tree commits (binary-safe), archive refs, bundle, the ignored-file decision, verification by bundle round trip before removal (06 section 3); ListWorktreeArchives and RestoreWorktree; archive retention; locks while in use",
+        "Workspace derivation for tasks; routing override",
+        "Workspace concurrency mode (ADAPTER_KEYS, SERIAL, SHARED) through UpdateWorkspaceSettings; CLI workspace concurrency and worktree archives and restore"
       ],
       "out_of_scope": [
         "Remote workspaces (AF-LAN-02)"
       ],
       "design_refs": [
         "docs/architecture/06-storage-workspaces.md",
-        "docs/contracts/proto/arcforges/node/v1/workspaces.proto"
+        "docs/contracts/proto/arcforges/node/v1/workspaces.proto",
+        "docs/data/node-store.md",
+        "docs/experience/cli.md"
       ],
       "requirements": [
-        "R-STOR-003"
+        "R-STOR-003",
+        "R-EXE-019"
       ],
       "deliverables": [
         "Workspaces and worktrees"
       ],
       "acceptance": [
-        "Dirty worktrees are never removed silently",
+        "Dirty worktrees are never removed silently: staged, unstaged, untracked and binary changes are archived; a forced verification failure removes nothing; a restore reproduces the staged and unstaged states exactly (R-STOR-003)",
         "One worktree per branch",
-        "Real git on both platforms"
+        "Real git on both platforms",
+        "SERIAL mode runs one managed task of the workspace at a time"
       ],
       "verification": {
         "author": [
@@ -2117,6 +2187,11 @@
         {
           "risk": "Worktree behaviour differs across git versions",
           "mitigation": "Real git tests; a minimum git version check in doctor",
+          "owner": "AF-WS-01"
+        },
+        {
+          "risk": "Archive verification misses a mode or symbolic-link difference",
+          "mitigation": "Compare git blob IDs and modes for tracked and untracked files; tests with executable bits, symbolic links and binaries on both platforms",
           "owner": "AF-WS-01"
         }
       ],
@@ -2154,8 +2229,8 @@
       "objective": "Know which AI sessions run what, route heavy commands where safe, detect bypass and report coverage honestly.",
       "scope": [
         "`arcforges hook <client> <event>` in exec form for Claude Code and Codex events (no WorktreeCreate or WorktreeRemove hooks); SessionService; correlation through the nearest client-executable ancestor",
-        "ClassifyCommand and rewrite construction (`ask` by default; `--cancel-when-gone`; guidance to MCP when the expected duration exceeds the client timeout); observe and guide modes; bypass detection",
-        "SessionCoverage and session reports; services stopped with their owner session; CLI session commands"
+        "ClassifyCommand and rewrite construction (`ask` by default; `--client-timeout` and `--join-existing`; hand-off before the client timeout with exit 124 and `tasks wait`; an interrupt before the hand-off cancels); modes observe, guide, rewrite (heavy commands) and rewrite-all with passthrough patterns (08 section 4.1); bypass detection",
+        "SessionCoverage with the managed share, the coverage map of 08 section 4.4 and session reports; services stopped with their owner session; CLI session commands"
       ],
       "out_of_scope": [
         "Writing client configuration (AF-AI-02)"
@@ -2163,23 +2238,26 @@
       "design_refs": [
         "docs/architecture/08-ai-integration.md",
         "docs/decisions/AD-0007-ai-integration.md",
-        "docs/contracts/proto/arcforges/node/v1/sessions.proto"
+        "docs/contracts/proto/arcforges/node/v1/sessions.proto",
+        "docs/decisions/AD-0006-execution-semantics.md"
       ],
       "requirements": [
         "R-AI-005",
         "R-AI-006",
         "R-AI-007",
-        "R-EXE-005"
+        "R-EXE-005",
+        "R-AI-010"
       ],
       "deliverables": [
         "Session and routing engine"
       ],
       "acceptance": [
         "Hook fixtures captured from real clients drive routing tests",
-        "Rewritten commands are byte-identical in output and exit code, and a client timeout or interrupt cancels the task",
+        "Rewritten commands are byte-identical in output and exit code when they finish before the client timeout; a scripted client timeout hands off (exit 124; the task keeps running and keeps its queue position); a resubmission joins the existing task; an interrupt before the hand-off cancels it (R-AI-010)",
         "Agent roots identified on Windows and WSL2 (F-A02)",
         "Hook p95 <= 50 ms",
-        "Coverage never claims completeness"
+        "Coverage never claims completeness",
+        "rewrite-all routes every shell command except passthrough patterns; the managed share is reported, and connecting MCP alone is never counted as interception (R-AI-005)"
       ],
       "verification": {
         "author": [
@@ -2217,6 +2295,11 @@
           "risk": "Hook payloads change with client updates",
           "mitigation": "Pin tested client versions, re-capture fixtures, and label coverage gaps",
           "owner": "AF-AI-01"
+        },
+        {
+          "risk": "A client's tool timeout is unknown or changes between versions",
+          "mitigation": "The hook passes the timeout the client reports, with a conservative default; the margin is policy (routing.handoff_margin_ms)",
+          "owner": "AF-AI-01"
         }
       ],
       "size": "M",
@@ -2251,7 +2334,8 @@
       "scope": [
         "SDK AOT decision or in-house stdio JSON-RPC (F-N01)",
         "Tools M-01..M-19 with output schemas and annotations; bounded waits; progress; tasks extension (no tasks/result; stdin through the adapter's attach); error mapping",
-        "Optional local Streamable HTTP with bearer"
+        "Optional local Streamable HTTP with bearer",
+        "run tool inputs, outputs and output_conflict: placement any derives inputs (git: tracked and untracked files, not ignored) or refuses with VALIDATION/inputs_required; agents cannot choose overwrite; side-effect assertions follow policy"
       ],
       "out_of_scope": [
         "Client configuration (AF-AI-02)"
@@ -2271,7 +2355,8 @@
       "acceptance": [
         "ScriptedMcpClient suites for 2025-11-25 and 2026-07-28 pass",
         "No call exceeds 55 s",
-        "Adapter idle memory and overhead within 15 section 3"
+        "Adapter idle memory and overhead within 15 section 3",
+        "placement any from a non-git directory without inputs fails with VALIDATION/inputs_required; an agent's overwrite is refused"
       ],
       "verification": {
         "author": [
@@ -2342,7 +2427,8 @@
       "scope": [
         "IntegrationService (ListClients, PlanIntegration, PlanRemoval, ApplyIntegration, StartProbe, ListProbeResults, GetInstructionSnippet); recorded writes",
         "`arcforges probe`; probe evaluation; rewrite gating",
-        "Claude Code plugin and Codex plugin packages (not published)"
+        "Claude Code plugin and Codex plugin packages (not published)",
+        "Plans per routing mode, including rewrite-all with passthrough patterns; snippets per mode (08 section 6.3); copy stating that connecting MCP alone routes nothing"
       ],
       "out_of_scope": [
         "Publishing plugins (AR-13)"
@@ -2365,7 +2451,8 @@
       "acceptance": [
         "Plan/apply/remove against real configuration files preserves unrelated settings",
         "Real probes in Claude Code and Codex on the workstation recorded (F-A01)",
-        "Plugin without the node prints install guidance"
+        "Plugin without the node prints install guidance",
+        "No plan or page presents connecting MCP alone as intercepting commands"
       ],
       "verification": {
         "author": [
@@ -2443,7 +2530,8 @@
       "scope": [
         "Avalonia view adapter for the reused shell models and design tokens",
         "Pages D-00 first run, D-01 overview, D-02 tasks with Run dialog, D-03 task detail, D-04 queue and pools, D-05 resources; D-21 drawer with the node notifier",
-        "Tray where supported; single instance; OS notifications"
+        "Tray where supported; single instance; OS notifications",
+        "Page content of the repaired design: D-01 disk levels; D-02 Run dialog concurrency, retry-safety and placement fields; D-03 output-limit, disk-limit, staged-output and hand-off states; D-04 feasibility classes, blocking keys and the reservation; D-05 memory guarantees and guest allocations"
       ],
       "out_of_scope": [
         "Remaining pages (AF-DESK-02)"
@@ -2537,7 +2625,8 @@
       ],
       "objective": "Complete the local Desktop pages.",
       "scope": [
-        "D-06 sessions, D-07 session detail, D-08 findings, D-09 approvals, D-10 workspaces, D-11 storage, D-12 caches, D-13 toolchains, D-14 integrations, D-17 policy, D-19 diagnostics (without upload), D-20 settings, D-22 about"
+        "D-06 sessions, D-07 session detail, D-08 findings, D-09 approvals, D-10 workspaces, D-11 storage, D-12 caches, D-13 toolchains, D-14 integrations, D-17 policy, D-19 diagnostics (without upload), D-20 settings, D-22 about",
+        "D-06 and D-07 managed share and routing modes; D-10 concurrency mode, the archive dialog with the ignored-file decision, archives and restore; D-11 limit kinds and volume levels; D-14 routing modes with the coverage map and the copy that MCP alone routes nothing"
       ],
       "out_of_scope": [
         "D-15 LAN (AF-LAN-01), D-16 account (AF-CLD-02), D-18 updates (AF-DIST-02), bundle upload (AF-SUP-01)"
@@ -2623,14 +2712,16 @@
         "Per-user setup program `arcforges-setup-<v>-<rid>.exe` (ArcForges.Setup; no MSI): supervisor autostart, PATH, HKCU uninstall entry, install_source, uninstall of every version directory",
         "install.sh and .deb with user units",
         "Release artifact pipeline: zips, tarballs, ES256 manifest and signature with test keys, SBOM",
-        "Read-only version directories"
+        "Read-only version directories",
+        "The setup program refuses Windows versions before Windows 11 with the reason (AD-0002; V-N06)"
       ],
       "out_of_scope": [
         "Production signing (AR-04); publication to R2 or package managers (AR-13)"
       ],
       "design_refs": [
         "docs/architecture/13-distribution-updates.md",
-        "docs/decisions/AD-0012-distribution-and-updates.md"
+        "docs/decisions/AD-0012-distribution-and-updates.md",
+        "docs/decisions/AD-0002-platform-scope.md"
       ],
       "requirements": [
         "R-DIST-001",
@@ -2644,7 +2735,8 @@
       "acceptance": [
         "Real install, upgrade and uninstall on the workstation (isolated profile root: separate data root, Run key and PATH under test names) and in a clean WSL2 distribution",
         "Windowless supervisor at logon (F-N03 re-verified with a logoff/logon cycle)",
-        "Managed tasks cannot write the installation (T-05)"
+        "Managed tasks cannot write the installation (T-05)",
+        "The setup program refuses an unsupported Windows version (version check under test)"
       ],
       "verification": {
         "author": [
@@ -2828,7 +2920,8 @@
       "scope": [
         "Pages W-01..W-08 per experience/web.md",
         "Build-time snapshots of the plan catalogue and release manifest",
-        "Legal pages use owner-supplied texts (placeholders refuse to build in production mode)"
+        "Legal pages use owner-supplied texts (placeholders refuse to publish in production mode)",
+        "Deploys dark: while the Web deploy switch public_site is off, the guarded deploy keeps publishing the current pages (10 section 8); AF-PROD-01 publishes the new site"
       ],
       "out_of_scope": [
         "Account and fleet profiles"
@@ -2845,7 +2938,7 @@
       ],
       "acceptance": [
         "Site builds with no JavaScript; budgets pass; accessibility checks pass",
-        "Merge deploys through the guarded main-push deploy only after the user approves publishing the new public content"
+        "Merging changes nothing the public sees: the guarded deploy keeps the current pages while public_site is off; the new site is published only by AF-PROD-01 after the user approves its content"
       ],
       "verification": {
         "author": [
@@ -2867,24 +2960,21 @@
       ],
       "future_validation": [],
       "acceptance_register": [],
-      "human_prerequisites": [
-        "H-05",
-        "H-10"
-      ],
+      "human_prerequisites": [],
       "risks": [
         {
           "risk": "Legal texts are missing (H-10)",
-          "mitigation": "Production builds refuse placeholders; the task is `blocked` at merge while other tasks continue",
-          "owner": "user"
+          "mitigation": "Production publication refuses placeholders; the texts are needed only when AF-PROD-01 publishes the site",
+          "owner": "AF-PROD-01"
         },
         {
           "risk": "Publishing is outward-facing",
-          "mitigation": "Merge only after the user approves",
-          "owner": "user"
+          "mitigation": "The site deploys dark; publication happens in AF-PROD-01 after the user approves",
+          "owner": "AF-PROD-01"
         }
       ],
       "size": "M",
-      "notes": "Outward-facing change: the coordinator asks the user before merging (main push deploys to production). Nothing depends on this task except the release candidate.",
+      "notes": "Deploys dark: merging does not publish the new public site (Design 10 section 8). Publication is outward-facing and happens in AF-PROD-01 with the user's approval. Nothing depends on this task except the release candidate.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2921,7 +3011,9 @@
         "Physical/manifest/fleet.json and generated migration; productId table-rebuild migration (arcforges-node, arcforges-mobile)",
         "fleet_signing_key handling (command, entitlement, relay HMAC, Node Issuing CA); secret binding names only",
         "Local cloud stack (16 section 3.1): native C# host process, workerd under Miniflare, the Container shim forwarding to the host's loopback port; scripts and documentation",
-        "Production bindings in wrangler.json (D1, R2, Queue) and a repository provisioning script that creates the D1 database, the R2 bucket with its lifecycle rules (10 section 3.11) and the Queue; running it against production needs the user's approval (H-20)"
+        "A repository provisioning script that creates the D1 database, the R2 bucket with its lifecycle rules (10 section 3.11) and the Queue, and the binding definitions it writes, tested against the local stack; running it and adding the production bindings belong to AF-PROD-01 (user approval, H-20)",
+        "Dark deploy: the host starts without the flagship bindings, readiness reports those modules as not provisioned, and the production migration step reports not applicable (10 section 8)",
+        "Structural cost bounds in wrangler.json: max_instances, instance_type and sleepAfter (14 section 7.1)"
       ],
       "out_of_scope": [
         "Platform services (AF-PLAT-01)",
@@ -2932,11 +3024,14 @@
         "docs/data/cloud-store.md",
         "docs/data/cloud-store.sql",
         "docs/architecture/10-cloud.md",
-        "docs/architecture/16-testing-strategy.md"
+        "docs/architecture/16-testing-strategy.md",
+        "docs/architecture/14-commercial-operations.md"
       ],
       "requirements": [
         "R-OPS-004",
-        "R-CLOUD-002"
+        "R-CLOUD-002",
+        "R-OPS-007",
+        "R-CLOUD-006"
       ],
       "deliverables": [
         "Cloud foundation for the flagship"
@@ -2944,7 +3039,7 @@
       "acceptance": [
         "Local D1 verification passes for the new module and migrations",
         "The local stack runs without Docker or WSL, and the host reaches D1, R2 and the Queue through the signed internal routes",
-        "Main-push deploy succeeds through repository scripts"
+        "Main-push deploy succeeds through repository scripts with no flagship bindings: the host starts, migrations report not applicable, and readiness reports the modules as not provisioned (R-OPS-007)"
       ],
       "verification": {
         "author": [
@@ -2967,16 +3062,13 @@
       "future_validation": [],
       "acceptance_register": [],
       "human_prerequisites": [
-        "H-06",
-        "H-16",
-        "H-18",
-        "H-20"
+        "H-18"
       ],
       "risks": [
         {
           "risk": "Production resources do not exist at 92ba1dc9 (only the proof environment has bindings)",
-          "mitigation": "Provisioning script plus the user's approval (H-20) before the merge",
-          "owner": "user"
+          "mitigation": "Dark deploys need none; AF-PROD-01 provisions them with the user's approval (H-20)",
+          "owner": "AF-PROD-01"
         },
         {
           "risk": "The local stack differs from production Containers",
@@ -2984,9 +3076,9 @@
           "owner": "AF-CLD-01"
         },
         {
-          "risk": "Production deploy needs account settings and key material (H-06, H-16)",
-          "mitigation": "The task waits `blocked` at merge until they exist",
-          "owner": "user"
+          "risk": "A dark deploy accidentally depends on production bindings or key material",
+          "mitigation": "Deploy test with the flagship bindings and secrets absent; account settings and keys are needed only by AF-PROD-01 (H-06, H-16)",
+          "owner": "AF-CLD-01"
         },
         {
           "risk": "The productId table rebuild fails on production data",
@@ -2995,7 +3087,7 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3027,9 +3119,9 @@
       ],
       "objective": "Provide the platform services every cloud feature uses: configuration revisions with kill switches and limits, the audit writer and reader, and operating budgets with reservations.",
       "scope": [
-        "Configuration revisions (stage, validate, activate data path), kill switches (relay.live_streaming, relay.new_connections, push.enabled, fleet.commands, support uploads) and limits",
+        "Configuration revisions (stage, validate, activate data path), kill switches (relay.live_streaming, relay.new_connections, push.enabled, fleet.commands, support uploads, cloud.essential_only) and limits; the flagship.activation switches per Cloud surface, answered by the Worker with STATE/not_activated without waking the container (10 section 8)",
         "Audit event writer with the hash chain, and the reader that backs OperatorReadService.ListAuditEvents; anomaly flags as `anomaly.<kind>` audit events",
-        "Operating budget service: reservations per dimension, threshold evaluation (80% alert, 100% kill switches in order), dimensions 8..12 table-rebuild migration, unit prices configuration",
+        "Operating budget service over every billing dimension (dimensions 8..19 table-rebuild migration; 14 section 7.1): reservations per measured dimension, estimated dimensions recorded after the fact, threshold evaluation (80% alert, 100% the degradation ladder step, 120% essential-only mode; 14 section 7.3), the residual daily exposure (section 7.4), unit prices configuration",
         "Budget and limit checks as a library for metered paths; rate limits per account and IP",
         "Job infrastructure: lease and fence plans over platform_job_lease, reusing the shared-families `lease` guard (holder and fence); a job runner started by a Worker cron trigger and scheduled handler that call the host (wrangler.json and its hash-bound receipts updated through the repository's reviewed process); the compact command fence",
         "Scheduled retention sweeps: expired receipts and inbox rows, expired flows, and the Retention column of data/cloud-store.md"
@@ -3042,24 +3134,28 @@
         "docs/architecture/14-commercial-operations.md",
         "docs/architecture/10-cloud.md",
         "docs/data/cloud-store.md",
-        "docs/decisions/AD-0009-cloud-relay-and-cost-controls.md"
+        "docs/decisions/AD-0009-cloud-relay-and-cost-controls.md",
+        "docs/contracts/proto/arcforges/operator/v1/operator_read.proto"
       ],
       "requirements": [
         "R-CLOUD-006",
         "R-OPS-002",
         "R-OPS-006",
-        "R-SEC-002"
+        "R-SEC-002",
+        "R-OPS-007"
       ],
       "deliverables": [
         "Platform services"
       ],
       "acceptance": [
-        "Budget exhaustion trips the kill switches in order in closed loop",
+        "Each dimension's budget walks the degradation ladder in closed loop, up to essential-only mode, in which non-essential routes are answered without waking the container (R-CLOUD-006)",
         "Kill switches propagate within one token lifetime",
         "Audit hash chain verified by the reader",
         "Rate limits return RESOURCE with retry_after",
         "A job runs once per lease under contention, and a crashed runner's lease is taken over after expiry",
-        "Retention sweeps delete exactly the rows past their schedule"
+        "Retention sweeps delete exactly the rows past their schedule",
+        "A disabled activation surface answers STATE/not_activated without waking the container (R-OPS-007)",
+        "The residual daily exposure is computed from the structural bounds and unit prices"
       ],
       "verification": {
         "author": [
@@ -3100,7 +3196,7 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3194,7 +3290,7 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3280,7 +3376,7 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3385,7 +3481,7 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3436,7 +3532,7 @@
       "acceptance": [
         "bUnit tests per page and state",
         "Real /connect and /activate flows against the local Cloud stack with a scripted browser session",
-        "Merge deploys through guarded main-push deploy"
+        "Merge deploys dark through the guarded main-push deploy (web_account off until AF-PROD-01)"
       ],
       "verification": {
         "author": [
@@ -3460,14 +3556,12 @@
       "acceptance_register": [
         "AR-10"
       ],
-      "human_prerequisites": [
-        "H-05"
-      ],
+      "human_prerequisites": [],
       "risks": [
         {
-          "risk": "Production deploy needs the account domain (H-05)",
-          "mitigation": "The task waits `blocked` at merge if the domain is missing",
-          "owner": "user"
+          "risk": "Publishing the account profile needs the domain (H-05)",
+          "mitigation": "The profile deploys dark (web_account off); AF-PROD-01 publishes it after the user approves",
+          "owner": "AF-PROD-01"
         }
       ],
       "size": "M",
@@ -3553,9 +3647,7 @@
       ],
       "future_validation": [],
       "acceptance_register": [],
-      "human_prerequisites": [
-        "H-16"
-      ],
+      "human_prerequisites": [],
       "risks": [
         {
           "risk": "Clock skew breaks offline token checks",
@@ -3564,12 +3656,12 @@
         },
         {
           "risk": "The production Node Issuing CA root is not yet in custody (H-16)",
-          "mitigation": "Test CA in development; the task waits `blocked` at merge without production keys",
+          "mitigation": "Test CA in development; production keys are needed only by AF-PROD-01",
           "owner": "user"
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3671,10 +3763,7 @@
         "F-C03"
       ],
       "acceptance_register": [],
-      "human_prerequisites": [
-        "H-16",
-        "H-20"
-      ],
+      "human_prerequisites": [],
       "risks": [
         {
           "risk": "R2 presigned PUT may not bind the length and checksum (A-C03, F-C03)",
@@ -3693,7 +3782,7 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3785,7 +3874,7 @@
       "risks": [
         {
           "risk": "DNS-SD behaves differently across Windows versions and networks (F-T03)",
-          "mitigation": "Manual addresses and account hints; Windows 10 22H2 stays in the register",
+          "mitigation": "Manual addresses and account hints; Windows 11 is the floor (AD-0002)",
           "owner": "AF-LAN-01"
         },
         {
@@ -3826,7 +3915,7 @@
       ],
       "objective": "Place separate tasks on paired peers with content-addressed transfer, leases and honest failure handling.",
       "scope": [
-        "Scoring (no double-counted cache warmth); PlacementService; TransferService; remote workspaces by copy or block clone; outputs return; SM-REMOTE-ATTEMPT; executor-side REMOTE tasks",
+        "Scoring (no double-counted cache warmth); PlacementService; TransferService; remote workspace slots per attempt (lan.max_workspace_slots, default 2) by copy or block clone; output bases recorded at submission; outputs applied under the output paths' exclusive keys with conflict handling (STAGE by default, SKIP_EXISTING, FAIL, OVERWRITE only from HUMAN or SCRIPT callers; never deleting local files) and OUTPUT_CONFLICT (09 section 6); SM-REMOTE-ATTEMPT; executor-side REMOTE tasks",
         "Entitlement checks lan.placement and lan.accept"
       ],
       "out_of_scope": [
@@ -3834,7 +3923,8 @@
       ],
       "design_refs": [
         "docs/architecture/09-lan.md",
-        "docs/contracts/proto/arcforges/peer/v1/peer.proto"
+        "docs/contracts/proto/arcforges/peer/v1/peer.proto",
+        "docs/data/node-store.md"
       ],
       "requirements": [
         "R-LAN-005",
@@ -3842,7 +3932,8 @@
         "R-LAN-007",
         "R-LAN-008",
         "R-LAN-010",
-        "R-EXE-015"
+        "R-EXE-015",
+        "R-LAN-011"
       ],
       "deliverables": [
         "Placement"
@@ -3850,7 +3941,9 @@
       "acceptance": [
         "Closed loop: placement, disconnect, retain, release, preemption, cancellation",
         "Transfer dedup and digest verification",
-        "Remote workspaces never hardlink CAS blobs"
+        "Remote workspaces never hardlink CAS blobs",
+        "Two concurrent remote attempts from one workspace use separate slots (R-LAN-011)",
+        "A local edit during a remote run is staged and reported as OUTPUT_CONFLICT, never overwritten by default; returned outputs never delete local files"
       ],
       "verification": {
         "author": [
@@ -3879,6 +3972,11 @@
         {
           "risk": "Placement misestimates duration",
           "mitigation": "Prefer the candidate's own facts; local wins ties",
+          "owner": "AF-LAN-02"
+        },
+        {
+          "risk": "A local edit races with output application",
+          "mitigation": "Apply under the output paths' exclusive keys and compare digests at apply time",
           "owner": "AF-LAN-02"
         }
       ],
@@ -3920,7 +4018,9 @@
         "ccache remote storage: the node serves the helper protocol on a per-user endpoint (`crsh:`), with the loopback HTTP fallback for older ccache (05 section 6)",
         "Entitlement lan.cache"
       ],
-      "out_of_scope": [],
+      "out_of_scope": [
+        "Dependency caches (NuGet, npm, Cargo, pip) over the LAN and FASTBuild worker governance: launch decisions (R-CACHE-007, product definition non-goals)"
+      ],
       "design_refs": [
         "docs/architecture/05-toolchains-caches.md",
         "docs/architecture/09-lan.md"
@@ -4016,9 +4116,9 @@
       ],
       "objective": "Connect nodes and viewers through hibernating WebSockets with demand-driven telemetry and bounded costs.",
       "scope": [
-        "Relay routes and FleetHub per AD-0009 and 10 sections 3.4-3.5 and 4-5; viewer grants as a WebSocket subprotocol validated before the DO",
+        "Relay routes and FleetHub per AD-0009 and 10 sections 3.4-3.5 and 4-5; viewer grants as a WebSocket subprotocol validated before the DO; hibernation API only; DO request counters and the estimated active duration metered (14 section 7.1); ladder step 2 closes existing sockets with close code 4429 and nodes back off",
         "FleetHub Durable Object binding and migration in wrangler.json",
-        "Node relay client (SM-RELAY), summaries, deltas, snapshots, EntitlementChanged frames",
+        "Node relay client (SM-RELAY), summaries, deltas, snapshots, EntitlementChanged frames; StatusSummary with disk and agent counts, TaskSummary with timing, queue position, blocking reason, termination reason, session and subagent, SessionSummary with subagents, last events, routing mode, managed share and unknowns (R-CLOUD-007)",
         "IssueRelayToken, OpenFleetWatch, WatchFleet, ListNodes, GetNode, RenameNode, RevokeNode",
         "Limits, alarm guard, kill switches"
       ],
@@ -4037,7 +4137,8 @@
         "R-CLOUD-006",
         "R-OPS-002",
         "R-OPS-003",
-        "R-COM-003"
+        "R-COM-003",
+        "R-CLOUD-007"
       ],
       "deliverables": [
         "Relay"
@@ -4046,7 +4147,9 @@
         "Closed loop through local workerd: snapshot, deltas, resume, reset, token refresh, close codes",
         "No command lines or output leave the node by default",
         "Kill switch degrades to summaries",
-        "An expired entitlement degrades only relay features"
+        "An expired entitlement degrades only relay features",
+        "Summaries carry every field the node knows that W-40, W-41 and A-03 to A-05 show; information no client reports is labelled unknown (R-CLOUD-007)",
+        "Ladder step 2 closes existing relay sockets with 4429, nodes back off, and DO duration is metered as an estimate"
       ],
       "verification": {
         "author": [
@@ -4068,9 +4171,7 @@
       ],
       "future_validation": [],
       "acceptance_register": [],
-      "human_prerequisites": [
-        "H-05"
-      ],
+      "human_prerequisites": [],
       "risks": [
         {
           "risk": "Durable Object costs from alarm loops or viewer floods",
@@ -4079,7 +4180,7 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4160,9 +4261,7 @@
       ],
       "future_validation": [],
       "acceptance_register": [],
-      "human_prerequisites": [
-        "H-16"
-      ],
+      "human_prerequisites": [],
       "risks": [
         {
           "risk": "Forged or replayed commands",
@@ -4171,12 +4270,12 @@
         },
         {
           "risk": "Production command keys missing (H-16)",
-          "mitigation": "Test keys in development; the task waits `blocked` at merge",
+          "mitigation": "Test keys in development; production keys are needed only by AF-PROD-01",
           "owner": "user"
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4273,7 +4372,7 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4304,24 +4403,28 @@
       "objective": "Show live fleet status and node detail with confirmed remote actions in the browser.",
       "scope": [
         "W-40, W-41; viewer WebSocket with ViewerFrame decoding in C#; WatchFleet fallback",
-        "Command confirmations with step-up"
+        "Command confirmations with step-up",
+        "W-40 disk and agent counts; W-41 task timing, queue position and reason, result, sessions and subagents, with unknowns labelled (R-CLOUD-007); deploys dark (web_fleet off until AF-PROD-01)"
       ],
       "out_of_scope": [],
       "design_refs": [
         "docs/experience/web.md",
-        "docs/architecture/12-client-applications.md"
+        "docs/architecture/12-client-applications.md",
+        "docs/contracts/proto/arcforges/fleet/v1/fleet.proto"
       ],
       "requirements": [
         "R-UX-004",
         "R-UX-006",
-        "R-API-005"
+        "R-API-005",
+        "R-CLOUD-007"
       ],
       "deliverables": [
         "Fleet profile"
       ],
       "acceptance": [
         "bUnit tests per page and state",
-        "Closed loop against local workerd relay with a real node"
+        "Closed loop against local workerd relay with a real node",
+        "Every value on W-40 and W-41 comes from the remote contracts; client information that is unavailable is labelled, never guessed"
       ],
       "verification": {
         "author": [
@@ -4441,7 +4544,7 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4536,7 +4639,7 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4571,7 +4674,8 @@
         "ViewerSocket, offline and background behaviour",
         "Debug-only loopback callback for the local stack",
         "QR library decision (F-C02)",
-        "Mobile README and plan updated for the Play channel (C-05)"
+        "Mobile README and plan updated for the Play channel (C-05)",
+        "A-03 disk and agent counts; A-04 Agents section (R-CLOUD-007)"
       ],
       "out_of_scope": [
         "Actions (AF-AND-02)",
@@ -4584,14 +4688,16 @@
       "requirements": [
         "R-UX-005",
         "R-UX-006",
-        "R-AUTH-002"
+        "R-AUTH-002",
+        "R-CLOUD-007"
       ],
       "deliverables": [
         "Android foundation"
       ],
       "acceptance": [
         "Emulator tests for sign-in, pairing and live views",
-        "Accessibility semantics assertions"
+        "Accessibility semantics assertions",
+        "A-03 and A-04 show disk and agent activity from the remote contracts; unknowns labelled"
       ],
       "verification": {
         "author": [
@@ -4664,20 +4770,23 @@
       ],
       "objective": "Act on nodes from Android with step-up, approve where allowed, and handle push notifications.",
       "scope": [
-        "A-04 actions, A-05, A-06, A-07; FCM registration and deep links; step-up upgrading mobile.limited"
+        "A-04 actions, A-05, A-06, A-07; FCM registration and deep links; step-up upgrading mobile.limited",
+        "A-05 timing, queue state, result, session and subagent attribution, with unknowns labelled (R-CLOUD-007)"
       ],
       "out_of_scope": [],
       "design_refs": [
         "docs/experience/android.md"
       ],
       "requirements": [
-        "R-UX-005"
+        "R-UX-005",
+        "R-CLOUD-007"
       ],
       "deliverables": [
         "Android actions"
       ],
       "acceptance": [
-        "Emulator closed loop against the local Cloud stack and FakeFcm"
+        "Emulator closed loop against the local Cloud stack and FakeFcm",
+        "A-05 shows timing and attribution from TaskSummary; an unreported subagent reads \"not reported\""
       ],
       "verification": {
         "author": [
@@ -4849,9 +4958,10 @@
       "scope": [
         "Operator sessions with step-up",
         "OperatorService implementation (cases, access, configuration, kill switches, break-glass, two-person actions, entitlements and compensation, refunds, trust-and-safety enforcement and appeals)",
-        "OperatorReadService (audit events, operating budgets, monthly report)",
+        "OperatorReadService (audit events, operating budgets with the residual exposure and the essential-only state, monthly report)",
         "W-60..W-67",
-        "Alerts and runbooks of 14 section 8"
+        "Alerts and runbooks of 14 section 8",
+        "Daily reconciliation against Cloudflare's GraphQL Analytics API when the optional read token exists (H-21): divergence alerts and recalibration of estimated dimensions (14 section 7.5); otherwise it reports reconciliation off"
       ],
       "out_of_scope": [
         "Production alert wiring (AR-09)"
@@ -4872,7 +4982,8 @@
       "acceptance": [
         "Operator pages work in closed loop against the local stack",
         "Two-person approval where configured; self-approval recorded otherwise",
-        "Audit reads are themselves audited"
+        "Audit reads are themselves audited",
+        "W-66 shows each dimension with its ladder step, essential-only mode and the residual daily worst case; reconciliation reports off without H-21"
       ],
       "verification": {
         "author": [
@@ -4898,7 +5009,8 @@
       ],
       "human_prerequisites": [
         "H-08",
-        "H-09"
+        "H-09",
+        "H-21"
       ],
       "risks": [
         {
@@ -4908,7 +5020,7 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys to production (main push): if a production prerequisite is missing, the task is set `blocked` at merge time with the H-item, and the plan continues with tasks that do not depend on it.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4955,7 +5067,7 @@
       ],
       "objective": "Prove every journey in closed loop, measure performance, complete the threat-test matrix and hand the acceptance register to the user.",
       "scope": [
-        "Journey suites J-01..J-10",
+        "Journey suites J-01..J-10 with real core implementations and only the approved external fakes of Design 16 section 5, labelled closed-loop",
         "Full benchmark run against 15",
         "Threat model test matrix complete (R-SEC-004)",
         "Acceptance register updated with exact remaining human steps"
@@ -4983,7 +5095,8 @@
       "acceptance": [
         "All journey suites pass on Windows and WSL2",
         "All targets met or justified",
-        "Register lists every deferred validation with prerequisites and owner"
+        "Register lists every deferred validation with prerequisites and owner",
+        "No fake replaces the behaviour under test; results are labelled closed-loop, and every remaining real-world validation stays in the register"
       ],
       "verification": {
         "author": [
@@ -5002,7 +5115,16 @@
         ]
       },
       "fakes_allowed": [
-        "none"
+        "FakePaddle",
+        "FakePlayDeveloperApi",
+        "FakePubSubPush",
+        "FakeFcm",
+        "FakeMailSender",
+        "FakeBillingClient",
+        "ScriptedBrowser (system browser)",
+        "ScriptedMcpClient (AI client internals)",
+        "HookPayloadFixtures (AI client internals)",
+        "PeerProcess (other machines are node processes on the same machine)"
       ],
       "future_validation": [],
       "acceptance_register": [
@@ -5041,6 +5163,130 @@
         "ledger": null
       },
       "order": 51
+    },
+    {
+      "id": "AF-PROD-01",
+      "title": "Production activation of the flagship cloud surfaces and the public site",
+      "milestone": "M15",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "wrangler.json",
+            "eng/**",
+            "docs/**"
+          ]
+        },
+        {
+          "repo": "Web",
+          "paths": [
+            "eng/**",
+            "docs/**"
+          ]
+        },
+        {
+          "repo": "Plan",
+          "paths": [
+            "acceptance-register.md",
+            "ledger/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-ACC-01"
+      ],
+      "objective": "Activate the delivered flagship surfaces in production one at a time, with the user's approval and the production prerequisites, and publish the public site.",
+      "scope": [
+        "Confirm the production prerequisites with the user: H-05 domains, H-06 Cloudflare account settings, H-09 cost ceiling, H-16 key material stored by the user, H-20 provisioning approval, and H-10 legal texts for the public site",
+        "Run the repository provisioning script against production with the user's approval (D1, the R2 bucket with lifecycle rules, the Queue); add the production bindings to wrangler.json through a reviewed main-push deploy; run the migrations (10 section 8)",
+        "Set the production operating budgets from the cost ceiling so that 31 x (daily budgets + residual) stays within it, and check the ladder configuration (14 section 7)",
+        "Enable the flagship.activation surfaces one at a time (fleet_api, relay, push, support; commerce with commerce.sales_open as decided under H-07), each followed by a production smoke check and a verified switch-off",
+        "Turn on the Web switches public_site, web_account and web_fleet after the user approves the content",
+        "Record the activation evidence and update the acceptance register entries whose prerequisites are now met"
+      ],
+      "out_of_scope": [
+        "Real payments and store purchases (AR-05, AR-06)",
+        "Package-manager and plugin publication (AR-13)",
+        "Android store release (AR-08) and production code signing (AR-04)"
+      ],
+      "design_refs": [
+        "docs/architecture/10-cloud.md",
+        "docs/decisions/AD-0014-delivery-method.md",
+        "docs/architecture/14-commercial-operations.md",
+        "docs/decisions/AD-0009-cloud-relay-and-cost-controls.md",
+        "docs/experience/web.md"
+      ],
+      "requirements": [
+        "R-OPS-007"
+      ],
+      "deliverables": [
+        "Activated production surfaces with smoke evidence",
+        "Published public site and web profiles",
+        "Updated acceptance register"
+      ],
+      "acceptance": [
+        "Each surface is enabled only after its prerequisites and the user's approval are recorded",
+        "A production smoke check passes after each surface is enabled, and switching it off was verified to withdraw it",
+        "The production daily budgets satisfy 31 x (budgets + residual daily worst case) <= the monthly ceiling (H-09)",
+        "The public site and the web profiles are published only after the user approves their content",
+        "The coordinator never reads or prints key material"
+      ],
+      "verification": {
+        "author": [
+          "Production smoke checks per surface through repository scripts",
+          "Exact commands, deploy identifiers and results recorded in the PR or the ledger"
+        ],
+        "reviewer_distinct": [
+          "Review of each activation step against Design 10 section 8 and the recorded approvals",
+          "Re-run only a smoke check the reviewer doubts"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "none"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-09"
+      ],
+      "human_prerequisites": [
+        "H-05",
+        "H-06",
+        "H-09",
+        "H-10",
+        "H-16",
+        "H-20"
+      ],
+      "risks": [
+        {
+          "risk": "A surface misbehaves in production after activation",
+          "mitigation": "One surface at a time with a smoke check; its switch withdraws it at once",
+          "owner": "AF-PROD-01"
+        },
+        {
+          "risk": "Production prerequisites are missing (H-05, H-06, H-09, H-10, H-16, H-20)",
+          "mitigation": "The task is set blocked with the missing items; no other task depends on it",
+          "owner": "user"
+        },
+        {
+          "risk": "Activation is outward-facing",
+          "mitigation": "The user's explicit approval before each surface and before publishing the site",
+          "owner": "user"
+        }
+      ],
+      "size": "M",
+      "notes": "Production changes only through main-push deploys and configuration activation; Cloudflare only through repository scripts; workers.dev and previews stay off. The coordinator asks the user before each activation step.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 52
     }
   ]
 }
