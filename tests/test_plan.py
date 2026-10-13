@@ -132,6 +132,20 @@ class StateChanges(unittest.TestCase):
         self.assertIn("AD-0099", self.graph["tasks"][0]["notes"])
 
 
+class EvidenceRecording(unittest.TestCase):
+    def test_multi_repository_tasks_keep_every_pr_and_merge(self):
+        g = copy.deepcopy(plan.load())
+        t = g["tasks"][0]
+        plan.set_state(g, t["id"], "active")
+        plan.set_state(g, t["id"], "delivered", pr=["https://example.invalid/a/1", "https://example.invalid/b/2"],
+                       merge=["A@1111111", "B@2222222"], publication=["cohort 1"])
+        self.assertEqual(t["evidence"]["prs"], ["https://example.invalid/a/1", "https://example.invalid/b/2"])
+        self.assertEqual(t["evidence"]["merges"], ["A@1111111", "B@2222222"])
+        self.assertEqual(t["evidence"]["publications"], ["cohort 1"])
+        plan.set_state(g, t["id"], "complete", merge="A@1111111")
+        self.assertEqual(t["evidence"]["merges"], ["A@1111111", "B@2222222"])
+
+
 class Ledger(unittest.TestCase):
     def test_append_only_records(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -147,6 +161,64 @@ class Ledger(unittest.TestCase):
         for line in plan.read(plan.LEDGER).splitlines():
             rec = json.loads(line)
             self.assertIn(rec["kind"], plan.LEDGER_KINDS)
+
+
+class RoadmapChecks(unittest.TestCase):
+    """roadmap.md is the single backlog: complete rows, valid statuses, existing references (roadmap.md section 4)."""
+
+    def setUp(self):
+        self.graph = plan.load()
+
+    def _check(self, text, graph=None):
+        # Task IDs only: the repository's tasks cite real roadmap items that a minimal test roadmap lacks.
+        ids_only = {"tasks": [{"id": t["id"]} for t in self.graph["tasks"]]}
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "roadmap.md"
+            path.write_text(text, encoding="utf-8")
+            return plan.validate_roadmap(graph or ids_only, None, path)
+
+    def test_repository_roadmap_is_valid(self):
+        self.assertEqual(plan.validate_roadmap(self.graph), [])
+        ids = [rid for rid, _ in plan.roadmap_rows()]
+        self.assertTrue(any(i.startswith("RM-") for i in ids))
+        self.assertTrue(any(i.startswith("EX-") for i in ids))
+
+    def test_rows_need_every_column_and_a_valid_status(self):
+        good_rm = "| RM-01 | a | b | c | d | e | f | AF-REPO-01 | accepted |"
+        self.assertEqual(self._check(good_rm), [])
+        errs = self._check("| RM-01 | a | b | c | d | e | f | AF-REPO-01 |")
+        self.assertTrue(any("expected 9" in e for e in errs))
+        errs = self._check("| RM-01 | a |  | c | d | e | f | g | accepted |")
+        self.assertTrue(any("empty column" in e for e in errs))
+        errs = self._check("| RM-01 | a | b | c | d | e | f | g | maybe |")
+        self.assertTrue(any("invalid status" in e for e in errs))
+        errs = self._check("| EX-01 | a | b | c | d | e | f | g | someday |")
+        self.assertTrue(any("invalid status" in e for e in errs))
+        self.assertEqual(self._check("| EX-01 | a | b | c | d | e | f | g | exploratory |"), [])
+        errs = self._check("| EX-01 | a | b | c | d | exploratory |")
+        self.assertTrue(any("expected 9" in e for e in errs))
+
+    def test_malformed_ids_are_reported_not_skipped(self):
+        for bad in ("RM-013", "RM-1", "rm-01", "EX-1"):
+            errs = self._check(f"| {bad} | a | b | c | d | e | f | g | accepted |")
+            self.assertTrue(any("malformed ID" in e for e in errs), bad)
+        self.assertEqual(self._check("| ex-employee note | a |"), [])  # not an item row
+
+    def test_references_and_duplicates(self):
+        errs = self._check("| RM-01 | a | b | c | d | e | f | AF-NOPE-99 | accepted |")
+        self.assertTrue(any("unknown task AF-NOPE-99" in e for e in errs))
+        errs = self._check("| RM-01 | a | b | c | d | e | f | g | promoted: AF-NOPE-98 |")
+        self.assertTrue(any("unknown task AF-NOPE-98" in e for e in errs))
+        errs = self._check("| EX-01 | a | b | c | d | e | f | g | accepted as RM-07 |")
+        self.assertTrue(any("unknown item RM-07" in e for e in errs))
+        row = "| RM-01 | a | b | c | d | e | f | g | accepted |"
+        errs = self._check(row + "\n" + row)
+        self.assertTrue(any("duplicate RM-01" in e for e in errs))
+
+    def test_tasks_may_cite_only_existing_items(self):
+        g = copy.deepcopy(self.graph)
+        g["tasks"][0]["out_of_scope"].append("Something later (roadmap RM-99)")
+        self.assertTrue(any("cites RM-99" in e for e in plan.validate_roadmap(g)))
 
 
 if __name__ == "__main__":

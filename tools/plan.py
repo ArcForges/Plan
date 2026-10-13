@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 GRAPH = ROOT / "delivery-graph.json"
 SEQUENCE = ROOT / "sequence.md"
 REGISTER = ROOT / "acceptance-register.md"
+ROADMAP = ROOT / "roadmap.md"
 LEDGER = ROOT / "ledger" / "ledger.jsonl"
 
 STATES = ["planned", "active", "blocked", "delivered", "complete", "superseded"]
@@ -36,6 +37,14 @@ REQUIRED = ["id", "title", "milestone", "order", "state", "repositories", "depen
             "design_refs", "requirements", "deliverables", "acceptance", "verification", "fakes_allowed", "future_validation",
             "acceptance_register", "human_prerequisites", "risks", "size", "notes", "blocked_by", "evidence"]
 LEDGER_KINDS = {"started", "delivered", "complete", "superseded", "note", "plan"}
+# roadmap.md tables: RM rows have 9 columns (ID, Item, Purpose, Why deferred, Prerequisites, Revisit when,
+# Foundations in release 1, References, Status); EX rows have 9 (ID, Idea, Purpose, Why not now,
+# Prerequisites, Question to answer, Revisit when, References, Status).
+RM_COLUMNS = 9
+EX_COLUMNS = 9
+RM_STATUS = re.compile(r"accepted|promoted: AF-[A-Z]+-\d{2}(, AF-[A-Z]+-\d{2})*|dropped: .+")
+EX_STATUS = re.compile(r"exploratory|accepted as RM-\d{2}|dropped: .+")
+ROADMAP_REF = re.compile(r"\b(?:RM|EX)-\d{2}\b")
 
 
 def read(path: Path) -> str:
@@ -57,7 +66,74 @@ def register_ids(path: Path = REGISTER) -> tuple[set[str], set[str]]:
     return ar, hp
 
 
-def validate(graph: dict, design: Path | None = None, register: Path = REGISTER) -> list[str]:
+def roadmap_rows(path: Path = ROADMAP) -> list[tuple[str, list[str]]]:
+    """Rows of the roadmap tables in file order: (ID, cells) for RM-xx and EX-xx rows."""
+    rows: list[tuple[str, list[str]]] = []
+    if not path.exists():
+        return rows
+    for line in read(path).split("\n"):
+        m = re.match(r"^\|\s*([^|]*?)\s*\|", line)
+        if m and re.match(r"(?i)(rm|ex)-\d", m.group(1)):
+            rows.append((m.group(1), [c.strip() for c in line.strip().strip("|").split("|")]))
+    return rows
+
+
+def validate_roadmap(graph: dict, design: Path | None = None, path: Path = ROADMAP) -> list[str]:
+    """roadmap.md is the only backlog (its section 4): complete rows, valid statuses, existing references."""
+    if not path.exists():
+        return ["roadmap.md is missing"]
+    errors: list[str] = []
+    rows = roadmap_rows(path)
+    ids = [rid for rid, _ in rows]
+    for rid in sorted({i for i in ids if ids.count(i) > 1}):
+        errors.append(f"roadmap: duplicate {rid}")
+    known = set(ids)
+    tasks = {t["id"] for t in graph.get("tasks", [])}
+    reqs: set[str] | None = None
+    adrs: set[str] | None = None
+    if design:
+        reqs = set(re.findall(r"^\|\s*(R-[A-Z]+-\d{3})\s*\|", read(design / "docs" / "product" / "requirements.md"), re.M))
+        adrs = {p.name[:7] for p in (design / "docs" / "decisions").glob("AD-*.md")}
+    for rid, cells in rows:
+        if not re.fullmatch(r"(RM|EX)-\d{2}", rid):
+            errors.append(f"roadmap: malformed ID {rid!r} (expected RM-NN or EX-NN)")
+            continue
+        want = RM_COLUMNS if rid.startswith("RM") else EX_COLUMNS
+        if len(cells) != want:
+            errors.append(f"roadmap: {rid} has {len(cells)} columns, expected {want}")
+            continue
+        if any(not c for c in cells):
+            errors.append(f"roadmap: {rid} has an empty column")
+        status = cells[-1]
+        if not (RM_STATUS if rid.startswith("RM") else EX_STATUS).fullmatch(status):
+            errors.append(f"roadmap: {rid} has an invalid status {status!r}")
+        text = " ".join(cells)
+        for tid in sorted(set(re.findall(r"\bAF-[A-Z]+-\d{2}\b", text)) - tasks):
+            errors.append(f"roadmap: {rid} names unknown task {tid}")
+        for ref in sorted(set(re.findall(r"\bRM-\d{2}\b", status)) - known):
+            errors.append(f"roadmap: {rid} names unknown item {ref}")
+        if reqs is not None:
+            for r in sorted(set(re.findall(r"\bR-[A-Z]+-\d{3}\b", text)) - reqs):
+                errors.append(f"roadmap: {rid} names unknown requirement {r}")
+        if adrs is not None:
+            for a in sorted(set(re.findall(r"\bAD-\d{4}\b", text)) - adrs):
+                errors.append(f"roadmap: {rid} names unknown decision {a}")
+    for t in graph.get("tasks", []):
+        for ref in sorted(set(ROADMAP_REF.findall(json.dumps(t, ensure_ascii=False))) - known):
+            errors.append(f"{t['id']}: cites {ref}, which is not in roadmap.md")
+    if design:
+        cited: dict[str, str] = {}
+        for p in sorted((design / "docs").rglob("*")):
+            if p.is_file() and p.suffix in (".md", ".proto", ".json", ".sql"):
+                for ref in ROADMAP_REF.findall(read(p)):
+                    cited.setdefault(ref, p.relative_to(design).as_posix())
+        for ref, where in sorted(cited.items()):
+            if ref not in known:
+                errors.append(f"design {where} cites {ref}, which is not in roadmap.md")
+    return errors
+
+
+def validate(graph: dict, design: Path | None = None, register: Path = REGISTER, roadmap: Path = ROADMAP) -> list[str]:
     errors: list[str] = []
     milestones = {m["id"] for m in graph.get("milestones", [])}
     tasks = graph.get("tasks", [])
@@ -161,6 +237,7 @@ def validate(graph: dict, design: Path | None = None, register: Path = REGISTER)
                     errors.append(f"design register {f} names unknown owner {o}")
                 elif f not in by_id[o]["future_validation"]:
                     errors.append(f"design register {f} names owner {o}, which does not list it")
+    errors += validate_roadmap(graph, design, roadmap)
     return errors
 
 
@@ -168,7 +245,7 @@ def render_sequence(graph: dict) -> str:
     ms = {m["id"]: m for m in graph["milestones"]}
     out = ["# Serial delivery sequence", "",
            "Generated by `python tools/plan.py sequence --write` from [delivery-graph.json](delivery-graph.json). Do not edit by hand.",
-           "Exactly one task is active at a time ([execution-policy.md](execution-policy.md)). Start the first `planned` task whose dependencies are delivered or complete (`python tools/plan.py next`).",
+           "Exactly one task is active at a time ([execution-policy.md](execution-policy.md)). Work is authorized per range of rows of this table ([execution-prompt.md](execution-prompt.md)); within a range, start the first `planned` task whose dependencies are delivered or complete.",
            "`Depends on` lists only real dependencies; the row order is the serial sequence. A `blocked` task waits on the named register entries, and `next` continues with tasks that do not depend on it.", ""]
     counts = {s: sum(1 for t in graph["tasks"] if t["state"] == s) for s in STATES}
     out.append("State: " + ", ".join(f"{s} {n}" for s, n in counts.items()) + ".")
@@ -214,12 +291,11 @@ def set_state(graph: dict, tid: str, state: str, pr=None, merge=None, publicatio
         raise SystemExit("--blocked-by applies only to the blocked state")
     if state in ("delivered", "complete") and not (merge or t["evidence"]["merges"]):
         raise SystemExit(f"{state} needs --merge evidence")
-    if pr:
-        t["evidence"]["prs"].append(pr)
-    if merge:
-        t["evidence"]["merges"].append(merge)
-    if publication:
-        t["evidence"]["publications"].append(publication)
+    # Each option may be given once per repository (a task can span several repositories).
+    for key, values in (("prs", pr), ("merges", merge), ("publications", publication)):
+        for v in ([values] if isinstance(values, str) else (values or [])):
+            if v not in t["evidence"][key]:
+                t["evidence"][key].append(v)
     if reason:
         t["notes"] = (t["notes"] + " " if t["notes"] else "") + f"[{state}] {reason}"
     t["blocked_by"] = list(blocked_by) if state == "blocked" else []
@@ -249,9 +325,9 @@ def main(argv: list[str]) -> int:
     ss = sub.add_parser("set-state")
     ss.add_argument("task")
     ss.add_argument("state", choices=STATES)
-    ss.add_argument("--pr")
-    ss.add_argument("--merge")
-    ss.add_argument("--publication")
+    ss.add_argument("--pr", action="append", help="repeat once per PR (multi-repository tasks)")
+    ss.add_argument("--merge", action="append", help="REPO@SHA; repeat once per repository")
+    ss.add_argument("--publication", action="append", help="repeat once per publication or deployment")
     ss.add_argument("--reason")
     ss.add_argument("--blocked-by", help="comma-separated H- or AR- IDs from the acceptance register")
     lg = sub.add_parser("ledger")
