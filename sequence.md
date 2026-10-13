@@ -64,8 +64,8 @@ Outcome: .NET, Rust, C/C++ (including FASTBuild), Node and Python work uses shar
 | # | Task | Title | Repositories | Depends on | Size | State |
 |---|---|---|---|---|---|---|
 | 17 | AF-TOOL-01 | Toolchain registry, adapter contract, .NET and generic adapters | ArcForges | AF-SCHED-01, AF-DIAG-01 | M | planned |
-| 18 | AF-TOOL-02 | Rust, C/C++ (with FASTBuild), Node and Python adapters and shared services | ArcForges | AF-TOOL-01 | M | planned |
-| 19 | AF-CACHE-01 | Cache registry, CAS, maintenance and effectiveness | ArcForges | AF-TOOL-01 | M | planned |
+| 18 | AF-CACHE-01 | Cache registry, CAS, maintenance and effectiveness | ArcForges | AF-TOOL-01 | M | planned |
+| 19 | AF-TOOL-02 | Rust, C/C++ (with FASTBuild), Node and Python adapters and per-attempt compiler servers | ArcForges | AF-TOOL-01, AF-CACHE-01 | M | planned |
 
 ## M6 — Storage and workspaces
 
