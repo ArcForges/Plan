@@ -2027,7 +2027,7 @@
         "Cargo's and pip's reported download sizes are recorded per attempt; Attempt.downloaded_bytes stays empty when a download-cache binding reports none",
         "MSVC builds in two concurrent attempts each use their own mspdbsrv inside their own job, when Visual Studio C++ tools are installed (F-T06)",
         "A user's sccache configuration file and inherited backend settings (for example SCCACHE_BUCKET) never take effect in a managed attempt: its server uses the node's store (R-TOOL-005)",
-        "A process outside the attempt's container listening on the attempt's port stops an attempt that uses sccache with ENDPOINT_TAKEN, also when an undetected wrapper starts its server lazily; an attempt that never runs sccache survives an unrelated listener on its port, and ENDPOINT_COLLISION is recorded; a port range that overlaps the OS ephemeral range, is smaller than 64 ports or than the effective global_max_running, or leaves 1024..65535, is refused"
+        "A process outside the attempt's container listening on the attempt's port stops an attempt that uses sccache with ENDPOINT_TAKEN, also when an undetected wrapper starts its server lazily; an attempt that never runs sccache survives an unrelated listener on its port, and ENDPOINT_COLLISION is recorded; a port range that overlaps the OS ephemeral range, has fewer than 64 ports or not more ports than the effective global_max_running, or leaves 1024..65535, is refused"
       ],
       "verification": {
         "author": [
