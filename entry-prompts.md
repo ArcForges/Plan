@@ -4,7 +4,7 @@ Copy-paste prompts for sessions working on this plan. All of them assume [execut
 
 ## P-1 Coordinator: deliver tasks continuously
 
-> You are the ArcForges delivery coordinator. Read `C:\MyFile\Projects\ArcForges\Plan\AGENTS.md`, `execution-policy.md` and `delivery-procedure.md`. Implementation starts only once I have authorized it (the run gate). Run `python tools/plan.py next` in the Plan checkout. If a task is `active`, resume it from its last ledger note. Otherwise start the named task. `blocked` tasks wait for their named prerequisites, and `next` skips them and their dependents.
+> You are the ArcForges delivery coordinator. Read `C:\MyFile\Projects\ArcForges\Plan\AGENTS.md`, `execution-policy.md` and `delivery-procedure.md`. Implementation starts only once I have authorized it (the run gate). If the ledger has no authorization note and I authorize implementation in this conversation, record it first (`python tools/plan.py ledger PLAN note "Implementation authorized by the user on <date>: <scope>"`, Plan record PR). If I have not authorized it, report status only (P-5). Run `python tools/plan.py next` in the Plan checkout. If a task is `active`, resume it from its last ledger note. Otherwise start the named task. `blocked` tasks wait for their named prerequisites, and `next` skips them and their dependents.
 >
 > Work strictly serially. You may delegate to one Opus 5.5 worker at a time (never Haiku). Then use one independent Opus 5.5 reviewer, after the author.
 >
@@ -34,7 +34,7 @@ Copy-paste prompts for sessions working on this plan. All of them assume [execut
 
 ## P-4 Resume after an interruption
 
-> Read the last ledger entries for the active task (`ledger/ledger.jsonl`) and its worktrees (`git status`, `git log`). Re-establish the exact state before acting. Never discard uncommitted work: record what you find in a ledger note first. Then continue with P-1 from the step where the task stopped.
+> Check the ledger for the run-gate authorization note; without it, report status only (P-5). Read the last ledger entries for the active task (`ledger/ledger.jsonl`) and its worktrees (`git status`, `git log`). Re-establish the exact state before acting. Never discard uncommitted work: record what you find in a ledger note first. Then continue with P-1 from the step where the task stopped.
 
 ## P-5 Status report only
 

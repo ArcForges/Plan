@@ -13,7 +13,7 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
    - A delegate works only in its task's worktree and never pushes, posts, merges or deploys. The coordinator does those (§4).
 4. **No build slot.** There is no workstation lock and no "retry for a slot". Long checks run once, in the background when practical, and their results are read rather than polled in loops.
 5. **Run gate, then continuous execution** ([AD-0014](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0014-delivery-method.md) §10).
-   - No implementation starts until the user authorizes it.
+   - No implementation starts until the user authorizes it. The coordinator records the authorization as a ledger note (`python tools/plan.py ledger PLAN note "Implementation authorized by the user on <date>: <scope>"`) in a Plan record PR. A session that finds no such note, and no active task, treats the gate as closed and only reports status (entry prompt P-5).
    - Once authorized, the coordinator delivers eligible tasks one after another. Serial means one task at a time, not one task per session: it reports each delivery and continues with `plan.py next` without asking to continue.
    - A `blocked` task is skipped, not a reason to stop.
    - It stops only when an outward-facing approval is needed, no eligible task remains, a decision only the user can make is required, or the user says stop. It then reports where it stopped and why.

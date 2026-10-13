@@ -2,7 +2,7 @@
   "schema": 2,
   "plan": "ArcForges flagship delivery",
   "created": "2026-10-12",
-  "revised": "2026-10-13 (findings review: workspace concurrency, memory and disk guarantees, WSL allocations, infeasible tasks, worktree archives, retry safety, hook hand-off, routing coverage, remote contracts, cloud cost dimensions, console signalling and the Windows 11 floor, continuous serial execution, production activation, release-candidate fakes)",
+  "revised": "2026-10-13 (findings review: workspace concurrency, memory and disk guarantees, WSL allocations, infeasible tasks, worktree archives, retry safety, hook hand-off, routing coverage, remote contracts, cloud cost dimensions, console signalling and the Windows 11 floor, continuous serial execution, production activation, release-candidate fakes; revised again after its independent review)",
   "policy": "execution-policy.md",
   "design": {
     "repository": "ArcForges/ArcForges-Design",
@@ -886,7 +886,7 @@
         "Command resolution, Windows quoting and batch refusal (04 section 2); environment resolution with sealed secrets",
         "Root and child jobs (the holder assigns the suspended process to the root job, then the child job); `arcforges node exec-wrap` holders outside the job that hold the child and root job handles until the node acknowledges the exit record; exit.json with accounting and limit violations; kill_with_node tasks without a holder (KILL_ON_JOB_CLOSE)",
         "Completion port clear-then-attach on restart; limit-violation check after restart; attempt roots started with CREATE_NO_WINDOW | CREATE_NEW_PROCESS_GROUP and the `node signal` helper (FreeConsole, AttachConsole, GenerateConsoleCtrlEvent) per L-18, with the WM_CLOSE and forced fallbacks (04 section 6); leftover handling",
-        "Output files and index, ReadTaskOutput, WatchTaskOutput, AttachTask with STREAM stdin; cancel_when_caller_gone; ReleaseCallerBinding and SubmitTask join_existing (AD-0006 section 7); the output limit max_attempt_output_bytes checked on every tailer read (TERMINATE with OUTPUT_LIMIT, or NOTIFY; 06 section 5)",
+        "Output files and index, ReadTaskOutput, WatchTaskOutput, AttachTask with STREAM stdin; cancel_when_caller_gone; ReleaseCallerBinding (AD-0006 section 7; joining resubmissions needs sessions and belongs to AF-AI-01); the output limit max_attempt_output_bytes checked on every tailer read (TERMINATE stops at once with OUTPUT_LIMIT; NOTIFY raises a finding; 06 section 5); limit stops skip the graceful phase (04 section 6)",
         "TaskService core: Submit, Get, List, Wait, Attach, Write/CloseTaskInput, Cancel, Retry (manual), Pin, PurgeTaskRecord, GetAttempt, ListAttempts",
         "Recovery after node restart and machine reboot (LOST)",
         "Interim admission: global FIFO with global_max_running until AF-SCHED-01",
@@ -933,8 +933,8 @@
         "Byte-identical attached output and exit codes vs direct runs",
         "Batch argument corpus refused (T-03)",
         "CTRL_BREAK reaches the attempt's process group through the helper on Windows 11 (L-18, F-N03); descendants with their own console, GUI processes and a failed attach fall back to WM_CLOSE and the forced phase",
-        "A caller released with ReleaseCallerBinding no longer cancels its task when it disconnects; a resubmission with join_existing returns the live task (joined); an interrupt before the release still cancels it (R-AI-010)",
-        "Output beyond max_attempt_output_bytes stops the attempt with OUTPUT_LIMIT, or is dropped with NOTIFY (R-STOR-009)",
+        "A caller released with ReleaseCallerBinding no longer cancels its task when it disconnects; an interrupt before the release still cancels it (R-AI-010)",
+        "Output beyond max_attempt_output_bytes stops the attempt at once with OUTPUT_LIMIT, or continues with a finding under NOTIFY; the overshoot stays within one tailer interval plus the stop latency (R-STOR-009)",
         "No attempt or root exceeds its commit limit in the mem-ramp scenario (R-RES-014; 15 section 4)"
       ],
       "verification": {
@@ -1053,7 +1053,7 @@
         "Executions survive node crash and `systemctl --user restart` with durable exit records (F-L03)",
         "Degraded mode refuses tasks requiring enforcement and labels others",
         "No attempt or root slice exceeds its MemoryMax in the mem-ramp scenario, and swap stays within swap_allowance (R-RES-014; 15 section 4)",
-        "Output limit, ReleaseCallerBinding and join_existing behave as on Windows"
+        "Output limit and ReleaseCallerBinding behave as on Windows; limit stops freeze the unit before killing it"
       ],
       "verification": {
         "author": [
@@ -1227,12 +1227,12 @@
       ],
       "objective": "Replace the interim FIFO with the admission algorithm and enforce budgets with root and attempt container limits.",
       "scope": [
-        "Pools, priorities, DRR fairness, aging, overcommit rules (03 section 4); accounted memory max(mem_expected, peak_observed); feasibility classes feasible, exceeds_budget and exceeds_capacity, with TASK_INFEASIBLE; one bounded large-task reservation (narrow, backfill from operational memory, lapse after large_task_reservation_max)",
+        "Pools, priorities, DRR fairness, aging, overcommit rules (03 section 4); CPU demand clamped to B_cpu (compressible); accounted memory max(mem_expected, peak_observed); memory feasibility classes feasible, exceeds_budget and exceeds_capacity, with TASK_INFEASIBLE; one bounded large-task reservation for memory only (backfill from operational memory, lapse after large_task_reservation_max); light routed commands outside pool parallelism limits",
         "Enforcement mapping both platforms (03 section 5) and the stated memory guarantees (section 5.4); pressure actions (section 7); task dependencies and service readiness; automatic retries only for asserted classes (AD-0006 section 4: side_effect_source, retry_safety rules, agent assertions only with accept_agent_assertions)",
         "QueueService; PolicyService (document, validation, revisions); SetParallelism",
         "Tool-level concurrency hook for adapters",
         "TestLoad load scenarios and benchmarks of 15 section 4",
-        "Exclusive keys and workspace access (03 section 4): the conflict rule over directory keys and purposes, the blocking reason exclusive_key, ExplainTask with keys and holders, task_exclusive_key persistence; the workspace concurrency mode applied at admission"
+        "Exclusive and shared keys and workspace access (03 section 4): the conflict rule over directory keys and purposes, the blocking reason exclusive_key, early release for run operations and ready services, ExplainTask with keys and holders, task_concurrency_key persistence; the workspace concurrency mode applied at admission"
       ],
       "out_of_scope": [
         "Permissions and approvals (AF-SEC-01)",
@@ -1273,8 +1273,9 @@
         "Parallelism disabled per scope runs one at a time",
         "Dependents start only after their dependency's condition, including service readiness (R-EXE-005)",
         "An exceeds_capacity task never holds a reservation or blocks feasible work and raises TASK_INFEASIBLE; the large-task reservation lapses after large_task_reservation_max (R-RES-005)",
-        "Two builds of one project in one workspace wait for each other (exclusive_key); builds of different projects run together; SERIAL mode runs one managed task at a time (R-EXE-019)",
-        "Retry policy tests per class and assertion source; an agent's PURE or IDEMPOTENT becomes UNKNOWN without accept_agent_assertions; a side-effecting task is not retried after node loss (R-EXE-010)"
+        "Key engine with caller-supplied keys: overlapping exclusive keys wait (exclusive_key), shared keys run together, an exclusive and a shared key conflict, the ancestor and purpose rules hold, and ExplainTask lists the holders (R-EXE-019; adapter keys are tested in AF-TOOL-01 and AF-TOOL-02, SERIAL mode in AF-WS-01)",
+        "Retry policy tests per class and assertion source; an agent's PURE or IDEMPOTENT becomes UNKNOWN without accept_agent_assertions; a side-effecting task is not retried after node loss (R-EXE-010)",
+        "A task whose CPU estimate exceeds B_cpu (for example 4,000 millicores on a 4-processor node) starts with the clamped grant and never reserves (R-RES-005)"
       ],
       "verification": {
         "author": [
@@ -1351,7 +1352,7 @@
         "`arcforges bridge wsl`; GuestLinkService (OpenLink stream, AnswerGrant, RevokeGrant, SetGuestBudget, GetGuestStatus); link token, host pinning, GetHostLink and TrustHost (guest)",
         "Host: guest discovery, link state machine, vmmem accounting, guest_other, grant proxy tasks; demand admitted and allocations enforced: the CPU split G_cpu and H_cpu with positive floors summing to B_cpu, memory grants never overcommitted (03 section 6)",
         "ResourceService.ListGuestLinks and SetGuestLink; CLI guests (host) and guests host, guests trust-host (guest)",
-        "Lease (lease_until, renewed at least every 30 s) and the standalone allocation (guest_standalone_fraction of the host budget), persisted on both sides (guest_link, host_link); the host reserves the standalone allocation during an outage and accounts the VM as max(usage, allocation); the never-linked window is reported"
+        "Acknowledged allocations (allocation_seq; released capacity reused only after the guest acknowledges; a grant that raises the allocation is acknowledged before AnswerGrant); the lease (lease_until, renewed at least every 30 s) and the standalone allocation (never larger than the last acknowledged allocation), persisted on both sides (guest_link, host_link); slice limits never lowered below running work; the host accounts the VM as max(usage, standalone allocation) during an outage; the never-linked window is reported"
       ],
       "out_of_scope": [
         "Optional privileged guest I/O control beyond a design probe"
@@ -1372,7 +1373,7 @@
         "Host-guest linking"
       ],
       "acceptance": [
-        "Closed loop through the real wsl.exe bridge: grants and release; a link loss keeps the last allocation until the lease lapses, then the standalone allocation, also across a node restart on either side (R-RES-010)",
+        "Closed loop through the real wsl.exe bridge: grants and release; link losses with an idle and with a busy guest never let host and guest admissions together exceed the host budget and kill no running guest work, also across a node restart on either side (R-RES-010)",
         "vmmem accounting observed and recorded (F-L01)",
         "Concurrent saturating host and guest load with CPU demand overcommitted: host and guest CPU caps sum to B_cpu, nothing is counted twice, and the host reserve stays protected",
         "A link from a different host is refused until TrustHost"
@@ -1749,7 +1750,7 @@
       "objective": "Detect toolchains and manage .NET work with shared NuGet caches and grant-based parallelism.",
       "scope": [
         "Detection of 05 section 1; ToolchainService (List, Detect, ListAdapters, PreviewInvocation)",
-        "Adapter contract with side-effect suggestions, assertions only where the adapter can verify them, and exclusive keys (05 section 2); .NET adapter (NuGet redirection with shared scratch, MSBuild node reuse off, -m:N, keys per project directory); generic adapter",
+        "Adapter contract with side-effect suggestions, assertions only where the adapter can verify them, and exclusive and shared keys (05 section 2); .NET adapter (NuGet redirection with shared scratch, MSBuild node reuse off, -m:N from the grant, the workspace key ws:<w>:dotnet for build-family operations, shared with --no-build); generic adapter",
         "Failure classifiers for .NET",
         "CLI toolchain commands"
       ],
@@ -1778,7 +1779,7 @@
         "Concurrent real restores share caches without errors and without duplicate downloads",
         "Each .NET redirection claim proven by a real run (F-T01 .NET)",
         "No adapter asserts a class it cannot verify: dotnet build, test and restore are UNKNOWN with a suggestion",
-        "Concurrent dotnet builds of one project in one workspace are ordered by the adapter's key; different projects run together"
+        "Two .NET build-family operations in one workspace run one after the other, including builds of different projects that share referenced projects; dotnet test --no-build runs beside another test run (R-EXE-019)"
       ],
       "verification": {
         "author": [
@@ -1870,7 +1871,7 @@
       "acceptance": [
         "Each redirection and concurrency claim proven by a real run where the tool is installed; missing tools recorded with reason (F-T01)",
         "FASTBuild cache precedence, -cachetrim and -j proven with a real FASTBuild build (F-T02)",
-        "Assertions and keys covered per adapter: npm ci without --ignore-scripts, pip install and plain pip download are UNKNOWN; git commands that write the index take ws:<w>:git"
+        "Assertions and keys covered per adapter: npm ci without --ignore-scripts, pip install and plain pip download are UNKNOWN; npm test waits for npm ci of the same package; cargo run releases its key when the program starts; git commands that write the index take ws:<w>:git"
       ],
       "verification": {
         "author": [
@@ -2036,7 +2037,7 @@
         "Managed roots, ownership records, quotas labelled by kind (admission threshold, monitored limit, tool-enforced, report-only; 06 section 5), per-attempt tmp with max_attempt_tmp_bytes checked every 15 s (DISK_LIMIT or NOTIFY)",
         "AnalyzeStorage detectors; PlanCleanup, AddExternalPath, ExecuteCleanup with re-validation; per-volume quarantine roots and restore; UpdateRoot",
         "CLI storage commands",
-        "Low-space guard per volume (NORMAL, LOW, CRITICAL; every 5 s): blocking reason disk_space at LOW; freeze or disk_limit_action at CRITICAL; the store reserve file (64 MiB) and the node state DEGRADED with store_out_of_space"
+        "Low-space guard per volume (NORMAL, LOW, CRITICAL; every 5 s; the LOW threshold capped by low_free_cap_bytes): blocking reason disk_space at LOW; freeze or immediate stop at CRITICAL; the store reserve file (64 MiB), released only when a store write fails, and the node state DEGRADED with store_out_of_space"
       ],
       "out_of_scope": [
         "Worktrees (AF-WS-01) beyond detection"
@@ -2065,8 +2066,8 @@
         "No deletion outside a validated plan; bounds enforced",
         "Items on a volume without a quarantine root need the per-item confirmation",
         "Relocation copies, verifies, switches and quarantines",
-        "A temporary-space flood stops the attempt with DISK_LIMIT, or notifies, within the stated interval (R-STOR-009)",
-        "On a nearly full volume new writers wait (disk_space), running writers are acted on at CRITICAL, and the node keeps recording its state (reserve file; DEGRADED with store_out_of_space, then READY)",
+        "A temporary-space flood stops the attempt at once with DISK_LIMIT (Linux: frozen, then killed), or continues with a finding under NOTIFY, within the stated interval plus the stop latency (R-STOR-009)",
+        "On a nearly full volume new writers wait (disk_space), running writers are stopped or frozen at CRITICAL, the reserve is released only when a store write fails, and the node never continues with unrecorded state (DEGRADED with store_out_of_space, then READY)",
         "Every quota and limit is labelled with its kind; none claims file-system enforcement (R-STOR-005)"
       ],
       "verification": {
@@ -2135,7 +2136,7 @@
       ],
       "objective": "Register workspaces and create or remove node-managed git worktrees safely.",
       "scope": [
-        "WorkspaceService; SM-WORKTREE including ARCHIVING; archive-then-remove with approval: index and working-tree commits (binary-safe), archive refs, bundle, the ignored-file decision, verification by bundle round trip before removal (06 section 3); ListWorktreeArchives and RestoreWorktree; archive retention; locks while in use",
+        "WorkspaceService; SM-WORKTREE including ARCHIVING; PlanWorktreeRemoval; archive-then-remove with approval: index and working-tree commits (binary-safe), intent-to-add paths, archive refs, bundle and side archives (ignored files, filter- or LFS-dependent bytes), the ignored-files decision with its digest, refusal for unmerged indexes and dirty submodules, verification by bundle round trip and byte comparison before removal (06 section 3); ListWorktreeArchives and RestoreWorktree (the L-19 sequence); archive retention; locks while in use",
         "Workspace derivation for tasks; routing override",
         "Workspace concurrency mode (ADAPTER_KEYS, SERIAL, SHARED) through UpdateWorkspaceSettings; CLI workspace concurrency and worktree archives and restore"
       ],
@@ -2146,7 +2147,8 @@
         "docs/architecture/06-storage-workspaces.md",
         "docs/contracts/proto/arcforges/node/v1/workspaces.proto",
         "docs/data/node-store.md",
-        "docs/experience/cli.md"
+        "docs/experience/cli.md",
+        "docs/verification/platform-capabilities.md"
       ],
       "requirements": [
         "R-STOR-003",
@@ -2156,7 +2158,7 @@
         "Workspaces and worktrees"
       ],
       "acceptance": [
-        "Dirty worktrees are never removed silently: staged, unstaged, untracked and binary changes are archived; a forced verification failure removes nothing; a restore reproduces the staged and unstaged states exactly (R-STOR-003)",
+        "Dirty worktrees are never removed silently: staged deletions and renames, unstaged, untracked, binary and intent-to-add changes are archived; an ignored .env needs an explicit decision; an unmerged index or a dirty submodule refuses removal; a forced verification failure removes nothing; a restore reproduces the index and every file exactly (R-STOR-003, L-19)",
         "One worktree per branch",
         "Real git on both platforms",
         "SERIAL mode runs one managed task of the workspace at a time"
@@ -2229,7 +2231,7 @@
       "objective": "Know which AI sessions run what, route heavy commands where safe, detect bypass and report coverage honestly.",
       "scope": [
         "`arcforges hook <client> <event>` in exec form for Claude Code and Codex events (no WorktreeCreate or WorktreeRemove hooks); SessionService; correlation through the nearest client-executable ancestor",
-        "ClassifyCommand and rewrite construction (`ask` by default; `--client-timeout` and `--join-existing`; hand-off before the client timeout with exit 124 and `tasks wait`; an interrupt before the hand-off cancels); modes observe, guide, rewrite (heavy commands) and rewrite-all with passthrough patterns (08 section 4.1); bypass detection",
+        "ClassifyCommand and rewrite construction (`ask` by default; `--client-timeout` from the call, the client default recorded by the probe, none for background calls; hand-off at the client timeout minus the margin with exit 124 and the wait and cancel commands; immediate exit 125 for exceeds_capacity; an interrupt before the hand-off cancels); SubmitTask join_existing with the exact command digest and the input-fingerprint rule for running tasks; modes observe, guide, rewrite (heavy commands) and rewrite-all with passthrough patterns, shell-state prefixes kept outside, background launches not routed and the light estimate (08 section 4.1); bypass detection",
         "SessionCoverage with the managed share, the coverage map of 08 section 4.4 and session reports; services stopped with their owner session; CLI session commands"
       ],
       "out_of_scope": [
@@ -2253,11 +2255,12 @@
       ],
       "acceptance": [
         "Hook fixtures captured from real clients drive routing tests",
-        "Rewritten commands are byte-identical in output and exit code when they finish before the client timeout; a scripted client timeout hands off (exit 124; the task keeps running and keeps its queue position); a resubmission joins the existing task; an interrupt before the hand-off cancels it (R-AI-010)",
+        "Rewritten commands are byte-identical in output and exit code when they finish before the client timeout; a scripted client timeout hands off (exit 124; the task keeps running and keeps its queue position); an identical resubmission joins a task that has not started, while a resubmission after a file edit starts a new run; an interrupt before the hand-off cancels it (R-AI-010)",
         "Agent roots identified on Windows and WSL2 (F-A02)",
         "Hook p95 <= 50 ms",
         "Coverage never claims completeness",
-        "rewrite-all routes every shell command except passthrough patterns; the managed share is reported, and connecting MCP alone is never counted as interception (R-AI-005)"
+        "rewrite-all routes every shell command except passthrough patterns; the managed share is reported, and connecting MCP alone is never counted as interception (R-AI-005)",
+        "rewrite-all keeps a leading cd in the client's shell, leaves background launches unrouted, and starts light commands without waiting for pool slots"
       ],
       "verification": {
         "author": [
@@ -2931,7 +2934,8 @@
       ],
       "requirements": [
         "R-UX-004",
-        "R-UX-006"
+        "R-UX-006",
+        "R-OPS-007"
       ],
       "deliverables": [
         "Public site"
@@ -3119,9 +3123,9 @@
       ],
       "objective": "Provide the platform services every cloud feature uses: configuration revisions with kill switches and limits, the audit writer and reader, and operating budgets with reservations.",
       "scope": [
-        "Configuration revisions (stage, validate, activate data path), kill switches (relay.live_streaming, relay.new_connections, push.enabled, fleet.commands, support uploads, cloud.essential_only) and limits; the flagship.activation switches per Cloud surface, answered by the Worker with STATE/not_activated without waking the container (10 section 8)",
+        "Configuration revisions (stage, validate, activate data path), kill switches (relay.live_streaming, relay.new_connections, push.enabled, fleet.commands, support uploads, cloud.essential_only) and limits; the FLAGSHIP_SURFACES deployment variable (identity, fleet_api, relay, push, support, commerce): disabled surfaces answered by the Worker with STATE/not_activated without waking the container, and the cron handler idle while none is enabled (10 section 8)",
         "Audit event writer with the hash chain, and the reader that backs OperatorReadService.ListAuditEvents; anomaly flags as `anomaly.<kind>` audit events",
-        "Operating budget service over every billing dimension (dimensions 8..19 table-rebuild migration; 14 section 7.1): reservations per measured dimension, estimated dimensions recorded after the fact, threshold evaluation (80% alert, 100% the degradation ladder step, 120% essential-only mode; 14 section 7.3), the residual daily exposure (section 7.4), unit prices configuration",
+        "Operating budget service over every billing dimension (dimensions 8..19 table-rebuild migration; 14 section 7.1), including the container's own Durable Object: reservations per measured dimension, estimated dimensions recorded after the fact, threshold evaluation (80% alert, 100% the degradation ladder step, 120% essential-only mode except EMAILS_SENT; 14 section 7.3), essential jobs only in essential-only mode, the residual daily exposure with Worker requests (section 7.4), unit prices configuration",
         "Budget and limit checks as a library for metered paths; rate limits per account and IP",
         "Job infrastructure: lease and fence plans over platform_job_lease, reusing the shared-families `lease` guard (holder and fence); a job runner started by a Worker cron trigger and scheduled handler that call the host (wrangler.json and its hash-bound receipts updated through the repository's reviewed process); the compact command fence",
         "Scheduled retention sweeps: expired receipts and inbox rows, expired flows, and the Retention column of data/cloud-store.md"
@@ -3524,7 +3528,8 @@
         "R-UX-006",
         "R-AUTH-004",
         "R-OPS-001",
-        "R-OPS-004"
+        "R-OPS-004",
+        "R-OPS-007"
       ],
       "deliverables": [
         "Account profile"
@@ -4416,7 +4421,8 @@
         "R-UX-004",
         "R-UX-006",
         "R-API-005",
-        "R-CLOUD-007"
+        "R-CLOUD-007",
+        "R-OPS-007"
       ],
       "deliverables": [
         "Fleet profile"
@@ -4983,7 +4989,8 @@
         "Operator pages work in closed loop against the local stack",
         "Two-person approval where configured; self-approval recorded otherwise",
         "Audit reads are themselves audited",
-        "W-66 shows each dimension with its ladder step, essential-only mode and the residual daily worst case; reconciliation reports off without H-21"
+        "W-66 shows each dimension with its ladder step, essential-only mode and the residual daily worst case; reconciliation reports off without H-21",
+        "GetOperatingBudgets.reconciliation drives W-66's reconciliation state"
       ],
       "verification": {
         "author": [
@@ -5198,10 +5205,10 @@
       ],
       "objective": "Activate the delivered flagship surfaces in production one at a time, with the user's approval and the production prerequisites, and publish the public site.",
       "scope": [
-        "Confirm the production prerequisites with the user: H-05 domains, H-06 Cloudflare account settings, H-09 cost ceiling, H-16 key material stored by the user, H-20 provisioning approval, and H-10 legal texts for the public site",
+        "Confirm the production prerequisites with the user, per surface (10 section 8): the core (provisioning, identity, fleet_api, relay) needs H-05, H-06, H-09, H-16, H-19 and H-20; push needs H-03; commerce needs H-01 (and H-02 for Play), H-07 and the published legal pages (H-10); the public site needs H-10",
         "Run the repository provisioning script against production with the user's approval (D1, the R2 bucket with lifecycle rules, the Queue); add the production bindings to wrangler.json through a reviewed main-push deploy; run the migrations (10 section 8)",
         "Set the production operating budgets from the cost ceiling so that 31 x (daily budgets + residual) stays within it, and check the ladder configuration (14 section 7)",
-        "Enable the flagship.activation surfaces one at a time (fleet_api, relay, push, support; commerce with commerce.sales_open as decided under H-07), each followed by a production smoke check and a verified switch-off",
+        "Add surfaces to FLAGSHIP_SURFACES one at a time through reviewed main-push deploys (identity, fleet_api, relay, support, then push and commerce when their prerequisites exist), each followed by a production smoke check and a verified withdrawal; a surface without its prerequisites stays off and is recorded",
         "Turn on the Web switches public_site, web_account and web_fleet after the user approves the content",
         "Record the activation evidence and update the acceptance register entries whose prerequisites are now met"
       ],
@@ -5230,7 +5237,8 @@
         "A production smoke check passes after each surface is enabled, and switching it off was verified to withdraw it",
         "The production daily budgets satisfy 31 x (budgets + residual daily worst case) <= the monthly ceiling (H-09)",
         "The public site and the web profiles are published only after the user approves their content",
-        "The coordinator never reads or prints key material"
+        "The coordinator never reads or prints key material",
+        "Delivered when the core surfaces are active and every other surface is active or recorded as waiting on its named prerequisite; complete when all surfaces are active"
       ],
       "verification": {
         "author": [
@@ -5253,11 +5261,16 @@
         "AR-09"
       ],
       "human_prerequisites": [
+        "H-01",
+        "H-02",
+        "H-03",
         "H-05",
         "H-06",
+        "H-07",
         "H-09",
         "H-10",
         "H-16",
+        "H-19",
         "H-20"
       ],
       "risks": [
@@ -5267,8 +5280,8 @@
           "owner": "AF-PROD-01"
         },
         {
-          "risk": "Production prerequisites are missing (H-05, H-06, H-09, H-10, H-16, H-20)",
-          "mitigation": "The task is set blocked with the missing items; no other task depends on it",
+          "risk": "Production prerequisites are missing",
+          "mitigation": "Core items (H-05, H-06, H-09, H-16, H-19, H-20) set the task blocked; the others (H-01, H-02, H-03, H-07, H-10) leave only their surface off and block completion, not delivery",
           "owner": "user"
         },
         {
