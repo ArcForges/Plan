@@ -14,7 +14,7 @@ The canonical TODO list and roadmap for ArcForges. ArcForges-Design [AD-0015](ht
 
 - **Tasks:** every task in [delivery-graph.json](delivery-graph.json) (milestones M0–M15), in [sequence.md](sequence.md) order:
   - M0–M10 build the free local and LAN product;
-  - M11–M13 build the cloud services sold as Pro;
+  - M11–M13 build the cloud services: account and support for every user, and remote access, mobile monitoring and notifications as Pro;
   - M14 is operations and the release candidate;
   - M15 is production activation.
 - **Product scope:** the Design product definition:
@@ -41,19 +41,19 @@ The canonical TODO list and roadmap for ArcForges. ArcForges-Design [AD-0015](ht
 
 ## 3. Exploratory ideas
 
-| ID | Idea | Question to answer | What would make it accepted | References | Status |
-|---|---|---|---|---|---|
-| EX-01 | Plugin ecosystem and marketplace (integrations, cache backends, diagnostics, adapters) | Can out-of-process plugins run entirely under the core permission, execution, resource and recording mechanisms with signed distribution? | A design that no plugin can bypass, and demand from the adapter backlog (RM-11). A marketplace never implies charging for local functionality. | AD-0015 | exploratory |
-| EX-02 | Hosted build and dependency caches as a cloud service | Is a cloud cache worth its cost and trust model compared with LAN sharing? | Measured cross-network cache demand and a cost model inside the Pro budget | AD-0009, AD-0015 | exploratory |
-| EX-03 | GPU and accelerator scheduling | Should local model inference and GPU builds share the same admission and enforcement model? | Agent workloads using local GPUs at a scale that contends | AD-0005 | exploratory |
-| EX-04 | Placing whole agent sessions or long-running services on other nodes | Can sessions move between machines without breaking client state? | Client support for remote execution environments | AD-0008 | exploratory |
-| EX-05 | macOS node | Is the demand worth a third platform backend? | Product-owner decision; the platform boundaries already allow it | AD-0002 | exploratory |
-| EX-06 | iOS app | Is the demand worth a second mobile platform? | Product-owner decision after the Android app's use is known | AD-0015 | exploratory |
+| ID | Idea | Purpose | Why not now | Prerequisites | Question to answer | Revisit when | References | Status |
+|---|---|---|---|---|---|---|---|---|
+| EX-01 | Plugin ecosystem and marketplace (integrations, cache backends, diagnostics, adapters) | Let others extend ArcForges without forking it | No plugin can yet be shown to stay inside the core permission, execution, resource and recording mechanisms; release 1 has no runtime plugins | A stable adapter contract (AF-TOOL-01) and the additional adapters of RM-11 | Can out-of-process plugins run entirely under the core mechanisms, with signed distribution? A marketplace never implies charging for local functionality. | A design shows that no plugin can bypass the core, and the adapter backlog (RM-11) shows demand | AD-0015 | exploratory |
+| EX-02 | Hosted build and dependency caches as a cloud service | Reuse build results and downloads across networks, not only on one LAN | Cost and trust model unknown; LAN sharing comes first (RM-02) | Cloud budgets (AF-PLAT-01); LAN sharing results (AF-LAN-03, RM-02) | Is a cloud cache worth its cost and trust model compared with LAN sharing? | Measured cross-network cache demand and a cost model inside the Pro budget | AD-0009, AD-0015 | exploratory |
+| EX-03 | GPU and accelerator scheduling | Bring local model inference and GPU builds under the same admission and enforcement | No measured contention yet, and no portable GPU enforcement design | Resource control (AF-SCHED-01) | Should GPUs share the CPU and memory admission and enforcement model? | Agent workloads use local GPUs at a scale that contends | AD-0005 | exploratory |
+| EX-04 | Placing whole agent sessions or long-running services on other nodes | Run an entire agent workspace where capacity is | Clients keep session state locally; there is no remote execution environment to move to | LAN placement (AF-LAN-02) | Can sessions move between machines without breaking client state? | Clients support remote execution environments | AD-0008 | exploratory |
+| EX-05 | macOS node | Serve developers on macOS | Out of scope by decision; a third platform backend doubles platform work | Platform abstraction boundaries (AD-0002) | Is the demand worth a third backend? | A product-owner decision | AD-0002 | exploratory |
+| EX-06 | iOS app | Mobile monitoring and control on iOS | Android comes first; a second mobile platform doubles the work | The Android app delivered (AF-AND-02) | Is the demand worth a second mobile platform? | A product-owner decision after the Android app's use is known | AD-0015 | exploratory |
 
 ## 4. Maintenance and promotion
 
 - **One place.** Deferred work is recorded only here. Task records point to it (`out_of_scope: … (roadmap RM-xx)`), and the Design cites the same IDs. `python tools/plan.py validate --design <Design root>` checks that:
-  - the IDs are unique and well formed;
+  - the IDs are unique and well formed (`RM-NN`, `EX-NN`; malformed IDs are reported, not skipped);
   - every field is filled and statuses are valid;
   - referenced tasks, requirements and decisions exist;
   - every `RM-*` or `EX-*` cited in the Design exists here.

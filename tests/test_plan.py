@@ -132,6 +132,20 @@ class StateChanges(unittest.TestCase):
         self.assertIn("AD-0099", self.graph["tasks"][0]["notes"])
 
 
+class EvidenceRecording(unittest.TestCase):
+    def test_multi_repository_tasks_keep_every_pr_and_merge(self):
+        g = copy.deepcopy(plan.load())
+        t = g["tasks"][0]
+        plan.set_state(g, t["id"], "active")
+        plan.set_state(g, t["id"], "delivered", pr=["https://example.invalid/a/1", "https://example.invalid/b/2"],
+                       merge=["A@1111111", "B@2222222"], publication=["cohort 1"])
+        self.assertEqual(t["evidence"]["prs"], ["https://example.invalid/a/1", "https://example.invalid/b/2"])
+        self.assertEqual(t["evidence"]["merges"], ["A@1111111", "B@2222222"])
+        self.assertEqual(t["evidence"]["publications"], ["cohort 1"])
+        plan.set_state(g, t["id"], "complete", merge="A@1111111")
+        self.assertEqual(t["evidence"]["merges"], ["A@1111111", "B@2222222"])
+
+
 class Ledger(unittest.TestCase):
     def test_append_only_records(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -178,16 +192,23 @@ class RoadmapChecks(unittest.TestCase):
         self.assertTrue(any("empty column" in e for e in errs))
         errs = self._check("| RM-01 | a | b | c | d | e | f | g | maybe |")
         self.assertTrue(any("invalid status" in e for e in errs))
-        errs = self._check("| EX-01 | a | b | c | d | someday |")
+        errs = self._check("| EX-01 | a | b | c | d | e | f | g | someday |")
         self.assertTrue(any("invalid status" in e for e in errs))
-        self.assertEqual(self._check("| EX-01 | a | b | c | d | exploratory |"), [])
+        self.assertEqual(self._check("| EX-01 | a | b | c | d | e | f | g | exploratory |"), [])
+        errs = self._check("| EX-01 | a | b | c | d | exploratory |")
+        self.assertTrue(any("expected 9" in e for e in errs))
+
+    def test_malformed_ids_are_reported_not_skipped(self):
+        for bad in ("RM-013", "RM-1", "rm-01", "EX-1"):
+            errs = self._check(f"| {bad} | a | b | c | d | e | f | g | accepted |")
+            self.assertTrue(any("malformed ID" in e for e in errs), bad)
 
     def test_references_and_duplicates(self):
         errs = self._check("| RM-01 | a | b | c | d | e | f | AF-NOPE-99 | accepted |")
         self.assertTrue(any("unknown task AF-NOPE-99" in e for e in errs))
         errs = self._check("| RM-01 | a | b | c | d | e | f | g | promoted: AF-NOPE-98 |")
         self.assertTrue(any("unknown task AF-NOPE-98" in e for e in errs))
-        errs = self._check("| EX-01 | a | b | c | d | accepted as RM-07 |")
+        errs = self._check("| EX-01 | a | b | c | d | e | f | g | accepted as RM-07 |")
         self.assertTrue(any("unknown item RM-07" in e for e in errs))
         row = "| RM-01 | a | b | c | d | e | f | g | accepted |"
         errs = self._check(row + "\n" + row)

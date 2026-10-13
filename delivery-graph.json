@@ -2,7 +2,7 @@
   "schema": 2,
   "plan": "ArcForges flagship delivery",
   "created": "2026-10-12",
-  "revised": "2026-10-13 (findings review and its independent review; then the product owner's decisions: local and LAN free, Windows 11 floor, initial LAN scope; LAN delivered before cloud; account-based LAN trust, result-cache restore and MCP over HTTP moved to the roadmap; correlated evidence and supported operations)",
+  "revised": "2026-10-13 (findings review and its independent review; then the product owner's decisions: local and LAN free, Windows 11 floor, initial LAN scope; LAN delivered before cloud; account-based LAN trust, result-cache restore and MCP over HTTP moved to the roadmap; correlated evidence and supported operations; independent review of that round)",
   "policy": "execution-policy.md",
   "design": {
     "repository": "ArcForges/ArcForges-Design",
@@ -1560,7 +1560,8 @@
         }
       ],
       "depends_on": [
-        "AF-RES-01"
+        "AF-RES-01",
+        "AF-SCHED-01"
       ],
       "objective": "Record what happened with categorized timelines and expose reports and exports.",
       "scope": [
@@ -1595,7 +1596,7 @@
         "Repeat and stale detection",
         "Exports validate against the node.v1 JSON mapping",
         "Seeded secrets never appear in records or exports",
-        "A record chain from a session's task leads to its processes, queue reasons, phases, resource use, retries and outcome; collection stays within the overhead and size targets (R-REC-006)"
+        "A record chain from a task leads to its attempts, processes, queue reasons (including key holders), phases, resource use, retries and outcome, and carries the session, agent and workspace when the task has them; collection stays within the overhead and size targets (R-REC-006)"
       ],
       "verification": {
         "author": [
@@ -1950,8 +1951,8 @@
         "Cache registry, compat keys, maintenance lease, quotas and eviction",
         "Content-addressed store with digest verification",
         "CacheService (List, Report, UpdateSettings, Verify); duplicate and per-task restore detection",
-        "Result cache per workspace: OFF and OBSERVE (would-be hits recorded); RESTORE is refused by policy validation (roadmap RM-04)",
-        "Per-attempt cache usage and downloads (CacheUsage, attempt_cache_usage, Attempt.downloaded_bytes) with EXACT or SHARED_WINDOW attribution (07 section 1.5)"
+        "Result cache per workspace: OFF and OBSERVE (action key and output-manifest digest per attempt in result_cache_observation; observations and would-be hits in GetCacheReport); no output blobs are stored; RESTORE is refused by policy validation (roadmap RM-04)",
+        "Per-attempt cache usage and downloads (CacheUsage, attempt_cache_usage, Attempt.downloaded_bytes) with EXACT or SHARED_WINDOW attribution, measured through the size cache within caches.usage_scan_budget_ms, and aggregated with each shared window counted once (07 section 1.5)"
       ],
       "out_of_scope": [
         "LAN serving (AF-LAN-03)"
@@ -1960,7 +1961,8 @@
         "docs/architecture/05-toolchains-caches.md",
         "docs/architecture/04-execution.md",
         "docs/contracts/proto/arcforges/node/v1/caches.proto",
-        "docs/architecture/07-records-diagnosis-memory.md"
+        "docs/architecture/07-records-diagnosis-memory.md",
+        "docs/architecture/15-performance-targets.md"
       ],
       "requirements": [
         "R-CACHE-001",
@@ -1979,8 +1981,9 @@
         "Eviction never removes entries in use",
         "CAS corruption quarantines and refetches",
         "Report shows hits, misses and duplicates from real tool statistics",
-        "OBSERVE records would-be hits without restoring anything; a policy with RESTORE is refused (roadmap RM-04)",
-        "Each attempt records what it added to and used from each bound cache; concurrent users of one cache are labelled SHARED_WINDOW, never split by guess (R-REC-006)"
+        "OBSERVE records action keys and would-be hits without storing outputs or restoring anything; a policy with RESTORE is refused (roadmap RM-04)",
+        "Each attempt records what it added to and used from each bound cache; concurrent users of one cache are labelled SHARED_WINDOW, never split by guess (R-REC-006)",
+        "Cache-usage measurement runs in the background within caches.usage_scan_budget_ms and never delays an attempt's result; an exceeded budget leaves bytes_added empty; session totals count each shared window once (15 section 2)"
       ],
       "verification": {
         "author": [
@@ -2251,7 +2254,8 @@
         "docs/architecture/08-ai-integration.md",
         "docs/decisions/AD-0007-ai-integration.md",
         "docs/contracts/proto/arcforges/node/v1/sessions.proto",
-        "docs/decisions/AD-0006-execution-semantics.md"
+        "docs/decisions/AD-0006-execution-semantics.md",
+        "docs/architecture/07-records-diagnosis-memory.md"
       ],
       "requirements": [
         "R-AI-005",
@@ -2259,7 +2263,8 @@
         "R-AI-007",
         "R-EXE-005",
         "R-AI-010",
-        "R-AI-011"
+        "R-AI-011",
+        "R-REC-006"
       ],
       "deliverables": [
         "Session and routing engine"
@@ -2271,7 +2276,8 @@
         "Hook p95 <= 50 ms",
         "Coverage never claims completeness",
         "rewrite-all routes every shell command except passthrough patterns; the managed share is reported, and connecting MCP alone is never counted as interception (R-AI-005)",
-        "rewrite-all keeps a leading cd in the client's shell and runs the routed part in that directory (cd sub && <cmd> runs <cmd> in sub), leaves background launches unrouted, and starts light commands without waiting for pool slots; a light command that needs more memory than its estimate is not killed for it"
+        "rewrite-all keeps a leading cd in the client's shell and runs the routed part in that directory (cd sub && <cmd> runs <cmd> in sub), leaves background launches unrouted, and starts light commands without waiting for pool slots; a light command that needs more memory than its estimate is not killed for it",
+        "From a routed command, including one from a Claude Code subagent, the session's records lead to its tasks, the agent ID, attempts, processes, queue reasons, cache usage, downloads and outcome (R-REC-006; J-11)"
       ],
       "verification": {
         "author": [
@@ -2356,12 +2362,14 @@
       ],
       "design_refs": [
         "docs/experience/mcp.md",
-        "docs/architecture/08-ai-integration.md"
+        "docs/architecture/08-ai-integration.md",
+        "docs/product/product-definition.md"
       ],
       "requirements": [
         "R-AI-001",
         "R-AI-002",
-        "R-MEM-003"
+        "R-MEM-003",
+        "R-AI-011"
       ],
       "deliverables": [
         "MCP adapter"
@@ -2370,7 +2378,8 @@
         "ScriptedMcpClient suites for 2025-11-25 and 2026-07-28 pass",
         "No call exceeds 55 s",
         "Adapter idle memory and overhead within 15 section 3",
-        "placement any from a non-git directory without inputs fails with VALIDATION/inputs_required; an agent's overwrite is refused"
+        "placement any from a non-git directory without inputs fails with VALIDATION/inputs_required; an agent's overwrite is refused",
+        "`session_coverage` returns `release_scope`, the release coverage statement, next to the session's observed facts (R-AI-011)"
       ],
       "verification": {
         "author": [
@@ -2442,7 +2451,8 @@
         "IntegrationService (ListClients, PlanIntegration, PlanRemoval, ApplyIntegration, StartProbe, ListProbeResults, GetInstructionSnippet); recorded writes",
         "`arcforges probe`; probe evaluation; rewrite gating",
         "Claude Code plugin and Codex plugin packages (not published)",
-        "Plans per routing mode, including rewrite-all with passthrough patterns; snippets per mode (08 section 6.3); copy stating that connecting MCP alone routes nothing"
+        "Plans per routing mode, including rewrite-all with passthrough patterns; snippets per mode (08 section 6.3); copy stating that connecting MCP alone routes nothing",
+        "`arcforges coverage [--session <id>]`: the release coverage statement (product definition §9), then the session's coverage when given"
       ],
       "out_of_scope": [
         "Publishing plugins (AR-13)"
@@ -2450,7 +2460,9 @@
       "design_refs": [
         "docs/architecture/08-ai-integration.md",
         "docs/decisions/AD-0007-ai-integration.md",
-        "docs/contracts/proto/arcforges/node/v1/integrations.proto"
+        "docs/contracts/proto/arcforges/node/v1/integrations.proto",
+        "docs/product/product-definition.md",
+        "docs/experience/cli.md"
       ],
       "requirements": [
         "R-AI-003",
@@ -2468,7 +2480,7 @@
         "Real probes in Claude Code and Codex on the workstation recorded (F-A01)",
         "Plugin without the node prints install guidance",
         "No plan or page presents connecting MCP alone as intercepting commands",
-        "Integration pages and the coverage report list the release-1 supported operations and the gaps of product definition §9, and never present instructions to the client as interception (R-AI-011)"
+        "`arcforges coverage` and the plugins' status output print the release coverage statement (product definition §9) next to the session's facts, and never present instructions to the client as interception (R-AI-011)"
       ],
       "verification": {
         "author": [
@@ -2642,24 +2654,27 @@
       "objective": "Complete the local Desktop pages.",
       "scope": [
         "D-06 sessions, D-07 session detail, D-08 findings, D-09 approvals, D-10 workspaces, D-11 storage, D-12 caches, D-13 toolchains, D-14 integrations, D-17 policy, D-19 diagnostics (without upload), D-20 settings, D-22 about",
-        "D-06 and D-07 managed share and routing modes; D-10 concurrency mode, the archive dialog with the ignored-file decision, archives and restore; D-11 limit kinds and volume levels; D-14 routing modes with the coverage map and the copy that MCP alone routes nothing"
+        "D-06 and D-07 managed share and routing modes; D-10 concurrency mode, the archive dialog with the ignored-file decision, archives and restore; D-11 limit kinds and volume levels; D-14 routing modes with the coverage map, the release coverage statement and the copy that MCP alone routes nothing"
       ],
       "out_of_scope": [
-        "D-15 LAN (AF-LAN-01), D-16 account (AF-CLD-02), D-18 updates (AF-DIST-02), bundle upload (AF-SUP-01)"
+        "D-15 LAN (AF-LAN-01), the D-12 LAN sharing section (AF-LAN-03), D-16 account (AF-CLD-02), D-18 updates (AF-DIST-02), bundle upload (AF-SUP-01)"
       ],
       "design_refs": [
-        "docs/experience/desktop.md"
+        "docs/experience/desktop.md",
+        "docs/product/product-definition.md"
       ],
       "requirements": [
         "R-UX-001",
-        "R-UX-006"
+        "R-UX-006",
+        "R-AI-011"
       ],
       "deliverables": [
         "Desktop local pages"
       ],
       "acceptance": [
         "Headless UI tests per page and state",
-        "Accessibility assertions"
+        "Accessibility assertions",
+        "D-14 shows the release coverage statement (product definition §9) beside the routing modes and the coverage map (R-AI-011)"
       ],
       "verification": {
         "author": [
@@ -2721,7 +2736,8 @@
       ],
       "depends_on": [
         "AF-SEC-01",
-        "AF-DESK-01"
+        "AF-DESK-01",
+        "AF-TOOL-01"
       ],
       "objective": "Let users enable LAN features, discover and pair machines, and see peer status.",
       "scope": [
@@ -2759,7 +2775,7 @@
         "Unpaired identities reach only Hello and Pairing; blocked identities reach nothing",
         "DNS-SD registration and browsing on Windows 11 and WSL2 (F-T03)",
         "Rate limiting and blocking",
-        "Pairing, status, placement and cache sharing work with no account and the cloud unreachable (R-LAN-002, R-CLOUD-001)"
+        "Pairing and peer status work with no account and with the cloud unreachable (R-LAN-002, R-CLOUD-001)"
       ],
       "verification": {
         "author": [
@@ -2847,7 +2863,8 @@
         "R-LAN-008",
         "R-LAN-010",
         "R-EXE-015",
-        "R-LAN-011"
+        "R-LAN-011",
+        "R-CLOUD-001"
       ],
       "deliverables": [
         "Placement"
@@ -2858,7 +2875,7 @@
         "Remote workspaces never hardlink CAS blobs",
         "Two concurrent remote attempts from one workspace use separate slots (R-LAN-011)",
         "A local edit during a remote run is staged and reported as OUTPUT_CONFLICT, never overwritten by default; returned outputs never delete local files; output application waits for local builds that hold the same tool keys",
-        "Placement needs only a paired peer whose policy allows it: no account or entitlement"
+        "Placement needs only a paired peer whose policy allows it, with no account or entitlement, and works with the cloud unreachable (R-CLOUD-001)"
       ],
       "verification": {
         "author": [
@@ -2917,30 +2934,36 @@
           "paths": [
             "src/ArcForges.Node.Peer/**",
             "src/ArcForges.Node.Toolchains/**",
-            "tests/**"
+            "tests/**",
+            "src/ArcForges.Desktop/**",
+            "src/ArcForges.Desktop.ViewModels/**"
           ]
         }
       ],
       "depends_on": [
         "AF-LAN-01",
         "AF-CACHE-01",
-        "AF-TOOL-02"
+        "AF-TOOL-02",
+        "AF-DESK-02"
       ],
       "objective": "Share compiler caches with trusted peers through the WebDAV subset and the local proxy.",
       "scope": [
         "WebDAV subset on the peer listener; per-peer read/write and quotas",
         "Loopback proxy with bearer; sccache WebDAV configuration",
-        "ccache remote storage: the node serves the helper protocol on a per-user endpoint (`crsh:`), with the loopback HTTP fallback for older ccache (05 section 6)"
+        "ccache remote storage: the node serves the helper protocol on a per-user endpoint (`crsh:`), with the loopback HTTP fallback for older ccache (05 section 6)",
+        "Desktop: the D-12 LAN sharing section (per-peer cache read and write, quotas, hit counts) and the pairing hint while no peer is paired"
       ],
       "out_of_scope": [
         "Dependency-cache sharing (roadmap RM-02) and managed FASTBuild workers (roadmap RM-03)"
       ],
       "design_refs": [
         "docs/architecture/05-toolchains-caches.md",
-        "docs/architecture/09-lan.md"
+        "docs/architecture/09-lan.md",
+        "docs/experience/desktop.md"
       ],
       "requirements": [
-        "R-CACHE-007"
+        "R-CACHE-007",
+        "R-CLOUD-001"
       ],
       "deliverables": [
         "Cache sharing"
@@ -2949,7 +2972,8 @@
         "Real sccache WebDAV client hits through the proxy between two node processes",
         "Real ccache hits through the node's helper endpoint (F-T04)",
         "Writes refused without cache_write",
-        "Cache sharing needs only a paired peer whose policy allows it: no account or entitlement"
+        "Cache sharing needs only a paired peer whose policy allows it, with no account or entitlement, and works with the cloud unreachable (R-CLOUD-001)",
+        "Headless UI tests for the D-12 LAN sharing section, with and without a paired peer"
       ],
       "verification": {
         "author": [
@@ -5087,7 +5111,7 @@
       ],
       "objective": "Prove every journey in closed loop, measure performance, complete the threat-test matrix and hand the acceptance register to the user.",
       "scope": [
-        "Journey suites J-01..J-10 with real core implementations and only the approved external fakes of Design 16 section 5, labelled closed-loop",
+        "Journey suites J-01..J-11 with real core implementations and only the approved external fakes of Design 16 section 5, labelled closed-loop",
         "Full benchmark run against 15",
         "Threat model test matrix complete (R-SEC-004)",
         "Acceptance register updated with exact remaining human steps"
@@ -5119,7 +5143,7 @@
         "All targets met or justified",
         "Register lists every deferred validation with prerequisites and owner",
         "No fake replaces the behaviour under test; results are labelled closed-loop, and every remaining real-world validation stays in the register",
-        "Every supported operation of product definition §9 passes an end-to-end journey test, and every listed gap appears in the coverage report (R-AI-011)"
+        "Every supported operation of product definition §9 passes the journeys in its Verified by column, and D-14, `arcforges coverage` and MCP `session_coverage` show the release coverage statement (R-AI-011)"
       ],
       "verification": {
         "author": [

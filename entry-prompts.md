@@ -20,7 +20,7 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 
 > Implement Plan task `<ID>` (`python tools/plan.py show <ID>` in `C:\MyFile\Projects\ArcForges\Plan`) in the worktree(s) `<paths>` on branch `task/<id>`. Stay inside the task's write scope.
 >
-> Read its design references in ArcForges-Design. Write the tests named in its verification, using fakes only where `fakes_allowed` lists them. Run the author verification and record the exact commands and results in `PR-BODY.md` at the worktree root.
+> Read its design references in ArcForges-Design. Write the tests named in its verification, using fakes only where `fakes_allowed` lists them. Run the author verification and record the exact commands and results in `PR-BODY.md` at the worktree root. Never commit `PR-BODY.md`; the coordinator uses it as the PR body.
 >
 > Do not push, open PRs, merge, deploy or publish. Return a summary: head SHA, files changed, tests run with results, open questions and any blocker needing a human step.
 
@@ -36,7 +36,7 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 
 ## P-4 Resume after an interruption
 
-> Check the ledger for the latest run-gate authorization note; its range is the scope. Without an unfinished authorized range, report status only (P-5). Read the last ledger entries for the active task (`ledger/ledger.jsonl`) and its worktrees (`git status`, `git log`). Re-establish the exact state before acting. Never discard uncommitted work: record what you find in a ledger note first. Then continue with P-1 from the step where the task stopped.
+> Check the ledger for the latest run-gate authorization note; its list of task IDs is the scope. Without an unfinished authorized range, report status only (P-5). Read the last ledger entries for the active task (`ledger/ledger.jsonl`) and its worktrees (`git status`, `git log`). Re-establish the exact state before acting. Never discard uncommitted work: record what you find in a ledger note first. Then continue with P-1 from the step where the task stopped.
 
 ## P-5 Status report only
 

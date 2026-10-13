@@ -10,11 +10,13 @@ Follow [execution-policy.md](execution-policy.md). These steps take one task fro
    - `python tools/plan.py set-state <id> active`
    - `python tools/plan.py ledger <id> started "<one line>"`
    - Commit to a Plan branch `plan/<id>-start`, then PR and merge. State-only record PRs need no independent review (policy §4): the coordinator checks the diff and Plan CI, then merges.
-4. **Create a worktree** per repository in the task's write scope: `<repo>/.worktree/<id-lower>` on branch `task/<id-lower>`, from the repository's current main. Never work in a main checkout.
+4. **Create a worktree** per repository in the task's write scope: `<repo>/.worktree/<id-lower>` on branch `task/<id-lower>`, from `origin/main` after `git fetch`. Never work in a main checkout.
 
 ## 2. Implement
 
-1. Stay inside the task's `repositories[].paths` write scope. A needed change outside it is either a new task proposal (stop and record it) or an explicit scope note in the PR when trivial.
+1. Stay inside the task's `repositories[].paths` write scope.
+   - **Repairs.** A defect in delivered code that prevents this task's acceptance is repaired within the task: in its PR with a scope note when it is small and inside the write paths, otherwise in a separate repair PR in the owning repository, reviewed like a task and recorded in the task's evidence (execution policy §1.6).
+   - **New scope.** Behaviour that no task specifies is a new task proposal: record it in the ledger, report it and do not build it.
    - **Package files.** A task that pins, adds or updates a package may also change the repository's central package file (`Directory.Packages.props`), its lock files and its dependency admission records.
 2. Follow each repository's `AGENTS.md`: locked restores, dependency admission records for new packages, analyzers, AOT settings.
 3. Build vertically. The task's user-visible outcome works end to end. Do not leave disconnected interface shells.
@@ -50,7 +52,7 @@ Run exactly what the task's `verification.author` names. Record in the PR body:
    - **Deploys:** the guarded main-push deploy succeeded.
    - Record the identifiers.
 4. **Record.**
-   - `python tools/plan.py set-state <id> delivered --pr <url> --merge <Repo>@<sha> [--publication "<cohort or deploy id>"]`
+   - `python tools/plan.py set-state <id> delivered --pr <url> --merge <Repo>@<sha> [--publication "<cohort or deploy id>"]`; a multi-repository task repeats `--pr`, `--merge` and `--publication` once per PR, repository and publication
    - `python tools/plan.py ledger <id> delivered "<summary>"`
    - Plan PR, then merge.
 5. **Complete.** When every completion prerequisite holds, including real-environment evidence possible now, run `set-state <id> complete` and add a ledger record. Deferred real-world items stay in the acceptance register.
@@ -60,5 +62,7 @@ Run exactly what the task's `verification.author` names. Record in the PR body:
 
 - **Stopped work.** Leave the worktree and branch in place, and record the exact state (head, uncommitted files, next step) in a ledger `note`. Never discard work.
 - **Resuming.** A later session resumes from that record. Do not restart from scratch if the record is usable.
+- **Unresolved failures without a human step** (for example an external outage beyond bounded retries): return the task to `planned` (`python tools/plan.py set-state <id> planned --reason "…"`) with the ledger note above, so the single active slot is free, and continue with tasks that do not depend on it.
+- **A task outside the authorized range is active:** report it and stop. Resuming, parking or finishing it is the user's decision.
 - **Blockers.** A blocker needing a human step goes into the acceptance register (or as an H item), with its **Blocks** column. When it blocks the task, the coordinator sets the task `blocked` (`python tools/plan.py set-state <id> blocked --blocked-by H-xx --reason "…"`), records it in the ledger, tells the user exactly what is needed, and continues with the next eligible task of the authorized range; the blocked task and its dependents are skipped.
 - **Production activation.** Cloud and Web tasks deploy dark on merge (Design 10 §8), so no production prerequisite blocks an implementation merge. AF-PROD-01 activates the surfaces with the user's approval. Ask the user for the core items H-05, H-06, H-09, H-16, H-19 and H-20, and for H-01, H-02, H-03, H-07 and H-10 for the other surfaces, when AF-ACC-01 starts, so that activation is not held up.

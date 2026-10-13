@@ -4,7 +4,7 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
 
 ## 1. One task at a time
 
-1. Exactly one task in [delivery-graph.json](delivery-graph.json) may be `active`. `python tools/plan.py next` names it, or names the next task to start.
+1. Exactly one task in [delivery-graph.json](delivery-graph.json) may be `active`. `python tools/plan.py next` names it, or names the first eligible task overall. `next` does not know the authorized range: within a range, the next task is the one §1.2 defines.
 2. The next task to start is the first `planned` task **of the authorized range** (§1.5) in serial order whose dependencies are `delivered`, `complete` or `superseded`. The order in the graph is the order of work. Do not reorder, skip or start tasks early. A task whose dependency lies outside the range and is not delivered is not eligible; the coordinator reports it and never implements the dependency.
    - `depends_on` lists only **real** dependencies (a task needs the other's delivered code, contracts or services). The serial order is the file order, not a dependency chain, so one blocked task holds back only the tasks that really need it.
 3. **Delegation.**
@@ -14,10 +14,11 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
 4. **No build slot.** There is no workstation lock and no "retry for a slot". Long checks run once, in the background when practical, and their results are read rather than polled in loops.
 5. **Run gate, then continuous execution** ([AD-0014](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0014-delivery-method.md) §10).
    - No implementation starts until the user authorizes it. The user authorizes work by giving a session the execution prompt ([execution-prompt.md](execution-prompt.md); the user's copy is `C:\MyFile\Projects\ArcForges\ArcForges.md`) with a pasted range of [sequence.md](sequence.md) steps. That range is the authorized scope: only its tasks are delivered, in sequence order, and work ends at its last task.
-   - The coordinator records the authorization as a ledger note (`python tools/plan.py ledger PLAN note "Implementation authorized by the user on <date>: <first ID>–<last ID> (<count> tasks)"`), merged with the first task's start record. A resumed session continues within the range of the latest authorization note. A session with neither a pasted range nor an unfinished authorized range only reports status (entry prompt P-5).
+   - The range's scope is the Task column of the pasted rows; IDs in *Depends on* are prerequisites, never scope. The coordinator records the authorization as a ledger note that lists every task ID in scope (`python tools/plan.py ledger PLAN note "Implementation authorized by the user on <date>: <ID>, <ID>, … (<count> tasks; sequence rows <first #>–<last #>)"`), merged with the first task's start record. A resumed session continues within the ID list of the latest authorization note. A session with neither a pasted range nor an unfinished authorized range only reports status (entry prompt P-5).
    - Within the range, the coordinator delivers eligible tasks one after another. Serial means one task at a time, not one task per session: it reports each delivery and continues with the next eligible task in the range without asking to continue. Tasks outside the range are never started, even when `plan.py next` names one.
    - A `blocked` task is skipped, not a reason to stop.
-   - It stops only when an outward-facing approval is needed, the authorized scope is complete, no eligible task remains, a decision only the user can make is required, or the user says stop. It then reports where it stopped and why.
+   - It stops only when an outward-facing approval is needed, the authorized scope is complete, no eligible task remains, a task outside the range is active, a decision only the user can make is required, or the user says stop. It then reports where it stopped and why.
+6. **Repairs versus new scope.** A defect in delivered code, in any repository, that prevents the current task's acceptance is repaired within that task: in its PR with a scope note when it is small and inside the task's write paths, otherwise in a separate repair PR in the owning repository, reviewed like a task and recorded in the task's evidence. A repair restores specified behaviour and adds none. Only behaviour that no task specifies becomes a new task proposal, which the coordinator records and reports without building it.
 
 ## 2. Task states
 
@@ -53,7 +54,7 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
   - Cloudflare only through repository scripts; `workers.dev` and previews stay off.
   - **Dark deploys.** Cloud and Web merges deploy with the flagship surfaces disabled (Design 10 §8). Implementation delivery never waits for production key material, domains, provisioning or publication approval.
   - **Production activation** is task AF-PROD-01: it needs the user's approval and the production prerequisites, and enables the surfaces one at a time.
-  - Outward-facing changes need the user's explicit approval before they become visible: publication of the public site and web profiles (AF-PROD-01), store listings, and package-manager or plugin publication.
+  - Outward-facing changes need the user's explicit approval before they become visible: publication of the public site and web profiles (AF-PROD-01), store listings, and publication to package managers and plugin marketplaces (winget, Scoop, apt repositories, plugin marketplaces; AR-13). First-party package cohorts published through a repository's main-push publishing are ordinary delivery.
 - **Published versions** are never unpublished, deprecated or deleted.
   - Never pin or admit Contracts `1.0.0-ci.350.1` or DesktopPlatform Build.Policy `1.0.0-ci.124.1`.
   - Never admit a first-party version whose publishing commit is not an ancestor of its producer's main.
