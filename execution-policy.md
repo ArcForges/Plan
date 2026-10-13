@@ -5,7 +5,7 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
 ## 1. One task at a time
 
 1. Exactly one task in [delivery-graph.json](delivery-graph.json) may be `active`. `python tools/plan.py next` names it, or names the next task to start.
-2. The next task to start is the first `planned` task in serial order whose dependencies are `delivered`, `complete` or `superseded`. The order in the graph is the order of work. Do not reorder, skip or start tasks early.
+2. The next task to start is the first `planned` task **of the authorized range** (§1.5) in serial order whose dependencies are `delivered`, `complete` or `superseded`. The order in the graph is the order of work. Do not reorder, skip or start tasks early. A task whose dependency lies outside the range and is not delivered is not eligible; the coordinator reports it and never implements the dependency.
    - `depends_on` lists only **real** dependencies (a task needs the other's delivered code, contracts or services). The serial order is the file order, not a dependency chain, so one blocked task holds back only the tasks that really need it.
 3. **Delegation.**
    - A coordinator session may delegate to **one** worker or reviewer at a time, using **Opus 5.5** only. Never Haiku.
@@ -13,8 +13,9 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
    - A delegate works only in its task's worktree and never pushes, posts, merges or deploys. The coordinator does those (§4).
 4. **No build slot.** There is no workstation lock and no "retry for a slot". Long checks run once, in the background when practical, and their results are read rather than polled in loops.
 5. **Run gate, then continuous execution** ([AD-0014](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0014-delivery-method.md) §10).
-   - No implementation starts until the user authorizes it. The coordinator records the authorization as a ledger note (`python tools/plan.py ledger PLAN note "Implementation authorized by the user on <date>: <scope>"`) in a Plan record PR. A session that finds no such note, and no active task, treats the gate as closed and only reports status (entry prompt P-5).
-   - Once authorized, the coordinator delivers eligible tasks one after another. Serial means one task at a time, not one task per session: it reports each delivery and continues with `plan.py next` without asking to continue.
+   - No implementation starts until the user authorizes it. The user authorizes work by giving a session the execution prompt ([execution-prompt.md](execution-prompt.md); the user's copy is `C:\MyFile\Projects\ArcForges\ArcForges.md`) with a pasted range of [sequence.md](sequence.md) steps. That range is the authorized scope: only its tasks are delivered, in sequence order, and work ends at its last task.
+   - The coordinator records the authorization as a ledger note (`python tools/plan.py ledger PLAN note "Implementation authorized by the user on <date>: <first ID>–<last ID> (<count> tasks)"`), merged with the first task's start record. A resumed session continues within the range of the latest authorization note. A session with neither a pasted range nor an unfinished authorized range only reports status (entry prompt P-5).
+   - Within the range, the coordinator delivers eligible tasks one after another. Serial means one task at a time, not one task per session: it reports each delivery and continues with the next eligible task in the range without asking to continue. Tasks outside the range are never started, even when `plan.py next` names one.
    - A `blocked` task is skipped, not a reason to stop.
    - It stops only when an outward-facing approval is needed, the authorized scope is complete, no eligible task remains, a decision only the user can make is required, or the user says stop. It then reports where it stopped and why.
 

@@ -2,7 +2,7 @@
   "schema": 2,
   "plan": "ArcForges flagship delivery",
   "created": "2026-10-12",
-  "revised": "2026-10-13 (findings review: workspace concurrency, memory and disk guarantees, WSL allocations, infeasible tasks, worktree archives, retry safety, hook hand-off, routing coverage, remote contracts, cloud cost dimensions, console signalling and the Windows 11 floor, continuous serial execution, production activation, release-candidate fakes; revised again after its independent review)",
+  "revised": "2026-10-13 (findings review and its independent review; then the product owner's decisions: local and LAN free, Windows 11 floor, initial LAN scope; LAN delivered before cloud; account-based LAN trust, result-cache restore and MCP over HTTP moved to the roadmap; correlated evidence and supported operations)",
   "policy": "execution-policy.md",
   "design": {
     "repository": "ArcForges/ArcForges-Design",
@@ -56,18 +56,18 @@
     },
     {
       "id": "M9",
-      "title": "Distribution",
-      "outcome": "Users download, install, update and roll back signed artifacts from arcforges.com."
+      "title": "LAN",
+      "outcome": "Paired machines on a LAN share work and compiler caches, free, without an account or a cloud connection."
     },
     {
       "id": "M10",
-      "title": "Cloud platform, account and entitlements",
-      "outcome": "The cloud platform services and account authentication exist; nodes sign in through the browser or a device code, entitlements are enforced offline, and support bundles reach cases."
+      "title": "Distribution",
+      "outcome": "Users download, install, update and roll back signed artifacts from arcforges.com; the free local and LAN product is complete."
     },
     {
       "id": "M11",
-      "title": "LAN",
-      "outcome": "Paired machines on a LAN share work and compiler caches."
+      "title": "Cloud platform, account and entitlements",
+      "outcome": "The cloud platform services and account authentication exist; nodes sign in through the browser or a device code, cloud features are gated by entitlement, and support bundles reach cases."
     },
     {
       "id": "M12",
@@ -1567,7 +1567,8 @@
         "Classifier and segments (07 section 1); process records; phase events",
         "Repeat and stale fingerprints",
         "GetTimeline; DiagnosisService GetReport and ExportRecords; retention and downsampling",
-        "Redaction of records and exports"
+        "Redaction of records and exports",
+        "Correlated evidence per attempt (07 section 1.5): identities, session and agent, workspace, processes, queue reasons in QUEUED segments, phases, resource use, retries and outcome"
       ],
       "out_of_scope": [
         "Findings (AF-DIAG-01)"
@@ -1583,7 +1584,8 @@
         "R-REC-004",
         "R-REC-005",
         "R-SEC-003",
-        "R-OPS-003"
+        "R-OPS-003",
+        "R-REC-006"
       ],
       "deliverables": [
         "Records and reports"
@@ -1592,7 +1594,8 @@
         "TestLoad scenarios produce expected categories with confidences",
         "Repeat and stale detection",
         "Exports validate against the node.v1 JSON mapping",
-        "Seeded secrets never appear in records or exports"
+        "Seeded secrets never appear in records or exports",
+        "A record chain from a session's task leads to its processes, queue reasons, phases, resource use, retries and outcome; collection stays within the overhead and size targets (R-REC-006)"
       ],
       "verification": {
         "author": [
@@ -1947,7 +1950,8 @@
         "Cache registry, compat keys, maintenance lease, quotas and eviction",
         "Content-addressed store with digest verification",
         "CacheService (List, Report, UpdateSettings, Verify); duplicate and per-task restore detection",
-        "Result cache modes per workspace (OFF, OBSERVE, RESTORE)"
+        "Result cache per workspace: OFF and OBSERVE (would-be hits recorded); RESTORE is refused by policy validation (roadmap RM-04)",
+        "Per-attempt cache usage and downloads (CacheUsage, attempt_cache_usage, Attempt.downloaded_bytes) with EXACT or SHARED_WINDOW attribution (07 section 1.5)"
       ],
       "out_of_scope": [
         "LAN serving (AF-LAN-03)"
@@ -1955,7 +1959,8 @@
       "design_refs": [
         "docs/architecture/05-toolchains-caches.md",
         "docs/architecture/04-execution.md",
-        "docs/contracts/proto/arcforges/node/v1/caches.proto"
+        "docs/contracts/proto/arcforges/node/v1/caches.proto",
+        "docs/architecture/07-records-diagnosis-memory.md"
       ],
       "requirements": [
         "R-CACHE-001",
@@ -1964,7 +1969,8 @@
         "R-CACHE-004",
         "R-CACHE-005",
         "R-CACHE-006",
-        "R-CACHE-008"
+        "R-CACHE-008",
+        "R-REC-006"
       ],
       "deliverables": [
         "Cache management"
@@ -1973,7 +1979,8 @@
         "Eviction never removes entries in use",
         "CAS corruption quarantines and refetches",
         "Report shows hits, misses and duplicates from real tool statistics",
-        "RESTORE mode replays a PURE task as a CACHE_RESTORE attempt, never as an execution"
+        "OBSERVE records would-be hits without restoring anything; a policy with RESTORE is refused (roadmap RM-04)",
+        "Each attempt records what it added to and used from each bound cache; concurrent users of one cache are labelled SHARED_WINDOW, never split by guess (R-REC-006)"
       ],
       "verification": {
         "author": [
@@ -2251,7 +2258,8 @@
         "R-AI-006",
         "R-AI-007",
         "R-EXE-005",
-        "R-AI-010"
+        "R-AI-010",
+        "R-AI-011"
       ],
       "deliverables": [
         "Session and routing engine"
@@ -2340,11 +2348,11 @@
       "scope": [
         "SDK AOT decision or in-house stdio JSON-RPC (F-N01)",
         "Tools M-01..M-19 with output schemas and annotations; bounded waits; progress; tasks extension (no tasks/result; stdin through the adapter's attach); error mapping",
-        "Optional local Streamable HTTP with bearer",
         "run tool inputs, outputs and output_conflict: placement any derives inputs (git: tracked and untracked files, not ignored) or refuses with VALIDATION/inputs_required; agents cannot choose overwrite; side-effect assertions follow policy"
       ],
       "out_of_scope": [
-        "Client configuration (AF-AI-02)"
+        "Client configuration (AF-AI-02)",
+        "A local HTTP transport (roadmap RM-05)"
       ],
       "design_refs": [
         "docs/experience/mcp.md",
@@ -2449,7 +2457,8 @@
         "R-AI-004",
         "R-AI-005",
         "R-AI-008",
-        "R-DIST-004"
+        "R-DIST-004",
+        "R-AI-011"
       ],
       "deliverables": [
         "Integration management"
@@ -2458,7 +2467,8 @@
         "Plan/apply/remove against real configuration files preserves unrelated settings",
         "Real probes in Claude Code and Codex on the workstation recorded (F-A01)",
         "Plugin without the node prints install guidance",
-        "No plan or page presents connecting MCP alone as intercepting commands"
+        "No plan or page presents connecting MCP alone as intercepting commands",
+        "Integration pages and the coverage report list the release-1 supported operations and the gaps of product definition §9, and never present instructions to the client as interception (R-AI-011)"
       ],
       "verification": {
         "author": [
@@ -2694,9 +2704,307 @@
       "order": 26
     },
     {
+      "id": "AF-LAN-01",
+      "title": "LAN listener, identity, discovery, pairing and peer status",
+      "milestone": "M9",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Peer/**",
+            "src/ArcForges.Desktop/**",
+            "src/ArcForges.CommandLine/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-SEC-01",
+        "AF-DESK-01"
+      ],
+      "objective": "Let users enable LAN features, discover and pair machines, and see peer status.",
+      "scope": [
+        "mTLS listener on 47820 (any well-formed client certificate at TLS; the interceptor limits unpaired identities to Hello and Pairing and refuses blocked identities everything); node keys and self-signed certificates",
+        "DNS-SD on Windows and the Linux responder on trusted networks; manual addresses",
+        "PeerHandshakeService, PairingService (SAS over fingerprints, no exporter), PeerStatusService; PeerService local API",
+        "Desktop D-15; CLI lan"
+      ],
+      "out_of_scope": [
+        "Placement (AF-LAN-02)",
+        "Account-based trust and cloud discovery hints (roadmap RM-01)"
+      ],
+      "design_refs": [
+        "docs/architecture/09-lan.md",
+        "docs/decisions/AD-0008-lan-trust-and-placement.md",
+        "docs/contracts/proto/arcforges/peer/v1/peer.proto",
+        "docs/contracts/proto/arcforges/node/v1/peers.proto",
+        "docs/experience/desktop.md",
+        "docs/decisions/AD-0015-direction-editions-roadmap.md"
+      ],
+      "requirements": [
+        "R-LAN-001",
+        "R-LAN-002",
+        "R-LAN-003",
+        "R-LAN-004",
+        "R-LAN-009",
+        "R-CLOUD-001"
+      ],
+      "deliverables": [
+        "LAN pairing"
+      ],
+      "acceptance": [
+        "Multi-node closed loop on one machine with real TLS",
+        "SAS protocol unit tests including an interposed relay (MITM)",
+        "Unpaired identities reach only Hello and Pairing; blocked identities reach nothing",
+        "DNS-SD registration and browsing on Windows 11 and WSL2 (F-T03)",
+        "Rate limiting and blocking",
+        "Pairing, status, placement and cache sharing work with no account and the cloud unreachable (R-LAN-002, R-CLOUD-001)"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "PeerProcess (other machines are node processes on the same machine)"
+      ],
+      "future_validation": [
+        "F-T03"
+      ],
+      "acceptance_register": [
+        "AR-03"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "DNS-SD behaves differently across Windows versions and networks (F-T03)",
+          "mitigation": "Manual addresses; Windows 11 is the floor (AD-0002)",
+          "owner": "AF-LAN-01"
+        },
+        {
+          "risk": "SAS comparison is skipped by users",
+          "mitigation": "Both sides must confirm; pinning only after confirmation",
+          "owner": "AF-LAN-01"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 27
+    },
+    {
+      "id": "AF-LAN-02",
+      "title": "Placement and transfer",
+      "milestone": "M9",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Peer/**",
+            "src/ArcForges.Node.Core/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-LAN-01",
+        "AF-WS-01"
+      ],
+      "objective": "Place separate tasks on paired peers with content-addressed transfer, leases and honest failure handling.",
+      "scope": [
+        "Scoring (no double-counted cache warmth); PlacementService; TransferService; remote workspace slots per attempt (lan.max_workspace_slots, default 2) by copy or block clone; output bases recorded at submission; outputs applied under the output paths' exclusive keys with conflict handling (STAGE by default, SKIP_EXISTING, FAIL, OVERWRITE only from HUMAN or SCRIPT callers; never deleting local files) and OUTPUT_CONFLICT (09 section 6); SM-REMOTE-ATTEMPT; executor-side REMOTE tasks"
+      ],
+      "out_of_scope": [
+        "Cache sharing (AF-LAN-03)"
+      ],
+      "design_refs": [
+        "docs/architecture/09-lan.md",
+        "docs/contracts/proto/arcforges/peer/v1/peer.proto",
+        "docs/data/node-store.md"
+      ],
+      "requirements": [
+        "R-LAN-005",
+        "R-LAN-006",
+        "R-LAN-007",
+        "R-LAN-008",
+        "R-LAN-010",
+        "R-EXE-015",
+        "R-LAN-011"
+      ],
+      "deliverables": [
+        "Placement"
+      ],
+      "acceptance": [
+        "Closed loop: placement, disconnect, retain, release, preemption, cancellation",
+        "Transfer dedup and digest verification",
+        "Remote workspaces never hardlink CAS blobs",
+        "Two concurrent remote attempts from one workspace use separate slots (R-LAN-011)",
+        "A local edit during a remote run is staged and reported as OUTPUT_CONFLICT, never overwritten by default; returned outputs never delete local files; output application waits for local builds that hold the same tool keys",
+        "Placement needs only a paired peer whose policy allows it: no account or entitlement"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "PeerProcess"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-03"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Placement misestimates duration",
+          "mitigation": "Prefer the candidate's own facts; local wins ties",
+          "owner": "AF-LAN-02"
+        },
+        {
+          "risk": "A local edit races with output application",
+          "mitigation": "Apply under the output paths' exclusive keys and compare digests at apply time",
+          "owner": "AF-LAN-02"
+        }
+      ],
+      "size": "L",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 28
+    },
+    {
+      "id": "AF-LAN-03",
+      "title": "LAN cache sharing",
+      "milestone": "M9",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/ArcForges.Node.Peer/**",
+            "src/ArcForges.Node.Toolchains/**",
+            "tests/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-LAN-01",
+        "AF-CACHE-01",
+        "AF-TOOL-02"
+      ],
+      "objective": "Share compiler caches with trusted peers through the WebDAV subset and the local proxy.",
+      "scope": [
+        "WebDAV subset on the peer listener; per-peer read/write and quotas",
+        "Loopback proxy with bearer; sccache WebDAV configuration",
+        "ccache remote storage: the node serves the helper protocol on a per-user endpoint (`crsh:`), with the loopback HTTP fallback for older ccache (05 section 6)"
+      ],
+      "out_of_scope": [
+        "Dependency-cache sharing (roadmap RM-02) and managed FASTBuild workers (roadmap RM-03)"
+      ],
+      "design_refs": [
+        "docs/architecture/05-toolchains-caches.md",
+        "docs/architecture/09-lan.md"
+      ],
+      "requirements": [
+        "R-CACHE-007"
+      ],
+      "deliverables": [
+        "Cache sharing"
+      ],
+      "acceptance": [
+        "Real sccache WebDAV client hits through the proxy between two node processes",
+        "Real ccache hits through the node's helper endpoint (F-T04)",
+        "Writes refused without cache_write",
+        "Cache sharing needs only a paired peer whose policy allows it: no account or entitlement"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and AOT publish of affected components",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
+        ]
+      },
+      "fakes_allowed": [
+        "PeerProcess"
+      ],
+      "future_validation": [
+        "F-T04"
+      ],
+      "acceptance_register": [
+        "AR-03"
+      ],
+      "human_prerequisites": [
+        "H-11"
+      ],
+      "risks": [
+        {
+          "risk": "Cache poisoning through a writable peer cache",
+          "mitigation": "cache_write off by default and explicit per trusted peer",
+          "owner": "AF-LAN-03"
+        },
+        {
+          "risk": "The ccache helper protocol differs from the manual, or ccache removes the HTTP backend (A-T03, F-T04)",
+          "mitigation": "Verify against the installed ccache early; the loopback HTTP fallback covers older versions",
+          "owner": "AF-LAN-03"
+        }
+      ],
+      "size": "M",
+      "notes": "",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 29
+    },
+    {
       "id": "AF-DIST-01",
       "title": "Installers and release artifacts",
-      "milestone": "M9",
+      "milestone": "M10",
       "state": "planned",
       "repositories": [
         {
@@ -2801,12 +3109,12 @@
         "publications": [],
         "ledger": null
       },
-      "order": 27
+      "order": 30
     },
     {
       "id": "AF-DIST-02",
       "title": "Updater, rollback, store migration rules, Updates page and package manifests",
-      "milestone": "M9",
+      "milestone": "M10",
       "state": "planned",
       "repositories": [
         {
@@ -2901,12 +3209,12 @@
         "publications": [],
         "ledger": null
       },
-      "order": 28
+      "order": 31
     },
     {
       "id": "AF-WEB-01",
       "title": "Public site for ArcForges",
-      "milestone": "M9",
+      "milestone": "M10",
       "state": "planned",
       "repositories": [
         {
@@ -2945,7 +3253,8 @@
       ],
       "acceptance": [
         "Site builds with no JavaScript; budgets pass; accessibility checks pass",
-        "Merging changes nothing the public sees: the guarded deploy keeps the current pages while public_site is off; the new site is published only by AF-PROD-01 after the user approves its content"
+        "Merging changes nothing the public sees: the guarded deploy keeps the current pages while public_site is off; the new site is published only by AF-PROD-01 after the user approves its content",
+        "W-03 states that everything local and on the LAN is free and that Pro is the cloud services (product definition §5)"
       ],
       "verification": {
         "author": [
@@ -2989,12 +3298,12 @@
         "publications": [],
         "ledger": null
       },
-      "order": 29
+      "order": 32
     },
     {
       "id": "AF-CLD-01",
       "title": "Flagship cloud host profile, fleet D1 module, product ID migration, key handling and local stack",
-      "milestone": "M10",
+      "milestone": "M11",
       "state": "planned",
       "repositories": [
         {
@@ -3016,7 +3325,7 @@
       "scope": [
         "Host profile composition (C-10)",
         "Physical/manifest/fleet.json and generated migration; productId table-rebuild migration (arcforges-node, arcforges-mobile)",
-        "fleet_signing_key handling (command, entitlement, relay HMAC, Node Issuing CA); secret binding names only",
+        "fleet_signing_key handling (command, entitlement, relay HMAC); secret binding names only",
         "Local cloud stack (16 section 3.1): native C# host process, workerd under Miniflare, the Container shim forwarding to the host's loopback port; scripts and documentation",
         "A repository provisioning script that creates the D1 database, the R2 bucket with its lifecycle rules (10 section 3.11) and the Queue, and the binding definitions it writes, tested against the local stack; running it and adding the production bindings belong to AF-PROD-01 (user approval, H-20)",
         "Dark deploy: the host starts without the flagship bindings, readiness reports those modules as not provisioned, and the production migration step reports not applicable (10 section 8)",
@@ -3102,12 +3411,12 @@
         "publications": [],
         "ledger": null
       },
-      "order": 30
+      "order": 33
     },
     {
       "id": "AF-PLAT-01",
       "title": "Cloud platform services: configuration, kill switches, audit and operating budgets",
-      "milestone": "M10",
+      "milestone": "M11",
       "state": "planned",
       "repositories": [
         {
@@ -3211,12 +3520,12 @@
         "publications": [],
         "ledger": null
       },
-      "order": 31
+      "order": 34
     },
     {
       "id": "AF-ID-01",
       "title": "Account authentication: passkeys, e-mail codes, sessions and step-up",
-      "milestone": "M10",
+      "milestone": "M11",
       "state": "planned",
       "repositories": [
         {
@@ -3305,12 +3614,12 @@
         "publications": [],
         "ledger": null
       },
-      "order": 32
+      "order": 35
     },
     {
       "id": "AF-ID-02",
       "title": "Account recovery, deletion, export, devices and security activity",
-      "milestone": "M10",
+      "milestone": "M11",
       "state": "planned",
       "repositories": [
         {
@@ -3329,7 +3638,7 @@
         "Recovery codes and recovery flow; e-mail change",
         "RequestAccountDeletion with the 30-day grace, cancellation and purge job",
         "DataService export jobs",
-        "DeviceService (Register, List, Rename, Revoke with cascade to node certificates and relay tokens); one device per node and per phone",
+        "DeviceService (Register, List, Rename, Revoke with cascade to node credentials and relay tokens); one device per node and per phone",
         "Security activity listing"
       ],
       "out_of_scope": [
@@ -3391,12 +3700,12 @@
         "publications": [],
         "ledger": null
       },
-      "order": 33
+      "order": 36
     },
     {
       "id": "AF-CLD-02",
       "title": "Node enrollment and sign-in",
-      "milestone": "M10",
+      "milestone": "M11",
       "state": "planned",
       "repositories": [
         {
@@ -3496,12 +3805,12 @@
         "publications": [],
         "ledger": null
       },
-      "order": 34
+      "order": 37
     },
     {
       "id": "AF-WEB-02",
       "title": "Account profile",
-      "milestone": "M10",
+      "milestone": "M11",
       "state": "planned",
       "repositories": [
         {
@@ -3581,12 +3890,12 @@
         "publications": [],
         "ledger": null
       },
-      "order": 35
+      "order": 38
     },
     {
       "id": "AF-CLD-03",
-      "title": "Entitlements: endpoints, tokens, offline grace, certificates and gating",
-      "milestone": "M10",
+      "title": "Entitlements: endpoints, tokens and cloud-feature gating",
+      "milestone": "M11",
       "state": "planned",
       "repositories": [
         {
@@ -3608,20 +3917,21 @@
       "depends_on": [
         "AF-CLD-02"
       ],
-      "objective": "Gate Pro features on nodes with signed entitlement tokens that work offline for 14 days and carry revocations.",
+      "objective": "Gate cloud features (remote access and push) with entitlement snapshots and signed tokens that work offline for 14 days; local and LAN features are never gated (AD-0015).",
       "scope": [
         "EntitlementService endpoints (GetSnapshot, Check, ListGrants) and the flagship plan catalogue",
-        "RefreshEntitlementToken, GetEntitlementKeys, IssueNodeCertificate (Node Issuing CA)",
-        "Node-side verification, offline grace, gated features, degradation rules and on-demand refresh triggers"
+        "RefreshEntitlementToken and GetEntitlementKeys (IssueNodeCertificate stays reserved for roadmap RM-01 and is not served)",
+        "Node-side verification, offline grace, cloud-feature degradation rules and on-demand refresh triggers"
       ],
       "out_of_scope": [
         "Commerce (AF-COM-01, AF-CLD-07)",
-        "Peer revocation checks (AF-LAN-01)",
-        "Relay degradation (AF-CLD-04)"
+        "Relay degradation (AF-CLD-04)",
+        "Node certificates and LAN hints (roadmap RM-01)"
       ],
       "design_refs": [
         "docs/decisions/AD-0010-commerce-and-entitlements.md",
-        "docs/architecture/10-cloud.md"
+        "docs/architecture/10-cloud.md",
+        "docs/decisions/AD-0015-direction-editions-roadmap.md"
       ],
       "requirements": [
         "R-CLOUD-001",
@@ -3631,9 +3941,8 @@
         "Entitlement enforcement"
       ],
       "acceptance": [
-        "Expired tokens degrade only gated features; running tasks unaffected",
-        "Revocation lists ride on token refresh",
-        "Certificates issued only to enrolled nodes"
+        "Expired tokens stop only cloud features; local and LAN features never consult them; running tasks are unaffected",
+        "The plan catalogue lists only cloud features (remote.view, remote.control, push)"
       ],
       "verification": {
         "author": [
@@ -3661,11 +3970,6 @@
           "risk": "Clock skew breaks offline token checks",
           "mitigation": "Skew tolerance with tests",
           "owner": "AF-CLD-03"
-        },
-        {
-          "risk": "The production Node Issuing CA root is not yet in custody (H-16)",
-          "mitigation": "Test CA in development; production keys are needed only by AF-PROD-01",
-          "owner": "user"
         }
       ],
       "size": "M",
@@ -3677,12 +3981,12 @@
         "publications": [],
         "ledger": null
       },
-      "order": 36
+      "order": 39
     },
     {
       "id": "AF-SUP-01",
       "title": "Support: cases, access grants and bundles end to end",
-      "milestone": "M10",
+      "milestone": "M11",
       "state": "planned",
       "repositories": [
         {
@@ -3791,300 +4095,6 @@
       ],
       "size": "M",
       "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
-      "blocked_by": [],
-      "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
-        "ledger": null
-      },
-      "order": 37
-    },
-    {
-      "id": "AF-LAN-01",
-      "title": "LAN listener, identity, discovery, pairing and peer status",
-      "milestone": "M11",
-      "state": "planned",
-      "repositories": [
-        {
-          "repo": "ArcForges",
-          "paths": [
-            "src/ArcForges.Node.Peer/**",
-            "src/ArcForges.Desktop/**",
-            "src/ArcForges.CommandLine/**",
-            "tests/**"
-          ]
-        }
-      ],
-      "depends_on": [
-        "AF-SEC-01",
-        "AF-CLD-03"
-      ],
-      "objective": "Let users enable LAN features, discover and pair machines, and see peer status.",
-      "scope": [
-        "mTLS listener on 47820 (any well-formed client certificate at TLS; revoked account certificates refused; interceptor limits unpaired identities to Hello and Pairing); node keys and certificates (self-signed and account CA)",
-        "DNS-SD on Windows and the Linux responder on trusted networks; manual addresses; account hints (off by default)",
-        "PeerHandshakeService, PairingService (SAS over fingerprints, no exporter), PeerStatusService; PeerService local API",
-        "Desktop D-15; CLI lan"
-      ],
-      "out_of_scope": [
-        "Placement (AF-LAN-02)"
-      ],
-      "design_refs": [
-        "docs/architecture/09-lan.md",
-        "docs/decisions/AD-0008-lan-trust-and-placement.md",
-        "docs/contracts/proto/arcforges/peer/v1/peer.proto",
-        "docs/contracts/proto/arcforges/node/v1/peers.proto",
-        "docs/experience/desktop.md"
-      ],
-      "requirements": [
-        "R-LAN-001",
-        "R-LAN-002",
-        "R-LAN-003",
-        "R-LAN-004",
-        "R-LAN-009"
-      ],
-      "deliverables": [
-        "LAN pairing"
-      ],
-      "acceptance": [
-        "Multi-node closed loop on one machine with real TLS",
-        "SAS protocol unit tests including an interposed relay (MITM)",
-        "Revoked account certificates fail the TLS handshake after a token refresh; unpaired identities reach only Hello and Pairing",
-        "DNS-SD registration and browsing on Windows 11 and WSL2 (F-T03)",
-        "Rate limiting and blocking"
-      ],
-      "verification": {
-        "author": [
-          "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
-          "Build, format, analyzers and AOT publish of affected components",
-          "Exact commands and results recorded in the PR"
-        ],
-        "reviewer_distinct": [
-          "Full diff review at the exact head against the design references and acceptance criteria",
-          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
-        ],
-        "hosted_ci": [
-          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
-        ]
-      },
-      "fakes_allowed": [
-        "PeerProcess (other machines are node processes on the same machine)"
-      ],
-      "future_validation": [
-        "F-T03"
-      ],
-      "acceptance_register": [
-        "AR-03"
-      ],
-      "human_prerequisites": [],
-      "risks": [
-        {
-          "risk": "DNS-SD behaves differently across Windows versions and networks (F-T03)",
-          "mitigation": "Manual addresses and account hints; Windows 11 is the floor (AD-0002)",
-          "owner": "AF-LAN-01"
-        },
-        {
-          "risk": "SAS comparison is skipped by users",
-          "mitigation": "Both sides must confirm; pinning only after confirmation",
-          "owner": "AF-LAN-01"
-        }
-      ],
-      "size": "L",
-      "notes": "",
-      "blocked_by": [],
-      "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
-        "ledger": null
-      },
-      "order": 38
-    },
-    {
-      "id": "AF-LAN-02",
-      "title": "Placement and transfer",
-      "milestone": "M11",
-      "state": "planned",
-      "repositories": [
-        {
-          "repo": "ArcForges",
-          "paths": [
-            "src/ArcForges.Node.Peer/**",
-            "src/ArcForges.Node.Core/**",
-            "tests/**"
-          ]
-        }
-      ],
-      "depends_on": [
-        "AF-LAN-01",
-        "AF-WS-01"
-      ],
-      "objective": "Place separate tasks on paired peers with content-addressed transfer, leases and honest failure handling.",
-      "scope": [
-        "Scoring (no double-counted cache warmth); PlacementService; TransferService; remote workspace slots per attempt (lan.max_workspace_slots, default 2) by copy or block clone; output bases recorded at submission; outputs applied under the output paths' exclusive keys with conflict handling (STAGE by default, SKIP_EXISTING, FAIL, OVERWRITE only from HUMAN or SCRIPT callers; never deleting local files) and OUTPUT_CONFLICT (09 section 6); SM-REMOTE-ATTEMPT; executor-side REMOTE tasks",
-        "Entitlement checks lan.placement and lan.accept"
-      ],
-      "out_of_scope": [
-        "Cache sharing (AF-LAN-03)"
-      ],
-      "design_refs": [
-        "docs/architecture/09-lan.md",
-        "docs/contracts/proto/arcforges/peer/v1/peer.proto",
-        "docs/data/node-store.md"
-      ],
-      "requirements": [
-        "R-LAN-005",
-        "R-LAN-006",
-        "R-LAN-007",
-        "R-LAN-008",
-        "R-LAN-010",
-        "R-EXE-015",
-        "R-LAN-011"
-      ],
-      "deliverables": [
-        "Placement"
-      ],
-      "acceptance": [
-        "Closed loop: placement, disconnect, retain, release, preemption, cancellation",
-        "Transfer dedup and digest verification",
-        "Remote workspaces never hardlink CAS blobs",
-        "Two concurrent remote attempts from one workspace use separate slots (R-LAN-011)",
-        "A local edit during a remote run is staged and reported as OUTPUT_CONFLICT, never overwritten by default; returned outputs never delete local files; output application waits for local builds that hold the same tool keys"
-      ],
-      "verification": {
-        "author": [
-          "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
-          "Build, format, analyzers and AOT publish of affected components",
-          "Exact commands and results recorded in the PR"
-        ],
-        "reviewer_distinct": [
-          "Full diff review at the exact head against the design references and acceptance criteria",
-          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
-        ],
-        "hosted_ci": [
-          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
-        ]
-      },
-      "fakes_allowed": [
-        "PeerProcess"
-      ],
-      "future_validation": [],
-      "acceptance_register": [
-        "AR-03"
-      ],
-      "human_prerequisites": [],
-      "risks": [
-        {
-          "risk": "Placement misestimates duration",
-          "mitigation": "Prefer the candidate's own facts; local wins ties",
-          "owner": "AF-LAN-02"
-        },
-        {
-          "risk": "A local edit races with output application",
-          "mitigation": "Apply under the output paths' exclusive keys and compare digests at apply time",
-          "owner": "AF-LAN-02"
-        }
-      ],
-      "size": "L",
-      "notes": "",
-      "blocked_by": [],
-      "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
-        "ledger": null
-      },
-      "order": 39
-    },
-    {
-      "id": "AF-LAN-03",
-      "title": "LAN cache sharing",
-      "milestone": "M11",
-      "state": "planned",
-      "repositories": [
-        {
-          "repo": "ArcForges",
-          "paths": [
-            "src/ArcForges.Node.Peer/**",
-            "src/ArcForges.Node.Toolchains/**",
-            "tests/**"
-          ]
-        }
-      ],
-      "depends_on": [
-        "AF-LAN-01",
-        "AF-CACHE-01",
-        "AF-TOOL-02"
-      ],
-      "objective": "Share compiler caches with trusted peers through the WebDAV subset and the local proxy.",
-      "scope": [
-        "WebDAV subset on the peer listener; per-peer read/write and quotas",
-        "Loopback proxy with bearer; sccache WebDAV configuration",
-        "ccache remote storage: the node serves the helper protocol on a per-user endpoint (`crsh:`), with the loopback HTTP fallback for older ccache (05 section 6)",
-        "Entitlement lan.cache"
-      ],
-      "out_of_scope": [
-        "Dependency caches (NuGet, npm, Cargo, pip) over the LAN and FASTBuild worker governance: launch decisions (R-CACHE-007, product definition non-goals)"
-      ],
-      "design_refs": [
-        "docs/architecture/05-toolchains-caches.md",
-        "docs/architecture/09-lan.md"
-      ],
-      "requirements": [
-        "R-CACHE-007"
-      ],
-      "deliverables": [
-        "Cache sharing"
-      ],
-      "acceptance": [
-        "Real sccache WebDAV client hits through the proxy between two node processes",
-        "Real ccache hits through the node's helper endpoint (F-T04)",
-        "Writes refused without cache_write"
-      ],
-      "verification": {
-        "author": [
-          "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
-          "Build, format, analyzers and AOT publish of affected components",
-          "Exact commands and results recorded in the PR"
-        ],
-        "reviewer_distinct": [
-          "Full diff review at the exact head against the design references and acceptance criteria",
-          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
-        ],
-        "hosted_ci": [
-          "Hosted CI of each touched repository (build, unit, contract, AOT publish, packaging, security scans)"
-        ]
-      },
-      "fakes_allowed": [
-        "PeerProcess"
-      ],
-      "future_validation": [
-        "F-T04"
-      ],
-      "acceptance_register": [
-        "AR-03"
-      ],
-      "human_prerequisites": [
-        "H-11"
-      ],
-      "risks": [
-        {
-          "risk": "Cache poisoning through a writable peer cache",
-          "mitigation": "cache_write off by default and explicit per trusted peer",
-          "owner": "AF-LAN-03"
-        },
-        {
-          "risk": "The ccache helper protocol differs from the manual, or ccache removes the HTTP backend (A-T03, F-T04)",
-          "mitigation": "Verify against the installed ccache early; the loopback HTTP fallback covers older versions",
-          "owner": "AF-LAN-03"
-        }
-      ],
-      "size": "M",
-      "notes": "",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4497,7 +4507,7 @@
       "scope": [
         "CommerceService endpoints: GetCatalogue, CreateCheckoutAttempt, GetPurchaseState, GetSubscription, CancelSubscription, ReactivateSubscription, ListBillingHistory, RequestRefund",
         "Paddle provider: hosted checkout, verified webhooks (raw-body HMAC, inbox dedup), subscription lifecycle and dunning, customer portal links, refunds through the Paddle API",
-        "Plan catalogue for free and pro; commerce.sales_open flag; entitlement grants from Paddle state"
+        "Plan catalogue for free and pro (Pro features are cloud features only: remote.view, remote.control, push; AD-0015); commerce.sales_open flag; entitlement grants from Paddle state"
       ],
       "out_of_scope": [
         "Google Play (AF-CLD-07)",
@@ -5089,7 +5099,8 @@
         "docs/experience/journeys.md",
         "docs/architecture/15-performance-targets.md",
         "docs/architecture/16-testing-strategy.md",
-        "docs/architecture/11-security-privacy.md"
+        "docs/architecture/11-security-privacy.md",
+        "docs/product/product-definition.md"
       ],
       "requirements": [
         "R-PERF-001",
@@ -5097,7 +5108,8 @@
         "R-TEST-001",
         "R-TEST-002",
         "R-TEST-003",
-        "R-UX-006"
+        "R-UX-006",
+        "R-AI-011"
       ],
       "deliverables": [
         "Release-candidate evidence report"
@@ -5106,7 +5118,8 @@
         "All journey suites pass on Windows and WSL2",
         "All targets met or justified",
         "Register lists every deferred validation with prerequisites and owner",
-        "No fake replaces the behaviour under test; results are labelled closed-loop, and every remaining real-world validation stays in the register"
+        "No fake replaces the behaviour under test; results are labelled closed-loop, and every remaining real-world validation stays in the register",
+        "Every supported operation of product definition §9 passes an end-to-end journey test, and every listed gap appears in the coverage report (R-AI-011)"
       ],
       "verification": {
         "author": [

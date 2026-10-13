@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 GRAPH = ROOT / "delivery-graph.json"
 SEQUENCE = ROOT / "sequence.md"
 REGISTER = ROOT / "acceptance-register.md"
+ROADMAP = ROOT / "roadmap.md"
 LEDGER = ROOT / "ledger" / "ledger.jsonl"
 
 STATES = ["planned", "active", "blocked", "delivered", "complete", "superseded"]
@@ -36,6 +37,14 @@ REQUIRED = ["id", "title", "milestone", "order", "state", "repositories", "depen
             "design_refs", "requirements", "deliverables", "acceptance", "verification", "fakes_allowed", "future_validation",
             "acceptance_register", "human_prerequisites", "risks", "size", "notes", "blocked_by", "evidence"]
 LEDGER_KINDS = {"started", "delivered", "complete", "superseded", "note", "plan"}
+# roadmap.md tables: RM rows have 9 columns (ID, Item, Purpose, Why deferred, Prerequisites, Revisit when,
+# Foundations in release 1, References, Status); EX rows have 6 (ID, Idea, Question to answer,
+# What would make it accepted, References, Status).
+RM_COLUMNS = 9
+EX_COLUMNS = 6
+RM_STATUS = re.compile(r"accepted|promoted: AF-[A-Z]+-\d{2}(, AF-[A-Z]+-\d{2})*|dropped: .+")
+EX_STATUS = re.compile(r"exploratory|accepted as RM-\d{2}|dropped: .+")
+ROADMAP_REF = re.compile(r"\b(?:RM|EX)-\d{2}\b")
 
 
 def read(path: Path) -> str:
@@ -57,7 +66,71 @@ def register_ids(path: Path = REGISTER) -> tuple[set[str], set[str]]:
     return ar, hp
 
 
-def validate(graph: dict, design: Path | None = None, register: Path = REGISTER) -> list[str]:
+def roadmap_rows(path: Path = ROADMAP) -> list[tuple[str, list[str]]]:
+    """Rows of the roadmap tables in file order: (ID, cells) for RM-xx and EX-xx rows."""
+    rows: list[tuple[str, list[str]]] = []
+    if not path.exists():
+        return rows
+    for line in read(path).split("\n"):
+        m = re.match(r"^\|\s*((?:RM|EX)-\d{2})\s*\|", line)
+        if m:
+            rows.append((m.group(1), [c.strip() for c in line.strip().strip("|").split("|")]))
+    return rows
+
+
+def validate_roadmap(graph: dict, design: Path | None = None, path: Path = ROADMAP) -> list[str]:
+    """roadmap.md is the only backlog (its section 4): complete rows, valid statuses, existing references."""
+    if not path.exists():
+        return ["roadmap.md is missing"]
+    errors: list[str] = []
+    rows = roadmap_rows(path)
+    ids = [rid for rid, _ in rows]
+    for rid in sorted({i for i in ids if ids.count(i) > 1}):
+        errors.append(f"roadmap: duplicate {rid}")
+    known = set(ids)
+    tasks = {t["id"] for t in graph.get("tasks", [])}
+    reqs: set[str] | None = None
+    adrs: set[str] | None = None
+    if design:
+        reqs = set(re.findall(r"^\|\s*(R-[A-Z]+-\d{3})\s*\|", read(design / "docs" / "product" / "requirements.md"), re.M))
+        adrs = {p.name[:7] for p in (design / "docs" / "decisions").glob("AD-*.md")}
+    for rid, cells in rows:
+        want = RM_COLUMNS if rid.startswith("RM") else EX_COLUMNS
+        if len(cells) != want:
+            errors.append(f"roadmap: {rid} has {len(cells)} columns, expected {want}")
+            continue
+        if any(not c for c in cells):
+            errors.append(f"roadmap: {rid} has an empty column")
+        status = cells[-1]
+        if not (RM_STATUS if rid.startswith("RM") else EX_STATUS).fullmatch(status):
+            errors.append(f"roadmap: {rid} has an invalid status {status!r}")
+        text = " ".join(cells)
+        for tid in sorted(set(re.findall(r"\bAF-[A-Z]+-\d{2}\b", text)) - tasks):
+            errors.append(f"roadmap: {rid} names unknown task {tid}")
+        for ref in sorted(set(re.findall(r"\bRM-\d{2}\b", status)) - known):
+            errors.append(f"roadmap: {rid} names unknown item {ref}")
+        if reqs is not None:
+            for r in sorted(set(re.findall(r"\bR-[A-Z]+-\d{3}\b", text)) - reqs):
+                errors.append(f"roadmap: {rid} names unknown requirement {r}")
+        if adrs is not None:
+            for a in sorted(set(re.findall(r"\bAD-\d{4}\b", text)) - adrs):
+                errors.append(f"roadmap: {rid} names unknown decision {a}")
+    for t in graph.get("tasks", []):
+        for ref in sorted(set(ROADMAP_REF.findall(json.dumps(t, ensure_ascii=False))) - known):
+            errors.append(f"{t['id']}: cites {ref}, which is not in roadmap.md")
+    if design:
+        cited: dict[str, str] = {}
+        for p in sorted((design / "docs").rglob("*")):
+            if p.is_file() and p.suffix in (".md", ".proto", ".json", ".sql"):
+                for ref in ROADMAP_REF.findall(read(p)):
+                    cited.setdefault(ref, p.relative_to(design).as_posix())
+        for ref, where in sorted(cited.items()):
+            if ref not in known:
+                errors.append(f"design {where} cites {ref}, which is not in roadmap.md")
+    return errors
+
+
+def validate(graph: dict, design: Path | None = None, register: Path = REGISTER, roadmap: Path = ROADMAP) -> list[str]:
     errors: list[str] = []
     milestones = {m["id"] for m in graph.get("milestones", [])}
     tasks = graph.get("tasks", [])
@@ -161,6 +234,7 @@ def validate(graph: dict, design: Path | None = None, register: Path = REGISTER)
                     errors.append(f"design register {f} names unknown owner {o}")
                 elif f not in by_id[o]["future_validation"]:
                     errors.append(f"design register {f} names owner {o}, which does not list it")
+    errors += validate_roadmap(graph, design, roadmap)
     return errors
 
 

@@ -2,9 +2,11 @@
 
 Copy-paste prompts for sessions working on this plan. All of them assume [execution-policy.md](execution-policy.md) and [delivery-procedure.md](delivery-procedure.md).
 
-## P-1 Coordinator: deliver tasks continuously
+## P-1 Coordinator: deliver a range of tasks
 
-> You are the ArcForges delivery coordinator. Read `C:\MyFile\Projects\ArcForges\Plan\AGENTS.md`, `execution-policy.md` and `delivery-procedure.md`. Implementation starts only once I have authorized it (the run gate). If the ledger has no authorization note and I authorize implementation in this conversation, record it first (`python tools/plan.py ledger PLAN note "Implementation authorized by the user on <date>: <scope>"`, Plan record PR). If I have not authorized it, report status only (P-5). Run `python tools/plan.py next` in the Plan checkout. If a task is `active`, resume it from its last ledger note. Otherwise start the named task. `blocked` tasks wait for their named prerequisites, and `next` skips them and their dependents.
+Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator prompt; the user's copy is `C:\MyFile\Projects\ArcForges\ArcForges.md`. The user pastes a range of `sequence.md` steps into its §13. That range is the authorized scope. The summary below is for orientation only; the execution prompt is binding.
+
+> You are the ArcForges delivery coordinator. Read `C:\MyFile\Projects\ArcForges\Plan\AGENTS.md`, `execution-policy.md` and `delivery-procedure.md`. Deliver only the tasks of the range I pasted, in sequence order, after recording my authorization as a ledger note. If a task is `active`, resume it from its last ledger note. `blocked` tasks wait for their named prerequisites, and their dependents are skipped.
 >
 > Work strictly serially. You may delegate to one Opus 5.5 worker at a time (never Haiku). Then use one independent Opus 5.5 reviewer, after the author.
 >
@@ -12,7 +14,7 @@ Copy-paste prompts for sessions working on this plan. All of them assume [execut
 >
 > Ask me before any outward-facing publication. If a missing human prerequisite blocks a task (the register's Blocks column), set the task `blocked` with that ID, tell me exactly what is needed, and continue with the next eligible task. Other prerequisites never block: use the task's fakes or skip that leg with a stated reason. Cloud and Web merges deploy dark; production activation is AF-PROD-01.
 >
-> After each delivery, report what was delivered, the evidence links and the acceptance-register entries touched, then continue with `plan.py next` without waiting for me. Stop only when an outward-facing approval is needed, the scope I authorized is complete, no eligible task remains, a decision only I can make is required, or I say stop; then report where you stopped and why.
+> After each delivery, report what was delivered, the evidence links and the acceptance-register entries touched, then continue with the next eligible task of the range without waiting for me. Stop only when an outward-facing approval is needed, the range is complete, no eligible task remains in it, a decision only I can make is required, or I say stop; then report where you stopped and why.
 
 ## P-2 Worker: implement one task (delegated)
 
@@ -34,7 +36,7 @@ Copy-paste prompts for sessions working on this plan. All of them assume [execut
 
 ## P-4 Resume after an interruption
 
-> Check the ledger for the run-gate authorization note; without it, report status only (P-5). Read the last ledger entries for the active task (`ledger/ledger.jsonl`) and its worktrees (`git status`, `git log`). Re-establish the exact state before acting. Never discard uncommitted work: record what you find in a ledger note first. Then continue with P-1 from the step where the task stopped.
+> Check the ledger for the latest run-gate authorization note; its range is the scope. Without an unfinished authorized range, report status only (P-5). Read the last ledger entries for the active task (`ledger/ledger.jsonl`) and its worktrees (`git status`, `git log`). Re-establish the exact state before acting. Never discard uncommitted work: record what you find in a ledger note first. Then continue with P-1 from the step where the task stopped.
 
 ## P-5 Status report only
 

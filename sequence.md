@@ -95,40 +95,40 @@ Outcome: The Desktop app shows and controls all local features.
 | 25 | AF-DESK-01 | Desktop shell and core pages | ArcForges | AF-REC-01, AF-SEC-01 | L | planned |
 | 26 | AF-DESK-02 | Desktop remaining local pages | ArcForges | AF-DESK-01, AF-AI-02 | L | planned |
 
-## M9 — Distribution
+## M9 — LAN
 
-Outcome: Users download, install, update and roll back signed artifacts from arcforges.com.
-
-| # | Task | Title | Repositories | Depends on | Size | State |
-|---|---|---|---|---|---|---|
-| 27 | AF-DIST-01 | Installers and release artifacts | ArcForges | AF-DESK-01 | L | planned |
-| 28 | AF-DIST-02 | Updater, rollback, store migration rules, Updates page and package manifests | ArcForges | AF-DIST-01 | L | planned |
-| 29 | AF-WEB-01 | Public site for ArcForges | Web | AF-DIST-01 | M | planned |
-
-## M10 — Cloud platform, account and entitlements
-
-Outcome: The cloud platform services and account authentication exist; nodes sign in through the browser or a device code, entitlements are enforced offline, and support bundles reach cases.
+Outcome: Paired machines on a LAN share work and compiler caches, free, without an account or a cloud connection.
 
 | # | Task | Title | Repositories | Depends on | Size | State |
 |---|---|---|---|---|---|---|
-| 30 | AF-CLD-01 | Flagship cloud host profile, fleet D1 module, product ID migration, key handling and local stack | Cloud | AF-CON-01 | M | planned |
-| 31 | AF-PLAT-01 | Cloud platform services: configuration, kill switches, audit and operating budgets | Cloud | AF-CLD-01 | M | planned |
-| 32 | AF-ID-01 | Account authentication: passkeys, e-mail codes, sessions and step-up | Cloud | AF-PLAT-01 | L | planned |
-| 33 | AF-ID-02 | Account recovery, deletion, export, devices and security activity | Cloud | AF-ID-01 | M | planned |
-| 34 | AF-CLD-02 | Node enrollment and sign-in | Cloud, ArcForges | AF-ID-02, AF-DP-02, AF-NODE-01 | L | planned |
-| 35 | AF-WEB-02 | Account profile | Web | AF-CLD-02 | M | planned |
-| 36 | AF-CLD-03 | Entitlements: endpoints, tokens, offline grace, certificates and gating | Cloud, ArcForges | AF-CLD-02 | M | planned |
-| 37 | AF-SUP-01 | Support: cases, access grants and bundles end to end | ArcForges, Cloud, Web | AF-CLD-02, AF-PLAT-01 | M | planned |
+| 27 | AF-LAN-01 | LAN listener, identity, discovery, pairing and peer status | ArcForges | AF-SEC-01, AF-DESK-01 | L | planned |
+| 28 | AF-LAN-02 | Placement and transfer | ArcForges | AF-LAN-01, AF-WS-01 | L | planned |
+| 29 | AF-LAN-03 | LAN cache sharing | ArcForges | AF-LAN-01, AF-CACHE-01, AF-TOOL-02 | M | planned |
 
-## M11 — LAN
+## M10 — Distribution
 
-Outcome: Paired machines on a LAN share work and compiler caches.
+Outcome: Users download, install, update and roll back signed artifacts from arcforges.com; the free local and LAN product is complete.
 
 | # | Task | Title | Repositories | Depends on | Size | State |
 |---|---|---|---|---|---|---|
-| 38 | AF-LAN-01 | LAN listener, identity, discovery, pairing and peer status | ArcForges | AF-SEC-01, AF-CLD-03 | L | planned |
-| 39 | AF-LAN-02 | Placement and transfer | ArcForges | AF-LAN-01, AF-WS-01 | L | planned |
-| 40 | AF-LAN-03 | LAN cache sharing | ArcForges | AF-LAN-01, AF-CACHE-01, AF-TOOL-02 | M | planned |
+| 30 | AF-DIST-01 | Installers and release artifacts | ArcForges | AF-DESK-01 | L | planned |
+| 31 | AF-DIST-02 | Updater, rollback, store migration rules, Updates page and package manifests | ArcForges | AF-DIST-01 | L | planned |
+| 32 | AF-WEB-01 | Public site for ArcForges | Web | AF-DIST-01 | M | planned |
+
+## M11 — Cloud platform, account and entitlements
+
+Outcome: The cloud platform services and account authentication exist; nodes sign in through the browser or a device code, cloud features are gated by entitlement, and support bundles reach cases.
+
+| # | Task | Title | Repositories | Depends on | Size | State |
+|---|---|---|---|---|---|---|
+| 33 | AF-CLD-01 | Flagship cloud host profile, fleet D1 module, product ID migration, key handling and local stack | Cloud | AF-CON-01 | M | planned |
+| 34 | AF-PLAT-01 | Cloud platform services: configuration, kill switches, audit and operating budgets | Cloud | AF-CLD-01 | M | planned |
+| 35 | AF-ID-01 | Account authentication: passkeys, e-mail codes, sessions and step-up | Cloud | AF-PLAT-01 | L | planned |
+| 36 | AF-ID-02 | Account recovery, deletion, export, devices and security activity | Cloud | AF-ID-01 | M | planned |
+| 37 | AF-CLD-02 | Node enrollment and sign-in | Cloud, ArcForges | AF-ID-02, AF-DP-02, AF-NODE-01 | L | planned |
+| 38 | AF-WEB-02 | Account profile | Web | AF-CLD-02 | M | planned |
+| 39 | AF-CLD-03 | Entitlements: endpoints, tokens and cloud-feature gating | Cloud, ArcForges | AF-CLD-02 | M | planned |
+| 40 | AF-SUP-01 | Support: cases, access grants and bundles end to end | ArcForges, Cloud, Web | AF-CLD-02, AF-PLAT-01 | M | planned |
 
 ## M12 — Remote access
 
