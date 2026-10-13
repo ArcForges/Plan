@@ -3951,7 +3951,7 @@
         "Transfer dedup and digest verification",
         "Remote workspaces never hardlink CAS blobs",
         "Two concurrent remote attempts from one workspace use separate slots (R-LAN-011)",
-        "A local edit during a remote run is staged and reported as OUTPUT_CONFLICT, never overwritten by default; returned outputs never delete local files"
+        "A local edit during a remote run is staged and reported as OUTPUT_CONFLICT, never overwritten by default; returned outputs never delete local files; output application waits for local builds that hold the same tool keys"
       ],
       "verification": {
         "author": [
