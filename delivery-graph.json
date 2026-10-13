@@ -2289,7 +2289,7 @@
         "rewrite-all routes every shell command except passthrough patterns; the managed share is reported, and connecting MCP alone is never counted as interception (R-AI-005)",
         "rewrite-all keeps a leading cd in the client's shell and runs the routed part in that directory (cd sub && <cmd> runs <cmd> in sub), leaves background launches unrouted, and starts light commands without waiting for pool slots; a light command that needs more memory than its estimate is not killed for it",
         "From a routed command, including one from a Claude Code subagent, the session's records lead to its tasks, the agent ID, attempts, processes, queue reasons, cache usage, downloads and outcome (R-REC-006; J-11)",
-        "GetReleaseScope returns the rows of product definition §9 (operation, management, gaps, Verified by), checked against a fixture taken from the Design at its pinned revision (R-AI-011)"
+        "GetReleaseScope returns the rows of product definition §9 (operation, management, gaps, Verified by), checked against a fixture copied from the Design that records the Design commit it came from and is refreshed whenever §9 changes (R-AI-011)"
       ],
       "verification": {
         "author": [

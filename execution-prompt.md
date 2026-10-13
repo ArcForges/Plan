@@ -124,10 +124,10 @@ Follow `delivery-procedure.md`. In short:
 **Delegation.**
 - At most one delegated worker or reviewer at a time, always Opus 5.5, never Haiku. Use the worker prompt P-2 and the reviewer prompt P-3.
 - **Model guarantee.** Delegate only to agents confirmed to run on Opus 5.5.
-  - **How to confirm.** The delegate's reply starts with its model ID (P-2 and P-3 ask for it), and it must be `claude-opus-5-5`.
+  - **How to confirm.** The delegate's reply starts with its model ID (P-2 and P-3 ask for it), and the ID must identify Opus 5.5 (currently `claude-opus-5-5`).
   - **Helpers.** Built-in helper agents (for example search or exploration helpers) may run on a smaller model. Never use them for task work or review.
   - **Unconfirmed worker.** Do not use it; do the work yourself.
-  - **Unconfirmed reviewer.** A review needs a confirmed Opus 5.5 reviewer other than you. Without one, the task is not merged: record that in the ledger and report it.
+  - **Unconfirmed reviewer.** A review needs a confirmed Opus 5.5 reviewer other than you. Without one, the task is not merged: record that in the ledger, report it and stop (§11).
 - Delegates work locally in the task's worktree. Only you push, open PRs, post review records, merge and update the graph and ledger.
 - The worker's `PR-BODY.md` at the worktree root is the PR body's source. Never commit it.
 
@@ -191,6 +191,7 @@ When unsure, prefer the narrower reading. Record the question in the ledger and 
 **Stop only when:**
 - every task in the range is delivered or complete, or has a recorded reason it is not: blocked by a named prerequisite, a dependency outside the range not delivered, returned to planned after an unresolved failure, or superseded;
 - a task outside the range is active (§5);
+- no confirmed Opus 5.5 reviewer is available for a task that is ready for review (§6);
 - an outward-facing step needs the user's approval;
 - a decision only the user can make is required;
 - or the user says stop.
