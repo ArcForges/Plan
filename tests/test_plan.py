@@ -202,6 +202,7 @@ class RoadmapChecks(unittest.TestCase):
         for bad in ("RM-013", "RM-1", "rm-01", "EX-1"):
             errs = self._check(f"| {bad} | a | b | c | d | e | f | g | accepted |")
             self.assertTrue(any("malformed ID" in e for e in errs), bad)
+        self.assertEqual(self._check("| ex-employee note | a |"), [])  # not an item row
 
     def test_references_and_duplicates(self):
         errs = self._check("| RM-01 | a | b | c | d | e | f | AF-NOPE-99 | accepted |")

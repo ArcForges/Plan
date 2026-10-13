@@ -8,7 +8,7 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
 2. The next task to start is the first `planned` task **of the authorized range** (§1.5) in serial order whose dependencies are `delivered`, `complete` or `superseded`. The order in the graph is the order of work. Do not reorder, skip or start tasks early. A task whose dependency lies outside the range and is not delivered is not eligible; the coordinator reports it and never implements the dependency.
    - `depends_on` lists only **real** dependencies (a task needs the other's delivered code, contracts or services). The serial order is the file order, not a dependency chain, so one blocked task holds back only the tasks that really need it.
 3. **Delegation.**
-   - A coordinator session may delegate to **one** worker or reviewer at a time, using **Opus 5.5** only. Never Haiku.
+   - A coordinator session may delegate to **one** worker or reviewer at a time, using **Opus 5.5** only, confirmed by the model ID the delegate reports first. Never Haiku. Without a confirmed Opus 5.5 reviewer, a task is not merged.
    - No parallel research, implementation or review workstreams.
    - A delegate works only in its task's worktree and never pushes, posts, merges or deploys. The coordinator does those (§4).
 4. **No build slot.** There is no workstation lock and no "retry for a slot". Long checks run once, in the background when practical, and their results are read rather than polled in loops.
@@ -18,13 +18,13 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
    - Within the range, the coordinator delivers eligible tasks one after another. Serial means one task at a time, not one task per session: it reports each delivery and continues with the next eligible task in the range without asking to continue. Tasks outside the range are never started, even when `plan.py next` names one.
    - A `blocked` task is skipped, not a reason to stop.
    - It stops only when an outward-facing approval is needed, the authorized scope is complete, no eligible task remains, a task outside the range is active, a decision only the user can make is required, or the user says stop. It then reports where it stopped and why.
-6. **Repairs versus new scope.** A defect in delivered code, in any repository, that prevents the current task's acceptance is repaired within that task: in its PR with a scope note when it is small and inside the task's write paths, otherwise in a separate repair PR in the owning repository, reviewed like a task and recorded in the task's evidence. A repair restores specified behaviour and adds none. Only behaviour that no task specifies becomes a new task proposal, which the coordinator records and reports without building it.
+6. **Repairs versus new scope.** A defect in delivered code, in any repository, that prevents the current task's acceptance is repaired within that task: in its PR with a scope note when it is small and inside the task's write paths, otherwise in a separate repair PR in the owning repository, reviewed like a task and recorded in the task's evidence. A repair restores specified behaviour and adds none. Small changes outside the write paths that the task's own specified scope needs (for example solution entries, wiring, or view models for its pages) go into its PR with a scope note. A larger one first widens the task record through a reviewed Plan PR. Only behaviour that no task specifies becomes a new task proposal, which the coordinator records and reports without building it.
 
 ## 2. Task states
 
 | State | Meaning | Set by |
 |---|---|---|
-| `planned` | Not started | — |
+| `planned` | Not started, or returned after an unresolved failure; then its work stays on its branch, and the ledger note says where | — |
 | `active` | Being implemented | Coordinator, when work starts (`plan.py set-state <id> active` plus a ledger `started` record) |
 | `delivered` | Merged at the reviewed head, published or deployed where applicable, and its own development-stage acceptance met | Coordinator, after merge and publication checks (`--merge REPO@SHA`) |
 | `complete` | Delivered, and every completion prerequisite holds, including the real-environment evidence possible now. Deferred real-world validation is recorded in the acceptance register. | Coordinator |

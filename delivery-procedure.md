@@ -16,6 +16,7 @@ Follow [execution-policy.md](execution-policy.md). These steps take one task fro
 
 1. Stay inside the task's `repositories[].paths` write scope.
    - **Repairs.** A defect in delivered code that prevents this task's acceptance is repaired within the task: in its PR with a scope note when it is small and inside the write paths, otherwise in a separate repair PR in the owning repository, reviewed like a task and recorded in the task's evidence (execution policy §1.6).
+   - **The task's own needs.** Small changes outside the write paths that the task's own specified scope needs (for example solution entries, wiring, or view models for its pages) go into its PR with a scope note. A larger one first widens the task record through a reviewed Plan PR.
    - **New scope.** Behaviour that no task specifies is a new task proposal: record it in the ledger, report it and do not build it.
    - **Package files.** A task that pins, adds or updates a package may also change the repository's central package file (`Directory.Packages.props`), its lock files and its dependency admission records.
 2. Follow each repository's `AGENTS.md`: locked restores, dependency admission records for new packages, analyzers, AOT settings.

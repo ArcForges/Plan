@@ -18,6 +18,8 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 
 ## P-2 Worker: implement one task (delegated)
 
+> Begin your reply with your model ID on its own line.
+>
 > Implement Plan task `<ID>` (`python tools/plan.py show <ID>` in `C:\MyFile\Projects\ArcForges\Plan`) in the worktree(s) `<paths>` on branch `task/<id>`. Stay inside the task's write scope.
 >
 > Read its design references in ArcForges-Design. Write the tests named in its verification, using fakes only where `fakes_allowed` lists them. Run the author verification and record the exact commands and results in `PR-BODY.md` at the worktree root. Never commit `PR-BODY.md`; the coordinator uses it as the PR body.
@@ -26,6 +28,8 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 
 ## P-3 Reviewer: independent exact-head review
 
+> Begin your reply with your model ID on its own line.
+>
 > Review Plan task `<ID>` at head `<SHA>` in `<worktree>`.
 > 1. Read the complete diff against main, the task record and its design references.
 > 2. Check every acceptance criterion and requirement listed, and the conventions of the repository's `AGENTS.md`.

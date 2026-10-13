@@ -80,7 +80,7 @@ In the Design: `docs/README.md`, then:
    - Merges happen on GitHub, so local main checkouts fall behind. Read the Plan and Design from a clean main checkout after `git pull --ff-only`, or from a worktree on `origin/main`.
    - Never edit a main checkout. A main checkout with local changes or commits is not used; report it.
    - Quote Windows paths, or write them with forward slashes, so Git Bash keeps them intact.
-2. **Plan state.** In the Plan, run `python tools/plan.py validate --design "C:/MyFile/Projects/ArcForges/ArcForges-Design"` and `python tools/plan.py next`, and read the last ledger entries (`ledger/ledger.jsonl`). `next` does not know your range: it names the first eligible task overall.
+2. **Plan state.** In the Plan, run `python tools/plan.py validate --design "<Design checkout or worktree at origin/main>"` (normally `C:/MyFile/Projects/ArcForges/ArcForges-Design` after `git pull --ff-only`) and `python tools/plan.py next`, and read the last ledger entries (`ledger/ledger.jsonl`). `next` does not know your range: it names the first eligible task overall.
 3. Classify each task in the range:
    - **Delivered or complete:** verify the evidence (the merges are on `main`, and the publication or deployment happened where the task needs it). Then skip it. Never redo it.
    - **Active, in your range:** resume it from its last ledger note, worktree, branch and PR. Never discard uncommitted work; record what you find first.
@@ -123,7 +123,11 @@ Follow `delivery-procedure.md`. In short:
 
 **Delegation.**
 - At most one delegated worker or reviewer at a time, always Opus 5.5, never Haiku. Use the worker prompt P-2 and the reviewer prompt P-3.
-- **Model guarantee.** Delegate only to agents that run on Opus 5.5. Built-in helper agents (for example search or exploration helpers) may run on a smaller model: never use them for task work or review. If you cannot confirm a delegate's model, do the work yourself.
+- **Model guarantee.** Delegate only to agents confirmed to run on Opus 5.5.
+  - **How to confirm.** The delegate's reply starts with its model ID (P-2 and P-3 ask for it), and it must be `claude-opus-5-5`.
+  - **Helpers.** Built-in helper agents (for example search or exploration helpers) may run on a smaller model. Never use them for task work or review.
+  - **Unconfirmed worker.** Do not use it; do the work yourself.
+  - **Unconfirmed reviewer.** A review needs a confirmed Opus 5.5 reviewer other than you. Without one, the task is not merged: record that in the ledger and report it.
 - Delegates work locally in the task's worktree. Only you push, open PRs, post review records, merge and update the graph and ledger.
 - The worker's `PR-BODY.md` at the worktree root is the PR body's source. Never commit it.
 
@@ -140,6 +144,7 @@ Follow `delivery-procedure.md`. In short:
 
 **Ordinary repairs are within your authority.** Do them without asking:
 - **Defects that block the current task.** A defect in delivered code, in any repository, that prevents the current task's acceptance is repaired within that task. A small fix inside the task's write paths goes into its PR with a scope note. Anything else is a separate repair PR in the owning repository, reviewed like a task, linked from the task's PR and recorded in the task's evidence (`--pr`, `--merge`). A repair restores specified behaviour and adds none.
+- **Your task's own needs outside its write paths.** Small changes outside the write paths that your task's specified scope needs (for example solution entries, wiring, or view models for its pages) go into its PR with a scope note. A larger one first widens the task record through a reviewed Plan PR.
 - tests, build or CI failures that block a task's acceptance criteria;
 - dependency admission records, lock files and pinned versions your tasks need, under each repository's rules;
 - rebasing, resolving conflicts, resuming interrupted work, and repairing records that are out of date;

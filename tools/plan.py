@@ -73,7 +73,7 @@ def roadmap_rows(path: Path = ROADMAP) -> list[tuple[str, list[str]]]:
         return rows
     for line in read(path).split("\n"):
         m = re.match(r"^\|\s*([^|]*?)\s*\|", line)
-        if m and re.match(r"(?i)(rm|ex)-", m.group(1)):
+        if m and re.match(r"(?i)(rm|ex)-\d", m.group(1)):
             rows.append((m.group(1), [c.strip() for c in line.strip().strip("|").split("|")]))
     return rows
 

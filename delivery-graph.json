@@ -2,7 +2,7 @@
   "schema": 2,
   "plan": "ArcForges flagship delivery",
   "created": "2026-10-12",
-  "revised": "2026-10-13 (findings review and its independent review; then the product owner's decisions: local and LAN free, Windows 11 floor, initial LAN scope; LAN delivered before cloud; account-based LAN trust, result-cache restore and MCP over HTTP moved to the roadmap; correlated evidence and supported operations; independent review of that round)",
+  "revised": "2026-10-13 (findings review and its independent review; then the product owner's decisions: local and LAN free, Windows 11 floor, initial LAN scope; LAN delivered before cloud; account-based LAN trust, result-cache restore and MCP over HTTP moved to the roadmap; correlated evidence and supported operations; independent review of that round and its delta)",
   "policy": "execution-policy.md",
   "design": {
     "repository": "ArcForges/ArcForges-Design",
@@ -310,7 +310,13 @@
             "src/**",
             "eng/**",
             "tests/**",
-            "docs/**"
+            "docs/**",
+            "ArcForges.Contracts.slnx",
+            "public/proto/constraints.json",
+            "public/proto/constraints/**",
+            "internal/proto/constraints.json",
+            "internal/proto/constraints/**",
+            "fixtures/**"
           ]
         }
       ],
@@ -1952,7 +1958,8 @@
         "Content-addressed store with digest verification",
         "CacheService (List, Report, UpdateSettings, Verify); duplicate and per-task restore detection",
         "Result cache per workspace: OFF and OBSERVE (action key and output-manifest digest per attempt in result_cache_observation; observations and would-be hits in GetCacheReport); no output blobs are stored; RESTORE is refused by policy validation (roadmap RM-04)",
-        "Per-attempt cache usage and downloads (CacheUsage, attempt_cache_usage, Attempt.downloaded_bytes) with EXACT or SHARED_WINDOW attribution, measured through the size cache within caches.usage_scan_budget_ms, and aggregated with each shared window counted once (07 section 1.5)"
+        "Per-attempt cache usage and downloads (CacheUsage, attempt_cache_usage, Attempt.downloaded_bytes) with EXACT or SHARED_WINDOW attribution, window IDs and baselines; window totals recorded once at close (cache_usage_window); measured within caches.usage_scan_budget_ms (07 section 1.5)",
+        "The incremental size cache of Design 06 section 6 (reused by disk analysis and limits in AF-STOR-01)"
       ],
       "out_of_scope": [
         "LAN serving (AF-LAN-03)"
@@ -1983,7 +1990,8 @@
         "Report shows hits, misses and duplicates from real tool statistics",
         "OBSERVE records action keys and would-be hits without storing outputs or restoring anything; a policy with RESTORE is refused (roadmap RM-04)",
         "Each attempt records what it added to and used from each bound cache; concurrent users of one cache are labelled SHARED_WINDOW, never split by guess (R-REC-006)",
-        "Cache-usage measurement runs in the background within caches.usage_scan_budget_ms and never delays an attempt's result; an exceeded budget leaves bytes_added empty; session totals count each shared window once (15 section 2)"
+        "Cache-usage measurement runs in the background within caches.usage_scan_budget_ms and never delays an attempt's result; an exceeded budget leaves bytes_added, and downloaded_bytes when it is a download cache, empty rather than 0 or a partial sum (15 section 2)",
+        "Overlapping binders of one cache get SHARED_WINDOW entries with one window ID; the window's totals are recorded once when it closes, and node-wide totals count each window once"
       ],
       "verification": {
         "author": [
@@ -2047,7 +2055,8 @@
         "Managed roots, ownership records, quotas labelled by kind (admission threshold, monitored limit, tool-enforced, report-only; 06 section 5), per-attempt tmp with max_attempt_tmp_bytes checked every 15 s (DISK_LIMIT or NOTIFY)",
         "AnalyzeStorage detectors; PlanCleanup, AddExternalPath, ExecuteCleanup with re-validation; per-volume quarantine roots and restore; UpdateRoot",
         "CLI storage commands",
-        "Low-space guard per volume (NORMAL, LOW, CRITICAL; every 5 s; the LOW threshold capped by low_free_cap_bytes): blocking reason disk_space at LOW; freeze or immediate stop at CRITICAL; the store reserve file (64 MiB), released only when a store write fails, and the node state DEGRADED with store_out_of_space"
+        "Low-space guard per volume (NORMAL, LOW, CRITICAL; every 5 s; the LOW threshold capped by low_free_cap_bytes): blocking reason disk_space at LOW; freeze or immediate stop at CRITICAL; the store reserve file (64 MiB), released only when a store write fails, and the node state DEGRADED with store_out_of_space",
+        "Disk analysis and limit monitoring use the size cache built in AF-CACHE-01"
       ],
       "out_of_scope": [
         "Worktrees (AF-WS-01) beyond detection"
@@ -2245,7 +2254,8 @@
       "scope": [
         "`arcforges hook <client> <event>` in exec form for Claude Code and Codex events (no WorktreeCreate or WorktreeRemove hooks); SessionService; correlation through the nearest client-executable ancestor",
         "ClassifyCommand and rewrite construction (`ask` by default; no `--cwd`, so the shell's directory applies; `--client-timeout` from the call, the client default recorded by the probe, none for background calls; hand-off at the client timeout minus the margin with exit 124 and the wait and cancel commands; immediate exit 125 for exceeds_capacity; an interrupt before the hand-off cancels); SubmitTask join_existing with the exact command digest, joining only tasks that have not started; modes observe, guide, rewrite (heavy commands) and rewrite-all with passthrough patterns, shell-state prefixes kept outside, background launches not routed and the light estimate (08 section 4.1); bypass detection",
-        "SessionCoverage with the managed share, the coverage map of 08 section 4.4 and session reports; services stopped with their owner session; CLI session commands"
+        "SessionCoverage with the managed share, the coverage map of 08 section 4.4 and session reports; services stopped with their owner session; CLI session commands",
+        "SessionService.GetReleaseScope: the release coverage statement, the rows of Design product definition §9 for this release"
       ],
       "out_of_scope": [
         "Writing client configuration (AF-AI-02)"
@@ -2255,7 +2265,8 @@
         "docs/decisions/AD-0007-ai-integration.md",
         "docs/contracts/proto/arcforges/node/v1/sessions.proto",
         "docs/decisions/AD-0006-execution-semantics.md",
-        "docs/architecture/07-records-diagnosis-memory.md"
+        "docs/architecture/07-records-diagnosis-memory.md",
+        "docs/product/product-definition.md"
       ],
       "requirements": [
         "R-AI-005",
@@ -2277,7 +2288,8 @@
         "Coverage never claims completeness",
         "rewrite-all routes every shell command except passthrough patterns; the managed share is reported, and connecting MCP alone is never counted as interception (R-AI-005)",
         "rewrite-all keeps a leading cd in the client's shell and runs the routed part in that directory (cd sub && <cmd> runs <cmd> in sub), leaves background launches unrouted, and starts light commands without waiting for pool slots; a light command that needs more memory than its estimate is not killed for it",
-        "From a routed command, including one from a Claude Code subagent, the session's records lead to its tasks, the agent ID, attempts, processes, queue reasons, cache usage, downloads and outcome (R-REC-006; J-11)"
+        "From a routed command, including one from a Claude Code subagent, the session's records lead to its tasks, the agent ID, attempts, processes, queue reasons, cache usage, downloads and outcome (R-REC-006; J-11)",
+        "GetReleaseScope returns the rows of product definition §9 (operation, management, gaps, Verified by), checked against a fixture taken from the Design at its pinned revision (R-AI-011)"
       ],
       "verification": {
         "author": [
@@ -2379,7 +2391,7 @@
         "No call exceeds 55 s",
         "Adapter idle memory and overhead within 15 section 3",
         "placement any from a non-git directory without inputs fails with VALIDATION/inputs_required; an agent's overwrite is refused",
-        "`session_coverage` returns `release_scope`, the release coverage statement, next to the session's observed facts (R-AI-011)"
+        "`session_coverage` returns `release_scope` from GetReleaseScope unchanged, next to the session's observed facts (R-AI-011)"
       ],
       "verification": {
         "author": [
@@ -2452,7 +2464,7 @@
         "`arcforges probe`; probe evaluation; rewrite gating",
         "Claude Code plugin and Codex plugin packages (not published)",
         "Plans per routing mode, including rewrite-all with passthrough patterns; snippets per mode (08 section 6.3); copy stating that connecting MCP alone routes nothing",
-        "`arcforges coverage [--session <id>]`: the release coverage statement (product definition §9), then the session's coverage when given"
+        "`arcforges coverage [--session <id>]`: the release coverage statement from GetReleaseScope, then the session's coverage when given; `arcforges session coverage <id>` ends with a pointer to it"
       ],
       "out_of_scope": [
         "Publishing plugins (AR-13)"
@@ -2480,7 +2492,7 @@
         "Real probes in Claude Code and Codex on the workstation recorded (F-A01)",
         "Plugin without the node prints install guidance",
         "No plan or page presents connecting MCP alone as intercepting commands",
-        "`arcforges coverage` and the plugins' status output print the release coverage statement (product definition §9) next to the session's facts, and never present instructions to the client as interception (R-AI-011)"
+        "`arcforges coverage` prints the release coverage statement from GetReleaseScope, followed by the session's facts when --session is given; `arcforges session coverage <id>` points to it; no output presents instructions to the client as interception (R-AI-011)"
       ],
       "verification": {
         "author": [
@@ -2674,7 +2686,7 @@
       "acceptance": [
         "Headless UI tests per page and state",
         "Accessibility assertions",
-        "D-14 shows the release coverage statement (product definition §9) beside the routing modes and the coverage map (R-AI-011)"
+        "D-14 shows the release coverage statement from GetReleaseScope beside the routing modes and the coverage map, and D-07 links to it (R-AI-011)"
       ],
       "verification": {
         "author": [
@@ -2730,7 +2742,8 @@
             "src/ArcForges.Node.Peer/**",
             "src/ArcForges.Desktop/**",
             "src/ArcForges.CommandLine/**",
-            "tests/**"
+            "tests/**",
+            "src/ArcForges.Desktop.ViewModels/**"
           ]
         }
       ],
@@ -2951,7 +2964,7 @@
         "WebDAV subset on the peer listener; per-peer read/write and quotas",
         "Loopback proxy with bearer; sccache WebDAV configuration",
         "ccache remote storage: the node serves the helper protocol on a per-user endpoint (`crsh:`), with the loopback HTTP fallback for older ccache (05 section 6)",
-        "Desktop: the D-12 LAN sharing section (per-peer cache read and write, quotas, hit counts) and the pairing hint while no peer is paired"
+        "Desktop: the D-12 LAN column and LAN sharing setting (UpdateCacheSettings), with the pairing hint while no peer is paired"
       ],
       "out_of_scope": [
         "Dependency-cache sharing (roadmap RM-02) and managed FASTBuild workers (roadmap RM-03)"
@@ -2973,7 +2986,7 @@
         "Real ccache hits through the node's helper endpoint (F-T04)",
         "Writes refused without cache_write",
         "Cache sharing needs only a paired peer whose policy allows it, with no account or entitlement, and works with the cloud unreachable (R-CLOUD-001)",
-        "Headless UI tests for the D-12 LAN sharing section, with and without a paired peer"
+        "Headless UI tests for the D-12 LAN column and sharing setting, with and without a paired peer"
       ],
       "verification": {
         "author": [
@@ -3148,7 +3161,8 @@
             "src/ArcForges.Supervisor/**",
             "src/ArcForges.Desktop/**",
             "packaging/**",
-            "tests/**"
+            "tests/**",
+            "src/ArcForges.Desktop.ViewModels/**"
           ]
         }
       ],
@@ -3745,7 +3759,8 @@
             "src/ArcForges.Node.CloudLink/**",
             "src/ArcForges.Desktop/**",
             "src/ArcForges.CommandLine/**",
-            "tests/**"
+            "tests/**",
+            "src/ArcForges.Desktop.ViewModels/**"
           ]
         }
       ],
@@ -4020,7 +4035,8 @@
             "src/ArcForges.Node.CloudLink/**",
             "src/ArcForges.Desktop/**",
             "src/ArcForges.CommandLine/**",
-            "tests/**"
+            "tests/**",
+            "src/ArcForges.Desktop.ViewModels/**"
           ]
         },
         {
@@ -5143,7 +5159,7 @@
         "All targets met or justified",
         "Register lists every deferred validation with prerequisites and owner",
         "No fake replaces the behaviour under test; results are labelled closed-loop, and every remaining real-world validation stays in the register",
-        "Every supported operation of product definition §9 passes the journeys in its Verified by column, and D-14, `arcforges coverage` and MCP `session_coverage` show the release coverage statement (R-AI-011)"
+        "Every supported operation of product definition §9 passes the journeys in its Verified by column, and D-14, `arcforges coverage` and MCP `session_coverage` show the same release coverage statement (R-AI-011)"
       ],
       "verification": {
         "author": [
