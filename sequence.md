@@ -74,7 +74,7 @@ Outcome: Disk usage is analyzed and reclaimed safely, and agents get managed wor
 | # | Task | Title | Repositories | Depends on | Size | State |
 |---|---|---|---|---|---|---|
 | 20 | AF-STOR-01 | Managed storage, analysis, two-phase cleanup, quarantine and relocation | ArcForges | AF-CACHE-01 | M | planned |
-| 21 | AF-WS-01 | Workspaces and managed worktrees | ArcForges | AF-STOR-01 | S | planned |
+| 21 | AF-WS-01 | Workspaces and managed worktrees | ArcForges | AF-TOOL-02, AF-STOR-01 | S | planned |
 
 ## M7 — AI integration
 

@@ -1227,7 +1227,7 @@
       ],
       "objective": "Replace the interim FIFO with the admission algorithm and enforce budgets with root and attempt container limits.",
       "scope": [
-        "Pools, priorities, DRR fairness, aging, overcommit rules (03 section 4); CPU demand clamped to B_cpu (compressible); accounted memory max(mem_expected, peak_observed); memory feasibility classes feasible, exceeds_budget and exceeds_capacity, with TASK_INFEASIBLE; one bounded large-task reservation for memory only (backfill from operational memory, lapse after large_task_reservation_max); light routed commands outside pool parallelism limits",
+        "Pools, priorities, DRR fairness, aging, overcommit rules (03 section 4); CPU demand clamped to B_cpu (compressible); accounted memory max(mem_expected, peak_observed); memory feasibility classes feasible, exceeds_budget and exceeds_capacity, with TASK_INFEASIBLE; one bounded large-task reservation for memory or CPU, always satisfiable (backfill from operational memory, lapse after large_task_reservation_max); light routed commands outside pool parallelism limits and reservations; LIGHT and DEFAULT estimates get the unknown-command ceiling (03 section 3)",
         "Enforcement mapping both platforms (03 section 5) and the stated memory guarantees (section 5.4); pressure actions (section 7); task dependencies and service readiness; automatic retries only for asserted classes (AD-0006 section 4: side_effect_source, retry_safety rules, agent assertions only with accept_agent_assertions)",
         "QueueService; PolicyService (document, validation, revisions); SetParallelism",
         "Tool-level concurrency hook for adapters",
@@ -1275,7 +1275,7 @@
         "An exceeds_capacity task never holds a reservation or blocks feasible work and raises TASK_INFEASIBLE; the large-task reservation lapses after large_task_reservation_max (R-RES-005)",
         "Key engine with caller-supplied keys: overlapping exclusive keys wait (exclusive_key), shared keys run together, an exclusive and a shared key conflict, the ancestor and purpose rules hold, and ExplainTask lists the holders (R-EXE-019; adapter keys are tested in AF-TOOL-01 and AF-TOOL-02, SERIAL mode in AF-WS-01)",
         "Retry policy tests per class and assertion source; an agent's PURE or IDEMPOTENT becomes UNKNOWN without accept_agent_assertions; a side-effecting task is not retried after node loss (R-EXE-010)",
-        "A task whose CPU estimate exceeds B_cpu (for example 4,000 millicores on a 4-processor node) starts with the clamped grant and never reserves (R-RES-005)"
+        "A task whose CPU estimate exceeds B_cpu (for example 4,000 millicores on a 4-processor node) starts with the clamped grant on an idle node, and on a busy node takes the reservation instead of being starved by smaller tasks (R-RES-005)"
       ],
       "verification": {
         "author": [
@@ -1750,7 +1750,7 @@
       "objective": "Detect toolchains and manage .NET work with shared NuGet caches and grant-based parallelism.",
       "scope": [
         "Detection of 05 section 1; ToolchainService (List, Detect, ListAdapters, PreviewInvocation)",
-        "Adapter contract with side-effect suggestions, assertions only where the adapter can verify them, and exclusive and shared keys (05 section 2); .NET adapter (NuGet redirection with shared scratch, MSBuild node reuse off, -m:N from the grant, the workspace key ws:<w>:dotnet for build-family operations, shared with --no-build); generic adapter",
+        "Adapter contract with side-effect suggestions, assertions only where the adapter can verify them, and exclusive and shared keys (05 section 2); .NET adapter (NuGet redirection with shared scratch, MSBuild node reuse off, -m:N from the grant, the tool key tool:dotnet:<w> for build-family operations, shared with --no-build); generic adapter",
         "Failure classifiers for .NET",
         "CLI toolchain commands"
       ],
@@ -1779,7 +1779,7 @@
         "Concurrent real restores share caches without errors and without duplicate downloads",
         "Each .NET redirection claim proven by a real run (F-T01 .NET)",
         "No adapter asserts a class it cannot verify: dotnet build, test and restore are UNKNOWN with a suggestion",
-        "Two .NET build-family operations in one workspace run one after the other, including builds of different projects that share referenced projects; dotnet test --no-build runs beside another test run (R-EXE-019)"
+        "The .NET adapter emits tool:dotnet:<w> exclusively for build-family operations and shared for --no-build (tests per operation; ordering of real work in one workspace is proven in AF-WS-01, which brings workspace derivation)"
       ],
       "verification": {
         "author": [
@@ -1871,7 +1871,7 @@
       "acceptance": [
         "Each redirection and concurrency claim proven by a real run where the tool is installed; missing tools recorded with reason (F-T01)",
         "FASTBuild cache precedence, -cachetrim and -j proven with a real FASTBuild build (F-T02)",
-        "Assertions and keys covered per adapter: npm ci without --ignore-scripts, pip install and plain pip download are UNKNOWN; npm test waits for npm ci of the same package; cargo run releases its key when the program starts; git commands that write the index take ws:<w>:git"
+        "Assertions and keys covered per adapter: npm ci without --ignore-scripts, pip install and plain pip download are UNKNOWN; npm installs emit the :deps key exclusively and npm test and run emit it shared; git working-tree writers emit ws:<w> and index-only writers tool:git:<w>; cargo run releases its key when the program starts (workspace ordering is proven in AF-WS-01)"
       ],
       "verification": {
         "author": [
@@ -2132,6 +2132,7 @@
         }
       ],
       "depends_on": [
+        "AF-TOOL-02",
         "AF-STOR-01"
       ],
       "objective": "Register workspaces and create or remove node-managed git worktrees safely.",
@@ -2148,7 +2149,8 @@
         "docs/contracts/proto/arcforges/node/v1/workspaces.proto",
         "docs/data/node-store.md",
         "docs/experience/cli.md",
-        "docs/verification/platform-capabilities.md"
+        "docs/verification/platform-capabilities.md",
+        "docs/architecture/05-toolchains-caches.md"
       ],
       "requirements": [
         "R-STOR-003",
@@ -2161,7 +2163,8 @@
         "Dirty worktrees are never removed silently: staged deletions and renames, unstaged, untracked, binary and intent-to-add changes are archived; an ignored .env needs an explicit decision; an unmerged index or a dirty submodule refuses removal; a forced verification failure removes nothing; a restore reproduces the index and every file exactly (R-STOR-003, L-19)",
         "One worktree per branch",
         "Real git on both platforms",
-        "SERIAL mode runs one managed task of the workspace at a time"
+        "SERIAL mode runs one managed task of the workspace at a time",
+        "With workspace derivation, adapter keys order real work: two .NET build-family operations in one workspace run one after the other while npm work in another directory runs beside them; dotnet test --no-build runs beside another test run; npm test waits for npm ci of the same package; git checkout waits for running builds (R-EXE-019)"
       ],
       "verification": {
         "author": [
@@ -2231,7 +2234,7 @@
       "objective": "Know which AI sessions run what, route heavy commands where safe, detect bypass and report coverage honestly.",
       "scope": [
         "`arcforges hook <client> <event>` in exec form for Claude Code and Codex events (no WorktreeCreate or WorktreeRemove hooks); SessionService; correlation through the nearest client-executable ancestor",
-        "ClassifyCommand and rewrite construction (`ask` by default; `--client-timeout` from the call, the client default recorded by the probe, none for background calls; hand-off at the client timeout minus the margin with exit 124 and the wait and cancel commands; immediate exit 125 for exceeds_capacity; an interrupt before the hand-off cancels); SubmitTask join_existing with the exact command digest and the input-fingerprint rule for running tasks; modes observe, guide, rewrite (heavy commands) and rewrite-all with passthrough patterns, shell-state prefixes kept outside, background launches not routed and the light estimate (08 section 4.1); bypass detection",
+        "ClassifyCommand and rewrite construction (`ask` by default; no `--cwd`, so the shell's directory applies; `--client-timeout` from the call, the client default recorded by the probe, none for background calls; hand-off at the client timeout minus the margin with exit 124 and the wait and cancel commands; immediate exit 125 for exceeds_capacity; an interrupt before the hand-off cancels); SubmitTask join_existing with the exact command digest, joining only tasks that have not started; modes observe, guide, rewrite (heavy commands) and rewrite-all with passthrough patterns, shell-state prefixes kept outside, background launches not routed and the light estimate (08 section 4.1); bypass detection",
         "SessionCoverage with the managed share, the coverage map of 08 section 4.4 and session reports; services stopped with their owner session; CLI session commands"
       ],
       "out_of_scope": [
@@ -2255,12 +2258,12 @@
       ],
       "acceptance": [
         "Hook fixtures captured from real clients drive routing tests",
-        "Rewritten commands are byte-identical in output and exit code when they finish before the client timeout; a scripted client timeout hands off (exit 124; the task keeps running and keeps its queue position); an identical resubmission joins a task that has not started, while a resubmission after a file edit starts a new run; an interrupt before the hand-off cancels it (R-AI-010)",
+        "Rewritten commands are byte-identical in output and exit code when they finish before the client timeout; a scripted client timeout hands off (exit 124; the task keeps running and keeps its queue position); an identical resubmission joins a task that has not started, while a resubmission during the identical task's run starts a new run; an interrupt before the hand-off cancels it (R-AI-010)",
         "Agent roots identified on Windows and WSL2 (F-A02)",
         "Hook p95 <= 50 ms",
         "Coverage never claims completeness",
         "rewrite-all routes every shell command except passthrough patterns; the managed share is reported, and connecting MCP alone is never counted as interception (R-AI-005)",
-        "rewrite-all keeps a leading cd in the client's shell, leaves background launches unrouted, and starts light commands without waiting for pool slots"
+        "rewrite-all keeps a leading cd in the client's shell and runs the routed part in that directory (cd sub && <cmd> runs <cmd> in sub), leaves background launches unrouted, and starts light commands without waiting for pool slots; a light command that needs more memory than its estimate is not killed for it"
       ],
       "verification": {
         "author": [

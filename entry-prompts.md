@@ -12,7 +12,7 @@ Copy-paste prompts for sessions working on this plan. All of them assume [execut
 >
 > Ask me before any outward-facing publication. If a missing human prerequisite blocks a task (the register's Blocks column), set the task `blocked` with that ID, tell me exactly what is needed, and continue with the next eligible task. Other prerequisites never block: use the task's fakes or skip that leg with a stated reason. Cloud and Web merges deploy dark; production activation is AF-PROD-01.
 >
-> After each delivery, report what was delivered, the evidence links and the acceptance-register entries touched, then continue with `plan.py next` without waiting for me. Stop only when an outward-facing approval is needed, no eligible task remains, a decision only I can make is required, or I say stop; then report where you stopped and why.
+> After each delivery, report what was delivered, the evidence links and the acceptance-register entries touched, then continue with `plan.py next` without waiting for me. Stop only when an outward-facing approval is needed, the scope I authorized is complete, no eligible task remains, a decision only I can make is required, or I say stop; then report where you stopped and why.
 
 ## P-2 Worker: implement one task (delegated)
 

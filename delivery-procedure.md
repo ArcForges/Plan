@@ -54,7 +54,7 @@ Run exactly what the task's `verification.author` names. Record in the PR body:
    - `python tools/plan.py ledger <id> delivered "<summary>"`
    - Plan PR, then merge.
 5. **Complete.** When every completion prerequisite holds, including real-environment evidence possible now, run `set-state <id> complete` and add a ledger record. Deferred real-world items stay in the acceptance register.
-6. **Continue.** Report the delivery and go back to §1 with `python tools/plan.py next` (execution policy §1.5). Stop only at a stop point: an outward-facing approval, no eligible task, a decision only the user can make, or the user's instruction.
+6. **Continue.** Report the delivery and go back to §1 with `python tools/plan.py next` (execution policy §1.5). Stop only at a stop point: an outward-facing approval, the authorized scope complete, no eligible task, a decision only the user can make, or the user's instruction.
 
 ## 6. Interruptions
 

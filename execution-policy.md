@@ -16,7 +16,7 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
    - No implementation starts until the user authorizes it. The coordinator records the authorization as a ledger note (`python tools/plan.py ledger PLAN note "Implementation authorized by the user on <date>: <scope>"`) in a Plan record PR. A session that finds no such note, and no active task, treats the gate as closed and only reports status (entry prompt P-5).
    - Once authorized, the coordinator delivers eligible tasks one after another. Serial means one task at a time, not one task per session: it reports each delivery and continues with `plan.py next` without asking to continue.
    - A `blocked` task is skipped, not a reason to stop.
-   - It stops only when an outward-facing approval is needed, no eligible task remains, a decision only the user can make is required, or the user says stop. It then reports where it stopped and why.
+   - It stops only when an outward-facing approval is needed, the authorized scope is complete, no eligible task remains, a decision only the user can make is required, or the user says stop. It then reports where it stopped and why.
 
 ## 2. Task states
 
