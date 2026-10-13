@@ -899,7 +899,7 @@
         "CLI run and tasks commands with exit codes, including `run --client-timeout` and `--join-existing` (exit 124 on hand-off) and `tasks wait --output`",
         "Disk guard in the holder while the node is down (06 section 5): the node heartbeat (run/node-heartbeat) and guard.json written before launch; takeover after storage.guard_takeover_ms; the output limit at the tailer interval; guard-events.jsonl ingested on restart, with limit_enforced_by=GUARD",
         "Adapter launch steps run by the holder in the attempt's jobs before the root process resumes, and end steps after the root exits and before leftover termination (04 section 3)",
-        "Heartbeat from the enforcement loop once recovery is done and the monitors run (instance ID and increasing sequence); guards judge staleness on their own monotonic clock; the supervisor restarts a node whose heartbeat stalls for 30 s; a failing launch step ends the attempt with SPAWN_FAILED"
+        "Heartbeat from the enforcement loop once recovery is done and each monitor has completed a cycle, and only while the cache store answers its probe (instance ID and increasing sequence); guards judge staleness on their own monotonic clock; the supervisor restarts a node whose heartbeat stalls for 30 s, counting from its first heartbeat; a failing launch step ends the attempt with SPAWN_FAILED"
       ],
       "out_of_scope": [
         "Budgets and pools (AF-SCHED-01)",
@@ -947,7 +947,7 @@
         "No attempt or root exceeds its commit limit in the mem-ramp scenario (R-RES-014; 15 section 4)",
         "Node killed while an attempt writes output continuously: the holder takes over within guard_takeover_ms + 1 s and stops the attempt at the output limit within the stated bound; the restarted node records OUTPUT_LIMIT with limit_enforced_by=GUARD (R-STOR-009)",
         "Launch steps run inside the attempt's jobs before the root process, and end steps before leftover termination (synthetic steps; real sccache steps follow in AF-TOOL-02)",
-        "With the node restarting faster than guard_takeover_ms while an attempt writes output, the holder still stops it within the stated bound; a node whose monitors hang stops renewing and is restarted by the supervisor within 30 s; a failing launch step ends the attempt with SPAWN_FAILED (R-STOR-009)"
+        "With the node restarting faster than guard_takeover_ms while an attempt writes output, the holder still stops it within the stated bound; a node whose monitors or cache store hang stops renewing and is restarted by the supervisor within 30 s, while a store migration longer than 30 s at startup is not mistaken for a hang; a failing launch step ends the attempt with SPAWN_FAILED (R-STOR-009)"
       ],
       "verification": {
         "author": [
@@ -1036,7 +1036,7 @@
         "Output limit and caller hand-off shared with AF-EXEC-01, verified on Linux",
         "arcforges-guard.service and `arcforges node guard` (13 section 3.4): one guard for all attempt units while the node is down, with the same heartbeat, guard.json and guard-events.jsonl as on Windows",
         "`arcforges node exec-launch`: launch steps inside the unit's cgroup, then execve of the command so it stays the unit's main process; end steps as ExecStop (04 section 3)",
-        "systemd watchdog (WatchdogSec=30) pinged from the enforcement loop; end steps as ExecStop=- with TimeoutStopSec covering the end-step budget plus leftover_grace, and exit-record taking the result from EXIT_CODE and EXIT_STATUS; launch.json from exec-launch recorded as SPAWN_FAILED"
+        "systemd watchdog (WatchdogSec=30, active once the node is ready) pinged from the enforcement loop while the cache store answers its probe; end steps as ExecStop=- with TimeoutStopSec covering the end-step budget plus leftover_grace, and exit-record taking the result from EXIT_CODE and EXIT_STATUS; launch.json from exec-launch recorded as SPAWN_FAILED"
       ],
       "out_of_scope": [
         "WSL host linking (AF-WSL-01)"
@@ -1373,7 +1373,7 @@
         "`arcforges bridge wsl`; GuestLinkService (OpenLink stream, AnswerGrant, RevokeGrant, SetGuestBudget, GetGuestStatus); link token, host pinning, GetHostLink and TrustHost (guest)",
         "Host: guest discovery, link state machine, vmmem accounting, guest_other, grant proxy tasks; demand admitted and allocations enforced: the CPU split G_cpu and H_cpu with positive floors summing to B_cpu, memory grants never overcommitted (03 section 6)",
         "ResourceService.ListGuestLinks and SetGuestLink; CLI guests (host) and guests host, guests trust-host (guest)",
-        "Acknowledged allocations (allocation_seq; released capacity reused only after the guest acknowledges; a grant that raises the allocation is acknowledged before AnswerGrant); the lease (lease_until, renewed at least every 30 s) and the standalone allocation (never larger than the last acknowledged allocation), persisted on both sides (guest_link, host_link); slice limits never lowered below running work; the reserved allocation (the last acknowledged allocation and any larger unacknowledged push) persisted in guest_link before each push and kept during an outage, whatever the guest's measured usage, with the host's own caps at B minus the reservation; until the guest acknowledges a smaller allocation after reporting what it applies (GuestHello applied_seq and values) and re-registering its outage admissions (GrantRequest.already_running) or the distribution or VM is observed stopped (wsl.exe --list --running --quiet every 30 s; a failed or unanswered call counts as running); disabling the link keeps the reservation; guest_other during an outage net of the reservation; outage admissions by accounted demand, not measured usage; a guest starting in a new boot of its distribution, detected by the marker in its tmpfs runtime directory (the boot ID is shared by every distribution), admits nothing until it links; the never-linked window is reported"
+        "Acknowledged allocations (allocation_seq; released capacity reused only after the guest acknowledges; a grant that raises the allocation is acknowledged before AnswerGrant); the lease (lease_until, renewed at least every 30 s) and the standalone allocation (never larger than the last acknowledged allocation), persisted on both sides (guest_link, host_link); slice limits never lowered below running work; the reserved allocation (the last acknowledged allocation and any larger unacknowledged push) persisted in guest_link before each push and kept during an outage, whatever the guest's measured usage, with the host's own caps at B minus the reservation; until the guest acknowledges a smaller allocation after reporting what it applies (GuestHello applied_seq and values) and re-registering its outage admissions (GrantRequest.already_running) or the distribution or VM is observed stopped (wsl.exe --list --running --quiet every 30 s; a failed or unanswered call counts as running); disabling the link keeps the reservation; guest_other during an outage net of the reservation; outage admissions by accounted demand, not measured usage; a guest whose runtime-directory marker does not match host_link.distro_boot_marker (a new boot of its distribution; the boot ID is shared by every distribution) admits nothing until it links; pushes serialized, so at most one is unacknowledged; the never-linked window is reported"
       ],
       "out_of_scope": [
         "Optional privileged guest I/O control beyond a design probe"
@@ -1399,7 +1399,7 @@
         "Concurrent saturating host and guest load with CPU demand overcommitted: host and guest CPU caps sum to B_cpu, nothing is counted twice, and the host reserve stays protected",
         "A link from a different host is refused until TrustHost",
         "A guest that goes idle (I/O wait) during an outage and then resumes CPU-heavy work never pushes the enforced host and guest CPU caps above B_cpu, and the host admits nothing into the reserved capacity meanwhile; the reservation ends only after an acknowledged smaller allocation or an observed distribution stop; attempts admitted during the outage are re-registered before the next allocation; a restarted distribution admits nothing until it links again (R-RES-010)",
-        "A host restart during an outage with an unacknowledged decrease keeps the full reservation, and a raise the guest applied whose acknowledgement was lost is reported in GuestHello and reserved; a terminated and restarted distribution is detected by its marker while the boot ID is unchanged, and admits nothing until it links again (F-L05; R-RES-010)"
+        "A host restart during an outage with an unacknowledged decrease keeps the full reservation, and a raise the guest applied whose acknowledgement was lost is reported in GuestHello and reserved; a terminated and restarted distribution is detected by its marker while the boot ID is unchanged, and admits nothing until it links again, also when an earlier guest process of the new boot already created the marker (F-L05; R-RES-010)"
       ],
       "verification": {
         "author": [
@@ -1886,7 +1886,8 @@
         "Result cache per workspace: OFF and OBSERVE (action key and output-manifest digest per attempt in result_cache_observation; observations and would-be hits in GetCacheReport); no output blobs are stored; RESTORE is refused by policy validation (roadmap RM-04)",
         "Per-attempt cache records (07 section 1.5): the tool's own counters (per-attempt sccache statistics, ccache stats log, packages parsed from the attempt's output, download sizes only when the tool reports them); node-measured growth attributed by file birth and change times to the attempt's binding interval (SOLE_BINDER, SHARED with a window ID, UNKNOWN), provisional until a later walk (measured_at); cache_usage_window and cache_walk (removed bytes, unattributed growth); measured within caches.usage_scan_budget_ms",
         "The incremental size cache of Design 06 section 6 (reused by disk analysis and limits in AF-STOR-01)",
-        "The node's compiler-cache store for sccache (05 section 5): a loopback WebDAV subset (GET, PUT, PROPFIND, MKCOL) with per-attempt bearer tokens; the node as the only writer (atomic writes, quota by LRU eviction); every request answered within 30 s; bytes written counted per attempt (attribution COUNTED) through the store's own ledger (first-writer PUTs, peer fills, evictions), so the store is never walked; online eviction; a stable store port across node restarts"
+        "The node's compiler-cache store for sccache (05 section 5): a loopback WebDAV subset (GET, PUT, PROPFIND, MKCOL) with per-attempt bearer tokens; the node as the only writer (atomic writes, quota by LRU eviction); every request answered within 30 s; bytes written counted per attempt (attribution COUNTED) through the store's own ledger (first-writer PUTs, peer fills, evictions), so the store is never walked; online eviction; a stable store port across node restarts",
+        "The store's ledger per period (cache_store_ledger: first writes, peer fills, evictions) and CacheUsage.peer_filled_bytes; on a node restart with the store's port taken, the attempts given that port stop with ENDPOINT_TAKEN"
       ],
       "out_of_scope": [
         "LAN serving (AF-LAN-03)"
@@ -1924,7 +1925,7 @@
         "Every byte of new or grown files is counted once across attempts, windows and unattributed growth in node-wide totals",
         "Cache-usage measurement runs in the background within caches.usage_scan_budget_ms and never delays an attempt's result; an entry without a completed walk within 24 h is UNKNOWN (15 section 2)",
         "A real sccache server reads and writes entries through the store with an attempt's token (Windows workstation, L-21); requests without a valid token are refused; bytes written are counted per attempt; the quota is kept by eviction; no request stays unanswered beyond 30 s",
-        "Concurrent PUTs of one key count once, for the first writer; the store is never walked, and node-wide totals add COUNTED, SOLE_BINDER, windows and unattributed growth with every byte once; a file dropped from the size cache and seen again is not counted again (R-REC-006)"
+        "Concurrent PUTs of one key count once, for the first writer; the store is never walked, and node-wide totals add COUNTED writes, peer fills, SOLE_BINDER, windows and unattributed growth with every byte once; store evictions appear in its ledger; a file dropped from the size cache and seen again is not counted again (R-REC-006)"
       ],
       "verification": {
         "author": [
@@ -1987,7 +1988,7 @@
       "objective": "Extend managed toolchain handling to Cargo, CMake/Ninja/make with sccache/ccache, FASTBuild, npm/pnpm and Python, and keep every compiler server inside the attempt that uses it.",
       "scope": [
         "Adapters of 05 section 3, including FASTBuild (05 section 3.8: cache path, -cache/-cacheread, -cachetrim maintenance, -j from the grant; -dist observed only)",
-        "Per-attempt compiler servers (05 section 5): the sccache server started as a launch step inside the attempt's container (Unix socket on Linux, an assigned loopback port on Windows; SCCACHE_IDLE_TIMEOUT=0; SCCACHE_SKIP_CACHE_CHECK=1 from sccache 0.18.0); the per-attempt settings applied to every managed attempt on a node where sccache is installed, so wrappers the user configured also start the attempt's own server; on Windows the holder checks that the listener on the assigned port is in the attempt's job, retries up to 5 ports, then fails the launch with SPAWN_FAILED, using the node's store with the attempt's token, its statistics read and the server stopped as end steps; supported versions recorded (sccache 0.17.0 or later); ccache with a per-attempt statistics log (CCACHE_STATSLOG)",
+        "Per-attempt compiler servers (05 section 5): the sccache server started as a launch step inside the attempt's container (Unix socket on Linux, an assigned loopback port on Windows; SCCACHE_IDLE_TIMEOUT=0; SCCACHE_SKIP_CACHE_CHECK=1 from sccache 0.18.0); the per-attempt settings applied to every managed attempt (inherited SCCACHE_* variables removed; SCCACHE_CONF pointing to an empty file the node writes; a per-attempt port on both platforms and, on Linux, the private socket), so wrappers the user configured also start the attempt's own server with the node's store; the server pre-started when sccache use is detected (the integration, the environment, the Cargo configuration or the CMake cache); every second the holder (Windows) or the node (Linux) checks that the listener on the attempt's port is in the attempt's container, else ENDPOINT_TAKEN; on Windows the holder checks that the listener on the assigned port is in the attempt's job, retries up to 5 ports, then fails the launch with SPAWN_FAILED, using the node's store with the attempt's token, its statistics read and the server stopped as end steps; supported versions recorded (sccache 0.17.0 or later); ccache with a per-attempt statistics log (CCACHE_STATSLOG)",
         "Failure classifiers",
         "Side-effect suggestions, verifiable assertions (cargo fetch, git fetch and clone, npm ci --ignore-scripts, pip download --only-binary=:all:, FBuild -cachetrim) and exclusive keys per tool (05 section 3)",
         "MSVC: _MSPDBSRV_ENDPOINT_ per attempt (05 section 5); Cargo and pip download sizes parsed from the attempt's output (07 section 1.5)"
@@ -2024,7 +2025,9 @@
         "Two concurrent attempts that use a wrapper the user configured (Cargo build.rustc-wrapper) each run their own server inside their own container, and nothing connects to sccache's default port (R-TOOL-005)",
         "When another process holds an attempt's assigned port, the holder moves to another port and the attempt never reaches a server outside its job; when every retry fails, the attempt fails at launch with SPAWN_FAILED",
         "Cargo's and pip's reported download sizes are recorded per attempt; Attempt.downloaded_bytes stays empty when a download-cache binding reports none",
-        "MSVC builds in two concurrent attempts each use their own mspdbsrv inside their own job, when Visual Studio C++ tools are installed (F-T06)"
+        "MSVC builds in two concurrent attempts each use their own mspdbsrv inside their own job, when Visual Studio C++ tools are installed (F-T06)",
+        "A user's sccache configuration file and inherited backend settings (for example SCCACHE_BUCKET) never take effect in a managed attempt: its server uses the node's store (R-TOOL-005)",
+        "A process outside the attempt's container listening on the attempt's port stops the attempt with ENDPOINT_TAKEN, also when an undetected wrapper starts its server lazily"
       ],
       "verification": {
         "author": [
@@ -2114,7 +2117,7 @@
         "Low-space guard per volume (NORMAL, LOW, CRITICAL; every 5 s; the LOW threshold capped by low_free_cap_bytes): blocking reason disk_space at LOW; freeze or immediate stop at CRITICAL; the store reserve file (64 MiB), released only when a store write fails, and the node state DEGRADED with store_out_of_space",
         "Disk analysis and limit monitoring use the size cache built in AF-CACHE-01",
         "Guards extended to the temporary-directory limit and the low-space guard while the node is down (06 section 5); guard_lost and the GUARD_LOST finding",
-        "Temporary-directory passes that read every known file's size again and list only changed directories for new entries, capped by max_attempt_tmp_entries (over the cap counts as over the limit); the guards' stateless full walk under the same cap; Linux guards freeze before they kill, and thaw after 30 s at NORMAL while the node is down"
+        "Temporary-directory passes as a full walk that keeps no per-file state, by the node and by the guards, capped by max_attempt_tmp_entries (over the cap counts as over the limit); Linux guards freeze before they kill, and thaw after 30 s at NORMAL while the node is down"
       ],
       "out_of_scope": [
         "Worktrees (AF-WS-01) beyond detection"
