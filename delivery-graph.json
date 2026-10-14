@@ -95,7 +95,7 @@
       "id": "AF-REPO-01",
       "title": "ArcForges repository foundation",
       "milestone": "M0",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -177,8 +177,12 @@
       "notes": "",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/4"
+        ],
+        "merges": [
+          "ArcForges@1e66be989c78fb193480c63eb268467f66648985"
+        ],
         "publications": [],
         "ledger": null
       },
@@ -188,7 +192,7 @@
       "id": "AF-DOCS-01",
       "title": "Point implementation repositories at the new design authority",
       "milestone": "M0",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Contracts",
