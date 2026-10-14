@@ -95,7 +95,7 @@
       "id": "AF-REPO-01",
       "title": "ArcForges repository foundation",
       "milestone": "M0",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
