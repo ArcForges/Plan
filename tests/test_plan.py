@@ -11,6 +11,20 @@ sys.path.insert(0, str(ROOT / "tools"))
 import plan  # noqa: E402
 
 
+def pristine_graph():
+    """The repository graph with every task reset to planned, for tests that change states.
+
+    The repository graph records real delivery progress, so tests that walk a task through
+    its lifecycle must not depend on the states recorded there.
+    """
+    g = copy.deepcopy(plan.load())
+    for t in g["tasks"]:
+        t["state"] = "planned"
+        t["blocked_by"] = []
+        t["evidence"] = {"prs": [], "merges": [], "publications": [], "ledger": None}
+    return g
+
+
 class GraphChecks(unittest.TestCase):
     def setUp(self):
         self.graph = plan.load()
@@ -24,18 +38,18 @@ class GraphChecks(unittest.TestCase):
     def test_serial_order_and_dependencies(self):
         orders = [t["order"] for t in self.graph["tasks"]]
         self.assertEqual(orders, list(range(1, len(orders) + 1)))
-        g = copy.deepcopy(self.graph)
+        g = pristine_graph()
         g["tasks"][0]["depends_on"] = [g["tasks"][5]["id"]]
         self.assertTrue(any("not earlier" in e for e in plan.validate(g)))
 
     def test_single_active_task(self):
-        g = copy.deepcopy(self.graph)
+        g = pristine_graph()
         g["tasks"][0]["state"] = "active"
         g["tasks"][1]["state"] = "active"
         self.assertTrue(any("more than one active" in e for e in plan.validate(g)))
 
     def test_delivered_needs_merge_evidence(self):
-        g = copy.deepcopy(self.graph)
+        g = pristine_graph()
         g["tasks"][0]["state"] = "delivered"
         self.assertTrue(any("without merge evidence" in e for e in plan.validate(g)))
 
@@ -68,7 +82,7 @@ class GraphChecks(unittest.TestCase):
         self.assertGreater(len(roots), 1)
 
     def test_blocked_needs_register_ids(self):
-        g = copy.deepcopy(self.graph)
+        g = pristine_graph()
         g["tasks"][0]["state"] = "blocked"
         self.assertTrue(any("blocked without blocked_by" in e for e in plan.validate(g)))
         g["tasks"][0]["blocked_by"] = ["H-99"]
@@ -81,7 +95,7 @@ class GraphChecks(unittest.TestCase):
 
 class StateChanges(unittest.TestCase):
     def setUp(self):
-        self.graph = copy.deepcopy(plan.load())
+        self.graph = pristine_graph()
         self.first = self.graph["tasks"][0]["id"]
         self.second = self.graph["tasks"][1]["id"]
 
@@ -134,7 +148,7 @@ class StateChanges(unittest.TestCase):
 
 class EvidenceRecording(unittest.TestCase):
     def test_multi_repository_tasks_keep_every_pr_and_merge(self):
-        g = copy.deepcopy(plan.load())
+        g = pristine_graph()
         t = g["tasks"][0]
         plan.set_state(g, t["id"], "active")
         plan.set_state(g, t["id"], "delivered", pr=["https://example.invalid/a/1", "https://example.invalid/b/2"],
