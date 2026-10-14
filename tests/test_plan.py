@@ -82,7 +82,7 @@ class GraphChecks(unittest.TestCase):
         self.assertGreater(len(roots), 1)
 
     def test_blocked_needs_register_ids(self):
-        g = copy.deepcopy(self.graph)
+        g = pristine_graph()
         g["tasks"][0]["state"] = "blocked"
         self.assertTrue(any("blocked without blocked_by" in e for e in plan.validate(g)))
         g["tasks"][0]["blocked_by"] = ["H-99"]
