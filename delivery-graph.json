@@ -618,7 +618,7 @@
       "id": "AF-DP-02",
       "title": "Security.Secrets Linux backends",
       "milestone": "M0",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "DesktopPlatform",
@@ -686,9 +686,15 @@
       "notes": "",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/DesktopPlatform/pull/188"
+        ],
+        "merges": [
+          "DesktopPlatform@4e2093225212acded4a4d5ef55a1dff940e30b9f"
+        ],
+        "publications": [
+          "DesktopPlatform cohort 1.0.0-ci.138.1 incl. ArcForges.Security.Secrets Linux backends (main 4e20932, run 38714733282)"
+        ],
         "ledger": null
       },
       "order": 6
@@ -697,7 +703,7 @@
       "id": "AF-NODE-02",
       "title": "Node store",
       "milestone": "M1",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
