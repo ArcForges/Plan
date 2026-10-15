@@ -811,7 +811,7 @@
       "id": "AF-NODE-01",
       "title": "Node host, endpoint, handshake, client library and CLI skeleton",
       "milestone": "M1",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -913,8 +913,12 @@
       "notes": "",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/6"
+        ],
+        "merges": [
+          "ArcForges@5e76c7159a00619d71e24766402724403608001a"
+        ],
         "publications": [],
         "ledger": null
       },
