@@ -928,7 +928,7 @@
       "id": "AF-EXEC-01",
       "title": "Windows execution",
       "milestone": "M1",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
