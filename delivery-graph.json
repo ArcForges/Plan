@@ -703,7 +703,7 @@
       "id": "AF-NODE-02",
       "title": "Node store",
       "milestone": "M1",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -796,8 +796,12 @@
       "notes": "",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/5"
+        ],
+        "merges": [
+          "ArcForges@2217bb12c21a21ac538c94bef00b96e825bb9115"
+        ],
         "publications": [],
         "ledger": null
       },
@@ -807,7 +811,7 @@
       "id": "AF-NODE-01",
       "title": "Node host, endpoint, handshake, client library and CLI skeleton",
       "milestone": "M1",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
