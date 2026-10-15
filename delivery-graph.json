@@ -521,7 +521,7 @@
       "id": "AF-DP-01",
       "title": "LocalRpc service-endpoint mode",
       "milestone": "M0",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "DesktopPlatform",
@@ -601,9 +601,15 @@
       "notes": "Never pin DesktopPlatform Build.Policy 1.0.0-ci.124.1.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/DesktopPlatform/pull/187"
+        ],
+        "merges": [
+          "DesktopPlatform@35721a1622d43e8fbd133cb0e603c27004839219"
+        ],
+        "publications": [
+          "DesktopPlatform cohort 1.0.0-ci.137.1 incl. ArcForges.LocalRpc service mode (main 35721a1, run 38699442690)"
+        ],
         "ledger": null
       },
       "order": 5
@@ -612,7 +618,7 @@
       "id": "AF-DP-02",
       "title": "Security.Secrets Linux backends",
       "milestone": "M0",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "DesktopPlatform",
