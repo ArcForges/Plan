@@ -438,7 +438,7 @@
       "id": "AF-CON-02",
       "title": "Rename the ArcForges.Cli tool command (C-03)",
       "milestone": "M0",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "Contracts",
@@ -504,9 +504,15 @@
       "notes": "",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/Contracts/pull/104"
+        ],
+        "merges": [
+          "Contracts@e2b0346df178517d0983f70797df6c0a0e3ca262"
+        ],
+        "publications": [
+          "Contracts cohort 1.0.0-ci.378.1; ArcForges.Cli 1.0.0-ci.378.1 is the first version whose tool command is arcforges-contracts (main e2b0346, run 38680166615)"
+        ],
         "ledger": null
       },
       "order": 4
@@ -515,7 +521,7 @@
       "id": "AF-DP-01",
       "title": "LocalRpc service-endpoint mode",
       "milestone": "M0",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "DesktopPlatform",
