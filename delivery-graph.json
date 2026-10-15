@@ -320,7 +320,7 @@
       "id": "AF-CON-01",
       "title": "Adopt the flagship contracts into Contracts",
       "milestone": "M0",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "Contracts",
@@ -418,9 +418,18 @@
       "notes": "Never admit or pin rolled-back Contracts 1.0.0-ci.350.1; admit only versions whose publishing commit is an ancestor of Contracts main.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/DesktopPlatform/pull/186",
+          "https://github.com/ArcForges/Contracts/pull/103"
+        ],
+        "merges": [
+          "DesktopPlatform@49c014d702fdbd27e79a0cb5e713dc650ade92a9",
+          "Contracts@dea4cd831ce74dbf7ed8f875a68fcf0a74cbe04e"
+        ],
+        "publications": [
+          "DesktopPlatform cohort 1.0.0-ci.136.1 incl. ArcForges.Build.Policy (main 49c014d, run 38671015662)",
+          "Contracts cohort 1.0.0-ci.375.1 (17 NuGet packages incl. new ArcForges.Contracts.Node, .Fleet, .Peer, .Relay, and @arcforges/ai-internal; main dea4cd8, run 38675685268)"
+        ],
         "ledger": null
       },
       "order": 3
@@ -429,7 +438,7 @@
       "id": "AF-CON-02",
       "title": "Rename the ArcForges.Cli tool command (C-03)",
       "milestone": "M0",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Contracts",
