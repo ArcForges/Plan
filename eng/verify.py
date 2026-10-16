@@ -230,6 +230,7 @@ class Runner:
         self.live: dict[subprocess.Popen, Step] = {}
         self.lock = threading.Lock()
         self.outcomes: list[Outcome] = []
+        self.aborted: set[str] = set()
 
     def expand(self, text: str) -> str:
         return text.replace("{sha}", self.sha).replace("{base}", self.base).replace("{range}", f"{self.base}..{self.sha}")
@@ -266,6 +267,8 @@ class Runner:
             say(f"could not stop the WSL step {step.id}: {error}")
 
     def abort(self, process: subprocess.Popen, step: Step) -> None:
+        with self.lock:
+            self.aborted.add(step.id)
         if step.host == "wsl":
             self.stop_wsl(step)
         kill_tree(process)
@@ -305,7 +308,7 @@ class Runner:
                         self.live.pop(process, None)
         except (OSError, VerifyError) as error:
             reason = f"cannot run: {error}"
-        if reason and self.stop.is_set() and reason.startswith("exit code"):
+        if reason and step.id in self.aborted and not reason.startswith("timed out"):
             reason = "stopped after an earlier failure"
         seconds = time.monotonic() - started
         say(f"{'pass' if not reason else 'FAIL'} {step.id} in {seconds:.0f}s{': ' + reason if reason else ''}")
