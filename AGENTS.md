@@ -27,7 +27,7 @@ Read [execution-policy.md](execution-policy.md) and [delivery-procedure.md](deli
    - Changing `eng/verify*.py` or `.githooks/` as reviewed engineering work is allowed; changing them to get a push through is not.
 7. **Efficient execution** (every repository; implementation repositories add only their concrete commands).
    - Run long commands in the background and wait for their completion notification. No sleep loops, fixed delays or CI polling.
-   - Restore and build once, then use `--no-restore` and `--no-build`. Keep builds incremental; never clean without a cause.
+   - Restore and build once, then use `--no-restore` and `--no-build`. Keep builds incremental and reuse existing caches (NuGet, npm, compiler caches); never clean or clear them without a cause.
    - While iterating, run the affected suites only. The full profile runs once, through the hook; running `python eng/verify.py run` before handover lets the push reuse it.
    - Format only the changed files while iterating (`dotnet format --include <files>`); the full check runs in the hook.
    - Within one task, run independent work in parallel with the repository's bounded defaults: test projects, AOT components, the Windows and WSL legs. Never add `-m:1`, `--max-parallel-threads 1` or serial collections without a measured reason.

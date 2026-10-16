@@ -3,10 +3,10 @@
 
 The steps are exactly what .github/workflows/plan.yml runs for external PRs: the plan validation against ArcForges-Design
 main, the design's traceability cross-check of delivery-graph.json, and the tool tests. Like CI, the Plan is validated
-against the merged Design, never an unmerged branch: the Design main commit is fetched once, by the `design-main`
-fingerprint probe (so that a pass is keyed to it and is not reused after Design main moves), and each lane checks that
-commit out: a detached worktree of the sibling Design clone on Windows, a Linux-native clone in WSL. Markdown is this
-repository's source (plan.py validates the sequence, register and roadmap), so every change runs the full profile, on
+against the merged Design, never an unmerged branch: the Design main commit is fetched and resolved once when this table
+loads (DESIGN_SHA), recorded by the `design-main` fingerprint probe (so a pass is keyed to it and is not reused after
+Design main moves), and each lane checks out exactly that commit: a detached worktree of the sibling Design clone on
+Windows, a Linux-native clone in WSL. Markdown is this repository's source (plan.py validates the sequence, register and roadmap), so every change runs the full profile, on
 Windows and WSL Debian concurrently. actionlint runs only when a workflow changed.
 """
 import subprocess
@@ -29,16 +29,26 @@ def _wsl_path(path: Path) -> str:
 
 DESIGN = _design_clone()
 DESIGN_MAIN = "refs/remotes/origin/main"
+
+
+def _design_main() -> str:
+    """Fetches ArcForges-Design main (a read of existing access) once and returns its commit, which every step uses and
+    the pass key records. A failed fetch fails verification."""
+    subprocess.run(["git", "-C", str(DESIGN), "fetch", "--quiet", "--no-tags", "origin", "main"], check=True)
+    return subprocess.run(["git", "-C", str(DESIGN), "rev-parse", f"{DESIGN_MAIN}^{{commit}}"], capture_output=True,
+                          text=True, check=True).stdout.strip()
+
+
+DESIGN_SHA = _design_main()
 WIN_DESIGN = DESIGN / ".worktree" / "_plan-verify"
 WSL_DESIGN = "$HOME/.cache/arcforges-verify/Plan-design-main"
 
 # Tool versions that key a reusable pass (the python running eng/verify.py is added by the core), and the Design main
-# commit the steps validate against: this probe fetches it (a read of existing access) and prints it.
+# commit the steps validate against (DESIGN_SHA, resolved once above).
 FINGERPRINT = {
     "win": {
         "python": ["python", "--version"],
-        "design-main": f'git -C "{DESIGN}" fetch --quiet --no-tags origin main && '
-                       f'git -C "{DESIGN}" rev-parse {DESIGN_MAIN}',
+        "design-main": ["python", "-c", f"print('{DESIGN_SHA}')"],
     },
     "wsl": {"python": "python --version"},
 }
@@ -67,6 +77,7 @@ print('ArcForges-Design main', head.strip(), 'at', tree)
 WSL_REFRESH = (
     f"set -euo pipefail; d={WSL_DESIGN}; mkdir -p \"$d\"; cd \"$d\"; [ -d .git ] || git init -q; "
     f"git fetch -q --no-tags {_wsl_path(DESIGN / '.git')} {DESIGN_MAIN}; "
+    f"test \"$(git rev-parse FETCH_HEAD)\" = {DESIGN_SHA}; "
     "git checkout -q --force --detach FETCH_HEAD; git clean -ffdq; "
     "echo \"ArcForges-Design main $(git rev-parse HEAD) at $d\""
 )
@@ -97,7 +108,7 @@ def select_profile(changed: list[str]) -> str:
 
 
 STEPS = [
-    Step("win-design-main", "win", ["python", "-c", WIN_REFRESH, str(DESIGN), str(WIN_DESIGN), DESIGN_MAIN],
+    Step("win-design-main", "win", ["python", "-c", WIN_REFRESH, str(DESIGN), str(WIN_DESIGN), DESIGN_SHA],
          timeout=300, env=ENV),
     Step("win-validate", "win", ["python", "tools/plan.py", "validate", "--design", str(WIN_DESIGN)], timeout=300,
          env=ENV),

@@ -185,7 +185,7 @@ When unsure, prefer the narrower reading. Record the question in the ledger and 
 - **CI and environments.**
   - No macOS CI; no device, GUI, browser, live-service or inference CI.
   - WSL2 Debian is the Linux test environment, and installs inside it are the user's. No SSH.
-- **Settings.** Never change repository security settings or account settings.
+- **Settings.** Never change repository security settings or account settings, except the required status checks of the conditional CI as the user authorized on 2026-10-16 (execution policy §5, AD-0016 §2).
 - **Accounts.** Existing access only. Never create accounts; signing custody, store accounts, payment and Firebase are human prerequisites (Plan `baseline.md` §4).
 - **Attribution.** Commits end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. PR bodies end with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
 
