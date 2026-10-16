@@ -1,13 +1,14 @@
 # SPDX-License-Identifier: Apache-2.0
 """Local verification steps of the ArcForges Plan, loaded by eng/verify.py (which injects `Step`).
 
-The steps are exactly what .github/workflows/plan.yml runs for external PRs: the plan validation against ArcForges-Design
-main, the design's traceability cross-check of delivery-graph.json, and the tool tests. Like CI, the Plan is validated
-against the merged Design, never an unmerged branch: the Design main commit is fetched and resolved once when this table
-loads (DESIGN_SHA), recorded by the `design-main` fingerprint probe (so a pass is keyed to it and is not reused after
-Design main moves), and each lane checks out exactly that commit: a detached worktree of the sibling Design clone on
-Windows, a Linux-native clone in WSL. Markdown is this repository's source (plan.py validates the sequence, register and roadmap), so every change runs the full profile, on
-Windows and WSL Debian concurrently. actionlint runs only when a workflow changed.
+The steps are exactly what .github/workflows/plan.yml runs for external PRs: the plan validation against
+ArcForges-Design main, the design's traceability cross-check of delivery-graph.json, and the tool tests. Like CI, the
+Plan is validated against the merged Design, never an unmerged branch: the Design main commit is fetched and resolved
+once when this table loads (DESIGN_SHA), recorded by the `design-main` fingerprint probe (so a pass is keyed to it and
+is not reused after Design main moves), and each lane checks out exactly that commit: a detached worktree of the sibling
+Design clone on Windows, a Linux-native clone in WSL. Markdown is this repository's source (plan.py validates the
+sequence, register and roadmap), so every change runs the full profile, on Windows and WSL Debian concurrently.
+actionlint runs only when a workflow changed.
 """
 import subprocess
 from pathlib import Path
@@ -34,9 +35,13 @@ DESIGN_MAIN = "refs/remotes/origin/main"
 def _design_main() -> str:
     """Fetches ArcForges-Design main (a read of existing access) once and returns its commit, which every step uses and
     the pass key records. A failed fetch fails verification."""
-    subprocess.run(["git", "-C", str(DESIGN), "fetch", "--quiet", "--no-tags", "origin", "main"], check=True)
-    return subprocess.run(["git", "-C", str(DESIGN), "rev-parse", f"{DESIGN_MAIN}^{{commit}}"], capture_output=True,
-                          text=True, check=True).stdout.strip()
+    try:
+        subprocess.run(["git", "-C", str(DESIGN), "fetch", "--quiet", "--no-tags", "origin", "main"], check=True)
+        return subprocess.run(["git", "-C", str(DESIGN), "rev-parse", f"{DESIGN_MAIN}^{{commit}}"], capture_output=True,
+                              text=True, check=True).stdout.strip()
+    except (subprocess.CalledProcessError, OSError) as error:
+        raise SystemExit(f"arcforges-verify: FAIL cannot fetch ArcForges-Design main in {DESIGN}: {error}; check "
+                         "network access to GitHub and that clone, then push again (never bypass the hook)") from error
 
 
 DESIGN_SHA = _design_main()
@@ -77,7 +82,8 @@ print('ArcForges-Design main', head.strip(), 'at', tree)
 WSL_REFRESH = (
     f"set -euo pipefail; d={WSL_DESIGN}; mkdir -p \"$d\"; cd \"$d\"; [ -d .git ] || git init -q; "
     f"git fetch -q --no-tags {_wsl_path(DESIGN / '.git')} {DESIGN_MAIN}; "
-    f"test \"$(git rev-parse FETCH_HEAD)\" = {DESIGN_SHA}; "
+    f"test \"$(git rev-parse FETCH_HEAD)\" = {DESIGN_SHA} || {{ echo \"ArcForges-Design main moved during "
+    f"verification (expected {DESIGN_SHA}, got $(git rev-parse FETCH_HEAD)); run again\" >&2; exit 1; }}; "
     "git checkout -q --force --detach FETCH_HEAD; git clean -ffdq; "
     "echo \"ArcForges-Design main $(git rev-parse HEAD) at $d\""
 )
