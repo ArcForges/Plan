@@ -58,7 +58,7 @@ In the Plan, at the current `origin/main` (§5):
 In the Design: `docs/README.md`, then:
 - the product definition, especially §5 and §9;
 - `docs/product/requirements.md`;
-- AD-0014 (delivery method) and AD-0015 (direction, editions, roadmap);
+- AD-0014 (delivery method), AD-0015 (direction, editions, roadmap) and AD-0016 (local-first verification);
 - the testing strategy (`docs/architecture/16-testing-strategy.md`);
 - `docs/verification/platform-capabilities.md`.
 
@@ -98,7 +98,7 @@ Do not assume earlier steps are complete because the user selected a later range
 Follow `delivery-procedure.md`. In short:
 1. **Start.**
    - `plan.py set-state <ID> active` and `plan.py ledger <ID> started "<one line>"`.
-   - Make a Plan record PR, check its diff and CI, and merge it.
+   - Make a Plan record PR, check its diff, push it (the pre-push hook verifies it) and merge it with the hook's PASS line in the PR.
 2. **Worktrees.** Create a worktree per repository in the task's write scope: `<repo>/.worktree/<id-lower>` on branch `task/<id-lower>`, from `origin/main` after a fetch. Never edit a main checkout.
 3. **Implement** inside the task's `repositories[].paths`.
    - Follow the repository's `AGENTS.md`: locked restores, dependency admission records, analyzers, AOT settings.
@@ -107,12 +107,15 @@ Follow `delivery-procedure.md`. In short:
    - Use fakes only where `fakes_allowed` lists them. Fakes stand in for unavailable external systems, never for the behaviour being delivered. `TestLoad` is a synthetic workload, not a fake.
 4. **Verify as the author.** Run what `verification.author` names, plus the affected real Windows and WSL2 tests. Record the exact commands and results in the PR body, mapping each acceptance criterion to its evidence.
 5. **Review.**
-   - Push the branch and open the PR.
+   - Push the branch and open the PR. The push runs the repository's pre-push verification at the head; quote its `arcforges-verify: PASS` line in the PR body.
    - One independent reviewer reviews the exact head: a fresh Opus 5.5 session using prompt P-3 from `entry-prompts.md`.
    - Fix blocking findings. Re-review covers only the delta.
    - Post the review record on the PR.
-6. **CI.** Hosted CI must pass at the reviewed head. Read it with the PR tools; never poll it in loops. Diagnose failures before any rerun, and never weaken a check to make it pass.
-7. **Merge** at the reviewed head. Never enable auto-merge. Then verify the publication or deployment the task requires, and record its identifiers:
+6. **Merge gate** (AD-0016).
+   - **Your PRs** (author `deku2026`): the pre-push verification at the reviewed head is the gate; its PASS line for that head is in the PR, and the hosted validation jobs show as skipped. If the hook fails, diagnose it, return the failure to the worker (or fix a cause on your side) and push again. Never use `git push --no-verify`, and never disable or edit the hook or the verification scripts to get a push through.
+   - **External PRs** (any other author): hosted CI must pass at the reviewed head. Read it with the PR tools; never poll it in loops.
+   - Diagnose failures before any rerun, and never weaken a check to make it pass.
+7. **Merge** at the reviewed head. Never enable auto-merge. Then verify the publication or deployment the task requires (delivery runs on the main push, which runs no separate validation), and record its identifiers:
    - the package cohort and its admission rules;
    - for a guarded main-push deploy: that it succeeded, with flagship surfaces still dark.
 8. **Record.**

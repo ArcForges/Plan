@@ -1,6 +1,6 @@
 # Execution policy (serial)
 
-Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0014-delivery-method.md). This policy replaces every earlier Plan-Parallel policy (`execution-policy.md`, `single-task-command.md`, `arcforges-implementation.md`, the build slot and claims and leases), which are history only.
+Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0014-delivery-method.md) and [AD-0016](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0016-local-first-verification.md) (local-first verification). This policy replaces every earlier Plan-Parallel policy (`execution-policy.md`, `single-task-command.md`, `arcforges-implementation.md`, the build slot and claims and leases), which are history only.
 
 ## 1. One task at a time
 
@@ -38,18 +38,25 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
 
 | Role | Runs | Never |
 |---|---|---|
-| Author | Targeted and affected tests, affected real Windows/WSL2 tests, build and AOT publish of affected components, format and analyzers. Records exact commands and results in the PR. | Skips tests it changed or that cover changed code |
+| Author | Targeted and affected tests, affected real Windows/WSL2 tests, build and AOT publish of affected components, format and analyzers. May run `python eng/verify.py run` before handing over, so the push reuses the pass. Records exact commands and results in the PR. | Skips tests it changed or that cover changed code |
 | Independent reviewer (one session, after the author) | Reads the complete diff at the exact head against the task's design references and acceptance criteria. Re-runs only what gives distinct evidence: a doubted test, a check whose script or workflow the PR changed, or a real-environment test the author could not run. | Repeats the author's identical full suite on the same unchanged head |
-| Hosted CI | The repository's CI: the merge gate for platform-independent checks | GUI, device, browser-E2E, live-service or inference jobs |
-| Coordinator | Push, PR, review record, CI result reading, merge at the reviewed head, publication or deployment check, graph state and ledger | Duplicates any of the above |
+| Local verification (pre-push hook), owner PRs | The repository's CI-equivalent profile at each pushed commit (`eng/verify.py`, Windows and WSL2 Debian): the merge gate for the owner's (`deku2026`) PRs. Its `arcforges-verify: PASS` line for the head is quoted in the PR. | Bypassed, weakened or skipped; a step that could not run is never reported as passed |
+| Hosted CI, external PRs | The repository's full CI for every other author, Dependabot included: the merge gate for platform-independent checks | GUI, device, browser-E2E, live-service or inference jobs |
+| Coordinator | Push (the hook runs), PR, review record, quoting the PASS line (owner PRs) or reading CI (external PRs), merge at the reviewed head, publication or deployment check, graph state and ledger | Duplicates any of the above |
 
+- **The hook at the coordinator's push** ([AD-0016](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0016-local-first-verification.md)). The coordinator's push runs the pre-push verification. If it fails, the coordinator returns the failure (step, last log lines, log path) to the worker, or fixes a coordinator-side cause such as a stale fetch, and pushes again. It never bypasses the hook (`git push --no-verify`) and never disables or edits the hook or the verification scripts to get a push through.
+- **Task records.** A task's `verification.hosted_ci` names the CI-equivalent checks of each touched repository. For the owner's PRs they are met by that repository's local verification; for external PRs by its hosted CI.
 - **Re-review** after fixes covers only the delta, unless the delta changes build or test infrastructure.
 - **Fakes** are allowed only where a task lists them (`fakes_allowed`). They stand in for an unavailable external environment (other machines, Cloudflare, Paddle, Google Play, FCM, AI-client internals), never for the behaviour under test.
 
 ## 4. Publication, merge and deployment
 
-- **Coordinator only.** The coordinator pushes branches, opens PRs, posts review records and merges. Merges happen at the reviewed head after hosted CI passes. Auto-merge is never enabled unless the user asks.
-- **Reading CI.** The coordinator reads CI through the app's PR tools and never polls CI in loops.
+- **Coordinator only.** The coordinator pushes branches, opens PRs, posts review records and merges. Auto-merge is never enabled unless the user asks.
+- **Merge gate** ([AD-0016](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0016-local-first-verification.md)). Merges happen at the reviewed head when:
+  - **owner PRs** (author `deku2026`): the pre-push verification PASS line for that head is in the PR (the coordinator quotes it) and the independent review approved. GitHub shows the validation jobs as skipped;
+  - **external PRs** (any other author, Dependabot included): full hosted CI passed at that head and the review approved.
+- **Reading CI.** For external PRs, the coordinator reads CI through the app's PR tools and never polls CI in loops.
+- **After a merge.** A main push runs only delivery: publication and deployment workflows, including gates that a publication embeds in its evidence (AD-0016 §2). It runs no separate validation, and the next task does not wait for a main CI run.
 - **Production changes** happen only through main-push deploys of the repositories' guarded scripts.
   - Cloudflare only through repository scripts; `workers.dev` and previews stay off.
   - **Dark deploys.** Cloud and Web merges deploy with the flagship surfaces disabled (Design 10 §8). Implementation delivery never waits for production key material, domains, provisioning or publication approval.
@@ -59,13 +66,13 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
   - Never pin or admit Contracts `1.0.0-ci.350.1` or DesktopPlatform Build.Policy `1.0.0-ci.124.1`.
   - Never admit a first-party version whose publishing commit is not an ancestor of its producer's main.
 - **Dependabot PRs** are never touched: no merge, close, comment or rebase.
-- **Plan record PRs.** A Plan PR that changes only task states, evidence and ledger lines (as written by `plan.py`) needs no independent review: the coordinator checks the diff, waits for Plan CI and merges. Any other Plan change (graph content, policy, tools) is reviewed like a task.
-- **Merge order between Design and Plan.** Plan CI validates the graph against ArcForges-Design `main` and runs the design's traceability cross-check (`check_design.py --plan`). A change that touches both merges the **Design PR first**, then re-runs Plan CI and merges the Plan PR.
+- **Plan record PRs.** A Plan PR that changes only task states, evidence and ledger lines (as written by `plan.py`) needs no independent review: the coordinator checks the diff, pushes it (the hook verifies the head) and merges with the PASS line in the PR. Any other Plan change (graph content, policy, tools) is reviewed like a task.
+- **Merge order between Design and Plan.** The Plan's verification (the pre-push hook for owner PRs, Plan CI for external PRs) validates the graph against ArcForges-Design `main` and runs the design's traceability cross-check (`check_design.py --plan`). A change that touches both merges the **Design PR first**, then re-verifies the Plan PR against the new Design main (`python eng/verify.py run` at the PR head, whose PASS line replaces the earlier one in the PR; the Design main commit is part of the pass key, so the earlier pass is not reused) and merges it.
 
 ## 5. Safety and environment
 
 - **Secrets.** Never read or print secrets.
-- **Network and settings.** No proxy or network changes. The coordinator never changes repository security settings (H-12).
+- **Network and settings.** No proxy or network changes. The coordinator never changes repository security settings (H-12), with one exception: the required status checks of the conditional CI (AD-0016 §2), which it may change only as the user authorized on 2026-10-16: "If existing required checks must be adjusted to support this conditional workflow, make the smallest appropriate changes."
 - **Failures.**
   - Diagnose before any rerun.
   - Retry ordinary transient failures with bounded backoff.
