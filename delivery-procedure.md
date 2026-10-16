@@ -9,7 +9,7 @@ Follow [execution-policy.md](execution-policy.md). These steps take one task fro
 3. **Mark it active.**
    - `python tools/plan.py set-state <id> active`
    - `python tools/plan.py ledger <id> started "<one line>"`
-   - Commit to a Plan branch `plan/<id>-start`, then PR and merge. State-only record PRs need no independent review (policy §4): the coordinator checks the diff and Plan CI, then merges.
+   - Commit to a Plan branch `plan/<id>-start`, then PR and merge. State-only record PRs need no independent review (policy §4): the coordinator checks the diff, pushes it (the pre-push hook verifies the head) and merges with the hook's PASS line in the PR.
 4. **Create a worktree** per repository in the task's write scope: `<repo>/.worktree/<id-lower>` on branch `task/<id-lower>`, from `origin/main` after `git fetch`. Never work in a main checkout.
 
 ## 2. Implement
@@ -26,7 +26,7 @@ Follow [execution-policy.md](execution-policy.md). These steps take one task fro
 
 ## 3. Author verification
 
-Run exactly what the task's `verification.author` names. Record in the PR body:
+Run exactly what the task's `verification.author` names: the affected suites while iterating (`AGENTS.md`, Efficient execution). Before handing over, the author may run `python eng/verify.py run` in the worktree; the coordinator's push then reuses that pass for the identical tree. Record in the PR body:
 - the commands, with the result of each;
 - the environments covered (Windows real, WSL2 real);
 - which acceptance criterion each test proves;
@@ -35,20 +35,22 @@ Run exactly what the task's `verification.author` names. Record in the PR body:
 
 ## 4. Review
 
-1. The coordinator pushes the branch and opens the PR. The PR body ends with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`, and commits end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
+1. The coordinator pushes the branch and opens the PR. The push runs the pre-push verification at the head ([AD-0016](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0016-local-first-verification.md)); the coordinator quotes its `arcforges-verify: PASS` line in the PR body. A failure goes back to the author (or the coordinator fixes a coordinator-side cause) and the branch is pushed again; the hook is never bypassed (policy §3). The PR body ends with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`, and commits end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
 2. **One independent reviewer** (Opus 5.5, a fresh session) reviews the exact head:
    - the full diff against the design references and acceptance criteria;
    - distinct checks only (policy §3).
 
    The reviewer writes a review record with findings, each marked blocking or non-blocking, and lists the checks run with their reasons.
-3. The author fixes blocking findings. Re-review covers only the delta.
+3. The author fixes blocking findings. The coordinator pushes the fixed head (the hook verifies it) and replaces the PASS line in the PR. Re-review covers only the delta.
 4. The coordinator posts the review record on the PR.
 
 ## 5. Merge and publish
 
-1. Hosted CI must pass at the reviewed head. The coordinator reads the results with the PR tools.
+1. The merge gate holds at the reviewed head (policy §4):
+   - **owner PRs** (`deku2026`): the hook's PASS line for that head is in the PR, and the review approved;
+   - **external PRs**: hosted CI passed at that head (read with the PR tools, never polled), and the review approved.
 2. **Merge** at the reviewed head (no auto-merge). Outward-facing changes need the user's approval first (policy §4).
-3. **Verify the publication or deployment.**
+3. **Verify the publication or deployment.** Delivery workflows run on the main push; it runs no separate validation, and the next task does not wait for a main CI run.
    - **Packages:** the cohort on main, and admission rules respected.
    - **Deploys:** the guarded main-push deploy succeeded.
    - Record the identifiers.

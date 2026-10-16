@@ -10,7 +10,7 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 >
 > Work strictly serially. You may delegate to one Opus 5.5 worker at a time (never Haiku). Then use one independent Opus 5.5 reviewer, after the author.
 >
-> Use git worktrees, never main checkouts. Only you push, open PRs, post review records, read CI through the PR tools (never poll), merge at the reviewed head, and record the result in the graph and ledger.
+> Use git worktrees, never main checkouts. Only you push (the pre-push hook verifies each pushed head; never bypass it), open PRs with the hook's PASS line, post review records, read hosted CI of external PRs through the PR tools (never poll), merge at the reviewed head, and record the result in the graph and ledger.
 >
 > Ask me before any outward-facing publication. If a missing human prerequisite blocks a task (the register's Blocks column), set the task `blocked` with that ID, tell me exactly what is needed, and continue with the next eligible task. Other prerequisites never block: use the task's fakes or skip that leg with a stated reason. Cloud and Web merges deploy dark; production activation is AF-PROD-01.
 >
@@ -22,7 +22,9 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 >
 > Implement Plan task `<ID>` (`python tools/plan.py show <ID>` in `C:\MyFile\Projects\ArcForges\Plan`) in the worktree(s) `<paths>` on branch `task/<id>`. Stay inside the task's write scope.
 >
-> Read its design references in ArcForges-Design. Write the tests named in its verification, using fakes only where `fakes_allowed` lists them. Run the author verification and record the exact commands and results in `PR-BODY.md` at the worktree root. Never commit `PR-BODY.md`; the coordinator uses it as the PR body.
+> Read its design references in ArcForges-Design. Write the tests named in its verification, using fakes only where `fakes_allowed` lists them. While iterating, run the affected suites (the repository's `AGENTS.md`, Efficient execution). Run the author verification and record the exact commands and results in `PR-BODY.md` at the worktree root. Never commit `PR-BODY.md`; the coordinator uses it as the PR body.
+>
+> Before handing over, you may run `python eng/verify.py run` in the worktree, so the coordinator's push reuses the pass; report its PASS line, or the failing step and log path. Never bypass, disable or modify the hooks to get a push through, and never report a step that could not run as passed.
 >
 > Do not push, open PRs, merge, deploy or publish. Return a summary: head SHA, files changed, tests run with results, open questions and any blocker needing a human step.
 
@@ -33,7 +35,7 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 > Review Plan task `<ID>` at head `<SHA>` in `<worktree>`.
 > 1. Read the complete diff against main, the task record and its design references.
 > 2. Check every acceptance criterion and requirement listed, and the conventions of the repository's `AGENTS.md`.
-> 3. Re-run only checks that give distinct evidence (execution-policy §3): tests you doubt, checks whose scripts or workflows the PR changed, and real-environment tests the author could not run. Do not repeat the author's identical full suite.
+> 3. Re-run only checks that give distinct evidence (execution-policy §3): tests you doubt, checks whose scripts or workflows the PR changed, and real-environment tests the author could not run. The hook's record (the `arcforges-verify: PASS` line for this head) shows that the full profile passed; do not repeat it or the author's identical suites. Work in a worktree of the existing clone (`git worktree add`), not a fresh clone.
 > 4. Return a review record: verdict (approve / changes required), findings (each blocking or non-blocking, with file:line), the checks you ran with commands, results and reasons, and residual risks.
 >
 > Do not push or comment on GitHub; the coordinator posts your record.
@@ -50,4 +52,4 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 > - open acceptance-register entries and human prerequisites;
 > - the next task.
 >
-> Verify against PRs, merges and CI where you state facts.
+> Verify against PRs, merges, verification PASS lines (owner PRs) and hosted CI (external PRs) where you state facts.

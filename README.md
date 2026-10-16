@@ -27,4 +27,14 @@ python tools/plan.py ledger AF-REPO-01 started "scaffold work begins"
 python -m unittest discover -s tests -v
 ```
 
+## Verification
+
+The owner's (`deku2026`) PRs are verified locally by the pre-push hook ([AD-0016](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0016-local-first-verification.md); [AGENTS.md](AGENTS.md) rule 6): it runs what the `Plan checks` workflow runs, against ArcForges-Design `main`, on Windows and WSL Debian. The workflow runs only for external PRs, the merge queue and manual dispatch.
+
+```bash
+python eng/verify.py install   # once per clone, from the main checkout on main
+python eng/verify.py list      # the steps a commit would run
+python eng/verify.py run       # verify HEAD now; the push reuses the pass
+```
+
 The previous parallel plan is frozen in `ArcForges/Plan-Parallel` (main `5ccbb392`). It is never resumed ([history/legacy-disposition.md](history/legacy-disposition.md)).
