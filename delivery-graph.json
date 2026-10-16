@@ -928,7 +928,7 @@
       "id": "AF-EXEC-01",
       "title": "Windows execution",
       "milestone": "M1",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1058,9 +1058,19 @@
       "notes": "",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/7",
+          "https://github.com/ArcForges/ArcForges/pull/8",
+          "https://github.com/ArcForges/ArcForges/pull/9"
+        ],
+        "merges": [
+          "ArcForges@4a231b7fa65f6d64b0a6b5f2eac1dd5277232e0b",
+          "ArcForges@8cfb91a570ef35a31efafdd172634742623f206b",
+          "ArcForges@f0cd6c91f7b68e6566b295e288cf39b86c2519d4"
+        ],
+        "publications": [
+          "main CI and Security green at f0cd6c9 (run 38834160105); startup-host artifacts for win-x64, win-arm64, linux-x64, linux-arm64"
+        ],
         "ledger": null
       },
       "order": 9
@@ -1069,7 +1079,7 @@
       "id": "AF-EXEC-02",
       "title": "Linux execution through transient systemd units",
       "milestone": "M2",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
