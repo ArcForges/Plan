@@ -1079,7 +1079,7 @@
       "id": "AF-EXEC-02",
       "title": "Linux execution through transient systemd units",
       "milestone": "M2",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1184,12 +1184,22 @@
         }
       ],
       "size": "L",
-      "notes": "",
+      "notes": "[delivered] Delivered: #10 at its reviewed head; repair #11; the main-branch flake (commit-limit test) fixed by #12",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/10",
+          "https://github.com/ArcForges/ArcForges/pull/11",
+          "https://github.com/ArcForges/ArcForges/pull/12"
+        ],
+        "merges": [
+          "ArcForges@c55aa63f4576866ba2b3b3d33ccc7b08857e8f6d",
+          "ArcForges@8b2c2543fe0aa9d867b9d83d5cc18f7764b1f231",
+          "ArcForges@4b18e498d5142a95e0c667e90a8e03534eb5f692"
+        ],
+        "publications": [
+          "main CI and Security green at 4b18e49 (runs 38957547094, 38957547170)"
+        ],
         "ledger": null
       },
       "order": 10
