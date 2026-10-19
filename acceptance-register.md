@@ -32,6 +32,7 @@ Real-world validation that cannot run at development stage, and the human prereq
 | AR-14 | Live transactional e-mail (account security notices) | Live mail excluded at development stage (user decision 2026-10-10) | H-19 | AF-ID-01 | Open |
 | AR-15 | Real-world multi-day agent workload trial with Claude Code and Codex sessions in parallel on the workstation | User acceptance activity | The user's real projects | AF-ACC-01 | Open |
 | AR-16 | Optional privileged features: Windows machine-wide service mode; Linux I/O control in a privileged guest install | Needs administrator or root installs by the user | User-performed privileged install | AF-DIST-01, AF-WSL-01 | Open |
+| AR-17 | Doctor host-posture check on a standard Windows account, and on a machine with Administrator protection switched on (Windows 11, security-baseline or device policy) | No venue offers a standard account (as for AR-02: the product owner's decision of 2026-10-10, second-account checks are procedure only and never re-asked), and none has Administrator protection switched on: it is off by default, and switching it on is a device policy change followed by a restart (Design verification register V-W08) | A user-provided Windows 11 machine or VM with a standard account and an administrator account, Administrator protection switched on (device policy and restart; not advised on Hyper-V devices, V-W08) | AF-DIAG-01 | Open |
 
 ## 2. Human prerequisites
 
