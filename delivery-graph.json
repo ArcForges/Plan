@@ -1572,10 +1572,11 @@
       "scope": [
         "Origin derivation (HUMAN, SCRIPT, AGENT; REMOTE and PEER hooks) as guardrails with documented bypasses (11 section 1); permission matrix and overrides; ExplainPermission",
         "ApprovalService with captured requests executed under the original command_id",
-        "AdoptProcess and TerminateProcess with escaped-process detection",
+        "AdoptProcess and TerminateProcess with escaped-process detection for descendants whose recorded ancestry passes through a job member; launches through WMI, a broker, a service, a scheduled task or a spoofed parent are a documented gap (11 section 1, T-23)",
         "Local audit_log",
-        "Read-only version directories with digest checks (AD-0007 section 8); optional Linux unit hardening (ReadOnlyPaths, InaccessiblePaths)",
-        "Retry-safety policy (AD-0006 section 4): retry_safety rules edited by HUMAN callers only, accept_agent_assertions (default false), side_effect_source recorded"
+        "Read-only version directories with digest checks (AD-0007 section 8); optional Linux unit hardening (ReadOnlyPaths, InaccessiblePaths); the hardening is read back after start and reported as applied or not applied, as GUARDRAIL hardening of ArcForges' own files (F-L04)",
+        "Retry-safety policy (AD-0006 section 4): retry_safety rules edited by HUMAN callers only, accept_agent_assertions (default false), side_effect_source recorded",
+        "Bypass catalogue additions (11 section 1): container tampering (T-22), leaving the container (T-23), privileged changes without ArcForges elevating, with the system bus in the channel catalogue (T-26); the same-user qualifier in both delivered capability reasons, the Linux and the Windows KillTreeReason (AF-EXEC-02 and AF-EXEC-01 stay delivered)"
       ],
       "out_of_scope": [
         "Remote origin enforcement (AF-CLD-05)",
@@ -1601,9 +1602,9 @@
       "acceptance": [
         "Matrix tests per origin for the supported clients",
         "Approval round trip returns the executed outcome to a retrying caller",
-        "WMI-escaped process detected and terminated (T-18)",
+        "A descendant whose recorded ancestry passes through a job member is detected and terminated (T-18); a real Windows WMI-created child is not detected, the scan reports nothing, and the gap is documented in Design 11 section 1 (T-23)",
         "Audit records for every privileged action",
-        "Linux hardening applied where the user manager supports it, and reported otherwise (F-L04)",
+        "Linux hardening is read back after start; where it did not apply it is reported as not applied, never as applied, and it is never reported as workload isolation (F-L04)",
         "Only HUMAN callers can edit retry_safety rules; agent assertions follow accept_agent_assertions"
       ],
       "verification": {
@@ -1612,7 +1613,7 @@
           "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Windows WMI escape test; adoption tests on both platforms"
+          "Windows WMI escape test showing that the scan reports nothing; adoption tests on both platforms"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -1626,7 +1627,8 @@
         "none"
       ],
       "future_validation": [
-        "F-L04"
+        "F-L04",
+        "F-W04"
       ],
       "acceptance_register": [],
       "human_prerequisites": [],
@@ -1639,6 +1641,11 @@
         {
           "risk": "User units reject ReadOnlyPaths or InaccessiblePaths (F-L04)",
           "mitigation": "Probe at startup; report hardening as not applied",
+          "owner": "AF-SEC-01"
+        },
+        {
+          "risk": "A real WMI-created child is not handled as the documented gap assumes (F-W04)",
+          "mitigation": "Real Windows WMI test showing that the scan reports nothing; the gap is documented in Design 11 section 1 (T-23)",
           "owner": "AF-SEC-01"
         }
       ],
@@ -1772,7 +1779,7 @@
       "scope": [
         "Finding catalogue (24 kinds) and SM-FINDING",
         "Remedy policy and ApplyRemedy",
-        "RunDoctor",
+        "RunDoctor, with a HUMAN-only host-posture check: on Windows the account type and the Administrator protection state, read without elevation (D2 host posture, Design 11 section 5; T-26), warning on an administrator account without Administrator protection with the generic statement that UAC is not a security boundary there. Its status and values are returned only to local callers of HUMAN origin; every other caller, AGENT and SCRIPT callers and the MCP doctor tool included, sees only that a HUMAN-only check exists, without its status or values, and the check does not count towards the overall result; support bundles leave the values out unless the owner includes them",
         "Tamper detection of out-of-band edits to node.json and the store (ENFORCEMENT_DEGRADED)",
         "MemoryService and use of facts in estimates; staleness",
         "CLI findings, doctor, memory"
@@ -1801,14 +1808,16 @@
         "Each finding kind has a detection test",
         "Approval-only remedies never run automatically",
         "Facts change estimates only when ACTIVE with confidence >= MEDIUM",
-        "An out-of-band edit raises the tamper finding"
+        "An out-of-band edit raises the tamper finding",
+        "The host-posture check reads the account type and the Administrator protection state at standard-user privilege and reports them correctly on a standard account and on an administrator account; a doctor call of AGENT or SCRIPT origin and the MCP doctor tool receive neither value nor status. Administrator protection switched on is an acceptance-register item where no venue has it (T-26)"
       ],
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
           "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
-          "Exact commands and results recorded in the PR"
+          "Exact commands and results recorded in the PR",
+          "Doctor host-posture test on a standard and an administrator account, and an origin test showing that AGENT, SCRIPT and MCP callers receive no host-posture value"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -1821,13 +1830,20 @@
       "fakes_allowed": [
         "none"
       ],
-      "future_validation": [],
+      "future_validation": [
+        "F-W05"
+      ],
       "acceptance_register": [],
       "human_prerequisites": [],
       "risks": [
         {
           "risk": "False stall findings during network waits",
           "mitigation": "Stall needs no CPU, no I/O and no output; network waits are labelled inferred",
+          "owner": "AF-DIAG-01"
+        },
+        {
+          "risk": "The account type or the Administrator protection state cannot be read without elevation on some account (F-W05)",
+          "mitigation": "Doctor host-posture test on a standard and an administrator account; Administrator protection switched on is an acceptance-register item where no venue has it",
           "owner": "AF-DIAG-01"
         }
       ],
@@ -2396,8 +2412,8 @@
       "scope": [
         "`arcforges hook <client> <event>` in exec form for Claude Code and Codex events (no WorktreeCreate or WorktreeRemove hooks); SessionService; correlation through the nearest client-executable ancestor",
         "ClassifyCommand and rewrite construction (`ask` by default; no `--cwd`, so the shell's directory applies; `--client-timeout` from the call, the client default recorded by the probe, none for background calls; hand-off at the client timeout minus the margin with exit 124 and the wait and cancel commands; immediate exit 125 for exceeds_capacity; an interrupt before the hand-off cancels); SubmitTask join_existing with the exact command digest, joining only tasks that have not started; modes observe, guide, rewrite (heavy commands) and rewrite-all with passthrough patterns, shell-state prefixes kept outside, background launches not routed and the light estimate (08 section 4.1); bypass detection",
-        "SessionCoverage with the managed share, the coverage map of 08 section 4.4 and session reports; services stopped with their owner session; CLI session commands",
-        "SessionService.GetReleaseScope: the release coverage statement, the rows of Design product definition §9 for this release"
+        "SessionCoverage with the managed share, the coverage map of 08 section 4.4 and session reports; services stopped with their owner session; CLI session commands; the coverage views named in Design 08 section 5 (D-14's integration consent panel, arcforges coverage and the MCP session_coverage tool) show the client's routing row of GetReleaseScope (routing:claude-code, routing:codex), and D-07 and arcforges session coverage link to the release coverage statement (R-AI-011)",
+        "SessionService.GetReleaseScope: the release coverage statement, the rows of Design product definition §9 for this release; the stated limits of §9 (added 2026-10-19), served after them: per supported client (routing:claude-code, routing:codex), that routed commands run outside the client's own sandbox and that the client's own process keeps the user's full access; the credential sentence and the same-user qualifier for the node data key, sealed task secrets and running environments; the generic sentence 'On an administrator account without Administrator protection, UAC is not a security boundary; unconfined workloads may obtain administrator rights silently'; the rows for ArcForges' own containers and for paired LAN peers; together they state the documented bypasses T-22 to T-27. GetReleaseScope carries no host-posture fact and no user path (the host's account type and Administrator protection state are AF-DIAG-01's HUMAN-only doctor check)"
       ],
       "out_of_scope": [
         "Writing client configuration (AF-AI-02)"
@@ -2431,7 +2447,9 @@
         "rewrite-all routes every shell command except passthrough patterns; the managed share is reported, and connecting MCP alone is never counted as interception (R-AI-005)",
         "rewrite-all keeps a leading cd in the client's shell and runs the routed part in that directory (cd sub && <cmd> runs <cmd> in sub), leaves background launches unrouted, and starts light commands without waiting for pool slots; a light command that needs more memory than its estimate is not killed for it",
         "From a routed command, including one from a Claude Code subagent, the session's records lead to its tasks, the agent ID, attempts, processes, queue reasons, cache usage, downloads and outcome (R-REC-006; J-11)",
-        "GetReleaseScope returns the rows of product definition §9 (operation, management, gaps, Verified by), checked against a fixture copied from the Design that records the Design commit it came from and is refreshed whenever §9 changes (R-AI-011)"
+        "GetReleaseScope returns the rows of product definition §9 (operation, management, gaps, Verified by), checked against a fixture copied from the Design that records the Design commit it came from and is refreshed whenever §9 changes (R-AI-011), and the stated limits of §9 (added 2026-10-19) after them, in the same columns, checked against the same fixture, refreshed for the corrected §9",
+        "The coverage views named in Design 08 section 5 (D-14's integration consent panel, arcforges coverage and the MCP session_coverage tool) show the client's routing row of GetReleaseScope (routing:claude-code, routing:codex), and D-07 and arcforges session coverage link to the release coverage statement (R-AI-011)",
+        "GetReleaseScope returns no host-posture value (account type, Administrator protection state) and no user path, for any origin"
       ],
       "verification": {
         "author": [
@@ -2453,7 +2471,8 @@
         "HookPayloadFixtures (AI client internals)"
       ],
       "future_validation": [
-        "F-A02"
+        "F-A02",
+        "F-A03"
       ],
       "acceptance_register": [],
       "human_prerequisites": [
@@ -2473,6 +2492,11 @@
         {
           "risk": "A client's tool timeout is unknown or changes between versions",
           "mitigation": "The hook passes the timeout the client reports, with a conservative default; the margin is policy (routing.handoff_margin_ms)",
+          "owner": "AF-AI-01"
+        },
+        {
+          "risk": "The per-client routing statement does not hold on a supported client (F-A03)",
+          "mitigation": "Real Claude Code and Codex sessions confirm that routed commands run outside the client's own sandbox (H-13); the statement text comes only from the routing rows of product definition §9, checked through the GetReleaseScope fixture",
           "owner": "AF-AI-01"
         }
       ],
@@ -2533,7 +2557,8 @@
         "No call exceeds 55 s",
         "Adapter idle memory and overhead within 15 section 3",
         "placement any from a non-git directory without inputs fails with VALIDATION/inputs_required; an agent's overwrite is refused",
-        "`session_coverage` returns `release_scope` from GetReleaseScope unchanged, next to the session's observed facts (R-AI-011)"
+        "`session_coverage` returns `release_scope` from GetReleaseScope unchanged, next to the session's observed facts (R-AI-011)",
+        "The run tool's description states that commands it runs execute outside the client's own sandbox, with resource control and records; session_coverage states it through the client's routing row (routing:claude-code or routing:codex) of release_scope, which it returns from GetReleaseScope unchanged (R-AI-011)"
       ],
       "verification": {
         "author": [
@@ -2554,7 +2579,8 @@
         "ScriptedMcpClient (AI client internals)"
       ],
       "future_validation": [
-        "F-N01"
+        "F-N01",
+        "F-A03"
       ],
       "acceptance_register": [],
       "human_prerequisites": [],
@@ -2567,6 +2593,11 @@
         {
           "risk": "Protocol revisions churn",
           "mitigation": "Tests for both revisions; capability negotiation",
+          "owner": "AF-MCP-01"
+        },
+        {
+          "risk": "The run tool's description or session_coverage misstates where routed commands run (F-A03)",
+          "mitigation": "session_coverage returns release_scope from GetReleaseScope unchanged; ScriptedMcpClient tests check the run tool's description and the client's routing row",
           "owner": "AF-MCP-01"
         }
       ],
@@ -2605,7 +2636,7 @@
         "IntegrationService (ListClients, PlanIntegration, PlanRemoval, ApplyIntegration, StartProbe, ListProbeResults, GetInstructionSnippet); recorded writes",
         "`arcforges probe`; probe evaluation; rewrite gating",
         "Claude Code plugin and Codex plugin packages (not published)",
-        "Plans per routing mode, including rewrite-all with passthrough patterns; snippets per mode (08 section 6.3); copy stating that connecting MCP alone routes nothing",
+        "Plans per routing mode, including rewrite-all with passthrough patterns; snippets per mode (08 section 6.3); copy stating that connecting MCP alone routes nothing; for every plan that enables an MCP or hook route, the client's routing statement shown verbatim with the diff (the Stated limit text of its routing row of product definition §9, routing:claude-code or routing:codex: routed commands run outside the client's own sandbox, and the client's own process keeps the user's full access), and each snippet offered together with it",
         "`arcforges coverage [--session <id>]`: the release coverage statement from GetReleaseScope, then the session's coverage when given; `arcforges session coverage <id>` ends with a pointer to it"
       ],
       "out_of_scope": [
@@ -2634,7 +2665,8 @@
         "Real probes in Claude Code and Codex on the workstation recorded (F-A01)",
         "Plugin without the node prints install guidance",
         "No plan or page presents connecting MCP alone as intercepting commands",
-        "`arcforges coverage` prints the release coverage statement from GetReleaseScope, followed by the session's facts when --session is given; `arcforges session coverage <id>` points to it; no output presents instructions to the client as interception (R-AI-011)"
+        "`arcforges coverage` prints the release coverage statement from GetReleaseScope, followed by the session's facts when --session is given; `arcforges session coverage <id>` points to it; no output presents instructions to the client as interception (R-AI-011)",
+        "Every plan that enables an MCP or hook route shows the client's routing statement, the Stated limit text of its routing row, verbatim in its consent diff, and applying it records the consent"
       ],
       "verification": {
         "author": [
@@ -2656,7 +2688,8 @@
         "none"
       ],
       "future_validation": [
-        "F-A01"
+        "F-A01",
+        "F-A03"
       ],
       "acceptance_register": [
         "AR-13",
@@ -2674,6 +2707,11 @@
         {
           "risk": "Writing client configuration damages unrelated settings",
           "mitigation": "Plan and apply with recorded writes and exact removal",
+          "owner": "AF-AI-02"
+        },
+        {
+          "risk": "Consent copy or a snippet misstates where routed commands run (F-A03)",
+          "mitigation": "Plans show the Stated limit text of the client's routing row verbatim, and snippets are offered with it; real Claude Code and Codex sessions on the workstation (H-13)",
           "owner": "AF-AI-02"
         }
       ],
@@ -3203,8 +3241,8 @@
       ],
       "objective": "Install and uninstall per user on Windows and Linux, and build signed release artifacts with test keys.",
       "scope": [
-        "Per-user setup program `arcforges-setup-<v>-<rid>.exe` (ArcForges.Setup; no MSI): supervisor autostart, PATH, HKCU uninstall entry, install_source, uninstall of every version directory",
-        "install.sh and .deb with user units",
+        "Per-user setup program `arcforges-setup-<v>-<rid>.exe` (ArcForges.Setup; no MSI): supervisor autostart, PATH, HKCU uninstall entry, install_source, uninstall of every version directory, the Start-menu shortcut and optional Desktop shortcut, the toast AUMID registration, the recorded integration writes (replayed in reverse) and the node's own Credential Manager entries (deleted by exact name, one at a time, whether or not the data root is kept)",
+        "install.sh and .deb with user units; `install.sh --uninstall` removes the node's own Secret Service items, or its 0600 fallback file, by exact name; removing the .deb runs as root outside any user's session and cannot remove them, so each user removes them first with the user-level `arcforges node wipe --scope all`",
         "Release artifact pipeline: zips, tarballs, ES256 manifest and signature with test keys, SBOM",
         "Read-only version directories",
         "The setup program refuses Windows versions before Windows 11 with the reason (AD-0002; V-N06)"
@@ -3230,7 +3268,9 @@
         "Real install, upgrade and uninstall on the workstation (isolated profile root: separate data root, Run key and PATH under test names) and in a clean WSL2 distribution",
         "Windowless supervisor at logon (F-N03 re-verified with a logoff/logon cycle)",
         "Managed tasks cannot write the installation (T-05)",
-        "The setup program refuses an unsupported Windows version (version check under test)"
+        "The setup program refuses an unsupported Windows version (version check under test)",
+        "Uninstall leaves no shortcut, AUMID registration or recorded integration write, and deletes the node's own Credential Manager entries by exact name; uninstall tests use the isolated secret-store backend, and one real-store check of the exact-name deletion per platform runs in the separate, sequential OS secret-store tier (AD-0016 section 5)",
+        "On Linux, `install.sh --uninstall`, and for the .deb the user-level `arcforges node wipe --scope all` before package removal, delete the node's own Secret Service items or its 0600 fallback file by exact name, under the same test tier (AD-0016 section 5); package removal alone leaves them"
       ],
       "verification": {
         "author": [
