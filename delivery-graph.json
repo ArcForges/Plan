@@ -2,7 +2,7 @@
   "schema": 2,
   "plan": "ArcForges flagship delivery",
   "created": "2026-10-12",
-  "revised": "2026-10-13 (findings review and its independent review; then the product owner's decisions: local and LAN free, Windows 11 floor, initial LAN scope; LAN delivered before cloud; account-based LAN trust, result-cache restore and MCP over HTTP moved to the roadmap; correlated evidence and supported operations; independent review of that round and its delta; mechanism review: WSL outage reservation, disk guards, per-attempt compiler servers, cache-growth attribution)",
+  "revised": "2026-10-19 (current-design corrections of ArcForges-Design #8, pair 1 of the 2026-10-18 long-term evolution study: the escape-detection gap, the same-user qualifiers, routing outside the client's own sandbox, the HUMAN-only host-posture check, the stated limits in the release coverage statement, and the complete uninstall with its secret-store test tier; independent review of that change)",
   "policy": "execution-policy.md",
   "design": {
     "repository": "ArcForges/ArcForges-Design",
@@ -1606,7 +1606,8 @@
         "A descendant whose recorded ancestry passes through a job member is detected and terminated (T-18); a real Windows WMI-created child is not detected, the scan reports nothing, and the gap is documented in Design 11 section 1 (T-23)",
         "Audit records for every privileged action",
         "Linux hardening is read back after start; where it did not apply it is reported as not applied, never as applied, and it is never reported as workload isolation (F-L04)",
-        "Only HUMAN callers can edit retry_safety rules; agent assertions follow accept_agent_assertions"
+        "Only HUMAN callers can edit retry_safety rules; agent assertions follow accept_agent_assertions",
+        "Both delivered kill_tree capability reasons end with the same-user qualifier of Design 03 section 8"
       ],
       "verification": {
         "author": [
@@ -1811,7 +1812,7 @@
         "Approval-only remedies never run automatically",
         "Facts change estimates only when ACTIVE with confidence >= MEDIUM",
         "An out-of-band edit raises the tamper finding",
-        "The host-posture check reads the account type and the Administrator protection state at standard-user privilege and reports them correctly on a standard account and on an administrator account; a doctor call of AGENT or SCRIPT origin and the MCP doctor tool receive neither value nor status. Administrator protection switched on is acceptance-register entry AR-17 where no venue has it (T-26)"
+        "The host-posture check reads the account type and the Administrator protection state at standard-user privilege and reports them correctly on the workstation's administrator account; a doctor call of AGENT or SCRIPT origin and the MCP doctor tool receive neither value nor status. A standard Windows account and Administrator protection switched on are acceptance-register entry AR-17 where no venue has them (T-26)"
       ],
       "verification": {
         "author": [
@@ -1819,7 +1820,7 @@
           "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Doctor host-posture test on a standard and an administrator account, and an origin test showing that AGENT, SCRIPT and MCP callers receive no host-posture value"
+          "Doctor host-posture test on the workstation's administrator account, and an origin test showing that AGENT, SCRIPT and MCP callers receive no host-posture value; a standard Windows account and Administrator protection switched on are AR-17"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -1838,9 +1839,7 @@
       "acceptance_register": [
         "AR-17"
       ],
-      "human_prerequisites": [
-        "H-22"
-      ],
+      "human_prerequisites": [],
       "risks": [
         {
           "risk": "False stall findings during network waits",
@@ -1849,7 +1848,7 @@
         },
         {
           "risk": "The account type or the Administrator protection state cannot be read without elevation on some account (F-W05)",
-          "mitigation": "Doctor host-posture test on a standard and an administrator account; Administrator protection switched on is acceptance-register entry AR-17 where no venue has it",
+          "mitigation": "Doctor host-posture test on the workstation's administrator account; a standard Windows account and Administrator protection switched on are acceptance-register entry AR-17 where no venue has them",
           "owner": "AF-DIAG-01"
         }
       ],
@@ -2418,7 +2417,7 @@
       "scope": [
         "`arcforges hook <client> <event>` in exec form for Claude Code and Codex events (no WorktreeCreate or WorktreeRemove hooks); SessionService; correlation through the nearest client-executable ancestor",
         "ClassifyCommand and rewrite construction (`ask` by default; no `--cwd`, so the shell's directory applies; `--client-timeout` from the call, the client default recorded by the probe, none for background calls; hand-off at the client timeout minus the margin with exit 124 and the wait and cancel commands; immediate exit 125 for exceeds_capacity; an interrupt before the hand-off cancels); SubmitTask join_existing with the exact command digest, joining only tasks that have not started; modes observe, guide, rewrite (heavy commands) and rewrite-all with passthrough patterns, shell-state prefixes kept outside, background launches not routed and the light estimate (08 section 4.1); bypass detection",
-        "SessionCoverage with the managed share, the coverage map of 08 section 4.4 and session reports; services stopped with their owner session; CLI session commands; the coverage views named in Design 08 section 5 (D-14's integration consent panel, arcforges coverage and the MCP session_coverage tool) show the client's routing row of GetReleaseScope (routing:claude-code, routing:codex), and D-07 and arcforges session coverage link to the release coverage statement (R-AI-011)",
+        "SessionCoverage with the managed share, the coverage map of 08 section 4.4 and session reports; services stopped with their owner session; CLI session commands; GetReleaseScope serves the routing rows under the fixed operation strings routing:claude-code and routing:codex, from which the coverage views named in Design 08 section 5 show the client's row; those views are built and checked by AF-MCP-01, AF-AI-02 and AF-DESK-02 (A-A03)",
         "SessionService.GetReleaseScope: the release coverage statement, the rows of Design product definition §9 for this release; the stated limits of §9 (added 2026-10-19), served after them: per supported client (routing:claude-code, routing:codex), that routed commands run outside the client's own sandbox and that the client's own process keeps the user's full access; the credential sentence and the same-user qualifier for the node data key, sealed task secrets and running environments; the generic sentence 'On an administrator account without Administrator protection, UAC is not a security boundary; unconfined workloads may obtain administrator rights silently'; the rows for ArcForges' own containers and for paired LAN peers; together they state the documented bypasses T-22 to T-27. GetReleaseScope carries no host-posture fact and no user path (the host's account type and Administrator protection state are AF-DIAG-01's HUMAN-only doctor check)"
       ],
       "out_of_scope": [
@@ -2454,7 +2453,7 @@
         "rewrite-all keeps a leading cd in the client's shell and runs the routed part in that directory (cd sub && <cmd> runs <cmd> in sub), leaves background launches unrouted, and starts light commands without waiting for pool slots; a light command that needs more memory than its estimate is not killed for it",
         "From a routed command, including one from a Claude Code subagent, the session's records lead to its tasks, the agent ID, attempts, processes, queue reasons, cache usage, downloads and outcome (R-REC-006; J-11)",
         "GetReleaseScope returns the rows of product definition §9 (operation, management, gaps, Verified by), checked against a fixture copied from the Design that records the Design commit it came from and is refreshed whenever §9 changes (R-AI-011), and the stated limits of §9 (added 2026-10-19) after them, in the same columns, checked against the same fixture, refreshed for the corrected §9",
-        "The coverage views named in Design 08 section 5 (D-14's integration consent panel, arcforges coverage and the MCP session_coverage tool) show the client's routing row of GetReleaseScope (routing:claude-code, routing:codex), and D-07 and arcforges session coverage link to the release coverage statement (R-AI-011)",
+        "GetReleaseScope serves the routing rows under the fixed operation strings routing:claude-code and routing:codex, from which the coverage views named in Design 08 section 5 show the client's row; those views are built and checked by AF-MCP-01, AF-AI-02 and AF-DESK-02 (A-A03)",
         "GetReleaseScope returns no host-posture value (account type, Administrator protection state) and no user path, for any origin"
       ],
       "verification": {
@@ -2672,7 +2671,8 @@
         "Plugin without the node prints install guidance",
         "No plan or page presents connecting MCP alone as intercepting commands",
         "`arcforges coverage` prints the release coverage statement from GetReleaseScope, followed by the session's facts when --session is given; `arcforges session coverage <id>` points to it; no output presents instructions to the client as interception (R-AI-011)",
-        "Every plan that enables an MCP or hook route shows the client's routing statement, the Stated limit text of its routing row, verbatim in its consent diff, and applying it records the consent"
+        "Every plan that enables an MCP or hook route shows the client's routing statement, the Stated limit text of its routing row, verbatim in its consent diff, and applying it records the consent",
+        "`arcforges coverage --session <id>` marks the routing row of the session's client, found through GetSession"
       ],
       "verification": {
         "author": [
