@@ -32,6 +32,7 @@ Real-world validation that cannot run at development stage, and the human prereq
 | AR-14 | Live transactional e-mail (account security notices) | Live mail excluded at development stage (user decision 2026-10-10) | H-19 | AF-ID-01 | Open |
 | AR-15 | Real-world multi-day agent workload trial with Claude Code and Codex sessions in parallel on the workstation | User acceptance activity | The user's real projects | AF-ACC-01 | Open |
 | AR-16 | Optional privileged features: Windows machine-wide service mode; Linux I/O control in a privileged guest install | Needs administrator or root installs by the user | User-performed privileged install | AF-DIST-01, AF-WSL-01 | Open |
+| AR-17 | Doctor host-posture check on a machine with Administrator protection switched on (Windows 11, security-baseline or device policy) | No venue has Administrator protection switched on: it is off by default, and switching it on is a device policy change followed by a restart (Design verification register V-W08) | H-22 | AF-DIAG-01 | Open |
 
 ## 2. Human prerequisites
 
@@ -58,6 +59,7 @@ Real-world validation that cannot run at development stage, and the human prereq
 | H-19 | Transactional e-mail provider account (Postmark, with Amazon SES as fallback), sending domain with SPF, DKIM and DMARC records, and API credentials in Cloud secrets | AF-ID-01 (live only), AF-PROD-01 (identity surface), AR-14 | AF-PROD-01 (the identity surface sends sign-in codes and security notices); nothing at development stage (live delivery: AR-14) | Development uses `FakeMailSender` |
 | H-20 | Approval to run the Cloud repository's provisioning script against the production account, creating the D1 database, the R2 bucket with its lifecycle rules and the Queue (or the user creates them and supplies their IDs) | AF-PROD-01 | AF-PROD-01 only | At Cloud `92ba1dc9` only the `proof` environment has these bindings; AF-CLD-01 writes and tests the script locally. Request it, with H-05, H-06 and H-16, when AF-ACC-01 starts |
 | H-21 | A read-only Cloudflare GraphQL Analytics API token stored as a Cloud secret, for the daily billing reconciliation (Design 14 §7.5) | AF-OPS-01 (optional) | Nothing (optional; without it reconciliation reports off) | The user creates and stores it; the coordinator never handles it |
+| H-22 | A Windows 11 machine or VM on which the user has switched Administrator protection on (a Windows security baseline or device policy), for the doctor's host-posture check (AR-17) | AF-DIAG-01, AR-17 | `complete`, not delivery, of AF-DIAG-01 (AR-17) | Switching it on is a device policy change followed by a restart, and Microsoft advises against it on devices that need Hyper-V (V-W08). The coordinator never changes security settings; the user provides the machine and switches it on |
 
 ## 3. Development-stage evidence to record per entry
 

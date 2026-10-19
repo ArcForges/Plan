@@ -1560,6 +1560,7 @@
             "src/ArcForges.Node.Api/**",
             "src/ArcForges.Node.Core/**",
             "src/ArcForges.Node.Platform.Linux/**",
+            "src/ArcForges.Node.Platform.Windows/**",
             "src/ArcForges.CommandLine/**",
             "tests/**"
           ]
@@ -1766,6 +1767,7 @@
           "paths": [
             "src/ArcForges.Node.Diagnosis/**",
             "src/ArcForges.Node.Core/**",
+            "src/ArcForges.Node.Platform.Windows/**",
             "src/ArcForges.CommandLine/**",
             "tests/**"
           ]
@@ -1809,7 +1811,7 @@
         "Approval-only remedies never run automatically",
         "Facts change estimates only when ACTIVE with confidence >= MEDIUM",
         "An out-of-band edit raises the tamper finding",
-        "The host-posture check reads the account type and the Administrator protection state at standard-user privilege and reports them correctly on a standard account and on an administrator account; a doctor call of AGENT or SCRIPT origin and the MCP doctor tool receive neither value nor status. Administrator protection switched on is an acceptance-register item where no venue has it (T-26)"
+        "The host-posture check reads the account type and the Administrator protection state at standard-user privilege and reports them correctly on a standard account and on an administrator account; a doctor call of AGENT or SCRIPT origin and the MCP doctor tool receive neither value nor status. Administrator protection switched on is acceptance-register entry AR-17 where no venue has it (T-26)"
       ],
       "verification": {
         "author": [
@@ -1833,8 +1835,12 @@
       "future_validation": [
         "F-W05"
       ],
-      "acceptance_register": [],
-      "human_prerequisites": [],
+      "acceptance_register": [
+        "AR-17"
+      ],
+      "human_prerequisites": [
+        "H-22"
+      ],
       "risks": [
         {
           "risk": "False stall findings during network waits",
@@ -1843,7 +1849,7 @@
         },
         {
           "risk": "The account type or the Administrator protection state cannot be read without elevation on some account (F-W05)",
-          "mitigation": "Doctor host-posture test on a standard and an administrator account; Administrator protection switched on is an acceptance-register item where no venue has it",
+          "mitigation": "Doctor host-posture test on a standard and an administrator account; Administrator protection switched on is acceptance-register entry AR-17 where no venue has it",
           "owner": "AF-DIAG-01"
         }
       ],
@@ -2637,7 +2643,7 @@
         "`arcforges probe`; probe evaluation; rewrite gating",
         "Claude Code plugin and Codex plugin packages (not published)",
         "Plans per routing mode, including rewrite-all with passthrough patterns; snippets per mode (08 section 6.3); copy stating that connecting MCP alone routes nothing; for every plan that enables an MCP or hook route, the client's routing statement shown verbatim with the diff (the Stated limit text of its routing row of product definition §9, routing:claude-code or routing:codex: routed commands run outside the client's own sandbox, and the client's own process keeps the user's full access), and each snippet offered together with it",
-        "`arcforges coverage [--session <id>]`: the release coverage statement from GetReleaseScope, then the session's coverage when given; `arcforges session coverage <id>` ends with a pointer to it"
+        "`arcforges coverage [--session <id>]`: the release coverage statement from GetReleaseScope, whose routing rows carry each client's routing statement; when a session is given, GetSession (which names the session's client) and GetSessionCoverage, the routing row of the session's client marked, then the session's coverage; `arcforges session coverage <id>` ends with a pointer to it"
       ],
       "out_of_scope": [
         "Publishing plugins (AR-13)"
@@ -3289,7 +3295,7 @@
         ]
       },
       "fakes_allowed": [
-        "none"
+        "IsolatedSecretStore (the OS secret store, for routine uninstall tests; Design AD-0016 section 5 and its 2026-10-17 amendment; the one real-store exact-name check runs in the separate, sequential OS secret-store tier)"
       ],
       "future_validation": [
         "F-N03"
