@@ -106,6 +106,11 @@ class VerifyCore(unittest.TestCase):
     def test_a_missing_windows_leg_rejects_the_push(self) -> None:
         work = self.repository('Step("linux-a", "linux", "true", timeout=60),\n'
                                'Step("win-a", "win", ["cmd", "/c", "exit 0"], timeout=60)')
+        early = self.pre_push(work)
+        self.assertEqual(early.returncode, 1)
+        self.assertIn("the win leg", early.stderr)
+        self.assertNotIn("LEG PASS", early.stdout, "the Linux leg ran although the push could not pass")
+        self.assertEqual(self.records(work, "linux"), [])
         run_result = self.verify(work, "run")
         self.assertEqual(run_result.returncode, 0, run_result.stderr)
         self.assertIn("arcforges-verify: INCOMPLETE", run_result.stdout)
@@ -172,6 +177,8 @@ class VerifyCore(unittest.TestCase):
             ("steps", dict(original, steps=["linux-a", "linux-extra"])),
             ("digest", dict(original, digest="0" * 64)),
             ("context", dict(original, context={"design-main": "0" * 40})),
+            ("platform", dict(original, platform="Windows-11-10.0.26300-SP0")),
+            ("platform", {k: v for k, v in original.items() if k != "platform"}),
         ]
         for field, data in forged:
             path = self.root / f"forged-{field}.json"
@@ -199,6 +206,7 @@ class VerifyCore(unittest.TestCase):
         self.assertEqual(computed.returncode, 0, computed.stderr)
         full_key = computed.stdout.strip().splitlines()[-1]
         win = dict(data, host="win", key=full_key, steps=["win-a"], machine="WINBOX", tools={"python": "3.14"},
+                   platform="Windows-11-10.0.26300-SP0",
                    results=[{"step": "win-a", "ok": True, "seconds": 0.1, "reason": "", "log_sha256": "x"}])
         path = self.root / "win.json"
         path.write_text(json.dumps(win), encoding="utf-8")
@@ -206,6 +214,45 @@ class VerifyCore(unittest.TestCase):
         push = self.pre_push(work)
         self.assertEqual(push.returncode, 0, push.stderr)
         self.assertIn("win@WINBOX (imported", push.stdout)
+
+    def test_a_shallow_clone_is_refused(self) -> None:
+        work = self.repository('Step("linux-a", "linux", "true", timeout=60)')
+        shallow = self.root / "shallow"
+        self.git(self.root, "clone", "-q", "--depth", "1", f"file://{work}", str(shallow))
+        result = self.verify(shallow, "run")
+        self.assertEqual(result.returncode, 1, result.stdout)
+        self.assertIn("git fetch --unshallow", result.stderr)
+        self.assertEqual(self.records(shallow, "linux"), [])
+
+    def test_an_incomplete_linux_clone_is_made_again(self) -> None:
+        work = self.repository('Step("linux-a", "linux", "test \\"$(git rev-list --count HEAD)\\" = 3", timeout=60)')
+        # History below the merge base: main gets a second commit and the feature moves onto it.
+        root = self.git(work, "rev-parse", "main")
+        self.git(work, "checkout", "-q", "main")
+        (work / "b.txt").write_text("b\n", encoding="utf-8")
+        self.git(work, "add", "b.txt")
+        self.git(work, "commit", "-qm", "main two")
+        self.git(work, "push", "-q", "origin", "main")
+        self.git(work, "checkout", "-q", "feature")
+        self.git(work, "rebase", "-q", "main")
+        clone = self.home / ".cache" / "arcforges-verify" / "CoreTest-a"
+        first = self.verify(work, "run")
+        self.assertEqual(first.returncode, 0, first.stdout + first.stderr)
+        # Lose the root commit below the merge base, as a fetch from a shallow source leaves the clone.
+        objects = clone / ".git" / "objects"
+        for pack in sorted((objects / "pack").glob("*.pack")):
+            moved = self.root / pack.name
+            pack.rename(moved)
+            pack.with_suffix(".idx").unlink()
+            subprocess.run(["git", "unpack-objects", "-q"], cwd=clone, stdin=moved.open("rb"), check=True,
+                           env=dict(os.environ, **self.env))
+        (objects / root[:2] / root[2:]).unlink()
+        self.assertNotEqual(run(["git", "rev-list", "--count", "HEAD"], clone, env=self.env).returncode, 0)
+        # The commit and the base are both still there, so a fetch alone would bring nothing and leave the hole.
+        second = self.verify(work, "run", "--force")
+        self.assertEqual(second.returncode, 0, second.stdout + second.stderr)
+        self.assertIn("making it again", second.stdout)
+        self.assertIn("arcforges-verify: LEG PASS", second.stdout)
 
 
 if __name__ == "__main__":

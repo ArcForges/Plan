@@ -76,7 +76,10 @@ print('ArcForges-Design main', head.strip(), 'at', tree)
 """
 
 LINUX_REFRESH = (
-    f"set -euo pipefail; d={LINUX_DESIGN}; mkdir -p \"$d\"; cd \"$d\"; [ -d .git ] || git init -q; "
+    # A shallow Design clone would leave this clone incomplete without an error (as in eng/verify.py prepare_linux).
+    f"set -euo pipefail; test \"$(git -C {shlex.quote(DESIGN.as_posix())} rev-parse --is-shallow-repository)\" = false "
+    f"|| {{ echo \"the ArcForges-Design clone {DESIGN.as_posix()} is shallow; run git fetch --unshallow there\" >&2; exit 1; }}; "
+    f"d={LINUX_DESIGN}; mkdir -p \"$d\"; cd \"$d\"; [ -d .git ] || git init -q; "
     f"git fetch -q --no-tags {shlex.quote((DESIGN / '.git').as_posix())} {DESIGN_MAIN}; "
     f"test \"$(git rev-parse FETCH_HEAD)\" = {DESIGN_SHA} || {{ echo \"ArcForges-Design main moved during "
     f"verification (expected {DESIGN_SHA}, got $(git rev-parse FETCH_HEAD)); run again\" >&2; exit 1; }}; "
