@@ -1280,7 +1280,9 @@
       ],
       "future_validation": [],
       "acceptance_register": [],
-      "human_prerequisites": [],
+      "human_prerequisites": [
+        "H-22"
+      ],
       "risks": [
         {
           "risk": "Sampling overhead breaks the idle CPU target",
@@ -1398,7 +1400,9 @@
       ],
       "future_validation": [],
       "acceptance_register": [],
-      "human_prerequisites": [],
+      "human_prerequisites": [
+        "H-22"
+      ],
       "risks": [
         {
           "risk": "Weights and hard caps fail to protect the reserved headroom under saturating load",
