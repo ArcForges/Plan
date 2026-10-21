@@ -22,12 +22,12 @@
     {
       "id": "M2",
       "title": "Linux execution",
-      "outcome": "The same works on Linux and WSL2 through transient systemd units, with durable exit records and survival across node restarts."
+      "outcome": "The same works on native Linux through transient systemd units, with durable exit records and survival across node restarts."
     },
     {
       "id": "M3",
       "title": "Resource control",
-      "outcome": "Many tasks run in parallel under computed budgets with pools, priorities, a parallelism policy and pressure handling; the Windows host and a WSL guest share one fair queue without double counting; origins, permissions and approvals apply."
+      "outcome": "Many tasks run in parallel under computed budgets with pools, priorities, a parallelism policy and pressure handling; origins, permissions and approvals apply."
     },
     {
       "id": "M4",
@@ -1108,7 +1108,7 @@
         "systemd watchdog (WatchdogSec=30, active once the node is ready) pinged from the enforcement loop while the cache store answers its in-memory probe (three misses in a row stop it); end steps as ExecStop=- with TimeoutStopSec covering the end-step budget plus leftover_grace, and exit-record taking the result from EXIT_CODE and EXIT_STATUS; launch.json from exec-launch recorded as SPAWN_FAILED"
       ],
       "out_of_scope": [
-        "WSL host linking (AF-WSL-01)"
+        "WSL host linking (AF-WSL-01, superseded by ArcForges-Design AD-0018)"
       ],
       "design_refs": [
         "docs/architecture/04-execution.md",
@@ -1226,7 +1226,7 @@
       "objective": "Observe the machine and managed work, compute budgets and pressure levels, and expose them.",
       "scope": [
         "Samplers of 03 section 1 on both platforms; process classification labels",
-        "Budget formulas, smoothing, guest terms",
+        "Budget formulas and smoothing (the WSL VM is unmanaged load, ArcForges-Design AD-0018)",
         "Pressure levels and actions hooks",
         "ResourceService: GetResourceSnapshot, WatchResources, ListProcesses, GetSamples",
         "Sample storage and downsampling",
@@ -1254,7 +1254,7 @@
       ],
       "acceptance": [
         "Budget unit tests including the workstation example",
-        "Process labels correct for managed, unmanaged, escaped and guest VM processes",
+        "Process labels correct for managed, unmanaged, escaped and guest VM processes; a Windows task that runs wsl.exe is flagged crosses_vm_boundary and its Linux processes are never shown as controlled (R-RES-002)",
         "Idle node CPU within target while sampling",
         "peak_observed excludes reclaimable page cache and never decreases while an attempt runs",
         "The pressure response to a synthetic unmanaged allocator acts within the stated times on both platforms (R-RES-014)"
@@ -1262,10 +1262,10 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Windows and WSL2 sampling tests"
+          "Windows and native Linux sampling tests"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -1288,9 +1288,9 @@
           "owner": "AF-RES-01"
         },
         {
-          "risk": "Guest VM memory is misattributed (A-L01)",
-          "mitigation": "Labelled as a guest consumer with stated uncertainty; reconciled in AF-WSL-01 (F-L01)",
-          "owner": "AF-WSL-01"
+          "risk": "WSL VM memory is misattributed (A-L01)",
+          "mitigation": "The WSL VM is one GUEST_VM unmanaged consumer with stated uncertainty, never summed from guest-internal processes; there is no reconciliation with a guest node (ArcForges-Design AD-0018)",
+          "owner": "AF-RES-01"
         }
       ],
       "size": "M",
@@ -1336,7 +1336,7 @@
       ],
       "out_of_scope": [
         "Permissions and approvals (AF-SEC-01)",
-        "WSL guest budgets (AF-WSL-01)"
+        "Dedicated WSL integration (dropped: ArcForges-Design AD-0018; AF-WSL-01 superseded)"
       ],
       "design_refs": [
         "docs/architecture/03-resource-control.md",
@@ -1380,10 +1380,10 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Windows and WSL2 load tests"
+          "Windows and native Linux load tests"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -1431,7 +1431,7 @@
       "id": "AF-WSL-01",
       "title": "WSL guest node, bridge and coordinated admission",
       "milestone": "M3",
-      "state": "planned",
+      "state": "superseded",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1538,7 +1538,7 @@
         }
       ],
       "size": "L",
-      "notes": "",
+      "notes": "[superseded] Dropped by the product owner's scope correction of 2026-10-21 (ArcForges-Design AD-0018: native Windows and native Linux without dedicated WSL integration); no successor task",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -1612,7 +1612,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
           "Windows WMI escape test showing that the scan reports nothing; adoption tests on both platforms"
@@ -1720,10 +1720,10 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Real build timelines on Windows and WSL2"
+          "Real build timelines on Windows and a real Linux host"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -1817,7 +1817,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
           "Doctor host-posture test on the workstation's administrator account, and an origin test showing that AGENT, SCRIPT and MCP callers receive no host-posture value; a standard Windows account and Administrator protection switched on are AR-17"
@@ -1920,10 +1920,10 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Real dotnet builds on Windows and WSL2"
+          "Real dotnet builds on Windows and a real Linux host"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -2030,7 +2030,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -2120,7 +2120,7 @@
         "Each redirection and concurrency claim proven by a real run where the tool is installed; missing tools recorded with reason (F-T01)",
         "FASTBuild cache precedence, -cachetrim and -j proven with a real FASTBuild build (F-T02)",
         "Assertions and keys covered per adapter: npm ci without --ignore-scripts, pip install and plain pip download are UNKNOWN; npm installs emit the :deps key exclusively and npm test and run emit it shared; git working-tree writers emit ws:<w> and index-only writers tool:git:<w>; cargo run releases its key when the program starts (workspace ordering is proven in AF-WS-01)",
-        "A real cache-miss compile through sccache runs the server and the compiler inside the attempt's container (process ancestry and job or cgroup membership), is accounted to the attempt, and ends at once when the attempt is cancelled; a later attempt's own server hits the entry through the store; the attempt's statistics are captured at its end (Windows workstation, L-20; WSL2 when sccache is installed, F-T05) (R-TOOL-005, R-CACHE-004)",
+        "A real cache-miss compile through sccache runs the server and the compiler inside the attempt's container (process ancestry and job or cgroup membership), is accounted to the attempt, and ends at once when the attempt is cancelled; a later attempt's own server hits the entry through the store; the attempt's statistics are captured at its end (Windows workstation, L-20; the Linux host when sccache is installed, F-T05) (R-TOOL-005, R-CACHE-004)",
         "ccache, where installed, compiles in the attempt's process tree and records the attempt's own statistics log (F-T04, F-T05)",
         "Two concurrent attempts that use a wrapper the user configured (Cargo build.rustc-wrapper) each run their own server inside their own container, and nothing connects to sccache's default port (R-TOOL-005)",
         "When another process holds an attempt's assigned port, the holder moves to another port and the attempt never reaches a server outside its job; when every retry fails, the attempt fails at launch with SPAWN_FAILED",
@@ -2132,10 +2132,10 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Real cargo, cmake, FASTBuild, npm and python runs on Windows; WSL2 runs for tools the user installs there"
+          "Real cargo, cmake, FASTBuild, npm and python runs on Windows; runs on the Linux host for tools the user installs there"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -2170,8 +2170,8 @@
           "owner": "AF-TOOL-02"
         },
         {
-          "risk": "sccache is not installed in WSL2, so the Linux per-attempt server cannot be proven on the workstation (F-T05)",
-          "mitigation": "The Windows proof runs now (L-20); the Linux run follows when the user installs sccache in WSL2 (H-11) and is tracked in the acceptance register",
+          "risk": "sccache is not installed on the Linux host, so the Linux per-attempt server cannot be proven there (F-T05)",
+          "mitigation": "The Windows proof runs now (L-20); the Linux run follows when the user installs sccache on the Linux host (H-11) and is tracked in the acceptance register",
           "owner": "AF-TOOL-02"
         },
         {
@@ -2255,10 +2255,10 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Real file-system tests on Windows (NTFS, Dev Drive when present) and WSL2 ext4"
+          "Real file-system tests on Windows (NTFS, Dev Drive when present) and Linux ext4"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -2351,10 +2351,10 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Real git tests on Windows and WSL2"
+          "Real git tests on Windows and a real Linux host"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -2446,7 +2446,7 @@
       "acceptance": [
         "Hook fixtures captured from real clients drive routing tests",
         "Rewritten commands are byte-identical in output and exit code when they finish before the client timeout; a scripted client timeout hands off (exit 124; the task keeps running and keeps its queue position); an identical resubmission joins a task that has not started, while a resubmission during the identical task's run starts a new run; an interrupt before the hand-off cancels it (R-AI-010)",
-        "Agent roots identified on Windows and WSL2 (F-A02)",
+        "Agent roots identified on Windows and Linux (F-A02)",
         "Hook p95 <= 50 ms",
         "Coverage never claims completeness",
         "rewrite-all routes every shell command except passthrough patterns; the managed share is reported, and connecting MCP alone is never counted as interception (R-AI-005)",
@@ -2459,7 +2459,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
           "Hook latency benchmark on the workstation"
@@ -2486,7 +2486,7 @@
       "risks": [
         {
           "risk": "Agent root identification fails for some launch paths (F-A02)",
-          "mitigation": "Exec-form hooks plus nearest-ancestor search; probes on Windows and WSL2 with the clients installed (H-13)",
+          "mitigation": "Exec-form hooks plus nearest-ancestor search; probes on Windows and Linux with the clients installed (H-13)",
           "owner": "AF-AI-01"
         },
         {
@@ -2568,7 +2568,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -2677,10 +2677,10 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Real Claude Code and Codex probe sessions on Windows and in WSL2"
+          "Real Claude Code and Codex probe sessions on Windows and on a real Linux host"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -2757,7 +2757,7 @@
         "Avalonia view adapter for the reused shell models and design tokens",
         "Pages D-00 first run, D-01 overview, D-02 tasks with Run dialog, D-03 task detail, D-04 queue and pools, D-05 resources; D-21 drawer with the node notifier",
         "Tray where supported; single instance; OS notifications",
-        "Page content of the repaired design: D-01 disk levels; D-02 Run dialog concurrency, retry-safety and placement fields; D-03 output-limit, disk-limit, staged-output and hand-off states; D-04 feasibility classes, blocking keys and the reservation; D-05 memory guarantees and guest allocations"
+        "Page content of the repaired design: D-01 disk levels; D-02 Run dialog concurrency, retry-safety and placement fields; D-03 output-limit, disk-limit, staged-output and hand-off states; D-04 feasibility classes, blocking keys and the reservation; D-05 memory guarantees"
       ],
       "out_of_scope": [
         "Remaining pages (AF-DESK-02)"
@@ -2786,7 +2786,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
           "Manual smoke on the workstation recorded as evidence (no GUI CI)"
@@ -2877,7 +2877,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
           "Manual smoke on the workstation recorded as evidence"
@@ -2972,14 +2972,14 @@
         "Multi-node closed loop on one machine with real TLS",
         "SAS protocol unit tests including an interposed relay (MITM)",
         "Unpaired identities reach only Hello and Pairing; blocked identities reach nothing",
-        "DNS-SD registration and browsing on Windows 11 and WSL2 (F-T03)",
+        "DNS-SD registration and browsing on Windows 11 and Linux (F-T03)",
         "Rate limiting and blocking",
         "Pairing and peer status work with no account and with the cloud unreachable (R-LAN-002, R-CLOUD-001)"
       ],
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -3079,7 +3079,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -3178,7 +3178,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -3271,7 +3271,7 @@
         "Installers and artifacts"
       ],
       "acceptance": [
-        "Real install, upgrade and uninstall on the workstation (isolated profile root: separate data root, Run key and PATH under test names) and in a clean WSL2 distribution",
+        "Real install, upgrade and uninstall on the workstation (isolated profile root: separate data root, Run key and PATH under test names) and in a clean Linux environment (a fresh user or container on a Linux host)",
         "Windowless supervisor at logon (F-N03 re-verified with a logoff/logon cycle)",
         "Managed tasks cannot write the installation (T-05)",
         "The setup program refuses an unsupported Windows version (version check under test)",
@@ -3281,10 +3281,10 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Windows install tests; WSL2 install.sh and .deb tests"
+          "Windows install tests; Linux install.sh and .deb tests"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -3322,7 +3322,7 @@
         },
         {
           "risk": "No clean Linux environment for install tests",
-          "mitigation": "A second clean WSL distribution with sudo (H-14)",
+          "mitigation": "A clean Linux environment with sudo (H-14)",
           "owner": "user"
         }
       ],
@@ -3394,10 +3394,10 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Windows and WSL2 real update tests"
+          "Windows and real Linux update tests"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",
@@ -3486,7 +3486,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -3587,7 +3587,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -3703,7 +3703,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -3797,7 +3797,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -3893,7 +3893,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -3994,7 +3994,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -4082,7 +4082,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -4175,7 +4175,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -4285,7 +4285,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -4401,7 +4401,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -4491,7 +4491,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -4589,7 +4589,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -4677,7 +4677,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -4761,7 +4761,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -4855,7 +4855,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -4950,7 +4950,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
           "Local emulator runs (no device CI)"
@@ -5039,7 +5039,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -5124,7 +5124,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -5237,7 +5237,7 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR"
         ],
@@ -5303,7 +5303,6 @@
       "depends_on": [
         "AF-DOCS-01",
         "AF-CON-02",
-        "AF-WSL-01",
         "AF-DESK-02",
         "AF-DIST-02",
         "AF-WEB-01",
@@ -5344,7 +5343,7 @@
         "Release-candidate evidence report"
       ],
       "acceptance": [
-        "All journey suites pass on Windows and WSL2",
+        "All journey suites pass on native Windows and native Linux",
         "All targets met or justified",
         "Register lists every deferred validation with prerequisites and owner",
         "No fake replaces the behaviour under test; results are labelled closed-loop, and every remaining real-world validation stays in the register",
@@ -5353,10 +5352,10 @@
       "verification": {
         "author": [
           "Targeted unit and integration tests for the change",
-          "Affected real Windows/WSL2 tests (when the task touches platform behaviour)",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
           "Build, format, analyzers and AOT publish of affected components",
           "Exact commands and results recorded in the PR",
-          "Full real suites on Windows and WSL2"
+          "Full real suites on native Windows and a real Linux host"
         ],
         "reviewer_distinct": [
           "Full diff review at the exact head against the design references and acceptance criteria",

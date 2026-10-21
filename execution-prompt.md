@@ -19,7 +19,7 @@ This prompt assumes you know nothing about earlier conversations. Everything you
   - Local and LAN execution never depend on the cloud.
 - **Platforms.**
   - Windows 11 (x64, arm64). Windows 10 is not supported; spend no effort on it.
-  - Linux, including WSL2 (x64, arm64).
+  - Linux (x64, arm64); a Linux node may run in a compatible WSL2 distribution without integration (ArcForges-Design AD-0018).
   - Android 8.0+ for the mobile app, and current evergreen browsers.
   - macOS is out of scope.
 - **Other products.** ArcScope and ArcSlate are possible future consumers of ArcForges' contracts, not current targets. Do not change them.
@@ -105,7 +105,7 @@ Follow `delivery-procedure.md`. In short:
    - Build vertically, so the outcome works end to end.
    - Write tests at the layers named in the testing strategy.
    - Use fakes only where `fakes_allowed` lists them. Fakes stand in for unavailable external systems, never for the behaviour being delivered. `TestLoad` is a synthetic workload, not a fake.
-4. **Verify as the author.** Run what `verification.author` names, plus the affected real Windows and WSL2 tests. Record the exact commands and results in the PR body, mapping each acceptance criterion to its evidence.
+4. **Verify as the author.** Run what `verification.author` names, plus the affected real Windows and Linux tests. Record the exact commands and results in the PR body, mapping each acceptance criterion to its evidence.
 5. **Review.**
    - Push the branch and open the PR. The push runs the repository's pre-push verification at the head; quote its `arcforges-verify: PASS` line in the PR body.
    - One independent reviewer reviews the exact head: a fresh Opus 5.5 session using prompt P-3 from `entry-prompts.md`.
@@ -184,7 +184,7 @@ When unsure, prefer the narrower reading. Record the question in the ledger and 
 - **Dependabot.** Leave every Dependabot PR untouched: no merge, close, comment or rebase.
 - **CI and environments.**
   - No macOS CI; no device, GUI, browser, live-service or inference CI.
-  - WSL2 Debian is the Linux test environment, and installs inside it are the user's. No SSH.
+  - Verification runs on native machines (ArcForges-Design AD-0018 §5): the Windows leg on the owner's workstation through Windows-MCP, the Linux leg in the Claude Code Cloud Linux environment (portable checks) and on a real Linux host with a systemd user manager and cgroup v2 delegation (real-OS tests). A leg passed on the other machine is imported with `python eng/verify.py import`. Local WSL is not a dependency; installs on those hosts are the user's. No SSH.
 - **Settings.** Never change repository security settings or account settings, except the required status checks of the conditional CI as the user authorized on 2026-10-16 (execution policy §5, AD-0016 §2).
 - **Accounts.** Existing access only. Never create accounts; signing custody, store accounts, payment and Firebase are human prerequisites (Plan `baseline.md` §4).
 - **Attribution.** Commits end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. PR bodies end with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.

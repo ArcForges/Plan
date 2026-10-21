@@ -31,13 +31,14 @@ From ArcForges-Design `docs/verification/platform-capabilities.md`.
 | Item | Value |
 |---|---|
 | Windows | Windows 11 Pro for Workstations build 26300; 18 logical processors (hybrid); 31.5 GB RAM (L-01) |
-| WSL | WSL 3.0.1.0, kernel 6.18, Debian 13 with systemd 257, cgroup v2, user manager delegation of cpu, memory and pids (L-02..L-07). Transient user units proven (L-13). Mirrored networking (L-12). |
-| .NET | SDK 10.0.401 (Windows); 10.0.400 under `~/.dotnet` in WSL (not on PATH) |
+| WSL | WSL 3.0.1.0, kernel 6.18, Debian 13 with systemd 257, cgroup v2, user manager delegation of cpu, memory and pids (L-02..L-07). Transient user units proven (L-13). Mirrored networking (L-12). Dated workstation facts: since 2026-10-21 WSL Debian is no longer the Linux verification venue (ArcForges-Design AD-0018 §5). |
+| .NET | SDK 10.0.401 (Windows); 10.0.400 under `~/.dotnet` in WSL (not on PATH; dated, see the WSL row) |
 | Python | 3.14.7 |
 | Node | 24.21.0, npm 11.19.0 (repositories that use them) |
 | protoc | Grpc.Tools 2.84.0 (NuGet cache) |
 | Tools on Windows | Rust (rustup), CMake, Ninja, sccache, Node LTS, git, gh, winget, Scoop; Visual Studio 18 instance (no `cl.exe` on PATH); no ccache or FASTBuild (L-10) |
-| Tools in WSL | gcc, g++, clang, git, Docker CLI, npm, Python 3. No cargo, CMake, Ninja, sccache, ccache or Avahi (L-11); installs are the user's (H-11). |
+| Tools in WSL | gcc, g++, clang, git, Docker CLI, npm, Python 3. No cargo, CMake, Ninja, sccache, ccache or Avahi (L-11); dated, see the WSL row. |
+| Linux verification venue | Native Linux (ArcForges-Design AD-0018 §5). The Claude Code Cloud Linux environment: an Ubuntu 24.04 container with .NET SDK 10.0.401 from the Microsoft SDK image and Docker; it has no systemd user manager, so it runs the portable checks only. Real-OS Linux tests (systemd units, cgroups) need a real Linux host with a systemd user manager and cgroup v2 delegation; installs on it are the user's (H-11). |
 
 ## 4. Accounts and access
 
