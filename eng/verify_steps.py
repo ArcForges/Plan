@@ -4,12 +4,14 @@
 The steps are exactly what .github/workflows/plan.yml runs for external PRs: the plan validation against
 ArcForges-Design main, the design's traceability cross-check of delivery-graph.json, and the tool tests. Like CI, the
 Plan is validated against the merged Design, never an unmerged branch: the Design main commit is fetched and resolved
-once when this table loads (DESIGN_SHA), recorded by the `design-main` fingerprint probe (so a pass is keyed to it and
-is not reused after Design main moves), and each lane checks out exactly that commit: a detached worktree of the sibling
-Design clone on Windows, a Linux-native clone in WSL. Markdown is this repository's source (plan.py validates the
-sequence, register and roadmap), so every change runs the full profile, on Windows and WSL Debian concurrently.
-actionlint runs only when a workflow changed.
+once when this table loads (DESIGN_SHA), recorded as CONTEXT (so every leg's pass is keyed to it, an imported record
+is refused for another Design main, and no pass is reused after Design main moves), and each leg checks out exactly
+that commit: a detached worktree of the sibling Design clone on Windows, a clone fetched from the sibling Design clone
+on Linux. Markdown is this repository's source (plan.py validates the sequence, register and roadmap), so every change
+runs the full profile: the Windows leg on native Windows and the Linux leg on native Linux (eng/verify.py; AGENTS.md
+rule 6). actionlint runs only when a workflow changed.
 """
+import shlex
 import subprocess
 from pathlib import Path
 
@@ -17,15 +19,10 @@ REPOSITORY = "Plan"
 
 
 def _design_clone() -> Path:
-    """The ArcForges-Design clone next to this Plan clone's main checkout (C:/MyFile/Projects/ArcForges/<name>)."""
+    """The ArcForges-Design clone next to this Plan clone's main checkout (<projects>/ArcForges-Design)."""
     common = subprocess.run(["git", "rev-parse", "--path-format=absolute", "--git-common-dir"], capture_output=True,
                             text=True, check=True).stdout.strip()
     return Path(common).parent.parent / "ArcForges-Design"
-
-
-def _wsl_path(path: Path) -> str:
-    text = path.resolve().as_posix()
-    return "/mnt/" + text[0].lower() + text[2:] if text[1:2] == ":" else text
 
 
 DESIGN = _design_clone()
@@ -46,16 +43,15 @@ def _design_main() -> str:
 
 DESIGN_SHA = _design_main()
 WIN_DESIGN = DESIGN / ".worktree" / "_plan-verify"
-WSL_DESIGN = "$HOME/.cache/arcforges-verify/Plan-design-main"
+LINUX_DESIGN = "$HOME/.cache/arcforges-verify/Plan-design-main"
 
-# Tool versions that key a reusable pass (the python running eng/verify.py is added by the core), and the Design main
-# commit the steps validate against (DESIGN_SHA, resolved once above).
+# The Design main commit every leg validates against (DESIGN_SHA, resolved once above): part of every leg's pass key.
+CONTEXT = {"design-main": DESIGN_SHA}
+
+# Tool versions that key a reusable local pass (the python running eng/verify.py is added by the core).
 FINGERPRINT = {
-    "win": {
-        "python": ["python", "--version"],
-        "design-main": ["python", "-c", f"print('{DESIGN_SHA}')"],
-    },
-    "wsl": {"python": "python --version"},
+    "win": {"python": ["python", "--version"]},
+    "linux": {"python": "python --version"},
 }
 
 # The environment of plan.yml.
@@ -79,9 +75,12 @@ head = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=tree, check=True, captur
 print('ArcForges-Design main', head.strip(), 'at', tree)
 """
 
-WSL_REFRESH = (
-    f"set -euo pipefail; d={WSL_DESIGN}; mkdir -p \"$d\"; cd \"$d\"; [ -d .git ] || git init -q; "
-    f"git fetch -q --no-tags {_wsl_path(DESIGN / '.git')} {DESIGN_MAIN}; "
+LINUX_REFRESH = (
+    # A shallow Design clone would leave this clone incomplete without an error (as in eng/verify.py prepare_linux).
+    f"set -euo pipefail; test \"$(git -C {shlex.quote(DESIGN.as_posix())} rev-parse --is-shallow-repository)\" = false "
+    f"|| {{ echo \"the ArcForges-Design clone {DESIGN.as_posix()} is shallow; run git fetch --unshallow there\" >&2; exit 1; }}; "
+    f"d={LINUX_DESIGN}; mkdir -p \"$d\"; cd \"$d\"; [ -d .git ] || git init -q; "
+    f"git fetch -q --no-tags {shlex.quote((DESIGN / '.git').as_posix())} {DESIGN_MAIN}; "
     f"test \"$(git rev-parse FETCH_HEAD)\" = {DESIGN_SHA} || {{ echo \"ArcForges-Design main moved during "
     f"verification (expected {DESIGN_SHA}, got $(git rev-parse FETCH_HEAD)); run again\" >&2; exit 1; }}; "
     "git checkout -q --force --detach FETCH_HEAD; git clean -ffdq; "
@@ -90,7 +89,8 @@ WSL_REFRESH = (
 
 TESTS = "python -m unittest discover -s tests -v"
 
-# actionlint as pinned in the product repositories' CI, cached once in WSL; the archive is checked on every run.
+# actionlint as pinned in the product repositories' CI, cached once on the Linux host; the archive is checked on every
+# run.
 ACTIONLINT = (
     "set -euo pipefail; v=1.7.12; "
     "sum=8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8; "
@@ -121,10 +121,10 @@ STEPS = [
     Step("win-traceability", "win", ["python", str(WIN_DESIGN / "tools" / "check_design.py"), "--plan",
                                      "delivery-graph.json"], timeout=600, env=ENV),
     Step("win-tool-tests", "win", TESTS.split(), timeout=300, env=ENV),
-    Step("wsl-design-main", "wsl", WSL_REFRESH, timeout=300, env=ENV),
-    Step("wsl-validate", "wsl", f"python tools/plan.py validate --design {WSL_DESIGN}", timeout=300, env=ENV),
-    Step("wsl-traceability", "wsl", f"python {WSL_DESIGN}/tools/check_design.py --plan delivery-graph.json",
+    Step("linux-design-main", "linux", LINUX_REFRESH, timeout=300, env=ENV),
+    Step("linux-validate", "linux", f"python tools/plan.py validate --design {LINUX_DESIGN}", timeout=300, env=ENV),
+    Step("linux-traceability", "linux", f"python {LINUX_DESIGN}/tools/check_design.py --plan delivery-graph.json",
          timeout=600, env=ENV),
-    Step("wsl-tool-tests", "wsl", TESTS, timeout=300, env=ENV),
-    Step("actionlint", "wsl", ACTIONLINT, timeout=300, lane="actionlint", when=workflows_changed),
+    Step("linux-tool-tests", "linux", TESTS, timeout=300, env=ENV),
+    Step("actionlint", "linux", ACTIONLINT, timeout=300, lane="actionlint", when=workflows_changed),
 ]

@@ -28,7 +28,7 @@ Follow [execution-policy.md](execution-policy.md). These steps take one task fro
 
 Run exactly what the task's `verification.author` names: the affected suites while iterating (`AGENTS.md`, Efficient execution). Before handing over, the author may run `python eng/verify.py run` in the worktree; the coordinator's push then reuses that pass for the identical tree. Record in the PR body:
 - the commands, with the result of each;
-- the environments covered (Windows real, WSL2 real);
+- the environments covered (native Windows real, native Linux real), with each verification leg's `LEG PASS` line;
 - which acceptance criterion each test proves;
 - benchmarks for measured paths;
 - acceptance-register entries prepared or advanced.

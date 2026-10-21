@@ -38,9 +38,9 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
 
 | Role | Runs | Never |
 |---|---|---|
-| Author | Targeted and affected tests, affected real Windows/WSL2 tests, build and AOT publish of affected components, format and analyzers. May run `python eng/verify.py run` before handing over, so the push reuses the pass. Records exact commands and results in the PR. | Skips tests it changed or that cover changed code |
+| Author | Targeted and affected tests, affected real Windows and Linux tests, build and AOT publish of affected components, format and analyzers. May run `python eng/verify.py run` before handing over, so the push reuses the pass. Records exact commands and results in the PR. | Skips tests it changed or that cover changed code |
 | Independent reviewer (one session, after the author) | Reads the complete diff at the exact head against the task's design references and acceptance criteria. Re-runs only what gives distinct evidence: a doubted test, a check whose script or workflow the PR changed, or a real-environment test the author could not run. | Repeats the author's identical full suite on the same unchanged head |
-| Local verification (pre-push hook), owner PRs | The repository's CI-equivalent profile at each pushed commit (`eng/verify.py`, Windows and WSL2 Debian): the merge gate for the owner's (`deku2026`) PRs. Its `arcforges-verify: PASS` line for the head is quoted in the PR. | Bypassed, weakened or skipped; a step that could not run is never reported as passed |
+| Local verification (pre-push hook), owner PRs | The repository's CI-equivalent profile at each pushed commit (`eng/verify.py`: a native Windows leg and a native Linux leg, each with a pass record, §5): the merge gate for the owner's (`deku2026`) PRs. Its `arcforges-verify: PASS` line for the head is quoted in the PR. | Bypassed, weakened or skipped; a step that could not run is never reported as passed |
 | Hosted CI, external PRs | The repository's full CI for every other author, Dependabot included: the merge gate for platform-independent checks | GUI, device, browser-E2E, live-service or inference jobs |
 | Coordinator | Push (the hook runs), PR, review record, quoting the PASS line (owner PRs) or reading CI (external PRs), merge at the reviewed head, publication or deployment check, graph state and ledger | Duplicates any of the above |
 
@@ -77,7 +77,7 @@ Authority: ArcForges-Design [AD-0014](https://github.com/ArcForges/ArcForges-Des
   - Diagnose before any rerun.
   - Retry ordinary transient failures with bounded backoff.
   - Inspect remote state before retrying any write.
-- **Platforms.** WSL2 Debian is the Linux test environment; installs inside it are the user's (H-11). There is no SSH, and macOS is out of scope.
+- **Platforms.** Verification runs on native machines, never through WSL ([AD-0018](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0018-native-platforms-without-wsl-integration.md) §5): the Windows leg on the owner's Windows workstation (reached from Claude Code Cloud through Windows-MCP), the Linux leg on a native Linux machine (the Claude Code Cloud Linux environment for portable checks, a real Linux host with a systemd user manager and cgroup v2 delegation for real-OS tests). Each leg writes a pass record; a record from the other machine is imported with `python eng/verify.py import`. Local WSL Debian is not a dependency. Installs on those hosts are the user's (H-11). There is no SSH, and macOS is out of scope.
 - **CI scope.** No device, GUI, browser, live-service or inference CI. Those runs are local opt-in, or deferred to the acceptance register.
 
 ## 6. Dogfooding
