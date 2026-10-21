@@ -29,7 +29,7 @@ python -m unittest discover -s tests -v
 
 ## Verification
 
-The owner's (`deku2026`) PRs are verified locally by the pre-push hook ([AD-0016](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0016-local-first-verification.md); [AGENTS.md](AGENTS.md) rule 6): it runs what the `Plan checks` workflow runs, against ArcForges-Design `main`, as a native Windows leg and a native Linux leg, each with a pass record; a leg passed on the other machine is imported with `python eng/verify.py import` ([AD-0018](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0018-native-platforms-without-wsl-integration.md) §5). The workflow runs only for external PRs, the merge queue and manual dispatch.
+The owner's (`deku2026`) PRs are verified locally by the pre-push hook ([AD-0016](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0016-local-first-verification.md); [AGENTS.md](AGENTS.md) rule 6): it runs what the `Plan checks` workflow runs, against ArcForges-Design `main`, as a native Windows leg and a native Linux leg, each with a pass record; a leg passed on the other machine is imported with `python eng/verify.py import` ([AD-0018](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0018-native-platforms-without-wsl-integration.md) §5). Agents run the Windows leg through the Windows MCP server and the Linux leg through the Linux MCP server, never through local WSL ([AD-0019](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0019-mcp-first-verification.md)). The workflow runs only for external PRs, the merge queue and manual dispatch.
 
 ```bash
 python eng/verify.py install   # once per clone, from the main checkout on main
