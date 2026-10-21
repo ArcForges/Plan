@@ -254,6 +254,57 @@ class VerifyCore(unittest.TestCase):
         self.assertIn("making it again", second.stdout)
         self.assertIn("arcforges-verify: LEG PASS", second.stdout)
 
+    def test_a_shallow_linux_clone_is_made_again(self) -> None:
+        work = self.repository('Step("linux-a", "linux", "test \\"$(git rev-list --count HEAD)\\" = 2", timeout=60)')
+        clone = self.home / ".cache" / "arcforges-verify" / "CoreTest-a"
+        first = self.verify(work, "run")
+        self.assertEqual(first.returncode, 0, first.stdout + first.stderr)
+        # A shallow boundary at the commit itself: rev-list walks from it and from the base without an error.
+        sha = self.git(work, "rev-parse", "HEAD")
+        (clone / ".git" / "shallow").write_text(sha + "\n", encoding="utf-8")
+        self.assertEqual(run(["git", "rev-list", "--quiet", sha, self.git(work, "rev-parse", "main")], clone,
+                             env=self.env).returncode, 0)
+        second = self.verify(work, "run", "--force")
+        self.assertEqual(second.returncode, 0, second.stdout + second.stderr)
+        self.assertIn("making it again", second.stdout)
+        self.assertIn("arcforges-verify: LEG PASS", second.stdout)
+        self.assertEqual(self.git(clone, "rev-parse", "--is-shallow-repository"), "false")
+
+    def test_two_clones_of_a_repository_never_run_linux_legs_at_once(self) -> None:
+        started, release = self.root / "started", self.root / "release"
+        steps = (f'Step("linux-a", "linux", "touch {started}; while [ ! -e {release} ]; do sleep 0.1; done; '
+                 'test \\"$(git rev-parse HEAD)\\" = {sha}", timeout=60)')
+        first = self.repository(steps, name="shared")
+        second = self.root / "second"
+        self.git(self.root, "clone", "-q", str(next(self.root.glob("origin-shared-*.git"))), str(second))
+        (second / "b.txt").write_text("other\n", encoding="utf-8")
+        self.git(second, "add", "b.txt")
+        self.git(second, "commit", "-qm", "other")
+        running = subprocess.Popen([sys.executable, "eng/verify.py", "run"], cwd=first, stdout=subprocess.PIPE,
+                                   stderr=subprocess.STDOUT, text=True, env=dict(os.environ, **self.env))
+        try:
+            deadline = time.monotonic() + 120
+            while not started.exists() and running.poll() is None and time.monotonic() < deadline:
+                time.sleep(0.1)
+            self.assertTrue(started.exists(), "the first clone's step did not start")
+            # The second clone shares the Linux-native clone and pid files; its leg must not touch the running one.
+            refused = self.verify(second, "run")
+            self.assertEqual(refused.returncode, 1, refused.stdout + refused.stderr)
+            self.assertIn("another clone's Linux leg of this repository", refused.stderr)
+            self.assertEqual(self.records(second, "linux"), [])
+            release.touch()
+            output, _ = running.communicate(timeout=120)
+        finally:
+            release.touch()
+            if running.poll() is None:
+                running.kill()
+        self.assertEqual(running.returncode, 0, output)
+        self.assertIn("arcforges-verify: LEG PASS", output)
+        started.unlink()
+        after = self.verify(second, "run")
+        self.assertEqual(after.returncode, 0, after.stdout + after.stderr)
+        self.assertIn("arcforges-verify: LEG PASS", after.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()
