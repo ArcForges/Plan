@@ -21,7 +21,7 @@ Read [execution-policy.md](execution-policy.md) and [delivery-procedure.md](deli
      - the independent review.
 
      The rulesets have no bypass actors and require the branch to be up to date with `main`. External PRs (anyone else, Dependabot included) also run the full hosted CI (`Verify` where required). A maintainer reads an external diff before any host verifies `refs/pull/<n>/head`, because the host runs that code (execution policy §3, §4).
-   - **Push** the branch to GitHub; nothing is verified before a push. There is no pre-push hook. `python eng/verify.py install`, once per clone from the main checkout on `main`, installs the lightweight hooks a repository keeps (`pre-commit`) and removes the retired pre-push hook. It uses no `core.hooksPath`: it removes any, and refuses while one remains elsewhere.
+   - **Push** the branch to GitHub; nothing is verified before a push. There is no pre-push hook. `python eng/verify.py install`, once per clone from the main checkout on `main`, installs the lightweight hooks where a repository has them (`pre-commit`) and removes the retired pre-push hook. It uses no `core.hooksPath`: it removes any, and refuses while one remains elsewhere.
    - **Two hosts.** Each step runs on one host, `win` (native Windows) or `linux` (native Linux), and `eng/verify.py` runs only the leg of its host's own operating system, never through WSL or a remote shell.
      - The Windows host is the owner's Windows 11 workstation, reached through the Windows MCP server.
      - The Linux host is the Linux MCP host (H-22: native Linux with a systemd user manager and cgroups v2 delegation), reached through the Linux MCP server.
@@ -76,7 +76,7 @@ Read [execution-policy.md](execution-policy.md) and [delivery-procedure.md](deli
    - Dependabot PRs untouched.
    - No macOS, device, GUI, browser, live or inference CI.
    - Linux tests on the Linux MCP host and Windows tests on the native Windows workstation, each through its MCP server (rule 6); installs on both are the user's. No local WSL, not even as a fallback. No SSH.
-   - The coordinator does not change repository security settings. The one exception is the required status checks of the conditional CI ([AD-0016](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0016-local-first-verification.md) §2), which the coordinator may change only as the user authorized on 2026-10-16: "If existing required checks must be adjusted to support this conditional workflow, make the smallest appropriate changes."
+   - The coordinator does not change repository security settings. The first exception is the required status checks of the conditional CI ([AD-0016](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0016-local-first-verification.md) §2), which the coordinator may change only as the user authorized on 2026-10-16: "If existing required checks must be adjusted to support this conditional workflow, make the smallest appropriate changes." The second is the `main` rulesets that require the host statuses (AD-0020 §6), which the user authorized on 2026-10-22 for that migration. Neither is ever changed to get a PR merged.
    - Read hosted CI (external PRs) with the PR tools; never poll it.
    - Never enable auto-merge unless the user asks.
 9. **Commits and PRs.** Commit messages end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. PR bodies end with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.

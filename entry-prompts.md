@@ -52,4 +52,4 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 > - open acceptance-register entries and human prerequisites;
 > - the next task.
 >
-> Verify against PRs, merges, verification PASS lines (owner PRs) and hosted CI (external PRs) where you state facts.
+> Verify against PRs, merges, the required statuses `arcforges/windows` and `arcforges/linux`, and hosted CI (external PRs) where you state facts.

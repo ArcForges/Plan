@@ -38,7 +38,7 @@ From ArcForges-Design `docs/verification/platform-capabilities.md`.
 | protoc | Grpc.Tools 2.84.0 (NuGet cache) |
 | Tools on Windows | Rust (rustup), CMake, Ninja, sccache, Node LTS, git, gh, winget, Scoop; Visual Studio 18 instance (no `cl.exe` on PATH); no ccache or FASTBuild (L-10) |
 | Tools in WSL | gcc, g++, clang, git, Docker CLI, npm, Python 3. No cargo, CMake, Ninja, sccache, ccache or Avahi (L-11); dated, see the WSL row. |
-| Linux verification venue | The Linux MCP host, through the Linux MCP server (ArcForges-Design AD-0019; H-22, not provisioned yet). Never local WSL, and no agent's own sandbox; until H-22 no Linux leg can be recorded (AD-0019 §8). *Dated (AD-0018, kept as history):* the Claude Code Cloud Linux environment, an Ubuntu 24.04 container with .NET SDK 10.0.401 from the Microsoft SDK image and Docker; it has no systemd user manager, so it ran the portable checks only. Real-OS Linux tests (systemd units, cgroups) need the Linux MCP host; installs on it are the user's (H-11). |
+| Linux verification venue | The Linux MCP host, through the Linux MCP server (ArcForges-Design AD-0019; H-22, not provisioned yet). Never local WSL, and no agent's own sandbox; until H-22 no Linux leg can be recorded (AD-0019 §8), so no `arcforges/linux` status can be reported and no PR can merge (AD-0020). *Dated (AD-0018, kept as history):* the Claude Code Cloud Linux environment, an Ubuntu 24.04 container with .NET SDK 10.0.401 from the Microsoft SDK image and Docker; it has no systemd user manager, so it ran the portable checks only. Real-OS Linux tests (systemd units, cgroups) need the Linux MCP host; installs on it are the user's (H-11). |
 
 ## 4. Accounts and access
 
