@@ -29,12 +29,13 @@ python -m unittest discover -s tests -v
 
 ## Verification
 
-The owner's (`deku2026`) PRs are verified locally by the pre-push hook ([AD-0016](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0016-local-first-verification.md); [AGENTS.md](AGENTS.md) rule 6): it runs what the `Plan checks` workflow runs, against ArcForges-Design `main`, as a native Windows leg and a native Linux leg, each with a pass record; a leg passed on the other machine is imported with `python eng/verify.py import` ([AD-0018](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0018-native-platforms-without-wsl-integration.md) §5). Agents run the Windows leg through the Windows MCP server and the Linux leg through the Linux MCP server, never through local WSL ([AD-0019](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0019-mcp-first-verification.md)). The workflow runs only for external PRs, the merge queue and manual dispatch.
+Every pushed head is verified after the push ([AD-0020](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0020-post-push-verification-and-required-checks.md); [AGENTS.md](AGENTS.md) rule 6). Each host fetches the commit from GitHub and runs what the `Plan checks` workflow runs, against ArcForges-Design `main`: the Windows host through the Windows MCP server, the Linux host through the Linux MCP server, never through local WSL ([AD-0019](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0019-mcp-first-verification.md)). Each host reports the commit status `arcforges/windows` or `arcforges/linux`, and the `main` ruleset requires both before a PR can merge. The workflow runs only for external PRs, the merge queue and manual dispatch.
 
 ```bash
-python eng/verify.py install   # once per clone, from the main checkout on main
-python eng/verify.py list      # the steps a commit would run
-python eng/verify.py run       # verify HEAD now; the push reuses the pass
+python eng/verify.py install          # once per clone, from the main checkout on main (removes the retired pre-push hook)
+python eng/verify.py list             # the steps each host runs for a commit
+python eng/verify.py run-and-report   # on a host, in a worktree at the pushed commit: verify it and report its status
+python eng/verify.py run              # verify this host's leg of HEAD without reporting
 ```
 
 The previous parallel plan is frozen in `ArcForges/Plan-Parallel` (main `5ccbb392`). It is never resumed ([history/legacy-disposition.md](history/legacy-disposition.md)).

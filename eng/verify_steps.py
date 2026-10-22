@@ -4,12 +4,13 @@
 The steps are exactly what .github/workflows/plan.yml runs for external PRs: the plan validation against
 ArcForges-Design main, the design's traceability cross-check of delivery-graph.json, and the tool tests. Like CI, the
 Plan is validated against the merged Design, never an unmerged branch: the Design main commit is fetched and resolved
-once when this table loads (DESIGN_SHA), recorded as CONTEXT (so every leg's pass is keyed to it, an imported record
-is refused for another Design main, and no pass is reused after Design main moves), and each leg checks out exactly
-that commit: a detached worktree of the sibling Design clone on Windows, a clone fetched from the sibling Design clone
-on Linux. Markdown is this repository's source (plan.py validates the sequence, register and roadmap), so every change
-runs the full profile: the Windows leg on native Windows and the Linux leg on native Linux (eng/verify.py; AGENTS.md
-rule 6). actionlint runs only when a workflow changed.
+once when this table loads (DESIGN_SHA) and recorded as CONTEXT in each leg's summary (a status does not record it, so
+a Plan head is verified again after a Design merge it depends on), and each leg checks out exactly that commit: a
+detached worktree of the sibling Design clone on Windows, a clone fetched from the sibling Design clone on Linux.
+Markdown is this repository's source (plan.py validates the sequence, register and roadmap), so every change runs the
+full profile: the Windows leg on native Windows and the Linux leg on native Linux, each on its own host after the push
+and reported as the commit statuses arcforges/windows and arcforges/linux (eng/verify.py; AGENTS.md rule 6).
+actionlint runs only when a workflow changed.
 """
 import shlex
 import subprocess
@@ -38,7 +39,7 @@ def _design_main() -> str:
                               text=True, check=True).stdout.strip()
     except (subprocess.CalledProcessError, OSError) as error:
         raise SystemExit(f"arcforges-verify: FAIL cannot fetch ArcForges-Design main in {DESIGN}: {error}; check "
-                         "network access to GitHub and that clone, then push again (never bypass the hook)") from error
+                         "network access to GitHub and that clone, then verify again") from error
 
 
 DESIGN_SHA = _design_main()
@@ -48,7 +49,7 @@ LINUX_DESIGN = "$HOME/.cache/arcforges-verify/Plan-design-main"
 # The Design main commit every leg validates against (DESIGN_SHA, resolved once above): part of every leg's pass key.
 CONTEXT = {"design-main": DESIGN_SHA}
 
-# Tool versions that key a reusable local pass (the python running eng/verify.py is added by the core).
+# Tool versions recorded in each leg's summary (the python running eng/verify.py is added by the core).
 FINGERPRINT = {
     "win": {"python": ["python", "--version"]},
     "linux": {"python": "python --version"},

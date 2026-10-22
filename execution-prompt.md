@@ -98,7 +98,7 @@ Do not assume earlier steps are complete because the user selected a later range
 Follow `delivery-procedure.md`. In short:
 1. **Start.**
    - `plan.py set-state <ID> active` and `plan.py ledger <ID> started "<one line>"`.
-   - Make a Plan record PR, check its diff, push it (the pre-push hook verifies it) and merge it with the hook's PASS line in the PR.
+   - Make a Plan record PR, check its diff, push it, verify its head on both hosts and merge it once the required statuses pass.
 2. **Worktrees.** Create a worktree per repository in the task's write scope: `<repo>/.worktree/<id-lower>` on branch `task/<id-lower>`, from `origin/main` after a fetch. Never edit a main checkout.
 3. **Implement** inside the task's `repositories[].paths`.
    - Follow the repository's `AGENTS.md`: locked restores, dependency admission records, analyzers, AOT settings.
@@ -107,13 +107,13 @@ Follow `delivery-procedure.md`. In short:
    - Use fakes only where `fakes_allowed` lists them. Fakes stand in for unavailable external systems, never for the behaviour being delivered. `TestLoad` is a synthetic workload, not a fake.
 4. **Verify as the author.** Run what `verification.author` names, plus the affected real Windows and Linux tests. Record the exact commands and results in the PR body, mapping each acceptance criterion to its evidence.
 5. **Review.**
-   - Push the branch and open the PR. The push runs the repository's pre-push verification at the head; quote its `arcforges-verify: PASS` line in the PR body.
+   - Push the branch and open the PR. Then run `python eng/verify.py run-and-report` on each host for the head, through its MCP server, in a worktree at the commit fetched from GitHub (Plan `AGENTS.md` rule 6). Each host reports `arcforges/windows` or `arcforges/linux` on the commit.
    - One independent reviewer reviews the exact head: a fresh Opus 5.5 session using prompt P-3 from `entry-prompts.md`.
    - Fix blocking findings. Re-review covers only the delta.
    - Post the review record on the PR.
 6. **Merge gate** (AD-0016).
-   - **Your PRs** (author `deku2026`): the pre-push verification at the reviewed head is the gate; its PASS line for that head is in the PR, and the hosted validation jobs show as skipped. If the hook fails, diagnose it, return the failure to the worker (or fix a cause on your side) and push again. Never use `git push --no-verify`, and never disable or edit the hook or the verification scripts to get a push through.
-   - **External PRs** (any other author): hosted CI must pass at the reviewed head. Read it with the PR tools; never poll it in loops.
+   - **Every PR:** the required statuses `arcforges/windows` and `arcforges/linux` (only `arcforges/linux` in Contracts) must report success for the reviewed head; GitHub refuses the merge otherwise, with no bypass (AD-0020). For your PRs (author `deku2026`) the hosted validation jobs show as skipped. If a leg fails, diagnose it, return the failure to the worker (or fix a cause on your side), push again and verify the new head. Never post a status by hand, change a ruleset to merge, use `git push --no-verify`, or disable or edit the verification scripts to get a change through.
+   - **External PRs** (any other author): hosted CI must also pass at the reviewed head. Read it with the PR tools; never poll it in loops. Read the diff before any host verifies it.
    - Diagnose failures before any rerun, and never weaken a check to make it pass.
 7. **Merge** at the reviewed head. Never enable auto-merge. Then verify the publication or deployment the task requires (delivery runs on the main push, which runs no separate validation), and record its identifiers:
    - the package cohort and its admission rules;
@@ -184,8 +184,8 @@ When unsure, prefer the narrower reading. Record the question in the ledger and 
 - **Dependabot.** Leave every Dependabot PR untouched: no merge, close, comment or rebase.
 - **CI and environments.**
   - No macOS CI; no device, GUI, browser, live-service or inference CI.
-  - Verification is MCP-first (ArcForges-Design AD-0019): the Windows leg on the owner's workstation through the Windows MCP server, the Linux leg on the Linux MCP host through the Linux MCP server (H-22; until it exists no Linux leg can be recorded and pushes are rejected, AD-0019 §8). A leg passed on the other machine is imported with `python eng/verify.py import`. Local WSL is never used, not even as a fallback. If an MCP server is unavailable, stop and report it; never skip a test or bypass a hook. Installs on those hosts are the user's. No SSH.
-- **Settings.** Never change repository security settings or account settings, except the required status checks of the conditional CI as the user authorized on 2026-10-16 (execution policy §5, AD-0016 §2).
+  - Verification is MCP-first (ArcForges-Design AD-0019): the Windows leg on the owner's workstation through the Windows MCP server, the Linux leg on the Linux MCP host through the Linux MCP server (H-22). Each host fetches the pushed commit from GitHub and reports its leg as a required commit status (AD-0020). Local WSL is never used, not even as a fallback. If an MCP server is unavailable, stop and report it; the PR cannot merge without its status. Never skip a test, bypass a hook or post a status by hand. Installs on those hosts are the user's. No SSH.
+- **Settings.** Never change repository security settings or account settings, except the required status checks of the conditional CI as the user authorized on 2026-10-16 (execution policy §5, AD-0016 §2), and the `main` rulesets of the post-push verification as the user authorized on 2026-10-22 (AD-0020); never to get a PR merged.
 - **Accounts.** Existing access only. Never create accounts; signing custody, store accounts, payment and Firebase are human prerequisites (Plan `baseline.md` §4).
 - **Attribution.** Commits end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. PR bodies end with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
 
