@@ -1208,7 +1208,7 @@
       "id": "AF-RES-01",
       "title": "Observation, budgets and pressure",
       "milestone": "M3",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
