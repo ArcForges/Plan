@@ -1208,7 +1208,7 @@
       "id": "AF-RES-01",
       "title": "Observation, budgets and pressure",
       "milestone": "M3",
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1279,7 +1279,9 @@
         "none"
       ],
       "future_validation": [],
-      "acceptance_register": [],
+      "acceptance_register": [
+        "AR-18"
+      ],
       "human_prerequisites": [
         "H-22"
       ],
@@ -1299,8 +1301,14 @@
       "notes": "",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/28",
+          "https://github.com/ArcForges/ArcForges/pull/29"
+        ],
+        "merges": [
+          "ArcForges@0d0eb0aab53e84c2a958485df1bb703c5f8398ea",
+          "ArcForges@e2696ae7107ab8f2ecac164fd85cc1a276c6f97b"
+        ],
         "publications": [],
         "ledger": null
       },
@@ -1310,7 +1318,7 @@
       "id": "AF-SCHED-01",
       "title": "Admission, pools, priorities, parallelism, dependencies, enforcement mapping and policy",
       "milestone": "M3",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
