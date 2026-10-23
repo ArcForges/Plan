@@ -1318,7 +1318,7 @@
       "id": "AF-SCHED-01",
       "title": "Admission, pools, priorities, parallelism, dependencies, enforcement mapping and policy",
       "milestone": "M3",
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1432,8 +1432,12 @@
       "notes": "",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/30"
+        ],
+        "merges": [
+          "ArcForges@69c0657f4901a840f2819a5eae9c203276f85f5f"
+        ],
         "publications": [],
         "ledger": null
       },
@@ -1564,7 +1568,7 @@
       "id": "AF-SEC-01",
       "title": "Origins, permission matrix, approvals, adoption and local audit",
       "milestone": "M3",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
