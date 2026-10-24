@@ -1,0 +1,139 @@
+# Maintenance pass 2026-10-24: repair list
+
+The product owner's maintenance instruction of 2026-10-24 reconciles the outstanding observations of `ledger/ledger.jsonl` (entries
+1-94, Plan main f2b398c) against later entries, owner decisions, ArcForges-Design main 5694479, the task records, ArcForges main
+2180053, its tests and the merged PRs. Repairs run one at a time in the order below; AF-REC-01 and every later task stay unstarted.
+Each resolution is appended to the ledger (a `note` on the owning task, naming the repair ID); this file's Status column follows it.
+
+Dispositions: **fix** (a reviewed repair PR, with any Design or Plan correction first), **resolved** (already resolved, evidence
+cited), **superseded**, **assign** (owned by a future task: its record is checked and corrected if needed; nothing is built),
+**deferred** (real-world validation, never reported as passed), **blocked** (a named human action or decision).
+Ledger references are entry numbers in `ledger/ledger.jsonl` (line numbers). Evidence marked *(confirm)* is re-checked first when the
+item runs.
+
+Product scope (owner, 2026-10-24): user-level software. No privileged system-application management, no sudo or elevation support in
+managed tasks, no option that disables protection to enable elevation. The stop on real Windows Credential Manager cleanup stays in force.
+
+## 1. Cancellation and escaped-process cleanup
+
+| ID | Issue | Ledger | Repos | Evidence | Proposed disposition | Status |
+|---|---|---|---|---|---|---|
+| MR-01 | Escaped descendants survive a graceful cancel: `TerminateEscaped` runs only on the forced paths (TerminateNow, the non-graceful Stop, grace expiry), so an attempt whose root exits on the graceful signal leaves its same-user escaped processes running, against 04 §6 step 4. After a node restart `KnownEscaped` is empty, and on Linux escaped children of an exited root reparent away from the recorded ancestry. | 76 (1), 91 | ArcForges | `ExecutionSupervisor.cs` 860, 913, 1448 are the only calls; the graceful-exit path through finalization has none | fix: terminate the attempt's recorded ESCAPED processes (pid plus start time, same user) whenever the stop sequence ends, graceful or forced, also for attempts recovered from `process_record`; regression tests on both OS | open |
+| MR-02 | A STOPPING attempt recovered after a node restart in the middle of its launch is forced once; if the holder or unit starts the command afterwards it is not terminated again (the live path does this through `ForceWhenStarted`). | ArcForges#12 follow-up (39 (2)) | ArcForges | `RecoverAsync` sets `GraceDeadline = now`; the loop calls `handle.Terminate()` once (1445-1449) | fix: the recovered forced phase uses the same terminate-again-on-start rule; fault test with a restart inside a launch step | open |
+| MR-03 | Linux ancestry scan never pruned recorded members and did not check a parent pid still belonged to them (pid reuse could label and kill an unrelated child). | 76 (2) | ArcForges | Repaired inside AF-SEC-01 (ArcForges#31, merge 2180053; ledger 87, 91) | resolved | open |
+
+## 2. Startup, stop and crash-recovery races; unintended termination; permission bypasses
+
+| ID | Issue | Ledger | Repos | Evidence | Proposed disposition | Status |
+|---|---|---|---|---|---|---|
+| MR-04 | SM-ATTEMPT has no STARTING -> STOPPING although a cancel during a launch persists STOPPING and recovery continues it; the model test carries an open-question allowance. | 39 (1); ArcForges#12 | Design, ArcForges (test) | state-machines README rows 123-135 | fix: Design adds the transition (and `machines.json`); the model test's allowance becomes the specified rule | open |
+| MR-05 | 04 §7 does not state the effect of a stop during the launch steps (both OS record HAPPENED; Windows can prove the command never started). | 39 (1); ArcForges#12 | Design | 04 §7 effect rule | fix: Design states the rule the implementation follows (launch steps are part of the task, so HAPPENED), or a reviewed narrower rule if the review finds one is required | open |
+| MR-06 | `StopNode` before READY (STARTING, RECOVERING) answers INTERNAL (`InvalidLifecycleTransitionException`); SM-NODE and the API catalogue give no specified answer. | 39 (1); ArcForges#12 | Design, ArcForges | SM-NODE rows 197-205 | fix: Design specifies the answer (a typed STATE error, or a stop accepted and applied once recovered); node implements and tests it | open |
+| MR-07 | One unexplained `node stop` exit 75 ("No node listens on the pipe") in a supervisor test under load. | 39 (2); ArcForges#12 | ArcForges | Not reproduced in about 500 targeted stops; diagnostics in place *(confirm against the host logs since)* | fix if a cause is found; otherwise reported with its evidence and kept watched (no claim of resolution) | open |
+| MR-08 | Remote `CancelTask` (REMOTE, medium) would reach ADOPTED tasks, terminating an adopted process although the matrix marks terminating a process D for REMOTE. | 59 (4), 65 | ArcForges, Plan | No REMOTE caller exists before AF-CLD-04/05 *(confirm the gate's ADOPTED handling)* | fix in the gate if the delivered matrix already decides it; otherwise assign to AF-CLD-05 with the obligation in its record | open |
+| MR-09 | An agent CLI with a pseudo-terminal is classified HUMAN until agent roots are registered (documented bypass, Design 11 §1). | 88 | Plan | AF-AI-01 acceptance names agent-root identification (F-A02) but not this consequence | assign: AF-AI-01 record names the obligation | open |
+| MR-10 | The interim origin trusted a self-declared client kind. | 59 (1), 64 | ArcForges | AF-SEC-01 verifies client kinds against the peer's executable (ArcForges#31; ledger 87) | resolved | open |
+| MR-11 | Cross-integrity case: a non-elevated node with an elevated same-user client (resolution and acceptance entry). | 20, 30 | ArcForges, Plan | ArcForges.Client owner-SID check fixed in AF-NODE-01; no acceptance-register entry *(confirm)* | fix: test if missing; acceptance-register entry for the real elevated case (deferred validation) | open |
+| MR-12 | DesktopPlatform `LocalRpcClientChannel` CurrentUserOnly check refuses an elevated same-user client (the defect ArcForges.Client fixed locally). | 30 | DesktopPlatform | *(confirm in DesktopPlatform main)* | fix in DesktopPlatform; adoption by ArcForges recorded separately (MR-43) | open |
+
+## 3. Secret purge and backup retention
+
+| ID | Issue | Ledger | Repos | Evidence | Proposed disposition | Status |
+|---|---|---|---|---|---|---|
+| MR-13 | Pre-migration backups (`records/backups`, last 3) keep `task_secret` values after the task's secrets are purged (R-EXE-017 / 04 §2 vs 13 §6). | 26 (3) | Design, ArcForges | 02 §2 step 3, 13 §6, node-store.md; no backup handling in the purge *(confirm)* | fix: Design states that a purge also removes the values from every retained backup (or that backups never carry them), and the node does so; regression test | open |
+| MR-14 | Deleted sealed values may stay readable in free pages of the store file after a purge. | 26 (3) (same retention concern) | ArcForges | *(confirm `secure_delete` or equivalent)* | fix if confirmed (same Design statement as MR-13); else resolved with evidence | open |
+| MR-15 | `CrashConsistencyTests.AStoreKilledDuringWritesReopensConsistent(420)` once saw every sealed value unavailable after a kill and reopen. | ArcForges#12 follow-up | ArcForges | Not reproduced; the test prints `UnavailableReason` *(confirm against host logs)* | fix if a cause is found; otherwise reported with evidence (no claim of resolution) | open |
+| MR-16 | Real Windows Credential Manager: 746 stress-generated entries and about 5,990 orphan credential files from 2026-10-17 remain; cleanup stopped by the owner's decision of 2026-10-18. | 39 (7), 40 | none (workstation) | Records only; no store access in this pass | blocked: the owner's decision on the recovery proposal in the final report | open |
+
+## 4. Resource-limit enforcement and failure classification
+
+| ID | Issue | Ledger | Repos | Evidence | Proposed disposition | Status |
+|---|---|---|---|---|---|---|
+| MR-17 | Windows: an attempt that crossed `mem_ceiling` while the node was down is classified EXITED, not MEMORY_LIMIT (the exit record's violation query reads the job state at exit, empty once memory is released). | 39 (2); ArcForges#12 | Design, ArcForges | ArcForges#12 open question (3 workstation runs) | fix: the holder records the job's peak against the notification limit; Design 04 §7 states the node-gap rule | open |
+| MR-18 | MEMORY_LIMIT is recorded for a non-zero exit after the commit notification at `mem_ceiling` with no allocation refused, and when a workload's own nested job reports a limit. | 55 (1) | Design, ArcForges | *(confirm in the classification code)* | fix: classification follows the specified evidence; Design states it | open |
+| MR-19 | `windows_status` labels every code at or above 0xC0000000 as NTSTATUS, including customer-bit codes (0xE0434352, 0xE0000008). | 55 (2), 63 | ArcForges, Design | `ExecutionSupervisor.cs` 1994 | fix: customer-bit codes are application codes (not NTSTATUS); Design and node agree | open |
+| MR-20 | OOM_KILLED says "killed at its memory limit" for four causes (its own MemoryMax, the slice's, a machine OOM, systemd-oomd). | 56 (1) | Design, ArcForges | *(confirm)* | fix: classify from `memory.events.local` of the attempt and the slice and systemd-oomd's attribute; detail names the cause | open |
+| MR-21 | The Critical pressure level reacts to any OOM kill, including an attempt's kill at its own ceiling (the machine-wide count). | 58 (1), 57 (5) | Design, ArcForges | `PressureEvaluator` uses the machine-wide `OomKills` | fix: kills inside an attempt at its own limit do not raise Critical; Design 03 §5.4 states it | open |
+| MR-22 | Lowering MemoryHigh to current usage reclaims synchronously in the user manager on systemd 249-257. | 58 (3), 57 (5) | ArcForges, Design | *(confirm whether any path still lowers MemoryHigh to usage)* | fix if a path does (no blocking write on the manager); else resolved with evidence | open |
+| MR-23 | The Windows sampler would open query-limited handles to a running game. | 58 (2) | ArcForges | Design#19 and ArcForges#28: one `NtQuerySystemInformation` table, no handle opened | resolved | open |
+| MR-24 | The under-load target counts executions, not processes; only the WSL VM is labelled a VM consumer. | 58 (5), (6) | Design | AF-RES-01 complete; `crosses_vm_boundary` added *(confirm 15 §1 wording)* | resolved or a Design wording fix | open |
+| MR-25 | `CpuRateCap` is parent-relative on Windows and machine-relative on Linux (no caller sets it). | 57 (1) | Design, ArcForges | *(confirm)* | fix: one stated meaning on both OS | open |
+| MR-26 | OOMPolicy kill stopped a multi-process SERVICE as a whole; OOMPolicy is now `stop` (L-27), which still ends the whole unit on one OOM kill. | 57 (3), 66 | Plan | L-27, 04 §3 | superseded for the kill policy; assign the SERVICE consequence to AF-AI-01's record | open |
+| MR-27 | exec-launch removes MEMORY_PRESSURE_WATCH/WRITE; the soft stage vanishes when `mem_expected` >= 0.8 x ceiling; "resident memory" wording; no RLIMIT_RTPRIO or RLIMIT_MEMLOCK of their own (information); kill_tree reason (a process can move itself to another user leaf; ended at stop, not prevented). | 56 (2), (3), (5) | Design | same-user qualifier added by AF-SEC-01 *(confirm the rest)* | fix: Design wording | open |
+| MR-28 | THROTTLED reads the attempt's own `cpu.stat` and misses slice throttling. | 61 (1) | Plan | AF-REC-01 not started; its record does not name it | assign: AF-REC-01 | open |
+| MR-29 | Process records carry no exit status. | 61 (2) | Plan | as above | assign: AF-REC-01 | open |
+| MR-30 | The OOM_KILLED finding retries "with more memory" whatever the cause; operational memory learns from peaks censored at a limit. | 57 (6), 60 (1), (2) | Plan | AF-DIAG-01 record does not name them | assign: AF-DIAG-01 | open |
+| MR-31 | The free-space guard should read the caller-available figure (`f_bavail`; `lpFreeBytesAvailableToCaller`). | 62 | ArcForges or Plan | delivered disk guards (AF-EXEC-01/02) *(confirm which call they use)* | fix if a delivered guard reads total free; else assign to AF-STOR-01 | open |
+
+## 5. Missing telemetry recorded as zero
+
+| ID | Issue | Ledger | Repos | Evidence | Proposed disposition | Status |
+|---|---|---|---|---|---|---|
+| MR-32 | A missing I/O accounting read (Linux `io.stat` absent, Windows I/O counters unavailable) is stored as zero bytes, so "no I/O" appears true. | 55 (4), 56 (4), 58 (7), 60 (3), 61 (3) | Design, ArcForges | `ProcFs.IoBytes` returns 0 for a missing file; `attempt.io_*` NOT NULL DEFAULT 0; `ExecutionSupervisor.cs` 2011 `?? 0` | fix: Design states how unobserved I/O is stored and served (expand-only); node records it; tests | open |
+| MR-33 | The io capability reasons overstate what is observed. | 55 (4), 56 (4) | ArcForges | capability reason text *(confirm)* | fix: reasons match MR-32 | open |
+
+## 6. Default-policy updates reaching existing stores
+
+| ID | Issue | Ledger | Repos | Evidence | Proposed disposition | Status |
+|---|---|---|---|---|---|---|
+| MR-34 | Default policy revision 1 is written once per store, so defaults that later releases add (routing patterns, diagnosis actions, root and cache quotas) never reach existing stores; no task's scope adds them. | 26 (4) | Design, ArcForges, Plan | node-store.md; only "Default policy document revision 1" in the records | fix: Design specifies how new default fields reach a store without overwriting the user's values; node implements the mechanism; owning tasks' records name their defaults | open |
+
+## 7. Sampling growth for long-running tasks
+
+| ID | Issue | Ledger | Repos | Evidence | Proposed disposition | Status |
+|---|---|---|---|---|---|---|
+| MR-35 | Attempt samples are kept at 1 s for as long as the attempt runs (downsampled only after completion), so a long-running SERVICE grows without bound. | 58 (4), 61 (4) | Design, ArcForges | node-store.md `resource_sample` row; `ResourceSamples.cs` downsamples finished attempts only | fix: Design bounds running-attempt samples (downsampling while running); node implements; growth test | open |
+
+## 8. Partial memory hints and frozen-time timeouts
+
+| ID | Issue | Ledger | Repos | Evidence | Proposed disposition | Status |
+|---|---|---|---|---|---|---|
+| MR-36 | Partial memory hints change the enforced ceiling in ways the Design does not state (a ceiling-only hint below 512 MiB is enforced at 512 MiB). | 55 (3), 56 (6), 57 (4) | Design, ArcForges | *(confirm)* | fix: per-field resolution stated and implemented | open |
+| MR-37 | Whether frozen (paused) time counts toward a task's wall-clock timeout is unstated. | 57 (2), 62 | Design, ArcForges | *(confirm current behaviour)* | fix: Design states the rule; node follows it; test | open |
+
+## 9. RPC connection classification and stream lifetime
+
+| ID | Issue | Ledger | Repos | Evidence | Proposed disposition | Status |
+|---|---|---|---|---|---|---|
+| MR-38 | `LocalRpcFailureClassifier` reports INTERNAL instead of UNAVAILABLE for one dropped connection. | 39 (3) | DesktopPlatform | *(confirm)* | fix | open |
+| MR-39 | A stream writer opened after its stream's lifetime ended is released only at the backstop. | 39 (3) | DesktopPlatform | *(confirm)* | fix | open |
+| MR-40 | Design 02 §1 and events.proto say an overflow sends a reset, while a reader stalled past LocalRpc's settle window gets a transport reset and resumes by cursor. | 35 (3) | Design | ArcForges#8 | fix: Design wording | open |
+| MR-41 | Paged journal replay. | 30 | ArcForges | *(confirm whether replay is bounded)* | fix if replay is unbounded; else resolved | open |
+| MR-42 | 32 LocalRpc streams per client process (Desktop). | 30 | Plan | AF-DESK-01 not started | assign: AF-DESK-01 | open |
+
+## 10. Build, dependency, verification, documentation and planning
+
+| ID | Issue | Ledger | Repos | Evidence | Proposed disposition | Status |
+|---|---|---|---|---|---|---|
+| MR-43 | NU1608 exception: DesktopPlatform packages pin Contracts.Foundation exactly 1.0.0-ci.216.1 while the node needs 375.1. | 26 (1) | DesktopPlatform, ArcForges | `NoWarn="NU1608"` in five ArcForges projects | fix: a DesktopPlatform cohort on Foundation >= 375.1 and its admission (CI cohort only, no production publication) | open |
+| MR-44 | Admission of LocalRpc and Build.Policy 1.0.0-ci.141.1. | 39 (2) | ArcForges | 1.0.0-ci.141.1 named in the host's csproj | resolved *(confirm admissions)* | open |
+| MR-45 | tasks.proto: `access = EXCLUSIVE` "runs alone among managed tasks of the workspace" vs 03 §4 (exclusive `ws:<workspace>` key). | 84 | Design, Contracts | protos adopted byte-identical | fix: comment aligned in Design and Contracts together (comment-only, schema unchanged) | open |
+| MR-46 | Store growth-budget scope differs between 15 §2 and node-store.md §4. | 26 (2) | Design | | fix: Design wording | open |
+| MR-47 | Design 15 should state the 5 ms noise floor of the startup-regression gate. | 8 (1) | Design | gate in ArcForges#9 *(confirm it still runs under AD-0020)* | fix or superseded | open |
+| MR-48 | errors.md: the key-unavailable use of `STATE/secrets_unavailable`. | 26 (7) | Design | errors.md line 59 already names the missing or unreadable key | resolved | open |
+| MR-49 | errors.md entry for the client-side `node_not_running`. | 30 | Design | *(confirm)* | fix | open |
+| MR-50 | base32 vs base64 ids in `--json`. | 30 | Design, ArcForges | *(confirm)* | fix (one stated form) | open |
+| MR-51 | R-API-003 architecture test. | 30 | ArcForges | *(confirm)* | fix | open |
+| MR-52 | Linux auto-start when the user manager runs but the unit is not installed (raised for WSL). | 30 | Design | AD-0018 removed WSL integration; the case is generic Linux *(confirm 02 §3)* | fix: Design clarification, or superseded | open |
+| MR-53 | `RestartPreventExitStatus=3` for the release unit. | 30 | Plan | AF-DIST-01 record *(confirm)* | assign: AF-DIST-01 | open |
+| MR-54 | Windows readiness ignores pids (no active-process limit field). | 35 (4) | Design | | fix: Design wording | open |
+| MR-55 | The Windows single-instance mutex is keyed by the instance key, not the data root. | 35 (5) | Design, ArcForges | *(confirm against 02 §2)* | fix: Design and node agree | open |
+| MR-56 | Linux store files are 0644 inside 0700 directories. | 26 (6) | ArcForges | *(confirm)* | fix: owner-only files (node-store.md) | open |
+| MR-57 | The expand-only check compares the branch with itself until a release exists. | 26 (6) | Plan | | assign: AF-DIST-01 (first release baseline) | open |
+| MR-58 | Client retries must resend identical bytes (payload digests); the node data key should load at startup. | 26 (5) | ArcForges | *(confirm AF-NODE-01's implementation)* | resolved or fix | open |
+| MR-59 | Security.Secrets consumer obligations (select, persist the backend per credential, 0700 data root, locked keyring fails closed). | 23 | ArcForges | `SelectForCurrentPlatform` used; `StorePaths` 0700 *(confirm the backend persistence)* | resolved or fix | open |
+| MR-60 | Pin one Windows SDK root (DOTNET_ROOT) in the ArcForges, Contracts, DesktopPlatform and Cloud step tables. | 39 (6) | ArcForges, Contracts, DesktopPlatform, Cloud | *(confirm under AD-0020's eng/verify.py)* | fix per repository, or superseded | open |
+| MR-61 | Mobile `eng/policy/dotnet-toolchain.json` is from 2026-10-09. | 39 (5) | Mobile | | fix | open |
+| MR-62 | DesktopPlatform: Build.Policy architecture-gate compile leaves stripped assemblies in obj; widen the OS-store policy pattern as ArcForges did. | 39 (3) | DesktopPlatform | | fix (two items, run one after the other) | open |
+| MR-63 | IsolatedSecretStore optional faults (read failure, timeout, locked keyring). | 39 (4) | DesktopPlatform or ArcForges | | fix | open |
+| MR-64 | Linux Secret Service binding tier needs a Secret Service provider on the isolated test host. | 39 (4) | none | H-23 (owner prerequisite) | deferred (H-23) | open |
+| MR-65 | Task records' `verification.hosted_ci` text predates AD-0016 and AD-0020. | 39 (8) | Plan | | fix: reviewed Plan change (text only) | open |
+| MR-66 | fakes_allowed: only AF-DIST-01 lists IsolatedSecretStore. | 54 | Plan | | fix: reviewed Plan change for planned tasks whose tests reach a secret store | open |
+| MR-67 | The doctor's PATH-shadowing check for an old ArcForges.Cli (C-03) has no owning task. | 17 | Plan | | assign: the doctor task (AF-DIAG-01) through a reviewed record change | open |
+| MR-68 | Contracts docs: `docs/consuming.md` example version predates the rename; root README package table stale; `SdkArchitectureTests` `RepositoryRoot.Find` outside the try; the flagship check skipped if `eng/flagship-contracts.json` is deleted. | 14, 17 | Contracts | | fix (documentation and test hygiene) | open |
+| MR-69 | AF-DOCS-01 leftovers: Mobile dependency-policy authority link; Cloud "integration owner" wording; DesktopPlatform policy owner field (hash-bound); DesktopPlatform README package table. | 11 | Mobile, Cloud, DesktopPlatform | | fix per repository where not hash-bound; hash-bound fields reported | open |
+| MR-70 | Future-task notes not yet in their records: AF-AI-01 (81, 88), AF-DIAG-01 (82), AF-DIST-01 (89, 93), AF-DIST-02 (90), AF-DESK-01 (8 (2)), AF-SUP-01 (14), AF-AI-01/MCP-01/AI-02/DESK-02 (47-50). | listed | Plan | *(each record checked)* | assign: records corrected where they miss an obligation | open |
+| MR-71 | Holder private memory 6.48 MB vs the 3 MB target. | 35 (1) | Design | owner decision 2026-10-16 (Design#4, RM-14; ledger 37) | resolved | open |
+| MR-72 | CLI cold start near the old cross-VM threshold; first run of the startup gate's baseline download. | 35 (6), 8 (3) | ArcForges | same-runner gate (ArcForges#9); AD-0020 | superseded | open |
+| MR-73 | Two verification-register rows read more broadly than their evidence; open owner roadmap decisions (EX-23, diagnosis stages b and c, EX-08, EX-13 stage a, EX-15 stage 1). | 53, 67 | Design, Plan | owner decisions pending | blocked: owner decision (unchanged by this pass) | open |
+| MR-74 | Deferred real-world validation: Windows positive auto-start leg, AR-02 second account, AR-17, AR-18, AR-19, H-15, F-N03. | 20, 30, 35 (7), 46, 74, 87 | none | acceptance register | deferred (never reported as passed) | open |
