@@ -1568,7 +1568,7 @@
       "id": "AF-SEC-01",
       "title": "Origins, permission matrix, approvals, adoption and local audit",
       "milestone": "M3",
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1648,7 +1648,9 @@
         "F-L04",
         "F-W04"
       ],
-      "acceptance_register": [],
+      "acceptance_register": [
+        "AR-19"
+      ],
       "human_prerequisites": [],
       "risks": [
         {
@@ -1671,8 +1673,12 @@
       "notes": "",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/31"
+        ],
+        "merges": [
+          "ArcForges@218005351fd2bdcc45a4e82992d677ccf07a924c"
+        ],
         "publications": [],
         "ledger": null
       },
