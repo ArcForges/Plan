@@ -4508,7 +4508,8 @@
         "Forged, expired or retargeted commands are refused (T-11)",
         "Expired commands never execute late",
         "Output tails are never stored in D1 or DO storage",
-        "Audit in cloud and node"
+        "Audit in cloud and node",
+        "A signed REMOTE cancel_task targeting a nonterminal ADOPTED task is denied as process.terminate before any stop, leaves the adopted process running, and is audited as denied on the real remote-to-node path; medium risk, step-up and approval cannot override the REMOTE deny (MR-08)"
       ],
       "verification": {
         "author": [
