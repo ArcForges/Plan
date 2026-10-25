@@ -3400,7 +3400,8 @@
         "docs/architecture/13-distribution-updates.md",
         "docs/decisions/AD-0012-distribution-and-updates.md",
         "docs/contracts/proto/arcforges/node/v1/updates.proto",
-        "docs/experience/desktop.md"
+        "docs/experience/desktop.md",
+        "docs/architecture/04-execution.md"
       ],
       "requirements": [
         "R-DIST-002",
@@ -3415,7 +3416,8 @@
       "acceptance": [
         "Real update and rollback with running executions on both platforms",
         "Crash injection at each switch phase recovers",
-        "Local HTTP manifest tests for every refusal case"
+        "Local HTTP manifest tests for every refusal case",
+        "Before a transparent Windows upgrade from an older holder without started.json, preserve known command-start/limit evidence or settle the STARTING attempt; validate node-gap and post-recovery starts with timeout and CPU-time limits across versions (MR-95, architecture 04 section 3)."
       ],
       "verification": {
         "author": [
@@ -3454,7 +3456,7 @@
         }
       ],
       "size": "L",
-      "notes": "",
+      "notes": "MR-95 fixes current-version recovery using additive holder start evidence; it does not backfill older live holders. Cross-version update preservation/settlement remains this planned task's acceptance obligation; no updater or migration is implemented by maintenance.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
