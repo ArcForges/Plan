@@ -3418,7 +3418,7 @@
         "Crash injection at each switch phase recovers",
         "Local HTTP manifest tests for every refusal case",
         "Before a transparent Windows upgrade from an older holder without started.json, preserve known command-start/limit evidence or settle the STARTING attempt; validate node-gap and post-recovery starts with timeout and CPU-time limits across versions (MR-95, architecture 04 section 3).",
-        "Cross-version update/rollback with a live STOPPING attempt must preserve the pending termination_reason/detail interpretation and retry rules, or settle the attempt with the compatible node first; an unknown legacy cause must not be inferred from human text (MR-100, architecture 04 section 9)."
+        "Cross-version update/rollback with a live STOPPING or FINALIZING attempt must preserve the pending termination_reason/detail interpretation, durable completion phase and retry rules, or settle the attempt with the compatible node first; an unknown legacy cause must not be inferred from human text and a FINALIZING row without a pending stop cause must derive its outcome from exit/launch evidence, never inferred cancellation (MR-100/MR-99, architecture 04 sections 3 and 9)."
       ],
       "verification": {
         "author": [
@@ -3457,7 +3457,7 @@
         }
       ],
       "size": "L",
-      "notes": "MR-95 fixes current-version recovery using additive holder start evidence; it does not backfill older live holders. Cross-version update preservation/settlement remains this planned task's acceptance obligation; no updater or migration is implemented by maintenance. MR-100 uses existing reason/detail columns for pending STOPPING intent; update/rollback compatibility with older readers remains future acceptance, not implemented or verified by maintenance.",
+      "notes": "MR-95 fixes current-version recovery using additive holder start evidence; it does not backfill older live holders. Cross-version update preservation/settlement remains this planned task's acceptance obligation; no updater or migration is implemented by maintenance. MR-100 uses existing reason/detail columns for pending STOPPING intent; update/rollback compatibility with older readers remains future acceptance, not implemented or verified by maintenance. MR-99 persists FINALIZING before the final result and carries nullable pending stop intent through it; compatibility of live attempts across older/newer node versions remains planned acceptance, not an update implementation or a verified upgrade claim.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
