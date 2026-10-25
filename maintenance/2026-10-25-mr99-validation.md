@@ -11,7 +11,8 @@ delegated.
 The code-wide review also found the separate synthetic ADOPTED mapping gap, now open MR-105. Adoption already starts from an existing
 process and has the LOST/no-exit-status semantics of architecture 04 section 10. This managed-execution repair does not claim those
 separate initial/finish paths repaired. MR-105 follows MR-103 in the same maintenance section. Successful Windows adoption stays
-deferred where every user process is already in a job. This is a code audit; the full source profile\u0027s existing adoption\nregressions are separate coverage, without a new canonical-transition validation claim.
+deferred where every user process is already in a job. This is a code audit; the full source profile's existing adoption
+regressions are separate coverage, without a new canonical-transition validation claim.
 
 ## Design first
 
