@@ -2447,6 +2447,7 @@
       ],
       "design_refs": [
         "docs/architecture/08-ai-integration.md",
+        "docs/architecture/11-security-privacy.md",
         "docs/decisions/AD-0007-ai-integration.md",
         "docs/contracts/proto/arcforges/node/v1/sessions.proto",
         "docs/decisions/AD-0006-execution-semantics.md",
@@ -2469,6 +2470,7 @@
         "Hook fixtures captured from real clients drive routing tests",
         "Rewritten commands are byte-identical in output and exit code when they finish before the client timeout; a scripted client timeout hands off (exit 124; the task keeps running and keeps its queue position); an identical resubmission joins a task that has not started, while a resubmission during the identical task's run starts a new run; an interrupt before the hand-off cancels it (R-AI-010)",
         "Agent roots identified on Windows and Linux (F-A02)",
+        "A verified CLI descended from a registered agent root is classified AGENT even with a pseudo-terminal or console on native Windows and Linux (F-A02); tests cover the effective permission/approval decision as well as the origin, and coverage reports the missing-root and escaped-ancestry bypasses without claiming a same-user security boundary (MR-09)",
         "Hook p95 <= 50 ms",
         "Coverage never claims completeness",
         "rewrite-all routes every shell command except passthrough patterns; the managed share is reported, and connecting MCP alone is never counted as interception (R-AI-005)",
@@ -2528,7 +2530,7 @@
         }
       ],
       "size": "M",
-      "notes": "",
+      "notes": "MR-09 (ledger 88): before sessions register agent roots, a verified agent CLI that presents a terminal may be classified HUMAN. This task must close that supported descendant path by registering roots and checking ancestry before the terminal fallback. Looking interactive and escaping ancestry remain documented same-user bypasses in Design 11 section 1; no claim of hostile-agent isolation.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
