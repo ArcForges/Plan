@@ -36,6 +36,7 @@ Real-world validation that cannot run at development stage, and the human prereq
 | AR-18 | A Windows node identifies a running WSL VM's worker process (`vmmem` or `vmmemWSL`) as one `GUEST_VM` consumer in unmanaged load, never controlled, and never presents the VM's Linux processes as its own (ArcForges-Design 03 §1, §2, §9; A-L01, AD-0018 §2). Procedure: on Windows 11 with WSL2 and one distribution installed, (1) start the distribution outside ArcForges (`wsl -d <distro> -e sleep 600`); (2) run a native node; (3) `arcforges ps --label guest --json` lists the VM worker with label `PROCESS_LABEL_GUEST_VM`, no task, and a memory figure close to Task Manager's for that process, and no Linux process of the distribution appears; (4) allocate about 2 GiB inside the distribution (for example `python3 -c "b=bytearray(2<<30); import time; time.sleep(60)"`): `arcforges resources --json` shows unmanaged memory rising and the memory budget falling by about that amount within about 10 s; (5) a task running `wsl.exe -d <distro> -e sleep 30` has every process flagged `crossesVmBoundary`, and `ps --label managed` lists only Windows processes of its job; (6) run `ArcForges.ClosedLoop.Tests -method *ATaskThatRunsWsl*` there and keep the VM workers it prints | WSL is not installed on the workstation, so no VM worker runs there; the `crosses_vm_boundary` flag itself is proven with the inbox `wsl.exe` (AF-RES-01) | A Windows 11 machine with WSL2 and one distribution (user-provided; installing WSL is the user's step) | AF-RES-01 | Open |
 | AR-19 | Successful Windows process adoption (ArcForges-Design 04 §10; `ResourceService.AdoptProcess`): a same-user process outside every job is adopted into the root job and a nested adoption job (the root job's limits apply, V-W01), appears as an `ADOPTED` task with label `ADOPTED`, its existing children follow, it can be terminated through `process.terminate`, and it ends `LOST` ("no exit status: the node is not the adopted process's parent") when it exits; after a node restart an adoption job the node cannot reopen (L-14) ends the task `LOST` through `container_missing`. Procedure: on a Windows 11 machine where a process created through WMI `Win32_Process.Create` is outside every job (check with `IsProcessInJob`), run `Node.Platform.Windows.Tests -method *AdoptionTests.AProcessOutsideAnyJobIsAdoptedWithItsChildrenAndTerminated` and `Node.Core.Tests -method *AdoptionLifecycleTests.AnAdoptedProcessThatEndsByItselfEndsItsTaskLostWithoutAnExitStatus` and `-method *AdoptionLifecycleTests.AnAdoptionContainerTheNodeCannotReopenAfterARestartIsLost`; none may skip with the "already in a job" reason | On the workstation every user process, a WMI-created one included, is already in a job (ArcForges-Design register L-30), so 04 §10 refuses every candidate and the capability `adopt` reports `LIMITED`; the refusal path is proven there (AF-SEC-01) | A Windows 11 machine or VM where a WMI-created process is outside every job (user-provided) | AF-SEC-01 | Open |
 | AR-20 | MR-07: establish the cause of the Windows supervisor test's unexplained node stop exit 75 and verify a discriminating repair if required | The historical failure has not recurred with the retained diagnostics; non-recurrence cannot establish its cause or prove a fix | A captured native Windows recurrence with verbose transport/descriptor/node/supervisor evidence, or a proven causal reproduction; the Windows MCP venue is already available, no new human provisioning | AF-NODE-01 | Open; unresolved observation, not a passed check or task block |
+| AR-21 | MR-11: a non-elevated Windows node and an elevated client of the same user: user-SID pipe ownership succeeds, but an unidentifiable elevated peer is refused before API execution | Existing automated ownership tests do not create two processes at different integrity levels; owner deferred full end-to-end testing on 2026-10-15 (ledger 30) | User-performed Windows 11 cross-integrity run at final end-to-end acceptance; no automatic elevation or re-request now | AF-NODE-01 | Open; deferred validation, no task block |
 
 ## 2. Human prerequisites
 
@@ -90,3 +91,42 @@ When a recurrence is observed during authorized maintenance:
    Do not assign the old RECOVERING/INTERNAL race as the cause of the different pipe-missing exit 75 without evidence.
 5. Close only with a proven cause and a discriminating regression/repair where required, reviewed and verified at its final pushed
    commit on the required native hosts. More silent runs alone never close this entry. No retry-count increase or weakened assertion.
+
+### AR-21: MR-11 same-user cross-integrity client
+
+Current development evidence: the user-SID ownership fix and three `PipeOwnershipTests` already exist in ArcForges main
+`5eaee92a4a964469bad41dad28dad9787b7552cf`; the fix was introduced by `3c323b2` during AF-NODE-01. `OwnerIsUser` rejects another
+user, BUILTIN\Administrators, SYSTEM and absent SIDs. A real user-owned pipe carries a byte after the owner check; a pipe owned by
+the token's default owner is accepted only when that owner is the user. The retained Windows CI leg at reviewed head
+`8fe744ffee80f24b59f835af60ba43e4a5163391` ran Client.Tests 102/102, no skips. This is existing evidence, not a new cross-integrity
+run. No missing ownership test or source repair was found. DesktopPlatform's separate transport is MR-12, not resolved here.
+
+The two checks differ: the client checks the server pipe's user SID; the node must also identify its peer. Current NodeClient turns
+three dropped hellos into AccessDenied and explains that an elevated client of a non-elevated node is refused. A successful pipe
+ownership test does not prove successful node Hello across integrity levels. This acceptance expects that refusal, not privilege
+support or node elevation. The real pair remains unverified; the owner's ledger-30 deferral is retained without re-asking.
+
+User-performed procedure at final end-to-end acceptance (not run in this maintenance pass):
+1. Record the source revision, matching Release binary paths, Windows version and whether each shell is elevated. In an ordinary
+   shell and then in the user's elevated shell run the already built ownership tests:
+   `dotnet test --project tests/ArcForges.Client.Tests -c Release --no-build --filter-class ArcForges.Client.Tests.PipeOwnershipTests --minimum-expected-tests 3 --output Detailed`.
+   Preserve the test output identifying the token-owner relation; both runs must pass all three tests without skips. The SID rule
+   tests alone are not a substitute for the next two-process case.
+2. In the ordinary shell prepare a unique temporary test root, its `config/node.json` containing a `dataRoot` inside that root, and a
+   unique pipe name. Set `ARCFORGES_CONFIG_DIR` to that config directory, `ARCFORGES_ENDPOINT` to that pipe name and
+   `ARCFORGES_TEST_MACHINE=isolated`; unset `ARCFORGES_OS_SECRET_STORE_TESTS`. Use `--test-mode` on every invocation, as the existing
+   ClosedLoop TestNode fixture does, so the node data key uses the isolated file-backed store. Never select a real credential store.
+   Run `<matching arcforges.exe> node run --test-mode` there. In another ordinary shell with the same three test-environment values,
+   run `<matching arcforges.exe> node wait-ready --test-mode`, then `<matching arcforges.exe> status --json --test-mode` as baseline.
+3. In the user's elevated shell set the same isolated test-environment values and no OS-store opt-in. Run
+   `<matching arcforges.exe> status --json --verbose --test-mode` with a 30 s external bound. Preserve exit/stdout/stderr and the
+   node log. Require the client ownership check to accept the user-owned pipe, then AccessDenied/refusal when the ordinary node
+   cannot identify the elevated peer; no successful Hello, privileged API action, replacement node or elevation by ArcForges.
+   If the OS permits peer resolution instead, preserve that evidence and review the stated expectation before closing this entry.
+4. Re-run ordinary-shell status to prove the original node remains usable; stop it from that ordinary shell with
+   `<matching arcforges.exe> node stop --test-mode`. Preserve process identities, endpoint descriptor and logs before disposing only
+   this temporary environment. No managed privileged task, second account, device-policy change or real credential cleanup is needed.
+
+Residual risk: no retained run proves the actual ordinary-node/elevated-client peer-resolution/refusal combination. Close only with
+that two-process evidence and review of the observed result. AR-02 second-account isolation and the deferred positive auto-start leg
+remain separate and open; this entry neither proves nor changes them.
