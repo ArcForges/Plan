@@ -73,6 +73,8 @@ DesktopPlatform#200 merged as `e02ebe455d4fe2c06b19dabc0f3179a43ab21aa6`; its cl
 branch/worktree retained. No work in other repositories was discarded.
 
 The normal main-push [Publish NuGet run 40213555173](https://github.com/ArcForges/DesktopPlatform/actions/runs/40213555173) was observed
-in progress at merge commit e02ebe4, run 148/attempt 1, started 2026-10-25T16:49:54Z. Publication is not yet claimed successful here.
+in progress at merge commit e02ebe4, run 148/attempt 1, started 2026-10-25T16:49:54Z. Follow-up on 2026-10-25 confirmed the same run
+completed successfully (updated 17:18:17Z), including publish job 121236288721: source/allowlist/content/hash recheck and publication of
+the same verified bytes both succeeded. No public cohort version is inferred from local candidate 1.0.0-ci.1.1.
 MR-43 must use a successfully published producer cohort with the normal admission evidence; no package was reinstalled or downloaded
 for post-publication verification. AF-DP-01 remains delivered, with AR-21's remaining real cross-integrity validation linked.
