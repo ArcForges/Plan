@@ -1,6 +1,6 @@
 # MR-101 continuation evidence, 2026-10-25
 
-Current pushed head: `c78bdd95621c3f33494f6dcfe6807929b0ba83ea`, existing [ArcForges#45](https://github.com/ArcForges/ArcForges/pull/45), after merging MR-104 main `f10248e`. Merge is pending. Windows author validation stopped at existing MR-90 before load or formal verification; Linux formal verification passed. MR-101 is parked for the separate MR-90 prerequisite. The `364fd53` evidence below is retained for that earlier checkpoint and cannot satisfy the new head.
+Reviewed and merged PR head: `8c1c06c081221e36723fd2cc16d4bfec4098b8a5`, existing [ArcForges#45](https://github.com/ArcForges/ArcForges/pull/45), based on MR-104/MR-90 main `266bfa6` plus the test readiness delta below. Merged as `866b0b7f3695cdbca8eebfd5ebe20566805d4330` after complete author validation and both exact-head formal legs passed: Windows 13 steps/932 s, Linux 16 steps/1130 s. Both summaries and the live GitHub merge gate were checked before merge. The prior 54ac6e0 Linux leg completed and remains old-head evidence. Earlier checkpoint evidence remains tied to its own revision and cannot satisfy the new head.
 
 The owner instructed this Codex session to analyze, implement and review directly, without other models or agents. That session instruction supersedes the delegation and independent Opus review requirement for this continuation. Existing review records remain historical evidence; the new delta is self-reviewed and attributed to OpenAI Codex.
 
@@ -89,3 +89,55 @@ MR-101 is parked while MR-90 is repaired separately as a verification prerequisi
 The c78bdd9 Linux formal leg subsequently passed all 16 full-profile steps in 1134 s, tree `8fdfbc573c8b8f8bf5a5ee93aea43c0992b65e18`, base `f10248e4163999b867c0e33b6da5c66935045ce6`. Its summary was checked and the host reported success; the user manager remained running. Logs: `/home/sammiller/arcforges/ArcForges/.git/arcforges-verify/logs/20261025-194208-c78bdd95621c-linux`. No competing Linux build/test ran. This remains c78bdd9-only evidence and will not be reused after the MR-90 main merge.
 
 MR-90 subsequently merged as `266bfa60229fc191e85966ee406c84ce3a4ead55` after both final-head formal legs passed; see the [MR-90 record](2026-10-25-mr90-validation.md). The next MR-101 action, after the Plan record merges, is to take live main and verify its resulting new pushed head. No extra MR-101 source change was made while its prerequisite was being repaired.
+
+## Fresh head after MR-90
+
+After MR-90's Plan#50 record merged (`83df1cf`), the existing branch took live main `266bfa60229fc191e85966ee406c84ce3a4ead55` without conflicts and pushed `54ac6e01e98fcae216f425d77dd59e27b475d380`. Its delta from c78bdd9 is the reviewed MR-90 test repair; the PR diff against main remains exactly AttemptRunner.cs and LaunchFaultTests.cs. Untracked PR-BODY.md remains preserved.
+
+New-head Windows locked restore, changed-file format and Release solution build passed (0 warnings/errors, build 23.61 s). Runner `C:\MyFile\Projects\dev\logs\resume-20261025-mr101\integrated-54ac6e0.ps1`, logs `final-54ac6e0`, uses the confirmed MTP full-class filters, protects existing logs, checks the source/head before and after author validation, and retains typed AOT component arrays. It requires ten standalone target classes, affected classes and Platform.Windows ci, then ten full Node.Core ci runs containing the target class (minimum 287 tests) beside ClosedLoop ci and fresh-worktree AOT publish. First failure stops the batch; every lane must drain before the formal Windows leg starts.
+
+Linux formal runner: `/home/sammiller/arcforges/logs/resume-mr101-54ac6e0-verify.log`, fetched from GitHub at 54ac6e0. Linux formal verification is in progress. Formal Windows verification has not started and its status is not yet reported at this head. None of the c78bdd9 or earlier results is reused for this commit.
+
+## Recovered-launch test readiness, 8c1c06c
+
+At 54ac6e0, standalone class run 1 passed; run 2 stopped with 9 passed/1 failed/0 skipped before load or formal Windows verification. The existing `AProcessEnteringAfterTheRecoveredForcedPhaseIsTerminatedWhenTheStartCompletedBeforeItOnWindows` waited 60 s but did not establish that its second step had left the job. Other cancellation cases passed, including the debugger-held regression at 298 ms. This is not a complete successful author batch.
+
+Code inspection found a missing test precondition: reopened Started completes on job entry, while AttemptRunner creates the step suspended, assigns it to the jobs and only then resumes it. Suspending its holder immediately on Started can prevent that Resume. An independent real stopping-job probe confirmed completed Started for the exact PID/creation while the child remained CREATE_SUSPENDED with no workload marker; its marker appeared after Resume (1 passed, 0 skipped). The original failing thread state was not retained, so the probe establishes the race the old test failed to exclude, rather than a captured timeline of that failure. [Microsoft's creation-flag contract](https://learn.microsoft.com/en-us/windows/win32/procthread/process-creation-flags) specifies that the primary thread does not run until ResumeThread.
+
+The probe temporarily changed JobTests.cs, then restored its original bytes and rebuilt the original project; entry-restored.diff is empty. Logs: `entry-probe-test.log`, `entry-probe-build.log`, `entry-restored-build.log`, `entry-probe.exit` (0), under `resume-20261025-mr101`.
+
+The bounded test-only fix in the existing PR (8c1c06c; 11 insertions/1 deletion) waits for the second step's actual start marker before suspending its holder. The absent go2 file still holds that step before the command. A new assertion requires the readiness precondition. All original empty-job, cancellation, phase-count, no-late-command and timing assertions remain. Target test and full LaunchFault class passed (1/1 and 10/10, no skips); build/format passed with 0 warnings/errors. The complete delta was self-reviewed directly; no blocking finding. No product file changed in this delta.
+
+Fresh runner: `integrated-8c1c06c.ps1`, logs `final-8c1c06c`. Complete Windows author validation is now the common prerequisite of both new-head formal legs. author.exit=0 is written only after every standalone/affected/loaded check passed, all lanes drained and final source/head checks passed; only then does Windows formal start and Linux formal may be launched. The prior 54ac6e0 Linux leg is not restarted or reused.
+
+The prior 54ac6e0 Linux leg completed all 16 steps in 1131 s, tree `cade993bc5eb129b59ae7249c8d21817d83df6f2`, base `266bfa60229fc191e85966ee406c84ce3a4ead55`; summary SHA/results were checked. One subsequent Linux MCP log read had a transient transport error; a bounded read-only retry recovered the existing completed log, without restarting verification. Its status remains old-head evidence only.
+
+At 8c1c06c the Windows runner completed all 10 standalone classes, the affected classes and Platform.Windows ci, then entered its three-stream loaded batch. The first four full Node.Core ci runs passed (287 total each; target class 10/10 each). Fresh-worktree AOT host publish passed with 0 warnings in 153.2 s beside the tests. These are partial batch results; complete author success and formal host verification are not yet established.
+
+## Complete author validation at 8c1c06c
+
+The full guarded batch passed and drained before formal verification. `author.exit` and `done.exit` are 0, final-source.diff is empty, and the head was rechecked. Audited evidence is saved in `final-8c1c06c/audited-author-evidence.json`.
+
+| Check | Result |
+|---|---|
+| Locked restore / changed-file format / Release solution build | passed; build 0 warnings/errors, 12.59 s |
+| 10 standalone LaunchFault class runs | each 10 passed, 0 failed, 0 skipped |
+| EscapedTermination + TaskControl | 17 total, 16 passed, 1 Linux-only skip, 0 failed |
+| Platform.Windows ci | 116 total, 115 passed, 1 documented adoption skip, 0 failed |
+| 10 integrated Node.Core ci runs beside ClosedLoop and AOT | each 287 total, 254 passed, 33 platform skips, 0 failed; target class 10/10 each, 100/100 total |
+| ClosedLoop load lane | 8 complete runs, each 44 total, 31 passed, 13 platform skips, 0 failed; drained exit 0 |
+| AOT lane | all five component names exercised, first fresh host publish 153.2 s with 0 warnings; lane drained exit 0 |
+
+CTRF records confirm 10 passes each for the watched infeasible, fairness and parallelism tests and the repaired recovered-launch precondition test. The infeasible method's complete duration ranged 6322-27074 ms (includes fixture/setup; this is not its internal stopwatch). No timing bound changed. The original failing samples still lack a retained exact timeline and are not retrospectively reported as fixed by these passes.
+
+Formal Windows started at 12:57:46 UTC only after author success/drain. Linux started afterwards, after confirming author.exit=0 and the previous Linux exit=0; its user manager was running and no test/workload processes remained before launch. Both legs fetch the exact pushed head. Windows summary directory: `C:\MyFile\Projects\ArcForges\ArcForges\.git\arcforges-verify\logs\20261025-125754-8c1c06c08122-win`. Linux summary directory: `/home/sammiller/arcforges/ArcForges/.git/arcforges-verify/logs/20261025-210005-8c1c06c08122-linux`. Final formal results and GitHub required-status inspection are pending.
+
+The 8c1c06c Windows formal leg completed all 13 full-profile steps in 932 s, tree `bfd8bbb17a9913652c388a53c0fe2fc57892e48c`, base `266bfa60229fc191e85966ee406c84ce3a4ead55`; every summary result and the SHA were checked, windows-verify.exit=0, and the host reported success. Linux formal verification and the final GitHub merge-gate inspection remain pending.
+
+## Final formal gate and merge
+
+Linux completed all 16 full-profile steps in 1130 s at 8c1c06c, matching the Windows summary's tree `bfd8bbb17a9913652c388a53c0fe2fc57892e48c` and base `266bfa60229fc191e85966ee406c84ce3a4ead55`. Every result, step count and exact SHA were checked. Both native host commands returned 0 and reported success; no competing build/test ran on either host during its formal leg.
+
+Immediately before merge, GitHub reported head 8c1c06c, base 266bfa6, mergeable=true, both required statuses success, and owner-hosted jobs skipped as specified. The final complete two-file diff (358 insertions/5 deletions) was self-reviewed directly under the owner's no-other-model/agent instruction; no blocking findings. Existing #45 merged as `866b0b7f3695cdbca8eebfd5ebe20566805d4330`.
+
+The repair restores launch-step stop latency and preserves normal-zero-exit resource lifetime. Test cleanup and recovered-launch readiness synchronize actual resource/process states while retaining all original task and timing assertions. Earlier interrupted/failed checkpoints remain above and were never counted as complete final-head validation. MR-102 (root wait) and MR-103 (end-step budget) remain separate. After this Plan record merges, continue MR-04 with Design#25 before ArcForges#44, then MR-102 and maintenance priorities. MR-16 stays blocked; recovery proposal retained, later features unstarted.
