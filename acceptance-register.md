@@ -37,6 +37,7 @@ Real-world validation that cannot run at development stage, and the human prereq
 | AR-19 | Successful Windows process adoption (ArcForges-Design 04 §10; `ResourceService.AdoptProcess`): a same-user process outside every job is adopted into the root job and a nested adoption job (the root job's limits apply, V-W01), appears as an `ADOPTED` task with label `ADOPTED`, its existing children follow, it can be terminated through `process.terminate`, and it ends `LOST` ("no exit status: the node is not the adopted process's parent") when it exits; after a node restart an adoption job the node cannot reopen (L-14) ends the task `LOST` through `container_missing`. Procedure: on a Windows 11 machine where a process created through WMI `Win32_Process.Create` is outside every job (check with `IsProcessInJob`), run `Node.Platform.Windows.Tests -method *AdoptionTests.AProcessOutsideAnyJobIsAdoptedWithItsChildrenAndTerminated` and `Node.Core.Tests -method *AdoptionLifecycleTests.AnAdoptedProcessThatEndsByItselfEndsItsTaskLostWithoutAnExitStatus` and `-method *AdoptionLifecycleTests.AnAdoptionContainerTheNodeCannotReopenAfterARestartIsLost`, plus `-method *AdoptionLifecycleTests.CancellingAnAdoptionJournalsStoppingBeforeItsFinalResult` (MR-105: real journal has initial RUNNING without previous states, exactly one STOPPING even after repeated cancellation, FINISHED CANCELLED/HAPPENED with no exit code, no adopted FINALIZING, and the shared kind-guarded model also checks an ordinary task); none may skip with the "already in a job" reason | On the workstation every user process, a WMI-created one included, is already in a job (ArcForges-Design register L-30), so 04 §10 refuses every candidate and the capability `adopt` reports `LIMITED`; the refusal path is proven there (AF-SEC-01) | A Windows 11 machine or VM where a WMI-created process is outside every job (user-provided) | AF-SEC-01 | Open |
 | AR-20 | MR-07: establish the cause of the Windows supervisor test's unexplained node stop exit 75 and verify a discriminating repair if required | The historical failure has not recurred with the retained diagnostics; non-recurrence cannot establish its cause or prove a fix | A captured native Windows recurrence with verbose transport/descriptor/node/supervisor evidence, or a proven causal reproduction; the Windows MCP venue is already available, no new human provisioning | AF-NODE-01 | Open; unresolved observation, not a passed check or task block |
 | AR-21 | MR-11: a non-elevated Windows node and an elevated client of the same user: user-SID pipe ownership succeeds, but an unidentifiable elevated peer is refused before API execution | Existing automated ownership tests do not create two processes at different integrity levels; owner deferred full end-to-end testing on 2026-10-15 (ledger 30) | User-performed Windows 11 cross-integrity run at final end-to-end acceptance; no automatic elevation or re-request now | AF-DP-01, AF-NODE-01 | Open; deferred validation, no task block |
+| AR-22 | MR-15: establish the cause of the historical Windows crash-test all-sealed-values-unavailable observation and a discriminating repair if required | Original failure lacks the unsealing reason; current crash tests use isolated file-backed keys and cannot validate the historical Credential Manager path | Existing or naturally recurring nonsecret diagnostic, or separately owner-authorized causal evidence; MR-16 real-store cleanup/stress prohibition stays in force, no new real-store operation authorized | AF-NODE-02 | Open; unresolved observation, deferred validation, no task block |
 
 ## 2. Human prerequisites
 
@@ -139,3 +140,23 @@ ArcForges' adoption of the producer version is MR-43. See [MR-12 evidence](maint
 Residual risk: no retained run proves the actual ordinary-node/elevated-client peer-resolution/refusal combination. Close only with
 that two-process evidence and review of the observed result. AR-02 second-account isolation and the deferred positive auto-start leg
 remain separate and open; this entry neither proves nor changes them.
+
+### AR-22: MR-15 historical sealed-input loss
+
+The historical Windows CrashConsistencyTests(420) observation remains unresolved, not repaired or validated.
+[MR-15 evidence](maintenance/2026-10-26-mr15-observation.md) records the original PR, backend change, audit scope and limits.
+The current file-backed isolated crash tests and their passing profiles do not validate the former real Credential Manager path.
+No current task or maintenance dependency is blocked by this entry.
+
+Procedure if existing evidence is supplied or a natural recurrence is observed during otherwise authorized work:
+1. Preserve the original output and UTC times before retry/reset. Record the source/binary revision, test scenario, acknowledgement
+   count, backend and isolation mode from existing diagnostics. Keep UnavailableReason and case outcome, never key/environment values.
+2. Classify the actual diagnostic: unrecorded/missing/unreadable/wrong-length key, changed backend, purge, or authentication mismatch.
+   An unavailable result alone proves none of these causes. Preserve the original relation between writer, kill and reopening reader.
+3. Do not run the old concurrent Windows/WSL scenario, change assertions/retries, select a real OS store, set its opt-in, run its tier,
+   list/read back/delete credentials or credential files, or start a real-store stress batch. MR-16 and the retained recovery proposal
+   remain controlling. This procedure grants no additional host, credential or test authorization.
+4. A real-store experiment would need separate explicit owner authorization and a reviewed isolated venue/procedure; do not request
+   or start one automatically. Existing nonsecret evidence may instead establish the cause without such an experiment.
+5. Close only with a proven cause, a discriminating regression and reviewed repair when required, and the owning repository's final
+   pushed-head native checks. Additional silent or isolated passing runs alone never close this entry.
