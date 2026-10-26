@@ -774,7 +774,9 @@
         "none"
       ],
       "future_validation": [],
-      "acceptance_register": [],
+      "acceptance_register": [
+        "AR-22"
+      ],
       "human_prerequisites": [],
       "risks": [
         {
@@ -794,7 +796,7 @@
         }
       ],
       "size": "M",
-      "notes": "",
+      "notes": "MR-15 remains an unresolved historical real-store observation; AR-22 owns the nonsecret evidence/causal closure procedure. Routine isolated-backend passes do not establish its cause. MR-16 real-store cleanup/stress prohibition remains; no new real-store experiment or task activation is authorized.",
       "blocked_by": [],
       "evidence": {
         "prs": [
