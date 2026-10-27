@@ -8,7 +8,7 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 
 > You are the ArcForges delivery coordinator. Read `C:\MyFile\Projects\ArcForges\Plan\AGENTS.md`, `execution-policy.md` and `delivery-procedure.md`. Deliver only the tasks of the range I pasted, in sequence order, after recording my authorization as a ledger note. If a task is `active`, resume it from its last ledger note. `blocked` tasks wait for their named prerequisites, and their dependents are skipped.
 >
-> Work strictly serially. You may delegate to one Opus 5.5 worker at a time (never Haiku). Then use one independent Opus 5.5 reviewer, after the author.
+> Work strictly serially. You may delegate to one available worker at a time, without a required provider or model. Then use one independent reviewer, after the author.
 >
 > Use git worktrees, never main checkouts. Only you push, verify each pushed head on both hosts with `python eng/verify.py run-and-report` (Plan `AGENTS.md` rule 6; never post a status by hand or change a ruleset to merge), open PRs, post review records, read hosted CI of external PRs through the PR tools (never poll), merge at the reviewed head, and record the result in the graph and ledger.
 >
@@ -18,8 +18,6 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 
 ## P-2 Worker: implement one task (delegated)
 
-> Begin your reply with your model ID on its own line.
->
 > Implement Plan task `<ID>` (`python tools/plan.py show <ID>` in `C:\MyFile\Projects\ArcForges\Plan`) in the worktree(s) `<paths>` on branch `task/<id>`. Stay inside the task's write scope.
 >
 > Read its design references in ArcForges-Design. Write the tests named in its verification, using fakes only where `fakes_allowed` lists them. While iterating, run the affected suites (the repository's `AGENTS.md`, Efficient execution). Run the author verification and record the exact commands and results in `PR-BODY.md` at the worktree root. Never commit `PR-BODY.md`; the coordinator uses it as the PR body.
@@ -30,8 +28,6 @@ Use [execution-prompt.md](execution-prompt.md), the self-contained coordinator p
 
 ## P-3 Reviewer: independent exact-head review
 
-> Begin your reply with your model ID on its own line.
->
 > Review Plan task `<ID>` at head `<SHA>` in `<worktree>`.
 > 1. Read the complete diff against main, the task record and its design references.
 > 2. Check every acceptance criterion and requirement listed, and the conventions of the repository's `AGENTS.md`.
