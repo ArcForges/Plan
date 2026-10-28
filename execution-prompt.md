@@ -10,13 +10,10 @@ This prompt assumes you know nothing about earlier conversations. Everything you
   - AI clients (Claude Code, Codex and similar) provide reasoning; ArcForges provides the execution side.
   - A node service on each machine owns execution and resource state. It accepts work once and queues it, enforces CPU and memory budgets with operating-system mechanisms, and keeps managed work in consistent directories and shared caches.
   - It records correlated evidence of where time goes, and integrates with AI clients through MCP, hooks and configuration.
-  - It extends the same model across paired machines on a LAN.
-  - It offers cloud services (remote access, an Android app, notifications) to subscribers.
+  - Since 2026-10-28 (ArcForges-Design AD-0021) ordinary use goes through a configured **center**, official or self-hosted: Desktop, CLI, Web and Android use the center's business API, cloud AI uses the center's MCP endpoint, and local AI uses the stdio adapter, which forwards to the same center; every call names an explicitly selected node. Nodes connect outbound and keep execution authority; the local endpoint serves node management, sign-in, diagnostics and recovery. The center is written in Go with Neon/PostgreSQL persistence.
+  - LAN distribution is out of current delivery (roadmap RM-19).
 - **Direction.** The long-term goal is to manage every non-reasoning operation of AI-driven work, including work started by subagents. Success means useful completion time and reliability, not concurrency counts. Each release states exactly which operations it manages. Release 1's list and its reported gaps are in the Design product definition §9.
-- **Editions.**
-  - Local and LAN functionality is free and needs no account. That includes future local and LAN capabilities.
-  - Only cloud-backed services need a subscription (Pro).
-  - Local and LAN execution never depend on the cloud.
+- **Editions and hosting** (AD-0021 §13). User-owned compute and the open-source software are distinct from the official hosted center, which is a service; a self-hosted center needs no official service. Normal operation uses a center; node-accepted work never depends on the center's availability. No price, free allowance, device limit or package is decided by the plan (H-07).
 - **Platforms.**
   - Windows 11 (x64, arm64). Windows 10 is not supported; spend no effort on it.
   - Linux (x64, arm64); a Linux node may run in a compatible WSL2 distribution without integration (ArcForges-Design AD-0018).

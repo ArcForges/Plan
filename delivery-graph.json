@@ -2,7 +2,7 @@
   "schema": 2,
   "plan": "ArcForges flagship delivery",
   "created": "2026-10-12",
-  "revised": "2026-10-19 (current-design corrections of ArcForges-Design #8, pair 1 of the 2026-10-18 long-term evolution study: the escape-detection gap, the same-user qualifiers, routing outside the client's own sandbox, the HUMAN-only host-posture check, the stated limits in the release coverage statement, and the complete uninstall with its secret-store test tier; independent review of that change)",
+  "revised": "2026-10-28 (ArcForges-Design AD-0021: central access through a configured center, a Go center on Neon/PostgreSQL, LAN out of current delivery; milestone MC added, LAN and absorbed cloud tasks superseded, remaining tasks re-targeted)",
   "policy": "execution-policy.md",
   "design": {
     "repository": "ArcForges/ArcForges-Design",
@@ -30,6 +30,11 @@
       "outcome": "Many tasks run in parallel under computed budgets with pools, priorities, a parallelism policy and pressure handling; origins, permissions and approvals apply."
     },
     {
+      "id": "MC",
+      "title": "Central access and Go center",
+      "outcome": "Nodes sign in to a configured center (official or self-hosted) and keep an outbound connection; clients and AI reach an explicitly selected node through the center's business API and MCP; the center runs in Go on PostgreSQL with the C# center retired (ArcForges-Design AD-0021)."
+    },
+    {
       "id": "M4",
       "title": "Records and diagnosis",
       "outcome": "Users see where time went, findings with evidence and remedies, and learned estimates feed admission."
@@ -47,7 +52,7 @@
     {
       "id": "M7",
       "title": "AI integration",
-      "outcome": "Claude Code and Codex run work through ArcForges (MCP, hooks, routing) with honest coverage."
+      "outcome": "Claude Code and Codex run work through ArcForges (MCP, hooks, routing) with honest coverage. Since AD-0021 the MCP route goes through the center (AF-CTR-07, AF-CTR-08)."
     },
     {
       "id": "M8",
@@ -57,22 +62,22 @@
     {
       "id": "M9",
       "title": "LAN",
-      "outcome": "Paired machines on a LAN share work and compiler caches, free, without an account or a cloud connection."
+      "outcome": "Superseded 2026-10-28 by ArcForges-Design AD-0021: LAN distribution is out of current delivery (roadmap RM-19); the tasks stay as history. Earlier outcome: paired machines on a LAN share work and compiler caches, free, without an account or a cloud connection."
     },
     {
       "id": "M10",
       "title": "Distribution",
-      "outcome": "Users download, install, update and roll back signed artifacts from arcforges.com; the free local and LAN product is complete."
+      "outcome": "Users download, install, update and roll back signed artifacts from arcforges.com; the node, CLI and clients are installable."
     },
     {
       "id": "M11",
       "title": "Cloud platform, account and entitlements",
-      "outcome": "The cloud platform services and account authentication exist; nodes sign in through the browser or a device code, cloud features are gated by entitlement, and support bundles reach cases."
+      "outcome": "The center's platform services and account lifecycle exist on the Go center (AD-0021); phones pair by QR, center features are gated by entitlement, and support bundles reach cases."
     },
     {
       "id": "M12",
-      "title": "Remote access",
-      "outcome": "Pro users watch and control nodes from the web, and receive push notifications."
+      "title": "Remote views and notifications",
+      "outcome": "Users watch their nodes live from the web and receive push notifications."
     },
     {
       "id": "M13",
@@ -1689,6 +1694,1435 @@
       "order": 14
     },
     {
+      "id": "AF-CTR-01",
+      "title": "Go contract bindings: generation, publication and compatibility",
+      "milestone": "MC",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Contracts",
+          "paths": [
+            "go/**",
+            "public/proto/**",
+            "internal/proto/**",
+            "eng/**",
+            ".github/**",
+            "docs/**",
+            "tests/**",
+            "fixtures/**",
+            "third-party/**",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CON-01"
+      ],
+      "objective": "Generate maintainable Go bindings (protobuf-go and Connect) from the single .proto source in the Contracts repository, check them for drift and for wire compatibility with the C# bindings on the native legs, and publish them at the cohort version of the NuGet packages.",
+      "scope": [
+        "Go module github.com/ArcForges/Contracts/go with the packages the Go center consumes (foundation.v1, hello.v1, publicapi.v1, node.v1, fleet.v1, relay.v1); retired identities stay retired",
+        "Pinned generators (protoc-gen-go, protoc-gen-connect-go) as Go tool dependencies; generation through the repository's single generation entry point; generated sources committed and never hand-edited",
+        "Drift check: regeneration from a clean checkout must reproduce the committed sources byte for byte",
+        "Wire compatibility: Go decodes and re-encodes the repository's C# golden fixtures; Connect status and error-detail mapping of foundation.v1 ArcError checked",
+        "Publication: the main-push publishing workflow tags go/v<cohort version> on the publishing commit together with the NuGet cohort; provenance and package inventory rows; licence and NOTICE",
+        "Engineering controls: go.mod/go.sum read-only resolution, module verification, gofmt, go vet, tests, govulncheck; Dependabot gomod entries for the real module paths; verify steps on the native leg(s), with the Windows-leg applicability of Go generation assessed and recorded"
+      ],
+      "out_of_scope": [
+        "Changing any existing wire definition (additions only, by the tasks that need them)",
+        "Go consumers (AF-CTR-02)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/contracts/README.md",
+        "docs/decisions/AD-0004-contracts-and-state.md",
+        "docs/architecture/16-testing-strategy.md"
+      ],
+      "requirements": [
+        "R-CTR-010",
+        "R-CTR-014",
+        "R-API-001"
+      ],
+      "deliverables": [
+        "Go bindings module",
+        "Generation and drift check",
+        "Go/C# compatibility tests",
+        "Go publication"
+      ],
+      "acceptance": [
+        "A clean regeneration reproduces the committed Go sources; a .proto change without regeneration fails the drift step on the host verification",
+        "Every C# golden fixture round-trips through the Go bindings; ArcError details map to Connect errors and back",
+        "After merge the tag go/v<cohort version> exists at the publishing commit and the module resolves through the public Go module proxy once at the handoff",
+        "C# NuGet and npm package contents are unchanged by the task (descriptor baselines unchanged)",
+        "Dependabot covers the Go module paths; govulncheck reports no reachable vulnerability"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and native builds of affected components (Go: gofmt, go vet, static analysis, tests; C#: format, analyzers, AOT publish)",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
+        ]
+      },
+      "fakes_allowed": [],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Generated Go code differs between generator versions or hosts",
+          "mitigation": "Pinned generator modules and protoc; byte-for-byte drift check on the host verification",
+          "owner": "AF-CTR-01"
+        },
+        {
+          "risk": "A Go module tag diverges from the NuGet cohort",
+          "mitigation": "The tag is created by the same publishing job after the cohort publishes, from the same commit",
+          "owner": "AF-CTR-01"
+        }
+      ],
+      "size": "M",
+      "notes": "Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 15
+    },
+    {
+      "id": "AF-CTR-02",
+      "title": "Go center foundation, PostgreSQL store and engineering controls",
+      "milestone": "MC",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "center/**",
+            "hello-go/**",
+            "worker/**",
+            "wrangler.json",
+            "Dockerfile",
+            "eng/**",
+            ".github/**",
+            ".githooks/**",
+            "docs/**",
+            "tests/**",
+            "tooling/**",
+            "third-party/**",
+            "storage/**",
+            "src/**",
+            "tools/**",
+            "package.json",
+            "package-lock.json",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CTR-01"
+      ],
+      "objective": "Replace the Hello-only Go proof with the Go center: one server binary serving the existing public routes over Connect with the ingress behaviour the Worker expects, configuration with a configurable public base URL, health and readiness, and a PostgreSQL store with versioned migrations, platform tables and least-privilege roles; carry the C# engineering controls over to Go on both native legs.",
+      "scope": [
+        "center/ Go module and the arcforges-center binary (serve, migrate, admin); exact-version consumption of the AF-CTR-01 bindings; Hello served unchanged (limits, status codes, Unicode and NUL)",
+        "Ingress compatibility with the Worker's deny-by-default route table and admission pipeline: RequestMeta and ResponseMeta, ArcError, correlation and traceparent, size limits, cookie and CSRF rules; the Worker stays a thin adapter",
+        "Configuration: public base URL, pooled runtime and direct migration database URLs, limits; a self-hosted mode that serves the same routes from one binary with any PostgreSQL",
+        "PostgreSQL store with pgx: one schema per module; a migration runner with versioned SQL, SHA-256 checksums, an advisory-lock exclusion, safe repetition and refusal of edited applied migrations; transaction helpers with deadlines, cancellation and serialization-failure retry; sanitized errors; TLS verify-full with channel binding; connection budgets",
+        "Platform tables re-implementing the D1 storage guarantees: command receipts and guard (idempotency per principal and command ID), inbox, outbox with its publisher, job lease and audit event append",
+        "Roles: the migration role applies migrations through the direct connection in the protected main-push deploy before promotion; the runtime role has only its module grants and uses the pooled connection; its credential is provisioned without being displayed",
+        "Backup, restore and rollback: Neon history retention recorded, a logical-backup restore drill on an isolated PostgreSQL, and an expand-and-contract rollback procedure covering application, schema, protocol and data compatibility",
+        "Engineering controls carried over with a disposition for every C# control: pinned toolchain and modules, dependency admission and licences, gofmt, go vet, a maintained static analyzer, unit tests, the race detector, fuzz targets for parsers, real PostgreSQL integration tests, govulncheck, CodeQL for Go, secret scanning, SBOM and NOTICE, reproducible build identity, the sealed candidate image promoted unchanged, lightweight pre-commit hook, Dependabot gomod; native Windows and Linux verify steps (PostgreSQL, race and the image on Linux)"
+      ],
+      "out_of_scope": [
+        "Account, node and MCP endpoints (AF-CTR-03 onward)",
+        "Retirement of the C# host (AF-CTR-09)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/architecture/10-cloud.md",
+        "docs/data/cloud-store.md",
+        "docs/architecture/16-testing-strategy.md",
+        "docs/decisions/AD-0016-local-first-verification.md"
+      ],
+      "requirements": [
+        "R-CTR-003",
+        "R-CTR-009",
+        "R-CTR-014"
+      ],
+      "deliverables": [
+        "Go center binary",
+        "PostgreSQL store and migrations",
+        "Engineering control mapping",
+        "Native verify steps"
+      ],
+      "acceptance": [
+        "The deployed revision serves Hello from the center binary and the published C# gRPC-Web client succeeds against the real Worker (greeting, Unicode, NUL, error statuses); health reports runtime=go and the center revision",
+        "Concurrent migration runs serialize, a repeated run is a no-op, an edited applied migration is refused, a failing migration rolls back; on the real Neon database the deploy applies the baseline with the migration role, and the runtime role can neither change schema nor read schemas it was not granted",
+        "A receipt-guarded command replayed with the same command ID returns the stored result, a different payload with the same ID is refused, and concurrent duplicates execute once (real PostgreSQL)",
+        "An outbox row commits with its business change and is published at least once after a crash between commit and publish",
+        "Both native legs run the Go checks; the race detector and PostgreSQL integration run on Linux; a deliberately failing Go test fails its leg",
+        "The engineering control mapping lists every existing control with its Go equivalent or reason, its entry point, stage and evidence",
+        "A self-hosted center starts against a local PostgreSQL with a configured base URL, and no official endpoint is compiled into a code path"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and native builds of affected components (Go: gofmt, go vet, static analysis, tests; C#: format, analyzers, AOT publish)",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
+        ]
+      },
+      "fakes_allowed": [],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "The runtime credential leaks through logs or artifacts",
+          "mitigation": "Provisioned inside the protected deploy job, never printed, never in artifacts; secret scanning",
+          "owner": "AF-CTR-02"
+        },
+        {
+          "risk": "A migration breaks the running revision",
+          "mitigation": "Expand-and-contract migrations, migration before promotion, rollback procedure exercised",
+          "owner": "AF-CTR-02"
+        },
+        {
+          "risk": "Neon pooler behaviour differs from direct connections",
+          "mitigation": "Runtime uses QueryExecModeExec without session state; integration tests run both modes",
+          "owner": "AF-CTR-02"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 16
+    },
+    {
+      "id": "AF-CTR-03",
+      "title": "Accounts, sessions and devices on the center",
+      "milestone": "MC",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "center/**",
+            "hello-go/**",
+            "worker/**",
+            "wrangler.json",
+            "Dockerfile",
+            "eng/**",
+            ".github/**",
+            ".githooks/**",
+            "docs/**",
+            "tests/**",
+            "tooling/**",
+            "third-party/**",
+            "storage/**",
+            "src/**",
+            "tools/**",
+            "package.json",
+            "package-lock.json",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md"
+          ]
+        },
+        {
+          "repo": "Contracts",
+          "paths": [
+            "go/**",
+            "public/proto/**",
+            "internal/proto/**",
+            "eng/**",
+            ".github/**",
+            "docs/**",
+            "tests/**",
+            "fixtures/**",
+            "third-party/**",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CTR-02"
+      ],
+      "objective": "Implement accounts and sign-in on the Go center: passkeys, e-mail codes through a provider adapter, an owner bootstrap for self-hosted and acceptance centers, cookie and native-bearer sessions with refresh rotation and reuse detection, step-up, device listing, renaming and revocation, and the center's own sign-in pages; port the identity core's domain rules from C#.",
+      "scope": [
+        "PostgreSQL identity and device schemas from the D1 model, with the product IDs arcforges-node and arcforges-mobile as an ordinary migration",
+        "IdentityService endpoints on the reused publicapi.v1 contract: WebAuthn registration and authentication with a maintained, admitted Go library; e-mail codes through the provider adapter (Postmark, Amazon SES fallback) with FakeMailSender in tests",
+        "Owner bootstrap: a one-time token whose SHA-256 is deployment configuration creates the first account and its first passkey, refused once an account exists or after expiry",
+        "Sessions: cookie sessions with CSRF and Origin checks; native-bearer sessions with refresh rotation and reuse detection that revokes the family; scopes account, mobile.limited, node, push, automation and agent (agent grants issued by AF-CTR-07)",
+        "Step-up; session listing and revocation; DeviceService List, Rename and Revoke, revoking the device's node credential and agent grants",
+        "Center-served pages without external assets and with a strict content security policy: sign-in, passkey registration, bootstrap, sessions and devices",
+        "Rate limits per IP prefix and account (AD-0011 section 7); audit of sign-in, session and device events"
+      ],
+      "out_of_scope": [
+        "Recovery, deletion, export and security activity (AF-ID-02)",
+        "Node enrollment (AF-CTR-04)",
+        "Live e-mail delivery (AR-14)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/decisions/AD-0011-identity-and-login.md",
+        "docs/architecture/10-cloud.md",
+        "docs/architecture/11-security-privacy.md",
+        "docs/data/cloud-store.md",
+        "docs/contracts/reuse-map.md"
+      ],
+      "requirements": [
+        "R-AUTH-004",
+        "R-AUTH-005",
+        "R-OPS-001",
+        "R-OPS-002",
+        "R-SEC-002",
+        "R-CTR-008"
+      ],
+      "deliverables": [
+        "Identity and device endpoints",
+        "Center sign-in pages",
+        "Identity schema"
+      ],
+      "acceptance": [
+        "A real browser on the Windows host (Playwright Chromium with a virtual WebAuthn authenticator, labelled as such) registers a passkey through the bootstrap link and signs in against a local center on real PostgreSQL; the e-mail-code flow passes in closed loop with FakeMailSender",
+        "Refresh-token reuse revokes the session family (real PostgreSQL)",
+        "Account A's session cannot list, rename or revoke account B's sessions or devices",
+        "mobile.limited sessions are refused for medium and high actions until step-up (T-19)",
+        "Revoking a device refuses its node credential on the next call"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and native builds of affected components (Go: gofmt, go vet, static analysis, tests; C#: format, analyzers, AOT publish)",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
+        ]
+      },
+      "fakes_allowed": [
+        "FakeMailSender (e-mail provider)",
+        "Virtual WebAuthn authenticator (platform or roaming authenticator)"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-14",
+        "AR-23"
+      ],
+      "human_prerequisites": [
+        "H-19"
+      ],
+      "risks": [
+        {
+          "risk": "Passkey ceremonies differ between the virtual authenticator and real platform authenticators",
+          "mitigation": "Standard library conformance; a real Windows Hello registration recorded as AR-23",
+          "owner": "AF-CTR-03"
+        },
+        {
+          "risk": "Bootstrap token misuse",
+          "mitigation": "Hash-only configuration, one use, expiry, refused once any account exists, audited",
+          "owner": "AF-CTR-03"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 17
+    },
+    {
+      "id": "AF-CTR-04",
+      "title": "Node sign-in and node credentials",
+      "milestone": "MC",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "center/**",
+            "hello-go/**",
+            "worker/**",
+            "wrangler.json",
+            "Dockerfile",
+            "eng/**",
+            ".github/**",
+            ".githooks/**",
+            "docs/**",
+            "tests/**",
+            "tooling/**",
+            "third-party/**",
+            "storage/**",
+            "src/**",
+            "tools/**",
+            "package.json",
+            "package-lock.json",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md"
+          ]
+        },
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/**",
+            "tests/**",
+            "tools/**",
+            "packaging/**",
+            "eng/**",
+            "docs/**",
+            "Directory.Packages.props",
+            "ArcForges.slnx",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "THIRD_PARTY_NOTICES.md",
+            "third-party/**"
+          ]
+        },
+        {
+          "repo": "Contracts",
+          "paths": [
+            "go/**",
+            "public/proto/**",
+            "internal/proto/**",
+            "eng/**",
+            ".github/**",
+            "docs/**",
+            "tests/**",
+            "fixtures/**",
+            "third-party/**",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CTR-03",
+        "AF-NODE-01",
+        "AF-DP-02"
+      ],
+      "objective": "Associate a node installation with an account on a configured center through the browser (PKCE loopback) or a device code, keep the node credential in the OS secret store with refresh, and handle revocation.",
+      "scope": [
+        "Center: NodeEnrollmentService BeginNodeSignIn, GetNodeSignInFlow, ApproveNodeSignIn, CompleteNodeSignIn, StartDeviceAuthorization, PollDeviceAuthorization, LookupDeviceCode, ApproveDeviceCode, RefreshNodeSession and ReportNodeInfo; fleet schema tables for nodes, sign-in flows and device authorizations; one device and installation per node; center pages /connect and /activate",
+        "Node: the center setting (official default, overridable, persisted); a CloudLink component storing the node credential through DesktopPlatform Security.Secrets (Windows Credential Manager; Linux Secret Service or the 0600 file reported as FILE_PERMISSIONS_ONLY), refreshing before expiry and turning revocation into the signed-out state; AccountService on the local endpoint (GetAccountStatus, BeginSignIn, GetSignInFlow, CancelSignIn, SignOut)",
+        "CLI: arcforges center set <url>, arcforges login [--device-code], arcforges logout, arcforges account status",
+        "Linux secret-store tests use the isolated backend; real OS secret-store integration only on the isolated host H-23"
+      ],
+      "out_of_scope": [
+        "Phone pairing (AF-CLD-02)",
+        "The node channel (AF-CTR-05)",
+        "Desktop pages (AF-DESK-01)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/decisions/AD-0011-identity-and-login.md",
+        "docs/architecture/10-cloud.md",
+        "docs/contracts/proto/arcforges/fleet/v1/fleet.proto",
+        "docs/contracts/proto/arcforges/node/v1/account.proto",
+        "docs/experience/cli.md"
+      ],
+      "requirements": [
+        "R-AUTH-001",
+        "R-AUTH-003",
+        "R-OPS-001",
+        "R-CTR-002",
+        "R-CTR-003"
+      ],
+      "deliverables": [
+        "Node enrollment endpoints and pages",
+        "Node CloudLink credential handling",
+        "CLI account commands"
+      ],
+      "acceptance": [
+        "A real Windows node and a real native Linux node sign in with a device code against a local center on real PostgreSQL, approved in a real browser session; the Windows node also signs in through the browser PKCE loopback flow",
+        "A reused code revokes the flow; an expired device code and a sixth wrong user code are refused",
+        "The Windows credential is stored in Credential Manager and the Linux credential in the isolated backend; refresh rotates it; a revoked device leaves the node signed out",
+        "A node configured for a self-hosted center never contacts the official endpoint"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and native builds of affected components (Go: gofmt, go vet, static analysis, tests; C#: format, analyzers, AOT publish)",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
+        ]
+      },
+      "fakes_allowed": [
+        "ScriptedBrowser (system browser) where a real browser session cannot run"
+      ],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [
+        "H-23"
+      ],
+      "risks": [
+        {
+          "risk": "The loopback redirect is blocked by a firewall or browser policy",
+          "mitigation": "Device-code fallback",
+          "owner": "AF-CTR-04"
+        },
+        {
+          "risk": "Code or flow replay",
+          "mitigation": "Single-use codes; reuse revokes the flow",
+          "owner": "AF-CTR-04"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 18
+    },
+    {
+      "id": "AF-CTR-05",
+      "title": "Node channel and center-routed execution",
+      "milestone": "MC",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Contracts",
+          "paths": [
+            "go/**",
+            "public/proto/**",
+            "internal/proto/**",
+            "eng/**",
+            ".github/**",
+            "docs/**",
+            "tests/**",
+            "fixtures/**",
+            "third-party/**",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md"
+          ]
+        },
+        {
+          "repo": "Cloud",
+          "paths": [
+            "center/**",
+            "hello-go/**",
+            "worker/**",
+            "wrangler.json",
+            "Dockerfile",
+            "eng/**",
+            ".github/**",
+            ".githooks/**",
+            "docs/**",
+            "tests/**",
+            "tooling/**",
+            "third-party/**",
+            "storage/**",
+            "src/**",
+            "tools/**",
+            "package.json",
+            "package-lock.json",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md"
+          ]
+        },
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/**",
+            "tests/**",
+            "tools/**",
+            "packaging/**",
+            "eng/**",
+            "docs/**",
+            "Directory.Packages.props",
+            "ArcForges.slnx",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "THIRD_PARTY_NOTICES.md",
+            "third-party/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CTR-04",
+        "AF-EXEC-02",
+        "AF-SEC-01"
+      ],
+      "objective": "Keep each signed-in node connected to its center over an outbound WebSocket carrying relay.v1 Protobuf frames, and let authorized callers submit, wait for, read the output of, list and cancel tasks on an explicitly selected node through the center, without duplicate execution or silent loss.",
+      "scope": [
+        "Contracts (additive v1): relay.v1 call and result frames (call ID, deadline, method, payload, ArcError); fleet.v1 routed task methods naming node_id and carrying command IDs",
+        "Center: the node hub (authenticated upgrade with the node credential, one connection per node, heartbeats, backpressure, bounded in-flight calls), routing with deadlines, receipts for idempotency, routing records without specifications or output, audit, node presence; FleetService ListNodes, GetNode, RenameNode and RevokeNode; the Worker passes the node WebSocket upgrade through a registered route with its admission policy",
+        "Node: outbound connection with jittered backoff and credential refresh; dispatch to the existing TaskService with the origin and caller identity the center verified (HUMAN through a client, AGENT through MCP); the local policy for center-routed callers; deduplication by command ID; output by offset",
+        "CLI: arcforges run [--node <name or id>] -- <command> through the center (default: this node), tasks, wait, output and cancel through the center; arcforges run --local stays a labelled diagnostic",
+        "Failure behaviour of AD-0021 section 11: offline node refusal, center restart, network loss, retry after an uncertain submission, revocation closing the channel"
+      ],
+      "out_of_scope": [
+        "File and workspace operations (AF-CTR-06)",
+        "MCP (AF-CTR-07)",
+        "Viewer streams and push (AF-WEB-03, AF-CLD-06)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/architecture/10-cloud.md",
+        "docs/decisions/AD-0009-cloud-relay-and-cost-controls.md",
+        "docs/decisions/AD-0006-execution-semantics.md",
+        "docs/contracts/proto/arcforges/relay/v1/relay.proto",
+        "docs/contracts/proto/arcforges/fleet/v1/fleet.proto",
+        "docs/architecture/11-security-privacy.md"
+      ],
+      "requirements": [
+        "R-CLOUD-002",
+        "R-CLOUD-004",
+        "R-OPS-003",
+        "R-SEC-002",
+        "R-TEST-002",
+        "R-CTR-001",
+        "R-CTR-002",
+        "R-CTR-006",
+        "R-CTR-007",
+        "R-CTR-008",
+        "R-CTR-012",
+        "R-CTR-013"
+      ],
+      "deliverables": [
+        "Node hub and routing",
+        "Node CloudLink channel",
+        "Routed task API",
+        "CLI through the center"
+      ],
+      "acceptance": [
+        "A real Windows node and a real native Linux node, connected to a local center on real PostgreSQL, run, wait, stream output, list and cancel tasks submitted through the center by the CLI",
+        "The center is killed during a submission: the client's retry with the same command ID executes the task once, the node reconnects, and output resumes by offset",
+        "An offline node is refused with UNAVAILABLE/node_offline; a revoked node credential closes the channel and refuses new calls while accepted tasks continue at the node",
+        "Two callers share one node's admission (queue positions and budgets) and appear with their identities in the task records",
+        "The center database holds no command line, environment or output after the suite (inspection test)"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and native builds of affected components (Go: gofmt, go vet, static analysis, tests; C#: format, analyzers, AOT publish)",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
+        ]
+      },
+      "fakes_allowed": [],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "A half-open connection hides a dead node",
+          "mitigation": "Heartbeats with deadlines; presence derived from the last heartbeat",
+          "owner": "AF-CTR-05"
+        },
+        {
+          "risk": "Duplicate execution after a retry",
+          "mitigation": "Command IDs end to end; the node's existing idempotent submission",
+          "owner": "AF-CTR-05"
+        },
+        {
+          "risk": "A connected node keeps the hosted Container running",
+          "mitigation": "max_instances, instance type and per-account node limits; cost recorded (AD-0021 section 9)",
+          "owner": "AF-CTR-05"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 19
+    },
+    {
+      "id": "AF-CTR-06",
+      "title": "Node files and workspaces for center-routed callers",
+      "milestone": "MC",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Contracts",
+          "paths": [
+            "go/**",
+            "public/proto/**",
+            "internal/proto/**",
+            "eng/**",
+            ".github/**",
+            "docs/**",
+            "tests/**",
+            "fixtures/**",
+            "third-party/**",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md"
+          ]
+        },
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/**",
+            "tests/**",
+            "tools/**",
+            "packaging/**",
+            "eng/**",
+            "docs/**",
+            "Directory.Packages.props",
+            "ArcForges.slnx",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "THIRD_PARTY_NOTICES.md",
+            "third-party/**"
+          ]
+        },
+        {
+          "repo": "Cloud",
+          "paths": [
+            "center/**",
+            "hello-go/**",
+            "worker/**",
+            "wrangler.json",
+            "Dockerfile",
+            "eng/**",
+            ".github/**",
+            ".githooks/**",
+            "docs/**",
+            "tests/**",
+            "tooling/**",
+            "third-party/**",
+            "storage/**",
+            "src/**",
+            "tools/**",
+            "package.json",
+            "package-lock.json",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CTR-05"
+      ],
+      "objective": "Give center-routed callers bounded, audited file read, write, edit, search and listing inside registered workspace roots, workspace listing, and cleanup of paths those callers created, all enforced by the node.",
+      "scope": [
+        "Contracts (additive v1): node.v1 file operations (read with offset and length, write with an expected hash, exact-replacement edit with an expected occurrence count, bounded literal or regular-expression search, directory listing, removal) and their fleet.v1 routed counterparts",
+        "Node: canonical path checks inside registered workspace roots with symbolic-link, junction and reserved-name escapes refused on Windows and Linux; size, count and time limits per call; permissions by origin (AGENT writes only where policy allows); audit records with path, operation, size and SHA-256, never content",
+        "Workspaces: listing and details through the center; registration stays HUMAN-only",
+        "Cleanup: an agent removes only paths it created through these operations or its tasks' temporary directories; anything else needs a HUMAN approval"
+      ],
+      "out_of_scope": [
+        "Managed worktrees and storage analysis (AF-WS-01, AF-STOR-01)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/architecture/06-storage-workspaces.md",
+        "docs/architecture/11-security-privacy.md",
+        "docs/contracts/proto/arcforges/node/v1/workspaces.proto",
+        "docs/experience/mcp.md"
+      ],
+      "requirements": [
+        "R-SEC-002",
+        "R-SEC-003",
+        "R-CTR-007",
+        "R-CTR-011",
+        "R-CTR-012"
+      ],
+      "deliverables": [
+        "Node file service",
+        "Routed file and workspace API"
+      ],
+      "acceptance": [
+        "Traversal, symbolic-link and junction escapes are refused on real Windows and Linux file systems",
+        "Limits hold: oversized reads are truncated with a continuation offset, oversized writes are refused",
+        "A write with a stale expected hash fails without changing the file",
+        "AGENT writes are refused while policy forbids them, and every operation is audited without content",
+        "The operations work end to end through the center on a real Windows node and a real Linux node"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and native builds of affected components (Go: gofmt, go vet, static analysis, tests; C#: format, analyzers, AOT publish)",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
+        ]
+      },
+      "fakes_allowed": [],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Path escapes through links or case folding",
+          "mitigation": "Canonical resolution after opening; link checks on both platforms; tests per escape kind",
+          "owner": "AF-CTR-06"
+        },
+        {
+          "risk": "Agents delete user files",
+          "mitigation": "Created-path tracking; HUMAN approval for anything else",
+          "owner": "AF-CTR-06"
+        }
+      ],
+      "size": "M",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 20
+    },
+    {
+      "id": "AF-CTR-07",
+      "title": "Center MCP",
+      "milestone": "MC",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "center/**",
+            "hello-go/**",
+            "worker/**",
+            "wrangler.json",
+            "Dockerfile",
+            "eng/**",
+            ".github/**",
+            ".githooks/**",
+            "docs/**",
+            "tests/**",
+            "tooling/**",
+            "third-party/**",
+            "storage/**",
+            "src/**",
+            "tools/**",
+            "package.json",
+            "package-lock.json",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CTR-06"
+      ],
+      "objective": "Serve standard MCP from the center over Streamable HTTP with OAuth authorization, AGENT grants scoped to devices and tools, sessions that survive reconnection, and tools for devices, tasks, files and workspaces.",
+      "scope": [
+        "Transport per the current official MCP specification: protocol revision negotiation, Mcp-Session-Id persisted by the center and bound to the grant, resumable streams where the specification defines them, server metadata, tools with output schemas and annotations",
+        "OAuth 2.1 authorization in the center: protected-resource and authorization-server metadata, authorization code with PKCE, client registration as the specification defines it, a consent page naming the devices and tool permissions, refresh and revocation, audience-bound tokens; agent grants in the identity schema",
+        "Tools: devices_list, run (device required, bounded wait), task_status, task_wait, task_output, task_cancel, task_list, file_read, file_write, file_edit, file_search, file_list, workspace_list and cleanup, mapped to the routed operations with origin AGENT",
+        "AGENT callers never reach HUMAN-only operations (approvals, policy changes, workspace registration, device management) and never approve their own requests",
+        "Measurement of the business API and MCP in one process against separate processes, recorded"
+      ],
+      "out_of_scope": [
+        "The local stdio adapter (AF-CTR-08)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/experience/mcp.md",
+        "docs/architecture/08-ai-integration.md",
+        "docs/decisions/AD-0007-ai-integration.md",
+        "docs/decisions/AD-0011-identity-and-login.md"
+      ],
+      "requirements": [
+        "R-AI-001",
+        "R-AI-002",
+        "R-SEC-002",
+        "R-CTR-004",
+        "R-CTR-005",
+        "R-CTR-008",
+        "R-CTR-012"
+      ],
+      "deliverables": [
+        "Center MCP endpoint",
+        "OAuth authorization for agents",
+        "MCP tools"
+      ],
+      "acceptance": [
+        "A real MCP client (the official MCP SDK client, and an AI client configured with the remote server where available) completes OAuth, lists tools, runs a command on a real Windows node and a real Linux node, follows up by task ID and reads, edits and searches files, against a local center",
+        "A session survives a dropped connection; a grant scoped to device A cannot reach device B; a revoked grant is refused on the next call",
+        "AGENT callers cannot approve requests or reach HUMAN-only operations",
+        "No tool call exceeds its bounded wait"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and native builds of affected components (Go: gofmt, go vet, static analysis, tests; C#: format, analyzers, AOT publish)",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
+        ]
+      },
+      "fakes_allowed": [],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Client implementations of MCP authorization differ",
+          "mitigation": "Conformance with the specification's required flows; tests with the official SDK and at least one AI client",
+          "owner": "AF-CTR-07"
+        },
+        {
+          "risk": "Token passthrough or confused deputy",
+          "mitigation": "Audience-bound tokens; the center never forwards client tokens to nodes",
+          "owner": "AF-CTR-07"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 21
+    },
+    {
+      "id": "AF-CTR-08",
+      "title": "Local stdio adapter to the center",
+      "milestone": "MC",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/**",
+            "tests/**",
+            "tools/**",
+            "packaging/**",
+            "eng/**",
+            "docs/**",
+            "Directory.Packages.props",
+            "ArcForges.slnx",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "THIRD_PARTY_NOTICES.md",
+            "third-party/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CTR-07"
+      ],
+      "objective": "Let local AI clients reach the configured center through arcforges mcp serve (stdio), which obtains an agent grant by device authorization, keeps it in the OS secret store and forwards MCP to the center.",
+      "scope": [
+        "arcforges mcp serve: a stdio MCP server forwarding to the center's MCP endpoint with the agent grant; default device selection is this installation's node; no local IPC route for task submission",
+        "Grant acquisition through the device-authorization flow of the center; storage through Security.Secrets; refresh and revocation",
+        "Native AOT publish with zero trimming and AOT warnings"
+      ],
+      "out_of_scope": [
+        "Client configuration and plugins (AF-AI-02)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/experience/mcp.md",
+        "docs/architecture/08-ai-integration.md",
+        "docs/decisions/AD-0007-ai-integration.md"
+      ],
+      "requirements": [
+        "R-AI-001",
+        "R-CTR-001",
+        "R-CTR-005"
+      ],
+      "deliverables": [
+        "Stdio adapter"
+      ],
+      "acceptance": [
+        "A local AI client configured with arcforges mcp serve runs a command on a selected node through the center",
+        "Restarting the adapter keeps the session's tasks reachable by ID",
+        "AOT publish on Windows and Linux with zero warnings"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and native builds of affected components (Go: gofmt, go vet, static analysis, tests; C#: format, analyzers, AOT publish)",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
+        ]
+      },
+      "fakes_allowed": [],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "The adapter becomes a second submission route",
+          "mitigation": "The adapter has no local endpoint client for tasks; tests assert all tool calls reach the center",
+          "owner": "AF-CTR-08"
+        }
+      ],
+      "size": "M",
+      "notes": "Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 22
+    },
+    {
+      "id": "AF-CTR-09",
+      "title": "Retained server domains on PostgreSQL and retirement of the C# center",
+      "milestone": "MC",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "center/**",
+            "hello-go/**",
+            "worker/**",
+            "wrangler.json",
+            "Dockerfile",
+            "eng/**",
+            ".github/**",
+            ".githooks/**",
+            "docs/**",
+            "tests/**",
+            "tooling/**",
+            "third-party/**",
+            "storage/**",
+            "src/**",
+            "tools/**",
+            "package.json",
+            "package-lock.json",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CTR-08"
+      ],
+      "objective": "Complete the server migration: port the implemented retained domain logic and the schemas of the flagship modules to the Go center on PostgreSQL, account for every retained-inactive module, inspect and retain the proof D1 data, and retire the C# center's active paths once the exit criteria of AD-0021 section 15 hold.",
+      "scope": [
+        "Migration inventory: every C#, D1 and Worker behaviour (production, proof, retained), its owner, the Go and PostgreSQL implementation or disposition, transition strategy and evidence",
+        "Port the entitlement resolver, snapshots and grants with parity tests replaying the C# test vectors; PostgreSQL schemas for entitlement, commerce, notification, support, audit and configuration",
+        "Retained-inactive modules (Chat, Task, Agent, Sync, Resource, Search, Scope, PackageCatalog, Policy, Workspace, TrustSafety) and the proof-only harness: recorded disposition, sources kept at the retirement commit as history",
+        "Proof D1 database: row counts and an export through the protected workflow, retained, never deleted",
+        "Remove the C# host from the image and candidate after the exit criteria hold; retire .NET server controls with recorded dispositions; the proof environment runs the Go center as the acceptance environment"
+      ],
+      "out_of_scope": [
+        "New endpoints of retained capabilities (their own tasks)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/architecture/10-cloud.md",
+        "docs/data/cloud-store.md",
+        "docs/decisions/AD-0010-commerce-and-entitlements.md",
+        "docs/decisions/AD-0013-reuse-and-supersession.md"
+      ],
+      "requirements": [
+        "R-CTR-009",
+        "R-CTR-015"
+      ],
+      "deliverables": [
+        "Migration inventory",
+        "Retained domains on PostgreSQL",
+        "C# center retirement"
+      ],
+      "acceptance": [
+        "The inventory has a disposition and evidence for every server behaviour",
+        "The Go entitlement resolver passes every C# test vector",
+        "The deployed image contains only the Go center; rollback to the previous image is documented with its compatibility conditions",
+        "The proof D1 data is exported, counted and retained"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and native builds of affected components (Go: gofmt, go vet, static analysis, tests; C#: format, analyzers, AOT publish)",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
+        ]
+      },
+      "fakes_allowed": [],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Retiring the C# path removes a still-needed behaviour",
+          "mitigation": "Exit criteria and the inventory gate the removal",
+          "owner": "AF-CTR-09"
+        }
+      ],
+      "size": "L",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 23
+    },
+    {
+      "id": "AF-CTR-10",
+      "title": "Central architecture end-to-end acceptance",
+      "milestone": "MC",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "center/**",
+            "hello-go/**",
+            "worker/**",
+            "wrangler.json",
+            "Dockerfile",
+            "eng/**",
+            ".github/**",
+            ".githooks/**",
+            "docs/**",
+            "tests/**",
+            "tooling/**",
+            "third-party/**",
+            "storage/**",
+            "src/**",
+            "tools/**",
+            "package.json",
+            "package-lock.json",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md"
+          ]
+        },
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "src/**",
+            "tests/**",
+            "tools/**",
+            "packaging/**",
+            "eng/**",
+            "docs/**",
+            "Directory.Packages.props",
+            "ArcForges.slnx",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "THIRD_PARTY_NOTICES.md",
+            "third-party/**"
+          ]
+        },
+        {
+          "repo": "Plan",
+          "paths": [
+            "acceptance-register.md",
+            "maintenance/**",
+            "ledger/**",
+            "delivery-graph.json",
+            "sequence.md"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CTR-09"
+      ],
+      "objective": "Prove the delivered combination on the real deployment with real nodes and clients after implementation and documentation are aligned, and record honest evidence.",
+      "scope": [
+        "The acceptance matrix: deployment and protocol, database, accounts and devices, Windows node, Linux node, central MCP, multiple clients and retry, authorization and failure, clients and self-hosting, retained behaviour",
+        "Each row records environment, call path, source, deployment and artifact identity, input category, expected and actual result; test data attributable and cleaned up",
+        "Missing human-only or device evidence recorded in the acceptance register, never reported as passed"
+      ],
+      "out_of_scope": [
+        "Production activation of center surfaces (AF-PROD-01)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/architecture/16-testing-strategy.md",
+        "docs/experience/journeys.md"
+      ],
+      "requirements": [
+        "R-TEST-001",
+        "R-TEST-002",
+        "R-TEST-003",
+        "R-CTR-016"
+      ],
+      "deliverables": [
+        "Acceptance record"
+      ],
+      "acceptance": [
+        "Every matrix row has real evidence or a named missing-evidence entry",
+        "The deployed Worker and Container run the intended Go revision, and real C# clients reach it through the retained protocol",
+        "Real Windows and Linux nodes execute center-routed work from the CLI and from a real MCP session"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and native builds of affected components (Go: gofmt, go vet, static analysis, tests; C#: format, analyzers, AOT publish)",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
+        ]
+      },
+      "fakes_allowed": [],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-23"
+      ],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "Acceptance runs against production data",
+          "mitigation": "The acceptance environment and its own database; attributable test identities",
+          "owner": "AF-CTR-10"
+        }
+      ],
+      "size": "M",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 24
+    },
+    {
+      "id": "AF-CTR-11",
+      "title": "Verification wall-clock measurement and optimization",
+      "milestone": "MC",
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "Cloud",
+          "paths": [
+            "eng/**",
+            ".github/**",
+            "docs/**",
+            "AGENTS.md",
+            "CONTRIBUTING.md"
+          ]
+        },
+        {
+          "repo": "ArcForges",
+          "paths": [
+            "eng/**",
+            ".github/**",
+            "docs/**",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "tests/**"
+          ]
+        },
+        {
+          "repo": "Contracts",
+          "paths": [
+            "eng/**",
+            ".github/**",
+            "docs/**",
+            "AGENTS.md"
+          ]
+        },
+        {
+          "repo": "Plan",
+          "paths": [
+            "eng/**",
+            "tests/**",
+            "maintenance/**",
+            "AGENTS.md"
+          ]
+        },
+        {
+          "repo": "ArcForges-Design",
+          "paths": [
+            "eng/**",
+            "docs/decisions/**"
+          ]
+        }
+      ],
+      "depends_on": [
+        "AF-CTR-10"
+      ],
+      "objective": "Measure the completion time of host verification after the migration and reduce it where measurements justify, without weakening any check.",
+      "scope": [
+        "Baseline: at least three samples per leg of the full profiles on the migrated code (cold and warm caches distinguished), per-step durations, critical path, resource use",
+        "Changes chosen from measurements: concurrency of independent lanes with isolated outputs, check ordering, removal of repeated work at the same trust boundary, correctly keyed caches",
+        "Verifier changes keep failure propagation, timeouts, cache isolation, path selection and commit binding, with tests",
+        "After measurement on the same inputs and coverage; a report of the before and after"
+      ],
+      "out_of_scope": [
+        "Plan task scheduling (delivery stays serial)"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/decisions/AD-0020-post-push-verification-and-required-checks.md",
+        "docs/decisions/AD-0016-local-first-verification.md"
+      ],
+      "requirements": [
+        "R-CTR-014"
+      ],
+      "deliverables": [
+        "Measurement report",
+        "Verifier changes where justified"
+      ],
+      "acceptance": [
+        "Before and after tables per host and overall with samples, medians and ranges, identical coverage",
+        "A failing step still fails its leg and blocks the merge after every change"
+      ],
+      "verification": {
+        "author": [
+          "Targeted unit and integration tests for the change",
+          "Affected real Windows and Linux tests (when the task touches platform behaviour)",
+          "Build, format, analyzers and native builds of affected components (Go: gofmt, go vet, static analysis, tests; C#: format, analyzers, AOT publish)",
+          "Exact commands and results recorded in the PR"
+        ],
+        "reviewer_distinct": [
+          "Full diff review at the exact head against the design references and acceptance criteria",
+          "Re-run only tests the reviewer doubts, checks whose scripts or workflows changed, or real-environment tests the author could not run"
+        ],
+        "hosted_ci": [
+          "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
+        ]
+      },
+      "fakes_allowed": [],
+      "future_validation": [],
+      "acceptance_register": [],
+      "human_prerequisites": [],
+      "risks": [
+        {
+          "risk": "An optimization weakens coverage",
+          "mitigation": "Identical step sets compared; failure-propagation tests",
+          "owner": "AF-CTR-11"
+        }
+      ],
+      "size": "M",
+      "notes": "Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "order": 25
+    },
+    {
       "id": "AF-REC-01",
       "title": "Records, timelines, fingerprints, reports and exports",
       "milestone": "M4",
@@ -1781,7 +3215,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 15
+      "order": 26
     },
     {
       "id": "AF-DIAG-01",
@@ -1887,7 +3321,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 16
+      "order": 27
     },
     {
       "id": "AF-TOOL-01",
@@ -1983,7 +3417,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 17
+      "order": 28
     },
     {
       "id": "AF-CACHE-01",
@@ -2090,7 +3524,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 18
+      "order": 29
     },
     {
       "id": "AF-TOOL-02",
@@ -2215,7 +3649,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 19
+      "order": 30
     },
     {
       "id": "AF-STOR-01",
@@ -2321,7 +3755,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 20
+      "order": 31
     },
     {
       "id": "AF-WS-01",
@@ -2417,7 +3851,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 21
+      "order": 32
     },
     {
       "id": "AF-AI-01",
@@ -2456,7 +3890,8 @@
         "docs/contracts/proto/arcforges/node/v1/sessions.proto",
         "docs/decisions/AD-0006-execution-semantics.md",
         "docs/architecture/07-records-diagnosis-memory.md",
-        "docs/product/product-definition.md"
+        "docs/product/product-definition.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-AI-005",
@@ -2534,7 +3969,7 @@
         }
       ],
       "size": "M",
-      "notes": "MR-09 (ledger 88): before sessions register agent roots, a verified agent CLI that presents a terminal may be classified HUMAN. This task must close that supported descendant path by registering roots and checking ancestry before the terminal fallback. Looking interactive and escaping ancestry remain documented same-user bypasses in Design 11 section 1; no claim of hostile-agent isolation.",
+      "notes": "MR-09 (ledger 88): before sessions register agent roots, a verified agent CLI that presents a terminal may be classified HUMAN. This task must close that supported descendant path by registering roots and checking ancestry before the terminal fallback. Looking interactive and escaping ancestry remain documented same-user bypasses in Design 11 section 1; no claim of hostile-agent isolation. Since AD-0021 hook rewrites target arcforges run, which submits through the center to the selected node (AD-0021 section 5).",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2542,13 +3977,13 @@
         "publications": [],
         "ledger": null
       },
-      "order": 22
+      "order": 33
     },
     {
       "id": "AF-MCP-01",
       "title": "MCP adapter",
       "milestone": "M7",
-      "state": "planned",
+      "state": "superseded",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2635,7 +4070,7 @@
         }
       ],
       "size": "M",
-      "notes": "",
+      "notes": "[superseded] Replaced by the center MCP and the stdio adapter to the center (ArcForges-Design AD-0021 section 6): successors AF-CTR-07 and AF-CTR-08.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2643,7 +4078,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 23
+      "order": 34
     },
     {
       "id": "AF-AI-02",
@@ -2662,7 +4097,8 @@
         }
       ],
       "depends_on": [
-        "AF-MCP-01"
+        "AF-AI-01",
+        "AF-CTR-08"
       ],
       "objective": "Configure Claude Code and Codex with consent, detect conflicts, prove reachability per environment and package the plugins.",
       "scope": [
@@ -2680,7 +4116,8 @@
         "docs/decisions/AD-0007-ai-integration.md",
         "docs/contracts/proto/arcforges/node/v1/integrations.proto",
         "docs/product/product-definition.md",
-        "docs/experience/cli.md"
+        "docs/experience/cli.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-AI-003",
@@ -2750,7 +4187,7 @@
         }
       ],
       "size": "M",
-      "notes": "",
+      "notes": "Since AD-0021 the configured MCP server is the stdio adapter to the center (AF-CTR-08) or the center's MCP endpoint (AF-CTR-07).",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2758,7 +4195,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 24
+      "order": 35
     },
     {
       "id": "AF-DESK-01",
@@ -2793,7 +4230,8 @@
       "design_refs": [
         "docs/experience/desktop.md",
         "docs/architecture/12-client-applications.md",
-        "docs/experience/README.md"
+        "docs/experience/README.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-UX-001",
@@ -2848,7 +4286,7 @@
         }
       ],
       "size": "L",
-      "notes": "",
+      "notes": "Since AD-0021 ordinary operations of the Desktop go through the center; the local endpoint serves node management, sign-in, diagnostics and recovery.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2856,7 +4294,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 25
+      "order": 36
     },
     {
       "id": "AF-DESK-02",
@@ -2942,13 +4380,13 @@
         "publications": [],
         "ledger": null
       },
-      "order": 26
+      "order": 37
     },
     {
       "id": "AF-LAN-01",
       "title": "LAN listener, identity, discovery, pairing and peer status",
       "milestone": "M9",
-      "state": "planned",
+      "state": "superseded",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -3042,7 +4480,7 @@
         }
       ],
       "size": "L",
-      "notes": "",
+      "notes": "[superseded] Out of current delivery by the product owner's decision of 2026-10-28 (ArcForges-Design AD-0021 section 12): LAN discovery, pairing and peer status are not built; roadmap RM-19. No successor task.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3050,13 +4488,13 @@
         "publications": [],
         "ledger": null
       },
-      "order": 27
+      "order": 38
     },
     {
       "id": "AF-LAN-02",
       "title": "Placement and transfer",
       "milestone": "M9",
-      "state": "planned",
+      "state": "superseded",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -3140,7 +4578,7 @@
         }
       ],
       "size": "L",
-      "notes": "",
+      "notes": "[superseded] Out of current delivery by the product owner's decision of 2026-10-28 (ArcForges-Design AD-0021 section 12): LAN placement and transfer are not built; roadmap RM-19. No successor task.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3148,13 +4586,13 @@
         "publications": [],
         "ledger": null
       },
-      "order": 28
+      "order": 39
     },
     {
       "id": "AF-LAN-03",
       "title": "LAN cache sharing",
       "milestone": "M9",
-      "state": "planned",
+      "state": "superseded",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -3243,7 +4681,7 @@
         }
       ],
       "size": "M",
-      "notes": "",
+      "notes": "[superseded] Out of current delivery by the product owner's decision of 2026-10-28 (ArcForges-Design AD-0021 section 12): inter-node compiler-cache sharing is not built; same-machine cache reuse stays (AF-CACHE-01); roadmap RM-19. No successor task.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3251,7 +4689,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 29
+      "order": 40
     },
     {
       "id": "AF-DIST-01",
@@ -3363,7 +4801,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 30
+      "order": 41
     },
     {
       "id": "AF-DIST-02",
@@ -3467,7 +4905,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 31
+      "order": 42
     },
     {
       "id": "AF-WEB-01",
@@ -3556,13 +4994,13 @@
         "publications": [],
         "ledger": null
       },
-      "order": 32
+      "order": 43
     },
     {
       "id": "AF-CLD-01",
       "title": "Flagship cloud host profile, fleet D1 module, product ID migration, key handling and local stack",
       "milestone": "M11",
-      "state": "planned",
+      "state": "superseded",
       "repositories": [
         {
           "repo": "Cloud",
@@ -3661,7 +5099,7 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge. [superseded] Replaced by the Go center on PostgreSQL (ArcForges-Design AD-0021 section 8): successor AF-CTR-02 (center foundation and store) and AF-CTR-09 (retained domains); no D1 fleet module is built.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3669,7 +5107,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 33
+      "order": 44
     },
     {
       "id": "AF-PLAT-01",
@@ -3689,15 +5127,15 @@
         }
       ],
       "depends_on": [
-        "AF-CLD-01"
+        "AF-CTR-02"
       ],
-      "objective": "Provide the platform services every cloud feature uses: configuration revisions with kill switches and limits, the audit writer and reader, and operating budgets with reservations.",
+      "objective": "On the Go center and PostgreSQL (ArcForges-Design AD-0021): Provide the platform services every cloud feature uses: configuration revisions with kill switches and limits, the audit writer and reader, and operating budgets with reservations.",
       "scope": [
         "Configuration revisions (stage, validate, activate data path), kill switches (relay.live_streaming, relay.new_connections, push.enabled, fleet.commands, support uploads, cloud.essential_only) and limits; the FLAGSHIP_SURFACES deployment variable (identity, fleet_api, relay, push, support, commerce): disabled surfaces answered by the Worker with STATE/not_activated without waking the container, and the cron handler idle while none is enabled (10 section 8)",
         "Audit event writer with the hash chain, and the reader that backs OperatorReadService.ListAuditEvents; anomaly flags as `anomaly.<kind>` audit events",
-        "Operating budget service over every billing dimension (dimensions 8..19 table-rebuild migration; 14 section 7.1), including the container's own Durable Object: reservations per measured dimension, estimated dimensions recorded after the fact, threshold evaluation (80% alert, 100% the degradation ladder step, 120% essential-only mode except EMAILS_SENT; 14 section 7.3), essential jobs only in essential-only mode, the residual daily exposure with Worker requests (section 7.4), unit prices configuration",
+        "Operating budget service over every billing dimension (dimensions 8..19 as an ordinary PostgreSQL migration; 14 section 7.1), including the container's own Durable Object: reservations per measured dimension, estimated dimensions recorded after the fact, threshold evaluation (80% alert, 100% the degradation ladder step, 120% essential-only mode except EMAILS_SENT; 14 section 7.3), essential jobs only in essential-only mode, the residual daily exposure with Worker requests (section 7.4), unit prices configuration",
         "Budget and limit checks as a library for metered paths; rate limits per account and IP",
-        "Job infrastructure: lease and fence plans over platform_job_lease, reusing the shared-families `lease` guard (holder and fence); a job runner started by a Worker cron trigger and scheduled handler that call the host (wrangler.json and its hash-bound receipts updated through the repository's reviewed process); the compact command fence",
+        "Job infrastructure: lease and fence over the platform job-lease table with row locks (holder and fence); a job runner started by a Worker cron trigger and scheduled handler that call the host (wrangler.json and its hash-bound receipts updated through the repository's reviewed process); the compact command fence",
         "Scheduled retention sweeps: expired receipts and inbox rows, expired flows, and the Retention column of data/cloud-store.md"
       ],
       "out_of_scope": [
@@ -3709,7 +5147,8 @@
         "docs/architecture/10-cloud.md",
         "docs/data/cloud-store.md",
         "docs/decisions/AD-0009-cloud-relay-and-cost-controls.md",
-        "docs/contracts/proto/arcforges/operator/v1/operator_read.proto"
+        "docs/contracts/proto/arcforges/operator/v1/operator_read.proto",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-CLOUD-006",
@@ -3770,7 +5209,7 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge. AF-CTR-02 delivers the audit table and its append path; this task adds the hash chain, the reader and the rest of its scope.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3778,13 +5217,13 @@
         "publications": [],
         "ledger": null
       },
-      "order": 34
+      "order": 45
     },
     {
       "id": "AF-ID-01",
       "title": "Account authentication: passkeys, e-mail codes, sessions and step-up",
       "milestone": "M11",
-      "state": "planned",
+      "state": "superseded",
       "repositories": [
         {
           "repo": "Cloud",
@@ -3864,7 +5303,7 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge. [superseded] Replaced by accounts and sign-in on the Go center (ArcForges-Design AD-0021 section 14): successor AF-CTR-03, which carries AR-14 and H-19.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3872,7 +5311,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 35
+      "order": 46
     },
     {
       "id": "AF-ID-02",
@@ -3889,24 +5328,25 @@
         }
       ],
       "depends_on": [
-        "AF-ID-01"
+        "AF-CTR-03"
       ],
-      "objective": "Complete the account lifecycle on the reused contracts: recovery, deletion with grace, data export, device registry and security activity.",
+      "objective": "On the Go center and PostgreSQL (ArcForges-Design AD-0021): Complete the account lifecycle on the reused contracts: recovery, deletion with grace, data export, device registry and security activity.",
       "scope": [
         "Recovery codes and recovery flow; e-mail change",
         "RequestAccountDeletion with the 30-day grace, cancellation and purge job",
         "DataService export jobs",
-        "DeviceService (Register, List, Rename, Revoke with cascade to node credentials and relay tokens); one device per node and per phone",
+        "DeviceService Register for phones and the remaining cascade (List, Rename and Revoke are delivered by AF-CTR-03); one device per node and per phone",
         "Security activity listing"
       ],
       "out_of_scope": [
-        "Node enrollment flows (AF-CLD-02)"
+        "Node enrollment flows (AF-CTR-04)"
       ],
       "design_refs": [
         "docs/decisions/AD-0011-identity-and-login.md",
         "docs/architecture/10-cloud.md",
         "docs/architecture/11-security-privacy.md",
-        "docs/data/cloud-store.md"
+        "docs/data/cloud-store.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-OPS-001",
@@ -3958,11 +5398,11 @@
         "publications": [],
         "ledger": null
       },
-      "order": 36
+      "order": 47
     },
     {
       "id": "AF-CLD-02",
-      "title": "Node enrollment and sign-in",
+      "title": "Phone pairing by QR from a signed-in node",
       "milestone": "M11",
       "state": "planned",
       "repositories": [
@@ -3985,14 +5425,12 @@
         }
       ],
       "depends_on": [
-        "AF-ID-02",
-        "AF-DP-02",
-        "AF-NODE-01"
+        "AF-CTR-04"
       ],
-      "objective": "Sign nodes in through the browser (PKCE loopback) or a device code, issue node credentials, and pair phones by QR on the cloud side.",
+      "objective": "Pair phones by QR from a signed-in node on the Go center, with mobile.limited sessions; node sign-in itself is delivered by AF-CTR-04 (ArcForges-Design AD-0021).",
       "scope": [
-        "NodeEnrollmentService: BeginNodeSignIn, GetNodeSignInFlow, ApproveNodeSignIn, CompleteNodeSignIn, StartDeviceAuthorization, PollDeviceAuthorization, LookupDeviceCode, ApproveDeviceCode, RefreshNodeSession, ReportNodeInfo, phone pairing methods (mobile.limited sessions)",
-        "Node AccountService; Desktop D-16 (sign-in and phone QR parts); CLI account"
+        "NodeEnrollmentService phone pairing methods: CreatePhonePairing, ClaimPhonePairing, GetPhonePairing, ConfirmPhonePairing, PollPhonePairing (mobile.limited sessions)",
+        "Node AccountService phone pairing methods; Desktop D-16 (phone QR part)"
       ],
       "out_of_scope": [
         "Web pages (AF-WEB-02)",
@@ -4003,23 +5441,20 @@
         "docs/decisions/AD-0011-identity-and-login.md",
         "docs/contracts/proto/arcforges/fleet/v1/fleet.proto",
         "docs/contracts/proto/arcforges/node/v1/account.proto",
-        "docs/experience/desktop.md"
+        "docs/experience/desktop.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
-        "R-AUTH-001",
         "R-AUTH-002",
-        "R-AUTH-003",
-        "R-AUTH-004",
-        "R-AUTH-005",
-        "R-OPS-001"
+        "R-AUTH-004"
       ],
       "deliverables": [
         "Enrollment"
       ],
       "acceptance": [
-        "ScriptedBrowser closed loop for both flows against the local Cloud stack",
-        "Code reuse revokes the flow",
-        "Credentials stored in the OS secret store; Linux fallback reported",
+        "Closed loop against a local Go center with a real node",
+        "A wrong or reused pairing secret consumes the pairing",
+        "The phone session is bound to its own arcforges-mobile installation",
         "A phone paired through a node credential holds only mobile.limited (T-19)"
       ],
       "verification": {
@@ -4064,7 +5499,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 37
+      "order": 48
     },
     {
       "id": "AF-WEB-02",
@@ -4081,7 +5516,7 @@
         }
       ],
       "depends_on": [
-        "AF-CLD-02"
+        "AF-CTR-04"
       ],
       "objective": "Serve the account pages users need to sign in, connect nodes, approve device codes and manage devices, security and privacy.",
       "scope": [
@@ -4092,7 +5527,8 @@
       ],
       "design_refs": [
         "docs/experience/web.md",
-        "docs/architecture/12-client-applications.md"
+        "docs/architecture/12-client-applications.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-UX-004",
@@ -4141,7 +5577,7 @@
         }
       ],
       "size": "M",
-      "notes": "",
+      "notes": "The center serves its own sign-in, /connect and /activate pages (AF-CTR-03, AF-CTR-04, AD-0021 section 4) so that self-hosted centers need no Web deployment; this task delivers the official site's account profile on the same API.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4149,7 +5585,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 38
+      "order": 49
     },
     {
       "id": "AF-CLD-03",
@@ -4174,9 +5610,9 @@
         }
       ],
       "depends_on": [
-        "AF-CLD-02"
+        "AF-CTR-09"
       ],
-      "objective": "Gate cloud features (remote access and push) with entitlement snapshots and signed tokens that work offline for 14 days; local and LAN features are never gated (AD-0015).",
+      "objective": "On the Go center and PostgreSQL (ArcForges-Design AD-0021): Gate cloud features (remote access and push) with entitlement snapshots and signed tokens that work offline for 14 days; node-local execution never consults entitlements; no price, allowance or limit is decided here (AD-0021 section 13).",
       "scope": [
         "EntitlementService endpoints (GetSnapshot, Check, ListGrants) and the flagship plan catalogue",
         "RefreshEntitlementToken and GetEntitlementKeys (IssueNodeCertificate stays reserved for roadmap RM-01 and is not served)",
@@ -4184,13 +5620,14 @@
       ],
       "out_of_scope": [
         "Commerce (AF-COM-01, AF-CLD-07)",
-        "Relay degradation (AF-CLD-04)",
+        "Channel degradation (AF-PLAT-01)",
         "Node certificates and LAN hints (roadmap RM-01)"
       ],
       "design_refs": [
         "docs/decisions/AD-0010-commerce-and-entitlements.md",
         "docs/architecture/10-cloud.md",
-        "docs/decisions/AD-0015-direction-editions-roadmap.md"
+        "docs/decisions/AD-0015-direction-editions-roadmap.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-CLOUD-001",
@@ -4200,7 +5637,7 @@
         "Entitlement enforcement"
       ],
       "acceptance": [
-        "Expired tokens stop only cloud features; local and LAN features never consult them; running tasks are unaffected",
+        "Expired tokens stop only gated center features; node-local execution never consults them; running tasks are unaffected",
         "The plan catalogue lists only cloud features (remote.view, remote.control, push)"
       ],
       "verification": {
@@ -4240,7 +5677,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 39
+      "order": 50
     },
     {
       "id": "AF-SUP-01",
@@ -4277,15 +5714,15 @@
         }
       ],
       "depends_on": [
-        "AF-CLD-02",
+        "AF-CTR-05",
         "AF-PLAT-01"
       ],
-      "objective": "Let users open support cases, build redacted bundles locally, upload them with consent, and decide operator access requests.",
+      "objective": "On the Go center and PostgreSQL (ArcForges-Design AD-0021): Let users open support cases, build redacted bundles locally, upload them with consent, and decide operator access requests.",
       "scope": [
         "SupportService (CreateCase, ListCases, AppendMessage, DecideAccess) and SupportAccessService (ListAccessRequests, GetAccessRequest)",
         "Node SupportService bundle builder with redaction",
         "BeginSupportUpload and CompleteSupportUpload with R2 presigned PUT and verification; per-plan limits and the uploads kill switch",
-        "R2 lifecycle rules for the pending and final prefixes through the provisioning script of AF-CLD-01 (H-20)",
+        "R2 lifecycle rules for the pending and final prefixes through the repository's provisioning script (H-20)",
         "W-25; Desktop D-19 upload; CLI support commands"
       ],
       "out_of_scope": [
@@ -4297,7 +5734,8 @@
         "docs/contracts/proto/arcforges/node/v1/support.proto",
         "docs/contracts/proto/arcforges/publicapi/v1/support_access.proto",
         "docs/architecture/14-commercial-operations.md",
-        "docs/experience/web.md"
+        "docs/experience/web.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-OPS-005",
@@ -4362,13 +5800,13 @@
         "publications": [],
         "ledger": null
       },
-      "order": 40
+      "order": 51
     },
     {
       "id": "AF-CLD-04",
       "title": "Relay: Worker routes, FleetHub Durable Object, node uplink and fleet watch",
       "milestone": "M12",
-      "state": "planned",
+      "state": "superseded",
       "repositories": [
         {
           "repo": "Cloud",
@@ -4458,7 +5896,7 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge. [superseded] Replaced by node connections terminating in the Go center (ArcForges-Design AD-0021 section 9): successor AF-CTR-05; viewer streams move to AF-WEB-03.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4466,13 +5904,13 @@
         "publications": [],
         "ledger": null
       },
-      "order": 41
+      "order": 52
     },
     {
       "id": "AF-CLD-05",
       "title": "Remote commands",
       "milestone": "M12",
-      "state": "planned",
+      "state": "superseded",
       "repositories": [
         {
           "repo": "Cloud",
@@ -4554,7 +5992,7 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge. [superseded] Replaced by center-routed execution under node policy (ArcForges-Design AD-0021 sections 2 and 7): successor AF-CTR-05.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4562,7 +6000,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 42
+      "order": 53
     },
     {
       "id": "AF-CLD-06",
@@ -4593,13 +6031,13 @@
         }
       ],
       "depends_on": [
-        "AF-CLD-04",
-        "AF-ID-01"
+        "AF-CTR-05",
+        "AF-CTR-03"
       ],
-      "objective": "Send node events as FCM pushes under user preferences, deduplication and limits.",
+      "objective": "On the Go center and PostgreSQL (ArcForges-Design AD-0021): Send node events as FCM pushes under user preferences, deduplication and limits.",
       "scope": [
         "NotificationService endpoints (List, Acknowledge, RegisterPush, UnregisterPush); FCM HTTP v1 sender with short-lived service-account tokens",
-        "Node event batches; push kinds",
+        "Node event batches over the node channel (AF-CTR-05); push kinds",
         "Get/UpdatePushPreferences; fleet_push_preference; W-29"
       ],
       "out_of_scope": [
@@ -4607,7 +6045,8 @@
       ],
       "design_refs": [
         "docs/architecture/10-cloud.md",
-        "docs/experience/web.md"
+        "docs/experience/web.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-CLOUD-005"
@@ -4659,7 +6098,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 43
+      "order": 54
     },
     {
       "id": "AF-WEB-03",
@@ -4676,7 +6115,7 @@
         }
       ],
       "depends_on": [
-        "AF-CLD-05",
+        "AF-CTR-05",
         "AF-WEB-02"
       ],
       "objective": "Show live fleet status and node detail with confirmed remote actions in the browser.",
@@ -4689,7 +6128,8 @@
       "design_refs": [
         "docs/experience/web.md",
         "docs/architecture/12-client-applications.md",
-        "docs/contracts/proto/arcforges/fleet/v1/fleet.proto"
+        "docs/contracts/proto/arcforges/fleet/v1/fleet.proto",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-UX-004",
@@ -4703,7 +6143,7 @@
       ],
       "acceptance": [
         "bUnit tests per page and state",
-        "Closed loop against local workerd relay with a real node",
+        "Closed loop against a local Go center with a real node",
         "Every value on W-40 and W-41 comes from the remote contracts; client information that is unavailable is labelled, never guessed"
       ],
       "verification": {
@@ -4735,7 +6175,7 @@
         }
       ],
       "size": "M",
-      "notes": "",
+      "notes": "Viewer frames come from the Go center's node channel (AD-0021 section 9).",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4743,7 +6183,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 44
+      "order": 55
     },
     {
       "id": "AF-COM-01",
@@ -4762,13 +6202,13 @@
       "depends_on": [
         "AF-CLD-03",
         "AF-PLAT-01",
-        "AF-ID-01"
+        "AF-CTR-03"
       ],
-      "objective": "Sell Pro on the web through Paddle with verified webhooks and the reused commerce contract.",
+      "objective": "On the Go center and PostgreSQL (ArcForges-Design AD-0021): Sell Pro on the web through Paddle with verified webhooks and the reused commerce contract.",
       "scope": [
         "CommerceService endpoints: GetCatalogue, CreateCheckoutAttempt, GetPurchaseState, GetSubscription, CancelSubscription, ReactivateSubscription, ListBillingHistory, RequestRefund",
         "Paddle provider: hosted checkout, verified webhooks (raw-body HMAC, inbox dedup), subscription lifecycle and dunning, customer portal links, refunds through the Paddle API",
-        "Plan catalogue for free and pro (Pro features are cloud features only: remote.view, remote.control, push; AD-0015); commerce.sales_open flag; entitlement grants from Paddle state"
+        "Plan catalogue as configuration data whose values are the owner's decisions (H-07; AD-0021 section 13); commerce.sales_open flag; entitlement grants from Paddle state"
       ],
       "out_of_scope": [
         "Google Play (AF-CLD-07)",
@@ -4777,7 +6217,8 @@
       "design_refs": [
         "docs/decisions/AD-0010-commerce-and-entitlements.md",
         "docs/architecture/14-commercial-operations.md",
-        "docs/architecture/10-cloud.md"
+        "docs/architecture/10-cloud.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-COM-001"
@@ -4832,7 +6273,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 45
+      "order": 56
     },
     {
       "id": "AF-CLD-07",
@@ -4858,7 +6299,7 @@
       "depends_on": [
         "AF-COM-01"
       ],
-      "objective": "Sell Pro in Google Play with one entitlement snapshot across web and Play.",
+      "objective": "On the Go center and PostgreSQL (ArcForges-Design AD-0021): Sell Pro in Google Play with one entitlement snapshot across web and Play.",
       "scope": [
         "StoreBillingService, RTDN intake, acknowledgement job, subscription normalization (SM-SUBSCRIPTION) and the combined snapshot",
         "W-24 subscription page for both providers"
@@ -4870,7 +6311,8 @@
         "docs/decisions/AD-0010-commerce-and-entitlements.md",
         "docs/architecture/14-commercial-operations.md",
         "docs/contracts/proto/arcforges/fleet/v1/fleet.proto",
-        "docs/experience/web.md"
+        "docs/experience/web.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-COM-002",
@@ -4927,7 +6369,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 46
+      "order": 57
     },
     {
       "id": "AF-AND-01",
@@ -4944,9 +6386,9 @@
         }
       ],
       "depends_on": [
-        "AF-CLD-04",
+        "AF-CTR-05",
         "AF-CLD-02",
-        "AF-ID-01"
+        "AF-CTR-03"
       ],
       "objective": "Sign in on Android (Custom Tab or QR) and watch the fleet live while in the foreground.",
       "scope": [
@@ -4963,7 +6405,8 @@
       ],
       "design_refs": [
         "docs/experience/android.md",
-        "docs/architecture/12-client-applications.md"
+        "docs/architecture/12-client-applications.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-UX-005",
@@ -5027,7 +6470,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 47
+      "order": 58
     },
     {
       "id": "AF-AND-02",
@@ -5045,7 +6488,6 @@
       ],
       "depends_on": [
         "AF-AND-01",
-        "AF-CLD-05",
         "AF-CLD-06"
       ],
       "objective": "Act on nodes from Android with step-up, approve where allowed, and handle push notifications.",
@@ -5055,7 +6497,8 @@
       ],
       "out_of_scope": [],
       "design_refs": [
-        "docs/experience/android.md"
+        "docs/experience/android.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-UX-005",
@@ -5108,7 +6551,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 48
+      "order": 59
     },
     {
       "id": "AF-AND-03",
@@ -5205,7 +6648,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 49
+      "order": 60
     },
     {
       "id": "AF-OPS-01",
@@ -5234,7 +6677,7 @@
         "AF-SUP-01",
         "AF-COM-01"
       ],
-      "objective": "Operate the service: cases, consented diagnostics, configuration, entitlements, refunds, trust and safety, budgets and runbooks.",
+      "objective": "On the Go center and PostgreSQL (ArcForges-Design AD-0021): Operate the service: cases, consented diagnostics, configuration, entitlements, refunds, trust and safety, budgets and runbooks.",
       "scope": [
         "Operator sessions with step-up",
         "OperatorService implementation (cases, access, configuration, kill switches, break-glass, two-person actions, entitlements and compensation, refunds, trust-and-safety enforcement and appeals)",
@@ -5249,7 +6692,8 @@
       "design_refs": [
         "docs/architecture/14-commercial-operations.md",
         "docs/experience/web.md",
-        "docs/contracts/proto/arcforges/operator/v1/operator_read.proto"
+        "docs/contracts/proto/arcforges/operator/v1/operator_read.proto",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-CLOUD-006",
@@ -5309,7 +6753,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 50
+      "order": 61
     },
     {
       "id": "AF-ACC-01",
@@ -5338,12 +6782,11 @@
         "AF-DESK-02",
         "AF-DIST-02",
         "AF-WEB-01",
-        "AF-LAN-02",
-        "AF-LAN-03",
         "AF-WEB-03",
         "AF-AND-02",
         "AF-AND-03",
-        "AF-OPS-01"
+        "AF-OPS-01",
+        "AF-CTR-10"
       ],
       "objective": "Prove every journey in closed loop, measure performance, complete the threat-test matrix and hand the acceptance register to the user.",
       "scope": [
@@ -5360,7 +6803,8 @@
         "docs/architecture/15-performance-targets.md",
         "docs/architecture/16-testing-strategy.md",
         "docs/architecture/11-security-privacy.md",
-        "docs/product/product-definition.md"
+        "docs/product/product-definition.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-PERF-001",
@@ -5413,7 +6857,6 @@
       "acceptance_register": [
         "AR-01",
         "AR-02",
-        "AR-03",
         "AR-04",
         "AR-05",
         "AR-06",
@@ -5437,7 +6880,7 @@
         }
       ],
       "size": "M",
-      "notes": "",
+      "notes": "LAN dependencies removed by AD-0021 (2026-10-28).",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -5445,7 +6888,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 51
+      "order": 62
     },
     {
       "id": "AF-PROD-01",
@@ -5481,8 +6924,8 @@
       ],
       "objective": "Activate the delivered flagship surfaces in production one at a time, with the user's approval and the production prerequisites, and publish the public site.",
       "scope": [
-        "Confirm the production prerequisites with the user, per surface (10 section 8): the core (provisioning, identity, fleet_api, relay) needs H-05, H-06, H-09, H-16, H-19 and H-20; push needs H-03; commerce needs H-01 (and H-02 for Play), H-07 and the published legal pages (H-10); the public site needs H-10",
-        "Run the repository provisioning script against production with the user's approval (D1, the R2 bucket with lifecycle rules, the Queue); add the production bindings to wrangler.json through a reviewed main-push deploy; run the migrations (10 section 8)",
+        "Confirm the production prerequisites with the user, per surface (10 section 8): the core (provisioning, identity, fleet_api, the node channel, mcp) needs H-05, H-06, H-09, H-16, H-19 and H-20; push needs H-03; commerce needs H-01 (and H-02 for Play), H-07 and the published legal pages (H-10); the public site needs H-10",
+        "Run the repository provisioning script against production with the user's approval (the PostgreSQL database and roles, the R2 bucket with lifecycle rules, the Queue); add the production bindings to wrangler.json through a reviewed main-push deploy; run the migrations (10 section 8)",
         "Set the production operating budgets from the cost ceiling so that 31 x (daily budgets + residual) stays within it, and check the ladder configuration (14 section 7)",
         "Add surfaces to FLAGSHIP_SURFACES one at a time through reviewed main-push deploys (identity, fleet_api, relay, support, then push and commerce when their prerequisites exist), each followed by a production smoke check and a verified withdrawal; a surface without its prerequisites stays off and is recorded",
         "Turn on the Web switches public_site, web_account and web_fleet after the user approves the content",
@@ -5498,7 +6941,8 @@
         "docs/decisions/AD-0014-delivery-method.md",
         "docs/architecture/14-commercial-operations.md",
         "docs/decisions/AD-0009-cloud-relay-and-cost-controls.md",
-        "docs/experience/web.md"
+        "docs/experience/web.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-OPS-007"
@@ -5575,7 +7019,7 @@
         "publications": [],
         "ledger": null
       },
-      "order": 52
+      "order": 63
     }
   ]
 }
