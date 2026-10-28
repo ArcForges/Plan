@@ -1842,11 +1842,15 @@
         "center/ Go module and the arcforges-center binary (serve, migrate, admin); exact-version consumption of the AF-CTR-01 bindings; Hello served unchanged (limits, status codes, Unicode and NUL)",
         "Ingress compatibility with the Worker's deny-by-default route table and admission pipeline: RequestMeta and ResponseMeta, ArcError, correlation and traceparent, size limits, cookie and CSRF rules; the Worker stays a thin adapter",
         "Configuration: public base URL, pooled runtime and direct migration database URLs, limits; a self-hosted mode that serves the same routes from one binary with any PostgreSQL",
-        "PostgreSQL store with pgx: one schema per module; a migration runner with versioned SQL, SHA-256 checksums, an advisory-lock exclusion, safe repetition and refusal of edited applied migrations; transaction helpers with deadlines, cancellation and serialization-failure retry; sanitized errors; TLS verify-full with channel binding; connection budgets",
+        "PostgreSQL store (driver, query and migration tooling evaluated and recorded; pgx is the Hello evidence, not a foregone conclusion): one schema per module; a migration runner with versioned SQL, SHA-256 checksums, an advisory-lock exclusion, safe repetition and refusal of edited applied migrations; transaction helpers with deadlines, cancellation and serialization-failure retry; sanitized errors; TLS verify-full with channel binding; connection budgets",
         "Platform tables re-implementing the D1 storage guarantees: command receipts and guard (idempotency per principal and command ID), inbox, outbox with its publisher, job lease and audit event append",
         "Roles: the migration role applies migrations through the direct connection in the protected main-push deploy before promotion; the runtime role has only its module grants and uses the pooled connection; its credential is provisioned without being displayed",
         "Backup, restore and rollback: Neon history retention recorded, a logical-backup restore drill on an isolated PostgreSQL, and an expand-and-contract rollback procedure covering application, schema, protocol and data compatibility",
-        "Engineering controls carried over with a disposition for every C# control: pinned toolchain and modules, dependency admission and licences, gofmt, go vet, a maintained static analyzer, unit tests, the race detector, fuzz targets for parsers, real PostgreSQL integration tests, govulncheck, CodeQL for Go, secret scanning, SBOM and NOTICE, reproducible build identity, the sealed candidate image promoted unchanged, lightweight pre-commit hook, Dependabot gomod; native Windows and Linux verify steps (PostgreSQL, race and the image on Linux)"
+        "Engineering controls carried over with a disposition for every C# control: pinned toolchain and modules, dependency admission and licences, gofmt, go vet, a maintained static analyzer, unit tests, the race detector, fuzz targets for parsers, real PostgreSQL integration tests, govulncheck, CodeQL for Go, secret scanning, SBOM and NOTICE, reproducible build identity, the sealed candidate image promoted unchanged, lightweight pre-commit hook, Dependabot gomod; native Windows and Linux verify steps (PostgreSQL, race and the image on Linux)",
+        "Signing keys: the center's key handling for the ES256 command-signing key (AF-CTR-05) and the entitlement-token key (AF-CLD-03): key IDs and metadata in the fleet schema, private keys only in platform secrets (production material H-16; acceptance and self-hosted centers generate their own without displaying them), rotation with overlapping validity",
+        "Structural cost bounds of the hosted deployment recorded and enforced in configuration: Container max_instances, instance type and idle sleepAfter, Worker cpu_ms limits, PostgreSQL connection budgets; the always-on instance worst case while nodes are connected stated for AF-PLAT-01's budgets",
+        "Observability: structured logs with correlation IDs and no secret, command line, output or file content; metrics for requests, database pools, migrations and the node channel; health and readiness with PostgreSQL reachability; alert conditions documented for AF-OPS-01",
+        "Go path coverage in the external-PR hosted workflows (CodeQL for Go, the Go checks, dependency review) and the required statuses"
       ],
       "out_of_scope": [
         "Account, node and MCP endpoints (AF-CTR-03 onward)",
@@ -1877,7 +1881,10 @@
         "An outbox row commits with its business change and is published at least once after a crash between commit and publish",
         "Both native legs run the Go checks; the race detector and PostgreSQL integration run on Linux; a deliberately failing Go test fails its leg",
         "The engineering control mapping lists every existing control with its Go equivalent or reason, its entry point, stage and evidence",
-        "A self-hosted center starts against a local PostgreSQL with a configured base URL, and no official endpoint is compiled into a code path"
+        "A self-hosted center starts against a local PostgreSQL with a configured base URL, and no official endpoint is compiled into a code path",
+        "The engineering record lists the maintained Go repositories inspected (files and exact commits), the practices adopted and the practices rejected with reasons",
+        "The choice of driver, query and migration tooling is evaluated against the business requirements and recorded with its rejected alternatives",
+        "External-PR hosted CI runs the Go checks and CodeQL for Go; the required statuses still gate every PR"
       ],
       "verification": {
         "author": [
@@ -2310,16 +2317,17 @@
       ],
       "objective": "Keep each signed-in node connected to its center over an outbound WebSocket carrying relay.v1 Protobuf frames, and let authorized callers submit, wait for, read the output of, list and cancel tasks on an explicitly selected node through the center, without duplicate execution or silent loss.",
       "scope": [
-        "Contracts (additive v1): relay.v1 call and result frames (call ID, deadline, method, payload, ArcError); fleet.v1 routed task methods naming node_id and carrying command IDs",
+        "Contracts (additive v1): relay.v1 call and result frames (call ID, deadline, method, payload, ArcError), each call signed by the center with the ES256 command-signing key (key ID, target node, caller principal and origin, command ID, method, request digest, expiry of at most 5 minutes) and each result signed with the node key (AD-0021 section 10); fleet.v1 routed task methods naming node_id and carrying command IDs",
         "Center: the node hub (authenticated upgrade with the node credential, one connection per node, heartbeats, backpressure, bounded in-flight calls), routing with deadlines, receipts for idempotency, routing records without specifications or output, audit, node presence; FleetService ListNodes, GetNode, RenameNode and RevokeNode; the Worker passes the node WebSocket upgrade through a registered route with its admission policy",
-        "Node: outbound connection with jittered backoff and credential refresh; dispatch to the existing TaskService with the origin and caller identity the center verified (HUMAN through a client, AGENT through MCP); the local policy for center-routed callers; deduplication by command ID; output by offset",
+        "Node: outbound connection with jittered backoff and credential refresh; verification of the center's signature, target and expiry (±120 s skew) against the center keys received at enrollment and refresh, before policy; dispatch to the existing TaskService with the origin and caller identity the center verified (HUMAN through a client, AGENT through MCP); the local policy for center-routed callers; deduplication by command ID; output by offset",
         "CLI: arcforges run [--node <name or id>] -- <command> through the center (default: this node), tasks, wait, output and cancel through the center; arcforges run --local stays a labelled diagnostic",
         "Failure behaviour of AD-0021 section 11: offline node refusal, center restart, network loss, retry after an uncertain submission, revocation closing the channel"
       ],
       "out_of_scope": [
         "File and workspace operations (AF-CTR-06)",
         "MCP (AF-CTR-07)",
-        "Viewer streams and push (AF-WEB-03, AF-CLD-06)"
+        "Viewer streams and telemetry (AF-CLD-04)",
+        "Push (AF-CLD-06)"
       ],
       "design_refs": [
         "docs/decisions/AD-0021-central-access-go-center.md",
@@ -2328,7 +2336,8 @@
         "docs/decisions/AD-0006-execution-semantics.md",
         "docs/contracts/proto/arcforges/relay/v1/relay.proto",
         "docs/contracts/proto/arcforges/fleet/v1/fleet.proto",
-        "docs/architecture/11-security-privacy.md"
+        "docs/architecture/11-security-privacy.md",
+        "docs/state-machines/machines.json"
       ],
       "requirements": [
         "R-CLOUD-002",
@@ -2355,7 +2364,9 @@
         "The center is killed during a submission: the client's retry with the same command ID executes the task once, the node reconnects, and output resumes by offset",
         "An offline node is refused with UNAVAILABLE/node_offline; a revoked node credential closes the channel and refuses new calls while accepted tasks continue at the node",
         "Two callers share one node's admission (queue positions and budgets) and appear with their identities in the task records",
-        "The center database holds no command line, environment or output after the suite (inspection test)"
+        "The center database holds no command line, environment or output after the suite (inspection test)",
+        "Forged, altered, retargeted or expired calls are refused by the node before any effect, and a call delivered after its expiry is never executed late (T-11)",
+        "A center-routed cancel of a nonterminal ADOPTED task is denied as process.terminate before any stop, leaves the adopted process running and is audited as denied on the real center-to-node path; neither origin, confirmation nor approval overrides the deny (MR-08, carried from AF-CLD-05)"
       ],
       "verification": {
         "author": [
@@ -2481,7 +2492,7 @@
       "scope": [
         "Contracts (additive v1): node.v1 file operations (read with offset and length, write with an expected hash, exact-replacement edit with an expected occurrence count, bounded literal or regular-expression search, directory listing, removal) and their fleet.v1 routed counterparts",
         "Node: canonical path checks inside registered workspace roots with symbolic-link, junction and reserved-name escapes refused on Windows and Linux; size, count and time limits per call; permissions by origin (AGENT writes only where policy allows); audit records with path, operation, size and SHA-256, never content",
-        "Workspaces: listing and details through the center; registration stays HUMAN-only",
+        "Workspaces: WorkspaceService RegisterWorkspace, UnregisterWorkspace, ListWorkspaces and GetWorkspace on the node (registration and unregistration HUMAN-only: the local CLI and HUMAN callers through the center), with listing and details through the center for AGENT callers; CLI workspace register, unregister and list",
         "Cleanup: an agent removes only paths it created through these operations or its tasks' temporary directories; anything else needs a HUMAN approval"
       ],
       "out_of_scope": [
@@ -2510,7 +2521,8 @@
         "Limits hold: oversized reads are truncated with a continuation offset, oversized writes are refused",
         "A write with a stale expected hash fails without changing the file",
         "AGENT writes are refused while policy forbids them, and every operation is audited without content",
-        "The operations work end to end through the center on a real Windows node and a real Linux node"
+        "The operations work end to end through the center on a real Windows node and a real Linux node",
+        "A HUMAN registers a workspace from the CLI; an AGENT caller can list it but neither register nor unregister one"
       ],
       "verification": {
         "author": [
@@ -2595,7 +2607,7 @@
       "scope": [
         "Transport per the current official MCP specification: protocol revision negotiation, Mcp-Session-Id persisted by the center and bound to the grant, resumable streams where the specification defines them, server metadata, tools with output schemas and annotations",
         "OAuth 2.1 authorization in the center: protected-resource and authorization-server metadata, authorization code with PKCE, client registration as the specification defines it, a consent page naming the devices and tool permissions, refresh and revocation, audience-bound tokens; agent grants in the identity schema",
-        "Tools: devices_list, run (device required, bounded wait), task_status, task_wait, task_output, task_cancel, task_list, file_read, file_write, file_edit, file_search, file_list, workspace_list and cleanup, mapped to the routed operations with origin AGENT",
+        "Tools: every M-tool of experience/mcp.md whose node API is delivered — M-01 run (device required, bounded wait), M-02 task_status, M-03 task_wait, M-04 task_output, M-05 task_cancel, M-06 task_list, M-07 task_retry, M-08 queue_status, M-09 explain_wait, M-10 resources and M-19 approval_status — plus devices_list, file_read, file_write, file_edit, file_search, file_list, workspace_list and cleanup, mapped to the routed operations with origin AGENT; M-11, M-12 and M-18 come with AF-DIAG-01, M-13 with AF-AI-01, M-14 and M-15 with AF-WS-01, M-16 and M-17 with AF-STOR-01",
         "AGENT callers never reach HUMAN-only operations (approvals, policy changes, workspace registration, device management) and never approve their own requests",
         "Measurement of the business API and MCP in one process against separate processes, recorded"
       ],
@@ -2627,7 +2639,8 @@
         "A real MCP client (the official MCP SDK client, and an AI client configured with the remote server where available) completes OAuth, lists tools, runs a command on a real Windows node and a real Linux node, follows up by task ID and reads, edits and searches files, against a local center",
         "A session survives a dropped connection; a grant scoped to device A cannot reach device B; a revoked grant is refused on the next call",
         "AGENT callers cannot approve requests or reach HUMAN-only operations",
-        "No tool call exceeds its bounded wait"
+        "No tool call exceeds its bounded wait",
+        "Conformance suites pass for every MCP protocol revision the server supports (at least the current official revision and 2025-11-25), with output schemas validated for every tool"
       ],
       "verification": {
         "author": [
@@ -2725,7 +2738,8 @@
       "acceptance": [
         "A local AI client configured with arcforges mcp serve runs a command on a selected node through the center",
         "Restarting the adapter keeps the session's tasks reachable by ID",
-        "AOT publish on Windows and Linux with zero warnings"
+        "AOT publish on Windows and Linux with zero warnings",
+        "Adapter idle memory and per-call overhead within Design 15 section 3"
       ],
       "verification": {
         "author": [
@@ -2799,7 +2813,7 @@
         }
       ],
       "depends_on": [
-        "AF-CTR-08"
+        "AF-CTR-07"
       ],
       "objective": "Complete the server migration: port the implemented retained domain logic and the schemas of the flagship modules to the Go center on PostgreSQL, account for every retained-inactive module, inspect and retain the proof D1 data, and retire the C# center's active paths once the exit criteria of AD-0021 section 15 hold.",
       "scope": [
@@ -2832,7 +2846,8 @@
         "The inventory has a disposition and evidence for every server behaviour",
         "The Go entitlement resolver passes every C# test vector",
         "The deployed image contains only the Go center; rollback to the previous image is documented with its compatibility conditions",
-        "The proof D1 data is exported, counted and retained"
+        "The proof D1 data is exported, counted and retained",
+        "Proof D1 business rows, if any, are transformed, backfilled and reconciled into PostgreSQL with counts and checksums; otherwise the inspection records that no business rows exist"
       ],
       "verification": {
         "author": [
@@ -2962,7 +2977,8 @@
       "acceptance": [
         "Every matrix row has real evidence or a named missing-evidence entry",
         "The deployed Worker and Container run the intended Go revision, and real C# clients reach it through the retained protocol",
-        "Real Windows and Linux nodes execute center-routed work from the CLI and from a real MCP session"
+        "Real Windows and Linux nodes execute center-routed work from the CLI and from a real MCP session",
+        "Retained behaviour: node SQLite and the entitlement boundaries are checked; same-machine cross-worktree cache reuse is recorded as not yet applicable while AF-CACHE-01 is undelivered, never as regression-tested"
       ],
       "verification": {
         "author": [
@@ -3245,7 +3261,8 @@
         "RunDoctor, with a HUMAN-only host-posture check: on Windows the account type and the Administrator protection state, read without elevation (D2 host posture, Design 11 section 5; T-26), warning on an administrator account without Administrator protection with the generic statement that UAC is not a security boundary there. Its status and values are returned only to local callers of HUMAN origin; every other caller, AGENT and SCRIPT callers and the MCP doctor tool included, sees only that a HUMAN-only check exists, without its status or values, and the check does not count towards the overall result; support bundles leave the values out unless the owner includes them",
         "Tamper detection of out-of-band edits to node.json and the store (ENFORCEMENT_DEGRADED)",
         "MemoryService and use of facts in estimates; staleness",
-        "CLI findings, doctor, memory"
+        "CLI findings, doctor, memory",
+        "The center MCP tools M-11 memory_query, M-12 findings and M-18 doctor (the HUMAN-only host-posture rule unchanged), served by the center's MCP endpoint over the routed node API (AF-CTR-07; ArcForges-Design AD-0021)"
       ],
       "out_of_scope": [
         "Toolchain-specific failure classifiers beyond the generic ones (adapter tasks)"
@@ -3253,7 +3270,8 @@
       "design_refs": [
         "docs/architecture/07-records-diagnosis-memory.md",
         "docs/contracts/proto/arcforges/node/v1/diagnosis.proto",
-        "docs/contracts/proto/arcforges/node/v1/memory.proto"
+        "docs/contracts/proto/arcforges/node/v1/memory.proto",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-DIAG-001",
@@ -3677,7 +3695,8 @@
         "Low-space guard per volume (NORMAL, LOW, CRITICAL; every 5 s; the LOW threshold capped by low_free_cap_bytes): blocking reason disk_space at LOW; freeze or immediate stop at CRITICAL; the store reserve file (64 MiB), released only when a store write fails, and the node state DEGRADED with store_out_of_space",
         "Disk analysis and limit monitoring use the size cache built in AF-CACHE-01",
         "Guards extended to the temporary-directory limit and the low-space guard while the node is down (06 section 5); guard_lost and the GUARD_LOST finding",
-        "Temporary-directory passes as a full walk that keeps no per-file state, by the node and by the guards, capped by max_attempt_tmp_entries (over the cap counts as over the limit); Linux guards freeze before they kill, and thaw after 30 s at NORMAL while the node is down"
+        "Temporary-directory passes as a full walk that keeps no per-file state, by the node and by the guards, capped by max_attempt_tmp_entries (over the cap counts as over the limit); Linux guards freeze before they kill, and thaw after 30 s at NORMAL while the node is down",
+        "The center MCP tools M-16 cleanup_plan and M-17 cleanup_execute, served by the center's MCP endpoint over the routed node API (AF-CTR-07; ArcForges-Design AD-0021)"
       ],
       "out_of_scope": [
         "Worktrees (AF-WS-01) beyond detection"
@@ -3685,7 +3704,8 @@
       "design_refs": [
         "docs/architecture/06-storage-workspaces.md",
         "docs/contracts/proto/arcforges/node/v1/storage.proto",
-        "docs/data/node-store.md"
+        "docs/data/node-store.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-STOR-001",
@@ -3779,9 +3799,10 @@
       ],
       "objective": "Register workspaces and create or remove node-managed git worktrees safely.",
       "scope": [
-        "WorkspaceService; SM-WORKTREE including ARCHIVING; PlanWorktreeRemoval; archive-then-remove with approval: index and working-tree commits (binary-safe), intent-to-add paths, archive refs, bundle and side archives (ignored files, filter- or LFS-dependent bytes), the ignored-files decision with its digest, refusal for unmerged indexes and dirty submodules, verification by bundle round trip and byte comparison before removal (06 section 3); ListWorktreeArchives and RestoreWorktree (the L-19 sequence); archive retention; locks while in use",
+        "WorkspaceService worktree and settings methods (registration, unregistration, listing and details are delivered by AF-CTR-06); SM-WORKTREE including ARCHIVING; PlanWorktreeRemoval; archive-then-remove with approval: index and working-tree commits (binary-safe), intent-to-add paths, archive refs, bundle and side archives (ignored files, filter- or LFS-dependent bytes), the ignored-files decision with its digest, refusal for unmerged indexes and dirty submodules, verification by bundle round trip and byte comparison before removal (06 section 3); ListWorktreeArchives and RestoreWorktree (the L-19 sequence); archive retention; locks while in use",
         "Workspace derivation for tasks; routing override",
-        "Workspace concurrency mode (ADAPTER_KEYS, SERIAL, SHARED) through UpdateWorkspaceSettings; CLI workspace concurrency and worktree archives and restore"
+        "Workspace concurrency mode (ADAPTER_KEYS, SERIAL, SHARED) through UpdateWorkspaceSettings; CLI workspace concurrency and worktree archives and restore",
+        "The center MCP tools M-14 worktree_create and M-15 worktree_remove, served by the center's MCP endpoint over the routed node API (AF-CTR-07; ArcForges-Design AD-0021)"
       ],
       "out_of_scope": [
         "Remote workspaces (AF-LAN-02)"
@@ -3792,7 +3813,8 @@
         "docs/data/node-store.md",
         "docs/experience/cli.md",
         "docs/verification/platform-capabilities.md",
-        "docs/architecture/05-toolchains-caches.md"
+        "docs/architecture/05-toolchains-caches.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-STOR-003",
@@ -3877,8 +3899,9 @@
       "scope": [
         "`arcforges hook <client> <event>` in exec form for Claude Code and Codex events (no WorktreeCreate or WorktreeRemove hooks); SessionService; correlation through the nearest client-executable ancestor",
         "ClassifyCommand and rewrite construction (`ask` by default; no `--cwd`, so the shell's directory applies; `--client-timeout` from the call, the client default recorded by the probe, none for background calls; hand-off at the client timeout minus the margin with exit 124 and the wait and cancel commands; immediate exit 125 for exceeds_capacity; an interrupt before the hand-off cancels); SubmitTask join_existing with the exact command digest, joining only tasks that have not started; modes observe, guide, rewrite (heavy commands) and rewrite-all with passthrough patterns, shell-state prefixes kept outside, background launches not routed and the light estimate (08 section 4.1); bypass detection",
-        "SessionCoverage with the managed share, the coverage map of 08 section 4.4 and session reports; services stopped with their owner session; CLI session commands; GetReleaseScope serves the routing rows under the fixed operation strings routing:claude-code and routing:codex, from which the coverage views named in Design 08 section 5 show the client's row; those views are built and checked by AF-MCP-01, AF-AI-02 and AF-DESK-02 (A-A03)",
-        "SessionService.GetReleaseScope: the release coverage statement, the rows of Design product definition §9 for this release; the stated limits of §9 (added 2026-10-19), served after them: per supported client (routing:claude-code, routing:codex), that routed commands run outside the client's own sandbox and that the client's own process keeps the user's full access; the credential sentence and the same-user qualifier for the node data key, sealed task secrets and running environments; the generic sentence 'On an administrator account without Administrator protection, UAC is not a security boundary; unconfined workloads may obtain administrator rights silently'; the rows for ArcForges' own containers and for paired LAN peers; together they state the documented bypasses T-22 to T-27. GetReleaseScope carries no host-posture fact and no user path (the host's account type and Administrator protection state are AF-DIAG-01's HUMAN-only doctor check)"
+        "SessionCoverage with the managed share, the coverage map of 08 section 4.4 and session reports; services stopped with their owner session; CLI session commands; GetReleaseScope serves the routing rows under the fixed operation strings routing:claude-code and routing:codex, from which the coverage views named in Design 08 section 5 show the client's row; those views are built and checked by AF-CTR-07 (through this task's M-13 tool), AF-AI-02 and AF-DESK-02 (A-A03)",
+        "SessionService.GetReleaseScope: the release coverage statement, the rows of Design product definition §9 for this release; the stated limits of §9 (added 2026-10-19), served after them: per supported client (routing:claude-code, routing:codex), that routed commands run outside the client's own sandbox and that the client's own process keeps the user's full access; the credential sentence and the same-user qualifier for the node data key, sealed task secrets and running environments; the generic sentence 'On an administrator account without Administrator protection, UAC is not a security boundary; unconfined workloads may obtain administrator rights silently'; the rows for ArcForges' own containers and for paired LAN peers; together they state the documented bypasses T-22 to T-27. GetReleaseScope carries no host-posture fact and no user path (the host's account type and Administrator protection state are AF-DIAG-01's HUMAN-only doctor check)",
+        "The center MCP tools M-13 session_coverage returning release_scope from GetReleaseScope unchanged, served by the center's MCP endpoint over the routed node API (AF-CTR-07; ArcForges-Design AD-0021)"
       ],
       "out_of_scope": [
         "Writing client configuration (AF-AI-02)"
@@ -4313,12 +4336,14 @@
       ],
       "depends_on": [
         "AF-DESK-01",
-        "AF-AI-02"
+        "AF-AI-02",
+        "AF-CTR-04"
       ],
       "objective": "Complete the local Desktop pages.",
       "scope": [
         "D-06 sessions, D-07 session detail, D-08 findings, D-09 approvals, D-10 workspaces, D-11 storage, D-12 caches, D-13 toolchains, D-14 integrations, D-17 policy, D-19 diagnostics (without upload), D-20 settings, D-22 about",
-        "D-06 and D-07 managed share and routing modes; D-10 concurrency mode, the archive dialog with the ignored-file decision, archives and restore; D-11 limit kinds and volume levels; D-14 routing modes with the coverage map, the release coverage statement and the copy that MCP alone routes nothing"
+        "D-06 and D-07 managed share and routing modes; D-10 concurrency mode, the archive dialog with the ignored-file decision, archives and restore; D-11 limit kinds and volume levels; D-14 routing modes with the coverage map, the release coverage statement and the copy that MCP alone routes nothing",
+        "D-16 account status and sign-in through the node's AccountService (AF-CTR-04); its phone QR part comes with AF-CLD-02"
       ],
       "out_of_scope": [
         "D-15 LAN (AF-LAN-01), the D-12 LAN sharing section (AF-LAN-03), D-16 account (AF-CLD-02), D-18 updates (AF-DIST-02), bundle upload (AF-SUP-01)"
@@ -4937,7 +4962,8 @@
         "Account and fleet profiles"
       ],
       "design_refs": [
-        "docs/experience/web.md"
+        "docs/experience/web.md",
+        "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
         "R-UX-004",
@@ -4950,7 +4976,7 @@
       "acceptance": [
         "Site builds with no JavaScript; budgets pass; accessibility checks pass",
         "Merging changes nothing the public sees: the guarded deploy keeps the current pages while public_site is off; the new site is published only by AF-PROD-01 after the user approves its content",
-        "W-03 states that everything local and on the LAN is free and that Pro is the cloud services (product definition §5)"
+        "W-03 states the editions and hosting distinction of ArcForges-Design AD-0021 section 13 (user-owned compute and open-source software, self-hosted centers, the official hosted center), with plan contents taken from the owner's decision (H-07)"
       ],
       "verification": {
         "author": [
@@ -5131,12 +5157,13 @@
       ],
       "objective": "On the Go center and PostgreSQL (ArcForges-Design AD-0021): Provide the platform services every cloud feature uses: configuration revisions with kill switches and limits, the audit writer and reader, and operating budgets with reservations.",
       "scope": [
-        "Configuration revisions (stage, validate, activate data path), kill switches (relay.live_streaming, relay.new_connections, push.enabled, fleet.commands, support uploads, cloud.essential_only) and limits; the FLAGSHIP_SURFACES deployment variable (identity, fleet_api, relay, push, support, commerce): disabled surfaces answered by the Worker with STATE/not_activated without waking the container, and the cron handler idle while none is enabled (10 section 8)",
+        "Configuration revisions (stage, validate, activate data path), kill switches (relay.live_streaming, relay.new_connections, push.enabled, fleet.commands, support uploads, cloud.essential_only) and limits; the FLAGSHIP_SURFACES deployment variable (identity, fleet_api, node_channel, mcp, push, support, commerce): disabled surfaces answered by the Worker with STATE/not_activated without waking the container, and the cron handler idle while none is enabled (10 section 8)",
         "Audit event writer with the hash chain, and the reader that backs OperatorReadService.ListAuditEvents; anomaly flags as `anomaly.<kind>` audit events",
         "Operating budget service over every billing dimension (dimensions 8..19 as an ordinary PostgreSQL migration; 14 section 7.1), including the container's own Durable Object: reservations per measured dimension, estimated dimensions recorded after the fact, threshold evaluation (80% alert, 100% the degradation ladder step, 120% essential-only mode except EMAILS_SENT; 14 section 7.3), essential jobs only in essential-only mode, the residual daily exposure with Worker requests (section 7.4), unit prices configuration",
         "Budget and limit checks as a library for metered paths; rate limits per account and IP",
         "Job infrastructure: lease and fence over the platform job-lease table with row locks (holder and fence); a job runner started by a Worker cron trigger and scheduled handler that call the host (wrangler.json and its hash-bound receipts updated through the repository's reviewed process); the compact command fence",
-        "Scheduled retention sweeps: expired receipts and inbox rows, expired flows, and the Retention column of data/cloud-store.md"
+        "Scheduled retention sweeps: expired receipts and inbox rows, expired flows, and the Retention column of data/cloud-store.md",
+        "PostgreSQL (Neon) compute and storage dimensions, and the always-on Container worst case while nodes are connected (AD-0021 section 9)"
       ],
       "out_of_scope": [
         "Operator console (AF-OPS-01)",
@@ -5616,7 +5643,8 @@
       "scope": [
         "EntitlementService endpoints (GetSnapshot, Check, ListGrants) and the flagship plan catalogue",
         "RefreshEntitlementToken and GetEntitlementKeys (IssueNodeCertificate stays reserved for roadmap RM-01 and is not served)",
-        "Node-side verification, offline grace, cloud-feature degradation rules and on-demand refresh triggers"
+        "Node-side verification, offline grace, cloud-feature degradation rules and on-demand refresh triggers",
+        "The entitlement-token signing key through the center's key handling (AF-CTR-02)"
       ],
       "out_of_scope": [
         "Commerce (AF-COM-01, AF-CLD-07)",
@@ -5631,14 +5659,16 @@
       ],
       "requirements": [
         "R-CLOUD-001",
-        "R-COM-004"
+        "R-COM-004",
+        "R-CTR-008"
       ],
       "deliverables": [
         "Entitlement enforcement"
       ],
       "acceptance": [
         "Expired tokens stop only gated center features; node-local execution never consults them; running tasks are unaffected",
-        "The plan catalogue lists only cloud features (remote.view, remote.control, push)"
+        "The plan catalogue lists only cloud features (remote.view, remote.control, push)",
+        "An entitlement change affects only new center-routed calls; accepted tasks are not cancelled (R-CTR-008)"
       ],
       "verification": {
         "author": [
@@ -5804,51 +5834,64 @@
     },
     {
       "id": "AF-CLD-04",
-      "title": "Relay: Worker routes, FleetHub Durable Object, node uplink and fleet watch",
+      "title": "Fleet watch, node telemetry and channel controls on the Go center",
       "milestone": "M12",
-      "state": "superseded",
+      "state": "planned",
       "repositories": [
         {
           "repo": "Cloud",
           "paths": [
-            "worker/relay/**",
-            "src/**",
+            "center/**",
+            "worker/**",
+            "wrangler.json",
+            "docs/**",
             "tests/**",
-            "eng/**",
-            "wrangler.json"
+            "eng/**"
           ]
         },
         {
           "repo": "ArcForges",
           "paths": [
-            "src/ArcForges.Node.CloudLink/**",
-            "tests/**"
+            "src/**",
+            "tests/**",
+            "docs/**"
+          ]
+        },
+        {
+          "repo": "Contracts",
+          "paths": [
+            "public/proto/**",
+            "internal/proto/**",
+            "go/**",
+            "eng/**",
+            "docs/**",
+            "tests/**",
+            "fixtures/**"
           ]
         }
       ],
       "depends_on": [
-        "AF-CLD-03",
+        "AF-CTR-05",
         "AF-PLAT-01"
       ],
-      "objective": "Connect nodes and viewers through hibernating WebSockets with demand-driven telemetry and bounded costs.",
+      "objective": "Let viewers watch nodes live through the Go center with demand-driven telemetry and bounded costs, and carry entitlement changes and channel controls over the node channel (ArcForges-Design AD-0021 section 9; the FleetHub Durable Object design is history).",
       "scope": [
-        "Relay routes and FleetHub per AD-0009 and 10 sections 3.4-3.5 and 4-5; viewer grants as a WebSocket subprotocol validated before the DO; hibernation API only; DO request counters and the estimated active duration metered (14 section 7.1); ladder step 2 closes existing sockets with close code 4429 and nodes back off",
-        "FleetHub Durable Object binding and migration in wrangler.json",
-        "Node relay client (SM-RELAY), summaries, deltas, snapshots, EntitlementChanged frames; StatusSummary with disk and agent counts, TaskSummary with timing, queue position, blocking reason, termination reason, session and subagent, SessionSummary with subagents, last events, routing mode, managed share and unknowns (R-CLOUD-007)",
-        "IssueRelayToken, OpenFleetWatch, WatchFleet, ListNodes, GetNode, RenameNode, RevokeNode",
-        "Limits, alarm guard, kill switches"
+        "FleetService OpenFleetWatch and WatchFleet on the center; the viewer WebSocket (ViewerFrame, grant as a subprotocol validated before routing) terminated in the Go center",
+        "Node telemetry over the node channel: StatusSummary, StatusDelta and snapshots with DemandSignal intervals and durations, cursors, resume and reset; TaskSummary and SessionSummary fields of R-CLOUD-007",
+        "EntitlementChanged frames to connected nodes; channel kill switches (live streaming, new connections) and ladder step 2 (close existing connections with 4429, nodes back off); limits per account"
       ],
       "out_of_scope": [
-        "Commands (AF-CLD-05)"
+        "Routed task operations (AF-CTR-05)",
+        "Web and Android views (AF-WEB-03, AF-AND-01)"
       ],
       "design_refs": [
         "docs/architecture/10-cloud.md",
+        "docs/decisions/AD-0021-central-access-go-center.md",
         "docs/decisions/AD-0009-cloud-relay-and-cost-controls.md",
         "docs/contracts/proto/arcforges/relay/v1/relay.proto",
         "docs/contracts/proto/arcforges/fleet/v1/fleet.proto"
       ],
       "requirements": [
-        "R-CLOUD-002",
         "R-CLOUD-003",
         "R-CLOUD-006",
         "R-OPS-002",
@@ -5860,12 +5903,10 @@
         "Relay"
       ],
       "acceptance": [
-        "Closed loop through local workerd: snapshot, deltas, resume, reset, token refresh, close codes",
+        "Closed loop against a local Go center with a real node: snapshot, deltas, resume, reset, grant refresh, close codes",
         "No command lines or output leave the node by default",
-        "Kill switch degrades to summaries",
-        "An expired entitlement degrades only relay features",
-        "Summaries carry every field the node knows that W-40, W-41 and A-03 to A-05 show; information no client reports is labelled unknown (R-CLOUD-007)",
-        "Ladder step 2 closes existing relay sockets with 4429, nodes back off, and DO duration is metered as an estimate"
+        "A kill switch degrades to summaries; ladder step 2 closes existing connections with 4429 and nodes back off",
+        "Summaries carry every field the node knows that W-40, W-41 and A-03 to A-05 show; information no client reports is labelled unknown (R-CLOUD-007)"
       ],
       "verification": {
         "author": [
@@ -5896,7 +5937,7 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge. [superseded] Replaced by node connections terminating in the Go center (ArcForges-Design AD-0021 section 9): successor AF-CTR-05; viewer streams move to AF-WEB-03.",
+      "notes": "Re-scoped 2026-10-28 by ArcForges-Design AD-0021: the node channel and ListNodes, GetNode, RenameNode and RevokeNode are delivered by AF-CTR-05; this task keeps the viewer, telemetry and channel-control scope of the earlier relay task on the Go center. Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -6115,7 +6156,7 @@
         }
       ],
       "depends_on": [
-        "AF-CTR-05",
+        "AF-CLD-04",
         "AF-WEB-02"
       ],
       "objective": "Show live fleet status and node detail with confirmed remote actions in the browser.",
@@ -6175,7 +6216,7 @@
         }
       ],
       "size": "M",
-      "notes": "Viewer frames come from the Go center's node channel (AD-0021 section 9).",
+      "notes": "Viewer frames come from the Go center (AF-CLD-04; AD-0021 section 9).",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -6386,7 +6427,7 @@
         }
       ],
       "depends_on": [
-        "AF-CTR-05",
+        "AF-CLD-04",
         "AF-CLD-02",
         "AF-CTR-03"
       ],
