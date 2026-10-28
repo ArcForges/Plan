@@ -35,8 +35,8 @@ Run exactly what the task's `verification.author` names: the affected suites whi
 
 ## 4. Review
 
-1. The coordinator pushes the branch and opens the PR, then runs `python eng/verify.py run-and-report` on each host for the head ([AD-0020](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0020-post-push-verification-and-required-checks.md); `AGENTS.md` rule 6). The hosts report `arcforges/windows` and `arcforges/linux` on the commit, which the `main` ruleset requires. A failure goes back to the author (or the coordinator fixes a coordinator-side cause), and the fixed branch is pushed and verified again. A status is never posted by hand (policy §3). The PR body ends with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`, and commits end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
-2. **One independent reviewer** (Opus 5.5, a fresh session) reviews the exact head:
+1. The coordinator pushes the branch and opens the PR, then runs `python eng/verify.py run-and-report` on each host for the head ([AD-0020](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0020-post-push-verification-and-required-checks.md); `AGENTS.md` rule 6). The hosts report `arcforges/windows` and `arcforges/linux` on the commit, which the `main` ruleset requires. A failure goes back to the author (or the coordinator fixes a coordinator-side cause), and the fixed branch is pushed and verified again. A status is never posted by hand (policy §3). Any commit co-author trailer or PR footer must identify the actual contributors and tools used.
+2. **One independent reviewer** (a fresh session) reviews the exact head:
    - the full diff against the design references and acceptance criteria;
    - distinct checks only (policy §3).
 

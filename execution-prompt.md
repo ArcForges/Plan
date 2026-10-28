@@ -108,7 +108,7 @@ Follow `delivery-procedure.md`. In short:
 4. **Verify as the author.** Run what `verification.author` names, plus the affected real Windows and Linux tests. Record the exact commands and results in the PR body, mapping each acceptance criterion to its evidence.
 5. **Review.**
    - Push the branch and open the PR. Then run `python eng/verify.py run-and-report` on each host for the head, through its MCP server, in a worktree at the commit fetched from GitHub (Plan `AGENTS.md` rule 6). Each host reports `arcforges/windows` or `arcforges/linux` on the commit.
-   - One independent reviewer reviews the exact head: a fresh Opus 5.5 session using prompt P-3 from `entry-prompts.md`.
+   - One independent reviewer reviews the exact head: a fresh session using prompt P-3 from `entry-prompts.md`.
    - Fix blocking findings. Re-review covers only the delta.
    - Post the review record on the PR.
 6. **Merge gate** (AD-0016).
@@ -125,12 +125,9 @@ Follow `delivery-procedure.md`. In short:
 9. **Continue** with the next eligible task in your range.
 
 **Delegation.**
-- At most one delegated worker or reviewer at a time, always Opus 5.5, never Haiku. Use the worker prompt P-2 and the reviewer prompt P-3.
-- **Model guarantee.** Delegate only to agents confirmed to run on Opus 5.5.
-  - **How to confirm.** The delegate's reply starts with its model ID (P-2 and P-3 ask for it), and the ID must identify Opus 5.5 (currently `claude-opus-5-5`).
-  - **Helpers.** Built-in helper agents (for example search or exploration helpers) may run on a smaller model. Never use them for task work or review.
-  - **Unconfirmed worker.** Do not use it; do the work yourself.
-  - **Unconfirmed reviewer.** A review needs a confirmed Opus 5.5 reviewer other than you. Without one, the task is not merged: record that in the ledger, report it and stop (§11).
+- At most one delegated worker or reviewer at a time. Use the worker prompt P-2 and the reviewer prompt P-3.
+- Use available agents without a required provider, model, or separate client login.
+- The reviewer must be independent of the author. If no independent reviewer is available, record the blocker, report it and stop before merging.
 - Delegates work locally in the task's worktree. Only you push, open PRs, post review records, merge and update the graph and ledger.
 - The worker's `PR-BODY.md` at the worktree root is the PR body's source. Never commit it.
 
@@ -187,14 +184,14 @@ When unsure, prefer the narrower reading. Record the question in the ledger and 
   - Verification is MCP-first (ArcForges-Design AD-0019): the Windows leg on the owner's workstation through the Windows MCP server, the Linux leg on the Linux MCP host through the Linux MCP server (H-22). Each host fetches the pushed commit from GitHub and reports its leg as a required commit status (AD-0020). Local WSL is never used, not even as a fallback. If an MCP server is unavailable, stop and report it; the PR cannot merge without its status. Never skip a test, bypass a hook or post a status by hand. Installs on those hosts are the user's. No SSH.
 - **Settings.** Never change repository security settings or account settings, except the required status checks of the conditional CI as the user authorized on 2026-10-16 (execution policy §5, AD-0016 §2), and the `main` rulesets of the post-push verification as the user authorized on 2026-10-22 (AD-0020); never to get a PR merged.
 - **Accounts.** Existing access only. Never create accounts; signing custody, store accounts, payment and Firebase are human prerequisites (Plan `baseline.md` §4).
-- **Attribution.** Commits end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`. PR bodies end with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
+- **Attribution.** Any commit co-author trailer or PR footer must identify the actual contributors and tools used.
 
 ## 11. When you stop
 
 **Stop only when:**
 - every task in the range is delivered or complete, or has a recorded reason it is not: blocked by a named prerequisite, a dependency outside the range not delivered, returned to planned after an unresolved failure, or superseded;
 - a task outside the range is active (§5);
-- no confirmed Opus 5.5 reviewer is available for a task that is ready for review (§6);
+- no independent reviewer is available for a task that is ready for review (§6);
 - an outward-facing step needs the user's approval;
 - a decision only the user can make is required;
 - or the user says stop.
