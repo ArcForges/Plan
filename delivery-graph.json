@@ -1697,7 +1697,7 @@
       "id": "AF-CTR-01",
       "title": "Go contract bindings: generation, publication and compatibility",
       "milestone": "MC",
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "Contracts",
@@ -1793,9 +1793,15 @@
       "notes": "Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/Contracts/pull/117"
+        ],
+        "merges": [
+          "Contracts@7205743648c6d5e81f539fe99b4d937dd4a0cbbc"
+        ],
+        "publications": [
+          "Contracts cohort 1.0.0-ci.410.1 (NuGet, npm) and Go module github.com/ArcForges/Contracts/go go/v1.0.0-ci.410.1 at 7205743 (CI run 40677698955)"
+        ],
         "ledger": null
       },
       "order": 15
@@ -1804,7 +1810,7 @@
       "id": "AF-CTR-02",
       "title": "Go center foundation, PostgreSQL store and engineering controls",
       "milestone": "MC",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Cloud",
