@@ -154,7 +154,7 @@ Outcome: Users watch their nodes live from the web and receive push notification
 
 | # | Task | Title | Repositories | Depends on | Size | State |
 |---|---|---|---|---|---|---|
-| 52 | AF-CLD-04 | Fleet watch, node telemetry and channel controls on the Go center | Cloud, ArcForges, Contracts | AF-CTR-05, AF-PLAT-01 | L | planned |
+| 52 | AF-CLD-04 | Fleet watch, node telemetry and channel controls on the Go center | Cloud, ArcForges, Contracts | AF-CTR-05, AF-PLAT-01, AF-CLD-03 | L | planned |
 | 53 | AF-CLD-05 | Remote commands | Cloud, ArcForges | AF-CLD-04, AF-SEC-01 | M | superseded |
 | 54 | AF-CLD-06 | Push notifications and preferences | Cloud, ArcForges, Web | AF-CTR-05, AF-CTR-03 | M | planned |
 | 55 | AF-WEB-03 | Fleet profile | Web | AF-CLD-04, AF-WEB-02 | M | planned |

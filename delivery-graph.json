@@ -1850,7 +1850,8 @@
         "Signing keys: the center's key handling for the ES256 command-signing key (AF-CTR-05) and the entitlement-token key (AF-CLD-03): key IDs and metadata in the fleet schema, private keys only in platform secrets (production material H-16; acceptance and self-hosted centers generate their own without displaying them), rotation with overlapping validity",
         "Structural cost bounds of the hosted deployment recorded and enforced in configuration: Container max_instances, instance type and idle sleepAfter, Worker cpu_ms limits, PostgreSQL connection budgets; the always-on instance worst case while nodes are connected stated for AF-PLAT-01's budgets",
         "Observability: structured logs with correlation IDs and no secret, command line, output or file content; metrics for requests, database pools, migrations and the node channel; health and readiness with PostgreSQL reachability; alert conditions documented for AF-OPS-01",
-        "Go path coverage in the external-PR hosted workflows (CodeQL for Go, the Go checks, dependency review) and the required statuses"
+        "Go path coverage in the external-PR hosted workflows (CodeQL for Go, the Go checks, dependency review) and the required statuses",
+        "The repository provisioning script for the center's resources (the PostgreSQL database and roles, the R2 bucket with its lifecycle rules, the Queue), exercised against the acceptance environment and run against production only by AF-PROD-01 with the owner's approval (H-20)"
       ],
       "out_of_scope": [
         "Account, node and MCP endpoints (AF-CTR-03 onward)",
@@ -2161,7 +2162,8 @@
         "Center: NodeEnrollmentService BeginNodeSignIn, GetNodeSignInFlow, ApproveNodeSignIn, CompleteNodeSignIn, StartDeviceAuthorization, PollDeviceAuthorization, LookupDeviceCode, ApproveDeviceCode, RefreshNodeSession and ReportNodeInfo; fleet schema tables for nodes, sign-in flows and device authorizations; one device and installation per node; center pages /connect and /activate",
         "Node: the center setting (official default, overridable, persisted); a CloudLink component storing the node credential through DesktopPlatform Security.Secrets (Windows Credential Manager; Linux Secret Service or the 0600 file reported as FILE_PERMISSIONS_ONLY), refreshing before expiry and turning revocation into the signed-out state; AccountService on the local endpoint (GetAccountStatus, BeginSignIn, GetSignInFlow, CancelSignIn, SignOut)",
         "CLI: arcforges center set <url>, arcforges login [--device-code], arcforges logout, arcforges account status",
-        "Linux secret-store tests use the isolated backend; real OS secret-store integration only on the isolated host H-23"
+        "Linux secret-store tests use the isolated backend; real OS secret-store integration only on the isolated host H-23",
+        "Keys for the signed center channel (ArcForges-Design AD-0021 section 10): the node key generated at first sign-in and stored as the node's own key (CNG user key on Windows, a 0600 file in the data root on Linux, file-backed under --test-mode; Design 02 section 4), its public key registered by CompleteNodeSignIn and on device-code approval, and the center's public signing keys delivered and rotated with CompleteNodeSignIn and RefreshNodeSession (additive v1 fields where needed)"
       ],
       "out_of_scope": [
         "Phone pairing (AF-CLD-02)",
@@ -2192,7 +2194,8 @@
         "A real Windows node and a real native Linux node sign in with a device code against a local center on real PostgreSQL, approved in a real browser session; the Windows node also signs in through the browser PKCE loopback flow",
         "A reused code revokes the flow; an expired device code and a sixth wrong user code are refused",
         "The Windows credential is stored in Credential Manager and the Linux credential in the isolated backend; refresh rotates it; a revoked device leaves the node signed out",
-        "A node configured for a self-hosted center never contacts the official endpoint"
+        "A node configured for a self-hosted center never contacts the official endpoint",
+        "The node key is generated once and survives restarts; its public key is on the center's node record; the node holds the center's current and next public keys after sign-in and refresh; under --test-mode no OS key store is touched"
       ],
       "verification": {
         "author": [
@@ -2320,7 +2323,7 @@
         "Contracts (additive v1): relay.v1 call and result frames (call ID, deadline, method, payload, ArcError), each call signed by the center with the ES256 command-signing key (key ID, target node, caller principal and origin, command ID, method, request digest, expiry of at most 5 minutes) and each result signed with the node key (AD-0021 section 10); fleet.v1 routed task methods naming node_id and carrying command IDs",
         "Center: the node hub (authenticated upgrade with the node credential, one connection per node, heartbeats, backpressure, bounded in-flight calls), routing with deadlines, receipts for idempotency, routing records without specifications or output, audit, node presence; FleetService ListNodes, GetNode, RenameNode and RevokeNode; the Worker passes the node WebSocket upgrade through a registered route with its admission policy",
         "Node: outbound connection with jittered backoff and credential refresh; verification of the center's signature, target and expiry (±120 s skew) against the center keys received at enrollment and refresh, before policy; dispatch to the existing TaskService with the origin and caller identity the center verified (HUMAN through a client, AGENT through MCP); the local policy for center-routed callers; deduplication by command ID; output by offset",
-        "CLI: arcforges run [--node <name or id>] -- <command> through the center (default: this node), tasks, wait, output and cancel through the center; arcforges run --local stays a labelled diagnostic",
+        "CLI: arcforges run [--node <name or id>] -- <command> through the center (default: this node), tasks, wait, output and cancel through the center; arcforges run --local stays a labelled diagnostic, bounded as AD-0021 section 5 states: the node's local TaskService.SubmitTask accepts ordinary submissions only from local callers of HUMAN origin (AGENT and SCRIPT origins refused), and records such tasks as local-diagnostic",
         "Failure behaviour of AD-0021 section 11: offline node refusal, center restart, network loss, retry after an uncertain submission, revocation closing the channel"
       ],
       "out_of_scope": [
@@ -2366,7 +2369,8 @@
         "Two callers share one node's admission (queue positions and budgets) and appear with their identities in the task records",
         "The center database holds no command line, environment or output after the suite (inspection test)",
         "Forged, altered, retargeted or expired calls are refused by the node before any effect, and a call delivered after its expiry is never executed late (T-11)",
-        "A center-routed cancel of a nonterminal ADOPTED task is denied as process.terminate before any stop, leaves the adopted process running and is audited as denied on the real center-to-node path; neither origin, confirmation nor approval overrides the deny (MR-08, carried from AF-CLD-05)"
+        "A center-routed cancel of a nonterminal ADOPTED task is denied as process.terminate before any stop, leaves the adopted process running and is audited as denied on the real center-to-node path; neither origin, confirmation nor approval overrides the deny (MR-08, carried from AF-CLD-05)",
+        "A local SubmitTask of AGENT or SCRIPT origin is refused with the documented error; a HUMAN --local submission runs and its task record is marked local-diagnostic"
       ],
       "verification": {
         "author": [
@@ -5872,7 +5876,8 @@
       ],
       "depends_on": [
         "AF-CTR-05",
-        "AF-PLAT-01"
+        "AF-PLAT-01",
+        "AF-CLD-03"
       ],
       "objective": "Let viewers watch nodes live through the Go center with demand-driven telemetry and bounded costs, and carry entitlement changes and channel controls over the node channel (ArcForges-Design AD-0021 section 9; the FleetHub Durable Object design is history).",
       "scope": [
@@ -6033,7 +6038,7 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge. [superseded] Replaced by center-routed execution under node policy (ArcForges-Design AD-0021 sections 2 and 7): successor AF-CTR-05.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: flagship surfaces stay disabled in production until AF-PROD-01 (Design 10 section 8), so no production prerequisite blocks the merge. [superseded] Replaced by center-routed execution under node policy (ArcForges-Design AD-0021 sections 2, 7 and 10, routed calls signed end to end): successor AF-CTR-05.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -6968,7 +6973,7 @@
         "Confirm the production prerequisites with the user, per surface (10 section 8): the core (provisioning, identity, fleet_api, the node channel, mcp) needs H-05, H-06, H-09, H-16, H-19 and H-20; push needs H-03; commerce needs H-01 (and H-02 for Play), H-07 and the published legal pages (H-10); the public site needs H-10",
         "Run the repository provisioning script against production with the user's approval (the PostgreSQL database and roles, the R2 bucket with lifecycle rules, the Queue); add the production bindings to wrangler.json through a reviewed main-push deploy; run the migrations (10 section 8)",
         "Set the production operating budgets from the cost ceiling so that 31 x (daily budgets + residual) stays within it, and check the ladder configuration (14 section 7)",
-        "Add surfaces to FLAGSHIP_SURFACES one at a time through reviewed main-push deploys (identity, fleet_api, relay, support, then push and commerce when their prerequisites exist), each followed by a production smoke check and a verified withdrawal; a surface without its prerequisites stays off and is recorded",
+        "Add surfaces to FLAGSHIP_SURFACES one at a time through reviewed main-push deploys (identity, fleet_api, node_channel, mcp, support, then push and commerce when their prerequisites exist), each followed by a production smoke check and a verified withdrawal; a surface without its prerequisites stays off and is recorded",
         "Turn on the Web switches public_site, web_account and web_fleet after the user approves the content",
         "Record the activation evidence and update the acceptance register entries whose prerequisites are now met"
       ],
