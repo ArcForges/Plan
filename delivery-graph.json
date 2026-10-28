@@ -1697,7 +1697,7 @@
       "id": "AF-CTR-01",
       "title": "Go contract bindings: generation, publication and compatibility",
       "milestone": "MC",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Contracts",
