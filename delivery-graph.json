@@ -1810,7 +1810,7 @@
       "id": "AF-CTR-02",
       "title": "Go center foundation, PostgreSQL store and engineering controls",
       "milestone": "MC",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "Cloud",
@@ -1914,7 +1914,9 @@
       "fakes_allowed": [],
       "future_validation": [],
       "acceptance_register": [],
-      "human_prerequisites": [],
+      "human_prerequisites": [
+        "H-24"
+      ],
       "risks": [
         {
           "risk": "The runtime credential leaks through logs or artifacts",
@@ -1933,12 +1935,23 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. [delivered] Delivered; complete waits on H-24 (Neon history window and plan recorded)",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/Cloud/pull/112",
+          "https://github.com/ArcForges/Cloud/pull/116",
+          "https://github.com/ArcForges/Cloud/pull/117"
+        ],
+        "merges": [
+          "Cloud@517568453406cfa3b7a5b8f2f2ac8755900b0bd4",
+          "Cloud@ec596f23b6484bdbafe207bb2bb18f42c21f92d5",
+          "Cloud@aecf53fd34e7e7d15cc5d40d36db1ffae383a305"
+        ],
+        "publications": [
+          "Cloud 0.1.0-ci.430.1 (run 40700415799), 0.1.0-ci.446.1 (run 40735525531) and 0.1.0-ci.454.1 (run 40745738258) deployed to production through the guarded main-push deploy (Hello only; no new surface)",
+          "Cloud 0.1.0-ci.455.1 deployed to the acceptance environment proof.arcforges.com (protected dispatch run 40745751187)"
+        ],
         "ledger": null
       },
       "order": 16
@@ -1947,7 +1960,7 @@
       "id": "AF-CTR-03",
       "title": "Accounts, sessions and devices on the center",
       "milestone": "MC",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Cloud",
