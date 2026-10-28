@@ -2001,7 +2001,7 @@
         "Step-up; session listing and revocation; DeviceService List, Rename and Revoke, revoking the device's node credential and agent grants",
         "Center-served pages without external assets and with a strict content security policy: sign-in, passkey registration, bootstrap, sessions and devices",
         "Rate limits per IP prefix and account (AD-0011 section 7); audit of sign-in, session and device events",
-        "Feature availability (ArcForges-Design AD-0021 section 13a): port the entitlement resolver, snapshots and grants from C# to Go and PostgreSQL with parity tests replaying the C# test vectors; the plan catalogue as configuration, with development fixtures (tests and the acceptance environment's attributable test identities) distinct from production settings, which stay unset until the owner decides prices, trials, node limits and traffic allowances (H-07); audited operator grants requiring a HUMAN step-up; official-hosted mode gates center-mediated node connectivity, execution, monitoring and control, and MCP access behind an active subscription entitlement, with no permanent free hosted-node allowance, while sign-in, account, billing, security and recovery stay ungated; self-hosted mode needs no official subscription and applies a built-in default enabling the available self-hostable capabilities, with optional operator-configured feature and resource limits; the gate runs after authentication, device ownership, authorization, AGENT/HUMAN separation and audit, never instead of them"
+        "Feature availability (ArcForges-Design AD-0021 section 13a): port the entitlement resolver, snapshots and grants from C# to Go and PostgreSQL with parity tests replaying the C# test vectors; the plan catalogue as configuration, with development fixtures (tests and the acceptance environment's attributable test identities) distinct from production settings, which stay unset until the owner decides prices, trials, node limits and traffic allowances (H-07); audited operator grants requiring a HUMAN step-up, each naming its account, features, reason and expiry, with catalogue-wide or unbounded grants refused in production configuration; the feature keys center.nodes, center.execute, remote.view, remote.control, center.mcp and push (AD-0021 section 13a); official-hosted mode gates center-mediated node connectivity, execution, monitoring and control, and MCP access behind an active subscription entitlement, with no permanent free hosted-node allowance, while sign-in, account, billing, security and recovery stay ungated; self-hosted mode needs no official subscription and applies a built-in default enabling the available self-hostable capabilities, with optional operator-configured feature and resource limits; the gate runs after authentication, device ownership, authorization, AGENT/HUMAN separation and audit, never instead of them"
       ],
       "out_of_scope": [
         "Recovery, deletion, export and security activity (AF-ID-02)",
@@ -2036,9 +2036,10 @@
         "Account A's session cannot list, rename or revoke account B's sessions or devices",
         "mobile.limited sessions are refused for medium and high actions until step-up (T-19)",
         "Revoking a device refuses its node credential on the next call",
-        "In official-hosted mode an account without an entitlement signs in and manages its account, security and recovery, and is refused every gated feature; missing or invalid plan configuration enables nothing gated",
+        "In official-hosted mode an account without an entitlement signs in and manages its sessions, devices and security settings (the essential operations this task delivers), and is refused every gated feature; missing or invalid plan configuration enables nothing gated",
         "In self-hosted mode the built-in default enables the self-hostable capabilities without any official subscription, and an operator-configured limit is enforced",
-        "The Go entitlement resolver passes every C# test vector; development fixtures cannot be loaded in production configuration"
+        "The Go entitlement resolver passes every C# test vector; development fixtures cannot be loaded in production configuration",
+        "An operator grant without a reason or an expiry, or a catalogue-wide grant in production configuration, is refused and audited"
       ],
       "verification": {
         "author": [
@@ -2329,7 +2330,7 @@
       "objective": "Keep each signed-in node connected to its center over an outbound WebSocket carrying relay.v1 Protobuf frames, and let authorized callers submit, wait for, read the output of, list and cancel tasks on an explicitly selected node through the center, without duplicate execution or silent loss.",
       "scope": [
         "Contracts (additive v1): relay.v1 call and result frames (call ID, deadline, method, payload, ArcError), each call signed by the center with the ES256 command-signing key (key ID, target node, caller principal and origin, command ID, method, request digest, expiry of at most 5 minutes) and each result signed with the node key (AD-0021 section 10); fleet.v1 routed task methods naming node_id and carrying command IDs",
-        "Center: the node hub (authenticated upgrade with the node credential, then the feature-availability gate for center-mediated connectivity, one connection per node, heartbeats, backpressure, bounded in-flight calls), routing with deadlines, receipts for idempotency, routing records without specifications or output, audit, node presence; FleetService ListNodes, GetNode, RenameNode and RevokeNode; the Worker passes the node WebSocket upgrade through a registered route with its admission policy",
+        "Center: the node hub (authenticated upgrade with the node credential, then the feature-availability gate for center-mediated connectivity (center.nodes; a lapsed subscription closes the connection at the next entitlement check), one connection per node, heartbeats, backpressure, bounded in-flight calls), routing with deadlines, receipts for idempotency, routing records without specifications or output, audit, node presence; FleetService ListNodes, GetNode, RenameNode and RevokeNode; the Worker passes the node WebSocket upgrade through a registered route with its admission policy",
         "Node: outbound connection with jittered backoff and credential refresh; verification of the center's signature, target and expiry (±120 s skew) against the center keys received at enrollment and refresh, before policy; dispatch to the existing TaskService with the origin and caller identity the center verified (HUMAN through a client, AGENT through MCP); the local policy for center-routed callers; deduplication by command ID; output by offset",
         "CLI: arcforges run [--node <name or id>] -- <command> through the center (default: this node), tasks, wait, output and cancel through the center; arcforges run --local stays a labelled diagnostic, bounded as AD-0021 section 5 states: the node's local TaskService.SubmitTask accepts ordinary submissions only from local callers of HUMAN origin (AGENT and SCRIPT origins refused), and records such tasks as local-diagnostic",
         "Failure behaviour of AD-0021 section 11: offline node refusal, center restart, network loss, retry after an uncertain submission, revocation closing the channel"
@@ -5394,7 +5395,8 @@
       "requirements": [
         "R-OPS-001",
         "R-OPS-004",
-        "R-AUTH-004"
+        "R-AUTH-004",
+        "R-CTR-017"
       ],
       "deliverables": [
         "Account lifecycle"
@@ -5402,7 +5404,8 @@
       "acceptance": [
         "Deletion purges every table on the retention schedule",
         "Device revocation cascades",
-        "Export contains the account's data"
+        "Export contains the account's data",
+        "In official-hosted mode recovery, deletion, export and security activity are available to an account without a subscription (R-CTR-017)"
       ],
       "verification": {
         "author": [
@@ -5915,7 +5918,8 @@
         "R-OPS-002",
         "R-OPS-003",
         "R-COM-003",
-        "R-CLOUD-007"
+        "R-CLOUD-007",
+        "R-CTR-017"
       ],
       "deliverables": [
         "Relay"
@@ -5924,7 +5928,8 @@
         "Closed loop against a local Go center with a real node: snapshot, deltas, resume, reset, grant refresh, close codes",
         "No command lines or output leave the node by default",
         "A kill switch degrades to summaries; ladder step 2 closes existing connections with 4429 and nodes back off",
-        "Summaries carry every field the node knows that W-40, W-41 and A-03 to A-05 show; information no client reports is labelled unknown (R-CLOUD-007)"
+        "Summaries carry every field the node knows that W-40, W-41 and A-03 to A-05 show; information no client reports is labelled unknown (R-CLOUD-007)",
+        "In official-hosted mode monitoring is gated by remote.view after authentication and authorization, and self-hosted mode applies its default (R-CTR-017)"
       ],
       "verification": {
         "author": [
@@ -6280,7 +6285,8 @@
         "docs/decisions/AD-0021-central-access-go-center.md"
       ],
       "requirements": [
-        "R-COM-001"
+        "R-COM-001",
+        "R-CTR-017"
       ],
       "deliverables": [
         "Web commerce"
@@ -6288,7 +6294,8 @@
       "acceptance": [
         "FakePaddle closed loops for every lifecycle state, including payment failure and refund",
         "Webhook replays are deduplicated",
-        "sales_open=false shows Coming soon"
+        "sales_open=false shows Coming soon",
+        "In official-hosted mode an account without a subscription can read the catalogue, start a checkout and manage billing (R-CTR-017)"
       ],
       "verification": {
         "author": [
