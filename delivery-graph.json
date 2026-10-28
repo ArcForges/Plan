@@ -2051,10 +2051,12 @@
       "deliverables": [
         "Identity and device endpoints",
         "Center sign-in pages",
-        "Identity schema"
+        "Identity schema",
+        "Feature availability (entitlement resolver, gate, operator grants)",
+        "Contracts device and session products and the WebBrowserSession document"
       ],
       "acceptance": [
-        "A real browser on the Windows host (Playwright Chromium with a virtual WebAuthn authenticator, labelled as such) registers a passkey through the bootstrap link and signs in against a local center on real PostgreSQL; the e-mail-code flow passes in closed loop with FakeMailSender",
+        "A real browser on the Windows host (Playwright Chromium with a virtual WebAuthn authenticator, labelled as such) registers a passkey through the bootstrap link and signs in against the deployed acceptance center (proof.arcforges.com, on real PostgreSQL) after merge, or a local center where one is reachable; the e-mail-code flow passes in closed loop with FakeMailSender",
         "Refresh-token reuse revokes the session family (real PostgreSQL)",
         "Account A's session cannot list, rename or revoke account B's sessions or devices",
         "mobile.limited sessions are refused for medium and high actions until step-up (T-19)",
