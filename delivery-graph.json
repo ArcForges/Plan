@@ -1995,6 +1995,7 @@
             "go/**",
             "public/proto/**",
             "internal/proto/**",
+            "public/http/**",
             "eng/**",
             ".github/**",
             "docs/**",
@@ -2004,7 +2005,9 @@
             "NOTICE",
             "README.md",
             "AGENTS.md",
-            "CONTRIBUTING.md"
+            "CONTRIBUTING.md",
+            "src/public/dotnet/**",
+            ".gitleaks.toml"
           ]
         }
       ],
@@ -2013,10 +2016,11 @@
       ],
       "objective": "Implement accounts and sign-in on the Go center: passkeys, e-mail codes through a provider adapter, an owner bootstrap for self-hosted and acceptance centers, cookie and native-bearer sessions with refresh rotation and reuse detection, step-up, device listing, renaming and revocation, and the center's own sign-in pages; port the identity core's domain rules from C#.",
       "scope": [
-        "PostgreSQL identity and device schemas from the D1 model, with the product IDs arcforges-node and arcforges-mobile as an ordinary migration",
-        "IdentityService endpoints on the reused publicapi.v1 contract: WebAuthn registration and authentication with a maintained, admitted Go library; e-mail codes through the provider adapter (Postmark, Amazon SES fallback) with FakeMailSender in tests",
+        "PostgreSQL identity and device schemas from the D1 model, with the product IDs arcforges-node, arcforges-mobile and arcforges-web (ArcForges-Design AD-0021 section 7) as an ordinary migration",
+        "Contracts (additive): the device and session product validations admit arcforges-node, arcforges-mobile and arcforges-web; a new closed WebBrowserSession HTTP document (public/http/v1/web-browser.schema.json, routes /session/v1/web/*) mirrors the frozen BrowserSession document with arcforges-web admitted for the center's browser sessions, while the frozen CON.07 documents (browser.schema.json, native-auth.schema.json) stay unchanged under the later-services window",
+        "IdentityService endpoints on the reused publicapi.v1 contract: WebAuthn registration and authentication with a maintained, admitted Go library; e-mail codes through the provider adapter (Postmark, Amazon SES fallback) with FakeMailSender in tests; the live adapters come last in the task, and live delivery stays H-19 and AR-14",
         "Owner bootstrap: a one-time token whose SHA-256 is deployment configuration creates the first account and its first passkey, refused once an account exists or after expiry",
-        "Sessions: cookie sessions with CSRF and Origin checks; native-bearer sessions with refresh rotation and reuse detection that revokes the family; scopes account, mobile.limited, node, push, automation and agent (agent grants issued by AF-CTR-07)",
+        "Sessions: cookie sessions with CSRF and Origin checks; native-bearer sessions with refresh rotation and reuse detection that revokes the family; scopes account, mobile.limited, node, push and automation; agent grants are AF-CTR-07's own records, bound to their AI client and account (AD-0021 section 7)",
         "Step-up; session listing and revocation; DeviceService List, Rename and Revoke, revoking the device's node credential and agent grants",
         "Center-served pages without external assets and with a strict content security policy: sign-in, passkey registration, bootstrap, sessions and devices",
         "Rate limits per IP prefix and account (AD-0011 section 7); audit of sign-in, session and device events",
