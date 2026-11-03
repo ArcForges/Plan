@@ -5541,7 +5541,8 @@
         ]
       },
       "fakes_allowed": [
-        "FakeMailSender (e-mail provider)"
+        "FakeMailSender (e-mail provider)",
+        "Virtual WebAuthn authenticator (platform or roaming authenticator)"
       ],
       "future_validation": [],
       "acceptance_register": [
