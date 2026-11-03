@@ -29,7 +29,7 @@ Real-world validation that cannot run at development stage, and the human prereq
 | AR-11 | ARM64 hardware runs (win-arm64, linux-arm64) | No ARM64 host | An ARM64 Windows device and an ARM64 Linux host | AF-REPO-01 (builds), AF-ACC-01 | Open |
 | AR-12 | Bare-metal Linux with headless lingering; other distributions (Ubuntu 22.04/24.04) and older systemd degrade paths | No bare-metal Linux host or other distribution is available | Linux hosts with those distributions | AF-EXEC-02 | Open |
 | AR-13 | Package-manager and plugin publication: winget, Scoop bucket, apt repository, Claude Code marketplace, Codex plugin | Publication is outward-facing and needs accounts | H-04, H-05; user approval to publish | AF-DIST-02, AF-AI-02 | Open |
-| AR-14 | Live transactional e-mail (account security notices) | Live mail excluded at development stage (user decision 2026-10-10) | H-19 | AF-CTR-03 (AF-ID-01 superseded) | Open |
+| AR-14 | Live transactional e-mail: a sign-in code, and once AF-ID-02 sends them an account security notice, reach a real inbox | Live mail excluded at development stage (user decision 2026-10-10); no account can hold an e-mail identity before AF-ID-02 | H-19; AF-ID-02 delivered | AF-CTR-03 (the adapters; AF-ID-01 superseded), AF-ID-02 (in-product) | Open |
 | AR-15 | Real-world multi-day agent workload trial with Claude Code and Codex sessions in parallel on the workstation | User acceptance activity | The user's real projects | AF-ACC-01 | Open |
 | AR-16 | Optional privileged features: Windows machine-wide service mode; Linux I/O control in a privileged native Linux install | Needs administrator or root installs by the user | User-performed privileged install | AF-DIST-01; AF-WSL-01 (superseded: its privileged WSL guest leg was dropped, ArcForges-Design AD-0018) | Open |
 | AR-17 | Doctor host-posture check on a standard Windows account, and on a machine with Administrator protection switched on (Windows 11, security-baseline or device policy) | No venue offers a standard account (as for AR-02: the product owner's decision of 2026-10-10, second-account checks are procedure only and never re-asked), and none has Administrator protection switched on: it is off by default, and switching it on is a device policy change followed by a restart (Design verification register V-W08) | A user-provided Windows 11 machine or VM with a standard account and an administrator account, Administrator protection switched on (device policy and restart; not advised on Hyper-V devices, V-W08) | AF-DIAG-01 | Open |
@@ -62,7 +62,7 @@ Real-world validation that cannot run at development stage, and the human prereq
 | H-16 | Production cloud key material generated and stored as Cloudflare secrets: command signing, entitlement token and relay HMAC keys, and a bucket-scoped R2 S3 API credential for presigned support uploads (a Node Issuing CA only with roadmap RM-01) | AF-PROD-01 | AF-PROD-01 only | Development uses test keys and dark deploys need none; the coordinator never handles key material. Request it, with H-05, H-06 and H-20, when AF-ACC-01 starts |
 | H-17 | A Play-enabled Android emulator image signed in with a licence-test account | AF-AND-03 (optional real billing smoke), AR-06 | Nothing (optional) | Development uses `FakeBillingClient` |
 | H-18 | Docker on the workstation (optional), for the Cloud repository's `test:container` diagnostics | Cloud container diagnostics (optional; AF-CLD-01 superseded by [AD-0021](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0021-central-access-go-center.md)) | Nothing (optional; never a gate) | Never a gate; the Linux host's Docker serves the Cloud image and PostgreSQL integration checks, and the workstation's WSL-backed `docker` shim is never a venue |
-| H-19 | Transactional e-mail provider account (Postmark, with Amazon SES as fallback), sending domain with SPF, DKIM and DMARC records, and API credentials in Cloud secrets | AF-CTR-03 (live only; AF-ID-01 superseded), AF-PROD-01 (identity surface), AR-14 | AF-PROD-01 (the identity surface sends sign-in codes and security notices); nothing at development stage (live delivery: AR-14) | Development uses `FakeMailSender` |
+| H-19 | Transactional e-mail provider account (Postmark, with Amazon SES as fallback), sending domain with SPF, DKIM and DMARC records, and API credentials in Cloud secrets | AF-CTR-03 (live only; AF-ID-01 superseded), AF-ID-02 (live only), AF-PROD-01 (identity surface), AR-14 | AF-PROD-01 (the identity surface sends sign-in codes and security notices); nothing at development stage (live delivery: AR-14) | Development uses `FakeMailSender`. The live adapters (Postmark over HTTPS, Amazon SES over SMTP) exist and are tested MOCKED (AF-CTR-03, Cloud #127); e-mail is disabled in every environment and no mail secret exists (checked 2026-11-03). The acceptance names are `MAIL_POSTMARK_TOKEN_ACCEPTANCE`, `MAIL_SMTP_USERNAME_ACCEPTANCE` and `MAIL_SMTP_PASSWORD_ACCEPTANCE` (create none until the coordinator asks; nothing reads them yet); production naming, the production sender's isolation (a Postmark Server token can send as any confirmed sender of its account) and how production mail leaves are AF-PROD-01 decisions |
 | H-20 | Approval to run the Cloud repository's provisioning script against the production account, creating the PostgreSQL database and roles (Neon), the R2 bucket with its lifecycle rules and the Queue (or the user creates them and supplies their IDs) | AF-PROD-01 | AF-PROD-01 only | At Cloud `92ba1dc9` only the `proof` environment has these bindings; AF-CTR-02 writes the script and exercises it against the acceptance environment (AF-CLD-01 is superseded by ArcForges-Design AD-0021). Request it, with H-05, H-06 and H-16, when AF-ACC-01 starts |
 | H-21 | A read-only Cloudflare GraphQL Analytics API token stored as a Cloud secret, for the daily billing reconciliation (Design 14 §7.5) | AF-OPS-01 (optional) | Nothing (optional; without it reconciliation reports off) | The user creates and stores it; the coordinator never handles it |
 | H-22 | The Linux MCP server and its host (ArcForges-Design AD-0019 §1–3): a standard MCP server, usable by Claude Code and Codex alike, on an independent native Linux host (a VPS or another suitable Linux environment, never local WSL), with a systemd user manager, cgroups v2 delegation of `cpu`, `memory` and `pids` to the user, the repositories' pinned toolchains, Docker builds that reach NuGet without TLS interception, and a file channel from the workstation for Git bundles (AD-0019 §3; *amended 2026-10-22:* DesktopPlatform's native hand-off archive is withdrawn because, since DesktopPlatform PR #195, each leg builds what it verifies from the commit alone; *former text (kept as history):* "a file channel from the workstation for Git bundles and DesktopPlatform's native hand-off archive"; *amended 2026-10-22 by AD-0020:* no file channel is needed, since the host fetches each pushed commit from GitHub; it needs read access to the repositories on GitHub and `gh` with a credential that can write commit statuses, preferably `ARCFORGES_STATUS_TOKEN` limited to commit statuses) | Every Linux leg of every repository (AD-0019 §2), for example AF-RES-01 and AF-SCHED-01 | Delivery (the pre-push verification) of every push in a repository where AD-0019 has merged: with no Linux MCP server no Linux leg can be recorded, so the push is rejected (AD-0019 §5, §8). *Amended 2026-10-22 by AD-0020:* the merge of every PR into `main` instead, which needs the `arcforges/linux` status this host reports | Provisioned and configured by the owner, separately; no repository holds its address, client configuration or credentials. There is no transition venue: neither local WSL nor an agent's own sandbox substitutes. *Superseded 2026-10-21 (kept as history):* under AD-0018 the Claude Code Cloud Linux environment ran portable Linux legs and the owner's WSL Debian distribution served as the interim real Linux host |
@@ -162,3 +162,38 @@ Procedure if existing evidence is supplied or a natural recurrence is observed d
    or start one automatically. Existing nonsecret evidence may instead establish the cause without such an experiment.
 5. Close only with a proven cause, a discriminating regression and reviewed repair when required, and the owning repository's final
    pushed-head native checks. Additional silent or isolated passing runs alone never close this entry.
+
+### AR-14: live transactional e-mail
+
+Prepared by AF-CTR-03 (the adapters, Cloud #127); the in-product part needs AF-ID-02, which owns e-mail identity enrollment and the
+account security notices.
+
+Procedure (Cloud `docs/center.md`, "Mail verification and the opt-in live tests", and `docs/deployment.md`, "Mail"):
+1. **Provider readiness** (the owner, H-19): the sending domain shows verified in the provider's console (DKIM, Return-Path, SPF,
+   DMARC), and a test message sent from the console arrives.
+2. **Adapter send** (the owner): the opt-in Go test of the real adapter, `TestLiveSendThroughPostmark` or `TestLiveSendThroughSMTP`,
+   which skips unless its switch, its confirmation and its gates are set, and prints neither the credential nor the address. The
+   coordinator records the result as REAL with the commit it ran at.
+3. **In product**: after AF-ID-02 and a reviewed change that enables a provider on the acceptance environment, an account enrolls an
+   e-mail identity and signs in with a code that reaches its inbox, and, once AF-ID-02 sends them, a security notice reaches the same
+   inbox.
+
+AR-14 stays Open until parts 2 and 3 have a result.
+
+Proven now (MOCKED provider): both adapters against local doubles; the sign-in, resend and step-up code loops through each adapter on
+real PostgreSQL; the failure classes, the bounded wait, the drain at shutdown and no refund of a failed send. REAL: Postmark's API with
+its public test token (nothing is delivered) and an Amazon SES SMTP endpoint's TLS handshake up to AUTH. No security notice exists yet.
+
+Residual risk: delivery to an inbox and the sender domain's alignment, the provider account's state (Postmark approval, the SES
+sandbox), whether a Cloudflare Container reaches SMTP ports, real latency and failures, and the isolation of a production sender from
+an acceptance token inside one Postmark account.
+
+### AR-23: a real platform authenticator
+
+Prepared by AF-CTR-03 (Cloud #121). Procedure: Cloud `docs/ar-23-owner-procedure.md` (the owner, on the Windows workstation, against
+the acceptance environment: `node eng/verification/browser/acceptance.ts --real-authenticator` creates a Windows Hello passkey, signs
+in with it and prints `PASSED`).
+
+Proven now: the passkey ceremonies of the account pages in a real Chromium against the hosted acceptance center, with Chromium's
+virtual authenticator (MOCKED hardware); the relying party with Cloud's Go test authenticator. Residual risk: a platform
+authenticator's own creation options, user verification and assertion; other browsers, other operating systems and phones.
