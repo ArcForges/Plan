@@ -1960,7 +1960,7 @@
       "id": "AF-CTR-03",
       "title": "Accounts, sessions and devices on the center",
       "milestone": "MC",
-      "state": "delivered",
+      "state": "complete",
       "repositories": [
         {
           "repo": "Cloud",
