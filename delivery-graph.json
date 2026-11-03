@@ -1960,7 +1960,7 @@
       "id": "AF-CTR-03",
       "title": "Accounts, sessions and devices on the center",
       "milestone": "MC",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "Cloud",
@@ -2106,12 +2106,36 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. [delivered] Delivered; complete waits on the E4-INTERNAL Cloud repair (arc.Internal() still answers INTERNAL/internal with UNKNOWN and AFTER_TIME, which the Contracts arcError rule rejects); AR-14 and AR-23 stay open in the acceptance register",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/Contracts/pull/121",
+          "https://github.com/ArcForges/Cloud/pull/118",
+          "https://github.com/ArcForges/Cloud/pull/120",
+          "https://github.com/ArcForges/Cloud/pull/121",
+          "https://github.com/ArcForges/Cloud/pull/122",
+          "https://github.com/ArcForges/Cloud/pull/123",
+          "https://github.com/ArcForges/Cloud/pull/124",
+          "https://github.com/ArcForges/Cloud/pull/127",
+          "https://github.com/ArcForges/Cloud/pull/128"
+        ],
+        "merges": [
+          "Contracts@62ccef164ba54b91313a7de2f086aab811aaf1c6",
+          "Cloud@d4e111091535b3f59ce652eb1cf21c552955794b",
+          "Cloud@5ee9ea199ebdf48a2283c0116b437d9aeecde9d3",
+          "Cloud@204f47aefe163bcf47674e4a1063ed3e13be4cae",
+          "Cloud@2f2a3b3ff87599d434d8e084e864d579a4047eda",
+          "Cloud@48bcbf29b3985b947ab9be395a7dd87409070364",
+          "Cloud@025eb911fffc6193550c59293a627ac58c3beb74",
+          "Cloud@4f7dfe8530cb99540abad56ab686d127bed7b04c",
+          "Cloud@474017f1fc88d22691036debaa6d74e106677824"
+        ],
+        "publications": [
+          "Contracts cohort 1.0.0-ci.416.1 (NuGet, npm) and Go module go/v1.0.0-ci.416.1 at 62ccef1 (run 40776894391)",
+          "Cloud production, dark (center.surfaces none), through the guarded main-push deploy: 0.1.0-ci.459.1 (run 40840154517, migration 0002), 0.1.0-ci.469.1 (40961777198), 0.1.0-ci.474.1 (41094805424), 0.1.0-ci.481.1 (41118664418), 0.1.0-ci.488.1 (41345106329, migration 0003), 0.1.0-ci.493.1 (41449691664), 0.1.0-ci.507.1 (41647205969), 0.1.0-ci.512.1 (41677291716)",
+          "Cloud acceptance environment proof.arcforges.com (protected dispatch): 0.1.0-ci.464.1 (run 40840933320), 0.1.0-ci.470.1 (40962532001), 0.1.0-ci.479.1 (41095773819), 0.1.0-ci.482.1 (41118713200), 0.1.0-ci.489.1 (41345150321), 0.1.0-ci.494.1 (41449707044), 0.1.0-ci.509.1 (41650498392), 0.1.0-ci.513.1 (41677346625); surfaces identity,pages,operations since 0.1.0-ci.494.1"
+        ],
         "ledger": null
       },
       "order": 17
@@ -2120,7 +2144,7 @@
       "id": "AF-CTR-04",
       "title": "Node sign-in and node credentials",
       "milestone": "MC",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Cloud",
@@ -2146,7 +2170,12 @@
             "README.md",
             "AGENTS.md",
             "CONTRIBUTING.md",
-            "SECURITY.md"
+            "SECURITY.md",
+            ".gitleaks.toml",
+            ".dockerignore",
+            "biome.json",
+            "tsconfig.json",
+            "deploy/**"
           ]
         },
         {
@@ -2182,7 +2211,10 @@
             "NOTICE",
             "README.md",
             "AGENTS.md",
-            "CONTRIBUTING.md"
+            "CONTRIBUTING.md",
+            "public/http/**",
+            "src/public/dotnet/**",
+            ".gitleaks.toml"
           ]
         }
       ],
@@ -2197,12 +2229,20 @@
         "Node: the center setting (official default, overridable, persisted); a CloudLink component storing the node credential through DesktopPlatform Security.Secrets (Windows Credential Manager; Linux Secret Service or the 0600 file reported as FILE_PERMISSIONS_ONLY), refreshing before expiry and turning revocation into the signed-out state; AccountService on the local endpoint (GetAccountStatus, BeginSignIn, GetSignInFlow, CancelSignIn, SignOut)",
         "CLI: arcforges center set <url>, arcforges login [--device-code], arcforges logout, arcforges account status",
         "Linux secret-store tests use the isolated backend; real OS secret-store integration only on the isolated host H-23",
-        "Keys for the signed center channel (ArcForges-Design AD-0021 section 10): the node key generated at first sign-in and stored as the node's own key (CNG user key on Windows, a 0600 file in the data root on Linux, file-backed under --test-mode; Design 02 section 4), its public key registered by CompleteNodeSignIn and on device-code approval, and the center's public signing keys delivered and rotated with CompleteNodeSignIn and RefreshNodeSession (additive v1 fields where needed)"
+        "Keys for the signed center channel (ArcForges-Design AD-0021 section 10): the node key generated at first sign-in and stored as the node's own key (CNG user key on Windows, a 0600 file in the data root on Linux, file-backed under --test-mode; Design 02 section 4), its public key registered by CompleteNodeSignIn and on device-code approval, and the center's public signing keys delivered and rotated with CompleteNodeSignIn and RefreshNodeSession (additive v1 fields where needed)",
+        "First, before the Contracts part C0: the E4-INTERNAL repair in Cloud (arc.Internal() answers INTERNAL/internal with effect UNKNOWN and retry NEVER, the refusal carries a reconciliation operation, and the arctest.Violations exemption is removed; ArcForges-Design errors.md, Delivered against target), a separate reviewed repair PR recorded in this task's evidence (execution-policy 1.6)",
+        "Center: SignOutNode, the eleventh NodeEnrollmentService method (the node signs itself out and the center revokes its credential; a restricted account's node may call it), with the additive key, credential-expiry and proof-of-possession fields that the Contracts part C0 freezes; the ArcForges-Design copies of fleet.proto and node.proto follow C0",
+        "Surfaces fleet (node enrollment and the pages /connect and /activate) and mobile (the mobile native authorization), dark in production; each is enabled on the acceptance environment by a reviewed change for its hosted run",
+        "Mobile native authorization (ArcForges-Design reuse-map section 4 and android.md): a new closed Contracts document under public/http/v1 for the Android Custom Tab sign-in, admitting the product arcforges-mobile, with browser PKCE on the center's own authorization page and the verified app-link redirect https://arcforges.com/app/callback; the center serves it, /app/callback and /.well-known/assetlinks.json behind the mobile surface, configured by ARCFORGES_CENTER_ANDROID_APP, on the acceptance environment first (its custom domain covers the host root); the production Worker routes for those two paths are added by AF-PROD-01 when it activates mobile, so production stays dark; the frozen version-1 native documents stay unchanged; the Android client is AF-AND-01",
+        "Before the first gated operation (Cloud docs/center-entitlement.md, What waits for later tasks): the definitions-activation fix (store-1) and the snapshot clock floor, the cause of a gate failure logged and audited (gate-3), the composition wirings pinned in both modes (gate-2), a per-account resource control in front of every gated row, and every row that carries a Feature checked against feature.OperationKeys"
       ],
       "out_of_scope": [
         "Phone pairing (AF-CLD-02)",
         "The node channel (AF-CTR-05)",
-        "Desktop pages (AF-DESK-01)"
+        "Desktop pages (AF-DESK-01)",
+        "The Android client and its emulator tests (AF-AND-01)",
+        "Production activation of the fleet and mobile surfaces, and the production app-link routes (AF-PROD-01)",
+        "Generation and custody of the center's signing keys, key-authenticated recovery and client-chosen key rotation (a later task decides)"
       ],
       "design_refs": [
         "docs/decisions/AD-0021-central-access-go-center.md",
@@ -2210,14 +2250,23 @@
         "docs/architecture/10-cloud.md",
         "docs/contracts/proto/arcforges/fleet/v1/fleet.proto",
         "docs/contracts/proto/arcforges/node/v1/account.proto",
-        "docs/experience/cli.md"
+        "docs/experience/cli.md",
+        "docs/experience/android.md",
+        "docs/contracts/reuse-map.md",
+        "docs/contracts/errors.md",
+        "docs/architecture/11-security-privacy.md",
+        "docs/architecture/16-testing-strategy.md",
+        "docs/experience/web.md",
+        "docs/data/cloud-store.md"
       ],
       "requirements": [
         "R-AUTH-001",
         "R-AUTH-003",
         "R-OPS-001",
         "R-CTR-002",
-        "R-CTR-003"
+        "R-CTR-003",
+        "R-AUTH-002",
+        "R-CTR-017"
       ],
       "deliverables": [
         "Node enrollment endpoints and pages",
@@ -2225,11 +2274,12 @@
         "CLI account commands"
       ],
       "acceptance": [
-        "A real Windows node and a real native Linux node sign in with a device code against a local center on real PostgreSQL, approved in a real browser session; the Windows node also signs in through the browser PKCE loopback flow",
+        "A real native Linux node signs in with a device code against a local center on real PostgreSQL, and a real Windows node signs in with a device code and through the browser PKCE loopback flow against the acceptance center (proof.arcforges.com, on real PostgreSQL); each approval is made in a real browser session (Chromium with a virtual WebAuthn authenticator, labelled as such)",
         "A reused code revokes the flow; an expired device code and a sixth wrong user code are refused",
-        "The Windows credential is stored in Credential Manager and the Linux credential in the isolated backend; refresh rotates it; a revoked device leaves the node signed out",
+        "The Windows credential is stored in Credential Manager (evidence: the hosted OS secret-store tier run or the owner's opt-in run; when neither exists, recorded as not run in the acceptance register) and the Linux credential in the isolated backend; refresh rotates it; a revoked device leaves the node signed out",
         "A node configured for a self-hosted center never contacts the official endpoint",
-        "The node key is generated once and survives restarts; its public key is on the center's node record; the node holds the center's current and next public keys after sign-in and refresh; under --test-mode no OS key store is touched"
+        "The node key is generated once and survives restarts; its public key is on the center's node record; the node holds the center's current and next public keys after sign-in and refresh; under --test-mode no OS key store is touched",
+        "The mobile native authorization passes in closed loop on the center (its HTTP routes, and its authorization page in a real browser with a virtual authenticator, against a local center on real PostgreSQL); the emulator part is AF-AND-01's"
       ],
       "verification": {
         "author": [
@@ -2247,7 +2297,11 @@
         ]
       },
       "fakes_allowed": [
-        "ScriptedBrowser (system browser) where a real browser session cannot run"
+        "ScriptedBrowser (system browser) where a real browser session cannot run",
+        "Virtual WebAuthn authenticator (Cloud's Go test authenticator and Chromium's DevTools virtual authenticator)",
+        "FakeCenter (the center, in node tests only; conformance-tested against exchanges captured from a real center)",
+        "NodeProbe (the node, in center tests and hosted runs: center/internal/nodetest and center/cmd/node-probe, never in the image)",
+        "IsolatedSecretStore (the OS secret store, above the secret-store adapter)"
       ],
       "future_validation": [],
       "acceptance_register": [],
@@ -2263,6 +2317,11 @@
         {
           "risk": "Code or flow replay",
           "mitigation": "Single-use codes; reuse revokes the flow",
+          "owner": "AF-CTR-04"
+        },
+        {
+          "risk": "The Windows-to-Linux data path between the hosts is unverified",
+          "mitigation": "Windows-node evidence runs against the acceptance center (proof); a relay is optional and never an acceptance dependency",
           "owner": "AF-CTR-04"
         }
       ],
@@ -2298,7 +2357,10 @@
             "NOTICE",
             "README.md",
             "AGENTS.md",
-            "CONTRIBUTING.md"
+            "CONTRIBUTING.md",
+            "public/http/**",
+            "src/public/dotnet/**",
+            ".gitleaks.toml"
           ]
         },
         {
@@ -2358,7 +2420,8 @@
         "Center: the node hub (authenticated upgrade with the node credential, then the feature-availability gate for center-mediated connectivity (center.nodes; a lapsed subscription closes the connection at the next entitlement check), one connection per node, heartbeats, backpressure, bounded in-flight calls), routing with deadlines, receipts for idempotency, routing records without specifications or output, audit, node presence; FleetService ListNodes, GetNode, RenameNode and RevokeNode; the Worker passes the node WebSocket upgrade through a registered route with its admission policy",
         "Node: outbound connection with jittered backoff and credential refresh; verification of the center's signature, target and expiry (±120 s skew) against the center keys received at enrollment and refresh, before policy; dispatch to the existing TaskService with the origin and caller identity the center verified (HUMAN through a client, AGENT through MCP); the local policy for center-routed callers; deduplication by command ID; output by offset",
         "CLI: arcforges run [--node <name or id>] -- <command> through the center (default: this node), tasks, wait, output and cancel through the center; arcforges run --local stays a labelled diagnostic, bounded as AD-0021 section 5 states: the node's local TaskService.SubmitTask accepts ordinary submissions only from local callers of HUMAN origin (AGENT and SCRIPT origins refused), and records such tasks as local-diagnostic",
-        "Failure behaviour of AD-0021 section 11: offline node refusal, center restart, network loss, retry after an uncertain submission, revocation closing the channel"
+        "Failure behaviour of AD-0021 section 11: offline node refusal, center restart, network loss, retry after an uncertain submission, revocation closing the channel",
+        "Contracts follow-up window before AF-PROD-01 (a separate Contracts PR of this task): regenerate the error-catalogue fixture (af-con-01-error-catalogue.json) from ArcForges-Design errors.md with the extended pair form; tighten the e-mail fields' maxLength from 320 to 254 (the center's address rule); decide ResponseMeta on the Worker's generated replies; define the WebBrowserSession error body"
       ],
       "out_of_scope": [
         "File and workspace operations (AF-CTR-06)",
@@ -2374,7 +2437,9 @@
         "docs/contracts/proto/arcforges/relay/v1/relay.proto",
         "docs/contracts/proto/arcforges/fleet/v1/fleet.proto",
         "docs/architecture/11-security-privacy.md",
-        "docs/state-machines/machines.json"
+        "docs/state-machines/machines.json",
+        "docs/contracts/errors.md",
+        "docs/experience/web.md"
       ],
       "requirements": [
         "R-CLOUD-002",
@@ -5391,8 +5456,33 @@
         {
           "repo": "Cloud",
           "paths": [
+            "center/**",
+            "hello-go/**",
+            "worker/**",
+            "wrangler.json",
+            "Dockerfile",
+            "eng/**",
+            ".github/**",
+            ".githooks/**",
+            "docs/**",
+            "tests/**",
+            "tooling/**",
+            "third-party/**",
+            "storage/**",
             "src/**",
-            "tests/**"
+            "tools/**",
+            "package.json",
+            "package-lock.json",
+            "NOTICE",
+            "README.md",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md",
+            ".gitleaks.toml",
+            ".dockerignore",
+            "biome.json",
+            "tsconfig.json",
+            "deploy/**"
           ]
         }
       ],
@@ -5401,7 +5491,7 @@
       ],
       "objective": "On the Go center and PostgreSQL (ArcForges-Design AD-0021): Complete the account lifecycle on the reused contracts: recovery, deletion with grace, data export, device registry and security activity.",
       "scope": [
-        "Recovery codes and recovery flow; e-mail change",
+        "Recovery codes and recovery flow; e-mail identity enrollment (a signed-in account adds an e-mail address as a sign-in and step-up method after a step-up, proved by a code sent to that address; no production code creates an e-mail identity before this task) and e-mail change; the account security notices of ArcForges-Design 14 section 4 (node revoked, new device sign-in). This task is outside the implementation range authorized on 2026-10-28 (AF-CTR-01 to AF-CTR-11): recorded, not started; until it is delivered no real account can be mailed",
         "RequestAccountDeletion with the 30-day grace, cancellation and purge job",
         "DataService export jobs",
         "DeviceService Register for phones and the remaining cascade (List, Rename and Revoke are delivered by AF-CTR-03); one device per node and per phone",
@@ -5415,7 +5505,8 @@
         "docs/architecture/10-cloud.md",
         "docs/architecture/11-security-privacy.md",
         "docs/data/cloud-store.md",
-        "docs/decisions/AD-0021-central-access-go-center.md"
+        "docs/decisions/AD-0021-central-access-go-center.md",
+        "docs/architecture/14-commercial-operations.md"
       ],
       "requirements": [
         "R-OPS-001",
@@ -5430,7 +5521,9 @@
         "Deletion purges every table on the retention schedule",
         "Device revocation cascades",
         "Export contains the account's data",
-        "In official-hosted mode recovery, deletion, export and security activity are available to an account without a subscription (R-CTR-017)"
+        "In official-hosted mode recovery, deletion, export and security activity are available to an account without a subscription (R-CTR-017)",
+        "A signed-in account enrolls an e-mail identity and then signs in and steps up with e-mail codes, in closed loop with FakeMailSender on real PostgreSQL; the browser channel stays passkey-only unless ArcForges-Design changes it",
+        "A security notice (new device sign-in; node revoked) reaches FakeMailSender on real PostgreSQL"
       ],
       "verification": {
         "author": [
@@ -5448,15 +5541,25 @@
         ]
       },
       "fakes_allowed": [
-        "none"
+        "FakeMailSender (e-mail provider)",
+        "Virtual WebAuthn authenticator (platform or roaming authenticator)"
       ],
       "future_validation": [],
-      "acceptance_register": [],
-      "human_prerequisites": [],
+      "acceptance_register": [
+        "AR-14"
+      ],
+      "human_prerequisites": [
+        "H-19"
+      ],
       "risks": [
         {
           "risk": "Deletion misses data in a module",
           "mitigation": "Per-table retention tests generated from the cloud-store model",
+          "owner": "AF-ID-02"
+        },
+        {
+          "risk": "Live e-mail to a real account is unproven until an e-mail identity can exist",
+          "mitigation": "Closed loop with FakeMailSender here; the live send and the in-product delivery stay AR-14 (H-19)",
           "owner": "AF-ID-02"
         }
       ],
@@ -6479,13 +6582,14 @@
       "depends_on": [
         "AF-CLD-04",
         "AF-CLD-02",
-        "AF-CTR-03"
+        "AF-CTR-03",
+        "AF-CTR-04"
       ],
       "objective": "Sign in on Android (Custom Tab or QR) and watch the fleet live while in the foreground.",
       "scope": [
         "A-01, A-02, A-03, A-04 (view only), A-09, A-10",
         "ViewerSocket, offline and background behaviour",
-        "Debug-only loopback callback for the local stack",
+        "Debug-only private-use scheme callback for the local stack (client arcforges.android.local; ArcForges-Design android.md)",
         "QR library decision (F-C02)",
         "Mobile README and plan updated for the Play channel (C-05)",
         "A-03 disk and agent counts; A-04 Agents section (R-CLOUD-007)"
@@ -6553,7 +6657,7 @@
         }
       ],
       "size": "L",
-      "notes": "",
+      "notes": "Sign-in (A-01) uses the center's mobile native authorization of AF-CTR-04 (Custom Tab, PKCE, the verified app link https://arcforges.com/app/callback in release builds); this task supplies the release package name and signing-certificate fingerprints that the center's assetlinks.json serves.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -7020,7 +7124,10 @@
         "Set the production operating budgets from the cost ceiling so that 31 x (daily budgets + residual) stays within it, and check the ladder configuration (14 section 7)",
         "Add surfaces to FLAGSHIP_SURFACES one at a time through reviewed main-push deploys (identity, fleet_api, node_channel, mcp, support, then push and commerce when their prerequisites exist), each followed by a production smoke check and a verified withdrawal; a surface without its prerequisites stays off and is recorded",
         "Turn on the Web switches public_site, web_account and web_fleet after the user approves the content",
-        "Record the activation evidence and update the acceptance register entries whose prerequisites are now met"
+        "Record the activation evidence and update the acceptance register entries whose prerequisites are now met",
+        "Before the identity surface is enabled: the Cloud E4-INTERNAL repair is merged (INTERNAL/internal never answers AFTER_TIME with UNKNOWN; ArcForges-Design errors.md), AF-CTR-05's Contracts follow-up window has regenerated the error-catalogue fixture from ArcForges-Design errors.md and tightened the e-mail fields to 254 bytes, and AF-PLAT-01's retention sweeps exist (ArcForges-Design cloud-store section 6)",
+        "Decide with the user before production e-mail (H-19): whether mail leaves through an outbound handler that fixes the destination instead of the Container's open egress; how production mail secrets are named and guarded (a separate GitHub environment with a reviewer, or a suffix convention inside the shared cloudflare environment); whether the production sender gets its own Postmark account (a Postmark Server token can send as any confirmed sender of its account)",
+        "Add the production Worker routes arcforges.com/app/* and arcforges.com/.well-known/assetlinks.json (AF-CTR-04 serves both behind the mobile surface) and activate the mobile surface like the others, with the Android release package name and signing-certificate fingerprints (AF-AND-01); production routing does not change before then"
       ],
       "out_of_scope": [
         "Real payments and store purchases (AR-05, AR-06)",
