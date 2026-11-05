@@ -2330,7 +2330,7 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. [delivered] Delivered; complete waits on <PENDING: the coordinator's decision after H3>; AR-08, AR-23 and AR-24 stay open in the acceptance register",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. [delivered] Delivered; complete waits on a later state-only Plan PR, once the Windows OS secret-store tier and X item 1 (the Windows node against proof) have been re-run at ArcForges main 4bc33da or later, because #71 changed CloudLink product code after X and the hosted tier run (both at 978d25d); AR-08, AR-23 and AR-24 stay open in the acceptance register",
       "blocked_by": [],
       "evidence": {
         "prs": [
@@ -2376,8 +2376,8 @@
           "ArcForges@e1055081ec2463cd5220a37596a18851dac99293",
           "ArcForges@fb9901c4f455f6672c2b830909aceed77b6eef89",
           "ArcForges@978d25d600e0ac93a66f7ee0bcea22fa315ef71a",
-          "ArcForges@PENDING71PENDING71PENDING71PENDING71PEND",
-          "ArcForges@PENDING70PENDING70PENDING70PENDING70PEND",
+          "ArcForges@0708e1bccfe883da79a8707ca9140dd2aa869a5e",
+          "ArcForges@4bc33dac6cbaa242a91c206f613f7bffeb1db15c",
           "ArcForges-Design@746618199bf5c7915e074a05caa416fa9dfba6b4",
           "ArcForges-Design@5da245e7e18035ec8f696cd8e6c02b28d80c1a8d"
         ],

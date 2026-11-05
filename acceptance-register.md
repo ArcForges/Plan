@@ -225,7 +225,7 @@ upload key of H-04, which AF-PROD-01 puts in `ARCFORGES_CENTER_ANDROID_APP` when
 `complete`, not delivery, of AF-PROD-01, as H-02 does.
 
 Proven now: REAL center, PostgreSQL, routes and Worker tables (the integration tests), and the 120 contract vectors replayed in
-Go; <PENDING: H3 on proof, REAL Chromium with the MOCKED app and authenticator: the result and its evidence path>. MOCKED: the app (MobileProbe) and the authenticator. NOT PROVEN: App Link verification on a device,
+Go; H3 on proof on 2026-11-05 (logs/evidence/h3-mobile-2026-11-05.md) PASSED in a REAL Chromium with Neon, the Worker and the Container: assetlinks.json and /app/callback, the approve (with a refresh), deny, reuse and wrong-verifier cases, and Google's Digital Asset Links statements:list for the labelled test statement (REAL parser). MOCKED: the app (MobileProbe) and the authenticator. NOT PROVEN: App Link verification on a device,
 the same-host hand-off from a Custom Tab to the app, the fragment in the intent, a real passkey in Chrome for Android, the
 release app identity. Residual risk (Cloud `docs/center-mobile.md`): an app that embeds the page in its own WebView, a center
 that proxies the official pages, and a crashed app's session family that lives until its idle expiry.
