@@ -2330,7 +2330,7 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. [delivered] Delivered; complete waits on a later state-only Plan PR, once the Windows OS secret-store tier and X item 1 (the Windows node against proof) have been re-run at ArcForges main 4bc33da or later, because #71 changed CloudLink product code after X and the hosted tier run (both at 978d25d); AR-08, AR-23 and AR-24 stay open in the acceptance register",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. [delivered] Delivered; complete waits on a later state-only Plan PR recording the re-runs at ArcForges main 4bc33da or later that #71 makes necessary, since it changed CloudLink product code after X, the hosted tier run and the keys rerun (all on 978d25d): the Windows OS secret-store tier (PASSED at 4bc33da, run 42061577006), X item 1, the Windows node against proof (PASSED at 4bc33da, logs/evidence/x-ctr04-2026-11-05/rerun-4bc33da/), and the keys check; AR-08, AR-23 and AR-24 stay open in the acceptance register",
       "blocked_by": [],
       "evidence": {
         "prs": [
@@ -2527,7 +2527,7 @@
       "acceptance": [
         "A real native Linux node, connected to a local center on real PostgreSQL and to the acceptance center (proof.arcforges.com), and a real Windows node, connected to the acceptance center on its real PostgreSQL (the Windows host has no path to a local center without a network change; AF-CTR-04 decision delivery-1), run, wait, stream output, list and cancel tasks submitted through the center by the CLI",
         "The center is killed during a submission: the client's retry with the same command ID executes the task once, the node reconnects, and output resumes by offset",
-        "An offline node is refused with STATE/node_offline (ArcForges-Design errors.md); a revoked node credential closes the channel and refuses new calls while accepted tasks continue at the node",
+        "An offline node is refused with STATE/node_offline (added to ArcForges-Design errors.md by part D0); a revoked node credential closes the channel and refuses new calls while accepted tasks continue at the node",
         "Two callers share one node's admission (queue positions and budgets) and appear with their identities in the task records",
         "The center database holds no command line, environment or output after the suite (inspection test)",
         "Forged, altered, retargeted or expired calls are refused by the node before any effect, and a call delivered after its expiry is never executed late (T-11)",
@@ -7249,6 +7249,7 @@
         "H-01",
         "H-02",
         "H-03",
+        "H-04",
         "H-05",
         "H-06",
         "H-07",
