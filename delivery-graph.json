@@ -2144,7 +2144,7 @@
       "id": "AF-CTR-04",
       "title": "Node sign-in and node credentials",
       "milestone": "MC",
-      "state": "delivered",
+      "state": "complete",
       "repositories": [
         {
           "repo": "Cloud",
