@@ -2300,6 +2300,7 @@
         "Virtual WebAuthn authenticator (Cloud's Go test authenticator and Chromium's DevTools virtual authenticator)",
         "FakeCenter (the center, in node tests only; conformance-tested against exchanges captured from a real center)",
         "NodeProbe (the node, in center tests and hosted runs: center/internal/nodetest and center/cmd/node-probe, never in the image)",
+        "MobileProbe (the Android app, the development stand-in for the center's mobile native authorization, in center tests and hosted runs: center/internal/mobiletest and center/cmd/mobile-probe, never in the image)",
         "IsolatedSecretStore (the OS secret store, above the secret-store adapter)"
       ],
       "future_validation": [],
@@ -6652,7 +6653,7 @@
         },
         {
           "risk": "Verified app links do not work against the local stack",
-          "mitigation": "Debug-only loopback callback; release builds accept only the verified link",
+          "mitigation": "The debug build uses a private-use scheme redirect (local stack only); the release build uses the verified app link and accepts nothing else",
           "owner": "AF-AND-01"
         }
       ],
