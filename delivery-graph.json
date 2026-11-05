@@ -2144,7 +2144,7 @@
       "id": "AF-CTR-04",
       "title": "Node sign-in and node credentials",
       "milestone": "MC",
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "Cloud",
@@ -2304,7 +2304,11 @@
         "IsolatedSecretStore (the OS secret store, above the secret-store adapter)"
       ],
       "future_validation": [],
-      "acceptance_register": [],
+      "acceptance_register": [
+        "AR-08",
+        "AR-23",
+        "AR-24"
+      ],
       "human_prerequisites": [
         "H-23"
       ],
@@ -2326,12 +2330,62 @@
         }
       ],
       "size": "L",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. [delivered] Delivered; complete waits on a later state-only Plan PR recording the re-runs at ArcForges main 4bc33da or later that #71 makes necessary, since it changed CloudLink product code after X, the hosted tier run and the keys rerun (all on 978d25d): the Windows OS secret-store tier (PASSED at 4bc33da, run 42061577006), X item 1, the Windows node against proof (PASSED at 4bc33da, logs/evidence/x-ctr04-2026-11-05/rerun-4bc33da/), and the keys check; AR-08, AR-23 and AR-24 stay open in the acceptance register",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/Contracts/pull/125",
+          "https://github.com/ArcForges/Contracts/pull/126",
+          "https://github.com/ArcForges/Contracts/pull/127",
+          "https://github.com/ArcForges/Cloud/pull/129",
+          "https://github.com/ArcForges/Cloud/pull/130",
+          "https://github.com/ArcForges/Cloud/pull/132",
+          "https://github.com/ArcForges/Cloud/pull/133",
+          "https://github.com/ArcForges/Cloud/pull/134",
+          "https://github.com/ArcForges/Cloud/pull/135",
+          "https://github.com/ArcForges/Cloud/pull/136",
+          "https://github.com/ArcForges/Cloud/pull/137",
+          "https://github.com/ArcForges/Cloud/pull/138",
+          "https://github.com/ArcForges/Cloud/pull/140",
+          "https://github.com/ArcForges/Cloud/pull/141",
+          "https://github.com/ArcForges/Cloud/pull/142",
+          "https://github.com/ArcForges/ArcForges/pull/61",
+          "https://github.com/ArcForges/ArcForges/pull/63",
+          "https://github.com/ArcForges/ArcForges/pull/69",
+          "https://github.com/ArcForges/ArcForges/pull/71",
+          "https://github.com/ArcForges/ArcForges/pull/70",
+          "https://github.com/ArcForges/ArcForges-Design/pull/47",
+          "https://github.com/ArcForges/ArcForges-Design/pull/48"
+        ],
+        "merges": [
+          "Contracts@a5bc52fd66505a1b5b0f767a6a4c6ec70167eaab",
+          "Contracts@1e0a5d69125635746411ac4128e1cdf5b879e60c",
+          "Contracts@5873dc24d4452adc2306f3e0bc6fb477add911e9",
+          "Cloud@602705fc34702b7bca638150aa95dd8cb4f7aff1",
+          "Cloud@2aaac73b39110eb05596ed33a48f5cde5cd506d5",
+          "Cloud@3e2cf6b2ff642dfa716d50df285e980d0f593c66",
+          "Cloud@b1c8c0d3ebf8d582f321b20aed66d3b38b0cda39",
+          "Cloud@940cb97089b4ca66d905ba7853e7d5115404ce25",
+          "Cloud@2686a73a6d735445e737d375655d81bffaf7b4e7",
+          "Cloud@41c8a72dbbd63efdb6967f71c23610ae2f73fae1",
+          "Cloud@9085b1217a96ef24cac5600a7cc9fadbb9a6fd6f",
+          "Cloud@98e73895414eaee3834ac9b9e7cf290347b14458",
+          "Cloud@3a13b9791149c7345f89d5fc8de7550c1eb1145b",
+          "Cloud@c83786027c86cdbd47c4eaf4287308785cf4fd6a",
+          "Cloud@34d9e60fcdc09e273980a612b88d82f560cd56b0",
+          "ArcForges@e1055081ec2463cd5220a37596a18851dac99293",
+          "ArcForges@fb9901c4f455f6672c2b830909aceed77b6eef89",
+          "ArcForges@978d25d600e0ac93a66f7ee0bcea22fa315ef71a",
+          "ArcForges@0708e1bccfe883da79a8707ca9140dd2aa869a5e",
+          "ArcForges@4bc33dac6cbaa242a91c206f613f7bffeb1db15c",
+          "ArcForges-Design@746618199bf5c7915e074a05caa416fa9dfba6b4",
+          "ArcForges-Design@5da245e7e18035ec8f696cd8e6c02b28d80c1a8d"
+        ],
+        "publications": [
+          "Contracts cohorts (NuGet, npm) and Go module tags: 1.0.0-ci.424.1 at a5bc52f (C0, run 41724651206), 1.0.0-ci.426.1 at 1e0a5d6 (the .NET 10.0.14 repair, run 42005833954), 1.0.0-ci.430.1 at 5873dc2 (CM, run 42016941693)",
+          "Cloud production, dark (center.surfaces none), through the guarded main-push deploy: 0.1.0-ci.517.1 (run 41703705634, #129), 0.1.0-ci.522.1 (41753271768, #130, migration 0004), 0.1.0-ci.530.1 (41780427382, #133 with #132, whose own main push 41774844734 failed in the image build on GHSA-p3jp-9v83-76w9 and deployed nothing), 0.1.0-ci.536.1 (41803581769, #134, migration 0005), 0.1.0-ci.540.1 (41835020959, #135), 0.1.0-ci.545.1 (41860400639, #136), 0.1.0-ci.547.1 (41866820816, #137), 0.1.0-ci.550.1 (41963408204, #138), 0.1.0-ci.555.1 (41972145189, #140), 0.1.0-ci.558.1 (42034181148, #141, migration 0006), 0.1.0-ci.563.1 (42044264473, #142)",
+          "Cloud acceptance environment proof.arcforges.com (protected dispatch): 0.1.0-ci.518.1 (run 41703738988), 0.1.0-ci.523.1 (41753319421), 0.1.0-ci.531.1 (41780465407), 0.1.0-ci.537.1 (41803628465), 0.1.0-ci.542.1 (41835733994; fleet enabled), since Cloud #138 the main-push artifact: 0.1.0-ci.550.1 (41964005572), 0.1.0-ci.558.1 (42035018213; mobile enabled); surfaces identity,pages,operations,fleet,mobile"
+        ],
         "ledger": null
       },
       "order": 18
@@ -2340,7 +2394,7 @@
       "id": "AF-CTR-05",
       "title": "Node channel and center-routed execution",
       "milestone": "MC",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Contracts",
@@ -2360,7 +2414,8 @@
             "CONTRIBUTING.md",
             "public/http/**",
             "src/public/dotnet/**",
-            ".gitleaks.toml"
+            ".gitleaks.toml",
+            "src/internal/dotnet/**"
           ]
         },
         {
@@ -2387,7 +2442,12 @@
             "README.md",
             "AGENTS.md",
             "CONTRIBUTING.md",
-            "SECURITY.md"
+            "SECURITY.md",
+            ".gitleaks.toml",
+            ".dockerignore",
+            "biome.json",
+            "tsconfig.json",
+            "deploy/**"
           ]
         },
         {
@@ -2405,7 +2465,8 @@
             "AGENTS.md",
             "CONTRIBUTING.md",
             "THIRD_PARTY_NOTICES.md",
-            "third-party/**"
+            "third-party/**",
+            ".github/**"
           ]
         }
       ],
@@ -2422,7 +2483,7 @@
         "Node: outbound connection with jittered backoff and credential refresh; verification of the center's signature, target and expiry (±120 s skew) against the center keys received at enrollment and refresh, before policy; dispatch to the existing TaskService with the origin and caller identity the center verified (HUMAN through a client, AGENT through MCP); the local policy for center-routed callers; deduplication by command ID; output by offset",
         "CLI: arcforges run [--node <name or id>] -- <command> through the center (default: this node), tasks, wait, output and cancel through the center; arcforges run --local stays a labelled diagnostic, bounded as AD-0021 section 5 states: the node's local TaskService.SubmitTask accepts ordinary submissions only from local callers of HUMAN origin (AGENT and SCRIPT origins refused), and records such tasks as local-diagnostic",
         "Failure behaviour of AD-0021 section 11: offline node refusal, center restart, network loss, retry after an uncertain submission, revocation closing the channel",
-        "Contracts follow-up window before AF-PROD-01 (a separate Contracts PR of this task): regenerate the error-catalogue fixture (af-con-01-error-catalogue.json) from ArcForges-Design errors.md with the extended pair form; tighten the e-mail fields' maxLength from 320 to 254 (the center's address rule); decide ResponseMeta on the Worker's generated replies; define the WebBrowserSession error body"
+        "Contracts follow-up window before AF-PROD-01 (a separate Contracts PR of this task): regenerate the error-catalogue fixture (af-con-01-error-catalogue.json) from ArcForges-Design errors.md with the extended pair form; tighten the e-mail fields' protobuf constraints from 320 to 254 bytes (the center's address rule), while the frozen public/http/v1 documents stay byte-identical at 320 with a recorded note that the center is stricter; decide ResponseMeta on the Worker's generated replies; define the WebBrowserSession error body"
       ],
       "out_of_scope": [
         "File and workspace operations (AF-CTR-06)",
@@ -2464,9 +2525,9 @@
         "CLI through the center"
       ],
       "acceptance": [
-        "A real Windows node and a real native Linux node, connected to a local center on real PostgreSQL, run, wait, stream output, list and cancel tasks submitted through the center by the CLI",
+        "A real native Linux node, connected to a local center on real PostgreSQL and to the acceptance center (proof.arcforges.com), and a real Windows node, connected to the acceptance center on its real PostgreSQL (the Windows host has no path to a local center without a network change; AF-CTR-04 decision delivery-1), run, wait, stream output, list and cancel tasks submitted through the center by the CLI",
         "The center is killed during a submission: the client's retry with the same command ID executes the task once, the node reconnects, and output resumes by offset",
-        "An offline node is refused with UNAVAILABLE/node_offline; a revoked node credential closes the channel and refuses new calls while accepted tasks continue at the node",
+        "An offline node is refused with STATE/node_offline (added to ArcForges-Design errors.md by part D0); a revoked node credential closes the channel and refuses new calls while accepted tasks continue at the node",
         "Two callers share one node's admission (queue positions and budgets) and appear with their identities in the task records",
         "The center database holds no command line, environment or output after the suite (inspection test)",
         "Forged, altered, retargeted or expired calls are refused by the node before any effect, and a call delivered after its expiry is never executed late (T-11)",
@@ -2489,7 +2550,12 @@
           "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
         ]
       },
-      "fakes_allowed": [],
+      "fakes_allowed": [
+        "nodetest channel client (the node, in center tests only: center/internal/nodetest extended with a channel client, a MOCKED node with software keys for the center's channel, routing and hostile-node cases; never an end-to-end claim)",
+        "FakeCenter channel peer (the center, in node tests only: a MOCKED center that sends forged, altered, retargeted, expired and replayed frames the real center cannot produce; conformance-tested against frames captured from the real center)",
+        "Virtual WebAuthn authenticator (Cloud's Go test authenticator and Chromium's DevTools virtual authenticator)",
+        "IsolatedSecretStore (the OS secret store, above the secret-store adapter)"
+      ],
       "future_validation": [],
       "acceptance_register": [],
       "human_prerequisites": [],
@@ -6658,7 +6724,7 @@
         }
       ],
       "size": "L",
-      "notes": "Sign-in (A-01) uses the center's mobile native authorization of AF-CTR-04 (Custom Tab, PKCE, the verified app link https://arcforges.com/app/callback in release builds); this task supplies the release package name and signing-certificate fingerprints that the center's assetlinks.json serves.",
+      "notes": "Sign-in (A-01) uses the center's mobile native authorization of AF-CTR-04 (Custom Tab, PKCE, the verified app link https://arcforges.com/app/callback in release builds); this task supplies the release package name and signing-certificate fingerprints that the center's assetlinks.json serves. Carried from AF-CTR-04 (Cloud docs/center-mobile.md, H3): the sign-in emulator tests include the checks (a) a tap from the same-host Custom Tab page opens the app through the verified link, (b) a script navigation does the same, or is recorded as not doing so (the done page has none), and (c) the intent keeps the fragment, and the app follows the MobileNativeAuth v1 rules (derive authorizeUrl, check iss and state, one pending attempt, one token request per code, a new installation ID after credential_revoked, no cookie jar, no ephemeral Custom Tab); a Design change of the callback host follows only if a tap does not open the app.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -7128,7 +7194,7 @@
         "Record the activation evidence and update the acceptance register entries whose prerequisites are now met",
         "Before the identity surface is enabled: the Cloud E4-INTERNAL repair is merged (INTERNAL/internal never answers AFTER_TIME with UNKNOWN; ArcForges-Design errors.md), AF-CTR-05's Contracts follow-up window has regenerated the error-catalogue fixture from ArcForges-Design errors.md and tightened the e-mail fields to 254 bytes, and AF-PLAT-01's retention sweeps exist (ArcForges-Design cloud-store section 6)",
         "Decide with the user before production e-mail (H-19): whether mail leaves through an outbound handler that fixes the destination instead of the Container's open egress; how production mail secrets are named and guarded (a separate GitHub environment with a reviewer, or a suffix convention inside the shared cloudflare environment); whether the production sender gets its own Postmark account (a Postmark Server token can send as any confirmed sender of its account)",
-        "Add the production Worker routes arcforges.com/app/* and arcforges.com/.well-known/assetlinks.json (AF-CTR-04 serves both behind the mobile surface) and activate the mobile surface like the others, with the Android release package name and signing-certificate fingerprints (AF-AND-01); production routing does not change before then"
+        "Add the production Worker routes arcforges.com/app/* and arcforges.com/.well-known/assetlinks.json (AF-CTR-04 serves both behind the mobile surface) and activate the mobile surface like the others, with the Android release package name and signing-certificate fingerprints (AF-AND-01); the per-client edge rate limit in front of /.well-known/assetlinks.json gets a limiter key or an exemption suited to Google's Digital Asset Links fetcher and Android's App Link verifier, so that neither is refused (Cloud #141 review B N-8); production routing does not change before then"
       ],
       "out_of_scope": [
         "Real payments and store purchases (AR-05, AR-06)",
@@ -7183,6 +7249,7 @@
         "H-01",
         "H-02",
         "H-03",
+        "H-04",
         "H-05",
         "H-06",
         "H-07",

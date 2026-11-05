@@ -23,7 +23,7 @@ Real-world validation that cannot run at development stage, and the human prereq
 | AR-05 | Real Paddle checkout, renewal, cancellation and refund with live webhooks | Payment provider account and real money flows | H-01, H-07; commerce activated (AF-PROD-01) | AF-COM-01 | Open |
 | AR-06 | Real Google Play purchase on the internal testing track; live RTDN; acknowledgement | Play developer account and app listing | H-02, H-07, H-17; commerce activated (AF-PROD-01) | AF-CLD-07, AF-AND-03 | Open |
 | AR-07 | FCM delivery to a physical Android device | Firebase project and a physical device | H-03 | AF-CLD-06, AF-AND-02 | Open |
-| AR-08 | Android app on physical phones: camera QR, background behaviour, Play install | No device CI; physical devices are human-held | A physical Android phone; H-02 | AF-AND-01, AF-AND-02, AF-AND-03 | Open |
+| AR-08 | Android app on physical phones: camera QR, background behaviour, Play install; the mobile native authorization on a phone (a release build's verified App Link opens the app from the center's Custom Tab page with the fragment, and a real passkey in Chrome for Android signs in) | No device CI; physical devices are human-held | A physical Android phone; H-02 (the release app identity in the center's asset links) | AF-AND-01, AF-AND-02, AF-AND-03; AF-CTR-04 (the center side) | Open |
 | AR-09 | Production cloud operations: alert routes, budget thresholds, the degradation ladder and essential-only mode, and Cloudflare budget alerts on the production account | Production configuration is owner-controlled | H-06, H-09; surfaces activated (AF-PROD-01) | AF-OPS-01, AF-PROD-01 | Open |
 | AR-10 | Human screen-reader sessions (NVDA or Narrator on Windows, Orca on Linux, TalkBack on Android) | Human session required (user decision 2026-10-10: never re-ask; procedure only) | A person using assistive technology | AF-DESK-01, AF-DESK-02, AF-WEB-02, AF-AND-01 | Open |
 | AR-11 | ARM64 hardware runs (win-arm64, linux-arm64) | No ARM64 host | An ARM64 Windows device and an ARM64 Linux host | AF-REPO-01 (builds), AF-ACC-01 | Open |
@@ -38,16 +38,17 @@ Real-world validation that cannot run at development stage, and the human prereq
 | AR-20 | MR-07: establish the cause of the Windows supervisor test's unexplained node stop exit 75 and verify a discriminating repair if required | The historical failure has not recurred with the retained diagnostics; non-recurrence cannot establish its cause or prove a fix | A captured native Windows recurrence with verbose transport/descriptor/node/supervisor evidence, or a proven causal reproduction; the Windows MCP venue is already available, no new human provisioning | AF-NODE-01 | Open; unresolved observation, not a passed check or task block |
 | AR-21 | MR-11: a non-elevated Windows node and an elevated client of the same user: user-SID pipe ownership succeeds, but an unidentifiable elevated peer is refused before API execution | Existing automated ownership tests do not create two processes at different integrity levels; owner deferred full end-to-end testing on 2026-10-15 (ledger 30) | User-performed Windows 11 cross-integrity run at final end-to-end acceptance; no automatic elevation or re-request now | AF-DP-01, AF-NODE-01 | Open; deferred validation, no task block |
 | AR-22 | MR-15: establish the cause of the historical Windows crash-test all-sealed-values-unavailable observation and a discriminating repair if required | Original failure lacks the unsealing reason; current crash tests use isolated file-backed keys and cannot validate the historical Credential Manager path | Existing or naturally recurring nonsecret diagnostic, or separately owner-authorized causal evidence; MR-16 real-store cleanup/stress prohibition stays in force, no new real-store operation authorized | AF-NODE-02 | Open; unresolved observation, deferred validation, no task block |
-| AR-23 | A real platform authenticator (Windows Hello on the workstation; a phone's passkey provider) registers a passkey and signs in on a deployed center | A platform authenticator needs the owner's presence (biometric or PIN); automated runs use a virtual WebAuthn authenticator in a real browser, labelled as such ([AD-0021](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0021-central-access-go-center.md)) | The owner at the Windows workstation, and the acceptance or production center | AF-CTR-03, AF-CTR-10 | Open |
+| AR-23 | A real platform authenticator (Windows Hello on the workstation; a phone's passkey provider) registers a passkey and signs in on a deployed center | A platform authenticator needs the owner's presence (biometric or PIN); automated runs use a virtual WebAuthn authenticator in a real browser, labelled as such ([AD-0021](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0021-central-access-go-center.md)) | The owner at the Windows workstation, and the acceptance or production center | AF-CTR-03, AF-CTR-04 (the node approval pages and the mobile authorization page), AF-CTR-10 | Open |
+| AR-24 | A person signs a real node in outside `--test-mode` on the Windows workstation: `arcforges login` launches the default browser through the OS opener, the approval is made on the center, the node credential lands in the person's Credential Manager and the node key in the CNG user key store, both survive a restart and a refresh, and `arcforges logout` removes both | Agents never run a node outside `--test-mode` against a real OS secret store and never set the OS secret-store tier's opt-in (ArcForges `AGENTS.md`, OS secret stores); automated runs write the sign-in URL to a file instead of launching the OS handler; the Credential Manager evidence of AF-CTR-04 is the hosted tier on a GitHub-hosted Windows runner | The owner at the Windows workstation; the acceptance center with the `fleet` surface (proof) | AF-CTR-04 | Open |
 
 ## 2. Human prerequisites
 
 | ID | Prerequisite | Needed by | Blocks | Notes |
 |---|---|---|---|---|
 | H-01 | Paddle seller account, products and prices for `pro_monthly` and `pro_annual`; webhook secret in Cloud secrets | AF-COM-01 (live only), AF-PROD-01 (commerce surface), AR-05 | Nothing at development stage (live runs: AR-05); `complete`, not delivery, of AF-PROD-01 (commerce stays off without it) | Development uses signed fixtures (`FakePaddle`) |
-| H-02 | Google Play developer account, merchant profile, app listing, subscription product `arcforges.pro` (base plans `monthly`, `annual`), RTDN topic, Play Developer API service account | AF-AND-03, AF-PROD-01 (Play commerce), AR-06, AR-08 | Nothing at development stage (live runs: AR-06, AR-08); `complete`, not delivery, of AF-PROD-01 (Play commerce stays off without it) | Development uses `FakePlayDeveloperApi` |
+| H-02 | Google Play developer account, merchant profile, app listing, subscription product `arcforges.pro` (base plans `monthly`, `annual`), RTDN topic, Play Developer API service account | AF-AND-03, AF-PROD-01 (Play commerce; the mobile surface's asset links: the release package name and the Play app-signing certificate fingerprint, with the upload key of H-04, in `ARCFORGES_CENTER_ANDROID_APP`), AR-06, AR-08 | Nothing at development stage (live runs: AR-06, AR-08); `complete`, not delivery, of AF-PROD-01 (Play commerce and the mobile surface stay off without it) | Development uses `FakePlayDeveloperApi`. The acceptance environment serves a labelled non-shipping test statement (`com.arcforges.prooftest`, the fingerprint of a throwaway certificate whose key was destroyed; Cloud `docs/center-mobile.md`) |
 | H-03 | Firebase project and FCM service account | AF-CLD-06 (live only), AF-PROD-01 (push surface), AR-07 | Nothing at development stage (live delivery: AR-07); `complete`, not delivery, of AF-PROD-01 (push stays off without it) | Development uses `FakeFcm` |
-| H-04 | Signing custody: Authenticode certificate, ES256 release manifest key, apt GPG key, Android upload key | AF-AND-03 (release readiness), AR-04 | Nothing at development stage (test keys); production releases and AR-04 | Development, including AF-DIST-01, uses test keys that are never shipped |
+| H-04 | Signing custody: Authenticode certificate, ES256 release manifest key, apt GPG key, Android upload key | AF-AND-03 (release readiness), AF-PROD-01 (the upload certificate fingerprint in the mobile surface's asset links), AR-04 | Nothing at development stage (test keys); production releases and AR-04; `complete`, not delivery, of AF-PROD-01 (the mobile surface stays off without it) | Development, including AF-DIST-01, uses test keys that are never shipped |
 | H-05 | Domains and DNS: `arcforges.com`, `releases.`, `relay.`, `status.` | AF-PROD-01 (publishing the site and profiles; relay and status endpoints), AR-13 | AF-PROD-01 only | Development uses the local stack, and implementation tasks deploy dark. Request it when AF-ACC-01 starts |
 | H-06 | Cloudflare account settings: Containers enabled, budget alerts configured | AF-PROD-01, AR-09 | AF-PROD-01 only | The coordinator never changes account or security settings. Dark deploys need no flagship Containers. Request it when AF-ACC-01 starts |
 | H-07 | Prices, currencies, trials and introductory offers; since 2026-10-28 also the plan contents under center access: which center features are gated and the limits per plan, such as nodes or devices per account and the free configuration, and whether self-hosted centers apply a catalogue ([AD-0021](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0021-central-access-go-center.md), Open questions). *Partly decided 2026-10-28 (AD-0021 §13a):* the official hosted center's center-mediated services are subscription services with no permanent free hosted-node allowance, essential operations stay ungated, and self-hosted centers need no official subscription; **still open:** exact prices, trials, node limits and traffic allowances (and currencies and introductory offers) | AF-COM-01, AF-CLD-07, AF-PROD-01 (commerce surface), AR-05, AR-06 | Nothing at development stage (`commerce.sales_open=false` until decided); `complete`, not delivery, of AF-PROD-01 (commerce stays off without it); the production activation steps of AF-PROD-01 for the center surfaces wait for the plan contents | Until decided, `commerce.sales_open=false` |
@@ -197,3 +198,58 @@ in with it and prints `PASSED`).
 Proven now: the passkey ceremonies of the account pages in a real Chromium against the hosted acceptance center, with Chromium's
 virtual authenticator (MOCKED hardware); the relying party with Cloud's Go test authenticator. Residual risk: a platform
 authenticator's own creation options, user verification and assertion; other browsers, other operating systems and phones.
+
+AF-CTR-04 adds two pages whose decisions take a passkey step-up: the node approval pages (`/connect` and `/activate`, Cloud
+`docs/center-fleet.md`) and the mobile authorization page (Cloud `docs/center-mobile.md`). Proven now with the virtual
+authenticator in a real Chromium on proof: H1 (three node approvals) and H3 (the mobile cases). The owner's AR-23 run can approve
+the node sign-in of AR-24 with Windows Hello in the same session; a phone's passkey provider is the AR-08 part below.
+
+### AR-08: the mobile native authorization on a phone (AF-CTR-04's part)
+
+Prepared by AF-CTR-04 (Contracts #127, the MobileNativeAuth v1 document; Cloud #141 and #142; Cloud `docs/center-mobile.md`).
+
+Handed to AF-AND-01 (its development-stage acceptance, "Emulator tests for sign-in"; they block nothing of AF-CTR-04 and are
+no register entries, since an emulator never proves an AR entry):
+- (a) a tap from the same-host Custom Tab page opens the app through the verified link;
+- (b) a script navigation does the same, or is recorded as not doing so (the center's done page has none);
+- (c) the intent keeps the fragment;
+- the app rules of the contract (derive `authorizeUrl`, check `iss` and `state`, one pending attempt, one token request per
+  code, a new installation ID after `credential_revoked`, no cookie jar on the native client, no ephemeral Custom Tab). A Design
+  change of the callback host follows only if a tap does not open the app.
+
+Procedure on a phone (AR-08, the owner): a Play-installed release build verifies its App Link for the center's host; the sign-in
+in a Custom Tab with a real passkey in Chrome for Android (also AR-23) reaches the app through `/app/callback` with the fragment;
+the devices page lists the phone. Prerequisites: H-02 (the release package name and the Play app-signing fingerprint) and the
+upload key of H-04, which AF-PROD-01 puts in `ARCFORGES_CENTER_ANDROID_APP` when it adds the production routes and activates the
+`mobile` surface (also behind an edge rate limit that never refuses the verifiers, Cloud #141 review B N-8). These
+prerequisites block `complete`, not delivery, of AF-PROD-01 (the mobile surface stays off without them); AR-08 itself blocks
+nothing.
+
+Proven now: REAL center, PostgreSQL, routes and Worker tables (the integration tests), and the 120 contract vectors replayed in
+Go; H3 on proof on 2026-11-05 (logs/evidence/h3-mobile-2026-11-05.md) PASSED in a REAL Chromium with Neon, the Worker and the Container: assetlinks.json and /app/callback, the approve (with a refresh), deny, reuse and wrong-verifier cases, and Google's Digital Asset Links statements:list for the labelled test statement (REAL parser). MOCKED: the app (MobileProbe) and the authenticator. NOT PROVEN: App Link verification on a device,
+the same-host hand-off from a Custom Tab to the app, the fragment in the intent, a real passkey in Chrome for Android, the
+release app identity. Residual risk (Cloud `docs/center-mobile.md`): an app that embeds the page in its own WebView, a center
+that proxies the official pages, and a crashed app's session family that lives until its idle expiry.
+
+### AR-24: a real node sign-in by a person, outside test mode
+
+Prepared by AF-CTR-04 (ArcForges #63, #69; the tier `tests/ArcForges.OsSecretStoreTier`). Procedure (the owner, on the Windows
+workstation, with a build of ArcForges `main`, never `--test-mode`):
+1. `arcforges center set <the acceptance center's URL>`, then `arcforges login`: the default browser opens the center's
+   `/connect` page through the OS opener; sign in and approve (with Windows Hello, this is also an AR-23 run).
+2. `arcforges account status` shows the node signed in, with `credential in OS store` yes; restart the node: still signed in,
+   with the same node key fingerprint, and still signed in after the next refresh.
+3. `arcforges logout`: signed out, the credential and the node key are removed, and the center has revoked the node's
+   credential (SignOutNode).
+4. Optional: `arcforges login --device-code`, approved at `/activate` from another browser.
+
+The coordinator records the result as REAL with the commit it ran at. It blocks nothing; AF-CTR-04 is delivered without it.
+
+Proven now (the Windows Credential Manager status of AF-CTR-04's part X): REAL Credential Manager and CNG user key store in the
+hosted OS secret-store tier on a GitHub-hosted Windows runner (run 41994995309 at ArcForges `978d25d`: the node credential, the
+node data key and the CNG node key, 3 of 3 passed; earlier runs 41885826580 and 41951127797); the owner's local opt-in run of
+that tier (`eng/os_secret_store_tier.py`) has not been made and is weaker evidence. REAL node processes under `--test-mode` on
+both hosts in X, which kept their credentials in the isolated store (`credential_in_os_store` false), with the Windows
+`cmdkey /list` count unchanged (773 before and after; a count shows no net change only). MOCKED: the opener (test mode writes the
+URL to a file). NOT PROVEN: the OS opener's launch (on Windows, and `xdg-open` on a Linux desktop), a node's own credential and
+key in a person's Credential Manager and CNG store, a real Linux Secret Service (H-23; ArcForges's Linux tier is not delivered).
