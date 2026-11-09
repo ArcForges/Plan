@@ -2769,7 +2769,7 @@
           "owner": "AF-CTR-06"
         },
         {
-          "risk": "Agents delete or move an unapproved object after a concurrent namespace substitution; the measured Linux interfaces do not provide a demonstrated strict source-and-tree guard (L-33).",
+          "risk": "Agents delete or move user or otherwise unapproved objects, including after a concurrent namespace substitution; the measured Linux interfaces do not provide a demonstrated strict source-and-tree guard (L-33).",
           "mitigation": "Created-object tracking and HUMAN approval remain mandatory. F-W06 and F-L06 must prove exact approved-object and complete-tree protection before any cleanup effect; unavailable protection causes an explicit pre-effect refusal. Actual successful strict cleanup remains required for task delivery and is currently unresolved, not waived by refusal or an owner-only mock.",
           "owner": "AF-CTR-06"
         }
