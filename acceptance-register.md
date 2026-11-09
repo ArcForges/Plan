@@ -40,6 +40,7 @@ Real-world validation that cannot run at development stage, and the human prereq
 | AR-22 | MR-15: establish the cause of the historical Windows crash-test all-sealed-values-unavailable observation and a discriminating repair if required | Original failure lacks the unsealing reason; current crash tests use isolated file-backed keys and cannot validate the historical Credential Manager path | Existing or naturally recurring nonsecret diagnostic, or separately owner-authorized causal evidence; MR-16 real-store cleanup/stress prohibition stays in force, no new real-store operation authorized | AF-NODE-02 | Open; unresolved observation, deferred validation, no task block |
 | AR-23 | A real platform authenticator (Windows Hello on the workstation; a phone's passkey provider) registers a passkey and signs in on a deployed center | A platform authenticator needs the owner's presence (biometric or PIN); automated runs use a virtual WebAuthn authenticator in a real browser, labelled as such ([AD-0021](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0021-central-access-go-center.md)) | The owner at the Windows workstation, and the acceptance or production center | AF-CTR-03, AF-CTR-04 (the node approval pages and the mobile authorization page), AF-CTR-10 | Open |
 | AR-24 | A person signs a real node in outside `--test-mode` on the Windows workstation: `arcforges login` launches the default browser through the OS opener, the approval is made on the center, the node credential lands in the person's Credential Manager and the node key in the CNG user key store, both survive a restart and a refresh, and `arcforges logout` removes both | Agents never run a node outside `--test-mode` against a real OS secret store and never set the OS secret-store tier's opt-in (ArcForges `AGENTS.md`, OS secret stores); automated runs write the sign-in URL to a file instead of launching the OS handler; the Credential Manager evidence of AF-CTR-04 is the hosted tier on a GitHub-hosted Windows runner | The owner at the Windows workstation; the acceptance center with the `fleet` surface (proof) | AF-CTR-04 | Open |
+| AR-25 | AF-CTR-05 signed routed execution through the protected acceptance center (H5): native Windows node and CLI, Windows-to-Linux callers sharing one target, official entitlement refusal, offline/reconnect and revocation | The user permits complete mocks/placeholders for unavailable owner-only integrations and real-device/hosted validation; no signed hosted H5 run was performed in this delivery. Local real-center evidence does not prove the hosted path | The reviewed protected proof deployment and valid public command-key registry, the two native MCP hosts, owned test accounts/devices and the proof environment; H-16 only for persistent/production key custody, AR-23/24 and H-23 only when claiming their real authenticator/store evidence | AF-CTR-05 (procedure and development evidence), AF-CTR-10 (later acceptance) | Open; NOT PROVEN hosted; no development task block |
 
 ## 2. Human prerequisites
 
@@ -253,3 +254,62 @@ both hosts in X, which kept their credentials in the isolated store (`credential
 `cmdkey /list` count unchanged (773 before and after; a count shows no net change only). MOCKED: the opener (test mode writes the
 URL to a file). NOT PROVEN: the OS opener's launch (on Windows, and `xdg-open` on a Linux desktop), a node's own credential and
 key in a person's Credential Manager and CNG store, a real Linux Secret Service (H-23; ArcForges's Linux tier is not delivered).
+
+
+### AR-25: signed hosted routing and two native hosts (H5)
+
+Prepared by AF-CTR-05. The user explicitly accepts complete mocks/placeholders for unavailable owner-only integrations at
+development stage. This entry does not block development delivery or completion. It stays open until the named hosted
+observations happen; a local PostgreSQL/center run, virtual authenticator or synthetic key does not close it.
+
+Procedure for a later authorized acceptance run (do not run it merely because this procedure exists):
+
+1. Use the reviewed Cloud protected proof deployment path in `docs/deployment.md` and the command-key runbook in
+   `docs/center-fleet.md`. Confirm the actual main-push candidate, version, schema, proof surfaces and public key registry
+   before executing. E3 prepares this path; that preparation is not a dispatch or a successful H5 run. Record its workflow/run,
+   candidate digest and public key IDs. Never print a private key, provider credential or database URL. Persistent/production
+   key custody remains H-16; no agent retires a key without reconciling actual active and rollback versions and the documented
+   overlap. Production remains dark.
+2. Through the Windows and Linux MCP servers, use native builds of the reviewed ArcForges head, each with an isolated
+   `--test-mode` node, endpoint, data root and secret store. Use the repository's existing node-sign-in/browser acceptance
+   tooling to approve only the run's devices. Record both nodes ONLINE, connected to proof, with their public IDs and exact
+   artifact hashes. A virtual authenticator is MOCKED; real Windows Hello and real OS stores remain AR-23/24/H-23.
+3. On Windows, run a bounded synthetic command through its own node's center route, then exercise `tasks list`,
+   `tasks show <id>`, `tasks wait <id>`, `output <id> --from-offset 0 --follow`, and `tasks cancel <id>` on a separate
+   long-running task. Record output bytes, task exit/status, command ID, source/target identity and effect certainty.
+   Preserve the same command ID and original bytes on an uncertain mutation; never advise a fresh submission when its
+   outcome is UNKNOWN.
+4. On Linux, configure an isolated target pool of one and explicitly permit the intended cross-node caller from a HUMAN
+   approval. Run the Linux PTY HUMAN caller and Windows SCRIPT caller against that target using `--node <target-id>`.
+   A foreign target requires `--cwd <absolute-target-directory>`; paths and environment are resolved by the target's
+   documented rules. Confirm one shared queue and CPU/memory accounting, distinct verified source-node/origin/session
+   identities and the target's default-deny behavior before the opt-in. Use only bounded synthetic workloads.
+5. Check the official no-grant cases separately. First, a valid native node credential without `center.nodes` is refused
+   by the channel gate before WebSocket upgrade. Second, use a separately authenticated account session with an owned
+   registered target and the authorization/step-up required by the chosen Fleet method to call that method directly,
+   without its corresponding feature grant. Confirm `feature_not_entitled`, `access.gated` and no routed effect/execution;
+   record each feature, response and audit independently. Do not use the disconnected node CLI as evidence of this
+   separate Fleet gate. Keep both cases distinct from the self-hosted no-subscription default. Stop/reconnect the owned
+   target and observe the offline refusal. Revoke it while an accepted task is running: record its
+   exact connection's 4401 close, new routed calls refused and that accepted task's completion. If exercising center
+   restart, operate only the explicitly owned acceptance instance by the supported procedure; no production restart.
+6. Inspect the planted markers against the named database columns/audit/logs and report the scope and all attributed
+   matches honestly. Revoke only the run's devices and confirm none remain; stop only its recorded process identities.
+   Preserve the attempt logs, manifest and original failures. Verify production stays dark through ordinary permitted
+   deployment/health evidence; an HTTP refusal is NOT OBSERVED, never a reason to alter access or network settings.
+
+Development evidence already obtained on 2026-11-09: real local Go center/PG18, actual in-process Linux node implementations
+and a separate Native AOT CLI passed automatic same-byte retry after a real center kill/restart (one task, two routing
+attempts), CLI/adopted-process cancellation denial, and a two-source/shared-budget/offline/expiry/revocation scenario.
+The retry and CLI runs used test head `dbcf7d10ff8c2fdce07e50fbfc2010eedfbc3a6e`; the two-node run used
+`afdb98a4f262a734650221cb0dec8fb32a671ae0`; the executable still identified itself as `234877ad383199dfe4e9e5ea04109f1b5455c840`.
+The center's `11c100b07dcd3fc4a83631fa9de1f4f2195e6770` tree equals merged Cloud `d2fd7c5`.
+Virtual browser authenticators, isolated secret storage and synthetic signing keys are MOCKED. Source-equivalence and
+retained artifact mappings, precise audits and limits are in the Linux handoff directory
+`/home/sammiller/arcforges/tmp/handoff/`, specifically `x-ctr05-real-center-dbcf-checkpoint-2026-11-09.md`,
+`x-ctr05-real-center-afdb-checkpoint-2026-11-09.md` and `x-ctr05-acceptance-matrix-current.md`.
+
+Residual risk: these local observations do not establish signed routing through the actual Cloudflare/Neon proof topology,
+Windows-to-Linux hosted interoperability, real owner key custody, physical authenticators or production behavior.
+Native Windows mock/protocol tests and native host verification are recorded separately in the task's final delivery
+evidence; they are not hosted H5.
