@@ -2751,7 +2751,10 @@
           "Host verification of each touched repository (arcforges/windows and arcforges/linux at the head); hosted CI for external PRs"
         ]
       },
-      "fakes_allowed": [],
+      "fakes_allowed": [
+        "Explicit user exception (2026-11-09, EXECUTION-PROMPT-CTR06-11-2026-11-09.md): disposable test signing keys, virtual authenticators and isolated secret-store seams may replace unavailable owner-only credentials, physical authenticators and persistent/production key custody. Product signing, verification, permissions, storage and failure behavior remain real; live configuration stays disabled and actual owner operations remain NOT PROVEN.",
+        "Explicit user exception: where owner-only hosted/proof connectivity is unavailable, isolated local real centers and real native nodes plus protocol-compatible harnesses may cover the unavailable external venue. Each real Windows and Linux center-to-node file/workspace path must be separately exercised wherever available. A substitute never proves hosted H5, Windows-to-proof or Windows-to-Linux hosted routing; missing real environment rows remain NOT PROVEN in the acceptance matrix and register."
+      ],
       "future_validation": [],
       "acceptance_register": [],
       "human_prerequisites": [],
@@ -2768,7 +2771,7 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. User authorization of 2026-11-09 permits only the named unavailable owner-only external boundaries in fakes_allowed, never the file/workspace business logic, protocol, authorization, filesystem safety, persistence, native gates or independent review. Report each acceptance row as REAL/MOCKED/NOT PROVEN/NOT APPLICABLE with exact component and artifact identities; development acceptance never closes an unperformed owner/hosted action.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
