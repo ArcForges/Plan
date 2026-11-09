@@ -2756,18 +2756,21 @@
         "Explicit user exception: where owner-only hosted/proof connectivity is unavailable, isolated local real centers and real native nodes plus protocol-compatible harnesses may cover the unavailable external venue. Each real Windows and Linux center-to-node file/workspace path must be separately exercised wherever available. A substitute never proves hosted H5, Windows-to-proof or Windows-to-Linux hosted routing; missing real environment rows remain NOT PROVEN in the acceptance matrix and register.",
         "Explicit user exception: unavailable genuine owner or second-user interactions may be represented only by isolated synthetic HUMAN identities/process harnesses operating on test-owned data through the actual approval, authentication and policy code. Label the actor MOCKED; keep the native filesystem, persistence and product enforcement REAL; never approve production/user-owned data this way and never claim the real owner interaction occurred."
       ],
-      "future_validation": [],
+      "future_validation": [
+        "F-W06",
+        "F-L06"
+      ],
       "acceptance_register": [],
       "human_prerequisites": [],
       "risks": [
         {
           "risk": "Path escapes through links or case folding",
-          "mitigation": "Canonical resolution after opening; link checks on both platforms; tests per escape kind",
+          "mitigation": "Canonical resolution after opening; link checks on both platforms; F-W06 and F-L06 require actual native traversal, reparse/symlink, identity, bounds and race tests per escape kind.",
           "owner": "AF-CTR-06"
         },
         {
-          "risk": "Agents delete user files",
-          "mitigation": "Created-path tracking; HUMAN approval for anything else",
+          "risk": "Agents delete or move an unapproved object after a concurrent namespace substitution; the measured Linux interfaces do not provide a demonstrated strict source-and-tree guard (L-33).",
+          "mitigation": "Created-object tracking and HUMAN approval remain mandatory. F-W06 and F-L06 must prove exact approved-object and complete-tree protection before any cleanup effect; unavailable protection causes an explicit pre-effect refusal. Actual successful strict cleanup remains required for task delivery and is currently unresolved, not waived by refusal or an owner-only mock.",
           "owner": "AF-CTR-06"
         }
       ],
