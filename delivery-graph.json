@@ -2394,7 +2394,7 @@
       "id": "AF-CTR-05",
       "title": "Node channel and center-routed execution",
       "milestone": "MC",
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "Contracts",
@@ -2557,7 +2557,9 @@
         "IsolatedSecretStore (the OS secret store, above the secret-store adapter)"
       ],
       "future_validation": [],
-      "acceptance_register": [],
+      "acceptance_register": [
+        "AR-25"
+      ],
       "human_prerequisites": [],
       "risks": [
         {
@@ -2580,9 +2582,47 @@
       "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/Contracts/pull/128",
+          "https://github.com/ArcForges/Contracts/pull/129",
+          "https://github.com/ArcForges/Cloud/pull/143",
+          "https://github.com/ArcForges/Cloud/pull/144",
+          "https://github.com/ArcForges/Cloud/pull/145",
+          "https://github.com/ArcForges/Cloud/pull/146",
+          "https://github.com/ArcForges/Cloud/pull/147",
+          "https://github.com/ArcForges/Cloud/pull/148",
+          "https://github.com/ArcForges/ArcForges/pull/72",
+          "https://github.com/ArcForges/ArcForges/pull/73",
+          "https://github.com/ArcForges/ArcForges/pull/74",
+          "https://github.com/ArcForges/ArcForges/pull/75",
+          "https://github.com/ArcForges/ArcForges-Design/pull/49",
+          "https://github.com/ArcForges/ArcForges/pull/76",
+          "https://github.com/ArcForges/Cloud/pull/149",
+          "https://github.com/ArcForges/ArcForges-Design/pull/50"
+        ],
+        "merges": [
+          "Contracts@48d63e0aad2a9db4da78b0c8d20eec759e15fb16",
+          "Contracts@e67a6b089a7270ab771a97c27aeba92c5d3b0469",
+          "Cloud@2ea0891fcba8a1296fcb55c732b3b5abe6cd4276",
+          "Cloud@c14156bf97aadce9165fd7762aaf482d68d23bd9",
+          "Cloud@5c4c60744f2a269a4546d5e65a0870cb97feca21",
+          "Cloud@e2bb493136af71a23e89c0e84ba905d291f8cc36",
+          "Cloud@b7743b931aba21465aceb12861502c5fe27699e4",
+          "Cloud@d2fd7c517f919b0e136ce91413e26366f0e9c1e3",
+          "ArcForges@54310b4452b67b3c670f10fd43c3b8c9dd083745",
+          "ArcForges@4cabbf86babe011e76d8fa94fb5799d527428b7b",
+          "ArcForges@23cc0fa8e43c2639eb9a3c54616081829bfdab3b",
+          "ArcForges@68e2538339335d414a25e34a75f7f5f0328f1d9f",
+          "ArcForges-Design@611dda6b79c3f8aa854fbacad19e012f1759bd19",
+          "ArcForges@be4600a7aac00d52f484d862f3c887299b6f97c9",
+          "Cloud@ffc03636ca0c7049fddf5fad733d0f98c53c3a6d",
+          "ArcForges-Design@659d56929eb49b6a03bec631230030a6a22b9dd2"
+        ],
+        "publications": [
+          "Contracts K1 1.0.0-ci.433.1 run 42088889768; K2 1.0.0-ci.437.1 run 42113228166",
+          "Cloud main dark deploy run 42555707356 attempt 1 at ffc03636ca0c7049fddf5fad733d0f98c53c3a6d; version 0.1.0-ci.601.1; image sha256:b68e8cc021d99117bd9e03f8bbf7b02c0b19db290c939197a0bc32e01f80b217; success; public receipts artifact 13647890064 sha256 0e60d94ad493843ca2bd5db9b7e111416f542394c6307aaa5de615156fc3302f; PostgreSQL 18 schema 10 gate passed, no new migration",
+          "Ordinary production GET /api/healthz 2026-11-09T03:24:09Z HTTP200 at ffc03636ca0c7049fddf5fad733d0f98c53c3a6d; official-hosted surfaces none. Proof jobs skipped; no H5 dispatch or production activation"
+        ],
         "ledger": null
       },
       "order": 19
