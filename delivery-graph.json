@@ -2631,7 +2631,7 @@
       "id": "AF-CTR-06",
       "title": "Node files and workspaces for center-routed callers",
       "milestone": "MC",
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Contracts",
@@ -2775,7 +2775,7 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. User authorization of 2026-11-09 permits only the named unavailable owner-only external boundaries in fakes_allowed, never the file/workspace business logic, protocol, authorization, filesystem safety, persistence, native gates or independent review. Report each acceptance row as REAL/MOCKED/NOT PROVEN/NOT APPLICABLE with exact component and artifact identities; development acceptance never closes an unperformed owner/hosted action. [planned] User requested pre-CTR06 cleanup and a new-executor handoff on 2026-11-09. Interrupted implementation is parked, not delivered; preserve task branches and dirty work. Resume at CTR06 after reconciliation, not CTR07.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. User authorization of 2026-11-09 permits only the named unavailable owner-only external boundaries in fakes_allowed, never the file/workspace business logic, protocol, authorization, filesystem safety, persistence, native gates or independent review. Report each acceptance row as REAL/MOCKED/NOT PROVEN/NOT APPLICABLE with exact component and artifact identities; development acceptance never closes an unperformed owner/hosted action. [planned] User requested pre-CTR06 cleanup and a new-executor handoff on 2026-11-09. Interrupted implementation is parked, not delivered; preserve task branches and dirty work. Resume at CTR06 after reconciliation, not CTR07. [active] User resumed AF-CTR-06 through AF-CTR-11 on 2026-11-10; preserve interrupted WIP and finish strict native acceptance before dependent work.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
