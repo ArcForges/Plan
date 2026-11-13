@@ -2770,7 +2770,7 @@
         },
         {
           "risk": "Agents delete or move user or otherwise unapproved objects, including after a concurrent namespace substitution; the measured Linux interfaces do not provide a demonstrated strict source-and-tree guard (L-33).",
-          "mitigation": "Created-object tracking and HUMAN approval remain mandatory. F-W06 and F-L06 must prove exact approved-object and complete-tree protection before any cleanup effect; unavailable protection causes an explicit pre-effect refusal. Actual successful strict cleanup remains required for task delivery and is currently unresolved, not waived by refusal or an owner-only mock.",
+          "mitigation": "Created-object tracking and HUMAN approval remain mandatory. Both platforms must establish exact approved-object and complete-tree protection before any cleanup effect; unavailable protection causes an explicit pre-effect refusal. The user's 2026-11-13 decision accepts actual unsupported-cleanup refusal on the current Linux host for F-L06, with unchanged source/tree, audit and exact replay; it is not cleanup success. Successful strict cleanup remains required for Windows F-W06. Other native file/workspace checks and the real/mock boundary are unchanged.",
           "owner": "AF-CTR-06"
         }
       ],
