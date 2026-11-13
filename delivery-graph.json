@@ -2631,7 +2631,7 @@
       "id": "AF-CTR-06",
       "title": "Node files and workspaces for center-routed callers",
       "milestone": "MC",
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "Contracts",
@@ -2775,12 +2775,22 @@
         }
       ],
       "size": "M",
-      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Except for the single AF-CTR-06 security-bridge build-and-publish-only bootstrap in execution policy §4, merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. User authorization of 2026-11-09 permits only the named unavailable owner-only external boundaries in fakes_allowed, never the file/workspace business logic, protocol, authorization, filesystem safety, persistence, native gates or independent review. Report each acceptance row as REAL/MOCKED/NOT PROVEN/NOT APPLICABLE with exact component and artifact identities; development acceptance never closes an unperformed owner/hosted action. [planned] User requested pre-CTR06 cleanup and a new-executor handoff on 2026-11-09. Interrupted implementation is parked, not delivered; preserve task branches and dirty work. Resume at CTR06 after reconciliation, not CTR07. [active] User resumed AF-CTR-06 through AF-CTR-11 on 2026-11-10; preserve interrupted WIP and finish strict native acceptance before dependent work. Latest user decision 2026-11-13: unavailable external authority qualification, bootstrap publication and subsequent successor/dark deployment are deferred/NOT PROVEN and no longer block AF-CTR-06 development delivery or completion. Keep unconfigured live features disabled and do not consume the bootstrap or execute those external actions by default. Normal product implementation, code/build/native acceptance and independent review remain required; once passed, deliver and complete AF-CTR-06 and stop, without executing07-11. Future enablement retains the existing external-operation safeguards.",
+      "notes": "Cloudflare only through repository scripts; workers.dev and previews stay off. Except for the single AF-CTR-06 security-bridge build-and-publish-only bootstrap in execution policy §4, merging deploys dark through the guarded main-push deploy: center surfaces other than Hello stay disabled in production until AF-PROD-01 (Design 10 section 8 as amended by AD-0021), so no production prerequisite blocks the merge. Documentation alongside (AD-0021, Delivery state): the affected Design chapters and repository documents are updated in the same delivery, marking target and delivered behaviour separately. User authorization of 2026-11-09 permits only the named unavailable owner-only external boundaries in fakes_allowed, never the file/workspace business logic, protocol, authorization, filesystem safety, persistence, native gates or independent review. Report each acceptance row as REAL/MOCKED/NOT PROVEN/NOT APPLICABLE with exact component and artifact identities; development acceptance never closes an unperformed owner/hosted action. [planned] User requested pre-CTR06 cleanup and a new-executor handoff on 2026-11-09. Interrupted implementation is parked, not delivered; preserve task branches and dirty work. Resume at CTR06 after reconciliation, not CTR07. [active] User resumed AF-CTR-06 through AF-CTR-11 on 2026-11-10; preserve interrupted WIP and finish strict native acceptance before dependent work. Latest user decision 2026-11-13: unavailable external authority qualification, bootstrap publication and subsequent successor/dark deployment are deferred/NOT PROVEN and no longer block AF-CTR-06 development delivery or completion. Keep unconfigured live features disabled and do not consume the bootstrap or execute those external actions by default. Normal product implementation, code/build/native acceptance and independent review remain required; once passed, deliver and complete AF-CTR-06 and stop, without executing07-11. Future enablement retains the existing external-operation safeguards. [delivered] Agreed native development acceptance delivered under the latest user scope; external qualification/bootstrap/successor deployment remains AR-26 DEFERRED/NOT PROVEN, default bootstrap disabled and live off. [complete] Normal code/build, both-native actual acceptance, final official verification and independent review are complete. Cleanup coordinates ArcForges and managed children; independent external processes are outside scope. AR-26 remains deferred/NOT PROVEN and cancelled long-wallclock gates remain CANCELLED_BY_USER_NOT_PASS. Stop at AF-CTR-06; do not execute07-11.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/Contracts/pull/133",
+          "https://github.com/ArcForges/ArcForges/pull/77",
+          "https://github.com/ArcForges/Cloud/pull/155"
+        ],
+        "merges": [
+          "Contracts@de3dba76266e89654be9b4d29d097d525a281c6a",
+          "ArcForges@10f692224f94916cfc93fbad971f80ec340c5edf",
+          "Cloud@6df33c525fcbc20495e46c9c4c011086146da796"
+        ],
+        "publications": [
+          "Contracts 1.0.0-ci.450.1 (immutable; PR133)"
+        ],
         "ledger": null
       },
       "order": 20
