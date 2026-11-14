@@ -73,7 +73,7 @@
       "title": "Build migration inventory and dry-run preflight",
       "milestone": "P0",
       "order": 1,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
