@@ -2901,7 +2901,7 @@
       "objective": "Migrate PostgreSQL safely to V2 management storage. All three upgrade/restore paths execute on real PostgreSQL with exact source/artifact receipts",
       "scope": [
         "Append V2 management receipt/cursor/entitlement storage while preserving identity, enrollment, applied migration hashes and security-successor floors",
-        "Implement reviewed finite schema10â†’guarded0011â†’V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
+        "Implement reviewed finite schema10→guarded0011→V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
         "Create fresh/schema10/schema11 fixtures with unresolved delivered receipts and recovery-generation safeguards"
       ],
       "out_of_scope": [
@@ -2921,7 +2921,7 @@
       ],
       "deliverables": [
         "Append V2 management receipt/cursor/entitlement storage while preserving identity, enrollment, applied migration hashes and security-successor floors",
-        "Implement reviewed finite schema10â†’guarded0011â†’V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
+        "Implement reviewed finite schema10→guarded0011→V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
         "Create fresh/schema10/schema11 fixtures with unresolved delivered receipts and recovery-generation safeguards"
       ],
       "acceptance": [
@@ -3269,10 +3269,10 @@
       ],
       "native_validation": {
         "windows": [
-          "Native Windows node â†” isolated Center channel/reconnect scenario"
+          "Native Windows node ↔ isolated Center channel/reconnect scenario"
         ],
         "linux": [
-          "Native Linux node â†” isolated Center channel and actual Go protocol tests"
+          "Native Linux node ↔ isolated Center channel and actual Go protocol tests"
         ]
       },
       "definition_of_done": [
@@ -4771,10 +4771,10 @@
       ],
       "native_validation": {
         "windows": [
-          "Native Node schema15â†’expandâ†’contractâ†’restore tests"
+          "Native Node schema15→expand→contract→restore tests"
         ],
         "linux": [
-          "Native Node migration plus real PostgreSQL schema10/11â†’V2â†’restore tests"
+          "Native Node migration plus real PostgreSQL schema10/11→V2→restore tests"
         ]
       },
       "definition_of_done": [
