@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "task": "AFV2-ENV-01",
+  "repository": "Plan",
+  "observed_at": "2026-11-14T15:05:49.650196+00:00",
+  "scope": "Current planning/verification tooling; historical graph, ledger facts and source audit identities remain unchanged.",
+  "tools": [
+    {
+      "name": "Python",
+      "version": "3.15.2",
+      "selector": ".python-version",
+      "source": "https://www.python.org/downloads/release/python-3152/",
+      "platforms": [
+        "windows-x64",
+        "linux-x64"
+      ],
+      "packages": "Standard library only; no pip dependencies or package installation in this repository"
+    }
+  ],
+  "dependencies_and_actions": [
+    {
+      "kind": "github-release",
+      "name": "actions/checkout",
+      "version": "v7.0.1",
+      "commit": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "source": "https://api.github.com/repos/actions/checkout/releases/latest",
+      "published_at": "2026-07-20T15:10:05Z"
+    },
+    {
+      "kind": "github-release",
+      "name": "actions/setup-python",
+      "version": "v7.1.0",
+      "commit": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "source": "https://api.github.com/repos/actions/setup-python/releases/latest",
+      "published_at": "2026-10-22T02:56:04Z"
+    },
+    {
+      "kind": "github-release",
+      "name": "rhysd/actionlint",
+      "version": "v1.7.12",
+      "commit": "914e7df21a07ef503a81201c76d2b11c789d3fca",
+      "source": "https://api.github.com/repos/rhysd/actionlint/releases/latest",
+      "published_at": "2026-03-30T17:49:21Z",
+      "artifact": {
+        "name": "actionlint_1.7.12_linux_amd64.tar.gz",
+        "url": "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz",
+        "digest": "sha256:8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
+      },
+      "applies_to": "Linux host, when workflows change"
+    }
+  ],
+  "ci_venue": {
+    "runner": "ubuntu-26.04",
+    "source": "https://github.com/actions/runner-images",
+    "note": "Latest available stable Ubuntu runner OS label at lookup; hosted weekly image revision is service-managed and recorded by Actions, not an immutable container digest. Native Linux remains the designated Debian host; version parity applies to applicable tools and dependencies.",
+    "actionlint_compatibility": {
+      "config": "eng/actionlint.yaml",
+      "reason": "Latest stable actionlint 1.7.12 predates the official hosted Ubuntu 26.04 label; add exactly that documented label through its supported label configuration. No diagnostic filter or alternate venue.",
+      "source": "https://github.com/rhysd/actionlint/blob/main/docs/config.md"
+    }
+  },
+  "containers": [],
+  "package_manifests": [],
+  "dependency_closure": "Python standard library only. No NuGet/npm/Go/pip dependency graph in Plan.",
+  "design_dependency": "Each native profile freshly fetches Design origin/main and records its exact commit as design-main. Reverify if Design main moves before Plan merge.",
+  "local_ci_parity": {
+    "preflight": "python eng/check_toolchain.py",
+    "checks": [
+      "Invoking Python equals .python-version",
+      "PATH Python equals .python-version"
+    ],
+    "required_evidence": "Exact pushed-head required native profiles, actionlint for changed workflows and independent review; recorded in the PR"
+  },
+  "rollback": "Revert selectors, workflow pins and compatibility changes together through reviewed delivery; retain installed historical interpreters and frozen records."
+}
