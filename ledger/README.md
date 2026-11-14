@@ -1,7 +1,5 @@
-# Ledger
+# Current V2 ledger
 
-`ledger.jsonl` is append-only: one JSON object per line, `{at, task, kind, text}`.
-- `at` is UTC ISO-8601.
-- `kind` is one of `plan`, `started`, `delivered`, `complete`, `superseded` or `note`.
+Only PLAN notes and current AFV2 task records belong in [ledger.jsonl](ledger.jsonl). The pre-V2 ledger is preserved unchanged in [history](../history/v1-20261114/ledger/ledger.jsonl). The coordinator appends via tools/plan.py; never rewrite old entries or copy completed history into current task states.
 
-Records are written only with `python tools/plan.py ledger <task> <kind> "<text>"` and committed through a Plan PR. Graph states (`delivery-graph.json`) carry the evidence (PRs, merges, publications); the ledger carries the narrative. Never rewrite or delete a line. Corrections are new `note` lines.
+Design migration records establish source and scope, not product implementation authorization. A future user-authorized range must be recorded before the first task starts. Delivered records include each exact PR/merge and ordinary publication identity; missing native proof remains explicit.

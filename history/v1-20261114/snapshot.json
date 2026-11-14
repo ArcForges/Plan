@@ -1,0 +1,152 @@
+{
+  "source_repository": "ArcForges/Plan",
+  "source_commit": "742ed2660c5e934e1df86f90e54198b3a199e2b1",
+  "frozen_at": "2026-11-14",
+  "authority": "Historical evidence only; superseded by AD-0022. No task is active here.",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "9256572e742af2de41c402649f34d00fc363e4b26fffdf9e489962c0ea6b7424"
+    },
+    {
+      "path": "README.md",
+      "sha256": "45c3ddaf696d80bf0968389ea8f214392d679219c7ed144f6f8a4705fe706c36"
+    },
+    {
+      "path": "acceptance-register.md",
+      "sha256": "29a40cef43c88017915f99892478ce02878cb6240e67640d87035fe71dd18099"
+    },
+    {
+      "path": "baseline.md",
+      "sha256": "0c8ea6dbc6116a78fb0a6d3a157ab8beb8a832ca8be4d611dc0bdf7cab85b888"
+    },
+    {
+      "path": "delivery-graph.json",
+      "sha256": "bec8e7774325dacdcaea488affb030b431b18848e8f8c44080de04bf1b024fad"
+    },
+    {
+      "path": "delivery-procedure.md",
+      "sha256": "07ff49c8e0a6864bb1986d8a3b7f0891419a291960bf666c50108eaf5a05fc2c"
+    },
+    {
+      "path": "entry-prompts.md",
+      "sha256": "921c012379255aa740aec518a0dc1cb5efbc3e194a040b19ef5b47bcb11bade5"
+    },
+    {
+      "path": "execution-policy.md",
+      "sha256": "5a607b30de00ccd7da20adf0de1c6512862e31af4ea569e0a8616ac61a201f61"
+    },
+    {
+      "path": "execution-prompt.md",
+      "sha256": "3c66070e4f8585b42447bd355227c132609078ca65d070becc635c31f631dbac"
+    },
+    {
+      "path": "ledger/README.md",
+      "sha256": "3f41f03e379126be8039358696d3f46780b22e9c1b466913c28be70a3b8f156c"
+    },
+    {
+      "path": "ledger/ledger.jsonl",
+      "sha256": "be6e3887bef2c9683460a2e1c8a4b7695cfb163acf5e148eac9eed51cb93ee55"
+    },
+    {
+      "path": "maintenance/2026-10-24-repair-list.md",
+      "sha256": "22ed045f30b68997cd450a9f90fbbfe17509511724bc32ec62ddb92647dffd20"
+    },
+    {
+      "path": "maintenance/2026-10-25-handoff.md",
+      "sha256": "bda98743f8f393e7e6893020e962e4a7f4989d41ec3cbd4b7e8bf75bf5b228b0"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr06-validation.md",
+      "sha256": "6992674e70facc6cc4050890532ca4fc5734cfbbc1fcdb1e155dee9f5c8ab74f"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr07-observation.md",
+      "sha256": "981ec55c7c76bff16977bdbcec285b587d7eafdae40e28d70199b23593929ebd"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr08-permission.md",
+      "sha256": "fd14f57b7ffb7290f1f4a62d7343b12176c71ac2374d01da5ee9d9640797c1d1"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr100-validation.md",
+      "sha256": "13b712cc0b7f29772e4b7a0400dac5975aafc0cba08e86fc29f9bda54ce49d50"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr101-validation.md",
+      "sha256": "4e691c1d5418116c0f4345ba294483ea234a7da84311ce5513b11bb40eb145f5"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr102-validation.md",
+      "sha256": "79d902f5abce87340b31fa0d794affd2c40ddf01573f8064a97a957103a0569b"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr103-validation.md",
+      "sha256": "d227cf0a271892275ab7f428f2f71801a0d2f448aed52e54c239b4a2ad18037b"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr104-validation.md",
+      "sha256": "c775ea127cf4788a8c33b03d5a991eb539590571719cdf4a9b871cbc2f05d0ea"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr105-validation.md",
+      "sha256": "60f5f25962469dfad527539853c239d1705e11fa2f0e14ed35191eaab321bb9a"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr12-validation.md",
+      "sha256": "97816dfd6b6fc964b321cdc415da3e4f073bf73dead53f06918402b9ef58b800"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr90-validation.md",
+      "sha256": "1d03e437f60a461bae661e70456c2452126e0348facd8ab11e396738096ba6c8"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr95-validation.md",
+      "sha256": "f888f118d2f72696c86b635d60be3b8189feb987ae1f3889bdc8305c393132bc"
+    },
+    {
+      "path": "maintenance/2026-10-25-mr99-validation.md",
+      "sha256": "334368dadc5a81ddc2f83a3578e4260e94c5e5c80e7c1126a67ea80baf491a6d"
+    },
+    {
+      "path": "maintenance/2026-10-26-handoff.md",
+      "sha256": "b7c23a1284510eb8b5908f84105337ccb0821e25a79682b0fc87af0464260493"
+    },
+    {
+      "path": "maintenance/2026-10-26-mr13-validation.md",
+      "sha256": "4908ba9e5decaea2260138c78005277bb000c6eab7e927c13f55e40ab54ab2e9"
+    },
+    {
+      "path": "maintenance/2026-10-26-mr14-validation.md",
+      "sha256": "aa930797d6fa2423e9a420f6836ba359267439ed6d3fed026a7a7a4307be1f4d"
+    },
+    {
+      "path": "maintenance/2026-10-26-mr15-observation.md",
+      "sha256": "9d0fce3ef85026e3c1d45e3eccb3887afa8bf4c243b8ebbc3962a7eab3dc015a"
+    },
+    {
+      "path": "maintenance/2026-10-26-mr17-validation.md",
+      "sha256": "203c7ea4bb2579a02da2129374baca95ecd5d4a126cee95885b8a0467876a6f9"
+    },
+    {
+      "path": "maintenance/2026-10-26-mr18-validation.md",
+      "sha256": "bdd69674fe6245773d4f8e7d6b1172194e84ac4b9870aef7f89809c0447682bc"
+    },
+    {
+      "path": "roadmap.md",
+      "sha256": "07d272c295057cfe245a8f9ec8f4643d6581216f7fece3e7e075de8b1c252f9d"
+    },
+    {
+      "path": "sequence.md",
+      "sha256": "2c7b9768d8380a6636b976ae02615a118c549cbd5b2902ec54e5afa76b18e114"
+    },
+    {
+      "path": "tests/test_plan.py",
+      "sha256": "916ef819701f83e01d708aac7f94c0916e73150bd138c8ba4be70c5fb0dc18b2"
+    },
+    {
+      "path": "tools/plan.py",
+      "sha256": "fbf0e11165eec9e23e1b1ba7c4128a065ee0cfc3766c3f18753f8db6f7a1a654"
+    }
+  ]
+}
