@@ -73,7 +73,7 @@
       "title": "Upgrade all current dependencies and align local with CI",
       "milestone": "P0",
       "order": 1,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "DesktopPlatform",
@@ -333,7 +333,7 @@
         }
       ],
       "size": "XL",
-      "notes": "Owner authorized all dependency upgrades, including business dependencies, on 2026-11-14 after the policy documents merge. Serial sub-order: inventory/host preparation, shared producers, consumers, complete aggregate acceptance. Path globs describe current source/build compatibility scope only; .config/dotnet-tools.json, missing version selector files and docs/dependency-upgrade/** are explicit new targets if absent. Never edit applied migrations or frozen evidence within a broad source glob.",
+      "notes": "Owner authorized all dependency upgrades, including business dependencies, on 2026-11-14 after the policy documents merge. Serial sub-order: inventory/host preparation, shared producers, consumers, complete aggregate acceptance. Path globs describe current source/build compatibility scope only; .config/dotnet-tools.json, missing version selector files and docs/dependency-upgrade/** are explicit new targets if absent. Never edit applied migrations or frozen evidence within a broad source glob. [active] Design #67 and Plan #100 policy documents merged after independent review and required native checks; begin authorized seven-repository inventory and latest-stable upgrades.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
