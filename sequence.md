@@ -56,9 +56,9 @@ Outcome: Offline ordinary and interactive local use plus safe import/export/dele
 
 | # | Task | Title | Repositories | Depends on | Size | State |
 |---|---|---|---|---|---|---|
-| 17 | AFV2-CLI-01 | Deliver complete offline local CLI commands | ArcForges | AFV2-CORE-01, AFV2-CORE-02, AFV2-SEC-01, AFV2-RES-03, AFV2-REC-01 | M | planned |
+| 17 | AFV2-CLI-01 | Deliver offline core and administration CLI commands | ArcForges | AFV2-CORE-01, AFV2-CORE-02, AFV2-SEC-01, AFV2-RES-03, AFV2-REC-01 | M | planned |
 | 18 | AFV2-CLI-02 | Deliver interactive CLI attach detach and terminal ergonomics | ArcForges | AFV2-CLI-01, AFV2-CORE-03 | M | planned |
-| 19 | AFV2-FILE-01 | Implement private data usage import and export | ArcForges | AFV2-CORE-01, AFV2-SEC-01, AFV2-REC-01 | M | planned |
+| 19 | AFV2-FILE-01 | Implement private data usage import and export | ArcForges | AFV2-CORE-01, AFV2-SEC-01, AFV2-REC-01, AFV2-CLI-01 | M | planned |
 | 20 | AFV2-FILE-02 | Implement safe whole-Sandbox deletion and interrupted cleanup | ArcForges | AFV2-FILE-01 | M | planned |
 
 ## P5 — Go Center migration
@@ -69,7 +69,7 @@ Outcome: PostgreSQL/identity/enrollment/routing and bounded remote observation u
 |---|---|---|---|---|---|---|
 | 21 | AFV2-CENTER-01 | Migrate PostgreSQL safely to V2 management storage | Cloud | AFV2-BASE-01, AFV2-API-01 | M | planned |
 | 22 | AFV2-ID-01 | Complete bounded account recovery export and deletion lifecycle | Cloud | AFV2-CENTER-01 | M | planned |
-| 23 | AFV2-CENTER-02 | Adapt enrollment and outbound node channels to V2 capabilities | Cloud, ArcForges | AFV2-CENTER-01, AFV2-API-01, AFV2-SEC-01 | M | planned |
+| 23 | AFV2-CENTER-02 | Adapt enrollment and outbound node channels to V2 capabilities | Cloud, ArcForges | AFV2-CENTER-01, AFV2-API-01, AFV2-SEC-01, AFV2-CLI-01 | M | planned |
 | 24 | AFV2-CENTER-03 | Route typed remote control through the same Sandbox Core | Cloud, ArcForges | AFV2-CENTER-02, AFV2-CORE-02, AFV2-SEC-01, AFV2-RES-03 | M | planned |
 | 25 | AFV2-CENTER-04 | Deliver bounded remote logs resources and Sandbox data transfer | Cloud, ArcForges | AFV2-CENTER-03, AFV2-FILE-01, AFV2-REC-01 | M | planned |
 
@@ -81,7 +81,7 @@ Outcome: Self-host is independent; official hosting entitlements, commerce and o
 |---|---|---|---|---|---|---|
 | 26 | AFV2-HOST-01 | Enforce official hosting entitlements and self-host independence | Cloud | AFV2-CENTER-03, AFV2-ID-01 | M | planned |
 | 27 | AFV2-HOST-02 | Implement official web commerce lifecycle and reconciliation | Cloud | AFV2-HOST-01, AFV2-ID-01 | M | planned |
-| 28 | AFV2-HOST-03 | Deliver self-host deployment and official operational controls | Cloud, Web | AFV2-CENTER-04, AFV2-HOST-02 | M | planned |
+| 28 | AFV2-HOST-03 | Deliver self-host deployment infrastructure and official operational controls | Cloud, Web | AFV2-CENTER-04, AFV2-HOST-02 | M | planned |
 
 ## P7 — Blazor management dashboard
 
@@ -100,7 +100,7 @@ Outcome: Old runtimes and live schema are removed, coherent artifacts/updates pa
 
 | # | Task | Title | Repositories | Depends on | Size | State |
 |---|---|---|---|---|---|---|
-| 33 | AFV2-MIG-01 | Cut over consumers and remove the old execution and Center runtimes | ArcForges, Cloud, Contracts, DesktopPlatform | AFV2-CLI-02, AFV2-FILE-02, AFV2-CENTER-04, AFV2-WEB-04, AFV2-HOST-03 | M | planned |
+| 33 | AFV2-MIG-01 | Cut over consumers and remove the old execution and Center runtimes | ArcForges, Cloud, Contracts | AFV2-CLI-02, AFV2-FILE-02, AFV2-CENTER-04, AFV2-WEB-04, AFV2-HOST-03 | M | planned |
 | 34 | AFV2-MIG-02 | Contract live schemas and finalize retention of historical evidence | ArcForges, Cloud, Contracts, ArcForges-Design | AFV2-MIG-01 | M | planned |
 | 35 | AFV2-DIST-01 | Package coherent signed native and self-host distributions | ArcForges, Cloud, Web | AFV2-MIG-01, AFV2-HOST-03 | M | planned |
 | 36 | AFV2-DIST-02 | Implement safe updates migration-aware rollback and supervisor drain | ArcForges, Cloud | AFV2-DIST-01, AFV2-MIG-02, AFV2-REC-01 | M | planned |

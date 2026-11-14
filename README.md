@@ -18,3 +18,5 @@ python -m unittest discover -s tests -v
 ```
 
 These author diagnostics do not replace required native host verification. One complete Design PR merges first; then both Plan host legs verify the exact Plan head against the new Design main. The unchanged `arcforges/windows`/`arcforges/linux` gates and independent review remain mandatory. Candidate branches and paired static checks are not a claim that main or the product is already V2.
+
+The paired [Design review record](https://github.com/ArcForges/ArcForges-Design/blob/design/v2-cli-sandbox-20261114/docs/verification/v2-review.md) preserves the single independent review and repair batch. Final-head review and required verification are recorded in the paired PRs; this candidate remains subject to Design-first merge order.

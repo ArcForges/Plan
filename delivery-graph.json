@@ -164,7 +164,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; ArcForges:docs/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -209,11 +209,17 @@
             "tests/ArcForges.Desktop.Tests/**",
             "ArcForges.slnx",
             "Directory.Packages.props",
-            "eng/packaging/**",
-            "eng/admission/**",
+            "eng/package.ps1",
+            "eng/publish.ps1",
+            "eng/verify_linux.py",
+            "packaging/**",
+            "eng/policy/dependency-admissions.json",
             "eng/verify_steps.py",
             ".github/workflows/**",
-            "README.md"
+            "README.md",
+            "eng/test-suites.conf",
+            "tests/ArcForges.Repository.Tests/**",
+            "THIRD_PARTY_NOTICES.md"
           ]
         }
       ],
@@ -277,7 +283,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -321,7 +327,9 @@
             "tools/ArcForges.MxcProbe/**",
             "eng/mxc/**",
             "Directory.Packages.props",
-            "src/**/packages.lock.json"
+            "src/**/packages.lock.json",
+            "eng/policy/dependency-admissions.json",
+            "THIRD_PARTY_NOTICES.md"
           ]
         },
         {
@@ -405,7 +413,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/**; ArcForges:eng/mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -536,7 +544,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Windows/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -667,7 +675,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Linux/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -787,7 +795,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/mxc/profiles/**; ArcForges:src/ArcForges.Node.Platform/Capabilities/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -828,13 +836,16 @@
         {
           "repo": "Contracts",
           "paths": [
-            "proto/**",
+            "public/proto/**",
+            "internal/proto/**",
             "src/**",
-            "packages/**",
+            "go/**",
+            "tests/**",
+            "fixtures/**",
             "eng/**",
-            "buf.yaml",
-            "buf.gen.yaml",
-            "README.md"
+            "README.md",
+            "docs/**",
+            "ArcForges.Contracts.slnx"
           ]
         }
       ],
@@ -845,7 +856,9 @@
       "scope": [
         "Adopt Sandbox/Run/Resource/Data/Node and management Device V2 specs into explicit new namespace/package surfaces and generate C#, Go and browser consumers",
         "Enforce presence, bounded validation, error/effect semantics, stream frames, command deduplication, revision and lease sequencing in contract tests",
-        "Publish new cohort under existing provenance rules; enumerate old public schemas retained solely for independent consumers"
+        "Publish new cohort under existing provenance rules; enumerate old public schemas retained solely for independent consumers",
+        "Include durable owner_epoch binding, transient terminal acknowledgment exceptions, bounded local recovery intent, safe Run display/config/profile revision and local-only CenterControlService in generated C#/Go validation and vectors",
+        "Generate InspectTransfer read bindings with typed progress/materialization state, final manifest digest and closed_at; no progress query retries a transfer-creation mutation"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -857,7 +870,8 @@
         "docs/contracts/proto/arcforges/management/v2/devices.proto",
         "docs/contracts/errors.md",
         "docs/state-machines/machines.json",
-        "docs/data/migrations.md"
+        "docs/data/migrations.md",
+        "docs/contracts/proto/arcforges/sandbox/v2/center_control.proto"
       ],
       "requirements": [
         "R-MIG-002",
@@ -867,12 +881,15 @@
       "deliverables": [
         "Adopt Sandbox/Run/Resource/Data/Node and management Device V2 specs into explicit new namespace/package surfaces and generate C#, Go and browser consumers",
         "Enforce presence, bounded validation, error/effect semantics, stream frames, command deduplication, revision and lease sequencing in contract tests",
-        "Publish new cohort under existing provenance rules; enumerate old public schemas retained solely for independent consumers"
+        "Publish new cohort under existing provenance rules; enumerate old public schemas retained solely for independent consumers",
+        "Include durable owner_epoch binding, transient terminal acknowledgment exceptions, bounded local recovery intent, safe Run display/config/profile revision and local-only CenterControlService in generated C#/Go validation and vectors",
+        "Generate InspectTransfer read bindings with typed progress/materialization state, final manifest digest and closed_at; no progress query retries a transfer-creation mutation"
       ],
       "acceptance": [
         "Bindings round-trip all specified fields/enums and unknown fields under supported versions",
         "No existing published v1 number/meaning/version is modified or unpublished; ContentSandbox remains distinct",
-        "All documented API routes/fields exist in compiled descriptors and target languages"
+        "All documented API routes/fields exist in compiled descriptors and target languages",
+        "Generated method inventory distinguishes durable Node mutations, transient terminal acknowledgments and local-only CenterControl/recovery; no immutable foundation fields are repurposed"
       ],
       "verification": {
         "author": [
@@ -902,7 +919,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Remove nonexistent root proto/packages/buf paths. New sandbox.v2 and management.v2 schemas belong under actual public/proto; internal/proto covers the explicitly versioned internal channel. Generated output, ownership/access inventories, tests and fixtures must change in the same cohort. No old published artifact or independent API deletion.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -924,7 +941,7 @@
           "Build C# bindings and AOT consumers on Windows when required by consuming repositories"
         ],
         "linux": [
-          "Run Contracts required Linux host profile, buf/descriptor compatibility and Go/browser generation tests"
+          "Run Contracts required Linux host profile, compiled protobuf descriptor compatibility and actual Go/browser generation tests"
         ]
       },
       "definition_of_done": [
@@ -956,8 +973,10 @@
       "objective": "Add V2 Node persistence and durable mutation receipts. Fresh and schema15 database fixtures preserve identity and unknown native effects across injected crash boundaries",
       "scope": [
         "Append forward expand migrations for Sandbox/config/Run/supervisor/limits/grants/transfers/delete-journal and migration receipts",
-        "Implement transactional receipt/event write with canonical request hashes and UNKNOWN retention; preserve source schema history/checksum/min-reader",
-        "Build consistent backup/restore and fresh/schema15 fixture upgrade paths; keep existing unresolved file intents readable for reconciliation"
+        "Persist a random owner_epoch and immutable owner/epoch/command/method/keyed-intent identity for every durable Node mutation; known response bodies may compact after 24 hours but identities remain for the entire admitted epoch",
+        "Keep UNKNOWN evidence and accepted recovery/Stop/revocation capacity; reject new admission when identity storage is exhausted rather than evict replay protection",
+        "Build consistent fresh/schema15 backup/restore paths with complete epoch keys and receipt identities; missing post-backup effects require reconciliation or explicit old-authority retirement/new epoch, never silent reuse",
+        "Preserve applied migration/checksum/min-reader history and unresolved legacy file intents; transient terminal acknowledgments never enter this durable receipt store"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -976,13 +995,19 @@
       ],
       "deliverables": [
         "Append forward expand migrations for Sandbox/config/Run/supervisor/limits/grants/transfers/delete-journal and migration receipts",
-        "Implement transactional receipt/event write with canonical request hashes and UNKNOWN retention; preserve source schema history/checksum/min-reader",
-        "Build consistent backup/restore and fresh/schema15 fixture upgrade paths; keep existing unresolved file intents readable for reconciliation"
+        "Persist a random owner_epoch and immutable owner/epoch/command/method/keyed-intent identity for every durable Node mutation; known response bodies may compact after 24 hours but identities remain for the entire admitted epoch",
+        "Keep UNKNOWN evidence and accepted recovery/Stop/revocation capacity; reject new admission when identity storage is exhausted rather than evict replay protection",
+        "Build consistent fresh/schema15 backup/restore paths with complete epoch keys and receipt identities; missing post-backup effects require reconciliation or explicit old-authority retirement/new epoch, never silent reuse",
+        "Preserve applied migration/checksum/min-reader history and unresolved legacy file intents; transient terminal acknowledgments never enter this durable receipt store"
       ],
       "acceptance": [
         "Fresh and schema15 database fixtures preserve identity and unknown native effects across injected crash boundaries",
         "Same command same payload returns same receipt; different payload and stale revision fail deterministically",
-        "Applied 0001..0015 remain byte-identical and incompatible older readers refuse"
+        "Applied 0001..0015 remain byte-identical and incompatible older readers refuse",
+        "A successful Start replay after response-body compaction beyond 24 hours and after Node restart returns retained identity/effect or an explicit compacted-body result and never launches again",
+        "A stale owner_epoch after store replacement/retirement is rejected without effect; clients cannot rebind the saved command to a fresh Handshake epoch",
+        "Coherent restore preserves all command identities and keys; a backup missing accepted post-backup effects cannot reopen replay by reusing the old epoch",
+        "Capacity saturation refuses new mutating work while reserving completion, accepted Stop, grant revocation and reconciliation; no identity is evicted to free admission space"
       ],
       "verification": {
         "author": [
@@ -1012,7 +1037,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -1057,7 +1082,12 @@
             "src/ArcForges.Node.Core/NodeRuntime.cs",
             "src/ArcForges.Node.Api/SandboxServiceHandler.cs",
             "src/ArcForges.Node.Platform/Capabilities/**",
-            "tests/**/Sandbox*"
+            "tests/**/Sandbox*",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "src/ArcForges.Node.Store/**",
+            "src/ArcForges.Node.Core/NodeCapabilities.cs"
           ]
         }
       ],
@@ -1097,7 +1127,8 @@
       "acceptance": [
         "Create/rename/reenter preserves data and never uses display name as filesystem identity",
         "Concurrent configure/delete/start fixtures prove consistent revisions and no partial authorization change",
-        "Unsupported profile/policy combinations reject before a process can run"
+        "Unsupported profile/policy combinations reject before a process can run",
+        "Sandbox display-name rename is a typed Configure revision update; it preserves Sandbox identity/private-root identity and never broadens local grant or policy"
       ],
       "verification": {
         "author": [
@@ -1127,7 +1158,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Sandboxes/**; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs; ArcForges:src/ArcForges.Node.Platform/Capabilities/**; ArcForges:tests/**/Sandbox*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -1175,7 +1206,19 @@
             "src/ArcForges.Node.Api/RunServiceHandler.cs",
             "tests/**/Mxc*",
             "ArcForges.slnx",
-            "eng/packaging/**"
+            "eng/package.ps1",
+            "eng/publish.ps1",
+            "eng/verify_linux.py",
+            "packaging/**",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "src/ArcForges.Node.Core/NodeRuntime.cs",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "src/ArcForges.Node.Store/**",
+            "src/ArcForges.Node.Platform.Windows/Native.cs",
+            "src/ArcForges.Node.Platform.Linux/Libc.cs",
+            "tests/ArcForges.Node.Platform.Windows.Tests/**",
+            "tests/ArcForges.Node.Platform.Linux.Tests/**"
           ]
         }
       ],
@@ -1213,7 +1256,8 @@
       "acceptance": [
         "Real argv quoting/environment/working-directory and foreground service scenarios work under both qualified profiles",
         "Node/client death does not accidentally dispose the Run owner; executor exit does not finalize until outer boundary emptiness is proved",
-        "Unknown startup/cleanup preserves receipt and ownership; no bare-PID kill or host-process fallback"
+        "Unknown startup/cleanup preserves receipt and ownership; no bare-PID kill or host-process fallback",
+        "Run inspection exposes safe_command_display, immutable sandbox_revision and exact profile_version; display is executable basename plus redacted argument count by default, without reconstructing secrets or host paths from launch input"
       ],
       "verification": {
         "author": [
@@ -1243,7 +1287,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Runs/**; ArcForges:src/ArcForges.RunSupervisor/**; ArcForges:src/ArcForges.Node.Platform.Windows/Mxc/**; ArcForges:src/ArcForges.Node.Platform.Linux/Mxc/**; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/Mxc*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -1289,7 +1333,15 @@
             "src/ArcForges.Node.Platform.Linux/Terminal/**",
             "src/ArcForges.Node.Core/Runs/Output*",
             "src/ArcForges.Node.Api/RunServiceHandler.cs",
-            "tests/**/Terminal*"
+            "tests/**/Terminal*",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "src/ArcForges.Node.Core/NodeRuntime.cs",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "src/ArcForges.Node.Store/**",
+            "tests/ArcForges.Node.Platform.Windows.Tests/**",
+            "tests/ArcForges.Node.Platform.Linux.Tests/**",
+            "tests/ArcForges.ClosedLoop.Tests/**"
           ]
         }
       ],
@@ -1298,9 +1350,10 @@
       ],
       "objective": "Implement real terminal broker and bounded output streams. Native TUI redraw, resize, terminal mode restoration, piped binary output and explicit stdin EOF pass",
       "scope": [
-        "Implement genuine ConPTY/PTY stdin/stdout, Ctrl+C/native signal semantics, resize, EOF for explicit pipes and UTF-8 byte handling",
-        "Implement exclusive writer/observer leases, monotonic input/resize sequences, deduplication and stale-epoch rejection",
-        "Persist bounded per-Run spool and offsets; emit GAP on retention/overload; detached Runs keep owner and drain"
+        "Implement genuine ConPTY/PTY stdin/stdout, Ctrl+C/native signals, resize, explicit-pipe EOF and UTF-8 byte handling",
+        "Keep Acquire/Write/Resize/Detach acknowledgments only in bounded supervisor memory under the live 30-second writer lease/generation and sequence window; no durable command receipt or GetOperation semantics for terminal input",
+        "Never persist raw terminal input or input-derived hashes in receipts, audit, traces or recovery records; expired acknowledgment windows and Node/supervisor loss produce explicit uncertainty without retransmission",
+        "Persist only bounded per-Run output spool/offsets with GAP on retention/overload; detached Runs retain their owner and continue draining"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -1317,14 +1370,18 @@
         "R-SEC-003"
       ],
       "deliverables": [
-        "Implement genuine ConPTY/PTY stdin/stdout, Ctrl+C/native signal semantics, resize, EOF for explicit pipes and UTF-8 byte handling",
-        "Implement exclusive writer/observer leases, monotonic input/resize sequences, deduplication and stale-epoch rejection",
-        "Persist bounded per-Run spool and offsets; emit GAP on retention/overload; detached Runs keep owner and drain"
+        "Implement genuine ConPTY/PTY stdin/stdout, Ctrl+C/native signals, resize, explicit-pipe EOF and UTF-8 byte handling",
+        "Keep Acquire/Write/Resize/Detach acknowledgments only in bounded supervisor memory under the live 30-second writer lease/generation and sequence window; no durable command receipt or GetOperation semantics for terminal input",
+        "Never persist raw terminal input or input-derived hashes in receipts, audit, traces or recovery records; expired acknowledgment windows and Node/supervisor loss produce explicit uncertainty without retransmission",
+        "Persist only bounded per-Run output spool/offsets with GAP on retention/overload; detached Runs retain their owner and continue draining"
       ],
       "acceptance": [
         "Native TUI redraw, resize, terminal mode restoration, piped binary output and explicit stdin EOF pass",
         "Concurrent attach/takeover/lease expiry cannot interleave two writers or duplicate unknown input",
-        "No client disconnection kills a Run and no pipes path is labeled interactive"
+        "No client disconnection kills a Run and no pipes path is labeled interactive",
+        "Expired acknowledgment window, lost Node broker and lost supervisor each invalidate the relevant lease/sequence acknowledgment; unknown input is never automatically retransmitted",
+        "Inspect actual durable store, audit and recovery outputs after input/resize/detach to prove raw input and input-derived hashes are absent; durable Start/Stop receipts remain separately testable",
+        "Use an echo-disabled no-output terminal fixture to detect forbidden input-control persistence; separately echoed program output follows its normal explicit retention policy and is not an input-control transcript"
       ],
       "verification": {
         "author": [
@@ -1354,7 +1411,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/Terminal/**; ArcForges:src/ArcForges.Node.Platform.Windows/Terminal/**; ArcForges:src/ArcForges.Node.Platform.Linux/Terminal/**; ArcForges:src/ArcForges.Node.Core/Runs/Output*; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/Terminal*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -1399,8 +1456,15 @@
             "src/ArcForges.Node.Api/ClientSessions.cs",
             "src/ArcForges.Node.Api/NodeServiceHandler.cs",
             "src/ArcForges.Node.Core/LocalSubmission.cs",
-            "src/ArcForges.Node.Core/CenterRouting.cs",
-            "tests/**/Security*"
+            "src/ArcForges.Node.Core/Security/CenterRouting.cs",
+            "tests/**/Security*",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "src/ArcForges.Node.Core/NodeRuntime.cs",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "src/ArcForges.Node.Store/**",
+            "src/ArcForges.Node.Api/ClientImages.cs",
+            "tests/ArcForges.Client.Tests/PipeOwnershipTests.cs"
           ]
         }
       ],
@@ -1412,7 +1476,8 @@
       "scope": [
         "Replace HUMAN-only diagnostic local submission with protected owner-authenticated normal local CLI authorization",
         "Implement local-only grant create/expand, Sandbox scopes, immutable provisioning templates and bounded derived child grants",
-        "Rework audit/redaction and secret injections; reject payload access to Node IPC/control metadata and remote widening"
+        "Rework audit/redaction and secret injections; reject payload access to Node IPC/control metadata and remote widening",
+        "Implement exact grant set/list/revoke action mapping with local-only grant edits, typed remote revoke and immediate authority invalidation; no arbitrary dispatcher or implicit grant from enrollment"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -1432,12 +1497,14 @@
       "deliverables": [
         "Replace HUMAN-only diagnostic local submission with protected owner-authenticated normal local CLI authorization",
         "Implement local-only grant create/expand, Sandbox scopes, immutable provisioning templates and bounded derived child grants",
-        "Rework audit/redaction and secret injections; reject payload access to Node IPC/control metadata and remote widening"
+        "Rework audit/redaction and secret injections; reject payload access to Node IPC/control metadata and remote widening",
+        "Implement exact grant set/list/revoke action mapping with local-only grant edits, typed remote revoke and immediate authority invalidation; no arbitrary dispatcher or implicit grant from enrollment"
       ],
       "acceptance": [
         "Scripts and ordinary CLI work locally without Center/login while wrong OS users and forged sessions fail",
         "Provisioning grant creates only equal/narrower policy; stale grant, expansion, foreign enrollment and revoked command fail",
-        "No raw credential/environment or command secret leaks into audit/remote errors"
+        "No raw credential/environment or command secret leaks into audit/remote errors",
+        "Local grant set/list/revoke and typed remote revocation operate on exact owner/enrollment/scope/revision; a remote caller cannot invoke SetRemoteGrant, repair, or another local-only control"
       ],
       "verification": {
         "author": [
@@ -1467,7 +1534,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tests/**/Security*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -1512,7 +1579,13 @@
             "src/ArcForges.Node.Platform.Windows/WindowsResourceSampler.cs",
             "src/ArcForges.Node.Platform.Linux/LinuxResourceSampler.cs",
             "src/ArcForges.Node.Platform.Linux/ProcFs.cs",
-            "tests/**/Resource*"
+            "tests/**/Resource*",
+            "src/ArcForges.Node.Platform/ResourceSampling.cs",
+            "src/ArcForges.Node.Api/ResourceServiceHandler.cs",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "tests/ArcForges.Node.Platform.Windows.Tests/**",
+            "tests/ArcForges.Node.Platform.Linux.Tests/**"
           ]
         }
       ],
@@ -1578,7 +1651,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -1625,7 +1698,16 @@
             "src/ArcForges.Node.Platform.Linux/SystemdManager.cs",
             "src/ArcForges.Node.Platform.Linux/UnitControl.cs",
             "src/ArcForges.Node.Api/ResourceServiceHandler.cs",
-            "tests/**/Resource*"
+            "tests/**/Resource*",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "src/ArcForges.Node.Core/NodeRuntime.cs",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "src/ArcForges.Node.Store/**",
+            "src/ArcForges.Node.Platform.Windows/Native.cs",
+            "src/ArcForges.Node.Platform.Linux/Libc.cs",
+            "tests/ArcForges.Node.Platform.Windows.Tests/**",
+            "tests/ArcForges.Node.Platform.Linux.Tests/**"
           ]
         }
       ],
@@ -1698,7 +1780,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Platform.Windows/Mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -1743,7 +1825,10 @@
             "src/ArcForges.Node.Core/Runs/Admission*",
             "src/ArcForges.Node.Core/Scheduling/AdmissionEngine.cs",
             "tests/**/Admission*",
-            "tests/**/Pressure*"
+            "tests/**/Pressure*",
+            "src/ArcForges.Node.Store/**",
+            "src/ArcForges.Node.Core/NodeRuntime.cs",
+            "tests/ArcForges.Node.Core.Tests/**"
           ]
         }
       ],
@@ -1806,7 +1891,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Runs/Admission*; ArcForges:tests/**/Pressure*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -1852,7 +1937,17 @@
             "src/ArcForges.RunSupervisor/**",
             "src/ArcForges.Node.Store/**",
             "tests/**/Recovery*",
-            "eng/systemd/**"
+            "eng/systemd/**",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "src/ArcForges.Node.Core/NodeRuntime.cs",
+            "src/ArcForges.Node.Core/Sandboxes/**",
+            "src/ArcForges.Node.Core/SandboxData/**",
+            "src/ArcForges.Node.Api/SandboxServiceHandler.cs",
+            "packaging/linux/**",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "tests/ArcForges.Node.Platform.Windows.Tests/**",
+            "tests/ArcForges.Node.Platform.Linux.Tests/**"
           ]
         }
       ],
@@ -1866,7 +1961,8 @@
       "scope": [
         "Persist and authenticate supervisor instance, Run/boot/creation/boundary identities; rebind only exact live ownership",
         "Implement Node crash, supervisor crash, machine reboot, process-ID reuse, log gap and interrupted stop/delete reconciliation",
-        "Keep DRAINING/RECOVERY_REQUIRED until scope emptiness or same-owner live state proven; invalidate client terminal leases on Node restart"
+        "Keep DRAINING/RECOVERY_REQUIRED until scope emptiness or same-owner live state proven; invalidate client terminal leases on Node restart",
+        "Implement local Configure.repair_error authorization/identity/no-use/no-unresolved-effect guards and Delete.resume_command_id successor-to-original-journal safety; accepted deletion has no cancellation path, while destructive phases and data CLI integration are completed by FILE-02"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -1886,12 +1982,15 @@
       "deliverables": [
         "Persist and authenticate supervisor instance, Run/boot/creation/boundary identities; rebind only exact live ownership",
         "Implement Node crash, supervisor crash, machine reboot, process-ID reuse, log gap and interrupted stop/delete reconciliation",
-        "Keep DRAINING/RECOVERY_REQUIRED until scope emptiness or same-owner live state proven; invalidate client terminal leases on Node restart"
+        "Keep DRAINING/RECOVERY_REQUIRED until scope emptiness or same-owner live state proven; invalidate client terminal leases on Node restart",
+        "Implement local Configure.repair_error authorization/identity/no-use/no-unresolved-effect guards and Delete.resume_command_id successor-to-original-journal safety; accepted deletion has no cancellation path, while destructive phases and data CLI integration are completed by FILE-02"
       ],
       "acceptance": [
         "Node restart preserves still-owned Runs without replaying Start; supervisor death cleans payload or honestly blocks cleanup",
         "Reboot does not auto-start commands or fabricate numeric exit code; no foreign process is killed",
-        "Unknown receipts survive retention and return original effect after recovery"
+        "Unknown receipts survive retention and return original effect after recovery",
+        "Only authenticated local owner Configure.repair_error can repair ERROR after exact-root/no-use/no-unresolved-effect guards; Delete.resume_command_id uses a fresh successor command/CAS and exact original journal/root/quarantine phase; foreign/changed roots, unknown identity and bare-PID inference are refused",
+        "GetOperation observes the original owner epoch/command without authorizing effects or silently rebinding; an explicit authorized resume links a distinct successor identity to the original delete journal and never rewrites an unresolved original receipt as success without proof"
       ],
       "verification": {
         "author": [
@@ -1930,7 +2029,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/**; ArcForges:tests/**/Recovery*; ArcForges:src/ArcForges.Node.Core/Sandboxes/**; ArcForges:src/ArcForges.Node.Core/SandboxData/**; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -1963,7 +2062,7 @@
     },
     {
       "id": "AFV2-CLI-01",
-      "title": "Deliver complete offline local CLI commands",
+      "title": "Deliver offline core and administration CLI commands",
       "milestone": "P4",
       "order": 17,
       "state": "planned",
@@ -1973,9 +2072,10 @@
           "paths": [
             "src/ArcForges.CommandLine/**",
             "src/ArcForges.Client/**",
-            "tests/ArcForges.CommandLine.Tests/**",
+            "tests/ArcForges.Client.Tests/**",
             "README.md",
-            "docs/cli/**"
+            "docs/cli/**",
+            "src/ArcForges.Host/Program.cs"
           ]
         }
       ],
@@ -1986,15 +2086,17 @@
         "AFV2-RES-03",
         "AFV2-REC-01"
       ],
-      "objective": "Deliver complete offline local CLI commands. An unenrolled offline user completes local create/start/stop/inspect and resource configuration",
+      "objective": "Deliver complete offline core and administration CLI commands. An unenrolled user can manage Sandbox/Run/resource/grant/operation state and diagnostics without a Center; data/delete commands are delivered by FILE-01/02.",
       "scope": [
-        "Implement Sandbox create/config/list/inspect and Run start/list/inspect/stop plus resources/doctor/node commands with new bindings",
-        "Reuse useful CLI output/error/config parsing; provide stable --json and explicit argv separator; local is normal route",
-        "Show capability/grant/limit readback and process exit provenance without requiring account/Center"
+        "Implement Sandbox create/configure/list/inspect including Configure display-name updates, and Run start/list/inspect/stop through typed Core clients",
+        "Implement resources show/watch/set, grants set/list/revoke, operations inspect, node status and doctor with exact CLI-to-method mapping and local ownership checks",
+        "Reuse useful parsing/output/error/config code; stable --json, explicit argv boundaries, original owner_epoch/command identity and truthful capabilities, limits and exit provenance",
+        "Do not register unimplemented data/delete or center-control placeholders: FILE-01/02 own data/delete CLI integration, and CENTER-02 owns actual center connect/disconnect/status/cancel/signout"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
-        "Changes to independent products or published package history without an identified required consumer migration"
+        "Changes to independent products or published package history without an identified required consumer migration",
+        "Data usage/import/export and Sandbox delete CLI integration are FILE-01/02; actual center-control commands are CENTER-02; no placeholder registration claims those later slices delivered"
       ],
       "design_refs": [
         "docs/architecture/06-local-node-cli.md",
@@ -2009,14 +2111,17 @@
         "R-RES-003"
       ],
       "deliverables": [
-        "Implement Sandbox create/config/list/inspect and Run start/list/inspect/stop plus resources/doctor/node commands with new bindings",
-        "Reuse useful CLI output/error/config parsing; provide stable --json and explicit argv separator; local is normal route",
-        "Show capability/grant/limit readback and process exit provenance without requiring account/Center"
+        "Implement Sandbox create/configure/list/inspect including Configure display-name updates, and Run start/list/inspect/stop through typed Core clients",
+        "Implement resources show/watch/set, grants set/list/revoke, operations inspect, node status and doctor with exact CLI-to-method mapping and local ownership checks",
+        "Reuse useful parsing/output/error/config code; stable --json, explicit argv boundaries, original owner_epoch/command identity and truthful capabilities, limits and exit provenance",
+        "Do not register unimplemented data/delete or center-control placeholders: FILE-01/02 own data/delete CLI integration, and CENTER-02 owns actual center connect/disconnect/status/cancel/signout"
       ],
       "acceptance": [
         "An unenrolled offline user completes local create/start/stop/inspect and resource configuration",
         "JSON and human output agree; argv quoting, path spaces, codes and failed admission are predictable",
-        "Old queue/job/dependency/retry/AI flags are absent from help/completions and cannot select legacy routes"
+        "Old queue/job/dependency/retry/AI flags are absent from help/completions and cannot select legacy routes",
+        "Help and generated-client inventory map every delivered local administrative action to its typed method; grants and resource changes are exercised through real Core, not only parsers",
+        "Compacted receipt and retired owner_epoch are visible in operations inspect; no command is silently retried or rebound after a new Handshake"
       ],
       "verification": {
         "author": [
@@ -2046,7 +2151,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/cli/**. Scope text must say core/admin CLI, not completion of data/delete/Center commands. FILE01/02 own their own client and command integration; CENTER02 owns actual connection flow commands and depends on CLI01.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2091,7 +2196,10 @@
             "src/ArcForges.CommandLine/Terminal/**",
             "src/ArcForges.Client/**",
             "tests/**/Terminal*",
-            "docs/cli/**"
+            "docs/cli/**",
+            "src/ArcForges.CommandLine/CliApplication.cs",
+            "tests/ArcForges.Client.Tests/**",
+            "tests/ArcForges.ClosedLoop.Tests/**"
           ]
         }
       ],
@@ -2101,9 +2209,10 @@
       ],
       "objective": "Deliver interactive CLI attach detach and terminal ergonomics. Full-screen TUI, UTF-8, Ctrl+C, window changes, stdin EOF and program exit behave correctly on both platforms",
       "scope": [
-        "Connect real local terminal to Run writer lease, resize events and signal semantics; restore host terminal on all exit/error paths",
-        "Expose explicit attach/detach/observer/takeover and redirected pipes mode with EOF",
-        "Persist original mutation ID over connection failure and reconcile input/Start without duplication"
+        "Connect the real local terminal to the Run writer lease, resize events and native signal semantics; restore host terminal on every exit/error path",
+        "Expose explicit attach/detach/observer/takeover and redirected pipes with EOF using the supervisor-memory lease/generation/sequence acknowledgment protocol",
+        "Keep durable Start/Stop command identity and owner_epoch separate from transient terminal acknowledgments; never store input-derived receipts or reconcile terminal input through GetOperation",
+        "After acknowledgment-window expiry or Node/supervisor loss, show uncertain input, revoke/detach the stale writer and require a new explicit attach; never retransmit unacknowledged input automatically"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -2120,14 +2229,18 @@
         "R-CLI-001"
       ],
       "deliverables": [
-        "Connect real local terminal to Run writer lease, resize events and signal semantics; restore host terminal on all exit/error paths",
-        "Expose explicit attach/detach/observer/takeover and redirected pipes mode with EOF",
-        "Persist original mutation ID over connection failure and reconcile input/Start without duplication"
+        "Connect the real local terminal to the Run writer lease, resize events and native signal semantics; restore host terminal on every exit/error path",
+        "Expose explicit attach/detach/observer/takeover and redirected pipes with EOF using the supervisor-memory lease/generation/sequence acknowledgment protocol",
+        "Keep durable Start/Stop command identity and owner_epoch separate from transient terminal acknowledgments; never store input-derived receipts or reconcile terminal input through GetOperation",
+        "After acknowledgment-window expiry or Node/supervisor loss, show uncertain input, revoke/detach the stale writer and require a new explicit attach; never retransmit unacknowledged input automatically"
       ],
       "acceptance": [
         "Full-screen TUI, UTF-8, Ctrl+C, window changes, stdin EOF and program exit behave correctly on both platforms",
         "Detach keeps foreground-root service alive; reattach resumes offsets with honest GAP",
-        "Two clients cannot both write; stale lease/input/resize sequences are rejected"
+        "Two clients cannot both write; stale lease/input/resize sequences are rejected",
+        "Loss before/after native terminal input acknowledgment and lease-window expiry cannot trigger automatic retransmission; Start/Stop still use their original durable owner_epoch/command identities",
+        "No raw input or input-derived hashes appear in persisted CLI state, Node receipts/audit or supervisor recovery records",
+        "Use an echo-disabled no-output terminal fixture to detect forbidden input-control persistence; separately echoed program output follows its normal explicit retention policy and is not an input-control transcript"
       ],
       "verification": {
         "author": [
@@ -2157,7 +2270,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.CommandLine/Terminal/**; ArcForges:tests/**/Terminal*; ArcForges:docs/cli/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2200,22 +2313,36 @@
           "paths": [
             "src/ArcForges.Node.Core/SandboxData/**",
             "src/ArcForges.Node.Api/DataServiceHandler.cs",
-            "src/ArcForges.Node.Platform/WorkspacePath*",
+            "src/ArcForges.Node.Core/Platform/**",
             "src/ArcForges.CommandLine/DataCommands.cs",
-            "tests/**/SandboxData*"
+            "tests/**/SandboxData*",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "src/ArcForges.Node.Core/NodeRuntime.cs",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "src/ArcForges.Node.Store/**",
+            "src/ArcForges.Node.Core/Files/**",
+            "src/ArcForges.CommandLine/CliApplication.cs",
+            "src/ArcForges.Client/**",
+            "tests/ArcForges.Client.Tests/**",
+            "tests/ArcForges.Node.Store.Tests/**",
+            "docs/cli/**"
           ]
         }
       ],
       "depends_on": [
         "AFV2-CORE-01",
         "AFV2-SEC-01",
-        "AFV2-REC-01"
+        "AFV2-REC-01",
+        "AFV2-CLI-01"
       ],
       "objective": "Implement private data usage import and export. Data persists across successive Runs; usage excludes authorized host mounts and marks partial observations",
       "scope": [
         "Rework proven opened-root/identity/staging primitives into Sandbox-only usage/list and single-file chunk import/export",
         "Require quiescence, explicit overwrite version, verified length/hash and private export snapshot; reject unsafe links/ADS/case collisions",
-        "Expose configured root and exclusions accurately; no cache taxonomy, arbitrary host search/editor or archive extraction"
+        "Expose configured root and exclusions accurately; no cache taxonomy, arbitrary host search/editor or archive extraction",
+        "Own the complete data usage/list/import/export CLI and generated-client integration, stable progress/cancel/unknown states and real Core/filesystem acceptance; CLI-01 supplies only the earlier core/admin shell",
+        "Implement DataService.InspectTransfer for bounded asynchronous progress and authoritative final snapshot metadata; COMPLETE verifies materialization, while a private export remains readable until explicit CloseTransfer or expiry"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -2235,12 +2362,16 @@
       "deliverables": [
         "Rework proven opened-root/identity/staging primitives into Sandbox-only usage/list and single-file chunk import/export",
         "Require quiescence, explicit overwrite version, verified length/hash and private export snapshot; reject unsafe links/ADS/case collisions",
-        "Expose configured root and exclusions accurately; no cache taxonomy, arbitrary host search/editor or archive extraction"
+        "Expose configured root and exclusions accurately; no cache taxonomy, arbitrary host search/editor or archive extraction",
+        "Own the complete data usage/list/import/export CLI and generated-client integration, stable progress/cancel/unknown states and real Core/filesystem acceptance; CLI-01 supplies only the earlier core/admin shell",
+        "Implement DataService.InspectTransfer for bounded asynchronous progress and authoritative final snapshot metadata; COMPLETE verifies materialization, while a private export remains readable until explicit CloseTransfer or expiry"
       ],
       "acceptance": [
         "Data persists across successive Runs; usage excludes authorized host mounts and marks partial observations",
         "Import crash at each commit boundary preserves known/unknown effect and cannot overwrite a changed target",
-        "Export bytes come from the bound private snapshot; no file operation escapes owned root"
+        "Export bytes come from the bound private snapshot; no file operation escapes owned root",
+        "The delivered CLI performs real owned-data usage/import/export end to end, including interrupted chunks, retained export snapshot reread until explicit close/expiry and truthful cancellation; no parser-only or mock-only command",
+        "Actual CLI and typed client inspect transfer progress/final digest/closed_at without another BeginExport; losing the final chunk response permits the same snapshot range read until CloseTransfer/expiry, and Sandbox deletion stays blocked while that export is retained"
       ],
       "verification": {
         "author": [
@@ -2270,7 +2401,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/SandboxData/**; ArcForges:src/ArcForges.Node.Api/DataServiceHandler.cs; ArcForges:src/ArcForges.CommandLine/DataCommands.cs; ArcForges:tests/**/SandboxData*; ArcForges:docs/cli/**. WorkspacePath is an existing Node.Core/Platform partial class, with WorkspaceWriteGuard/FileLinks/LinuxFile* siblings. Rework these proved primitives rather than create a replacement in Node.Platform. DataCommands.cs is a legitimate new command file; add real CLI root/client/test integration.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2315,7 +2446,19 @@
             "src/ArcForges.Node.Api/SandboxServiceHandler.cs",
             "src/ArcForges.CommandLine/SandboxCommands.cs",
             "src/ArcForges.Node.Store/**",
-            "tests/**/SandboxDelete*"
+            "tests/**/SandboxDelete*",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "src/ArcForges.Node.Core/NodeRuntime.cs",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "src/ArcForges.Node.Core/Platform/**",
+            "src/ArcForges.Node.Core/Files/**",
+            "src/ArcForges.CommandLine/CliApplication.cs",
+            "src/ArcForges.Client/**",
+            "tests/ArcForges.Client.Tests/**",
+            "tests/ArcForges.Node.Store.Tests/**",
+            "docs/cli/**",
+            "src/ArcForges.Node.Core/Sandboxes/**"
           ]
         }
       ],
@@ -2326,7 +2469,8 @@
       "scope": [
         "Implement revision/identity-bound PlanDelete and one-use Delete receipt with the shared admission/no-use lock",
         "Quarantine only exact owned roots; journal each native destructive phase and recover interrupted deletion",
-        "Exclude host grants, sibling Sandboxes and unknown owned effects; bounded retention is not a wall-clock development gate"
+        "Exclude host grants, sibling Sandboxes and unknown owned effects; bounded retention is not a wall-clock development gate",
+        "Own actual Sandbox plan/delete and local resume CLI/client integration: a preview may be abandoned before acceptance, while accepted deletion has no cancel/restore-to-READY promise; resume uses Delete.resume_command_id with REC-01 guards and exact original journal identity"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -2345,12 +2489,14 @@
       "deliverables": [
         "Implement revision/identity-bound PlanDelete and one-use Delete receipt with the shared admission/no-use lock",
         "Quarantine only exact owned roots; journal each native destructive phase and recover interrupted deletion",
-        "Exclude host grants, sibling Sandboxes and unknown owned effects; bounded retention is not a wall-clock development gate"
+        "Exclude host grants, sibling Sandboxes and unknown owned effects; bounded retention is not a wall-clock development gate",
+        "Own actual Sandbox plan/delete and local resume CLI/client integration: a preview may be abandoned before acceptance, while accepted deletion has no cancel/restore-to-READY promise; resume uses Delete.resume_command_id with REC-01 guards and exact original journal identity"
       ],
       "acceptance": [
         "Active Run/transfer blocks delete; concurrent Start cannot enter after deletion lock",
         "Crash/replay/changed path/quarantine identity tests preserve truthful effect and never delete foreign data",
-        "Actual owned data is removed after guards pass; blanket refusal is not a substitute for functionality"
+        "Actual owned data is removed after guards pass; blanket refusal is not a substitute for functionality",
+        "The actual CLI previews/deletes owned data and resumes only with a fresh successor command/revision bound to the original journal/root/quarantine phase; preview abandonment has no effect, accepted deletion offers no cancellation, and resume never broadens the deletion or infers success from a pathname"
       ],
       "verification": {
         "author": [
@@ -2389,7 +2535,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/SandboxData/Delete*; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs; ArcForges:src/ArcForges.CommandLine/SandboxCommands.cs; ArcForges:tests/**/SandboxDelete*; ArcForges:docs/cli/**; ArcForges:src/ArcForges.Node.Core/Sandboxes/**. SandboxCommands.cs and SandboxData/Delete* are legitimate planned paths created by V2. Existing proven Files/Platform primitives and actual CLI/client integration need explicit scope; preserve unresolved old journals until finite cutover.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2435,7 +2581,16 @@
             "center/internal/management/**",
             "eng/v2-migration/**",
             "eng/verification/**",
-            "storage/**"
+            "storage/**",
+            "center/cmd/arcforges-center/**",
+            "center/internal/config/**",
+            "center/internal/server/**",
+            "center/internal/bridgeproof/**",
+            "center/internal/dbtest/**",
+            "center/internal/pgtest/**",
+            "tooling/postgres-deploy.ts",
+            "tooling/neon-runtime.ts",
+            "tests/worker/postgres-deploy.test.ts"
           ]
         }
       ],
@@ -2513,7 +2668,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; Cloud:eng/v2-migration/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2557,8 +2712,20 @@
             "center/internal/identity/**",
             "center/internal/routes/identity.go",
             "center/internal/schema/**",
-            "center/internal/identitytests/**",
-            "center/internal/httpapi/**"
+            "center/internal/identityapi/**",
+            "center/internal/pages/**",
+            "center/internal/server/**",
+            "center/internal/access/**",
+            "center/internal/workertables/**",
+            "center/cmd/center-gen/**",
+            "worker/tables/center-tables.generated.ts",
+            "center/internal/session/**",
+            "center/internal/device/**",
+            "center/internal/oneuse/**",
+            "center/internal/mail/**",
+            "center/internal/ratelimit/**",
+            "center/internal/routes/pages.go",
+            "center/internal/routes/routes.go"
           ]
         }
       ],
@@ -2593,7 +2760,8 @@
       "acceptance": [
         "Recovery proof cannot be replayed or used across accounts; failure messages do not disclose account existence",
         "Deletion/recovery revokes remote authority consistently under concurrent sessions and leaves local Runs/data alone",
-        "Generated-but-unregistered methods are either implemented and routed here or excluded explicitly from published UI/API inventory"
+        "Generated-but-unregistered methods are either implemented and routed here or excluded explicitly from published UI/API inventory",
+        "External delivery/authenticator fixtures cannot bypass actual proof crypto or PostgreSQL state; real mail/domain/browser qualification is recorded separately and remains unproven until exercised"
       ],
       "verification": {
         "author": [
@@ -2610,7 +2778,8 @@
         ]
       },
       "fakes_allowed": [
-        "External mail delivery is replaced by a bounded test sink; proof generation, verification, state, rate limits and persistence are real"
+        "External SMTP/mailbox test peer may capture delivery or inject transport outage; real proof verifiers, rate limits, one-use state, epochs, revocation and PostgreSQL transactions must execute unchanged",
+        "Software-authenticator/browser ceremony input fixtures may generate test credentials and malformed responses, but real WebAuthn/COSE/signature/origin/challenge verification cannot be mocked; real mailbox/domain and supported-browser qualification remains AR-10/H-04 activation evidence"
       ],
       "future_validation": [],
       "acceptance_register": [],
@@ -2623,7 +2792,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Actual API adapters and co-located tests are identityapi; current browser pages are pages; session verification must consume new account epochs. Do not invent duplicate httpapi/identitytests packages.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2651,7 +2820,8 @@
       "definition_of_done": [
         "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
-        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py"
+        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
+        "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"
       ]
     },
     {
@@ -2664,11 +2834,28 @@
         {
           "repo": "Cloud",
           "paths": [
-            "center/internal/node/**",
+            "center/internal/management/**",
+            "center/internal/fleetapi/**",
             "center/internal/fleet/**",
             "center/internal/routes/nodes.go",
             "center/internal/hub/**",
-            "center/internal/device/**"
+            "center/internal/device/**",
+            "center/internal/server/**",
+            "center/internal/access/**",
+            "center/internal/workertables/**",
+            "center/cmd/center-gen/**",
+            "worker/tables/center-tables.generated.ts",
+            "center/internal/session/**",
+            "center/internal/config/**",
+            "center/internal/routes/**",
+            "center/internal/pages/**",
+            "center/internal/nodetest/**",
+            "center/cmd/node-probe/**",
+            "center/go.mod",
+            "center/go.sum",
+            "center/internal/schema/**",
+            "center/internal/store/**",
+            "center/internal/pgtest/**"
           ]
         },
         {
@@ -2677,20 +2864,33 @@
             "src/ArcForges.Node.CloudLink/**",
             "src/ArcForges.CommandLine/CenterCommands.cs",
             "src/ArcForges.CommandLine/LoginCommands.cs",
-            "tests/**/CloudLink*"
+            "tests/**/CloudLink*",
+            "src/ArcForges.Client/**",
+            "src/ArcForges.CommandLine/CliApplication.cs",
+            "src/ArcForges.Node.Api/CenterControlServiceHandler.cs",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "tests/ArcForges.Node.CloudLink.Tests/**",
+            "tests/ArcForges.Client.Tests/**",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "docs/cli/**",
+            "src/ArcForges.Node.Store/**",
+            "tests/ArcForges.Node.Store.Tests/**"
           ]
         }
       ],
       "depends_on": [
         "AFV2-CENTER-01",
         "AFV2-API-01",
-        "AFV2-SEC-01"
+        "AFV2-SEC-01",
+        "AFV2-CLI-01"
       ],
       "objective": "Adapt enrollment and outbound node channels to V2 capabilities. Rotation/revocation/reconnect reject stale enrollment and hub epochs",
       "scope": [
         "Reuse authenticated outbound enrollment/channel/epoch/rotation infrastructure with explicit Center origin and V2 profile capabilities",
         "Expose owner-scoped DeviceService inventory/revocation and stale presence; retain no old task capability advertisement",
-        "Disconnect/expire/revoke hosted channel without stopping local Core or deleting Sandbox data"
+        "Disconnect/expire/revoke hosted channel without stopping local Core or deleting Sandbox data",
+        "Implement the local-only CenterControlService GetStatus/BeginConnect/GetConnectFlow/CancelConnect/Disconnect/SignOut adapter and actual center connect/flow/disconnect/status/cancel/signout CLI commands; reuse CloudLinkService, SignInOrchestrator and protected credential/control-file internals without retaining the old Node.v1 dispatcher"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -2699,7 +2899,8 @@
       "design_refs": [
         "docs/architecture/09-go-center.md",
         "docs/architecture/08-security-trust.md",
-        "docs/contracts/README.md"
+        "docs/contracts/README.md",
+        "docs/contracts/proto/arcforges/sandbox/v2/center_control.proto"
       ],
       "requirements": [
         "R-CTR-001",
@@ -2709,12 +2910,16 @@
       "deliverables": [
         "Reuse authenticated outbound enrollment/channel/epoch/rotation infrastructure with explicit Center origin and V2 profile capabilities",
         "Expose owner-scoped DeviceService inventory/revocation and stale presence; retain no old task capability advertisement",
-        "Disconnect/expire/revoke hosted channel without stopping local Core or deleting Sandbox data"
+        "Disconnect/expire/revoke hosted channel without stopping local Core or deleting Sandbox data",
+        "Implement the local-only CenterControlService GetStatus/BeginConnect/GetConnectFlow/CancelConnect/Disconnect/SignOut adapter and actual center connect/disconnect/status/cancel/signout CLI commands; reuse CloudLinkService, SignInOrchestrator and protected credential/control-file internals without retaining the old Node.v1 dispatcher"
       ],
       "acceptance": [
         "Rotation/revocation/reconnect reject stale enrollment and hub epochs",
         "Offline/stale is distinct from no running work; Node capability report contains only actually qualified profiles",
-        "Unenrolled/Center-unreachable local CLI remains fully functional"
+        "Unenrolled/Center-unreachable local CLI remains fully functional",
+        "All six typed CenterControl methods and six user commands work through actual local owner-authenticated IPC; mutations preserve owner_epoch and their durable control identity",
+        "BeginConnect reconnects or exposes a bounded asynchronous sign-in flow; CancelConnect cancels only that pending flow; Disconnect disables the link while retaining credentials; SignOut ends local credentials and reports remote-revocation uncertainty honestly",
+        "Device management exposes List/Inspect/Revoke only; no unimplemented remote Device rename UI or route remains"
       ],
       "verification": {
         "author": [
@@ -2731,7 +2936,8 @@
         ]
       },
       "fakes_allowed": [
-        "none; native behavior is never mocked for acceptance"
+        "Only external SMTP/mailbox delivery and software-authenticator ceremony input fixtures already defined for ID-01 may exercise local sign-in flows; actual Go identity/enrollment endpoints, proof crypto, PostgreSQL, credential store and owner-authenticated Node IPC run unchanged",
+        "No mocked successful authentication/enrollment response, local grant decision or native Node behavior; actual provider/mail/domain and supported-browser qualification remains separately recorded in AR-10/H-04"
       ],
       "future_validation": [],
       "acceptance_register": [],
@@ -2744,7 +2950,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; ArcForges:src/ArcForges.Node.Api/CenterControlServiceHandler.cs; ArcForges:docs/cli/**. Retain Node.CloudLink project for actual CloudLinkService/SignInOrchestrator/key and credential stores. New CenterControlServiceHandler is an explicit future path. Local connect/disconnect/status/cancel/signout uses new typed CenterControlService, with existing CLI root and Client project wiring; no legacy Node.v1 dispatcher dependency remains. Explicit schema/store/real-PostgreSQL fixture scope carries node_owner_epoch binding through enrollment/channel replacement and durable routed receipt/stream reconciliation; retain the original operation identity instead of rebasing to a new Handshake.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2788,7 +2994,19 @@
             "center/internal/management/**",
             "center/internal/routes/**",
             "center/internal/hub/**",
-            "center/internal/fleet/**"
+            "center/internal/fleet/**",
+            "center/internal/server/**",
+            "center/internal/access/**",
+            "center/internal/workertables/**",
+            "center/cmd/center-gen/**",
+            "worker/tables/center-tables.generated.ts",
+            "center/internal/fleetapi/**",
+            "center/internal/ingress/**",
+            "worker/ingress/**",
+            "tests/worker/ingress-routes.test.ts",
+            "center/internal/schema/**",
+            "center/internal/store/**",
+            "center/internal/pgtest/**"
           ]
         },
         {
@@ -2796,8 +3014,14 @@
           "paths": [
             "src/ArcForges.Node.CloudLink/**",
             "src/ArcForges.Node.Api/RoutedDispatcher.cs",
-            "src/ArcForges.Node.Core/CenterRouting.cs",
-            "tests/**/RemoteManagement*"
+            "src/ArcForges.Node.Core/Security/CenterRouting.cs",
+            "tests/**/RemoteManagement*",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "tests/ArcForges.Node.CloudLink.Tests/**",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "src/ArcForges.Node.Store/**",
+            "tests/ArcForges.Node.Store.Tests/**"
           ]
         }
       ],
@@ -2835,7 +3059,8 @@
       "acceptance": [
         "Remote Start/Stop/configure/resources produce the same constraints/results as local Core",
         "Forged arbitrary method, host path expansion, provision-template change and replayed grant all fail before effect",
-        "Lost replies/reconnect do not create duplicate Runs; revoked subscription/grants affect future admission only"
+        "Lost replies/reconnect do not create duplicate Runs; revoked subscription/grants affect future admission only",
+        "The routed identity retains the original node_owner_epoch across channel replacement, browser reload and new Handshake; stale epochs/body compaction cannot become a new Start"
       ],
       "verification": {
         "author": [
@@ -2874,7 +3099,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; ArcForges:tests/**/RemoteManagement*. Explicit schema/store/real-PostgreSQL fixture scope carries node_owner_epoch binding through enrollment/channel replacement and durable routed receipt/stream reconciliation; retain the original operation identity instead of rebasing to a new Handshake.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2917,7 +3142,19 @@
           "paths": [
             "center/internal/management/**",
             "center/internal/routes/**",
-            "center/internal/hub/**"
+            "center/internal/hub/**",
+            "center/internal/server/**",
+            "center/internal/access/**",
+            "center/internal/workertables/**",
+            "center/cmd/center-gen/**",
+            "worker/tables/center-tables.generated.ts",
+            "center/internal/fleetapi/**",
+            "center/internal/ingress/**",
+            "worker/ingress/**",
+            "tests/worker/ingress-routes.test.ts",
+            "center/internal/schema/**",
+            "center/internal/store/**",
+            "center/internal/pgtest/**"
           ]
         },
         {
@@ -2926,7 +3163,14 @@
             "src/ArcForges.Node.CloudLink/**",
             "src/ArcForges.Node.Api/DataServiceHandler.cs",
             "src/ArcForges.Node.Api/RunServiceHandler.cs",
-            "tests/**/RemoteStream*"
+            "tests/**/RemoteStream*",
+            "src/ArcForges.Node.Api/NodeApiServer.cs",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "tests/ArcForges.Node.CloudLink.Tests/**",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "src/ArcForges.Node.Api/ResourceServiceHandler.cs",
+            "src/ArcForges.Node.Store/**",
+            "tests/ArcForges.Node.Store.Tests/**"
           ]
         }
       ],
@@ -2938,8 +3182,9 @@
       "objective": "Deliver bounded remote logs resources and Sandbox data transfer. Remote output matches Run epoch/offset and visibly reports gaps; disconnect cannot exhaust unbounded memory",
       "scope": [
         "Route only allowed output/events/usage and bounded one-file import/export with actor, grant, cursor, expiry and quotas",
-        "Apply backpressure/slow-consumer GAP, reconnect resnapshot and explicit staleness without replaying mutation",
-        "Keep terminal writer/input/resize local-only and prevent generic remote host-file APIs"
+        "Bound output/event delivery with their typed gap markers; WatchUsage uses fresh complete sample-epoch/sequence snapshots, overload closes a slow stream, and reconnect resnapshots without history replay or mutation retry",
+        "Keep terminal writer/input/resize local-only and prevent generic remote host-file APIs",
+        "Expose fixed authorized InspectTransfer reads carrying transfer progress, final digest and closed_at; reconnect/query never retries BeginExport to discover progress"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -2957,13 +3202,16 @@
       ],
       "deliverables": [
         "Route only allowed output/events/usage and bounded one-file import/export with actor, grant, cursor, expiry and quotas",
-        "Apply backpressure/slow-consumer GAP, reconnect resnapshot and explicit staleness without replaying mutation",
-        "Keep terminal writer/input/resize local-only and prevent generic remote host-file APIs"
+        "Bound output/event delivery with their typed gap markers; WatchUsage uses fresh complete sample-epoch/sequence snapshots, overload closes a slow stream, and reconnect resnapshots without history replay or mutation retry",
+        "Keep terminal writer/input/resize local-only and prevent generic remote host-file APIs",
+        "Expose fixed authorized InspectTransfer reads carrying transfer progress, final digest and closed_at; reconnect/query never retries BeginExport to discover progress"
       ],
       "acceptance": [
         "Remote output matches Run epoch/offset and visibly reports gaps; disconnect cannot exhaust unbounded memory",
         "Data grant is required at every transfer phase; revoked/expired transfers fail safely and preserve unknown commit effects",
-        "No output/request body is retained unboundedly in Center receipts or logs"
+        "No output/request body is retained unboundedly in Center receipts or logs",
+        "InspectTransfer is an authorized read on the original transfer; partial/complete/closed/expired states and final digest remain truthful across dropped replies, while replaying final export bytes before close never causes a second export",
+        "Resource WatchUsage uses typed sample epoch/sequence and fresh snapshots, not Run-byte OutputGap or retained history; intentional downsampling and reconnect are labeled without fabricated continuity"
       ],
       "verification": {
         "author": [
@@ -2993,7 +3241,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; ArcForges:src/ArcForges.Node.Api/DataServiceHandler.cs; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/RemoteStream*. Explicit schema/store/real-PostgreSQL fixture scope carries node_owner_epoch binding through enrollment/channel replacement and durable routed receipt/stream reconciliation; retain the original operation identity instead of rebasing to a new Handshake.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3039,7 +3287,13 @@
             "center/internal/config/**",
             "center/internal/routes/**",
             "center/internal/schema/**",
-            "center/internal/management/**"
+            "center/internal/management/**",
+            "center/internal/server/**",
+            "center/internal/access/**",
+            "center/internal/workertables/**",
+            "center/cmd/center-gen/**",
+            "worker/tables/center-tables.generated.ts",
+            "center/internal/hub/**"
           ]
         }
       ],
@@ -3092,7 +3346,8 @@
         ]
       },
       "fakes_allowed": [
-        "none; native behavior is never mocked for acceptance"
+        "Labeled versioned catalog/provider-fact test data may be loaded through actual entitlement resolver and PostgreSQL paths; never fake availability, authorization, signature, expiry or local-continuity decisions",
+        "Controlled unreachable external official endpoint may prove self-host makes no dependency call; the Go Center, database, local Node and business paths remain real"
       ],
       "future_validation": [
         "F-HOST-01"
@@ -3114,7 +3369,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3142,7 +3397,8 @@
       "definition_of_done": [
         "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
-        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py"
+        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
+        "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"
       ]
     },
     {
@@ -3159,7 +3415,19 @@
             "center/internal/schema/**",
             "center/internal/routes/**",
             "center/internal/config/**",
-            "deploy/**"
+            "deploy/**",
+            "center/internal/server/**",
+            "center/internal/access/**",
+            "center/internal/workertables/**",
+            "center/cmd/center-gen/**",
+            "worker/tables/center-tables.generated.ts",
+            "center/internal/entitlement/**",
+            "center/internal/platform/**",
+            "center/internal/store/**",
+            "center/internal/ingress/**",
+            "worker/ingress/**",
+            "worker/foundation/cloud-container.ts",
+            "tests/worker/**"
           ]
         }
       ],
@@ -3192,9 +3460,10 @@
         "Keep unconfigured checkout dark, self-host purchase-free, and price/plan/trial values external configuration pending owner decision"
       ],
       "acceptance": [
-        "Duplicate/reordered/forged webhooks and lost callback replies cannot double-charge or grant invalid entitlement",
+        "Duplicate/reordered/forged webhooks and lost provider replies preserve one durable purchase identity/idempotency key and cannot duplicate local service terms or grant invalid entitlement; actual provider charge/idempotency semantics require separate sandbox qualification",
         "Billing projection and entitlement reconcile after restart without calling local execution APIs",
-        "Provider sandbox qualification and business configuration are explicitly separated from code delivery and live activation"
+        "Provider sandbox qualification and business configuration are explicitly separated from code delivery and live activation",
+        "Fixture peer tests exercise the real signature verifier, provider parser, idempotency/reconciliation code and PostgreSQL; they are explicitly insufficient for provider sandbox/live activation evidence"
       ],
       "verification": {
         "author": [
@@ -3211,7 +3480,9 @@
         ]
       },
       "fakes_allowed": [
-        "Payment provider transport may use recorded signed test fixtures for development; signature validation, ledger, projection and entitlement code are real; live qualification remains separate"
+        "Version-pinned external provider HTTP transport fixture may return documented checkout/subscription/event responses, delays, disconnections and reordered events; actual adapter parsing, idempotency, reconciliation, entitlement and PostgreSQL code must execute",
+        "Webhook test fixtures use test keys and real signature verification including invalid signatures/environment/account binding; no preverified success bypass, fake payment decision or fabricated provider sandbox/live receipt",
+        "Production prices/merchant inputs may be explicit test catalog values; actual provider sandbox behavior, mail/domain/merchant authority and live commercial qualification remain AR-10/H-04 activation gates"
       ],
       "future_validation": [],
       "acceptance_register": [
@@ -3226,7 +3497,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/commerce/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3254,12 +3525,13 @@
       "definition_of_done": [
         "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
-        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py"
+        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
+        "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"
       ]
     },
     {
       "id": "AFV2-HOST-03",
-      "title": "Deliver self-host deployment and official operational controls",
+      "title": "Deliver self-host deployment infrastructure and official operational controls",
       "milestone": "P6",
       "order": 28,
       "state": "planned",
@@ -3268,17 +3540,36 @@
           "repo": "Cloud",
           "paths": [
             "deploy/**",
-            "eng/deploy/**",
+            "tooling/cloudflare.ts",
+            "tooling/project.ts",
+            "tooling/postgres-deploy.ts",
+            "tooling/neon-runtime.ts",
             "center/cmd/**",
             "center/internal/config/**",
-            "docs/operations/**"
+            "docs/operations/**",
+            "tooling/**",
+            "worker/**",
+            "Dockerfile",
+            ".dockerignore",
+            "wrangler.json",
+            "center/internal/server/**",
+            "center/internal/observe/**",
+            "center/internal/quota/**",
+            "center/internal/provision/**",
+            "tests/worker/**"
           ]
         },
         {
           "repo": "Web",
           "paths": [
-            "eng/deploy/**",
-            "docs/self-host/**"
+            "tooling/cloudflare.ts",
+            "tooling/project.ts",
+            "tooling/candidate.ts",
+            "wrangler.json",
+            "worker/index.ts",
+            "docs/self-host/**",
+            "tests/worker/**",
+            "tests/provenance/**"
           ]
         }
       ],
@@ -3286,11 +3577,12 @@
         "AFV2-CENTER-04",
         "AFV2-HOST-02"
       ],
-      "objective": "Deliver self-host deployment and official operational controls. A clean self-host install and backup restore manage a real enrolled node without official service calls",
+      "objective": "Deliver self-host deployment infrastructure and official operational controls. Real Go/PostgreSQL and an enrolled Node prove install/restore and origin/asset integration contracts; the finished Dashboard distribution is assembled only by DIST-01 after WEB-04 via MIG-01.",
       "scope": [
-        "Package Go Center+PostgreSQL+Blazor origin configuration for self-host with TLS, backup/restore and operator limits",
-        "Adapt existing Cloudflare guarded deployment/monitoring for node connections, command uncertainty, storage and billing health",
-        "Remove stale AI/mobile/cache dashboards and write service loss/revocation/recovery runbooks; retain dark activation"
+        "Deliver Go/PostgreSQL deployment configuration, static-origin/asset manifest integration contract, TLS, bootstrap, backup/restore and operator limits for self-host",
+        "Adapt actual guarded Cloudflare tooling/Worker deployment and monitoring for connection, uncertainty, storage and billing health; keep public activation dark",
+        "Remove retired operational alerts/profiles and write service-loss/revocation/recovery runbooks; test real API/Node operation without claiming the old probe assets are the new Dashboard",
+        "Supply reproducible infrastructure inputs to DIST-01; final assembly of actual Go/PostgreSQL/qualified Blazor product waits for WEB-04 transitively through MIG-01"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -3307,14 +3599,16 @@
         "R-SEC-004"
       ],
       "deliverables": [
-        "Package Go Center+PostgreSQL+Blazor origin configuration for self-host with TLS, backup/restore and operator limits",
-        "Adapt existing Cloudflare guarded deployment/monitoring for node connections, command uncertainty, storage and billing health",
-        "Remove stale AI/mobile/cache dashboards and write service loss/revocation/recovery runbooks; retain dark activation"
+        "Deliver Go/PostgreSQL deployment configuration, static-origin/asset manifest integration contract, TLS, bootstrap, backup/restore and operator limits for self-host",
+        "Adapt actual guarded Cloudflare tooling/Worker deployment and monitoring for connection, uncertainty, storage and billing health; keep public activation dark",
+        "Remove retired operational alerts/profiles and write service-loss/revocation/recovery runbooks; test real API/Node operation without claiming the old probe assets are the new Dashboard",
+        "Supply reproducible infrastructure inputs to DIST-01; final assembly of actual Go/PostgreSQL/qualified Blazor product waits for WEB-04 transitively through MIG-01"
       ],
       "acceptance": [
-        "A clean self-host install and backup restore manage a real enrolled node without official service calls",
+        "A clean self-host Go/PostgreSQL install and backup restore manage a real enrolled Node through typed APIs without official service calls; static-origin manifest checks are infrastructure evidence, not completed Dashboard evidence",
         "Official guarded build/deploy path preserves identity/producer/credential boundaries and never bypasses schema admission",
-        "Connection/stream cost caps and alerts are tested without arbitrary pricing invention"
+        "Connection/stream cost caps and alerts are tested without arbitrary pricing invention",
+        "No Hello/account probe bundle is accepted as the finished management UI; final self-host bundle and complete browser journeys are DIST-01 acceptance after WEB-04/MIG-01"
       ],
       "verification": {
         "author": [
@@ -3331,7 +3625,8 @@
         ]
       },
       "fakes_allowed": [
-        "none; native behavior is never mocked for acceptance"
+        "External deployment-provider HTTP/inventory fixtures are allowed only for repository-tooling dry-run/failure-path tests; real manifests, hashes, signature/credential-boundary logic and isolated Go/PostgreSQL install/restore remain required",
+        "Fixture deployment responses never establish genuine provider authority, published producer identity, live migration admission or public activation; those remain H-03/H-04/H-05 gates"
       ],
       "future_validation": [],
       "acceptance_register": [
@@ -3348,7 +3643,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:docs/operations/**; Web:docs/self-host/**. Cloud deploy/** currently contains monitoring only. Actual guarded deployment/candidate implementation is tooling/{cloudflare,project,postgres-deploy,neon-runtime,...}, Dockerfile, wrangler.json and Worker. New deploy/self-host infrastructure is legitimate. This task cannot accept a completed V2 Dashboard before WEB04; final assembly belongs DIST01.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3376,7 +3671,8 @@
       "definition_of_done": [
         "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
-        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py"
+        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
+        "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"
       ]
     },
     {
@@ -3394,7 +3690,14 @@
             "src/ArcForges.Web.Site/**",
             "tests/**",
             "Directory.Packages.props",
-            "eng/**"
+            "eng/**",
+            "tooling/project.ts",
+            "tooling/candidate.ts",
+            "tooling/build-identity.ts",
+            "worker/index.ts",
+            "wrangler.json",
+            "win.slnx",
+            "package.json"
           ]
         }
       ],
@@ -3445,7 +3748,7 @@
         ]
       },
       "fakes_allowed": [
-        "none; native behavior is never mocked for acceptance"
+        "Typed response/view-model fixtures may exercise component loading/empty/error/offline/stale/expiry rendering, cancellation and late responses; final sign-in/device/API journeys use real Center/PostgreSQL and Nodes, with only separately task-listed external mail/provider peers"
       ],
       "future_validation": [],
       "acceptance_register": [],
@@ -3458,7 +3761,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3486,7 +3789,8 @@
       "definition_of_done": [
         "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
-        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py"
+        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
+        "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"
       ]
     },
     {
@@ -3499,9 +3803,9 @@
         {
           "repo": "Web",
           "paths": [
-            "src/ArcForges.Web.App/Pages/**",
             "src/ArcForges.Web.Ui/**",
-            "tests/**"
+            "tests/**",
+            "src/ArcForges.Web.App/**"
           ]
         }
       ],
@@ -3515,7 +3819,8 @@
       "scope": [
         "Implement Sandboxes list/detail/template-bounded Create/configure/delete-preview and Runs list/detail/start/stop/log output",
         "Implement live resource plots/tables with units, pressure, requested/applied/readback limits and stale sample labels",
-        "Bind all mutations to original command IDs/revisions, show accepted/unknown/reconciled states and destructive confirmation"
+        "Bind all mutations to original command IDs/revisions, show accepted/unknown/reconciled states and destructive confirmation",
+        "Poll InspectTransfer for asynchronous preparation/final digest and explicit closure; show COMPLETE separately from released snapshot and keep delete unavailable while an export lease remains"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -3535,12 +3840,15 @@
       "deliverables": [
         "Implement Sandboxes list/detail/template-bounded Create/configure/delete-preview and Runs list/detail/start/stop/log output",
         "Implement live resource plots/tables with units, pressure, requested/applied/readback limits and stale sample labels",
-        "Bind all mutations to original command IDs/revisions, show accepted/unknown/reconciled states and destructive confirmation"
+        "Bind all mutations to original command IDs/revisions, show accepted/unknown/reconciled states and destructive confirmation",
+        "Poll InspectTransfer for asynchronous preparation/final digest and explicit closure; show COMPLETE separately from released snapshot and keep delete unavailable while an export lease remains"
       ],
       "acceptance": [
         "Every main control is wired to its typed API and actual node outcome; no mock-only finished page",
         "Deletion shows owned data/excluded host grants and revalidates preview; unsupported policies explain exact reason",
-        "Logs are escaped untrusted text, bounded and gap-aware; no remote terminal input is exposed"
+        "Logs are escaped untrusted text, bounded and gap-aware; no remote terminal input is exposed",
+        "Sandbox rename uses Configure display_name/revision; Run detail shows safe_command_display, immutable sandbox_revision and exact profile_version; Device rename is absent from delivered controls",
+        "Transfer UI distinguishes preparing, materialized COMPLETE and released/expired, obtains progress through InspectTransfer and never retries BeginExport or makes Sandbox deletion available merely because all bytes were received"
       ],
       "verification": {
         "author": [
@@ -3557,7 +3865,7 @@
         ]
       },
       "fakes_allowed": [
-        "none; native behavior is never mocked for acceptance"
+        "Typed component response fixtures may render unsupported policy, conflicts, uncertain mutation, log gaps and resource samples; they never prove Core authorization, mutation effects, filesystem/resource safety or completed end-to-end pages"
       ],
       "future_validation": [],
       "acceptance_register": [],
@@ -3570,7 +3878,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3598,7 +3906,8 @@
       "definition_of_done": [
         "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
-        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py"
+        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
+        "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"
       ]
     },
     {
@@ -3611,9 +3920,9 @@
         {
           "repo": "Web",
           "paths": [
-            "src/ArcForges.Web.App/Pages/**",
             "src/ArcForges.Web.Ui/**",
-            "tests/**"
+            "tests/**",
+            "src/ArcForges.Web.App/**"
           ]
         }
       ],
@@ -3667,7 +3976,7 @@
         ]
       },
       "fakes_allowed": [
-        "none; native behavior is never mocked for acceptance"
+        "Typed rendering fixtures may show recovery/export/deletion/subscription pending/error/unconfigured states; completed business journeys run real identity/entitlement/commerce/PostgreSQL with only ID-01/HOST-02 external transport fixtures, never fake authorization or successful payments"
       ],
       "future_validation": [],
       "acceptance_register": [],
@@ -3680,7 +3989,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3708,7 +4017,8 @@
       "definition_of_done": [
         "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
-        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py"
+        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
+        "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"
       ]
     },
     {
@@ -3776,7 +4086,7 @@
         ]
       },
       "fakes_allowed": [
-        "none; native behavior is never mocked for acceptance"
+        "Typed view-model/transport-response fixtures may produce deterministic loading/offline/error/slow/stale states for component and visual checks; final responsive/reconnect/unknown-operation journeys use actual Blazor/Go/PostgreSQL/Node code and real native containment"
       ],
       "future_validation": [
         "F-WEB-01"
@@ -3798,7 +4108,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Web:docs/ux-acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3826,7 +4136,8 @@
       "definition_of_done": [
         "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
-        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py"
+        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
+        "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"
       ]
     },
     {
@@ -3839,7 +4150,18 @@
         {
           "repo": "ArcForges",
           "paths": [
-            "src/**",
+            "src/ArcForges.Node.Core/**",
+            "src/ArcForges.Node.Api/**",
+            "src/ArcForges.Node.Store/**",
+            "src/ArcForges.Node.CloudLink/**",
+            "src/ArcForges.Node.Platform/**",
+            "src/ArcForges.Node.Platform.Windows/**",
+            "src/ArcForges.Node.Platform.Linux/**",
+            "src/ArcForges.CommandLine/**",
+            "src/ArcForges.Client/**",
+            "src/ArcForges.Host/**",
+            "src/ArcForges.Supervisor/**",
+            "src/ArcForges.RunSupervisor/**",
             "tests/**",
             "ArcForges.slnx",
             "Directory.Packages.props",
@@ -3850,29 +4172,74 @@
           "repo": "Cloud",
           "paths": [
             "src/ArcForges.Cloud.Modules.Task/**",
-            "src/ArcForges.Cloud.Runtime*",
-            "src/ArcForges.Cloud.Host*",
             "center/internal/routes/**",
             "center/internal/fleet/**",
             "Cloud.slnx",
             "Directory.Packages.props",
             "eng/**",
-            "deploy/**"
+            "deploy/**",
+            "src/ArcForges.Cloud/**",
+            "src/ArcForges.Cloud.Modules.Abstractions/**",
+            "src/ArcForges.Cloud.Modules.Agent/**",
+            "src/ArcForges.Cloud.Modules.Audit/**",
+            "src/ArcForges.Cloud.Modules.Chat/**",
+            "src/ArcForges.Cloud.Modules.Commerce/**",
+            "src/ArcForges.Cloud.Modules.Configuration/**",
+            "src/ArcForges.Cloud.Modules.Devices/**",
+            "src/ArcForges.Cloud.Modules.Entitlement/**",
+            "src/ArcForges.Cloud.Modules.Identity/**",
+            "src/ArcForges.Cloud.Modules.Notification/**",
+            "src/ArcForges.Cloud.Modules.PackageCatalog/**",
+            "src/ArcForges.Cloud.Modules.Policy/**",
+            "src/ArcForges.Cloud.Modules.Resource/**",
+            "src/ArcForges.Cloud.Modules.Scope/**",
+            "src/ArcForges.Cloud.Modules.Search/**",
+            "src/ArcForges.Cloud.Modules.Support/**",
+            "src/ArcForges.Cloud.Modules.Sync/**",
+            "src/ArcForges.Cloud.Modules.TrustSafety/**",
+            "src/ArcForges.Cloud.Modules.Workspace/**",
+            "src/ArcForges.Cloud.Storage.D1/**",
+            "center/internal/fleetapi/**",
+            "center/internal/mobileauth/**",
+            "center/internal/mobiletest/**",
+            "center/internal/pages/**",
+            "center/internal/config/**",
+            "center/internal/server/**",
+            "center/internal/hub/**",
+            "center/internal/access/**",
+            "center/internal/workertables/**",
+            "center/cmd/mobile-probe/**",
+            "center/cmd/center-gen/**",
+            "worker/**",
+            "tooling/**",
+            "tools/ArcForges.Cloud.Generation/**",
+            "tests/ArcForges.Cloud.Tests/**",
+            "tests/ArcForges.Cloud.Consumer/**",
+            "tests/ArchitectureTests/**",
+            "tests/worker/**",
+            "Dockerfile",
+            ".dockerignore",
+            "wrangler.json",
+            "package.json",
+            "package-lock.json",
+            "Directory.Build.props",
+            "Directory.Build.targets",
+            "global.json",
+            "NOTICE",
+            "README.md"
           ]
         },
         {
           "repo": "Contracts",
           "paths": [
-            "proto/**",
+            "public/proto/**",
+            "internal/proto/**",
             "eng/**",
-            "src/**"
-          ]
-        },
-        {
-          "repo": "DesktopPlatform",
-          "paths": [
-            "eng/**",
-            "Directory.Packages.props"
+            "src/**",
+            "go/**",
+            "tests/**",
+            "fixtures/**",
+            "docs/**"
           ]
         }
       ],
@@ -3888,7 +4255,8 @@
         "Drain legacy attempts/queues, migrate all ArcForges callers to V2, and remove Task/Attempt supervisor, DAG/retry/pools/tool/AI adapters and old unsafe direct fallback",
         "Remove old Windows/Linux payload launchers replaced by MXC while keeping only required Job/cgroup/IPC/resource primitives",
         "Remove obsolete Task/Fleet/file-workspace routes and C# Center serving/deployment path; update package/solution/build/provenance inventory",
-        "Verify shared consumer inventory before any Contracts/DesktopPlatform source removal; leave independent products and their published versions intact"
+        "Verify shared consumer inventory before any Contracts/DesktopPlatform source removal; leave independent products and their published versions intact",
+        "Rework actual Cloud Dockerfile/worker/tooling composition to the sole Go server; retain the required Go Container transport, guarded deployment/admission and immutable applied history while removing only retired C# bindings and routes"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -3909,12 +4277,15 @@
         "Drain legacy attempts/queues, migrate all ArcForges callers to V2, and remove Task/Attempt supervisor, DAG/retry/pools/tool/AI adapters and old unsafe direct fallback",
         "Remove old Windows/Linux payload launchers replaced by MXC while keeping only required Job/cgroup/IPC/resource primitives",
         "Remove obsolete Task/Fleet/file-workspace routes and C# Center serving/deployment path; update package/solution/build/provenance inventory",
-        "Verify shared consumer inventory before any Contracts/DesktopPlatform source removal; leave independent products and their published versions intact"
+        "Verify shared consumer inventory before any Contracts/DesktopPlatform source removal; leave independent products and their published versions intact",
+        "An exact deleted/retained module and generated-route inventory covering every legacy C# project, Go fleet/mobile adapter, current executable/build/deploy reference and unaffected independent public API"
       ],
       "acceptance": [
         "No runtime switch can launch the old Task executor after cutover; no permanently disabled old service or empty project remains",
         "All retained shared package consumers have an explicit reason/path and compile evidence where affected",
-        "Search/build/runtime route inventory shows no cancelled product behavior; development MCP host verification remains operational"
+        "Search/build/runtime route inventory shows no cancelled product behavior; development MCP host verification remains operational",
+        "Every listed legacy C# host/module/D1 project is removed from current serving/build/deployment composition, with reusable vectors and immutable applied history preserved; no old Docker entrypoint, generated Worker dispatch or fleet/mobile adapter remains reachable",
+        "Read-only DesktopPlatform/Mobile/AI/ArcScope/ArcSlate/ArcNotes consumer checks preserve their current APIs and immutable published cohorts; any necessary independent-product edit requires a separately reviewed concrete task scope, not implied permission from this cutover"
       ],
       "verification": {
         "author": [
@@ -3944,7 +4315,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/**. Cloud C# host is src/ArcForges.Cloud and Dockerfile ENTRYPOINT currently defaults to it; all listed Modules.* and Storage.D1 projects are real. Remove only the retired Go fleet task/file/mobile paths, preserving migrated enrollment/session/key/authorization behavior. Worker foundation still has required Go Container transport: rework it, do not delete that whole directory blindly. Immutable D1/applied migration source must be archived before removal, not edited. ArcForges src/** is narrowed to the explicitly named Node.Core, Node.Api, Node.Store, Node.CloudLink, Node.Platform, Node.Platform.Windows, Node.Platform.Linux, CommandLine, Client, Host, Supervisor and new RunSupervisor projects; Desktop was handled by BASE02. DesktopPlatform is a read-only consumer check unless a concrete necessary adaptation is separately declared; avoid a generic eng/** write authority merely to inspect shared consumers. Recommendation removes DesktopPlatform write scope: this graph only requires read-only consumer verification here. Declare a separate concrete change if inventory proves one necessary; existing independent API code and published packages remain intact.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -3953,7 +4324,9 @@
         "ledger": null
       },
       "removals": [
-        "Old IExecutionPlatform/IAttemptHandle/ExecutionSupervisor/RunningAttempt, Task/Queue/Job handlers and CLI; DirectAttemptHandle/adoption; obsolete workspace/editor/Fleet/MCP/AI routes; old C# Center serving path; dead package/build entries"
+        "Old IExecutionPlatform/IAttemptHandle/ExecutionSupervisor/RunningAttempt, Task/Queue/Job handlers and CLI; DirectAttemptHandle/adoption; obsolete workspace/editor/Fleet/MCP/AI routes; old C# Center serving path; dead package/build entries",
+        "Remove the retired C# serving/build/deploy projects after qualified successor behavior and immutable-history extraction: src/ArcForges.Cloud.Modules.Task/**, src/ArcForges.Cloud/**, src/ArcForges.Cloud.Modules.Abstractions/**, src/ArcForges.Cloud.Modules.Agent/**, src/ArcForges.Cloud.Modules.Audit/**, src/ArcForges.Cloud.Modules.Chat/**, src/ArcForges.Cloud.Modules.Commerce/**, src/ArcForges.Cloud.Modules.Configuration/**, src/ArcForges.Cloud.Modules.Devices/**, src/ArcForges.Cloud.Modules.Entitlement/**, src/ArcForges.Cloud.Modules.Identity/**, src/ArcForges.Cloud.Modules.Notification/**, src/ArcForges.Cloud.Modules.PackageCatalog/**, src/ArcForges.Cloud.Modules.Policy/**, src/ArcForges.Cloud.Modules.Resource/**, src/ArcForges.Cloud.Modules.Scope/**, src/ArcForges.Cloud.Modules.Search/**, src/ArcForges.Cloud.Modules.Support/**, src/ArcForges.Cloud.Modules.Sync/**, src/ArcForges.Cloud.Modules.TrustSafety/**, src/ArcForges.Cloud.Modules.Workspace/**, src/ArcForges.Cloud.Storage.D1/**. Preserve needed entitlement vectors and applied D1/migration bytes as evidence; no executable old host remains.",
+        "Remove retired task/file handlers from center/internal/fleet/** and center/internal/fleetapi/**; remove ArcForges mobile composition in center/internal/mobileauth/**, center/internal/mobiletest/** and center/cmd/mobile-probe/**, and its registrations in routes/pages/server. Retained enrollment, device proof, session/key and authorization behavior moves to the admitted V2 management surface before deletion."
       ],
       "migration": [
         "Finite rollout window ends here; retain only immutable schemas/packages/historical receipts required for migration and unrelated consumers."
@@ -3995,13 +4368,16 @@
           "paths": [
             "center/internal/schema/**",
             "center/internal/store/**",
-            "eng/v2-migration/**"
+            "eng/v2-migration/**",
+            "center/cmd/arcforges-center/**",
+            "center/internal/bridgeproof/**",
+            "center/internal/dbtest/**",
+            "center/internal/pgtest/**"
           ]
         },
         {
           "repo": "Contracts",
           "paths": [
-            "proto/**",
             "eng/v2-consumers/**"
           ]
         },
@@ -4020,7 +4396,8 @@
       "scope": [
         "Append contract migrations that remove obsolete live Task/Attempt/queue/session/cache/CAS/toolchain/workspace/LAN/mobile tables after consumer and unresolved-effect checks",
         "Copy/export required historical records without relabeling IDs; preserve applied migration source bytes and minimum-reader/restore restrictions",
-        "Make contraction refuse active legacy processes, unknown file/native receipts, foreign consumers or an unverified backup"
+        "Make contraction refuse active legacy processes, unknown file/native receipts, foreign consumers or an unverified backup",
+        "Contracts work is limited to the eng/v2-consumers inventory closure; database contraction does not authorize additional public/internal schema deletion"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -4075,7 +4452,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Replace nonexistent Contracts proto/** with actual roots if source retirement is still in this slice; otherwise restrict Contracts writes to its v2 consumer inventory. No field/enum reinterpretation or published artifact deletion. Actual SQLite/PostgreSQL contraction remains in Node.Store and center/internal/schema/store. Recommendation chooses the bounded inventory-only Contracts alternative: DB contraction needs no public/internal proto write authority; MIG01 already owns approved current-source consumer retirement after its inventory gate.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4116,25 +4493,41 @@
         {
           "repo": "ArcForges",
           "paths": [
-            "eng/packaging/**",
-            "eng/admission/**",
+            "eng/package.ps1",
+            "eng/publish.ps1",
+            "eng/verify_linux.py",
+            "packaging/**",
+            "eng/policy/dependency-admissions.json",
             "src/**/packages.lock.json",
             "docs/install/**",
-            ".github/workflows/**"
+            ".github/workflows/**",
+            "THIRD_PARTY_NOTICES.md",
+            "tests/ArcForges.Repository.Tests/**"
           ]
         },
         {
           "repo": "Cloud",
           "paths": [
             "deploy/**",
-            "docs/self-host/**"
+            "docs/self-host/**",
+            "tooling/**",
+            "worker/**",
+            "Dockerfile",
+            ".dockerignore",
+            "wrangler.json",
+            "tests/worker/**"
           ]
         },
         {
           "repo": "Web",
           "paths": [
             "eng/**",
-            "docs/self-host/**"
+            "docs/self-host/**",
+            "tooling/**",
+            "worker/index.ts",
+            "wrangler.json",
+            "tests/provenance/**",
+            "tests/worker/**"
           ]
         }
       ],
@@ -4170,7 +4563,8 @@
       "acceptance": [
         "Fresh native install runs qualified profiles with no Node.js/desktop/mobile/C# Center dependency",
         "Package integrity/signature and architecture mismatch rejection pass at real trust handoff",
-        "Published cohort provenance binds actual main ancestry and excludes rolled-back package versions"
+        "Published cohort provenance binds actual main ancestry and excludes rolled-back package versions",
+        "After WEB-04 transitively through MIG-01, the actual complete Go/PostgreSQL/Blazor self-host artifact is installed from its sealed cohort and all required Dashboard routes operate against real services and an enrolled Node; a probe/placeholder bundle fails acceptance"
       ],
       "verification": {
         "author": [
@@ -4209,7 +4603,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/install/**; Cloud:docs/self-host/**; Web:docs/self-host/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4252,15 +4646,33 @@
           "paths": [
             "src/ArcForges.Node.Core/Updates/**",
             "src/ArcForges.CommandLine/UpdateCommands.cs",
-            "eng/packaging/**",
-            "tests/**/Update*"
+            "eng/package.ps1",
+            "eng/publish.ps1",
+            "eng/verify_linux.py",
+            "packaging/**",
+            "tests/**/Update*",
+            "src/ArcForges.CommandLine/CliApplication.cs",
+            "src/ArcForges.Client/**",
+            "src/ArcForges.Node.Store/**",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "src/ArcForges.Supervisor/**",
+            "tests/ArcForges.Client.Tests/**",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "tests/ArcForges.Node.Store.Tests/**",
+            "tests/ArcForges.Repository.Tests/**"
           ]
         },
         {
           "repo": "Cloud",
           "paths": [
             "deploy/**",
-            "docs/operations/**"
+            "docs/operations/**",
+            "tooling/postgres-deploy.ts",
+            "tooling/neon-runtime.ts",
+            "tooling/cloudflare.ts",
+            "center/cmd/arcforges-center/**",
+            "center/internal/store/migrate/**",
+            "tests/worker/**"
           ]
         }
       ],
@@ -4327,7 +4739,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Updates/**; ArcForges:src/ArcForges.CommandLine/UpdateCommands.cs; ArcForges:tests/**/Update*; Cloud:docs/operations/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4457,7 +4869,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4500,20 +4912,25 @@
           "paths": [
             "center/**",
             "deploy/**",
-            "docs/acceptance/**"
+            "docs/acceptance/**",
+            "eng/verification/browser/**"
           ]
         },
         {
           "repo": "Web",
           "paths": [
             "docs/ux-acceptance/**",
-            "tests/**"
+            "tests/**",
+            "tests/browser/**"
           ]
         },
         {
           "repo": "ArcForges",
           "paths": [
-            "tests/**/RemoteManagement*"
+            "tests/**/RemoteManagement*",
+            "tests/ArcForges.Node.CloudLink.Tests/**",
+            "tests/ArcForges.Node.Core.Tests/**",
+            "tests/ArcForges.Client.Tests/**"
           ]
         },
         {
@@ -4577,7 +4994,8 @@
         ]
       },
       "fakes_allowed": [
-        "none; native behavior is never mocked for acceptance"
+        "Only the external mail/authenticator-input/payment transport peers explicitly bounded by ID-01 and HOST-02 may stand in for unavailable external services; final Dashboard/Go/PostgreSQL/Node authorization, crypto, persistence, files, terminal and resource behavior remains real",
+        "No synthetic UI/API-success responses count as final product journeys; actual provider sandbox/live authority and public activation remain AR-10/H-04/H-05 and cannot be marked proven from fixtures"
       ],
       "future_validation": [
         "F-REMOTE-02"
@@ -4602,7 +5020,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:docs/acceptance/**; Web:docs/ux-acceptance/**; ArcForges:tests/**/RemoteManagement*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4630,7 +5048,8 @@
       "definition_of_done": [
         "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
-        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py"
+        "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
+        "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"
       ]
     },
     {
@@ -4644,20 +5063,29 @@
           "repo": "Cloud",
           "paths": [
             "deploy/**",
-            "docs/operations/**"
+            "docs/operations/**",
+            "tooling/cloudflare.ts",
+            "wrangler.json"
           ]
         },
         {
           "repo": "Web",
           "paths": [
-            "eng/deploy/**",
+            "tooling/cloudflare.ts",
+            "tooling/project.ts",
+            "tooling/candidate.ts",
+            "wrangler.json",
+            "worker/index.ts",
             "src/ArcForges.Web.Site/**"
           ]
         },
         {
           "repo": "ArcForges",
           "paths": [
-            "eng/packaging/**",
+            "eng/package.ps1",
+            "eng/publish.ps1",
+            "eng/verify_linux.py",
+            "packaging/**",
             "docs/release/**"
           ]
         }
@@ -4731,7 +5159,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:docs/operations/**; ArcForges:docs/release/**. Invoke the existing guarded script; this scope is not permission to loosen deployment guards. Activation configuration is rooted in wrangler.json/Worker/product settings, not merely deploy/monitoring.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
