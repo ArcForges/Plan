@@ -970,7 +970,7 @@
         "AFV2-BASE-01",
         "AFV2-API-01"
       ],
-      "objective": "Add V2 Node persistence and durable mutation receipts. Fresh and schema15 database fixtures preserve identity and unknown native effects across injected crash boundaries",
+      "objective": "Add V2 Node persistence and durable mutation receipts. Real fresh and schema15 SQLite fixtures preserve admitted command identity and explicit unknown-effect evidence across store close/reopen and injected transaction boundaries",
       "scope": [
         "Append forward expand migrations for Sandbox/config/Run/supervisor/limits/grants/transfers/delete-journal and migration receipts",
         "Persist a random owner_epoch and immutable owner/epoch/command/method/keyed-intent identity for every durable Node mutation; known response bodies may compact after 24 hours but identities remain for the entire admitted epoch",
@@ -1001,18 +1001,19 @@
         "Preserve applied migration/checksum/min-reader history and unresolved legacy file intents; transient terminal acknowledgments never enter this durable receipt store"
       ],
       "acceptance": [
-        "Fresh and schema15 database fixtures preserve identity and unknown native effects across injected crash boundaries",
-        "Same command same payload returns same receipt; different payload and stale revision fail deterministically",
+        "Real fresh and schema15 SQLite fixtures preserve admitted command identity and explicit unknown-effect evidence across store close/reopen and injected transaction boundaries; no Node IPC or native payload behavior is claimed in this task",
+        "Same command and intent returns its existing receipt; different intent and stale revision fail deterministically at the store admission boundary",
         "Applied 0001..0015 remain byte-identical and incompatible older readers refuse",
-        "A successful Start replay after response-body compaction beyond 24 hours and after Node restart returns retained identity/effect or an explicit compacted-body result and never launches again",
-        "A stale owner_epoch after store replacement/retirement is rejected without effect; clients cannot rebind the saved command to a fresh Handshake epoch",
-        "Coherent restore preserves all command identities and keys; a backup missing accepted post-backup effects cannot reopen replay by reusing the old epoch",
-        "Capacity saturation refuses new mutating work while reserving completion, accepted Stop, grant revocation and reconciliation; no identity is evicted to free admission space"
+        "A known settled command replay after response-body compaction beyond 24 hours and store close/reopen returns retained identity/effect or an explicit compacted-body result; a narrowly scoped synthetic effect-counter callback detects any repeated admission without representing a real Run",
+        "UNKNOWN and unresolved fixture bodies remain intact; active receipt identity cannot be evicted, rekeyed or replaced, and a retired or different owner_epoch is refused without another fixture admission",
+        "Coherent database/key fixtures preserve all admitted identities; an incomplete backup cannot activate the old epoch after missing post-backup identities are detected, and retirement never rotates authority automatically",
+        "Real SQLite capacity/admission fixtures reject new nonsafety work while preserving reserved storage and receipt access for already admitted completion/safety intents; actual Stop, grant revocation and reconciliation are proved in AFV2-REC-01"
       ],
       "verification": {
         "author": [
           "Run the targeted checks named by acceptance and native_validation, preserving exact commands, environment, source/artifact identity and negative cases",
-          "Run the affected build/locked restore/format/AOT/contract checks from each touched repository; no unsupported suppressions"
+          "Run the affected build/locked restore/format/AOT/contract checks from each touched repository; no unsupported suppressions",
+          "Record database primitive evidence separately from the permitted effect-counter fixture; actual settled Start replay belongs to CORE-02, live-owner restart and safety controls to REC-01, and saved client command/Handshake behavior to CLI-01"
         ],
         "reviewer_distinct": [
           "Independent reviewer reads complete latest diff against referenced V2 contracts and acceptance; records blocking findings and resolution",
@@ -1024,7 +1025,7 @@
         ]
       },
       "fakes_allowed": [
-        "none; native behavior is never mocked for acceptance"
+        "Only an explicit synthetic effect-counter callback at the durable store admission boundary, with supplied admitted-intent/effect-observation fixtures, to detect duplicate admission and exercise unknown-result/backup/capacity branches; use real SQLite, migrations, transactions, keys and close/reopen. This proves no native Run, Node IPC, CLI, Stop or grant-revocation behavior."
       ],
       "future_validation": [],
       "acceptance_register": [],
@@ -1056,10 +1057,10 @@
       ],
       "native_validation": {
         "windows": [
-          "Run real SQLite/WAL/restart/permission fixtures on native Windows"
+          "Run real SQLite/WAL/schema15 upgrade, permission, owner-epoch, capacity and backup fixtures on native Windows, including store process close/reopen; runtime integration remains CORE-02/REC-01"
         ],
         "linux": [
-          "Run same SQLite upgrade/restore fixtures on native Linux"
+          "Run the same real SQLite/schema15 upgrade, permission, owner-epoch, capacity and restore fixtures on native Linux, including store process close/reopen; runtime integration remains CORE-02/REC-01"
         ]
       },
       "definition_of_done": [
@@ -1257,7 +1258,8 @@
         "Real argv quoting/environment/working-directory and foreground service scenarios work under both qualified profiles",
         "Node/client death does not accidentally dispose the Run owner; executor exit does not finalize until outer boundary emptiness is proved",
         "Unknown startup/cleanup preserves receipt and ownership; no bare-PID kill or host-process fallback",
-        "Run inspection exposes safe_command_display, immutable sandbox_revision and exact profile_version; display is executable basename plus redacted argument count by default, without reconstructing secrets or host paths from launch input"
+        "Run inspection exposes safe_command_display, immutable sandbox_revision and exact profile_version; display is executable basename plus redacted argument count by default, without reconstructing secrets or host paths from launch input",
+        "After a real successfully started Run has settled and its process boundary is empty, compact its known response body beyond 24 hours, cold-restart Node and replay the original owner_epoch/command/intent through the real typed API: return the retained effect or explicit compacted-body result with no second payload; reject conflicting or retired-epoch replay without native effect. Live-Run restart/rebind remains REC-01."
       ],
       "verification": {
         "author": [
@@ -1306,10 +1308,12 @@
       ],
       "native_validation": {
         "windows": [
-          "Native official executor + nested Job + stop/child/failure tests"
+          "Native official executor + nested Job + stop/child/failure tests",
+          "Use an actual native Run and real Node typed API for settled Start replay after body compaction/cold Node restart; measure that the payload ran once"
         ],
         "linux": [
-          "Native SDK + delegated cgroup + stop/child/failure tests"
+          "Native SDK + delegated cgroup + stop/child/failure tests",
+          "Use an actual native Run and real Node typed API for settled Start replay after body compaction/cold Node restart; measure that the payload ran once"
         ]
       },
       "definition_of_done": [
@@ -1962,7 +1966,8 @@
         "Persist and authenticate supervisor instance, Run/boot/creation/boundary identities; rebind only exact live ownership",
         "Implement Node crash, supervisor crash, machine reboot, process-ID reuse, log gap and interrupted stop/delete reconciliation",
         "Keep DRAINING/RECOVERY_REQUIRED until scope emptiness or same-owner live state proven; invalidate client terminal leases on Node restart",
-        "Implement local Configure.repair_error authorization/identity/no-use/no-unresolved-effect guards and Delete.resume_command_id successor-to-original-journal safety; accepted deletion has no cancellation path, while destructive phases and data CLI integration are completed by FILE-02"
+        "Implement local Configure.repair_error authorization/identity/no-use/no-unresolved-effect guards and Delete.resume_command_id successor-to-original-journal safety; accepted deletion has no cancellation path, while destructive phases and data CLI integration are completed by FILE-02",
+        "Integrate durable admission reserves and coherent restore guards with real already admitted Run Stop, grant revocation and unresolved-effect reconciliation; preserve original owner epochs across live-owner recovery"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -1983,14 +1988,18 @@
         "Persist and authenticate supervisor instance, Run/boot/creation/boundary identities; rebind only exact live ownership",
         "Implement Node crash, supervisor crash, machine reboot, process-ID reuse, log gap and interrupted stop/delete reconciliation",
         "Keep DRAINING/RECOVERY_REQUIRED until scope emptiness or same-owner live state proven; invalidate client terminal leases on Node restart",
-        "Implement local Configure.repair_error authorization/identity/no-use/no-unresolved-effect guards and Delete.resume_command_id successor-to-original-journal safety; accepted deletion has no cancellation path, while destructive phases and data CLI integration are completed by FILE-02"
+        "Implement local Configure.repair_error authorization/identity/no-use/no-unresolved-effect guards and Delete.resume_command_id successor-to-original-journal safety; accepted deletion has no cancellation path, while destructive phases and data CLI integration are completed by FILE-02",
+        "Integrate durable admission reserves and coherent restore guards with real already admitted Run Stop, grant revocation and unresolved-effect reconciliation; preserve original owner epochs across live-owner recovery"
       ],
       "acceptance": [
         "Node restart preserves still-owned Runs without replaying Start; supervisor death cleans payload or honestly blocks cleanup",
         "Reboot does not auto-start commands or fabricate numeric exit code; no foreign process is killed",
         "Unknown receipts survive retention and return original effect after recovery",
         "Only authenticated local owner Configure.repair_error can repair ERROR after exact-root/no-use/no-unresolved-effect guards; Delete.resume_command_id uses a fresh successor command/CAS and exact original journal/root/quarantine phase; foreign/changed roots, unknown identity and bare-PID inference are refused",
-        "GetOperation observes the original owner epoch/command without authorizing effects or silently rebinding; an explicit authorized resume links a distinct successor identity to the original delete journal and never rewrites an unresolved original receipt as success without proof"
+        "GetOperation observes the original owner epoch/command without authorizing effects or silently rebinding; an explicit authorized resume links a distinct successor identity to the original delete journal and never rewrites an unresolved original receipt as success without proof",
+        "Saturate nonsafety admission against real Core/Store while a native Run and remote grant exist: new effects are refused, already reserved Stop and grant revocation complete through their real handlers, and unresolved intents remain observable/reconcilable without identity eviction or repeated effects",
+        "Restart Node while a real Run/supervisor remains active and replay its original Start after body compaction: rebind only proven same-owner state and never launch another payload; UNKNOWN effects retain full reconciliation evidence",
+        "Exercise coherent backup/restore with real previously admitted effects; an older backup missing later command identities leaves Node in maintenance until complete reconciliation or separately authorized offline retirement satisfies no-live-Run/no-unknown-effect guards, and saved old-epoch requests never acquire fresh authority"
       ],
       "verification": {
         "author": [
@@ -2048,10 +2057,12 @@
       ],
       "native_validation": {
         "windows": [
-          "Native Node/supervisor kill, child escape attempt, duplicated Job handle and reboot-fixture tests"
+          "Native Node/supervisor kill, child escape attempt, duplicated Job handle and reboot-fixture tests",
+          "Exercise real capacity-saturation Stop/revocation/reconciliation, live-owner Start replay after Node restart and incomplete-backup maintenance with actual Core/Store/native ownership; no synthetic effect success"
         ],
         "linux": [
-          "Native user-manager/unit loss, supervisor kill, cgroup empty and boot-identity fixtures"
+          "Native user-manager/unit loss, supervisor kill, cgroup empty and boot-identity fixtures",
+          "Exercise real capacity-saturation Stop/revocation/reconciliation, live-owner Start replay after Node restart and incomplete-backup maintenance with actual Core/Store/native ownership; no synthetic effect success"
         ]
       },
       "definition_of_done": [
@@ -2601,7 +2612,7 @@
       "objective": "Migrate PostgreSQL safely to V2 management storage. All three upgrade/restore paths execute on real PostgreSQL with exact source/artifact receipts",
       "scope": [
         "Append V2 management receipt/cursor/entitlement storage while preserving identity, enrollment, applied migration hashes and security-successor floors",
-        "Implement reviewed finite schema10\u2192guarded0011\u2192V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
+        "Implement reviewed finite schema10→guarded0011→V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
         "Create fresh/schema10/schema11 fixtures with unresolved delivered receipts and recovery-generation safeguards"
       ],
       "out_of_scope": [
@@ -2621,7 +2632,7 @@
       ],
       "deliverables": [
         "Append V2 management receipt/cursor/entitlement storage while preserving identity, enrollment, applied migration hashes and security-successor floors",
-        "Implement reviewed finite schema10\u2192guarded0011\u2192V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
+        "Implement reviewed finite schema10→guarded0011→V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
         "Create fresh/schema10/schema11 fixtures with unresolved delivered receipts and recovery-generation safeguards"
       ],
       "acceptance": [
@@ -2969,10 +2980,10 @@
       ],
       "native_validation": {
         "windows": [
-          "Native Windows node \u2194 isolated Center channel/reconnect scenario"
+          "Native Windows node ↔ isolated Center channel/reconnect scenario"
         ],
         "linux": [
-          "Native Linux node \u2194 isolated Center channel and actual Go protocol tests"
+          "Native Linux node ↔ isolated Center channel and actual Go protocol tests"
         ]
       },
       "definition_of_done": [
@@ -4471,10 +4482,10 @@
       ],
       "native_validation": {
         "windows": [
-          "Native Node schema15\u2192expand\u2192contract\u2192restore tests"
+          "Native Node schema15→expand→contract→restore tests"
         ],
         "linux": [
-          "Native Node migration plus real PostgreSQL schema10/11\u2192V2\u2192restore tests"
+          "Native Node migration plus real PostgreSQL schema10/11→V2→restore tests"
         ]
       },
       "definition_of_done": [
