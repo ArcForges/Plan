@@ -102,7 +102,9 @@
             "CMakePresets.json",
             "DesktopPlatform.slnx",
             "win.slnx",
-            ".pre-commit-config.yaml"
+            ".pre-commit-config.yaml",
+            "AGENTS.md",
+            "NOTICE.md"
           ]
         },
         {
@@ -131,7 +133,9 @@
             "third-party/**",
             "package.json",
             "package-lock.json",
-            "ArcForges.Contracts.slnx"
+            "ArcForges.Contracts.slnx",
+            "AGENTS.md",
+            "NOTICE"
           ]
         },
         {
@@ -155,7 +159,8 @@
             "src/**",
             "third-party/**",
             "packaging/**",
-            "ArcForges.slnx"
+            "ArcForges.slnx",
+            "AGENTS.md"
           ]
         },
         {
@@ -190,7 +195,9 @@
             "wrangler.json",
             "tsconfig.json",
             "tsconfig.worker.json",
-            "biome.json"
+            "biome.json",
+            "AGENTS.md",
+            "NOTICE"
           ]
         },
         {
@@ -219,7 +226,8 @@
             "package-lock.json",
             "win.slnx",
             "wrangler.json",
-            "tsconfig.json"
+            "tsconfig.json",
+            "AGENTS.md"
           ]
         },
         {
@@ -236,7 +244,8 @@
             "docs/verification/mxc-experiments.md",
             "docs/verification/platform-capabilities.md",
             "docs/architecture/02-mxc-integration.md",
-            "README.md"
+            "README.md",
+            "AGENTS.md"
           ]
         },
         {
@@ -248,7 +257,8 @@
             "tools/**",
             "tests/**",
             "docs/dependency-upgrade/**",
-            "README.md"
+            "README.md",
+            "AGENTS.md"
           ]
         }
       ],
@@ -259,7 +269,8 @@
         "Select latest upstream stable releases including major upgrades; repair required APIs, TFMs, generated outputs and build integration throughout the listed current modules. Broad source path entries allow only dependency compatibility repairs, not product features or retirement. Record actual changed modules and reasons in each PR.",
         "Upgrade DesktopPlatform and Contracts producers before downstream admission; preserve independent consumers and immutable published contracts. Publish new main-descended cohorts through existing delivery, then update all applicable consumer admissions and lockfiles.",
         "Align applicable local Windows/Linux selected tools and resolved dependency graphs with CI, verify actual executable/SDK roots and lockfile identities, and add version-mismatch preflight checks to the existing verification flow without changing required coverage.",
-        "Use owner-authorized prerequisite installations on the designated hosts, with verified artifacts and rollback-safe side-by-side tools where needed. Update current MXC source/admission evidence if the selected stable version changes; composed native admission remains P1 work."
+        "Use owner-authorized prerequisite installations on the designated hosts, with verified artifacts and rollback-safe side-by-side tools where needed. Update current MXC source/admission evidence if the selected stable version changes; composed native admission remains P1 work.",
+        "Synchronize current AGENTS.md tool/version/prerequisite instructions and actual NOTICE/NOTICE.md attribution files where dependency updates require them; preserve every verification, security, host and activation gate."
       ],
       "out_of_scope": [
         "Public activation, deployment or host OS replacement; network/proxy/security settings and protection/ruleset changes",
