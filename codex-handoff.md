@@ -14,6 +14,12 @@ The graph has 40 tasks and AFV2-ENV-01 is active. The original 39-ID authorizati
 
 ENV covers ArcForges, Cloud, Web, Contracts, shared DesktopPlatform, ArcForges-Design and Plan: all current tools/runtimes/SDKs, Actions/images, direct business dependencies and resolved transitive dependencies. Check latest upstream stable versions during implementation, pin exact identities and make local/CI resolution match. Include major upgrades and necessary compatibility repairs. Preserve immutable historical artifacts, published versions and applied SQL. Independent Mobile/AI/ArcScope/ArcSlate/ArcNotes are protected consumers, outside blanket upgrade scope. Public deployment/activation is not part of ENV.
 
+## Owner-approved Go qualification (2026-11-15)
+
+On 2026-11-15 the owner approved only AD-0023's bounded Contracts Go qualifications: retain the complete selected module graph while separately proving the named upstream metadata entries are absent from each applicable actual tool and Contracts-owned build/test closure; admit only `golang.org/x/exp/typeparams` and `golang.org/x/telemetry` through reviewed latest fixed upstream commits with their disclosed experimental/no-compatibility posture. The scope is Contracts' two existing Go modules, four declared tools and existing Windows/Linux configurations, not a general unused-dependency or other-repository exemption. The Design amendment lists exact eligible names and evidence requirements. Merge Design then this Plan amendment before affected dependency admission. Keep both-module checksums/tidy/security checks and all existing native gates unchanged; classification is acceptance accounting only. Final candidate graphs must be remeasured on both applicable platforms; the dated research is not current acceptance.
+
+The owner selected the prepared limited proposal after official-source research and independent review identified untagged actual tool dependencies and deprecated metadata retained by the latest upstream tools. This changes no task state: ENV remains active and the other roots stay planned. Contracts upgrade edits are preserved in `.worktree/afv2-env-01`; they are not accepted by this policy-only record.
+
 ## ENV implementation checkpoint
 
 Two tooling slices have merged; **ENV is not delivered or complete**:

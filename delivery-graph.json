@@ -270,7 +270,8 @@
         "Upgrade DesktopPlatform and Contracts producers before downstream admission; preserve independent consumers and immutable published contracts. Publish new main-descended cohorts through existing delivery, then update all applicable consumer admissions and lockfiles.",
         "Align applicable local Windows/Linux selected tools and resolved dependency graphs with CI, verify actual executable/SDK roots and lockfile identities, and add version-mismatch preflight checks to the existing verification flow without changing required coverage.",
         "Use owner-authorized prerequisite installations on the designated hosts, with verified artifacts and rollback-safe side-by-side tools where needed. Update current MXC source/admission evidence if the selected stable version changes; composed native admission remains P1 work.",
-        "Synchronize current AGENTS.md tool/version/prerequisite instructions and actual NOTICE/NOTICE.md attribution files where dependency updates require them; preserve every verification, security, host and activation gate."
+        "Synchronize current AGENTS.md tool/version/prerequisite instructions and actual NOTICE/NOTICE.md attribution files where dependency updates require them; preserve every verification, security, host and activation gate.",
+        "Apply only the owner-approved 2026-11-15 bounded Contracts Go qualification in AD-0023: retain the complete selected graph and exact upstream edges; distinguish the named metadata-only candidates using final tool and owned-build/test closures on each applicable Windows/Linux configuration; admit only x/exp/typeparams and x/telemetry as reviewed latest fixed upstream commits, with checksums and maturity disclosures. All existing checks remain unchanged; this is not a general exemption for other repositories or unused dependencies."
       ],
       "out_of_scope": [
         "Public activation, deployment or host OS replacement; network/proxy/security settings and protection/ruleset changes",
@@ -289,7 +290,7 @@
         "Producer publication/consumer admission identities, complete native profile results, independent review, merged PRs and rollback/checkpoint record for every covered repository"
       ],
       "acceptance": [
-        "Every current dependency and tool, including nested and resolved transitive entries, is inventoried and upgraded to latest upstream stable at candidate lock; recheck latest before final acceptance and reverify affected candidates if a new stable release exists",
+        "Every current dependency and tool, including nested and resolved transitive entries, is inventoried and upgraded to latest upstream stable at candidate lock; recheck latest before final acceptance and reverify affected candidates if a new stable release exists; the sole qualifications are the named Contracts Go cases in amended AD-0023, supported by final platform/configuration-specific actual-closure measurements and exact upstream identities",
         "Applicable local and CI versions/graphs match exactly; platform-specific artifacts and CI/native OS venue differences are explicit; stale PATH/SDK overrides and unlocked restores fail preflight",
         "Required Windows/Linux profiles, locked restore/build/test/AOT/analyzer/security checks and changed-workflow actionlint pass at each final pushed head; no skipped requirement or raised failure threshold",
         "Shared producer cohorts descend from producer main and publish before consumer admission; compatibility and immutable artifact/migration constraints hold",
@@ -333,7 +334,7 @@
         }
       ],
       "size": "XL",
-      "notes": "Owner authorized all dependency upgrades, including business dependencies, on 2026-11-14 after the policy documents merge. Serial sub-order: inventory/host preparation, shared producers, consumers, complete aggregate acceptance. Path globs describe current source/build compatibility scope only; .config/dotnet-tools.json, missing version selector files and docs/dependency-upgrade/** are explicit new targets if absent. Never edit applied migrations or frozen evidence within a broad source glob. [active] Design #67 and Plan #100 policy documents merged after independent review and required native checks; begin authorized seven-repository inventory and latest-stable upgrades.",
+      "notes": "Owner authorized all dependency upgrades, including business dependencies, on 2026-11-14 after the policy documents merge. Serial sub-order: inventory/host preparation, shared producers, consumers, complete aggregate acceptance. Path globs describe current source/build compatibility scope only; .config/dotnet-tools.json, missing version selector files and docs/dependency-upgrade/** are explicit new targets if absent. Never edit applied migrations or frozen evidence within a broad source glob. [active] Design #67 and Plan #100 policy documents merged after independent review and required native checks; begin authorized seven-repository inventory and latest-stable upgrades. Owner explicitly approved the bounded Contracts Go metadata/untagged dependency proposal on 2026-11-15; merge the paired Design/Plan amendment before affected dependency admission, then remeasure final applicable Windows/Linux closures. This does not complete ENV or authorize wider exceptions.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -360,7 +361,7 @@
       },
       "definition_of_done": [
         "All seven covered repositories have independently reviewed merged latest-stable upgrades with actual required host statuses, producer/consumer evidence and local/CI parity inventory",
-        "AR-13 is closed with exact source/artifact/version/environment evidence; no current unresolved older dependency or compatibility failure is recorded as accepted",
+        "AR-13 is closed with exact source/artifact/version/environment evidence; only the expressly approved named Contracts Go qualifications in AD-0023 may affect acceptance accounting, and no unqualified older dependency, missing final closure measurement or compatibility failure is accepted",
         "Record all PR/merge/publication identities through plan.py before resuming BASE-01 and MXC-01; public activation remains separate"
       ]
     },
