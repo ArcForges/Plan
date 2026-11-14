@@ -1,5 +1,7 @@
 # One V2 delivery task
 
+For the AD-0023 amendment, complete Design/Plan document review, required native verification and Design-first merges before implementing upgrades. AFV2-ENV-01 then delivers the seven-repository latest-stable dependency baseline and local/CI parity; only after its acceptance may BASE-01 resume. All dependency compatibility work retains the complete checks below.
+
 1. Read [execution policy](execution-policy.md), the authorized AFV2 range, `plan.py next`, full task record, Design refs and register Blocks. A task outside the authorized range is not implied scope.
 2. Fetch latest involved main branches, inspect existing PRs/worktrees and actual deployed/migration state relevant to the task. Reuse valid prior work. Create isolated task worktrees.
 3. Mark the eligible task active through `plan.py set-state`; record the user's authorization and task start. State-only Plan records retain required host checks even where independent review is exempt.

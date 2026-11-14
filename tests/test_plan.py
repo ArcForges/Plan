@@ -133,10 +133,12 @@ class GraphChecks(unittest.TestCase):
         g["tasks"][0]["risks"][0]["owner"] = "AFV2-NOPE-99"
         self.assertTrue(any("risk owner AFV2-NOPE-99" in e for e in plan.validate(g)))
 
-    def test_dependencies_are_real_not_a_chain(self):
-        # Tasks with no real dependency exist beyond the first, so one blocked task cannot stall the plan (R-08).
+    def test_dependency_baseline_precedes_independent_product_branches(self):
+        # AD-0023 adds one real shared prerequisite; product branches remain independent afterward.
         roots = [t["id"] for t in self.graph["tasks"] if not t["depends_on"]]
-        self.assertGreater(len(roots), 1)
+        self.assertEqual(roots, ["AFV2-ENV-01"])
+        branches = {t["id"] for t in self.graph["tasks"] if t["depends_on"] == roots}
+        self.assertEqual(branches, {"AFV2-BASE-01", "AFV2-MXC-01"})
 
     def test_blocked_needs_register_ids(self):
         g = pristine_graph()
@@ -173,8 +175,10 @@ class StateChanges(unittest.TestCase):
             plan.set_state(self.graph, self.first, "planned")
 
     def test_blocked_task_is_skipped_and_does_not_count_as_active(self):
+        plan.set_state(self.graph, "AFV2-ENV-01", "active")
+        plan.set_state(self.graph, "AFV2-ENV-01", "delivered", merge="Plan@abc1234")
         by_id = {t["id"]: t for t in self.graph["tasks"]}
-        web = next(t["id"] for t in self.graph["tasks"] if not t["depends_on"])
+        web = "AFV2-BASE-01"
         with self.assertRaises(SystemExit):
             plan.set_state(self.graph, web, "blocked", reason="legal texts")  # needs --blocked-by
         with self.assertRaises(SystemExit):
@@ -183,7 +187,7 @@ class StateChanges(unittest.TestCase):
         plan.set_state(self.graph, web, "blocked", reason="waiting for legal texts", blocked_by=[known_human_prerequisite()])
         self.assertEqual(by_id[web]["blocked_by"], [known_human_prerequisite()])
         nxt = plan.next_task(self.graph)
-        self.assertNotEqual(nxt["id"], web)
+        self.assertEqual(nxt["id"], "AFV2-MXC-01")
         self.assertNotIn(web, nxt["depends_on"])
         plan.set_state(self.graph, nxt["id"], "active")  # allowed: the blocked task is not active
         self.assertEqual(plan.validate(self.graph), [])
@@ -191,6 +195,18 @@ class StateChanges(unittest.TestCase):
         plan.set_state(self.graph, nxt["id"], "planned")
         plan.set_state(self.graph, web, "planned")
         self.assertEqual(by_id[web]["blocked_by"], [])
+
+    def test_blocked_dependency_upgrade_prevents_all_product_activation(self):
+        plan.set_state(self.graph, "AFV2-ENV-01", "blocked", reason="native host unavailable",
+                       blocked_by=[known_human_prerequisite()])
+        self.assertIsNone(plan.next_task(self.graph))
+        for task in self.graph["tasks"][1:]:
+            with self.subTest(task=task["id"]):
+                before = copy.deepcopy(self.graph)
+                with self.assertRaisesRegex(SystemExit, "dependencies must be delivered or complete"):
+                    plan.set_state(self.graph, task["id"], "active")
+                self.assertEqual(self.graph, before)
+        self.assertEqual(plan.validate(self.graph), [])
 
     def test_superseded_needs_reason(self):
         with self.assertRaises(SystemExit):

@@ -7,8 +7,8 @@
   "design": {
     "repository": "ArcForges/ArcForges-Design",
     "authority": "AD-0022",
-    "candidate_branch": "design/v2-cli-sandbox-20261114",
-    "note": "Merge Design before final Plan host verification. Candidate pairing is not a claim that main already contains V2."
+    "candidate_branch": "design/latest-version-policy",
+    "note": "AD-0022 is merged product authority; AD-0023 adds documents-first dependency upgrades. Merge this Design amendment before final Plan host verification against actual Design main."
   },
   "historical_baseline": {
     "repository": "ArcForges/Plan",
@@ -23,8 +23,8 @@
   "milestones": [
     {
       "id": "P0",
-      "title": "Baseline and retirement preparation",
-      "outcome": "Actual deployed state and consumers are known; only disconnected retired scaffolding is removed."
+      "title": "Current dependency baseline and migration preparation",
+      "outcome": "All current dependencies and local/CI versions are upgraded and qualified before migration inventory and retirement preparation."
     },
     {
       "id": "P1",
@@ -69,11 +69,307 @@
   ],
   "tasks": [
     {
+      "id": "AFV2-ENV-01",
+      "title": "Upgrade all current dependencies and align local with CI",
+      "milestone": "P0",
+      "order": 1,
+      "state": "planned",
+      "repositories": [
+        {
+          "repo": "DesktopPlatform",
+          "paths": [
+            ".github/workflows/**",
+            "global.json",
+            ".python-version",
+            ".node-version",
+            ".config/dotnet-tools.json",
+            "Directory.Build.props",
+            "Directory.Build.targets",
+            "Directory.Packages.props",
+            "eng/**",
+            "tests/**",
+            "tools/**",
+            "docs/dependency-upgrade/**",
+            "README.md",
+            "CONTRIBUTING.md",
+            "THIRD_PARTY_NOTICES.md",
+            "src/**",
+            "native/**",
+            "benchmarks/**",
+            "fixtures/**",
+            "third-party/**",
+            "CMakeLists.txt",
+            "CMakePresets.json",
+            "DesktopPlatform.slnx",
+            "win.slnx",
+            ".pre-commit-config.yaml",
+            "AGENTS.md",
+            "NOTICE.md"
+          ]
+        },
+        {
+          "repo": "Contracts",
+          "paths": [
+            ".github/workflows/**",
+            "global.json",
+            ".python-version",
+            ".node-version",
+            ".config/dotnet-tools.json",
+            "Directory.Build.props",
+            "Directory.Build.targets",
+            "Directory.Packages.props",
+            "eng/**",
+            "tests/**",
+            "tools/**",
+            "docs/dependency-upgrade/**",
+            "README.md",
+            "CONTRIBUTING.md",
+            "THIRD_PARTY_NOTICES.md",
+            "src/**",
+            "go/**",
+            "internal/**",
+            "public/**",
+            "fixtures/**",
+            "third-party/**",
+            "package.json",
+            "package-lock.json",
+            "ArcForges.Contracts.slnx",
+            "AGENTS.md",
+            "NOTICE"
+          ]
+        },
+        {
+          "repo": "ArcForges",
+          "paths": [
+            ".github/workflows/**",
+            "global.json",
+            ".python-version",
+            ".node-version",
+            ".config/dotnet-tools.json",
+            "Directory.Build.props",
+            "Directory.Build.targets",
+            "Directory.Packages.props",
+            "eng/**",
+            "tests/**",
+            "tools/**",
+            "docs/dependency-upgrade/**",
+            "README.md",
+            "CONTRIBUTING.md",
+            "THIRD_PARTY_NOTICES.md",
+            "src/**",
+            "third-party/**",
+            "packaging/**",
+            "ArcForges.slnx",
+            "AGENTS.md"
+          ]
+        },
+        {
+          "repo": "Cloud",
+          "paths": [
+            ".github/workflows/**",
+            "global.json",
+            ".python-version",
+            ".node-version",
+            ".config/dotnet-tools.json",
+            "Directory.Build.props",
+            "Directory.Build.targets",
+            "Directory.Packages.props",
+            "eng/**",
+            "tests/**",
+            "tools/**",
+            "docs/dependency-upgrade/**",
+            "README.md",
+            "CONTRIBUTING.md",
+            "THIRD_PARTY_NOTICES.md",
+            "src/**",
+            "center/**",
+            "worker/**",
+            "tooling/**",
+            "third-party/**",
+            "deploy/**",
+            "storage/**",
+            "package.json",
+            "package-lock.json",
+            "Dockerfile",
+            "Cloud.slnx",
+            "wrangler.json",
+            "tsconfig.json",
+            "tsconfig.worker.json",
+            "biome.json",
+            "AGENTS.md",
+            "NOTICE"
+          ]
+        },
+        {
+          "repo": "Web",
+          "paths": [
+            ".github/workflows/**",
+            "global.json",
+            ".python-version",
+            ".node-version",
+            ".config/dotnet-tools.json",
+            "Directory.Build.props",
+            "Directory.Build.targets",
+            "Directory.Packages.props",
+            "eng/**",
+            "tests/**",
+            "tools/**",
+            "docs/dependency-upgrade/**",
+            "README.md",
+            "CONTRIBUTING.md",
+            "THIRD_PARTY_NOTICES.md",
+            "src/**",
+            "worker/**",
+            "tooling/**",
+            "third-party/**",
+            "package.json",
+            "package-lock.json",
+            "win.slnx",
+            "wrangler.json",
+            "tsconfig.json",
+            "AGENTS.md"
+          ]
+        },
+        {
+          "repo": "ArcForges-Design",
+          "paths": [
+            ".github/workflows/**",
+            ".python-version",
+            "global.json",
+            "tools/**",
+            "tests/**",
+            "eng/**",
+            "docs/dependency-upgrade/**",
+            "docs/research/mxc-research.md",
+            "docs/verification/mxc-experiments.md",
+            "docs/verification/platform-capabilities.md",
+            "docs/architecture/02-mxc-integration.md",
+            "README.md",
+            "AGENTS.md"
+          ]
+        },
+        {
+          "repo": "Plan",
+          "paths": [
+            ".github/workflows/**",
+            ".python-version",
+            "eng/**",
+            "tools/**",
+            "tests/**",
+            "docs/dependency-upgrade/**",
+            "README.md",
+            "AGENTS.md"
+          ]
+        }
+      ],
+      "depends_on": [],
+      "objective": "After the Design/Plan policy amendment is reviewed, verified and merged, upgrade all current tools, CI components, images and dependencies across the seven delivery repositories to latest stable versions with reproducible local/CI parity.",
+      "scope": [
+        "Inventory every current root and nested project/tool/test manifest, resolved transitive dependency, SDK/runtime, package manager, native helper, generator, test/security tool, CI Action/runner and container image in the seven listed repositories; record lookup time and official source, version, checksum/digest, consumer and platform applicability.",
+        "Select latest upstream stable releases including major upgrades; repair required APIs, TFMs, generated outputs and build integration throughout the listed current modules. Broad source path entries allow only dependency compatibility repairs, not product features or retirement. Record actual changed modules and reasons in each PR.",
+        "Upgrade DesktopPlatform and Contracts producers before downstream admission; preserve independent consumers and immutable published contracts. Publish new main-descended cohorts through existing delivery, then update all applicable consumer admissions and lockfiles.",
+        "Align applicable local Windows/Linux selected tools and resolved dependency graphs with CI, verify actual executable/SDK roots and lockfile identities, and add version-mismatch preflight checks to the existing verification flow without changing required coverage.",
+        "Use owner-authorized prerequisite installations on the designated hosts, with verified artifacts and rollback-safe side-by-side tools where needed. Update current MXC source/admission evidence if the selected stable version changes; composed native admission remains P1 work.",
+        "Synchronize current AGENTS.md tool/version/prerequisite instructions and actual NOTICE/NOTICE.md attribution files where dependency updates require them; preserve every verification, security, host and activation gate."
+      ],
+      "out_of_scope": [
+        "Public activation, deployment or host OS replacement; network/proxy/security settings and protection/ruleset changes",
+        "Independent Mobile/AI/ArcScope/ArcSlate/ArcNotes blanket upgrades or product refactoring; preserve their compatibility",
+        "Frozen history, published package bytes, applied SQL/checksums and historical bootstrap/security-bridge identities; preserve Dependabot PRs"
+      ],
+      "design_refs": [
+        "docs/decisions/AD-0023-current-dependency-baseline.md"
+      ],
+      "requirements": [
+        "R-DEP-001"
+      ],
+      "deliverables": [
+        "Reviewed per-repository machine-readable current dependency inventory and aggregate seven-repository coverage report under docs/dependency-upgrade/**",
+        "Updated source/manifests/lockfiles/CI/tool selection and targeted compatibility tests; exact native local/CI fingerprints and mismatch diagnostics",
+        "Producer publication/consumer admission identities, complete native profile results, independent review, merged PRs and rollback/checkpoint record for every covered repository"
+      ],
+      "acceptance": [
+        "Every current dependency and tool, including nested and resolved transitive entries, is inventoried and upgraded to latest upstream stable at candidate lock; recheck latest before final acceptance and reverify affected candidates if a new stable release exists",
+        "Applicable local and CI versions/graphs match exactly; platform-specific artifacts and CI/native OS venue differences are explicit; stale PATH/SDK overrides and unlocked restores fail preflight",
+        "Required Windows/Linux profiles, locked restore/build/test/AOT/analyzer/security checks and changed-workflow actionlint pass at each final pushed head; no skipped requirement or raised failure threshold",
+        "Shared producer cohorts descend from producer main and publish before consumer admission; compatibility and immutable artifact/migration constraints hold",
+        "All seven repositories have merged upgrades and recorded source/artifact evidence; historical-only reproductions are isolated and cannot supply the current default build; incompatibility remains an unresolved blocker, never a silent older-version exemption"
+      ],
+      "verification": {
+        "author": [
+          "Check official version/artifact provenance and complete inventory coverage, then run targeted compatibility and negative version-mismatch cases",
+          "Run affected locked restores, code generation, API/consumer compatibility, build/tests/AOT/analyzers/security checks; keep existing native/runtime obligations and baseline thresholds"
+        ],
+        "reviewer_distinct": [
+          "Independent nonauthor reviewer checks each full latest diff, all inventory entries and scope restrictions, producer/consumer order, immutable exclusions and parity evidence",
+          "Rerun changed validation tooling or disputed evidence only; review every new code head and keep blockers explicit"
+        ],
+        "hosted_ci": [
+          "Push and fetch the exact candidate independently on each repository-required designated MCP host; run eng/verify.py run-and-report with all existing checks and reviewed parity additions",
+          "Require actual exact-head statuses and external hosted checks where applicable; no manual statuses, bypass, substitute hosts or protection changes"
+        ]
+      },
+      "fakes_allowed": [
+        "none for version resolution, provenance, native behavior or compatibility acceptance"
+      ],
+      "future_validation": [],
+      "acceptance_register": [
+        "AR-13"
+      ],
+      "human_prerequisites": [
+        "H-01",
+        "H-02"
+      ],
+      "risks": [
+        {
+          "risk": "A stable major or transitive constraint is incompatible with current source/consumer or AOT/native behavior",
+          "mitigation": "Repair compatibility and regenerate/retest the affected cohort; if upstream makes latest stable impossible, leave delivery unfinished and report the concrete blocker rather than silently retain an older pin.",
+          "owner": "AFV2-ENV-01"
+        },
+        {
+          "risk": "A global tool override changes another project, historical artifact reproduction or the running MCP service",
+          "mitigation": "Install verified tools side by side and bind current project/CI resolution explicitly; preserve historical tools and verification access, then record selected paths and rollback.",
+          "owner": "AFV2-ENV-01"
+        }
+      ],
+      "size": "XL",
+      "notes": "Owner authorized all dependency upgrades, including business dependencies, on 2026-11-14 after the policy documents merge. Serial sub-order: inventory/host preparation, shared producers, consumers, complete aggregate acceptance. Path globs describe current source/build compatibility scope only; .config/dotnet-tools.json, missing version selector files and docs/dependency-upgrade/** are explicit new targets if absent. Never edit applied migrations or frozen evidence within a broad source glob.",
+      "blocked_by": [],
+      "evidence": {
+        "prs": [],
+        "merges": [],
+        "publications": [],
+        "ledger": null
+      },
+      "removals": [
+        "Remove superseded current tool/dependency selections and obsolete compatibility shims only after replacement passes; retain historical-only reproducibility tools/artifacts explicitly isolated"
+      ],
+      "migration": [
+        "Merge the policy documents first; preserve BASE-01 uncommitted work. Upgrade producers then consumers serially with fresh evidence and preserve all published versions/applied migration bytes."
+      ],
+      "rollback": [
+        "Preserve prior tool installations and source/lockfile identities; revert unaccepted source selections coherently without overwriting packages or rolling a database schema back. Partial upgrade keeps this task unfinished and product dependents planned."
+      ],
+      "native_validation": {
+        "windows": [
+          "On the designated Windows MCP host verify resolved executable paths, SDK roots, versions, locked dependency graphs and a negative mismatch case; run each repository-required complete Windows profile at its exact pushed head"
+        ],
+        "linux": [
+          "On H-22 verify resolved executable paths, versions, locked dependency graphs and a negative mismatch case; run each repository-required complete Linux profile with real user-manager/cgroup prerequisites and changed-workflow actionlint"
+        ]
+      },
+      "definition_of_done": [
+        "All seven covered repositories have independently reviewed merged latest-stable upgrades with actual required host statuses, producer/consumer evidence and local/CI parity inventory",
+        "AR-13 is closed with exact source/artifact/version/environment evidence; no current unresolved older dependency or compatibility failure is recorded as accepted",
+        "Record all PR/merge/publication identities through plan.py before resuming BASE-01 and MXC-01; public activation remains separate"
+      ]
+    },
+    {
       "id": "AFV2-BASE-01",
       "title": "Build migration inventory and dry-run preflight",
       "milestone": "P0",
-      "order": 1,
-      "state": "active",
+      "order": 2,
+      "state": "planned",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -104,7 +400,9 @@
           ]
         }
       ],
-      "depends_on": [],
+      "depends_on": [
+        "AFV2-ENV-01"
+      ],
       "objective": "Build migration inventory and dry-run preflight. Dry-run reports fresh, Node15, Center10, Center11 and unknown/newer schema distinctly and never writes live state",
       "scope": [
         "Implement read-only preflight commands that inventory actual installed cohort, Node schema15, Center schema10/11, unresolved receipts/journals and current contract consumers without reading secrets",
@@ -164,7 +462,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; ArcForges:docs/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; ArcForges:docs/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [planned] Parked at owner-directed documents-first dependency upgrade checkpoint; preserve uncommitted ArcForges/Cloud .worktree/afv2-base-01 files and resume after AFV2-ENV-01.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -199,7 +497,7 @@
       "id": "AFV2-BASE-02",
       "title": "Delete disconnected retired desktop scaffolding and stale product registrations",
       "milestone": "P0",
-      "order": 2,
+      "order": 3,
       "state": "planned",
       "repositories": [
         {
@@ -318,7 +616,7 @@
       "id": "AFV2-MXC-01",
       "title": "Admit stable MXC artifacts and build AOT/provenance probes",
       "milestone": "P1",
-      "order": 3,
+      "order": 4,
       "state": "planned",
       "repositories": [
         {
@@ -340,7 +638,9 @@
           ]
         }
       ],
-      "depends_on": [],
+      "depends_on": [
+        "AFV2-ENV-01"
+      ],
       "objective": "Admit stable MXC artifacts and build AOT/provenance probes. MXC-AOT-01 produces source/package/binary/license/SBOM receipts and real win-x64/linux-x64 AOT results",
       "scope": [
         "Build runnable isolated C# probes against exact stable Microsoft.Mxc.Sdk and official executor artifacts; verify version/schema/native hashes and redistribution closure",
@@ -448,7 +748,7 @@
       "id": "AFV2-MXC-02",
       "title": "Qualify Windows ProcessContainer terminal and resource composition",
       "milestone": "P1",
-      "order": 4,
+      "order": 5,
       "state": "planned",
       "repositories": [
         {
@@ -579,7 +879,7 @@
       "id": "AFV2-MXC-03",
       "title": "Qualify Linux Bubblewrap terminal and cgroup composition",
       "milestone": "P1",
-      "order": 5,
+      "order": 6,
       "state": "planned",
       "repositories": [
         {
@@ -710,7 +1010,7 @@
       "id": "AFV2-MXC-04",
       "title": "Admit complete backend profiles or record a blocking gap",
       "milestone": "P1",
-      "order": 6,
+      "order": 7,
       "state": "planned",
       "repositories": [
         {
@@ -830,7 +1130,7 @@
       "id": "AFV2-API-01",
       "title": "Publish explicit V2 contracts and generate all required bindings",
       "milestone": "P2",
-      "order": 7,
+      "order": 8,
       "state": "planned",
       "repositories": [
         {
@@ -954,7 +1254,7 @@
       "id": "AFV2-DATA-01",
       "title": "Add V2 Node persistence and durable mutation receipts",
       "milestone": "P2",
-      "order": 8,
+      "order": 9,
       "state": "planned",
       "repositories": [
         {
@@ -1073,7 +1373,7 @@
       "id": "AFV2-CORE-01",
       "title": "Implement persistent Sandbox Core and qualified policy profiles",
       "milestone": "P2",
-      "order": 9,
+      "order": 10,
       "state": "planned",
       "repositories": [
         {
@@ -1194,7 +1494,7 @@
       "id": "AFV2-CORE-02",
       "title": "Implement per-Run supervisor and official MXC execution",
       "milestone": "P2",
-      "order": 10,
+      "order": 11,
       "state": "planned",
       "repositories": [
         {
@@ -1326,7 +1626,7 @@
       "id": "AFV2-CORE-03",
       "title": "Implement real terminal broker and bounded output streams",
       "milestone": "P2",
-      "order": 11,
+      "order": 12,
       "state": "planned",
       "repositories": [
         {
@@ -1450,7 +1750,7 @@
       "id": "AFV2-SEC-01",
       "title": "Implement local ownership and bounded remote grant policy",
       "milestone": "P2",
-      "order": 12,
+      "order": 13,
       "state": "planned",
       "repositories": [
         {
@@ -1573,7 +1873,7 @@
       "id": "AFV2-RES-01",
       "title": "Extract resource observation and host-headroom budgeting",
       "milestone": "P3",
-      "order": 13,
+      "order": 14,
       "state": "planned",
       "repositories": [
         {
@@ -1690,7 +1990,7 @@
       "id": "AFV2-RES-02",
       "title": "Apply and verify per-Run and aggregate resource limits",
       "milestone": "P3",
-      "order": 14,
+      "order": 15,
       "state": "planned",
       "repositories": [
         {
@@ -1819,7 +2119,7 @@
       "id": "AFV2-RES-03",
       "title": "Coordinate multi-Sandbox priority and bounded pressure response",
       "milestone": "P3",
-      "order": 15,
+      "order": 16,
       "state": "planned",
       "repositories": [
         {
@@ -1930,7 +2230,7 @@
       "id": "AFV2-REC-01",
       "title": "Reconcile Node and Run ownership after failures",
       "milestone": "P3",
-      "order": 16,
+      "order": 17,
       "state": "planned",
       "repositories": [
         {
@@ -2075,7 +2375,7 @@
       "id": "AFV2-CLI-01",
       "title": "Deliver offline core and administration CLI commands",
       "milestone": "P4",
-      "order": 17,
+      "order": 18,
       "state": "planned",
       "repositories": [
         {
@@ -2197,7 +2497,7 @@
       "id": "AFV2-CLI-02",
       "title": "Deliver interactive CLI attach detach and terminal ergonomics",
       "milestone": "P4",
-      "order": 18,
+      "order": 19,
       "state": "planned",
       "repositories": [
         {
@@ -2316,7 +2616,7 @@
       "id": "AFV2-FILE-01",
       "title": "Implement private data usage import and export",
       "milestone": "P4",
-      "order": 19,
+      "order": 20,
       "state": "planned",
       "repositories": [
         {
@@ -2447,7 +2747,7 @@
       "id": "AFV2-FILE-02",
       "title": "Implement safe whole-Sandbox deletion and interrupted cleanup",
       "milestone": "P4",
-      "order": 20,
+      "order": 21,
       "state": "planned",
       "repositories": [
         {
@@ -2581,7 +2881,7 @@
       "id": "AFV2-CENTER-01",
       "title": "Migrate PostgreSQL safely to V2 management storage",
       "milestone": "P5",
-      "order": 21,
+      "order": 22,
       "state": "planned",
       "repositories": [
         {
@@ -2714,7 +3014,7 @@
       "id": "AFV2-ID-01",
       "title": "Complete bounded account recovery export and deletion lifecycle",
       "milestone": "P5",
-      "order": 22,
+      "order": 23,
       "state": "planned",
       "repositories": [
         {
@@ -2839,7 +3139,7 @@
       "id": "AFV2-CENTER-02",
       "title": "Adapt enrollment and outbound node channels to V2 capabilities",
       "milestone": "P5",
-      "order": 23,
+      "order": 24,
       "state": "planned",
       "repositories": [
         {
@@ -2996,7 +3296,7 @@
       "id": "AFV2-CENTER-03",
       "title": "Route typed remote control through the same Sandbox Core",
       "milestone": "P5",
-      "order": 24,
+      "order": 25,
       "state": "planned",
       "repositories": [
         {
@@ -3145,7 +3445,7 @@
       "id": "AFV2-CENTER-04",
       "title": "Deliver bounded remote logs resources and Sandbox data transfer",
       "milestone": "P5",
-      "order": 25,
+      "order": 26,
       "state": "planned",
       "repositories": [
         {
@@ -3287,7 +3587,7 @@
       "id": "AFV2-HOST-01",
       "title": "Enforce official hosting entitlements and self-host independence",
       "milestone": "P6",
-      "order": 26,
+      "order": 27,
       "state": "planned",
       "repositories": [
         {
@@ -3416,7 +3716,7 @@
       "id": "AFV2-HOST-02",
       "title": "Implement official web commerce lifecycle and reconciliation",
       "milestone": "P6",
-      "order": 27,
+      "order": 28,
       "state": "planned",
       "repositories": [
         {
@@ -3544,7 +3844,7 @@
       "id": "AFV2-HOST-03",
       "title": "Deliver self-host deployment infrastructure and official operational controls",
       "milestone": "P6",
-      "order": 28,
+      "order": 29,
       "state": "planned",
       "repositories": [
         {
@@ -3690,7 +3990,7 @@
       "id": "AFV2-WEB-01",
       "title": "Build responsive Blazor shell identity and device overview",
       "milestone": "P7",
-      "order": 29,
+      "order": 30,
       "state": "planned",
       "repositories": [
         {
@@ -3808,7 +4108,7 @@
       "id": "AFV2-WEB-02",
       "title": "Deliver Sandbox Run and resource management journeys",
       "milestone": "P7",
-      "order": 30,
+      "order": 31,
       "state": "planned",
       "repositories": [
         {
@@ -3925,7 +4225,7 @@
       "id": "AFV2-WEB-03",
       "title": "Deliver security account and subscription management pages",
       "milestone": "P7",
-      "order": 31,
+      "order": 32,
       "state": "planned",
       "repositories": [
         {
@@ -4036,7 +4336,7 @@
       "id": "AFV2-WEB-04",
       "title": "Qualify responsive accessibility offline and reconnect behavior",
       "milestone": "P7",
-      "order": 32,
+      "order": 33,
       "state": "planned",
       "repositories": [
         {
@@ -4155,7 +4455,7 @@
       "id": "AFV2-MIG-01",
       "title": "Cut over consumers and remove the old execution and Center runtimes",
       "milestone": "P8",
-      "order": 33,
+      "order": 34,
       "state": "planned",
       "repositories": [
         {
@@ -4363,7 +4663,7 @@
       "id": "AFV2-MIG-02",
       "title": "Contract live schemas and finalize retention of historical evidence",
       "milestone": "P8",
-      "order": 34,
+      "order": 35,
       "state": "planned",
       "repositories": [
         {
@@ -4498,7 +4798,7 @@
       "id": "AFV2-DIST-01",
       "title": "Package coherent signed native and self-host distributions",
       "milestone": "P8",
-      "order": 35,
+      "order": 36,
       "state": "planned",
       "repositories": [
         {
@@ -4649,7 +4949,7 @@
       "id": "AFV2-DIST-02",
       "title": "Implement safe updates migration-aware rollback and supervisor drain",
       "milestone": "P8",
-      "order": 36,
+      "order": 37,
       "state": "planned",
       "repositories": [
         {
@@ -4785,7 +5085,7 @@
       "id": "AFV2-ACC-01",
       "title": "Accept the full native local Sandbox product",
       "milestone": "P8",
-      "order": 37,
+      "order": 38,
       "state": "planned",
       "repositories": [
         {
@@ -4915,7 +5215,7 @@
       "id": "AFV2-ACC-02",
       "title": "Accept self-host official remote and account journeys",
       "milestone": "P8",
-      "order": 38,
+      "order": 39,
       "state": "planned",
       "repositories": [
         {
@@ -5067,7 +5367,7 @@
       "id": "AFV2-PROD-01",
       "title": "Activate only the accepted official service and publish release channels",
       "milestone": "P8",
-      "order": 39,
+      "order": 40,
       "state": "planned",
       "repositories": [
         {

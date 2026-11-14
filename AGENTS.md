@@ -1,6 +1,6 @@
 # Agent instructions — ArcForges V2 Plan
 
-Read [execution-policy.md](execution-policy.md), [delivery-procedure.md](delivery-procedure.md), [acceptance-register.md](acceptance-register.md) and the exact current task before delivery. Design AD-0022 and this schema3 graph are current authority. Frozen history is evidence only.
+Read [execution-policy.md](execution-policy.md), [delivery-procedure.md](delivery-procedure.md), [acceptance-register.md](acceptance-register.md) and the exact current task before delivery. Design AD-0022, the AD-0023 dependency policy and this schema3 graph are current authority. Frozen history is evidence only.
 
 ## Scope and records
 
