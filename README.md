@@ -10,6 +10,8 @@ All 63 earlier tasks leave the current sequence. Their 11 delivered, 8 complete,
 
 ## Validation and merge order
 
+The current Python version is pinned in `.python-version`; `python eng/check_toolchain.py` checks both the invoking and PATH interpreters before native and hosted validation. The [current dependency inventory](docs/dependency-upgrade/current.json) records official sources and the latest stable Actions/runner selections. Plan uses Python's standard library and does not introduce a package-manager dependency for this check.
+
 ```sh
 python tools/plan.py sequence --write
 python tools/plan.py validate --design <ArcForges-Design-worktree>

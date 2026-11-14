@@ -1,0 +1,6 @@
+# actionlint 1.7.12 predates this official hosted runner label.
+# Source: https://github.com/actions/runner-images (Ubuntu 26.04, reviewed 2026-11-14).
+# Add the exact known label; no diagnostic filters or alternate verification venue.
+self-hosted-runner:
+  labels:
+    - ubuntu-26.04
