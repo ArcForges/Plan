@@ -12,7 +12,7 @@ Outcome: All current dependencies and local/CI versions are upgraded and qualifi
 
 | # | Task | Title | Repositories | Depends on | Size | State |
 |---|---|---|---|---|---|---|
-| 1 | AFV2-ENV-01 | Upgrade all current dependencies and align local with CI | DesktopPlatform, Contracts, ArcForges, Cloud, Web, ArcForges-Design, Plan | — | XL | active |
+| 1 | AFV2-ENV-01 | Align necessary mainstream toolchains and local/CI versions | DesktopPlatform, Contracts, ArcForges, Cloud, Web, ArcForges-Design, Plan | — | XL | active |
 | 2 | AFV2-BASE-01 | Build migration inventory and dry-run preflight | ArcForges, Cloud, Contracts, ArcForges-Design | AFV2-ENV-01 | M | planned |
 | 3 | AFV2-BASE-02 | Delete disconnected retired desktop scaffolding and stale product registrations | ArcForges | AFV2-BASE-01 | M | planned |
 

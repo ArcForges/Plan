@@ -70,7 +70,7 @@
   "tasks": [
     {
       "id": "AFV2-ENV-01",
-      "title": "Upgrade all current dependencies and align local with CI",
+      "title": "Align necessary mainstream toolchains and local/CI versions",
       "milestone": "P0",
       "order": 1,
       "state": "active",
@@ -267,15 +267,15 @@
         }
       ],
       "depends_on": [],
-      "objective": "After the Design/Plan policy amendment is reviewed, verified and merged, upgrade all current tools, CI components, images and dependencies across the seven delivery repositories to latest stable versions with reproducible local/CI parity.",
+      "objective": "Preserve completed upgrades and finish the necessary mainstream language/build toolchains across the seven delivery repositories with compatible locked resolution and local/CI version parity.",
       "scope": [
-        "Inventory every current root and nested project/tool/test manifest, resolved transitive dependency, SDK/runtime, package manager, native helper, generator, test/security tool, CI Action/runner and container image in the seven listed repositories; record lookup time and official source, version, checksum/digest, consumer and platform applicability.",
-        "Select latest upstream stable releases including major upgrades; repair required APIs, TFMs, generated outputs and build integration throughout the listed current modules. Broad source path entries allow only dependency compatibility repairs, not product features or retirement. Record actual changed modules and reasons in each PR.",
-        "Upgrade DesktopPlatform and Contracts producers before downstream admission; preserve independent consumers and immutable published contracts. Publish new main-descended cohorts through existing delivery, then update all applicable consumer admissions and lockfiles.",
-        "Align applicable local Windows/Linux selected tools and resolved dependency graphs with CI, verify actual executable/SDK roots and lockfile identities, and add version-mismatch preflight checks to the existing verification flow without changing required coverage.",
-        "Use owner-authorized prerequisite installations on the designated hosts, with verified artifacts and rollback-safe side-by-side tools where needed. Update current MXC source/admission evidence if the selected stable version changes; composed native admission remains P1 work.",
-        "Synchronize current AGENTS.md tool/version/prerequisite instructions and actual NOTICE/NOTICE.md attribution files where dependency updates require them; preserve every verification, security, host and activation gate.",
-        "Apply only the owner-approved 2026-11-15 bounded Contracts Go qualification in AD-0023: retain the complete selected graph and exact upstream edges; distinguish the named metadata-only candidates using final tool and owned-build/test closures on each applicable Windows/Linux configuration; admit only x/exp/typeparams and x/telemetry as reviewed latest fixed upstream commits, with checksums and maturity disclosures. All existing checks remain unchanged; this is not a general exemption for other repositories or unused dependencies."
+        "Preserve every completed upgrade and existing inventory. Record the selected necessary .NET/C#, Go, TypeScript and supporting Node/npm, Python, native build and CI tool versions, sources and applicable local/CI resolution.",
+        "Repair actual APIs, TFMs, generated outputs and build integration required by the selected toolchains. Broad source paths cover dependency compatibility repairs only, not new product features or retirement.",
+        "Use existing compatible published DesktopPlatform/Contracts cohorts when sufficient. Publish a new main-descended producer cohort through ordinary delivery only when an actual source/API/package or compatibility change requires it, before consumer admission.",
+        "Align applicable local Windows/Linux tools with CI and verify executable/SDK roots and lock identities through the existing preflight and required verification coverage.",
+        "Continue already authorized rollback-safe prerequisite installations on the designated hosts; preserve historical tools and immutable evidence. Relevant changed native components retain their existing qualification tasks.",
+        "Synchronize current tool/version instructions and actual licence/NOTICE attribution as needed while preserving normal compilation, tests, AOT/analyzers, security, provenance, host and activation gates.",
+        "Retain compatible locked direct/transitive dependencies and ordinary fixed Go pseudo-versions under existing checks. The earlier individually-latest dependency and special upstream-metadata/tag qualification requirements are superseded; no additional per-version research, repository exception or owner-approval loop is required."
       ],
       "out_of_scope": [
         "Public activation, deployment or host OS replacement; network/proxy/security settings and protection/ruleset changes",
@@ -289,24 +289,24 @@
         "R-DEP-001"
       ],
       "deliverables": [
-        "Reviewed per-repository machine-readable current dependency inventory and aggregate seven-repository coverage report under docs/dependency-upgrade/**",
-        "Updated source/manifests/lockfiles/CI/tool selection and targeted compatibility tests; exact native local/CI fingerprints and mismatch diagnostics",
-        "Producer publication/consumer admission identities, complete native profile results, independent review, merged PRs and rollback/checkpoint record for every covered repository"
+        "Current selected-toolchain/version and applicable seven-repository local/CI parity inventory under docs/dependency-upgrade/**, preserving completed detailed dependency inventories",
+        "Necessary source/manifest/lock/CI/tool-selection compatibility repairs and relevant existing or targeted checks",
+        "Actual required native results, normal review/merge evidence and applicable existing or necessary new producer/consumer publication/admission identities"
       ],
       "acceptance": [
-        "Every current dependency and tool, including nested and resolved transitive entries, is inventoried and upgraded to latest upstream stable at candidate lock; recheck latest before final acceptance and reverify affected candidates if a new stable release exists; the sole qualifications are the named Contracts Go cases in amended AD-0023, supported by final platform/configuration-specific actual-closure measurements and exact upstream identities",
-        "Applicable local and CI versions/graphs match exactly; platform-specific artifacts and CI/native OS venue differences are explicit; stale PATH/SDK overrides and unlocked restores fail preflight",
-        "Required Windows/Linux profiles, locked restore/build/test/AOT/analyzer/security checks and changed-workflow actionlint pass at each final pushed head; no skipped requirement or raised failure threshold",
-        "Shared producer cohorts descend from producer main and publish before consumer admission; compatibility and immutable artifact/migration constraints hold",
-        "All seven repositories have merged upgrades and recorded source/artifact evidence; historical-only reproductions are isolated and cannot supply the current default build; incompatibility remains an unresolved blocker, never a silent older-version exemption"
+        "The necessary selected mainstream language/build toolchains are supported, explicit and aligned with applicable local/CI versions; all completed upgrades are retained. No individually-newest transitive dependency or upstream stable-tag qualification is an additional acceptance requirement.",
+        "Actual executable/SDK roots and lock identities match the selected configuration; platform-specific tools and hosted/native OS venues remain explicit and stale overrides or unlocked restores fail existing preflight.",
+        "Normal required locked restore/build/test/AOT/analyzer/security/source checks and exact-head native profiles pass without fabricated results or lowered thresholds.",
+        "Existing compatible published producer cohorts may satisfy consumers; any necessary new cohort follows ordinary main-descended producer-before-consumer publication with immutable contracts preserved.",
+        "All seven repositories have their necessary compatible upgrades and parity evidence recorded, with remaining real failures resolved before ENV delivery; no additional per-version research or approval loop is required."
       ],
       "verification": {
         "author": [
-          "Check official version/artifact provenance and complete inventory coverage, then run targeted compatibility and negative version-mismatch cases",
+          "Check selected necessary tool/artifact provenance, applicable local/CI parity and relevant version-mismatch cases; reuse completed inventories and measurements.",
           "Run affected locked restores, code generation, API/consumer compatibility, build/tests/AOT/analyzers/security checks; keep existing native/runtime obligations and baseline thresholds"
         ],
         "reviewer_distinct": [
-          "Independent nonauthor reviewer checks each full latest diff, all inventory entries and scope restrictions, producer/consumer order, immutable exclusions and parity evidence",
+          "Normal delivery review covers the full candidate, scope, necessary compatibility, immutable evidence and applicable parity results; no extra dependency-by-dependency review is required.",
           "Rerun changed validation tooling or disputed evidence only; review every new code head and keep blockers explicit"
         ],
         "hosted_ci": [
@@ -327,8 +327,8 @@
       ],
       "risks": [
         {
-          "risk": "A stable major or transitive constraint is incompatible with current source/consumer or AOT/native behavior",
-          "mitigation": "Repair compatibility and regenerate/retest the affected cohort; if upstream makes latest stable impossible, leave delivery unfinished and report the concrete blocker rather than silently retain an older pin.",
+          "risk": "A necessary selected toolchain is incompatible with current source, consumers or AOT/native behavior",
+          "mitigation": "Repair the actual scoped compatibility failure and run the relevant existing checks; retain compatible locked dependencies and record unresolved real failures without restarting blanket upstream-version research.",
           "owner": "AFV2-ENV-01"
         },
         {
@@ -338,7 +338,7 @@
         }
       ],
       "size": "XL",
-      "notes": "Owner authorized all dependency upgrades, including business dependencies, on 2026-11-14 after the policy documents merge. Serial sub-order: inventory/host preparation, shared producers, consumers, complete aggregate acceptance. Path globs describe current source/build compatibility scope only; .config/dotnet-tools.json, missing version selector files and docs/dependency-upgrade/** are explicit new targets if absent. Never edit applied migrations or frozen evidence within a broad source glob. [active] Design #67 and Plan #100 policy documents merged after independent review and required native checks; begin authorized seven-repository inventory and latest-stable upgrades. Owner explicitly approved the bounded Contracts Go metadata/untagged dependency proposal on 2026-11-15; merge the paired Design/Plan amendment before affected dependency admission, then remeasure final applicable Windows/Linux closures. This does not complete ENV or authorize wider exceptions.",
+      "notes": "The owner authorized upgrades on 2026-11-14 and clarified acceptance on 2026-11-15: retain all completed work and finish necessary mainstream toolchains plus local/CI parity, without individually-latest direct/transitive dependency, untagged-metadata research or per-version approval requirements. The earlier special Contracts Go qualification is no longer an additional ENV requirement. Existing ordinary compilation/test/security/provenance/native checks remain. The original39 tasks stay planned while ENV remains active; preserve BASE-01 work, published bytes and historical evidence.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -364,9 +364,9 @@
         ]
       },
       "definition_of_done": [
-        "All seven covered repositories have independently reviewed merged latest-stable upgrades with actual required host statuses, producer/consumer evidence and local/CI parity inventory",
-        "AR-13 is closed with exact source/artifact/version/environment evidence; only the expressly approved named Contracts Go qualifications in AD-0023 may affect acceptance accounting, and no unqualified older dependency, missing final closure measurement or compatibility failure is accepted",
-        "Record all PR/merge/publication identities through plan.py before resuming BASE-01 and MXC-01; public activation remains separate"
+        "The seven delivery repositories have compatible necessary toolchain upgrades and actual applicable local/CI parity with normal required checks and delivery evidence",
+        "AR-13 is closed only with actual selected-tool/source/artifact/environment results; no extra individually-latest dependency, upstream-tag or per-version approval exercise is required",
+        "Record actual PR/merge and applicable publication/admission identities before resuming BASE-01 and MXC-01; public activation remains separate"
       ]
     },
     {
