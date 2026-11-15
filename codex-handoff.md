@@ -36,10 +36,21 @@ parked `.worktree/afv2-base-01` drafts were copied, never reset or overwritten.
 
 | Repository | Commit / remote state | Contents |
 |---|---|---|
-| ArcForges | local `6f6436db7ddd4df6211c539870959e779cafafc6`; HTTPS push failed | Read-only Node preflight, 12 tests, operator/backup/cutover/rollback instructions |
+| ArcForges | pushed `6f6436db7ddd4df6211c539870959e779cafafc6`; [draft PR85](https://github.com/ArcForges/ArcForges/pull/85) | Read-only Node preflight, 12 tests, operator/backup/cutover/rollback instructions |
 | Cloud | pushed `dce36152a21e19cb64b94b8837b21bfc9f63200f`; [draft PR158](https://github.com/ArcForges/Cloud/pull/158) | Read-only PG preflight, real disposable PostgreSQL test script, use/evidence boundaries |
-| Contracts | local `9fd2b8e384198db983f7b9e230614cd070f93474`; HTTPS push failed | Committed-input consumer scanner, 5 tests, instructions, `observed-20261116.json` |
-| Plan | this checkpoint branch; exact publication identity in its PR | Authorization, active→blocked facts, generated sequence and this handoff |
+| Contracts | pushed `9fd2b8e384198db983f7b9e230614cd070f93474`; branch `task/afv2-base-01-resume` | Committed-input consumer scanner, 5 tests, instructions, `observed-20261116.json` |
+| Plan | [draft PR110](https://github.com/ArcForges/Plan/pull/110); exact latest head in PR | Authorization, active→blocked facts, generated sequence and this handoff |
+
+Node/Contracts were saved through the existing local `gh` Git-data API after
+HTTPS pushes failed. Both resulting tree and commit SHA were checked equal to
+the original local commits before branch creation; these are not alternate
+commits. The non-product preservation helper remains at
+`C:/MyFile/Projects/ArcForges/tmp/afv2-base-01-preserve.py`. No credentials were
+read/output and no network/security configuration was changed. Plan's ordinary
+Git push succeeded. The owner subsequently directed all Windows work to use the
+current machine's local directory directly, including future Windows checks;
+do not require Windows MCP again for that authorized local path. Linux evidence
+still requires the designated H-22 MCP and remains missing.
 
 Author diagnostic `python -m unittest discover -s eng/v2-migration -v` in the
 Windows ArcForges task worktree: 12 tests, OK, 1 expected Linux-only rename skip.
