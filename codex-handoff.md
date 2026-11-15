@@ -27,9 +27,9 @@ coordinates, locks and historical receipt bytes remain preserved.
 
 | Repository | Head / PR | Current status |
 |---|---|---|
-| ArcForges | 48aac4ed7ee7f480b4bfbc48fc89ca90b53342ba / PR85 | Code reviewed; final Windows full running; final Linux full waits for old run/other heavy work |
-| Cloud | a498b4c48e5d2e0a13ee10b14f9ae4426cb13b80 / PR158 | Code and exact public-digest metadata reviewed; final Linux full running; final Windows full waits for Node Windows |
-| Contracts | tested f173cf4124541f33b7b6366fe7b264733a0d6077 / merged PR139 | Required Linux20/20; merge69f3041ab4c6bcee1677d0587aaebbbf54cb98bb; ordinary CI43772758290 in progress |
+| ArcForges | 48aac4ed7ee7f480b4bfbc48fc89ca90b53342ba / PR85 | Code reviewed; final Windows/Linux full profiles running independently after all other heavy work finished |
+| Cloud | tested a498b4c48e5d2e0a13ee10b14f9ae4426cb13b80 / merged PR158 | Windows10/10, Linux17/17; mergef4708b36fd799025ad7d6fa9e5845e4558e492b3; main CI43774372219 skipped all18 jobs under existing guards |
+| Contracts | tested f173cf4124541f33b7b6366fe7b264733a0d6077 / merged PR139 | Linux20/20; merge69f3041ab4c6bcee1677d0587aaebbbf54cb98bb; CI43772758290 succeeded,17 NuGet/internal npm/Go tag at1.0.0-ci.467.1 |
 | Plan | .worktree/afv2-base-01-final / plan/afv2-base-01-final | This active checkpoint, based on actual main7c8aeea; no completion claim |
 
 Windows product worktrees are <repo>/.worktree/afv2-base-01-resume,
@@ -60,15 +60,21 @@ central declarations; missing/mismatched sources stay unknown.
 - Cloud targeted actual-repository-admission and public-digest allowlist tests
   passed1/1 each after r2/config/pin changes. Real final secret scan now passes.
 
-Windows final Node exec session43695, receipt directory
-ArcForges/.git/arcforges-verify/logs/20261116-070743-48aac4ed7ee7-win.
-H-22 old Node verification PID2711473 at77459503, root log
-logs/afv2-base01-node-verify.txt; it is in existing exclusive suites and has an
-observed failure. Let it exit/clean naturally before final Linux run. Its failures
-remain failures; none is transferred to a successful final status.
-H-22 final Cloud verification PID2762963 at a498b4c4, root log
-logs/afv2-base01-cloud-verify-a498.txt. Authoritative full receipts are always in
-each repository's .git/arcforges-verify/logs/. Inspect actual summaries/statuses.
+Windows final Node exec session84164, receipt directory
+ArcForges/.git/arcforges-verify/logs/20261116-072057-48aac4ed7ee7-win.
+It sets only process-local DOTNET_CLI_UI_LANGUAGE=en-US and VSLANG=1033: the prior
+48aac4ed run passed CI but its Native AOT publish summary was Chinese and the
+unchanged script required an English warning count. A direct host publish probe
+with English CLI output passed with0warnings. No system language, warnings or
+script changed. The complete profile now reruns, with no inferred status reuse.
+H-22 final Node PID2807490, log logs/afv2-base01-node-verify-final.txt, after old
+PID2711473 exited. Old77459503 failed its exclusive900s timeout and first-attempt
+90s wait; retain logs/afv2-base01-node-verify.txt as failure history.
+Final Cloud receipts20261116-071745-a498b4c48e5d-win and
+20261116-070913-a498b4c48e5d-linux both passed, same treea05ad1946fe380661186b25fa02f8f394ab2d830.
+Candidate0.1.0-local.1794784677743 image sha256:b351e73fbb63fc368035244f25185ac1a196700a5a016400ff45205ba36fbfa2.
+Authoritative full receipts stay in each repository's .git/arcforges-verify/logs/.
+No Cloud deployment/publication occurred under its existing main guards.
 
 Cloud bridge checks require the already preserved native Go1.27.3 selector
 ARCFORGES_CTR06_BRIDGE_GO=.../dev/go/go1.27.3/go/bin/go (go.exe on Windows),
@@ -87,8 +93,7 @@ full verification without other host heavy builds during exclusive/native and
 startup phases. Preserve failure history; never weaken checks or claim a retry
 passed without actual final-head full receipts.
 
-Next: finish current checks, run final Node Linux independently after old cleanup
-and Cloud heavy work, and final Cloud Windows after Node Windows. Inspect required
+Next: finish the current independent final Node checks. Inspect required
 exact-head statuses and already completed independent review; merge only admitted
 heads, record actual ordinary publication/deploy identities, then set BASE-01
 delivered/complete through plan.py and merge the final Plan evidence with both
