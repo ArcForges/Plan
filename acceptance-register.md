@@ -32,6 +32,15 @@ Items below distinguish completed toolchain evidence from future implementation/
 
 ## Blocking semantics and closure
 
+2026-11-16 resumed BASE-01: the owner clarified that only three consecutive
+failed reconnect attempts within one outage trigger the stop rule; success resets
+the counter. The earlier cumulative stop was an interpretation error. H-22 MCP
+subsequently ran all eight PostgreSQL inventory tests and twelve Linux Node
+fixtures successfully. H-02 is not currently blocking BASE-01. Required final
+repository profiles/review remain distinct and are tracked in the
+[current handoff](codex-handoff.md). Historical ENV passes and H-03’s later
+destructive-admission boundary remain unchanged.
+
 A prerequisite blocks only the scope named in its Blocks cell. Missing native containment/terminal/resource/data safety is never a business deferral. A task with an unavailable provider can deliver only its specified development-stage code/fixture scope where the task explicitly allows it; it does not mark live/provider qualification proven or activate public surfaces. Mandatory local/self-host entitlement behavior remains a real code/runtime gate.
 
 Use the actual bounded fixture lists in ID-01, HOST-01..03, WEB-01..04 and ACC-02. Renderer fixtures demonstrate presentation states only; external mail/provider peers demonstrate the production adapter and business code's handling of those inputs only. Signature verification, account/entitlement decisions, PostgreSQL state and native Node effects remain real. Final product journeys do not substitute fabricated success DTOs for a running Center or Node. Record each external provider/mail/authority qualification separately so a development pass cannot silently close AR-10.

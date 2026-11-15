@@ -1,6 +1,87 @@
 # Codex handoff — ArcForges V2
 
-## Current scope and stopping point
+## Current task — AFV2-BASE-01 active
+
+Owner resumed BASE-01 on 2026-11-16. ENV remains complete; AR-13 stays PASS.
+The owner clarified that the reconnect stop rule is **three consecutive failed
+attempts in one outage**, reset by a successful reconnect. The previous
+cumulative stop was the coordinator’s incorrect interpretation, not evidence of
+a VPS failure. Its original ledger facts and draft checkpoint remain historical.
+Windows work and native checks now use the current machine’s local directory
+directly under the owner’s latest instruction. H-22 Linux still uses its MCP.
+
+Current fetched main baselines: Plan 2b8b4809ae13a01ce7b9a665f4b5aea1777a98a6;
+Design 4472ea5a110a3c15c8beeeed14627e44b37103d0;
+ArcForges 200d2d25b1b40093c3af278993145a92bbf82a78;
+Cloud d422d7718307f39903de49ee673105a3d0db6b9d;
+Contracts 2b525ad3d79f404d705e4abe8c30bf4bf477d0a6.
+All retained upgrade results and applied SQL remain unchanged. No deployment.
+
+### Worktrees, heads and evidence
+
+Windows product task worktrees are under each repository’s
+.worktree/afv2-base-01-resume on task/afv2-base-01-resume.
+The untouched original .worktree/afv2-base-01 drafts remain preserved.
+Plan continuation is Plan/.worktree/afv2-base-01-continue on
+plan/afv2-base-01-continue, based on actual remote checkpoint 2cff1b3.
+Earlier local Plan resume worktree remains at 1dfcce7; its equivalent tree was
+published as 2cff1b3 without resetting local work. Linux Plan primary’s dirty
+history remains preserved; never use it as a clean task worktree.
+
+| Repository | Candidate / PR | Actual evidence |
+|---|---|---|
+| ArcForges | 48aac4ed7ee7f480b4bfbc48fc89ca90b53342ba / PR85 | Node Windows author tests 12 OK (one Linux-only expected skip); Linux native fixtures 12/12, no skips; 107-entry module/subasset map |
+| Cloud | e66c610e27d5ad0ba13a6487fb0a7b1b5d4d7f5d / PR158 | Real PostgreSQL inventory tests 8/8 at fdc1b282 (same Python source; later commits docs/provenance only); final full profiles running |
+| Contracts | f173cf4124541f33b7b6366fe7b264733a0d6077 / PR139 | 5 temporary-Git tests; 10-repository committed input report: 215 references / 60 central declarations; final Linux full profile running |
+| Plan | PR110, this continuation | Resume semantics and exact-path correction for mandatory provenance metadata; independent review/full native gates pending |
+
+The module map covers all ArcForges/Cloud/Web/Contracts/DesktopPlatform projects
+and 40 Go package/command roots, with owners/consumers/retirement gates. No V1
+executor, applied SQL, published package or independent product was removed.
+BASE-01’s Cloud/Contracts allowlists add eng/provenance/files.json for required
+classification of the new original files. Cloud additionally admits only the two
+new standard-library Python input hashes through its existing dependency-policy
+and a new immutable afv2-base-01-r1 successor receipt. All existing input hashes,
+package coordinates/locks and historical receipts remain unchanged. No validator,
+provenance policy, reused record or runtime module is changed.
+
+Linux PostgreSQL test command was python eng/v2-migration/test_preflight.py in
+Cloud/.worktree/afv2-base-01-resume at fdc1b2820e3efed5eedb9a30b18812b7ceb74997.
+The prior uncertain background command never started: log/process probes were
+absent. The direct bounded run completed all eight tests and removed its fixture.
+This is inventory-fixture proof, not guarded CENTER-01 migration/authority or
+schema11 deployment admission. All deployment reports remain unknown.
+
+### Current checks and next action
+
+Unchanged eng/verify.py run-and-report runs from independently fetched exact SHA
+worktrees on each host. Windows local sessions: Cloud 23556, Node 66138.
+Linux detached verification launch PIDs: Cloud old-head rerun 2696842,
+Contracts final 2708140, Node final 2711473. Root logs are under
+/home/sammiller/arcforges/logs/afv2-base01-*-verify*.txt; authoritative receipts
+are each repository’s .git/arcforges-verify/logs/. Inspect summaries before
+claiming a pass; these processes may have finished by the time of handoff.
+Linux Node fixture log: logs/afv2-base01-node-fixtures.txt.
+
+Cloud’s first full attempts failed because historical Go1.27.3 was not selected.
+Use ARCFORGES_CTR06_BRIDGE_GO pointing at the preserved native dev/go/go1.27.3/go/bin/go
+(or go.exe), while current Center remains Go1.27.4. Security producer needs the
+existing ARCFORGES_CTR06_SECURITY_GO_ARCHIVE under
+tmp/af-ctr-06-scratch/go1274-provision-<platform>-amd64-20261111/.
+No install, PATH/global setting or verifier was changed. The unchanged native
+bridge check passed after the selector correction. The old dce3615 Linux rerun
+may still finish; final Cloud e66c610e requires its own new run.
+
+Next: finish independent nonauthor review and required exact-head profiles,
+fix actual failures only, and merge PR110’s bounded metadata scope correction
+before product PRs. Check the final actual main/status/review identities. Then
+record BASE-01 delivery/completion and all merge/publication results in a final
+Plan checkpoint, with both Plan hosts bound to actual Design main. Do not start
+another product task before BASE-01 completes. H-03 remains a later destructive
+admission prerequisite, not a read-only code blocker. No current task is claimed
+delivered/complete yet. Public activation still requires PROD-01 approval.
+
+## Prior completed upgrade round — historical stopping point
 
 **ENV is complete, AR-13 is PASS, and the original 39 tasks remain planned.**
 This upgrade round is finished; do not start BASE-01, MXC-01

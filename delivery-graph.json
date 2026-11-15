@@ -395,7 +395,7 @@
       "title": "Build migration inventory and dry-run preflight",
       "milestone": "P0",
       "order": 2,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -408,13 +408,17 @@
           "repo": "Cloud",
           "paths": [
             "eng/v2-migration/**",
-            "center/internal/schema/**"
+            "center/internal/schema/**",
+            "eng/provenance/files.json",
+            "eng/policy/dependency-policy.json",
+            "eng/policy/dependency-reviews/afv2-base-01-r1.json"
           ]
         },
         {
           "repo": "Contracts",
           "paths": [
-            "eng/v2-consumers/**"
+            "eng/v2-consumers/**",
+            "eng/provenance/files.json"
           ]
         },
         {
@@ -488,7 +492,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; ArcForges:docs/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [planned] Parked at owner-directed documents-first dependency upgrade checkpoint; preserve uncommitted ArcForges/Cloud .worktree/afv2-base-01 files and resume after AFV2-ENV-01.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; ArcForges:docs/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [planned] Parked at owner-directed documents-first dependency upgrade checkpoint; preserve uncommitted ArcForges/Cloud .worktree/afv2-base-01 files and resume after AFV2-ENV-01. [active] Resumed after completed ENV; reconcile preserved drafts with upgraded main, then deliver only the BASE-01 read-only preparation scope. [blocked] Stopped under owner three-MCP-failure rule after three Linux MCP transport errors in this resumed round (intermittent identity/fetch recoveries occurred). Read-only preparation checkpoint only; required Linux scenarios/statuses and independent review remain missing. H-03 does not block preflight code. [active] Owner resumed and corrected consecutive reconnect semantics; H-22 MCP reachable and eight PostgreSQL inventory fixtures passed. Continue only BASE-01. BASE-01 required provenance classification: Contracts and Cloud eng/provenance/files.json may list only the newly authored task tooling/docs as firstParty; no policy/validator, reused record, published artifact or runtime scope change. Cloud dependency-input admission includes the two new standard-library Python scripts through an exact-input successor receipt; package/lock/runtime closure and immutable history stay unchanged.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -2938,7 +2942,7 @@
       "objective": "Migrate PostgreSQL safely to V2 management storage. All three upgrade/restore paths execute on real PostgreSQL with exact source/artifact receipts",
       "scope": [
         "Append V2 management receipt/cursor/entitlement storage while preserving identity, enrollment, applied migration hashes and security-successor floors",
-        "Implement reviewed finite schema10→guarded0011→V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
+        "Implement reviewed finite schema10\u2192guarded0011\u2192V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
         "Create fresh/schema10/schema11 fixtures with unresolved delivered receipts and recovery-generation safeguards"
       ],
       "out_of_scope": [
@@ -2958,7 +2962,7 @@
       ],
       "deliverables": [
         "Append V2 management receipt/cursor/entitlement storage while preserving identity, enrollment, applied migration hashes and security-successor floors",
-        "Implement reviewed finite schema10→guarded0011→V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
+        "Implement reviewed finite schema10\u2192guarded0011\u2192V2 maintenance/successor transition; qualify actual authority instead of assuming deferred bootstrap ran",
         "Create fresh/schema10/schema11 fixtures with unresolved delivered receipts and recovery-generation safeguards"
       ],
       "acceptance": [
@@ -3306,10 +3310,10 @@
       ],
       "native_validation": {
         "windows": [
-          "Native Windows node ↔ isolated Center channel/reconnect scenario"
+          "Native Windows node \u2194 isolated Center channel/reconnect scenario"
         ],
         "linux": [
-          "Native Linux node ↔ isolated Center channel and actual Go protocol tests"
+          "Native Linux node \u2194 isolated Center channel and actual Go protocol tests"
         ]
       },
       "definition_of_done": [
@@ -4808,10 +4812,10 @@
       ],
       "native_validation": {
         "windows": [
-          "Native Node schema15→expand→contract→restore tests"
+          "Native Node schema15\u2192expand\u2192contract\u2192restore tests"
         ],
         "linux": [
-          "Native Node migration plus real PostgreSQL schema10/11→V2→restore tests"
+          "Native Node migration plus real PostgreSQL schema10/11\u2192V2\u2192restore tests"
         ]
       },
       "definition_of_done": [
