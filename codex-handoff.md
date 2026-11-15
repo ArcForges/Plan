@@ -14,8 +14,8 @@ blocks later destructive admission only. There is no migration or deployment.
 Node schema15 and Center0001..0011 SQL, public package bytes and independent
 products remain unchanged. Overall BASE-01 is not delivered yet.
 
-Plan main is 7c8aeea55f27c06763cf3eded2abbcb79099dbc9 after reviewed native5/5
-Windows/Linux PR110 and PR111. Design remains4472ea5a110a3c15c8beeeed14627e44b37103d0.
+Plan main is 246bb8d92c106202cb2e45123093db436c4ca2a7 after reviewed native5/5
+Windows/Linux PR110, PR111 and PR112. Design remains4472ea5a110a3c15c8beeeed14627e44b37103d0.
 Those Plan PRs admit only exact firstParty/dependency-input/public-digest companion
 metadata paths required by real mandatory check failures. No validator/rule was
 disabled. Each public-digest block binds one exact receipt file and the two exact
@@ -27,10 +27,10 @@ coordinates, locks and historical receipt bytes remain preserved.
 
 | Repository | Head / PR | Current status |
 |---|---|---|
-| ArcForges | 2c4607cab05967fdd316ebfed5ffea4087fa3f13 / PR85 | Reviewed two-attribute timing-test isolation repair; targeted real-socket1/1 on both hosts; new Linux full running, Windows awaits prior run exit |
+| ArcForges | 2c4607cab05967fdd316ebfed5ffea4087fa3f13 / PR85 | Reviewed two-attribute timing-test isolation repair; targeted real-socket1/1 on both hosts; exact-head Windows/Linux full profiles running |
 | Cloud | tested a498b4c48e5d2e0a13ee10b14f9ae4426cb13b80 / merged PR158 | Windows10/10, Linux17/17; mergef4708b36fd799025ad7d6fa9e5845e4558e492b3; main CI43774372219 skipped all18 jobs under existing guards |
 | Contracts | tested f173cf4124541f33b7b6366fe7b264733a0d6077 / merged PR139 | Linux20/20; merge69f3041ab4c6bcee1677d0587aaebbbf54cb98bb; CI43772758290 succeeded,17 NuGet/internal npm/Go tag at1.0.0-ci.467.1 |
-| Plan | .worktree/afv2-base-01-final / plan/afv2-base-01-final | This active checkpoint, based on actual main7c8aeea; no completion claim |
+| Plan | .worktree/afv2-base-01-complete / plan/afv2-base-01-complete | This active checkpoint, based on actual main246bb8d; no completion claim |
 
 Windows product worktrees are <repo>/.worktree/afv2-base-01-resume,
 task/afv2-base-01-resume. Untouched original .worktree/afv2-base-01 drafts remain.
@@ -53,20 +53,21 @@ central declarations; missing/mismatched sources stay unknown.
   explicit python eng/v2-migration/test_preflight.py. Source DDL fixture replay
   proves inventory only, not guarded CENTER-01 migration/authority/deployment.
 - Contracts input tests:5/5. Full receipt20261116-065050-f173cf412454-linux,
-  20/20; actual status/protection/review checked before merge. Publication pending.
+  20/20; actual status/protection/review checked before merge. Ordinary publication
+  run43772758290 succeeded:17 NuGet packages, internal npm and Go tag1.0.0-ci.467.1.
 - Plan PR110 finalb5bc995 receipts065731-win/065754-linux:5/5 each; merge7da363a.
   Plan PR111 finald90bcd79 receipts070855-win/070912-linux:5/5 each; merge7c8aeea.
   All four summaries bind actual Design4472ea5a. Actual no-bypass strict rules read.
 - Cloud targeted actual-repository-admission and public-digest allowlist tests
   passed1/1 each after r2/config/pin changes. Real final secret scan now passes.
 
-Windows prior Node48aac4ed exec session84164, receipt directory
+Windows prior Node48aac4ed completed15/15 in2015s, receipt directory
 ArcForges/.git/arcforges-verify/logs/20261116-072057-48aac4ed7ee7-win.
 It sets only process-local DOTNET_CLI_UI_LANGUAGE=en-US and VSLANG=1033: the prior
 48aac4ed run passed CI but its Native AOT publish summary was Chinese and the
 unchanged script required an English warning count. A direct host publish probe
 with English CLI output passed with0warnings. No system language, warnings or
-script changed. The complete profile now reruns, with no inferred status reuse.
+script changed. This historical head cannot satisfy the new candidate's status.
 H-2248aac4ed attempts PID2807490 and2829465 finished with CI failures, logs
 logs/afv2-base01-node-verify-final.txt and -final-r2.txt. One fired-timer wait
 failed then its exact method passed1/1 in0.887s; the next full attempt passed that
@@ -78,8 +79,11 @@ reviewer accepted Node2c4607ca and the exact single-file Plan scope. Windows
 locked restore/build0warnings plus selected method with exclusive trait passed1/1;
 H-22 independently fetched2c4607ca, built with0warnings and passed the method1/1.
 H-22 current full PID2852179, logs/afv2-base01-node-verify-2c4607.txt; no other
-repository heavy build is running. Windows2c4607ca full must start after prior
-48aac4ed run exits naturally, using the same process-local English settings.
+repository heavy build is running. Windows2c4607ca full started after prior
+48aac4ed run exited naturally, with the same process-local English settings:
+exec session85689, receipt20261116-075439-2c4607cab059-win, verification worktree
+ArcForges/.worktree/verify-base01-2c4607ca. Linux independently fetched the same
+SHA into its matching worktree; receipt20261116-073919-2c4607cab059-linux.
 Old77459503 PID2711473 failed its exclusive900s timeout and first-attempt
 90s wait; retain logs/afv2-base01-node-verify.txt as failure history.
 Final Cloud receipts20261116-071745-a498b4c48e5d-win and
