@@ -1,8 +1,8 @@
 # One V2 delivery task
 
-For the AD-0023 amendment, complete Design/Plan document review, required native verification and Design-first merges before implementing upgrades. AFV2-ENV-01 then delivers the seven-repository latest-stable dependency baseline and local/CI parity; only after its acceptance may BASE-01 resume. All dependency compatibility work retains the complete checks below.
+Follow the owner's latest AD-0023 clarification: preserve completed upgrades, finish necessary mainstream toolchains and local/CI version parity across the seven repositories, and keep normal compilation, test, security, provenance and required native checks. ENV remains active before BASE-01 resumes. Compatible locked dependencies and existing published producer cohorts do not need an additional individually-latest, upstream-tag or per-version approval exercise. Retain prior research as dated evidence rather than restarting it.
 
-The owner-approved 2026-11-15 Contracts Go qualifications in AD-0023 retain the full selected graph, all current checks and final Windows/Linux actual-closure evidence. Merge their paired policy amendment in the same Design-first order before affected admission; no other dependency exception is implied.
+For this paired clarification merge Design first, then verify Plan against actual Design main. Existing delivery and activation boundaries below remain unchanged.
 
 1. Read [execution policy](execution-policy.md), the authorized AFV2 range, `plan.py next`, full task record, Design refs and register Blocks. A task outside the authorized range is not implied scope.
 2. Fetch latest involved main branches, inspect existing PRs/worktrees and actual deployed/migration state relevant to the task. Reuse valid prior work. Create isolated task worktrees.
