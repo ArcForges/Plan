@@ -193,6 +193,7 @@
             "package.json",
             "package-lock.json",
             "Dockerfile",
+            ".dockerignore",
             "Cloud.slnx",
             "wrangler.json",
             "tsconfig.json",
