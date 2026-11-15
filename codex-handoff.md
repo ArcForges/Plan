@@ -30,7 +30,7 @@ history remains preserved; never use it as a clean task worktree.
 
 | Repository | Candidate / PR | Actual evidence |
 |---|---|---|
-| ArcForges | 77459503f24df7fff6cb7c13908abed0f6692434 / PR85 | Node Windows author tests 12 OK (one Linux-only expected skip); Linux native fixtures 12/12, no skips; 107-entry module/subasset map |
+| ArcForges | 48aac4ed7ee7f480b4bfbc48fc89ca90b53342ba / PR85 | Node Windows author tests 12 OK (one Linux-only expected skip); Linux native fixtures 12/12, no skips; 107-entry module/subasset map |
 | Cloud | e66c610e27d5ad0ba13a6487fb0a7b1b5d4d7f5d / PR158 | Real PostgreSQL inventory tests 8/8 at fdc1b282 (same Python source; later commits docs/provenance only); final full profiles running |
 | Contracts | f173cf4124541f33b7b6366fe7b264733a0d6077 / PR139 | 5 temporary-Git tests; 10-repository committed input report: 215 references / 60 central declarations; final Linux full profile running |
 | Plan | PR110, this continuation | Resume semantics and exact-path correction for mandatory provenance metadata; independent review/full native gates pending |
@@ -38,9 +38,12 @@ history remains preserved; never use it as a clean task worktree.
 The module map covers all ArcForges/Cloud/Web/Contracts/DesktopPlatform projects
 and 40 Go package/command roots, with owners/consumers/retirement gates. No V1
 executor, applied SQL, published package or independent product was removed.
-BASE-01’s Cloud/Contracts allowlists add only eng/provenance/files.json: their
-existing mandatory provenance checks require classifying the new original
-preflight files. No provenance validator/policy/reused record is changed.
+BASE-01’s Cloud/Contracts allowlists add eng/provenance/files.json for required
+classification of the new original files. Cloud additionally admits only the two
+new standard-library Python input hashes through its existing dependency-policy
+and a new immutable afv2-base-01-r1 successor receipt. All existing input hashes,
+package coordinates/locks and historical receipts remain unchanged. No validator,
+provenance policy, reused record or runtime module is changed.
 
 Linux PostgreSQL test command was python eng/v2-migration/test_preflight.py in
 Cloud/.worktree/afv2-base-01-resume at fdc1b2820e3efed5eedb9a30b18812b7ceb74997.
