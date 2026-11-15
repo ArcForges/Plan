@@ -395,7 +395,7 @@
       "title": "Build migration inventory and dry-run preflight",
       "milestone": "P0",
       "order": 2,
-      "state": "planned",
+      "state": "blocked",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -488,8 +488,10 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; ArcForges:docs/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [planned] Parked at owner-directed documents-first dependency upgrade checkpoint; preserve uncommitted ArcForges/Cloud .worktree/afv2-base-01 files and resume after AFV2-ENV-01.",
-      "blocked_by": [],
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; ArcForges:docs/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [planned] Parked at owner-directed documents-first dependency upgrade checkpoint; preserve uncommitted ArcForges/Cloud .worktree/afv2-base-01 files and resume after AFV2-ENV-01. [active] Resumed after completed ENV; reconcile preserved drafts with upgraded main, then deliver only the BASE-01 read-only preparation scope. [blocked] Stopped under owner three-MCP-failure rule after three Linux MCP transport errors in this resumed round (intermittent identity/fetch recoveries occurred). Read-only preparation checkpoint only; required Linux scenarios/statuses and independent review remain missing. H-03 does not block preflight code.",
+      "blocked_by": [
+        "H-02"
+      ],
       "evidence": {
         "prs": [],
         "merges": [],

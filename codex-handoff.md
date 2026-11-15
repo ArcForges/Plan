@@ -1,6 +1,90 @@
 # Codex handoff — ArcForges V2
 
-## Current scope and stopping point
+## Current checkpoint — BASE-01 resumed, stopped on host transport failures
+
+The owner resumed the existing V2 authorization on 2026-11-16 (Asia/Shanghai).
+This round works only on AFV2-BASE-01. ENV remains complete and AR-13 PASS;
+BASE-01 is now **blocked by H-02**, with 38 other product tasks still planned.
+The prior upgrade-round stop below is historical and was superseded by this
+resumption. No product task is delivered by this checkpoint.
+
+Baselines fetched from GitHub: Plan `2b8b4809ae13a01ce7b9a665f4b5aea1777a98a6`,
+Design `4472ea5a110a3c15c8beeeed14627e44b37103d0`,
+ArcForges `200d2d25b1b40093c3af278993145a92bbf82a78`,
+Cloud `d422d7718307f39903de49ee673105a3d0db6b9d`,
+Contracts `2b525ad3d79f404d705e4abe8c30bf4bf477d0a6`.
+
+Both designated MCP hosts executed real identity/workspace/tool probes. Windows
+was DEKU / deku\\j7rdm / Windows 10.0.26300, workspace
+`C:/MyFile/Projects/ArcForges`; Linux was v2202601329473427941 / sammiller /
+Debian kernel 6.12.63+deb13-amd64, `/home/sammiller/arcforges`, with a running user
+manager and cgroup2fs. These probes are not required verification statuses.
+Linux Plan primary's existing dirty staged/unstaged history was preserved.
+
+Three Linux MCP shell invocations returned transport send/HTTP errors for
+`https://linux-mcp.arcforges.com/mcp`, interspersed with successful reconnects.
+After the third error the coordinator stopped under the owner's explicit
+three-failure rule. No further native invocation is permitted in this stopped
+round. Windows Git HTTPS also reported intermittent schannel handshake failures;
+no network/TLS/proxy/security setting was changed.
+
+### Saved work and exact identities
+
+All Windows task worktrees are `<workspace>/<repo>/.worktree/afv2-base-01-resume`,
+branch `task/afv2-base-01-resume` (Plan uses `plan/afv2-base-01-resume`). Original
+parked `.worktree/afv2-base-01` drafts were copied, never reset or overwritten.
+
+| Repository | Commit / remote state | Contents |
+|---|---|---|
+| ArcForges | local `6f6436db7ddd4df6211c539870959e779cafafc6`; HTTPS push failed | Read-only Node preflight, 12 tests, operator/backup/cutover/rollback instructions |
+| Cloud | pushed `dce36152a21e19cb64b94b8837b21bfc9f63200f`; [draft PR158](https://github.com/ArcForges/Cloud/pull/158) | Read-only PG preflight, real disposable PostgreSQL test script, use/evidence boundaries |
+| Contracts | local `9fd2b8e384198db983f7b9e230614cd070f93474`; HTTPS push failed | Committed-input consumer scanner, 5 tests, instructions, `observed-20261116.json` |
+| Plan | this checkpoint branch; exact publication identity in its PR | Authorization, active→blocked facts, generated sequence and this handoff |
+
+Author diagnostic `python -m unittest discover -s eng/v2-migration -v` in the
+Windows ArcForges task worktree: 12 tests, OK, 1 expected Linux-only rename skip.
+It exercised real temporary SQLite files/locks/WAL/unknown-journal cases; this is
+not MCP `run-and-report` evidence. The draft's source-size bound now precedes
+hashing; schema drift is unknown. Contracts' 5 temporary-Git tests passed; actual
+10-repository scan observed 215 references and 60 central declarations, with exact
+HEADs/input hashes and independent/shared consumers protected. It does not
+evaluate conditional MSBuild or prove installations/runtime compatibility.
+Cloud scripts passed syntax compilation only. No PostgreSQL result was observed.
+
+Linux independently fetched Cloud `fdc1b2820e3efed5eedb9a30b18812b7ceb74997`
+(parent of documentation head) into
+`/home/sammiller/arcforges/Cloud/.worktree/afv2-base-01-resume`.
+The attempted background command was
+`nohup python eng/v2-migration/test_preflight.py > /home/sammiller/arcforges/logs/afv2-base-01-pg.txt 2>&1 < /dev/null &`.
+Its transport failed; **whether it started is unknown**. On resume inspect that
+log and only the owned `eng/v2-migration/test_preflight.py` process/container
+(`arcforges-center-v2-preflight-*`) before restarting. Never kill unrelated
+processes/containers. No formal host profile or CI was deliberately started.
+No required status, independent final review, merge, publication, migration or
+deployment is claimed. Cloud draft PR hosted skips are not acceptance.
+
+Untracked `eng/v2-migration/__pycache__/` may exist in both Windows product
+worktrees; these are Python author-check artifacts, excluded from commits.
+The per-module machine-readable disposition map was not completed before stop.
+No Design file was changed; its pinned historical audit remains unchanged.
+
+### Next action on a later authorized resume
+
+1. Recheck designated MCP connectivity (same three-failure stop rule), inspect
+   uncertain PG process/log, fetch actual main and compare the saved exact heads.
+2. Publish the preserved Node/Contracts commits if still local; retain any
+   supplemental connector-publication identities recorded with this checkpoint.
+3. Complete the source-pinned per-module disposition/owner/consumer map within
+   ArcForges `docs/v2-migration/**`, reconciling upgraded main with the immutable
+   Design audit. Do not widen retirement or edit applied SQL.
+4. Run Windows and Linux Node fixtures and Linux PostgreSQL fixtures; fix actual
+   failures, obtain independent nonauthor full-final-head review, then exact
+   pushed-head required profiles through each designated MCP. None has run yet.
+5. Merge only when every BASE-01 item and required repository gate is met;
+   record actual merges/evidence through plan.py and Plan native checks. H-03
+   still blocks later destructive admission, not read-only preflight code.
+
+## Prior completed upgrade round — historical stopping point
 
 **ENV is complete, AR-13 is PASS, and the original 39 tasks remain planned.**
 This upgrade round is finished; do not start BASE-01, MXC-01
