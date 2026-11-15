@@ -103,6 +103,7 @@
             "DesktopPlatform.slnx",
             "win.slnx",
             ".pre-commit-config.yaml",
+            ".gitleaks.toml",
             "AGENTS.md",
             "NOTICE.md"
           ]
