@@ -1,62 +1,78 @@
-# Codex handoff â€” ArcForges V2
+# Codex handoff — ArcForges V2
 
-Continue from current GitHub main and the ledger. The owner authorized the original 39 AFV2 tasks and subsequently added all-dependency upgrades with local/CI parity, explicitly requiring document review and merge first. Public activation still needs its separate concrete approval.
+## Current scope and stopping point
 
-## Current authority and document order
+**ENV is complete, AR-13 is PASS, and the original 39 tasks remain planned.**
+This upgrade round is finished; do not start BASE-01, MXC-01
+or another task. The original authorization remains in the ledger for a later
+resumed round. Public activation retains its separate explicit approval.
 
-Design #66 merged as `7952aa9fbf54613e8c1b078ead797b6f0444f7a7`; Plan #98 merged as `27fe4278d3b30b418619c4369860ddb573caace4` and start-record #99 as `f5fdaabd10a63a5b60d1dce903475b1be2d51b1a`. They established AD-0022/schema3 and the original implementation authorization. Do not redo that completed migration.
+Current authority is AD-0022/schema3 and the owner's AD-0023 clarification merged
+through [Design #71](https://github.com/ArcForges/ArcForges-Design/pull/71) and
+[Plan #108](https://github.com/ArcForges/Plan/pull/108). Preserve completed upgrades
+and finish necessary .NET/C#, Go, TypeScript and supporting tools with local/CI
+parity. Compatible locked dependencies and published producer cohorts may remain.
+Keep normal build/test/AOT/analyzer/security/provenance and required native gates;
+do not restart per-dependency freshness research, special upstream-metadata/tag
+qualification, additional per-version approval or the optional broader native r5.
+Independent Mobile/AI/ArcScope/ArcSlate/ArcNotes remain protected consumers.
 
-The documents-first amendment is complete: Design [#67](https://github.com/ArcForges/ArcForges-Design/pull/67) merged as `8241e59d97ae216d829b7ea0019c5b16dacafa96`, then Plan [#100](https://github.com/ArcForges/Plan/pull/100) as `32b397b975e90a6f1c7e62061dc6b072677b7cdf`. Both received independent review and full exact-head native Windows/Linux verification; the Plan summaries recorded that actual Design main. They add AD-0023, R-DEP-001 and AFV2-ENV-01. Plan [#101](https://github.com/ArcForges/Plan/pull/101), merged as `fca5c7c2aa918cecab684898e46d18a764966080`, records ENV active. Do not repeat the document stage or restart the task.
+## Completed ENV delivery
 
-## Authorized next work
+All seven repositories are delivered. Cloud [#157](https://github.com/ArcForges/Cloud/pull/157)
+merged as `d422d7718307f39903de49ee673105a3d0db6b9d` after Windows 10/10 and Linux 18/18
+at `7d2d18b6e29157df98b5a63dbb6efe2977f6c632`. Its
+[main CI run](https://github.com/ArcForges/Cloud/actions/runs/43706393820) completed as `skipped` under the pre-existing guards. All 18 hosted jobs were skipped: ordinary main-push candidates and deployment were already disabled before ENV. No publication or deployment was attempted. The required native Linux profile built and verified candidate 0.1.0-local.1794739798362 (image sha256:aeb1e68ce06a1a119f0f61ae44c7a29e8fc312c9a3bbdbc0473d664f6f95edfe). Both Cloud primary checkouts were fast-forwarded to the merge.
 
-The graph has 40 tasks and AFV2-ENV-01 is active. The original 39-ID authorization remains in the ledger; the added ENV authorization is recorded separately. Read AGENTS, execution-policy, delivery-procedure, acceptance-register and each complete task record. Continue ENV, then use `python tools/plan.py next` to resume eligible tasks serially. BASE-01 and MXC-01 both depend on the upgrade. Keep isolated task worktrees, independent nonauthor review and every required native profile; never bypass statuses, hooks, protections or failed safety checks.
+The [ENV summary](docs/dependency-upgrade/afv2-env-01-summary.md) is the single
+table of tested heads, merges, required totals and publication links. In particular:
 
-ENV covers ArcForges, Cloud, Web, Contracts, DesktopPlatform, ArcForges-Design and Plan. The owner's latest clarification is authoritative: preserve every completed upgrade and finish necessary mainstream .NET/C#, Go, TypeScript and required supporting tools with local/CI version parity. Keep compatible existing locked dependencies and published producer cohorts when sufficient. Normal compilation, tests, AOT/analyzers, security, checksum/source/provenance and required native checks remain; no extra individually-latest transitive dependency, untagged metadata research, repository exception or per-version approval loop is required. Independent products remain protected consumers outside this scope, and public activation remains separate.
+- [ArcForges #84](https://github.com/ArcForges/ArcForges/pull/84) merged
+  `200d2d25b1b40093c3af278993145a92bbf82a78` after Windows 15/15 and Linux 21/21
+  at `136670a04d34bb45822fa2908229190d25f479ae`; there is no main-push publication.
+- [Contracts #138](https://github.com/ArcForges/Contracts/pull/138) merged
+  `2b525ad3d79f404d705e4abe8c30bf4bf477d0a6` after its required single Linux 21/21.
+  Ordinary [run463](https://github.com/ArcForges/Contracts/actions/runs/43699575709)
+  published 17 NuGet packages, internal npm and the Go tag at `1.0.0-ci.463.1`;
+  Go proxy/sumdb resolution succeeded. Compatible consumers may retain 450.1.
+- DesktopPlatform's [ordinary publication](https://github.com/ArcForges/DesktopPlatform/actions/runs/43693457102)
+  completed all 29 jobs and 21 NuGet packages at `1.0.0-ci.151.1`; compatible 150.1 remains valid.
+- Web's [final CI/delivery](https://github.com/ArcForges/Web/actions/runs/43694865856)
+  succeeded at merge `69be85d95ea412cc027597ffd0d990bf0e28e50f`, recording
+  `web-0.1.0-ci.186.1`; `No targets deployed for arcforges-web` keeps public targets unmounted.
 
-## Owner scope clarification (2026-11-15)
+The coordinator recorded ENV delivered then complete through `plan.py` and
+closed AR-13 with actual evidence. This state/evidence record retains the required
+Plan Windows/Linux checks against actual Design main. Preserve the pre-existing
+dirty Linux Plan primary and use isolated worktrees.
 
-The earlier Contracts-specific upstream-metadata and fixed-commit qualification procedure is superseded as an additional ENV acceptance requirement. Preserve all upgrades, inventories and genuine observations already produced, but do not restart that research or require new producer versions merely because a language toolchain changed. Prior Design #69 / Plan #104 merges remain historical facts; they do not override this latest owner direction. ENV stays active, AR-13 remains open and the original39 tasks stay planned. No successful build, admission or runtime result is invented by this clarification.
+## Tool selection and preserved host work
 
-## ENV implementation checkpoint
+Selected necessary versions are SDK 11.0.100 / C# 15, Go 1.27.4, TypeScript 7.0.2,
+Node 26.13.1 / npm 12.2.2 and Python 3.15.2 where used. The
+[selection table](docs/dependency-upgrade/afv2-env-01-summary.md#selected-language-tools-and-localci-selection)
+records actual local roots and committed CI selectors. The new Windows MCP
+default shell was measured at these executable versions; Linux `.profile`
+selection was completed earlier. Windows User PATH/profile selection uses
+`C:/MyFile/Projects/dev/arcforges-toolchains/activate-language-tools.ps1`, retains
+Scoop 11 `DOTNET_ROOT` and removes the fixed User `MSBuildSDKsPath` override.
+User environment backup is `tmp/afv2-env-01/windows-language-selection-backup/user-environment.json`.
+Machine environment, execution/security policy and old installations were unchanged.
 
-The Design/Plan tooling slices and DesktopPlatform managed slice have merged; **ENV is not delivered or complete**:
+Visual Studio 18.12 installation completed with exit 3010; do not reboot in this round.
+Private LLVM 23.1.5 / GNU 2.47 (actual banner 2.47.20260726) and their receipts remain.
+The optional broader native r5 WIP in `DesktopPlatform/.worktree/afv2-env-01-native`
+is preserved unchanged, not an outstanding mainstream-toolchain requirement.
+Earlier OOM/ENOSPC recovery removed only 172 temporary Cloud sealed-tool copies
+(20.310 GiB), preserved archives/evidence/logs, and restarted the existing user
+manager without configuration changes. It is history, not a current profile pass.
 
-| Repository | PR / final tested head | Merge | Required native evidence |
-|---|---|---|---|
-| ArcForges-Design | [#68](https://github.com/ArcForges/ArcForges-Design/pull/68), `c32f428418c54d01a3611bf5e3e902cf08909996` | `1a46a08e525b073afd86ff8c046f9b09a691eb1b` | Windows 4/4, Linux 5/5; full receipts `20261114-232318-c32f428418c5-win` / `20261114-232318-c32f428418c5-linux` |
-| ArcForges-Design SDK roots | [#70](https://github.com/ArcForges/ArcForges-Design/pull/70), `be73b32e56abb0705155de14730023085f57479e` | `65676f008d6d9641ca51d30819d0d3a4ac4069f2` | Windows 4/4, Linux 4/4; full receipts `20261115-142720-be73b32e56ab-win` / `20261115-142703-be73b32e56ab-linux` |
-| Plan | [#102](https://github.com/ArcForges/Plan/pull/102), `0f0c1f2de895c97f2b8793e9fa2737b1e222f9d8` | `fcac9fd47fe7bed278ed8f170dbaa7ec30e6a85d` | Windows 5/5, Linux 6/6; full receipts `20261114-233007-0f0c1f2de895-win` / `20261114-233006-0f0c1f2de895-linux` |
-| DesktopPlatform | [#216](https://github.com/ArcForges/DesktopPlatform/pull/216), `151dc2ad315d78704b4b8ddd4a04ae18af760b2e` | `f208d915087224eed45c8b3be30bc81fb352556f` | Windows 18/18, Linux 26/26; full receipts `20261115-123958-151dc2ad315d-win` / `20261115-123959-151dc2ad315d-linux` |
-
-The Design/Plan tooling heads received independent nonauthor review. Those Plan summaries record Design main `1a46a08e525b073afd86ff8c046f9b09a691eb1b`, rechecked against GitHub before merge. Each receipt remains under its own host's repository `.git/arcforges-verify/logs/`; none was transferred between hosts. Hosted PR workflows were skipped under the configured owner policy. See Design and Plan's `docs/dependency-upgrade/current.json` for their exact admitted pins and sources. Design now binds protoc/plugin/includes to its restored lock; both repositories reject invoking/PATH Python mismatches, and Design also checks selected SDK/MSBuild roots. The actionlint configuration adds only the official Ubuntu 26.04 label absent from stable actionlint's vocabulary.
-
-The shared-producer compatibility bootstrap has merged: DesktopPlatform [#215](https://github.com/ArcForges/DesktopPlatform/pull/215), final tested head `0fe3eaf7597a2f8f3228c8bf75b865a7148eb13b`, merge `924e2b3d9ef6b07610bfca9dec679f0af592975b`. Independent nonauthor review approved the full change and fixes. Native Windows passed all 17 steps (`20261115-001807-0fe3eaf7597a-win`); H-22 Linux passed all 24 (`20261115-001621-0fe3eaf7597a-linux`). Actual statuses were success before merge. The ordinary full-cohort [Publish NuGet run](https://github.com/ArcForges/DesktopPlatform/actions/runs/43615837618) **failed** in native Windows restore on `Microsoft.DotNet.ILCompiler 10.0.11` / NU1903 / GHSA-p3jp-9v83-76w9. No new cohort or Build.Policy publication resulted. Do not rerun the obsolete source or publish a standalone policy package. The compatibility bootstrap itself remains accepted; it is not DesktopPlatform's complete ENV upgrade.
-
-DesktopPlatform [#216](https://github.com/ArcForges/DesktopPlatform/pull/216) merged after independent nonauthor review of the complete final head and its fixes. Its final source head is `151dc2ad315d78704b4b8ddd4a04ae18af760b2e`, tree `881431d34d43c4b33abc11a6247ad66e5287160a`; merge `f208d915087224eed45c8b3be30bc81fb352556f` retains that source tree. Both complete native profiles passed at that final head, as recorded above. The branch/worktree `task/afv2-env-01-managed` / `DesktopPlatform/.worktree/afv2-env-01-managed` remain preserved. This slice selects SDK11/net11/C#15 and current managed/Python/CI dependencies while retaining native r4 and frozen source evidence; latest native qualification remains separate.
-
-The ordinary complete-cohort [Publish NuGet run](https://github.com/ArcForges/DesktopPlatform/actions/runs/43678526078) at merge `f208d915087224eed45c8b3be30bc81fb352556f` succeeded: all 29 jobs passed, and the publication log confirms all 21 NuGet packages at `1.0.0-ci.150.1`, including Build.Policy. This is the normal main-descended whole cohort. Use this source/run/version identity for subsequent consumer admission; the coordinator already inspected publication logs, so do not redownload published packages solely to repeat verification. Publication does not complete the native upgrade or consumer acceptance.
-
-Retain these earlier failed-candidate investigations as history; they are not the final head's results:
-
-- At `497536d5aa6f2a987cc76a716ccaf2531803385c`, Windows passed native build/staging and seven AOT probes before naming/runtime ownership incorrectly required net11 from frozen Contracts net10 source. The reviewed repair assigns each owner its exact expected framework while preserving pins, exports and historical snapshots. The affected regression tests and historical source audit passed, followed by the final complete Windows/Linux profiles at `151dc2ad315d78704b4b8ddd4a04ae18af760b2e`; earlier partial passes were not substituted for those profiles.
-- At that same earlier head, Linux failed NU1403 for two .NET11 tool packages because the global NuGet cache contained unsigned Homebrew `library-packs` bytes under official package IDs. Only those two directories were preserved in `/home/sammiller/arcforges/tmp/afv2-env-01/nuget-recovery-20261115-497536d/` and replaced through official locked restore. Replacement archive hashes matched the independent official fetch and Windows artifacts; content hashes matched committed locks and both NuGet signatures verified. No lock/source/policy was changed by cache recovery. The verification clone's `origin/main` was explicitly refreshed to the then-current merge base `924e2b3d9ef6b07610bfca9dec679f0af592975b`. Preserve the recovery evidence; fetch actual current main for the next candidate.
-
-ENV's DesktopPlatform path list now explicitly includes `.gitleaks.toml` for the reviewed compatibility delta: only the twelve scanner-observed public project-digest lines in three exact paths, with whole-line/hash/indent matching and the original scanner/gate intact. No general secret-scan exclusion or weakened check is authorized.
-
-Contracts' reviewed source draft is pushed at `dacb563ec9f35a5b26e3c8456eedb575b56bf161` on `task/afv2-env-01` in `Contracts/.worktree/afv2-env-01`; its inventory, successor admission and two generated-provenance records remain pending. It has restored Build.Policy `1.0.0-ci.150.1`; compatible current producer admission and normal required checks remain outstanding; a new producer version or special upstream-metadata qualification is not required solely for the language-toolchain upgrade. Cloud's source draft is pushed at `34fa1db0fcf2e000d1b5c8aaac045cd48515004c` in `Cloud/.worktree/afv2-env-01`; it is not an accepted upgrade. DesktopPlatform's latest native tool/port successor profile and downstream ArcForges/Cloud/Web upgrades remain unfinished; all seven repositories and aggregate acceptance are required before ENV completes.
-
-The ENV source-path audit adds only Web `docs/development.md` and Contracts `docs/engineering-controls.md` to their write scopes, for the existing current-tool/version instructions. No new wildcard, `.gitignore`, independent-product scope or acceptance exception is added.
-
-The Windows scratch inventory is `C:/MyFile/Projects/ArcForges/tmp/afv2-env-01/inventory.json` with `inventory-summary.md`. It inventories source and locks, including historical references; it does not prove every row is current or upgraded. Official-registry observations are a separate scratch research step, not dependency admission. Review actual restored closures, successor major module paths, licences/provenance, current native profiles and protected consumers. Preserve old native receipts and bridge identities; do not refresh their hashes to disguise a new toolchain.
-
-Authorized side-by-side tool installs exist under `C:/MyFile/Projects/dev/arcforges-toolchains/` and `/home/sammiller/.local/share/arcforges/toolchains/` (Python 3.15.2, Node 26.13.1, npm 12.2.2, uv 0.13.8). Windows Design verification selected SDK 11.0.100 from the existing Scoop SDK root and removed only the conflicting process-local `MSBuildSDKsPath`; the user's older `.dotnet` SDKs remain. Linux `.dotnet` now also contains SDK 11.0.100 while retaining older SDKs, and `~/.local/bin/python` selects the installed 3.15.2. Install/source hashes and the prior Linux Python selection are recorded in each host's own `tmp/afv2-env-01/` receipts. The owner later authorized Scoop installation for the blocked GitHub tool downloads; verified existing Scoop Ninja 1.13.2 and sccache 0.19.0 are available, and CMake 4.5.0 was installed side by side. The current managed slice still reproduces native r4 with its recorded older tool selections until the reviewed native successor is ready. No proxy/security settings were changed. Remaining repository/tool selections still need migration and verification; these installs are not evidence of complete local/CI parity across all seven repositories.
-
-The native successor source draft is preserved at `DesktopPlatform/.worktree/afv2-env-01-native` on `task/afv2-env-01-native`, based on `f208d915087224eed45c8b3be30bc81fb352556f`. Its 42 overlay files received independent source review, including the narrow OpenEXR/OpenJPH version-lookup repair and preservation of the prior TIFF/minizip feature sets. This is source-only evidence: the selected dependency graph, native configure/build/stage and successor profile/admission remain unproved. Copied MIT recipes/legal text require reuse provenance, and patch contexts retain their upstream terms; do not classify the copied recipes as first-party implementation or rewrite historical r4 receipts. The scratch source inventory and review checkpoint remain under `tmp/afv2-env-01/native-overlay-draft-*`.
-
-Private LLVM 23.1.5 and GNU binutils official release 2.47 (actual unmodified banner `2.47.20260726`) are installed on H-22. Version/loader/linker-routing diagnostics and the reviewed helper's source-`0b9114435bd4677c256714b864b8cb8f970c2d57` check passed; these are tool-selection facts, not native package/profile qualification or complete local/CI parity. The Microsoft-signed Visual Studio 18.12 layout and trusted catalogue chain have now been verified, resolving the earlier integrity blocker without accepting replacement hashes. The authorized side-by-side installation is running through the normal SDK MSI stage and is not yet complete. Preserve the earlier investigation and old toolchains; no network/security settings were changed.
-
-Clean Windows Plan/Design primaries and Linux Design were fast-forwarded to their accepted merges. The pre-existing dirty Linux Plan primary was preserved; use fresh verification/task worktrees there.
+Earlier tooling/managed slices and failed-candidate investigations remain in Git,
+the [ledger](ledger/ledger.jsonl), linked PRs and each host's own
+`.git/arcforges-verify/logs/`. For example, the
+[old bootstrap publication failure](https://github.com/ArcForges/DesktopPlatform/actions/runs/43615837618)
+and later [150.1 publication](https://github.com/ArcForges/DesktopPlatform/actions/runs/43678526078)
+retain their original outcomes. Do not rerun them or rewrite historical receipts.
 
 ## Preserved BASE-01 checkpoint
 
@@ -66,12 +82,18 @@ BASE-01 is parked planned, not delivered. Preserve these uncommitted files on Wi
 - `Cloud/.worktree/afv2-base-01/eng/v2-migration/preflight.py`; base `6df33c525fcbc20495e46c9c4c011086146da796`.
 - `Contracts/.worktree/afv2-base-01` remains unmodified at `de3dba76266e89654be9b4d29d097d525a281c6a`.
 
-The earlier Node author diagnostic had 11 tests OK with one Windows condition skipped; the latest protected-fd/in-memory SQLite snapshot and failure-classification changes are untested. Cloud is an untested draft. Consumer scanning, module map, documentation and PostgreSQL fixtures remain unfinished. No product commit, PR or native acceptance exists for this checkpoint. After ENV, reconcile these worktrees with actual upgraded main and run affected checks; do not count the old author diagnostic as current acceptance.
+The earlier Node author diagnostic had 11 tests OK with one Windows condition skipped; the latest protected-fd/in-memory SQLite snapshot and failure-classification changes are untested. Cloud is an untested draft. Consumer scanning, module map, documentation and PostgreSQL fixtures remain unfinished. No product commit, PR or native acceptance exists for this checkpoint. On a later resumed BASE-01 round, reconcile these worktrees with actual upgraded main and run affected checks; do not count the old author diagnostic as current acceptance.
 
-## Product and acceptance boundaries
+## Product and verification boundaries
 
-Deliver the general CLI Sandbox/Run platform with official stable MXC, genuine terminals, preserved intelligent resource management, private persistent data, free offline local CLI, optional free self-hosted Go Center and Blazor management. Only official hosted access is subscription-gated. No product MCP/AI/Task DAG/cache platform/desktop or mobile client; never copy/fork MXC or silently use an uncontained process.
+The subsequent product remains the general CLI Sandbox/Run platform with official
+stable MXC, real terminals/resources/data safety, free offline local CLI, optional
+self-hosted Go Center/Blazor management, and subscription-gated official hosting.
+No product MCP/AI/Task-DAG/cache platform or desktop/mobile client is introduced.
+Preserve Node schema 15 and Center schema 10/11 guards; mandatory composed P1/runtime
+qualification and destructive-migration prerequisites remain future task work.
 
-Both composed native profiles need real P1 qualification before executor replacement. Changed upstream versions require relevant source/artifact requalification; dated research is not a new runtime pass. Preserve Node schema15 and Center schema10/11 safeguards and unresolved effects. H-03 blocks destructive admission, not read-only preflight code. Prices/provider/legal/domain settings remain owner inputs, and AFV2-PROD-01 needs separate explicit outward-facing activation approval.
-
-Use the Windows MCP at `C:/MyFile/Projects/ArcForges/` and H-22 Linux MCP at `/home/sammiller/arcforges/`. Fetch independently from GitHub; never substitute WSL/SSH/scratch or transfer verification receipts. Preserve existing dirty primary checkouts. Record exact heads, worktrees and unfinished steps on interruption. Report in Simplified Chinese and continue only within the authorized graph.
+Use native Windows MCP at `C:/MyFile/Projects/ArcForges/` and H-22 Linux MCP at
+`/home/sammiller/arcforges/`; fetch exact candidates independently. Never use
+substitute hosts, copied receipts, bypasses or network/security changes. Report in
+Simplified Chinese. This round is complete; resume product work only in a later round.

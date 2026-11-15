@@ -73,7 +73,7 @@
       "title": "Align necessary mainstream toolchains and local/CI versions",
       "milestone": "P0",
       "order": 1,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "DesktopPlatform",
@@ -338,12 +338,33 @@
         }
       ],
       "size": "XL",
-      "notes": "The owner authorized upgrades on 2026-11-14 and clarified acceptance on 2026-11-15: retain all completed work and finish necessary mainstream toolchains plus local/CI parity, without individually-latest direct/transitive dependency, untagged-metadata research or per-version approval requirements. The earlier special Contracts Go qualification is no longer an additional ENV requirement. Existing ordinary compilation/test/security/provenance/native checks remain. The original39 tasks stay planned while ENV remains active; preserve BASE-01 work, published bytes and historical evidence.",
+      "notes": "The owner authorized upgrades on 2026-11-14 and clarified acceptance on 2026-11-15: retain all completed work and finish necessary mainstream toolchains plus local/CI parity, without individually-latest direct/transitive dependency, untagged-metadata research or per-version approval requirements. The earlier special Contracts Go qualification is no longer an additional ENV requirement. Existing ordinary compilation/test/security/provenance/native checks remain. The original39 tasks stay planned while ENV remains active; preserve BASE-01 work, published bytes and historical evidence. [delivered] All seven necessary toolchain upgrades passed their required native checks, merged and completed applicable ordinary publication. See docs/dependency-upgrade/afv2-env-01-summary.md. [complete] AR-13 PASS with actual compilation/test/security/provenance and local/CI parity evidence. Preserve all completed work and stop this round; the original 39 tasks remain planned.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges-Design/pull/71",
+          "https://github.com/ArcForges/Plan/pull/108",
+          "https://github.com/ArcForges/DesktopPlatform/pull/217",
+          "https://github.com/ArcForges/Web/pull/59",
+          "https://github.com/ArcForges/Contracts/pull/138",
+          "https://github.com/ArcForges/ArcForges/pull/84",
+          "https://github.com/ArcForges/Cloud/pull/157"
+        ],
+        "merges": [
+          "ArcForges-Design@4472ea5a110a3c15c8beeeed14627e44b37103d0",
+          "Plan@557cfc12861a0778f41e7be25a151efce43105cc",
+          "DesktopPlatform@6e109ef5d01855158c7ae3a63cd42c98db2647f3",
+          "Web@69be85d95ea412cc027597ffd0d990bf0e28e50f",
+          "Contracts@2b525ad3d79f404d705e4abe8c30bf4bf477d0a6",
+          "ArcForges@200d2d25b1b40093c3af278993145a92bbf82a78",
+          "Cloud@d422d7718307f39903de49ee673105a3d0db6b9d"
+        ],
+        "publications": [
+          "DesktopPlatform 1.0.0-ci.151.1: all 21 NuGet packages; https://github.com/ArcForges/DesktopPlatform/actions/runs/43693457102",
+          "Contracts 1.0.0-ci.463.1: 17 NuGet packages, internal npm and go/v1.0.0-ci.463.1; https://github.com/ArcForges/Contracts/actions/runs/43699575709",
+          "Web web-0.1.0-ci.186.1; Cloudflare version 95d6ff5a-fd2c-4e74-8794-77486d6e722c; no public targets deployed; https://github.com/ArcForges/Web/actions/runs/43694865856",
+          "Cloud: All 18 hosted jobs were skipped: ordinary main-push candidates and deployment were already disabled before ENV. No publication or deployment was attempted. The required native Linux profile built and verified candidate 0.1.0-local.1794739798362 (image sha256:aeb1e68ce06a1a119f0f61ae44c7a29e8fc312c9a3bbdbc0473d664f6f95edfe). Both Cloud primary checkouts were fast-forwarded to the merge. https://github.com/ArcForges/Cloud/actions/runs/43706393820"
+        ],
         "ledger": null
       },
       "removals": [
