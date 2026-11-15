@@ -27,7 +27,7 @@ coordinates, locks and historical receipt bytes remain preserved.
 
 | Repository | Head / PR | Current status |
 |---|---|---|
-| ArcForges | 48aac4ed7ee7f480b4bfbc48fc89ca90b53342ba / PR85 | Code reviewed; final Windows/Linux full profiles running independently after all other heavy work finished |
+| ArcForges | 2c4607cab05967fdd316ebfed5ffea4087fa3f13 / PR85 | Reviewed two-attribute timing-test isolation repair; targeted real-socket1/1 on both hosts; new Linux full running, Windows awaits prior run exit |
 | Cloud | tested a498b4c48e5d2e0a13ee10b14f9ae4426cb13b80 / merged PR158 | Windows10/10, Linux17/17; mergef4708b36fd799025ad7d6fa9e5845e4558e492b3; main CI43774372219 skipped all18 jobs under existing guards |
 | Contracts | tested f173cf4124541f33b7b6366fe7b264733a0d6077 / merged PR139 | Linux20/20; merge69f3041ab4c6bcee1677d0587aaebbbf54cb98bb; CI43772758290 succeeded,17 NuGet/internal npm/Go tag at1.0.0-ci.467.1 |
 | Plan | .worktree/afv2-base-01-final / plan/afv2-base-01-final | This active checkpoint, based on actual main7c8aeea; no completion claim |
@@ -60,15 +60,27 @@ central declarations; missing/mismatched sources stay unknown.
 - Cloud targeted actual-repository-admission and public-digest allowlist tests
   passed1/1 each after r2/config/pin changes. Real final secret scan now passes.
 
-Windows final Node exec session84164, receipt directory
+Windows prior Node48aac4ed exec session84164, receipt directory
 ArcForges/.git/arcforges-verify/logs/20261116-072057-48aac4ed7ee7-win.
 It sets only process-local DOTNET_CLI_UI_LANGUAGE=en-US and VSLANG=1033: the prior
 48aac4ed run passed CI but its Native AOT publish summary was Chinese and the
 unchanged script required an English warning count. A direct host publish probe
 with English CLI output passed with0warnings. No system language, warnings or
 script changed. The complete profile now reruns, with no inferred status reuse.
-H-22 final Node PID2807490, log logs/afv2-base01-node-verify-final.txt, after old
-PID2711473 exited. Old77459503 failed its exclusive900s timeout and first-attempt
+H-2248aac4ed attempts PID2807490 and2829465 finished with CI failures, logs
+logs/afv2-base01-node-verify-final.txt and -final-r2.txt. One fired-timer wait
+failed then its exact method passed1/1 in0.887s; the next full attempt passed that
+method but failed real-socket IdleConnectionsDoNotDelayAValidRequest at1.0177669s
+against its original1s bound. Standing AGENTS83-89 require this timing-sensitive
+method to be exclusive. Only Fact DisableParallelization=true and Trait
+isolation=exclusive were added; body/response/1s bound unchanged. Independent
+reviewer accepted Node2c4607ca and the exact single-file Plan scope. Windows
+locked restore/build0warnings plus selected method with exclusive trait passed1/1;
+H-22 independently fetched2c4607ca, built with0warnings and passed the method1/1.
+H-22 current full PID2852179, logs/afv2-base01-node-verify-2c4607.txt; no other
+repository heavy build is running. Windows2c4607ca full must start after prior
+48aac4ed run exits naturally, using the same process-local English settings.
+Old77459503 PID2711473 failed its exclusive900s timeout and first-attempt
 90s wait; retain logs/afv2-base01-node-verify.txt as failure history.
 Final Cloud receipts20261116-071745-a498b4c48e5d-win and
 20261116-070913-a498b4c48e5d-linux both passed, same treea05ad1946fe380661186b25fa02f8f394ab2d830.
