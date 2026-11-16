@@ -1,5 +1,35 @@
 # Codex handoff — ArcForges V2
 
+## Current API-01 checked scope and formal run
+
+Plan scope PR122 actually merged916cdc5cc5d927c9b6caaecdbaa5063f701f880a
+at independently reviewed5594d8cea301c83d640aa7c864ad59331c506918,
+treeb554c60077616818d339497ca8ce515bc7d848e0. Native Windows5/5 receipt
+20261116-123403-5594d8cea301-win and H-22Linux5/5
+20261116-123411-5594d8cea301-linux both bind actual Design493022f. Strict
+both-host statuses, current head/base, no bypass and zero threads were checked.
+
+Contracts candidate215ab65ddb48de4a3efeb66392c48a9e25a7974f adds only31lines
+to .gitleaks.toml aftera5d: two exact-path groups,11 distinct public key/hash
+whole-line generic-api-key rules covering the14 observed duplicate findings.
+Author rehashed Git blobs and checked wrong hash/key/path/suffix rejection;
+no source, Go/control input, version or scanner behavior otherwise changed.
+
+H-22 independently fetched exact215 and launched unchanged full20step
+python eng/verify.py run-and-report, PID3052053, background log
+/home/sammiller/arcforges/logs/afv2-api-01-formal-215ab65.txt;
+formal logs Contracts/.git/arcforges-verify/logs/
+20261116-123608-215ab65ddb48-linux/. The original secret-scan now passes.
+Restore, admission, naming, provenance, access and format passed; pack running
+at this checkpoint. Do not claim full success until its summary completes.
+Independent reviewer /root/base_review is inspecting the complete215 diff
+against Design/acceptance. No source merge or new package publication yet.
+
+Plan final-record worktree: Plan/.worktree/afv2-api-01-delivery on
+plan/afv2-api-01-delivery, base916cdc5. Next observe full native result and
+review, fix actual blockers only, then merge/prove normal cohort publication,
+record delivered/complete and continue next eligible authorized task.
+
 ## Latest API-01 formal-check checkpoint
 
 Contracts draft PR140 is at a5d69f7df56febdd3d2696d4b21cd4ec57fcab9f.
