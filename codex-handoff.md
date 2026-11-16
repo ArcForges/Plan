@@ -1,6 +1,28 @@
 # Codex handoff — ArcForges V2
 
-## Current confirmed reconciliation blocker and exact successor amendment
+## Current reconciliation repair after scope admission
+
+Plan133 actually mergedde91326e3331c46bdb828aa633770914b4a797f9 at reviewed
+2875af4bc0d69df9493364cb19f0cd0d0fbca8e5/treeea39ce7d73182e58b2b4479fe536ad59af115ece.
+Independent review accepted; nativeWin5/5 in5s and H22Linux5/5 in26s,
+bothDesign493, original protection satisfied. Scope24 admits exact newr4.
+Author is now fixing the confirmed revokedUNKNOWN settlement defect and adding
+regression coverage; usedr3/oldSQL history stay unchanged. Not fixed/verified yet.
+
+Cloudhead1f52ba8cc4070fddf839139ccd85e215763ee1df remains pushed/native.
+Its8 changedconsumer scenarios allPASS/0skip5.962s: real11backup/new11restore/
+finite12, repeat12grants, oldCTR06admission/floor/role/hash guards and0011writer
+wait/backfill. Logs artifacts/afv2-center-01-management-1f52-linux.*, SHA
+1431fa7b7346e8dacf4ac01408d0545f7c6772ba15b8afa4e44ceb8a61437fe9.
+Testcontainer removed; PID3241893 ended. Still no positive schema10 qualification.
+
+Current root Plan branchplan/afv2-center-01-reconcile in same independent
+.worktree/afv2-center-01-native starts actualde913. CurrentDesign493/Cloudmainf470.
+Unchanged Cloudfull profiles remain Windows10/Linux17 steps, including actual
+CTR06 bridge/nativeCenter/provenance/candidate gates. Finalrun waits stable source/
+metadata; no stale or incomplete-profile PASS. H22free last8.6GiB; no cleanup.
+
+## Earlier confirmed reconciliation blocker and exact successor amendment
 
 Independent review found and root reproduced a current defect at418b: after
 Reserve, UNKNOWN and protocol revocation, the same original command/current hub
@@ -54,7 +76,7 @@ dependent Core work is not eligible. No V1 queue or unrelated product work.
 
 Latest checked Designmain493022fbf643b484665b2713c9eb8670f2fb2234;
 Cloudmainf4708b36fd799025ad7d6fa9e5845e4558e492b3;
-Planmain 90ba68b1778ac04cd19f9a1cff30d930ec930c04 (PR132).
+Planmain de91326e3331c46bdb828aa633770914b4a797f9 (PR133).
 Windows native direct access replaces unstable Windows MCP by owner instruction.
 Linux venue is actual H-22 via Linux MCP: v2202601329473427941/sammiller,
 /home/sammiller/arcforges. MCP is healthy; compile/test/shell errors do not count
