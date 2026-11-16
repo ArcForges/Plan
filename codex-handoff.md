@@ -21,7 +21,7 @@ Worktrees under C:/MyFile/Projects/ArcForges/:
 - Plan/.worktree/afv2-id-01-verify, native caller at96a48ea.
 - Cloud/.worktree/afv2-id-01-verify, preserved native caller at6bd7169.
 H22 native: /home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-native,
-currently31525fc8c1ae3114e7a5883a5d08a1e450498c63; Plan native caller is
+currently94834c591958dd5d24a0bef92888e0d6c2c2099d; Plan native caller is
 Plan/.worktree/afv2-id-01-verify at96a48ea. Never touch dirty Linux Plan primary.
 
 Plan141 mergeda221ba8; Plan142 merged63e9c236. Latest scope is38 exact paths,
@@ -139,6 +139,24 @@ Then normal PR160 merge/applicable paused main result and true Plan143 completio
 records, both Plan legs against current Design and ordinary shared-record merge.
 Stop after current ID01. No ID completion/final host status/production acceptance
 is claimed yet. Real mail/domain/browser qualification stays AR10/H04 external.
+
+Final candidate94834c591958dd5d24a0bef92888e0d6c2c2099d is pushed and clean.
+R138 LFhashbe32706770d0f338761c035f00e91bba17355fb4fb2f256ebc2e236f6a67229a and
+original runtime-ID-r1/Worker-ID-r1/review-r1 first freeze is complete. Dockercontext6/6,
+all468inputs/carried253Center(203Go)+157C# hashes, actualWorker closure, source
+provenance,131unchangedpackages/586admissioninputs,provenance37/37 and targeted
+format guards PASS. Original Windows author-metadata-ready.json and
+related logs stay in Cloud author artifacts/afv2-id-01/. No used oldrecord changed.
+
+Both native callers independently fetched9483 and started unchanged formal
+eng/verify.py run-and-report. Windows session86407:
+Cloud/.git/arcforges-verify/logs/20261117-004519-94834c591958-win.
+H22 driverPID3499069: artifacts/afv2-id-01-formal-9483/native.log and exit;
+its driver is artifacts/afv2-id-01-formal-9483-runner.py in the native worktree.
+Required profiles are Windows10/Linux17. The pinned redacted secret-scan step
+actually PASS1s on H22 at9483. Other formal results remain pending; do not merge
+or mark task complete early. Independent id_review is reviewing exact metadata
+and final source while waiting for original final host receipts/candidate identity.
 
 All following sections are historical snapshots and do not override this one.
 
