@@ -8,7 +8,7 @@ existing authorized serial AFV2 range. The sole active task is now AFV2-ID-01:
 bounded account recovery, export and deletion. The older CENTER stopping point
 below is historical and no longer prevents this authorized next task.
 
-Latest fetched mains: Plan a221ba8b827c926620dade2752f133e7ca8b61e0,
+Latest fetched mains: Plan63e9c23650308541009ecbd4fb55b06c9d8693d1,
 Design493022fbf643b484665b2713c9eb8670f2fb2234,
 Cloud6bd7169607d55c8b647b1a70302ff28ad365d488. CENTER-01 is complete and its
 original evidence remains valid. The graph has6complete,1active,1blocked and
@@ -22,7 +22,7 @@ New independent worktrees:
 Plan141 has merged as a221ba8b827c926620dade2752f133e7ca8b61e0. Its reviewed
 7f114efa715f47519f14066e55d0490341c35d20 passed Windows5/5 in5s and H22Linux5/5
 in26s, both bound to actual Design493. ID-01 now has35 concrete allowed paths.
-The record branch is now plan/afv2-id-01-progress in the same Plan worktree.
+Plan142 then merged63e9c23650308541009ecbd4fb55b06c9d8693d1; exact96a48ea passed both5-step native profiles against Design493 with independent review. Its three additional exact test paths bring ID01 to38. The record branch is now plan/afv2-id-01-acceptance in the same Plan worktree.
 
 Core author id_author owns identity/session/oneuse/schema13/device/mail/ratelimit;
 transport author id_transport owns API/pages/routes/access/server/generatedtables
@@ -41,8 +41,12 @@ evidence. Independent reviewer id_review did not author the implementation.
 Root alone stages/commits/pushes shared source and owns graph/ledger, integration,
 PRs, designated-host verification and normal merge.
 
-Cloud draft PR160 branch task/afv2-id-01 now has bootstrap5c4418e1cbb857b290ec5454e931a5ac905357a1 plus an exact ACL-parser correction; complete core/transport/test drafts remain uncommitted across the named owned paths. Initial core and transport Windows Go1.27.4 compilation passed;
-this is not native PostgreSQL acceptance. No R138 metadata or13oracle is frozen.
+Cloud draft PR160 branch task/afv2-id-01 sourcecheckpoint is now
+be9d2f8ded5819ff50ee8c897f8ebd99dcd3fe36 (schema, migration, complete account
+core and transport). All Windows Go packages compile; PostgreSQL is not inferred
+from that. Browser-script successor tests54/54 pass author-side and final
+formatting remains uncommitted. Root alone integrates commits. No R138 metadata
+or13oracle is frozen.
 Export uses bounded canonical JSON and a receipt digest; reads recheck current
 authority/expiry and reject changed content. No export-body storage or new
 filesystem/configuration framework. SourceSQL13 is independently authored from
@@ -60,8 +64,8 @@ The latest continuation resumes this current ID-01 task through completion and
 shared delivery records, then stops before another product task. Plan draft142
 records the implementation and the exact three-test scope correction. Root's
 routes/** delegation shorthand exceeded the three original named source files;
-only the two closed-route tests already drafted and the browser-script test are
-added. Do not write new account-script tests before that amendment is merged.
+only the two closed-route tests and browser-script test are added. That reviewed
+amendment has now merged; the new script tests are authorized.
 
 H22 fresh13 PostgreSQL DDL actually applied at bootstrap5c4418e. Inventory failed
 only at strict archive ACL matching for a parameterized function (retry1 log:
@@ -69,10 +73,23 @@ Cloud/.worktree/afv2-id-01-native/artifacts/afv2-id-01-inventory-5c44-retry1/).
 The earlier driver AttributeError happened before Go and remains recorded as an
 orchestration error. Neither failure was a transport outage or a passed inventory.
 Exact full-signature ACL matching now has positive/negative Go unit evidence;
-refresh the native source and regenerate the actual closed13oracle before use.
+actual archive inspection found unnamed FUNCTION versus named ACL parameters.
+The exact one-function mapping is now in be9d, with whole-TOC positive/negative
+unit evidence; old oracle/SQL remain immutable.
 No backup13 oracle or R138 metadata is qualified/frozen yet.
 
-Next: integrate the current complete lifecycle/migration/transport source,
+H22 native worktree Cloud/.worktree/afv2-id-01-native has independently fetched
+be9d from GitHub. Running driverPID3456966:
+artifacts/afv2-id-01-targeted-be9d-runner.py; logs/exit/inventory are in
+artifacts/afv2-id-01-targeted-be9d/ (driver log sibling). It uses the actual pinned
+PostgreSQL18.7 with durability on and real Go race-enabled identity/session/pages
+plus inventory tests. Read its actual outcome before relaunching or advancing.
+The unused ca7c driver hit its stale expected-SHA assertion before Go; preserve it
+as an orchestration failure, not another PostgreSQL result or transport outage.
+No designated-host outage exists.
+
+Next: inspect this native result, settle any actual safety/acceptance failures,
+
 settle schema13 and generate its actual H22 closed oracle, then run real
 crypto/PG/epoch/concurrency/recovery verification and ordinary
 delivery. No ID-01 success is claimed yet. Production H03/AR10/H04/PROD01 and
