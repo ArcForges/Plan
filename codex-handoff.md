@@ -16,6 +16,97 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
+## Latest formal result: Docker context closure must be corrected
+
+Final84ef Windows passed10/10 in153s. Its Linux profile failed check at the
+complete1201-test source suite:1199passed,2failed,0skipped. Both failures are in
+the unchanged Docker context guards: the embedded schema12 inventory TXT lacks
+an exact context file rule, and carried management/store.go is absent from
+r136 inputs. Parallel linux-center was canceled; later steps/candidate not run.
+Original20261116-193953-84efb8c551e8-linux logs and status remain immutable.
+No formal job is running. This is real package closure, not an MCP failure.
+
+The precise amendment adds .dockerignore and r137/runtime-Worker-r3 immutable
+successor paths,32to36. Keep the valid Docker tests and all used metadata.
+Author audits the complete carried-file closure, adds only the exact embedded
+TXT rule and missing actual inputs, then runs the full affected Docker-context
+suite before metadata freeze. No new Go/SQL/dependency/API or production change.
+After reviewedPlan/native5 merge, settle this source/config + metadata batch,
+review/fetch finalhead/bothfullprofiles/samecandidate3path and normalclosure.
+CENTER remains active, AR07 not yet passed; finish the whole task thenSTOP.
+
+## Latest checkpoint: final exact head under native verification
+
+Cloud final head is 84efb8c551e879e6aea4a13693be41f98cfaaeb4 (PR159). It is
+pushed, clean and independently fetched on both hosts. Source317 already passed
+the real race suite. Independent base_review accepts the complete final source
+and metadata: r136 SHA25646175cb676e1346de70fe85153fbd7042aad845f2414ff33fc2fbe51c0532d1a,
+452 image inputs (only two changed source hashes),580 admitted inputs and131
+unchanged external package coordinates. All prior profiles/records/SQL remain.
+Final r2 receiptSHA9ca32666b592cafa9130a18eb672ba5296d001659edf1e86b378c86d2c843fae
+passed actual pinned H22 redacted scan with0findings; author targeted gates pass.
+
+Unchanged final full run-and-report profiles are active:
+- Windows caller Cloud/.worktree/afv2-center-01-verify: final PASS10/10 in153s;
+  original logs20261116-193924-84efb8c551e8-win. Session30196 is closed.
+- H22 caller Cloud/.worktree/afv2-center-01-native; driver3329447;
+  artifacts/afv2-center-01-formal-84ef-linux.{log,exit}, runner/driver beside it.
+  Original common logs20261116-193953-84efb8c551e8-linux; still running.
+  Security bridge passed169s, npm audit passed; check/parallel center continue.
+The first Linux launch stopped before fetch/status because the author import
+created two untracked pyc files. Those exact owned files were preserved under
+artifacts/afv2-center-01-source317-pycache; no unknown file/cache was deleted.
+The clean caller fetched final84ef, then started with process-local bytecode off.
+This was a launcher cleanup condition, not a transport failure or formal result.
+
+Independent base_review also accepted the prepared driver coverage and confirmed
+H03 remains a production boundary. Actual candidate results are still pending.
+Wait for the genuine final Linux profile. Then use this same candidate image's extracted
+CLI (check its manifest/image/member digest) with the prepared ignored driver
+for fresh/10/11 actual PG backup/restore. Review final evidence, mergeCloud,
+write Plan139 closure and stop/report; do not start another product task.
+H03 production authority remains closed; deployment and public activation stay off.
+
+## Latest verified source: native race suite passed
+
+Source317ba1ede2303534f9f07319cc2367c2732d3306 passed the corrected existing
+center.check_tests(True) on H-22. All36 test packages passed;10 had no tests.
+The command used real owned PostgreSQL, the original race/required/logging
+settings and the existing real container pg_dump/pg_restore transport.
+Store/migrate passed61.453s, CLI17.768s, provision41.413s; generated Worker table
+is current. Driver3315255 ended with exit0; no formal/native job is running.
+Original log: Cloud/.worktree/afv2-center-01-native/artifacts/afv2-center-01-source317-native.log,
+SHA2562eceed90c653379734493a4576a18e3160a634921be8d92b4adab5aa9f80f9ac.
+This is affected author evidence, not final formal status/candidate admission.
+
+Author now freezes one r136/runtime-Worker-r2/new immutable dependency-r2 cohort
+against stable317 source. No more source/SQL/dependency changes are authorized
+without a concrete current failure. Final-head review, both full profiles and
+actual samecandidate CLI three-path backup/restore remain mandatory and pending.
+Root records branch plan/afv2-center-01-finish-1129, draft Plan139. Finish the
+current entire CENTER-01 then stop/report; no subsequent product task starts.
+
+## Current source fix under real native race verification
+
+Plan138 mergedc5e228175eaee02086fece0752c9b5e4eab24c28; reviewed8258817 native
+Win5/5PASS5s/Linux5/5PASS26s, both actualDesign493. Root records now on unique
+plan/afv2-center-01-finish-1129 in the same Plan worktree; preserve older
+similarly named branches. ExactCloud source317ba1ede2303534f9f07319cc2367c2732d3306
+is pushed, clean and independently fetched on H22. Independent base_review
+accepted the three-source delta: AtVersion10 historical grants plus existing
+ownedPG real tool transport; public old bridge refusal and all assertions kept.
+Author Windows old-entry hardstop1/1PASS/AST/gofmt passed.
+
+Root H22 driver3315255 runs the corrected existing center.check_tests(True)
+from this exact source; artifacts/afv2-center-01-source317-native.{log,exit},
+runner.py/driver.log beside them. This is affected author native evidence,
+not a formal status or candidate artifact. No other formal run is active.
+If it passes, author freezes one exactr136/runtime/Worker-r2 + newimmutable
+admission-r2 cohort with precise scan/pin for that new receipt, retaining all
+used records and SQL. Then independent finaldelta, both full final-head profiles,
+sameactualcandidateCLI3pathPG, Cloudmerge and Plan completion. CENTERstillactive;
+H03productionclosed/deploypaused. FinishcurrenttaskthenSTOP/report.
+
 ## Latest actual failure and bounded native integration correction
 
 Finalca525 Win10/10PASS154s remains valid for that head. H22 full failed at
