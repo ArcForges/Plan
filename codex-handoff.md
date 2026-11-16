@@ -1,6 +1,33 @@
 # Codex handoff — ArcForges V2
 
-## Latest DATA correction and pending backup closure
+## Latest DATA candidate: complete owner backup closure
+
+Actual shared Plan126 merged709795fbfaee6143d195029d4d14b7cf52773ab5;
+both exact-head native profiles5/5 bind Design493, original summaries in ledger.
+New Plan worktree .worktree/afv2-data-01-final / plan/afv2-data-01-final;
+coordinator owns records, author/reviewer remain serial.
+
+Node PR94 current pushed head1e02e335b97c25b8a05808c90c82c608f3c31c36,
+16paths allallowed, no project/package/lock changes. Author source editing stopped.
+Catalogue gate now serializes owner creation/backup/restore; restore compares
+external latest DB complete owner/epoch/state/history and exact signed fence set.
+This fixes the concrete post-backup new-owner omission. Three new real fixtures
+cover two-owner/key closure, new-owner rejection and old-DB/new-fence rejection.
+
+Current Windows build0warnings/errors3.43s and17/17PASS0skip10.879s,
+artifacts/afv2-data-01-backup-closure-build-win-2.log / backup-closure-tests-win.log.
+Initial nullable CS8620 failure retained in backup-closure-build-win.log.
+H22 independently fetched1e02: current Store.Tests build0warnings/errors4.75s,
+17/17PASS0skip4.418s, original artifacts/afv2-data-01-tests-build-linux-1e02.log
+and durable-tests-linux-1e02.log, explicit exits0. Real permissions and two
+children are included; effects remain only supplied fixtures/synthetic counter.
+
+Affected host/bench AOT, independent nonauthor review, both exact-head required
+Node full profiles and merge remain pending. No product acceptance/delivery yet.
+Author transfers Windows AOT session to root before reviewer starts; no second
+delegated worker at once. All earlier failures/evidence below stay historical.
+
+## Earlier DATA correction and pending backup closure
 
 Node head564f2dcc38763bd3ecc93cda3060d2dfde5a4e5a is pushed in PR94.
 It changes only existing StageProducerAdmissionTests to current schema/current+1;
