@@ -1,5 +1,22 @@
 # Codex handoff — ArcForges V2
 
+## Running H-22 obsolete-head boundary stop
+
+Final source165 remains independently accepted; Windows final session5350
+continues. H22 currentlinux-exclusive1e02 step3154816 continues normally;
+only its obsolete verifier coordinator3124629 is SIGSTOP-paused. Ignored
+helper artifacts/afv2-data-01-old-head-boundary-stop.py/log observer3161196
+waits the step natural exit/zombie, then SIGTERM+SIGCONT to existing verifier
+interruption handler. No running test fixture was killed; future old steps
+cannot start. Helper finally resumes even on its1100s bound.
+
+Monitor original data-native artifacts/afv2-data-01-formal-linux-1e02.log/.exit
+and boundary-stop.log, plus process/lock end. Oldhead is partial/interrupted,
+never PASS. After clean end, fetch165, build/run final19 then normal20step
+run-and-report. Do not leave coordinator stopped if manually interrupting this
+helper; SIGCONT3124629 plus its normal SIGTERM handler must finish cleanup.
+This changes no product/gate/tool source or host settings.
+
 ## Current DATA source accepted; final native checks pending
 
 Finalsource165913b2cdd61b66f3fdf7ffe6bff5a062b7f418 in Node draftPR94,
