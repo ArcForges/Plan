@@ -1,85 +1,244 @@
 # Codex handoff — ArcForges V2
 
-## Current resumed checkpoint — AFV2-ID-01 active
+## Current checkpoint — capacity restored; ID-01 formatting correction
 
-The owner has explicitly resumed migration after the completed CENTER-01 stop
-point, and repeated continue after an interrupted read-only check. Continue the
-existing authorized serial AFV2 range. The sole active task is now AFV2-ID-01:
-bounded account recovery, export and deletion. The older CENTER stopping point
-below is historical and no longer prevents this authorized next task.
+The owner explicitly clarified continuation covers remaining AFV2 tasks 7–40;
+the earlier stop-after-ID01 instruction below is superseded. Continue serially
+through eligible tasks, preserving native gates and separate PROD-01 approval.
 
-Latest fetched mains: Plan a221ba8b827c926620dade2752f133e7ca8b61e0,
+Owner-authorized H22 cleanup completed: root available304045109248 bytes
+(304.0GB / 283.2GiB), used213701177344 bytes,42%. Docker builder-only pruning
+reported202.4GB; audited ignored project bin/obj57.87GB, old locked node_modules
+22.49GB, verifier bin/obj8.33GB, Go build cache6.35GB and NuGet global cache10.33GB
+were reclaimed. These category estimates are not additive filesystem receipts.
+No images, containers, volumes, source/worktrees, published artifacts, archived
+logs or native receipts were deleted. Running containers26 and volumes28 remain.
+Detailed inventories/deletion logs: H22
+/home/sammiller/arcforges/logs/afv2-disk-cleanup-20261117/.
+Source paths were checked for Git tracking/ignore rules and process references;
+unclassified scratch outputs were excluded. Dependencies may need normal restore.
+
+Cloud independently fetched exact94834c591958dd5d24a0bef92888e0d6c2c2099d again.
+Its unchanged Linux formal profile restarted with existing toolchain selectors,
+PID3572114, caller Cloud/.worktree/afv2-id-01-native, log
+artifacts/afv2-id-01-formal-9483-capacity-restored/native.log, exit in same directory.
+The original run20261117-044320-94834c591958-linux has finished FAIL: check found
+Prettier formatting in docs/postgres-store.md; security bridge passed195s.
+The controller stopped linux-center after that failure; later steps did not run.
+Root applied pinned Prettier in the Windows author worktree: only two inline-code
+continuation lines lose two indentation spaces each. Independent source review
+accepts this semantic-no-op correction. That document is an admitted dependency
+input, so the minimum immutable successor metadata is being inspected before a
+new candidate; used ID-r1/R138 bytes must remain untouched. This one documentation
+file is currently uncommitted in Cloud/.worktree/afv2-id-01. No formal process is
+still running. Old Windows10/10 remains valid only for9483; a new head needs both
+native legs again. No new Linux PASS, merge or completion is claimed.
+Next: finish the minimal admission successor/scope record, commit/push the
+formatting correction, obtain both native profiles and final independent review,
+then ordinary Cloud160/Plan143 delivery.
+
+Plan branch plan/afv2-id-01-acceptance / draft PR143 contains this checkpoint.
+Main baselines remain Plan63e9c236, Design493022fb and Cloud6bd71696.
+
+## Historical checkpoint — ID-01 blocked by H-22 disk capacity
+
+ID-01 is blocked by H-02 and is NOT delivered or complete. The graph now has
+6complete,0active,2blocked(ID01/MXC01),32planned. Do not start another product
+task; finish the current task after the real host prerequisite is restored.
+
+Exact Cloud candidate94834c591958dd5d24a0bef92888e0d6c2c2099d is pushed and clean
+in task/afv2-id-01, draft PR160. Source/metadata independent review has no blockers.
+Windows formal10/10PASS344s at this exact SHA; original summary is
+Cloud/.git/arcforges-verify/logs/20261117-004519-94834c591958-win/summary.json.
+Linux9483 formal profile reported error after actual ENOSPC on the503G root
+volume (user-available0). Original run20261117-004529-94834c591958-linux and
+artifacts/afv2-id-01-formal-9483/native.log are preserved. Empty summary/exit files
+are consequences of the full filesystem, not success. Pinned secret scan passed
+before interruption. All formal processes have ended; no merge/publication occurred.
+
+H22 MCP remains healthy; transport failure streak0. A readonly Docker usage helper
+timed out without output (pid3515799), not a transport failure. Known Cloud cache
+sealed-tool copies total under1GiB and do not exactly match retained archives;
+132Cloud worktrees contain no additional such copies. No files, archives, images,
+unknown caches, settings or evidence were removed. The owner was asked to provide
+capacity (about15GiB recommended) or identify a concrete permitted cleanup target.
+
+Next: after real capacity is available, fetch and verify the same9483 on H22 using
+the unchanged full eng/verify.py run-and-report with the documented Go selectors.
+Keep the valid Windows receipt. Obtain full Linux success and independent final
+receipt/artifact review, then normal Cloud160 merge/main-pause observation and
+Plan143 completion record with both required Plan legs against current Design.
+Stop after ID01. Never bypass the error or mark an unfinished task complete.
+
+Plan record worktree remains Plan/.worktree/afv2-id-01 on
+plan/afv2-id-01-acceptance, draft PR143. Its Linux record verification/merge is also
+unavailable while the host cannot write. Push this accurate handoff rather than
+claiming shared main has advanced. Latest merged mains remain Plan63e9c236,
+Cloud6bd71696 and Design493022fb. Ordinary development authorization persists;
+public activation is still separate and Cloud deployment remains paused.
+
+The following implementation checkpoints are historical phase records. Their
+running-process/active/next instructions do not override this blocked checkpoint.
+
+## Prior implementation checkpoint — before formal disk failure
+
+Continue the current ID-01 through actual completion and shared delivery records,
+then stop before another product task. The owner explicitly resumed after the
+completed CENTER-01 stop and the recent interruption. No repeat approval is needed
+for the current development/review/verification/ordinary merge. Public activation
+remains AFV2-PROD-01 with separate concrete approval; Cloud deployment stays paused.
+
+Current fetched mains: Plan63e9c23650308541009ecbd4fb55b06c9d8693d1,
 Design493022fbf643b484665b2713c9eb8670f2fb2234,
-Cloud6bd7169607d55c8b647b1a70302ff28ad365d488. CENTER-01 is complete and its
-original evidence remains valid. The graph has6complete,1active,1blocked and
-32planned. MXC-01/AR03 remains blocked independently; ID-01's dependency is ready.
+Cloud6bd7169607d55c8b647b1a70302ff28ad365d488.
+Graph:6complete,1active(ID01),1blocked(MXC01),32planned. MXC/AR03 remains an
+independent official-engine blocker; ID01 depends only on completed CENTER01.
 
-New independent worktrees:
-- Plan: C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-id-01, plan/afv2-id-01.
-- Cloud: C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-id-01, task/afv2-id-01.
-- Design read-only baseline: ArcForges-Design/.worktree/afv2-id-01, detached493.
+Worktrees under C:/MyFile/Projects/ArcForges/:
+- Plan/.worktree/afv2-id-01, plan/afv2-id-01-acceptance, draft PR143.
+- Cloud/.worktree/afv2-id-01, task/afv2-id-01, draft PR160.
+- ArcForges-Design/.worktree/afv2-id-01, detached493 read-only.
+- Plan/.worktree/afv2-id-01-verify, native caller at96a48ea.
+- Cloud/.worktree/afv2-id-01-verify, preserved native caller at6bd7169.
+H22 native: /home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-native,
+currently94834c591958dd5d24a0bef92888e0d6c2c2099d; Plan native caller is
+Plan/.worktree/afv2-id-01-verify at96a48ea. Never touch dirty Linux Plan primary.
 
-Plan141 has merged as a221ba8b827c926620dade2752f133e7ca8b61e0. Its reviewed
-7f114efa715f47519f14066e55d0490341c35d20 passed Windows5/5 in5s and H22Linux5/5
-in26s, both bound to actual Design493. ID-01 now has35 concrete allowed paths.
-The record branch is now plan/afv2-id-01-progress in the same Plan worktree.
+Plan141 mergeda221ba8; Plan142 merged63e9c236. Latest scope is38 exact paths,
+including only the three necessary closed-route/browser-script tests added in142.
+Independent id_review accepted142 head96a48ea; Windows5/5PASS5s and Linux5/5PASS26s
+both bind actual Design493. See immutable ledger/PR for full identifiers.
 
-Core author id_author owns identity/session/oneuse/schema13/device/mail/ratelimit;
-transport author id_transport owns API/pages/routes/access/server/generatedtables
-and identity docs. Reuse existing proof crypto, identity/session/one-use,
-mail delivery and bounded transaction primitives. Add actual account epochs and
-lifecycle receipts through forward schema13, preserve applied0001–0012 and local
-Runs/data. State4 deletion reconciliation requires new real authentication and
-narrow account-only permissions; revoked credentials are never re-enabled.
+Cloud sourcecba8a20b887e266ffe9f359770dc9ec6573f5d3f implements recovery,
+bounded canonical export, deletion/owner cleanup, real account epoch/session
+revocation, typed pages/RPC inventory, finite schema13 migration and restore.
+Applied0001–0012 and previous oracles/metadata remain immutable. New0013 is an
+unpublished forward migration, independently authored from requirements.
+No local Run/Sandbox data, unrelated products or dependency upgrades are included.
 
-Migration author id_audit now owns store/migrate, the real CLI, dbtest, narrow
-historical hub fixtures, Docker context and postgres-store docs. It must preserve
-all applied SQL and old12oracles, fence source12 writers across all7schemas and
-derive13's closed oracle from actual H22 DDL. Default fixtures are real complete13;
-the explicitly named historical routing fixture cannot be used as current safety
-evidence. Independent reviewer id_review did not author the implementation.
-Root alone stages/commits/pushes shared source and owns graph/ledger, integration,
-PRs, designated-host verification and normal merge.
+H22 actual PostgreSQL18.7 durability-on with Go race detector:
+- be9d2f8 initial10cases PASS: inventory1,identity5,session1(3subcases),pages3.
+  Original artifacts/afv2-id-01-targeted-be9d/native.log.
+- cba8a20b changed3cases PASS: recovery-vs-credential-removal real pg_locks race,
+  owner reported-name cleanup/provider-pending retention and fresh13 inventory.
+  Original artifacts/afv2-id-01-delta-cba8/native.log.
+- schema13 canonical inventory381objects SHA256
+  0f26a23b7e39b4b4f9ab8f859e647f822e6e39eac41c1383028d484121972578;
+  actual catalogue5fb4f156d72ed7040d839e76d82028ffb3e769a085e319bf501fbe18871ff30b.
+  Native directory artifacts/afv2-id-01-delta-cba8/lifecycle-schema13-3886327592/.
+  Canonical inventory alone was transferred as necessary checked-in source,
+  never as a substitute/copied host verification receipt. New13oracle binding is
+  now being committed; old12oracle is unchanged. Finite/restore13 is NOT passed yet.
 
-Cloud draft PR160 branch task/afv2-id-01 now has bootstrap5c4418e1cbb857b290ec5454e931a5ac905357a1 plus an exact ACL-parser correction; complete core/transport/test drafts remain uncommitted across the named owned paths. Initial core and transport Windows Go1.27.4 compilation passed;
-this is not native PostgreSQL acceptance. No R138 metadata or13oracle is frozen.
-Export uses bounded canonical JSON and a receipt digest; reads recheck current
-authority/expiry and reject changed content. No export-body storage or new
-filesystem/configuration framework. SourceSQL13 is independently authored from
-requirements, not copied Design DDL. Existing dependency versions stay fixed.
+Windows all-Go compile and author browser-script54/54/TypeScript passed. Actual
+Worker dry-run produced164579bytes, SHA256
+ a3a9a97925d906d9f37daada0da15f7b20c4d0b43761d723d51c189f23ca17d5,
+parsed27/emitted26; unchanged locked dependencies. Evidence in ignored
+artifacts/afv2-id-01/author-worker-dryrun-{win.log,summary.json}. No publication.
+No R138/runtime-id-r1/Worker-id-r1 metadata is frozen yet.
 
-Windows native DEKU/J7Rdm is accessed locally under the owner's explicit
-authorization. H-22 Linux MCP executed successfully on
-v2202601329473427941/sammiller, Debian13, /home/sammiller/arcforges. GitHub MCP
-read is healthy. The Linux primary Plan has old staged/unstaged changes and is
-untouched; use separate worktrees. The initial interrupted call was read-only,
-not an outage. Only three consecutive transport failures in one outage trigger
-the stop rule; successful calls reset it.
+Independent reviewer id_review accepted source fixes: lock-held live-email
+recheck prevents recovery from adopting a concurrently revoked channel; real PG
+regression passes. Owner cleanup clears reported_name/named_by_account; recovery
+UI uses conditional delivery wording. Ordinary email signin already rechecks the
+channel; no resend rewrite. Exact source review also withdrew a false floor
+finding: recordLifecycle already atomically archives old credentials and moves
+floor/admission to the new generation. Reuse lock concern likewise withdrawn
+with concrete family/revoked predicates. No speculative legacy rewrites/tests.
 
-The latest continuation resumes this current ID-01 task through completion and
-shared delivery records, then stops before another product task. Plan draft142
-records the implementation and the exact three-test scope correction. Root's
-routes/** delegation shorthand exceeded the three original named source files;
-only the two closed-route tests already drafted and the browser-script test are
-added. Do not write new account-script tests before that amendment is merged.
+Authors are frozen: id_author(core/schema),id_transport(pages/API/scripts/docs),
+id_audit(migrate/CLI/dbtest/historical fixture/docs); root alone git index,
+commit/push/PR/merge/state/ledger. id_review and base_review are nonauthor reviewers;
+id_metadata may prepare ignored facts only until final source/oracle/native pass.
 
-H22 fresh13 PostgreSQL DDL actually applied at bootstrap5c4418e. Inventory failed
-only at strict archive ACL matching for a parameterized function (retry1 log:
-Cloud/.worktree/afv2-id-01-native/artifacts/afv2-id-01-inventory-5c44-retry1/).
-The earlier driver AttributeError happened before Go and remains recorded as an
-orchestration error. Neither failure was a transport outage or a passed inventory.
-Exact full-signature ACL matching now has positive/negative Go unit evidence;
-refresh the native source and regenerate the actual closed13oracle before use.
-No backup13 oracle or R138 metadata is qualified/frozen yet.
+Windows native DEKU/J7Rdm uses authorized direct local access. H22 MCP is healthy:
+v2202601329473427941/sammiller, Debian13, no transport outage (streak0). Only three
+consecutive transport failures in one outage stop work; success resets the count.
+Preserve initial pre-Go AttributeError/stale-runner-SHA assertion and real ACL
+parser failures in their original artifacts; they were not native successes or
+transport failures. Native named-ACL/unnamed-FUNCTION distinction is now handled
+by one exact closed-signature mapping with whole-TOC positive/negative tests.
+The earlier full native driver has ended. Full real-PG Go compatibility diagnostic at
+3a22 ran to exit1; original artifacts/afv2-id-01-allgo-3a22/native.log.
+Root custom runner omitted standard pg_stat_statements preload/statement logging;
+corresponding three fleet log cases rerun with repository-standard settings PASS
+in artifacts/afv2-id-01-pglogs-3a22/native.log. Other log-dependent cases need the
+standard setup too; do not count the malformed diagnostic as a full-suite pass.
+Source/fixture failures also occurred and must be fixed before final freeze:
+- id_author: recovery raw sending belongs in the existing deliver.go boundary,
+  as enforced by TestEverySendGoesThroughDeliver; preserve real delivery behavior.
+- id_transport: update actual new RPC/page/receipt closed-set fixtures; retain
+  exact old-epoch refusal/remaining-credential assertions; adapt concurrency hook
+  to the real new lock order and join workers so failed setup causes no test race.
+- id_audit: historical schemasAndGrantsAt fixture copied the old version filter;
+  delegate it to existing correct schema.AtVersion so old prefixes do not request
+  nonexistent13tables. Production Apply version selection was already correct.
+All fixes remain in current allowed paths. No SQL/oracle/guard weakening or old
+product rewrite. Metadata stays entirely ignored draft; no R138/ID-r1 is frozen.
+Core delivery and historical fixture fixes70ec passed standard-PG/race full
+identity(7.156s) and provision(19.530s). migrate had only the original required FK
+leading-index failure. One exact nullable index was added to unpublished0013 in
+e62dac9b80bc40e4d364cddff39efce370f9609a; the unchanged FK test and actual fresh
+inventory both PASS. New canonical382objects SHA256
+4f3eea6a132861d604ff1a94cf53aa320eef9e6bdec546e0ce43be677fa5531e,
+catalogueba0db874e2abf564139893cd5009c14873d9e57ea54a1d381d9e2318fbbb1530,
+SQL13SHA1014d5163065ff585e51bc7ef901c44a10356f53f3597c3be122017d41bde946.
+Native facts remain at artifacts/afv2-id-01-oracle-e62d/. Earlier381 facts/logs
+remain unchanged historical evidence. The new unpublished13source oracle was
+bound at31525fc8c1ae3114e7a5883a5d08a1e450498c63 together with exactly3 consumer
+test adapters. Independent id_review accepted those deltas: real recovery+replay
+receipt scans, exact oldepoch and freshproof assertions, real queued race window
+and complete worker joins, exact page/RPC test inventory. No dummy success or
+assertion/constraint removal.
 
-Next: integrate the current complete lifecycle/migration/transport source,
-settle schema13 and generate its actual H22 closed oracle, then run real
-crypto/PG/epoch/concurrency/recovery verification and ordinary
-delivery. No ID-01 success is claimed yet. Production H03/AR10/H04/PROD01 and
-Cloud deployment pause remain separate; no public activation is authorized.
+H22 standard-PG/log/race full affected suites at31525fc8c1ae3114e7a5883a5d08a1e450498c63
+are now PASS exit0: identityapi89.345s/pages79.109s/migrate69.493s, no failure or
+data race. Original artifacts/afv2-id-01-compat-3152/native.log. All native drivers
+have ended; no task-owned temporary PG server remains. Full identity/provision at
+70ec and the previously passed unchanged packages plus standard fleet log rerun
+are retained evidence; final unchanged repository profiles still must run.
+Source is clean and frozen. Metadata author now has explicit final-freeze go:
+only original R138/runtime-ID-r1/Worker-ID-r1/policyreview-r1/filesNOTICE/strict
+secret scan guards and co-located provenance tests. Old usedrecords and131package
+coordinates/versions remain fixed. Prospective profile has468carried imageinputs,
+all filenames/hashes bound, actual existing Worker bundle reusable. The first
+tracked metadata freeze remains pending normal full context/hash/Worker gates.
 
-All following checkpoints are historical snapshots. Their old active task,
-running process and stop/next-action instructions do not supersede this one.
+Finite10/11/12 allPASS atabaa; openwriter/management-only refusal and SQL-fault
+rollback PASS at1b69. Real restore13 PASS at3a22 (3.93s): actual pg_dump/restore,
+oldauthority revoked/notuplifted, deletion/UNKNOWN/cutover facts retained. Failed
+fixture42P08 and confirmation23514 remain in original logs; only explicitUUID
+casts and supplied confirmation fields changed, no production guard weakening.
+
+Next: integrate only these actual compatibility fixes, push/fetch new exact SHA,
+run affected packages under the repository-standard real PG/log settings and
+race detector. Once those pass, finish full Docker context/carried-hash/actual
+Worker closure and first original R138/ID-r1 freeze. Final exact-head Cloud
+Windows10/Linux17 required profiles and independent evidence review remain.
+Then normal PR160 merge/applicable paused main result and true Plan143 completion
+records, both Plan legs against current Design and ordinary shared-record merge.
+Stop after current ID01. No ID completion/final host status/production acceptance
+is claimed yet. Real mail/domain/browser qualification stays AR10/H04 external.
+
+Final candidate94834c591958dd5d24a0bef92888e0d6c2c2099d is pushed and clean.
+R138 LFhashbe32706770d0f338761c035f00e91bba17355fb4fb2f256ebc2e236f6a67229a and
+original runtime-ID-r1/Worker-ID-r1/review-r1 first freeze is complete. Dockercontext6/6,
+all468inputs/carried253Center(203Go)+157C# hashes, actualWorker closure, source
+provenance,131unchangedpackages/586admissioninputs,provenance37/37 and targeted
+format guards PASS. Original Windows author-metadata-ready.json and
+related logs stay in Cloud author artifacts/afv2-id-01/. No used oldrecord changed.
+
+Both native callers independently fetched9483 and started unchanged formal
+eng/verify.py run-and-report. Windows session86407:
+Cloud/.git/arcforges-verify/logs/20261117-004519-94834c591958-win.
+H22 driverPID3499069: artifacts/afv2-id-01-formal-9483/native.log and exit;
+its driver is artifacts/afv2-id-01-formal-9483-runner.py in the native worktree.
+Required profiles are Windows10/Linux17. The pinned redacted secret-scan step
+actually PASS1s on H22 at9483. Other formal results remain pending; do not merge
+or mark task complete early. Independent id_review is reviewing exact metadata
+and final source while waiting for original final host receipts/candidate identity.
+
+All following sections are historical snapshots and do not override this one.
 
 ## Historical owner stop boundary — CENTER-01 round
 
