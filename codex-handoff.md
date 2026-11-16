@@ -78,24 +78,37 @@ Preserve initial pre-Go AttributeError/stale-runner-SHA assertion and real ACL
 parser failures in their original artifacts; they were not native successes or
 transport failures. Native named-ACL/unnamed-FUNCTION distinction is now handled
 by one exact closed-signature mapping with whole-TOC positive/negative tests.
-All earlier targeted drivers have ended. Current H22 full-Go compatibility
-check is artifacts/afv2-id-01-allgo-3a22-runner.py; log/exit under
-artifacts/afv2-id-01-allgo-3a22/. It runs real PostgreSQL and race-enabled go test
-./... before final metadata freeze, to catch actual consumer/test compatibility.
+All native drivers have ended. Full real-PG Go compatibility diagnostic at
+3a22 ran to exit1; original artifacts/afv2-id-01-allgo-3a22/native.log.
+Root custom runner omitted standard pg_stat_statements preload/statement logging;
+corresponding three fleet log cases rerun with repository-standard settings PASS
+in artifacts/afv2-id-01-pglogs-3a22/native.log. Other log-dependent cases need the
+standard setup too; do not count the malformed diagnostic as a full-suite pass.
+Source/fixture failures also occurred and must be fixed before final freeze:
+- id_author: recovery raw sending belongs in the existing deliver.go boundary,
+  as enforced by TestEverySendGoesThroughDeliver; preserve real delivery behavior.
+- id_transport: update actual new RPC/page/receipt closed-set fixtures; retain
+  exact old-epoch refusal/remaining-credential assertions; adapt concurrency hook
+  to the real new lock order and join workers so failed setup causes no test race.
+- id_audit: historical schemasAndGrantsAt fixture copied the old version filter;
+  delegate it to existing correct schema.AtVersion so old prefixes do not request
+  nonexistent13tables. Production Apply version selection was already correct.
+All fixes remain in current allowed paths. No SQL/oracle/guard weakening or old
+product rewrite. Metadata stays entirely ignored draft; no R138/ID-r1 is frozen.
 
 Finite10/11/12 allPASS atabaa; openwriter/management-only refusal and SQL-fault
 rollback PASS at1b69. Real restore13 PASS at3a22 (3.93s): actual pg_dump/restore,
 oldauthority revoked/notuplifted, deletion/UNKNOWN/cutover facts retained. Failed
 fixture42P08 and confirmation23514 remain in original logs; only explicitUUID
 casts and supplied confirmation fields changed, no production guard weakening.
-Metadata author is now preparing only scoped original R138/runtime-ID-r1/Worker-ID-r1
-and policyreview/filesNOTICE/strictsecret-scan guards after full Docker context,
-all-carried hash and actual Worker closure checks. No dependency version changes.
-Root must collect full-Go compatibility, metadata checks and independent review,
-then run final exact-head Cloud Windows10/Linux17 unchanged required profiles.
-Finish normal PR160 merge and inspect applicable paused main-push result; record
-true completion/evidence in Plan143, verify both Plan legs against actual Design
-main and merge shared records.
+
+Next: integrate only these actual compatibility fixes, push/fetch new exact SHA,
+run affected packages under the repository-standard real PG/log settings and
+race detector. Once those pass, finish full Docker context/carried-hash/actual
+Worker closure and first original R138/ID-r1 freeze. Final exact-head Cloud
+Windows10/Linux17 required profiles and independent evidence review remain.
+Then normal PR160 merge/applicable paused main result and true Plan143 completion
+records, both Plan legs against current Design and ordinary shared-record merge.
 Stop after current ID01. No ID completion/final host status/production acceptance
 is claimed yet. Real mail/domain/browser qualification stays AR10/H04 external.
 
