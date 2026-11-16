@@ -1,6 +1,28 @@
 # Codex handoff — ArcForges V2
 
-## Pending real-process DATA fixture implementation choice
+## Current coherent DATA candidate and real native diagnostics
+
+Node draft PR94: https://github.com/ArcForges/ArcForges/pull/94
+Branch task/afv2-data-01, exact pushed source782ee4a69e22727db3cf3de7b018b09baa5e56cf;
+14paths within allowed scope, no project/package/lock change; author tree clean.
+Windows targeted14/14PASS0skip9.769s, Store.Tests build0warnings/errors;
+original artifacts/afv2-data-01-{durable-tests-win-5,tests-build-win-5,format-win}.log.
+H-22 independently fetched782 into data-native worktree. Release no-restore
+warnaserror build0warnings/errors6.86s; same14/14PASS0skip4.240s with real
+Linux permissions and two real children. Original artifacts/afv2-data-01-
+tests-build-linux-782.log and durable-tests-linux-782.log; explicit exits both0.
+
+These supersede pending source/process snapshots below, retained as history.
+No product runtime proof, formal status or delivery claimed. Linux full Store
+regression PID3116956 / artifacts/afv2-data-01-store-regression-linux-782.log
+still running and already has two StageProducerAdmissionTests failures;
+sole delegated author base_audit notified and continues Windows regression.
+Fix affected regressions before AOT/final review. Windows affected AOT,
+independent review and both unchanged exact-head host profiles remain pending.
+Last H-22 user-free310038528bytes; existing verify cache9.3GB was read-only
+inspected, no cleanup. Preserve all raw evidence and historical drafts.
+
+## Earlier pending real-process DATA fixture implementation choice
 
 Use the existing Store.Tests MTP executable with exact method filter/no-build
 and test-local phase/root, twice: first real process admits/settles with real
