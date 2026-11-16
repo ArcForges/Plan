@@ -67,7 +67,7 @@ The actual named-ACL/unnamed-FUNCTION distinction has one exact closed mapping,
 with complete-TOC positive/negative tests. A successful MCP call resets the outage
 counter; no native outage occurred in this resumed checkpoint.
 
-The final schema13 source oracle was generated from actual`cba8`PostgreSQL:
+The first schema13 source oracle was generated from actual`cba8`PostgreSQL:
 381unique objects, inventory SHA256
 `0f26a23b7e39b4b4f9ab8f859e647f822e6e39eac41c1383028d484121972578`,
 catalogue`5fb4f156d72ed7040d839e76d82028ffb3e769a085e319bf501fbe18871ff30b`,
@@ -75,6 +75,21 @@ catalogue`5fb4f156d72ed7040d839e76d82028ffb3e769a085e319bf501fbe18871ff30b`,
 `9936d566131f26aa470bf63494f0167391a76c0824b2a57c99ef01f4dcde5d4e`.
 The canonical inventory is a necessary checked-in source artifact; original native
 receipts stay on H22 and are never reused as another host's verification.
+The unchanged mandatory foreign-key index check then found one missing index.
+A single nullable lifecycle-reference index was added to unpublished0013; no old
+SQL or constraint changed. H22`e62dac9b80bc40e4d364cddff39efce370f9609a`passed
+that check and captured its actual successor:382objects, inventory SHA256
+`4f3eea6a132861d604ff1a94cf53aa320eef9e6bdec546e0ce43be677fa5531e`,
+catalogue`ba0db874e2abf564139893cd5009c14873d9e57ea54a1d381d9e2318fbbb1530`,
+SQL13SHA`1014d5163065ff585e51bc7ef901c44a10356f53f3597c3be122017d41bde946`.
+The final source-oracle binding and exact consumer-test adapters are at`31525fc8`.
+Its standard-PG/log/race full identityapi/pages/migrate suites passed89.345s,
+79.109s and69.493s, exit0, with no data race. Original native log is
+`artifacts/afv2-id-01-compat-3152/native.log`. Earlier381objects remain historical
+facts, not rewritten current-admission evidence. Full identity/provision at`70ec`
+passed7.156s/19.530s. The original full diagnostic's missing PG preload/log setup
+is retained as an orchestration error; no full-suite pass is inferred from it.
+
 
 ## Review and remaining delivery
 
@@ -87,8 +102,8 @@ correct existing atomic implementation; no speculative duplicate fix was made.
 Windows all-Go compilation and browser-script54/54/TypeScript author checks passed.
 Actual locked Wrangler dry-run built164579bytes, SHA256
 `a3a9a97925d906d9f37daada0da15f7b20c4d0b43761d723d51c189f23ca17d5`,
-27parsed/26emitted inputs, without publication. The full real-PG Go compatibility
-suite and new original metadata closure are in progress. Final exact-head required
+27parsed/26emitted inputs, without publication. Affected real-PG compatibility checks have passed and original metadata closure
+is in progress. Final exact-head required
 Windows/Linux profiles, final independent review, normal merge and shared complete
 state still remain. No final status, merged artifact or publication is invented.
 

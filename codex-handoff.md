@@ -111,13 +111,18 @@ receipt scans, exact oldepoch and freshproof assertions, real queued race window
 and complete worker joins, exact page/RPC test inventory. No dummy success or
 assertion/constraint removal.
 
-Current H22 driverPID3489723 runs full affected identityapi/pages/migrate at3152
-with repository-standard preload/all-statement/duration logging, durability and
-race detector. Driver artifacts/afv2-id-01-compat-3152-runner.py; log/exit in
-artifacts/afv2-id-01-compat-3152/. Read actual outcome before source/final metadata
-freeze. Cloud author workingtree is clean. Metadata author only updated ignored
-prospective drafts/hashes to3152 (468imageinputs, all-carried bound); no tracked
-R138/ID-r1 exists yet. Actual Worker inputs stayed unchanged and are reusable.
+H22 standard-PG/log/race full affected suites at31525fc8c1ae3114e7a5883a5d08a1e450498c63
+are now PASS exit0: identityapi89.345s/pages79.109s/migrate69.493s, no failure or
+data race. Original artifacts/afv2-id-01-compat-3152/native.log. All native drivers
+have ended; no task-owned temporary PG server remains. Full identity/provision at
+70ec and the previously passed unchanged packages plus standard fleet log rerun
+are retained evidence; final unchanged repository profiles still must run.
+Source is clean and frozen. Metadata author now has explicit final-freeze go:
+only original R138/runtime-ID-r1/Worker-ID-r1/policyreview-r1/filesNOTICE/strict
+secret scan guards and co-located provenance tests. Old usedrecords and131package
+coordinates/versions remain fixed. Prospective profile has468carried imageinputs,
+all filenames/hashes bound, actual existing Worker bundle reusable. The first
+tracked metadata freeze remains pending normal full context/hash/Worker gates.
 
 Finite10/11/12 allPASS atabaa; openwriter/management-only refusal and SQL-fault
 rollback PASS at1b69. Real restore13 PASS at3a22 (3.93s): actual pg_dump/restore,
