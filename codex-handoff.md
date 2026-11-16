@@ -1,5 +1,25 @@
 # Codex handoff — ArcForges V2
 
+## Current API-01 candidate2ede formal verification
+
+Candidate2ede7f6b8b7b7c65fabc99849d139ead29f3d01a is pushed draftPR140.
+Only two affected tooling-test consumer modules change after96: strict135groups
+with old131 retained and4 exact newly audited groups; strict28packages with all
+old26 rows retained and2 explicit V2 owners. Author66/66 DependencyAdmission and
+11/11 Identity tests pass; original Windows logs are author artifacts/
+afv2-api-01-tooling-consumer-dependency-win.log and
+...-identity-win.log. No producer/Go/control/security delta; qualification1efa
+stays valid. Author idle; base_review independent delta review is active.
+
+H-22 independently fetched2ede and started unchanged full20step
+python eng/verify.py run-and-report, PID3074195, background
+/home/sammiller/arcforges/logs/afv2-api-01-formal-2ede7f6.txt. Observe actual new
+receipt/summary and final review before merge. API remains the only active task,
+no complete/merge/publication claim. Plan final record draft124 is on
+plan/afv2-api-01-final at Plan/.worktree/afv2-api-01-final. Next: finish formal
+profile; check actual strictstatus/currenthead/base/threads; expected-head merge,
+normal19NuGet/internalnpm/Go cohort; record completion then next eligible task.
+
 ## Current API-01 formal96 tooling consumer failure
 
 Formal96d02cef1eeff087e17ac8aab66891b55169270f tree
