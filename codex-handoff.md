@@ -1,5 +1,21 @@
 # Codex handoff — ArcForges V2
 
+## Latest API-01 candidate5417
+
+Source5417f9d12fc5bff43dc07590defefb0ba73a68cb fixes215 pack failure with
+exactly two V2 solution Project registrations. Windows solution Release build
+passed0warnings/0errors; log Contracts/.worktree/afv2-api-01/artifacts/
+afv2-api-01-solution-release-fix-win.log SHA256
+f74b12f61edd5b02023e50e4089c856a9e14fb38424172a16c3befedae5df35f.
+Admission266inputs passes. Independent base_review accepts full215source and
+5417delta, explicitly retaining215formal failure until a new full pass.
+
+H-22 fetched5417 independently; unchanged20step full profile PID3055580 is in
+/home/sammiller/arcforges/logs/afv2-api-01-formal-5417f9d.txt, actual receipt
+Contracts/.git/arcforges-verify/logs/20261116-124013-5417f9d12fc5-linux/.
+Observe its real summary; still no final full success, merge or publication.
+Plan final evidence is preserved in draftPR123/plan/afv2-api-01-delivery.
+
 ## Current API-01 checked scope and formal run
 
 Plan scope PR122 actually merged916cdc5cc5d927c9b6caaecdbaa5063f701f880a
