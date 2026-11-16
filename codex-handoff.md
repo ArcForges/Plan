@@ -1,6 +1,56 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — MXC-01 active; continuous delivery
+## Current checkpoint — MXC-01 native privacy failure; record then continue
+
+MXC-01 remains the only active task while its negative result and blocked state
+are made authoritative. Do not admit the candidate or weaken the privacy gate.
+Node draft93 preserves tested8252c8fc13d5973b27ab76bc18726eab8f21cb96; no Node
+required full statuses or source merge exists. Author is completing whitespace
+formatting only and then pausing for independent review.
+
+H-22 independently fetched825, locked restore and actual linux-x64 AOT passed
+0warnings/0errors. Native SDK1.0.1 discovery, pipe and real PTY passed. The owned
+kill/wait case PID3026318 observed the synthetic environment sentinel in owned
+native argv, then killed/waited and confirmed PID absent. Reportok=false/exit1;
+unit arcforges-mxc-aot-825-26b98458 is inactive/not-found with emptyControlGroup,
+and root confirmed all recordedPIDs absent. This is not an MCP/network/host
+failure. No credential was used or exported; only bool/PID evidence is retained.
+
+Exact Linux worktree: ArcForges/.worktree/afv2-mxc-01-8252c8f. Same-host artifacts:
+artifacts/mxc-01/{linux-report-825.json,linux-context-825.json,linux-unit-825.log,
+linux-unit-cleanup-825.txt,linux-publish-8252c8f.log,stage-825.log}, validstage
+`安装 测试825`, and four negative reports under `negative Linux825/`. ReportSHA
+2d9fbd329c481e77912a9df5b566a96590eba1aa8c8591f196d9c3664310eafe;
+probeSHAd2465732a29fff4edd0d20b8017d3ed9f665254b67fa0af7005f0452d8b45663;
+manifestSHA2d2da41778cb1548b6521f4bf1b2f3ab2570ae467d54022e272c8d7c53161aa1.
+All four invalid-stage cases reject before native/fixture work. Older488/676
+source/artifact diagnostics remain in their own named worktrees. No native job
+or build remains running there.
+
+Windows author825 evidence is in Node authorworktree artifacts/mxc-01/
+windows-author-8252c8f-summary.json: AOT0warnings, five actual signaturesValid,
+five fresh-process executor/Jobzero/argv checks passed, four negative cases
+passed. Native-only executable SHA23b9bae909c4bbaa638b5c1985d202e1e22ac6dc9aa28191b0bcc77d6b3a5370,
+stagemanifestf903750d347c4709fd02a6fc6c80921604aac587b0935b7c9501d6071c81ce1a.
+These are author-native results, not required full repository statuses. Actual
+source/tree, paths, commands, warning/signature/cleanup/measurement details are
+in the originating summary; coordinator/reviewer must read it before final doc.
+
+Official1.1.0 is not an automatic remedy: bounded exact source inspection still
+shows request environment emitted as --setenv key value. That is source-only,
+no1.1 runtime/admission claim. A supported upstream remedy or an explicit
+reviewed product decision is needed to resume admission. Preserve existing
+product executor/data; no private patch or new unreviewed pin.
+
+Next: independent review of Plan119 exact evidence-register allowlist amendment,
+merge it after its own native gates; only then edit Design platform F-AOT-01.
+Finish Design72 negative evidence/review/dual exact-head gates and merge first;
+then final Plan record against actual Design main sets MXC-01 blockedAR-03,
+records AR-03 failure, all pending drafts/receipts and next task. Continue
+AFV2-API-01 after that record, under existing continuous authorization. No task-
+boundary stop, public activation, source merge or runtime pass is implied.
+
+## Previous checkpoint — MXC-01 active; continuous delivery
 
 BASE-02 final Plan PR117 merged a42b00a7c3ad8643812face8796c156518e5607a at reviewed9630064c55893a9a6e4da7b8804eb4f2a6e0f789. Both required Plan native legs passed5/5 (Windows20261116-103722-9630064c5589-win; H-22Linux20261116-103731-9630064c5589-linux), binding actual Design4472ea5a110a3c15c8beeeed14627e44b37103d0.
 
@@ -9,6 +59,40 @@ AFV2-MXC-01 is the sole active task. Baselines: Plan a42b00a7c3ad8643812face8796
 Scope: exact stable Microsoft.Mxc.Sdk1.0.1 / officialv1.0.1 / schema1.0.0 artifact/license/SBOM admission and standalone C# Native AOT MXC-AOT-01 probes on the actual Windows/H-22 hosts. Keep product runtime, data and shared consumers; no profile-composition or product-performance qualification is claimed. /root/base_audit owns scoped Node probe authoring; coordinator owns Plan/Design and Linux/integration. At this checkpoint no probe code/build/runtime acceptance exists. Linux MCP fresh native preflight passed: actual H-22, SDK11.0.100/Python3.15.2, user manager running, cgroup2fs, bwrap0.12.0. Firewall helper binaries are absent on current PATH; determine whether the bounded default-denied offline probe needs them, never silently install or broaden networking.
 
 Next: implement MXC-AOT-01 within the task allowlist, collect exact official artifacts and genuine native receipts, independent final review and required exact-head host profiles; Design merges before Plan when updated. Continue the next eligible authorized task after recording delivery. No task-boundary stop is authorized. Public PROD-01 activation retains separate concrete approval.
+
+### MXC-01 artifact stage and authoritative scope
+
+Plan start/scope PR118 actually merged c1599bc878f6e9fb1cec7f4d8ae4aaf5d3948b9e
+at reviewed2de09dee78dd24bffc3c46dad2270bd92bd07225. The only scope addition is
+ArcForges.slnx to register the real probe required by existing repository layout
+checks; no checker or product-package change. Final required native receipts:
+Windows20261116-104942-2de09dee78dd-win5/5; H-22Linux20261116-104855-2de09dee78dd-linux5/5.
+Both bind actual Design4472ea5a110a3c15c8beeeed14627e44b37103d0. Independent
+nonauthor /root/base_review accepted; strict actual checks/no bypass/zero threads
+were checked before merge. Initial wrong-cwd Windows run only checked historical
+2b8b4809ae13 and never qualified PR118; the ledger retains that fact.
+
+Current evidence branch: plan/afv2-mxc-01-evidence in
+Plan/.worktree/afv2-mxc-01-evidence, based on that actual scope merge.
+Design draft PR72, design/afv2-mxc-01 at fda4637d8e31eae965b9b5e2a4671800d203bc78,
+records artifact-only progress; it is not reviewed/verified/merged and no runtime
+acceptance is claimed. Design must merge before final Plan validation.
+
+Linux native author venue is ArcForges/.worktree/afv2-mxc-01-author at detached
+39c2c57fdaf3666ec046a22370aa2f2157c2d058. Official artifacts and factual
+linux-artifact-inspection.json stay in artifacts/mxc-01/official there. ZIP
+542051775bytes/SHA0e832239454ba7fcd338ff56218a287eef4c0a01c1484084b869f55feff8abe9;
+NuGet14615475bytes/SHAd47b1f70c3fcaaed1705a0c3872807e2878fe8c1b778c0dd9eb9325bf421a672.
+All five x64 native files match; upstream SPDX2.2 digest matches but NOASSERTION
+licenses are inventory only, not closure approval. DownloadPID3023151 ended.
+Actual user namespace probe passed; no host settings or prerequisites changed.
+
+Official1.1.0 was freshly observed (published2026-11-15T05:28:48Z); preserve the
+explicit1.0.1 pin and reject unadmitted APIs. No probe code or AOT/runtime pass
+exists at this checkpoint. /root/base_audit is implementing scoped Node probe;
+root coordinates native Linux and Design/Plan. Continue implementation and
+collect complete MXC-AOT-01 evidence, then independent review and exact-head
+required native gates. Keep these staging paths and all older drafts/receipts.
 
 ## Previous checkpoint — BASE-02 complete; continue MXC-01
 
