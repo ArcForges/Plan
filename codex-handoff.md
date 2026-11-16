@@ -1,6 +1,26 @@
 # Codex handoff — ArcForges V2
 
-## Current UNKNOWN fix and oracle rebinding
+## Current finite schema10 implementation decision
+
+Independent Design/source audit confirms the reviewed finite maintenance branch
+is authorized in this same CENTER task; no old bootstrap/live collector activation
+is needed for isolated implementation. Continue private same-invocation source10
+capability bound to actual DB/connection/call, exact closed backup and new actual
+artifact/producer identity. Prove complete old roles/sessions/privilege-graph fencing,
+use original0011 SQL, establish explicit new maintenance floor without fake8e5
+promotion, then0012 with honest failure/recovery. The old hosted bridge still
+refuses. No force flag, synthetic publisher or Design semantic rewrite.
+
+Author first finishes the r4 native oracle/CLI batch for backup retest, then the
+minimal10slice. Fixed schema10 refusal is not final CENTER acceptance. A local
+self-hash/runner label is not published qualification; the same exact executable/
+candidate must pass migration, fault and restore. Actual mainf470 push43774372219
+was skipped with artifacts0; no existing published V2 successor is assumed.
+Local native profiles qualify closure but do not execute the schema10 migration.
+H03 production/operator/provider admission remains closed, and AR07 has not passed.
+This does not block current isolated engineering. Continue after this record.
+
+## UNKNOWN fix and oracle rebinding
 
 Cloud pushed/native sourcec0d9a62cdb200f43d291f362a11a80983f4c7089 fixes the
 confirmed revokedUNKNOWN settlement defect. Real H-22 targeted regression and
