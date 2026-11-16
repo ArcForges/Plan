@@ -1,6 +1,6 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — capacity restored; ID-01 verification resumed
+## Current checkpoint — capacity restored; ID-01 formatting correction
 
 The owner explicitly clarified continuation covers remaining AFV2 tasks 7–40;
 the earlier stop-after-ID01 instruction below is superseded. Continue serially
@@ -22,10 +22,20 @@ Cloud independently fetched exact94834c591958dd5d24a0bef92888e0d6c2c2099d again.
 Its unchanged Linux formal profile restarted with existing toolchain selectors,
 PID3572114, caller Cloud/.worktree/afv2-id-01-native, log
 artifacts/afv2-id-01-formal-9483-capacity-restored/native.log, exit in same directory.
-The earlier failed log is preserved. Valid Windows10/10 receipt remains applicable.
-No new Linux PASS, merge or completion is claimed until the profile finishes.
-Next: inspect this original run, resolve actual failures within scope, obtain
-independent final evidence review, then ordinary Cloud160/Plan143 delivery.
+The original run20261117-044320-94834c591958-linux has finished FAIL: check found
+Prettier formatting in docs/postgres-store.md; security bridge passed195s.
+The controller stopped linux-center after that failure; later steps did not run.
+Root applied pinned Prettier in the Windows author worktree: only two inline-code
+continuation lines lose two indentation spaces each. Independent source review
+accepts this semantic-no-op correction. That document is an admitted dependency
+input, so the minimum immutable successor metadata is being inspected before a
+new candidate; used ID-r1/R138 bytes must remain untouched. This one documentation
+file is currently uncommitted in Cloud/.worktree/afv2-id-01. No formal process is
+still running. Old Windows10/10 remains valid only for9483; a new head needs both
+native legs again. No new Linux PASS, merge or completion is claimed.
+Next: finish the minimal admission successor/scope record, commit/push the
+formatting correction, obtain both native profiles and final independent review,
+then ordinary Cloud160/Plan143 delivery.
 
 Plan branch plan/afv2-id-01-acceptance / draft PR143 contains this checkpoint.
 Main baselines remain Plan63e9c236, Design493022fb and Cloud6bd71696.
