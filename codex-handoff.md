@@ -1,6 +1,28 @@
 # Codex handoff — ArcForges V2
 
-## Current DATA P1 fix pushed, new-head qualification pending
+## Current DATA source accepted; final native checks pending
+
+Finalsource165913b2cdd61b66f3fdf7ffe6bff5a062b7f418 in Node draftPR94,
+treeb065cefdd50b0104378c1d69375a51c2ea5f8dd6. Independent base_review
+accepted finaldelta, closed prior P1, no further sourceblocker. Review was
+read-only/no extra Windows build/test load. Original failing1e02 fixture stays
+preserved. CurrentWindows19/19zeroSkip and0warning build remain actual proof.
+OnlyStoreprimitive/syntheticcounter acceptance, neverRun/IPC/liveSafety.
+
+FinalWindows unchanged15step run-and-report is running at exact165 fetched
+fromGitHub into detached .worktree/afv2-data-01-verify; root session5350,
+common log20261116-153119-165913b2cdd6-win. Existingbase39 reused in2s.
+Old1e02 Windows formal actually failedwin-ci506s/exit1 on one pre-existing
+CoreEventStream timing branch; original151921summary remains failed and no
+latersteps claimed. No Core/test/gate modification was made.
+
+H22 old1e02 verifierPID3124628 is still in its real exclusive phase; keep
+resource measurements alone. Wait clean completion, then fetch165 independently
+in data-native worktree, run final19 fixture build/test and unchanged20step
+new-head run-and-report. Bothfinalstatuses and review-evidence confirmation
+are needed before expected-head merge. Plan draftPR127 holds current records.
+
+## Earlier DATA P1 fix pushed, new-head qualification pending
 
 Node draftPR94 final candidate165913b2cdd61b66f3fdf7ffe6bff5a062b7f418,
 treeb065cefdd50b0104378c1d69375a51c2ea5f8dd6. Only5allowedpaths changed
