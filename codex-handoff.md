@@ -28,17 +28,20 @@ Final newreceipt09ff84a99679ebfb9b5d1c9f4ae98f4c50ddbcb65277ee0fafc8168b51039095
 passed same pinned real H22 redacted dir diagnostic with0findings, reportSHA
 37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570.
 Author dependency131/577/provenance/strictpin1of1/format passed. Independent
-base_review is reviewing this exact delta; prior source/metadata accepted.
+base_review accepted exactca525 delta with no blocker; full source accepted.
+Cloud159 comment https://github.com/ArcForges/Cloud/pull/159#issuecomment-6914977244.
 
 Both designated hosts independently fetched sameca525 and started unchanged
 full run-and-report with correct existing Go archive selectors:
-- nativeWindows Cloud/.worktree/afv2-center-01-verify, rootexecsession13352,
-  commonlogs20261116-191849-ca5250f88c4c-win.
+- nativeWindows Cloud/.worktree/afv2-center-01-verify, completedPASS10/10in154s,
+  commonlogs20261116-191849-ca5250f88c4c-win; session13352 is closed.
 - H22 Cloud/.worktree/afv2-center-01-native, driverPID3295659,
   artifacts/afv2-center-01-formal-ca525-linux.{log,exit}, driver.py beside it.
 Do not modify source during runs. Earlier genuinefailed f153 statuses remain.
 Ignored driver for exactcandidate CLI fresh/schema10/schema11 realPG three-path
-backup/restore is being prepared by center_artifact_drill, not yet executed.
+backup/restore is ready and on H22 at artifacts/afv2-center-01-final-drill.py,
+SHAbec2a47a7e54bce5a7c9db2eeebac49374036d7b2549f795d35f0016986c9221.
+Read by root/ASTpassed, not yet executed; no publication assertion for old10.
 No task completion, production admission, release or deployment is claimed.
 After exact-head checks/drills/review, mergeCloud/record actualdelivery, close
 CENTER if its agreed gates pass, thenSTOP/report per latestowner instruction.
