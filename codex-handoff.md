@@ -1,5 +1,31 @@
 # Codex handoff — ArcForges V2
 
+## Current API-01 r2 exact qualification and observed hash successors
+
+Metadata candidatee9caf2a6931f4dcf566be98593bb81426d69be18 is pushed draft140;
+source1efa1dd Go header fix and derived r2 qualification only. Author is idle.
+Windows exacte9ca full existing go static PASS, including original ST1000 and
+reviewed/current source qualification; logauthor artifacts/
+afv2-api-01-go-static-r2-win.log. Provenance1440files/170records, admission267inputs,
+format, generation drift and60vectors passed. Immutable r1 records stay unchanged.
+
+H-22 pinned read-only/no-network redacted scan diagnostic of origin/main..e9ca
+found11 new generic-api-key public input SHA256 rows in the immutable r2 successor.
+Raw diagnostic log stays author-native artifacts/
+afv2-api-01-secret-diagnostic-e9caf2a.log. Root rehashed all11 from Git blobs;
+all matched. Policy lines204/1247 duplicate one new Go-r2 record hash; r2 receipt
+lines46/91/129/198/231/232/278/410/415 contain9 distinct exact key/hash rows.
+This is a diagnostic, never a formal status. Its first invocation failed to import
+the Step-injected profile module; the corrected command used the same pinned
+image/config/range plus a read-only Git-dir mount for the linked worktree.
+
+Plan PR123 now updates only the existing exact .gitleaks.toml scope purpose to
+include actually observed immutable qualification successors with rehashing;
+no new path, broad ignore, scanner disabling or threshold changes. Independent
+scope review and both required Plan profiles precede adding these exact rules.
+Then final Contracts full Linux profile, delta review, merge and normal cohort
+publication remain. API is the sole active task, no delivery claim yet.
+
 ## Current API-01 required-check failure and bounded repair
 
 H-22 full5417 completed11steps successfully, including pack/Native AOT and
