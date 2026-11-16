@@ -1,191 +1,116 @@
 # Codex handoff — ArcForges V2
 
-## Current CENTER implementation: finite schema10 next
+## Current task and exact source
 
-Cloud draftPR159 is pushed at1f3899b3d1ca08e975c3209506708d88cc28e765,
-independently fetched on H-22. R4 UNKNOWN repair and new actual schema12 oracle
-are implemented and qualified by targeted PostgreSQL tests. Latest native run:
-3 top-level/5subcases/0skip PASS, exit0; store backup/restore+malformedmetadata
-4.451s, CLI config-to-PG boundary1.687s (current10refusal and real11transition).
-Original artifacts/afv2-center-01-management-1f389-linux.{log,json,exit}, logSHA
-c1189f6274a16a4e3edc04b1fbb18e604dbf5d56689ef3b955804d0805726dc4.
-Ownedcontainer removed/PID3247883 ended. No paused/running verification process.
+Continue the owner's authorized serial V2 implementation after each task/record.
+Five of40 tasks are complete: ENV01, BASE01, BASE02, API01 and DATA01. Current
+sole active product task is AFV2-CENTER-01. MXC01/AR03 remain blocked/FAILED;
+its dependent Core work is not eligible. No V1 task queue or unrelated product work.
 
-Independent base_review accepted c0d9 SQL fix and fixed1f52 backup/source audit;
-final full head and native profiles remain pending. Used r1..r3 unchanged; r4 SQL
-69c5496cb533c1b5edd56aaab3cce65c04608874ad29646b84df72d8321d85e5,
-actual current catalogue813ca9708dcfcf7ef79a3aeed2ef0c5b7cfb5703ca11819f305b9e6fd0f91501,
+Cloud draftPR159, branch task/afv2-center-01, pushed/native source
+177cd6afd5ed4701518210502a54e0b4c9667693. Windows author worktree:
+C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-center-01. H-22 independently
+fetched that SHA into /home/sammiller/arcforges/Cloud/.worktree/afv2-center-01-native.
+Author base_audit now implements schema10 archive restore; inspect its live status
+before touching files. Root owns state/ledger/H22/push/PR/merge. The artifact
+subagent ended without changes; independent base_review is available for final
+complete source and evidence review. Do not start a second active product task.
+
+Last checked Cloudmain f4708b36fd799025ad7d6fa9e5845e4558e492b3,
+Designmain493022fbf643b484665b2713c9eb8670f2fb2234,
+Planmain6839af0cb5daf8d9cd577239de8d68107b8aa028 (PR134).
+Current Plan record draftPR135, branch plan/afv2-center-01-schema10 in
+Plan/.worktree/afv2-center-01-native. Previous record branches/worktrees remain.
+
+## Latest real PostgreSQL checkpoint
+
+Source177 targeted checks PASS5 top-level/4subcases/0skip, exit0:
+store4top+old open-session/NOINHERIT refusal6.232s; CLI1top+real10/11finite
+transition2.604s. The actual schema10 path preserves history and establishes the
+new maintenance floor without old8e5 promotion. Fault after0011 commit leaves
+real version11/pending floor and old writers fenced, then resumes safely.
+Old bridge/proof input still refuses. Applied0001..0011,0012/r4 SQL and oracle
+bytes are unchanged. This is not yet a sealed-candidate executable or published
+successor qualification, and177 does not implement schema10 archive restore.
+
+Native command in center, GOTOOLCHAIN=local GOFLAGS=-mod=readonly:
+go test ./internal/store/migrate ./cmd/arcforges-center -run
+'^TestManagement(Schema10FiniteMaintenancePreservesHistory|Schema10LaterFaultKeepsCommittedFloorAndCanResume|OldBridgeCannotQualifySchema10|OpenOldWriterAndMembershipPathRefuse|CLIUsesTheRealMigrationBoundary)$'
+-count=1 -v. Original artifacts/afv2-center-01-management-177c-linux.{log,json,exit},
+logSHA515e956d3f659da3a11afe6803893b7124e54bfcad0765f951be5413b3345eeb.
+Owned test container removed; PID3254120 ended. No verification job is paused.
+
+Existing earlier successful fixtures remain valid at their recorded inputs:
+source1f389 real12backup/newtargetrestore, malformed metadata refusal and CLI
+boundary PASS3top/5sub/0skip; logc1189f6274a16a4e3edc04b1fbb18e604dbf5d56689ef3b955804d0805726dc4.
+Source1f52 real11backup/new11restore/finite12 and old guards PASS8/0skip;
+log1431fa7b7346e8dacf4ac01408d0545f7c6772ba15b8afa4e44ceb8a61437fe9.
+Independent review found and real418b diagnostic reproduced revokedUNKNOWN unable
+to settle (55000). R4 fixed only definite reconciliation under current hub while
+keeping original identity/owner/digest/channel/count; redelivery/new admission
+remains refused. c0d9 regression/inventory PASS2/0skip; independent delta accepted.
+All original failed and interrupted logs remain in ledger/raw artifacts/Git.
+
+## Scope, schema and provenance
+
+CENTER has24 precise allowed paths from plan.py show, including exact immutable
+management source records r1..r4, r135 candidate profile and exact runtime/Worker
+successor records. Scope amendments129/130/131/133 were independently reviewed,
+passed both Plan native profiles/current Design, and actually merged. No broad
+profile directory, policy, fake or deployment relaxation. Used r1..r3/r134 and
+applied0001..0011 are immutable. Current0012/r4 SHA
+69c5496cb533c1b5edd56aaab3cce65c04608874ad29646b84df72d8321d85e5;
+schema12 catalogue813ca9708dcfcf7ef79a3aeed2ef0c5b7cfb5703ca11819f305b9e6fd0f91501;
 361object inventoryf35cf1598d0b00e27ca65ac4bf6fa2f5b445ffcf4cb5a09899f512fc9b5d51d2.
-Native rawschemafacts/source.dump remain artifacts/management-schema12-3010129480;
-only canonical source-oracle text/hash went to Windows artifacts, not receipts.
-Previous c0d9 deliberately unqualified12backup state is resolved at1f389.
+Native raw schema facts/dump remain artifacts/management-schema12-3010129480;
+only expected-schema source inputs went to Windows, never host receipts/statuses.
+Register/update source inventory and freeze r135/runtime/Worker metadata only
+when complete source10 restore/consumer logic and independent source review stabilize.
 
-Author base_audit now continues the original task's schema10 finite maintenance
-slice in Cloud/.worktree/afv2-center-01. It is explicitly permitted by Design493
-migrations.md finite-maintenance OR admitted-successor branch. Reuse actual10
-closedbackup; new private same-invocation capability binds DB/connection/call/
-exactactualartifact/source, proves all-table/sequence/LOB consistency and complete
-oldroles/sessions/recursiveprivilegegraph fencing. guardCTR06Schema and floor
-recording must recognize new maintenance evidence without fake8e5promotion or
-oldGo identity. Original0011 SQL stays unchanged, then0012, with explicitfault/
-maintenance recovery. Old hostedbridge entry remains refused. No force flag,
-synthetic publisher, new product surface, Design rewrite or workflow activation.
+## Same exact native executable qualification next
 
-Currentfixed10refusal is not fullCENTER acceptance. Sameexactexecutable/candidate
-must receive real10 migration/fault/restore evidence and actualprotectedartifact
-qualification. Localselfhash/runnerlabel/nativecompile is not publishedauthority.
-ActualCloudmainf470 push43774372219 completed/skipped/artifacts0, so no existing
-publishedV2successor is assumed. H03actualoperator/production/provideradmission
-staysclosed but doesnot block isolated engineering; AR07 remainsNOT_RUN.
-Freeze r135/runtime/Worker metadata only after the source10code/review stabilizes.
+Reuse existing eng.center helpers; no new tracked wrapper is needed. H-22 native
+artifacts/afv2-center-01-historical-inputs/ preserves original starting producers:
+- schema10-arcforges-center:29466784B,
+  SHA028223a3dcbcbd6d7724558de02409e1e8874d876049f03fed38f47998773ba4.
+  Existing615.1 carrier was checked by unchanged carrier helper against pinned
+  carrier/OCI/source8e5. schema10-input.json records actual identity.
+- schema11-arcforges-center:43684061B,
+  SHAd65219ed3aeefd45bb33a981fe30260a6573836833b885dde31285dbeff56a5b.
+  Native verified sourcea498b4c48e5d2e0a13ee10b14f9ae4426cb13b80 tree exactly
+  equals mergedf470. Original full070913 receipt and center log/report hash chain
+  match; schema11-input.json references them. Not a publishedschema11 claim.
 
-Planmain de91326e3331c46bdb828aa633770914b4a797f9 (PR133), Designmain493,
-Cloudmainf470. Scope24 exact paths; no source/outside-profile additions.
-Currentrootrecord draftPlan134, branchplan/afv2-center-01-reconcile in
-Plan/.worktree/afv2-center-01-native. Root owns ledger/state/H22/push/PR/merge.
-WindowsprimaryCloud and independentcloud-deploy-ci-python/base01drafts remain
-untouched. Earlier intermediate evidence is below/ledger/Git and is historical.
-Continue after this checkpoint, do not start a second active product task.
+No historical producer was rebuilt/executed in preparation. After final required
+Cloud profiles, bind the actual current CLI to candidate manifest/source/imageId
+and image-provenance member SHA. Reuse an already extracted, verified image member
+where possible. Then actual fresh/10/valid11 producer migration, same current CLI
+finite maintenance, backup, separate-PG-target restore, rotate and platform verify
+use eng.center.Postgres/center_command/rotate/drill_phase/backup/restore helpers.
+Never hand-insert migration rows or call platform fixture observations Node results.
+Current candidate building alone does not execute schema10 migration. Actual main
+push43774372219 was skipped/artifacts0; no publishedV2successor is presumed.
 
-## Earlier confirmed reconciliation blocker and exact successor amendment
+## Completion and operational boundaries
 
-Independent review found and root reproduced a current defect at418b: after
-Reserve, UNKNOWN and protocol revocation, the same original command/current hub
-cannot record a definite final observation (SQLSTATE55000,0.386s,exit1). This
-also affects restored UNKNOWN rows because restore revokes old protocols.
-H-22 independent review worktree .worktree/review-afv2-center-01-unknown preserves
-untracked management_revocation_review_test.go, fixtureSHA
-2a05004377c045bc7518aa67fa5e89666c25560c100a1d113201e888a02a0d7f.
-Raw artifacts/afv2-center-01-review-418b-linux.{log,json,exit}, logSHA
-7415434b96f39c8a1001c09f8622dc107b12129510b559e99c08aa931989dbb4.
-Ownedcontainer removed, PID3241000 ended. No fake Node-result authority claimed.
+Finish schema10 archive restore/quarantine/fault tests and remaining direct
+consumers/documentation. Review stable full source; update exact provenance, push,
+fetch on both native hosts and run unchanged Cloud eng/verify.py run-and-report
+(Windows10steps/Linux17steps), then same exact candidate CLI three-path drill.
+Final reviewed head must meet actual Cloud strictboth/nobypass plus classicVerify.
+No AR07/F-CTR01/complete/delivered or production qualification is claimed yet.
+H03 actual operator inventory/backups/provider admission remains closed; it does
+not block the Design-authorized finite maintenance branch's isolated engineering.
+Old hosted bridge remains refused; no force, syntheticpublisher or workflow enablement.
 
-Plan133 adds only the precise management-storage-r4 successor record path,
-23 to24 paths. Proposed minimal SQL fix permits existing UNKNOWN to record a
-definite final observation under current hub, preserving original identity,
-owner epoch/digest/channel/delivery count. Revoked new admission/redelivery stays
-refused. Used r3 immutable. Independent scope review and both Plan profiles must
-precede SQL/r4 changes. Author continues nonconflicting Go-only consumer work;
-new Cloudhead1f52ba8cc4070fddf839139ccd85e215763ee1df is pushed with schema11
-historical fixture selection and expanded true11backup/restore-to12 tests.
-Root starts its exact targeted native consumer checks; no result claimed yet.
-
-## Earlier recovery implementation
-
-Cloud draft159 pushed418b89e2bc99ac3f73b4ddcea739f045ba258149, independently fetched
-on H-22. First real Capture12 to newtarget Restore fixture PASS, plus malformed
-metadata refusal for missing-table/changed-checksum/self-asserted-catalogue.
-Two top-level plus three subcases, zero skips,4.101s, exit0. Target-specific
-admission is renewed; old UNKNOWN/command facts retained. Original artifacts/
-afv2-center-01-management-418b-linux.{log,json,exit}, logSHA
-4a2268205856d293a14d55123843cd5ab4696a798552c53585fb929b54e63225.
-Ownedcontainer removed; PID3239238 ended. No verification process paused/running.
-Author continues required fault/CLI/consumer/provenance work; base_review makes
-read-only intermediate review of fixed0aba SQL/store, not final full acceptance.
-
-Plan132 actually merged90ba68b1778ac04cd19f9a1cff30d930ec930c04 with both profiles
-at ae0068b75dcceb2170f82420915e80dc80448890, Windows5/5 in5s/H22Linux5/5 in25s,
-bothDesign493. Current recovery record draft Plan133, branch
-plan/afv2-center-01-recovery in Plan/.worktree/afv2-center-01-native. CENTER stays
-sole active. Full backup/recovery coverage, final formal Cloud profiles/review
-and positive schema10 successor qualification are not complete.
-
-## Current task and baselines
-
-Continue the owner's authorized serial V2 work after each task/record. Five of40
-tasks are complete: ENV01, BASE01, BASE02, API01 and DATA01. DATA source NodePR94
-actually merged1319107b26305e4c6c29574deea5c81f6036e7d1; its Plan closurePR127
-actually merged6b8609101284af25b922408e8858091ad5906fd6. These tasks are not reopened.
-Current sole active task is AFV2-CENTER-01. MXC01/AR03 remain blocked/FAILED and
-dependent Core work is not eligible. No V1 queue or unrelated product work.
-
-Latest checked Designmain493022fbf643b484665b2713c9eb8670f2fb2234;
-Cloudmainf4708b36fd799025ad7d6fa9e5845e4558e492b3;
-Planmain de91326e3331c46bdb828aa633770914b4a797f9 (PR133).
-Windows native direct access replaces unstable Windows MCP by owner instruction.
-Linux venue is actual H-22 via Linux MCP: v2202601329473427941/sammiller,
-/home/sammiller/arcforges. MCP is healthy; compile/test/shell errors do not count
-as transport outages. Only three consecutive connection failures in one outage
-trigger that stop rule. GitHub uses existing native gh/Git authentication.
-
-## Current source, author and precise scope
-
-Cloud draft [PR159](https://github.com/ArcForges/Cloud/pull/159), branch
-task/afv2-center-01, pushed418b89e2bc99ac3f73b4ddcea739f045ba258149.
-Windows author:C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-center-01.
-H-22 native:/home/sammiller/arcforges/Cloud/.worktree/afv2-center-01-native,
-independently fetched exact418b. Author base_audit is implementing V2 backup/
-restore in this same task. Root owns state, evidence, H-22, push, PR and merge.
-No independent final Cloud review yet. Inspect live git status before touching
-author files. Root does not edit them while author is active.
-
-CENTER scope is23 precise paths from plan.py show. Reviewed metadata admissions:
-Plan129 merge5a0348da13526e9d8bb7eaab91e8abc47983be8a (18paths);
-Plan130 mergedb7b97e36b48f0811e0bd0bdc09d3c00931b1100 (22paths);
-Plan131 mergee980cf763402b2a602981e6ca52a464237de7984 (23paths).
-All had independent scope review and both required Plan profiles/currentDesign.
-Latest reviewedheadc1e7698beecd817b103c4ad1f72a8959caa89b3f/tree25d9a1f97c1f6a82adbd257d488ba8eb3427f496;
-Windows5/5 in5s original172345, Linux5/5 in26s original172352, driverexit0,
-bothDesign493. No protection, check or acceptance weakening.
-
-Preserve applied SQL0001..0011 and all used provenance records/profiles.
-Management-only DesignSQL adaptation registered before copying with same AGPL3
-source grant; identity read-lock fix received r2, SQL alias fix r3, never rewrote
-r1/r2. Current0012 SHA485661afcadbd485d83c660e39c163f7519b7e34a0a67e004203867f363670b3.
-Exact r135/runtime-r1/Worker-r1 closure metadata is authorized but not complete;
-old r134 remains immutable. Worker product/dependency changes are not required.
-No broad artifact-profile directory, new policy/framework or extra product scope.
-
-## Latest real PostgreSQL results
-
-At exact0aba, pinned native PostgreSQL18.7 image
-postgres:18.7-alpine3.24@sha256:b6972e1115a4ff8eba5d7f7d19184926d1e16d7d1136ae1e1a7ebf286da0f015,
-fsync/synchronous_commit/full_page_writes=on. Existing eng.center.Postgres and
-restore_drill_tool transport the container's actual pg_dump/pg_restore.
-Command in center: GOTOOLCHAIN=local GOFLAGS=-mod=readonly go test
-./internal/store/migrate -run '^TestManagement' -count=1 -v.
-Six top-level cases and two nested cases PASS, zero skips,6.480s, exit0:
-fresh SQL guards/reservations/cursor; valid11 legacy UNKNOWN preservation and
-writer fencing; old open session and NOINHERIT membership refusal; schema/floor/
-role fault rollback; schema10 unqualified refusal without side effects; native
-inventory diagnostic. Supplied result observations do not claim a remote Run.
-
-Original artifacts/afv2-center-01-management-0aba-linux.{log,json,exit}, logSHA
-cdf14271c9f29c6f86e7ab824cd5cdb1915eea3a79833fb2f5f8a6a94b0def2c.
-Closed schema12 inventory361objects SHA
-f35cf1598d0b00e27ca65ac4bf6fa2f5b445ffcf4cb5a09899f512fc9b5d51d2;
-catalogue034aa62eb4aba1396197a096e89b8aad9fa6ff6a904fafdbacda026f2386938c.
-Native raw dump/facts: artifacts/management-schema12-238699149. Only canonical
-expected-schema source inputs copied to Windows author ignored artifacts/
-afv2-center-01/schema12-r3-{inventory,catalogue-sha256}.txt. Native receipts and
-statuses stay on their producing host. Ownedcontainer removed; PID3234898 ended.
-Earlier5eaa2PASS2FAIL and a8825PASS1FAIL logs remain, not relabeled successful.
-The first Plan e18 Linux launcher was interrupted by shell grouping/30s timeout;
-original incomplete171720 log retained, proper171840 rerun passed. Not an outage.
-
-## Remaining CENTER work and boundaries
-
-Finish actual V2 backup/restore, pinned closed schema12 oracle, target-specific
-restore/cutover readiness and fault/recovery coverage. Then update authorized
-artifact provenance, push final candidate, run unchanged Cloud native profiles
-from GitHub on both required hosts, and obtain independent implementation review.
-Current targeted passes are not those formal statuses or complete F-CTR-01/AR07.
-
-Positive existing-schema10 upgrade still lacks a qualified published V2 security
-successor; RequireCTR06SecurityBridge remains genuinely unbound. No self-hash,
-test key, source readiness copy, force flag or caller assertion is publisher
-qualification. H-03 gates destructive operator/production admission, not current
-isolated development. Complete independent work before handling that real gate;
-never claim positive10 path passed. Cloud deployment stays deliberately paused.
-No production/credential probe, provider bootstrap, public activation or secret use.
-
-Current root Plan record worktree .worktree/afv2-center-01-native,
-branchplan/afv2-center-01-recovery from actual90ba. Preserve all prior branches.
-Cloud primary worktrees remain d422d771; Cloud/.worktree/afv2-base-01 has separate
-untracked eng/v2-migration, and .worktree/cloud-deploy-ci-python has independent
-unmerged eng/verification/test_ctr06_bridge_assets.py draft. Do not import it
-implicitly. Keep current/historical Go1.27.4/1.27.3 installations and old package/
-migration/evidence bytes. H-22 userfree last2.3GiB; no bulk cache cleanup.
+Windows native direct filesystem access replaces unstable Windows MCP by owner
+instruction. H-22 Linux MCP is healthy; count only three consecutive transport
+failures in one outage, never command/test failures. Existing native gh/Git login
+is used without credential reads. No SSH/WSL, proxy/security/network change or
+production probe. Preserve primary worktrees and Cloud base01/cloud-deploy-ci-python
+independent drafts; do not import them. Current/historical Go1.27.4/1.27.3 stay.
+All meaningful earlier CENTER phases are preserved in append-only ledger and Git.
+Continue after this record; stop only at a real unresolved gate or owner stop.
 
 ## Earlier task evidence — historical snapshots
 
