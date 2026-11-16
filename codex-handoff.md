@@ -2,120 +2,94 @@
 
 ## Current resumed checkpoint — AFV2-ID-01 active
 
-The owner has explicitly resumed migration after the completed CENTER-01 stop
-point, and repeated continue after an interrupted read-only check. Continue the
-existing authorized serial AFV2 range. The sole active task is now AFV2-ID-01:
-bounded account recovery, export and deletion. The older CENTER stopping point
-below is historical and no longer prevents this authorized next task.
+Continue the current ID-01 through actual completion and shared delivery records,
+then stop before another product task. The owner explicitly resumed after the
+completed CENTER-01 stop and the recent interruption. No repeat approval is needed
+for the current development/review/verification/ordinary merge. Public activation
+remains AFV2-PROD-01 with separate concrete approval; Cloud deployment stays paused.
 
-Latest fetched mains: Plan63e9c23650308541009ecbd4fb55b06c9d8693d1,
+Current fetched mains: Plan63e9c23650308541009ecbd4fb55b06c9d8693d1,
 Design493022fbf643b484665b2713c9eb8670f2fb2234,
-Cloud6bd7169607d55c8b647b1a70302ff28ad365d488. CENTER-01 is complete and its
-original evidence remains valid. The graph has6complete,1active,1blocked and
-32planned. MXC-01/AR03 remains blocked independently; ID-01's dependency is ready.
+Cloud6bd7169607d55c8b647b1a70302ff28ad365d488.
+Graph:6complete,1active(ID01),1blocked(MXC01),32planned. MXC/AR03 remains an
+independent official-engine blocker; ID01 depends only on completed CENTER01.
 
-New independent worktrees:
-- Plan: C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-id-01, plan/afv2-id-01.
-- Cloud: C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-id-01, task/afv2-id-01.
-- Design read-only baseline: ArcForges-Design/.worktree/afv2-id-01, detached493.
+Worktrees under C:/MyFile/Projects/ArcForges/:
+- Plan/.worktree/afv2-id-01, plan/afv2-id-01-acceptance, draft PR143.
+- Cloud/.worktree/afv2-id-01, task/afv2-id-01, draft PR160.
+- ArcForges-Design/.worktree/afv2-id-01, detached493 read-only.
+- Plan/.worktree/afv2-id-01-verify, native caller at96a48ea.
+- Cloud/.worktree/afv2-id-01-verify, preserved native caller at6bd7169.
+H22 native: /home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-native,
+currently1b690454d52b010b01f4076c5426cf18f0a9108b; Plan native caller is
+Plan/.worktree/afv2-id-01-verify at96a48ea. Never touch dirty Linux Plan primary.
 
-Plan141 has merged as a221ba8b827c926620dade2752f133e7ca8b61e0. Its reviewed
-7f114efa715f47519f14066e55d0490341c35d20 passed Windows5/5 in5s and H22Linux5/5
-in26s, both bound to actual Design493. ID-01 now has35 concrete allowed paths.
-Plan142 then merged63e9c23650308541009ecbd4fb55b06c9d8693d1; exact96a48ea passed both5-step native profiles against Design493 with independent review. Its three additional exact test paths bring ID01 to38. The record branch is now plan/afv2-id-01-acceptance in the same Plan worktree.
+Plan141 mergeda221ba8; Plan142 merged63e9c236. Latest scope is38 exact paths,
+including only the three necessary closed-route/browser-script tests added in142.
+Independent id_review accepted142 head96a48ea; Windows5/5PASS5s and Linux5/5PASS26s
+both bind actual Design493. See immutable ledger/PR for full identifiers.
 
-Core author id_author owns identity/session/oneuse/schema13/device/mail/ratelimit;
-transport author id_transport owns API/pages/routes/access/server/generatedtables
-and identity docs. Reuse existing proof crypto, identity/session/one-use,
-mail delivery and bounded transaction primitives. Add actual account epochs and
-lifecycle receipts through forward schema13, preserve applied0001–0012 and local
-Runs/data. State4 deletion reconciliation requires new real authentication and
-narrow account-only permissions; revoked credentials are never re-enabled.
+Cloud sourcecba8a20b887e266ffe9f359770dc9ec6573f5d3f implements recovery,
+bounded canonical export, deletion/owner cleanup, real account epoch/session
+revocation, typed pages/RPC inventory, finite schema13 migration and restore.
+Applied0001–0012 and previous oracles/metadata remain immutable. New0013 is an
+unpublished forward migration, independently authored from requirements.
+No local Run/Sandbox data, unrelated products or dependency upgrades are included.
 
-Migration author id_audit now owns store/migrate, the real CLI, dbtest, narrow
-historical hub fixtures, Docker context and postgres-store docs. It must preserve
-all applied SQL and old12oracles, fence source12 writers across all7schemas and
-derive13's closed oracle from actual H22 DDL. Default fixtures are real complete13;
-the explicitly named historical routing fixture cannot be used as current safety
-evidence. Independent reviewer id_review did not author the implementation.
-Root alone stages/commits/pushes shared source and owns graph/ledger, integration,
-PRs, designated-host verification and normal merge.
+H22 actual PostgreSQL18.7 durability-on with Go race detector:
+- be9d2f8 initial10cases PASS: inventory1,identity5,session1(3subcases),pages3.
+  Original artifacts/afv2-id-01-targeted-be9d/native.log.
+- cba8a20b changed3cases PASS: recovery-vs-credential-removal real pg_locks race,
+  owner reported-name cleanup/provider-pending retention and fresh13 inventory.
+  Original artifacts/afv2-id-01-delta-cba8/native.log.
+- schema13 canonical inventory381objects SHA256
+  0f26a23b7e39b4b4f9ab8f859e647f822e6e39eac41c1383028d484121972578;
+  actual catalogue5fb4f156d72ed7040d839e76d82028ffb3e769a085e319bf501fbe18871ff30b.
+  Native directory artifacts/afv2-id-01-delta-cba8/lifecycle-schema13-3886327592/.
+  Canonical inventory alone was transferred as necessary checked-in source,
+  never as a substitute/copied host verification receipt. New13oracle binding is
+  now being committed; old12oracle is unchanged. Finite/restore13 is NOT passed yet.
 
-Cloud draft PR160 branch task/afv2-id-01 sourcecheckpoint is now
-be9d2f8ded5819ff50ee8c897f8ebd99dcd3fe36 (schema, migration, complete account
-core and transport). All Windows Go packages compile; PostgreSQL is not inferred
-from that. Browser-script successor tests54/54 pass author-side and final
-formatting remains uncommitted. Root alone integrates commits. No R138 metadata
-or13oracle is frozen.
-Export uses bounded canonical JSON and a receipt digest; reads recheck current
-authority/expiry and reject changed content. No export-body storage or new
-filesystem/configuration framework. SourceSQL13 is independently authored from
-requirements, not copied Design DDL. Existing dependency versions stay fixed.
+Windows all-Go compile and author browser-script54/54/TypeScript passed. Actual
+Worker dry-run produced164579bytes, SHA256
+ a3a9a97925d906d9f37daada0da15f7b20c4d0b43761d723d51c189f23ca17d5,
+parsed27/emitted26; unchanged locked dependencies. Evidence in ignored
+artifacts/afv2-id-01/author-worker-dryrun-{win.log,summary.json}. No publication.
+No R138/runtime-id-r1/Worker-id-r1 metadata is frozen yet.
 
-Windows native DEKU/J7Rdm is accessed locally under the owner's explicit
-authorization. H-22 Linux MCP executed successfully on
-v2202601329473427941/sammiller, Debian13, /home/sammiller/arcforges. GitHub MCP
-read is healthy. The Linux primary Plan has old staged/unstaged changes and is
-untouched; use separate worktrees. The initial interrupted call was read-only,
-not an outage. Only three consecutive transport failures in one outage trigger
-the stop rule; successful calls reset it.
+Independent reviewer id_review accepted source fixes: lock-held live-email
+recheck prevents recovery from adopting a concurrently revoked channel; real PG
+regression passes. Owner cleanup clears reported_name/named_by_account; recovery
+UI uses conditional delivery wording. Ordinary email signin already rechecks the
+channel; no resend rewrite. Exact source review also withdrew a false floor
+finding: recordLifecycle already atomically archives old credentials and moves
+floor/admission to the new generation. Reuse lock concern likewise withdrawn
+with concrete family/revoked predicates. No speculative legacy rewrites/tests.
 
-The latest continuation resumes this current ID-01 task through completion and
-shared delivery records, then stops before another product task. Plan draft142
-records the implementation and the exact three-test scope correction. Root's
-routes/** delegation shorthand exceeded the three original named source files;
-only the two closed-route tests and browser-script test are added. That reviewed
-amendment has now merged; the new script tests are authorized.
+Authors are frozen: id_author(core/schema),id_transport(pages/API/scripts/docs),
+id_audit(migrate/CLI/dbtest/historical fixture/docs); root alone git index,
+commit/push/PR/merge/state/ledger. id_review and base_review are nonauthor reviewers;
+id_metadata may prepare ignored facts only until final source/oracle/native pass.
 
-H22 fresh13 PostgreSQL DDL actually applied at bootstrap5c4418e. Inventory failed
-only at strict archive ACL matching for a parameterized function (retry1 log:
-Cloud/.worktree/afv2-id-01-native/artifacts/afv2-id-01-inventory-5c44-retry1/).
-The earlier driver AttributeError happened before Go and remains recorded as an
-orchestration error. Neither failure was a transport outage or a passed inventory.
-Exact full-signature ACL matching now has positive/negative Go unit evidence;
-actual archive inspection found unnamed FUNCTION versus named ACL parameters.
-The exact one-function mapping is now in be9d, with whole-TOC positive/negative
-unit evidence; old oracle/SQL remain immutable.
-No backup13 oracle or R138 metadata is qualified/frozen yet.
+Windows native DEKU/J7Rdm uses authorized direct local access. H22 MCP is healthy:
+v2202601329473427941/sammiller, Debian13, no transport outage (streak0). Only three
+consecutive transport failures in one outage stop work; success resets the count.
+Preserve initial pre-Go AttributeError/stale-runner-SHA assertion and real ACL
+parser failures in their original artifacts; they were not native successes or
+transport failures. Native named-ACL/unnamed-FUNCTION distinction is now handled
+by one exact closed-signature mapping with whole-TOC positive/negative tests.
+Earlier drivers3456966/3459367 have ended. New H22 driver artifacts/afv2-id-01-migrate-1b69-runner.py is running against exact1b690454; log/exit in artifacts/afv2-id-01-migrate-1b69/. Read the actual result before relaunching.
 
-H22 sourcebe9d2f8 race-enabled real PostgreSQL check now PASS exit0: fresh13
-inventory1, identity5, session1(3locking subcases), pages3. Original log is
-Cloud/.worktree/afv2-id-01-native/artifacts/afv2-id-01-targeted-be9d/native.log.
-It covers actual proof crypto, canonical export bounds/read refusal, providerless
-cleanup versus provider pending, deletion/cancel revocation, session serialization
-and real HTTP flows. It is targeted evidence, not the final required profile.
-Inventory381objects/catalogue6abb7ffc is provisional. The independently reviewed
-unpublished schema13 must clear reported_name/named_by_account during owner cleanup;
-source author is adding that minimal correction and real test assertion. Review
-also found BeginRecovery's pre-lock email lookup could race credential removal;
-lock inside account authority and recheck the actual live email before enrolling
-a recovery flow, with a real concurrent test. Ordinary email signin already
-rechecks under the account lock and does not need a speculative resend rewrite.
-Existing completed-code-reuse lock paths were cross-checked and need no change.
-Final schema13 oracle must be recaptured after the SQL correction. Plan draft143
-tracks this continuing task; metadata author may prepare only ignored tools and
-dry-run Worker facts until final source is stable.
+New13source-oracle binding is pushed at1b690454d52b010b01f4076c5426cf18f0a9108b. H22 fetched that exact head. Next: inspect the running real finite12→13/seven-schema fencing/SQL-fault rollback/restore13 cases with native pg_dump/pg_restore and durability on. Fix only actual failures,
+then freeze original R138/ID-r1 metadata after full Docker context/carried-hash
+and actual Worker closure checks. Run final exact-head required Cloud Windows10/
+Linux17 profiles, finish independent final review and normal PR160 merge; inspect
+applicable paused main-push result. Record true complete state/evidence in Plan143,
+verify both Plan legs against actual latest Design and merge shared records.
+Stop after current ID01. No ID completion/final host status/production acceptance
+is claimed yet. Real mail/domain/browser qualification stays AR10/H04 external.
 
-
-H22 native worktree Cloud/.worktree/afv2-id-01-native has independently fetched
-be9d from GitHub. Running driverPID3456966:
-artifacts/afv2-id-01-targeted-be9d-runner.py; logs/exit/inventory are in
-artifacts/afv2-id-01-targeted-be9d/ (driver log sibling). It uses the actual pinned
-PostgreSQL18.7 with durability on and real Go race-enabled identity/session/pages
-plus inventory tests. Read its actual outcome before relaunching or advancing.
-The unused ca7c driver hit its stale expected-SHA assertion before Go; preserve it
-as an orchestration failure, not another PostgreSQL result or transport outage.
-No designated-host outage exists.
-
-Next: inspect this native result, settle any actual safety/acceptance failures,
-
-settle schema13 and generate its actual H22 closed oracle, then run real
-crypto/PG/epoch/concurrency/recovery verification and ordinary
-delivery. No ID-01 success is claimed yet. Production H03/AR10/H04/PROD01 and
-Cloud deployment pause remain separate; no public activation is authorized.
-
-All following checkpoints are historical snapshots. Their old active task,
-running process and stop/next-action instructions do not supersede this one.
+All following sections are historical snapshots and do not override this one.
 
 ## Historical owner stop boundary — CENTER-01 round
 
