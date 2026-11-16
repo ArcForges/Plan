@@ -18,15 +18,25 @@ Windows DEKU native local commands and H-22 MCP were freshly checked; user manag
 running/cgroup2fs. Count only consecutive reconnect failures within one outage.
 
 Worktrees: ArcForges/.worktree/afv2-base-02 on task/afv2-base-02;
-Plan/.worktree/afv2-base-02-delivery on plan/afv2-base-02-delivery. The earlier
+Plan/.worktree/afv2-base-02-delivery on plan/afv2-base-02-delivery,
+[delivery draft PR115](https://github.com/ArcForges/Plan/pull/115). The earlier
 scope worktree Plan/.worktree/afv2-base-02 / plan/afv2-base-02 is preserved.
 Prior BASE-01 drafts and the
 independent Cloud CI draft remain untouched. Linux Plan primary remains dirty;
 use independent worktrees. No product candidate/PR/native receipt exists yet. The scope amendment passed
 independent review and native5/5 on each host at9dd6b7e20028ed69af8a9b94d7eecf5d3fad400a
 before merge; both summaries bind actual Design4472ea5a. Product authoring has
-resumed in the isolated worktree. The current product diff is uncommitted work,
-not a delivered or tested candidate.
+resumed in the isolated worktree. The current product diff is uncommitted work, not a delivered candidate.
+The author has removed the13 actual Desktop source/test files,26 exclusive
+package pins/admissions and current Avalonia/MicroCom notice copies. Tmds.DBus
+and all other locks remain unchanged. The38 affected paths are the admitted
+Desktop files and solution/dependency/publish/package/workflow/benchmark/docs/
+ClientImages companions; `git status --short` in the product worktree names each.
+Only the two removed Desktop lock files are staged so git-ls-files preflight sees
+the final project graph. Other edits remain unstaged. Locked restore passed;
+a single native Windows build, Repository/Tools tests and publish/package/startup
+author checks are running/next. No source candidate or mandatory host status is
+claimed. Process-local English CLI output avoids the known locale parse issue.
 
 BASE-02 retains Node/CLI/supervisor/service and essential old execution/data
 safety; deletes the disconnected Hello World desktop/test scaffold and unused
