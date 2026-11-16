@@ -48,15 +48,17 @@ intent/effect observations. No Run/NodeIPC/CLI/Stop/revocation proof or delivery
 
 Both hosts independently fetched final165 from GitHub. Windows full15step:
 detached .worktree/afv2-data-01-verify, root execsession5350;
-common git log20261116-153119-165913b2cdd6-win. CI489s/schema9s/AOT62s/
-native tools27s/native closedloop70s passed, nowbench. Base39 reused in2s.
+common git log20261116-153119-165913b2cdd6-win. CI489s/schema9s/AOT62s/native tools27s/native closedloop70s/bench53s/
+package3s passed. Exclusive phase started15:43:35. Base39 reused in2s.
+The receipt log is authoritative for the current running step.
 
 H22 data-native is now exact165:
  /home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native.
 Final19-case build/tests passed before unchanged20step full run started.
 DriverPID3163319, artifacts/afv2-data-01-formal-linux-165.log/.exit;
-common git log20261116-154123-165913b2cdd6-linux. Toolchain/realOS/restore/
-format/build passed, nowCI. Observe current logs, do not launch a duplicate.
+common git log20261116-154123-165913b2cdd6-linux. Toolchain/realOS/restore/format57s/build32s/CI152s/schema4s/AOT68s/
+tools6s/nativeclosedloop77s/bench14s/package2s passed. Exclusive started15:48:18.
+Observe current logs, do not launch a duplicate.
 Keep exclusive resource measurements alone on each host.
 
 Old1e02 Windows151921 profile failedwin-ci506s on one existing CoreEventStream
