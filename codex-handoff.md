@@ -1,6 +1,27 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — adapt stale ingress negative test
+## Current checkpoint — f6b9 final native verification running
+
+Plan144 mergedcedc3c4905808b7bbee539a33a8e1a6ce3736f2a after independent review
+and Windows5/5PASS5s/Linux5/5PASS27s atfadd0cc, both currentDesign493022fb.
+Its40th exactpath permits the necessary ingress negative-vector adaptation.
+Cloudf6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa is pushed/clean; only two test lines
+changed fromdb93. Independentreview accepted unchanged404/zero-forward assertions.
+H22 independently fetched it and native ingress-pipeline test27/27PASS0skip.
+Windows targeted samefile26/27: the changedcase passed, only the already-observed
+WindowsURL C:/C:/ source-path test failed; no additional scope or weakened gate.
+
+Both hosts run the unchanged full profile atf6b9. Windows session31337, original
+Cloud/.git/arcforges-verify/logs/20261117-052223-f6b9edc25f5d-win/; H22 driver3679481,
+callerCloud/.worktree/afv2-id-01-native, artifacts/afv2-id-01-formal-f6b9/native.log
+and exit. Results pending; do not duplicate or claim success. id_audit watches
+original Linux evidence. Prior original runs/results remain preserved.
+Root Plan branch is now plan/afv2-id-01-delivery in the same worktree. Next: final
+both-host receipt/artifact review, ordinaryCloud160 merge and paused main-push
+observation, then Plan completion record/both native checks and merge. Continue
+the remaining authorized task range only as real dependencies permit.
+
+## Historical checkpoint — adapt stale ingress negative test
 
 Clouddb93 final Windows10/10PASS144s; Linux failedcheck on the old
 ingress-pipeline.test.ts negative vector for BeginRecovery(actual200/expected404).
