@@ -1,6 +1,29 @@
 # Codex handoff — ArcForges V2
 
-## Current recovery implementation
+## Current confirmed reconciliation blocker and exact successor amendment
+
+Independent review found and root reproduced a current defect at418b: after
+Reserve, UNKNOWN and protocol revocation, the same original command/current hub
+cannot record a definite final observation (SQLSTATE55000,0.386s,exit1). This
+also affects restored UNKNOWN rows because restore revokes old protocols.
+H-22 independent review worktree .worktree/review-afv2-center-01-unknown preserves
+untracked management_revocation_review_test.go, fixtureSHA
+2a05004377c045bc7518aa67fa5e89666c25560c100a1d113201e888a02a0d7f.
+Raw artifacts/afv2-center-01-review-418b-linux.{log,json,exit}, logSHA
+7415434b96f39c8a1001c09f8622dc107b12129510b559e99c08aa931989dbb4.
+Ownedcontainer removed, PID3241000 ended. No fake Node-result authority claimed.
+
+Plan133 adds only the precise management-storage-r4 successor record path,
+23 to24 paths. Proposed minimal SQL fix permits existing UNKNOWN to record a
+definite final observation under current hub, preserving original identity,
+owner epoch/digest/channel/delivery count. Revoked new admission/redelivery stays
+refused. Used r3 immutable. Independent scope review and both Plan profiles must
+precede SQL/r4 changes. Author continues nonconflicting Go-only consumer work;
+new Cloudhead1f52ba8cc4070fddf839139ccd85e215763ee1df is pushed with schema11
+historical fixture selection and expanded true11backup/restore-to12 tests.
+Root starts its exact targeted native consumer checks; no result claimed yet.
+
+## Earlier recovery implementation
 
 Cloud draft159 pushed418b89e2bc99ac3f73b4ddcea739f045ba258149, independently fetched
 on H-22. First real Capture12 to newtarget Restore fixture PASS, plus malformed
