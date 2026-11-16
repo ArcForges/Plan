@@ -49,6 +49,18 @@ This retires the isolated scaffold; it does not qualify MXC, V2 runtime/migratio
 or public activation, and closes no AR-01..12 item. Continue the next eligible
 authorized task after recording; no task-boundary stop.
 
+2026-11-16 DATA-01 store primitives completed in Node PR94, merged
+1319107b26305e4c6c29574deea5c81f6036e7d1 at reviewed/tested165913b2cdd6.
+Both final native data fixtures passed19/19 with0skips; unchanged formal profiles
+passedWindows15/15 andH22Linux20/20 at the same source/tree. Applied0001..0015
+history and unresolved journals remain preserved. Independent review accepted
+the complete owner-backup closure and refusal of unqualified SQL-only retirement;
+the original retirement rollback failure remains recorded. Local validation
+packages were built, with no publicrelease. This proves the scoped SQLite/key/
+identity/replay/backup boundary only; no Run/IPC/CLI/Stop/revocation or official
+MXC profile is accepted here. No AR-01..12 row is closed; AR-03 stays FAILED.
+Exact receipts/artifacts/rollback and review are in the handoff and ledger.
+
 The owner permits current-machine local Windows access instead of its unstable
 MCP. H-22 MCP successfully executed final required Linux profiles. The reconnect
 stop rule is three consecutive failures within one outage; success resets the

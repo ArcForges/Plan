@@ -1349,7 +1349,7 @@
       "title": "Add V2 Node persistence and durable mutation receipts",
       "milestone": "P2",
       "order": 9,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1432,11 +1432,16 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Continue the existing user-authorized serial AFV2 range after complete API-01/cohort481.1 and final Plan124 merge. Only real V2 Node SQLite persistence/receipt/backup primitives in the three declared paths; preserve applied0001..0015 and legacy unresolved intents. No Core/Run/IPC/CLI/safety runtime claim.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Continue the existing user-authorized serial AFV2 range after complete API-01/cohort481.1 and final Plan124 merge. Only real V2 Node SQLite persistence/receipt/backup primitives in the three declared paths; preserve applied0001..0015 and legacy unresolved intents. No Core/Run/IPC/CLI/safety runtime claim. [delivered] Scoped Store primitives merged at reviewed exact tree; real Windows/Linux19-case acceptance and required15/20-step profiles passed. Independent review accepted. Local validation packages recorded; no publication or runtime activation applies. [complete] All DATA-01 scoped completion conditions met: real native data fixtures, unchanged required full host profiles, independent review and actual source merge. Current Plan PR records closure; proceed to next independently eligible authorized task after its merge.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/94",
+          "https://github.com/ArcForges/Plan/pull/127"
+        ],
+        "merges": [
+          "ArcForges@1319107b26305e4c6c29574deea5c81f6036e7d1"
+        ],
         "publications": [],
         "ledger": null
       },

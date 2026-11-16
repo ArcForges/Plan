@@ -1,121 +1,135 @@
 # Codex handoff — ArcForges V2
 
-## Current task and exact source
+## Current delivery checkpoint
 
-AFV2-DATA-01 is the only active product task. ENV-01, BASE-01, BASE-02 and
-API-01 are complete; MXC-01/AR-03 remain blocked/FAILED. The owner explicitly
-requires continuous authorized work after each completed record. Do not resume
-V1 tasks, widen implementation scope or activate production.
+AFV2-DATA-01 code/development acceptance is complete. Node PR94 actually merged
+1319107b26305e4c6c29574deea5c81f6036e7d1; its tree
+b065cefdd50b0104378c1d69375a51c2ea5f8dd6 equals final reviewed/tested source
+165913b2cdd61b66f3fdf7ffe6bff5a062b7f418. Node main has no automatic release;
+only local native validation packages were produced. No public activation.
 
-- Node base/main:39c2c57fdaf3666ec046a22370aa2f2157c2d058.
-- Design main:493022fbf643b484665b2713c9eb8670f2fb2234.
-- Last actual Plan merge:PR126,709795fbfaee6143d195029d4d14b7cf52773ab5.
-- Node draftPR94:task/afv2-data-01, final source165913b2cdd61b66f3fdf7ffe6bff5a062b7f418,
-  treeb065cefdd50b0104378c1d69375a51c2ea5f8dd6.
-- Current Plan draftPR127:plan/afv2-data-01-final, Windows worktree
-  C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-data-01-final.
-- Windows author Node worktree:.worktree/afv2-data-01, clean165; author ended.
-  Sole independent reviewer base_review accepted165 delta and ended.
-  Coordinator owns native checks, pushes, PRs, merge and records.
+Plan draftPR127 / plan/afv2-data-01-final records this closure and must still
+pass both native Plan profiles and merge. Its worktree is
+C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-data-01-final.
+Last actual Plan main is PR126 merge709795fbfaee6143d195029d4d14b7cf52773ab5.
+Design actual main493022fbf643b484665b2713c9eb8670f2fb2234 was freshly checked
+before Node merge. No Design change was needed.
 
-## Completed implementation and qualified boundary
+Graph now has5complete tasks of40:ENV/BASE01/BASE02/API01/DATA01. No product task
+is active until next startup. MXC01/AR03 stayblocked/FAILED and Core dependencies
+remain unsatisfied. plan.py next actually returned AFV2-CENTER-01 planned:
+Migrate PostgreSQL safely to V2 management storage. The owner requires continuous
+authorized work after each completed record; do not stop at this boundary.
 
-Schema16 is expand-only; applied0001..0015 SQL/history remain byte-identical.
-V1 resource_sample and unresolved journals remain; only V2 logical
-resource_sample maps to v2_resource_sample. No package/project/workflow changes.
-Durable owner epoch/protected HMAC identities, known-body-only compaction after
-24hours, retained UNKNOWN, CAS, SQLite admission reserve, coherent DB/key
-snapshots and independent complete owner/history fences are implemented.
+## DATA implementation and independent acceptance
 
-Independent review caught an actual retirement rollback P1 at1e02: SQL-only
-RETIRED disappeared after latestDB rollback and old ACTIVE restore was allowed.
-Final165 refuses unqualified state/retired_utc updates before any state change;
-supplied RETIRED input refuses admission/maintenance, never auto-reactivates.
-No retirement product workflow/API was added. Reviewer accepted this minimum
-and all16 changed paths; original failing review fixture remains in
-Node/.worktree/review-afv2-data-01-1e02/tests/ArcForges.Node.Store.Tests/
-DurableRetirementRollbackReviewTests.cs.
+Only16 paths in Node Store, its tests and eng/v2-migration changed. Schema16
+expands V2 Sandbox/Run/config/resource/grant/transfer/delete/migration storage,
+retaining all applied0001..0015 bytes/history, old tables and unresolved journals.
+Logical V2 resource_sample uses fixed v2_resource_sample to preserve V1 consumers.
+No dependencies/projects/workflows or native/IPC consumers changed.
 
-Windows final Store.Tests build0warnings/errors33.80s and19/19PASS0skip41.854s:
-author artifacts/afv2-data-01-retirement-guard-{build,tests,format}-win.log.
-H22 final165 Store.Tests build0warnings/errors6.64s and19/19PASS0skip4.680s:
-data-native artifacts/afv2-data-01-tests-build-linux-165.log and
-durable-tests-linux-165.log, explicit exits0. Both final full profiles remain pending. Fixtures prove real SQLite/keys/permissions/
-two process reopen, with only the permitted synthetic effect counter and supplied
-intent/effect observations. No Run/NodeIPC/CLI/Stop/revocation proof or delivery yet.
+Random owner epoch, protected HMAC intent, immutable admitted identities,24hour
+known-body compaction, retained UNKNOWN, CAS, SQLite admission reserve and coherent
+DB/key backup with independent complete owner/history closure are implemented.
+Unqualified SQL state/retired_utc updates refuse before retirement can occur;
+there is no retirement product API or automatic epoch/key rotation.
 
-## Running native processes — continue these first
+Independent nonauthor base_review accepted final165 code and BOTH native data
+evidence after closing its real P1. Original failing1e02 retirement rollback
+fixture remains in Node/.worktree/review-afv2-data-01-1e02/tests/
+ArcForges.Node.Store.Tests/DurableRetirementRollbackReviewTests.cs.
+Earlier wrong-schema fixtures, first build failures, rejected review candidate,
+interrupted old Linux profile and old Windows timing failure remain in ledger/
+raw logs/history. No old failure was converted to success.
 
-Both hosts independently fetched final165 from GitHub. Windows finished actual
-exit0/full15of15PASS2220s. Original common git summary:
-20261116-153119-165913b2cdd6-win/summary.json,
-SHAaa7ece4e40515cfa01429308775180eac013c47777f2d6f40affc91f0c06e1b4;
-command reported actualsuccess16:08:21. Rootsession5350 is CLOSED; do not poll it.
-Native-exclusive713s/startupgate24s passed. Formal cached zip16333540B,
+Task fixtures prove actual SQLite/keys/permissions/process reopen. Only the
+admission counter and supplied intent/effect observations are synthetic. No Run,
+Node IPC, CLI, Stop/revocation, live recovery or official MXC qualification claimed.
+
+## Exact native evidence and artifacts
+
+Both hosts independently fetched source165 from GitHub. Final Store fixtures:
+- Windows19/19PASS0skip41.854s; build0warnings/errors33.80s.
+  Author artifacts/afv2-data-01-retirement-guard-{build,tests,format}-win.log.
+- H22Linux19/19PASS0skip4.680s; build0warnings/errors6.64s; explicitexits0.
+  data-native artifacts/afv2-data-01-{tests-build,durable-tests}-linux-165.log.
+
+Both unchanged full run-and-report profiles completed and themselves posted
+actual success at that exact source/tree:
+- Windows15/15PASS2220s, exit0. Original common git summary
+ 20261116-153119-165913b2cdd6-win/summary.json,
+ SHAaa7ece4e40515cfa01429308775180eac013c47777f2d6f40affc91f0c06e1b4.
+ Native-exclusive713s/startup24s passed; rootsession5350 is closed.
+- H22Linux20/20PASS2054s, exit0. Original common git summary
+ 20261116-154123-165913b2cdd6-linux/summary.json,
+ SHAccb9d38389635b1a22ec34934666b68af3f8036dcf4fc8940118f806da7d9bb4.
+ Native-exclusive800s/startup1s passed; driver3163319 completed.
+
+Windows formal zip16333540B,
 SHA9e4409e2ae8f598def7e11fc758f1d0e499bc4a6a5d9144536741998308d327f,
-at Node/.worktree/_verify/artifacts/packages/arcforges-win-x64.zip.
-Host/bench hashes in ledger. These are local validation artifacts, not release.
+Node/.worktree/_verify/artifacts/packages/arcforges-win-x64.zip.
+H22 formal tar15515106B,
+SHAd99e081f4fe7ab94dd90be86606c1e757aecd5604a1411fa0f92a0cc170512ff,
+/home/sammiller/.cache/arcforges-verify/ArcForges/artifacts/packages/
+arcforges-linux-x64.tar.gz. Host/bench individual hashes are in ledger.
+These are validation artifacts, not published distribution channels.
 
-H22 data-native is now exact165:
- /home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native.
-Final19-case build/tests passed before unchanged20step full run started.
-DriverPID3163319, artifacts/afv2-data-01-formal-linux-165.log/.exit;
-common git log20261116-154123-165913b2cdd6-linux. Toolchain/realOS/restore/format57s/build32s/CI152s/schema4s/AOT68s/
-tools6s/nativeclosedloop77s/bench14s/package2s passed. First exclusive passed837s at16:02:15; native-exclusive now running,
-then startupgate. Observe current logs, do not launch a duplicate.
-Keep exclusive resource measurements alone on each host.
+Actual strict Node24915109 ruleset required both statuses, no bypass. Current
+head/base, real success statuses, zero threads and accepted review were checked
+before immediate expected-head merge; no admin/automatic merge. Actual merge
+tree was fetched/verified. Original receipts stay on their producing hosts.
 
-Old1e02 Windows151921 profile failedwin-ci506s on one existing CoreEventStream
-timing branch; no latersteps claimed. Its CIphase overlapped cold base AOT148s,
-but causation is not established. Final165CI passed without Core/gate changes.
-OldH22 exclusive suite ended naturally; boundary observer then used the existing
-verifier interruption handler before another oldstep. Originaldriverexit2 and
-arcforges/linux error reported15:40:25. Oldverifier/step/observer/lock/PIDfile
-were absent before finalcheckout; no coordinator remains paused. Fulloldleg
-was interrupted, never PASS. Helper/log/raw step evidence remains preserved.
+## Worktrees, rollback and preservation
 
-## Exact next actions and merge gates
+Windows author Node .worktree/afv2-data-01 / task/afv2-data-01 is clean at165.
+Windows detached caller .worktree/afv2-data-01-verify and formal _verify are165.
+H22 /home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native is165.
+No native verifier/observer is left paused or intentionally running. The obsolete
+1e02 Linux resource step ended naturally before normal interruption handling;
+its real error/exit2 is preserved, not PASS. Do not poll closed sessions.
 
-1. Windows is fully passed; monitor only H22 finaldriver3163319 to completion;
-   both final19-case native fixtures are already passed, no rerun needed.
-2. Record full original summaries/exit codes/artifact hashes and actual required
-   final165 statuses. Never copy another host receipt or manually post a status.
-3. Do not overlap other host work with exclusive resource measurements or start
-   duplicate profiles. Diagnose actual failures before any justified repeat.
-4. Obtain both actual required statuses at final165 and reviewer confirmation of
-   final evidence. Check actual rules/current head/base/threads, then immediate
-   expected-head mergePR94, no bypass/admin/automatic merge.
-5. Record actual merge, formal receipts/artifact hashes, review and ordinary
-   delivery (Node main has no automatic release). Use plan.py delivered then
-   complete/ledger/sequence --write. No DATA-specific AR row closes other ARs.
-6. Finish PlanPR127 with current handoff/register facts, both native5step profiles
-   binding freshly fetched actual Design main, required protection checks, merge.
-   Record its actual merge in next startup. Then plan.py next; CENTER-01 is
-   independently eligible after DATA, while MXC-dependent Core stays blocked.
+All schema15 and V2 backup/restore evidence uses disposable fixture roots; no
+operator deployment/database was migrated. Restore requires complete keys,
+identities and independently retained latest authority; missing/newer history
+refuses activation/maintenance, never silent reset or rekey. Old live tables
+remain until MIG02, and older readers refuse schema16.
 
-## Host and preservation constraints
+Only four exactly verified retired ignored/untracked Desktop bin/obj directories
+in the H22 formal cache were removed for measured space pressure. No source,
+evidence, published artifact or unknown cache was deleted. Preserve primary
+Node checkouts200d2d25, all historical worktrees, .worktree/afv2-base-01 drafts,
+Cloud/.worktree/cloud-deploy-ci-python and original artifacts/SQL/checksums.
 
-Windows current native local filesystem is explicitly owner-authorized instead
-of unstable Windows MCP. H22 Linux MCP remains reachable; only consecutive
-transport failures within one outage count toward the3-failure stop rule.
-A prior synchronous Plan call exceeded command timeout, not MCP connectivity.
-GitHub MCP had3consecutive HTTP transport failures earlier; use existing gh/Git
-login, no token creation/printing. No WSL/SSH/alternate venue/security changes.
+Windows current native local access is explicitly owner-authorized instead of
+unstable Windows MCP. H22 Linux MCP stayed reachable throughout all checks.
+Only3consecutive transport failures within one outage count; command/test exits
+are not connection failures. GitHub MCP previously hit3consecutive HTTP failures;
+use existing native gh/Git login, no token creation/printing. No WSL/SSH/other
+verification venue, network/proxy/security change or deployment activation.
 
-Only four retired ignored/untracked Desktop bin/obj outputs in the existing H22
-formal cache were removed after exact path/process/Git checks; space recovered
-to3.37GB, last later2.5GB. No evidence/source/package/unknown cache was deleted.
-Preserve primary Windows/Linux Node checkout200d2d25 and all historical worktrees,
-Cloud/.worktree/cloud-deploy-ci-python, .worktree/afv2-base-01 drafts, raw evidence,
-published bytes and applied SQL. Deploy stays paused; PROD-01 needs later
-concrete explicit approval.
+## Exact next actions
+
+1. Push/check final PlanPR127 closure head. Both designated hosts fetch it and run
+   unchanged python eng/verify.py run-and-report. Both5step summaries must bind
+   freshly fetched actual Design main; recheck that SHA before Plan merge.
+2. Verify actual Plan statuses/currenthead/base/strictno-bypass/threads. The
+   record-only coordinator-check exception applies. Expected-head immediate merge,
+   record actual ownmergeSHA in next startup (no self-reference loop).
+3. Run plan.py next/show AFV2-CENTER-01 and read its full definition, Design refs,
+   current Cloud AGENTS/CONTRIBUTING and actual origin/main/worktrees/drafts.
+   Read authorization ledger; owner already authorized subsequent V2 ordinary
+   development/delivery. Record exact scope and only one active task.
+4. Preserve independent CI draft and all published SQL/security-successor history.
+   Distinguish H03/runtime admission from read-only/development work. Keep Cloud
+   deployment paused; public PROD01 still needs a concrete later explicit approval.
+5. Continue the next eligible work without a task-boundary final/permission loop.
 
 ## Historical evidence
 
-Detailed DATA phase diagnostics, failures, exact sources and all old native
-proofs are immutable in ledger/ledger.jsonl and prior handoff commits (including
-1a3694b). NodePR94 and PlanPR125/126/127 retain review/status records. The prior
-task snapshots below are historical; the current state above is authoritative.
+Full dated DATA facts remain immutable in ledger/ledger.jsonl, NodePR94,
+PlanPR125/126/127 and prior handoff commits. Prior task snapshots below are
+historical; current delivery and pending Plan closure above are authoritative.
 
 ## Current checkpoint: API-01 complete; final Plan record awaits checks/merge
 
