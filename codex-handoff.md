@@ -1,5 +1,24 @@
 # Codex handoff — ArcForges V2
 
+## Current API-01 candidate9d precise AT-12 integration repair
+
+Candidate9d27110969fb3d7b2a347a8b487d945a3721cb56 is pushed draftContracts140.
+Root cause:7 new generated auxiliary public types were absent from existing
+WireSchemaCatalog. Only two ArchitectureTests files change (41addlines), binding
+exact two V2 owners/three declared output names to their owned protocol anchor,
+using existing Services aggregation semantics. Original Contract/Generated/AT12/
+hash/drift checks stay; no waiver or policy change. Crossowner/oldowner/nested/
+fake-output negatives pass, Windows incremental build0warnings0errors/local
+fixtures pass, not a shared formal success. Source1efa Go qualifiers unchanged.
+
+H-22 independently fetched9d and started unchanged full20step profile,
+PID3088638, background/home/sammiller/arcforges/logs/afv2-api-01-formal-9d27110.txt.
+Shared architecture gate will run once inside this full profile, avoiding an extra
+3minute duplicate gate. Independent reviewer base_review is auditing the precise
+binding delta against original AT12. Author idle. Observe real final summary/review,
+then strict gates/expected-head merge/normal cohort publication. API still active;
+no full success, merge or publication yet. DraftPlan124 contains all current records.
+
 ## Current API-01 AT-12 diagnosis complete
 
 Safe H-22 diagnostic completed GATE_EXIT1: exactly7 AT-12 findings, only new
