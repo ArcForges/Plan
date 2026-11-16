@@ -131,6 +131,12 @@ Full dated DATA facts remain immutable in ledger/ledger.jsonl, NodePR94,
 PlanPR125/126/127 and prior handoff commits. Prior task snapshots below are
 historical; current delivery and pending Plan closure above are authoritative.
 
+## Historical prior-task snapshots
+
+The snapshots below are historical. Current DATA delivery and next actions are
+above; detailed phase facts remain immutable in ledger/ledger.jsonl and Git
+history. Do not resume obsolete active states or pending API publication notes.
+
 ## Current checkpoint: API-01 complete; final Plan record awaits checks/merge
 
 This checkpoint supersedes the historical intermediate snapshots below.
