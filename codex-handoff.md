@@ -16,7 +16,33 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
-## Current stable source accepted; artifact metadata in progress
+## Current final candidate under mandatory host verification
+
+FinalCloud headf153548d703f547d5eea11ebdcbcfa91b03184ab is pushed and independently
+fetched on both designated hosts. Independent source and metadata review accepts;
+newr135/source1888,475distinctGitinputdigests verified, authorprovenance/profile
+andWrangler13/13 passed. Source/SQL/metadata are frozen during verification.
+
+First formal attempt failed only because root omitted the required non-secret
+Go distribution archive selector; original Win184846/Linux184856 failed evidence
+is preserved. Exact existing pinned archives were found and hashed; only process
+selection was corrected, no source/policy/install change. Both unchanged full
+profiles now run at the samef153:
+- Windows caller Cloud/.worktree/afv2-center-01-verify, active rootexecsession9492;
+  original common git logs20261116-185513-f153548d703f-win.
+- H-22 callerCloud/.worktree/afv2-center-01-native, driverPID3275443;
+  artifacts/afv2-center-01-formal-f153-linux-retry1.{log,exit}; common git logs
+  20261116-185523-f153548d703f-linux. No Linux process is paused.
+
+The archive selector points at the existing20261111 Go1.27.4 distribution on each
+host. Current and historical Go/Node remain separate. MCP is healthy; these input
+failures are not connection failures. No status is manually posted or copied.
+After both fullprofiles pass, use the same actual candidate image CLI for three
+starting paths/backup/restore, then complete independent evidence review, normal
+merge and Plan closure. Not yet task complete/published/productionadmitted.
+Owner boundary remains: complete CENTER-01, then stop/report; do not start next.
+
+## Stable source acceptance before metadata freeze
 
 Cloud pushed/native1888ddcdee56cecf71e619952fcac7d958ebe9a9 is the accepted code
 baseline. Independent base_review accepted full48d2 source and the test-only1888
