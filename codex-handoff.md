@@ -1,5 +1,24 @@
 # Codex handoff — ArcForges V2
 
+## Current narrow successor metadata amendment
+
+Author paused after the first native findings, with only management.go and
+management_integration_test.go uncommitted in the allowed Cloud worktree.
+The failure is specific: immutable command_identity reads used FOR UPDATE in
+Reserve and FOR SHARE in the SQL trigger, each requiring an UPDATE grant. Remove
+these unnecessary identity locks; preserve insert-only grants and existing
+Serializable, unique/FK, immutable identity and admission checks. No role widening.
+
+Plan PR130 now adds four exact required successor metadata paths, 18 to 22:
+management-storage-r2 (supersedes unchanged used r1), cloud-release-r135,
+center-runtime-afv2-center-01-r1 and center-worker-afv2-center-01-r1 under their
+existing eng/provenance locations. Active runtime/Worker records bind immutable
+r134, whose native source closure changes with this task; Worker bytes/dependencies
+are unchanged. No directory wildcard, policy or acceptance relaxation. These
+provenance profiles are not publisher admission or proof of schema10 qualification.
+Independent scope review and both Plan profiles/current Design are next, then
+resume sole author. Used schema0001..0011, r1 and old profiles remain untouched.
+
 ## Current CENTER candidate and first native findings
 
 Cloud draft [PR159](https://github.com/ArcForges/Cloud/pull/159) is pushed at
