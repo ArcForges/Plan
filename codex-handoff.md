@@ -1,5 +1,48 @@
 # Codex handoff — ArcForges V2
 
+## Current confirmed reconciliation blocker and exact successor amendment
+
+Independent review found and root reproduced a current defect at418b: after
+Reserve, UNKNOWN and protocol revocation, the same original command/current hub
+cannot record a definite final observation (SQLSTATE55000,0.386s,exit1). This
+also affects restored UNKNOWN rows because restore revokes old protocols.
+H-22 independent review worktree .worktree/review-afv2-center-01-unknown preserves
+untracked management_revocation_review_test.go, fixtureSHA
+2a05004377c045bc7518aa67fa5e89666c25560c100a1d113201e888a02a0d7f.
+Raw artifacts/afv2-center-01-review-418b-linux.{log,json,exit}, logSHA
+7415434b96f39c8a1001c09f8622dc107b12129510b559e99c08aa931989dbb4.
+Ownedcontainer removed, PID3241000 ended. No fake Node-result authority claimed.
+
+Plan133 adds only the precise management-storage-r4 successor record path,
+23 to24 paths. Proposed minimal SQL fix permits existing UNKNOWN to record a
+definite final observation under current hub, preserving original identity,
+owner epoch/digest/channel/delivery count. Revoked new admission/redelivery stays
+refused. Used r3 immutable. Independent scope review and both Plan profiles must
+precede SQL/r4 changes. Author continues nonconflicting Go-only consumer work;
+new Cloudhead1f52ba8cc4070fddf839139ccd85e215763ee1df is pushed with schema11
+historical fixture selection and expanded true11backup/restore-to12 tests.
+Root starts its exact targeted native consumer checks; no result claimed yet.
+
+## Earlier recovery implementation
+
+Cloud draft159 pushed418b89e2bc99ac3f73b4ddcea739f045ba258149, independently fetched
+on H-22. First real Capture12 to newtarget Restore fixture PASS, plus malformed
+metadata refusal for missing-table/changed-checksum/self-asserted-catalogue.
+Two top-level plus three subcases, zero skips,4.101s, exit0. Target-specific
+admission is renewed; old UNKNOWN/command facts retained. Original artifacts/
+afv2-center-01-management-418b-linux.{log,json,exit}, logSHA
+4a2268205856d293a14d55123843cd5ab4696a798552c53585fb929b54e63225.
+Ownedcontainer removed; PID3239238 ended. No verification process paused/running.
+Author continues required fault/CLI/consumer/provenance work; base_review makes
+read-only intermediate review of fixed0aba SQL/store, not final full acceptance.
+
+Plan132 actually merged90ba68b1778ac04cd19f9a1cff30d930ec930c04 with both profiles
+at ae0068b75dcceb2170f82420915e80dc80448890, Windows5/5 in5s/H22Linux5/5 in25s,
+bothDesign493. Current recovery record draft Plan133, branch
+plan/afv2-center-01-recovery in Plan/.worktree/afv2-center-01-native. CENTER stays
+sole active. Full backup/recovery coverage, final formal Cloud profiles/review
+and positive schema10 successor qualification are not complete.
+
 ## Current task and baselines
 
 Continue the owner's authorized serial V2 work after each task/record. Five of40
@@ -11,7 +54,7 @@ dependent Core work is not eligible. No V1 queue or unrelated product work.
 
 Latest checked Designmain493022fbf643b484665b2713c9eb8670f2fb2234;
 Cloudmainf4708b36fd799025ad7d6fa9e5845e4558e492b3;
-Planmain e980cf763402b2a602981e6ca52a464237de7984 (PR131).
+Planmain 90ba68b1778ac04cd19f9a1cff30d930ec930c04 (PR132).
 Windows native direct access replaces unstable Windows MCP by owner instruction.
 Linux venue is actual H-22 via Linux MCP: v2202601329473427941/sammiller,
 /home/sammiller/arcforges. MCP is healthy; compile/test/shell errors do not count
@@ -21,10 +64,10 @@ trigger that stop rule. GitHub uses existing native gh/Git authentication.
 ## Current source, author and precise scope
 
 Cloud draft [PR159](https://github.com/ArcForges/Cloud/pull/159), branch
-task/afv2-center-01, pushed0aba947d44086350e9fcaca2c9cf0f400ee42912.
+task/afv2-center-01, pushed418b89e2bc99ac3f73b4ddcea739f045ba258149.
 Windows author:C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-center-01.
 H-22 native:/home/sammiller/arcforges/Cloud/.worktree/afv2-center-01-native,
-independently fetched exact0aba. Author base_audit is implementing V2 backup/
+independently fetched exact418b. Author base_audit is implementing V2 backup/
 restore in this same task. Root owns state, evidence, H-22, push, PR and merge.
 No independent final Cloud review yet. Inspect live git status before touching
 author files. Root does not edit them while author is active.
@@ -90,7 +133,7 @@ never claim positive10 path passed. Cloud deployment stays deliberately paused.
 No production/credential probe, provider bootstrap, public activation or secret use.
 
 Current root Plan record worktree .worktree/afv2-center-01-native,
-branchplan/afv2-center-01-validation from actuale980. Preserve all prior branches.
+branchplan/afv2-center-01-recovery from actual90ba. Preserve all prior branches.
 Cloud primary worktrees remain d422d771; Cloud/.worktree/afv2-base-01 has separate
 untracked eng/v2-migration, and .worktree/cloud-deploy-ci-python has independent
 unmerged eng/verification/test_ctr06_bridge_assets.py draft. Do not import it
