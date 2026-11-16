@@ -1,6 +1,62 @@
 # Codex handoff — ArcForges V2
 
-## Current delivery checkpoint
+## Current task: AFV2-CENTER-01
+
+Continue the already authorized serial V2 range. DATA-01 and shared PlanPR127
+actually completed/merged:Node1319107b26305e4c6c29574deea5c81f6036e7d1 and
+Plan6b8609101284af25b922408e8858091ad5906fd6. Plan closure exact738/tree6ef
+passedWindows5of5/H22Linux5of5, both actual Design493. Fiveof40 complete.
+Current sole active task is CENTER-01, not oldV1 or MXC-dependentCore.
+
+Baseline Cloudorigin/mainf4708b36fd799025ad7d6fa9e5845e4558e492b3 was fetched
+and originArcForges/Cloud verified on both actual hosts. Designmain remains
+493022fbf643b484665b2713c9eb8670f2fb2234. Current Plan worktree
+C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-center-01 branchplan/afv2-center-01
+starts from actual6b86091; startup records not yet merged.
+Windows Cloud author:C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-center-01,
+branch task/afv2-center-01, cleanf470. H22 native:
+ /home/sammiller/arcforges/Cloud/.worktree/afv2-center-01-native, detachedcleanf470.
+Both primaryCloud worktreesd422d771 remain untouched. No product edits/tests yet.
+
+Implement the exact fifteen allowed paths in plan.py show CENTER-01. The prior
+ledger count17 was a count typo only, corrected; no allowlist widening.
+Goal:reuse locked direct PostgreSQL runner/store.InTx/backup/restore/floor guards;
+append only needed V2 management/protocol/receipt/tombstone/cutover/grant storage
+and a qualified finite schema10→guarded0011→V2 transition. Preserve immutable
+0001..0011/checksums, identity/enrollment/entitlement/audit and unresolved delivered
+UNKNOWN facts. Never force, assume-fenced, insert fake migration records or
+reuse the obsolete unbound8e5 authority. Prove fresh/schema10/schema11 upgrade/
+fault/restore with actual source/artifact/backup/writer/generation receipts.
+
+Design refs cloud-store.md/sql,migrations.md,cloud-audit.md and FCTR01 are current.
+The targetSQL also includes ID01 account lifecycle and HOST02 commerce tables;
+those later product features are outside this task. No new authoritative Center
+Run DB, command args/env/output/file payloads, new channel/RPC product/billing/
+account lifecycle, old table contraction, dependency upgrades or release activation.
+
+H03 blocks destructive actual operator admission/production, not authorized
+isolated H22 development/fixture qualification. AR07/FCTR01 remain NOTPROVEN;
+BASE1 read-only inventory/preflight is reusable code, not migration acceptance.
+Current RequireCTR06SecurityBridge is genuinely unbound. Replace its obsolete
+binding through reviewed finite maintenance/successor engineering while retaining
+writer-retirement/floor/restore guarantees; no naked0012 or proof-by-user-flag.
+Keep Cloud deployment/activation disabled, no live DB/credential probing.
+
+Actual H22 MCP successful:hostv2202601329473427941,user sammiller, Docker same
+host/linux/x86_64, Go1.27.4 native amd64, Python3.15.2. Last userfree2.3GiB.
+No install/network/security/cleanup performed. Both actual formal Cloud host
+profiles are still required after a final candidate push. Normal legacy 8e5
+tool/source identity and historical Go1.27.3 remain preserved when checks need it.
+
+Preserve Cloud/.worktree/cloud-deploy-ci-python atd422:dirty
+eng/verification/test_ctr06_bridge_assets.py(6add2del). Do not automatically mix.
+Old Cloud/.worktree/afv2-base-01 at6df33 has untrackedeng/v2-migration; preserve.
+Use delivered BASE1 preflight onmain where valid. No author/reviewer is currently
+editing; coordinator owns statuses/push/PR/merge. Next:push/merge startup record
+with required nativePlan checks, then sole author implements narrow task while
+coordinator owns realH22PostgreSQL qualification. Record exact new evidence.
+
+## Completed DATA delivery checkpoint (previous task)
 
 AFV2-DATA-01 code/development acceptance is complete. Node PR94 actually merged
 1319107b26305e4c6c29574deea5c81f6036e7d1; its tree
