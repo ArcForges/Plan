@@ -1,5 +1,16 @@
 # Codex handoff — ArcForges V2
 
+## H-22 dependency preparation for current DATA fixtures
+
+In /home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native at clean39c,
+eng/check_toolchain.py and locked Store.Tests restore logged Python3.15.2,
+SDK11.0.100 and all3Store/Bench/Store.Tests project restores (1.31s).
+Original log artifacts/afv2-data-01-dependency-prep-linux.log. This is dependency
+preparation only; no product build/test/status. Tracked source remains clean;
+last userfree444,755,968bytes. Reuse assets after fetching the exact pushed source;
+rerestore only if actual project/lock inputs change. Windows author continues
+the remaining real fixtures; the current partial five-case result follows.
+
 ## Current DATA partial Windows fixture milestone
 
 Author still implements an uncommitted Windows working-tree variant.
