@@ -1,9 +1,15 @@
 # AFV2-ID-01 engineering evidence
 
-ID-01 is active; this is the shared implementation/verification checkpoint, not
-a delivered or published result. Current source is Cloud
+ID-01 is blocked by H-02 storage capacity; this is the shared implementation and
+verification checkpoint, not a delivered or published result. Initial source is Cloud
 `3a22bec5e9e4dc29841fbb3b9e96c4b2362c6d00` in [Cloud PR160](https://github.com/ArcForges/Cloud/pull/160).
 Design baseline is `493022fbf643b484665b2713c9eb8670f2fb2234`.
+Final candidate is `94834c591958dd5d24a0bef92888e0d6c2c2099d`, tree
+`ca9a2a1416077cb8093ebb554f9274decaa3e9b3`. Independent source/metadata review
+passed and Windows formal10/10 passed344s. Same-head Linux formal verification
+reported error after ENOSPC (root volume user-available0); it has not passed.
+Original Windows run is20261117-004519-94834c591958-win; Linux failed run is
+20261117-004529-94834c591958-linux. No merge, publication or deployment occurred.
 Plan141/142 authorize the exact source, migration, metadata and co-located tests.
 Complete this task and shared records, then stop before another product task.
 

@@ -1,6 +1,46 @@
 # Codex handoff — ArcForges V2
 
-## Current resumed checkpoint — AFV2-ID-01 active
+## Current checkpoint — ID-01 blocked by H-22 disk capacity
+
+ID-01 is blocked by H-02 and is NOT delivered or complete. The graph now has
+6complete,0active,2blocked(ID01/MXC01),32planned. Do not start another product
+task; finish the current task after the real host prerequisite is restored.
+
+Exact Cloud candidate94834c591958dd5d24a0bef92888e0d6c2c2099d is pushed and clean
+in task/afv2-id-01, draft PR160. Source/metadata independent review has no blockers.
+Windows formal10/10PASS344s at this exact SHA; original summary is
+Cloud/.git/arcforges-verify/logs/20261117-004519-94834c591958-win/summary.json.
+Linux9483 formal profile reported error after actual ENOSPC on the503G root
+volume (user-available0). Original run20261117-004529-94834c591958-linux and
+artifacts/afv2-id-01-formal-9483/native.log are preserved. Empty summary/exit files
+are consequences of the full filesystem, not success. Pinned secret scan passed
+before interruption. All formal processes have ended; no merge/publication occurred.
+
+H22 MCP remains healthy; transport failure streak0. A readonly Docker usage helper
+timed out without output (pid3515799), not a transport failure. Known Cloud cache
+sealed-tool copies total under1GiB and do not exactly match retained archives;
+132Cloud worktrees contain no additional such copies. No files, archives, images,
+unknown caches, settings or evidence were removed. The owner was asked to provide
+capacity (about15GiB recommended) or identify a concrete permitted cleanup target.
+
+Next: after real capacity is available, fetch and verify the same9483 on H22 using
+the unchanged full eng/verify.py run-and-report with the documented Go selectors.
+Keep the valid Windows receipt. Obtain full Linux success and independent final
+receipt/artifact review, then normal Cloud160 merge/main-pause observation and
+Plan143 completion record with both required Plan legs against current Design.
+Stop after ID01. Never bypass the error or mark an unfinished task complete.
+
+Plan record worktree remains Plan/.worktree/afv2-id-01 on
+plan/afv2-id-01-acceptance, draft PR143. Its Linux record verification/merge is also
+unavailable while the host cannot write. Push this accurate handoff rather than
+claiming shared main has advanced. Latest merged mains remain Plan63e9c236,
+Cloud6bd71696 and Design493022fb. Ordinary development authorization persists;
+public activation is still separate and Cloud deployment remains paused.
+
+The following implementation checkpoints are historical phase records. Their
+running-process/active/next instructions do not override this blocked checkpoint.
+
+## Prior implementation checkpoint — before formal disk failure
 
 Continue the current ID-01 through actual completion and shared delivery records,
 then stop before another product task. The owner explicitly resumed after the
