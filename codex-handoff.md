@@ -1,6 +1,30 @@
 # Codex handoff — ArcForges V2
 
-## DATA independent review P1: do not merge1e02
+## Current DATA P1 fix pushed, new-head qualification pending
+
+Node draftPR94 final candidate165913b2cdd61b66f3fdf7ffe6bff5a062b7f418,
+treeb065cefdd50b0104378c1d69375a51c2ea5f8dd6. Only5allowedpaths changed
+from1e02: schema16 SQL state/retired_utc UPDATE guard and hash16,2existing
+fixturefiles/docs. No retirement product API/automaticrotation added. Reject
+unqualified retirement before state changes; suppliedRETIRED fixture refuses
+admission/maintenance and reactivation. Original independent failure preserved.
+All old1..15SQL/history remain byte-identical. Author ended before base_review
+resumed focused delta review; do not merge until actual final acceptance.
+
+Windows currentbuild0warnings/errors33.80s,19/19PASS0skip41.854s,
+artifacts/afv2-data-01-retirement-guard-{build,tests,format}-win.log.
+H22 final19/nativeformal must wait oldLinuxexclusive finishes to keep required
+resource measurements alone. Old1e02 formal processes still own their exact
+cached checkouts and report only oldSHA. Windows oldCI has one EventStream
+70000 timingbranch failure, full state converged; it overlapped cold baseline
+AOT148s. Core/test/gate untouched. Finalhead must get original both fullprofiles;
+base39cache now warm. Investigate further only if actual finalhead check fails.
+
+Next root: finish/record oldprofiles, fetch165 independently both hosts, run
+H22 changed19fixtures, delta review, new-head unchanged run-and-report both,
+merge only reviewed passed head; then complete Plan record and next task.
+
+## Earlier DATA independent review P1: do not merge1e02
 
 Independent reviewer base_review ended with one real reproduced blocker:
 known no-effect settlement, backup, existing fixture SQL RETIRED transition,
