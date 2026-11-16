@@ -9,8 +9,9 @@ inventory, approved production backups and provider authority remain unproven.
 
 ## Delivered behavior
 
-Schema12 appends metadata-only management identities, operations, cursors,
-entitlements and cutover evidence. Applied0001–0011 remain byte-for-byte intact.
+Schema12 appends management protocol, identity, operation and cutover metadata
+while retaining existing entitlement storage. Store supplies bounded keyset
+cursors. Applied0001–0011 remain byte-for-byte intact.
 The finite schema10/valid11 transition captures a consistent logical backup,
 checks and fences old writers, preserves uncertain outcomes and commits a new
 target-specific admission. Restore uses a new quarantined destination, verifies
