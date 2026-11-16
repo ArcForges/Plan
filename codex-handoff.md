@@ -1,6 +1,55 @@
 # Codex handoff — ArcForges V2
 
-## Current narrow successor metadata amendment
+## Current exact r3 follow-up admission
+
+The a882 fresh-case 42702 is a PL/pgSQL naming conflict: local row variable i
+and UPDATE-branch SQL alias i. Rename only the alias to identity_row, preserving
+all query predicates, locks and guards. Used r2 is immutable; Plan131 adds only
+the precise management-storage-r3 successor record path, 22 to23 paths. No
+wider directory, policy, acceptance or authority change. Independent Plan-only
+scope review and both native Plan profiles precede that SQL change. Author may
+continue nonconflicting Go-only backup/restore in parallel; this remains one
+active product task, and Plan reviewer is not reviewing a changing Cloud diff.
+
+## Latest CENTER native result at a882
+
+Pushed Cloud candidate a882bf48d11d92e87dc3874fa8c4676d6e484856 fixes the two
+42501 failures without broader grants. Used r1 is unchanged; new r2 binds SQL
+1d60c43cc932012722f0ba4c744022ddbad41d7a482ba2d4de8b8b9f1e0faccb.
+H-22 independently fetched this SHA. Five top-level cases PASS, one fresh case
+FAIL, zero skips (6.449s): open old session and NOINHERIT membership refuse;
+fault rolls back schema/floor/roles; schema10 safely refuses; valid11 preserves
+old UNKNOWN identities and fences writers; inventory facts are collected. The
+remaining fresh failure is SQLSTATE42702 during supplied known-result UPDATE,
+under author investigation. Do not call this passed migration acceptance.
+
+Original artifacts/afv2-center-01-management-a882-linux.{log,json,exit}, logSHA
+d4e7cc5210a7c4c082fe358f16b00e33f9026d4caeb1874c356c2003599a2ab5.
+Inventory still361/f35cf159..., catalogue changed to
+edd8061831b7e3d282ed903ba54b63b1122c0809586ac0c3bb5b2262dfd69bda;
+raw artifacts/management-schema12-2708186134 retained. Recollect after any SQL
+fix, do not freeze a stale oracle. Test container removed, PID3230892 ended.
+Current root record draft Plan131, author still working on same task.
+
+## CENTER work resumed after exact successor scope merge
+
+Plan130 actually merged db7b97e36b48f0811e0bd0bdc09d3c00931b1100 from reviewed
+head e18d22c02dde883ebde79acd2291ef8582c78c8f/tree414192a46f3b62e8ed315afdfe1b8ede8508a79d.
+Independent base_review accepted. Native Windows5/5 in5s (171711) and H-22 Linux5/5
+in25s (171840, driverexit0) both bind actual Design493. Original protection,
+current base/head and zero threads checked; normal expected-head merge, no bypass.
+The first Linux launcher timed out due to shell grouping, not connectivity;
+incomplete171720 evidence was preserved and a normal full rerun succeeded.
+
+Author base_audit resumed alone. Next: commit minimal identity lock fix with r2,
+rerun changed native PG/inventory facts, then complete V2 backup/restore/faults
+and exact r135/runtime/Worker metadata. Existing schema11/r1/r134 remain immutable.
+Cloud draft159 is still incomplete at pushed5eaa. No final native profiles,
+independent Cloud review, product merge, positive schema10 qualification or AR07.
+Current Plan record worktree .worktree/afv2-center-01-native on
+plan/afv2-center-01-native begins actual db7b97e; previous record branches remain.
+
+## Earlier narrow successor metadata amendment
 
 Author paused after the first native findings, with only management.go and
 management_integration_test.go uncommitted in the allowed Cloud worktree.
