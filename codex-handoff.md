@@ -1,220 +1,141 @@
 # Codex handoff — ArcForges V2
 
-## Latest DATA correction and pending backup closure
+## Current delivery checkpoint
 
-Node head564f2dcc38763bd3ecc93cda3060d2dfde5a4e5a is pushed in PR94.
-It changes only existing StageProducerAdmissionTests to current schema/current+1;
-both original floor-refusal and missing-function assertions remain. Prior full
-Store run782 failed only those2: Windows152pass/2expectedskip/2fail123.990s;
-H22Linux151pass/3expectedskip/2fail126.257s, explicitexit2 retained. Changed
-Stage3/3PASS0skip on Windows3.401s and Linux0.720s; Linux incremental build
-0warnings/errors. Logs artifacts/afv2-data-01-stage-fixture-build-linux-564.log
-and stage-fixtures-linux-564.log, exits0.
+AFV2-DATA-01 code/development acceptance is complete. Node PR94 actually merged
+1319107b26305e4c6c29574deea5c81f6036e7d1; its tree
+b065cefdd50b0104378c1d69375a51c2ea5f8dd6 equals final reviewed/tested source
+165913b2cdd61b66f3fdf7ffe6bff5a062b7f418. Node main has no automatic release;
+only local native validation packages were produced. No public activation.
 
-Author base_audit must first finish checking/fixing complete latest-owner closure:
-a post-snapshot newly created owner/epoch must invalidate an old backup too;
-manifest-listed owners alone are insufficient. This directly affects DATA backup
-acceptance. No final review/full profile is started until production source stable.
+Plan draftPR127 / plan/afv2-data-01-final records this closure and must still
+pass both native Plan profiles and merge. Its worktree is
+C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-data-01-final.
+Last actual Plan main is PR126 merge709795fbfaee6143d195029d4d14b7cf52773ab5.
+Design actual main493022fbf643b484665b2713c9eb8670f2fb2234 was freshly checked
+before Node merge. No Design change was needed.
 
-H22 userfree now3371986944B after measured/bounded cleanup of only four retired
-Desktop ignored/untracked bin/obj directories in the existing formal verify cache.
-Exact paths/checks are in ledger; no evidence/delivered artifacts/source deleted.
-Unchanged Host project locked restore passed in data-native worktree, preparing
-for final affected AOT. Native14case782 logs and all failures remain intact.
+Graph now has5complete tasks of40:ENV/BASE01/BASE02/API01/DATA01. No product task
+is active until next startup. MXC01/AR03 stayblocked/FAILED and Core dependencies
+remain unsatisfied. plan.py next actually returned AFV2-CENTER-01 planned:
+Migrate PostgreSQL safely to V2 management storage. The owner requires continuous
+authorized work after each completed record; do not stop at this boundary.
 
-## Earlier coherent DATA candidate and real native diagnostics
+## DATA implementation and independent acceptance
 
-Node draft PR94: https://github.com/ArcForges/ArcForges/pull/94
-Branch task/afv2-data-01, exact pushed source782ee4a69e22727db3cf3de7b018b09baa5e56cf;
-14paths within allowed scope, no project/package/lock change; author tree clean.
-Windows targeted14/14PASS0skip9.769s, Store.Tests build0warnings/errors;
-original artifacts/afv2-data-01-{durable-tests-win-5,tests-build-win-5,format-win}.log.
-H-22 independently fetched782 into data-native worktree. Release no-restore
-warnaserror build0warnings/errors6.86s; same14/14PASS0skip4.240s with real
-Linux permissions and two real children. Original artifacts/afv2-data-01-
-tests-build-linux-782.log and durable-tests-linux-782.log; explicit exits both0.
+Only16 paths in Node Store, its tests and eng/v2-migration changed. Schema16
+expands V2 Sandbox/Run/config/resource/grant/transfer/delete/migration storage,
+retaining all applied0001..0015 bytes/history, old tables and unresolved journals.
+Logical V2 resource_sample uses fixed v2_resource_sample to preserve V1 consumers.
+No dependencies/projects/workflows or native/IPC consumers changed.
 
-These supersede pending source/process snapshots below, retained as history.
-No product runtime proof, formal status or delivery claimed. Linux full Store
-regression PID3116956 / artifacts/afv2-data-01-store-regression-linux-782.log
-still running and already has two StageProducerAdmissionTests failures;
-sole delegated author base_audit notified and continues Windows regression.
-Fix affected regressions before AOT/final review. Windows affected AOT,
-independent review and both unchanged exact-head host profiles remain pending.
-Last H-22 user-free310038528bytes; existing verify cache9.3GB was read-only
-inspected, no cleanup. Preserve all raw evidence and historical drafts.
+Random owner epoch, protected HMAC intent, immutable admitted identities,24hour
+known-body compaction, retained UNKNOWN, CAS, SQLite admission reserve and coherent
+DB/key backup with independent complete owner/history closure are implemented.
+Unqualified SQL state/retired_utc updates refuse before retirement can occur;
+there is no retirement product API or automatic epoch/key rotation.
 
-## Earlier pending real-process DATA fixture implementation choice
+Independent nonauthor base_review accepted final165 code and BOTH native data
+evidence after closing its real P1. Original failing1e02 retirement rollback
+fixture remains in Node/.worktree/review-afv2-data-01-1e02/tests/
+ArcForges.Node.Store.Tests/DurableRetirementRollbackReviewTests.cs.
+Earlier wrong-schema fixtures, first build failures, rejected review candidate,
+interrupted old Linux profile and old Windows timing failure remain in ledger/
+raw logs/history. No old failure was converted to success.
 
-Use the existing Store.Tests MTP executable with exact method filter/no-build
-and test-local phase/root, twice: first real process admits/settles with real
-SQLite/file keys; next process compacts/replays original epoch/command using
-explicit fixture time. The effect is only the allowed synthetic counter.
-Existing bench store-growth only admits empty roots and cannot prove this replay.
-No new project, solution/tools registration or product environment hook is needed.
-Own child timeout/exit/cleanup evidence must be recorded. This scenario is still
-pending, not a native pass. The five-case Windows partial result remains separate.
+Task fixtures prove actual SQLite/keys/permissions/process reopen. Only the
+admission counter and supplied intent/effect observations are synthetic. No Run,
+Node IPC, CLI, Stop/revocation, live recovery or official MXC qualification claimed.
 
-## H-22 dependency preparation for current DATA fixtures
+## Exact native evidence and artifacts
 
-In /home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native at clean39c,
-eng/check_toolchain.py and locked Store.Tests restore logged Python3.15.2,
-SDK11.0.100 and all3Store/Bench/Store.Tests project restores (1.31s).
-Original log artifacts/afv2-data-01-dependency-prep-linux.log. This is dependency
-preparation only; no product build/test/status. Tracked source remains clean;
-last userfree444,755,968bytes. Reuse assets after fetching the exact pushed source;
-rerestore only if actual project/lock inputs change. Windows author continues
-the remaining real fixtures; the current partial five-case result follows.
+Both hosts independently fetched source165 from GitHub. Final Store fixtures:
+- Windows19/19PASS0skip41.854s; build0warnings/errors33.80s.
+  Author artifacts/afv2-data-01-retirement-guard-{build,tests,format}-win.log.
+- H22Linux19/19PASS0skip4.680s; build0warnings/errors6.64s; explicitexits0.
+  data-native artifacts/afv2-data-01-{tests-build,durable-tests}-linux-165.log.
 
-## Current DATA partial Windows fixture milestone
+Both unchanged full run-and-report profiles completed and themselves posted
+actual success at that exact source/tree:
+- Windows15/15PASS2220s, exit0. Original common git summary
+ 20261116-153119-165913b2cdd6-win/summary.json,
+ SHAaa7ece4e40515cfa01429308775180eac013c47777f2d6f40affc91f0c06e1b4.
+ Native-exclusive713s/startup24s passed; rootsession5350 is closed.
+- H22Linux20/20PASS2054s, exit0. Original common git summary
+ 20261116-154123-165913b2cdd6-linux/summary.json,
+ SHAccb9d38389635b1a22ec34934666b68af3f8036dcf4fc8940118f806da7d9bb4.
+ Native-exclusive800s/startup1s passed; driver3163319 completed.
 
-Author still implements an uncommitted Windows working-tree variant.
-Root read actual artifacts/afv2-data-01-durable-tests-win-1.log:
-DurableCommandStoreTests5/5PASS,0skip,2.428s. Latest author Store/Store.Tests
-builds passed0warnings/0errors. This is not a committed candidate or Linux/
-formal acceptance. Schema15/CAS/fault/permission/real-process/AOT and affected
-regression remain pending, so do not deliver or use the old build as latest proof.
+Windows formal zip16333540B,
+SHA9e4409e2ae8f598def7e11fc758f1d0e499bc4a6a5d9144536741998308d327f,
+Node/.worktree/_verify/artifacts/packages/arcforges-win-x64.zip.
+H22 formal tar15515106B,
+SHAd99e081f4fe7ab94dd90be86606c1e757aecd5604a1411fa0f92a0cc170512ff,
+/home/sammiller/.cache/arcforges-verify/ArcForges/artifacts/packages/
+arcforges-linux-x64.tar.gz. Host/bench individual hashes are in ledger.
+These are validation artifacts, not published distribution channels.
 
-Backup code now uses realSQLite onlinecopy, existing V1 sealed-value sanitation,
-full epoch-key/manifest closure and independently retained latest authority with
-owner-control lock; post-effect observations also advance fence. No backup can
-self-certify missing later history. Author reports the five initial cases cover
-compaction/reopen,UNKNOWN/terminal exclusion,key/DB-loss no rotation,coherent/stale
-effect restore and realSQLite safetyreserve; exact final-head rerun still required.
+Actual strict Node24915109 ruleset required both statuses, no bypass. Current
+head/base, real success statuses, zero threads and accepted review were checked
+before immediate expected-head merge; no admin/automatic merge. Actual merge
+tree was fetched/verified. Original receipts stay on their producing hosts.
 
-Additional uncommitted files are DurableStoreBackups.cs and
-tests/ArcForges.Node.Store.Tests/DurableCommandStoreTests.cs. All changes remain
-under the three allowed paths. Full older snapshot/details follow. H-22 data-native
-worktree remains clean39c awaiting first pushed candidate; root alone runs it.
+## Worktrees, rollback and preservation
 
-## Current DATA partial build and integration snapshot
+Windows author Node .worktree/afv2-data-01 / task/afv2-data-01 is clean at165.
+Windows detached caller .worktree/afv2-data-01-verify and formal _verify are165.
+H22 /home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native is165.
+No native verifier/observer is left paused or intentionally running. The obsolete
+1e02 Linux resource step ended naturally before normal interruption handling;
+its real error/exit2 is preserved, not PASS. Do not poll closed sessions.
 
-Author working tree remains uncommitted, within three allowed directories.
-Additional files since earlier snapshot: DurableCommandResults.cs;
-NodeStore.cs and Migrations/StoreBackups.cs now modified for integration/backup.
-Current uncommitted source also includes DurableEpoch.cs, DurableCommandStore.cs,
-Schema/0016-v2-expand.sql, schema-history.json, StoreMigration.cs and
-eng/v2-migration/afv2-data-01-source.json. Preserve all current author work.
+All schema15 and V2 backup/restore evidence uses disposable fixture roots; no
+operator deployment/database was migrated. Restore requires complete keys,
+identities and independently retained latest authority; missing/newer history
+refuses activation/maintenance, never silent reset or rekey. Old live tables
+remain until MIG02, and older readers refuse schema16.
 
-Partial Windows author diagnostics:
-- artifacts/afv2-data-01-toolchain-win.log: actual check_toolchain.py pass after an
-  initial missing-artifacts redirection did not execute it.
-- artifacts/afv2-data-01-store-restore-win.log: locked Store project restore pass.
-- artifacts/afv2-data-01-store-build-win.log: initial CS0121 HMAC-overload failure.
-- artifacts/afv2-data-01-store-build-win-2.log: corrected variant Release
-  --no-restore -warnaserror -tl:off passed0warnings/0errors1.89s (root read tail).
+Only four exactly verified retired ignored/untracked Desktop bin/obj directories
+in the H22 formal cache were removed for measured space pressure. No source,
+evidence, published artifact or unknown cache was deleted. Preserve primary
+Node checkouts200d2d25, all historical worktrees, .worktree/afv2-base-01 drafts,
+Cloud/.worktree/cloud-deploy-ci-python and original artifacts/SQL/checksums.
 
-Latest NodeStore/checkpoint/backup edits are AFTER that built variant and remain
-unbuilt/untested. Do not reuse the partial build as final candidate proof.
-No product commit, acceptance fixture result or native Linux result yet.
-Author is completing backup/restore/real fixtures. Owner history fence advances
-on post-admission effect observations too; restore never trusts the backup's own
-bundled fence as independent latest-history evidence. No automatic rekey/epoch reset.
-Current detailed scope/native venue and older snapshots follow.
+Windows current native local access is explicitly owner-authorized instead of
+unstable Windows MCP. H22 Linux MCP stayed reachable throughout all checks.
+Only3consecutive transport failures within one outage count; command/test exits
+are not connection failures. GitHub MCP previously hit3consecutive HTTP failures;
+use existing native gh/Git login, no token creation/printing. No WSL/SSH/other
+verification venue, network/proxy/security change or deployment activation.
 
-## Current DATA source snapshot (implementation in progress)
+## Exact next actions
 
-Windows task/afv2-data-01 currently has uncommitted module-local work:
-- src/ArcForges.Node.Store/Migrations/StoreMigration.cs (migration registration)
-- src/ArcForges.Node.Store/Schema/schema-history.json (new step history)
-- src/ArcForges.Node.Store/Schema/0016-v2-expand.sql (forward V2 expand)
-- src/ArcForges.Node.Store/DurableEpoch.cs and DurableCommandStore.cs
-- eng/v2-migration/afv2-data-01-source.json (source/mapping evidence)
+1. Push/check final PlanPR127 closure head. Both designated hosts fetch it and run
+   unchanged python eng/verify.py run-and-report. Both5step summaries must bind
+   freshly fetched actual Design main; recheck that SHA before Plan merge.
+2. Verify actual Plan statuses/currenthead/base/strictno-bypass/threads. The
+   record-only coordinator-check exception applies. Expected-head immediate merge,
+   record actual ownmergeSHA in next startup (no self-reference loop).
+3. Run plan.py next/show AFV2-CENTER-01 and read its full definition, Design refs,
+   current Cloud AGENTS/CONTRIBUTING and actual origin/main/worktrees/drafts.
+   Read authorization ledger; owner already authorized subsequent V2 ordinary
+   development/delivery. Record exact scope and only one active task.
+4. Preserve independent CI draft and all published SQL/security-successor history.
+   Distinguish H03/runtime admission from read-only/development work. Keep Cloud
+   deployment paused; public PROD01 still needs a concrete later explicit approval.
+5. Continue the next eligible work without a task-boundary final/permission loop.
 
-This is a partial implementation snapshot only. No product commit, build/test
-result or native acceptance is claimed. No old0001..0015 file appears modified.
-Author base_audit continues; do not overwrite these drafts or treat them as ready.
-H-22 remains clean39c in its new data-native worktree. Current task/scope and
-baseline details follow; source changes stay in the three permitted paths.
+## Historical evidence
 
-## Current checkpoint: DATA-01 implementation active
+Full dated DATA facts remain immutable in ledger/ledger.jsonl, NodePR94,
+PlanPR125/126/127 and prior handoff commits. Prior task snapshots below are
+historical; current delivery and pending Plan closure above are authoritative.
 
-Startup Plan125 actually merged926af0616d6738d8cc525bcc93ac59eb8d23f311
-at reviewed544132d4413042159c73946c6cd372f4c7418601/tree45cc6bf33aad317c7e52e72782a459a66ff81fe0.
-Native Plan Windows141510/Linux141518 each5/5 bind actual Design493022fbf643b484665b2713c9eb8670f2fb2234;
-strict status/current head/base/no bypass/zero threads checked before merge.
-API-01/cohort481.1 complete, AR03/MXC01 stay failed/blocked in their own range.
-DATA-01 is the sole active authorized task; no product acceptance yet.
+## Historical prior-task snapshots
 
-Sole delegated author base_audit works in Windows
-C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-data-01,
-branch task/afv2-data-01 baseline39c2c57fdaf3666ec046a22370aa2f2157c2d058.
-Current assessment: reuse WAL/single writer/FULL transactions, existing migrations/
-backups/protected-key helpers and real-process fixtures; keep every applied0001..0015
-byte/checksum/history, V1table and unresolvedintent. Do not reuse legacy24h dedupe
-identity eviction for V2. Implement forward schema16/minreader16 and only missing
-V2 epoch/HMAC receipt/known-body compaction/UNKNOWN/CAS/reserve/backup primitives.
-
-Only actual DDL conflict is old resource_sample(attempt_id/sampled_at).
-Preserve it; new V2 physical table v2_resource_sample maps logical resource_sample
-(scope_kind/scope_id/observed_utc) in an explicit eng/v2-migration record.
-The Design target is not an upgrade script; this is a narrow physical expand
-adaptation, no source table contraction/new naming framework/semantic waiver.
-Final independent review must inspect it.
-
-H-22 native worktree exists, clean at39c2 with correct origin:
- /home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native
-Measured tracked checkout10,359,037bytes, current userfree445,399,040bytes after it.
-Python3.15.2/SDK11.0.100 verified; no install, cleanup or duplicate baseline tests.
-Root alone handles Linux, formal status/push/PR/merge/Plan. One delegate at a time;
-reviewer idle. Author Windows implementation/targeted realfixtures in progress,
-no product commit/nativeLinux validation or full status yet. No active nativeprocess.
-
-Record branch: Plan/.worktree/afv2-data-01-progress on
-plan/afv2-data-01-progress, base926af06. Next: author candidate/precise source and
-test evidence, push, independent H-22 fetch and realSQLite fixtures, fix actual
-blockers only, then author-stop/independentreview/final both native Node profiles,
-strictmerge and accurate final delivery. Source/protected-key material never logged.
-Only the task's explicit synthetic admission effect-counter is permitted; no real
-Run/NodeIPC/CLI/Stop/grant-revocation result can be claimed here. Preserve existing
-Cloud CI/base/MXC/otherproduct drafts. No production activation. Continue serially.
-
-## Current checkpoint: DATA-01 active after completed API-01
-
-The owner requires continuous serial execution. API-01 and ordinary481.1 cohort
-are complete; final Plan124 actually merged7e66141e217b5ad5544c5d1af72cdeabc6f4279e
-at reviewedce6ccb17ddc688c89a76761b68a94c78a4d10322/tree94de39d18577a13fade7e5924977a92e1799be6e.
-Native Plan Win135941/Linux135929 each5/5 bind actual Design493022fbf643b484665b2713c9eb8670f2fb2234.
-Strict both-host/current head/base/no bypass/zero threads and review checked.
-This checkpoint supersedes historical task states below.
-
-AFV2-DATA-01 is now the only active task; BASE-01/API-01 dependencies are complete.
-No product implementation or validation outcome claimed yet. MXC-01 remains blocked/
-AR-03FAILED only in its dependent range; ENV/BASE-01/BASE-02/API-01 stay complete.
-No public activation authority or Cloud deployment has been enabled.
-
-Actual baselines fetched: Plan7e66141e217b5ad5544c5d1af72cdeabc6f4279e,
-Design493022fbf643b484665b2713c9eb8670f2fb2234,
-Node39c2c57fdaf3666ec046a22370aa2f2157c2d058. Git origins verified, primary
-Windows/Linux Node checkouts remain unmodified at200d2d25. All existing worktrees
-inspected; no previous DATA draft/PR found. Preserve BASE01/MXC/Cloud CI and all
-other worktrees. New Windows Node/.worktree/afv2-data-01 on task/afv2-data-01;
-Plan/.worktree/afv2-data-01 on plan/afv2-data-01. Product directory is ArcForges,
-Design directory is ArcForges-Design (not the old handoff shorthand Design).
-
-Scope: only Node src/ArcForges.Node.Store/**, tests/ArcForges.Node.Store.Tests/**,
-eng/v2-migration/**. Read current Node AGENTS/CONTRIBUTING, full task and4Design
-refs completed. Keep migration0001..0015 bytes/checksums/min-reader history,
-unresolved legacy intents and valid existing WAL/transactions/encryption/backups.
-Adapt with forward-expand V2 tables, protected random epoch/HMAC identity,
-retained known/UNKNOWN receipts,24h known-body compaction, reserve/capacity and
-coherent backup/restore. Add only missing primitives and real fresh/schema15
-SQLite/key/permission/close-reopen fixtures. Only explicitly allowed synthetic
-admission effect-counter; no native Run/IPC/CLI/Stop/revocation acceptance claim.
-
-Windows uses expressly authorized native local filesystem/tools. H-22 MCP was
-freshly called: correct hostv2202601329473427941/usersammiller/origin/workspace,
-clean primary/healthy transport. Last disk observation439MiB useravailable;
-monitor and reuse known own worktrees/builds, never delete unknown directories.
-No active native process. Coordinator owns Plan/nativeLinux/push/PR/merge;
-one delegated author or reviewer at a time.
-
-Next: commit/push this startup record, both unchanged Plan native profiles and
-merge; then author a bounded keep/adapt/add assessment of actual Store source,
-reuse its key/backup/migration helpers and implement complete DATA-01 acceptance.
-Do not restart dependency upgrades, old V1 tasks, nativeMXC experiments or unrelated
-products. Formal Node final PR requires both native host profiles and independent
-review. Every failed primitive remains explicit; no unsafe rollback/epoch reset.
+The snapshots below are historical. Current DATA delivery and next actions are
+above; detailed phase facts remain immutable in ledger/ledger.jsonl and Git
+history. Do not resume obsolete active states or pending API publication notes.
 
 ## Current checkpoint: API-01 complete; final Plan record awaits checks/merge
 
