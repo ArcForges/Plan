@@ -1,6 +1,36 @@
 # Codex handoff — ArcForges V2
 
-## Current schema10 implementation and exact-artifact subwork
+## Current native artifact inputs ready; source10 draft in progress
+
+The exact-artifact delegate finished with no file changes: existing eng.center
+helpers suffice, so no new wrapper or framework is added. H-22 preserved these
+historical fixture executables under the native worktree's ignored
+artifacts/afv2-center-01-historical-inputs/ before future cache replacement:
+
+- schema11-arcforges-center:43684061B, SHA
+  d65219ed3aeefd45bb33a981fe30260a6573836833b885dde31285dbeff56a5b.
+  Source a498b4c48e5d2e0a13ee10b14f9ae4426cb13b80 has the exact same tree as
+  mergef470. Original full070913 native receipt and its linux-center log/report
+  chain match; schema11-input.json references originals. This is not a new V2
+  receipt or a published schema11 claim.
+- schema10-arcforges-center:29466784B, SHA
+  028223a3dcbcbd6d7724558de02409e1e8874d876049f03fed38f47998773ba4.
+  The existing pinned615.1 carrier was verified/extracted through the unchanged
+  carrier helper, source8e5; schema10-input.json records its actual identity.
+
+No old producer was rebuilt or executed and no DB migration has happened in this
+preparation. Future current CLI must be bound to the final candidate image/member
+SHA and actual source manifest; reuse existing Postgres/center_command/rotate/
+drill_phase/backup/restore for three starting paths, without handwritten migration
+records. Same-host artifact preservation does not transfer host verification.
+
+Main author continues source10 Go drafts in schema/store guard/floor/backup paths;
+latest pushed/native source remains1f389. No source10positive or final acceptance
+claimed. Current Plan record draft135, branchplan/afv2-center-01-schema10 in
+.worktree/afv2-center-01-native. Only main author is writing product code; the
+artifact delegate ended, independent base_review remains available for full review.
+
+## Schema10 implementation checkpoint
 
 Plan134 actually merged6839af0cb5daf8d9cd577239de8d68107b8aa028 from exact
 727deca3a862fa45adc57be64e2f8690816f98be/treebd0917803ca900857498fba9e12d3ec6408b80cb.
