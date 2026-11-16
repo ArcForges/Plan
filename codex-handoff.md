@@ -1,8 +1,24 @@
 # Codex handoff — ArcForges V2
 
+## Latest owner stop boundary — finish CENTER-01, then stop
+
+The owner now requires the entire currently active AFV2-CENTER-01 to finish,
+then stop and report overall progress. Do not start the next product task after
+CENTER closure without a later resume instruction. Finish implementation, native
+verification, independent review and applicable ordinary delivery/shared records
+inside this task. Preserve true external/production gates; never label an unmet
+gate or partial work complete merely to stop. This supersedes earlier continuous
+next-task instructions for this run, including historical snapshots below.
+
+Current Planmain d7b3340b6ab1db66da838442f4abd1f70601a8bf (PR135); its reviewed
+3f1094cb87545972099535e67c469f110aa1a467 head passed Win5/5 in5s and Linux5/5
+in27s, bothDesign493. Current record branch plan/afv2-center-01-final in
+Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
+restore after the positive177 migration/fault/CLI checks; it is not verified yet.
+
 ## Current task and exact source
 
-Continue the owner's authorized serial V2 implementation after each task/record.
+Complete only the current CENTER-01 under the latest stop boundary above.
 Five of40 tasks are complete: ENV01, BASE01, BASE02, API01 and DATA01. Current
 sole active product task is AFV2-CENTER-01. MXC01/AR03 remain blocked/FAILED;
 its dependent Core work is not eligible. No V1 task queue or unrelated product work.
@@ -18,8 +34,8 @@ complete source and evidence review. Do not start a second active product task.
 
 Last checked Cloudmain f4708b36fd799025ad7d6fa9e5845e4558e492b3,
 Designmain493022fbf643b484665b2713c9eb8670f2fb2234,
-Planmain6839af0cb5daf8d9cd577239de8d68107b8aa028 (PR134).
-Current Plan record draftPR135, branch plan/afv2-center-01-schema10 in
+Planmain d7b3340b6ab1db66da838442f4abd1f70601a8bf (PR135).
+Current Plan record branch plan/afv2-center-01-final in
 Plan/.worktree/afv2-center-01-native. Previous record branches/worktrees remain.
 
 ## Latest real PostgreSQL checkpoint
@@ -110,7 +126,7 @@ is used without credential reads. No SSH/WSL, proxy/security/network change or
 production probe. Preserve primary worktrees and Cloud base01/cloud-deploy-ci-python
 independent drafts; do not import them. Current/historical Go1.27.4/1.27.3 stay.
 All meaningful earlier CENTER phases are preserved in append-only ledger and Git.
-Continue after this record; stop only at a real unresolved gate or owner stop.
+Continue within CENTER-01 until its real completion, then stop and report. Do not start the next task.
 
 ## Earlier task evidence — historical snapshots
 
