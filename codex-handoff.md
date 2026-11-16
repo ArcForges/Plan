@@ -1,6 +1,53 @@
 # Codex handoff — ArcForges V2
 
-## Current confirmed reconciliation blocker and exact successor amendment
+## Current CENTER implementation: finite schema10 next
+
+Cloud draftPR159 is pushed at1f3899b3d1ca08e975c3209506708d88cc28e765,
+independently fetched on H-22. R4 UNKNOWN repair and new actual schema12 oracle
+are implemented and qualified by targeted PostgreSQL tests. Latest native run:
+3 top-level/5subcases/0skip PASS, exit0; store backup/restore+malformedmetadata
+4.451s, CLI config-to-PG boundary1.687s (current10refusal and real11transition).
+Original artifacts/afv2-center-01-management-1f389-linux.{log,json,exit}, logSHA
+c1189f6274a16a4e3edc04b1fbb18e604dbf5d56689ef3b955804d0805726dc4.
+Ownedcontainer removed/PID3247883 ended. No paused/running verification process.
+
+Independent base_review accepted c0d9 SQL fix and fixed1f52 backup/source audit;
+final full head and native profiles remain pending. Used r1..r3 unchanged; r4 SQL
+69c5496cb533c1b5edd56aaab3cce65c04608874ad29646b84df72d8321d85e5,
+actual current catalogue813ca9708dcfcf7ef79a3aeed2ef0c5b7cfb5703ca11819f305b9e6fd0f91501,
+361object inventoryf35cf1598d0b00e27ca65ac4bf6fa2f5b445ffcf4cb5a09899f512fc9b5d51d2.
+Native rawschemafacts/source.dump remain artifacts/management-schema12-3010129480;
+only canonical source-oracle text/hash went to Windows artifacts, not receipts.
+Previous c0d9 deliberately unqualified12backup state is resolved at1f389.
+
+Author base_audit now continues the original task's schema10 finite maintenance
+slice in Cloud/.worktree/afv2-center-01. It is explicitly permitted by Design493
+migrations.md finite-maintenance OR admitted-successor branch. Reuse actual10
+closedbackup; new private same-invocation capability binds DB/connection/call/
+exactactualartifact/source, proves all-table/sequence/LOB consistency and complete
+oldroles/sessions/recursiveprivilegegraph fencing. guardCTR06Schema and floor
+recording must recognize new maintenance evidence without fake8e5promotion or
+oldGo identity. Original0011 SQL stays unchanged, then0012, with explicitfault/
+maintenance recovery. Old hostedbridge entry remains refused. No force flag,
+synthetic publisher, new product surface, Design rewrite or workflow activation.
+
+Currentfixed10refusal is not fullCENTER acceptance. Sameexactexecutable/candidate
+must receive real10 migration/fault/restore evidence and actualprotectedartifact
+qualification. Localselfhash/runnerlabel/nativecompile is not publishedauthority.
+ActualCloudmainf470 push43774372219 completed/skipped/artifacts0, so no existing
+publishedV2successor is assumed. H03actualoperator/production/provideradmission
+staysclosed but doesnot block isolated engineering; AR07 remainsNOT_RUN.
+Freeze r135/runtime/Worker metadata only after the source10code/review stabilizes.
+
+Planmain de91326e3331c46bdb828aa633770914b4a797f9 (PR133), Designmain493,
+Cloudmainf470. Scope24 exact paths; no source/outside-profile additions.
+Currentrootrecord draftPlan134, branchplan/afv2-center-01-reconcile in
+Plan/.worktree/afv2-center-01-native. Root owns ledger/state/H22/push/PR/merge.
+WindowsprimaryCloud and independentcloud-deploy-ci-python/base01drafts remain
+untouched. Earlier intermediate evidence is below/ledger/Git and is historical.
+Continue after this checkpoint, do not start a second active product task.
+
+## Earlier confirmed reconciliation blocker and exact successor amendment
 
 Independent review found and root reproduced a current defect at418b: after
 Reserve, UNKNOWN and protocol revocation, the same original command/current hub
@@ -54,7 +101,7 @@ dependent Core work is not eligible. No V1 queue or unrelated product work.
 
 Latest checked Designmain493022fbf643b484665b2713c9eb8670f2fb2234;
 Cloudmainf4708b36fd799025ad7d6fa9e5845e4558e492b3;
-Planmain 90ba68b1778ac04cd19f9a1cff30d930ec930c04 (PR132).
+Planmain de91326e3331c46bdb828aa633770914b4a797f9 (PR133).
 Windows native direct access replaces unstable Windows MCP by owner instruction.
 Linux venue is actual H-22 via Linux MCP: v2202601329473427941/sammiller,
 /home/sammiller/arcforges. MCP is healthy; compile/test/shell errors do not count
