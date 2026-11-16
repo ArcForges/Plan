@@ -1,5 +1,26 @@
 # Codex handoff — ArcForges V2
 
+## Current DATA partial Windows fixture milestone
+
+Author still implements an uncommitted Windows working-tree variant.
+Root read actual artifacts/afv2-data-01-durable-tests-win-1.log:
+DurableCommandStoreTests5/5PASS,0skip,2.428s. Latest author Store/Store.Tests
+builds passed0warnings/0errors. This is not a committed candidate or Linux/
+formal acceptance. Schema15/CAS/fault/permission/real-process/AOT and affected
+regression remain pending, so do not deliver or use the old build as latest proof.
+
+Backup code now uses realSQLite onlinecopy, existing V1 sealed-value sanitation,
+full epoch-key/manifest closure and independently retained latest authority with
+owner-control lock; post-effect observations also advance fence. No backup can
+self-certify missing later history. Author reports the five initial cases cover
+compaction/reopen,UNKNOWN/terminal exclusion,key/DB-loss no rotation,coherent/stale
+effect restore and realSQLite safetyreserve; exact final-head rerun still required.
+
+Additional uncommitted files are DurableStoreBackups.cs and
+tests/ArcForges.Node.Store.Tests/DurableCommandStoreTests.cs. All changes remain
+under the three allowed paths. Full older snapshot/details follow. H-22 data-native
+worktree remains clean39c awaiting first pushed candidate; root alone runs it.
+
 ## Current DATA partial build and integration snapshot
 
 Author working tree remains uncommitted, within three allowed directories.
