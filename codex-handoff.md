@@ -20,8 +20,12 @@ python eng/verify.py run-and-report, PID3052053, background log
 /home/sammiller/arcforges/logs/afv2-api-01-formal-215ab65.txt;
 formal logs Contracts/.git/arcforges-verify/logs/
 20261116-123608-215ab65ddb48-linux/. The original secret-scan now passes.
-Restore, admission, naming, provenance, access and format passed; pack running
-at this checkpoint. Do not claim full success until its summary completes.
+Restore, admission, naming, provenance, access and format passed; pack FAILED.
+The two V2 projects were absent from ArcForges.Contracts.slnx and project references
+built them in Debug; Release inspect-build correctly rejected missing DLLs.
+Root is adding only their two solution Project rows and running targeted Windows
+Release, then a new pushed-head Linux full profile. This is a build defect, not
+a transport/storage failure. Final review must include that delta.
 Independent reviewer /root/base_review is inspecting the complete215 diff
 against Design/acceptance. No source merge or new package publication yet.
 
