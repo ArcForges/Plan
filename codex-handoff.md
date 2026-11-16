@@ -1,71 +1,133 @@
 # Codex handoff — ArcForges V2
 
-## Current task — AFV2-BASE-02 active, continuous serial implementation
+## Current task — AFV2-BASE-02 active, Windows CI failure diagnosis
 
-On 2026-11-16 the owner explicitly corrected the coordinator: complete and record
-each authorized task, then continue to the next eligible task without stopping at
-task boundaries. The BASE-01-only stopping point below was coordinator-imposed
-and is superseded. All38 remaining current task IDs are authorized in the new
-PLAN ledger note. Public PROD-01 activation still requires a concrete approval.
-Exactly one product task is active. No frozen V1 task or unrelated app enters scope.
+The owner explicitly requires continuous serial implementation: complete and
+record each authorized task, then proceed to the next eligible task. Do not stop
+at a task boundary. The38 remaining task IDs were authorized in the PLAN ledger
+on2026-11-16; public PROD-01 activation still needs its concrete explicit approval.
+Exactly one product task is active. ENV/BASE-01 remain complete, AR-13 PASS.
 
-Current Plan main is97ecbf618b642d5e8b4c3a22604765f85a3a41c0 (scope PR114 merged);
-initial recovery baseline was1b792422716d48e0ae9d36b7a04aa95a9efb3cf3. Other baselines:
-Design4472ea5a110a3c15c8beeeed14627e44b37103d0, ArcForges
-de361dbb189baa3ecfb1389fbaf682191d68766a. ENV and BASE-01 complete; AR-13 PASS.
-BASE-02 dependency is met and no acceptance-register item blocks this removal.
-Windows DEKU native local commands and H-22 MCP were freshly checked; user manager
-running/cgroup2fs. Count only consecutive reconnect failures within one outage.
+Baselines: Plan main397c04e546a734c64fe5f3787ae40be6b1c702fc (scope PR115),
+Design4472ea5a110a3c15c8beeeed14627e44b37103d0 unchanged, ArcForges main
+ de361dbb189baa3ecfb1389fbaf682191d68766a. Product candidate
+c58b9efb9073ee5bd61745f94c5d52ebde3519b3, treeb02a936ea7249568f301770d42c80352d63888c9,
+[Node PR86](https://github.com/ArcForges/ArcForges/pull/86), is NOT merged/delivered.
 
-Worktrees: ArcForges/.worktree/afv2-base-02 on task/afv2-base-02;
-Plan/.worktree/afv2-base-02-delivery on plan/afv2-base-02-delivery,
-[delivery draft PR115](https://github.com/ArcForges/Plan/pull/115). The earlier
-scope worktree Plan/.worktree/afv2-base-02 / plan/afv2-base-02 is preserved.
-Prior BASE-01 drafts and the
-independent Cloud CI draft remain untouched. Linux Plan primary remains dirty;
-use independent worktrees. No product candidate/PR/native receipt exists yet. The scope amendment passed
-independent review and native5/5 on each host at9dd6b7e20028ed69af8a9b94d7eecf5d3fad400a
-before merge; both summaries bind actual Design4472ea5a. Product authoring has
-resumed in the isolated worktree. The current product diff is uncommitted work, not a delivered candidate.
-The author has removed the13 actual Desktop source/test files,26 exclusive
-package pins/admissions and current Avalonia/MicroCom notice copies. Tmds.DBus
-and all other locks remain unchanged. The38 affected paths are the admitted
-Desktop files and solution/dependency/publish/package/workflow/benchmark/docs/
-ClientImages companions; `git status --short` in the product worktree names each.
-Only the two removed Desktop lock files are staged so git-ls-files preflight sees
-the final project graph. Other edits remain unstaged. Locked restore passed;
-a single native Windows build, Repository/Tools tests and publish/package/startup
-author checks are running/next. No source candidate or mandatory host status is
-claimed. Process-local English CLI output avoids the known locale parse issue.
+### Implemented and independently reviewed
 
-BASE-02 retains Node/CLI/supervisor/service and essential old execution/data
-safety; deletes the disconnected Hello World desktop/test scaffold and unused
-Avalonia closure; adapts only actual solution/publish/package/workflow/notice
-registrations. Nonexistent MCP/hook/toolchain/cache projects are reported absent,
-not invented as deletions. Protect shared DesktopPlatform/Contracts and all
-independent products. No database migration, published artifact rewrite or deploy.
+The42-file diff removes13 actual Desktop source/test files,26 exclusive desktop
+package pins/admission records and current Avalonia/MicroCom notice copies.
+It adapts actual solution/publish/benchmark/CI/test-suite/current docs and the
+existing package to Node/CLI Host plus Windows Supervisor or Linux service units.
+Locks, notices, source/build-info and per-file digests remain in the package.
+No release channel is introduced. No nonexistent MCP/hook/toolchain/cache project
+is claimed as deleted; retained legacy kinds/SQL/behavior belong to later cutover.
 
-Source audit found exact missing companion paths for desktop benchmark targets,
-telemetry target, default desktop image registration, current docs/dependabot
-group and Avalonia/MicroCom notice copies; these are listed explicitly in the
-graph amendment. Tmds.DBus remains a real Linux systemd dependency and is retained.
-No product edit occurred before the scope merge. The author worker is now
-implementing the admitted removal; the coordinator owns only Plan/integration.
+Tmds.DBus and its notice remain for real Linux systemd use. All remaining locks
+and admission objects/rules/never-admit/warning exceptions remain unchanged.
+Node/CLI/supervisor/service, resource/safety/native checks and their thresholds
+remain. Shared DesktopPlatform/Contracts, independent apps, toolchain selectors,
+NodeStore SQL and Linux service source files are untouched.
 
-Additional precise consumer-copy amendment pending: the two live Node-unavailable
-CLI error strings still recommend the removed Desktop. Four exact paths in the
-graph admit removing only that unavailable alternative and adapting existing
-assertions; Node startup instructions/routing/auth/lifecycle remain unchanged.
-The worker finishes its current author phase then pauses before these four edits.
+ClientImages.ForNode no longer automatically trusts an adjacent desktop image;
+legacy kinds and isolated test seam remain. Four files remove only unavailable
+Desktop startup/approval alternatives and adapt existing assertions, preserving
+actual CLI commands, authorization, routing, lifecycle, exit codes and budgets.
+Scope PR114 merged97ecbf618b642d5e8b4c3a22604765f85a3a41c0 after dual5/5 at9dd6b7e;
+PR115 merged397c04e after dual5/5 atc7c0f05a. Both independently reviewed, both
+summaries bound actual Design4472ea5a. The author waited for each scope merge.
+Final complete sourcec58b9efb was independently accepted with no blockers by
+OpenAI Codex nonauthor reviewer /root/base_review; truthful record is on PR86.
 
-Next: independently review/merge that four-file copy amendment, finish the small
-removal consumers, then targeted native build/startup and the
-required exact-head Windows/Linux full profiles with independent review. Record
-actual merge/publication facts through plan.py; after completion select the next
-eligible authorized task and continue. Preserve failures and any missing gate.
+### Author evidence and limits
 
-The following BASE-01 checkpoint is historical evidence, including its superseded
-stopping language. It does not limit this renewed continuous authorization.
+Windows author checks passed: locked restore, Release build0warnings/errors,
+Repository116/116, Tools100pass+1expected Linux-only skip; final guidance delta
+Client190/190 and NodeLifecycle2pass+1explicit environment skip (no restrictive
+Windows Job). Earlier dirty author Host/Supervisor Native AOT0warnings, actual
+native Node start/stop1/1 and ZIP77/77digests passed. Those native binaries predate
+the final guidance-copy change and remain dirty diagnostic evidence only.
+Logs: Windows product worktree artifacts/base02-author/, including new
+build-guidance.txt/tests-guidance-client.txt/tests-guidance-lifecycle.txt.
+
+H-22 independently fetched exactc58b9efb into
+/home/sammiller/arcforges/ArcForges/.worktree/afv2-base-02-author. Toolchain,
+locked restore, build0warnings, Host Native AOT0warnings, native CLI version,
+real native NodeStopEndsTheProcessCleanly1/1(no skips), package and archive
+inspection passed. The clean package bindsc58b9efb/SDK11.0.100,78files and77/77
+digests, actual Linux units and no retired desktop/symbol output. Author archive
+SHA2566dd8126e606dfe8b7c3230caee4c1f29e15b58adf49101410203630395e37e56;
+author Host7f036837ba71ad146ab70a034676e3804ff4ceb7a8da375d909eeb8231827598.
+These are author artifacts, not a required full status or public release.
+Detailed summary/package-inspection/logs: artifacts/base02-author-linux/ in that
+worktree. Root log logs/afv2-base02-author-linux-c58.txt; PID2916929 ended.
+
+### Required profiles — Windows failed, Linux continues
+
+Both designated hosts independently fetchedc58b9efb from GitHub and invoked
+unchanged `python eng/verify.py run-and-report` in detached verification worktrees.
+All required steps must finish; do not substitute author smoke or copied statuses.
+
+- Native Windows DEKU, current-machine local access explicitly authorized by owner:
+  exec session66036 ended with win-ci failure (422s), full15steps incomplete, receipt
+  ArcForges/.git/arcforges-verify/logs/20261116-091624-c58b9efb9073-win/.
+  Invoking worktree ArcForges/.worktree/verify-base02-c58b9efb; canonical build
+  ArcForges/.worktree/_verify. Only process-local DOTNET_CLI_UI_LANGUAGE=en-US /
+  VSLANG=1033 selects English zero-warning summaries for the unchanged publisher.
+- H-22 v2202601329473427941/sammiller through designated Linux MCP:
+  PID2918324, full21steps (includes changed-workflow actionlint), receipt
+  ArcForges/.git/arcforges-verify/logs/20261116-091813-c58b9efb9073-linux/.
+  Root log /home/sammiller/arcforges/logs/afv2-base02-node-verify-c58.txt;
+  invoking worktree ArcForges/.worktree/verify-base02-c58b9efb, canonical build
+  /home/sammiller/.cache/arcforges-verify/ArcForges.
+
+Windows first full summary has ok=false: existing unchanged LoopbackReceiver
+stall-flood test opened120connections within3s vs required aboveHardCapacity;
+LaunchFaultTests.RecoveredLimits recovered-start(cpu=true,startInGap=true)
+asserted recorded1794792156963000 < recovery1794792156962545, but it was455us later.
+Both original logs and the failed receipt remain. Windows actual status is failure,
+and schema/publish/native/bench/package/exclusive/startup steps did not run.
+Root is performing one exact-method diagnostic for each with unchanged assertions,
+logs canonical artifacts/base02-diagnostics/{loopback-stall-c58,recovered-start-c58}.txt;
+exec session58572 ended: exact original methods passed1/1(0.291s) and4/4(6.767s).
+Read-only diagnosis confirms Job membership before native Resume/start-record write.
+A precise two-test-file amendment is pending review/native Plan gates: classify
+only the failing methods exclusive/DisableParallelization and retain live Job
+evidence plus valid native Windows StartedRecord before recoveryAt, within the
+existing bound. All original limits/strict assertions stay. No production edit or
+blind full rerun. Linux oldc58 continues; it cannot satisfy a future changed head. This is a required-check failure, not a MCP connection outage.
+Linux's same-head CI/native/package passed and its exclusive suite continues.
+
+No other repository heavy job is running. Keep the hosts free of competing heavy
+builds during exclusive/native/startup phases. MCP calls this round succeeded;
+only three consecutive failed reconnects within one outage stop work, success
+resets count. No network/proxy/security setting changed, no substitute host used.
+
+### Preserved work and next action
+
+Windows product author worktree ArcForges/.worktree/afv2-base-02 on
+task/afv2-base-02 is clean atc58b9efb, source writer stopped. Coordinator Plan
+worktree Plan/.worktree/afv2-base-02-complete on plan/afv2-base-02-complete is based
+on main397c04e and records this checkpoint. Prior Plan scope/delivery worktrees
+remain. All BASE-01 drafts, earlier native receipts/caches and independent Cloud
+CI draft are preserved as detailed below. Linux Plan primary remains historically
+dirty; do not reset it or use it for authoring. No source cache cleanup occurred.
+
+Next: diagnose/fix only the two concrete Windows failures within reviewed exact
+paths, retain failed evidence, and await the current Linux run natural cleanup.
+Then obtain both complete exact-head full summaries and actual statuses.
+Diagnose any specific failure before a bounded fix/rerun; retain failed receipts.
+Then check final independent review/current strict protection and merge Node PR86.
+Node has no main-push publication; no deployment/public activation is authorized.
+Record actual merge/native artifacts and delivered then complete via plan.py,
+generate sequence, update register/handoff and merge final Plan evidence only
+after both native Plan legs bind the actual latest Design main. Immediately run
+plan.py next and continue the next eligible authorized task (normally MXC-01).
+No other product task has started and no new acceptance goal is added.
+
+Everything below is historical completed BASE-01 evidence. Its former coordinator
+stopping language is superseded by the owner's continuous instruction above.
 
 ## Historical BASE-01 delivery checkpoint
 
