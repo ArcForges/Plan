@@ -1,5 +1,30 @@
 # Codex handoff — ArcForges V2
 
+## Current DATA partial build and integration snapshot
+
+Author working tree remains uncommitted, within three allowed directories.
+Additional files since earlier snapshot: DurableCommandResults.cs;
+NodeStore.cs and Migrations/StoreBackups.cs now modified for integration/backup.
+Current uncommitted source also includes DurableEpoch.cs, DurableCommandStore.cs,
+Schema/0016-v2-expand.sql, schema-history.json, StoreMigration.cs and
+eng/v2-migration/afv2-data-01-source.json. Preserve all current author work.
+
+Partial Windows author diagnostics:
+- artifacts/afv2-data-01-toolchain-win.log: actual check_toolchain.py pass after an
+  initial missing-artifacts redirection did not execute it.
+- artifacts/afv2-data-01-store-restore-win.log: locked Store project restore pass.
+- artifacts/afv2-data-01-store-build-win.log: initial CS0121 HMAC-overload failure.
+- artifacts/afv2-data-01-store-build-win-2.log: corrected variant Release
+  --no-restore -warnaserror -tl:off passed0warnings/0errors1.89s (root read tail).
+
+Latest NodeStore/checkpoint/backup edits are AFTER that built variant and remain
+unbuilt/untested. Do not reuse the partial build as final candidate proof.
+No product commit, acceptance fixture result or native Linux result yet.
+Author is completing backup/restore/real fixtures. Owner history fence advances
+on post-admission effect observations too; restore never trusts the backup's own
+bundled fence as independent latest-history evidence. No automatic rekey/epoch reset.
+Current detailed scope/native venue and older snapshots follow.
+
 ## Current DATA source snapshot (implementation in progress)
 
 Windows task/afv2-data-01 currently has uncommitted module-local work:
