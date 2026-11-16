@@ -46,12 +46,15 @@ intent/effect observations. No Run/NodeIPC/CLI/Stop/revocation proof or delivery
 
 ## Running native processes — continue these first
 
-Both hosts independently fetched final165 from GitHub. Windows full15step:
-detached .worktree/afv2-data-01-verify, root execsession5350;
-common git log20261116-153119-165913b2cdd6-win. CI489s/schema9s/AOT62s/native tools27s/native closedloop70s/bench53s/
-package3s passed. First exclusive passed748s at15:56:03; native-exclusive now running,
-then startupgate. Base39 reused in2s.
-The receipt log is authoritative for the current running step.
+Both hosts independently fetched final165 from GitHub. Windows finished actual
+exit0/full15of15PASS2220s. Original common git summary:
+20261116-153119-165913b2cdd6-win/summary.json,
+SHAaa7ece4e40515cfa01429308775180eac013c47777f2d6f40affc91f0c06e1b4;
+command reported actualsuccess16:08:21. Rootsession5350 is CLOSED; do not poll it.
+Native-exclusive713s/startupgate24s passed. Formal cached zip16333540B,
+SHA9e4409e2ae8f598def7e11fc758f1d0e499bc4a6a5d9144536741998308d327f,
+at Node/.worktree/_verify/artifacts/packages/arcforges-win-x64.zip.
+Host/bench hashes in ledger. These are local validation artifacts, not release.
 
 H22 data-native is now exact165:
  /home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native.
@@ -73,7 +76,7 @@ was interrupted, never PASS. Helper/log/raw step evidence remains preserved.
 
 ## Exact next actions and merge gates
 
-1. Monitor existing Windows5350 and H22 finaldriver3163319 to completion;
+1. Windows is fully passed; monitor only H22 finaldriver3163319 to completion;
    both final19-case native fixtures are already passed, no rerun needed.
 2. Record full original summaries/exit codes/artifact hashes and actual required
    final165 statuses. Never copy another host receipt or manually post a status.
