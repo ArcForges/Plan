@@ -38,45 +38,44 @@ DurableRetirementRollbackReviewTests.cs.
 
 Windows final Store.Tests build0warnings/errors33.80s and19/19PASS0skip41.854s:
 author artifacts/afv2-data-01-retirement-guard-{build,tests,format}-win.log.
-Previous1e02 H22 real17case build/test and host/bench AOT passed. Final165
-H22 fixture/profile remains pending. Fixtures prove real SQLite/keys/permissions/
+H22 final165 Store.Tests build0warnings/errors6.64s and19/19PASS0skip4.680s:
+data-native artifacts/afv2-data-01-tests-build-linux-165.log and
+durable-tests-linux-165.log, explicit exits0. Both final full profiles remain pending. Fixtures prove real SQLite/keys/permissions/
 two process reopen, with only the permitted synthetic effect counter and supplied
 intent/effect observations. No Run/NodeIPC/CLI/Stop/revocation proof or delivery yet.
 
 ## Running native processes — continue these first
 
-Windows final exact165 unchanged15step run-and-report:
+Both hosts independently fetched final165 from GitHub. Windows full15step:
 detached .worktree/afv2-data-01-verify, root execsession5350;
-common git log20261116-153119-165913b2cdd6-win. Base39 reused in2s.
-Old1e02 Windows151921 profile failedwin-ci506s on one existing CoreEventStream
-70000 timing branch; it remains failed, no latersteps claimed. Its CI phase
-overlapped cold base AOT148s; causation is not established. No Core/gate change.
+common git log20261116-153119-165913b2cdd6-win. CI489s/schema9s/AOT62s/
+native tools27s/native closedloop70s passed, nowbench. Base39 reused in2s.
 
-H22 data-native worktree still at1e02:
-/home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native.
-Old driverPID3124628 / verifier3124629 / currentexclusive step3154816.
-Only obsolete verifier coordinator3124629 is SIGSTOP-paused; test step proceeds
-naturally. Ignored boundary helper observer3161196:
-artifacts/afv2-data-01-old-head-boundary-stop.py/.log.
-It waits step exit/zombie then sends existing-handler SIGTERM+SIGCONT; no future
-old step can launch. Helper finally always resumes, bounded1100s. If manually
-interrupting helper, resume verifier with SIGCONT and normal SIGTERM cleanup;
-never leave it stopped. Original driver:
-artifacts/afv2-data-01-formal-linux-1e02.log/.exit;
-common git original log20261116-151927-1e02e335b97c-linux.
-This is an obsolete partial/interrupted leg, never PASS. Do not start another
-Linux build/test while its exclusive measurements remain active.
+H22 data-native is now exact165:
+ /home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native.
+Final19-case build/tests passed before unchanged20step full run started.
+DriverPID3163319, artifacts/afv2-data-01-formal-linux-165.log/.exit;
+common git log20261116-154123-165913b2cdd6-linux. Toolchain/realOS/restore/
+format/build passed, nowCI. Observe current logs, do not launch a duplicate.
+Keep exclusive resource measurements alone on each host.
+
+Old1e02 Windows151921 profile failedwin-ci506s on one existing CoreEventStream
+timing branch; no latersteps claimed. Its CIphase overlapped cold base AOT148s,
+but causation is not established. Final165CI passed without Core/gate changes.
+OldH22 exclusive suite ended naturally; boundary observer then used the existing
+verifier interruption handler before another oldstep. Originaldriverexit2 and
+arcforges/linux error reported15:40:25. Oldverifier/step/observer/lock/PIDfile
+were absent before finalcheckout; no coordinator remains paused. Fulloldleg
+was interrupted, never PASS. Helper/log/raw step evidence remains preserved.
 
 ## Exact next actions and merge gates
 
-1. Observe old Linux step/helper/driver ending and original lock/process cleanup.
-   Fetch task/afv2-data-01 independently from GitHub; clean checkout exact165.
-2. Reuse unchanged restored assets. Build Store.Tests Release --no-restore
-   -warnaserror; run --no-build --filter-class
-   ArcForges.Node.Store.Tests.DurableCommandStoreTests, record final19 results.
-3. Run unchanged python eng/verify.py run-and-report on H22 in background with
-   unique log and explicit exit file. Do not overlap other host work with exclusive
-   measurements. Monitor existing Windows5350 rather than starting a duplicate.
+1. Monitor existing Windows5350 and H22 finaldriver3163319 to completion;
+   both final19-case native fixtures are already passed, no rerun needed.
+2. Record full original summaries/exit codes/artifact hashes and actual required
+   final165 statuses. Never copy another host receipt or manually post a status.
+3. Do not overlap other host work with exclusive resource measurements or start
+   duplicate profiles. Diagnose actual failures before any justified repeat.
 4. Obtain both actual required statuses at final165 and reviewer confirmation of
    final evidence. Check actual rules/current head/base/threads, then immediate
    expected-head mergePR94, no bypass/admin/automatic merge.
