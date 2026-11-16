@@ -1,6 +1,36 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — f6b9 final native verification running
+## Current checkpoint — f6b9 Windows passed; H22 observation unavailable
+
+Cloudf6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa is clean/pushed and independently
+source-reviewed. Final Windows full10/10PASS144s, tree8af897e46cc0577d06794c787becf1f14411c739,
+originalCloud/.git/arcforges-verify/logs/20261117-052223-f6b9edc25f5d-win/summary.json.
+Linux originalrun20261117-052230-f6b9edc25f5d-linux was independently launched;
+last host observation confirmed driver3679481 running17s. During subsequent
+id_audit observation, LinuxMCP returned three consecutive HTTP502 transport errors
+in this one outage, including the final minimal hostname/ps probe. Per the owner's
+explicit three-consecutive-failure limit, no further MCP retry was attempted.
+The independently running formal process was not terminated; current outcome is
+unknown. GitHub last observation still reportsLinuxpending andWindowssuccess.
+This is a new transport outage, not renewed disk exhaustion or a Go/test failure.
+
+ID01 is blocked byH02 pending recovery of the designated host observation. No
+product merge, finalLinuxPASS or completion claimed. Overall6complete/2blocked/
+32planned. Current Plan record branch plan/afv2-id-01-delivery, draftPR145;
+mergedmaincedc3c4 still contains the earlier active checkpoint, so fetch this draft
+for latest blocked state. SourceCloud160 remains draft. No uncommitted Cloudfiles.
+
+Next resume: establish a new MCP connection attempt within the owner's retry rule;
+read existing artifacts/afv2-id-01-formal-f6b9/native.log/exit and originalsummary
+before deciding to rerun. Do not duplicate a still-running profile. If exactf6b9
+already passed, preserve its validWindows receipt and perform final independent
+receipt/artifact review, normalCloudmerge and pausedmain-push observation, then
+Plan completion checks/merge. If it failed, fix only the actual failure. Continue
+remaining tasks7–40 as dependencies permit; the old stop-after-ID01 is superseded.
+All cleanup records, source changes and failures are preserved. No network,
+proxy/security settings, unknown data, databasevolumes or images were changed.
+
+## Historical checkpoint — f6b9 final native verification running
 
 Plan144 mergedcedc3c4905808b7bbee539a33a8e1a6ce3736f2a after independent review
 and Windows5/5PASS5s/Linux5/5PASS27s atfadd0cc, both currentDesign493022fb.
