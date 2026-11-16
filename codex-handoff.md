@@ -1,6 +1,24 @@
 # Codex handoff — ArcForges V2
 
-## Current narrow successor metadata amendment
+## Current CENTER work resumed after exact successor scope merge
+
+Plan130 actually merged db7b97e36b48f0811e0bd0bdc09d3c00931b1100 from reviewed
+head e18d22c02dde883ebde79acd2291ef8582c78c8f/tree414192a46f3b62e8ed315afdfe1b8ede8508a79d.
+Independent base_review accepted. Native Windows5/5 in5s (171711) and H-22 Linux5/5
+in25s (171840, driverexit0) both bind actual Design493. Original protection,
+current base/head and zero threads checked; normal expected-head merge, no bypass.
+The first Linux launcher timed out due to shell grouping, not connectivity;
+incomplete171720 evidence was preserved and a normal full rerun succeeded.
+
+Author base_audit resumed alone. Next: commit minimal identity lock fix with r2,
+rerun changed native PG/inventory facts, then complete V2 backup/restore/faults
+and exact r135/runtime/Worker metadata. Existing schema11/r1/r134 remain immutable.
+Cloud draft159 is still incomplete at pushed5eaa. No final native profiles,
+independent Cloud review, product merge, positive schema10 qualification or AR07.
+Current Plan record worktree .worktree/afv2-center-01-native on
+plan/afv2-center-01-native begins actual db7b97e; previous record branches remain.
+
+## Earlier narrow successor metadata amendment
 
 Author paused after the first native findings, with only management.go and
 management_integration_test.go uncommitted in the allowed Cloud worktree.
