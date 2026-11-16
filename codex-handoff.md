@@ -1,5 +1,29 @@
 # Codex handoff — ArcForges V2
 
+## Current API-01 final96 source, formal check pending
+
+This current checkpoint supersedes earlier snapshots below; all historical
+failures and intermediate source/artifact identities remain in this file and ledger.
+Plan123 actually merged7cfd4d725c0dc3586831af37ea3bc34af38a723c at independent
+revieweda6ec2cc6b262476bdf21b0df883e0fb1d7b934f1; both native5/5 summaries bind
+actual Design493022fbf643b484665b2713c9eb8670f2fb2234 (Win124940/Linux124931).
+
+Contracts final96d02cef1eeff087e17ac8aab66891b55169270f is pushed draftPR140.
+Independent base_review accepts complete final source and all reviewed deltas,
+including exact observed r2 digest rules; no source blocker. Existing generated
+C# business bytes still match4d; Go source1efa changes only generated package
+comments and has true native qualifiers on both hosts. Immutable r1 stays intact.
+
+H-22 independently fetched96 and is running unchanged full20step verification,
+PID3064037, background/home/sammiller/arcforges/logs/afv2-api-01-formal-96d02ce.txt;
+formal receipt Contracts/.git/arcforges-verify/logs/
+20261116-125104-96d02cef1eef-linux/. Scan, restore and admission have passed;
+observe the completed summary before merge. No full success, merge or publication
+yet. Root final-record worktree Plan/.worktree/afv2-api-01-final on
+plan/afv2-api-01-final base7cfd4d7. Task remains active. Next: real formal result,
+protection/head/base/threads check, expected-head merge, normal cohort publication,
+final Plan delivered/complete record and next eligible task. Never activate PROD.
+
 ## Current API-01 r2 exact qualification and observed hash successors
 
 Metadata candidatee9caf2a6931f4dcf566be98593bb81426d69be18 is pushed draft140;
