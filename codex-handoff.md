@@ -10,11 +10,8 @@ inside this task. Preserve true external/production gates; never label an unmet
 gate or partial work complete merely to stop. This supersedes earlier continuous
 next-task instructions for this run, including historical snapshots below.
 
-Current Planmain436010a7ae153ca59b2ea6d9b66aa240ea7e510e (PR136); its reviewed
-551d2777a132238b9d4f5262fc694f76395cf572 head passed Win5/5 in5s and Linux5/5
-in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
-Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
-restore after the positive177 migration/fault/CLI checks; it is not verified yet.
+Use the current checkpoint below for actual baselines and next actions. Older
+execution snapshots are historical evidence, not active instructions.
 
 ## Current checkpoint: r137 exact final head is being verified
 
@@ -38,11 +35,13 @@ provenance/strictpin/profile/actual retainedWorker checks passed. Independent
 base_review accepts complete8048042 including all metadata/context inputs.
 Review: https://github.com/ArcForges/Cloud/pull/159#issuecomment-6915784867.
 
-Both unchanged full profiles are running at8048042:
+Final profile status at8048042:
 - Windows caller Cloud/.worktree/afv2-center-01-verify: PASS10/10 in142s;
   original logs20261116-195553-8048042b4026-win. Session86054 ended.
 - H22 caller Cloud/.worktree/afv2-center-01-native; driver3359347;
   original common logs20261116-195604-8048042b4026-linux; security bridge passed160s.
+  Center full check passed334s; source check passed171s. check-dotnet is active;
+  remaining candidate/provenance steps and final summary are not yet passed.
   artifacts/afv2-center-01-formal-8048-linux.{log,exit}, runner/driver beside it.
 Do not modify source. Keep earlier actual failed statuses/logs; they are not PASS.
 After both pass, run existing ignored artifacts/afv2-center-01-candidate-input.py
