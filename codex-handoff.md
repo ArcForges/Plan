@@ -1,5 +1,69 @@
 # Codex handoff — ArcForges V2
 
+## Current checkpoint: API-01 complete; final Plan record awaits checks/merge
+
+This checkpoint supersedes the historical intermediate snapshots below.
+The user requires continuous serial delivery; after this record merges, start
+the next eligible authorized task rather than ending at the task boundary.
+
+### Completed API-01
+
+- Contracts PR140: https://github.com/ArcForges/Contracts/pull/140
+  Actual merge c22be9a7da5a747b4a14b1b81d78f0ea460f810f, reviewed/tested head
+  9d27110969fb3d7b2a347a8b487d945a3721cb56. Both share tree
+  318db47ce162b67b57252de44e8925929cceaea2.
+- H-22 required unchanged full profile passed all20steps in556s. Original receipt:
+  Contracts/.git/arcforges-verify/logs/20261116-132451-9d27110969fb-linux/summary.json,
+  SHA25648c4d86ab5ed00c202158f4da901dcac1f5f95bc7e9d5513c7718d9f069df95b.
+  Includes649toolingtests, pack/Native AOT, Go/static/test/exchange/vulnerability,
+  security and the original shared architecture gate. Independent base_review
+  accepted complete source, final deltas and actual final evidence. Strict required
+  status/current head/base/no bypass/zero review threads were checked before merge.
+- Ordinary cohort1.0.0-ci.481.1 is published:19NuGet packages, retained internal npm
+  @arcforges/ai-internal, and go/v1.0.0-ci.481.1. Main-push run43811258953 succeeded,
+  actual publishing steps in all3jobs succeeded; Go tag directly points to mergec22.
+  https://github.com/ArcForges/Contracts/actions/runs/43811258953
+  Candidate artifact14200813608 (16513026bytes), metadata SHA256
+  18d53a6d8fd00755d4f6614325dd7ebd123e76f97980ce661ea5ed0546eed13c.
+  Only publication metadata was inspected; no repeated downloads/rescans/consumers.
+- Windows AOT/Release and exact-source1efa native Go qualifier originals, plus all
+  real earlier failures, remain in native locations and the append-only ledger.
+  No SQL, old schema/checksum, independent consumer pin or deployment was changed.
+
+plan.py recorded API-01 delivered then complete, including actual PR/merge and all
+three publication channels; sequence regenerated. No API acceptance-register row
+exists. Keep AR-03FAILED/MXC-01blocked, AR-13PASS and completed ENV/BASE tasks intact.
+MXC rejection remains a real privacy failure and blocks its own dependent range.
+
+### Final record before the next task
+
+Plan/.worktree/afv2-api-01-final on plan/afv2-api-01-final; draftPR124:
+https://github.com/ArcForges/Plan/pull/124
+Base actual Plan main7cfd4d725c0dc3586831af37ea3bc34af38a723c; Design main
+493022fbf643b484665b2713c9eb8670f2fb2234. Next: push final record, obtain both
+unchanged native Plan5step profiles on that exact head, check both Design-bound
+summaries against freshly fetched actual Design main, review/protection/threads
+and expected-head merge. Record the actual Plan124 merge in the next startup ledger.
+No native or CI process remains running; no source work is uncommitted.
+
+### Next eligible authorized task: AFV2-DATA-01
+
+plan.py next selects DATA-01: add V2 Node persistence and durable mutation receipts.
+Dependencies BASE-01/API-01 are complete; AR-03 does not block this store-only task.
+Read the full task plus current Node AGENTS/CONTRIBUTING and Design node-store.md,
+node-store.sql, migrations.md and contracts README before implementation.
+Allowed product paths only: ArcForges src/ArcForges.Node.Store/**,
+tests/ArcForges.Node.Store.Tests/**, eng/v2-migration/**. Inspect actual latest Node
+main and all worktrees first; preserve existing drafts and use an isolated worktree.
+Scope is forward expand migrations, owner_epoch/immutable command-intent receipts,
+UNKNOWN preservation/compaction/capacity, coherent database/key backup/restore and
+real fresh/schema15 SQLite/WAL/permission/close-reopen fixtures on both native hosts.
+Never edit applied0001..0015 or contract live tables. Only the task's explicit
+synthetic effect-counter admission fixture is allowed; actual Run/IPC/CLI/Stop/
+grant revocation remains CORE-02/REC-01/CLI-01 and cannot be claimed from it.
+After Plan124 merges, mark DATA-01 active and ledger the exact scope/baselines,
+then implement the smallest complete task. Public activation remains separate PROD-01.
+
 ## Current API-01 merged source; ordinary cohort pending
 
 This checkpoint supersedes all intermediate snapshots below.
