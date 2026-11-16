@@ -691,7 +691,7 @@
       "title": "Admit stable MXC artifacts and build AOT/provenance probes",
       "milestone": "P1",
       "order": 4,
-      "state": "active",
+      "state": "blocked",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -789,11 +789,21 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/**; ArcForges:eng/mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Resume continuous authorized V2 delivery after BASE-02 final record PR117; implement only exact stable MXC artifact/AOT probe admission. Reviewed scope amendment pending: register only the real probe project in ArcForges.slnx because RepositoryLayoutTests requires every tools project in the solution; no product package/publish target or test/validator bypass. Proposed evidence-only scope amendment pending review: update F-AOT-01/V-MXC-07 and the dated status preamble in docs/verification/platform-capabilities.md from actual MXC-AOT-01 evidence; all composed-profile and unrelated future facts remain unchanged.",
-      "blocked_by": [],
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/**; ArcForges:eng/mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Resume continuous authorized V2 delivery after BASE-02 final record PR117; implement only exact stable MXC artifact/AOT probe admission. Scope amendment approved in Plan PR118: register only the real probe project in ArcForges.slnx because RepositoryLayoutTests requires every tools project in the solution; no product package/publish target or test/validator bypass. Evidence-only scope amendment approved in Plan PR119: update F-AOT-01/V-MXC-07 and the dated status preamble in docs/verification/platform-capabilities.md from actual MXC-AOT-01 evidence; all composed-profile and unrelated future facts remain unchanged. [blocked] Selected official1.0.1 fails MXC-AOT-01 request-environment argv privacy on genuine H-22; candidate rejected, native cleanup proved, no weaker policy/private patch/unreviewed pin. Preserve Node draft93; independent API-01 may proceed.",
+      "blocked_by": [
+        "AR-03"
+      ],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/93",
+          "https://github.com/ArcForges/ArcForges-Design/pull/72",
+          "https://github.com/ArcForges/Plan/pull/118",
+          "https://github.com/ArcForges/Plan/pull/119"
+        ],
+        "merges": [
+          "Plan@32589ed5ea739fcd813ca33eb03f831f713280be",
+          "ArcForges-Design@493022fbf643b484665b2713c9eb8670f2fb2234"
+        ],
         "publications": [],
         "ledger": null
       },

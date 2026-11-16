@@ -1,6 +1,46 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — MXC-01 native privacy failure; record then continue
+## Current checkpoint — MXC-01 blocked; continue independent API-01
+
+MXC-01 is blocked by AR-03, not complete/delivered. The selected official1.0.1
+cohort failed the genuine H-22 request-environment argv privacy case. Do not
+retry unchanged inputs, weaken the assertion, privately patch MXC, upgrade the
+pin without admission, or merge Node draft93. Existing product executors/data
+and completed ENV/BASE work remain intact. This is not a host/MCP outage.
+
+Design PR72 actually merged493022fbf643b484665b2713c9eb8670f2fb2234 at reviewed
+181540da05d45f33f3f7963855ba0f91d1f5ed72, both native Design4/4 passed (Windows
+20261116-111251-181540da05d4-win; H-22Linux20261116-111215-181540da05d4-linux).
+Its sources/protocol/F-AOT-01 agree on FAILED and preserve all other future
+facts. Plan scope PR119 merged32589ed5ea739fcd813ca33eb03f831f713280be after
+independent review and exact-head dual5/5 against then-current Design4472.
+
+The Node branch task/afv2-mxc-01 is pushed through
+4382988ce5b5ea40f4eb4583534a18bb135d371a/tree4f581146effc75c65a00104ce6aa76b5278c83b2.
+It is clean and only the last whitespace-format delta differs from native
+candidate8252c8fc13d5973b27ab76bc18726eab8f21cb96. Native825 results are not
+claimed for438. Independent /root/base_review checked the complete source,
+original Windows/Linux evidence and rejected admission disposition, and accepted
+final Design181 negative records with no blockers. No Node merge/full status or
+product acceptance approval exists. All owned native/build processes finished.
+
+Exact originating artifacts, hashes, worktrees, failures and cleanup facts are
+preserved in the following checkpoint history and Design result. The source
+worktree and all old drafts remain untouched. There is no data migration,
+backup/restore or publication/deployment in this probe task.
+
+This final blocked-state record is in Plan/.worktree/afv2-mxc-01-blocked on
+plan/afv2-mxc-01-blocked, baseline32589ed5ea739fcd813ca33eb03f831f713280be.
+Before it merges, its actual required Plan native legs must bind current Design
+493022fbf643b484665b2713c9eb8670f2fb2234; independent final record review remains.
+After recording this state, immediately activate AFV2-API-01 (dependency BASE-01
+complete; no AR-03 dependency). Do not stop at this boundary. Contracts actual
+origin was checked and latest main fetched69f3041ab4c6bcee1677d0587aaebbbf54cb98bb;
+primary and old worktrees are preserved. Create a new API worktree, read its
+AGENTS/CONTRIBUTING and exact V2 Design refs, then implement/publish additive V2
+contracts and generated bindings without changing published v1 meanings.
+
+## Previous checkpoint — MXC-01 native privacy failure; record then continue
 
 MXC-01 remains the only active task while its negative result and blocked state
 are made authoritative. Do not admit the candidate or weaken the privacy gate.
