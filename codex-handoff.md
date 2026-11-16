@@ -1,6 +1,50 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — AFV2-BASE-01 complete
+## Current task — AFV2-BASE-02 active, continuous serial implementation
+
+On 2026-11-16 the owner explicitly corrected the coordinator: complete and record
+each authorized task, then continue to the next eligible task without stopping at
+task boundaries. The BASE-01-only stopping point below was coordinator-imposed
+and is superseded. All38 remaining current task IDs are authorized in the new
+PLAN ledger note. Public PROD-01 activation still requires a concrete approval.
+Exactly one product task is active. No frozen V1 task or unrelated app enters scope.
+
+Current baselines: Plan1b792422716d48e0ae9d36b7a04aa95a9efb3cf3 (PR113 merged),
+Design4472ea5a110a3c15c8beeeed14627e44b37103d0, ArcForges
+de361dbb189baa3ecfb1389fbaf682191d68766a. ENV and BASE-01 complete; AR-13 PASS.
+BASE-02 dependency is met and no acceptance-register item blocks this removal.
+Windows DEKU native local commands and H-22 MCP were freshly checked; user manager
+running/cgroup2fs. Count only consecutive reconnect failures within one outage.
+
+Worktrees: ArcForges/.worktree/afv2-base-02 on task/afv2-base-02;
+Plan/.worktree/afv2-base-02 on plan/afv2-base-02. Prior BASE-01 drafts and the
+independent Cloud CI draft remain untouched. Linux Plan primary remains dirty;
+use independent worktrees. No product candidate/PR/native receipt exists yet. The exact companion-path amendment
+is awaiting independent review/native Plan gates before product edits.
+
+BASE-02 retains Node/CLI/supervisor/service and essential old execution/data
+safety; deletes the disconnected Hello World desktop/test scaffold and unused
+Avalonia closure; adapts only actual solution/publish/package/workflow/notice
+registrations. Nonexistent MCP/hook/toolchain/cache projects are reported absent,
+not invented as deletions. Protect shared DesktopPlatform/Contracts and all
+independent products. No database migration, published artifact rewrite or deploy.
+
+Source audit found exact missing companion paths for desktop benchmark targets,
+telemetry target, default desktop image registration, current docs/dependabot
+group and Avalonia/MicroCom notice copies; these are listed explicitly in the
+graph amendment. Tmds.DBus remains a real Linux systemd dependency and is retained.
+The product worker is paused with zero edits until the Plan amendment merges.
+
+Next: review and merge this exact Plan amendment, implement the small removal
+and necessary callers, then targeted native build/startup and the
+required exact-head Windows/Linux full profiles with independent review. Record
+actual merge/publication facts through plan.py; after completion select the next
+eligible authorized task and continue. Preserve failures and any missing gate.
+
+The following BASE-01 checkpoint is historical evidence, including its superseded
+stopping language. It does not limit this renewed continuous authorization.
+
+## Historical BASE-01 delivery checkpoint
 
 The owner resumed V2 implementation on 2026-11-16. This round delivered only
 BASE-01, after ENV; no second product task started. ENV and AR-13 remain complete /
