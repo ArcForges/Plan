@@ -15,6 +15,22 @@ collectors; root owns Linux, author can prepare Windows. All previous receipts
 stay intact. After derived admission metadata refresh, new full final-head Linux
 check and independent delta review remain mandatory. Current task still API-01.
 
+## Current API-01 Go comment repair and native qualifiers
+
+Source1efa1dd761ee4d37028d3d0b2e67fc827d556bc6 is pushed in draft140.
+Only generator header and two regenerated Go package comments changed after5417;
+Go60vectors passed. Both clean native Go collectors passed same1efa and reported
+unchangedSourceAndLocks=true. Windows raw report is in the preserved go-23a4b33
+worktree artifacts/afv2-api-01-go-reference-windows-1efa1dd.json, SHA256
+21754a48640c6330888b480b1a8b8c46250b10d3d6a8509909f59ab9f50fddf3.
+H-22 raw is in preserved268c42e worktree artifacts/
+afv2-api-01-go-reference-linux-1efa1dd.json, SHA256
+a0214c4b4052d0a8324699730912f8d38f0890135b0ca535a02073a62cd38ca8.
+Original raws stay on their hosts; the existing validator derived the portable
+Linux summary. Author base_audit is preparing immutable Go provenance/review r2,
+then affected checks; no final full profile or source merge yet. Source comments
+are the only behavior-neutral Go changes, compatible versions remain fixed.
+
 ## Latest API-01 candidate5417
 
 Source5417f9d12fc5bff43dc07590defefb0ba73a68cb fixes215 pack failure with
