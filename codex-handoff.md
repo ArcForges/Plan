@@ -28,17 +28,21 @@ Final r2 receiptSHA9ca32666b592cafa9130a18eb672ba5296d001659edf1e86b378c86d2c843
 passed actual pinned H22 redacted scan with0findings; author targeted gates pass.
 
 Unchanged final full run-and-report profiles are active:
-- Windows caller Cloud/.worktree/afv2-center-01-verify; root session30196;
-  original logs20261116-193924-84efb8c551e8-win.
+- Windows caller Cloud/.worktree/afv2-center-01-verify: final PASS10/10 in153s;
+  original logs20261116-193924-84efb8c551e8-win. Session30196 is closed.
 - H22 caller Cloud/.worktree/afv2-center-01-native; driver3329447;
   artifacts/afv2-center-01-formal-84ef-linux.{log,exit}, runner/driver beside it.
+  Original common logs20261116-193953-84efb8c551e8-linux; still running.
+  Security bridge passed169s, npm audit passed; check/parallel center continue.
 The first Linux launch stopped before fetch/status because the author import
 created two untracked pyc files. Those exact owned files were preserved under
 artifacts/afv2-center-01-source317-pycache; no unknown file/cache was deleted.
 The clean caller fetched final84ef, then started with process-local bytecode off.
 This was a launcher cleanup condition, not a transport failure or formal result.
 
-Wait for genuine final profiles. Then use this same candidate image's extracted
+Independent base_review also accepted the prepared driver coverage and confirmed
+H03 remains a production boundary. Actual candidate results are still pending.
+Wait for the genuine final Linux profile. Then use this same candidate image's extracted
 CLI (check its manifest/image/member digest) with the prepared ignored driver
 for fresh/10/11 actual PG backup/restore. Review final evidence, mergeCloud,
 write Plan139 closure and stop/report; do not start another product task.
