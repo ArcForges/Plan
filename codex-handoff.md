@@ -2,12 +2,23 @@
 
 ## Current recovery implementation
 
-Plan132 actually merged90ba68b1778ac04cd19f9a1cff30d930ec930c04; its exact
-ae0068b75dcceb2170f82420915e80dc80448890 head passed nativeWindows5/5 in5s
-andH-22Linux5/5 in25s, bothDesign493. Latest main contains the genuine0aba
-passing migration stage. Author backup/restore edits are still uncommitted;
-next native restore run waits for the next coherent pushed source. Remain on
-CENTER-01 and continue; this is a stage checkpoint, not task completion.
+Cloud draft159 pushed418b89e2bc99ac3f73b4ddcea739f045ba258149, independently fetched
+on H-22. First real Capture12 to newtarget Restore fixture PASS, plus malformed
+metadata refusal for missing-table/changed-checksum/self-asserted-catalogue.
+Two top-level plus three subcases, zero skips,4.101s, exit0. Target-specific
+admission is renewed; old UNKNOWN/command facts retained. Original artifacts/
+afv2-center-01-management-418b-linux.{log,json,exit}, logSHA
+4a2268205856d293a14d55123843cd5ab4696a798552c53585fb929b54e63225.
+Ownedcontainer removed; PID3239238 ended. No verification process paused/running.
+Author continues required fault/CLI/consumer/provenance work; base_review makes
+read-only intermediate review of fixed0aba SQL/store, not final full acceptance.
+
+Plan132 actually merged90ba68b1778ac04cd19f9a1cff30d930ec930c04 with both profiles
+at ae0068b75dcceb2170f82420915e80dc80448890, Windows5/5 in5s/H22Linux5/5 in25s,
+bothDesign493. Current recovery record draft Plan133, branch
+plan/afv2-center-01-recovery in Plan/.worktree/afv2-center-01-native. CENTER stays
+sole active. Full backup/recovery coverage, final formal Cloud profiles/review
+and positive schema10 successor qualification are not complete.
 
 ## Current task and baselines
 
@@ -30,10 +41,10 @@ trigger that stop rule. GitHub uses existing native gh/Git authentication.
 ## Current source, author and precise scope
 
 Cloud draft [PR159](https://github.com/ArcForges/Cloud/pull/159), branch
-task/afv2-center-01, pushed0aba947d44086350e9fcaca2c9cf0f400ee42912.
+task/afv2-center-01, pushed418b89e2bc99ac3f73b4ddcea739f045ba258149.
 Windows author:C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-center-01.
 H-22 native:/home/sammiller/arcforges/Cloud/.worktree/afv2-center-01-native,
-independently fetched exact0aba. Author base_audit is implementing V2 backup/
+independently fetched exact418b. Author base_audit is implementing V2 backup/
 restore in this same task. Root owns state, evidence, H-22, push, PR and merge.
 No independent final Cloud review yet. Inspect live git status before touching
 author files. Root does not edit them while author is active.
