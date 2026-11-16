@@ -1,5 +1,14 @@
 # Codex handoff — ArcForges V2
 
+## Current recovery implementation
+
+Plan132 actually merged90ba68b1778ac04cd19f9a1cff30d930ec930c04; its exact
+ae0068b75dcceb2170f82420915e80dc80448890 head passed nativeWindows5/5 in5s
+andH-22Linux5/5 in25s, bothDesign493. Latest main contains the genuine0aba
+passing migration stage. Author backup/restore edits are still uncommitted;
+next native restore run waits for the next coherent pushed source. Remain on
+CENTER-01 and continue; this is a stage checkpoint, not task completion.
+
 ## Current task and baselines
 
 Continue the owner's authorized serial V2 work after each task/record. Five of40
@@ -11,7 +20,7 @@ dependent Core work is not eligible. No V1 queue or unrelated product work.
 
 Latest checked Designmain493022fbf643b484665b2713c9eb8670f2fb2234;
 Cloudmainf4708b36fd799025ad7d6fa9e5845e4558e492b3;
-Planmain e980cf763402b2a602981e6ca52a464237de7984 (PR131).
+Planmain 90ba68b1778ac04cd19f9a1cff30d930ec930c04 (PR132).
 Windows native direct access replaces unstable Windows MCP by owner instruction.
 Linux venue is actual H-22 via Linux MCP: v2202601329473427941/sammiller,
 /home/sammiller/arcforges. MCP is healthy; compile/test/shell errors do not count
@@ -90,7 +99,7 @@ never claim positive10 path passed. Cloud deployment stays deliberately paused.
 No production/credential probe, provider bootstrap, public activation or secret use.
 
 Current root Plan record worktree .worktree/afv2-center-01-native,
-branchplan/afv2-center-01-validation from actuale980. Preserve all prior branches.
+branchplan/afv2-center-01-recovery from actual90ba. Preserve all prior branches.
 Cloud primary worktrees remain d422d771; Cloud/.worktree/afv2-base-01 has separate
 untracked eng/v2-migration, and .worktree/cloud-deploy-ci-python has independent
 unmerged eng/verification/test_ctr06_bridge_assets.py draft. Do not import it
