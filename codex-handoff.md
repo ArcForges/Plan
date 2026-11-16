@@ -1,5 +1,16 @@
 # Codex handoff — ArcForges V2
 
+## Current exact r3 follow-up admission
+
+The a882 fresh-case 42702 is a PL/pgSQL naming conflict: local row variable i
+and UPDATE-branch SQL alias i. Rename only the alias to identity_row, preserving
+all query predicates, locks and guards. Used r2 is immutable; Plan131 adds only
+the precise management-storage-r3 successor record path, 22 to23 paths. No
+wider directory, policy, acceptance or authority change. Independent Plan-only
+scope review and both native Plan profiles precede that SQL change. Author may
+continue nonconflicting Go-only backup/restore in parallel; this remains one
+active product task, and Plan reviewer is not reviewing a changing Cloud diff.
+
 ## Latest CENTER native result at a882
 
 Pushed Cloud candidate a882bf48d11d92e87dc3874fa8c4676d6e484856 fixes the two
