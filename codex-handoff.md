@@ -86,6 +86,56 @@ root coordinates Linux diagnostics/integration. New source must be pushed and
 fetched by H-22 before its final unchanged full profile. Preserve existing
 69f cohort and reject missing/failed validation; no product runtime is in scope.
 
+### Latest API native checkpoint — code23a, metadata still pending
+
+Contracts draft140 now contains pushed stable Go/control code
+`23a4b33dc5dd0ddd5068e8451fc0789322060f99`. Shared vectors are now57;
+C# targeted checks and native Windows Go vectors passed. H-22 independently
+fetched the same commit and actual Go `TestV2ContractVectors` passed all57,
+including Unicode/non-BMP limits and immutable Foundation vocabulary/detail
+refusals. These are contract tests, not runtime authorization/dedup acceptance.
+
+H-22 reused the clean diagnostic worktree
+`Contracts/.worktree/afv2-api-01-268c42e`, whose actual HEAD is now23a.
+Earlier268/8a artifacts remain under its ignored artifacts/. Current raw Go
+collector report is `artifacts/afv2-api-01-go-reference-linux-23a4b33.json`,
+SHA256 `6e47fc316fcc6a1dd6c12800a0566fe4d727064c01876b372ca200f8a468cc46`.
+It reports clean source and unchanged source/locks at exact23a. The Go vector
+log is `artifacts/afv2-api-01-go-vectors-23a4b33.log`. The existing collector's
+`go_report_summary` validated/derived portable qualification metadata; the raw
+host receipt stays on H-22 and is not copied into another host's status.
+Author metadata combines real same-source Windows and Linux references; no
+version refresh or reused old-source native success is permitted.
+
+A real storage condition occurred: H-22 root ext4 is503GiB, user free29MiB
+at failed new8a checkout; inode use17%, so not an MCP/network/inode failure.
+Git automatically removed the incomplete new checkout. Root confirmed the
+bb4 diagnostic checkout had no modified/untracked/ignored/artifact files and
+removed only that reproducible200MiB copy via git worktree remove; exactbb4
+remains in GitHub/history. No independent-product or other author's work moved.
+Then, after verifying the825 original report/native-stage/manifest hashes,
+root removed only bin/obj under its own three previous MxcProbe worktrees
+488/676/825 (about382MiB). Source, installed toolchains, officialZIP/NuGet,
+published stages/debug files/raw reports and original helper pycache all remain.
+The preserved native hashes were checked again after removal. Free space is
+now about599MiB; do not clear unknown/global caches. A required build that still
+cannot fit must be reported honestly, with no merge or fake status.
+
+The original Windows AOT compile had0warnings, but an old descriptor inventory
+assertion failed after new V2 checks passed; its log is retained. The corrected
+exact268 Windows AOT full serialization probe passed with dynamic code false,
+recorded separately as `artifacts/afv2-api-01-aot-win-268c42e-report.json`.
+It is not relabelled as23a/current-fixture proof. Author now finishes access,
+generated provenance/dependency receipts and docs; Go/control bytes are frozen
+at23a unless an actual acceptance defect requires a new measured source.
+
+Next: finish the noncontrolled metadata candidate, push/fetch its exact SHA,
+run the unchanged required Contracts Linux full profile (including actual
+native AOT and C#/Go exchanges), independent final source/receipt review,
+protected exact-head merge and normal cohort publication. No final full status,
+source merge, API completion or new publication exists at this checkpoint.
+Plan progress draft122 preserves this record; coordinator retains Plan state.
+
 ## Previous checkpoint — MXC-01 blocked; continue independent API-01
 
 MXC-01 is blocked by AR-03, not complete/delivered. The selected official1.0.1
