@@ -1,6 +1,6 @@
 # Codex handoff — ArcForges V2
 
-## Current task — AFV2-BASE-02 active, final native profiles running
+## Current task — AFV2-BASE-02 active, Windows CI failure diagnosis
 
 The owner explicitly requires continuous serial implementation: complete and
 record each authorized task, then proceed to the next eligible task. Do not stop
@@ -63,14 +63,14 @@ These are author artifacts, not a required full status or public release.
 Detailed summary/package-inspection/logs: artifacts/base02-author-linux/ in that
 worktree. Root log logs/afv2-base02-author-linux-c58.txt; PID2916929 ended.
 
-### Running required profiles — no final pass claimed
+### Required profiles — Windows failed, Linux continues
 
 Both designated hosts independently fetchedc58b9efb from GitHub and invoked
 unchanged `python eng/verify.py run-and-report` in detached verification worktrees.
 All required steps must finish; do not substitute author smoke or copied statuses.
 
 - Native Windows DEKU, current-machine local access explicitly authorized by owner:
-  exec session66036, full15steps, receipt
+  exec session66036 ended with win-ci failure (422s), full15steps incomplete, receipt
   ArcForges/.git/arcforges-verify/logs/20261116-091624-c58b9efb9073-win/.
   Invoking worktree ArcForges/.worktree/verify-base02-c58b9efb; canonical build
   ArcForges/.worktree/_verify. Only process-local DOTNET_CLI_UI_LANGUAGE=en-US /
@@ -81,6 +81,19 @@ All required steps must finish; do not substitute author smoke or copied statuse
   Root log /home/sammiller/arcforges/logs/afv2-base02-node-verify-c58.txt;
   invoking worktree ArcForges/.worktree/verify-base02-c58b9efb, canonical build
   /home/sammiller/.cache/arcforges-verify/ArcForges.
+
+Windows first full summary has ok=false: existing unchanged LoopbackReceiver
+stall-flood test opened120connections within3s vs required aboveHardCapacity;
+LaunchFaultTests.RecoveredLimits recovered-start(cpu=true,startInGap=true)
+asserted recorded1794792156963000 < recovery1794792156962545, but it was455us later.
+Both original logs and the failed receipt remain. Windows actual status is failure,
+and schema/publish/native/bench/package/exclusive/startup steps did not run.
+Root is performing one exact-method diagnostic for each with unchanged assertions,
+logs canonical artifacts/base02-diagnostics/{loopback-stall-c58,recovered-start-c58}.txt;
+exec session58572. The author is doing read-only minimal start-synchronization /
+timing classification analysis. No source fix or blind full rerun yet, no new
+scope admitted. This is a required-check failure, not a MCP connection outage.
+Linux's same-head CI/native/package passed and its exclusive suite continues.
 
 No other repository heavy job is running. Keep the hosts free of competing heavy
 builds during exclusive/native/startup phases. MCP calls this round succeeded;
@@ -97,7 +110,9 @@ remain. All BASE-01 drafts, earlier native receipts/caches and independent Cloud
 CI draft are preserved as detailed below. Linux Plan primary remains historically
 dirty; do not reset it or use it for authoring. No source cache cleanup occurred.
 
-Next: await/read both complete exact-head full summaries and actual statuses.
+Next: diagnose/fix only the two concrete Windows failures within reviewed exact
+paths, retain failed evidence, and await the current Linux run natural cleanup.
+Then obtain both complete exact-head full summaries and actual statuses.
 Diagnose any specific failure before a bounded fix/rerun; retain failed receipts.
 Then check final independent review/current strict protection and merge Node PR86.
 Node has no main-push publication; no deployment/public activation is authorized.
