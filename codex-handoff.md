@@ -1,6 +1,36 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — ID-01 final7322 native profiles running
+## Current checkpoint — ID-01 finaldb93 native profiles running
+
+Cloud final candidate is db93b93a9f7a777ba0a775b6006ce0c11fff04de, pushed and clean.
+It replaces16 non-null assertions in the already-scoped account-script test with
+actual assert.ok presence checks. Independent review accepted every retained
+click/retry/proof/state assertion. No business source or admitted artifact input
+changes; used r2/R138 metadata remains unchanged. Author all-repository Prettier,
+Biome(error-on-warnings), both TypeScript configurations and54account cases pass.
+An additional Windows npm run check is still observing existing native ACL tests;
+its overall exit is pending, not a mandatory Windows profile or claimed PASS.
+
+Previous7322 Windows passed10/10 in343s. Linux7322 passed document formatting and
+security bridge177s but failed those16lint warnings; controller stopped center.
+Independent log review found no additional Go/package/race failure in the stopped
+9483/7322 center logs; neither partial run counts as a complete center PASS.
+
+Finaldb93 was independently fetched on both designated hosts. Windows full profile
+session2698, logCloud/.git/arcforges-verify/logs/20261117-051045-db93b93a9f7a-win/.
+H22 full driverPID3644171, callerCloud/.worktree/afv2-id-01-native,
+artifacts/afv2-id-01-formal-db93/native.log and exit file. Both results pending.
+Do not launch duplicates. Independent agents: id_audit watches original H22
+center evidence; id_transport observes additional author-check exit; id_review
+has accepted source and will review final receipts. Root alone commits/merges.
+
+Current Plan record branch plan/afv2-id-01-final, draftPR144; mergedPlanmain is
+ff625b4d6b17c44844d57932bbb88835fa91139a. Next: collect finaldb93 native results,
+resolve actual failures, get independent receipt review, then ordinaryCloud160
+merge and applicable paused main-push result. Record completion and verifyPlan144
+on both hosts against actual currentDesign before merge. Continue eligible tasks.
+
+## Historical checkpoint — ID-01 final7322 native profiles running
 
 Plan143 mergedff625b4d6b17c44844d57932bbb88835fa91139a after independent scope
 review and Windows5/5PASS7s, Linux5/5PASS25s, both currentDesign493022fb.
