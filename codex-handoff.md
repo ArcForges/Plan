@@ -34,13 +34,15 @@ R137 SHA256dfcce65f7f674180b6f24888094b4b87c9a740b6d9b15a61f050907d4bda8cd4;
 source owner6b442d983986027b0dee6105f4e077f379de1f64. R3 receiptSHA
 b597a1757c23f0a669a1e0693fd93471d3fae0750747f503cb29c891a7ef51ee passed
 actual same-pinned H22 redacted scan0findings. Author admission131/583,
-provenance/strictpin/profile/actual retainedWorker checks passed. Final independent
-metadata review is pending; the exact one-line context source is accepted.
+provenance/strictpin/profile/actual retainedWorker checks passed. Independent
+base_review accepts complete8048042 including all metadata/context inputs.
+Review: https://github.com/ArcForges/Cloud/pull/159#issuecomment-6915784867.
 
 Both unchanged full profiles are running at8048042:
-- Windows caller Cloud/.worktree/afv2-center-01-verify; root session86054;
-  original logs20261116-195553-8048042b4026-win.
+- Windows caller Cloud/.worktree/afv2-center-01-verify: PASS10/10 in142s;
+  original logs20261116-195553-8048042b4026-win. Session86054 ended.
 - H22 caller Cloud/.worktree/afv2-center-01-native; driver3359347;
+  original common logs20261116-195604-8048042b4026-linux; security bridge passed160s.
   artifacts/afv2-center-01-formal-8048-linux.{log,exit}, runner/driver beside it.
 Do not modify source. Keep earlier actual failed statuses/logs; they are not PASS.
 After both pass, run existing ignored artifacts/afv2-center-01-candidate-input.py
