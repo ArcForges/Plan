@@ -1231,7 +1231,8 @@
             "eng/**",
             "README.md",
             "docs/**",
-            "ArcForges.Contracts.slnx"
+            "ArcForges.Contracts.slnx",
+            ".gitleaks.toml"
           ]
         }
       ],
@@ -1305,7 +1306,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Remove nonexistent root proto/packages/buf paths. New sandbox.v2 and management.v2 schemas belong under actual public/proto; internal/proto covers the explicitly versioned internal channel. Generated output, ownership/access inventories, tests and fixtures must change in the same cohort. No old published artifact or independent API deletion. [active] Continue continuous authorized delivery after genuine MXC-01 rejection was shared and blocked; BASE-01 dependency complete, no AR03 dependency. Additive V2 contract generation/cohort only.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Remove nonexistent root proto/packages/buf paths. New sandbox.v2 and management.v2 schemas belong under actual public/proto; internal/proto covers the explicitly versioned internal channel. Generated output, ownership/access inventories, tests and fixtures must change in the same cohort. No old published artifact or independent API deletion. [active] Continue continuous authorized delivery after genuine MXC-01 rejection was shared and blocked; BASE-01 dependency complete, no AR03 dependency. Additive V2 contract generation/cohort only. Scope amendment: .gitleaks.toml is authorized only for exact-path/key/digest whole-line generic-api-key allowlists for the 14 observed public SHA256 receipt rows at Contracts a5d69f7; no scanner disabling, broad ignore or other security-policy change.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
