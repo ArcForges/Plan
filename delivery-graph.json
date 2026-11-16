@@ -545,7 +545,7 @@
       "title": "Delete disconnected retired desktop scaffolding and stale product registrations",
       "milestone": "P0",
       "order": 3,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -564,7 +564,20 @@
             "README.md",
             "eng/test-suites.conf",
             "tests/ArcForges.Repository.Tests/**",
-            "THIRD_PARTY_NOTICES.md"
+            "THIRD_PARTY_NOTICES.md",
+            "eng/bench.ps1",
+            "tools/ArcForges.Bench/Program.cs",
+            "tools/ArcForges.Bench/SizeBenchmark.cs",
+            "tests/ArcForges.Tools.Tests/BenchTests.cs",
+            "Directory.Build.targets",
+            "AGENTS.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md",
+            "src/ArcForges.Node.Api/ClientImages.cs",
+            ".github/dependabot.yml",
+            "third-party/Avalonia.LICENSE.txt",
+            "third-party/MicroCom.LICENSE.txt",
+            "third-party/sources.json"
           ]
         }
       ],
@@ -628,7 +641,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Owner requested continuous serial implementation after each recorded delivery; remove only disconnected desktop scaffold and its actual build/package/dependency registrations after BASE-01 inventory. BASE-02 current-source companion amendment: exact benchmark target/consumer files remove only the retired desktop size target; Directory.Build.targets removes only the obsolete AvaloniaStats registration; current contributor/security docs lose dead desktop instructions; ClientImages.ForNode removes only automatic adjacent-desktop trust while retaining existing legacy kinds and isolated test seam; dependabot config removes only the unused Avalonia group, never touches PRs; current Avalonia/MicroCom notice copies and source entries retire only after remaining-closure check. Preserve Tmds.DBus and its notices for real Linux systemd use, all Node/CLI/supervisor/store/startup/security checks, immutable receipts and all remaining locks/cohorts. CLI/Node packaging adapts the existing scripts, not a new release channel.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
