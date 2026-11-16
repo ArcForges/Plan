@@ -16,6 +16,34 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
+## Latest checkpoint: final exact head under native verification
+
+Cloud final head is 84efb8c551e879e6aea4a13693be41f98cfaaeb4 (PR159). It is
+pushed, clean and independently fetched on both hosts. Source317 already passed
+the real race suite. Independent base_review accepts the complete final source
+and metadata: r136 SHA25646175cb676e1346de70fe85153fbd7042aad845f2414ff33fc2fbe51c0532d1a,
+452 image inputs (only two changed source hashes),580 admitted inputs and131
+unchanged external package coordinates. All prior profiles/records/SQL remain.
+Final r2 receiptSHA9ca32666b592cafa9130a18eb672ba5296d001659edf1e86b378c86d2c843fae
+passed actual pinned H22 redacted scan with0findings; author targeted gates pass.
+
+Unchanged final full run-and-report profiles are active:
+- Windows caller Cloud/.worktree/afv2-center-01-verify; root session30196;
+  original logs20261116-193924-84efb8c551e8-win.
+- H22 caller Cloud/.worktree/afv2-center-01-native; driver3329447;
+  artifacts/afv2-center-01-formal-84ef-linux.{log,exit}, runner/driver beside it.
+The first Linux launch stopped before fetch/status because the author import
+created two untracked pyc files. Those exact owned files were preserved under
+artifacts/afv2-center-01-source317-pycache; no unknown file/cache was deleted.
+The clean caller fetched final84ef, then started with process-local bytecode off.
+This was a launcher cleanup condition, not a transport failure or formal result.
+
+Wait for genuine final profiles. Then use this same candidate image's extracted
+CLI (check its manifest/image/member digest) with the prepared ignored driver
+for fresh/10/11 actual PG backup/restore. Review final evidence, mergeCloud,
+write Plan139 closure and stop/report; do not start another product task.
+H03 production authority remains closed; deployment and public activation stay off.
+
 ## Latest verified source: native race suite passed
 
 Source317ba1ede2303534f9f07319cc2367c2732d3306 passed the corrected existing
