@@ -1,6 +1,36 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — ID-01 blocked by H-22 disk capacity
+## Current checkpoint — capacity restored; ID-01 verification resumed
+
+The owner explicitly clarified continuation covers remaining AFV2 tasks 7–40;
+the earlier stop-after-ID01 instruction below is superseded. Continue serially
+through eligible tasks, preserving native gates and separate PROD-01 approval.
+
+Owner-authorized H22 cleanup completed: root available304045109248 bytes
+(304.0GB / 283.2GiB), used213701177344 bytes,42%. Docker builder-only pruning
+reported202.4GB; audited ignored project bin/obj57.87GB, old locked node_modules
+22.49GB, verifier bin/obj8.33GB, Go build cache6.35GB and NuGet global cache10.33GB
+were reclaimed. These category estimates are not additive filesystem receipts.
+No images, containers, volumes, source/worktrees, published artifacts, archived
+logs or native receipts were deleted. Running containers26 and volumes28 remain.
+Detailed inventories/deletion logs: H22
+/home/sammiller/arcforges/logs/afv2-disk-cleanup-20261117/.
+Source paths were checked for Git tracking/ignore rules and process references;
+unclassified scratch outputs were excluded. Dependencies may need normal restore.
+
+Cloud independently fetched exact94834c591958dd5d24a0bef92888e0d6c2c2099d again.
+Its unchanged Linux formal profile restarted with existing toolchain selectors,
+PID3572114, caller Cloud/.worktree/afv2-id-01-native, log
+artifacts/afv2-id-01-formal-9483-capacity-restored/native.log, exit in same directory.
+The earlier failed log is preserved. Valid Windows10/10 receipt remains applicable.
+No new Linux PASS, merge or completion is claimed until the profile finishes.
+Next: inspect this original run, resolve actual failures within scope, obtain
+independent final evidence review, then ordinary Cloud160/Plan143 delivery.
+
+Plan branch plan/afv2-id-01-acceptance / draft PR143 contains this checkpoint.
+Main baselines remain Plan63e9c236, Design493022fb and Cloud6bd71696.
+
+## Historical checkpoint — ID-01 blocked by H-22 disk capacity
 
 ID-01 is blocked by H-02 and is NOT delivered or complete. The graph now has
 6complete,0active,2blocked(ID01/MXC01),32planned. Do not start another product
