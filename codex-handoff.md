@@ -1,5 +1,20 @@
 # Codex handoff — ArcForges V2
 
+## Current API-01 required-check failure and bounded repair
+
+H-22 full5417 completed11steps successfully, including pack/Native AOT and
+Go generation drift. It then failed go-static ST1000: the two generated V2
+validation.go files lack the required Package sandboxv2/managementv2 comment
+separation. Treeee0a035464267bc92adf47b94098096eb9e2b116, receipt
+20261116-124013-5417f9d12fc5-linux. Later profile steps not run. No publication.
+
+Sole delegate /root/base_audit is fixing only the generator header and regenerating
+these files, with targeted Go checks. No generated hand-edit or suppression.
+Changed Go bytes require a new source commit and both native Go qualification
+collectors; root owns Linux, author can prepare Windows. All previous receipts
+stay intact. After derived admission metadata refresh, new full final-head Linux
+check and independent delta review remain mandatory. Current task still API-01.
+
 ## Latest API-01 candidate5417
 
 Source5417f9d12fc5bff43dc07590defefb0ba73a68cb fixes215 pack failure with
