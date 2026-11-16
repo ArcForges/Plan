@@ -1,5 +1,112 @@
 # Codex handoff — ArcForges V2
 
+## Current API-01 r2 exact qualification and observed hash successors
+
+Metadata candidatee9caf2a6931f4dcf566be98593bb81426d69be18 is pushed draft140;
+source1efa1dd Go header fix and derived r2 qualification only. Author is idle.
+Windows exacte9ca full existing go static PASS, including original ST1000 and
+reviewed/current source qualification; logauthor artifacts/
+afv2-api-01-go-static-r2-win.log. Provenance1440files/170records, admission267inputs,
+format, generation drift and60vectors passed. Immutable r1 records stay unchanged.
+
+H-22 pinned read-only/no-network redacted scan diagnostic of origin/main..e9ca
+found11 new generic-api-key public input SHA256 rows in the immutable r2 successor.
+Raw diagnostic log stays author-native artifacts/
+afv2-api-01-secret-diagnostic-e9caf2a.log. Root rehashed all11 from Git blobs;
+all matched. Policy lines204/1247 duplicate one new Go-r2 record hash; r2 receipt
+lines46/91/129/198/231/232/278/410/415 contain9 distinct exact key/hash rows.
+This is a diagnostic, never a formal status. Its first invocation failed to import
+the Step-injected profile module; the corrected command used the same pinned
+image/config/range plus a read-only Git-dir mount for the linked worktree.
+
+Plan PR123 now updates only the existing exact .gitleaks.toml scope purpose to
+include actually observed immutable qualification successors with rehashing;
+no new path, broad ignore, scanner disabling or threshold changes. Independent
+scope review and both required Plan profiles precede adding these exact rules.
+Then final Contracts full Linux profile, delta review, merge and normal cohort
+publication remain. API is the sole active task, no delivery claim yet.
+
+## Current API-01 required-check failure and bounded repair
+
+H-22 full5417 completed11steps successfully, including pack/Native AOT and
+Go generation drift. It then failed go-static ST1000: the two generated V2
+validation.go files lack the required Package sandboxv2/managementv2 comment
+separation. Treeee0a035464267bc92adf47b94098096eb9e2b116, receipt
+20261116-124013-5417f9d12fc5-linux. Later profile steps not run. No publication.
+
+Sole delegate /root/base_audit is fixing only the generator header and regenerating
+these files, with targeted Go checks. No generated hand-edit or suppression.
+Changed Go bytes require a new source commit and both native Go qualification
+collectors; root owns Linux, author can prepare Windows. All previous receipts
+stay intact. After derived admission metadata refresh, new full final-head Linux
+check and independent delta review remain mandatory. Current task still API-01.
+
+## Current API-01 Go comment repair and native qualifiers
+
+Source1efa1dd761ee4d37028d3d0b2e67fc827d556bc6 is pushed in draft140.
+Only generator header and two regenerated Go package comments changed after5417;
+Go60vectors passed. Both clean native Go collectors passed same1efa and reported
+unchangedSourceAndLocks=true. Windows raw report is in the preserved go-23a4b33
+worktree artifacts/afv2-api-01-go-reference-windows-1efa1dd.json, SHA256
+21754a48640c6330888b480b1a8b8c46250b10d3d6a8509909f59ab9f50fddf3.
+H-22 raw is in preserved268c42e worktree artifacts/
+afv2-api-01-go-reference-linux-1efa1dd.json, SHA256
+a0214c4b4052d0a8324699730912f8d38f0890135b0ca535a02073a62cd38ca8.
+Original raws stay on their hosts; the existing validator derived the portable
+Linux summary. Author base_audit is preparing immutable Go provenance/review r2,
+then affected checks; no final full profile or source merge yet. Source comments
+are the only behavior-neutral Go changes, compatible versions remain fixed.
+
+## Latest API-01 candidate5417
+
+Source5417f9d12fc5bff43dc07590defefb0ba73a68cb fixes215 pack failure with
+exactly two V2 solution Project registrations. Windows solution Release build
+passed0warnings/0errors; log Contracts/.worktree/afv2-api-01/artifacts/
+afv2-api-01-solution-release-fix-win.log SHA256
+f74b12f61edd5b02023e50e4089c856a9e14fb38424172a16c3befedae5df35f.
+Admission266inputs passes. Independent base_review accepts full215source and
+5417delta, explicitly retaining215formal failure until a new full pass.
+
+H-22 fetched5417 independently; unchanged20step full profile PID3055580 is in
+/home/sammiller/arcforges/logs/afv2-api-01-formal-5417f9d.txt, actual receipt
+Contracts/.git/arcforges-verify/logs/20261116-124013-5417f9d12fc5-linux/.
+Observe its real summary; still no final full success, merge or publication.
+Plan final evidence is preserved in draftPR123/plan/afv2-api-01-delivery.
+
+## Current API-01 checked scope and formal run
+
+Plan scope PR122 actually merged916cdc5cc5d927c9b6caaecdbaa5063f701f880a
+at independently reviewed5594d8cea301c83d640aa7c864ad59331c506918,
+treeb554c60077616818d339497ca8ce515bc7d848e0. Native Windows5/5 receipt
+20261116-123403-5594d8cea301-win and H-22Linux5/5
+20261116-123411-5594d8cea301-linux both bind actual Design493022f. Strict
+both-host statuses, current head/base, no bypass and zero threads were checked.
+
+Contracts candidate215ab65ddb48de4a3efeb66392c48a9e25a7974f adds only31lines
+to .gitleaks.toml aftera5d: two exact-path groups,11 distinct public key/hash
+whole-line generic-api-key rules covering the14 observed duplicate findings.
+Author rehashed Git blobs and checked wrong hash/key/path/suffix rejection;
+no source, Go/control input, version or scanner behavior otherwise changed.
+
+H-22 independently fetched exact215 and launched unchanged full20step
+python eng/verify.py run-and-report, PID3052053, background log
+/home/sammiller/arcforges/logs/afv2-api-01-formal-215ab65.txt;
+formal logs Contracts/.git/arcforges-verify/logs/
+20261116-123608-215ab65ddb48-linux/. The original secret-scan now passes.
+Restore, admission, naming, provenance, access and format passed; pack FAILED.
+The two V2 projects were absent from ArcForges.Contracts.slnx and project references
+built them in Debug; Release inspect-build correctly rejected missing DLLs.
+Root is adding only their two solution Project rows and running targeted Windows
+Release, then a new pushed-head Linux full profile. This is a build defect, not
+a transport/storage failure. Final review must include that delta.
+Independent reviewer /root/base_review is inspecting the complete215 diff
+against Design/acceptance. No source merge or new package publication yet.
+
+Plan final-record worktree: Plan/.worktree/afv2-api-01-delivery on
+plan/afv2-api-01-delivery, base916cdc5. Next observe full native result and
+review, fix actual blockers only, then merge/prove normal cohort publication,
+record delivered/complete and continue next eligible authorized task.
+
 ## Latest API-01 formal-check checkpoint
 
 Contracts draft PR140 is at a5d69f7df56febdd3d2696d4b21cd4ec57fcab9f.
