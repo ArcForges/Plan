@@ -32,14 +32,18 @@ Items below distinguish completed toolchain evidence from future implementation/
 
 ## Blocking semantics and closure
 
-2026-11-16 resumed BASE-01: the owner clarified that only three consecutive
-failed reconnect attempts within one outage trigger the stop rule; success resets
-the counter. The earlier cumulative stop was an interpretation error. H-22 MCP
-subsequently ran all eight PostgreSQL inventory tests and twelve Linux Node
-fixtures successfully. H-02 is not currently blocking BASE-01. Required final
-repository profiles/review remain distinct and are tracked in the
-[current handoff](codex-handoff.md). Historical ENV passes and H-03’s later
-destructive-admission boundary remain unchanged.
+2026-11-16 BASE-01 preparation completed: Node exact-head Windows15/15 and
+H-22 Linux20/20, Cloud Windows10/10 and Linux17/17, Contracts required Linux20/20,
+independent review and source merges are recorded in the [handoff](codex-handoff.md)
+and ledger. Real SQLite fixtures and8 PostgreSQL inventory tests proved only the
+read-only preparation boundary; no migration/runtime/provider AR-01..12 is closed.
+H-03 still gates later destructive admission. ENV/AR-13 remain complete/PASS.
+
+The owner permits current-machine local Windows access instead of its unstable
+MCP. H-22 MCP successfully executed final required Linux profiles. The reconnect
+stop rule is three consecutive failures within one outage; success resets the
+counter. The earlier cumulative stop was a coordinator interpretation error,
+not evidence of VPS failure. H-01/H-02 are not currently blocking this delivery.
 
 A prerequisite blocks only the scope named in its Blocks cell. Missing native containment/terminal/resource/data safety is never a business deferral. A task with an unavailable provider can deliver only its specified development-stage code/fixture scope where the task explicitly allows it; it does not mark live/provider qualification proven or activate public surfaces. Mandatory local/self-host entitlement behavior remains a real code/runtime gate.
 
