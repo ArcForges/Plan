@@ -13,7 +13,69 @@ next-task instructions for this run, including historical snapshots below.
 Use the current checkpoint below for actual baselines and next actions. Older
 execution snapshots are historical evidence, not active instructions.
 
-## Current checkpoint: r137 exact final head is being verified
+## Current delivery checkpoint — CENTER-01 complete; stop
+
+The authorized CENTER-01 engineering task is complete. Cloud PR159 merged
+6bd7169607d55c8b647b1a70302ff28ad365d488 at reviewed candidate
+8048042b4026006d6d1cf6f160c82b3adc72746d. Both trees are
+cf0da85b72b11664e4e85bdfa3a79d32233463b6. This shared completion record is
+[Plan140](https://github.com/ArcForges/Plan/pull/140); its actual required native
+checks and merge result are tracked there. Finish that normal record merge,
+then STOP and report. Do not start another product task.
+
+The graph has6complete,1blocked(MXC-01),33planned and no active product task.
+Completed: ENV-01,BASE-01,BASE-02,API-01,DATA-01,CENTER-01. MXC-01 remains blocked
+by the actual official1.0.1 Linux request-environment/argv failure (AR03FAILED).
+The next eligible task reported by plan.py is AFV2-ID-01, still PLANNED. A later
+owner resume is required before it starts. Fetch latest mains and read that full
+task on resume. Frozen V1 work is not resumed.
+
+### Final evidence
+
+See [the complete CENTER evidence](docs/afv2-center-01-summary.md). Windows full
+10/10PASS142s and H22Linuxfull17/17PASS617s bind exact8048042/treecf0da85.
+Original summaries remain under Cloud/.git/arcforges-verify/logs/
+20261116-195553-8048042b4026-win and20261116-195604-8048042b4026-linux.
+Independent nonauthor base_review accepted complete source, metadata, original
+host receipts, all candidate member digests and the final native result.
+
+The same actual CLI, SHA256
+8417991d1c1357fd5595583a8c996499252971e4504c8dba2f0307a2439b2591,
+passed fresh/schema10/schema11 migration, backup and restore on H22. All49
+steps passed, exit0, all6owned containers confirmed absent. Durability was on
+in every source/destination. The original private report remains on H22 at
+/tmp/afv2-center-01-final-drill-fi1bdhah/report.json, SHA256
+b5b0fb7ee9be014da2ba226d18d6e6f58f401d16879b5bea2452ba23bcbc6bf2.
+Candidate identity is preserved at Cloud/.worktree/afv2-center-01-native/artifacts/
+afv2-center-01-qualified-r137/candidate-input.json. Initial daemon-image absence
+was handled by loading the same manifest-hashed sealed archive, with no rebuild
+or publication; the original extraction script/failure are retained. Actual ELF,
+source and target-specific floors matched. Drivers3359347/3404835 and Windows
+86054 ended. No product verification is paused or running.
+
+### Worktrees and boundaries
+
+Cloud author: C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-center-01,
+task/afv2-center-01 at8048042, clean and pushed. Windows native caller:
+Cloud/.worktree/afv2-center-01-verify at the same SHA. H22 native caller:
+/home/sammiller/arcforges/Cloud/.worktree/afv2-center-01-native, same SHA.
+Plan record: C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-center-01-native,
+plan/afv2-center-01-closure-r137. Plan base before this record:
+69c1e6407e7e0bec0776a8de14afa2a0fd8b3566(PR139). Design main remains
+493022fbf643b484665b2713c9eb8670f2fb2234. Shared components, applied0001–0011,
+all used profiles/receipts and unrelated preserved worktrees/drafts were retained.
+
+AR07/F-CTR01 engineering acceptance is PASS. H03 production inventory, approved
+production backups/provider authority and PROD01 public activation remain closed.
+Actual merged-main push43864301663 completed SKIPPED with0artifacts under the
+owner's existing migration pause. No deployment, publication or production-data
+migration occurred. Rollback and uncertain effects follow the migration guide;
+a backup alone never erases post-backup UNKNOWN outcomes.
+
+All following checkpoints are historical execution evidence. Their prior active
+states, PIDs, candidates and next actions do not supersede this checkpoint.
+
+## Historical snapshot — r137 native verification
 
 This checkpoint supersedes the older execution snapshots below for current state.
 Finish AFV2-CENTER-01 in full, then stop and report. No next product task starts.

@@ -2,6 +2,16 @@
 
 Items below distinguish completed toolchain evidence from future implementation/activation evidence. Source research and existing V1 acceptance do not satisfy them. A missing required host check also blocks the current documentation PR merge independently of these product tasks.
 
+## CENTER-01 qualification on 2026-11-16
+
+F-CTR-01 / AR-07 passed at exact Cloud8048042. Cloud159 merged as
+6bd7169607d55c8b647b1a70302ff28ad365d488. Original host receipts, sealed
+candidate/image/ELF identities, real PostgreSQL three-path reports and independent
+review are in [the delivery evidence](docs/afv2-center-01-summary.md).
+H-03 production inventory, approved production backups and provider authority
+remain separate closed prerequisites. Merged-main run43864301663 was intentionally
+SKIPPED with zero artifacts. No deployment or public activation occurred.
+
 ## Acceptance items
 
 | ID | Item | Status | Blocks | Owner | Evidence / action |
@@ -12,7 +22,7 @@ Items below distinguish completed toolchain evidence from future implementation/
 | AR-04 | Crash and unknown ownership recovery | NOT_RUN | AFV2-REC-01 delivery; full native acceptance | AFV2-REC-01 | Same Run owner survives Node loss; supervisor loss/reboot/no PID guessing and exact outer-scope empty tests |
 | AR-05 | Owned Sandbox data and deletion safety | NOT_RUN | AFV2-FILE-02 delivery; final acceptance | AFV2-FILE-02 | Native path/identity/managed-use/partial effect/import/export/delete recovery tests; no blanket refusal |
 | AR-06 | OS-effective resource budget | NOT_RUN | AFV2-RES-02 delivery and dependent allocation | AFV2-RES-02 | Saturation and desired/applied/readback failures on both hosts; aggregate reductions before increases |
-| AR-07 | PostgreSQL guarded upgrade and restore | NOT_RUN | AFV2-CENTER-01 runtime migration admission and live upgrade | AFV2-CENTER-01 | Fresh/schema10/schema11 actual migration runner with 0011 security floor/backup/receipt guards; static DDL is not proof |
+| AR-07 | PostgreSQL guarded upgrade and restore | PASS — qualified isolated candidate | AFV2-CENTER-01 engineering migration acceptance; H-03 still gates production admission/live upgrade | AFV2-CENTER-01 | [Final8048042 evidence](docs/afv2-center-01-summary.md): native Win10/10, H22Linux17/17; same actual candidate CLI fresh/schema10/schema11 real PostgreSQL upgrade/backup/restore,49 successful steps and6owned containers absent. UNKNOWN/fault/quarantine guards verified; no production authority claimed |
 | AR-08 | Remote control and data effect consistency | NOT_RUN | AFV2-CENTER-03 delivery and AFV2-ACC-02 final acceptance | AFV2-CENTER-03, AFV2-ACC-02 | Real Node+Go+PG loss/replay/revoke/template tests and final self-host/official journeys |
 | AR-09 | Blazor responsive/accessibility and recovery UX | NOT_RUN | AFV2-WEB-04 completion and AFV2-ACC-02 acceptance | AFV2-WEB-04 | Explicit local browser keyboard/focus/viewport/offline/unknown states; no browser/live CI |
 | AR-10 | Hosted service/commerce/mail external qualification | NOT_RUN; prices, quotas, trial settings TBD; fixture evidence is distinct | Mandatory real local/self-host mode correctness blocks AFV2-HOST-01; unavailable external provider/mail/domain/merchant/legal qualification blocks AFV2-PROD-01 activation only | AFV2-ID-01, AFV2-HOST-01, AFV2-HOST-02, AFV2-HOST-03, AFV2-ACC-02 | Real Go/PostgreSQL proof, authorization, entitlement, idempotency and local continuity are mandatory. Only graph-listed external transport/input fixtures are allowed for development; actual provider sandbox behavior, mail/domain delivery, merchant/authority and live settings remain separately NOT PROVEN until exercised |
