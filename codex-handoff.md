@@ -52,6 +52,40 @@ exact-head required statuses and normal main-push cohort delivery; record then
 continue the next eligible authorized task. Public activation still requires
 its separate concrete approval.
 
+### API implementation checkpoint — partial candidate published
+
+Startup Plan PR121 actually merged8665de3ace9243670668970ee35fa826aa68a196
+atfc08f5cb34ae6f4de872ba2ca24eff58274edc56. Both Plan native5/5 receipts
+20261116-113110-fc08f5cb34ae-win and20261116-113037-fc08f5cb34ae-linux bind
+actual Design493022fbf643b484665b2713c9eb8670f2fb2234. The state/evidence-only
+coordinator exception was applied; required independent review of the final
+Contracts implementation remains mandatory.
+
+Contracts draftPR140 now preserves first partial source
+bb4f9bcc5115c8a6ad68690355e705ae37375f6a on task/afv2-api-01 from69f3041.
+The coordinator checked all53 changed paths against the task allowlist: none
+outside scope. Three specs are adopted byte-for-byte after10-field provenance;
+two new public C# owners and two internal Go packages use existing generation,
+153 message constraints,42 method classifications and V2-specific wire ceilings.
+Author generation and both C# Release package builds passed0warnings. Existing
+v1 meanings/limits, retired packages and all protected consumers remain intact.
+This partial commit is not final delivery or a fully tested contract cohort.
+
+H-22 independently fetchedbb4 into Contracts/.worktree/afv2-api-01-bb4f9bc.
+Actual command in its go/ directory:
+GOTOOLCHAIN=local GOFLAGS=-mod=readonly go test
+./arcforges/sandbox/v2/... ./arcforges/management/v2/... returned0;
+all four proto/connect packages reported [no test files]. This is compilation
+only, not a passing protocol-vector test or required formal host status.
+
+/root/base_audit continues local shared positive/negative vectors, descriptor
+coverage, browser-compatible C# consumer/AOT, access/generated provenance and
+normal dependency review receipts and docs. There is no final required Linux
+profile, independent final source review, merge or new publication yet. The
+root coordinates Linux diagnostics/integration. New source must be pushed and
+fetched by H-22 before its final unchanged full profile. Preserve existing
+69f cohort and reject missing/failed validation; no product runtime is in scope.
+
 ## Previous checkpoint — MXC-01 blocked; continue independent API-01
 
 MXC-01 is blocked by AR-03, not complete/delivered. The selected official1.0.1
