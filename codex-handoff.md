@@ -1,123 +1,146 @@
 # Codex handoff — ArcForges V2
 
-## Current task — AFV2-BASE-01 active, final checks in progress
+## Current checkpoint — AFV2-BASE-01 complete
 
-The owner resumed BASE-01 on 2026-11-16. The reconnect stop rule is three
-**consecutive** failures within one outage; a success resets the count. The prior
-cumulative stop was the coordinator's interpretation error, not proof of VPS
-failure. Windows work/checks use the current machine's local directory under the
-owner's explicit instruction. H-22 Linux uses its designated MCP; subsequent
-identity, fixture and verification calls have executed successfully.
+The owner resumed V2 implementation on 2026-11-16. This round delivered only
+BASE-01, after ENV; no second product task started. ENV and AR-13 remain complete /
+PASS. The graph now has two complete tasks and38 planned, none active. Stop this
+round after the final Plan evidence PR; the next eligible task is BASE-02.
 
-ENV remains complete, AR-13 PASS. No other AFV2 task has started. H-03 still
-blocks later destructive admission only. There is no migration or deployment.
-Node schema15 and Center0001..0011 SQL, public package bytes and independent
-products remain unchanged. Overall BASE-01 is not delivered yet.
+Plan baseline for this evidence is main246bb8d92c106202cb2e45123093db436c4ca2a7
+(merged PR112). Design remains4472ea5a110a3c15c8beeeed14627e44b37103d0; no normative
+Design change was required. This evidence branch is plan/afv2-base-01-complete in
+Plan/.worktree/afv2-base-01-complete, [PR113](https://github.com/ArcForges/Plan/pull/113).
+Its own exact-head Windows/Linux gates and merge remain mandatory before this
+checkpoint reaches main; final receipts/statuses/review are linked on that PR.
 
-Plan main is 246bb8d92c106202cb2e45123093db436c4ca2a7 after reviewed native5/5
-Windows/Linux PR110, PR111 and PR112. Design remains4472ea5a110a3c15c8beeeed14627e44b37103d0.
-Those Plan PRs admit only exact firstParty/dependency-input/public-digest companion
-metadata paths required by real mandatory check failures. No validator/rule was
-disabled. Each public-digest block binds one exact receipt file and the two exact
-immutable legal-record key/SHA256 lines with unchanged positive/negative controls.
-Committed r1 is immutable; r2 is an input-only successor. All131 package
-coordinates, locks and historical receipt bytes remain preserved.
+### Delivered source and ordinary delivery
 
-### Saved branches and exact heads
+| Repository | Tested head | Actual merge / PR | Required native result |
+|---|---|---|---|
+| ArcForges | 2c4607cab05967fdd316ebfed5ffea4087fa3f13 | de361dbb189baa3ecfb1389fbaf682191d68766a / [85](https://github.com/ArcForges/ArcForges/pull/85) | Windows15/15, H-22 Linux20/20 |
+| Cloud | a498b4c48e5d2e0a13ee10b14f9ae4426cb13b80 | f4708b36fd799025ad7d6fa9e5845e4558e492b3 / [158](https://github.com/ArcForges/Cloud/pull/158) | Windows10/10, H-22 Linux17/17 |
+| Contracts | f173cf4124541f33b7b6366fe7b264733a0d6077 | 69f3041ab4c6bcee1677d0587aaebbbf54cb98bb / [139](https://github.com/ArcForges/Contracts/pull/139) | Required single H-22 Linux20/20 |
 
-| Repository | Head / PR | Current status |
-|---|---|---|
-| ArcForges | 2c4607cab05967fdd316ebfed5ffea4087fa3f13 / PR85 | Reviewed two-attribute timing-test isolation repair; Linux20/20 final PASS; Windows final full still running |
-| Cloud | tested a498b4c48e5d2e0a13ee10b14f9ae4426cb13b80 / merged PR158 | Windows10/10, Linux17/17; mergef4708b36fd799025ad7d6fa9e5845e4558e492b3; main CI43774372219 skipped all18 jobs under existing guards |
-| Contracts | tested f173cf4124541f33b7b6366fe7b264733a0d6077 / merged PR139 | Linux20/20; merge69f3041ab4c6bcee1677d0587aaebbbf54cb98bb; CI43772758290 succeeded,17 NuGet/internal npm/Go tag at1.0.0-ci.467.1 |
-| Plan | .worktree/afv2-base-01-complete / plan/afv2-base-01-complete | This active checkpoint, based on actual main246bb8d; no completion claim |
+All product final heads passed independent nonauthor review by OpenAI Codex agent
+/root/base_review. Its map-owner findings were repaired and delta reviewed. The
+final Node change adds only exclusive/DisableParallelization attributes to one
+existing timing-sensitive test; the method body and1s latency assertion remain.
+Actual strict/no-bypass rules and final statuses were checked before each merge.
 
-Windows product worktrees are <repo>/.worktree/afv2-base-01-resume,
-task/afv2-base-01-resume. Untouched original .worktree/afv2-base-01 drafts remain.
-Earlier Plan resume/continue/delivery worktrees are preserved; do not reset them.
-Linux Plan primary's existing staged/unstaged history remains dirty and untouched.
+Contracts [ordinary CI43772758290](https://github.com/ArcForges/Contracts/actions/runs/43772758290)
+succeeded, publishing17 NuGet packages, internal npm and Go tag1.0.0-ci.467.1.
+Compatible existing consumer cohorts remain valid. Cloud [main CI43774372219](https://github.com/ArcForges/Cloud/actions/runs/43774372219)
+completed skipped (all18 jobs) under unchanged migration guards: no deployment or
+publication. Node has no main-push publication path; no merge-triggered run was
+observed. Native verification packages below are local outputs, not a release.
 
-Independent nonauthor OpenAI Codex reviewer /root/base_review accepted all final
-heads above. The only P2 map-owner group was repaired and delta reviewed. The
-107-entry module/subasset map covers146 C# projects and40 Go roots, actual owners,
-consumers, immutable-source drift and guarded retirement. No removal is authorized
-by inventory. The consumer snapshot covers10 repositories,215 references and60
-central declarations; missing/mismatched sources stay unknown.
+### Acceptance and limits
 
-### Evidence and running commands
+Read-only preflights distinguish fresh, Node15, Center10/11 and unknown/newer;
+source state is never migrated or initialized. Node holds native read protection
+and inspects an in-memory SQLite snapshot without source sidecars. Center uses a
+single read-only repeatable-read PostgreSQL transaction. Reports expose aggregate
+metadata only. Unresolved/active/locked/unknown inputs remain fail-closed;
+contraction is always denied. Optional binary hashes do not prove provenance,
+and actual deployment/authority remain unknown.
 
-- Node Windows author fixtures:12 tests OK, one expected Linux-only rename skip.
-- Node H-22 fixtures at77459503 (same Python as final48aac4ed):12/12, no skips,
-  logs/afv2-base01-node-fixtures.txt; real SQLite/locks/WAL/unknown journals.
-- Cloud H-22 PostgreSQL inventory:8/8 atfdc1b282 (same Python as finala498b4c4),
-  explicit python eng/v2-migration/test_preflight.py. Source DDL fixture replay
-  proves inventory only, not guarded CENTER-01 migration/authority/deployment.
-- Contracts input tests:5/5. Full receipt20261116-065050-f173cf412454-linux,
-  20/20; actual status/protection/review checked before merge. Ordinary publication
-  run43772758290 succeeded:17 NuGet packages, internal npm and Go tag1.0.0-ci.467.1.
-- Plan PR110 finalb5bc995 receipts065731-win/065754-linux:5/5 each; merge7da363a.
-  Plan PR111 finald90bcd79 receipts070855-win/070912-linux:5/5 each; merge7c8aeea.
-  All four summaries bind actual Design4472ea5a. Actual no-bypass strict rules read.
-- Cloud targeted actual-repository-admission and public-digest allowlist tests
-  passed1/1 each after r2/config/pin changes. Real final secret scan now passes.
+The107-entry module/subasset map covers146 C# projects and40 Go roots, actual
+owners/consumers and pinned-audit drift. The fixed-HEAD consumer snapshot covers
+10 repositories,215 references and60 central declarations; SHA256
+1b20e70b5a4c24e1758fdbf596f09b25e65ae8749e510fddfe6b10306950f8e8.
+Independent products and shared DesktopPlatform ContentSandbox v1 are protected.
+No executor, runtime route, applied SQL or published bytes were removed/rewritten.
+Backup, drain, restore, cutover and rollback prerequisites and later owner tasks
+are in ArcForges docs/v2-migration/README.md and the two companion tool READMEs.
 
-Windows prior Node48aac4ed completed15/15 in2015s, receipt directory
-ArcForges/.git/arcforges-verify/logs/20261116-072057-48aac4ed7ee7-win.
-It sets only process-local DOTNET_CLI_UI_LANGUAGE=en-US and VSLANG=1033: the prior
-48aac4ed run passed CI but its Native AOT publish summary was Chinese and the
-unchanged script required an English warning count. A direct host publish probe
-with English CLI output passed with0warnings. No system language, warnings or
-script changed. This historical head cannot satisfy the new candidate's status.
-H-2248aac4ed attempts PID2807490 and2829465 finished with CI failures, logs
-logs/afv2-base01-node-verify-final.txt and -final-r2.txt. One fired-timer wait
-failed then its exact method passed1/1 in0.887s; the next full attempt passed that
-method but failed real-socket IdleConnectionsDoNotDelayAValidRequest at1.0177669s
-against its original1s bound. Standing AGENTS83-89 require this timing-sensitive
-method to be exclusive. Only Fact DisableParallelization=true and Trait
-isolation=exclusive were added; body/response/1s bound unchanged. Independent
-reviewer accepted Node2c4607ca and the exact single-file Plan scope. Windows
-locked restore/build0warnings plus selected method with exclusive trait passed1/1;
-H-22 independently fetched2c4607ca, built with0warnings and passed the method1/1.
-H-22 final full PID2852179 exited after20/20 PASS in2004s and reported Linux
-success at08:12:45, logs/afv2-base01-node-verify-2c4607.txt and
-receipt20261116-073919-2c4607cab059-linux/summary.json; sha2c4607cab05967fdd316ebfed5ffea4087fa3f13,
-tree31b85b3b8d1a15be615c9ca75f5a95fb133dc429, ok=true. No other
-repository heavy build is running. Windows2c4607ca full started after prior
-48aac4ed run exited naturally, with the same process-local English settings:
-exec session85689, receipt20261116-075439-2c4607cab059-win, verification worktree
-ArcForges/.worktree/verify-base01-2c4607ca. Linux independently fetched the same
-SHA into its matching worktree; receipt20261116-073919-2c4607cab059-linux.
-Old77459503 PID2711473 failed its exclusive900s timeout and first-attempt
-90s wait; retain logs/afv2-base01-node-verify.txt as failure history.
-Final Cloud receipts20261116-071745-a498b4c48e5d-win and
-20261116-070913-a498b4c48e5d-linux both passed, same treea05ad1946fe380661186b25fa02f8f394ab2d830.
-Candidate0.1.0-local.1794784677743 image sha256:b351e73fbb63fc368035244f25185ac1a196700a5a016400ff45205ba36fbfa2.
-Authoritative full receipts stay in each repository's .git/arcforges-verify/logs/.
-No Cloud deployment/publication occurred under its existing main guards.
+Node author fixtures: Windows12 total, one expected Linux-only rename skip;
+H-22 Linux12/12, no skips. Cloud H-22 PostgreSQL inventory8/8 used real disposable
+PostgreSQL/source DDL and removed its fixture container. Contracts input tests5/5
+use temporary Git repositories, not runtime doubles. Final native socket test1/1
+on each host preceded full gates. PostgreSQL inventory fixtures do not prove the
+guarded CENTER-01 upgrade, schema11 deployment or security/provider authority.
+H-03 still gates later destructive admission, and AR-01..12 remain unqualified.
+There was no production backup/restore/migration, deployment or public activation.
 
-Cloud bridge checks require the already preserved native Go1.27.3 selector
-ARCFORGES_CTR06_BRIDGE_GO=.../dev/go/go1.27.3/go/bin/go (go.exe on Windows),
-while current Center stays1.27.4. Security producer archive selector is the
-existing tmp/af-ctr-06-scratch/go1274-provision-<platform>-amd64-20261111 archive.
-No installation or PATH/global/security setting was changed. Full Cloud Windows
-at earlier fd692345 passed10/10 but cannot satisfy finala498b4c4's status.
+### Exact receipts and native artifact identities
 
-Old Node77459503 Windows full failed one actual-parent ready timeout; the exact
-method reran1/1 in1.671s without code/threshold changes. Old Linux exclusive failed
-first waiting90s for an attempt, before pressure/crash/recovery logic. It uses
-LiveMachine=true and exclusive traits; repository locks cannot exclude another
-repository's heavy jobs. Later measured H-22 CPU PSI/swap competition is evidence
-of current contention, not proof of the earlier failure's cause. Do final Node
-full verification without other host heavy builds during exclusive/native and
-startup phases. Preserve failure history; never weaken checks or claim a retry
-passed without actual final-head full receipts.
+Each host independently fetched the exact SHA from GitHub into an isolated
+worktree and ran unchanged `python eng/verify.py run-and-report`. Full summaries
+were read, every result ok=true. Receipts stay on their originating hosts under
+<repo>/.git/arcforges-verify/logs/ (Windows roots C:/MyFile/Projects/ArcForges,
+Linux roots /home/sammiller/arcforges):
 
-Next: finish the current independent final Node checks. Inspect required
-exact-head statuses and already completed independent review; merge only admitted
-heads, record actual ordinary publication/deploy identities, then set BASE-01
-delivered/complete through plan.py and merge the final Plan evidence with both
-native legs against current Design. No public activation; next task is selected
-with plan.py next only after BASE-01 completion. No second product task is active.
+- Node:20261116-075439-2c4607cab059-win (2215s),
+  20261116-073919-2c4607cab059-linux (2004s), same tree
+  31b85b3b8d1a15be615c9ca75f5a95fb133dc429.
+- Cloud:20261116-071745-a498b4c48e5d-win and
+  20261116-070913-a498b4c48e5d-linux, same tree
+  a05ad1946fe380661186b25fa02f8f394ab2d830.
+- Contracts:20261116-065050-f173cf412454-linux, tree
+  2469c712dcd9dc5879306df054ee6521be8007fe.
+- Prior Plan scope PR110: b5bc9953a7945e9cf9df54d510731e75406e4e3c,
+  dual5/5, merge7da363a8b781d13903e8bab88e90f5e230a96e94;
+  PR111:d90bcd79544c296b7ab61b5d9d87f1fa577cabc3, dual5/5,
+  merge7c8aeea55f27c06763cf3eded2abbcb79099dbc9;
+  PR112:01564acfe4bd14590fa0db948c1e9c229d26a730, dual5/5,
+  receipts20261116-075030-01564acfe4bd-win/20261116-075023-01564acfe4bd-linux,
+  merge246bb8d92c106202cb2e45123093db436c4ca2a7.
+  All bind actual Design4472ea5a; no Design mutation or validator bypass.
+
+Native Node host SHA256: Windows
+1fa9838d3ab163cea2b02dc571fecf4df3db095e4a8d63ae1f9fec45e9b5aef8;
+Linux2c8e988b54e6578b1bbe15d359302c6f6ffe28e68d08cdb17c2727e341f7911a.
+Local package SHA256: Windows zip
+8f4dc7dac090f032dce1f183a9e6e60854523dd7d9729acf188c867491e1d3b3;
+Linux tar.gz c57f8272a17a95806124df72b3441a5b7bbc0fc189a44e35c65eefc9fa2812d0.
+Paths are artifacts/publish/<rid>/host/arcforges[.exe] and
+artifacts/packages/arcforges-desktop-<rid>.<zip|tar.gz> in the native verifier's
+checkout (Windows ArcForges/.worktree/_verify, Linux
+/home/sammiller/.cache/arcforges-verify/ArcForges).
+Cloud local candidate0.1.0-local.1794784677743 image
+sha256:b351e73fbb63fc368035244f25185ac1a196700a5a016400ff45205ba36fbfa2.
+
+### Preserved work and exact next step
+
+No BASE-01 verification process remains running. Prior Windows session85689 and
+H-22 PID2852179 ended successfully. No Cloud/Contracts CI remains pending.
+Windows product author worktrees <repo>/.worktree/afv2-base-01-resume remain on
+task/afv2-base-01-resume at the tested heads above. Node and Cloud each have only
+untracked eng/v2-migration/__pycache__/ generated by tests; Contracts is clean.
+Untouched ArcForges/Cloud .worktree/afv2-base-01 still contain their original
+untracked eng/v2-migration drafts. Cloud/.worktree/cloud-deploy-ci-python retains
+its independent uncommitted eng/verification/test_ctr06_bridge_assets.py fix;
+do not mix it into V2. Earlier Plan worktrees are preserved.
+Linux Plan primary still has its pre-existing staged/unstaged historical edits
+(including graph, ledger, policy, tooling and maintenance paths); do not reset or
+reuse it for authoring. Use independent worktrees. No unrelated product changed.
+
+The owner permits current-machine local Windows access in place of unstable
+Windows MCP; designated H-22 Linux MCP is required. Three consecutive failed
+reconnect attempts within one outage stop work; successful calls reset the count.
+The earlier cumulative stop was a coordinator interpretation error. Subsequent
+H-22 identity, fixture and full-profile calls succeeded. Transport failures alone
+do not establish VPS failure. No network/proxy/security settings changed.
+Windows verifier needs only process-local DOTNET_CLI_UI_LANGUAGE=en-US and
+VSLANG=1033 so unchanged publish scripts can read English zero-warning summaries.
+Cloud's existing bridge selectors remain in the ledger/previous checkpoint; no
+tool installation or general toolchain upgrade was reopened.
+
+Failure history remains append-only in ledger/ledger.jsonl: prior77459503
+resource timeouts and48aac4ed CI timing failures were not reused as final proof.
+The latter caused only the standing single-test isolation repair admitted by
+PR112. Cloud's narrow public-digest scan exceptions bind exact receipt file and
+two exact public key/value lines with positive/negative controls; no rule disabled.
+Immutable r1 was retained and input-only r2 used; all131 package coordinates and
+locks remain unchanged. Final normal scans and admission checks passed.
+
+After final Plan PR113 merge, fetch latest main/Design and run
+`python tools/plan.py next`: it returns AFV2-BASE-02. Read its full definition and
+current allowed paths before starting; it is planned, not active. This round
+stops at BASE-01 completion. Public rollout still requires PROD-01's separate
+concrete approval. Historical sections below describe their dated stopping points
+and do not override this checkpoint.
 
 ## Prior completed upgrade round — historical stopping point
 

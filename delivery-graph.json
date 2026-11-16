@@ -395,7 +395,7 @@
       "title": "Build migration inventory and dry-run preflight",
       "milestone": "P0",
       "order": 2,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -496,12 +496,25 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; ArcForges:docs/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [planned] Parked at owner-directed documents-first dependency upgrade checkpoint; preserve uncommitted ArcForges/Cloud .worktree/afv2-base-01 files and resume after AFV2-ENV-01. [active] Resumed after completed ENV; reconcile preserved drafts with upgraded main, then deliver only the BASE-01 read-only preparation scope. [blocked] Stopped under owner three-MCP-failure rule after three Linux MCP transport errors in this resumed round (intermittent identity/fetch recoveries occurred). Read-only preparation checkpoint only; required Linux scenarios/statuses and independent review remain missing. H-03 does not block preflight code. [active] Owner resumed and corrected consecutive reconnect semantics; H-22 MCP reachable and eight PostgreSQL inventory fixtures passed. Continue only BASE-01. BASE-01 required provenance classification: Contracts and Cloud eng/provenance/files.json may list only the newly authored task tooling/docs as firstParty; no policy/validator, reused record, published artifact or runtime scope change. Cloud dependency-input admission includes the two new standard-library Python scripts through an exact-input successor receipt; package/lock/runtime closure and immutable history stay unchanged. The new receipt repeats two known public provenance SHA256 digests that trigger generic-api-key: permit only two exact-file/key/value false-positive blocks and its existing positive/negative pin test; no rule, credential or general path exemption is permitted. Committed r1 receipt remains immutable; an input-only r2 successor records exact false-positive configuration and its pin test. No historical review bytes change. Required Node full check exposed the existing real-socket 1-second IdleConnectionsDoNotDelayAValidRequest timing test in the parallel CI suite. Apply the standing AGENTS timing-sensitive test isolation rule only to this method: isolation=exclusive and DisableParallelization=true; retain the exact response/latency assertions and every other test. No runtime or verifier change.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; ArcForges:docs/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [planned] Parked at owner-directed documents-first dependency upgrade checkpoint; preserve uncommitted ArcForges/Cloud .worktree/afv2-base-01 files and resume after AFV2-ENV-01. [active] Resumed after completed ENV; reconcile preserved drafts with upgraded main, then deliver only the BASE-01 read-only preparation scope. [blocked] Stopped under owner three-MCP-failure rule after three Linux MCP transport errors in this resumed round (intermittent identity/fetch recoveries occurred). Read-only preparation checkpoint only; required Linux scenarios/statuses and independent review remain missing. H-03 does not block preflight code. [active] Owner resumed and corrected consecutive reconnect semantics; H-22 MCP reachable and eight PostgreSQL inventory fixtures passed. Continue only BASE-01. BASE-01 required provenance classification: Contracts and Cloud eng/provenance/files.json may list only the newly authored task tooling/docs as firstParty; no policy/validator, reused record, published artifact or runtime scope change. Cloud dependency-input admission includes the two new standard-library Python scripts through an exact-input successor receipt; package/lock/runtime closure and immutable history stay unchanged. The new receipt repeats two known public provenance SHA256 digests that trigger generic-api-key: permit only two exact-file/key/value false-positive blocks and its existing positive/negative pin test; no rule, credential or general path exemption is permitted. Committed r1 receipt remains immutable; an input-only r2 successor records exact false-positive configuration and its pin test. No historical review bytes change. Required Node full check exposed the existing real-socket 1-second IdleConnectionsDoNotDelayAValidRequest timing test in the parallel CI suite. Apply the standing AGENTS timing-sensitive test isolation rule only to this method: isolation=exclusive and DisableParallelization=true; retain the exact response/latency assertions and every other test. No runtime or verifier change. [delivered] Read-only inventory and module/consumer map merged after exact-head required native profiles and independent review; ordinary producer publication observed. No destructive admission or runtime migration claim. [complete] All BASE-01 preparation acceptance met: schema classifications, no source mutation, unresolved/active fail-closed inventory, protected shared/independent consumers, and explicit backup/restore/cutover prerequisites. H-03 still gates later destructive admission. No further task starts this round.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/85",
+          "https://github.com/ArcForges/Cloud/pull/158",
+          "https://github.com/ArcForges/Contracts/pull/139",
+          "https://github.com/ArcForges/Plan/pull/113"
+        ],
+        "merges": [
+          "ArcForges@de361dbb189baa3ecfb1389fbaf682191d68766a",
+          "Cloud@f4708b36fd799025ad7d6fa9e5845e4558e492b3",
+          "Contracts@69f3041ab4c6bcee1677d0587aaebbbf54cb98bb"
+        ],
+        "publications": [
+          "Contracts 1.0.0-ci.467.1: https://github.com/ArcForges/Contracts/actions/runs/43772758290 succeeded, 17 NuGet/internal npm/Go tag",
+          "Cloud: https://github.com/ArcForges/Cloud/actions/runs/43774372219 completed skipped under existing migration guards; no deployment",
+          "ArcForges: no main-push publication; native artifacts and hashes retained in ledger"
+        ],
         "ledger": null
       },
       "removals": [
