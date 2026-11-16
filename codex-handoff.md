@@ -1,6 +1,34 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — capacity restored; ID-01 formatting correction
+## Current checkpoint — ID-01 final7322 native profiles running
+
+Plan143 mergedff625b4d6b17c44844d57932bbb88835fa91139a after independent scope
+review and Windows5/5PASS7s, Linux5/5PASS25s, both currentDesign493022fb.
+The exact39th path admits only dependency-reviews/afv2-id-01-r2.json.
+
+Cloud source formatting fix49a2dad21aa2675db9b454d1a38d5fe83a2bd53e and minimal
+admission successor732203f42d2e71724cfe7b7b94b3654cb4c6164b are committed/pushed,
+author worktree clean. Independent id_review accepted the exact final7322 diff:
+586 actual LF input hashes match,131 packages unchanged, used ID-r1/R138/runtime/
+Worker/NOTICE unchanged, strict r2 allowlist controls retained. Author targeted
+format/dependency/provenance/37pin tests passed. No business source change.
+
+Both designated hosts independently fetched7322 and started unchanged full native
+profiles. Windows exec session23220, original log
+Cloud/.git/arcforges-verify/logs/20261117-045812-732203f42d2e-win/summary.json when
+finished. H22 driverPID3620208, callerCloud/.worktree/afv2-id-01-native, log
+artifacts/afv2-id-01-formal-7322/native.log and exit in the same directory.
+Do not rerun an active profile. Old9483 WindowsPASS and Linuxfailures are historical;
+final7322 requires its own complete both-host results. No merge/completion claimed.
+Next: inspect both results, resolve actual required failures, obtain independent
+final receipt/artifact review, mergeCloud160 normally, record applicable paused
+main-push outcome, then complete the Plan record with both native checks against
+the actual latestDesign. Continue eligible tasks under the remaining-range authority.
+
+Plan record branch is now plan/afv2-id-01-final in the same Plan task worktree.
+Plan143 is already merged; a new record PR will carry final delivery evidence.
+
+## Historical checkpoint — capacity restored; ID-01 formatting correction
 
 The owner explicitly clarified continuation covers remaining AFV2 tasks 7–40;
 the earlier stop-after-ID01 instruction below is superseded. Continue serially
