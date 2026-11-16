@@ -1,6 +1,58 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — MXC-01 blocked; continue independent API-01
+## Current checkpoint — API-01 active; MXC-01 preserved blocked
+
+The owner requires continuous serial delivery. API-01 is now the only active
+task; BASE-01 dependency is complete and AR-03 does not block this contract
+work. MXC-01 remains blocked, not delivered/complete; do not resume its rejected
+cohort or remove the old product runtime. ENV/BASE-01/BASE-02 remain complete.
+
+Final MXC record Plan PR120 actually merged6367ed1bce7b4b3cdce0ae560ceeae5742cd0706
+at reviewedb9448fbc21be7f724ae478bbfad1de418917ac93. Native Plan Windows5/5
+receipt20261116-112149-b9448fbc21be-win and H-22Linux5/5
+20261116-112116-b9448fbc21be-linux both bind actual Design
+493022fbf643b484665b2713c9eb8670f2fb2234. Complete summaries, strict protection,
+actual statuses/current head/base/zero threads and independent review were
+checked before expected-head merge. Node draft93 remains unmerged at438;
+actual825 native failure/artifacts and all exact prior evidence remain below.
+
+A single GitHub MCP connector outage had three consecutive HTTP transport
+failures. Retrying that connector stopped. The expressly authorized fallback
+uses the existing native Windows gh login: read-only state confirmed PR120
+still draft/unmerged, live Design/status/rules were checked, then ready and
+expected-head immediate merge succeeded with actual SHA readback. No native
+host failed and no status/token/proxy/security setting was changed. Continue
+using that existing gh/Git fallback for GitHub; Linux verification must still
+use designated H-22 MCP. Never add these failures to a future unrelated outage.
+
+API baselines fetched from actual origins: Plan6367ed1bce7b4b3cdce0ae560ceeae5742cd0706;
+Contracts69f3041ab4c6bcee1677d0587aaebbbf54cb98bb;
+Design493022fbf643b484665b2713c9eb8670f2fb2234. New Windows worktrees:
+Plan/.worktree/afv2-api-01 on plan/afv2-api-01;
+Contracts/.worktree/afv2-api-01 on task/afv2-api-01;
+Design/.worktree/afv2-api-01-baseline is detached and read-only. Existing drafts,
+primary directories and unrelated Cloud CI work remain preserved. H-22
+Contracts origin/main69f and tool selection were freshly checked: native host,
+clean primary, Python3.15.2/.NET11/Node26.13.1/Go1.27.4; no MCP outage.
+
+Scope: additive sandbox.v2/management.v2 schemas, generated C#/Go and applicable
+browser consumers, required validation/vectors/method inventories and ordinary
+cohort publication. Keep every published v1 number/meaning/artifact and actual
+shared consumer. Use existing generators and exact toolchains; no hand-edited
+generated code, retired npm/Maven revival or product runtime implementation.
+Contracts requires its actual Linux full profile; Plan requires both hosts.
+
+/root/base_audit is the sole delegated Contracts author after reading all task
+refs and repository instructions. The coordinator owns Plan, native Linux,
+integration/push/PR/review/merge/publication. Scope activation has no API
+implementation or acceptance claim. Next: finish the author's bounded
+keep/delete/adapt/add assessment, implement through existing generation and
+validation paths, run affected native C#/Go/browser checks, independent review,
+exact-head required statuses and normal main-push cohort delivery; record then
+continue the next eligible authorized task. Public activation still requires
+its separate concrete approval.
+
+## Previous checkpoint — MXC-01 blocked; continue independent API-01
 
 MXC-01 is blocked by AR-03, not complete/delivered. The selected official1.0.1
 cohort failed the genuine H-22 request-environment argv privacy case. Do not
