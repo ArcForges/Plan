@@ -16,6 +16,41 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
+## Current checkpoint: r137 exact final head is being verified
+
+This checkpoint supersedes the older execution snapshots below for current state.
+Finish AFV2-CENTER-01 in full, then stop and report. No next product task starts.
+Plan main:69c1e6407e7e0bec0776a8de14afa2a0fd8b3566 (PR139). Design main remains
+493022fbf643b484665b2713c9eb8670f2fb2234. Cloud main remains f4708b36fd799025ad7d6fa9e5845e4558e492b3.
+Current Plan record branch is plan/afv2-center-01-closure-r137 in the same worktree.
+
+Final Cloud candidate:8048042b4026006d6d1cf6f160c82b3adc72746d (PR159), clean,
+pushed and independently fetched on both hosts. Source6b442d adds only the exact
+Docker context inventory rule. Full unchanged Docker-context suite passed6/6;
+237 Go/201 C# carried files and all453 profile inputs have no missing binding or
+hash mismatch. Source317 real race36-package proof applies to unchanged Go and
+harness bytes. All used profiles/records/SQL and external dependencies remain.
+R137 SHA256dfcce65f7f674180b6f24888094b4b87c9a740b6d9b15a61f050907d4bda8cd4;
+source owner6b442d983986027b0dee6105f4e077f379de1f64. R3 receiptSHA
+b597a1757c23f0a669a1e0693fd93471d3fae0750747f503cb29c891a7ef51ee passed
+actual same-pinned H22 redacted scan0findings. Author admission131/583,
+provenance/strictpin/profile/actual retainedWorker checks passed. Final independent
+metadata review is pending; the exact one-line context source is accepted.
+
+Both unchanged full profiles are running at8048042:
+- Windows caller Cloud/.worktree/afv2-center-01-verify; root session86054;
+  original logs20261116-195553-8048042b4026-win.
+- H22 caller Cloud/.worktree/afv2-center-01-native; driver3359347;
+  artifacts/afv2-center-01-formal-8048-linux.{log,exit}, runner/driver beside it.
+Do not modify source. Keep earlier actual failed statuses/logs; they are not PASS.
+After both pass, run existing ignored artifacts/afv2-center-01-candidate-input.py
+(updated to8048042/r137) to verify manifest/image/member identities and preserve
+its existing audited CLI. Then run artifacts/afv2-center-01-final-drill.py with
+that binary/SHA and --source-sha8048042, real historical10/11 inputs and pinnedGo.
+Review actual results, mergeCloud under unchanged protections, record actual
+main-push pause and Plan closure. H03 production admission/public activation
+remain closed. AR07 is still open and CENTER active until these gates succeed.
+
 ## Latest formal result: Docker context closure must be corrected
 
 Final84ef Windows passed10/10 in153s. Its Linux profile failed check at the
