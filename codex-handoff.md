@@ -16,7 +16,28 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
-## Latest source10 restore result — positive passed, fault fixture being fixed
+## Current stable source accepted; artifact metadata in progress
+
+Cloud pushed/native1888ddcdee56cecf71e619952fcac7d958ebe9a9 is the accepted code
+baseline. Independent base_review accepted full48d2 source and the test-only1888
+increment. The real target-fault/quarantine regression PASS3.058s, log
+9e3fa217bc2a732796ccfc6abd4e4d3f65c8b3b2283ad374977b80c9f5406980.
+The compact affected-package run at48d2 had252test/subtestsPASS,1old11fixtureFAIL
+and2historicalfixtureSKIP selected by separate full native bridge checks. Its
+original logSHA2b64d336c6b10b7f6de78612899e9881d64381fdac6792c172ef8003d9a58804.
+That old test used latest12grants on a11fixture;1888 fixes only its input to11,
+preserving assertions and production. Exact failingcase rerun PASS0.596s,
+logb744c0c2c038d889583baf35a04499b1d2d0951ab1001903b1dd7d862cddb89f.
+All testcontainers and PIDs3263318/3264717/3270499 ended; no native job is paused.
+
+Main author is now writing only authorized r135/runtime/Worker immutable metadata,
+source inventory and NOTICE. Product/test/SQL source is frozen at1888; usedrecords
+and original0001..0011/r4 stay unchanged. Final metadata delta review, mandatory
+Windows10/Linux17 full profiles, same exact candidate CLI three-path evidence,
+normal merge and shared task closure remain. Do not claim completion before them.
+User stop boundary is unchanged: finish CENTER-01, then stop/report, no next task.
+
+## Earlier source10 restore result — positive passed, fault fixture being fixed
 
 Cloud pushed/native sourcefbe90338bb26415f0eb19a57c85a7d3f97d20947.
 Real schema10 archive restore into a new target generation PASS2.78s. The
@@ -37,7 +58,7 @@ sole active product task is AFV2-CENTER-01. MXC01/AR03 remain blocked/FAILED;
 its dependent Core work is not eligible. No V1 task queue or unrelated product work.
 
 Cloud draftPR159, branch task/afv2-center-01, pushed/native source
-fbe90338bb26415f0eb19a57c85a7d3f97d20947. Windows author worktree:
+1888ddcdee56cecf71e619952fcac7d958ebe9a9. Windows author worktree:
 C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-center-01. H-22 independently
 fetched that SHA into /home/sammiller/arcforges/Cloud/.worktree/afv2-center-01-native.
 Author base_audit now implements schema10 archive restore; inspect its live status
