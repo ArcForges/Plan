@@ -1,6 +1,21 @@
 # Codex handoff — ArcForges V2
 
-## Current exact r3 follow-up admission
+## Current source after r3 admission
+
+Plan131 actually merged e980cf763402b2a602981e6ca52a464237de7984 from reviewed
+c1e7698beecd817b103c4ad1f72a8959caa89b3f/tree25d9a1f97c1f6a82adbd257d488ba8eb3427f496.
+Independent review accepted; native Windows5/5 in5s and H-22 Linux5/5 in26s,
+both actual Design493, original protection satisfied. Scope is23 exact paths.
+
+Cloud draft159 pushed 0aba947d44086350e9fcaca2c9cf0f400ee42912; only the SQL
+alias and immutable r3 successor changed. SQL SHA
+485661afcadbd485d83c660e39c163f7519b7e34a0a67e004203867f363670b3;
+used r1/r2 unchanged. H-22 fetched exact0aba and runs the realPG cases. Author
+continues V2 backup/restore in the same task. Current root Plan worktree remains
+.worktree/afv2-center-01-native, branch plan/afv2-center-01-validation at actuale980.
+Previous branches remain preserved. No migration completion or activation claim.
+
+## Earlier exact r3 follow-up admission
 
 The a882 fresh-case 42702 is a PL/pgSQL naming conflict: local row variable i
 and UPDATE-branch SQL alias i. Rename only the alias to identity_row, preserving
