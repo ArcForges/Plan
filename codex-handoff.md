@@ -1,5 +1,33 @@
 # Codex handoff — ArcForges V2
 
+## Latest API-01 formal-check checkpoint
+
+Contracts draft PR140 is at a5d69f7df56febdd3d2696d4b21cd4ec57fcab9f.
+The first native H-22 formal run failed secret-scan (14 generic-api-key findings),
+not transport. Receipt: Contracts/.git/arcforges-verify/logs/
+20261116-122908-a5d69f7df56f-linux/summary.json; tree
+270a1284ab0b28a05b95649e9831dc22626d0426. Clone identity and native-toolchain
+passed; later profile steps did not complete and no success is claimed.
+All 14 rows were independently recomputed from current Git blobs on H-22:
+three distinct policy rows (duplicated in its review snapshot) and eight receipt
+rows, all public SHA256 input hashes, all matching current source bytes.
+
+This Plan amendment adds only exact .gitleaks.toml to API-01's Contracts paths
+for existing-style AND exact-path/key/digest whole-line generic-api-key false
+positive allowlists. Independent scope review and both Plan native statuses are
+required before editing that file. Never disable or broadly exempt the scan.
+Go/control inputs are unchanged by this file; preserve the already collected
+4d92cf5 Windows/Linux qualification and Windows AOT evidence, not repeat them.
+Correct Windows AOT report locator is Contracts/.worktree/afv2-api-01-go-23a4b33/
+artifacts/afv2-api-01-aot-win-4d92cf5-report.json (full filename prefix).
+
+Next: merge this narrow reviewed scope amendment after both required checks
+against actual Design main493022fbf643b484665b2713c9eb8670f2fb2234; fix only
+observed digest rules; push a new Contracts head, rerun its native full Linux
+profile, resolve independent final-source review, merge and inspect ordinary
+19-NuGet/internal-npm/Go cohort delivery. Then record API completion and continue
+the next eligible authorized task. API remains active, nothing merged/published.
+
 ## Current checkpoint — API-01 active; MXC-01 preserved blocked
 
 The owner requires continuous serial delivery. API-01 is now the only active
