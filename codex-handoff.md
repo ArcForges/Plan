@@ -1,6 +1,30 @@
 # Codex handoff — ArcForges V2
 
-## Latest DATA candidate: complete owner backup closure
+## Current DATA final qualification running
+
+Same source1e02e335b97c25b8a05808c90c82c608f3c31c36, Node draftPR94;
+current Plan draftPR127 / branchplan/afv2-data-01-final.
+Both native17-case fixtures passed (Windows10.879s, Linux4.418s, zero skips).
+H22 host/bench authorAOT completed explicitexit0, both0warnings/errors,
+artifacts/afv2-data-01-aot-publish-linux-1e02.log/.exit.
+Windows publish log has both0warning completed summaries and exact artifact
+hashes in ledger; cross-agent session37666 was unavailable and wrapper exit
+not obtained, so do not infer it. Standard four-RID locked restore fixed only
+the initial -rwin-x64 invocation mismatch, no source/lock change.
+
+Author ended before sole independent reviewer base_review started. Root owns
+native checks/push/PR/merge/records. Unchanged full Node profiles are running:
+Windows source fetched independently into .worktree/afv2-data-01-verify;
+root execsession40227, common git log20261116-151921-1e02e335b97c-win.
+H22 data-native backgroundPID3124628, artifacts/afv2-data-01-formal-linux-1e02.log
+and eventual .exit. Actual statuses pending. Preserve all original logs;
+no passed full profile, final review, merge or delivery claimed yet.
+
+Next: monitor real profiles, resolve only actual failures/review blockers,
+review any source delta and obtain new-head statuses if changed, merge only
+reviewed head, record actual merge/delivery, then next eligible authorized task.
+
+## Earlier DATA candidate: complete owner backup closure
 
 Actual shared Plan126 merged709795fbfaee6143d195029d4d14b7cf52773ab5;
 both exact-head native profiles5/5 bind Design493, original summaries in ledger.
