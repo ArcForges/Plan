@@ -86,7 +86,36 @@ root coordinates Linux diagnostics/integration. New source must be pushed and
 fetched by H-22 before its final unchanged full profile. Preserve existing
 69f cohort and reject missing/failed validation; no product runtime is in scope.
 
-### Latest API native checkpoint — code23a, metadata still pending
+### Current frozen code —4d92; final metadata/AOT in progress
+
+Contracts draft140 now preserves `4d92cf527652f2bcea69bca5ffc4075272d169ad`.
+Go/control code is frozen. Current C#/Go shared vectors are60; C# author,
+Windows Go and actual H-22 Go tests pass. This includes GetOperation as a
+correlation-only read with original command/epoch, immutable Foundation nested
+validation, Unicode scalars, exact compiled RPC request/response/stream mapping
+and the existing bounded protocol cases. Generation drift, operation-scope67
+and Go-binding20 tooling tests passed at the author checkpoint; original
+failures are preserved. No old v1 wire/global validator is changed.
+
+H-22 actual worktree is still `Contracts/.worktree/afv2-api-01-268c42e`, now
+checked out at4d92 after independent GitHub fetch. Latest raw collector report
+`artifacts/afv2-api-01-go-reference-linux-4d92cf5.json` SHA256:
+`f7cf451fa40f84bbb8fc165d280f6e9dd9700193ac6c2e9adcb69d3113626186`.
+The source is clean and unchanged. Native Go vector log is
+`artifacts/afv2-api-01-go-vectors-4d92cf5.log`. Existing go_report_summary
+validated portable metadata references that original report and was supplied
+to the author, without copying raw host receipts. Windows same4d92 clean
+collector passed too; the current Windows AOT run is using a detached same4d92
+tree with ignored outputs. Wait for its actual outcome; old268 AOT remains old.
+
+Author only updates noncontrolled access/provenance/dependency receipts/docs.
+Next: push final metadata head, pause author, independent source/receipt review
+and unchanged full Contracts Linux verification including actual AOT/exchanges.
+Plan current API state stays active. No source merge/new cohort/final required
+status or task completion exists yet. Disk recovery details remain below;
+599MiB was the last observed free H-22 user space, not a promise the build fits.
+
+### Previous API native checkpoint — code23a, metadata still pending
 
 Contracts draft140 now contains pushed stable Go/control code
 `23a4b33dc5dd0ddd5068e8451fc0789322060f99`. Shared vectors are now57;
