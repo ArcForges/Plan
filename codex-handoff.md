@@ -67,16 +67,22 @@ preceded its scope admission. No runtime/migration/provider AR-01..12 is closed.
   ArcForges/.git/arcforges-verify/logs/20261116-094125-f95af854ee2d-win/.
   Invoking .worktree/verify-base02-f95af854, canonical .worktree/_verify.
   Process-local DOTNET_CLI_UI_LANGUAGE=en-US/VSLANG=1033 only; unchanged parser.
-- Oldc58 H-22 full21steps still runs PID2918324, receipt
-  ArcForges/.git/arcforges-verify/logs/20261116-091813-c58b9efb9073-linux/,
-  root log /home/sammiller/arcforges/logs/afv2-base02-node-verify-c58.txt.
-  Managed exclusive passed821s, native-exclusive began09:38:53. Let it finish
-  naturally with cleanup; never use this old head's result forf95.
-- H-22 independently fetchedf95 from GitHub into
-  /home/sammiller/arcforges/ArcForges/.worktree/verify-base02-f95af854.
-  Its formal full has NOT started; start unchanged
-  `python eng/verify.py run-and-report` there only after oldPID2918324 exits.
-  Linux canonical build is /home/sammiller/.cache/arcforges-verify/ArcForges.
+- Finalf95 H-22 full21steps now runs PID2967445, receipt
+  ArcForges/.git/arcforges-verify/logs/20261116-095435-f95af854ee2d-linux/,
+  root log /home/sammiller/arcforges/logs/afv2-base02-node-verify-f95.txt.
+  Invoking .worktree/verify-base02-f95af854 independently fetched from GitHub;
+  canonical /home/sammiller/.cache/arcforges-verify/ArcForges.
+  Pending reported09:54:34, format passed55s; no complete success claimed.
+
+Old H-22c58 PID2918324 naturally ended after21/21 PASS in2029s, receipt
+20261116-091813-c58b9efb9073-linux/summary.json, sha c58/treeb02a936e,
+allresults true/emptyreason, native-exclusive787.8s; status success09:52:03.
+Coordinator read the full summary. Its clean package was preserved on the same
+host under that receipt's artifacts/arcforges-linux-x64.tar.gz before cache reuse,
+SHA2568444ed0691fcd105113e5f8e7c2239ffeaf11abfa06119d22d0267345cc27f72.
+No receipt/status was edited or copied between hosts. This old result is history,
+notf95 qualification. Windowsf95 has passed CI/schema/native publish/tools/closed
+loop/bench/package and entered managed-exclusive09:52:42; full still running.
 
 Old Windowsc58 session66036 ended failed; receipt20261116-091624-c58b9efb9073-win
 summary ok=false, win-ci422s; later steps not run. Its immutable win-ci.log has
@@ -89,7 +95,8 @@ No competing heavy repository job runs on either host during exclusive/startup.
 
 Windows product .worktree/afv2-base-02 / task/afv2-base-02 clean atf95, source
 writer stopped. Coordinator Plan/.worktree/afv2-base-02-closeout /
-plan/afv2-base-02-closeout starts from actual main456ff230. Earlier Plan
+plan/afv2-base-02-closeout starts from actual main456ff230;
+[final evidence draft PR117](https://github.com/ArcForges/Plan/pull/117). Earlier Plan
 base-02 / delivery / complete scope worktrees remain preserved. Original BASE-01
 drafts and independent Cloud CI draft remain untouched; Linux Plan primary still
 has its pre-existing staged/unstaged history and must not be reset/reused.
@@ -98,8 +105,7 @@ Windows current-machine local access is owner-authorized; H-22 uses designated
 Linux MCP. Three consecutive reconnect failures within one outage stop; success
 resets count. All MCP calls this round succeeded. Test failures are not outages.
 
-Next: monitor new Windows full and old Linux natural cleanup, then runf95 Linux
-full and read all exact-head results. Diagnose actual failures before any fix or
+Next: monitor both finalf95 full profiles and read all exact-head results. Diagnose actual failures before any fix or
 bounded rerun; preserve failed receipts. After both final-head full statuses and
 review/protection pass, merge Node PR86, record actual native package identities
 and no-main-push-publication outcome, then plan.py delivered/complete, generated
