@@ -1,5 +1,23 @@
 # Codex handoff — ArcForges V2
 
+## Current bounded architecture diagnostic process
+
+H-22 diagnostic-only PID3086285 is running on clean2ede in formal cache
+/home/sammiller/.cache/arcforges-verify/Contracts. Background log
+/home/sammiller/arcforges/logs/afv2-api-01-policy-diagnostic-2ede.txt;
+ignored output artifacts/afv2-api-01-policy-diagnostic-2ede-6qfqjd0g.
+Helper source/root review and native code hash are in latest ledger. It uses the
+existing host lock, rejects live formal PIDs, temporarily prints only sanitized
+PolicyFinding.Rule/Path, builds separate ignored output, restores exact original
+source bytes in finally BEFORE diagnostic DLL evaluation. Actual Git status was
+observed clean after restoration. Original if/throw and nonzero exit remain;
+Message is never read/printed, formal verifier/status/receipts untouched.
+
+This is diagnostic only, never a formal pass. Observe its Rule/Path output and
+GATE_EXIT, then fix only that actual current V2 integration issue. Author base_audit
+is paused awaiting result, no concurrent build/investigation. Current formal2ede
+still fails architecture after19passes; draftContracts140/Plan124 preserved.
+
 ## Current API-01 architecture gate failure after19passed
 
 Full2ede7f6b8b7b7c65fabc99849d139ead29f3d01a tree
