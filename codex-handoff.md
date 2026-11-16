@@ -10,11 +10,24 @@ inside this task. Preserve true external/production gates; never label an unmet
 gate or partial work complete merely to stop. This supersedes earlier continuous
 next-task instructions for this run, including historical snapshots below.
 
-Current Planmain d7b3340b6ab1db66da838442f4abd1f70601a8bf (PR135); its reviewed
-3f1094cb87545972099535e67c469f110aa1a467 head passed Win5/5 in5s and Linux5/5
-in27s, bothDesign493. Current record branch plan/afv2-center-01-final in
+Current Planmain436010a7ae153ca59b2ea6d9b66aa240ea7e510e (PR136); its reviewed
+551d2777a132238b9d4f5262fc694f76395cf572 head passed Win5/5 in5s and Linux5/5
+in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
+
+## Latest source10 restore result — positive passed, fault fixture being fixed
+
+Cloud pushed/native sourcefbe90338bb26415f0eb19a57c85a7d3f97d20947.
+Real schema10 archive restore into a new target generation PASS2.78s. The
+quarantine/failure fixture FAIL0.47s at the existing source credential-history
+check during CaptureLogical, before its intended target failure. Author is fixing
+the fault input/point without weakening backup validation. Combinedexit1,0skip,
+3.261s; no claim that target quarantine fault is verified yet.
+Raw artifacts/afv2-center-01-management-fbe9-linux.{log,json,exit}, logSHA
+34e2ecc3e121c13b2ba062ab2803d284382e20c9c7148afbe3461ace1c7c0927.
+Ownedcontainer removed, PID3259695 ended. Final complete source review, provenance,
+mandatory host profiles and exact candidate executable drill still remain.
 
 ## Current task and exact source
 
@@ -24,7 +37,7 @@ sole active product task is AFV2-CENTER-01. MXC01/AR03 remain blocked/FAILED;
 its dependent Core work is not eligible. No V1 task queue or unrelated product work.
 
 Cloud draftPR159, branch task/afv2-center-01, pushed/native source
-177cd6afd5ed4701518210502a54e0b4c9667693. Windows author worktree:
+fbe90338bb26415f0eb19a57c85a7d3f97d20947. Windows author worktree:
 C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-center-01. H-22 independently
 fetched that SHA into /home/sammiller/arcforges/Cloud/.worktree/afv2-center-01-native.
 Author base_audit now implements schema10 archive restore; inspect its live status
@@ -34,8 +47,8 @@ complete source and evidence review. Do not start a second active product task.
 
 Last checked Cloudmain f4708b36fd799025ad7d6fa9e5845e4558e492b3,
 Designmain493022fbf643b484665b2713c9eb8670f2fb2234,
-Planmain d7b3340b6ab1db66da838442f4abd1f70601a8bf (PR135).
-Current Plan record branch plan/afv2-center-01-final in
+Planmain436010a7ae153ca59b2ea6d9b66aa240ea7e510e (PR136).
+Current Plan record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Previous record branches/worktrees remain.
 
 ## Latest real PostgreSQL checkpoint
