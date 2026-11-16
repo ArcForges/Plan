@@ -63,16 +63,25 @@ preceded its scope admission. No runtime/migration/provider AR-01..12 is closed.
 
 ### Active and pending exact-head verification
 
-- New finalf95 native Windows full15steps: exec session94271, receipt
+- Finalf95 native Windows full15/15 PASS in2172s: exec session94271 ended, receipt
   ArcForges/.git/arcforges-verify/logs/20261116-094125-f95af854ee2d-win/.
   Invoking .worktree/verify-base02-f95af854, canonical .worktree/_verify.
-  Process-local DOTNET_CLI_UI_LANGUAGE=en-US/VSLANG=1033 only; unchanged parser.
+  Full summary read, every result true/emptyreason, actual success reported10:17:38.
+  Managed-exclusive742s/native-exclusive729s/startup23s passed. Clean final package
+  independently inspected78files/77digests; real host/supervisor/source locks and
+  legal/build-info assets, no desktop/symbol output. Archive SHA256
+  1fc47ca1e8961603bc2fc4110d920dcc873f7f36a7636a17ed30424457921e3f,
+  Hostbd88cd0e0ceaae7c80a004c11e6864395f17062e6ff9e9e864dc34aabfe7d5c9,
+  Supervisor06e2554d760b066613ab6f96aae6a6963cb1f6a988be1417e767be70a315711a.
+  Exact archive and package-inspection.json preserved in that receipt/artifacts/.
+  Only process-local English CLI selectors; no publisher/parser rule changed.
 - Finalf95 H-22 full21steps now runs PID2967445, receipt
   ArcForges/.git/arcforges-verify/logs/20261116-095435-f95af854ee2d-linux/,
   root log /home/sammiller/arcforges/logs/afv2-base02-node-verify-f95.txt.
   Invoking .worktree/verify-base02-f95af854 independently fetched from GitHub;
   canonical /home/sammiller/.cache/arcforges-verify/ArcForges.
-  Pending reported09:54:34, format passed55s; no complete success claimed.
+  Pending reported09:54:34; managed-exclusive838sPASS at10:15:30, now native-exclusive.
+  No complete Linux success claimed.
 
 Old H-22c58 PID2918324 naturally ended after21/21 PASS in2029s, receipt
 20261116-091813-c58b9efb9073-linux/summary.json, sha c58/treeb02a936e,
@@ -88,7 +97,7 @@ Old Windowsc58 session66036 ended failed; receipt20261116-091624-c58b9efb9073-wi
 summary ok=false, win-ci422s; later steps not run. Its immutable win-ci.log has
 both exact failure assertions/stacks. Diagnostic session58572 ended1/1+4/4;
 canonical artifacts/base02-diagnostics preserves those logs. Never relabel them.
-Both finalf95 complete summaries and actual required statuses are still needed.
+Finalf95 Linux complete summary/status is still needed; Windows fully qualified.
 No competing heavy repository job runs on either host during exclusive/startup.
 
 ### Worktrees and next action
