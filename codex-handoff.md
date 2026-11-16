@@ -1,6 +1,28 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — ID-01 finaldb93 native profiles running
+## Current checkpoint — adapt stale ingress negative test
+
+Clouddb93 final Windows10/10PASS144s; Linux failedcheck on the old
+ingress-pipeline.test.ts negative vector for BeginRecovery(actual200/expected404).
+OriginalLinux20261117-051101-db93b93a9f7a-linux summary records check173s failure,
+center353.7s stopped after earlier failure. Complete Go/race/PG stage had passed;
+fuzz was interrupted, remaining candidate steps did not run. No fullLinuxPASS.
+
+Additional Windows author npmcheck exited1:1156pass/22fail/2skip. All formatting,
+lint, bothTypeScript configs and54account cases passed.21other failures are existing
+Windows ACL/path/platform differences outside its requiredprofile; do not expand
+them into this task. The ingress vector is the one cross-platform current defect.
+
+Plan144 adds only40th allowedpath tests/worker/ingress-pipeline.test.ts. After its
+review/native/merge, replace only the negative BeginRecovery vector/comment with
+the intentionally excluded legacy RequestAccountDeletion, retain404/zero-forward
+assertions, targeted tests and independent review. This file is outside the
+admitted dependency/artifact input sets; no new metadata successor is necessary.
+Cloudauthor remains clean atdb93; no product merge or completion. All prior driver
+processes have ended. Newhead will require freshboth formalprofiles. Remaining
+task-range authorization and capacity recovery remain in mergedPlan143.
+
+## Historical checkpoint — ID-01 finaldb93 native profiles running
 
 Cloud final candidate is db93b93a9f7a777ba0a775b6006ce0c11fff04de, pushed and clean.
 It replaces16 non-null assertions in the already-scoped account-script test with
