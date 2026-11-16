@@ -8,7 +8,7 @@ existing authorized serial AFV2 range. The sole active task is now AFV2-ID-01:
 bounded account recovery, export and deletion. The older CENTER stopping point
 below is historical and no longer prevents this authorized next task.
 
-Latest fetched mains: Plan c6600f321705ff7c7cc9c4efc2177090a0140a35,
+Latest fetched mains: Plan a221ba8b827c926620dade2752f133e7ca8b61e0,
 Design493022fbf643b484665b2713c9eb8670f2fb2234,
 Cloud6bd7169607d55c8b647b1a70302ff28ad365d488. CENTER-01 is complete and its
 original evidence remains valid. The graph has6complete,1active,1blocked and
@@ -41,8 +41,7 @@ evidence. Independent reviewer id_review did not author the implementation.
 Root alone stages/commits/pushes shared source and owns graph/ledger, integration,
 PRs, designated-host verification and normal merge.
 
-Current Cloud HEAD remains6bd7169 with uncommitted task drafts across the named
-owned paths. Initial core and transport Windows Go1.27.4 compilation passed;
+Cloud draft PR160 branch task/afv2-id-01 now has bootstrap5c4418e1cbb857b290ec5454e931a5ac905357a1 plus an exact ACL-parser correction; complete core/transport/test drafts remain uncommitted across the named owned paths. Initial core and transport Windows Go1.27.4 compilation passed;
 this is not native PostgreSQL acceptance. No R138 metadata or13oracle is frozen.
 Export uses bounded canonical JSON and a receipt digest; reads recheck current
 authority/expiry and reject changed content. No export-body storage or new
@@ -56,6 +55,22 @@ read is healthy. The Linux primary Plan has old staged/unstaged changes and is
 untouched; use separate worktrees. The initial interrupted call was read-only,
 not an outage. Only three consecutive transport failures in one outage trigger
 the stop rule; successful calls reset it.
+
+The latest continuation resumes this current ID-01 task through completion and
+shared delivery records, then stops before another product task. Plan draft142
+records the implementation and the exact three-test scope correction. Root's
+routes/** delegation shorthand exceeded the three original named source files;
+only the two closed-route tests already drafted and the browser-script test are
+added. Do not write new account-script tests before that amendment is merged.
+
+H22 fresh13 PostgreSQL DDL actually applied at bootstrap5c4418e. Inventory failed
+only at strict archive ACL matching for a parameterized function (retry1 log:
+Cloud/.worktree/afv2-id-01-native/artifacts/afv2-id-01-inventory-5c44-retry1/).
+The earlier driver AttributeError happened before Go and remains recorded as an
+orchestration error. Neither failure was a transport outage or a passed inventory.
+Exact full-signature ACL matching now has positive/negative Go unit evidence;
+refresh the native source and regenerate the actual closed13oracle before use.
+No backup13 oracle or R138 metadata is qualified/frozen yet.
 
 Next: integrate the current complete lifecycle/migration/transport source,
 settle schema13 and generate its actual H22 closed oracle, then run real
