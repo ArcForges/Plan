@@ -10,11 +10,109 @@ inside this task. Preserve true external/production gates; never label an unmet
 gate or partial work complete merely to stop. This supersedes earlier continuous
 next-task instructions for this run, including historical snapshots below.
 
-Current Planmain436010a7ae153ca59b2ea6d9b66aa240ea7e510e (PR136); its reviewed
-551d2777a132238b9d4f5262fc694f76395cf572 head passed Win5/5 in5s and Linux5/5
-in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
-Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
-restore after the positive177 migration/fault/CLI checks; it is not verified yet.
+Use the current checkpoint below for actual baselines and next actions. Older
+execution snapshots are historical evidence, not active instructions.
+
+## Current delivery checkpoint — CENTER-01 complete; stop
+
+The authorized CENTER-01 engineering task is complete. Cloud PR159 merged
+6bd7169607d55c8b647b1a70302ff28ad365d488 at reviewed candidate
+8048042b4026006d6d1cf6f160c82b3adc72746d. Both trees are
+cf0da85b72b11664e4e85bdfa3a79d32233463b6. This shared completion record is
+[Plan140](https://github.com/ArcForges/Plan/pull/140); its actual required native
+checks and merge result are tracked there. Finish that normal record merge,
+then STOP and report. Do not start another product task.
+
+The graph has6complete,1blocked(MXC-01),33planned and no active product task.
+Completed: ENV-01,BASE-01,BASE-02,API-01,DATA-01,CENTER-01. MXC-01 remains blocked
+by the actual official1.0.1 Linux request-environment/argv failure (AR03FAILED).
+The next eligible task reported by plan.py is AFV2-ID-01, still PLANNED. A later
+owner resume is required before it starts. Fetch latest mains and read that full
+task on resume. Frozen V1 work is not resumed.
+
+### Final evidence
+
+See [the complete CENTER evidence](docs/afv2-center-01-summary.md). Windows full
+10/10PASS142s and H22Linuxfull17/17PASS617s bind exact8048042/treecf0da85.
+Original summaries remain under Cloud/.git/arcforges-verify/logs/
+20261116-195553-8048042b4026-win and20261116-195604-8048042b4026-linux.
+Independent nonauthor base_review accepted complete source, metadata, original
+host receipts, all candidate member digests and the final native result.
+
+The same actual CLI, SHA256
+8417991d1c1357fd5595583a8c996499252971e4504c8dba2f0307a2439b2591,
+passed fresh/schema10/schema11 migration, backup and restore on H22. All49
+steps passed, exit0, all6owned containers confirmed absent. Durability was on
+in every source/destination. The original private report remains on H22 at
+/tmp/afv2-center-01-final-drill-fi1bdhah/report.json, SHA256
+b5b0fb7ee9be014da2ba226d18d6e6f58f401d16879b5bea2452ba23bcbc6bf2.
+Candidate identity is preserved at Cloud/.worktree/afv2-center-01-native/artifacts/
+afv2-center-01-qualified-r137/candidate-input.json. Initial daemon-image absence
+was handled by loading the same manifest-hashed sealed archive, with no rebuild
+or publication; the original extraction script/failure are retained. Actual ELF,
+source and target-specific floors matched. Drivers3359347/3404835 and Windows
+86054 ended. No product verification is paused or running.
+
+### Worktrees and boundaries
+
+Cloud author: C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-center-01,
+task/afv2-center-01 at8048042, clean and pushed. Windows native caller:
+Cloud/.worktree/afv2-center-01-verify at the same SHA. H22 native caller:
+/home/sammiller/arcforges/Cloud/.worktree/afv2-center-01-native, same SHA.
+Plan record: C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-center-01-native,
+plan/afv2-center-01-closure-r137. Plan base before this record:
+69c1e6407e7e0bec0776a8de14afa2a0fd8b3566(PR139). Design main remains
+493022fbf643b484665b2713c9eb8670f2fb2234. Shared components, applied0001–0011,
+all used profiles/receipts and unrelated preserved worktrees/drafts were retained.
+
+AR07/F-CTR01 engineering acceptance is PASS. H03 production inventory, approved
+production backups/provider authority and PROD01 public activation remain closed.
+Actual merged-main push43864301663 completed SKIPPED with0artifacts under the
+owner's existing migration pause. No deployment, publication or production-data
+migration occurred. Rollback and uncertain effects follow the migration guide;
+a backup alone never erases post-backup UNKNOWN outcomes.
+
+All following checkpoints are historical execution evidence. Their prior active
+states, PIDs, candidates and next actions do not supersede this checkpoint.
+
+## Historical snapshot — r137 native verification
+
+This checkpoint supersedes the older execution snapshots below for current state.
+Finish AFV2-CENTER-01 in full, then stop and report. No next product task starts.
+Plan main:69c1e6407e7e0bec0776a8de14afa2a0fd8b3566 (PR139). Design main remains
+493022fbf643b484665b2713c9eb8670f2fb2234. Cloud main remains f4708b36fd799025ad7d6fa9e5845e4558e492b3.
+Current Plan record branch is plan/afv2-center-01-closure-r137 in the same worktree.
+
+Final Cloud candidate:8048042b4026006d6d1cf6f160c82b3adc72746d (PR159), clean,
+pushed and independently fetched on both hosts. Source6b442d adds only the exact
+Docker context inventory rule. Full unchanged Docker-context suite passed6/6;
+237 Go/201 C# carried files and all453 profile inputs have no missing binding or
+hash mismatch. Source317 real race36-package proof applies to unchanged Go and
+harness bytes. All used profiles/records/SQL and external dependencies remain.
+R137 SHA256dfcce65f7f674180b6f24888094b4b87c9a740b6d9b15a61f050907d4bda8cd4;
+source owner6b442d983986027b0dee6105f4e077f379de1f64. R3 receiptSHA
+b597a1757c23f0a669a1e0693fd93471d3fae0750747f503cb29c891a7ef51ee passed
+actual same-pinned H22 redacted scan0findings. Author admission131/583,
+provenance/strictpin/profile/actual retainedWorker checks passed. Independent
+base_review accepts complete8048042 including all metadata/context inputs.
+Review: https://github.com/ArcForges/Cloud/pull/159#issuecomment-6915784867.
+
+Final profile status at8048042:
+- Windows caller Cloud/.worktree/afv2-center-01-verify: PASS10/10 in142s;
+  original logs20261116-195553-8048042b4026-win. Session86054 ended.
+- H22 caller Cloud/.worktree/afv2-center-01-native; driver3359347;
+  original common logs20261116-195604-8048042b4026-linux; security bridge passed160s.
+  Center full check passed334s; source check passed171s. check-dotnet is active;
+  remaining candidate/provenance steps and final summary are not yet passed.
+  artifacts/afv2-center-01-formal-8048-linux.{log,exit}, runner/driver beside it.
+Do not modify source. Keep earlier actual failed statuses/logs; they are not PASS.
+After both pass, run existing ignored artifacts/afv2-center-01-candidate-input.py
+(updated to8048042/r137) to verify manifest/image/member identities and preserve
+its existing audited CLI. Then run artifacts/afv2-center-01-final-drill.py with
+that binary/SHA and --source-sha8048042, real historical10/11 inputs and pinnedGo.
+Review actual results, mergeCloud under unchanged protections, record actual
+main-push pause and Plan closure. H03 production admission/public activation
+remain closed. AR07 is still open and CENTER active until these gates succeed.
 
 ## Latest formal result: Docker context closure must be corrected
 
