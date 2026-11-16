@@ -16,6 +16,27 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
+## Current source fix under real native race verification
+
+Plan138 mergedc5e228175eaee02086fece0752c9b5e4eab24c28; reviewed8258817 native
+Win5/5PASS5s/Linux5/5PASS26s, both actualDesign493. Root records now on unique
+plan/afv2-center-01-finish-20261116 in the same Plan worktree; preserve older
+similarly named branches. ExactCloud source317ba1ede2303534f9f07319cc2367c2732d3306
+is pushed, clean and independently fetched on H22. Independent base_review
+accepted the three-source delta: AtVersion10 historical grants plus existing
+ownedPG real tool transport; public old bridge refusal and all assertions kept.
+Author Windows old-entry hardstop1/1PASS/AST/gofmt passed.
+
+Root H22 driver3315255 runs the corrected existing center.check_tests(True)
+from this exact source; artifacts/afv2-center-01-source317-native.{log,exit},
+runner.py/driver.log beside them. This is affected author native evidence,
+not a formal status or candidate artifact. No other formal run is active.
+If it passes, author freezes one exactr136/runtime/Worker-r2 + newimmutable
+admission-r2 cohort with precise scan/pin for that new receipt, retaining all
+used records and SQL. Then independent finaldelta, both full final-head profiles,
+sameactualcandidateCLI3pathPG, Cloudmerge and Plan completion. CENTERstillactive;
+H03productionclosed/deploypaused. FinishcurrenttaskthenSTOP/report.
+
 ## Latest actual failure and bounded native integration correction
 
 Finalca525 Win10/10PASS154s remains valid for that head. H22 full failed at
