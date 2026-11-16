@@ -1,5 +1,31 @@
 # Codex handoff — ArcForges V2
 
+## Current API-01 merged source; ordinary cohort pending
+
+This checkpoint supersedes all intermediate snapshots below.
+Contracts PR140 actually merged c22be9a7da5a747b4a14b1b81d78f0ea460f810f.
+Reviewed head 9d27110969fb3d7b2a347a8b487d945a3721cb56 and merge have identical
+tree 318db47ce162b67b57252de44e8925929cceaea2. H-22 full20/20 PASS556s,
+649 tooling tests108.203s and shared architecture229s. Original receipt
+20261116-132451-9d27110969fb-linux/summary.json SHA256
+48c4d86ab5ed00c202158f4da901dcac1f5f95bc7e9d5513c7718d9f069df95b.
+Independent base_review accepted final source and evidence; strict required
+Linux success/current head/base/zero threads/no bypass were checked before merge.
+
+Ordinary main-push CI run43811258953, number481/attempt1, exact merge c22:
+https://github.com/ArcForges/Contracts/actions/runs/43811258953
+Build candidate is provisioning the reviewed native toolchain. Publication has
+not yet been confirmed. Graph stays API-01 active with real PR/merge evidence.
+No publication identity, delivered/complete state or runtime activation claimed.
+
+Next: inspect this existing CI and actual19NuGet/internalnpm/Go publication
+metadata; do not repeat consumers/downloads/rescans or enable deployments.
+Then use plan.py delivered/complete, sequence, final Plan124 evidence/handoff,
+both native Plan profiles against actual latest Design main493022f, and merge.
+Continue the next eligible authorized task. Final-record worktree/branch:
+Plan/.worktree/afv2-api-01-final on plan/afv2-api-01-final. No native process is
+running; only GitHub ordinary publication CI. User requires continuous serial work.
+
 ## Current API-01 candidate9d precise AT-12 integration repair
 
 Candidate9d27110969fb3d7b2a347a8b487d945a3721cb56 is pushed draftContracts140.
