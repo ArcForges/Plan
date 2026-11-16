@@ -16,6 +16,33 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
+## Current final head after admission correction
+
+Plan137 merged9e059e0da351d4547af5944642a4abf4b35b49dd; reviewed f924 head
+passed native Win5/5in5s/Linux5/5in27s, both exactDesign493/currentremote493.
+Root record branch is now plan/afv2-center-01-close, same Plan worktree.
+Cloud author clean/pushed ca5250f88c4c16953c1a6b25f148208917fad0e4, PR159draft.
+Only necessary admission/strict scan-guard metadata changed since f153;
+131 external npm coordinates/integrities and old records/r135/SQL retained.
+Final newreceipt09ff84a99679ebfb9b5d1c9f4ae98f4c50ddbcb65277ee0fafc8168b51039095
+passed same pinned real H22 redacted dir diagnostic with0findings, reportSHA
+37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570.
+Author dependency131/577/provenance/strictpin1of1/format passed. Independent
+base_review is reviewing this exact delta; prior source/metadata accepted.
+
+Both designated hosts independently fetched sameca525 and started unchanged
+full run-and-report with correct existing Go archive selectors:
+- nativeWindows Cloud/.worktree/afv2-center-01-verify, rootexecsession13352,
+  commonlogs20261116-191849-ca5250f88c4c-win.
+- H22 Cloud/.worktree/afv2-center-01-native, driverPID3295659,
+  artifacts/afv2-center-01-formal-ca525-linux.{log,exit}, driver.py beside it.
+Do not modify source during runs. Earlier genuinefailed f153 statuses remain.
+Ignored driver for exactcandidate CLI fresh/schema10/schema11 realPG three-path
+backup/restore is being prepared by center_artifact_drill, not yet executed.
+No task completion, production admission, release or deployment is claimed.
+After exact-head checks/drills/review, mergeCloud/record actualdelivery, close
+CENTER if its agreed gates pass, thenSTOP/report per latestowner instruction.
+
 ## Current bounded security-scan scope amendment
 
 H-22 actual pinned gitleaks dir diagnostic of the new uncommitted receipt
