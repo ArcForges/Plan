@@ -20,7 +20,7 @@ restore after the positive177 migration/fault/CLI checks; it is not verified yet
 
 Plan138 mergedc5e228175eaee02086fece0752c9b5e4eab24c28; reviewed8258817 native
 Win5/5PASS5s/Linux5/5PASS26s, both actualDesign493. Root records now on unique
-plan/afv2-center-01-finish-20261116 in the same Plan worktree; preserve older
+plan/afv2-center-01-finish-1129 in the same Plan worktree; preserve older
 similarly named branches. ExactCloud source317ba1ede2303534f9f07319cc2367c2732d3306
 is pushed, clean and independently fetched on H22. Independent base_review
 accepted the three-source delta: AtVersion10 historical grants plus existing
