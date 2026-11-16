@@ -1,5 +1,24 @@
 # Codex handoff — ArcForges V2
 
+## Current API-01 architecture gate failure after19passed
+
+Full2ede7f6b8b7b7c65fabc99849d139ead29f3d01a tree
+49e1f8f96ee05a2afe355b65d510afb810460797 finished19/20PASS, but architecture-gate
+FAILED after203.3s at fixed stage ValidatePolicyResults. All649toolingtests passed;
+pack/AOT/Go/static/vulnerability/security/naming/clean checks passed. Native summary
+Contracts/.git/arcforges-verify/logs/20261116-130212-2ede7f6b8b7b-linux/summary.json
+SHA256dcd4620b5980ac5b75d4f350f6b07ecb85d20fce8a32f93b45c17151025a8423.
+Actual required Linux status is failure. No formal process remains running.
+
+HostedPolicyGate.cs receives nonempty PolicyEngine.Check findings, throws fixed
+stage-only failure without exposing messages. SDK01-04negativefixtures passed.
+Author base_audit is doing bounded safe ruleId/repository-relativepath diagnosis
+on the unchanged policy, no full exception/env/secret dumps, no waiver or scan/gate
+changes. Fix only the confirmed new V2 integration issue, then targeted validation,
+independent delta review and new final-head full status. Revieweridle after accepting
+2ede source/testdelta; source acceptance does not waive this actual required failure.
+API remains active, draftContracts140/Plan124 preserve current evidence. No delivery.
+
 ## Current API-01 candidate2ede formal verification
 
 Candidate2ede7f6b8b7b7c65fabc99849d139ead29f3d01a is pushed draftPR140.
