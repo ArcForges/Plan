@@ -21,7 +21,7 @@ Worktrees under C:/MyFile/Projects/ArcForges/:
 - Plan/.worktree/afv2-id-01-verify, native caller at96a48ea.
 - Cloud/.worktree/afv2-id-01-verify, preserved native caller at6bd7169.
 H22 native: /home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-native,
-currently3a22bec5e9e4dc29841fbb3b9e96c4b2362c6d00; Plan native caller is
+currently70ecb490ef00f872f77e49b6a7d8a7c9860fb47a; Plan native caller is
 Plan/.worktree/afv2-id-01-verify at96a48ea. Never touch dirty Linux Plan primary.
 
 Plan141 mergeda221ba8; Plan142 merged63e9c236. Latest scope is38 exact paths,
@@ -78,7 +78,7 @@ Preserve initial pre-Go AttributeError/stale-runner-SHA assertion and real ACL
 parser failures in their original artifacts; they were not native successes or
 transport failures. Native named-ACL/unnamed-FUNCTION distinction is now handled
 by one exact closed-signature mapping with whole-TOC positive/negative tests.
-All native drivers have ended. Full real-PG Go compatibility diagnostic at
+The earlier full native driver has ended. Full real-PG Go compatibility diagnostic at
 3a22 ran to exit1; original artifacts/afv2-id-01-allgo-3a22/native.log.
 Root custom runner omitted standard pg_stat_statements preload/statement logging;
 corresponding three fleet log cases rerun with repository-standard settings PASS
@@ -95,6 +95,13 @@ Source/fixture failures also occurred and must be fixed before final freeze:
   nonexistent13tables. Production Apply version selection was already correct.
 All fixes remain in current allowed paths. No SQL/oracle/guard weakening or old
 product rewrite. Metadata stays entirely ignored draft; no R138/ID-r1 is frozen.
+Core delivery and historical fixture fixes are now pushed70ecb490ef00f872f77e49b6a7d8a7c9860fb47a.
+Current H22 driverPID3481380 runs affected identity/migrate/provision under actual
+repository-standard preload/all-statement/duration logging plus durability and
+race detector. Original driver artifacts/afv2-id-01-compat-70ec-runner.py;
+log/exit in artifacts/afv2-id-01-compat-70ec/. Transport's current source/test
+adapters remain in the author worktree. Root alone stages them after ready.
+
 
 Finite10/11/12 allPASS atabaa; openwriter/management-only refusal and SQL-fault
 rollback PASS at1b69. Real restore13 PASS at3a22 (3.93s): actual pg_dump/restore,
