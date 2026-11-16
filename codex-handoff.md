@@ -15,7 +15,7 @@ Linux success/current head/base/zero threads/no bypass were checked before merge
 Ordinary main-push CI run43811258953, number481/attempt1, exact merge c22:
 https://github.com/ArcForges/Contracts/actions/runs/43811258953
 Build candidate is provisioning the reviewed native toolchain. Publication has
-not yet been confirmed. Graph stays API-01 active with real PR/merge evidence.
+not yet been confirmed. Graph stays API-01 active; merge evidence is in the ledger until the real delivery transition can attach graph evidence.
 No publication identity, delivered/complete state or runtime activation claimed.
 
 Next: inspect this existing CI and actual19NuGet/internalnpm/Go publication
