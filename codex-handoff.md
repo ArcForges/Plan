@@ -9,7 +9,8 @@ and is superseded. All38 remaining current task IDs are authorized in the new
 PLAN ledger note. Public PROD-01 activation still requires a concrete approval.
 Exactly one product task is active. No frozen V1 task or unrelated app enters scope.
 
-Current baselines: Plan1b792422716d48e0ae9d36b7a04aa95a9efb3cf3 (PR113 merged),
+Current Plan main is97ecbf618b642d5e8b4c3a22604765f85a3a41c0 (scope PR114 merged);
+initial recovery baseline was1b792422716d48e0ae9d36b7a04aa95a9efb3cf3. Other baselines:
 Design4472ea5a110a3c15c8beeeed14627e44b37103d0, ArcForges
 de361dbb189baa3ecfb1389fbaf682191d68766a. ENV and BASE-01 complete; AR-13 PASS.
 BASE-02 dependency is met and no acceptance-register item blocks this removal.
@@ -17,10 +18,15 @@ Windows DEKU native local commands and H-22 MCP were freshly checked; user manag
 running/cgroup2fs. Count only consecutive reconnect failures within one outage.
 
 Worktrees: ArcForges/.worktree/afv2-base-02 on task/afv2-base-02;
-Plan/.worktree/afv2-base-02 on plan/afv2-base-02. Prior BASE-01 drafts and the
+Plan/.worktree/afv2-base-02-delivery on plan/afv2-base-02-delivery. The earlier
+scope worktree Plan/.worktree/afv2-base-02 / plan/afv2-base-02 is preserved.
+Prior BASE-01 drafts and the
 independent Cloud CI draft remain untouched. Linux Plan primary remains dirty;
-use independent worktrees. No product candidate/PR/native receipt exists yet. The exact companion-path amendment
-is awaiting independent review/native Plan gates before product edits.
+use independent worktrees. No product candidate/PR/native receipt exists yet. The scope amendment passed
+independent review and native5/5 on each host at9dd6b7e20028ed69af8a9b94d7eecf5d3fad400a
+before merge; both summaries bind actual Design4472ea5a. Product authoring has
+resumed in the isolated worktree. The current product diff is uncommitted work,
+not a delivered or tested candidate.
 
 BASE-02 retains Node/CLI/supervisor/service and essential old execution/data
 safety; deletes the disconnected Hello World desktop/test scaffold and unused
@@ -33,10 +39,11 @@ Source audit found exact missing companion paths for desktop benchmark targets,
 telemetry target, default desktop image registration, current docs/dependabot
 group and Avalonia/MicroCom notice copies; these are listed explicitly in the
 graph amendment. Tmds.DBus remains a real Linux systemd dependency and is retained.
-The product worker is paused with zero edits until the Plan amendment merges.
+No product edit occurred before the scope merge. The author worker is now
+implementing the admitted removal; the coordinator owns only Plan/integration.
 
-Next: review and merge this exact Plan amendment, implement the small removal
-and necessary callers, then targeted native build/startup and the
+Next: finish the small removal and necessary callers, then targeted native
+build/startup and the
 required exact-head Windows/Linux full profiles with independent review. Record
 actual merge/publication facts through plan.py; after completion select the next
 eligible authorized task and continue. Preserve failures and any missing gate.
