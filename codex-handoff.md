@@ -21,7 +21,7 @@ Worktrees under C:/MyFile/Projects/ArcForges/:
 - Plan/.worktree/afv2-id-01-verify, native caller at96a48ea.
 - Cloud/.worktree/afv2-id-01-verify, preserved native caller at6bd7169.
 H22 native: /home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-native,
-currently70ecb490ef00f872f77e49b6a7d8a7c9860fb47a; Plan native caller is
+currently31525fc8c1ae3114e7a5883a5d08a1e450498c63; Plan native caller is
 Plan/.worktree/afv2-id-01-verify at96a48ea. Never touch dirty Linux Plan primary.
 
 Plan141 mergeda221ba8; Plan142 merged63e9c236. Latest scope is38 exact paths,
@@ -95,13 +95,29 @@ Source/fixture failures also occurred and must be fixed before final freeze:
   nonexistent13tables. Production Apply version selection was already correct.
 All fixes remain in current allowed paths. No SQL/oracle/guard weakening or old
 product rewrite. Metadata stays entirely ignored draft; no R138/ID-r1 is frozen.
-Core delivery and historical fixture fixes are now pushed70ecb490ef00f872f77e49b6a7d8a7c9860fb47a.
-Current H22 driverPID3481380 runs affected identity/migrate/provision under actual
-repository-standard preload/all-statement/duration logging plus durability and
-race detector. Original driver artifacts/afv2-id-01-compat-70ec-runner.py;
-log/exit in artifacts/afv2-id-01-compat-70ec/. Transport's current source/test
-adapters remain in the author worktree. Root alone stages them after ready.
+Core delivery and historical fixture fixes70ec passed standard-PG/race full
+identity(7.156s) and provision(19.530s). migrate had only the original required FK
+leading-index failure. One exact nullable index was added to unpublished0013 in
+e62dac9b80bc40e4d364cddff39efce370f9609a; the unchanged FK test and actual fresh
+inventory both PASS. New canonical382objects SHA256
+4f3eea6a132861d604ff1a94cf53aa320eef9e6bdec546e0ce43be677fa5531e,
+catalogueba0db874e2abf564139893cd5009c14873d9e57ea54a1d381d9e2318fbbb1530,
+SQL13SHA1014d5163065ff585e51bc7ef901c44a10356f53f3597c3be122017d41bde946.
+Native facts remain at artifacts/afv2-id-01-oracle-e62d/. Earlier381 facts/logs
+remain unchanged historical evidence. The new unpublished13source oracle was
+bound at31525fc8c1ae3114e7a5883a5d08a1e450498c63 together with exactly3 consumer
+test adapters. Independent id_review accepted those deltas: real recovery+replay
+receipt scans, exact oldepoch and freshproof assertions, real queued race window
+and complete worker joins, exact page/RPC test inventory. No dummy success or
+assertion/constraint removal.
 
+Current H22 driverPID3489723 runs full affected identityapi/pages/migrate at3152
+with repository-standard preload/all-statement/duration logging, durability and
+race detector. Driver artifacts/afv2-id-01-compat-3152-runner.py; log/exit in
+artifacts/afv2-id-01-compat-3152/. Read actual outcome before source/final metadata
+freeze. Cloud author workingtree is clean. Metadata author only updated ignored
+prospective drafts/hashes to3152 (468imageinputs, all-carried bound); no tracked
+R138/ID-r1 exists yet. Actual Worker inputs stayed unchanged and are reusable.
 
 Finite10/11/12 allPASS atabaa; openwriter/management-only refusal and SQL-fault
 rollback PASS at1b69. Real restore13 PASS at3a22 (3.93s): actual pg_dump/restore,
