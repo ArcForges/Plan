@@ -1,5 +1,33 @@
 # Codex handoff — ArcForges V2
 
+## Current CENTER metadata scope review and preserved draft
+
+StartupPlan128 actually merged15f29da03899eceaaeffd0e132e85d7210408d68
+after both5-step profiles at237/tree768 boundDesign493. Current rootrecord
+worktree Plan/.worktree/afv2-center-01-progress / plan/afv2-center-01-progress.
+
+Authorbase_audit is paused/ended, no running author tool. Preserve uncommitted
+original Cloud/.worktree/afv2-center-01/center/internal/management/store.go
+(~200lines). gofmt + Go compile-only test -run^$ passed [no test files].
+This is partial and not yet linked to schema/PG; no functionality/acceptance claim.
+No DesignSQL copied or scope-outside metadata written.
+
+Existing Cloudsourcegate needs3 precise additional metadata paths. Current Plan
+amendment changes15to18: provenance/files.json; exact new record
+provenance/records/afv2-center-01-management-storage-r1.json; provenance/NOTICE.txt,
+all under eng/. Usedrecords/profiles stay immutable; no extra profile dir,
+validator/policy/runtime/publication/deployment change. Obtain independent
+base_review acceptance, both unchanged Planprofiles/currentDesign and merge before
+resuming soleauthor. Then author registers reviewed before-copy source record
+and connects only required management DDL/migration/grants/fixtures.
+
+Actual old authority remains fixedUnbound/8e5. Read-only currentreleaseinventory
+found noV2successor, and ci.yml authorityjob is deliberatelyfalse with no reviewed
+livecollector/broker. Do not selfhash/testkey-sign fakepublished qualification or
+enable workflows/deployment. Complete independent code and realrefusal/PGproof;
+schema10 positive qualification needs actual protected artifact/source authority.
+Keep H03 boundary and AR07/FCTR01 accurate, not PASSED prematurely.
+
 ## Current task: AFV2-CENTER-01
 
 Continue the already authorized serial V2 range. DATA-01 and shared PlanPR127
