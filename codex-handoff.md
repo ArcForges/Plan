@@ -1,5 +1,231 @@
 # Codex handoff — ArcForges V2
 
+## Current checkpoint: API-01 complete; final Plan record awaits checks/merge
+
+This checkpoint supersedes the historical intermediate snapshots below.
+The user requires continuous serial delivery; after this record merges, start
+the next eligible authorized task rather than ending at the task boundary.
+
+### Completed API-01
+
+- Contracts PR140: https://github.com/ArcForges/Contracts/pull/140
+  Actual merge c22be9a7da5a747b4a14b1b81d78f0ea460f810f, reviewed/tested head
+  9d27110969fb3d7b2a347a8b487d945a3721cb56. Both share tree
+  318db47ce162b67b57252de44e8925929cceaea2.
+- H-22 required unchanged full profile passed all20steps in556s. Original receipt:
+  Contracts/.git/arcforges-verify/logs/20261116-132451-9d27110969fb-linux/summary.json,
+  SHA25648c4d86ab5ed00c202158f4da901dcac1f5f95bc7e9d5513c7718d9f069df95b.
+  Includes649toolingtests, pack/Native AOT, Go/static/test/exchange/vulnerability,
+  security and the original shared architecture gate. Independent base_review
+  accepted complete source, final deltas and actual final evidence. Strict required
+  status/current head/base/no bypass/zero review threads were checked before merge.
+- Ordinary cohort1.0.0-ci.481.1 is published:19NuGet packages, retained internal npm
+  @arcforges/ai-internal, and go/v1.0.0-ci.481.1. Main-push run43811258953 succeeded,
+  actual publishing steps in all3jobs succeeded; Go tag directly points to mergec22.
+  https://github.com/ArcForges/Contracts/actions/runs/43811258953
+  Candidate artifact14200813608 (16513026bytes), metadata SHA256
+  18d53a6d8fd00755d4f6614325dd7ebd123e76f97980ce661ea5ed0546eed13c.
+  Only publication metadata was inspected; no repeated downloads/rescans/consumers.
+- Windows AOT/Release and exact-source1efa native Go qualifier originals, plus all
+  real earlier failures, remain in native locations and the append-only ledger.
+  No SQL, old schema/checksum, independent consumer pin or deployment was changed.
+
+plan.py recorded API-01 delivered then complete, including actual PR/merge and all
+three publication channels; sequence regenerated. No API acceptance-register row
+exists. Keep AR-03FAILED/MXC-01blocked, AR-13PASS and completed ENV/BASE tasks intact.
+MXC rejection remains a real privacy failure and blocks its own dependent range.
+
+### Final record before the next task
+
+Plan/.worktree/afv2-api-01-final on plan/afv2-api-01-final; draftPR124:
+https://github.com/ArcForges/Plan/pull/124
+Base actual Plan main7cfd4d725c0dc3586831af37ea3bc34af38a723c; Design main
+493022fbf643b484665b2713c9eb8670f2fb2234. Next: push final record, obtain both
+unchanged native Plan5step profiles on that exact head, check both Design-bound
+summaries against freshly fetched actual Design main, review/protection/threads
+and expected-head merge. Record the actual Plan124 merge in the next startup ledger.
+No native or CI process remains running; no source work is uncommitted.
+
+### Next eligible authorized task: AFV2-DATA-01
+
+plan.py next selects DATA-01: add V2 Node persistence and durable mutation receipts.
+Dependencies BASE-01/API-01 are complete; AR-03 does not block this store-only task.
+Read the full task plus current Node AGENTS/CONTRIBUTING and Design node-store.md,
+node-store.sql, migrations.md and contracts README before implementation.
+Allowed product paths only: ArcForges src/ArcForges.Node.Store/**,
+tests/ArcForges.Node.Store.Tests/**, eng/v2-migration/**. Inspect actual latest Node
+main and all worktrees first; preserve existing drafts and use an isolated worktree.
+Scope is forward expand migrations, owner_epoch/immutable command-intent receipts,
+UNKNOWN preservation/compaction/capacity, coherent database/key backup/restore and
+real fresh/schema15 SQLite/WAL/permission/close-reopen fixtures on both native hosts.
+Never edit applied0001..0015 or contract live tables. Only the task's explicit
+synthetic effect-counter admission fixture is allowed; actual Run/IPC/CLI/Stop/
+grant revocation remains CORE-02/REC-01/CLI-01 and cannot be claimed from it.
+After Plan124 merges, mark DATA-01 active and ledger the exact scope/baselines,
+then implement the smallest complete task. Public activation remains separate PROD-01.
+
+## Current API-01 merged source; ordinary cohort pending
+
+This checkpoint supersedes all intermediate snapshots below.
+Contracts PR140 actually merged c22be9a7da5a747b4a14b1b81d78f0ea460f810f.
+Reviewed head 9d27110969fb3d7b2a347a8b487d945a3721cb56 and merge have identical
+tree 318db47ce162b67b57252de44e8925929cceaea2. H-22 full20/20 PASS556s,
+649 tooling tests108.203s and shared architecture229s. Original receipt
+20261116-132451-9d27110969fb-linux/summary.json SHA256
+48c4d86ab5ed00c202158f4da901dcac1f5f95bc7e9d5513c7718d9f069df95b.
+Independent base_review accepted final source and evidence; strict required
+Linux success/current head/base/zero threads/no bypass were checked before merge.
+
+Ordinary main-push CI run43811258953, number481/attempt1, exact merge c22:
+https://github.com/ArcForges/Contracts/actions/runs/43811258953
+Build candidate is provisioning the reviewed native toolchain. Publication has
+not yet been confirmed. Graph stays API-01 active; merge evidence is in the ledger until the real delivery transition can attach graph evidence.
+No publication identity, delivered/complete state or runtime activation claimed.
+
+Next: inspect this existing CI and actual19NuGet/internalnpm/Go publication
+metadata; do not repeat consumers/downloads/rescans or enable deployments.
+Then use plan.py delivered/complete, sequence, final Plan124 evidence/handoff,
+both native Plan profiles against actual latest Design main493022f, and merge.
+Continue the next eligible authorized task. Final-record worktree/branch:
+Plan/.worktree/afv2-api-01-final on plan/afv2-api-01-final. No native process is
+running; only GitHub ordinary publication CI. User requires continuous serial work.
+
+## Current API-01 candidate9d precise AT-12 integration repair
+
+Candidate9d27110969fb3d7b2a347a8b487d945a3721cb56 is pushed draftContracts140.
+Root cause:7 new generated auxiliary public types were absent from existing
+WireSchemaCatalog. Only two ArchitectureTests files change (41addlines), binding
+exact two V2 owners/three declared output names to their owned protocol anchor,
+using existing Services aggregation semantics. Original Contract/Generated/AT12/
+hash/drift checks stay; no waiver or policy change. Crossowner/oldowner/nested/
+fake-output negatives pass, Windows incremental build0warnings0errors/local
+fixtures pass, not a shared formal success. Source1efa Go qualifiers unchanged.
+
+H-22 independently fetched9d and started unchanged full20step profile,
+PID3088638, background/home/sammiller/arcforges/logs/afv2-api-01-formal-9d27110.txt.
+Shared architecture gate will run once inside this full profile, avoiding an extra
+3minute duplicate gate. Independent reviewer base_review is auditing the precise
+binding delta against original AT12. Author idle. Observe real final summary/review,
+then strict gates/expected-head merge/normal cohort publication. API still active;
+no full success, merge or publication yet. DraftPlan124 contains all current records.
+
+## Current API-01 AT-12 diagnosis complete
+
+Safe H-22 diagnostic completed GATE_EXIT1: exactly7 AT-12 findings, only new
+Management.V2.csproj(3) and Sandbox.V2.csproj(4), no otherRule/Path findings.
+Safe stdout log/home/sammiller/arcforges/logs/afv2-api-01-policy-diagnostic-2ede.txt
+SHA425e96cb5c6c1c86dacb04bcf142f23758e32ca2f3088ac80bce4da6473b1c23;
+diagnostic.logSHA5bd5dec8e204574c912c72c8836b61c12c145d8776a135ce9b73f5c1ebffb126
+in cache ignored artifacts/...-6qfqjd0g. No Message was read/printed.
+Source restored byte-identically, HEAD2ede and emptygitstatus rechecked; original
+formal failure summary hash unchanged dcd4620b5980ac5b75d4f350f6b07ecb85d20fce8a32f93b45c17151025a8423.
+No process remains active from that diagnostic. This never counts as a formal pass.
+
+Author base_audit is reading only pinnedAT-12 and existing Contracts wire/test
+binding/catalog to fix the actual new V2 integration. No waiver, threshold,
+policy/gate or unrelated product change. Next: precise small fix, targeted check,
+independent review/new finalhead formal20step; sourcemerge/cohort/Plancomplete
+remain outstanding. API is still the sole active task.
+
+## Current bounded architecture diagnostic process
+
+H-22 diagnostic-only PID3086285 is running on clean2ede in formal cache
+/home/sammiller/.cache/arcforges-verify/Contracts. Background log
+/home/sammiller/arcforges/logs/afv2-api-01-policy-diagnostic-2ede.txt;
+ignored output artifacts/afv2-api-01-policy-diagnostic-2ede-6qfqjd0g.
+Helper source/root review and native code hash are in latest ledger. It uses the
+existing host lock, rejects live formal PIDs, temporarily prints only sanitized
+PolicyFinding.Rule/Path, builds separate ignored output, restores exact original
+source bytes in finally BEFORE diagnostic DLL evaluation. Actual Git status was
+observed clean after restoration. Original if/throw and nonzero exit remain;
+Message is never read/printed, formal verifier/status/receipts untouched.
+
+This is diagnostic only, never a formal pass. Observe its Rule/Path output and
+GATE_EXIT, then fix only that actual current V2 integration issue. Author base_audit
+is paused awaiting result, no concurrent build/investigation. Current formal2ede
+still fails architecture after19passes; draftContracts140/Plan124 preserved.
+
+## Current API-01 architecture gate failure after19passed
+
+Full2ede7f6b8b7b7c65fabc99849d139ead29f3d01a tree
+49e1f8f96ee05a2afe355b65d510afb810460797 finished19/20PASS, but architecture-gate
+FAILED after203.3s at fixed stage ValidatePolicyResults. All649toolingtests passed;
+pack/AOT/Go/static/vulnerability/security/naming/clean checks passed. Native summary
+Contracts/.git/arcforges-verify/logs/20261116-130212-2ede7f6b8b7b-linux/summary.json
+SHA256dcd4620b5980ac5b75d4f350f6b07ecb85d20fce8a32f93b45c17151025a8423.
+Actual required Linux status is failure. No formal process remains running.
+
+HostedPolicyGate.cs receives nonempty PolicyEngine.Check findings, throws fixed
+stage-only failure without exposing messages. SDK01-04negativefixtures passed.
+Author base_audit is doing bounded safe ruleId/repository-relativepath diagnosis
+on the unchanged policy, no full exception/env/secret dumps, no waiver or scan/gate
+changes. Fix only the confirmed new V2 integration issue, then targeted validation,
+independent delta review and new final-head full status. Revieweridle after accepting
+2ede source/testdelta; source acceptance does not waive this actual required failure.
+API remains active, draftContracts140/Plan124 preserve current evidence. No delivery.
+
+## Current API-01 candidate2ede formal verification
+
+Candidate2ede7f6b8b7b7c65fabc99849d139ead29f3d01a is pushed draftPR140.
+Only two affected tooling-test consumer modules change after96: strict135groups
+with old131 retained and4 exact newly audited groups; strict28packages with all
+old26 rows retained and2 explicit V2 owners. Author66/66 DependencyAdmission and
+11/11 Identity tests pass; original Windows logs are author artifacts/
+afv2-api-01-tooling-consumer-dependency-win.log and
+...-identity-win.log. No producer/Go/control/security delta; qualification1efa
+stays valid. Author idle; base_review independent delta review is active.
+
+H-22 independently fetched2ede and started unchanged full20step
+python eng/verify.py run-and-report, PID3074195, background
+/home/sammiller/arcforges/logs/afv2-api-01-formal-2ede7f6.txt. Observe actual new
+receipt/summary and final review before merge. API remains the only active task,
+no complete/merge/publication claim. Plan final record draft124 is on
+plan/afv2-api-01-final at Plan/.worktree/afv2-api-01-final. Next: finish formal
+profile; check actual strictstatus/currenthead/base/threads; expected-head merge,
+normal19NuGet/internalnpm/Go cohort; record completion then next eligible task.
+
+## Current API-01 formal96 tooling consumer failure
+
+Formal96d02cef1eeff087e17ac8aab66891b55169270f tree
+0ede4a1fec540bdc809f49ddb6ec4dee68f17d3c FAILED tooling-tests after15passed
+steps including pack/AOT/Go-static/test/exchange/vulncheck. Actual receipt
+20261116-125104-96d02cef1eef-linux, raw logs original H-22 location below.
+648tests/97.559s/26failures:25 historical scan tests require exact global131,
+now135 due to4 reviewed API groups; identity_http package count26 now28 due
+to2 V2 owners. Source review had accepted96, but formal gate stays failed.
+
+Author base_audit is adapting only test_dependency_admission.py and
+test_identity_http.py affected consumers: strict new counts, exact new group
+rows/negative inputs and explicit2 new owner identities, preserving old checks.
+No >= waiver, gate removal or control/Go input change. Existing1efa native
+qualification stays valid. After commit: rootpush, finaldelta review, new full
+H-22 profile, gates/merge/ordinary publication; then final Plan completion.
+No active native process is carried forward from failed96. Task remains active.
+
+## Current API-01 final96 source, formal check pending
+
+This current checkpoint supersedes earlier snapshots below; all historical
+failures and intermediate source/artifact identities remain in this file and ledger.
+Plan123 actually merged7cfd4d725c0dc3586831af37ea3bc34af38a723c at independent
+revieweda6ec2cc6b262476bdf21b0df883e0fb1d7b934f1; both native5/5 summaries bind
+actual Design493022fbf643b484665b2713c9eb8670f2fb2234 (Win124940/Linux124931).
+
+Contracts final96d02cef1eeff087e17ac8aab66891b55169270f is pushed draftPR140.
+Independent base_review accepts complete final source and all reviewed deltas,
+including exact observed r2 digest rules; no source blocker. Existing generated
+C# business bytes still match4d; Go source1efa changes only generated package
+comments and has true native qualifiers on both hosts. Immutable r1 stays intact.
+
+H-22 independently fetched96 and is running unchanged full20step verification,
+PID3064037, background/home/sammiller/arcforges/logs/afv2-api-01-formal-96d02ce.txt;
+formal receipt Contracts/.git/arcforges-verify/logs/
+20261116-125104-96d02cef1eef-linux/. Scan, restore and admission have passed;
+observe the completed summary before merge. No full success, merge or publication
+yet. Root final-record worktree Plan/.worktree/afv2-api-01-final on
+plan/afv2-api-01-final base7cfd4d7. Task remains active. Next: real formal result,
+protection/head/base/threads check, expected-head merge, normal cohort publication,
+final Plan delivered/complete record and next eligible task. Never activate PROD.
+
 ## Current API-01 r2 exact qualification and observed hash successors
 
 Metadata candidatee9caf2a6931f4dcf566be98593bb81426d69be18 is pushed draft140;
