@@ -10,6 +10,40 @@ Scope: exact stable Microsoft.Mxc.Sdk1.0.1 / officialv1.0.1 / schema1.0.0 artifa
 
 Next: implement MXC-AOT-01 within the task allowlist, collect exact official artifacts and genuine native receipts, independent final review and required exact-head host profiles; Design merges before Plan when updated. Continue the next eligible authorized task after recording delivery. No task-boundary stop is authorized. Public PROD-01 activation retains separate concrete approval.
 
+### MXC-01 artifact stage and authoritative scope
+
+Plan start/scope PR118 actually merged c1599bc878f6e9fb1cec7f4d8ae4aaf5d3948b9e
+at reviewed2de09dee78dd24bffc3c46dad2270bd92bd07225. The only scope addition is
+ArcForges.slnx to register the real probe required by existing repository layout
+checks; no checker or product-package change. Final required native receipts:
+Windows20261116-104942-2de09dee78dd-win5/5; H-22Linux20261116-104855-2de09dee78dd-linux5/5.
+Both bind actual Design4472ea5a110a3c15c8beeeed14627e44b37103d0. Independent
+nonauthor /root/base_review accepted; strict actual checks/no bypass/zero threads
+were checked before merge. Initial wrong-cwd Windows run only checked historical
+2b8b4809ae13 and never qualified PR118; the ledger retains that fact.
+
+Current evidence branch: plan/afv2-mxc-01-evidence in
+Plan/.worktree/afv2-mxc-01-evidence, based on that actual scope merge.
+Design draft PR72, design/afv2-mxc-01 at fda4637d8e31eae965b9b5e2a4671800d203bc78,
+records artifact-only progress; it is not reviewed/verified/merged and no runtime
+acceptance is claimed. Design must merge before final Plan validation.
+
+Linux native author venue is ArcForges/.worktree/afv2-mxc-01-author at detached
+39c2c57fdaf3666ec046a22370aa2f2157c2d058. Official artifacts and factual
+linux-artifact-inspection.json stay in artifacts/mxc-01/official there. ZIP
+542051775bytes/SHA0e832239454ba7fcd338ff56218a287eef4c0a01c1484084b869f55feff8abe9;
+NuGet14615475bytes/SHAd47b1f70c3fcaaed1705a0c3872807e2878fe8c1b778c0dd9eb9325bf421a672.
+All five x64 native files match; upstream SPDX2.2 digest matches but NOASSERTION
+licenses are inventory only, not closure approval. DownloadPID3023151 ended.
+Actual user namespace probe passed; no host settings or prerequisites changed.
+
+Official1.1.0 was freshly observed (published2026-11-15T05:28:48Z); preserve the
+explicit1.0.1 pin and reject unadmitted APIs. No probe code or AOT/runtime pass
+exists at this checkpoint. /root/base_audit is implementing scoped Node probe;
+root coordinates native Linux and Design/Plan. Continue implementation and
+collect complete MXC-AOT-01 evidence, then independent review and exact-head
+required native gates. Keep these staging paths and all older drafts/receipts.
+
 ## Previous checkpoint — BASE-02 complete; continue MXC-01
 
 The owner explicitly requires continuous serial implementation: complete and
