@@ -1,5 +1,16 @@
 # Codex handoff — ArcForges V2
 
+## Pending real-process DATA fixture implementation choice
+
+Use the existing Store.Tests MTP executable with exact method filter/no-build
+and test-local phase/root, twice: first real process admits/settles with real
+SQLite/file keys; next process compacts/replays original epoch/command using
+explicit fixture time. The effect is only the allowed synthetic counter.
+Existing bench store-growth only admits empty roots and cannot prove this replay.
+No new project, solution/tools registration or product environment hook is needed.
+Own child timeout/exit/cleanup evidence must be recorded. This scenario is still
+pending, not a native pass. The five-case Windows partial result remains separate.
+
 ## H-22 dependency preparation for current DATA fixtures
 
 In /home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native at clean39c,
