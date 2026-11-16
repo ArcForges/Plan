@@ -90,9 +90,13 @@ Both original logs and the failed receipt remain. Windows actual status is failu
 and schema/publish/native/bench/package/exclusive/startup steps did not run.
 Root is performing one exact-method diagnostic for each with unchanged assertions,
 logs canonical artifacts/base02-diagnostics/{loopback-stall-c58,recovered-start-c58}.txt;
-exec session58572. The author is doing read-only minimal start-synchronization /
-timing classification analysis. No source fix or blind full rerun yet, no new
-scope admitted. This is a required-check failure, not a MCP connection outage.
+exec session58572 ended: exact original methods passed1/1(0.291s) and4/4(6.767s).
+Read-only diagnosis confirms Job membership before native Resume/start-record write.
+A precise two-test-file amendment is pending review/native Plan gates: classify
+only the failing methods exclusive/DisableParallelization and retain live Job
+evidence plus valid native Windows StartedRecord before recoveryAt, within the
+existing bound. All original limits/strict assertions stay. No production edit or
+blind full rerun. Linux oldc58 continues; it cannot satisfy a future changed head. This is a required-check failure, not a MCP connection outage.
 Linux's same-head CI/native/package passed and its exclusive suite continues.
 
 No other repository heavy job is running. Keep the hosts free of competing heavy
