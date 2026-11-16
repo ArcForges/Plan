@@ -16,6 +16,25 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
+## Latest verified source: native race suite passed
+
+Source317ba1ede2303534f9f07319cc2367c2732d3306 passed the corrected existing
+center.check_tests(True) on H-22. All36 test packages passed;10 had no tests.
+The command used real owned PostgreSQL, the original race/required/logging
+settings and the existing real container pg_dump/pg_restore transport.
+Store/migrate passed61.453s, CLI17.768s, provision41.413s; generated Worker table
+is current. Driver3315255 ended with exit0; no formal/native job is running.
+Original log: Cloud/.worktree/afv2-center-01-native/artifacts/afv2-center-01-source317-native.log,
+SHA2562eceed90c653379734493a4576a18e3160a634921be8d92b4adab5aa9f80f9ac.
+This is affected author evidence, not final formal status/candidate admission.
+
+Author now freezes one r136/runtime-Worker-r2/new immutable dependency-r2 cohort
+against stable317 source. No more source/SQL/dependency changes are authorized
+without a concrete current failure. Final-head review, both full profiles and
+actual samecandidate CLI three-path backup/restore remain mandatory and pending.
+Root records branch plan/afv2-center-01-finish-1129, draft Plan139. Finish the
+current entire CENTER-01 then stop/report; no subsequent product task starts.
+
 ## Current source fix under real native race verification
 
 Plan138 mergedc5e228175eaee02086fece0752c9b5e4eab24c28; reviewed8258817 native
