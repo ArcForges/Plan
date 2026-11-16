@@ -1,5 +1,47 @@
 # Codex handoff — ArcForges V2
 
+## Current checkpoint: DATA-01 implementation active
+
+Startup Plan125 actually merged926af0616d6738d8cc525bcc93ac59eb8d23f311
+at reviewed544132d4413042159c73946c6cd372f4c7418601/tree45cc6bf33aad317c7e52e72782a459a66ff81fe0.
+Native Plan Windows141510/Linux141518 each5/5 bind actual Design493022fbf643b484665b2713c9eb8670f2fb2234;
+strict status/current head/base/no bypass/zero threads checked before merge.
+API-01/cohort481.1 complete, AR03/MXC01 stay failed/blocked in their own range.
+DATA-01 is the sole active authorized task; no product acceptance yet.
+
+Sole delegated author base_audit works in Windows
+C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-data-01,
+branch task/afv2-data-01 baseline39c2c57fdaf3666ec046a22370aa2f2157c2d058.
+Current assessment: reuse WAL/single writer/FULL transactions, existing migrations/
+backups/protected-key helpers and real-process fixtures; keep every applied0001..0015
+byte/checksum/history, V1table and unresolvedintent. Do not reuse legacy24h dedupe
+identity eviction for V2. Implement forward schema16/minreader16 and only missing
+V2 epoch/HMAC receipt/known-body compaction/UNKNOWN/CAS/reserve/backup primitives.
+
+Only actual DDL conflict is old resource_sample(attempt_id/sampled_at).
+Preserve it; new V2 physical table v2_resource_sample maps logical resource_sample
+(scope_kind/scope_id/observed_utc) in an explicit eng/v2-migration record.
+The Design target is not an upgrade script; this is a narrow physical expand
+adaptation, no source table contraction/new naming framework/semantic waiver.
+Final independent review must inspect it.
+
+H-22 native worktree exists, clean at39c2 with correct origin:
+ /home/sammiller/arcforges/ArcForges/.worktree/afv2-data-01-native
+Measured tracked checkout10,359,037bytes, current userfree445,399,040bytes after it.
+Python3.15.2/SDK11.0.100 verified; no install, cleanup or duplicate baseline tests.
+Root alone handles Linux, formal status/push/PR/merge/Plan. One delegate at a time;
+reviewer idle. Author Windows implementation/targeted realfixtures in progress,
+no product commit/nativeLinux validation or full status yet. No active nativeprocess.
+
+Record branch: Plan/.worktree/afv2-data-01-progress on
+plan/afv2-data-01-progress, base926af06. Next: author candidate/precise source and
+test evidence, push, independent H-22 fetch and realSQLite fixtures, fix actual
+blockers only, then author-stop/independentreview/final both native Node profiles,
+strictmerge and accurate final delivery. Source/protected-key material never logged.
+Only the task's explicit synthetic admission effect-counter is permitted; no real
+Run/NodeIPC/CLI/Stop/grant-revocation result can be claimed here. Preserve existing
+Cloud CI/base/MXC/otherproduct drafts. No production activation. Continue serially.
+
 ## Current checkpoint: DATA-01 active after completed API-01
 
 The owner requires continuous serial execution. API-01 and ordinary481.1 cohort
