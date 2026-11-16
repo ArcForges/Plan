@@ -21,7 +21,7 @@ Worktrees under C:/MyFile/Projects/ArcForges/:
 - Plan/.worktree/afv2-id-01-verify, native caller at96a48ea.
 - Cloud/.worktree/afv2-id-01-verify, preserved native caller at6bd7169.
 H22 native: /home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-native,
-currently1b690454d52b010b01f4076c5426cf18f0a9108b; Plan native caller is
+currently3a22bec5e9e4dc29841fbb3b9e96c4b2362c6d00; Plan native caller is
 Plan/.worktree/afv2-id-01-verify at96a48ea. Never touch dirty Linux Plan primary.
 
 Plan141 mergeda221ba8; Plan142 merged63e9c236. Latest scope is38 exact paths,
@@ -78,14 +78,24 @@ Preserve initial pre-Go AttributeError/stale-runner-SHA assertion and real ACL
 parser failures in their original artifacts; they were not native successes or
 transport failures. Native named-ACL/unnamed-FUNCTION distinction is now handled
 by one exact closed-signature mapping with whole-TOC positive/negative tests.
-Earlier drivers3456966/3459367 have ended. New H22 driver artifacts/afv2-id-01-migrate-1b69-runner.py is running against exact1b690454; log/exit in artifacts/afv2-id-01-migrate-1b69/. Read the actual result before relaunching.
+All earlier targeted drivers have ended. Current H22 full-Go compatibility
+check is artifacts/afv2-id-01-allgo-3a22-runner.py; log/exit under
+artifacts/afv2-id-01-allgo-3a22/. It runs real PostgreSQL and race-enabled go test
+./... before final metadata freeze, to catch actual consumer/test compatibility.
 
-New13source-oracle binding is pushed at1b690454d52b010b01f4076c5426cf18f0a9108b. H22 fetched that exact head. Next: inspect the running real finite12→13/seven-schema fencing/SQL-fault rollback/restore13 cases with native pg_dump/pg_restore and durability on. Fix only actual failures,
-then freeze original R138/ID-r1 metadata after full Docker context/carried-hash
-and actual Worker closure checks. Run final exact-head required Cloud Windows10/
-Linux17 profiles, finish independent final review and normal PR160 merge; inspect
-applicable paused main-push result. Record true complete state/evidence in Plan143,
-verify both Plan legs against actual latest Design and merge shared records.
+Finite10/11/12 allPASS atabaa; openwriter/management-only refusal and SQL-fault
+rollback PASS at1b69. Real restore13 PASS at3a22 (3.93s): actual pg_dump/restore,
+oldauthority revoked/notuplifted, deletion/UNKNOWN/cutover facts retained. Failed
+fixture42P08 and confirmation23514 remain in original logs; only explicitUUID
+casts and supplied confirmation fields changed, no production guard weakening.
+Metadata author is now preparing only scoped original R138/runtime-ID-r1/Worker-ID-r1
+and policyreview/filesNOTICE/strictsecret-scan guards after full Docker context,
+all-carried hash and actual Worker closure checks. No dependency version changes.
+Root must collect full-Go compatibility, metadata checks and independent review,
+then run final exact-head Cloud Windows10/Linux17 unchanged required profiles.
+Finish normal PR160 merge and inspect applicable paused main-push result; record
+true completion/evidence in Plan143, verify both Plan legs against actual Design
+main and merge shared records.
 Stop after current ID01. No ID completion/final host status/production acceptance
 is claimed yet. Real mail/domain/browser qualification stays AR10/H04 external.
 
