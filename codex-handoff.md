@@ -16,6 +16,25 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
+## Latest formal result: Docker context closure must be corrected
+
+Final84ef Windows passed10/10 in153s. Its Linux profile failed check at the
+complete1201-test source suite:1199passed,2failed,0skipped. Both failures are in
+the unchanged Docker context guards: the embedded schema12 inventory TXT lacks
+an exact context file rule, and carried management/store.go is absent from
+r136 inputs. Parallel linux-center was canceled; later steps/candidate not run.
+Original20261116-193953-84efb8c551e8-linux logs and status remain immutable.
+No formal job is running. This is real package closure, not an MCP failure.
+
+The precise amendment adds .dockerignore and r137/runtime-Worker-r3 immutable
+successor paths,32to36. Keep the valid Docker tests and all used metadata.
+Author audits the complete carried-file closure, adds only the exact embedded
+TXT rule and missing actual inputs, then runs the full affected Docker-context
+suite before metadata freeze. No new Go/SQL/dependency/API or production change.
+After reviewedPlan/native5 merge, settle this source/config + metadata batch,
+review/fetch finalhead/bothfullprofiles/samecandidate3path and normalclosure.
+CENTER remains active, AR07 not yet passed; finish the whole task thenSTOP.
+
 ## Latest checkpoint: final exact head under native verification
 
 Cloud final head is 84efb8c551e879e6aea4a13693be41f98cfaaeb4 (PR159). It is
