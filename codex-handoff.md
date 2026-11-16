@@ -19,18 +19,35 @@ New independent worktrees:
 - Cloud: C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-id-01, task/afv2-id-01.
 - Design read-only baseline: ArcForges-Design/.worktree/afv2-id-01, detached493.
 
-Core author id_author is implementing only the original declared paths after
-this authorization record. Reuse existing proof crypto, identity/session/one-use,
+Plan141 has merged as a221ba8b827c926620dade2752f133e7ca8b61e0. Its reviewed
+7f114efa715f47519f14066e55d0490341c35d20 passed Windows5/5 in5s and H22Linux5/5
+in26s, both bound to actual Design493. ID-01 now has35 concrete allowed paths.
+The record branch is now plan/afv2-id-01-progress in the same Plan worktree.
+
+Core author id_author owns identity/session/oneuse/schema13/device/mail/ratelimit;
+transport author id_transport owns API/pages/routes/access/server/generatedtables
+and identity docs. Reuse existing proof crypto, identity/session/one-use,
 mail delivery and bounded transaction primitives. Add actual account epochs and
 lifecycle receipts through forward schema13, preserve applied0001–0012 and local
 Runs/data. State4 deletion reconciliation requires new real authentication and
 narrow account-only permissions; revoked credentials are never re-enabled.
 
-Read-only audit id_audit is identifying necessary schema13 writer-fence,
-backup/restore, CLI and immutable artifact integration paths. Those additional
-paths need the bounded reviewed Plan amendment before edits. Independent
-reviewer id_review did not author the implementation. Root owns graph/ledger,
-integration, pushes/PRs, designated-host verification and normal merge.
+Migration author id_audit now owns store/migrate, the real CLI, dbtest, narrow
+historical hub fixtures, Docker context and postgres-store docs. It must preserve
+all applied SQL and old12oracles, fence source12 writers across all7schemas and
+derive13's closed oracle from actual H22 DDL. Default fixtures are real complete13;
+the explicitly named historical routing fixture cannot be used as current safety
+evidence. Independent reviewer id_review did not author the implementation.
+Root alone stages/commits/pushes shared source and owns graph/ledger, integration,
+PRs, designated-host verification and normal merge.
+
+Current Cloud HEAD remains6bd7169 with uncommitted task drafts across the named
+owned paths. Initial core and transport Windows Go1.27.4 compilation passed;
+this is not native PostgreSQL acceptance. No R138 metadata or13oracle is frozen.
+Export uses bounded canonical JSON and a receipt digest; reads recheck current
+authority/expiry and reject changed content. No export-body storage or new
+filesystem/configuration framework. SourceSQL13 is independently authored from
+requirements, not copied Design DDL. Existing dependency versions stay fixed.
 
 Windows native DEKU/J7Rdm is accessed locally under the owner's explicit
 authorization. H-22 Linux MCP executed successfully on
@@ -40,9 +57,9 @@ untouched; use separate worktrees. The initial interrupted call was read-only,
 not an outage. Only three consecutive transport failures in one outage trigger
 the stop rule; successful calls reset it.
 
-Next: finish exact integration-scope audit/review, merge the shared start record
-under both normal Plan profiles against Design493, implement the complete task,
-then native crypto/PG/epoch/concurrency/recovery verification and ordinary
+Next: integrate the current complete lifecycle/migration/transport source,
+settle schema13 and generate its actual H22 closed oracle, then run real
+crypto/PG/epoch/concurrency/recovery verification and ordinary
 delivery. No ID-01 success is claimed yet. Production H03/AR10/H04/PROD01 and
 Cloud deployment pause remain separate; no public activation is authorized.
 
