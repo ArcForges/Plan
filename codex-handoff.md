@@ -1,5 +1,23 @@
 # Codex handoff — ArcForges V2
 
+## Current API-01 AT-12 diagnosis complete
+
+Safe H-22 diagnostic completed GATE_EXIT1: exactly7 AT-12 findings, only new
+Management.V2.csproj(3) and Sandbox.V2.csproj(4), no otherRule/Path findings.
+Safe stdout log/home/sammiller/arcforges/logs/afv2-api-01-policy-diagnostic-2ede.txt
+SHA425e96cb5c6c1c86dacb04bcf142f23758e32ca2f3088ac80bce4da6473b1c23;
+diagnostic.logSHA5bd5dec8e204574c912c72c8836b61c12c145d8776a135ce9b73f5c1ebffb126
+in cache ignored artifacts/...-6qfqjd0g. No Message was read/printed.
+Source restored byte-identically, HEAD2ede and emptygitstatus rechecked; original
+formal failure summary hash unchanged dcd4620b5980ac5b75d4f350f6b07ecb85d20fce8a32f93b45c17151025a8423.
+No process remains active from that diagnostic. This never counts as a formal pass.
+
+Author base_audit is reading only pinnedAT-12 and existing Contracts wire/test
+binding/catalog to fix the actual new V2 integration. No waiver, threshold,
+policy/gate or unrelated product change. Next: precise small fix, targeted check,
+independent review/new finalhead formal20step; sourcemerge/cohort/Plancomplete
+remain outstanding. API is still the sole active task.
+
 ## Current bounded architecture diagnostic process
 
 H-22 diagnostic-only PID3086285 is running on clean2ede in formal cache
