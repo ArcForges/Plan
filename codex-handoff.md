@@ -1,6 +1,28 @@
 # Codex handoff — ArcForges V2
 
-## Current coherent DATA candidate and real native diagnostics
+## Latest DATA correction and pending backup closure
+
+Node head564f2dcc38763bd3ecc93cda3060d2dfde5a4e5a is pushed in PR94.
+It changes only existing StageProducerAdmissionTests to current schema/current+1;
+both original floor-refusal and missing-function assertions remain. Prior full
+Store run782 failed only those2: Windows152pass/2expectedskip/2fail123.990s;
+H22Linux151pass/3expectedskip/2fail126.257s, explicitexit2 retained. Changed
+Stage3/3PASS0skip on Windows3.401s and Linux0.720s; Linux incremental build
+0warnings/errors. Logs artifacts/afv2-data-01-stage-fixture-build-linux-564.log
+and stage-fixtures-linux-564.log, exits0.
+
+Author base_audit must first finish checking/fixing complete latest-owner closure:
+a post-snapshot newly created owner/epoch must invalidate an old backup too;
+manifest-listed owners alone are insufficient. This directly affects DATA backup
+acceptance. No final review/full profile is started until production source stable.
+
+H22 userfree now3371986944B after measured/bounded cleanup of only four retired
+Desktop ignored/untracked bin/obj directories in the existing formal verify cache.
+Exact paths/checks are in ledger; no evidence/delivered artifacts/source deleted.
+Unchanged Host project locked restore passed in data-native worktree, preparing
+for final affected AOT. Native14case782 logs and all failures remain intact.
+
+## Earlier coherent DATA candidate and real native diagnostics
 
 Node draft PR94: https://github.com/ArcForges/ArcForges/pull/94
 Branch task/afv2-data-01, exact pushed source782ee4a69e22727db3cf3de7b018b09baa5e56cf;
