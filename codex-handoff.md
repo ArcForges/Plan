@@ -1,26 +1,32 @@
 # Codex handoff — ArcForges V2
 
-## Current reconciliation repair after scope admission
+## Current UNKNOWN fix and oracle rebinding
 
-Plan133 actually mergedde91326e3331c46bdb828aa633770914b4a797f9 at reviewed
-2875af4bc0d69df9493364cb19f0cd0d0fbca8e5/treeea39ce7d73182e58b2b4479fe536ad59af115ece.
-Independent review accepted; nativeWin5/5 in5s and H22Linux5/5 in26s,
-bothDesign493, original protection satisfied. Scope24 admits exact newr4.
-Author is now fixing the confirmed revokedUNKNOWN settlement defect and adding
-regression coverage; usedr3/oldSQL history stay unchanged. Not fixed/verified yet.
+Cloud pushed/native sourcec0d9a62cdb200f43d291f362a11a80983f4c7089 fixes the
+confirmed revokedUNKNOWN settlement defect. Real H-22 targeted regression and
+native inventory PASS2/0skip1.231s, exit0. Originalidentity/currenthub definite
+settlement works; newReserve/redelivery/channelchange/missingdigest/ownerchange/
+stalehub and finaloverwrite refuse. Independent SQLdelta review is pending.
+New0012/r4 SHA69c5496cb533c1b5edd56aaab3cce65c04608874ad29646b84df72d8321d85e5;
+usedr1..r3 unchanged. This intermediatehead deliberately blocks12backup until
+new actual oracle is bound, while11 remains compatible. Do not call it final.
 
-Cloudhead1f52ba8cc4070fddf839139ccd85e215763ee1df remains pushed/native.
-Its8 changedconsumer scenarios allPASS/0skip5.962s: real11backup/new11restore/
-finite12, repeat12grants, oldCTR06admission/floor/role/hash guards and0011writer
-wait/backfill. Logs artifacts/afv2-center-01-management-1f52-linux.*, SHA
-1431fa7b7346e8dacf4ac01408d0545f7c6772ba15b8afa4e44ceb8a61437fe9.
-Testcontainer removed; PID3241893 ended. Still no positive schema10 qualification.
+Native original artifacts/afv2-center-01-management-c0d9-linux.{log,json,exit},
+logSHA0658bdcfe86051455718efb899b5b41436b47aa82344c954299853c87676f171.
+Currentcatalogue813ca9708dcfcf7ef79a3aeed2ef0c5b7cfb5703ca11819f305b9e6fd0f91501,
+361object inventory stillf35cf1598d0b00e27ca65ac4bf6fa2f5b445ffcf4cb5a09899f512fc9b5d51d2.
+Raw artifacts/management-schema12-3010129480 retained; only canonical schemafacts
+copied to author artifacts/afv2-center-01/schema12-r4-{inventory,catalogue-sha256}.txt.
+Ownedcontainer removed/PID3245965 ended. Initial premature fetch before Windows
+push completed started no PG test; firstdriverlog preserved, correctedsequence
+attempt2 succeeded. MCP remains healthy, no connection-failure count increment.
 
-Current root Plan branchplan/afv2-center-01-reconcile in same independent
-.worktree/afv2-center-01-native starts actualde913. CurrentDesign493/Cloudmainf470.
-Unchanged Cloudfull profiles remain Windows10/Linux17 steps, including actual
-CTR06 bridge/nativeCenter/provenance/candidate gates. Finalrun waits stable source/
-metadata; no stale or incomplete-profile PASS. H22free last8.6GiB; no cleanup.
+Planmain de91326e3331c46bdb828aa633770914b4a797f9 (PR133), Designmain493,
+Cloudmainf470. Scope24 exact paths. Current record draftPlan134 in root
+Plan/.worktree/afv2-center-01-native branchplan/afv2-center-01-reconcile.
+Author continues oracle binding, backup/fault/CLI/consumer/provenance closure;
+no finalnativeCloudprofiles/completeacceptance/publicactivation. Fixed1f52
+backupsourceaudit found no additional blocker; final stablefullhead review remains.
 
 ## Earlier confirmed reconciliation blocker and exact successor amendment
 
