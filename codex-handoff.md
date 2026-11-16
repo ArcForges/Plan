@@ -1,6 +1,32 @@
 # Codex handoff — ArcForges V2
 
-## Current CENTER metadata scope review and preserved draft
+## Current CENTER implementation resumed after metadata admission
+
+RequiredsourceScope amendment Plan129 actually merged
+5a0348da13526e9d8bb7eaab91e8abc47983be8a atedc2c18/tree42bf;
+independentbase_review accepted, both5step original profiles164909Win/164917Linux
+passed5s/26s and bind actualDesign493. CENTER scope now18 precise paths; no
+artifactprofile directory/policy/activation relaxation. Authorbase_audit resumed
+after reviewerended/merge, currentlyonlyauthor; root ownsnativeH22/records/GitHub.
+Current rootPlan worktree .worktree/afv2-center-01-evidence /
+plan/afv2-center-01-evidence begins actual5a0348d.
+
+Before-copy source grant reviewed byCodexroot2026-11-16 under maintainerauthority:
+Design493 LICENSE AGPL3-only SHA8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef,
+cloud-store.sql SHAc6f1933db63cea5956f1b1b591109eafdb359cab8ab254701f83d5c81c78cc97.
+Register exactnew afv2-center-01-management-storage-r1.json record/notice before
+introducing onlymanagement adaptation; usedrecords/profiles immutable.
+No new licenceexception or userapproval loop.
+
+H22 realPostgreSQL readiness succeeded using existing pinned18.7 helper,
+fsync/synchronous_commit/full_page_writes allon, ownedcontainer removed after
+test. Original data-native artifacts/afv2-center-01-postgres-readiness-linux.json.
+This is onlyenvironment proof, not3migrationpaths/AR07/FCTR01. No DB URL/password
+printed, no productionprobe. Current+historicalGo1.27.4/1.27.3 roots exist on both
+hosts, no install/upgrade. Source/artifact publisherqualification remainsmissing
+for schema10; code/realPGsafe/refusalwork continues, no fakepublication or enablement.
+
+## Earlier CENTER metadata scope review and preserved draft
 
 StartupPlan128 actually merged15f29da03899eceaaeffd0e132e85d7210408d68
 after both5-step profiles at237/tree768 boundDesign493. Current rootrecord
