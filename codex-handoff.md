@@ -1,5 +1,52 @@
 # Codex handoff — ArcForges V2
 
+## Current checkpoint: DATA-01 active after completed API-01
+
+The owner requires continuous serial execution. API-01 and ordinary481.1 cohort
+are complete; final Plan124 actually merged7e66141e217b5ad5544c5d1af72cdeabc6f4279e
+at reviewedce6ccb17ddc688c89a76761b68a94c78a4d10322/tree94de39d18577a13fade7e5924977a92e1799be6e.
+Native Plan Win135941/Linux135929 each5/5 bind actual Design493022fbf643b484665b2713c9eb8670f2fb2234.
+Strict both-host/current head/base/no bypass/zero threads and review checked.
+This checkpoint supersedes historical task states below.
+
+AFV2-DATA-01 is now the only active task; BASE-01/API-01 dependencies are complete.
+No product implementation or validation outcome claimed yet. MXC-01 remains blocked/
+AR-03FAILED only in its dependent range; ENV/BASE-01/BASE-02/API-01 stay complete.
+No public activation authority or Cloud deployment has been enabled.
+
+Actual baselines fetched: Plan7e66141e217b5ad5544c5d1af72cdeabc6f4279e,
+Design493022fbf643b484665b2713c9eb8670f2fb2234,
+Node39c2c57fdaf3666ec046a22370aa2f2157c2d058. Git origins verified, primary
+Windows/Linux Node checkouts remain unmodified at200d2d25. All existing worktrees
+inspected; no previous DATA draft/PR found. Preserve BASE01/MXC/Cloud CI and all
+other worktrees. New Windows Node/.worktree/afv2-data-01 on task/afv2-data-01;
+Plan/.worktree/afv2-data-01 on plan/afv2-data-01. Product directory is ArcForges,
+Design directory is ArcForges-Design (not the old handoff shorthand Design).
+
+Scope: only Node src/ArcForges.Node.Store/**, tests/ArcForges.Node.Store.Tests/**,
+eng/v2-migration/**. Read current Node AGENTS/CONTRIBUTING, full task and4Design
+refs completed. Keep migration0001..0015 bytes/checksums/min-reader history,
+unresolved legacy intents and valid existing WAL/transactions/encryption/backups.
+Adapt with forward-expand V2 tables, protected random epoch/HMAC identity,
+retained known/UNKNOWN receipts,24h known-body compaction, reserve/capacity and
+coherent backup/restore. Add only missing primitives and real fresh/schema15
+SQLite/key/permission/close-reopen fixtures. Only explicitly allowed synthetic
+admission effect-counter; no native Run/IPC/CLI/Stop/revocation acceptance claim.
+
+Windows uses expressly authorized native local filesystem/tools. H-22 MCP was
+freshly called: correct hostv2202601329473427941/usersammiller/origin/workspace,
+clean primary/healthy transport. Last disk observation439MiB useravailable;
+monitor and reuse known own worktrees/builds, never delete unknown directories.
+No active native process. Coordinator owns Plan/nativeLinux/push/PR/merge;
+one delegated author or reviewer at a time.
+
+Next: commit/push this startup record, both unchanged Plan native profiles and
+merge; then author a bounded keep/adapt/add assessment of actual Store source,
+reuse its key/backup/migration helpers and implement complete DATA-01 acceptance.
+Do not restart dependency upgrades, old V1 tasks, nativeMXC experiments or unrelated
+products. Formal Node final PR requires both native host profiles and independent
+review. Every failed primitive remains explicit; no unsafe rollback/epoch reset.
+
 ## Current checkpoint: API-01 complete; final Plan record awaits checks/merge
 
 This checkpoint supersedes the historical intermediate snapshots below.

@@ -1349,7 +1349,7 @@
       "title": "Add V2 Node persistence and durable mutation receipts",
       "milestone": "P2",
       "order": 9,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1432,7 +1432,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Continue the existing user-authorized serial AFV2 range after complete API-01/cohort481.1 and final Plan124 merge. Only real V2 Node SQLite persistence/receipt/backup primitives in the three declared paths; preserve applied0001..0015 and legacy unresolved intents. No Core/Run/IPC/CLI/safety runtime claim.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
