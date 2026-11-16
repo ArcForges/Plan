@@ -1,6 +1,81 @@
 # Codex handoff — ArcForges V2
 
-## Current CENTER metadata scope review and preserved draft
+## Current narrow successor metadata amendment
+
+Author paused after the first native findings, with only management.go and
+management_integration_test.go uncommitted in the allowed Cloud worktree.
+The failure is specific: immutable command_identity reads used FOR UPDATE in
+Reserve and FOR SHARE in the SQL trigger, each requiring an UPDATE grant. Remove
+these unnecessary identity locks; preserve insert-only grants and existing
+Serializable, unique/FK, immutable identity and admission checks. No role widening.
+
+Plan PR130 now adds four exact required successor metadata paths, 18 to 22:
+management-storage-r2 (supersedes unchanged used r1), cloud-release-r135,
+center-runtime-afv2-center-01-r1 and center-worker-afv2-center-01-r1 under their
+existing eng/provenance locations. Active runtime/Worker records bind immutable
+r134, whose native source closure changes with this task; Worker bytes/dependencies
+are unchanged. No directory wildcard, policy or acceptance relaxation. These
+provenance profiles are not publisher admission or proof of schema10 qualification.
+Independent scope review and both Plan profiles/current Design are next, then
+resume sole author. Used schema0001..0011, r1 and old profiles remain untouched.
+
+## Current CENTER candidate and first native findings
+
+Cloud draft [PR159](https://github.com/ArcForges/Cloud/pull/159) is pushed at
+5eaa7fafcc79838ffd3c9a86d825cf8cb6bee947 on task/afv2-center-01. Windows author
+worktree Cloud/.worktree/afv2-center-01; H-22 independently fetched this SHA into
+Cloud/.worktree/afv2-center-01-native. Author base_audit continues only this task;
+root owns records, H-22 runs, push/PR/merge. No independent final review yet.
+
+First real PostgreSQL18.7 targeted run: 2 PASS, 2 FAIL, zero skips, exit1.
+Fresh Reserve and post-schema11 legacy identity lookup fail SQLSTATE42501;
+author must fix the actual least-privilege query/grant mismatch. Schema10 safely
+refuses unqualified transition without side effects. Schema12 inventory diagnostic
+passed; it is a candidate oracle input, not backup/restore acceptance. Inventory
+SHA f35cf1598d0b00e27ca65ac4bf6fa2f5b445ffcf4cb5a09899f512fc9b5d51d2,
+361 objects; catalogue SHA
+948d13ea71ea4560a4e437df1585b731cf9d71a1928bd1bd9a522f7535d7a6bf.
+The native source.dump and facts remain artifacts/management-schema12-4226122008;
+only canonical fixture text/hash were copied to Windows artifacts/afv2-center-01.
+Original logs/JSON/exit are artifacts/afv2-center-01-management-5eaa-linux.*,
+log SHA 6deacbcea4f62a5ccde7198467dda03c5ed2669bbd394cfa03a3d5f6a52bd11c.
+Owned test container removed, PID3224943 ended; no paused process. Linux MCP
+is healthy. PostgreSQL test failures do not count as connection failures.
+
+Keep schema0001..0011 and used r1 immutable. V2 backup/restore, fault/recovery,
+actual artifact closure metadata, final native profiles and review remain.
+The exact proposed r135 profile/runtime-r1/worker-r1 metadata paths require a
+concentrated reviewed Plan amendment after first native fixes stabilize; no
+out-of-scope file written yet. Positive schema10 qualification remains unproven;
+no fake publisher authority or deployment activation. CENTER stays sole active.
+
+## Current CENTER implementation resumed after metadata admission
+
+RequiredsourceScope amendment Plan129 actually merged
+5a0348da13526e9d8bb7eaab91e8abc47983be8a atedc2c18/tree42bf;
+independentbase_review accepted, both5step original profiles164909Win/164917Linux
+passed5s/26s and bind actualDesign493. CENTER scope now18 precise paths; no
+artifactprofile directory/policy/activation relaxation. Authorbase_audit resumed
+after reviewerended/merge, currentlyonlyauthor; root ownsnativeH22/records/GitHub.
+Current rootPlan worktree .worktree/afv2-center-01-evidence /
+plan/afv2-center-01-evidence begins actual5a0348d.
+
+Before-copy source grant reviewed byCodexroot2026-11-16 under maintainerauthority:
+Design493 LICENSE AGPL3-only SHA8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef,
+cloud-store.sql SHAc6f1933db63cea5956f1b1b591109eafdb359cab8ab254701f83d5c81c78cc97.
+Register exactnew afv2-center-01-management-storage-r1.json record/notice before
+introducing onlymanagement adaptation; usedrecords/profiles immutable.
+No new licenceexception or userapproval loop.
+
+H22 realPostgreSQL readiness succeeded using existing pinned18.7 helper,
+fsync/synchronous_commit/full_page_writes allon, ownedcontainer removed after
+test. Original data-native artifacts/afv2-center-01-postgres-readiness-linux.json.
+This is onlyenvironment proof, not3migrationpaths/AR07/FCTR01. No DB URL/password
+printed, no productionprobe. Current+historicalGo1.27.4/1.27.3 roots exist on both
+hosts, no install/upgrade. Source/artifact publisherqualification remainsmissing
+for schema10; code/realPGsafe/refusalwork continues, no fakepublication or enablement.
+
+## Earlier CENTER metadata scope review and preserved draft
 
 StartupPlan128 actually merged15f29da03899eceaaeffd0e132e85d7210408d68
 after both5-step profiles at237/tree768 boundDesign493. Current rootrecord
