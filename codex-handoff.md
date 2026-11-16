@@ -1,6 +1,24 @@
 # Codex handoff — ArcForges V2
 
-## Current DATA final qualification running
+## DATA independent review P1: do not merge1e02
+
+Independent reviewer base_review ended with one real reproduced blocker:
+known no-effect settlement, backup, existing fixture SQL RETIRED transition,
+latest DB rollback while retaining fence allowed old ACTIVE restore. The state
+change was only in SQLite, not the independent fence. Expected maintenance was
+not thrown. Single nativeWindows real SQLite/file-key case failed,0skip;
+review build0warnings/errors. Reproduction retained in isolated
+ArcForges/.worktree/review-afv2-data-01-1e02/tests/ArcForges.Node.Store.Tests/
+DurableRetirementRollbackReviewTests.cs. Author worktree was not changed.
+
+Reviewer ended before sole author base_audit resumed concentrated fix. Prefer
+refusing unqualified DB-only retirement/maintenance, no new retirement product
+workflow or automatic rotation. Keep old1..15 bytes/history unchanged and add
+precise real fixture. Both old1e02 full profiles may finish but cannot waive
+this P1. Root must push fix, H22 same-head changed fixtures, delta review and
+both new-head unchanged formal profiles before product merge. No delivery yet.
+
+## Earlier DATA qualification running at1e02
 
 Same source1e02e335b97c25b8a05808c90c82c608f3c31c36, Node draftPR94;
 current Plan draftPR127 / branchplan/afv2-data-01-final.
