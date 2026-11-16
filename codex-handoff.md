@@ -1,5 +1,23 @@
 # Codex handoff — ArcForges V2
 
+## Current API-01 formal96 tooling consumer failure
+
+Formal96d02cef1eeff087e17ac8aab66891b55169270f tree
+0ede4a1fec540bdc809f49ddb6ec4dee68f17d3c FAILED tooling-tests after15passed
+steps including pack/AOT/Go-static/test/exchange/vulncheck. Actual receipt
+20261116-125104-96d02cef1eef-linux, raw logs original H-22 location below.
+648tests/97.559s/26failures:25 historical scan tests require exact global131,
+now135 due to4 reviewed API groups; identity_http package count26 now28 due
+to2 V2 owners. Source review had accepted96, but formal gate stays failed.
+
+Author base_audit is adapting only test_dependency_admission.py and
+test_identity_http.py affected consumers: strict new counts, exact new group
+rows/negative inputs and explicit2 new owner identities, preserving old checks.
+No >= waiver, gate removal or control/Go input change. Existing1efa native
+qualification stays valid. After commit: rootpush, finaldelta review, new full
+H-22 profile, gates/merge/ordinary publication; then final Plan completion.
+No active native process is carried forward from failed96. Task remains active.
+
 ## Current API-01 final96 source, formal check pending
 
 This current checkpoint supersedes earlier snapshots below; all historical
