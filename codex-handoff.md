@@ -16,6 +16,30 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
+## Latest formal result and necessary admission refresh
+
+Final source f153 remains pushed/clean. Windows full profile passed10/10 in254s,
+original Cloud/.git/arcforges-verify/logs/20261116-185513-f153548d703f-win.
+H-22 retry20261116-185523-f153548d703f-linux ended failure in184s: check rejected
+main.go input digest (actual02e1ff67fafe6eb59fa2efc1877415c67fc179b4b34c328cab1d913534643933,
+expectedcd705d04895ab8a3280f64c35abc728f8a8902c03c29201d010e9e600cbedaf9).
+Security bridge passed; parallel linux-center was canceled after check failure;
+remaining unrun steps are not passed. Both formal jobs ended, no paused process.
+The original failed logs/status remain; this is normal source-admission drift,
+not MCP failure or a tool/dependency version change.
+
+Execution-policy section4 explicitly allows necessary admission entries for
+already declared modules. Independent base_review accepted this scope. Author
+base_audit is refreshing only eng/policy/dependency-policy.json, a new immutable
+eng/policy/dependency-reviews/afv2-center-01-r1.json and files.json classification.
+Retain all dependency coordinates/versions/integrities, historical receipts,
+thresholds and r135. No new package/profile/production authority. The two policy
+paths are not r135 inputs, so no successor artifact profile is required.
+Next: author admission diagnostics, independent delta review, root push; both
+hosts fetch new exact SHA and rerun their unchanged required profiles with the
+existing archive selectors, then same candidate CLI three-path PG drill and
+normal delivery. CENTER is still active, AR07 not yet closed. Finish then stop.
+
 ## Current final candidate under mandatory host verification
 
 FinalCloud headf153548d703f547d5eea11ebdcbcfa91b03184ab is pushed and independently
