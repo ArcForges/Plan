@@ -3140,7 +3140,7 @@
       "title": "Complete bounded account recovery export and deletion lifecycle",
       "milestone": "P5",
       "order": 23,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Cloud",
@@ -3228,7 +3228,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Actual API adapters and co-located tests are identityapi; current browser pages are pages; session verification must consume new account epochs. Do not invent duplicate httpapi/identitytests packages.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Actual API adapters and co-located tests are identityapi; current browser pages are pages; session verification must consume new account epochs. Do not invent duplicate httpapi/identitytests packages. [active] Owner resumed migration after completed CENTER-01 stop point. Current sole product task is bounded account recovery/export/deletion, reusing existing identity/session/one-use/crypto/PostgreSQL. CENTER-01 dependency complete at Cloud6bd7169; Plan baselinec6600f3/Design493022f. Necessary scope audit precedes source edits; no release or production activation.",
       "blocked_by": [],
       "evidence": {
         "prs": [],

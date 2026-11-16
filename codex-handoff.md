@@ -1,6 +1,55 @@
 # Codex handoff — ArcForges V2
 
-## Latest owner stop boundary — finish CENTER-01, then stop
+## Current resumed checkpoint — AFV2-ID-01 active
+
+The owner has explicitly resumed migration after the completed CENTER-01 stop
+point, and repeated continue after an interrupted read-only check. Continue the
+existing authorized serial AFV2 range. The sole active task is now AFV2-ID-01:
+bounded account recovery, export and deletion. The older CENTER stopping point
+below is historical and no longer prevents this authorized next task.
+
+Latest fetched mains: Plan c6600f321705ff7c7cc9c4efc2177090a0140a35,
+Design493022fbf643b484665b2713c9eb8670f2fb2234,
+Cloud6bd7169607d55c8b647b1a70302ff28ad365d488. CENTER-01 is complete and its
+original evidence remains valid. The graph has6complete,1active,1blocked and
+32planned. MXC-01/AR03 remains blocked independently; ID-01's dependency is ready.
+
+New independent worktrees:
+- Plan: C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-id-01, plan/afv2-id-01.
+- Cloud: C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-id-01, task/afv2-id-01.
+- Design read-only baseline: ArcForges-Design/.worktree/afv2-id-01, detached493.
+
+Core author id_author is implementing only the original declared paths after
+this authorization record. Reuse existing proof crypto, identity/session/one-use,
+mail delivery and bounded transaction primitives. Add actual account epochs and
+lifecycle receipts through forward schema13, preserve applied0001–0012 and local
+Runs/data. State4 deletion reconciliation requires new real authentication and
+narrow account-only permissions; revoked credentials are never re-enabled.
+
+Read-only audit id_audit is identifying necessary schema13 writer-fence,
+backup/restore, CLI and immutable artifact integration paths. Those additional
+paths need the bounded reviewed Plan amendment before edits. Independent
+reviewer id_review did not author the implementation. Root owns graph/ledger,
+integration, pushes/PRs, designated-host verification and normal merge.
+
+Windows native DEKU/J7Rdm is accessed locally under the owner's explicit
+authorization. H-22 Linux MCP executed successfully on
+v2202601329473427941/sammiller, Debian13, /home/sammiller/arcforges. GitHub MCP
+read is healthy. The Linux primary Plan has old staged/unstaged changes and is
+untouched; use separate worktrees. The initial interrupted call was read-only,
+not an outage. Only three consecutive transport failures in one outage trigger
+the stop rule; successful calls reset it.
+
+Next: finish exact integration-scope audit/review, merge the shared start record
+under both normal Plan profiles against Design493, implement the complete task,
+then native crypto/PG/epoch/concurrency/recovery verification and ordinary
+delivery. No ID-01 success is claimed yet. Production H03/AR10/H04/PROD01 and
+Cloud deployment pause remain separate; no public activation is authorized.
+
+All following checkpoints are historical snapshots. Their old active task,
+running process and stop/next-action instructions do not supersede this one.
+
+## Historical owner stop boundary — CENTER-01 round
 
 The owner now requires the entire currently active AFV2-CENTER-01 to finish,
 then stop and report overall progress. Do not start the next product task after
