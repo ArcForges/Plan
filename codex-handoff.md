@@ -1,5 +1,35 @@
 # Codex handoff — ArcForges V2
 
+## Current CENTER candidate and first native findings
+
+Cloud draft [PR159](https://github.com/ArcForges/Cloud/pull/159) is pushed at
+5eaa7fafcc79838ffd3c9a86d825cf8cb6bee947 on task/afv2-center-01. Windows author
+worktree Cloud/.worktree/afv2-center-01; H-22 independently fetched this SHA into
+Cloud/.worktree/afv2-center-01-native. Author base_audit continues only this task;
+root owns records, H-22 runs, push/PR/merge. No independent final review yet.
+
+First real PostgreSQL18.7 targeted run: 2 PASS, 2 FAIL, zero skips, exit1.
+Fresh Reserve and post-schema11 legacy identity lookup fail SQLSTATE42501;
+author must fix the actual least-privilege query/grant mismatch. Schema10 safely
+refuses unqualified transition without side effects. Schema12 inventory diagnostic
+passed; it is a candidate oracle input, not backup/restore acceptance. Inventory
+SHA f35cf1598d0b00e27ca65ac4bf6fa2f5b445ffcf4cb5a09899f512fc9b5d51d2,
+361 objects; catalogue SHA
+948d13ea71ea4560a4e437df1585b731cf9d71a1928bd1bd9a522f7535d7a6bf.
+The native source.dump and facts remain artifacts/management-schema12-4226122008;
+only canonical fixture text/hash were copied to Windows artifacts/afv2-center-01.
+Original logs/JSON/exit are artifacts/afv2-center-01-management-5eaa-linux.*,
+log SHA 6deacbcea4f62a5ccde7198467dda03c5ed2669bbd394cfa03a3d5f6a52bd11c.
+Owned test container removed, PID3224943 ended; no paused process. Linux MCP
+is healthy. PostgreSQL test failures do not count as connection failures.
+
+Keep schema0001..0011 and used r1 immutable. V2 backup/restore, fault/recovery,
+actual artifact closure metadata, final native profiles and review remain.
+The exact proposed r135 profile/runtime-r1/worker-r1 metadata paths require a
+concentrated reviewed Plan amendment after first native fixes stabilize; no
+out-of-scope file written yet. Positive schema10 qualification remains unproven;
+no fake publisher authority or deployment activation. CENTER stays sole active.
+
 ## Current CENTER implementation resumed after metadata admission
 
 RequiredsourceScope amendment Plan129 actually merged
