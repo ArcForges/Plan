@@ -78,6 +78,25 @@ The exact one-function mapping is now in be9d, with whole-TOC positive/negative
 unit evidence; old oracle/SQL remain immutable.
 No backup13 oracle or R138 metadata is qualified/frozen yet.
 
+H22 sourcebe9d2f8 race-enabled real PostgreSQL check now PASS exit0: fresh13
+inventory1, identity5, session1(3locking subcases), pages3. Original log is
+Cloud/.worktree/afv2-id-01-native/artifacts/afv2-id-01-targeted-be9d/native.log.
+It covers actual proof crypto, canonical export bounds/read refusal, providerless
+cleanup versus provider pending, deletion/cancel revocation, session serialization
+and real HTTP flows. It is targeted evidence, not the final required profile.
+Inventory381objects/catalogue6abb7ffc is provisional. The independently reviewed
+unpublished schema13 must clear reported_name/named_by_account during owner cleanup;
+source author is adding that minimal correction and real test assertion. Review
+also found BeginRecovery's pre-lock email lookup could race credential removal;
+lock inside account authority and recheck the actual live email before enrolling
+a recovery flow, with a real concurrent test. Ordinary email signin already
+rechecks under the account lock and does not need a speculative resend rewrite.
+Existing completed-code-reuse lock paths were cross-checked and need no change.
+Final schema13 oracle must be recaptured after the SQL correction. Plan draft143
+tracks this continuing task; metadata author may prepare only ignored tools and
+dry-run Worker facts until final source is stable.
+
+
 H22 native worktree Cloud/.worktree/afv2-id-01-native has independently fetched
 be9d from GitHub. Running driverPID3456966:
 artifacts/afv2-id-01-targeted-be9d-runner.py; logs/exit/inventory are in
