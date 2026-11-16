@@ -1,6 +1,25 @@
 # Codex handoff — ArcForges V2
 
-## Current CENTER implementation: finite schema10 next
+## Current schema10 implementation and exact-artifact subwork
+
+Plan134 actually merged6839af0cb5daf8d9cd577239de8d68107b8aa028 from exact
+727deca3a862fa45adc57be64e2f8690816f98be/treebd0917803ca900857498fba9e12d3ec6408b80cb.
+Both Plan profiles passed Windows5/5 in5s/H22Linux5/5 in25s, Design493,
+coordinator evidence-check exception and original protection satisfied.
+Mainauthor base_audit is implementing the approved same-task finite schema10
+capability. Cloud latestpushed1f389; no source10positive claim yet.
+
+Delegate center_artifact_drill only reuses the existing exactnativeCLI/historical
+artifact helpers and, if necessary, authors eng/v2-migration/center-01-native.py.
+It does not touch Go/docs/metadata, commit, run MCP or add a framework. Existing
+eng.center.drill already covers actual fresh/backup/separate-PG-target restore;
+10/11transition and candidate-source identity need the current task's additional
+evidence. Default local build identity is not a sealed/published source receipt.
+Root integrates/runs on H22 later, independent base_review retains final review.
+Current root Plan/.worktree/afv2-center-01-native branchplan/afv2-center-01-schema10.
+No native test/verification job is running or paused at this checkpoint.
+
+## CENTER baseline before finite schema10
 
 Cloud draftPR159 is pushed at1f3899b3d1ca08e975c3209506708d88cc28e765,
 independently fetched on H-22. R4 UNKNOWN repair and new actual schema12 oracle
@@ -39,9 +58,9 @@ publishedV2successor is assumed. H03actualoperator/production/provideradmission
 staysclosed but doesnot block isolated engineering; AR07 remainsNOT_RUN.
 Freeze r135/runtime/Worker metadata only after the source10code/review stabilizes.
 
-Planmain de91326e3331c46bdb828aa633770914b4a797f9 (PR133), Designmain493,
+Planmain 6839af0cb5daf8d9cd577239de8d68107b8aa028 (PR134), Designmain493,
 Cloudmainf470. Scope24 exact paths; no source/outside-profile additions.
-Currentrootrecord draftPlan134, branchplan/afv2-center-01-reconcile in
+Currentrootrecord branchplan/afv2-center-01-schema10 from actual6839 in
 Plan/.worktree/afv2-center-01-native. Root owns ledger/state/H22/push/PR/merge.
 WindowsprimaryCloud and independentcloud-deploy-ci-python/base01drafts remain
 untouched. Earlier intermediate evidence is below/ledger/Git and is historical.
