@@ -10,11 +10,112 @@ inside this task. Preserve true external/production gates; never label an unmet
 gate or partial work complete merely to stop. This supersedes earlier continuous
 next-task instructions for this run, including historical snapshots below.
 
-Current Planmain d7b3340b6ab1db66da838442f4abd1f70601a8bf (PR135); its reviewed
-3f1094cb87545972099535e67c469f110aa1a467 head passed Win5/5 in5s and Linux5/5
-in27s, bothDesign493. Current record branch plan/afv2-center-01-final in
+Current Planmain436010a7ae153ca59b2ea6d9b66aa240ea7e510e (PR136); its reviewed
+551d2777a132238b9d4f5262fc694f76395cf572 head passed Win5/5 in5s and Linux5/5
+in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
+
+## Current bounded security-scan scope amendment
+
+H-22 actual pinned gitleaks dir diagnostic of the new uncommitted receipt
+f0608daf171db6d6b1aee1991ba32e97080bbda8bc3e69dc9ee7f271a12a70f0 exited1,
+only generic-api-key lines434/435: two unchanged public legal-record SHA pairs.
+Original private ignored diagnostic reportSHA90aef55814b7e9193c0fe7ac4c9da4dbe4a94f664098e491a027d75f15ab01b4
+at Cloud/.worktree/afv2-center-01-native/artifacts/afv2-center-01-admission-scan-output.
+Independent base_review requires exact Plan scope for the repo-level guard/test.
+This amendment adds only .gitleaks.toml and tests/worker/provenance.test.ts,24to26.
+Use the existing exact path/key/digest/whole-line AND pattern and negative matrix.
+No secret exemption by wildcard, disabled scan, dependency/profile change.
+The necessary declared-module policy/new receipt entries are already allowed by
+execution-policy section4. r135 does not bind any changed guard/admission files.
+Author completes only these necessary entries and targeted checks; root waits
+for reviewed Plan amendment and both native5checks before pushing Cloud candidate.
+CENTER remains active, final Cloud profiles/three-path drill/normalmerge pending.
+
+## Latest formal result and necessary admission refresh
+
+Final source f153 remains pushed/clean. Windows full profile passed10/10 in254s,
+original Cloud/.git/arcforges-verify/logs/20261116-185513-f153548d703f-win.
+H-22 retry20261116-185523-f153548d703f-linux ended failure in184s: check rejected
+main.go input digest (actual02e1ff67fafe6eb59fa2efc1877415c67fc179b4b34c328cab1d913534643933,
+expectedcd705d04895ab8a3280f64c35abc728f8a8902c03c29201d010e9e600cbedaf9).
+Security bridge passed; parallel linux-center was canceled after check failure;
+remaining unrun steps are not passed. Both formal jobs ended, no paused process.
+The original failed logs/status remain; this is normal source-admission drift,
+not MCP failure or a tool/dependency version change.
+
+Execution-policy section4 explicitly allows necessary admission entries for
+already declared modules. Independent base_review accepted this scope. Author
+base_audit is refreshing only eng/policy/dependency-policy.json, a new immutable
+eng/policy/dependency-reviews/afv2-center-01-r1.json and files.json classification.
+Retain all dependency coordinates/versions/integrities, historical receipts,
+thresholds and r135. No new package/profile/production authority. The two policy
+paths are not r135 inputs, so no successor artifact profile is required.
+Next: author admission diagnostics, independent delta review, root push; both
+hosts fetch new exact SHA and rerun their unchanged required profiles with the
+existing archive selectors, then same candidate CLI three-path PG drill and
+normal delivery. CENTER is still active, AR07 not yet closed. Finish then stop.
+
+## Current final candidate under mandatory host verification
+
+FinalCloud headf153548d703f547d5eea11ebdcbcfa91b03184ab is pushed and independently
+fetched on both designated hosts. Independent source and metadata review accepts;
+newr135/source1888,475distinctGitinputdigests verified, authorprovenance/profile
+andWrangler13/13 passed. Source/SQL/metadata are frozen during verification.
+
+First formal attempt failed only because root omitted the required non-secret
+Go distribution archive selector; original Win184846/Linux184856 failed evidence
+is preserved. Exact existing pinned archives were found and hashed; only process
+selection was corrected, no source/policy/install change. Both unchanged full
+profiles now run at the samef153:
+- Windows caller Cloud/.worktree/afv2-center-01-verify, active rootexecsession9492;
+  original common git logs20261116-185513-f153548d703f-win.
+- H-22 callerCloud/.worktree/afv2-center-01-native, driverPID3275443;
+  artifacts/afv2-center-01-formal-f153-linux-retry1.{log,exit}; common git logs
+  20261116-185523-f153548d703f-linux. No Linux process is paused.
+
+The archive selector points at the existing20261111 Go1.27.4 distribution on each
+host. Current and historical Go/Node remain separate. MCP is healthy; these input
+failures are not connection failures. No status is manually posted or copied.
+After both fullprofiles pass, use the same actual candidate image CLI for three
+starting paths/backup/restore, then complete independent evidence review, normal
+merge and Plan closure. Not yet task complete/published/productionadmitted.
+Owner boundary remains: complete CENTER-01, then stop/report; do not start next.
+
+## Stable source acceptance before metadata freeze
+
+Cloud pushed/native1888ddcdee56cecf71e619952fcac7d958ebe9a9 is the accepted code
+baseline. Independent base_review accepted full48d2 source and the test-only1888
+increment. The real target-fault/quarantine regression PASS3.058s, log
+9e3fa217bc2a732796ccfc6abd4e4d3f65c8b3b2283ad374977b80c9f5406980.
+The compact affected-package run at48d2 had252test/subtestsPASS,1old11fixtureFAIL
+and2historicalfixtureSKIP selected by separate full native bridge checks. Its
+original logSHA2b64d336c6b10b7f6de78612899e9881d64381fdac6792c172ef8003d9a58804.
+That old test used latest12grants on a11fixture;1888 fixes only its input to11,
+preserving assertions and production. Exact failingcase rerun PASS0.596s,
+logb744c0c2c038d889583baf35a04499b1d2d0951ab1001903b1dd7d862cddb89f.
+All testcontainers and PIDs3263318/3264717/3270499 ended; no native job is paused.
+
+Main author is now writing only authorized r135/runtime/Worker immutable metadata,
+source inventory and NOTICE. Product/test/SQL source is frozen at1888; usedrecords
+and original0001..0011/r4 stay unchanged. Final metadata delta review, mandatory
+Windows10/Linux17 full profiles, same exact candidate CLI three-path evidence,
+normal merge and shared task closure remain. Do not claim completion before them.
+User stop boundary is unchanged: finish CENTER-01, then stop/report, no next task.
+
+## Earlier source10 restore result — positive passed, fault fixture being fixed
+
+Cloud pushed/native sourcefbe90338bb26415f0eb19a57c85a7d3f97d20947.
+Real schema10 archive restore into a new target generation PASS2.78s. The
+quarantine/failure fixture FAIL0.47s at the existing source credential-history
+check during CaptureLogical, before its intended target failure. Author is fixing
+the fault input/point without weakening backup validation. Combinedexit1,0skip,
+3.261s; no claim that target quarantine fault is verified yet.
+Raw artifacts/afv2-center-01-management-fbe9-linux.{log,json,exit}, logSHA
+34e2ecc3e121c13b2ba062ab2803d284382e20c9c7148afbe3461ace1c7c0927.
+Ownedcontainer removed, PID3259695 ended. Final complete source review, provenance,
+mandatory host profiles and exact candidate executable drill still remain.
 
 ## Current task and exact source
 
@@ -24,7 +125,7 @@ sole active product task is AFV2-CENTER-01. MXC01/AR03 remain blocked/FAILED;
 its dependent Core work is not eligible. No V1 task queue or unrelated product work.
 
 Cloud draftPR159, branch task/afv2-center-01, pushed/native source
-177cd6afd5ed4701518210502a54e0b4c9667693. Windows author worktree:
+1888ddcdee56cecf71e619952fcac7d958ebe9a9. Windows author worktree:
 C:/MyFile/Projects/ArcForges/Cloud/.worktree/afv2-center-01. H-22 independently
 fetched that SHA into /home/sammiller/arcforges/Cloud/.worktree/afv2-center-01-native.
 Author base_audit now implements schema10 archive restore; inspect its live status
@@ -34,8 +135,8 @@ complete source and evidence review. Do not start a second active product task.
 
 Last checked Cloudmain f4708b36fd799025ad7d6fa9e5845e4558e492b3,
 Designmain493022fbf643b484665b2713c9eb8670f2fb2234,
-Planmain d7b3340b6ab1db66da838442f4abd1f70601a8bf (PR135).
-Current Plan record branch plan/afv2-center-01-final in
+Planmain436010a7ae153ca59b2ea6d9b66aa240ea7e510e (PR136).
+Current Plan record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Previous record branches/worktrees remain.
 
 ## Latest real PostgreSQL checkpoint
