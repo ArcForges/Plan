@@ -1,5 +1,20 @@
 # Codex handoff — ArcForges V2
 
+## Current DATA source snapshot (implementation in progress)
+
+Windows task/afv2-data-01 currently has uncommitted module-local work:
+- src/ArcForges.Node.Store/Migrations/StoreMigration.cs (migration registration)
+- src/ArcForges.Node.Store/Schema/schema-history.json (new step history)
+- src/ArcForges.Node.Store/Schema/0016-v2-expand.sql (forward V2 expand)
+- src/ArcForges.Node.Store/DurableEpoch.cs and DurableCommandStore.cs
+- eng/v2-migration/afv2-data-01-source.json (source/mapping evidence)
+
+This is a partial implementation snapshot only. No product commit, build/test
+result or native acceptance is claimed. No old0001..0015 file appears modified.
+Author base_audit continues; do not overwrite these drafts or treat them as ready.
+H-22 remains clean39c in its new data-native worktree. Current task/scope and
+baseline details follow; source changes stay in the three permitted paths.
+
 ## Current checkpoint: DATA-01 implementation active
 
 Startup Plan125 actually merged926af0616d6738d8cc525bcc93ac59eb8d23f311
