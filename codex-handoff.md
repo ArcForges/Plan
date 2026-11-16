@@ -52,8 +52,14 @@ graph amendment. Tmds.DBus remains a real Linux systemd dependency and is retain
 No product edit occurred before the scope merge. The author worker is now
 implementing the admitted removal; the coordinator owns only Plan/integration.
 
-Next: finish the small removal and necessary callers, then targeted native
-build/startup and the
+Additional precise consumer-copy amendment pending: the two live Node-unavailable
+CLI error strings still recommend the removed Desktop. Four exact paths in the
+graph admit removing only that unavailable alternative and adapting existing
+assertions; Node startup instructions/routing/auth/lifecycle remain unchanged.
+The worker finishes its current author phase then pauses before these four edits.
+
+Next: independently review/merge that four-file copy amendment, finish the small
+removal consumers, then targeted native build/startup and the
 required exact-head Windows/Linux full profiles with independent review. Record
 actual merge/publication facts through plan.py; after completion select the next
 eligible authorized task and continue. Preserve failures and any missing gate.
