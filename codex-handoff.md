@@ -16,6 +16,28 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
+## Latest actual failure and bounded native integration correction
+
+Finalca525 Win10/10PASS154s remains valid for that head. H22 full failed at
+linux-center: normal race suite has no host pg_dump/restore; management real
+backup scenarios failed unavailable-tool. Independently, two pre0011 provision
+fixtures and private completeIssuedCTR06Bridge use latest12 grants on schema10,
+causing SQLSTATE3F000. This is actual harness/consumer adaptation, not MCP outage.
+Original Linux logs20261116-191859-ca5250f88c4c-linux and failed status retained;
+parallel check canceled, later steps not passed. No formal job remains running.
+
+Independent review agrees the minimal correction: exacteng/center.py for existing
+real restore_drill_tool transport within ownedPostgres/test lifecycle only;
+exactprovision/ctr06_bridge.go and ctr06_bridge_test.go to use schema.AtVersion(10).
+Preserve every assertion, requiredPG/race/logging/step and public old-bridge stop.
+Usedr135 binds changed inputs: permit exactnewr136/runtime-r2/Worker-r2 records,
+all usedrecords/SQL unchanged. This amendment adds only6paths,26to32; necessary
+newimmutable dependency-r2 and existing strictscan/pin remain normal module admission.
+After reviewedPlan/native5 merge: source fix/targeted actual native suite first,
+then one settled successor metadata batch, independent delta review/rootpush,
+newhead both required full profiles, actualcandidate3pathCLI, normalmerge/closure.
+CENTER stillactive/AR07open/H03closed/deploypaused. FinishCENTERthenSTOP/report.
+
 ## Current final head after admission correction
 
 Plan137 merged9e059e0da351d4547af5944642a4abf4b35b49dd; reviewed f924 head
