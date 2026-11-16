@@ -39,6 +39,16 @@ and ledger. Real SQLite fixtures and8 PostgreSQL inventory tests proved only the
 read-only preparation boundary; no migration/runtime/provider AR-01..12 is closed.
 H-03 still gates later destructive admission. ENV/AR-13 remain complete/PASS.
 
+2026-11-16 BASE-02 desktop retirement completed: Node PR86 merged
+39c2c57fdaf3666ec046a22370aa2f2157c2d058 after finalf95af854 exact-head
+Windows15/15 and H-22 Linux21/21, independently reviewed source and actual
+78-file/77-digest Node/CLI package inspections on both native hosts. Shared
+components, Linux Tmds.DBus/service assets and critical old execution/data guards
+remain. See [handoff](codex-handoff.md) and ledger for exact receipts/artifacts.
+This retires the isolated scaffold; it does not qualify MXC, V2 runtime/migration
+or public activation, and closes no AR-01..12 item. Continue the next eligible
+authorized task after recording; no task-boundary stop.
+
 The owner permits current-machine local Windows access instead of its unstable
 MCP. H-22 MCP successfully executed final required Linux profiles. The reconnect
 stop rule is three consecutive failures within one outage; success resets the
