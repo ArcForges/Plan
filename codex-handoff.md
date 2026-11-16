@@ -1,6 +1,16 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — BASE-02 complete; continue MXC-01
+## Current checkpoint — MXC-01 active; continuous delivery
+
+BASE-02 final Plan PR117 merged a42b00a7c3ad8643812face8796c156518e5607a at reviewed9630064c55893a9a6e4da7b8804eb4f2a6e0f789. Both required Plan native legs passed5/5 (Windows20261116-103722-9630064c5589-win; H-22Linux20261116-103731-9630064c5589-linux), binding actual Design4472ea5a110a3c15c8beeeed14627e44b37103d0.
+
+AFV2-MXC-01 is the sole active task. Baselines: Plan a42b00a7c3ad8643812face8796c156518e5607a, Node39c2c57fdaf3666ec046a22370aa2f2157c2d058, Design4472ea5a110a3c15c8beeeed14627e44b37103d0. New Windows worktrees: each repository/.worktree/afv2-mxc-01 on plan/afv2-mxc-01, task/afv2-mxc-01 and design/afv2-mxc-01 respectively. All previous drafts and native receipts remain preserved.
+
+Scope: exact stable Microsoft.Mxc.Sdk1.0.1 / officialv1.0.1 / schema1.0.0 artifact/license/SBOM admission and standalone C# Native AOT MXC-AOT-01 probes on the actual Windows/H-22 hosts. Keep product runtime, data and shared consumers; no profile-composition or product-performance qualification is claimed. /root/base_audit owns scoped Node probe authoring; coordinator owns Plan/Design and Linux/integration. At this checkpoint no probe code/build/runtime acceptance exists. Linux MCP fresh native preflight passed: actual H-22, SDK11.0.100/Python3.15.2, user manager running, cgroup2fs, bwrap0.12.0. Firewall helper binaries are absent on current PATH; determine whether the bounded default-denied offline probe needs them, never silently install or broaden networking.
+
+Next: implement MXC-AOT-01 within the task allowlist, collect exact official artifacts and genuine native receipts, independent final review and required exact-head host profiles; Design merges before Plan when updated. Continue the next eligible authorized task after recording delivery. No task-boundary stop is authorized. Public PROD-01 activation retains separate concrete approval.
+
+## Previous checkpoint — BASE-02 complete; continue MXC-01
 
 The owner explicitly requires continuous serial implementation: complete and
 record a task, then proceed without a task-boundary stop. The38 remaining task

@@ -691,7 +691,7 @@
       "title": "Admit stable MXC artifacts and build AOT/provenance probes",
       "milestone": "P1",
       "order": 4,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -787,7 +787,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/**; ArcForges:eng/mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/**; ArcForges:eng/mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Resume continuous authorized V2 delivery after BASE-02 final record PR117; implement only exact stable MXC artifact/AOT probe admission.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
