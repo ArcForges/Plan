@@ -16,6 +16,23 @@ in27s, bothDesign493. Current record branch plan/afv2-center-01-delivery in
 Plan/.worktree/afv2-center-01-native. Main author is implementing schema10 archive
 restore after the positive177 migration/fault/CLI checks; it is not verified yet.
 
+## Current bounded security-scan scope amendment
+
+H-22 actual pinned gitleaks dir diagnostic of the new uncommitted receipt
+f0608daf171db6d6b1aee1991ba32e97080bbda8bc3e69dc9ee7f271a12a70f0 exited1,
+only generic-api-key lines434/435: two unchanged public legal-record SHA pairs.
+Original private ignored diagnostic reportSHA90aef55814b7e9193c0fe7ac4c9da4dbe4a94f664098e491a027d75f15ab01b4
+at Cloud/.worktree/afv2-center-01-native/artifacts/afv2-center-01-admission-scan-output.
+Independent base_review requires exact Plan scope for the repo-level guard/test.
+This amendment adds only .gitleaks.toml and tests/worker/provenance.test.ts,24to26.
+Use the existing exact path/key/digest/whole-line AND pattern and negative matrix.
+No secret exemption by wildcard, disabled scan, dependency/profile change.
+The necessary declared-module policy/new receipt entries are already allowed by
+execution-policy section4. r135 does not bind any changed guard/admission files.
+Author completes only these necessary entries and targeted checks; root waits
+for reviewed Plan amendment and both native5checks before pushing Cloud candidate.
+CENTER remains active, final Cloud profiles/three-path drill/normalmerge pending.
+
 ## Latest formal result and necessary admission refresh
 
 Final source f153 remains pushed/clean. Windows full profile passed10/10 in254s,
