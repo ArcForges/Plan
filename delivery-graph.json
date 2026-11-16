@@ -3000,7 +3000,10 @@
             "center/internal/pgtest/**",
             "tooling/postgres-deploy.ts",
             "tooling/neon-runtime.ts",
-            "tests/worker/postgres-deploy.test.ts"
+            "tests/worker/postgres-deploy.test.ts",
+            "eng/provenance/files.json",
+            "eng/provenance/records/afv2-center-01-management-storage-r1.json",
+            "eng/provenance/NOTICE.txt"
           ]
         }
       ],
@@ -3078,7 +3081,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; Cloud:eng/v2-migration/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Next actually eligible authorized task after DATA closure; dependencies BASE01/API01 complete. Implement finite guarded PostgreSQL transition and real isolated fixtures in declared Cloud paths; H03 operator production admission remains gated, deployment stays paused.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; Cloud:eng/v2-migration/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Next actually eligible authorized task after DATA closure; dependencies BASE01/API01 complete. Implement finite guarded PostgreSQL transition and real isolated fixtures in declared Cloud paths; H03 operator production admission remains gated, deployment stays paused. CENTER-01 required source-provenance metadata amendment: append only newly authored task inputs to eng/provenance/files.json, introduce the exact before-copy Design493 management-DDL reuse record eng/provenance/records/afv2-center-01-management-storage-r1.json, and regenerate current NOTICE. Existing used records/profiles and published/applied bytes remain immutable. Explicit planned new target: Cloud:eng/provenance/records/afv2-center-01-management-storage-r1.json. No product objective, dependency, acceptance, fake, activation or deployment change; no artifact-profile directory expansion without concrete closure evidence.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
