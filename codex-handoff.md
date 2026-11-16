@@ -27,7 +27,7 @@ coordinates, locks and historical receipt bytes remain preserved.
 
 | Repository | Head / PR | Current status |
 |---|---|---|
-| ArcForges | 2c4607cab05967fdd316ebfed5ffea4087fa3f13 / PR85 | Reviewed two-attribute timing-test isolation repair; targeted real-socket1/1 on both hosts; exact-head Windows/Linux full profiles running |
+| ArcForges | 2c4607cab05967fdd316ebfed5ffea4087fa3f13 / PR85 | Reviewed two-attribute timing-test isolation repair; Linux20/20 final PASS; Windows final full still running |
 | Cloud | tested a498b4c48e5d2e0a13ee10b14f9ae4426cb13b80 / merged PR158 | Windows10/10, Linux17/17; mergef4708b36fd799025ad7d6fa9e5845e4558e492b3; main CI43774372219 skipped all18 jobs under existing guards |
 | Contracts | tested f173cf4124541f33b7b6366fe7b264733a0d6077 / merged PR139 | Linux20/20; merge69f3041ab4c6bcee1677d0587aaebbbf54cb98bb; CI43772758290 succeeded,17 NuGet/internal npm/Go tag at1.0.0-ci.467.1 |
 | Plan | .worktree/afv2-base-01-complete / plan/afv2-base-01-complete | This active checkpoint, based on actual main246bb8d; no completion claim |
@@ -78,7 +78,10 @@ isolation=exclusive were added; body/response/1s bound unchanged. Independent
 reviewer accepted Node2c4607ca and the exact single-file Plan scope. Windows
 locked restore/build0warnings plus selected method with exclusive trait passed1/1;
 H-22 independently fetched2c4607ca, built with0warnings and passed the method1/1.
-H-22 current full PID2852179, logs/afv2-base01-node-verify-2c4607.txt; no other
+H-22 final full PID2852179 exited after20/20 PASS in2004s and reported Linux
+success at08:12:45, logs/afv2-base01-node-verify-2c4607.txt and
+receipt20261116-073919-2c4607cab059-linux/summary.json; sha2c4607cab05967fdd316ebfed5ffea4087fa3f13,
+tree31b85b3b8d1a15be615c9ca75f5a95fb133dc429, ok=true. No other
 repository heavy build is running. Windows2c4607ca full started after prior
 48aac4ed run exited naturally, with the same process-local English settings:
 exec session85689, receipt20261116-075439-2c4607cab059-win, verification worktree
