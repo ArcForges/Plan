@@ -1,54 +1,50 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — 8c1c exact page inventory correction under final verification
+## Current checkpoint — ID-01 complete; remaining graph awaits MXC remedy
 
-Plan145 merged e414f268f1c1df8578059cc10d638d0ad880c2c1 after independent review
-and both native5/5 checks at b584224, both Design493022fb. The exact41st testpath
-is effective. Cloud candidate8c1c67697ecb6727e71a3ccae44526d21408cec5/tree
-c56551d9047b32ce28328109af6e4cb12f296f0d is pushed/clean. The only delta fromf6b9
-makes ProductionBundleMarkersTests explicitly assert14web+original2mobile paths;
-all negative checks remain. Author explicit project build0warnings/0errors,13/13
-named tests, format/diff pass; logs under author artifacts/afv2-id-01/
-production-bundle-markers-author-build.log and -recheck.log. id_review accepted
-exacthead as continuation of fullsource review. No metadata successor is needed.
+Cloud PR160 merged faf5dcb3638916f69fc2b833eea9d8d6d33571e9 from exact candidate
+8c1c67697ecb6727e71a3ccae44526d21408cec5; merge/candidate tree is
+c56551d9047b32ce28328109af6e4cb12f296f0d. Independent final source/metadata/native/
+artifact review PASS; Windows full10/10PASS144s and H22Linux17/17PASS1028s.
+Original receipts: Cloud/.git/arcforges-verify/logs/20261117-103902-8c1c67697ecb-win
+and 20261117-105110-8c1c67697ecb-linux. All log/payload hashes independently matched.
+Main-push CI44008751500 intentionally SKIPPED/alljobs/zeroartifacts; no deployment,
+public release or service activation. Full identities, acceptance, failures and
+rollback are in docs/afv2-id-01-summary.md and append-only ledger.
 
-New exacthead Windows10/10PASS144s, originalCloud/.git/arcforges-verify/logs/
-20261117-103902-8c1c67697ecb-win/summary.json. H22 independently fetched8c1c and
-launched original fullprofile with process-only0077/GOMAXPROCS2/DOTNET_PROCESSOR_COUNT2, driver3838157,
-caller /home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-native,
-artifacts/afv2-id-01-formal-8c1c-ssh-0077-gmp2-dotnet2-20261117/native.log/exit and matching
--runner.py/-driver.log. id_audit observes this single run via ssh netcup.
-Final Linux result remains pending; no Cloud merge/completion/publication.
+Graph is7complete/1blocked/32planned, no active product task. Actual plan.py next
+returns null. All32planned transitively require blockedMXC01/AR03. Preserve official
+1.0.1 failed Linux argv privacy evidence and Node draft93; latest stable1.1.0 existing
+source audit still constructs request-env key/value argv, not an accepted remedy.
+Do not activate dependent work or weaken the original confidentiality gate. Next
+executable prerequisite is a supported official stable remedy or an explicit reviewed
+product/profile decision, followed by exact cohort admission and affected native
+MXC-AOT-01. No provider/PROD approval is inferred. User authorization for remaining
+7–40 persists but does not satisfy this native acceptance prerequisite.
 
-The previous8c1c run20261117-104146-8c1c67697ecb-linux failed395s:
-check-dotnet has1922passed/0failed/1skipped, including architecture511passed/0failed,
-but architecture process exit137. Thus the inventory fix passed; full verification
-did not. Session919 localoom_kill0to1/peak8465383424bytes; individual PID kernel
-attribution remains unavailable. Center stopped after that earlier failure. After
-measurement, independent id_review accepted adding process-onlyDOTNET_PROCESSOR_COUNT2
-which affects.NET CPU view and default runtime/worker parallelism; all original
-solution projects/cases/flags/timeouts/format/native profile remain unchanged.
-No source or host setting changed; do not rerun valid8c1c Windows unnecessarily.
+Current Plan completion branch plan/afv2-id-01-completion-20261117 in
+C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-id-01, PR146. The record's own
+reviewed head, original native receipts and actual merge identity are available in
+https://github.com/ArcForges/Plan/pull/146; it uses the unchanged two-host/currentDesign
+merge gate. Scope/checkpoint Plan145 merged e414f268f1c1df8578059cc10d638d0ad880c2c1.
+Design main remains493022fbf643b484665b2713c9eb8670f2fb2234. Cloud author branch
+task/afv2-id-01 is clean at8c1c; keep it and the native/verify worktrees as evidence.
+No formal process remains running; last H22 driver3838157 completed successfully.
+Original caller native.log/exit under artifacts/afv2-id-01-formal-8c1c-ssh-0077-gmp2-dotnet2-20261117/.
 
-Before launching, root revalidated and deleted exactly21 known old Go build work
-directories from audited tmpfs inventory,3947823104bytes. Checked host/uid1000,
-exact device/inode/0700/age/allocatedbytes/all-owner/no-symlinks/standardbNNN tree,
-no Go processes or readable process references. Protected systemd/PAM/SSH reference
-visibility remains limited and is explicitly recorded, not claimed globally proven.
-Recent failed go-build4221419264, security-native producers, databases, original
-logs/evidence and unclassified directories are preserved. No root or settings changed.
-Original inventory and deletion receipts in H22logs/afv2-disk-cleanup-20261117/:
-go-build-old-candidates-20261117T023954Z-0ed46b78.json,
-go-build-old-deletion-20261117T024100Z.json. /tmp available2454323200to6402146304bytes;
-MemAvailable7956928kB/SwapFree658436kB after cleanup. Earlier root-disk304GB recovery
-remains separate; this bounded cleanup addresses observed tmpfs memory pressure.
+Use native local Windows and ssh netcup to sameH22 v2202601329473427941/sammiller,
+per owner override. No root needed or used. Successful Linux process settings were
+umask0077, GOMAXPROCS2, DOTNET_PROCESSOR_COUNT2 after measured creation-mode/OOM
+failures; all original profile checks remain. Final scope930OOM0. Root disk currently
+279349833728B available after successful builds; initial audited recovery restored
+304045109248B, and later21 old Go tmpfs work dirs freed3947823104B. Preserve original
+cleanup manifests/logs, latest failed Go work, security producers and all databases.
 
-Plan records now use draftPR146/branch plan/afv2-id-01-completion-20261117 in existing
-.worktree/afv2-id-01; older branches preserved. Current baselines Plan e414f268,
-Design493022fbf643b484665b2713c9eb8670f2fb2234, Cloud6bd7169607d55c8b647b1a70302ff28ad365d488.
-Next: actual fullLinux originalreceipt/artefact review, normal Cloud160 merge and
-paused delivery observation, then Plan completion/bothhostchecks/merge. All32planned
-still depend on MXC01/AR03; do not bypass its official-engine privacy gate.
+Known unrelated work remains protected: original BASE-01 worktrees, Node MXC draft93,
+Cloud/.worktree/cloud-deploy-ci-python and other prior worktrees/branches. Do not
+reset or mix them into this completed task. The only author changes in this resumption
+were the exact scoped architecture inventory test plus Plan records. Historical
+checkpoints below record prior states; use this section/graph/ledger as current.
 
 ## Historical checkpoint — exact architecture inventory consumer correction
 

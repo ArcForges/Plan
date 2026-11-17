@@ -1,31 +1,80 @@
 # AFV2-ID-01 engineering evidence
 
-Current pushed candidate is `8c1c67697ecb6727e71a3ccae44526d21408cec5`, tree
-`c56551d9047b32ce28328109af6e4cb12f296f0d`, Cloud draftPR160. ID01 remains active.
-Design baseline493022fbf643b484665b2713c9eb8670f2fb2234; Plan scope amendment145
-merged e414f268f1c1df8578059cc10d638d0ad880c2c1. Independent source/metadata review
-and exact page-inventory delta review passed. Author built the changed project
-with0warnings/errors then13/13 targeted tests passed; full negative markers remain.
-New Windows full10/10PASS144s:20261117-103902-8c1c67697ecb-win. New Linux fullprofile
-is running underdriver3838157, artifacts/afv2-id-01-formal-8c1c-ssh-0077-gmp2-dotnet2-20261117/.
-The preceding8c1c full run failed395s:1922.NET assertions passed/0failed/1skipped,
-but architecture process exited137 and scope919 recorded oneOOMkill. Original
-20261117-104146-8c1c67697ecb-linux retains that failure. The current process also
-sets DOTNET_PROCESSOR_COUNT2 after measured pressure and independent review; this
-changes.NET CPU view/default worker parallelism, preserving every original check.
-No finalLinuxPASS, merge, publication or completion is claimed.
+ID-01 development acceptance is complete. [Cloud PR160](https://github.com/ArcForges/Cloud/pull/160)
+merged as `faf5dcb3638916f69fc2b833eea9d8d6d33571e9` from verified candidate
+`8c1c67697ecb6727e71a3ccae44526d21408cec5`; both have tree
+`c56551d9047b32ce28328109af6e4cb12f296f0d`. Design remains
+`493022fbf643b484665b2713c9eb8670f2fb2234`. [Plan PR145](https://github.com/ArcForges/Plan/pull/145)
+merged scope/checkpoint `e414f268f1c1df8578059cc10d638d0ad880c2c1`;
+[Plan PR146](https://github.com/ArcForges/Plan/pull/146) carries this completion record.
 
-Owner authorizes local Windows and ssh netcup to sameH22. Native private-output
-creation diagnostics proved per-process0077 corrects inherited0002 refusal without
-changing backup guards. Measured OOM led to process-onlyGOMAXPROCS2; all original
-packages/race/count/timeouts/realPG/fuzz/restore/image/profile steps remain. It also
-limits default package parallelism and fuzz workers. A precisely audited21 old Go
-work directories on /tmp tmpfs were removed after revalidation, freeing3947823104B;
-recent failure work, security producers, databases and evidence remain. Original
-inventory/deletion receipts are in H22logs/afv2-disk-cleanup-20261117; protected
-systemd/PAM/SSH reference visibility limits are explicitly preserved. No root used.
+## Final verification and delivery
 
-Historical interrupted/failed attempts and fixes follow; they are not current passes.
+Both designated hosts independently fetched the exact candidate and ran the original
+`python eng/verify.py run-and-report` full profile. Independent nonauthor id_review
+accepted all source/metadata/deltas and read both original summaries, every logged
+hash, the actual Center executable and all ten sealed candidate payloads. No blocking
+finding remains. [Final review](https://github.com/ArcForges/Cloud/pull/160#issuecomment-6936955789).
+
+| Host | Original directory under Cloud/.git/arcforges-verify/logs | Result | Summary SHA256 |
+|---|---|---|---|
+| Native Windows DEKU |20261117-103902-8c1c67697ecb-win|10/10 PASS,144s|e4920b55162696264aca36b22414bb85fdda7d08701dacb553e0400f2131090d|
+| Native H22 v2202601329473427941/sammiller via ssh netcup |20261117-105110-8c1c67697ecb-linux|17/17 PASS,1028s|c2dcd44a447338d6b513f6dc8ee7b485f8ec9a5455ead414c29f655927505862|
+
+Linux used only per-process umask0077, GOMAXPROCS2 and DOTNET_PROCESSOR_COUNT2
+after measured failures. These change creation mode and runtime/default worker
+parallelism; every original project, test, race flag, count, timeout, fuzz target,
+real PostgreSQL, native build, restore and image check remained. Final scopeOOM0.
+The original .NET suite passed1923 tests,0 failed,1 expected skip. Center passed
+all15 checks, including real PG18.7/race, nine fuzz targets, native startup/shutdown
+and schema13 seed/dump/restore/migrate/verify. Its executable SHA256 is
+`ff80d8500af9a22178555043859d7b19ac0874b0ea3cb24800c8c362d1fb45df`.
+Original Center checks and candidate are under
+`/home/sammiller/.cache/arcforges-verify/Cloud/artifacts/center/checks.json` and
+`/home/sammiller/.cache/arcforges-verify/Cloud/artifacts/candidate/manifest.json`.
+
+Verified local candidate version `0.1.0-local.1794884525048` has clean revision8c1c,
+manifest SHA256 `7665990c1a181554b8ba0f3eb030654ddba08ec594a49c794a172d4919c3a48b`,
+Docker archive SHA256 `bceeda92aa567b27c74f3f37896795880e63827cd0d157fcb320e50e000c4a0c`,
+and image manifest identity
+`sha256:9b575530d5856f0906721c5c99461fa998b96c0d6c5fe46bc646e1a0796839f3`.
+Worker164579bytes SHA256 is
+`a3a9a97925d906d9f37daada0da15f7b20c4d0b43761d723d51c189f23ca17d5`.
+All ten payload hashes and current-run generation times were independently verified.
+R138/used records and applied SQL0001–0012 remain immutable; r2 admits the necessary
+document formatting input without changing the original131 package coordinates.
+
+[Main-push CI44008751500](https://github.com/ArcForges/Cloud/actions/runs/44008751500)
+completed intentionally SKIPPED, all jobs skipped and zero artifacts. Cloud deployment
+remains paused; the local candidate is not a published release. Real mail/domain/browser/
+provider and production authority qualification remains AR10/H03/H04/PROD, not satisfied
+by the allowed external transport/input peers. No public activation occurred.
+
+The task's failure behavior, backup/quarantine/restore and rollback instructions are
+in Cloud `docs/center-identity.md`, `docs/postgres-store.md` and `docs/center.md`.
+Recovery never uplifts old revoked credentials; unresolved provider/UNKNOWN facts and
+required audit/financial retention survive. Export never includes local Sandbox data.
+HTTP export pages carry at most32KiB raw data (64KiB response envelope), each section
+is bounded to256 rows and the full canonical export to2MiB.
+
+## Host recovery and remaining dependency
+
+Initial root disk recovery restored304045109248B user-available space. A later,
+separately audited21 old Go build directories freed3947823104B of /tmp tmpfs memory.
+Original inventory/deletion records remain in H22
+`/home/sammiller/arcforges/logs/afv2-disk-cleanup-20261117/`;
+protected systemd/PAM/SSH process-reference visibility limits are explicitly recorded.
+Recent failure work, databases, security producers, source and original evidence were
+preserved. No root/sudo or host network/security settings were used or changed.
+After final builds, root available space is279349833728B; /tmp is6341808128B available.
+
+After ID01 completion, `python tools/plan.py next` returns null:7 complete,1 blocked,
+32 planned. All32 planned tasks transitively require MXC01/AR03, whose real Linux
+request-environment argv privacy failure remains. Existing stable1.1.0 source review
+still found that path; it was neither executed nor admitted. A supported official
+remedy or an explicit reviewed product/profile decision must precede new admission;
+this task does not weaken that gate. Detailed original failures and development
+checkpoints below remain historical evidence, not additional pending ID01 work.
 
 ## Historical verification checkpoints
 
@@ -170,7 +219,7 @@ passed7.156s/19.530s. The original full diagnostic's missing PG preload/log setu
 is retained as an orchestration error; no full-suite pass is inferred from it.
 
 
-## Review and remaining delivery
+## Historical review and then-remaining delivery
 
 Independent`id_review`reviewed the complete core/transport source and the revoked
 email, retained hostname and delivery wording fixes. Independent`base_review`
@@ -179,7 +228,7 @@ results. One floor concern was withdrawn after exact-blob verification showed th
 correct existing atomic implementation; no speculative duplicate fix was made.
 
 Windows all-Go compilation and browser-script54/54/TypeScript author checks passed.
-Actual locked Wrangler dry-run built164579bytes, SHA256
+At that earlier checkpoint, the actual locked Wrangler dry-run built164579bytes, SHA256
 `a3a9a97925d906d9f37daada0da15f7b20c4d0b43761d723d51c189f23ca17d5`,
 27parsed/26emitted inputs, without publication. Affected real-PG compatibility checks have passed and original metadata closure
 is in progress. Final exact-head required
