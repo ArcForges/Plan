@@ -64,13 +64,31 @@ MSBuild output was Chinese (actual AOT0warnings/0errors). Original failure
 DOTNET_CLI_UI_LANGUAGE=en-US and VSLANG=1033; unchanged full rerun session76792 /
 ArcForges/.git/arcforges-verify/logs/20261117-123248-d460524d7fa2-win;
 Linux driverPID3944020 /home/sammiller/arcforges/logs/node93-d460524-driver.log.
-Linux original20261117-122153-d460524d7fa2-linux/linux-exclusive.log now records
+Linux final full reporter ended failure at12:44:28 after the unchanged900s
+exclusive timeout; exclusive-native/startup did not run. Original
+20261117-122153-d460524d7fa2-linux/linux-exclusive.log records
 one real ClosedLoop pressure-test failure: fourth Normal/nonpreemptible task did
 not reach Running within90s at ResourceTests.cs629; the first three Background
 tasks did reach Running. The2GiB pressure allocator had not started. id_audit is
 reading exact fixture/unit/state facts; base_review supplied the Queued state_reason
-vs Starting/start-job vs unrecorded-start diagnosis. No cleanup/retry/source edit
-has happened. The unchanged full runner continues its remaining exclusive project.
+vs Starting/start-job vs unrecorded-start diagnosis. The three exact old services later became inactive/dead without agent cleanup.
+Original fixture data was removed by its Dispose and has no retained state_reason.
+Root authorized a single same-head diagnostic reproduction after process/lock
+termination, sampling only new fixture task/attempt reasons and whitelisted node
+events before disposal.
+Diagnostic driver3986850 is running from
+/home/sammiller/arcforges/ArcForges/artifacts/afv2-mxc-01-pressure-d460-20261117/driver.py;
+evidence stays beside it. It holds the existing verify lock, uses the exact cached
+d460 DLL and single method/parallel-none selection with umask0077 and no additional
+GOMAXPROCS or DOTNET_PROCESSOR_COUNT overrides (those belonged to prior Cloud work).
+The first diagnostic invocation lacked the selected DOTNET_ROOT and failed before
+workload; retained separately. Corrected same-SDK diagnostic in sdk-selected/
+passed1/1zeroSkip19.476s, all4 tasks Running then real pressure/preemption/recovery.
+It did not reproduce or explain the original queue wait. Root started unchanged
+fullLinuxR2 driver3987632, /home/sammiller/arcforges/logs/node93-d460524-r2-driver.log;
+original receipt directory20261117-125046-d460524d7fa2-linux. id_audit observes the
+specific new pressure-fixture state without starting a concurrent test. Results pending.
+ No source/timeout/assertion change or broad cleanup.
 Both invoked unchanged eng/verify.py run-and-report from host-fetched exact candidate.
 No full-profile PASS or Node source merge is claimed yet.
 
