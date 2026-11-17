@@ -1,5 +1,44 @@
 # Codex handoff — ArcForges V2
 
+## MXC03 delivered; completion record — 2026-11-18
+
+Node PR96 merged normally at687eb3ad5d7f7b2e993d061df1dc5ccc96d13cb8 from
+final022946a305e505e5817162c79a956c7816b99b12. Exact-head Windows15/15 PASS2171s
+(receipt20261118-013632-022946a305e5-win) and H22 Linux20/20 PASS2010s
+(receipt20261118-014327-022946a305e5-linux) are complete; both original reporters
+posted success. Actual strict statuses/CLEAN/up-to-date/no unresolved threads
+were checked before the expected-head merge. Final source/native independent
+review is recorded on PR96, comments6956376954 and6956887604. All verification
+processes have exited; no test load remains from these runs.
+
+The original same-cohort native qualification remains72/72 with confirmed cleanup
+at50e602a; final022 is only the reviewed formatting delta. Full identities,
+limitations, diagnosis and immutable failure locations are in
+[the task summary](docs/afv2-mxc-03-summary.md). Linux final summary SHA256:
+c3a37cc950f630138fc0da571d51db14d1c18032befc407b1756cc793c7ce4b7.
+No runtime cutover, data migration, ordinary package publication or deployment
+was applicable; Node workflow definitions have no main-push publishing trigger.
+
+Design PR76/77 merged6fa2a98/41d25327841e6c88df639bbcb387682bd067f7a1.
+Plan checkpoint154 mergedfc96a516384b65130746b0b1b7a0255c2a4f9b89 from83ac266;
+its Windows5/5 PASS10s receipt014545 and H22 5/5 PASS29s receipt014550 both bind
+Design41d2532. Current completion-record branch is
+`plan/afv2-mxc-03-delivery` in `Plan/.worktree/afv2-mxc-01-resume`; graph transitions
+through delivered/complete were made by plan.py. This candidate records9/40
+complete; finish its exact-head Plan checks/review/merge before claiming that
+count in shared main. Generated sequence and AR02 are updated.
+
+Next eligible task from `plan.py next` is AFV2-MXC-02. Continue the already
+owner-authorized range; do not stop at this boundary. Read its complete task and
+current preserved Windows draft PR95/worktree against latest Node main, reuse
+valid work, and record resumption before implementation. The retired H06 direct
+Windows-to-VPS channel is not a blocker; local Windows and ssh netcup remain the
+approved transports. Public activation still has its separate PROD01 approval.
+
+The earlier checkpoints below are preserved historical evidence, superseded by
+this completed Node/Design result and the pending Plan completion-record merge.
+
+
 ## Latest checkpoint — 2026-11-18
 
 Design PR77 merged41d25327841e6c88df639bbcb387682bd067f7a1 after independent

@@ -2,22 +2,34 @@
 
 ## Current delivery state
 
-The complete H-22 native experiment passed; repository delivery is still in
-progress. AFV2-MXC-03 remains active and the graph remains8/40 complete. This
-does not make the AFV2-MXC-04 profile-admission decision or activate a release.
+The complete H-22 native experiment and final repository host checks passed.
+Node PR96 merged at `687eb3ad5d7f7b2e993d061df1dc5ccc96d13cb8`; Design PR76/77
+merged at `6fa2a98ad3f93793134555320f0bd362e81625f0` and
+`41d25327841e6c88df639bbcb387682bd067f7a1`. Plan checkpoint154 merged at
+`fc96a516384b65130746b0b1b7a0255c2a4f9b89`; this completion-record change marks
+MXC03 complete through plan.py, bringing the graph to9/40 after its own merge.
+The later MXC04 admission decision and public activation remain separate.
 
-- Node draft [PR96](https://github.com/ArcForges/ArcForges/pull/96), final source
-  `022946a305e505e5817162c79a956c7816b99b12`.
-- Native source `50e602a83ece2c4de75d8dbd32777c7833a6eaf7`; final source only
-  reformats Admission initializers. Independent nonauthor review verified
-  unchanged C# tokens and non-whitespace bytes. Original evidence is not relabeled.
-- Design [PR76](https://github.com/ArcForges/ArcForges-Design/pull/76), merged as
-  `6fa2a98ad3f93793134555320f0bd362e81625f0` from candidate
-  `e95476f531ca22b3ca3944bdaa56d7e26f9763bf`, records the exact cohort, original
-  hashes, host/helper observations and measured overhead with its limits.
-- Plan [PR153](https://github.com/ArcForges/Plan/pull/153) merged as
-  `cf937ddc1c52778007bdc0980a1ae139c809d25f`; draft
-  [PR154](https://github.com/ArcForges/Plan/pull/154) records subsequent qualification.
+Native source is `50e602a83ece2c4de75d8dbd32777c7833a6eaf7`; reviewed final
+source `022946a305e505e5817162c79a956c7816b99b12` only formats Admission
+initializers, preserving C# tokens/non-whitespace bytes and original evidence
+identity. Final tree is `1b6fb25cbe65c6b0c1ba4f1b59e2734df32fef29`.
+
+Final unchanged host profiles passed on that exact final commit:
+
+- Native Windows deku:15/15 PASS2171s, original receipt
+  `20261118-013632-022946a305e5-win`.
+- H22 Linux:20/20 PASS2010s, original receipt
+  `20261118-014327-022946a305e5-linux`; summary SHA256
+  `c3a37cc950f630138fc0da571d51db14d1c18032befc407b1756cc793c7ce4b7`.
+
+Receipts remain under each producing repository's `.git/arcforges-verify/logs`.
+Both reporters automatically posted success. Actual strict required statuses,
+latest CLEAN head and resolved threads were checked before normal merge.
+Independent nonauthor source/native review is recorded on
+[PR96](https://github.com/ArcForges/ArcForges/pull/96#issuecomment-6956376954);
+[final host gates](https://github.com/ArcForges/ArcForges/pull/96#issuecomment-6956887604)
+are recorded separately. All verification processes have exited.
 
 ## Native result
 
@@ -69,10 +81,10 @@ were introduced.
 
 ## Repository gates and preserved failures
 
-Required Node checks are not yet complete. Original50e Linux failed Admission
+The following original attempts are retained alongside the final passing checks above. Original50e Linux failed Admission
 formatting, receipt20261118-005847-50e602a83ece-linux; the correction is022946a.
 Original50e Windows passed15/15 in2190s, receipt20261118-005846-50e602a83ece-win.
-Final022 Windows is running at20261118-013632-022946a305e5-win.
+Final022 Windows subsequently passed at20261118-013632-022946a305e5-win.
 
 Final022 Linux receipt20261118-010502-022946a305e5-linux has an exclusive
 CloudLink pressure-setup failure: only57 connections within3s against a required
@@ -82,8 +94,10 @@ summary exists and its status was not reported as success. Preserve the failure
 and incomplete receipt. Isolated bounded diagnostics passed with298 connections/Peak256/browser200 and
 no premature producer exit; observed connect waits do not establish the original
 packet-level cause. One unchanged original-method control passed1/1 in1.629s.
-A single full unchanged022 formal retry follows, with detached private output
-logging; no threshold or assertion is relaxed.
+A single full unchanged022 formal retry passed20/20, with detached private output
+logging; no threshold or assertion was relaxed. Both JIT and native CloudLink
+groups passed36/36 in that full run. The original packet-level cause remains
+unproven; this is not attributed to a host/network configuration defect.
 
 Design e95476f passed independent review and both formal legs: H22 4/4 in31s,
 receipt20261118-011411-e95476f531ca-linux; Windows4/4 in17s,
@@ -94,7 +108,7 @@ as41d25327841e6c88df639bbcb387682bd067f7a1 after exact71017e9 Windows4/4 PASS74s
 (receipt013951) and H22 4/4 PASS30s (receipt014149). It preserves the experiment
 owner and all evidence while avoiding a second owner inferred from disclaimer
 text by the reciprocal parser. This latest Design main is the Plan validation
-baseline. Node still requires both final-head statuses before merge.
+baseline. Node final-head statuses subsequently passed and PR96 merged.
 
 Every original failed author report remains intact. Diagnosed corrections include
 PTY foreground process identity, deleted cgroup proof, duplicate symlink mounts,
@@ -112,7 +126,8 @@ published bytes, deploy Cloud, or cut over the product runtime. Preserve the
 original private fixture evidence. Any failed probe stops only its exact owned
 unit/scope; unknown cleanup cannot be called successful or authorize deletion.
 
-Finish the exact-head Node checks, merge reviewed Node and Design candidates
-through normal rules, then record actual merge/publication applicability and
-completion through `plan.py`. Regenerate sequence and validate Plan against the
-latest Design main. Continue the next eligible authorized task afterward.
+No ordinary publication or deployment applies: the existing Node workflows
+have no main-push publication trigger. Final Node/Design merges and completion
+are recorded through plan.py; sequence is regenerated. Finish this Plan record
+against actual latest Design main, then continue eligible AFV2-MXC-02 using its
+preserved draft and full current definition. Do not stop the authorized graph.

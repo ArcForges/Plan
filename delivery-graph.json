@@ -984,7 +984,7 @@
       "title": "Qualify Linux Bubblewrap terminal and cgroup composition",
       "milestone": "P1",
       "order": 6,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1080,12 +1080,24 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Linux/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. Source-scope audit2026-11-17 at Node main b2ebace5c15a130b13a7dbd02fd9900e4983c6e8: permit the existing Program.cs entry dispatch and stage-validator visibility for Linux/** qualification roles in the same admitted AOT executable. No alternate entry framework, new project, dependency/lock, stage/verify change or product runtime cutover is included. [active] Continue existing owner-authorized graph through40 while Windows selected-egress data prerequisite H06 is unresolved. BASE01/MXC01 complete; qualify only LNX01..05 on designated H22 via existing ssh netcup. Reuse official1.0.1/cohort and existing AOT entry; no product runtime cutover or host configuration changes. Implementation begins after the narrow Program.cs scope amendment is reviewed and merged.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Linux/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. Source-scope audit2026-11-17 at Node main b2ebace5c15a130b13a7dbd02fd9900e4983c6e8: permit the existing Program.cs entry dispatch and stage-validator visibility for Linux/** qualification roles in the same admitted AOT executable. No alternate entry framework, new project, dependency/lock, stage/verify change or product runtime cutover is included. [active] Continue existing owner-authorized graph through40 while Windows selected-egress data prerequisite H06 is unresolved. BASE01/MXC01 complete; qualify only LNX01..05 on designated H22 via existing ssh netcup. Reuse official1.0.1/cohort and existing AOT entry; no product runtime cutover or host configuration changes. Implementation begins after the narrow Program.cs scope amendment is reviewed and merged. [delivered] Official Linux full native72/72 with all cleanup confirmed; independent source/native review PASS including final022 format-only association. Final022 Windows15/15 PASS2171s receipt013632; H22 Linux20/20 PASS2010s receipt014327. Strict exact-head statuses/CLEAN/no unresolved threads confirmed before normal Node96 merge687eb3a. Design76/77 merged, Plan154 checkpoint merged against actual latest Design41d2532. Original failed reports remain intact; no runtime cutover. [complete] All MXC03 acceptance and completion conditions satisfied by full same-cohort H22 receipt57f41658b57c18ff350fde2a9afc428c9434946b1aa829735325336019288fcf, independent review and actual Node/Design delivery. Where-feasible namespace-denial injection NOT_RUN and measured DNS/IPv6/ingress limits remain explicit. MXC04 product admission is separate and still depends on MXC02; no new scope or activation inferred.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/96",
+          "https://github.com/ArcForges/ArcForges-Design/pull/76",
+          "https://github.com/ArcForges/ArcForges-Design/pull/77",
+          "https://github.com/ArcForges/Plan/pull/154"
+        ],
+        "merges": [
+          "ArcForges@687eb3ad5d7f7b2e993d061df1dc5ccc96d13cb8",
+          "ArcForges-Design@6fa2a98ad3f93793134555320f0bd362e81625f0",
+          "ArcForges-Design@41d25327841e6c88df639bbcb387682bd067f7a1",
+          "Plan@fc96a516384b65130746b0b1b7a0255c2a4f9b89"
+        ],
+        "publications": [
+          "Not applicable: experimental probe and documentation only; existing Node workflows have no main-push publication/deployment. No public activation."
+        ],
         "ledger": null
       },
       "removals": [
