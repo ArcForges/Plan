@@ -1,6 +1,34 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — same H22 resumed through owner-authorized SSH
+## Current checkpoint — f6b9 SSH verification with private creation mode
+
+The first SSH run(defaultumask0002) actually failed real management/backup tests:
+Go1.27.4 testing.TempDir child mode0775 is correctly refused by the unchanged Linux
+backup unprotected-ancestor guard. This was not disk exhaustion or a tmpfs ban.
+Independent diagnostic worktree@f6b9:
+/home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-diag-capture-umask-f6b9,
+artifacts/afv2-id-01-capture-umask-diagnostic/ contains ssh-default.log,
+per-run-0077.log,result.json,per-run-0077-pg-management.log,result-pg.json.
+With only this process os.umask(0077), tempchild0700 is accepted; unchanged
+protected-parent/directory-sync/shared-directory/symlink tests pass with race,
+and original managementCLI10/11 both pass with real pinnedPostgreSQL18.7/wrappers.
+No product code, TMPDIR, user/system configuration or validation guard changed.
+
+Previous SSH driver3732917 exited1; failure evidence retained. New final samef6b9
+fullprofile driver3758064 is detached with per-processumask0077, original caller
+Cloud/.worktree/afv2-id-01-native, log
+artifacts/afv2-id-01-formal-f6b9-ssh-0077-20261117/native.log and exit when finished.
+Root freshly fetched exactsource before launch. Same-headWindows10PASS144s remains
+valid. id_audit observes this one run; id_review independently audits diagnostic
+facts and then finalreceipts. Do not duplicate tests/profiles. No merge/completion.
+
+Current Plan branch plan/afv2-id-01-delivery/draftPR145. Next: actual Linux complete
+profile/artefact review, normalCloud160 merge and pauseddelivery observation, then
+Plan completion/bothhostchecks/merge. Only then advance an eligible task. Read-only
+lookahead found all32planned depend on MXC01/AR03; same-host recovery does not waive
+that independent official-engine privacy blocker.
+
+## Historical checkpoint — same H22 resumed through owner-authorized SSH
 
 Owner explicitly directs native local `ssh netcup` instead of LinuxMCP for the
 remaining V2 tasks7–40, with parallel agents within the current task. This overrides
