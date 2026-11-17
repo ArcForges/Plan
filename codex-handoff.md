@@ -29,6 +29,27 @@ nonoverlapping scopes. Coordinator owns Program dispatch, native profile integra
 all Plan state/ledger, commits/pushes and PRs. Independent reviewer is id_review.
 No MXC02 native acceptance or formal host success has yet occurred.
 
+Latest 15:09 checkpoint supersedes the earlier in-flight notes below:
+Node PR95 now contains f75d4de31425bfc19ff334bb5ddfaf41c4f2ff9a.
+Integration09 finished:50 cases/45 PASS/5 FAIL, report SHA256
+ a6542249d1e042d9fb9fc8cd754a8dc5a0d11182c4bdf29896a816f4c7260e1e.
+Terminal/resource groups and owned filesystem/reparse/externalgrant now pass.
+Default-deny combined passes; all final guardian cleanups completed in09.
+No full qualification or formal required host profile yet. H22 independently
+fetched exact f75d4de in .worktree/mxc02-f75d4de-author and shared compile passed
+zero warnings; initial tail display alone failed from PowerShell trailing CR,
+then the original successful log was read without repeating build.
+Current narrow uncommitted work: metadata corrects official invalid-env -1
+classification using private executor diagnostics, not payload stdout; lifecycle
+adds actual remaining-member creation/image observations (09 owner-only drain
+still had a second member after10s, do not guess its identity); qualification
+adds --only fixed-group diagnostics to avoid repeating passing groups. Network
+authors base_audit/id_transport implement a bounded real H22 peer controlled by
+SSH, direct TCP/UDP data, no tunnels/proxy/firewall changes: local NIC selected
+connections are still classified/refused and cannot prove external support.
+Root coordinates builds/native runs. No native/CI process currently running.
+Next collect frozen sources, build/publish fresh stage, run narrow lifecycle/
+policy/network diagnostics, then final composed profile and existing gates.
 Latest 2026-11-17 14:53 native checkpoint: integration08 completed (43 cases,
 28 PASS/15 FAIL), not qualification. Build03 and publish08 passed zero warnings.
 Report artifacts/mxc-02/terminal-integration-08.json SHA256
