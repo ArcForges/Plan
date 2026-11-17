@@ -1,6 +1,46 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — MXC-01 complete; close Plan148 and continue MXC-02
+## Current checkpoint — MXC-02 active; 8/40 complete
+
+Plan PR148 is merged at 2f24cd97960ed9dd08722ede81f272e1abc15801.
+Its Windows/Linux receipts both bind Design af28dc6378d91d678870abc628362476611efa32.
+MXC-01 is complete; no further MXC-01 qualification is required. Continue the entire
+owner-authorized V2 graph serially; public activation still requires PROD-01 approval.
+
+Only AFV2-MXC-02 is active. Implement the existing WIN-01..06 composed Windows
+ProcessContainer/ConPTY/resources/files/network/lifecycle experiment; retain current
+product executors and recovery/data guards. No product runtime cutover is authorized
+by this task. The actual service context is current-user background Node/supervisor,
+not an invented SCM/LocalSystem service. Admission requires native combined evidence.
+
+Working locations:
+- Node C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-mxc-02,
+  task/afv2-mxc-02 from main b2ebace5c15a130b13a7dbd02fd9900e4983c6e8.
+- Plan C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-mxc-01-resume,
+  now plan/afv2-mxc-02 from the actual Plan148 merge above.
+- Design remains af28dc6378d91d678870abc628362476611efa32; no MXC02 evidence
+  amendment yet. Prior MXC01 source/stages/logs remain intact at paths below.
+
+Current implementation is unverified, not delivered: new Windows/ConPtySession.cs
+and ConPtyNative.cs (id_transport), WindowsWorkload.cs (id_author), WindowsPolicy.cs
+(id_metadata), WindowsProbeOwner.cs/OwnerProtocol.cs (base_review) are assigned
+nonoverlapping scopes. Coordinator owns Program dispatch, native profile integration,
+all Plan state/ledger, commits/pushes and PRs. Independent reviewer is id_review.
+No MXC02 native acceptance or formal host success has yet occurred.
+
+Next: integrate the real ConPTY/Job primitive, bounded synthetic workload, private
+schema1.0.0 policy and authenticated independent owner; publish the same official
+1.0.1 cohort, execute WIN-01..06 and preserve actual failures. Then final exact-head
+required Windows/Linux reports and independent review. Linux must compile the shared
+probe contract; no Linux result substitutes for Windows native composed acceptance.
+
+Use native local Windows and ssh netcup to the same H22, no MCP/root/WSL. Set only
+process-local DOTNET_CLI_UI_LANGUAGE=en-US/VSLANG=1033 for Windows Node reporting.
+Preserve historical dirty worktrees and unrelated Cloud draft. Intentionally supplied
+workload argv/env visible to the trusted host owner/admin is not an admission blocker;
+real secrets remain excluded from public/shared evidence and ordinary diagnostic logs.
+
+## Historical checkpoint — MXC-01 complete; close Plan148 and continue MXC-02
 
 MXC01 scoped acceptance and source delivery are complete: graph8complete/32planned,
 no active product task. `python tools/plan.py next` returns AFV2-MXC-02. User
