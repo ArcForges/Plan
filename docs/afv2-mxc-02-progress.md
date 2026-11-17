@@ -91,6 +91,13 @@ log redirection and umask 0077. Its launch log is
 `arcforges-verify/launches/mxc02-32e2ac1-linux-detached-01/reporter.log`
 under the Git common directory.
 
+The detached H-22 run passed all 20 required steps in 1,981 seconds. Its
+regular and native exclusive suites passed in 843.6 and 799.0 seconds, and
+startup passed in 1.3 seconds. The source, host and result are recorded in
+`20261118-065617-32e2ac1b6c96-linux/summary.json`, SHA-256
+`5b7572fcd113960d0cf0333e6e59bf8f57842e95419d3e59b92aad93fb4e0168`.
+The reporter posted `arcforges/linux=success` (status 59200509937) and exited.
+
 On the first Windows `32e2ac1` run, the CI step reported three failures.
 CloudLink's ahead-of-server clock test timed out waiting for its timers.
 The Core priority test still saw a Running task after 60 seconds. The
@@ -130,7 +137,7 @@ Its `summary.json` has SHA-256
 `baae645bbdf9c2be02114ef3200ccebb3bde38ff6be5a8ee01d2a31c8db01ae7`
 under `.worktree/verify-mxc02-32e2ac1/artifacts/windows-project-isolated-32e2ac1`.
 
-## Current status — 2026-11-18, after Plan160
+## Earlier dcd91f6 checkpoint — 2026-11-18, after Plan160
 
 MXC02 is blocked by existing AR-01 at Node PR95 source dcd91f63a8ce96863c4f9384d66292759550175d,
 in `.worktree/afv2-mxc-02-resume`; Design main is41d25327841e6c88df639bbcb387682bd067f7a1.

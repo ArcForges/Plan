@@ -32,8 +32,9 @@ preserved under the prior Node SHA below. On the new SHA the first Linux
 repository run failed at Unix socket-directory permissions. The targeted
 rerun passed with the documented process umask 0077. The foreground retry
 reached the end of the regular exclusive suite before its reporter lost
-stdout. The detached reporter is running on H-22 with the same umask and
-host-local output.
+stdout. With the same umask and host-local output, the detached H-22 run
+passed 20/20 in 1,981 seconds and reported success at the new SHA. Its
+receipt is `20261118-065617-32e2ac1b6c96-linux/summary.json`.
 
 The new Windows repository head twice failed the normal CI step. A measured
 rerun of that step reproduced three Platform waits and a Core forced-stop
@@ -45,7 +46,7 @@ failed on the new head. The new head has independent review of its code delta.
 The graph remains 9 complete, one blocked by AR-01 and 30 planned.
 `python tools/plan.py next` returns `null`.
 
-## Current: formal checks passed; original Windows qualification unresolved — 2026-11-18
+## Earlier dcd91f6 checkpoint — formal checks passed on 2026-11-18
 
 State:9/40 complete, MXC02 blocked by existing AR-01,30 planned,0 active.
 `python tools/plan.py next` returns null: no independent planned task currently
