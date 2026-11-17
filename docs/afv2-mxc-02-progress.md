@@ -33,6 +33,14 @@ WIN04/06 and one final68-case receipt remain incomplete. No host network/proxy/
 security setting changed. The [handoff](../codex-handoff.md) and draft PR95 carry
 the exact stage/source/receipt identities and current diagnostic next step.
 
+The earlier `terminal-integration-09.json` also contains the concrete local
+assigned-IPv4 alternative with HostLoopback denied and exact IP/protocol/port
+allowed. Ordinary peer calibration succeeded, but contained TCP returned native
+10013 and UDP timed out without increasing peer counters. This rules out that
+tested combination; it does not establish a universal prohibition on same-host
+endpoints or add an external-peer approval requirement. Preserve those policy,
+peer and payload observations rather than repeating the same unsuccessful path.
+
 ## Owner transport clarification — 2026-11-17, after PR151
 
 The extra Windows-to-VPS direct endpoint prerequisite H-06 is retired. Code
