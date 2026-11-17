@@ -2,6 +2,34 @@
 
 ## Resumed native qualification — 2026-11-18
 
+Current integration head: Node0573c19a007798577081cfe14236da6bb8d42262 (PR96),
+clean `task/afv2-mxc-03` worktree. Targeted Windows builds/format and independent
+incremental source reviews pass. H22 is independently building/staging/running
+the full profile under `.worktree/mxc03-author-0573c19a0077/artifacts/mxc-03`;
+read `author-summary.json`, `full-native-01.json` and its event log before retry.
+Plan PR153 merged at cf937ddc1c52778007bdc0980a1ae139c809d25f; current recording
+branch is `plan/afv2-mxc-03-qualification` in the same Plan worktree.
+
+Latest proven slices:7cf87 policy12/12 and network10/10 (including DNS denial),
+2bba lifecycle16/16 including both combinations, dc4485 CPU/memory/pids/dynamic
+and refusal cases with strict owner-report checks. Each passed slice confirmed
+cleanup. These are not a full same-head qualification or final merge gate.
+The original068c701 full run passed admission4/terminal17/policy12/network10,
+then failed controller-absence setup and cleanup proof. Original resource report
+SHA2567c47d1fcceac32ad6426132bcaffb14bdd17333ffa7d90c7c677106e86bb68aa
+keeps cleanup=false. Its exact owned slice is now inactive/dead with no cgroup,
+invocation or transient definition; original stop exit0 was followed by systemd
+synthetic state, not another live owner. No manual stop was issued. New0573c19
+keeps normal CPU readback strict, uses a fixed time/memory/pids-bounded negative
+pre-exec that can never launch owner/SDK, and requires the original held-cgroup
+empty proof before accepting post-stop synthetic slice state. Real revalidation
+is pending; do not convert the old failure into a pass.
+
+No Node formal host profile or final qualification/review/merge has occurred.
+Next: inspect0573c19 full report, fix only demonstrated failures, then complete
+normal Node/Design/Plan delivery gates and continue the authorized graph.
+The paragraphs below describe earlier checkpoints, not current uncommitted work.
+
 Latest pushed Node candidate:2bba330680437fd99c22174a193aab9733c16398,
 draft PR96. Windows targeted build0warnings/0errors and scoped format passed;
 H22 independently fetched and passed locked build/AOT/stage. The full invocation
