@@ -849,7 +849,7 @@
       "title": "Qualify Windows ProcessContainer terminal and resource composition",
       "milestone": "P1",
       "order": 5,
-      "state": "active",
+      "state": "blocked",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -931,7 +931,8 @@
         "AR-01"
       ],
       "human_prerequisites": [
-        "H-01"
+        "H-01",
+        "H-06"
       ],
       "risks": [
         {
@@ -946,10 +947,14 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Windows/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. Source-audited continuation scope2026-11-17: permit only the existing Program.cs entry/manifest/report dispatch and WindowsLauncher.cs native launcher helpers alongside Windows/** so WIN01..06 can reuse the admitted probe and exact launcher contract. This adds no requirement, product runtime or alternate entry framework; it does not authorize old product executor removal. MXC02 remains planned until MXC01 shared completion; existing owner authorization covers its ordinary implementation. [active] Continue existing owner-authorized graph after actual MXC01 shared completion Plan148. Qualify only WIN01..06 same official1.0.1 Windows ProcessContainer+ConPTY+outerJob/lifetime combination using the existing isolated admitted probe. Preserve old product launchers, data and shared consumers; exact Program.cs/WindowsLauncher.cs integration paths were reviewed/merged in Plan148. No product runtime cutover or public activation.",
-      "blocked_by": [],
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Windows/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. Source-audited continuation scope2026-11-17: permit only the existing Program.cs entry/manifest/report dispatch and WindowsLauncher.cs native launcher helpers alongside Windows/** so WIN01..06 can reuse the admitted probe and exact launcher contract. This adds no requirement, product runtime or alternate entry framework; it does not authorize old product executor removal. MXC02 remains planned until MXC01 shared completion; existing owner authorization covers its ordinary implementation. [active] Continue existing owner-authorized graph after actual MXC01 shared completion Plan148. Qualify only WIN01..06 same official1.0.1 Windows ProcessContainer+ConPTY+outerJob/lifetime combination using the existing isolated admitted probe. Preserve old product launchers, data and shared consumers; exact Program.cs/WindowsLauncher.cs integration paths were reviewed/merged in Plan148. No product runtime cutover or public activation. [blocked] Preserved draft14886bf and partial native evidence. H22 peer self-calibration and SSH are healthy; ordinary Windows data-path calibration has no peer receives even at15s. Keep existing network/proxy settings; selected-egress/full combination awaits a reachable controlled endpoint. This does not block MXC03 or normal host checks.",
+      "blocked_by": [
+        "H-06"
+      ],
       "evidence": {
-        "prs": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/95"
+        ],
         "merges": [],
         "publications": [],
         "ledger": null
@@ -982,14 +987,15 @@
       "title": "Qualify Linux Bubblewrap terminal and cgroup composition",
       "milestone": "P1",
       "order": 6,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
           "paths": [
             "tools/ArcForges.MxcProbe/Linux/**",
             "tests/ArcForges.MxcProbe.Tests/**",
-            "eng/mxc/profiles/**"
+            "eng/mxc/profiles/**",
+            "tools/ArcForges.MxcProbe/Program.cs"
           ]
         },
         {
@@ -1077,7 +1083,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Linux/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Linux/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. Source-scope audit2026-11-17 at Node main b2ebace5c15a130b13a7dbd02fd9900e4983c6e8: permit the existing Program.cs entry dispatch and stage-validator visibility for Linux/** qualification roles in the same admitted AOT executable. No alternate entry framework, new project, dependency/lock, stage/verify change or product runtime cutover is included. [active] Continue existing owner-authorized graph through40 while Windows selected-egress data prerequisite H06 is unresolved. BASE01/MXC01 complete; qualify only LNX01..05 on designated H22 via existing ssh netcup. Reuse official1.0.1/cohort and existing AOT entry; no product runtime cutover or host configuration changes. Implementation begins after the narrow Program.cs scope amendment is reviewed and merged.",
       "blocked_by": [],
       "evidence": {
         "prs": [],

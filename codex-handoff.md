@@ -1,5 +1,72 @@
 # Codex handoff — ArcForges V2
 
+## Current checkpoint — Linux qualification active; 8/40 complete
+
+The owner authorizes continuing the V2 graph through40 with parallel agents inside
+one active product task. Do not stop at a task boundary or restore frozen V1 work.
+Use native local Windows and existing `ssh netcup` to actual H-22; no MCP, root,
+WSL, substitute host, credential exposure, or host network/proxy/security changes.
+Every new/changed feature includes diagnostics from its first implementation;
+read the instruction in execution-policy section3, merged by Plan PR150.
+
+Current graph in this branch:8 complete, AFV2-MXC-02 blocked only by H-06,
+AFV2-MXC-03 active,30 planned. ENV/BASE01/BASE02/MXC01/API01/DATA01/CENTER01/ID01
+remain complete. No completed upgrade or former admission work should be redone.
+Public activation still requires the concrete PROD-01 approval.
+
+Baselines and locations:
+- Plan main26d3b6197305804b3379c6a441615bda40a7955d (PR150); current recording branch
+  plan/afv2-mxc-02-followup at C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-mxc-01-resume.
+- Design mainaf28dc6378d91d678870abc628362476611efa32, freshly checked before Plan150.
+- Node mainb2ebace5c15a130b13a7dbd02fd9900e4983c6e8; fetch again before Linux work.
+- Windows draftPR95/task/afv2-mxc-02 at14886bffd3f66b59aa1f8fec83f0450f108e40b2,
+  C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-mxc-02. This worktree is clean;
+  code4ca55df passed author build/format/AOT with0warnings, following commit adds usage.
+- H22 source-author compile atf75d4de used
+  /home/sammiller/arcforges/ArcForges/.worktree/mxc02-f75d4de-author; this is not a
+  latest-head formal profile or Windows qualification.
+
+Windows outcomes and remaining condition are in
+[the scoped progress record](docs/afv2-mxc-02-progress.md). Terminal/resource,
+policy12/12, lifecycle14/14, real build/IPC and default-deny combined slices pass.
+The original0xc0000142 dialogs and later harness failures are preserved. Network
+setup now logs exact phases/errors/counters. The identical H22 peer passes real
+TCP/UDP self-checks, while Windows's existing Mihomo route receives no reply and
+the external peer sees no connection in a bounded15s ordinary-host measurement.
+No relevant proxy log was found; do not claim its root cause or blame the VPS.
+No MXC payload ran in that failed calibration. H-06 blocks only selected-egress/
+full Windows qualification; no full admission, final Node statuses or merge occurred.
+The owner was asked for an already reachable free TCP/UDP test port/data path.
+Keep existing settings and continue independent Linux work while that is unresolved.
+
+MXC03 depends only on complete BASE01/MXC01. Its reviewed scope checkpoint adds
+only existing Program.cs entry dispatch/stage-validator access to Linux/** and
+eng/mxc/profiles/**; no alternate entry project, new dependencies/locks or product
+runtime cutover. No Linux implementation or new native result exists yet. First
+merge this Plan scope/state record through independent review and normal two-host
+checks, then inspect existing Node worktrees and create/reuse a separate
+.worktree/afv2-mxc-03 with branch task/afv2-mxc-03 from actual latest main. Read the full task,
+LNX01..05 and architecture02/04/07; verify actual H22 user-manager/cgroup/helpers.
+Keep its logs from the first operation. Do not incorporate the blocked Windows
+branch into Linux or treat Windows/TCP peer self-checks as Linux sandbox evidence.
+
+Plan150 final candidate99a1204e7f328fc0794bff8b75c385592e5dcf63 had independent
+id_review approval, Windows5/5 in7s and H22 Linux5/5 in26s, both binding Designaf28dc.
+Original receipts are20261117-154108-99a1204e7f32-win and
+20261117-154111-99a1204e7f32-linux under each host's Plan .git/arcforges-verify/logs.
+It merged normally at26d3b6197305804b3379c6a441615bda40a7955d; no public activation.
+
+No native experiment or CI process is currently running. Current
+Plan scope/state/register/ledger/sequence/handoff and progress-summary changes
+are for the checkpoint described above. Protect all other worktrees, primary
+H22 Plan modifications, Cloud deploy-CI draft, other products and Dependabot work.
+Further details of older checkpoints are retained verbatim below; current graph,
+ledger and the section above supersede their former active/next-task statements.
+
+<details>
+<summary>Historical handoff checkpoints (superseded state, preserved evidence)</summary>
+# Codex handoff — ArcForges V2
+
 ## Current checkpoint — MXC-02 active; 8/40 complete
 Latest owner instruction: every new/changed feature includes usable diagnostics
 from its first implementation. Read execution-policy section3; diagnose actual
@@ -2472,3 +2539,5 @@ Use native Windows MCP at `C:/MyFile/Projects/ArcForges/` and H-22 Linux MCP at
 `/home/sammiller/arcforges/`; fetch exact candidates independently. Never use
 substitute hosts, copied receipts, bypasses or network/security changes. Report in
 Simplified Chinese. This round is complete; resume product work only in a later round.
+
+</details>
