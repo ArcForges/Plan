@@ -1,5 +1,40 @@
 # Codex handoff — ArcForges V2
 
+## Current Windows network qualification checkpoint — 2026-11-18
+
+Node draft PR95 has advanced to `32e2ac1b6c9645b75f607bfc7a58bcb0d552c274`.
+Ordinary calibration now verifies that the controlled peer received and
+matched precisely one request in addition to checking the reply. The
+[experiment record](docs/afv2-mxc-02-progress.md) gives the native positive
+and negative controls, author worktrees, receipt hashes and source review.
+
+On the same native Windows host, a new assigned IPv6 endpoint passed ordinary
+calibration before and after four contained attempts with the prior published
+`dcd91f6` payload. Default-deny and exact-allow TCP both returned 10013.
+Both UDP attempts timed out. All four peer deltas were 0/0 and the peer
+closed cleanly. This determines the outcome for that concrete endpoint.
+The native layer responsible for the failed allows remains unknown.
+
+The original strict policy still needs a controlled, directly reachable
+endpoint that can distinguish exact allows from the negative controls.
+Microsoft's pinned backend documentation also explains why the old RFC 1918
+test address requires a private-network capability that changes ingress
+semantics. The current inventory identified no independently routable,
+controlled peer on this workstation for the remaining experiment. The fixture
+hardcodes H-22 and Windows adapter 17. Choose and calibrate a candidate
+before binding it to the network and combined test paths. Retain the
+peer's identity, exact counts, direct socket path and cleanup evidence.
+The original 68-case receipt remains outstanding.
+
+The original Linux admission timeout and its successful same-input retry are
+preserved under the prior Node SHA below. On the new SHA the first Linux
+repository run failed at Unix socket-directory permissions. The targeted
+rerun passed with the documented process umask 0077. The full retry is in
+progress, alongside the native Windows repository run.
+
+The graph remains 9 complete, one blocked by AR-01 and 30 planned.
+`python tools/plan.py next` returns `null`.
+
 ## Current: formal checks passed; original Windows qualification unresolved — 2026-11-18
 
 State:9/40 complete, MXC02 blocked by existing AR-01,30 planned,0 active.

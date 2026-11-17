@@ -1,5 +1,85 @@
 # AFV2-MXC-02 partial native evidence — 2026-11-17
 
+## Assigned IPv6 endpoint on the Windows host — 2026-11-18
+
+At Node `dcd91f63a8ce96863c4f9384d66292759550175d`, a bounded diagnostic used
+an existing non-loopback IPv6 address on the Windows workstation. The host
+bound the test sockets to that address. Before and after the four native
+cases, the host exchanged the expected bytes over TCP, UDP on the same
+numeric port, and a second TCP port. Each exchange increased its own peer's
+receive and match counters by exactly one. The peer saw no foreign requests.
+
+All four requests used the pinned official executor, BaseContainer, denied
+ingress and denied host loopback. Each workload recorded its network attempt.
+
+| Transport | Default deny | Exact /128, protocol and port allowed | Peer receive/match deltas |
+|---|---|---|---|
+| TCP | Winsock 10013, exit 70 | Winsock 10013, exit 70 | 0/0 in both cases |
+| UDP | 18 bytes sent, reply timed out, exit 124 | 18 bytes sent, reply timed out, exit 124 | 0/0 in both cases |
+
+All four executors and observed payload processes exited. The peer sockets
+closed and its thread exited. This diagnostic observed network effects and
+process exit only. WIN04/06 and the full composed-Run qualification stay open.
+The result applies to this endpoint and policy. The layer that rejected the
+selected traffic remains undetermined.
+
+The private report is `artifacts/mxc-02/local-v6-run-01/report.json` in the
+Node worktree `.worktree/mxc02-local-v6-diagnostic`, SHA-256
+`f28ba5094b075c3548bbacd53667ef24c6897e24c61ea6ca6d3b45c1b732680c`.
+It records per-case policy hashes, before/after counters, process observations
+and the staged executable hashes. All test traffic stayed on this workstation.
+The private driver is `artifacts/mxc-02/local-v6-diagnostic.py`, SHA-256
+`041e741ef5503b01e7d080bbb05dc72a34e7f175d5aa23ed91762a8ec6629850`.
+It takes the assigned IPv6 address and a fresh output directory. Before
+launching the first contained case it wrote `calibration.json`, SHA-256
+`2d183ebf979335ca84064f369337884f3bae352ed0048a4d800312afe72ff0d3`.
+
+The earlier local IPv4 endpoint used an RFC 1918 address. The
+[pinned Microsoft network contract](https://github.com/microsoft/mxc/blob/fda29ac63bc306b7f97f3b86b4b63d44f7f40cf2/docs/backends/process-container/networking.md)
+requires the bidirectional private-network capability for private traffic.
+Setting `ingress.default=allow` would change the policy under test. A future
+candidate for strict selected egress needs a controlled endpoint reachable
+under the original ingress policy. The experiment design permits any topology
+that demonstrates these effects.
+
+## Calibration correction at Node 32e2ac1
+
+The prior calibrator verified the echo bytes and endpoint health. Its success
+path did not compare the actual peer counters before and after the exchange.
+[Node PR95](https://github.com/ArcForges/ArcForges/pull/95) now retains both
+snapshots and requires one receive and one match on the selected channel.
+A counter read failure or a wrong delta preserves the failure and its
+observations. The networking policy and I/O budget are unchanged.
+
+The author ran a real local TCP listener, UDP on the same port and a second
+TCP listener. Each passed 12 successive calibrations. A controlled extra
+matching TCP request caused the counts to move from 1/0 to 2/2. The
+calibrator refused the correct echo and preserved both snapshots. A disposed
+endpoint preserved its original exception and cleared the previous success.
+Original author log `artifacts/mxc02-calibration-test/native-loopback.log`,
+SHA-256 `85c02dbcc6295cb0c0ce117524b7483325bddda918b4dafda58a6a06646b0304`,
+in Node worktree `.worktree/afv2-mxc-02-peer-calibration`. Locked restore,
+Release build, formatting and Windows x64 Native AOT publish passed.
+A nonauthor reviewed the exact delta from `dcd91f6` through
+`32e2ac1b6c9645b75f607bfc7a58bcb0d552c274` against the source and receipts.
+The draft retains its open native acceptance. Independent selected-egress
+success and a single 68-case composed receipt are outstanding.
+
+The first H-22 formal run on `32e2ac1` used the SSH session default umask
+`0002`. In the CloudLink suite, `ARealCliUnderARegisteredAgentRootCannotSubmitLocally`
+created its temporary directory and the Unix socket server rejected the
+directory's permissions at startup. The suite recorded 699 passed, one
+failed and one skipped. The original formal summary is
+`20261118-062427-32e2ac1b6c96-linux/summary.json`, SHA-256
+`6b1d447fa1006e288431c45065c78984b751ec7a3cf5da39ee7c14ed14eb0d8e`.
+The adjacent `cloudlink-original-failure.log` has SHA-256
+`0ff55368cc449a5d0c5117400a9c206075498a71e5a6c7b309af7ae1806fbb3d`.
+Running the exact test with the documented process umask `0077` passed 1/1
+in 2.369 seconds, log `cloudlink-owner-only-targeted.log`, SHA-256
+`7ec9cf5729a953c4426a62cd85207112e26c78a0fbe012e3ea222c996bb79f15`.
+The full retry uses that process setting and the same source. The older
+`dcd91f6` pressure-test timeout has its own evidence and an unknown cause.
+
 ## Current status — 2026-11-18, after Plan160
 
 MXC02 is blocked by existing AR-01 at Node PR95 source dcd91f63a8ce96863c4f9384d66292759550175d,
