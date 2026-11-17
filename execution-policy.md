@@ -14,6 +14,22 @@ Implementation requires an explicit user-authorized list or range of AFV2 task I
 
 Exactly one task is active. Within the authorized range, start the first planned task in graph order whose real dependencies are delivered or complete. Superseded dependencies do not silently count as delivered: update the dependency graph through a reviewed decision. Blocked tasks do not occupy the active slot, and independent eligible work may continue. A failed mandatory MXC profile blocks its admission and dependent Core work; negative probe results are evidence, not permission to weaken the product.
 
+Owner-approved local process boundary (2026-11-17): intentionally supplied workload
+arguments/environment visible to the trusted local host owner or administrator in OS
+process metadata are not public disclosure and are not an independent MXC admission
+or development blocker. Do not recreate the retired argv-absence requirement under
+another gate or stop for hypothetical owner-local observation. Record the observation
+truthfully using synthetic values and booleans only. Public Plan/GitHub material,
+ordinary diagnostic logs, telemetry and shared receipts must not contain real secrets
+or raw sensitive command/environment values. Actual unauthorized payload access across
+the Sandbox/host boundary, implicit host credential inheritance, and demonstrated
+secret publication remain distinct defects subject to their existing checks. This
+explicit product decision changes that acceptance condition, not required native
+execution, provenance, data-safety tests or repository merge procedures. Preserve old
+failures as dated results under their original rule and requalify the revised probe;
+do not fabricate a historical pass. Continue the authorized graph after each completed
+task without another approval for this already decided local visibility boundary.
+
 The coordinator owns state/ledger changes and all pushes, PRs, merges and publication. Delegated work is limited to the authorized task/write scope. Each implementation task receives an independent reviewer who did not author it; without one, do not merge. Independent author work within the task may run with bounded tool parallelism; no second product task starts concurrently.
 
 ## 2. Task states and evidence

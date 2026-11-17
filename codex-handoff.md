@@ -1,6 +1,42 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — ID-01 complete; remaining graph awaits MXC remedy
+## Current checkpoint — owner decision resumes MXC-01
+
+Owner2026-11-17 explicitly directs correction of the local-process visibility rule
+and continued completion of the40-task graph. Workload environment/arguments visible
+to the trusted local host owner/admin are not public GitHub disclosure and do not
+independently block MXC admission. Keep real secrets out of public Plan/GitHub,
+ordinary logs and shared evidence; retain actual payload isolation/host-credential/
+data-safety/provenance/native checks. Do not reintroduce the retired local argv-only
+blocker under another name. Original synthetic argv-hit=true remains a historical
+observation; its old failure verdict is not rewritten as a past pass.
+
+MXC01 is the sole active task; graph7complete/1active/32planned. AR03 is PENDING
+revised-rule qualification, not PASS. User authorization covers the document decision,
+necessary probe adaptation/verification, normal PR/merge and subsequent eligible tasks.
+Current main baselines Design493022fbf643b484665b2713c9eb8670f2fb2234 and
+Plan6ec723ad816d98aa9ad1f32606826afea803a9c0. ID01/Cloudfaf5dcb3 remains complete.
+
+New isolated worktrees:
+- Design C:/MyFile/Projects/ArcForges/ArcForges-Design/.worktree/afv2-local-process-boundary,
+  branch design/afv2-local-process-boundary; delegated id_author edits exact current
+  decision/security/MXC experiment/status wording and preserves historical receipts.
+- Plan C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-mxc-01-resume,
+  branch plan/afv2-mxc-01-resume; root owns graph/policy/ledger/handoff.
+- Existing Node draft93 and its worktree are preserved; id_transport performs only
+  read-only scope/probe/progress audit until the document amendment is merged.
+
+Next: independent Design amendment review, exact-head both-host checks and merge;
+then Plan checks against actual newDesign main and merge; adapt only necessary probe
+expectations within MXC01, execute native scenarios/fullchecks, review and deliver.
+Continue next eligible task immediately after actual completion, without asking for
+this local-process decision again. Public activation remains separate PROD01 approval.
+Use local Windows and ssh netcup to sameH22 v2202601329473427941/sammiller, no MCP/root.
+H22 root Plan checkout has historical dirty files; leave it untouched and use isolated
+worktrees. New host/origin calls succeeded this turn. Previous transcripts below are
+history, not instructions to stop for the now-superseded argv-only condition.
+
+## Historical checkpoint — ID-01 complete; then awaiting MXC decision
 
 Cloud PR160 merged faf5dcb3638916f69fc2b833eea9d8d6d33571e9 from exact candidate
 8c1c67697ecb6727e71a3ccae44526d21408cec5; merge/candidate tree is
