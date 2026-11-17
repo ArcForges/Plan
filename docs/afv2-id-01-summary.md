@@ -1,5 +1,29 @@
 # AFV2-ID-01 engineering evidence
 
+Current pushed candidate is `8c1c67697ecb6727e71a3ccae44526d21408cec5`, tree
+`c56551d9047b32ce28328109af6e4cb12f296f0d`, Cloud draftPR160. ID01 remains active.
+Design baseline493022fbf643b484665b2713c9eb8670f2fb2234; Plan scope amendment145
+merged e414f268f1c1df8578059cc10d638d0ad880c2c1. Independent source/metadata review
+and exact page-inventory delta review passed. Author built the changed project
+with0warnings/errors then13/13 targeted tests passed; full negative markers remain.
+New Windows full10/10PASS144s:20261117-103902-8c1c67697ecb-win. New Linux fullprofile
+is running underdriver3814190, artifacts/afv2-id-01-formal-8c1c-ssh-0077-gmp2-20261117/.
+No finalLinuxPASS, merge, publication or completion is claimed.
+
+Owner authorizes local Windows and ssh netcup to sameH22. Native private-output
+creation diagnostics proved per-process0077 corrects inherited0002 refusal without
+changing backup guards. Measured OOM led to process-onlyGOMAXPROCS2; all original
+packages/race/count/timeouts/realPG/fuzz/restore/image/profile steps remain. It also
+limits default package parallelism and fuzz workers. A precisely audited21 old Go
+work directories on /tmp tmpfs were removed after revalidation, freeing3947823104B;
+recent failure work, security producers, databases and evidence remain. Original
+inventory/deletion receipts are in H22logs/afv2-disk-cleanup-20261117; protected
+systemd/PAM/SSH reference visibility limits are explicitly preserved. No root used.
+
+Historical interrupted/failed attempts and fixes follow; they are not current passes.
+
+## Historical verification checkpoints
+
 ID-01 is active after the owner authorized local `ssh netcup` to the sameH22,
 superseding older MCP-only transport wording. Native host and verification gates
 remain unchanged. This is the shared implementation and
