@@ -7,7 +7,12 @@ merged e414f268f1c1df8578059cc10d638d0ad880c2c1. Independent source/metadata rev
 and exact page-inventory delta review passed. Author built the changed project
 with0warnings/errors then13/13 targeted tests passed; full negative markers remain.
 New Windows full10/10PASS144s:20261117-103902-8c1c67697ecb-win. New Linux fullprofile
-is running underdriver3814190, artifacts/afv2-id-01-formal-8c1c-ssh-0077-gmp2-20261117/.
+is running underdriver3838157, artifacts/afv2-id-01-formal-8c1c-ssh-0077-gmp2-dotnet2-20261117/.
+The preceding8c1c full run failed395s:1922.NET assertions passed/0failed/1skipped,
+but architecture process exited137 and scope919 recorded oneOOMkill. Original
+20261117-104146-8c1c67697ecb-linux retains that failure. The current process also
+sets DOTNET_PROCESSOR_COUNT2 after measured pressure and independent review; this
+changes.NET CPU view/default worker parallelism, preserving every original check.
 No finalLinuxPASS, merge, publication or completion is claimed.
 
 Owner authorizes local Windows and ssh netcup to sameH22. Native private-output

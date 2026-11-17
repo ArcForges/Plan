@@ -14,11 +14,21 @@ exacthead as continuation of fullsource review. No metadata successor is needed.
 
 New exacthead Windows10/10PASS144s, originalCloud/.git/arcforges-verify/logs/
 20261117-103902-8c1c67697ecb-win/summary.json. H22 independently fetched8c1c and
-launched original fullprofile with process-only0077/GOMAXPROCS2, driver3814190,
+launched original fullprofile with process-only0077/GOMAXPROCS2/DOTNET_PROCESSOR_COUNT2, driver3838157,
 caller /home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-native,
-artifacts/afv2-id-01-formal-8c1c-ssh-0077-gmp2-20261117/native.log/exit and matching
+artifacts/afv2-id-01-formal-8c1c-ssh-0077-gmp2-dotnet2-20261117/native.log/exit and matching
 -runner.py/-driver.log. id_audit observes this single run via ssh netcup.
 Final Linux result remains pending; no Cloud merge/completion/publication.
+
+The previous8c1c run20261117-104146-8c1c67697ecb-linux failed395s:
+check-dotnet has1922passed/0failed/1skipped, including architecture511passed/0failed,
+but architecture process exit137. Thus the inventory fix passed; full verification
+did not. Session919 localoom_kill0to1/peak8465383424bytes; individual PID kernel
+attribution remains unavailable. Center stopped after that earlier failure. After
+measurement, independent id_review accepted adding process-onlyDOTNET_PROCESSOR_COUNT2
+which affects.NET CPU view and default runtime/worker parallelism; all original
+solution projects/cases/flags/timeouts/format/native profile remain unchanged.
+No source or host setting changed; do not rerun valid8c1c Windows unnecessarily.
 
 Before launching, root revalidated and deleted exactly21 known old Go build work
 directories from audited tmpfs inventory,3947823104bytes. Checked host/uid1000,
@@ -33,7 +43,7 @@ go-build-old-deletion-20261117T024100Z.json. /tmp available2454323200to640214630
 MemAvailable7956928kB/SwapFree658436kB after cleanup. Earlier root-disk304GB recovery
 remains separate; this bounded cleanup addresses observed tmpfs memory pressure.
 
-Plan records now use branch plan/afv2-id-01-completion-20261117 in existing
+Plan records now use draftPR146/branch plan/afv2-id-01-completion-20261117 in existing
 .worktree/afv2-id-01; older branches preserved. Current baselines Plan e414f268,
 Design493022fbf643b484665b2713c9eb8670f2fb2234, Cloud6bd7169607d55c8b647b1a70302ff28ad365d488.
 Next: actual fullLinux originalreceipt/artefact review, normal Cloud160 merge and
