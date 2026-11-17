@@ -64,6 +64,13 @@ MSBuild output was Chinese (actual AOT0warnings/0errors). Original failure
 DOTNET_CLI_UI_LANGUAGE=en-US and VSLANG=1033; unchanged full rerun session76792 /
 ArcForges/.git/arcforges-verify/logs/20261117-123248-d460524d7fa2-win;
 Linux driverPID3944020 /home/sammiller/arcforges/logs/node93-d460524-driver.log.
+Linux original20261117-122153-d460524d7fa2-linux/linux-exclusive.log now records
+one real ClosedLoop pressure-test failure: fourth Normal/nonpreemptible task did
+not reach Running within90s at ResourceTests.cs629; the first three Background
+tasks did reach Running. The2GiB pressure allocator had not started. id_audit is
+reading exact fixture/unit/state facts; base_review supplied the Queued state_reason
+vs Starting/start-job vs unrecorded-start diagnosis. No cleanup/retry/source edit
+has happened. The unchanged full runner continues its remaining exclusive project.
 Both invoked unchanged eng/verify.py run-and-report from host-fetched exact candidate.
 No full-profile PASS or Node source merge is claimed yet.
 
