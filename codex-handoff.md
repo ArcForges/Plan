@@ -1,5 +1,114 @@
 # Codex handoff — ArcForges V2
 
+## Lifecycle result and ancestor-rule correction — 2026-11-18
+
+Source bfc55b518432fcdd4805ded9b3be9fba312bb664 passed targeted build,
+format and Native AOT with zero warnings/errors. Verified stage
+`artifacts/mxc-02/install-resume-02` manifest SHA256
+05bf342daea59930849b0a5b05b65fb5981f2d8c02da50a302919e6e1023b4eb.
+`lifecycle-resume-01.json` completed exit2:15/15 passed, every case cleanup
+completed, cleanupConfirmed=true, no primary/evidence failure. Receipt SHA256
+11e6c6384859ce66fb484805ca2565e6bb5357d80d130dcaa107931b3b90d9ab.
+This includes the separate center-observer-loss case. It remains a partial
+diagnostic, not full Windows qualification. Session78064 has finished.
+
+Independent review withdrew the added blanket requirement that the original
+driver must have no inherited Job: Design requires actual chain compatibility,
+not absence of an external tool Job. Windows nested-Job inheritance and native
+assignment enforce the owned non-breakaway chain even when an external Job
+permits breakaway. The minimal correction is in progress; retain actual driver
+context, owned handles/readback, suspended assignment, descendants, limits and
+cleanup evidence. QueryInformationJobObject(NULL) reports only the immediate
+Job: do not claim every external ancestor was enumerated or exact whole-machine
+CPU share under an unknown ancestor cap. No host launch/settings changes.
+Reviewer continues the sticky logging-failure delta review. Network venue
+question remains pending; no repeated failed local-egress or cross-host probes.
+
+## MXC02 latest native outcomes — 2026-11-18
+
+Current Node PR95 source is bfc55b518432fcdd4805ded9b3be9fba312bb664 on local
+`task/afv2-mxc-02-resume`, remote `task/afv2-mxc-02`, in new resume worktree.
+The first integrated candidate8765ddb passed targeted build/format/AOT with0
+warnings/errors. Its stage `artifacts/mxc-02/install-resume-01` manifestSHA is
+ d233a20738c4e4dba557979f420a3d6c00076d34f8ce891d68cfbf6fb0488d59.
+Program.cs may show a stat-only modified flag; filtered blob equals HEAD
+473c00dfa27c0c2f6ccd1fa2aca0260562234256 and textual diff is empty. Do not reset.
+
+Actual network-resume-01 is partial8/13, not a pass. The five intended deny
+cases really communicated: official exit0, matching workload reply and trusted
+peer receive counters+1. Native HostLoopbackallow is unrestricted host loopback
+and bypasses fine egress tuples; fixed upstream source agrees. Receipt SHA256
+2bf9a3f162155c2b68651fc046a229a8eefcb14c82426a86f32f5e3b430e7565, all case
+cleanupCompleted. Do not repeat the known-failing local-egress setup unchanged
+or resume the stopped cross-host data probes without the owner's answer.
+Owner question is pending: permit controlled H22 native
+TCP/UDP acceptance traffic, provide an existing independent LAN/VM peer, or
+preserve that acceptance block and continue eligible work. Earlier cross-host
+stop remains effective until answered; ssh netcup control/verification works.
+
+Strict policy-resume-02 passed12/12 as a diagnostic (exit2, qualificationfalse),
+cleanupConfirmed; SHA25653fe08b9626fd0dbb244922fbf015458a280859279eb6d5e7cc0b5e65da18339.
+No full Windows qualification or current required host status exists.
+
+The first driver-context observed inherited Job=true with flags10240,UI0,CPU0.
+A permitted-breakaway author launch still observed another Job and was stopped
+at0.006s; keep author-launch-failed/cleanupunknown original. Normal Shell and
+actual desktop broker read-only console/no-console probes likewise reported
+inJobtrue (no payloads). Originals in private `artifacts/mxc-02/author-launches`.
+Do not keep trying alternative launch services/settings. Independent reviewer
+is checking whether the newly added blanket no-inherited-Job gate is stricter
+than the actual WIN03 text: necessary ancestor compatibility may instead be
+proven by readback, kernel nested-Job constraints and all held ArcForges handles.
+Do not change that predicate without a specific reviewed technical proof.
+
+Latest bfc55b5 fixes the review's sticky owner-logging EvidenceFailure gap:
+Record/Response propagate the first sink failure; consumers mark qualification
+failed but still Stop/shutdown/drain and capture late Dispose evidence. Targeted
+build0warnings0errors and format passed. AOT publish-resume-02 is underway or
+finished; inspect `resume-logs/publish-resume-02.log` before staging/running.
+Next independent work is lifecycle slice on a new verified stage. Review final
+source delta and native evidence; no network/host assumption is a PASS.
+Current Plan157 branch `plan/afv2-mxc-02-qualification` preserves these facts.
+
+## MXC02 implementation checkpoint — 2026-11-18
+
+Resumption Plan156 merged88f4564184714d70949c4a3f28fab594d53e2a1b from8e92f5a,
+Windows5/5 PASS5s (022915) and H22 5/5 PASS27s (023003), both Design41d2532.
+Shared main has9complete/MXC02soleactive. Current recording branch is now
+`plan/afv2-mxc-02-qualification` in the same Plan worktree.
+
+Node `.worktree/afv2-mxc-02-resume` remains on integrated a4e03ff (PR95 remote),
+with these intentional uncommitted task changes; no native success is claimed:
+- WindowsNetworkCases.cs: real driver-owned loopback TCP/UDP peers, strict13-case
+  allow/deny matrix, no SSH/VPS data channel; remote helper retained until actual
+  replacement proof, then remove unused code.
+- WindowsWorkload.cs/WindowsCombinedCases.cs: actual pressure readiness before
+  network/files effects, external ordered evidence; CancellationToken last.
+- WindowsLifecycleCases.cs/PhaseClient.cs: separate real read-only observer loss
+  scenario named center-observer-loss; local control/Stop remain real.
+- WindowsProbeOwner.cs: bounded owner-private stage/error JSONL without raw
+  configurations/capabilities, preserving original and cleanup failures.
+- WindowsQualification.cs: strict68-case completion, exact embedded source and
+  stage identities, diagnostic slices always partial; finalized by admission.
+- combined_fix is adding the explicit pre-experiment driver Job context check
+  in WindowsHostContext.cs/WindowsQualification.cs. Prior direct-driver report
+  had InheritedJob=true but no current pre-Job full context; unknown ancestors
+  cannot be relabeled verified. No framework/host setting/privilege change.
+- policy_fix is tightening four rejection variants in WindowsPolicyCases.cs
+  against actual old private official errors, not arbitrary exit1. Invalid-env
+  already checks actualCreateProcess87 and is retained.
+- Coordinator updated the two Windows profile usage documents and prepared
+  `C:/MyFile/Projects/ArcForges/tmp/mxc02-resume-publish.ps1` for this new WT.
+
+Reviewer `/root/review` completed the first source audit; the four additional
+issues above directly correspond to WIN01..06, and no other scope was added.
+Wait for the remaining authors to freeze, then one targeted build/format,
+commit, Native AOT/stage, network/combined diagnostics and complete same-head
+qualification. Logs begin at `artifacts/mxc-02/resume-logs`. Existing admitted
+package/archive are in original MXC01 `artifacts/mxc-01/official`; stage.py
+must recheck hashes/signatures. No experiment process is currently running.
+Do not overwrite original Windows worktree or historical artifacts.
+
 ## MXC02 resumed after MXC03 completion — 2026-11-18
 
 Shared Plan main14b3689a2b8cd6720c78bc0aa7d1d17f3bb1d373 (PR155) records9/40
