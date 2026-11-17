@@ -18,9 +18,14 @@ behavior remains an actual native experiment, not an inferred pass.
 
 Node implementation is in C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-mxc-03,
 branch task/afv2-mxc-03, based on freshly fetched main
-b2ebace5c15a130b13a7dbd02fd9900e4983c6e8. Current new Linux/** files, Program.cs
-role dispatch, and eng/mxc/profiles/linux-bubblewrap-sdk-v1.md are UNCOMMITTED
-work in progress. Do not discard them or mix in blocked Windows PR95. Coordinator
+b2ebace5c15a130b13a7dbd02fd9900e4983c6e8. First code checkpoint
+649e99899c423b0d6277c6befbae69b34c8826d0 is pushed, draft Node PR96:
+https://github.com/ArcForges/ArcForges/pull/96. It includes four diagnostic groups,
+first-operation logs, Program roles and the Linux profile usage document.
+Uncommitted work includes LinuxOwnerChannel.cs/LifecycleCases work in progress,
+resource readback-refusal evidence tightening, and the currently diagnosed
+cgroup/terminal corrections. Check actual git status before editing. Do not
+discard them or mix in blocked Windows PR95. Coordinator
 owns integration, commits/push/PR and Plan records. Delegated work is restricted
 to this task: id_transport session/terminal; id_metadata factory/policy;
 base_review service/cgroup; id_audit resource cases; base_audit network cases;
@@ -40,13 +45,31 @@ needs actual new-service readback. No namespace/payload/host configuration was
 changed by preflight. Original audit is retained under the Node worktree's
 artifacts/mxc-03/h22-preflight-4a86c365 (also the original Windows temporary folder).
 
-Locked restore passed. artifacts/mxc-03/build-integration-01.log is a FAILED
-intermediate build: unfinished resource/network types plus terminal/fixture
-compile/analyzer errors. Authors are fixing the concrete errors. No new Linux
-native execution, qualification, formal Node profile, Node commit or PR exists
-yet at this checkpoint. Next: finish the in-task integration, build/format/AOT,
-push an exact candidate, independently fetch it on H22, then run bounded native
-slices and fix actual logged failures before full combination and final gates.
+Locked restore and the third targeted shared build passed with0warnings/0errors;
+scoped formatting passed. Failed intermediate build-integration-01/02 logs remain
+under artifacts/mxc-03. H22 independently fetched649e998 into
+/home/sammiller/arcforges/ArcForges/.worktree/mxc03-author-649e99899c42.
+Its artifacts/mxc-03 directory retains toolchain/restore/build/publish/stage logs,
+author-summary.json, terminal-native-01.json and driver/owner JSONL. AOT publish
+passed with0warnings in10.699s; official staging passed. Native terminal execution
+failed in9.567s:17cases16PASS, foreground SIGINT observation timed out after the
+actual ETX caused prompt native exit-1; no timeout increase or success waiver.
+Report SHA256bdb573c960ae8533820f4021d9f743c4f0d11e9e70a871f42a4ad4a1ad6624fd.
+CleanupConfirmed is false: cgroup_read_cgroup_events returned nativeerrno2.
+The held-cgroup removal proof assumed ordinary nlink semantics; base_review is
+fixing that from kernel/source evidence and must prove it in a new native run.
+The original unit now has Main/ControlPID0 and its old cgroup path is absent;
+that read-only follow-up does not rewrite the original cleanup failure.
+id_transport is resolving the signal test's host-vs-pid-namespace group evidence.
+The lifecycle author continues the separate LNX05 slice. No full qualification,
+final required Node profiles/review/merge or product runtime cutover has occurred.
+Next: integrate the minimal diagnosed fixes, push a new exact source checkpoint,
+fetch/build/stage it independently on H22, and rerun affected native slices before
+the remaining combination and final gates. No native experiment is currently running.
+The reusable local launcher script is tmp/mxc03-native-author.py (outside repos);
+it accepts the exact SHA, fetches on H22, retains phase logs and never changes
+host settings or existing worktrees. Plan working handoff is draft PR152 on
+plan/afv2-mxc-03-progress; its latest checks/merge are still pending.
 
 The previous checkpoint below remains historical context; this live section
 supersedes its not-yet-merged PR151 and not-yet-created Linux-worktree statements.
