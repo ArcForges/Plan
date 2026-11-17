@@ -2,7 +2,7 @@
 
 ## Current status — 2026-11-18, after Plan160
 
-MXC02 is active at Node PR95 source dcd91f63a8ce96863c4f9384d66292759550175d,
+MXC02 is blocked by existing AR-01 at Node PR95 source dcd91f63a8ce96863c4f9384d66292759550175d,
 in `.worktree/afv2-mxc-02-resume`; Design main is41d25327841e6c88df639bbcb387682bd067f7a1.
 The older parked-task and endpoint-decision wording below is dated history.
 The owner resumed the full authorized graph. SSH only replaces Linux MCP as
@@ -21,8 +21,12 @@ An unchanged targeted reproduction with bounded read-only diagnostics passed
 1/1 in19.904s, including four running tasks, Critical, one preemption and Normal.
 The queue was empty in all nine observations, so the original admission failure
 was not reproduced and its cause remains UNKNOWN. Owned processes/units/data
-were cleaned by the fixture. A same-source full Linux retry follows; the targeted
-pass does not replace the required profile or erase its original failure.
+were cleaned by the fixture. The same-source full Linux retry then passed20/20
+in1991s, receipt `20261118-045655-dcd91f63a8ce-linux/summary.json`, SHA256
+154a878b85a74ebd90515ba91f928069370de9a3481de9bced47df27c499acfd.
+The reporter postedSUCCESS and exited. Both required repository profiles now
+pass; neither they nor the targeted diagnostic erase the original failure or
+replace the original complete Windows qualification.
 
 The committed H22 peer is independently fetched from GitHub and controlled over
 SSH. Ordinary Windows calibration has failed on the measured defaultIPv4,

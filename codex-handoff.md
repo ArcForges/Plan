@@ -1,5 +1,38 @@
 # Codex handoff — ArcForges V2
 
+## Current: formal checks passed; original Windows qualification unresolved — 2026-11-18
+
+State:9/40 complete, MXC02 blocked by existing AR-01,30 planned,0 active.
+`python tools/plan.py next` returns null: no independent planned task currently
+has satisfied dependencies. Full40-task implementation remains authorized; this
+is not a task-boundary stop or a request to repeat ordinary development approval.
+H06 remains retired; H01/H02 and ssh netcup are available.
+
+Node draft PR95 source dcd91f63a8ce96863c4f9384d66292759550175d now has both
+required host statuses: Windows15/15 in2177s and H22Linux20/20 in1991s.
+Linux retry receipt `20261118-045655-dcd91f63a8ce-linux/summary.json` has SHA256
+154a878b85a74ebd90515ba91f928069370de9a3481de9bced47df27c499acfd;
+reporter176014 ended and postedSUCCESS at2026-11-17T21:30:07Z. Both exclusive
+groups and startup passed. The initial failure and subsequent unchanged targeted
+diagnostic remain separate original evidence; the initial cause is UNKNOWN.
+All verification/diagnostic processes from this round have ended.
+
+Original WIN04/06 is still unmet: the measured controlled-peer calibrations
+failed before contained network cases; the concrete earlier local assigned-IP
+and exact-rule combination also failed. No full68-case qualification exists.
+No source merge, publication or product completion is claimed. Do not infer an
+SSH/VPS/MXC fault, universal local-endpoint prohibition or extra endpoint approval.
+
+Preserve Node resume WT/branch and PR95, original WT and all original receipts.
+Plan recording WT remains `.worktree/afv2-mxc-01-resume`, branch
+`plan/afv2-mxc-02-formal-diagnosis`, PR161; baseline main70a93596066e73d7c9752b5ceb92a3d300617af5.
+Design main remains41d25327841e6c88df639bbcb387682bd067f7a1.
+Next product step requires concrete new controlled-endpoint reachability or a
+scoped fixture correction supported by evidence. Then resume the original failed
+network cases, same-Run combinations and full receipt, review and normal delivery.
+Do not repeat unchanged failed paths, alter host settings, waive AR-01 or start
+dependent tasks without satisfying their actual dependencies.
+
 ## Windows full profile passed; Linux diagnosis continues — 2026-11-18
 
 Plan160 merged as 70a93596066e73d7c9752b5ceb92a3d300617af5 after independent
