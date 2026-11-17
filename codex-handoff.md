@@ -1,5 +1,28 @@
 # Codex handoff — ArcForges V2
 
+## Final repository gate follow-up — 2026-11-18
+
+MXC03 remains the sole active task;8/40 complete. Owner again explicitly asked
+for parallel delegates and continuation through the already authorized graph.
+Final022 H22 formal verification is still running, but its exclusive CloudLink
+test has logged a real failure: the3-second pressure setup established57
+connections, below HardCapacity256; later cap/browser assertions did not run.
+Both the test and production receiver blobs match Node main b2ebace5. Existing
+logs do not distinguish producer socket errors from scheduling delay. Preserve
+receipt20261118-010502-022946a305e5-linux and diagnose this exact condition before
+retrying; do not loosen assertions or infer a VPS/network outage. Delegate
+resource_gap is preparing isolated diagnostics after the formal run finishes.
+
+Old50e Windows profile is progressing normally through native exclusive tests;
+its ClosedLoop project passed19 with21 expected platform skips. Design Windows
+has a fresh exacte95476f worktree at `.worktree/verify-mxc03-e95476f-win`; delegate
+profile waits for old Node reporterPID17792 to finish before invoking the normal
+Design reporter. Final022 Windows must follow, not overlap shared `_verify`.
+Independent final Design review PASS is posted at
+https://github.com/ArcForges/ArcForges-Design/pull/76#issuecomment-6955662432 .
+Plan checkpoint2bc78b8 was independently reviewed PASS; resumed-gate ledger
+addition is pushed ascc309a3. No new merge or completion is claimed.
+
 ## Resumed native qualification — 2026-11-18
 
 Final source is now Node022946a305e505e5817162c79a956c7816b99b12, only a
