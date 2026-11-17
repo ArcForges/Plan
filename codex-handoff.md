@@ -1,5 +1,47 @@
 # Codex handoff — ArcForges V2
 
+## Latest exact candidate and remaining network boundary — 2026-11-18
+
+Plan checkpoint157 merged e811761131562f5e744011267b5b170ea9603fc0 from
+132847f044136265039f1c58c79dcd5651abc925. Windows5/5 PASS5s receipt030553,
+H22 Linux5/5 PASS26s receipt030633, both Design41d25327841e6c88df639bbcb387682bd067f7a1;
+independent nonauthor review PASS. Current Plan recording branch is
+`plan/afv2-mxc-02-log-evidence`; graph remains9complete/MXC02active/30planned.
+
+Node PR95 latest pushed head57decb6315f7d0cdfaf7652a760092d6848e6161 in
+the same `.worktree/afv2-mxc-02-resume`. Implementation e00d204 removes the
+unnecessary no-inherited-Job condition while requiring successful actual
+identity/membership/immediate limits/UI/CPU observations. It atomically publishes
+the final receipt after write/flush/close, and tests a real owner log CreateNew
+failure inside the existing lifecycle case. Final57decb6 only sorts two imports.
+Independent delta review PASS. No change to required68 cases or native cleanup.
+
+Targeted build04 passed0warnings/errors; format03 initially found import ordering,
+fixed with format-fix04 (original log retained). Final Native AOT publish03
+passed0warnings/errors in14.25s. Verified install-resume-03 manifestSHA256
+2f5c6f16ccbc77ca7994408636cf67b744f7c98bc118bcbe3d1bbd17ce609cc5.
+Native `lifecycle-resume-02.json` at57decb6 exited2:15/15, cleanupConfirmed=true,
+driverJobContextObserved=true with real inheritedJob=true; still partial and
+qualificationPassed=false. ReceiptSHA256
+9936bf35f63b88c95d5f8905a0e2358274e95f70cdb0356c7e29db8e00cc7e28.
+The log negative case records owner_evidence_evidence_open/IOException/
+HResult-2147024816, keeps its negative qualification false, and proves real
+Stop/status/shutdown plus empty held aggregate. Session62414 has ended; no
+experiment remains running. No latest-source full host statuses or full Windows
+qualification are claimed, and Node PR95 is not ready to merge.
+
+Remaining acceptance is the actual independent-network-stack peer for the
+five denied-egress cases and the complete combined/full profile. The owner
+question about permitting H22 controlled native acceptance traffic or providing
+an existing LAN/VM peer remains unanswered. Do not resume stopped cross-host
+probes or repeat known-failing local HostLoopbackallow experiments unchanged.
+SSH control/fetch/host checks remain authorized and healthy. The current graph
+has no other dependency-satisfied planned product task; MXC04 requires MXC02
+and cannot admit a failed profile. No new host/production prerequisite is added.
+Next: incorporate the owner's peer decision, change only the scoped network
+fixture, then qualify the exact candidate, obtain both required host checks,
+independent review, and normal Design/Node/Plan delivery. Preserve old failures.
+
 ## Lifecycle result and ancestor-rule correction — 2026-11-18
 
 Source bfc55b518432fcdd4805ded9b3be9fba312bb664 passed targeted build,
