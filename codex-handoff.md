@@ -20,7 +20,8 @@ endpoint that can distinguish exact allows from the negative controls.
 Microsoft's pinned backend documentation also explains why the old RFC 1918
 test address requires a private-network capability that changes ingress
 semantics. The current inventory identified no independently routable,
-controlled peer on this workstation for the remaining experiment. The fixture
+controlled peer on this workstation for the remaining experiment. The owner
+also confirmed there is no known existing project test endpoint. The fixture
 hardcodes H-22 and Windows adapter 17. Choose and calibrate a candidate
 before binding it to the network and combined test paths. Retain the
 peer's identity, exact counts, direct socket path and cleanup evidence.
@@ -29,8 +30,17 @@ The original 68-case receipt remains outstanding.
 The original Linux admission timeout and its successful same-input retry are
 preserved under the prior Node SHA below. On the new SHA the first Linux
 repository run failed at Unix socket-directory permissions. The targeted
-rerun passed with the documented process umask 0077. The full retry is in
-progress, alongside the native Windows repository run.
+rerun passed with the documented process umask 0077. The foreground retry
+reached the end of the regular exclusive suite before its reporter lost
+stdout. The detached reporter is running on H-22 with the same umask and
+host-local output.
+
+The new Windows repository head twice failed the normal CI step. A measured
+rerun of that step reproduced three Platform waits and a Core forced-stop
+deadline under concurrent project load. The same Platform selection passed
+114 with one skip when run alone. Both formal failure receipts and diagnostic
+comparisons are in the experiment record. Windows repository status remains
+failed on the new head. The new head has independent review of its code delta.
 
 The graph remains 9 complete, one blocked by AR-01 and 30 planned.
 `python tools/plan.py next` returns `null`.

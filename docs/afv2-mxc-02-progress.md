@@ -77,8 +77,58 @@ The adjacent `cloudlink-original-failure.log` has SHA-256
 Running the exact test with the documented process umask `0077` passed 1/1
 in 2.369 seconds, log `cloudlink-owner-only-targeted.log`, SHA-256
 `7ec9cf5729a953c4426a62cd85207112e26c78a0fbe012e3ea222c996bb79f15`.
-The full retry uses that process setting and the same source. The older
+The full retry used that process setting and the same source. The older
 `dcd91f6` pressure-test timeout has its own evidence and an unknown cause.
+
+The retry in `20261118-063155-32e2ac1b6c96-linux` passed the CI suite and
+the regular exclusive suite. After the foreground SSH session disconnected,
+the reporter exited with `BrokenPipeError` and posted `error` before the
+native exclusive suite, startup or summary publication. The complete
+regular exclusive log has SHA-256
+`c0e249adbdeb47f188bc2b605e60b34d56bf15683c50c03ffe3e5d30cc98decc`.
+The next invocation runs the same command under `nohup` on H-22 with local
+log redirection and umask 0077. Its launch log is
+`arcforges-verify/launches/mxc02-32e2ac1-linux-detached-01/reporter.log`
+under the Git common directory.
+
+On the first Windows `32e2ac1` run, the CI step reported three failures.
+CloudLink's ahead-of-server clock test timed out waiting for its timers.
+The Core priority test still saw a Running task after 60 seconds. The
+3,000 ms Core cancellation case observed a command start during cancellation.
+The original summary `20261118-062407-32e2ac1b6c96-win/summary.json`
+has SHA-256 `4217e24991524a3146f0cfc461e91bf6ec1729868c3bffde951375a81eb568e7`.
+The reporter's log directory retains both suite logs and three targeted
+rerun logs. All four targeted cases passed on the same compiled binaries,
+including both cancellation inputs. The reasons for the original failures
+remain undetermined.
+
+The same-head Windows full retry again stopped at `win-ci`. CloudLink
+passed. Seven Windows Platform cases and one Core forced-root-stop case
+failed in this run. The original summary
+`20261118-063738-32e2ac1b6c96-win/summary.json` has SHA-256
+`da3bf5f2b1f997d876b29754da9d7534c22c78bd24d532d720bbf074c259d57b`.
+
+A separate diagnostic reran the original affected CI group on the same
+Release binaries, with default project and in-project parallelism and
+unchanged deadlines. Seven projects passed. Windows Platform reported
+three failures and Core reported three. Three previously observed Windows
+wait timeouts and the Core forced-stop deadline recurred. Whole-host CPU
+use had 30-second medians of 88.24–88.89 percent near the observed failures.
+Available physical memory stayed at or above 14,290 MiB across the run. These
+measurements establish concurrent load. The cause of the timing failures
+remains open. The diagnostic's `summary.json` has SHA-256
+`ee160d638861fc5687f135456769faa7719f7daba92e0a8767bcd0b6e0861898`
+under `.worktree/verify-mxc02-32e2ac1/artifacts/ci-suite-measured-32e2ac1`.
+
+The same Windows Platform CI selection then ran alone with its original
+in-project parallelism, trait filters and time limits. It passed 114 cases
+and skipped one. The test runner reported 22.057 seconds. This result and
+the concurrent 111-pass/3-fail/1-skip result localize a difference in test
+conditions. They leave project contention as a possible contributor. The
+standalone observation does not fulfill the repository's Windows status.
+Its `summary.json` has SHA-256
+`baae645bbdf9c2be02114ef3200ccebb3bde38ff6be5a8ee01d2a31c8db01ae7`
+under `.worktree/verify-mxc02-32e2ac1/artifacts/windows-project-isolated-32e2ac1`.
 
 ## Current status — 2026-11-18, after Plan160
 
