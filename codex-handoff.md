@@ -1,6 +1,175 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — adapt stale ingress negative test
+## Current checkpoint — exact architecture inventory consumer correction
+
+Latest f6b9 full Linux run20261117-102200-f6b9edc25f5d-linux finished failure372s.
+The original check-dotnet log has one actual assertion failure:
+ProductionBundleMarkersTests.TheGeneratedTableListsTheSevenWebBrowserSessionRoutesAndTheTwoNativeMobileRoutes,
+expected9 actual16. ID01 added seven real lifecycle page routes; update this stale
+consumer inventory, retaining exact-route and negative-marker protection.
+check passed172s; security bridge123s; center was stopped after the earlier failure,
+not a full pass. Its identityapi passed85.960s. Session895 recorded localoom_kill0to1,
+peak4830121984bytes; that resource event does not explain the route assertion, and
+exit137 alone does not identify a killed PID. Preserve original logs and summary.
+Driver3786855 has finished; no active formal verification remains.
+
+Plan draftPR145 adds only the exact41st Cloud path
+ tests/ArchitectureTests/WorkerAdapter/ProductionBundleMarkersTests.cs.
+No source change until amendment review/required both-host checks/normal merge.
+Independent id_transport is reading the minimal assertion adaptation; id_metadata
+checks whether this test is in any immutable admitted hash closure. No runtime,
+route, dependency upgrade or weakened assertion is intended. Existing source at
+Cloudf6b9 remains clean; its Windows10/10PASS144s is historical valid evidence but
+any successor requires fresh both-host profiles. Continue per-process0077/GOMAXPROCS2
+for the measured memory pressure; no root, host settings or container deletion.
+
+Baselines Plan cedc3c4905808b7bbee539a33a8e1a6ce3736f2a,
+Design493022fbf643b484665b2713c9eb8670f2fb2234, Cloud6bd7169607d55c8b647b1a70302ff28ad365d488.
+Plan worktree .worktree/afv2-id-01 branch plan/afv2-id-01-delivery; Cloud author/native
+worktrees unchanged. Next: merge reviewed Plan amendment, adapt/test exact consumer,
+review/push successor and get both native full checks; then Cloud merge/paused
+publication observation and Plan completion. All32planned remain behind MXC01/AR03.
+
+## Historical checkpoint — same f6b9 verification with bounded Go concurrency
+
+The per-process0077 run (driver3758064) finished exit1. Original receipt directory:
+Cloud/.git/arcforges-verify/logs/20261117-100316-f6b9edc25f5d-linux.
+ManagementCLI and migrate passed; identityapi and provision processes were killed
+without assertion/race failure. The corresponding session-860.scope recorded two
+OOM kills and peak4217671680 bytes; host swap2GiB was full. Kernel journal is not
+readable by this ordinary user, so individual killed PID attribution is unproven.
+Root still has273GiB available: this is not renewed disk exhaustion. The old scope
+and its compiler servers have since exited. Old disposable PostgreSQL containers
+have AutoRemove=true; preserve their data rather than stopping them opportunistically.
+
+Independent id_review accepted only this invocation GOMAXPROCS=2 plus umask0077:
+it changes runtime/default package parallelism and fuzz workers, not just inter-package
+scheduling. All original packages, race/count/timeouts, real PostgreSQL, nine fuzz
+targets, restore/image and remaining profile steps stay unchanged. No source or host
+configuration change, root/sudo or new acceptance requirement. Earlier failures remain.
+
+H22 independently fetched f6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa again;
+new detached driver3786855, caller /home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-native,
+artifacts/afv2-id-01-formal-f6b9-ssh-0077-gmp2-20261117/native.log and exit.
+Runner and driver.log use the same prefix under artifacts. id_audit observes this
+one run via owner-authorized ssh netcup. No final LinuxPASS/merge/completion yet.
+Same-head Windows10/10PASS144s remains valid. Plan branch plan/afv2-id-01-delivery,
+draftPR145; Cloud draftPR160. Baselines Plan cedc3c4905808b7bbee539a33a8e1a6ce3736f2a,
+Design493022fbf643b484665b2713c9eb8670f2fb2234, Cloud6bd7169607d55c8b647b1a70302ff28ad365d488.
+Next: read actual full result, independent original receipt/artifact review, normal
+Cloud merge and paused delivery observation, then Plan completion/checks/merge.
+Only advance an eligible task: all32planned currently depend on MXC01/AR03.
+
+## Historical checkpoint — f6b9 SSH verification with private creation mode
+
+The first SSH run(defaultumask0002) actually failed real management/backup tests:
+Go1.27.4 testing.TempDir child mode0775 is correctly refused by the unchanged Linux
+backup unprotected-ancestor guard. This was not disk exhaustion or a tmpfs ban.
+Independent diagnostic worktree@f6b9:
+/home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-diag-capture-umask-f6b9,
+artifacts/afv2-id-01-capture-umask-diagnostic/ contains ssh-default.log,
+per-run-0077.log,result.json,per-run-0077-pg-management.log,result-pg.json.
+With only this process os.umask(0077), tempchild0700 is accepted; unchanged
+protected-parent/directory-sync/shared-directory/symlink tests pass with race,
+and original managementCLI10/11 both pass with real pinnedPostgreSQL18.7/wrappers.
+No product code, TMPDIR, user/system configuration or validation guard changed.
+
+Previous SSH driver3732917 exited1; failure evidence retained. New final samef6b9
+fullprofile driver3758064 is detached with per-processumask0077, original caller
+Cloud/.worktree/afv2-id-01-native, log
+artifacts/afv2-id-01-formal-f6b9-ssh-0077-20261117/native.log and exit when finished.
+Root freshly fetched exactsource before launch. Same-headWindows10PASS144s remains
+valid. id_audit observes this one run; id_review independently audits diagnostic
+facts and then finalreceipts. Do not duplicate tests/profiles. No merge/completion.
+
+Current Plan branch plan/afv2-id-01-delivery/draftPR145. Next: actual Linux complete
+profile/artefact review, normalCloud160 merge and pauseddelivery observation, then
+Plan completion/bothhostchecks/merge. Only then advance an eligible task. Read-only
+lookahead found all32planned depend on MXC01/AR03; same-host recovery does not waive
+that independent official-engine privacy blocker.
+
+## Historical checkpoint — same H22 resumed through owner-authorized SSH
+
+Owner explicitly directs native local `ssh netcup` instead of LinuxMCP for the
+remaining V2 tasks7–40, with parallel agents within the current task. This overrides
+older MCP-only/no-SSH transport instructions; the host/profile/review gates do not
+change. Verified sameH22 v2202601329473427941, user sammiller, Linux6.12.63;
+root available275GiB. No root/sudo, network or security changes are needed or used.
+
+Actual priorf6b9 run is now known: native.log ended05:24:34 with centerexit-15 and
+FAIL interrupted, no summary/exit file. Cause is not established. Read-only process
+and lock checks found no old controller/children/active locks; stale lock-file PID
+is not a running process. Preserve this interrupted evidence, never call it PASS.
+
+Current source remains pushed/cleanf6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa.
+Valid same-head Windows10/10PASS144s is retained. H22 independently fetched current
+branch/main, then launched unchanged full `eng/verify.py run-and-report` with
+existing Go/bridge/archive selectors. New driver3732917 is detached using
+Popen(start_new_session=True, stdin=DEVNULL), callerCloud/.worktree/afv2-id-01-native.
+Log artifacts/afv2-id-01-formal-f6b9-ssh-20261117/native.log; exit in same directory,
+driver output artifacts/afv2-id-01-formal-f6b9-ssh-20261117-driver.log.
+id_audit observes this single run through SSH; do not start duplicates.
+
+ID01 is active again. Main baselines freshly fetched: Plan cedc3c4905808b7bbee539a33a8e1a6ce3736f2a,
+Design493022fbf643b484665b2713c9eb8670f2fb2234, Cloud6bd7169607d55c8b647b1a70302ff28ad365d488.
+Plan task worktree branch plan/afv2-id-01-delivery/draftPR145. Next: collect actual
+Linux result, final independent receipt/artifact review, ordinaryCloud160 merge
+and pausedmain-push observation, then Plan completion checks/merge. Continue next
+eligible authorized task; base_audit is only reading future dependency readiness,
+not starting a second product implementation. No public activation is authorized.
+
+## Historical checkpoint — f6b9 Windows passed; H22 observation unavailable
+
+Cloudf6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa is clean/pushed and independently
+source-reviewed. Final Windows full10/10PASS144s, tree8af897e46cc0577d06794c787becf1f14411c739,
+originalCloud/.git/arcforges-verify/logs/20261117-052223-f6b9edc25f5d-win/summary.json.
+Linux originalrun20261117-052230-f6b9edc25f5d-linux was independently launched;
+last host observation confirmed driver3679481 running17s. During subsequent
+id_audit observation, LinuxMCP returned three consecutive HTTP502 transport errors
+in this one outage, including the final minimal hostname/ps probe. Per the owner's
+explicit three-consecutive-failure limit, no further MCP retry was attempted.
+The independently running formal process was not terminated; current outcome is
+unknown. GitHub last observation still reportsLinuxpending andWindowssuccess.
+This is a new transport outage, not renewed disk exhaustion or a Go/test failure.
+
+ID01 is blocked byH02 pending recovery of the designated host observation. No
+product merge, finalLinuxPASS or completion claimed. Overall6complete/2blocked/
+32planned. Current Plan record branch plan/afv2-id-01-delivery, draftPR145;
+mergedmaincedc3c4 still contains the earlier active checkpoint, so fetch this draft
+for latest blocked state. SourceCloud160 remains draft. No uncommitted Cloudfiles.
+
+Next resume: establish a new MCP connection attempt within the owner's retry rule;
+read existing artifacts/afv2-id-01-formal-f6b9/native.log/exit and originalsummary
+before deciding to rerun. Do not duplicate a still-running profile. If exactf6b9
+already passed, preserve its validWindows receipt and perform final independent
+receipt/artifact review, normalCloudmerge and pausedmain-push observation, then
+Plan completion checks/merge. If it failed, fix only the actual failure. Continue
+remaining tasks7–40 as dependencies permit; the old stop-after-ID01 is superseded.
+All cleanup records, source changes and failures are preserved. No network,
+proxy/security settings, unknown data, databasevolumes or images were changed.
+
+## Historical checkpoint — f6b9 final native verification running
+
+Plan144 mergedcedc3c4905808b7bbee539a33a8e1a6ce3736f2a after independent review
+and Windows5/5PASS5s/Linux5/5PASS27s atfadd0cc, both currentDesign493022fb.
+Its40th exactpath permits the necessary ingress negative-vector adaptation.
+Cloudf6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa is pushed/clean; only two test lines
+changed fromdb93. Independentreview accepted unchanged404/zero-forward assertions.
+H22 independently fetched it and native ingress-pipeline test27/27PASS0skip.
+Windows targeted samefile26/27: the changedcase passed, only the already-observed
+WindowsURL C:/C:/ source-path test failed; no additional scope or weakened gate.
+
+Both hosts run the unchanged full profile atf6b9. Windows session31337, original
+Cloud/.git/arcforges-verify/logs/20261117-052223-f6b9edc25f5d-win/; H22 driver3679481,
+callerCloud/.worktree/afv2-id-01-native, artifacts/afv2-id-01-formal-f6b9/native.log
+and exit. Results pending; do not duplicate or claim success. id_audit watches
+original Linux evidence. Prior original runs/results remain preserved.
+Root Plan branch is now plan/afv2-id-01-delivery in the same worktree. Next: final
+both-host receipt/artifact review, ordinaryCloud160 merge and paused main-push
+observation, then Plan completion record/both native checks and merge. Continue
+the remaining authorized task range only as real dependencies permit.
+
+## Historical checkpoint — adapt stale ingress negative test
 
 Clouddb93 final Windows10/10PASS144s; Linux failedcheck on the old
 ingress-pipeline.test.ts negative vector for BeginRecovery(actual200/expected404).

@@ -1,10 +1,42 @@
 # AFV2-ID-01 engineering evidence
 
-ID-01 is active after H-02 storage capacity recovery; this is the shared implementation and
+ID-01 is active after the owner authorized local `ssh netcup` to the sameH22,
+superseding older MCP-only transport wording. Native host and verification gates
+remain unchanged. This is the shared implementation and
 verification checkpoint, not a delivered or published result. Initial source is Cloud
 `3a22bec5e9e4dc29841fbb3b9e96c4b2362c6d00` in [Cloud PR160](https://github.com/ArcForges/Cloud/pull/160).
 Design baseline is `493022fbf643b484665b2713c9eb8670f2fb2234`.
-Final candidate is `94834c591958dd5d24a0bef92888e0d6c2c2099d`, tree
+Current candidate is `f6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa`, tree
+`8af897e46cc0577d06794c787becf1f14411c739`. Independent final source review passed;
+Windows formal10/10PASS144s (20261117-052223-f6b9edc25f5d-win). The prior H22 run
+was found interrupted(exit-15), withoutsummary, after connection recovery. No old
+process/lock remains. The first SSH run failed because inherited umask0002 created
+Go test output directories0775, correctly refused by the backup guard. Native
+original managementCLI10/11 and protected-parent diagnostics pass with process0077.
+The next complete run20261117-100316-f6b9edc25f5d-linux passed management/migrate,
+but identityapi/provision were killed; its scope recorded oom_kill2 while swap was
+full. Preserve both failures; there is still no final Linux pass.
+
+After measured pressure and independent review, the same unchanged profile is
+running under driver3786855 with per-process umask0077 and GOMAXPROCS=2. This limits
+runtime/default package parallelism and fuzz workers; all original cases/race,
+counts/timeouts, PostgreSQL, nine fuzz targets, restore/image and remaining checks
+remain. No product or host configuration change. Original log:
+artifacts/afv2-id-01-formal-f6b9-ssh-0077-gmp2-20261117/native.log and exit.
+This run ended failure372s: check passed172s, but check-dotnet found the old
+architecture inventory assertion expected9 versus actual16. Center was stopped
+after that failure. Its scope also recorded one OOM kill, without individual PID
+attribution; do not attribute the deterministic assertion to memory. The exact
+consumer-path Plan amendment precedes source correction and new-head both-host
+verification. Original same-head Windows success remains valid historical evidence.
+
+Historical observation before SSH recovery: H22 launched
+run20261117-052230-f6b9edc25f5d-linux, then three consecutiveMCP HTTP502 failures
+required stopping retries. The native process was not terminated; outcome is
+unknown and last GitHubLinux status pending. No merge or completion is claimed.
+On resume inspect that existing run before rerun; preserve the valid Windows leg.
+
+Earlier candidate was `94834c591958dd5d24a0bef92888e0d6c2c2099d`, tree
 `ca9a2a1416077cb8093ebb554f9274decaa3e9b3`. Independent source/metadata review
 passed and Windows formal10/10 passed344s. Same-head Linux formal verification
 reported error after ENOSPC (root volume user-available0); it has not passed.
@@ -15,7 +47,12 @@ Owner-authorized audited cleanup restored304.0GB available on H22. Same9483
 Linux formal profile20261117-044320-94834c591958-linux failed the required Prettier
 check for docs/postgres-store.md; security bridge passed195s. The controller
 stopped linux-center and later steps; no full pass. A two-line formatting-only
-correction is source-reviewed; minimal immutable admission succession is pending.
+correction and immutable admissionr2 are now committed. Subsequent16nonnull test
+assertions were replaced by real assert.ok guards; a stale ingress negativevector
+was adapted to the unregistered legacyRequestAccountDeletion. Both deltas received
+independent review; nativeLinux ingress27/27 passed. PriorLinuxdb93 completeGo/race/
+PG stage passed before the stalevector interrupted fuzz/later stages, so it was
+not a full profile pass. Applied SQL and usedr1/R138 records remain unchanged.
 Detailed cleanup inventories remain in H22 arcforges/logs/afv2-disk-cleanup-20261117/.
 The owner clarified continued authorization for remaining tasks7–40; finish this
 task and records, then continue the next eligible task under unchanged gates.
