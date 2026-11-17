@@ -1,5 +1,54 @@
 # Codex handoff — ArcForges V2
 
+## Windows full profile passed; Linux diagnosis continues — 2026-11-18
+
+Plan160 merged as 70a93596066e73d7c9752b5ceb92a3d300617af5 after independent
+review and both required 5/5 host profiles at41969525e5d6acf3ff0272c2ee15a9c695cf8ca3,
+both against actual Design main41d25327841e6c88df639bbcb387682bd067f7a1.
+The same Plan worktree now uses branch `plan/afv2-mxc-02-formal-diagnosis`.
+
+Node dcd91f63a8ce96863c4f9384d66292759550175d Windows full profile is now
+PASS:15/15 steps,2177 seconds; the reporter posted arcforges/windows SUCCESS.
+Original receipt `.git/arcforges-verify/logs/20261118-040926-dcd91f63a8ce-win/summary.json`
+SHA2567845d9fa55708176aec964e78487603ce9e27e83a5f3ee0b2a40e682df664560.
+Exclusive passed745s, exclusive-native708s, startup3s. Reporter PID25552 ended.
+H22's original full failure below remains. Its later CloudLink/Core/Linux-platform
+groups passed; the overall900s budget expired during the Store application, whose
+selected frozen-clock test intentionally waits122s. No second hang is established.
+No related H22 verification/test process remained after that reporter ended.
+
+The completed diagnostic is one unchanged original Linux pressure-response method,
+with bounded private log capture and an artifact-only observer using existing
+read-only APIs, AutoStart=false and exact fixture process/Node identity checks.
+Observer source is in Node resume WT `artifacts/pressure-observer-source-01`;
+the H22 diagnostic target is the invocation WT's `artifacts/pressure-diagnostic-01`.
+Its first helper build rejected the unavailable WaitReadyAsync name; the
+artifact-only helper was corrected to public ConnectAsync(AutoStart=false).
+Build02 passed with zero warnings/errors; ProgramSHA256
+69b34b266a8a15838149db9bdfb58fd221af2b6471fa63286adbf13aa8ea2045.
+Detached diagnostic driver PID174907 started2026-11-17T20:52:31Z; inspect
+`original-method.log`, `observer.jsonl`, and `driver-console.log` in that H22
+diagnostic directory. It preserves only the owned node/supervisor log snapshots.
+No test parameter or threshold changed; this is author diagnosis, not a status.
+The method passed1/1 in19.904s (driver20.915s); observer exited0. Nine snapshots
+showed no queued task; all four ran by3.265s, with measured CPU budget5142 and
+AUTO pool limit5 (initial6200/6). Critical/preempt-one/Normal behavior passed.
+No protected-task explanation was captured because no task remained queued.
+The original failure's admission reason is still UNKNOWN; do not call it fixed.
+Original method logSHA256604f347fd2fb6b76105129116d3bc00079d7c2ad6bfcbec459ed2662eff3e9a5;
+observerSHA2566cf54996d88e0aab5617178da5d47a4b595fedc420c81cc522d1972f7e10a704;
+captured node logSHA2564ad5a788d8395d95c62d8f9f2a1d5e510e418188df120e307f480a5b5dec377d.
+All four owned attempt units were not-found with zero PID/empty cgroup; owned
+slice was inactive/empty, test/observer/node/driver exited, Root/endpoint removed.
+Proceed with one unchanged same-source full Linux reporter retry, retaining the
+original failure and this author diagnostic as separate evidence.
+Retry reporter PID176014 started2026-11-17T20:56:52.875821Z, independently fetched
+exactdcd in `/home/sammiller/arcforges/ArcForges/.worktree/verify-mxc02-dcd91f63a8ce-retry01-linux`.
+Original retry receipt is `.git/arcforges-verify/logs/20261118-045655-dcd91f63a8ce-linux`;
+launch stdout/stderr are under `.git/arcforges-verify/launches/mxc02-dcd91f63a8ce-retry01-linux/`.
+This unchanged full20-step reporter is running; no final result is claimed.
+Node draft PR95 still lacks Linux required PASS and WIN04/06/full68 native evidence.
+
 ## Formal Linux failure under diagnosis — 2026-11-18
 
 The dcd91f63a8ce96863c4f9384d66292759550175d H22 reporter has ended
