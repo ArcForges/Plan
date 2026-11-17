@@ -1,6 +1,36 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — f6b9 SSH verification with private creation mode
+## Current checkpoint — same f6b9 verification with bounded Go concurrency
+
+The per-process0077 run (driver3758064) finished exit1. Original receipt directory:
+Cloud/.git/arcforges-verify/logs/20261117-100316-f6b9edc25f5d-linux.
+ManagementCLI and migrate passed; identityapi and provision processes were killed
+without assertion/race failure. The corresponding session-860.scope recorded two
+OOM kills and peak4217671680 bytes; host swap2GiB was full. Kernel journal is not
+readable by this ordinary user, so individual killed PID attribution is unproven.
+Root still has273GiB available: this is not renewed disk exhaustion. The old scope
+and its compiler servers have since exited. Old disposable PostgreSQL containers
+have AutoRemove=true; preserve their data rather than stopping them opportunistically.
+
+Independent id_review accepted only this invocation GOMAXPROCS=2 plus umask0077:
+it changes runtime/default package parallelism and fuzz workers, not just inter-package
+scheduling. All original packages, race/count/timeouts, real PostgreSQL, nine fuzz
+targets, restore/image and remaining profile steps stay unchanged. No source or host
+configuration change, root/sudo or new acceptance requirement. Earlier failures remain.
+
+H22 independently fetched f6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa again;
+new detached driver3786855, caller /home/sammiller/arcforges/Cloud/.worktree/afv2-id-01-native,
+artifacts/afv2-id-01-formal-f6b9-ssh-0077-gmp2-20261117/native.log and exit.
+Runner and driver.log use the same prefix under artifacts. id_audit observes this
+one run via owner-authorized ssh netcup. No final LinuxPASS/merge/completion yet.
+Same-head Windows10/10PASS144s remains valid. Plan branch plan/afv2-id-01-delivery,
+draftPR145; Cloud draftPR160. Baselines Plan cedc3c4905808b7bbee539a33a8e1a6ce3736f2a,
+Design493022fbf643b484665b2713c9eb8670f2fb2234, Cloud6bd7169607d55c8b647b1a70302ff28ad365d488.
+Next: read actual full result, independent original receipt/artifact review, normal
+Cloud merge and paused delivery observation, then Plan completion/checks/merge.
+Only advance an eligible task: all32planned currently depend on MXC01/AR03.
+
+## Historical checkpoint — f6b9 SSH verification with private creation mode
 
 The first SSH run(defaultumask0002) actually failed real management/backup tests:
 Go1.27.4 testing.TempDir child mode0775 is correctly refused by the unchanged Linux
