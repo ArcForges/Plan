@@ -1,5 +1,36 @@
 # Codex handoff — ArcForges V2
 
+## Exact-script candidate and calibration diagnosis — 2026-11-18
+
+Plan159 merged8b9340ca1dd29b0066a192f3ffd60b7247c0d97d after independent
+review and both required statuses againstDesign41d2532. Node PR95 now has
+417a0dca3e3e123305e0feed394b5e12d2820d98 in the same resume worktree.
+The three scoped authors restored7external-egress/6local cases and real peer
+accounting in combined scenarios, and replaced inline source transfer with a
+single committed Python script. Independent source review found no blocking
+acceptance defect. Targeted build05/format05 and AOT publish04 passed with
+zero warnings/errors. Install04 manifestSHA256:
+c26f3a14157f95f99e8d34358c90c32d5d44aab829d856bc76ff874810f9fdaf.
+
+H22 independently fetched417a0dc into
+`/home/sammiller/arcforges/ArcForges/.worktree/mxc02-peer-417a0dca3e3e123305e0feed394b5e12d2820d98`.
+Git/script bytes match922e820bb5df11f2535a6cda4845f0939ece6ea9197ec2b9ae4e5d06e83f5b1d.
+`network-resume-02.json` is a real failed diagnostic, SHA256
+0533fa8b9b9dd7e7126677ac75f567ecee4faec445c7a36a711d715fae787522:
+TCPconnect1ms/send0ms, receive0bytes at original3s budget; local address
+198.18.0.1, peer accepted/matched0 before and after. Script/host/source admission
+and SSH control succeeded; explicit peer cleanup confirmed. No sandbox cases
+ran, so no policy pass is inferred. Session30884 has ended.
+
+Next investigation is bounded read-only route/address inspection to distinguish
+a wrong fixture path from actual unavailable data transport and choose the
+smallest original-task implementation. Do not increase timeouts blindly, change
+host settings, revive an endpoint-approval gate, or call this SSH failure.
+Current source has one uncommitted RemotePeer error-whitelist literal fix
+(`source_git_query_timeout`) and the preserved stat-only Program.cs flag with
+no textual change. Plan recording branch is `plan/afv2-mxc-02-native-checkpoint`.
+No other product task is active; qualification and source merge gates remain open.
+
 ## Resume original task; separate instructions from implementation — 2026-11-18
 
 After a requested interpretation audit, the owner explicitly resumed execution
