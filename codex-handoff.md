@@ -2,6 +2,31 @@
 
 ## Resumed native qualification — 2026-11-18
 
+Final source is now Node022946a305e505e5817162c79a956c7816b99b12, only a
+reviewed whitespace delta from the successful50e native source. The original
+50e Linux formal check failed Admission formatting; do not rewrite that failure
+or the original50e native receipt. Author formatting must cover all task-changed
+files since origin/main, not only currently uncommitted files. Independent
+source/native review PASS extends to022946 with unchanged tokens/non-whitespace
+bytes. See [the qualification summary](docs/afv2-mxc-03-summary.md).
+
+Actual final022946 H22 formal receipt is20261118-010502-022946a305e5-linux.
+Its original reporterPID4193458 was confirmed alive in
+`.worktree/verify-mxc03-022946a` after one SSH output disconnect; it continued
+through format/build/CI/publish into exclusive tests. Reconnect/read original
+logs and status before starting anything; do not launch a duplicate. Old50e
+Windows verification is still in exclusive tests in receipt005846; final022946
+Windows verification must run afterward using the same unchanged reporter.
+
+Design PR76 candidatee95476f531ca22b3ca3944bdaa56d7e26f9763bf has independent
+review PASS and H22 formal4/4 PASS31s, receipt20261118-011411-e95476f531ca-linux.
+Its detached driverPID31035/log`/home/sammiller/arcforges/logs/design76-e95476f-driver.log`
+completed. Windows Design formal is pending. No Node/Design merge or MXC03
+task completion is claimed. AR02 now separates observed native PASS from pending
+repository delivery and MXC04 admission. Plan PR154 remains the shared draft.
+
+The following notes retain earlier candidates and are superseded where stated.
+
 Latest result: Node50e602a83ece2c4de75d8dbd32777c7833a6eaf7 (draft PR96)
 passed the full same-head H22 native profile in87.749s: admission4, terminal17,
 policy12, network10, resource13, lifecycle16;72/72 and every cleanup confirmed.
