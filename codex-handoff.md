@@ -2,6 +2,29 @@
 
 ## Resumed native qualification — 2026-11-18
 
+Latest result: Node50e602a83ece2c4de75d8dbd32777c7833a6eaf7 (draft PR96)
+passed the full same-head H22 native profile in87.749s: admission4, terminal17,
+policy12, network10, resource13, lifecycle16;72/72 and every cleanup confirmed.
+Original evidence is in H22 `.worktree/mxc03-author-50e602a83ece/artifacts/mxc-03`:
+`full-native-01.json`, child reports beneath `full fixture 01`, and original
+driver/owner logs. Last fix waits for actual active/running rather than an early
+pre-exec MainPID; real200/CHDIR refusal now passes. Previous failed reports below
+remain unchanged.
+
+Formal exact-head Node profiles are running, not yet passed: Windows15 steps,
+receipt20261118-005846-50e602a83ece-win; H22 Linux20 steps,
+receipt20261118-005847-50e602a83ece-linux. Originals live in each host's Node
+`.git/arcforges-verify/logs`. Both use the unchanged reporter, selected Python,
+process-local English CLI output; H22 uses0077 and the installed .NET11 root.
+No source merge or task completion is claimed. Independent final native/source
+review and the Design evidence update are in progress. Design worktree is
+`ArcForges-Design/.worktree/afv2-mxc-03`, branch `design/afv2-mxc-03`, based onaf28dc6;
+only the two task-allowed verification documents are being updated. Plan draft
+PR154 preserves this qualification checkpoint. Finish Node checks/review and
+Design delivery, then validate Plan against actual new Design main before merge.
+
+The following integration notes are superseded by the latest result above.
+
 Current integration head: Node0573c19a007798577081cfe14236da6bb8d42262 (PR96),
 clean `task/afv2-mxc-03` worktree. Targeted Windows builds/format and independent
 incremental source reviews pass. H22 is independently building/staging/running
