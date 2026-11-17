@@ -17,7 +17,8 @@ Working locations:
 - Node C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-mxc-02,
   task/afv2-mxc-02 from main b2ebace5c15a130b13a7dbd02fd9900e4983c6e8.
 - Plan C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-mxc-01-resume,
-  now plan/afv2-mxc-02 from the actual Plan148 merge above.
+  now plan/afv2-mxc-02-evidence from actual Plan149 merge
+  89d142f735a520f47fd98414176333dfa34b5f92.
 - Design remains af28dc6378d91d678870abc628362476611efa32; no MXC02 evidence
   amendment yet. Prior MXC01 source/stages/logs remain intact at paths below.
 
@@ -27,6 +28,28 @@ and ConPtyNative.cs (id_transport), WindowsWorkload.cs (id_author), WindowsPolic
 nonoverlapping scopes. Coordinator owns Program dispatch, native profile integration,
 all Plan state/ledger, commits/pushes and PRs. Independent reviewer is id_review.
 No MXC02 native acceptance or formal host success has yet occurred.
+
+Latest native checkpoint: author publishes01/02/03 are zero-warning Native AOT;
+unchanged official stages are retained under Node artifacts/mxc-02. Smoke01/02
+failed because ui.disable=true prevented AOT loader initialization (actual Windows
+System event26, 0xc0000142, five dialogs reported by owner). Process-local error
+mode GetErrorMode|3 now prevents interactive dialogs while returning the true
+failure. The same policy with ui.disable=false, clipboard=none and injection=false
+starts the AOT payload in a pipe-only diagnostic; independent id_review confirmed
+this explicit profile selection conforms to current Design and needs no new approval.
+No host settings changed. Original failures remain historical, not rewritten passes.
+
+Smoke03 uses that corrected UI policy and no longer creates dialogs, but ConPTY
+still emits only 170 bytes (clear/title), with no fixture console event in 10s.
+CleanupCompleted=true; the primary failure is expected_fixture_event_missing.
+Current task remains active, not accepted. Investigate exact official executor
+console handling and actual owned Job process/thread observations; do not label
+pipe diagnostics as terminal evidence or replace the unchanged official binary.
+Reports: terminal-integration-01/02/03.json, diagnostic-no-dialog.json,
+diagnostic-win32k-enabled.json, crash-popup-events.json. Raw terminal/diagnostic
+streams stay inside the private per-case control directories, not public records.
+All these test processes have exited. Source remains uncommitted author work;
+owner/guardian/policy/terminal/workload pieces are implemented but not qualified.
 
 Next: integrate the real ConPTY/Job primitive, bounded synthetic workload, private
 schema1.0.0 policy and authenticated independent owner; publish the same official
