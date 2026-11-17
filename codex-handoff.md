@@ -14,20 +14,26 @@ observation; its old failure verdict is not rewritten as a past pass.
 MXC01 is the sole active task; graph7complete/1active/32planned. AR03 is PENDING
 revised-rule qualification, not PASS. User authorization covers the document decision,
 necessary probe adaptation/verification, normal PR/merge and subsequent eligible tasks.
-Current main baselines Design493022fbf643b484665b2713c9eb8670f2fb2234 and
+Current main baselines Design4bc1d2be8916a961d167b4965e30e45bc3023ef1 and
 Plan6ec723ad816d98aa9ad1f32606826afea803a9c0. ID01/Cloudfaf5dcb3 remains complete.
 
 New isolated worktrees:
 - Design C:/MyFile/Projects/ArcForges/ArcForges-Design/.worktree/afv2-local-process-boundary,
-  branch design/afv2-local-process-boundary; delegated id_author edits exact current
-  decision/security/MXC experiment/status wording and preserves historical receipts.
+  branch design/afv2-local-process-boundary atca8e67a7014203937921eedd081be48a721a8b15;
+  Design73 merged4bc1d2be after independent review and original Windows4PASS15s /
+  H22Linux4PASS35s. All nine current policy documents are consistent; old JSON keys
+  and native reports are unchanged. No Design author changes remain uncommitted.
 - Plan C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-mxc-01-resume,
-  branch plan/afv2-mxc-01-resume; root owns graph/policy/ledger/handoff.
-- Existing Node draft93 and its worktree are preserved; id_transport performs only
-  read-only scope/probe/progress audit until the document amendment is merged.
+  branch plan/afv2-mxc-01-resume / PR147; root owns graph/policy/ledger/handoff.
+- Node draft93 task/afv2-mxc-01 worktree is preserved and clean. Root merged actual
+  main1319107b26305e4c6c29574deea5c81f6036e7d1 without conflicts into the existing
+  draft, yielding local2a5a6ffc7e0cbddb6d9d274d294f6d58da598061 (not yet pushed).
+  id_transport completed the audit; only Program.cs, WindowsLauncher.cs and
+  eng/mxc/README.md need the approved observation semantics after document merge.
+  Existing same-host official package/release inputs and historic receipts survive.
 
-Next: independent Design amendment review, exact-head both-host checks and merge;
-then Plan checks against actual newDesign main and merge; adapt only necessary probe
+Next: finish Plan147 exact-head checks against actual Design4bc1d2be main and normal
+merge; then adapt only necessary probe
 expectations within MXC01, execute native scenarios/fullchecks, review and deliver.
 Continue next eligible task immediately after actual completion, without asking for
 this local-process decision again. Public activation remains separate PROD01 approval.

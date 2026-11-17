@@ -14,7 +14,7 @@ Implementation requires an explicit user-authorized list or range of AFV2 task I
 
 Exactly one task is active. Within the authorized range, start the first planned task in graph order whose real dependencies are delivered or complete. Superseded dependencies do not silently count as delivered: update the dependency graph through a reviewed decision. Blocked tasks do not occupy the active slot, and independent eligible work may continue. A failed mandatory MXC profile blocks its admission and dependent Core work; negative probe results are evidence, not permission to weaken the product.
 
-Owner-approved local process boundary (2026-11-17): intentionally supplied workload
+Owner-approved [local process boundary](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0022-cli-sandbox-platform-pivot.md#local-process-visibility--2026-11-17-amendment) (2026-11-17): intentionally supplied workload
 arguments/environment visible to the trusted local host owner or administrator in OS
 process metadata are not public disclosure and are not an independent MXC admission
 or development blocker. Do not recreate the retired argv-absence requirement under
