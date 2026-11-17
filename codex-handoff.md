@@ -1,5 +1,98 @@
 # Codex handoff — ArcForges V2
 
+## Formal Linux failure under diagnosis — 2026-11-18
+
+The dcd91f63a8ce96863c4f9384d66292759550175d H22 reporter has ended
+and posted failure: 17 steps passed, 18 ran of 20 required, 1384 seconds.
+Original summary is `.git/arcforges-verify/logs/20261118-040940-dcd91f63a8ce-linux/summary.json`,
+SHA256 ede9129da912bb99457e46945083ece4dd699e81384e52d8b4838a105edaced6.
+The exclusive step hit its 900-second timeout; exclusive-native and startup
+did not run. Its first observed failure was the pressure-response test's fourth,
+protected task waiting 90 seconds for Running (ResourceTests.cs:629), before
+the 2 GiB pressure injection. This is not evidence of failed preemption timing.
+The three fixture-owned units have been cleaned up and are now not found.
+The test disposes its private log root; original admission diagnostics were not
+preserved. Do not invent a cause, change thresholds or blindly rerun the suite.
+Next: inspect the remaining exclusive log and arrange one unchanged targeted
+reproduction with bounded owned-log capture and read-only admission diagnostics.
+
+Windows at the same source passed win-exclusive in 745 seconds and started
+win-exclusive-native at 04:33:52 local time; no final result is claimed yet.
+The current Node and Plan worktrees/PRs below remain the active candidates.
+9/40 tasks remain complete; only MXC02 is active. Continue the authorized graph
+after each task; this checkpoint is not a request or instruction to stop.
+
+## Current candidate, native results and running formal checks — 2026-11-18
+
+Node PR95 current pushed source is dcd91f63a8ce96863c4f9384d66292759550175d.
+Fixed socket-local IP_UNICAST_IF17 Set/Get is shared by ordinary calibration,
+real payload TCP/UDP and combined execution; no Bind, host settings change,
+new config or fallback. The same original policies/counters/deadlines remain.
+Independent source review PASS; build07/format07 and AOT publish06 passed
+zero warnings/errors. Install06 manifestSHA256
+5482f5365547927063d01ab3fa7fcc4fc4ee08e6be2e57de0075b206a72ee8c9.
+The H22 peer uses its own exact-source worktree `mxc02-peer-dcd91f63a8ce96863c4f9384d66292759550175d`
+and scriptSHA922e820bb5df11f2535a6cda4845f0939ece6ea9197ec2b9ae4e5d06e83f5b1d.
+
+Native `network-resume-04.json` failed at TCPconnect with the original3s budget:
+interface17 was actually applied/read back, no bytes sent, peer0/0. Explicit
+peer cleanup succeeded; no payloadcase ran, and whole-profile cleanup/pass is
+not claimed. ReceiptSHA25677a6611abfb0b1390dcd4af0e7da2df96e2944cf0e8751ac9aea00c9aa5aa815.
+Prior IPv6 cc447dd `network-resume-03.json` likewise failed at TCPconnect,
+SHA2560c1aeced27b126c044e9da5a8b4f0bf77f3ed2d5659f0da870aac05e55640266.
+Prior defaultIPv4 failed at receive; all originals and cleanup evidence remain.
+These establish only an unfulfilled controlled-peer data-path prerequisite,
+not an SSH outage, proven firewall cause, or sandbox policy failure/pass.
+No further unchanged probe or timeout increase is underway. Owner was asked
+for an existing reachable controlled endpoint/known permitted unused ports as
+missing environment information, not ordinary development approval.
+
+Formal exact-head full profiles are running independently:
+- Windows invocation WT `.worktree/verify-mxc02-dcd91f6`, reporter PID25552
+  created2026-11-18T04:09:21+08:00. Launch logs under that WT
+  `artifacts/verification-launch/reporter.log` and `reporter.err`.
+  Actual receipt directory `.git/arcforges-verify/logs/20261118-040926-dcd91f63a8ce-win`.
+- H22 invocation WT `/home/sammiller/arcforges/ArcForges/.worktree/verify-mxc02-dcd91f63a8ce-linux`,
+  detached reporter PID129062, launchUTC2026-11-17T20:09:38Z.
+  Launch logs `.git/arcforges-verify/launches/mxc02-dcd91f63a8ce-linux/reporter.log`.
+  Use the original reporter's eventual summary/status; no success yet claimed.
+
+Continue these ordinary checks and record actual results. Do not merge Node or
+mark MXC02 complete without the required controlled network/combined/full native
+evidence. Current task is still active,9/40 complete; no other task is started.
+Only the original stat-only Program.cs flag remains, with no textual diff.
+
+## Exact-script candidate and calibration diagnosis — 2026-11-18
+
+Plan159 merged8b9340ca1dd29b0066a192f3ffd60b7247c0d97d after independent
+review and both required statuses againstDesign41d2532. Node PR95 now has
+417a0dca3e3e123305e0feed394b5e12d2820d98 in the same resume worktree.
+The three scoped authors restored7external-egress/6local cases and real peer
+accounting in combined scenarios, and replaced inline source transfer with a
+single committed Python script. Independent source review found no blocking
+acceptance defect. Targeted build05/format05 and AOT publish04 passed with
+zero warnings/errors. Install04 manifestSHA256:
+c26f3a14157f95f99e8d34358c90c32d5d44aab829d856bc76ff874810f9fdaf.
+
+H22 independently fetched417a0dc into
+`/home/sammiller/arcforges/ArcForges/.worktree/mxc02-peer-417a0dca3e3e123305e0feed394b5e12d2820d98`.
+Git/script bytes match922e820bb5df11f2535a6cda4845f0939ece6ea9197ec2b9ae4e5d06e83f5b1d.
+`network-resume-02.json` is a real failed diagnostic, SHA256
+0533fa8b9b9dd7e7126677ac75f567ecee4faec445c7a36a711d715fae787522:
+TCPconnect1ms/send0ms, receive0bytes at original3s budget; local address
+198.18.0.1, peer accepted/matched0 before and after. Script/host/source admission
+and SSH control succeeded; explicit peer cleanup confirmed. No sandbox cases
+ran, so no policy pass is inferred. Session30884 has ended.
+
+Next investigation is bounded read-only route/address inspection to distinguish
+a wrong fixture path from actual unavailable data transport and choose the
+smallest original-task implementation. Do not increase timeouts blindly, change
+host settings, revive an endpoint-approval gate, or call this SSH failure.
+Current source has one uncommitted RemotePeer error-whitelist literal fix
+(`source_git_query_timeout`) and the preserved stat-only Program.cs flag with
+no textual change. Plan recording branch is `plan/afv2-mxc-02-native-checkpoint`.
+No other product task is active; qualification and source merge gates remain open.
+
 ## Resume original task; separate instructions from implementation — 2026-11-18
 
 After a requested interpretation audit, the owner explicitly resumed execution
