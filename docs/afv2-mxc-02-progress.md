@@ -42,3 +42,26 @@ Network12/13 exposed an incorrect test-helper assumption: the existing SSH contr
 ## Continuation
 
 Preserve the draft, private original reports and unqualified profile. Do not merge or label the full task complete using these partial results. Once a reachable controlled data path is available, run network-only diagnostics, the required same-run combinations, and one final complete receipt. Then obtain independent final-head review and unchanged Windows/Linux host reports before ordinary merge. All future features follow the diagnostics-from-first-implementation instruction merged in Plan PR150.
+
+## Latest resumption evidence — 2026-11-18
+
+Node PR95 candidate57decb6315f7d0cdfaf7652a760092d6848e6161 has a reviewed
+immediate-Job observation gate (no blanket rejection of inherited Jobs), atomic
+final receipt publication, and a real log-sink failure test in the existing
+lifecycle case. Its Native AOT build passed without warnings/errors.
+`lifecycle-resume-02.json` passed15/15 with all cleanup confirmed; diagnostic
+exit2 remains partial, not qualification. SHA256:
+9936bf35f63b88c95d5f8905a0e2358274e95f70cdb0356c7e29db8e00cc7e28.
+The log failure retained original HResult-2147024816, disqualified its negative
+result and still completed native Stop/shutdown/empty-scope verification.
+
+Earlier candidate8765ddb's `network-resume-01` passed8/13 only: HostLoopbackallow
+allowed all five intended fine-egress denies. ReceiptSHA256
+2bf9a3f162155c2b68651fc046a229a8eefcb14c82426a86f32f5e3b430e7565.
+Strict policy-resume-02 passed12/12 as a partial diagnostic, SHA256
+53fe08b9626fd0dbb244922fbf015458a280859279eb6d5e7cc0b5e65da18339.
+No full profile or current-source merge gate is claimed. An independent-network
+peer decision remains pending under the earlier stop on cross-host data probes;
+GitHub/ssh netcup control and native host checks remain healthy and authorized.
+The handoff names exact worktrees, stage and next action. Historical facts above
+remain unchanged; H-06 has since been retired, as the current register records.
