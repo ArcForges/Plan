@@ -1,5 +1,30 @@
 # Codex handoff — ArcForges V2
 
+## Resume original task; separate instructions from implementation — 2026-11-18
+
+After a requested interpretation audit, the owner explicitly resumed execution
+of the documented40-task graph with parallel agents. SSH replaces Linux MCP
+transport on the same H22 host; it neither creates new product tests nor grants
+or forbids particular network experiments. The coordinator's earlier inferred
+endpoint-approval request is not an owner instruction. Use the original WIN04/06
+controlled-endpoint requirements to choose implementation, not interpretations
+of the SSH instruction. H-06 remains retired, with no new human gate or weaker
+acceptance. Earlier conflicting handoff paragraphs remain historical evidence.
+
+Continue only MXC02: extract the existing bounded peer into a committed script,
+independently fetch the exact source on H22, execute via ssh netcup, and use the
+real separate-network-stack peer for native allow/deny and combined effects.
+No tunnel replaces payload isolation and no host network/proxy/firewall setting
+changes. Diagnose the original calibration failure before repeating; script
+transport correction alone is not evidence that the payload data path works.
+Fresh H22 connection confirms hostname v2202601329473427941, user sammiller,
+native Linux and correct ArcForges origin; root filesystem has255GiB available.
+Node starts from57decb6315f7d0cdfaf7652a760092d6848e6161, Design41d2532,
+Plan mainb9fde801faf4c9485d21df448939d0c18a216be8 (PR158 merged).
+Current Plan branch is `plan/afv2-mxc-02-controlled-peer`. Parallel authors own
+separate RemotePeer/script, NetworkCases and CombinedCases paths, with an
+independent reviewer. No ordinary implementation authorization is requested again.
+
 ## Latest exact candidate and remaining network boundary — 2026-11-18
 
 Plan checkpoint157 merged e811761131562f5e744011267b5b170ea9603fc0 from
