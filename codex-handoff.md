@@ -23,13 +23,15 @@ MXC-AOT-01. No provider/PROD approval is inferred. User authorization for remain
 7–40 persists but does not satisfy this native acceptance prerequisite.
 
 Current Plan completion branch plan/afv2-id-01-completion-20261117 in
-C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-id-01, PR146. The record's own
-reviewed head, original native receipts and actual merge identity are available in
-https://github.com/ArcForges/Plan/pull/146; it uses the unchanged two-host/currentDesign
-merge gate. Scope/checkpoint Plan145 merged e414f268f1c1df8578059cc10d638d0ad880c2c1.
+C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-id-01, PR146. PR146 carries this record and will contain its own final check and merge identities
+once completed: https://github.com/ArcForges/Plan/pull/146. It uses the unchanged
+two-host/currentDesign merge gate. Scope/checkpoint Plan145 merged e414f268f1c1df8578059cc10d638d0ad880c2c1.
 Design main remains493022fbf643b484665b2713c9eb8670f2fb2234. Cloud author branch
 task/afv2-id-01 is clean at8c1c; keep it and the native/verify worktrees as evidence.
-No formal process remains running; last H22 driver3838157 completed successfully.
+No Cloud formal process remains running; last H22 driver3838157 completed successfully.
+The Linux Plan verifier caller .worktree/afv2-id-01-verify has untracked artifacts/
+containing our Plan driver logs; preserve these diagnostics. Tracked source is clean;
+its preflight correctly refused the untracked directory before any new profile ran.
 Original caller native.log/exit under artifacts/afv2-id-01-formal-8c1c-ssh-0077-gmp2-dotnet2-20261117/.
 
 Use native local Windows and ssh netcup to sameH22 v2202601329473427941/sammiller,
