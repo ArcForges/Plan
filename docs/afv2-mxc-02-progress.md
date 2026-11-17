@@ -1,5 +1,16 @@
 # AFV2-MXC-02 partial native evidence — 2026-11-17
 
+## Owner transport clarification — 2026-11-17, after PR151
+
+The extra Windows-to-VPS direct endpoint prerequisite H-06 is retired. Code
+transport and designated Linux execution use GitHub exact fetch over healthy
+`ssh netcup`; stop further cross-host data probes. MXC02 is parked planned while
+MXC03 continues as the sole active task. This does not turn any failed network
+experiment into a pass or waive real selected-egress/full-combination acceptance.
+The earlier H-06 references and measurements below describe the original
+checkpoint and are retained as history, not a current port-opening request.
+
+
 Full Windows qualification is not established. Source is preserved in [Node draft PR95](https://github.com/ArcForges/ArcForges/pull/95), branch `task/afv2-mxc-02`, current head `14886bffd3f66b59aa1f8fec83f0450f108e40b2`. Code checkpoint `4ca55dfc88a6d21caebbee1afd11f099b1914412` passed author compilation, targeted whitespace formatting and Native AOT publication with zero warnings; the following commit adds usage documentation. No latest-head formal Node host profiles, merge, publication or whole-profile PASS are claimed.
 
 Node worktree: `C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-mxc-02`. Private original evidence is under `artifacts/mxc-02`. Official SDK/executor cohort remains 1.0.1/schema1.0.0; staged official bytes are unchanged. Design baseline is `af28dc6378d91d678870abc628362476611efa32`. Existing product launchers and all data/recovery guards remain.

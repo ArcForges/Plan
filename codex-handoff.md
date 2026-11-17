@@ -1,5 +1,80 @@
 # Codex handoff — ArcForges V2
 
+## Live implementation checkpoint — 2026-11-17
+
+Plan PR151 merged at d63e2396ae194b76dce6197cf75e88ce2c3aa785, reviewed head
+40376ee6da410fd14333b92671f85a0c13c7ae9f. Independent id_review passed. Original
+Windows/H22 receipts are 20261117-163934-40376ee6da41-win (5/5,5s) and
+20261117-163936-40376ee6da41-linux (5/5,26s); both bind Design af28dc6. No Plan
+main-push publication workflow ran. MXC03 is the only active task; 8/40 complete.
+
+Owner clarification: `ssh netcup` remains healthy. Code delivery is local
+commit/push, then exact GitHub fetch and script execution on H22. No extra
+Windows-to-VPS TCP data channel is needed for development or host verification.
+Stop further cross-host data-path probes. H-06 is retired/nonblocking; MXC02 is parked planned with its draft intact. The graph is8complete/1active/31planned, with MXC03 the sole active task. The preserved retry01 TCP measurement
+still had no external accepts and cleaned up successfully; it is not an SSH
+failure or a reason to stop ordinary development. Required sandbox network
+behavior remains an actual native experiment, not an inferred pass.
+
+Node implementation is in C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-mxc-03,
+branch task/afv2-mxc-03, based on freshly fetched main
+b2ebace5c15a130b13a7dbd02fd9900e4983c6e8. First code checkpoint
+649e99899c423b0d6277c6befbae69b34c8826d0 is pushed, draft Node PR96:
+https://github.com/ArcForges/ArcForges/pull/96. It includes four diagnostic groups,
+first-operation logs, Program roles and the Linux profile usage document.
+Uncommitted work includes LinuxOwnerChannel.cs/LifecycleCases work in progress,
+resource readback-refusal evidence tightening, and the currently diagnosed
+cgroup/terminal corrections. Check actual git status before editing. Do not
+discard them or mix in blocked Windows PR95. Coordinator
+owns integration, commits/push/PR and Plan records. Delegated work is restricted
+to this task: id_transport session/terminal; id_metadata factory/policy;
+base_review service/cgroup; id_audit resource cases; base_audit network cases;
+id_author native fixture/lifecycle. id_review remains the independent reviewer.
+
+The first implementation includes bounded phase/error/cleanup JSONL and private
+owner-bootstrap stderr. Early review corrected owner failures retaining a true
+slice flag, logger failures hiding primary failures, and imprecise setup phases.
+Unrun diagnostic slices cannot claim full qualification. Native source/artifacts
+stay the admitted official1.0.1 cohort; no project/dependency/lock changes.
+
+H22 read-only preflight found no demonstrated hard prerequisite blocker:
+actual host/user match, user manager running, cpu/memory/pids delegated, bwrap0.12
+and slirp1.2.1 present. Firewall helpers are installed under /usr/sbin; the fixed
+owner child PATH selects them without changing the host environment. CPU still
+needs actual new-service readback. No namespace/payload/host configuration was
+changed by preflight. Original audit is retained under the Node worktree's
+artifacts/mxc-03/h22-preflight-4a86c365 (also the original Windows temporary folder).
+
+Locked restore and the third targeted shared build passed with0warnings/0errors;
+scoped formatting passed. Failed intermediate build-integration-01/02 logs remain
+under artifacts/mxc-03. H22 independently fetched649e998 into
+/home/sammiller/arcforges/ArcForges/.worktree/mxc03-author-649e99899c42.
+Its artifacts/mxc-03 directory retains toolchain/restore/build/publish/stage logs,
+author-summary.json, terminal-native-01.json and driver/owner JSONL. AOT publish
+passed with0warnings in10.699s; official staging passed. Native terminal execution
+failed in9.567s:17cases16PASS, foreground SIGINT observation timed out after the
+actual ETX caused prompt native exit-1; no timeout increase or success waiver.
+Report SHA256bdb573c960ae8533820f4021d9f743c4f0d11e9e70a871f42a4ad4a1ad6624fd.
+CleanupConfirmed is false: cgroup_read_cgroup_events returned nativeerrno2.
+The held-cgroup removal proof assumed ordinary nlink semantics; base_review is
+fixing that from kernel/source evidence and must prove it in a new native run.
+The original unit now has Main/ControlPID0 and its old cgroup path is absent;
+that read-only follow-up does not rewrite the original cleanup failure.
+id_transport is resolving the signal test's host-vs-pid-namespace group evidence.
+The lifecycle author continues the separate LNX05 slice. No full qualification,
+final required Node profiles/review/merge or product runtime cutover has occurred.
+Next: integrate the minimal diagnosed fixes, push a new exact source checkpoint,
+fetch/build/stage it independently on H22, and rerun affected native slices before
+the remaining combination and final gates. No native experiment is currently running.
+The reusable local launcher script is tmp/mxc03-native-author.py (outside repos);
+it accepts the exact SHA, fetches on H22, retains phase logs and never changes
+host settings or existing worktrees. Plan working handoff is draft PR152 on
+plan/afv2-mxc-03-progress; its latest checks/merge are still pending.
+
+The previous checkpoint below remains historical context; this live section
+supersedes its not-yet-merged PR151 and not-yet-created Linux-worktree statements.
+
+
 ## Current checkpoint — Linux qualification active; 8/40 complete
 
 The owner authorizes continuing the V2 graph through40 with parallel agents inside
