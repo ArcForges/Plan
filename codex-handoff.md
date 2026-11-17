@@ -1,5 +1,57 @@
 # Codex handoff — ArcForges V2
 
+## Live implementation checkpoint — 2026-11-17
+
+Plan PR151 merged at d63e2396ae194b76dce6197cf75e88ce2c3aa785, reviewed head
+40376ee6da410fd14333b92671f85a0c13c7ae9f. Independent id_review passed. Original
+Windows/H22 receipts are 20261117-163934-40376ee6da41-win (5/5,5s) and
+20261117-163936-40376ee6da41-linux (5/5,26s); both bind Design af28dc6. No Plan
+main-push publication workflow ran. MXC03 is the only active task; 8/40 complete.
+
+Owner clarification: `ssh netcup` remains healthy. Code delivery is local
+commit/push, then exact GitHub fetch and script execution on H22. No extra
+Windows-to-VPS TCP data channel is needed for development or host verification.
+Stop further cross-host data-path probes. The preserved retry01 TCP measurement
+still had no external accepts and cleaned up successfully; it is not an SSH
+failure or a reason to stop ordinary development. Required sandbox network
+behavior remains an actual native experiment, not an inferred pass.
+
+Node implementation is in C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-mxc-03,
+branch task/afv2-mxc-03, based on freshly fetched main
+b2ebace5c15a130b13a7dbd02fd9900e4983c6e8. Current new Linux/** files, Program.cs
+role dispatch, and eng/mxc/profiles/linux-bubblewrap-sdk-v1.md are UNCOMMITTED
+work in progress. Do not discard them or mix in blocked Windows PR95. Coordinator
+owns integration, commits/push/PR and Plan records. Delegated work is restricted
+to this task: id_transport session/terminal; id_metadata factory/policy;
+base_review service/cgroup; id_audit resource cases; base_audit network cases;
+id_author native fixture/lifecycle. id_review remains the independent reviewer.
+
+The first implementation includes bounded phase/error/cleanup JSONL and private
+owner-bootstrap stderr. Early review corrected owner failures retaining a true
+slice flag, logger failures hiding primary failures, and imprecise setup phases.
+Unrun diagnostic slices cannot claim full qualification. Native source/artifacts
+stay the admitted official1.0.1 cohort; no project/dependency/lock changes.
+
+H22 read-only preflight found no demonstrated hard prerequisite blocker:
+actual host/user match, user manager running, cpu/memory/pids delegated, bwrap0.12
+and slirp1.2.1 present. Firewall helpers are installed under /usr/sbin; the fixed
+owner child PATH selects them without changing the host environment. CPU still
+needs actual new-service readback. No namespace/payload/host configuration was
+changed by preflight. Original audit is retained under the Node worktree's
+artifacts/mxc-03/h22-preflight-4a86c365 (also the original Windows temporary folder).
+
+Locked restore passed. artifacts/mxc-03/build-integration-01.log is a FAILED
+intermediate build: unfinished resource/network types plus terminal/fixture
+compile/analyzer errors. Authors are fixing the concrete errors. No new Linux
+native execution, qualification, formal Node profile, Node commit or PR exists
+yet at this checkpoint. Next: finish the in-task integration, build/format/AOT,
+push an exact candidate, independently fetch it on H22, then run bounded native
+slices and fix actual logged failures before full combination and final gates.
+
+The previous checkpoint below remains historical context; this live section
+supersedes its not-yet-merged PR151 and not-yet-created Linux-worktree statements.
+
+
 ## Current checkpoint — Linux qualification active; 8/40 complete
 
 The owner authorizes continuing the V2 graph through40 with parallel agents inside
@@ -66,6 +118,58 @@ ledger and the section above supersede their former active/next-task statements.
 <details>
 <summary>Historical handoff checkpoints (superseded state, preserved evidence)</summary>
 # Codex handoff — ArcForges V2
+
+## Live implementation checkpoint — 2026-11-17
+
+Plan PR151 merged at d63e2396ae194b76dce6197cf75e88ce2c3aa785, reviewed head
+40376ee6da410fd14333b92671f85a0c13c7ae9f. Independent id_review passed. Original
+Windows/H22 receipts are 20261117-163934-40376ee6da41-win (5/5,5s) and
+20261117-163936-40376ee6da41-linux (5/5,26s); both bind Design af28dc6. No Plan
+main-push publication workflow ran. MXC03 is the only active task; 8/40 complete.
+
+Owner clarification: `ssh netcup` remains healthy. Code delivery is local
+commit/push, then exact GitHub fetch and script execution on H22. No extra
+Windows-to-VPS TCP data channel is needed for development or host verification.
+Stop further cross-host data-path probes. The preserved retry01 TCP measurement
+still had no external accepts and cleaned up successfully; it is not an SSH
+failure or a reason to stop ordinary development. Required sandbox network
+behavior remains an actual native experiment, not an inferred pass.
+
+Node implementation is in C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-mxc-03,
+branch task/afv2-mxc-03, based on freshly fetched main
+b2ebace5c15a130b13a7dbd02fd9900e4983c6e8. Current new Linux/** files, Program.cs
+role dispatch, and eng/mxc/profiles/linux-bubblewrap-sdk-v1.md are UNCOMMITTED
+work in progress. Do not discard them or mix in blocked Windows PR95. Coordinator
+owns integration, commits/push/PR and Plan records. Delegated work is restricted
+to this task: id_transport session/terminal; id_metadata factory/policy;
+base_review service/cgroup; id_audit resource cases; base_audit network cases;
+id_author native fixture/lifecycle. id_review remains the independent reviewer.
+
+The first implementation includes bounded phase/error/cleanup JSONL and private
+owner-bootstrap stderr. Early review corrected owner failures retaining a true
+slice flag, logger failures hiding primary failures, and imprecise setup phases.
+Unrun diagnostic slices cannot claim full qualification. Native source/artifacts
+stay the admitted official1.0.1 cohort; no project/dependency/lock changes.
+
+H22 read-only preflight found no demonstrated hard prerequisite blocker:
+actual host/user match, user manager running, cpu/memory/pids delegated, bwrap0.12
+and slirp1.2.1 present. Firewall helpers are installed under /usr/sbin; the fixed
+owner child PATH selects them without changing the host environment. CPU still
+needs actual new-service readback. No namespace/payload/host configuration was
+changed by preflight. Original audit is retained under the Node worktree's
+artifacts/mxc-03/h22-preflight-4a86c365 (also the original Windows temporary folder).
+
+Locked restore passed. artifacts/mxc-03/build-integration-01.log is a FAILED
+intermediate build: unfinished resource/network types plus terminal/fixture
+compile/analyzer errors. Authors are fixing the concrete errors. No new Linux
+native execution, qualification, formal Node profile, Node commit or PR exists
+yet at this checkpoint. Next: finish the in-task integration, build/format/AOT,
+push an exact candidate, independently fetch it on H22, then run bounded native
+slices and fix actual logged failures before full combination and final gates.
+
+The previous checkpoint below remains historical context; this live section
+supersedes its not-yet-merged PR151 and not-yet-created Linux-worktree statements.
+
 
 ## Current checkpoint — MXC-02 active; 8/40 complete
 Latest owner instruction: every new/changed feature includes usable diagnostics
