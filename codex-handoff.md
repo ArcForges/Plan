@@ -11,7 +11,7 @@ main-push publication workflow ran. MXC03 is the only active task; 8/40 complete
 Owner clarification: `ssh netcup` remains healthy. Code delivery is local
 commit/push, then exact GitHub fetch and script execution on H22. No extra
 Windows-to-VPS TCP data channel is needed for development or host verification.
-Stop further cross-host data-path probes. The preserved retry01 TCP measurement
+Stop further cross-host data-path probes. H-06 is retired/nonblocking; MXC02 is parked planned with its draft intact. The graph is8complete/1active/31planned, with MXC03 the sole active task. The preserved retry01 TCP measurement
 still had no external accepts and cleaned up successfully; it is not an SSH
 failure or a reason to stop ordinary development. Required sandbox network
 behavior remains an actual native experiment, not an inferred pass.
