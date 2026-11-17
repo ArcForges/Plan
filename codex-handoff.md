@@ -1,6 +1,21 @@
 # Codex handoff — ArcForges V2
 
 ## Current checkpoint — MXC-02 active; 8/40 complete
+Latest owner instruction: every new/changed feature includes usable diagnostics
+from its first implementation. Read execution-policy section3; diagnose actual
+logs before changes/retries. Setup/calibration failures must record a concrete
+phase, original errors and cleanup, even when no case/workload starts.
+
+Latest native slices: policy10 all12 PASS (report SHA256
+253004c0a282026d5d53ce753c78a2a4a18f41602f8eb78c3505f31e69a235e7),
+lifecycle11 all14 PASS (2d197ca86b87b27a03190abf178465234edcc39031dfd6faed2d63dc06c76ddf).
+The owner used CREATE_NO_WINDOW, which still created a hidden console/conhost;
+actual lifecycle10 held-member identity established that cause. DETACHED_PROCESS
+preserves the token/session and Job-before-resume while removing that extra console.
+Native13 is being prepared to identify external-peer setup/calibration failure:
+network12 ended with generic IOException before cases. Do not blame the VPS or
+change host settings. New fixed phase/error/native/counter diagnostics are in the
+uncommitted source; keep original12 and re-run only network first.
 
 Plan PR148 is merged at 2f24cd97960ed9dd08722ede81f272e1abc15801.
 Its Windows/Linux receipts both bind Design af28dc6378d91d678870abc628362476611efa32.
