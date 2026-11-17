@@ -56,7 +56,7 @@ Original receipts are20261117-154108-99a1204e7f32-win and
 20261117-154111-99a1204e7f32-linux under each host's Plan .git/arcforges-verify/logs.
 It merged normally at26d3b6197305804b3379c6a441615bda40a7955d; no public activation.
 
-No native experiment or CI process is currently running. Current uncommitted
+No native experiment or CI process is currently running. Current
 Plan scope/state/register/ledger/sequence/handoff and progress-summary changes
 are for the checkpoint described above. Protect all other worktrees, primary
 H22 Plan modifications, Cloud deploy-CI draft, other products and Dependabot work.
