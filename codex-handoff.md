@@ -12,10 +12,10 @@ lifecycle11 all14 PASS (2d197ca86b87b27a03190abf178465234edcc39031dfd6faed2d63dc
 The owner used CREATE_NO_WINDOW, which still created a hidden console/conhost;
 actual lifecycle10 held-member identity established that cause. DETACHED_PROCESS
 preserves the token/session and Job-before-resume while removing that extra console.
-Native13 is being prepared to identify external-peer setup/calibration failure:
+Network13 has now localized the external-peer setup failure:
 network12 ended with generic IOException before cases. Do not blame the VPS or
 change host settings. New fixed phase/error/native/counter diagnostics are in the
-uncommitted source; keep original12 and re-run only network first.
+uncommitted source. Network13 verified SSH/script identity/cleanup; its closed-before-ready error came from treating the SSH IPv6 loopback control address as the external data endpoint. Read-only H22 route/address facts identify one global IPv4 on eth0. The fixture address fix is in progress; preserve12/13 and run a fresh network-only instance after it is ready. No native process is currently running.
 
 Plan PR148 is merged at 2f24cd97960ed9dd08722ede81f272e1abc15801.
 Its Windows/Linux receipts both bind Design af28dc6378d91d678870abc628362476611efa32.
