@@ -12,6 +12,18 @@ H-03 production inventory, approved production backups and provider authority
 remain separate closed prerequisites. Merged-main run43864301663 was intentionally
 SKIPPED with zero artifacts. No deployment or public activation occurred.
 
+## ID-01 qualification on 2026-11-17
+
+Bounded recovery, export and deletion passed at Cloud
+`8c1c67697ecb6727e71a3ccae44526d21408cec5`; PR160 merged as
+`faf5dcb3638916f69fc2b833eea9d8d6d33571e9` with the same verified tree.
+Windows10/10 and H22Linux17/17 required checks, real proof/crypto/PostgreSQL/race,
+nine fuzz targets, schema13 backup/restore and candidate provenance passed.
+Independent final source and original artifact/receipt review passed; see
+[ID-01 evidence](docs/afv2-id-01-summary.md). Main-push CI44008751500 intentionally
+skipped with zero artifacts. No deployment or public activation occurred.
+This development acceptance does not close AR-03, AR-10, H-03, H-04 or H-05.
+
 ## Acceptance items
 
 | ID | Item | Status | Blocks | Owner | Evidence / action |
@@ -34,8 +46,8 @@ SKIPPED with zero artifacts. No deployment or public activation occurred.
 
 | ID | Prerequisite | Current observation | Blocks | Owner / action |
 |---|---|---|---|---|
-| H-01 | Designated native Windows MCP host with qualified Windows/PSEC prerequisites and repo toolchains | MCP reachable; required ENV Windows profiles and selected local tools passed on 2026-11-15, recorded in the [ENV summary](docs/dependency-upgrade/afv2-env-01-summary.md). Composed MXC/PSEC runtime qualification remains pending | Every repository-required Windows merge check; AFV2-MXC-02 native experiments and affected native delivery | Owner supplies existing host connection/prerequisites; never another host, WSL or handwritten status |
-| H-02 | H-22 native Linux host with user manager, cgroupv2 delegation and admitted helpers | Owner explicitly replaced unstableMCP with local ssh netcup on2026-11-17; sameH22 hostname/user/OS verified,275GiB available. Priorf6b9 run actually interrupted withoutsummary; no oldprocess/lock remains. Samef6b9 SSH0077 run failed two process kills with corresponding scope oom_kill2; GOMAXPROCS2/private0077 run reached real stale architecture route-count failure9vs16; correction/newhead checks pending. Earlier ENV/delegation evidence remains valid; composed MXC qualification remains pending | Every repository-required Linux merge check; AFV2-MXC-03 native experiments and affected native delivery | Use owner-authorizedSSH to designatedH22 and inspect original native receipts; no substitutehost, copiedstatus or networkchanges. Original interrupted logs and cleanup records preserved |
+| H-01 | Designated native Windows host with qualified Windows/PSEC prerequisites and repo toolchains | Owner authorizes direct native local Windows access instead of unstable MCP. Final ID01 exact8c1c Windows full10/10 passed144s on DEKU; prior ENV evidence retained. Composed MXC/PSEC qualification remains pending | Every repository-required Windows merge check; AFV2-MXC-02 native experiments and affected native delivery | Use designated native workstation and actual original receipts, never WSL/substitute host/handwritten status |
+| H-02 | H-22 native Linux host with user manager, cgroupv2 delegation and admitted helpers | Owner-authorized ssh netcup reaches same v2202601329473427941/sammiller. ID01 exact8c1c full17/17 passed1028s after measured process0077/GMP2/DOTNET2 and bounded cleanup; final scopeOOM0. Root available279349833728B after builds; prior capacity/private-mode/OOM failures remain recorded. ENV/delegation evidence retained; composed MXC qualification pending | Every repository-required Linux merge check; AFV2-MXC-03 native experiments and affected native delivery | Use same designatedH22 original receipts. No substitutehost/copiedstatus/root/network/security changes; cleanup and failed-run evidence retained |
 | H-03 | Actual deployment inventory, approved consistent backups and security-successor/provider authority qualification | Last evidence is historical; no live authority assumed | Destructive migration/admission in AFV2-CENTER-01 and production operations in AFV2-HOST-03; not read-only preflight code | Owner/operator confirms configuration without exposing secrets; keep surfaces dark on uncertainty |
 | H-04 | Official pricing/terms/provider and sender accounts/legal text/domain and operational approvals | TBD; no invented prices/quotas/trial | AFV2-PROD-01 activation; does not block architecture or development with graph-listed external fixtures | Owner supplies commercial/provider/sender/domain/legal inputs; perform actual provider sandbox, mail/domain and authority qualification before activation, without treating fixture peers as that evidence |
 | H-05 | Explicit approval of concrete accepted public rollout and distribution channels | Not requested in design migration | AFV2-PROD-01 outward-facing activation | Present exact cohort/routes/rollback for final approval, after all preparation and qualification |
