@@ -65,11 +65,16 @@ summary/hash remain unchanged. No native rerun is needed for that auxiliary fiel
 Independent nonauthor id_review read the complete11-file final difference and
 original Windows/Linux hashes, stage members, reports and negatives; no blocking
 source or native-author evidence finding remains. Final exact-head full profiles
-remain incomplete: Windows15steps are rerunning with process-local English output
-after the existing warning-count parser rejected a Chinese zero-warning summary.
+remain incomplete overall. Windows passed15/15 in2102s with process-local English
+output after the existing warning-count parser rejected a Chinese zero-warning
+summary. Final Windows summary hash is
+ec87c1c6b9413d6303993e663f4272782667ca8ca127ed89eea4f1f048fbe438; all15 log
+hashes were independently checked.
 H22Linux20steps recorded a genuine exclusive ResourceTests failure while waiting
 for the fourth Normal task to enter Running, before pressure allocation. Focused
-fixture/state diagnosis is in progress. Both use unchanged eng/verify.py
+fixture/state diagnosis passed the same unchanged single case, and Linux fullR2
+passed that case and the entire JIT exclusive suite; native-exclusive/startup remain
+pending. The original fourth-task admission cause is still unknown. Both use unchanged eng/verify.py
 run-and-report; original failures remain preserved. No host result is copied or manually posted.
 
 This probe migrates no data and changes no published package, applied SQL or

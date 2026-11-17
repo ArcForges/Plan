@@ -57,7 +57,9 @@ real probe immediate processId absence assertions passed. Reviewer additionally
 observed all15 actual processId paths absent later; original summary/hash preserved.
 Independent id_review full final source and author-native evidence PASS.
 
-Full final-head host profiles remain running. Windows first full leg failed only
+Final Windows full profile is PASS15/15,2102s at d460524; summary SHA256
+ec87c1c6b9413d6303993e663f4272782667ca8ca127ed89eea4f1f048fbe438 and all15
+step-log hashes independently verified. Windows first full leg failed only
 because the unchanged publish parser expects English warning counts but the local
 MSBuild output was Chinese (actual AOT0warnings/0errors). Original failure
 20261117-122129-d460524d7fa2-win is preserved. Corrected invoking-process
@@ -87,18 +89,20 @@ passed1/1zeroSkip19.476s, all4 tasks Running then real pressure/preemption/recov
 It did not reproduce or explain the original queue wait. Root started unchanged
 fullLinuxR2 driver3987632, /home/sammiller/arcforges/logs/node93-d460524-r2-driver.log;
 original receipt directory20261117-125046-d460524d7fa2-linux. id_audit observes the
-specific new pressure-fixture state without starting a concurrent test. Results pending.
+specific new pressure-fixture state without starting a concurrent test. Linux R2 passed its JIT exclusive suite840s at13:10:00; currently18/20 steps
+passed, native-exclusive and startup remain pending.
  No source/timeout/assertion change or broad cleanup.
 Both invoked unchanged eng/verify.py run-and-report from host-fetched exact candidate.
-No full-profile PASS or Node source merge is claimed yet.
+Linux final full-profile result and Node source merge remain pending.
 
 Design evidence PR74 merged a877c184521fac493bb1066955992c598d68172a after
 independent review and both exact-head4/4checks (Windows63s/Linux29s).
 Design branch design/afv2-mxc-01-revalidation at3b45fec is clean.
 Cohort F-AOT status and original hashes are shared; full profiles remain UNPROVEN.
 Plan branch plan/afv2-mxc-01-revalidation has only new ledger/handoff records.
-Next resolve the recorded Linux required exclusive failure and finish the Windows
-rerun, merge reviewed Node93, then Plan delivery/completion against actual Design main.
+Next finish Linux R2 (the previously failing case and JIT exclusive suite passed),
+merge reviewed Node93 after both final statuses, then Plan delivery/completion
+against actual Design main.
 Continue MXC02 immediately after real completion. No second product task is active.
 
 ## Historical checkpoint — ID-01 complete; then awaiting MXC decision
