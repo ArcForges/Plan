@@ -1,5 +1,50 @@
 # AFV2-MXC-02 partial native evidence — 2026-11-17
 
+## Current status — 2026-11-18, after Plan160
+
+MXC02 is blocked by existing AR-01 at Node PR95 source dcd91f63a8ce96863c4f9384d66292759550175d,
+in `.worktree/afv2-mxc-02-resume`; Design main is41d25327841e6c88df639bbcb387682bd067f7a1.
+The older parked-task and endpoint-decision wording below is dated history.
+The owner resumed the full authorized graph. SSH only replaces Linux MCP as
+transport to the same H22; it creates no extra network test, prohibition or
+endpoint-approval gate. Implement the original WIN04/06 requirements.
+
+Windows exact-head full required profile passed15/15 in2177s, including both
+exclusive suites and startup. Receipt `20261118-040926-dcd91f63a8ce-win/summary.json`
+SHA2567845d9fa55708176aec964e78487603ce9e27e83a5f3ee0b2a40e682df664560.
+H22 full required profile failed17-pass/18-ran/20-required: the fourth protected
+task in the pressure-response test did not enter Running within90s, before
+pressure injection; later the whole exclusive step exhausted900s. Its two final
+steps did not run. Receipt `20261118-040940-dcd91f63a8ce-linux/summary.json`
+SHA256ede9129da912bb99457e46945083ece4dd699e81384e52d8b4838a105edaced6.
+An unchanged targeted reproduction with bounded read-only diagnostics passed
+1/1 in19.904s, including four running tasks, Critical, one preemption and Normal.
+The queue was empty in all nine observations, so the original admission failure
+was not reproduced and its cause remains UNKNOWN. Owned processes/units/data
+were cleaned by the fixture. The same-source full Linux retry then passed20/20
+in1991s, receipt `20261118-045655-dcd91f63a8ce-linux/summary.json`, SHA256
+154a878b85a74ebd90515ba91f928069370de9a3481de9bced47df27c499acfd.
+The reporter postedSUCCESS and exited. Both required repository profiles now
+pass; neither they nor the targeted diagnostic erase the original failure or
+replace the original complete Windows qualification.
+
+The committed H22 peer is independently fetched from GitHub and controlled over
+SSH. Ordinary Windows calibration has failed on the measured defaultIPv4,
+existingIPv6 and socket-selected physicalIPv4 paths, with peer counters0/0 and
+explicit peer cleanup confirmed. These are original failures before any contained
+network case; they establish neither an SSH outage nor a sandbox policy result.
+WIN04/06 and one final68-case receipt remain incomplete. No host network/proxy/
+security setting changed. The [handoff](../codex-handoff.md) and draft PR95 carry
+the exact stage/source/receipt identities and current diagnostic next step.
+
+The earlier `terminal-integration-09.json` also contains the concrete local
+assigned-IPv4 alternative with HostLoopback denied and exact IP/protocol/port
+allowed. Ordinary peer calibration succeeded, but contained TCP returned native
+10013 and UDP timed out without increasing peer counters. This rules out that
+tested combination; it does not establish a universal prohibition on same-host
+endpoints or add an external-peer approval requirement. Preserve those policy,
+peer and payload observations rather than repeating the same unsuccessful path.
+
 ## Owner transport clarification — 2026-11-17, after PR151
 
 The extra Windows-to-VPS direct endpoint prerequisite H-06 is retired. Code
