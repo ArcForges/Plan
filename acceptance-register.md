@@ -30,7 +30,7 @@ This development acceptance does not close AR-03, AR-10, H-03, H-04 or H-05.
 |---|---|---|---|---|---|
 | AR-01 | Full Windows official profile | NOT_RUN | AFV2-MXC-04 and dependent Core; final AFV2-ACC-01 | AFV2-MXC-02 | Run MXC-WIN-01..06 on exact qualified native Windows; no pipes-only or separate-feature substitute |
 | AR-02 | Full Linux official profile | NOT_RUN | AFV2-MXC-04 and dependent Core; final AFV2-ACC-01 | AFV2-MXC-03 | Run MXC-LNX-01..05 on H-22 with actual PTY/user-manager/cgroup/helpers |
-| AR-03 | AOT/native package and distribution admission | PENDING revised-rule verification; old local-argv-only rejection superseded by owner decision | AFV2-MXC-01 actual cohort/AOT/provenance acceptance, then dependent profile qualification | AFV2-MXC-01 | Owner2026-11-17 accepts trusted local process visibility for intentionally supplied workload values; public/shared evidence must remain secret-free. Prior argv-hit=true and cleanup facts remain historical. Resume Node draft93, adapt observation to revised Design and complete actual native/full checks before marking PASS. No official upstream argv-hiding fix is required solely for this local observation. |
+| AR-03 | AOT/native package and distribution admission | PASS — isolated official1.0.1 cohort and scoped source delivery complete | AFV2-MXC-01 actual cohort/AOT/provenance acceptance, then dependent profile qualification | AFV2-MXC-01 | Fresh9a9378bc warning-free AOT, native execution/cleanup and four invalid-stage cases per host passed under the accepted local-process boundary. Independent source/original-evidence review PASS at finald460524d. See [delivery evidence](docs/afv2-mxc-01-summary.md). Old825 FAILED report/argv observations are preserved. Final Windows15/Linux20 checks passed; Node93 mergedb2ebace5 and Design75 mergedaf28dc. Full platform combinations remain separate AR-01/02. |
 | AR-04 | Crash and unknown ownership recovery | NOT_RUN | AFV2-REC-01 delivery; full native acceptance | AFV2-REC-01 | Same Run owner survives Node loss; supervisor loss/reboot/no PID guessing and exact outer-scope empty tests |
 | AR-05 | Owned Sandbox data and deletion safety | NOT_RUN | AFV2-FILE-02 delivery; final acceptance | AFV2-FILE-02 | Native path/identity/managed-use/partial effect/import/export/delete recovery tests; no blanket refusal |
 | AR-06 | OS-effective resource budget | NOT_RUN | AFV2-RES-02 delivery and dependent allocation | AFV2-RES-02 | Saturation and desired/applied/readback failures on both hosts; aggregate reductions before increases |
@@ -102,7 +102,8 @@ of intentionally supplied workload values in trusted owner/admin OS process meta
 is not publication to Plan/GitHub and must not block development by itself. Public
 repositories, shared evidence, ordinary logs and telemetry still exclude real secrets;
 actual unauthorized payload access and inherited host credentials remain separate.
-AR-03 is pending revised-rule native verification, not already passed. The original
+At that policy checkpoint AR-03 was pending revised-rule native verification;
+the current row above records the subsequent fresh cohort PASS. The original
 2026-11-16 observation and its then-applicable failure remain below as dated evidence.
 
 ### Historical 2026-11-16 native MXC admission failure
