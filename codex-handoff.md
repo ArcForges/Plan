@@ -15,7 +15,7 @@ MXC01 is the sole active task; graph7complete/1active/32planned. AR03 is PENDING
 revised-rule qualification, not PASS. User authorization covers the document decision,
 necessary probe adaptation/verification, normal PR/merge and subsequent eligible tasks.
 Current main baselines Design4bc1d2be8916a961d167b4965e30e45bc3023ef1 and
-Plan6ec723ad816d98aa9ad1f32606826afea803a9c0. ID01/Cloudfaf5dcb3 remains complete.
+Planda24652d090023a06175b1f43301b1fb0eaaaff5. ID01/Cloudfaf5dcb3 remains complete.
 
 New isolated worktrees:
 - Design C:/MyFile/Projects/ArcForges/ArcForges-Design/.worktree/afv2-local-process-boundary,
@@ -24,7 +24,7 @@ New isolated worktrees:
   H22Linux4PASS35s. All nine current policy documents are consistent; old JSON keys
   and native reports are unchanged. No Design author changes remain uncommitted.
 - Plan C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-mxc-01-resume,
-  branch plan/afv2-mxc-01-resume / PR147; root owns graph/policy/ledger/handoff.
+  PR147 merged da24652d090023a06175b1f43301b1fb0eaaaff5 after independent review and Windows5/5PASS5s / H22Linux5/5PASS26s against Design4bc. Continuation branch plan/afv2-mxc-01-revalidation; root owns graph/ledger/handoff.
 - Node draft93 task/afv2-mxc-01 worktree is preserved and clean. Root merged actual
   main1319107b26305e4c6c29574deea5c81f6036e7d1 without conflicts into the existing
   draft, yielding local2a5a6ffc7e0cbddb6d9d274d294f6d58da598061 (not yet pushed).
@@ -32,15 +32,49 @@ New isolated worktrees:
   eng/mxc/README.md need the approved observation semantics after document merge.
   Existing same-host official package/release inputs and historic receipts survive.
 
-Next: finish Plan147 exact-head checks against actual Design4bc1d2be main and normal
-merge; then adapt only necessary probe
-expectations within MXC01, execute native scenarios/fullchecks, review and deliver.
+Next: id_transport is adapting only Program.cs, WindowsLauncher.cs and eng/mxc/README.md in the preserved Node worktree under the merged policy. Commit/push the candidate, execute fresh native scenarios/fullchecks, review and deliver MXC01. Existing official inputs and historical reports remain intact.
 Continue next eligible task immediately after actual completion, without asking for
 this local-process decision again. Public activation remains separate PROD01 approval.
 Use local Windows and ssh netcup to sameH22 v2202601329473427941/sammiller, no MCP/root.
 H22 root Plan checkout has historical dirty files; leave it untouched and use isolated
 worktrees. New host/origin calls succeeded this turn. Previous transcripts below are
 history, not instructions to stop for the now-superseded argv-only condition.
+
+### Revalidation checkpoint — final Node d460524
+
+Probe correction is pushed to draft93: runtime candidate
+9a9378bc3a6bc8190d896ca7ef0e43eee5abd886; final metadata/README head
+d460524d7fa23e1558fc7ddd5e4a3c31e66e71d6 (source behavior unchanged).
+Both native AOT publishes passed0warnings/0errors. Windows five executor/Job0
+runs and Linux five rounds of pipe/PTY/Kill-Wait passed, with four invalid-stage
+negative cases per host. Original Windows summary hash9e1676addeedbbb465a4a0e0f1544220fc76a095db815075907167fd6355f12e
+in Node author artifacts/mxc-01/windows-author-9a9378bc3a6b-revalidated-summary.json.
+Linux summary hash e499109bd69dd5476522c0fd1996a999e5dfdad745941c3aeea37a461dc9781b
+in /home/sammiller/arcforges/ArcForges/.worktree/afv2-mxc-01-9a9378b-native/artifacts/mxc-01-native-9a9378b/summary.json.
+The experimental user unit arcforges-mxc01-9a9378b-121810 finished successfully.
+Linux driver auxiliary casePidsAbsent used the wrong JSON key and is not evidence;
+real probe immediate processId absence assertions passed. Reviewer additionally
+observed all15 actual processId paths absent later; original summary/hash preserved.
+Independent id_review full final source and author-native evidence PASS.
+
+Full final-head host profiles remain running. Windows first full leg failed only
+because the unchanged publish parser expects English warning counts but the local
+MSBuild output was Chinese (actual AOT0warnings/0errors). Original failure
+20261117-122129-d460524d7fa2-win is preserved. Corrected invoking-process
+DOTNET_CLI_UI_LANGUAGE=en-US and VSLANG=1033; unchanged full rerun session76792 /
+ArcForges/.git/arcforges-verify/logs/20261117-123248-d460524d7fa2-win;
+Linux driverPID3944020 /home/sammiller/arcforges/logs/node93-d460524-driver.log.
+Both invoked unchanged eng/verify.py run-and-report from host-fetched exact candidate.
+No full-profile PASS or Node source merge is claimed yet.
+
+Design evidence PR74 merged a877c184521fac493bb1066955992c598d68172a after
+independent review and both exact-head4/4checks (Windows63s/Linux29s).
+Design branch design/afv2-mxc-01-revalidation at3b45fec is clean.
+Cohort F-AOT status and original hashes are shared; full profiles remain UNPROVEN.
+Plan branch plan/afv2-mxc-01-revalidation has only new ledger/handoff records.
+Next finish current fullchecks and Design evidence review/merge, merge Node93 at
+reviewed finalhead, then Plan delivery/completion against actual latest Design main.
+Continue MXC02 immediately after real completion. No second product task is active.
 
 ## Historical checkpoint — ID-01 complete; then awaiting MXC decision
 
