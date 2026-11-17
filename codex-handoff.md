@@ -2,6 +2,32 @@
 
 ## Resumed native qualification — 2026-11-18
 
+Latest pushed Node candidate:2bba330680437fd99c22174a193aab9733c16398,
+draft PR96. Windows targeted build0warnings/0errors and scoped format passed;
+H22 independently fetched and passed locked build/AOT/stage. The full invocation
+binds that embedded source SHA and actual Plan/Design baselines; admission4/4
+and terminal17/17 passed, policy first10 passed. Full profile stopped at ingress
+default-allow refusal classification, still partial. The official SDK returned
+BackendError12 before spawning; the harness expected different error codes.
+Only exact source-defined refusal evidence may repair that classification.
+All original reports are retained in H22
+`.worktree/mxc03-author-2bba33068043/artifacts/mxc-03`.
+Its separate resource run proved memory/pids/CPU/burst/dynamic enforcement and
+cleanup, then failed at `resource_lower_refusal` with
+`resource_probe_limit_out_of_bounds`; report SHA256
+882a6087d1e40b9bedb1da4532876b0636b6381bc84c339158a6626014c250fe.
+Lifecycle is running sequentially after it and now reaches actual Node crashes.
+Inspect original report/log completion before any retry.
+
+Current uncommitted fixes after2bba330: resource owner-report error validation
+and lower-limit negative case; DNS result facts split to respect existing32-field
+log bound; exact SDK ingress refusal classification. Independent review caught
+the first two issues and has not approved the final candidate. Earlier source
+fixes include pressure-ready synchronization, connect-before-NetworkStream,
+bounded first-failure outputs, DNS denial evidence and full-profile receipt.
+Plan PR153 is the shared recording draft on `plan/afv2-mxc-03-native`; required
+host checks and merge status must be checked before treating it as main.
+
 Owner explicitly resumed the authorized V2 graph through40 with parallel agents
 inside the sole active task, AFV2-MXC-03. Still8/40 complete. Fresh Plan main is
 f17b024bdd943b9de722743c870f5c02391720bd (PR152 merged), Design main remains
