@@ -1,5 +1,44 @@
 # Codex handoff — ArcForges V2
 
+## MXC02 implementation checkpoint — 2026-11-18
+
+Resumption Plan156 merged88f4564184714d70949c4a3f28fab594d53e2a1b from8e92f5a,
+Windows5/5 PASS5s (022915) and H22 5/5 PASS27s (023003), both Design41d2532.
+Shared main has9complete/MXC02soleactive. Current recording branch is now
+`plan/afv2-mxc-02-qualification` in the same Plan worktree.
+
+Node `.worktree/afv2-mxc-02-resume` remains on integrated a4e03ff (PR95 remote),
+with these intentional uncommitted task changes; no native success is claimed:
+- WindowsNetworkCases.cs: real driver-owned loopback TCP/UDP peers, strict13-case
+  allow/deny matrix, no SSH/VPS data channel; remote helper retained until actual
+  replacement proof, then remove unused code.
+- WindowsWorkload.cs/WindowsCombinedCases.cs: actual pressure readiness before
+  network/files effects, external ordered evidence; CancellationToken last.
+- WindowsLifecycleCases.cs/PhaseClient.cs: separate real read-only observer loss
+  scenario named center-observer-loss; local control/Stop remain real.
+- WindowsProbeOwner.cs: bounded owner-private stage/error JSONL without raw
+  configurations/capabilities, preserving original and cleanup failures.
+- WindowsQualification.cs: strict68-case completion, exact embedded source and
+  stage identities, diagnostic slices always partial; finalized by admission.
+- combined_fix is adding the explicit pre-experiment driver Job context check
+  in WindowsHostContext.cs/WindowsQualification.cs. Prior direct-driver report
+  had InheritedJob=true but no current pre-Job full context; unknown ancestors
+  cannot be relabeled verified. No framework/host setting/privilege change.
+- policy_fix is tightening four rejection variants in WindowsPolicyCases.cs
+  against actual old private official errors, not arbitrary exit1. Invalid-env
+  already checks actualCreateProcess87 and is retained.
+- Coordinator updated the two Windows profile usage documents and prepared
+  `C:/MyFile/Projects/ArcForges/tmp/mxc02-resume-publish.ps1` for this new WT.
+
+Reviewer `/root/review` completed the first source audit; the four additional
+issues above directly correspond to WIN01..06, and no other scope was added.
+Wait for the remaining authors to freeze, then one targeted build/format,
+commit, Native AOT/stage, network/combined diagnostics and complete same-head
+qualification. Logs begin at `artifacts/mxc-02/resume-logs`. Existing admitted
+package/archive are in original MXC01 `artifacts/mxc-01/official`; stage.py
+must recheck hashes/signatures. No experiment process is currently running.
+Do not overwrite original Windows worktree or historical artifacts.
+
 ## MXC02 resumed after MXC03 completion — 2026-11-18
 
 Shared Plan main14b3689a2b8cd6720c78bc0aa7d1d17f3bb1d373 (PR155) records9/40
