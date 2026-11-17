@@ -1,5 +1,27 @@
 # Codex handoff — ArcForges V2
 
+## Formal Linux failure under diagnosis — 2026-11-18
+
+The dcd91f63a8ce96863c4f9384d66292759550175d H22 reporter has ended
+and posted failure: 17 steps passed, 18 ran of 20 required, 1384 seconds.
+Original summary is `.git/arcforges-verify/logs/20261118-040940-dcd91f63a8ce-linux/summary.json`,
+SHA256 ede9129da912bb99457e46945083ece4dd699e81384e52d8b4838a105edaced6.
+The exclusive step hit its 900-second timeout; exclusive-native and startup
+did not run. Its first observed failure was the pressure-response test's fourth,
+protected task waiting 90 seconds for Running (ResourceTests.cs:629), before
+the 2 GiB pressure injection. This is not evidence of failed preemption timing.
+The three fixture-owned units have been cleaned up and are now not found.
+The test disposes its private log root; original admission diagnostics were not
+preserved. Do not invent a cause, change thresholds or blindly rerun the suite.
+Next: inspect the remaining exclusive log and arrange one unchanged targeted
+reproduction with bounded owned-log capture and read-only admission diagnostics.
+
+Windows at the same source passed win-exclusive in 745 seconds and started
+win-exclusive-native at 04:33:52 local time; no final result is claimed yet.
+The current Node and Plan worktrees/PRs below remain the active candidates.
+9/40 tasks remain complete; only MXC02 is active. Continue the authorized graph
+after each task; this checkpoint is not a request or instruction to stop.
+
 ## Current candidate, native results and running formal checks — 2026-11-18
 
 Node PR95 current pushed source is dcd91f63a8ce96863c4f9384d66292759550175d.
