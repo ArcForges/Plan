@@ -1,6 +1,153 @@
 # Codex handoff — ArcForges V2
 
+## Latest checkpoint — 2026-11-18
+
+Design PR77 merged41d25327841e6c88df639bbcb387682bd067f7a1 after independent
+review and exact71017e9 Windows4/4 PASS74s (receipt013951) and H22 Linux4/4
+PASS30s (receipt014149). The one-line disclaimer rewording fixes the reciprocal
+register parser treating a mentioned subsequent task as a second experiment
+owner. It changes no graph, validation rule, experimental evidence or admission
+condition. Plan native checks must bind this latest Design main.
+
+The isolated Linux diagnostic passed with original thresholds:298 connections,
+Peak256 and browser200, no premature producer exit. It observed connect waits
+but cannot establish the original packet-level cause. One unchanged original
+method control passed1/1 in1.629s; original-targeted.log SHA256
+ ea3ec08e34f4a97455de55776e731d57489bc1912cb2e871585628e9007c8e0a.
+All originals are in H22 `.worktree/final022-loopback-diagnostic-01/artifacts/loopback-diagnostic`.
+No production or candidate test source was changed. A single full final022
+Linux retry is running: receipt20261118-014327-022946a305e5-linux, PID47183,
+fresh invocation worktree `.worktree/verify-mxc03-022946a-retry01`. Detached
+reporter output is Node `.git/arcforges-verify/launches/node022-retry01-linux/reporter.log`.
+It independently fetched the exact GitHub SHA. Read the launch record and original receipt;
+do not duplicate it. Windows final022 continues in receipt013632/session9064.
+MXC03 remains active,8/40 complete; Node merge/completion still pending.
+
+## Design delivered; final Node checks — 2026-11-18
+
+Design PR76 merged normally at6fa2a98ad3f93793134555320f0bd362e81625f0 after
+independent review and exacte95476f Windows4/4 PASS17s (receipt013522) and
+H22 Linux4/4 PASS31s (receipt011411). Actual strict status rules, CLEAN head and
+no unresolved review threads were checked. Plan must now validate against this
+actual new Design main on both hosts.
+
+Old50e Windows completed15/15 PASS2190s, receipt005846. This does not satisfy
+final022 head: final022 Windows is running, receipt
+20261118-013632-022946a305e5-win, local session9064, fresh invocation worktree
+`ArcForges/.worktree/verify-mxc03-022946a`. No source changes are pending.
+
+Final022 Linux original exclusive step failed only the CloudLink pressure setup;
+subsequent read-only checks confirmed original reporterPID4193458 absent, no
+other repo reporter/step processes, no step pidfiles, and no finalsummary. Its
+GitHub status remained pending after the earlier SSH output disconnect. Preserve
+this incomplete receipt; do not fabricate a summary or status. One isolated
+H22 `.worktree/final022-loopback-diagnostic-01` adds diagnostic counters only,
+with unchanged pressure threshold and assertions. Delegate resource_gap owns
+the sole diagnostic execution; wait for its result before another Linux run.
+Node PR96 remains unmerged and MXC03 active,8/40 complete. Plan154 is a checkpoint,
+not task completion. Final Node checks/source merge and actual completion remain.
+
+
+## Final repository gate follow-up — 2026-11-18
+
+MXC03 remains the sole active task;8/40 complete. Owner again explicitly asked
+for parallel delegates and continuation through the already authorized graph.
+Final022 H22 formal verification is still running, but its exclusive CloudLink
+test has logged a real failure: the3-second pressure setup established57
+connections, below HardCapacity256; later cap/browser assertions did not run.
+Both the test and production receiver blobs match Node main b2ebace5. Existing
+logs do not distinguish producer socket errors from scheduling delay. Preserve
+receipt20261118-010502-022946a305e5-linux and diagnose this exact condition before
+retrying; do not loosen assertions or infer a VPS/network outage. Delegate
+resource_gap is preparing isolated diagnostics after the formal run finishes.
+
+Old50e Windows profile is progressing normally through native exclusive tests;
+its ClosedLoop project passed19 with21 expected platform skips. Design Windows
+has a fresh exacte95476f worktree at `.worktree/verify-mxc03-e95476f-win`; delegate
+profile waits for old Node reporterPID17792 to finish before invoking the normal
+Design reporter. Final022 Windows must follow, not overlap shared `_verify`.
+Independent final Design review PASS is posted at
+https://github.com/ArcForges/ArcForges-Design/pull/76#issuecomment-6955662432 .
+Plan checkpoint2bc78b8 was independently reviewed PASS; resumed-gate ledger
+addition is pushed ascc309a3. No new merge or completion is claimed.
+
 ## Resumed native qualification — 2026-11-18
+
+Final source is now Node022946a305e505e5817162c79a956c7816b99b12, only a
+reviewed whitespace delta from the successful50e native source. The original
+50e Linux formal check failed Admission formatting; do not rewrite that failure
+or the original50e native receipt. Author formatting must cover all task-changed
+files since origin/main, not only currently uncommitted files. Independent
+source/native review PASS extends to022946 with unchanged tokens/non-whitespace
+bytes. See [the qualification summary](docs/afv2-mxc-03-summary.md).
+
+Actual final022946 H22 formal receipt is20261118-010502-022946a305e5-linux.
+Its original reporterPID4193458 was confirmed alive in
+`.worktree/verify-mxc03-022946a` after one SSH output disconnect; it continued
+through format/build/CI/publish into exclusive tests. Reconnect/read original
+logs and status before starting anything; do not launch a duplicate. Old50e
+Windows verification is still in exclusive tests in receipt005846; final022946
+Windows verification must run afterward using the same unchanged reporter.
+
+Design PR76 candidatee95476f531ca22b3ca3944bdaa56d7e26f9763bf has independent
+review PASS and H22 formal4/4 PASS31s, receipt20261118-011411-e95476f531ca-linux.
+Its detached driverPID31035/log`/home/sammiller/arcforges/logs/design76-e95476f-driver.log`
+completed. Windows Design formal is pending. No Node/Design merge or MXC03
+task completion is claimed. AR02 now separates observed native PASS from pending
+repository delivery and MXC04 admission. Plan PR154 remains the shared draft.
+
+The following notes retain earlier candidates and are superseded where stated.
+
+Latest result: Node50e602a83ece2c4de75d8dbd32777c7833a6eaf7 (draft PR96)
+passed the full same-head H22 native profile in87.749s: admission4, terminal17,
+policy12, network10, resource13, lifecycle16;72/72 and every cleanup confirmed.
+Original evidence is in H22 `.worktree/mxc03-author-50e602a83ece/artifacts/mxc-03`:
+`full-native-01.json`, child reports beneath `full fixture 01`, and original
+driver/owner logs. Last fix waits for actual active/running rather than an early
+pre-exec MainPID; real200/CHDIR refusal now passes. Previous failed reports below
+remain unchanged.
+
+Formal exact-head Node profiles are running, not yet passed: Windows15 steps,
+receipt20261118-005846-50e602a83ece-win; H22 Linux20 steps,
+receipt20261118-005847-50e602a83ece-linux. Originals live in each host's Node
+`.git/arcforges-verify/logs`. Both use the unchanged reporter, selected Python,
+process-local English CLI output; H22 uses0077 and the installed .NET11 root.
+No source merge or task completion is claimed. Independent final native/source
+review and the Design evidence update are in progress. Design worktree is
+`ArcForges-Design/.worktree/afv2-mxc-03`, branch `design/afv2-mxc-03`, based onaf28dc6;
+only the two task-allowed verification documents are being updated. Plan draft
+PR154 preserves this qualification checkpoint. Finish Node checks/review and
+Design delivery, then validate Plan against actual new Design main before merge.
+
+The following integration notes are superseded by the latest result above.
+
+Current integration head: Node0573c19a007798577081cfe14236da6bb8d42262 (PR96),
+clean `task/afv2-mxc-03` worktree. Targeted Windows builds/format and independent
+incremental source reviews pass. H22 is independently building/staging/running
+the full profile under `.worktree/mxc03-author-0573c19a0077/artifacts/mxc-03`;
+read `author-summary.json`, `full-native-01.json` and its event log before retry.
+Plan PR153 merged at cf937ddc1c52778007bdc0980a1ae139c809d25f; current recording
+branch is `plan/afv2-mxc-03-qualification` in the same Plan worktree.
+
+Latest proven slices:7cf87 policy12/12 and network10/10 (including DNS denial),
+2bba lifecycle16/16 including both combinations, dc4485 CPU/memory/pids/dynamic
+and refusal cases with strict owner-report checks. Each passed slice confirmed
+cleanup. These are not a full same-head qualification or final merge gate.
+The original068c701 full run passed admission4/terminal17/policy12/network10,
+then failed controller-absence setup and cleanup proof. Original resource report
+SHA2567c47d1fcceac32ad6426132bcaffb14bdd17333ffa7d90c7c677106e86bb68aa
+keeps cleanup=false. Its exact owned slice is now inactive/dead with no cgroup,
+invocation or transient definition; original stop exit0 was followed by systemd
+synthetic state, not another live owner. No manual stop was issued. New0573c19
+keeps normal CPU readback strict, uses a fixed time/memory/pids-bounded negative
+pre-exec that can never launch owner/SDK, and requires the original held-cgroup
+empty proof before accepting post-stop synthetic slice state. Real revalidation
+is pending; do not convert the old failure into a pass.
+
+No Node formal host profile or final qualification/review/merge has occurred.
+Next: inspect0573c19 full report, fix only demonstrated failures, then complete
+normal Node/Design/Plan delivery gates and continue the authorized graph.
+The paragraphs below describe earlier checkpoints, not current uncommitted work.
 
 Latest pushed Node candidate:2bba330680437fd99c22174a193aab9733c16398,
 draft PR96. Windows targeted build0warnings/0errors and scoped format passed;
