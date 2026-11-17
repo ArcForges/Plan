@@ -1,13 +1,19 @@
 # AFV2-ID-01 engineering evidence
 
-ID-01 is blocked by a new H-02 transport outage after storage capacity recovery;
-this is the shared implementation and
+ID-01 is active after the owner authorized local `ssh netcup` to the sameH22,
+superseding older MCP-only transport wording. Native host and verification gates
+remain unchanged. This is the shared implementation and
 verification checkpoint, not a delivered or published result. Initial source is Cloud
 `3a22bec5e9e4dc29841fbb3b9e96c4b2362c6d00` in [Cloud PR160](https://github.com/ArcForges/Cloud/pull/160).
 Design baseline is `493022fbf643b484665b2713c9eb8670f2fb2234`.
 Current candidate is `f6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa`, tree
 `8af897e46cc0577d06794c787becf1f14411c739`. Independent final source review passed;
-Windows formal10/10PASS144s (20261117-052223-f6b9edc25f5d-win). H22 launched
+Windows formal10/10PASS144s (20261117-052223-f6b9edc25f5d-win). The prior H22 run
+was found interrupted(exit-15), withoutsummary, after connection recovery. No old
+process/lock remains. A new full same-head run is detached underdriver3732917;
+artifacts/afv2-id-01-formal-f6b9-ssh-20261117/native.log, result pending.
+
+Historical observation before SSH recovery: H22 launched
 run20261117-052230-f6b9edc25f5d-linux, then three consecutiveMCP HTTP502 failures
 required stopping retries. The native process was not terminated; outcome is
 unknown and last GitHubLinux status pending. No merge or completion is claimed.

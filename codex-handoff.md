@@ -1,6 +1,36 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — f6b9 Windows passed; H22 observation unavailable
+## Current checkpoint — same H22 resumed through owner-authorized SSH
+
+Owner explicitly directs native local `ssh netcup` instead of LinuxMCP for the
+remaining V2 tasks7–40, with parallel agents within the current task. This overrides
+older MCP-only/no-SSH transport instructions; the host/profile/review gates do not
+change. Verified sameH22 v2202601329473427941, user sammiller, Linux6.12.63;
+root available275GiB. No root/sudo, network or security changes are needed or used.
+
+Actual priorf6b9 run is now known: native.log ended05:24:34 with centerexit-15 and
+FAIL interrupted, no summary/exit file. Cause is not established. Read-only process
+and lock checks found no old controller/children/active locks; stale lock-file PID
+is not a running process. Preserve this interrupted evidence, never call it PASS.
+
+Current source remains pushed/cleanf6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa.
+Valid same-head Windows10/10PASS144s is retained. H22 independently fetched current
+branch/main, then launched unchanged full `eng/verify.py run-and-report` with
+existing Go/bridge/archive selectors. New driver3732917 is detached using
+Popen(start_new_session=True, stdin=DEVNULL), callerCloud/.worktree/afv2-id-01-native.
+Log artifacts/afv2-id-01-formal-f6b9-ssh-20261117/native.log; exit in same directory,
+driver output artifacts/afv2-id-01-formal-f6b9-ssh-20261117-driver.log.
+id_audit observes this single run through SSH; do not start duplicates.
+
+ID01 is active again. Main baselines freshly fetched: Plan cedc3c4905808b7bbee539a33a8e1a6ce3736f2a,
+Design493022fbf643b484665b2713c9eb8670f2fb2234, Cloud6bd7169607d55c8b647b1a70302ff28ad365d488.
+Plan task worktree branch plan/afv2-id-01-delivery/draftPR145. Next: collect actual
+Linux result, final independent receipt/artifact review, ordinaryCloud160 merge
+and pausedmain-push observation, then Plan completion checks/merge. Continue next
+eligible authorized task; base_audit is only reading future dependency readiness,
+not starting a second product implementation. No public activation is authorized.
+
+## Historical checkpoint — f6b9 Windows passed; H22 observation unavailable
 
 Cloudf6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa is clean/pushed and independently
 source-reviewed. Final Windows full10/10PASS144s, tree8af897e46cc0577d06794c787becf1f14411c739,

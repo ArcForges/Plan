@@ -41,6 +41,8 @@ After pushing, fetch the exact SHA from GitHub into a worktree on each designate
 
 Every PR needs its actual required statuses (`arcforges/windows` and `arcforges/linux`, or the repository's documented single-host rule) at the reviewed head. External PRs also need their configured hosted CI. No bypass actors, handwritten/copied statuses, weakened steps, hook disabling, `--no-verify`, ruleset/permission changes or automatic merge. If a host is unavailable, report the exact missing capability, leave status missing and stop that merge; complete reviewable non-host work where authorized.
 
+Owner transport override (2026-11-17): for the remaining V2 migration, use native local Windows access and local `ssh netcup` to the same designated H-22 host (`v2202601329473427941`, user `sammiller`) instead of the unstable MCP connections. This explicit instruction supersedes the MCP-only/no-SSH transport wording above and in repository guidance; it does not permit a substitute host, altered profile, copied receipt or weaker merge gate. Verify the host identity, independently fetch the exact SHA and run the unchanged host-local reporter. Ordinary work does not require root; do not change network/security settings.
+
 The independent reviewer reads the full latest diff against Design/contracts/requirements, records blocking and nonblocking findings, and reruns only changed validators or disputed evidence. Fixes get delta review; a new code head needs fresh required host profiles. An author-side audit does not satisfy the independent review gate. Plan state/ledger-only PRs retain the existing coordinator-check exception; graph/policy/tool changes require independent review.
 
 ## 4. Repository scope and removal
