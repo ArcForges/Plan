@@ -1,5 +1,50 @@
 # Codex handoff — ArcForges V2
 
+## MXC02 latest native outcomes — 2026-11-18
+
+Current Node PR95 source is bfc55b518432fcdd4805ded9b3be9fba312bb664 on local
+`task/afv2-mxc-02-resume`, remote `task/afv2-mxc-02`, in new resume worktree.
+The first integrated candidate8765ddb passed targeted build/format/AOT with0
+warnings/errors. Its stage `artifacts/mxc-02/install-resume-01` manifestSHA is
+ d233a20738c4e4dba557979f420a3d6c00076d34f8ce891d68cfbf6fb0488d59.
+Program.cs may show a stat-only modified flag; filtered blob equals HEAD
+473c00dfa27c0c2f6ccd1fa2aca0260562234256 and textual diff is empty. Do not reset.
+
+Actual network-resume-01 is partial8/13, not a pass. The five intended deny
+cases really communicated: official exit0, matching workload reply and trusted
+peer receive counters+1. Native HostLoopbackallow is unrestricted host loopback
+and bypasses fine egress tuples; fixed upstream source agrees. Receipt SHA256
+2bf9a3f162155c2b68651fc046a229a8eefcb14c82426a86f32f5e3b430e7565, all case
+cleanupCompleted. No more local or remote network probing is authorized by this
+failed candidate. Owner question is pending: permit controlled H22 native
+TCP/UDP acceptance traffic, provide an existing independent LAN/VM peer, or
+preserve that acceptance block and continue eligible work. Earlier cross-host
+stop remains effective until answered; ssh netcup control/verification works.
+
+Strict policy-resume-02 passed12/12 as a diagnostic (exit2, qualificationfalse),
+cleanupConfirmed; SHA25653fe08b9626fd0dbb244922fbf015458a280859279eb6d5e7cc0b5e65da18339.
+No full Windows qualification or current required host status exists.
+
+The first driver-context observed inherited Job=true with flags10240,UI0,CPU0.
+A permitted-breakaway author launch still observed another Job and was stopped
+at0.006s; keep author-launch-failed/cleanupunknown original. Normal Shell and
+actual desktop broker read-only console/no-console probes likewise reported
+inJobtrue (no payloads). Originals in private `artifacts/mxc-02/author-launches`.
+Do not keep trying alternative launch services/settings. Independent reviewer
+is checking whether the newly added blanket no-inherited-Job gate is stricter
+than the actual WIN03 text: necessary ancestor compatibility may instead be
+proven by readback, kernel nested-Job constraints and all held ArcForges handles.
+Do not change that predicate without a specific reviewed technical proof.
+
+Latest bfc55b5 fixes the review's sticky owner-logging EvidenceFailure gap:
+Record/Response propagate the first sink failure; consumers mark qualification
+failed but still Stop/shutdown/drain and capture late Dispose evidence. Targeted
+build0warnings0errors and format passed. AOT publish-resume-02 is underway or
+finished; inspect `resume-logs/publish-resume-02.log` before staging/running.
+Next independent work is lifecycle slice on a new verified stage. Review final
+source delta and native evidence; no network/host assumption is a PASS.
+Current Plan157 branch `plan/afv2-mxc-02-qualification` preserves these facts.
+
 ## MXC02 implementation checkpoint — 2026-11-18
 
 Resumption Plan156 merged88f4564184714d70949c4a3f28fab594d53e2a1b from8e92f5a,
