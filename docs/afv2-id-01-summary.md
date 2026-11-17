@@ -10,8 +10,20 @@ Current candidate is `f6b9edc25f5dcdf4e1c73d5e731f892ec3d4cdaa`, tree
 `8af897e46cc0577d06794c787becf1f14411c739`. Independent final source review passed;
 Windows formal10/10PASS144s (20261117-052223-f6b9edc25f5d-win). The prior H22 run
 was found interrupted(exit-15), withoutsummary, after connection recovery. No old
-process/lock remains. A new full same-head run is detached underdriver3732917;
-artifacts/afv2-id-01-formal-f6b9-ssh-20261117/native.log, result pending.
+process/lock remains. The first SSH run failed because inherited umask0002 created
+Go test output directories0775, correctly refused by the backup guard. Native
+original managementCLI10/11 and protected-parent diagnostics pass with process0077.
+The next complete run20261117-100316-f6b9edc25f5d-linux passed management/migrate,
+but identityapi/provision were killed; its scope recorded oom_kill2 while swap was
+full. Preserve both failures; there is still no final Linux pass.
+
+After measured pressure and independent review, the same unchanged profile is
+running under driver3786855 with per-process umask0077 and GOMAXPROCS=2. This limits
+runtime/default package parallelism and fuzz workers; all original cases/race,
+counts/timeouts, PostgreSQL, nine fuzz targets, restore/image and remaining checks
+remain. No product or host configuration change. Original log:
+artifacts/afv2-id-01-formal-f6b9-ssh-0077-gmp2-20261117/native.log and exit.
+Result pending; original same-head Windows success remains valid.
 
 Historical observation before SSH recovery: H22 launched
 run20261117-052230-f6b9edc25f5d-linux, then three consecutiveMCP HTTP502 failures
