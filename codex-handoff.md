@@ -1,5 +1,69 @@
 # Codex handoff — ArcForges V2
 
+## Resumed native qualification — 2026-11-18
+
+Latest pushed Node candidate:2bba330680437fd99c22174a193aab9733c16398,
+draft PR96. Windows targeted build0warnings/0errors and scoped format passed;
+H22 independently fetched and passed locked build/AOT/stage. The full invocation
+binds that embedded source SHA and actual Plan/Design baselines; admission4/4
+and terminal17/17 passed, policy first10 passed. Full profile stopped at ingress
+default-allow refusal classification, still partial. The official SDK returned
+BackendError12 before spawning; the harness expected different error codes.
+Only exact source-defined refusal evidence may repair that classification.
+All original reports are retained in H22
+`.worktree/mxc03-author-2bba33068043/artifacts/mxc-03`.
+Its separate resource run proved memory/pids/CPU/burst/dynamic enforcement and
+cleanup, then failed at `resource_lower_refusal` with
+`resource_probe_limit_out_of_bounds`; report SHA256
+882a6087d1e40b9bedb1da4532876b0636b6381bc84c339158a6626014c250fe.
+Lifecycle is running sequentially after it and now reaches actual Node crashes.
+Inspect original report/log completion before any retry.
+
+Current uncommitted fixes after2bba330: resource owner-report error validation
+and lower-limit negative case; DNS result facts split to respect existing32-field
+log bound; exact SDK ingress refusal classification. Independent review caught
+the first two issues and has not approved the final candidate. Earlier source
+fixes include pressure-ready synchronization, connect-before-NetworkStream,
+bounded first-failure outputs, DNS denial evidence and full-profile receipt.
+Plan PR153 is the shared recording draft on `plan/afv2-mxc-03-native`; required
+host checks and merge status must be checked before treating it as main.
+
+Owner explicitly resumed the authorized V2 graph through40 with parallel agents
+inside the sole active task, AFV2-MXC-03. Still8/40 complete. Fresh Plan main is
+f17b024bdd943b9de722743c870f5c02391720bd (PR152 merged), Design main remains
+af28dc6378d91d678870abc628362476611efa32. Local Windows and `ssh netcup` to
+H22 v2202601329473427941/sammiller were verified again; no MCP/root/host changes.
+
+Reuse Node worktree `.worktree/afv2-mxc-03`, branch `task/afv2-mxc-03`, draft PR96.
+Candidate0a76ab98ff2c424c8036096a4bc98f114e4bedac passed terminal17/17 and actual
+held-cgroup cleanup; report SHA256
+db9d51b36920b7b1e95b327bc77491dc5d40cda980c4838a28ca903c39d21d1f.
+The original649e failures remain unchanged. Candidate589a809cf3e32beb3487fde444f8eb67cb256ba6
+adds bounded private failed-policy stdout/stderr. Its H22 locked build/AOT/stage
+passed; targeted policy reproduction exposed the actual error:
+`bwrap: Can't mount on symlink destination /bin/sh`.
+This was a redundant executable grant in the probe, not an SSH or host outage.
+Candidatea5720c5 adds the minimal grant correction and admission implementation;
+its native validation is pending. Other delegated changes remain uncommitted:
+resource negative cases, combined pressure synchronization, DNS denial evidence,
+full-profile receipt and failure diagnostics. Inspect status before touching them.
+
+H22 originals for589a809 are under
+`/home/sammiller/arcforges/ArcForges/.worktree/mxc03-author-589a809cf3e3/artifacts/mxc-03`.
+Network9/9 passed with cleanup true (report SHA256
+be1e1eb2a237f202e818f24c3af766f0cbf87add2dae8b35545b363754e34ebb).
+Resource CPU/control/burst/dynamic/pids and CPU comparison passed, memory OOM
+observation failed; cleanup true (report SHA256
+7cd582b498f776b985739c31a7614186dbe31a6d4d7c535d8e7a7384a854cf3e).
+Diagnose original owner/driver logs before rerunning. Lifecycle is running in the
+same sequential author invocation; exact reports/logs are named
+`lifecycle-native-01.json` and `.json.events.jsonl`. No full qualification or
+final host status/review/merge is claimed. Next: integrate frozen fixes, build,
+push/fetch exact SHA, run affected native slices, complete full combination and
+normal required host/review gates. Main coordinator alone commits and pushes.
+
+The following checkpoints are historical and are superseded by this section.
+
 ## Live implementation checkpoint — 2026-11-17
 
 Plan PR151 merged at d63e2396ae194b76dce6197cf75e88ce2c3aa785, reviewed head
