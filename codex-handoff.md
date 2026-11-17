@@ -11,13 +11,13 @@ data-safety/provenance/native checks. Do not reintroduce the retired local argv-
 blocker under another name. Original synthetic argv-hit=true remains a historical
 observation; its old failure verdict is not rewritten as a past pass.
 
-MXC01 is the sole active task; graph7complete/1active/32planned. AR03 is PENDING
-revised-rule qualification, not PASS. User authorization covers the document decision,
+MXC01 is the sole active task; graph7complete/1active/32planned. AR03 isolated cohort/AOT acceptance is PASS at9a9378bc; Node d460524
+required checks and source merge remain incomplete. User authorization covers the document decision,
 necessary probe adaptation/verification, normal PR/merge and subsequent eligible tasks.
-Current main baselines Design4bc1d2be8916a961d167b4965e30e45bc3023ef1 and
+Current main baselines Designa877c184521fac493bb1066955992c598d68172a and
 Planda24652d090023a06175b1f43301b1fb0eaaaff5. ID01/Cloudfaf5dcb3 remains complete.
 
-New isolated worktrees:
+Initial resumption setup (historical; superseded by the revalidation checkpoint below):
 - Design C:/MyFile/Projects/ArcForges/ArcForges-Design/.worktree/afv2-local-process-boundary,
   branch design/afv2-local-process-boundary atca8e67a7014203937921eedd081be48a721a8b15;
   Design73 merged4bc1d2be after independent review and original Windows4PASS15s /
@@ -79,8 +79,8 @@ independent review and both exact-head4/4checks (Windows63s/Linux29s).
 Design branch design/afv2-mxc-01-revalidation at3b45fec is clean.
 Cohort F-AOT status and original hashes are shared; full profiles remain UNPROVEN.
 Plan branch plan/afv2-mxc-01-revalidation has only new ledger/handoff records.
-Next finish current fullchecks and Design evidence review/merge, merge Node93 at
-reviewed finalhead, then Plan delivery/completion against actual latest Design main.
+Next resolve the recorded Linux required exclusive failure and finish the Windows
+rerun, merge reviewed Node93, then Plan delivery/completion against actual Design main.
 Continue MXC02 immediately after real completion. No second product task is active.
 
 ## Historical checkpoint — ID-01 complete; then awaiting MXC decision

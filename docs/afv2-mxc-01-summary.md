@@ -65,14 +65,18 @@ summary/hash remain unchanged. No native rerun is needed for that auxiliary fiel
 Independent nonauthor id_review read the complete11-file final difference and
 original Windows/Linux hashes, stage members, reports and negatives; no blocking
 source or native-author evidence finding remains. Final exact-head full profiles
-are running: Windows15steps and H22Linux20steps via unchanged eng/verify.py
-run-and-report. No host result is copied or manually posted.
+remain incomplete: Windows15steps are rerunning with process-local English output
+after the existing warning-count parser rejected a Chinese zero-warning summary.
+H22Linux20steps recorded a genuine exclusive ResourceTests failure while waiting
+for the fourth Normal task to enter Running, before pressure allocation. Focused
+fixture/state diagnosis is in progress. Both use unchanged eng/verify.py
+run-and-report; original failures remain preserved. No host result is copied or manually posted.
 
 This probe migrates no data and changes no published package, applied SQL or
 existing product executor. Rollback is rejection of this candidate; preserve old
 inputs/evidence. Other RIDs and complete ConPTY/filesystem/network/Job/cgroup/
 recovery compositions remain unqualified. No production activation or deployment.
 
-Next finish fullchecks and Design evidence merge, merge reviewed Node93, then
+Next resolve the required-check failure and finish fullchecks, merge reviewed Node93, then
 record actual merges and complete MXC01 through plan.py. MXC02 is next eligible
 only after real completion; existing user authorization covers ordinary delivery.

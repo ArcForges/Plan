@@ -102,7 +102,8 @@ of intentionally supplied workload values in trusted owner/admin OS process meta
 is not publication to Plan/GitHub and must not block development by itself. Public
 repositories, shared evidence, ordinary logs and telemetry still exclude real secrets;
 actual unauthorized payload access and inherited host credentials remain separate.
-AR-03 is pending revised-rule native verification, not already passed. The original
+At that policy checkpoint AR-03 was pending revised-rule native verification;
+the current row above records the subsequent fresh cohort PASS. The original
 2026-11-16 observation and its then-applicable failure remain below as dated evidence.
 
 ### Historical 2026-11-16 native MXC admission failure
