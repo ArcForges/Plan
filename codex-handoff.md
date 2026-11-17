@@ -1,6 +1,63 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — owner decision resumes MXC-01
+## Current checkpoint — MXC-01 complete; close Plan148 and continue MXC-02
+
+MXC01 scoped acceptance and source delivery are complete: graph8complete/32planned,
+no active product task. `python tools/plan.py next` returns AFV2-MXC-02. User
+explicitly directs continuing the entire authorized V2 graph after recording each
+delivery; do not stop after this record or revive the retired local argv-only gate.
+Public activation remains the separate concrete approval in PROD01.
+
+Actual baselines:
+- Node main b2ebace5c15a130b13a7dbd02fd9900e4983c6e8 (PR93), same verified tree
+  14c754b7da091eb4e0630fa2350d0a1dcde322bc as finald460524d7fa23e1558fc7ddd5e4a3c31e66e71d6.
+- Design main af28dc6378d91d678870abc628362476611efa32 (final evidence PR75);
+  policy PR73 and native evidence PR74 remain historical prerequisite merges.
+- Plan main before this completion record is da24652d090023a06175b1f43301b1fb0eaaaff5.
+  Completion draft https://github.com/ArcForges/Plan/pull/148, branch
+  plan/afv2-mxc-01-revalidation, author worktree
+  C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-mxc-01-resume.
+
+Node final full verification: Windows15/15PASS2102s and H22Linux20/20PASS1950s;
+independent id_review accepted complete source, native acceptance, both original
+summaries and all35 original step-log hashes. Original directories under each
+Node .git/arcforges-verify/logs are20261117-123248-d460524d7fa2-win and
+20261117-125046-d460524d7fa2-linux. Details/hashes/failures/recovery are in
+[the MXC01 delivery record](docs/afv2-mxc-01-summary.md).
+All native/formal jobs and the diagnostic observer have finished. No product
+publication or deployment occurred (actual Node main-push workflow query0runs).
+
+Preserved source worktrees:
+- Node C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-mxc-01,
+  task/afv2-mxc-01 atd460524, clean; same-host native artifacts remain ignored there.
+- H22 /home/sammiller/arcforges/ArcForges/.worktree/afv2-mxc-01-9a9378b-native,
+  native9a reports retained; formal worktree verify-mxc01-d460524 and central cache
+  have final same-head reports. Original failed attempts remain separate.
+- Design C:/MyFile/Projects/ArcForges/ArcForges-Design/.worktree/afv2-local-process-boundary,
+  design/afv2-mxc-01-delivery atb050b878, clean and merged throughPR75.
+- Plan148 pending completion files: graph/state+generatedsequence, append-onlyledger,
+  acceptance register, handoff and docs/afv2-mxc-01-summary.md. A minimal source-audited
+  MXC02 scope correction adds only existing Program.cs and WindowsLauncher.cs entry/
+  helper paths to reuse the admitted probe for the already declared WIN01..06.
+  It does not activate MXC02 or change its acceptance/dependencies.
+
+Next exact steps: finish Plan148 independent review (including the two precise path
+additions), push final head, fetch that exact SHA independently on local Windows and
+H22 and run unchanged eng/verify.py run-and-report. Both Plan receipts must bind
+actual Design af28dc (fresh-fetch again before merge). Normal merge, record actual
+Plan merge, then activate MXC02 via plan.py in a new Plan continuation branch and
+create/reuse an isolated Node task/afv2-mxc-02 worktree from actual main. Read full
+WIN01..06 protocols and use current scope, retain critical product executors.
+
+Use native local Windows and ssh netcup to the same H22 v2202601329473427941 /
+sammiller; no MCP/root/WSL. For Windows Node full reporting set process-local
+DOTNET_CLI_UI_LANGUAGE=en-US and VSLANG=1033 so its unchanged warning parser sees
+English output. H22 Node checks used only umask0077/Python selection, no added CPU
+count overrides. Do not copy prior Cloud GOMAXPROCS2/DOTNET_PROCESSOR_COUNT2 settings
+into Node diagnostics without actual need. Existing old H22 primary Plan dirty
+files, unrelated Cloud CI draft and all historical evidence remain protected.
+
+## Historical checkpoint — MXC-01 resumption and verification
 
 Owner2026-11-17 explicitly directs correction of the local-process visibility rule
 and continued completion of the40-task graph. Workload environment/arguments visible

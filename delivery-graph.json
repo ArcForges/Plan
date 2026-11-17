@@ -691,7 +691,7 @@
       "title": "Admit stable MXC artifacts and build AOT/provenance probes",
       "milestone": "P1",
       "order": 4,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -795,20 +795,30 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/**; ArcForges:eng/mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Resume continuous authorized V2 delivery after BASE-02 final record PR117; implement only exact stable MXC artifact/AOT probe admission. Scope amendment approved in Plan PR118: register only the real probe project in ArcForges.slnx because RepositoryLayoutTests requires every tools project in the solution; no product package/publish target or test/validator bypass. Evidence-only scope amendment approved in Plan PR119: update F-AOT-01/V-MXC-07 and the dated status preamble in docs/verification/platform-capabilities.md from actual MXC-AOT-01 evidence; all composed-profile and unrelated future facts remain unchanged. [blocked] Selected official1.0.1 fails MXC-AOT-01 request-environment argv privacy on genuine H-22; candidate rejected, native cleanup proved, no weaker policy/private patch/unreviewed pin. Preserve Node draft93; independent API-01 may proceed. [active] Owner approved correction of the local-process visibility requirement and continuation. Resume existing MXC01 draft and re-evaluate under the reviewed boundary; AR03 no longer blocks solely for owner-local argv visibility, but remains pending actual updated probe/cohort verification and delivery. Design-first document amendment precedes probe change; no historical result or native gate is fabricated. Owner-authorized2026-11-17 design correction adds only six exact existing Design paths for accepted ADR/trust-boundary/index/research/acceptance consistency, alongside the three existing experiment/source/status paths. No implementation scope expansion or new dependency is implied; Node probe paths already cover the necessary observation/reporting change. Historical native failures remain immutable dated facts.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/**; ArcForges:eng/mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Resume continuous authorized V2 delivery after BASE-02 final record PR117; implement only exact stable MXC artifact/AOT probe admission. Scope amendment approved in Plan PR118: register only the real probe project in ArcForges.slnx because RepositoryLayoutTests requires every tools project in the solution; no product package/publish target or test/validator bypass. Evidence-only scope amendment approved in Plan PR119: update F-AOT-01/V-MXC-07 and the dated status preamble in docs/verification/platform-capabilities.md from actual MXC-AOT-01 evidence; all composed-profile and unrelated future facts remain unchanged. [blocked] Selected official1.0.1 fails MXC-AOT-01 request-environment argv privacy on genuine H-22; candidate rejected, native cleanup proved, no weaker policy/private patch/unreviewed pin. Preserve Node draft93; independent API-01 may proceed. [active] Owner approved correction of the local-process visibility requirement and continuation. Resume existing MXC01 draft and re-evaluate under the reviewed boundary; AR03 no longer blocks solely for owner-local argv visibility, but remains pending actual updated probe/cohort verification and delivery. Design-first document amendment precedes probe change; no historical result or native gate is fabricated. Owner-authorized2026-11-17 design correction adds only six exact existing Design paths for accepted ADR/trust-boundary/index/research/acceptance consistency, alongside the three existing experiment/source/status paths. No implementation scope expansion or new dependency is implied; Node probe paths already cover the necessary observation/reporting change. Historical native failures remain immutable dated facts. [delivered] Official1.0.1 isolated cohort admitted under owner-approved boundary; both native AOT/cleanup/negative experiments and independent review passed. Final d460 same-tree Node merge follows Windows15/15 and H22Linux20/20 required checks. Design final evidence mergedaf28dc; original failures retained without relabeling. Complete profile composition remains MXC02/03. [complete] All scoped MXC-AOT-01/F-AOT-01 and AR03 acceptance, exact official provenance/native distribution, real designated-host checks, final independent review and source/Design merges are complete. No data migration, product runtime replacement or external activation is claimed. Shared Plan148 completion record closes this delivery; continue next eligible MXC02 under existing authorization.",
       "blocked_by": [],
       "evidence": {
         "prs": [
           "https://github.com/ArcForges/ArcForges/pull/93",
           "https://github.com/ArcForges/ArcForges-Design/pull/72",
           "https://github.com/ArcForges/Plan/pull/118",
-          "https://github.com/ArcForges/Plan/pull/119"
+          "https://github.com/ArcForges/Plan/pull/119",
+          "https://github.com/ArcForges/ArcForges-Design/pull/73",
+          "https://github.com/ArcForges/ArcForges-Design/pull/74",
+          "https://github.com/ArcForges/ArcForges-Design/pull/75",
+          "https://github.com/ArcForges/Plan/pull/147",
+          "https://github.com/ArcForges/Plan/pull/148"
         ],
         "merges": [
           "Plan@32589ed5ea739fcd813ca33eb03f831f713280be",
-          "ArcForges-Design@493022fbf643b484665b2713c9eb8670f2fb2234"
+          "ArcForges-Design@493022fbf643b484665b2713c9eb8670f2fb2234",
+          "ArcForges@b2ebace5c15a130b13a7dbd02fd9900e4983c6e8",
+          "ArcForges-Design@af28dc6378d91d678870abc628362476611efa32",
+          "Plan@da24652d090023a06175b1f43301b1fb0eaaaff5"
         ],
-        "publications": [],
+        "publications": [
+          "Node main b2ebace5 has zero main-push workflow runs as expected; no product package publication, deployment or public activation. Isolated native artifacts and original receipts retained on each host."
+        ],
         "ledger": null
       },
       "removals": [
@@ -846,7 +856,9 @@
           "paths": [
             "tools/ArcForges.MxcProbe/Windows/**",
             "tests/ArcForges.MxcProbe.Tests/**",
-            "eng/mxc/profiles/**"
+            "eng/mxc/profiles/**",
+            "tools/ArcForges.MxcProbe/Program.cs",
+            "tools/ArcForges.MxcProbe/WindowsLauncher.cs"
           ]
         },
         {
@@ -934,7 +946,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Windows/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Windows/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. Source-audited continuation scope2026-11-17: permit only the existing Program.cs entry/manifest/report dispatch and WindowsLauncher.cs native launcher helpers alongside Windows/** so WIN01..06 can reuse the admitted probe and exact launcher contract. This adds no requirement, product runtime or alternate entry framework; it does not authorize old product executor removal. MXC02 remains planned until MXC01 shared completion; existing owner authorization covers its ordinary implementation.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
