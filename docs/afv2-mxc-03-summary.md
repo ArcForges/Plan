@@ -11,7 +11,8 @@ does not make the AFV2-MXC-04 profile-admission decision or activate a release.
 - Native source `50e602a83ece2c4de75d8dbd32777c7833a6eaf7`; final source only
   reformats Admission initializers. Independent nonauthor review verified
   unchanged C# tokens and non-whitespace bytes. Original evidence is not relabeled.
-- Design [PR76](https://github.com/ArcForges/ArcForges-Design/pull/76), candidate
+- Design [PR76](https://github.com/ArcForges/ArcForges-Design/pull/76), merged as
+  `6fa2a98ad3f93793134555320f0bd362e81625f0` from candidate
   `e95476f531ca22b3ca3944bdaa56d7e26f9763bf`, records the exact cohort, original
   hashes, host/helper observations and measured overhead with its limits.
 - Plan [PR153](https://github.com/ArcForges/Plan/pull/153) merged as
@@ -68,20 +69,32 @@ were introduced.
 
 ## Repository gates and preserved failures
 
-Required Node checks are not yet complete. The original50e Linux profile failed
-only Admission whitespace checks, at
-`20261118-005847-50e602a83ece-linux`; those source-only formatting changes became
-022946a. Original50e Windows verification is finishing before its final-head
-rerun, avoiding overlapping use of that repository's verification worktree.
-The actual022946a Linux reporter is running with receipt
-`20261118-010502-022946a305e5-linux`. A disconnected SSH output stream did not
-stop it: reconnection verified its original process/worktree and continuing
-same-host logs. Do not start another copy while it is alive.
+Required Node checks are not yet complete. Original50e Linux failed Admission
+formatting, receipt20261118-005847-50e602a83ece-linux; the correction is022946a.
+Original50e Windows passed15/15 in2190s, receipt20261118-005846-50e602a83ece-win.
+Final022 Windows is running at20261118-013632-022946a305e5-win.
 
-Design e95476f has independent review and H-22 formal4/4 PASS in31s, receipt
-`20261118-011411-e95476f531ca-linux`; Windows formal verification is pending.
-Both repositories still require their actual final-head statuses before merge.
-Plan must verify against the actual new Design main after Design merges.
+Final022 Linux receipt20261118-010502-022946a305e5-linux has an exclusive
+CloudLink pressure-setup failure: only57 connections within3s against a required
+value greater than256. The test and receiver source match actual Node main.
+The reporter later exited after its SSH output stream had disconnected; no final
+summary exists and its status was not reported as success. Preserve the failure
+and incomplete receipt. Isolated bounded diagnostics passed with298 connections/Peak256/browser200 and
+no premature producer exit; observed connect waits do not establish the original
+packet-level cause. One unchanged original-method control passed1/1 in1.629s.
+A single full unchanged022 formal retry follows, with detached private output
+logging; no threshold or assertion is relaxed.
+
+Design e95476f passed independent review and both formal legs: H22 4/4 in31s,
+receipt20261118-011411-e95476f531ca-linux; Windows4/4 in17s,
+receipt20261118-013522-e95476f531ca-win. PR76 merged normally as
+6fa2a98ad3f93793134555320f0bd362e81625f0. Plan now validates against that actual
+Design main. A follow-up one-line register disclaimer fix, reviewed PR77, merged
+as41d25327841e6c88df639bbcb387682bd067f7a1 after exact71017e9 Windows4/4 PASS74s
+(receipt013951) and H22 4/4 PASS30s (receipt014149). It preserves the experiment
+owner and all evidence while avoiding a second owner inferred from disclaimer
+text by the reciprocal parser. This latest Design main is the Plan validation
+baseline. Node still requires both final-head statuses before merge.
 
 Every original failed author report remains intact. Diagnosed corrections include
 PTY foreground process identity, deleted cgroup proof, duplicate symlink mounts,

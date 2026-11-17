@@ -1,5 +1,53 @@
 # Codex handoff — ArcForges V2
 
+## Latest checkpoint — 2026-11-18
+
+Design PR77 merged41d25327841e6c88df639bbcb387682bd067f7a1 after independent
+review and exact71017e9 Windows4/4 PASS74s (receipt013951) and H22 Linux4/4
+PASS30s (receipt014149). The one-line disclaimer rewording fixes the reciprocal
+register parser treating a mentioned subsequent task as a second experiment
+owner. It changes no graph, validation rule, experimental evidence or admission
+condition. Plan native checks must bind this latest Design main.
+
+The isolated Linux diagnostic passed with original thresholds:298 connections,
+Peak256 and browser200, no premature producer exit. It observed connect waits
+but cannot establish the original packet-level cause. One unchanged original
+method control passed1/1 in1.629s; original-targeted.log SHA256
+ ea3ec08e34f4a97455de55776e731d57489bc1912cb2e871585628e9007c8e0a.
+All originals are in H22 `.worktree/final022-loopback-diagnostic-01/artifacts/loopback-diagnostic`.
+No production or candidate test source was changed. A single full final022
+Linux retry is running: receipt20261118-014327-022946a305e5-linux, PID47183,
+fresh invocation worktree `.worktree/verify-mxc03-022946a-retry01`. Detached
+reporter output is Node `.git/arcforges-verify/launches/node022-retry01-linux/reporter.log`.
+It independently fetched the exact GitHub SHA. Read the launch record and original receipt;
+do not duplicate it. Windows final022 continues in receipt013632/session9064.
+MXC03 remains active,8/40 complete; Node merge/completion still pending.
+
+## Design delivered; final Node checks — 2026-11-18
+
+Design PR76 merged normally at6fa2a98ad3f93793134555320f0bd362e81625f0 after
+independent review and exacte95476f Windows4/4 PASS17s (receipt013522) and
+H22 Linux4/4 PASS31s (receipt011411). Actual strict status rules, CLEAN head and
+no unresolved review threads were checked. Plan must now validate against this
+actual new Design main on both hosts.
+
+Old50e Windows completed15/15 PASS2190s, receipt005846. This does not satisfy
+final022 head: final022 Windows is running, receipt
+20261118-013632-022946a305e5-win, local session9064, fresh invocation worktree
+`ArcForges/.worktree/verify-mxc03-022946a`. No source changes are pending.
+
+Final022 Linux original exclusive step failed only the CloudLink pressure setup;
+subsequent read-only checks confirmed original reporterPID4193458 absent, no
+other repo reporter/step processes, no step pidfiles, and no finalsummary. Its
+GitHub status remained pending after the earlier SSH output disconnect. Preserve
+this incomplete receipt; do not fabricate a summary or status. One isolated
+H22 `.worktree/final022-loopback-diagnostic-01` adds diagnostic counters only,
+with unchanged pressure threshold and assertions. Delegate resource_gap owns
+the sole diagnostic execution; wait for its result before another Linux run.
+Node PR96 remains unmerged and MXC03 active,8/40 complete. Plan154 is a checkpoint,
+not task completion. Final Node checks/source merge and actual completion remain.
+
+
 ## Final repository gate follow-up — 2026-11-18
 
 MXC03 remains the sole active task;8/40 complete. Owner again explicitly asked
