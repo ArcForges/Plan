@@ -1,5 +1,45 @@
 # Codex handoff — ArcForges V2
 
+## MXC02 resumed after MXC03 completion — 2026-11-18
+
+Shared Plan main14b3689a2b8cd6720c78bc0aa7d1d17f3bb1d373 (PR155) records9/40
+complete, including MXC03. Final completion candidate32e61da passed Windows5/5
+in5s (receipt022127) and H22 5/5 in27s (receipt022200), both against actual
+Design41d25327841e6c88df639bbcb387682bd067f7a1; independent review PASS and normal
+strict merge completed. No MXC03 implementation or validation work remains.
+
+MXC02 is now the sole active task in this resumed record, under the owner's
+standing through40 authorization and explicit parallel-agent instruction.
+Preserved original Windows worktree `.worktree/afv2-mxc-02` remains at14886bf;
+Program.cs shows a modified working-tree stat with no textual diff and is left
+untouched. New Node worktree `.worktree/afv2-mxc-02-resume`, local branch
+`task/afv2-mxc-02-resume`, reuses that draft and merges actual Node main687eb3a.
+Integrated commita4e03ff60fa87e79cab91f0673ba21a0648ee3e5 is pushed to the existing
+PR95 remote branch `task/afv2-mxc-02`. Only Program.cs dispatch conflicted;
+both role sets are retained. Locked restore/build passed0warnings/0errors;
+original logs are `artifacts/mxc-02/resume-logs/*main-integration.log`.
+
+Current delegated implementation scopes, uncommitted until integration:
+- admission: WindowsQualification.cs strict complete-case finalization and exact
+  source/stage/host identity; diagnostic --only stays partial.
+- lifecycle_diagnosis: WindowsWorkload.cs/WindowsCombinedCases.cs actual pressure
+  ready gate before network/files operations, externally checked event order.
+- dns: WindowsNetworkCases.cs reuses real local TCP/UDP peers. Candidate explicit
+  host-loopback policy must pass all-deny and precise IP/protocol/port positives
+  and negatives; no host setting change, SSH data tunnel or revived H06.
+Coordinator owns Program integration, AOT/native execution, documentation and
+all commits/pushes/PR/merge/state. Do not run competing native loads.
+
+Full qualification remains unfinished. Existing slices in the MXC02 progress
+record guide reuse, not a stitched final PASS. After integration, run targeted
+network/combined diagnosis, then a fresh same-head full native receipt; obtain
+independent final review and exact-head normal host gates. No old executor or
+shared data guard is removed, no product runtime/public activation occurs.
+Current Plan branch is `plan/afv2-mxc-02-resume` in the same Plan worktree;
+its graph/ledger/sequence record resumption. Finish sharing this checkpoint
+through the normal Plan workflow while product implementation continues.
+
+
 ## MXC03 delivered; completion record — 2026-11-18
 
 Node PR96 merged normally at687eb3ad5d7f7b2e993d061df1dc5ccc96d13cb8 from
