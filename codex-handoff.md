@@ -1,6 +1,36 @@
 # Codex handoff — ArcForges V2
 
-## Current checkpoint — same f6b9 verification with bounded Go concurrency
+## Current checkpoint — exact architecture inventory consumer correction
+
+Latest f6b9 full Linux run20261117-102200-f6b9edc25f5d-linux finished failure372s.
+The original check-dotnet log has one actual assertion failure:
+ProductionBundleMarkersTests.TheGeneratedTableListsTheSevenWebBrowserSessionRoutesAndTheTwoNativeMobileRoutes,
+expected9 actual16. ID01 added seven real lifecycle page routes; update this stale
+consumer inventory, retaining exact-route and negative-marker protection.
+check passed172s; security bridge123s; center was stopped after the earlier failure,
+not a full pass. Its identityapi passed85.960s. Session895 recorded localoom_kill0to1,
+peak4830121984bytes; that resource event does not explain the route assertion, and
+exit137 alone does not identify a killed PID. Preserve original logs and summary.
+Driver3786855 has finished; no active formal verification remains.
+
+Plan draftPR145 adds only the exact41st Cloud path
+ tests/ArchitectureTests/WorkerAdapter/ProductionBundleMarkersTests.cs.
+No source change until amendment review/required both-host checks/normal merge.
+Independent id_transport is reading the minimal assertion adaptation; id_metadata
+checks whether this test is in any immutable admitted hash closure. No runtime,
+route, dependency upgrade or weakened assertion is intended. Existing source at
+Cloudf6b9 remains clean; its Windows10/10PASS144s is historical valid evidence but
+any successor requires fresh both-host profiles. Continue per-process0077/GOMAXPROCS2
+for the measured memory pressure; no root, host settings or container deletion.
+
+Baselines Plan cedc3c4905808b7bbee539a33a8e1a6ce3736f2a,
+Design493022fbf643b484665b2713c9eb8670f2fb2234, Cloud6bd7169607d55c8b647b1a70302ff28ad365d488.
+Plan worktree .worktree/afv2-id-01 branch plan/afv2-id-01-delivery; Cloud author/native
+worktrees unchanged. Next: merge reviewed Plan amendment, adapt/test exact consumer,
+review/push successor and get both native full checks; then Cloud merge/paused
+publication observation and Plan completion. All32planned remain behind MXC01/AR03.
+
+## Historical checkpoint — same f6b9 verification with bounded Go concurrency
 
 The per-process0077 run (driver3758064) finished exit1. Original receipt directory:
 Cloud/.git/arcforges-verify/logs/20261117-100316-f6b9edc25f5d-linux.

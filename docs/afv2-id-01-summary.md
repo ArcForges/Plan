@@ -23,7 +23,12 @@ runtime/default package parallelism and fuzz workers; all original cases/race,
 counts/timeouts, PostgreSQL, nine fuzz targets, restore/image and remaining checks
 remain. No product or host configuration change. Original log:
 artifacts/afv2-id-01-formal-f6b9-ssh-0077-gmp2-20261117/native.log and exit.
-Result pending; original same-head Windows success remains valid.
+This run ended failure372s: check passed172s, but check-dotnet found the old
+architecture inventory assertion expected9 versus actual16. Center was stopped
+after that failure. Its scope also recorded one OOM kill, without individual PID
+attribution; do not attribute the deterministic assertion to memory. The exact
+consumer-path Plan amendment precedes source correction and new-head both-host
+verification. Original same-head Windows success remains valid historical evidence.
 
 Historical observation before SSH recovery: H22 launched
 run20261117-052230-f6b9edc25f5d-linux, then three consecutiveMCP HTTP502 failures
