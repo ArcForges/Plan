@@ -691,7 +691,7 @@
       "title": "Admit stable MXC artifacts and build AOT/provenance probes",
       "milestone": "P1",
       "order": 4,
-      "state": "blocked",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -710,7 +710,13 @@
           "paths": [
             "docs/research/mxc-sources.json",
             "docs/verification/mxc-experiments.md",
-            "docs/verification/platform-capabilities.md"
+            "docs/verification/platform-capabilities.md",
+            "docs/README.md",
+            "docs/architecture/02-mxc-integration.md",
+            "docs/architecture/08-security-trust.md",
+            "docs/decisions/AD-0022-cli-sandbox-platform-pivot.md",
+            "docs/research/mxc-research.md",
+            "docs/verification/acceptance.md"
           ]
         }
       ],
@@ -789,10 +795,8 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/**; ArcForges:eng/mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Resume continuous authorized V2 delivery after BASE-02 final record PR117; implement only exact stable MXC artifact/AOT probe admission. Scope amendment approved in Plan PR118: register only the real probe project in ArcForges.slnx because RepositoryLayoutTests requires every tools project in the solution; no product package/publish target or test/validator bypass. Evidence-only scope amendment approved in Plan PR119: update F-AOT-01/V-MXC-07 and the dated status preamble in docs/verification/platform-capabilities.md from actual MXC-AOT-01 evidence; all composed-profile and unrelated future facts remain unchanged. [blocked] Selected official1.0.1 fails MXC-AOT-01 request-environment argv privacy on genuine H-22; candidate rejected, native cleanup proved, no weaker policy/private patch/unreviewed pin. Preserve Node draft93; independent API-01 may proceed.",
-      "blocked_by": [
-        "AR-03"
-      ],
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/**; ArcForges:eng/mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Resume continuous authorized V2 delivery after BASE-02 final record PR117; implement only exact stable MXC artifact/AOT probe admission. Scope amendment approved in Plan PR118: register only the real probe project in ArcForges.slnx because RepositoryLayoutTests requires every tools project in the solution; no product package/publish target or test/validator bypass. Evidence-only scope amendment approved in Plan PR119: update F-AOT-01/V-MXC-07 and the dated status preamble in docs/verification/platform-capabilities.md from actual MXC-AOT-01 evidence; all composed-profile and unrelated future facts remain unchanged. [blocked] Selected official1.0.1 fails MXC-AOT-01 request-environment argv privacy on genuine H-22; candidate rejected, native cleanup proved, no weaker policy/private patch/unreviewed pin. Preserve Node draft93; independent API-01 may proceed. [active] Owner approved correction of the local-process visibility requirement and continuation. Resume existing MXC01 draft and re-evaluate under the reviewed boundary; AR03 no longer blocks solely for owner-local argv visibility, but remains pending actual updated probe/cohort verification and delivery. Design-first document amendment precedes probe change; no historical result or native gate is fabricated. Owner-authorized2026-11-17 design correction adds only six exact existing Design paths for accepted ADR/trust-boundary/index/research/acceptance consistency, alongside the three existing experiment/source/status paths. No implementation scope expansion or new dependency is implied; Node probe paths already cover the necessary observation/reporting change. Historical native failures remain immutable dated facts.",
+      "blocked_by": [],
       "evidence": {
         "prs": [
           "https://github.com/ArcForges/ArcForges/pull/93",

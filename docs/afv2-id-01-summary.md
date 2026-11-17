@@ -59,6 +59,12 @@ is bounded to256 rows and the full canonical export to2MiB.
 
 ## Host recovery and remaining dependency
 
+Subsequent owner decision (2026-11-17): the local-process argv-only rejection
+recorded below is superseded. The owner directs the Design/Plan boundary amendment
+and resumption of MXC01, with public/shared material still secret-free. ID01 delivery
+facts and historical next=null observation remain unchanged; follow current graph,
+execution-policy and handoff for the resumed work, not this historical stop point.
+
 Initial root disk recovery restored304045109248B user-available space. A later,
 separately audited21 old Go build directories freed3947823104B of /tmp tmpfs memory.
 Original inventory/deletion records remain in H22

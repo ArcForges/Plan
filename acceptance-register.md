@@ -30,7 +30,7 @@ This development acceptance does not close AR-03, AR-10, H-03, H-04 or H-05.
 |---|---|---|---|---|---|
 | AR-01 | Full Windows official profile | NOT_RUN | AFV2-MXC-04 and dependent Core; final AFV2-ACC-01 | AFV2-MXC-02 | Run MXC-WIN-01..06 on exact qualified native Windows; no pipes-only or separate-feature substitute |
 | AR-02 | Full Linux official profile | NOT_RUN | AFV2-MXC-04 and dependent Core; final AFV2-ACC-01 | AFV2-MXC-03 | Run MXC-LNX-01..05 on H-22 with actual PTY/user-manager/cgroup/helpers |
-| AR-03 | AOT/native package and distribution admission | FAILED — selected1.0.1 cohort rejected | AFV2-MXC-01 admission; dependent AFV2-MXC-02/03/04 profile qualification and Core delivery | AFV2-MXC-01 | Real candidate8252c8f Linux request-environment sentinel observed in owned native argv; Kill/Wait/PID absence and owned unit cleanup proved. Windows bounded observations pass but do not waive Linux failure. [Design PR72](https://github.com/ArcForges/ArcForges-Design/pull/72), [Node draft93](https://github.com/ArcForges/ArcForges/pull/93); supported upstream remedy or explicit reviewed product decision required before new admission. |
+| AR-03 | AOT/native package and distribution admission | PENDING revised-rule verification; old local-argv-only rejection superseded by owner decision | AFV2-MXC-01 actual cohort/AOT/provenance acceptance, then dependent profile qualification | AFV2-MXC-01 | Owner2026-11-17 accepts trusted local process visibility for intentionally supplied workload values; public/shared evidence must remain secret-free. Prior argv-hit=true and cleanup facts remain historical. Resume Node draft93, adapt observation to revised Design and complete actual native/full checks before marking PASS. No official upstream argv-hiding fix is required solely for this local observation. |
 | AR-04 | Crash and unknown ownership recovery | NOT_RUN | AFV2-REC-01 delivery; full native acceptance | AFV2-REC-01 | Same Run owner survives Node loss; supervisor loss/reboot/no PID guessing and exact outer-scope empty tests |
 | AR-05 | Owned Sandbox data and deletion safety | NOT_RUN | AFV2-FILE-02 delivery; final acceptance | AFV2-FILE-02 | Native path/identity/managed-use/partial effect/import/export/delete recovery tests; no blanket refusal |
 | AR-06 | OS-effective resource budget | NOT_RUN | AFV2-RES-02 delivery and dependent allocation | AFV2-RES-02 | Saturation and desired/applied/readback failures on both hosts; aggregate reductions before increases |
@@ -95,7 +95,17 @@ Use the actual bounded fixture lists in ID-01, HOST-01..03, WEB-01..04 and ACC-0
 
 Close an item with exact source/artifact/environment/command/result and independent review references. Failed experiments stay failed/blocked; do not reset them to pass after a version change without requalification. No retention setting creates a 24-hour development wait. No old acceptance item or one-time bootstrap permission silently authorizes V2 actions.
 
-### 2026-11-16 native MXC admission failure
+### 2026-11-17 owner-approved local process boundary
+
+The owner explicitly supersedes the local argv-absence admission condition. Visibility
+of intentionally supplied workload values in trusted owner/admin OS process metadata
+is not publication to Plan/GitHub and must not block development by itself. Public
+repositories, shared evidence, ordinary logs and telemetry still exclude real secrets;
+actual unauthorized payload access and inherited host credentials remain separate.
+AR-03 is pending revised-rule native verification, not already passed. The original
+2026-11-16 observation and its then-applicable failure remain below as dated evidence.
+
+### Historical 2026-11-16 native MXC admission failure
 
 MXC-AOT-01 executed exact Node8252c8fc13d5973b27ab76bc18726eab8f21cb96 on
 native Windows and designated H-22 Linux. Both AOT publishes had zero warnings;
@@ -110,7 +120,9 @@ The latest Node draft4382988ce5b5ea40f4eb4583534a18bb135d371a adds only whitespa
 formatting after tested825; it has no final required full statuses or merge.
 Four staging negative cases passed on each native host. Exact originating
 artifact/report/command identities remain in the Design result and handoff.
-This failure blocks admission and its actual dependent profiles/Core; it does
-not block independent API-01/BASE-01-dependent contract work. H-22 connectivity,
+Under the then-applicable rule, this failure blocked admission and dependent
+profiles/Core; it did not block independent API-01/BASE-01-dependent contract work.
+That local-argv-only blocking interpretation is superseded by the 2026-11-17 owner
+decision above; full revised-rule cohort/profile evidence is still required. H-22 connectivity,
 user manager and helper availability are not the blocker. Existing ENV/BASE
 completion and AR-13 PASS remain valid. No public activation is authorized.
