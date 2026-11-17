@@ -1,5 +1,29 @@
 # Codex handoff — ArcForges V2
 
+## Lifecycle result and ancestor-rule correction — 2026-11-18
+
+Source bfc55b518432fcdd4805ded9b3be9fba312bb664 passed targeted build,
+format and Native AOT with zero warnings/errors. Verified stage
+`artifacts/mxc-02/install-resume-02` manifest SHA256
+05bf342daea59930849b0a5b05b65fb5981f2d8c02da50a302919e6e1023b4eb.
+`lifecycle-resume-01.json` completed exit2:15/15 passed, every case cleanup
+completed, cleanupConfirmed=true, no primary/evidence failure. Receipt SHA256
+11e6c6384859ce66fb484805ca2565e6bb5357d80d130dcaa107931b3b90d9ab.
+This includes the separate center-observer-loss case. It remains a partial
+diagnostic, not full Windows qualification. Session78064 has finished.
+
+Independent review withdrew the added blanket requirement that the original
+driver must have no inherited Job: Design requires actual chain compatibility,
+not absence of an external tool Job. Windows nested-Job inheritance and native
+assignment enforce the owned non-breakaway chain even when an external Job
+permits breakaway. The minimal correction is in progress; retain actual driver
+context, owned handles/readback, suspended assignment, descendants, limits and
+cleanup evidence. QueryInformationJobObject(NULL) reports only the immediate
+Job: do not claim every external ancestor was enumerated or exact whole-machine
+CPU share under an unknown ancestor cap. No host launch/settings changes.
+Reviewer continues the sticky logging-failure delta review. Network venue
+question remains pending; no repeated failed local-egress or cross-host probes.
+
 ## MXC02 latest native outcomes — 2026-11-18
 
 Current Node PR95 source is bfc55b518432fcdd4805ded9b3be9fba312bb664 on local
@@ -15,8 +39,9 @@ cases really communicated: official exit0, matching workload reply and trusted
 peer receive counters+1. Native HostLoopbackallow is unrestricted host loopback
 and bypasses fine egress tuples; fixed upstream source agrees. Receipt SHA256
 2bf9a3f162155c2b68651fc046a229a8eefcb14c82426a86f32f5e3b430e7565, all case
-cleanupCompleted. No more local or remote network probing is authorized by this
-failed candidate. Owner question is pending: permit controlled H22 native
+cleanupCompleted. Do not repeat the known-failing local-egress setup unchanged
+or resume the stopped cross-host data probes without the owner's answer.
+Owner question is pending: permit controlled H22 native
 TCP/UDP acceptance traffic, provide an existing independent LAN/VM peer, or
 preserve that acceptance block and continue eligible work. Earlier cross-host
 stop remains effective until answered; ssh netcup control/verification works.
