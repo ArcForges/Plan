@@ -29,6 +29,21 @@ nonoverlapping scopes. Coordinator owns Program dispatch, native profile integra
 all Plan state/ledger, commits/pushes and PRs. Independent reviewer is id_review.
 No MXC02 native acceptance or formal host success has yet occurred.
 
+Latest 2026-11-17 14:53 native checkpoint: integration08 completed (43 cases,
+28 PASS/15 FAIL), not qualification. Build03 and publish08 passed zero warnings.
+Report artifacts/mxc-02/terminal-integration-08.json SHA256
+6768d99f62dc1a135114f428723c6fe09f4072f615bca2aeaba57ccb08d51472.
+The user-reported 0xc0000142 was the probe loader/UI-policy failure above;
+no further matching popup event occurred during integration08. All probe/executor
+processes were absent after profile exit. Preserve the selected-network combined
+case's unresolved-cleanup verdict; final process absence does not rewrite it.
+Resource fixture-directory wiring is now fixed but not revalidated. Authors are
+checking line/cmd/cooperative ETX (id_audit), known-folder expectation (id_metadata),
+selected TCP/UDP (base_audit), owner helper accounting/guardian cleanup (base_review).
+Independent id_review is reviewing all current source. No native process remains.
+Program and the Windows case sources are uncommitted after source4a3ae76; preserve
+them. Next collect these narrow fixes, build/publish a fresh stage09 and execute
+new evidence without overwriting08, then complete required host/review gates.
 Latest native checkpoint: author publishes01/02/03 are zero-warning Native AOT;
 unchanged official stages are retained under Node artifacts/mxc-02. Smoke01/02
 failed because ui.disable=true prevented AOT loader initialization (actual Windows
@@ -39,17 +54,33 @@ starts the AOT payload in a pipe-only diagnostic; independent id_review confirme
 this explicit profile selection conforms to current Design and needs no new approval.
 No host settings changed. Original failures remain historical, not rewritten passes.
 
-Smoke03 uses that corrected UI policy and no longer creates dialogs, but ConPTY
-still emits only 170 bytes (clear/title), with no fixture console event in 10s.
-CleanupCompleted=true; the primary failure is expected_fixture_event_missing.
-Current task remains active, not accepted. Investigate exact official executor
-console handling and actual owned Job process/thread observations; do not label
-pipe diagnostics as terminal evidence or replace the unchanged official binary.
+Smoke03..05 diagnosed a separate redirected-parent standard-handle bug in our
+ConPTY launcher: official private logs showed passthrough mode; native Job was
+empty and executor exited77. Setting STARTF_USESTDHANDLES with null std handles
+fixes that initialization (Microsoft Terminal discussion15814). Native06 confirmed
+actual console APIs true/80x24 and executor exit0, but raw OSC title bytes confused
+the fixture JSON parser. Native07 after bounded ANSI/OSC parsing passed realconsole,
+exit0/1/23 and fake-error provenance; interactive/flood fixture events were still
+lost through real screen redraw/wrapping. Preserve those reports as failed.
+
+Current narrow harness fix: payload Emit keeps original terminal output and also
+writes bounded untrusted synthetic observations to owned.Work/probe-observations/
+<pid>.jsonl (explicit AFV2_MXC_OBSERVATIONS_DIR only,64KiB perprocess). Terminal
+capture still proves console-info/ANSI/input/output/replay through actual VT; the
+auxiliary fixture log is never trusted exit/Job/control state. id_audit integrates
+explicit EnableFixtureEvents plus bounded no-reparse reading. Other parallel
+current-task authors add resource, policy, network and lifecycle cases in distinct
+Windows files; no second product task is active. H22 independently fetched4a3ae76
+and locked restore/shared-probe compilation passed with0warnings using installed
+/home/sammiller/.local/share/arcforges/toolchains/dotnet-11.0.100; its default SSH
+PATH initially lacked dotnet (retained log, not a connection failure).
+
 Reports: terminal-integration-01/02/03.json, diagnostic-no-dialog.json,
 diagnostic-win32k-enabled.json, crash-popup-events.json. Raw terminal/diagnostic
 streams stay inside the private per-case control directories, not public records.
-All these test processes have exited. Source remains uncommitted author work;
-owner/guardian/policy/terminal/workload pieces are implemented but not qualified.
+All these test processes have exited. Source checkpoint is pushed as Node4a3ae76 on task/afv2-mxc-02, draftPR95.
+Subsequent uncommitted files extend only this task's Windows native cases.
+Owner/guardian/policy/terminal/workload pieces remain incompletely qualified.
 
 Next: integrate the real ConPTY/Job primitive, bounded synthetic workload, private
 schema1.0.0 policy and authenticated independent owner; publish the same official
