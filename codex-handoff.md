@@ -1,6 +1,21 @@
 # Codex handoff — ArcForges V2
 
 ## Current checkpoint — MXC-02 active; 8/40 complete
+Latest owner instruction: every new/changed feature includes usable diagnostics
+from its first implementation. Read execution-policy section3; diagnose actual
+logs before changes/retries. Setup/calibration failures must record a concrete
+phase, original errors and cleanup, even when no case/workload starts.
+
+Latest native slices: policy10 all12 PASS (report SHA256
+253004c0a282026d5d53ce753c78a2a4a18f41602f8eb78c3505f31e69a235e7),
+lifecycle11 all14 PASS (2d197ca86b87b27a03190abf178465234edcc39031dfd6faed2d63dc06c76ddf).
+The owner used CREATE_NO_WINDOW, which still created a hidden console/conhost;
+actual lifecycle10 held-member identity established that cause. DETACHED_PROCESS
+preserves the token/session and Job-before-resume while removing that extra console.
+Network13 has now localized the external-peer setup failure:
+network12 ended with generic IOException before cases. Do not blame the VPS or
+change host settings. New fixed phase/error/native/counter diagnostics are in the
+uncommitted source. Network13 verified SSH/script identity/cleanup; its closed-before-ready error came from treating the SSH IPv6 loopback control address as the external data endpoint. Read-only H22 route/address facts identify one global IPv4 on eth0. The fixture address fix is in progress; preserve12/13 and run a fresh network-only instance after it is ready. No native process is currently running.
 
 Plan PR148 is merged at 2f24cd97960ed9dd08722ede81f272e1abc15801.
 Its Windows/Linux receipts both bind Design af28dc6378d91d678870abc628362476611efa32.
@@ -17,7 +32,8 @@ Working locations:
 - Node C:/MyFile/Projects/ArcForges/ArcForges/.worktree/afv2-mxc-02,
   task/afv2-mxc-02 from main b2ebace5c15a130b13a7dbd02fd9900e4983c6e8.
 - Plan C:/MyFile/Projects/ArcForges/Plan/.worktree/afv2-mxc-01-resume,
-  now plan/afv2-mxc-02 from the actual Plan148 merge above.
+  now plan/afv2-mxc-02-evidence from actual Plan149 merge
+  89d142f735a520f47fd98414176333dfa34b5f92.
 - Design remains af28dc6378d91d678870abc628362476611efa32; no MXC02 evidence
   amendment yet. Prior MXC01 source/stages/logs remain intact at paths below.
 
@@ -27,6 +43,80 @@ and ConPtyNative.cs (id_transport), WindowsWorkload.cs (id_author), WindowsPolic
 nonoverlapping scopes. Coordinator owns Program dispatch, native profile integration,
 all Plan state/ledger, commits/pushes and PRs. Independent reviewer is id_review.
 No MXC02 native acceptance or formal host success has yet occurred.
+
+Latest 15:09 checkpoint supersedes the earlier in-flight notes below:
+Node PR95 now contains f75d4de31425bfc19ff334bb5ddfaf41c4f2ff9a.
+Integration09 finished:50 cases/45 PASS/5 FAIL, report SHA256
+ a6542249d1e042d9fb9fc8cd754a8dc5a0d11182c4bdf29896a816f4c7260e1e.
+Terminal/resource groups and owned filesystem/reparse/externalgrant now pass.
+Default-deny combined passes; all final guardian cleanups completed in09.
+No full qualification or formal required host profile yet. H22 independently
+fetched exact f75d4de in .worktree/mxc02-f75d4de-author and shared compile passed
+zero warnings; initial tail display alone failed from PowerShell trailing CR,
+then the original successful log was read without repeating build.
+Current narrow uncommitted work: metadata corrects official invalid-env -1
+classification using private executor diagnostics, not payload stdout; lifecycle
+adds actual remaining-member creation/image observations (09 owner-only drain
+still had a second member after10s, do not guess its identity); qualification
+adds --only fixed-group diagnostics to avoid repeating passing groups. Network
+authors base_audit/id_transport implement a bounded real H22 peer controlled by
+SSH, direct TCP/UDP data, no tunnels/proxy/firewall changes: local NIC selected
+connections are still classified/refused and cannot prove external support.
+Root coordinates builds/native runs. No native/CI process currently running.
+Next collect frozen sources, build/publish fresh stage, run narrow lifecycle/
+policy/network diagnostics, then final composed profile and existing gates.
+Latest 2026-11-17 14:53 native checkpoint: integration08 completed (43 cases,
+28 PASS/15 FAIL), not qualification. Build03 and publish08 passed zero warnings.
+Report artifacts/mxc-02/terminal-integration-08.json SHA256
+6768d99f62dc1a135114f428723c6fe09f4072f615bca2aeaba57ccb08d51472.
+The user-reported 0xc0000142 was the probe loader/UI-policy failure above;
+no further matching popup event occurred during integration08. All probe/executor
+processes were absent after profile exit. Preserve the selected-network combined
+case's unresolved-cleanup verdict; final process absence does not rewrite it.
+Resource fixture-directory wiring is now fixed but not revalidated. Authors are
+checking line/cmd/cooperative ETX (id_audit), known-folder expectation (id_metadata),
+selected TCP/UDP (base_audit), owner helper accounting/guardian cleanup (base_review).
+Independent id_review is reviewing all current source. No native process remains.
+Program and the Windows case sources are uncommitted after source4a3ae76; preserve
+them. Next collect these narrow fixes, build/publish a fresh stage09 and execute
+new evidence without overwriting08, then complete required host/review gates.
+Latest native checkpoint: author publishes01/02/03 are zero-warning Native AOT;
+unchanged official stages are retained under Node artifacts/mxc-02. Smoke01/02
+failed because ui.disable=true prevented AOT loader initialization (actual Windows
+System event26, 0xc0000142, five dialogs reported by owner). Process-local error
+mode GetErrorMode|3 now prevents interactive dialogs while returning the true
+failure. The same policy with ui.disable=false, clipboard=none and injection=false
+starts the AOT payload in a pipe-only diagnostic; independent id_review confirmed
+this explicit profile selection conforms to current Design and needs no new approval.
+No host settings changed. Original failures remain historical, not rewritten passes.
+
+Smoke03..05 diagnosed a separate redirected-parent standard-handle bug in our
+ConPTY launcher: official private logs showed passthrough mode; native Job was
+empty and executor exited77. Setting STARTF_USESTDHANDLES with null std handles
+fixes that initialization (Microsoft Terminal discussion15814). Native06 confirmed
+actual console APIs true/80x24 and executor exit0, but raw OSC title bytes confused
+the fixture JSON parser. Native07 after bounded ANSI/OSC parsing passed realconsole,
+exit0/1/23 and fake-error provenance; interactive/flood fixture events were still
+lost through real screen redraw/wrapping. Preserve those reports as failed.
+
+Current narrow harness fix: payload Emit keeps original terminal output and also
+writes bounded untrusted synthetic observations to owned.Work/probe-observations/
+<pid>.jsonl (explicit AFV2_MXC_OBSERVATIONS_DIR only,64KiB perprocess). Terminal
+capture still proves console-info/ANSI/input/output/replay through actual VT; the
+auxiliary fixture log is never trusted exit/Job/control state. id_audit integrates
+explicit EnableFixtureEvents plus bounded no-reparse reading. Other parallel
+current-task authors add resource, policy, network and lifecycle cases in distinct
+Windows files; no second product task is active. H22 independently fetched4a3ae76
+and locked restore/shared-probe compilation passed with0warnings using installed
+/home/sammiller/.local/share/arcforges/toolchains/dotnet-11.0.100; its default SSH
+PATH initially lacked dotnet (retained log, not a connection failure).
+
+Reports: terminal-integration-01/02/03.json, diagnostic-no-dialog.json,
+diagnostic-win32k-enabled.json, crash-popup-events.json. Raw terminal/diagnostic
+streams stay inside the private per-case control directories, not public records.
+All these test processes have exited. Source checkpoint is pushed as Node4a3ae76 on task/afv2-mxc-02, draftPR95.
+Subsequent uncommitted files extend only this task's Windows native cases.
+Owner/guardian/policy/terminal/workload pieces remain incompletely qualified.
 
 Next: integrate the real ConPTY/Job primitive, bounded synthetic workload, private
 schema1.0.0 policy and authenticated independent owner; publish the same official

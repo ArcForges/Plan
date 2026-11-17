@@ -46,6 +46,13 @@ The coordinator owns state/ledger changes and all pushes, PRs, merges and public
 Use tools/plan.py to change state and append the ledger. Each delivered task records every repository PR and merge SHA, plus applicable artifact/deployment identity. The immutable old graph/ledger is never edited. UNKNOWN native or routed effects are not erased to advance a task.
 
 ## 3. Verification and independent review
+### Diagnostics from the first implementation — owner instruction, 2026-11-17
+
+Every new or changed feature must include usable diagnostics in its first implementation, using the repository's existing logging facilities. Do not defer logging until a failure or leave a generic error as the only evidence. Record the relevant operation/Run identity, execution phase, outcome, original native or provider error code, and cleanup/recovery result. Setup, admission, calibration and early-exit failures need diagnostics even when no workload or test case has started. Preserve the primary failure separately from failures while collecting evidence or cleaning up.
+
+Diagnose failures from the actual logs before changing code or repeating execution. When evidence is insufficient, first add the missing bounded diagnostic detail, reproduce only the affected operation, then fix the demonstrated cause and verify it. Do not guess that the host or network is broken, increase timeouts blindly, or turn a failure into success. Record the cause, correction and verification in the task handoff/ledger.
+
+Keep diagnostics bounded and proportionate; reuse existing logging rather than adding an unrelated observability framework. Trusted local process observation follows the local-process boundary above. Real credentials and raw sensitive payloads stay out of public/shared logs; ordinary stage identifiers, synthetic fixture observations, error codes and cleanup facts must remain available for diagnosis. This requirement applies as authorized features are implemented or changed; it does not authorize unrelated repository-wide refactoring.
 
 Authors run targeted/affected checks, native scenarios specified by the task, locked restores, analyzers and AOT builds. Use only task-listed external doubles; native isolation/terminal/resource/files/cryptography/state/recovery acceptance remains real. Record exact commands, source/artifact identity, environment, observed outcome and limitations. Tests that merely repeat unchanged evidence are not expanded without a concrete reason.
 
