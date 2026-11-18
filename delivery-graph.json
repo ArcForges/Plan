@@ -1152,7 +1152,7 @@
       "title": "Admit the official MXC wrappers and record capability evidence",
       "milestone": "P1",
       "order": 7,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1236,11 +1236,18 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/mxc/profiles/**; ArcForges:src/ArcForges.Node.Platform/Capabilities/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] MXC-02/03 complete and AR-01/02/03 available. Qualify the exact official Windows local and Linux Bubblewrap profiles and verify distinct fail-closed refusals on the designated hosts.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/mxc/profiles/**; ArcForges:src/ArcForges.Node.Platform/Capabilities/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] MXC-02/03 complete and AR-01/02/03 available. Qualify the exact official Windows local and Linux Bubblewrap profiles and verify distinct fail-closed refusals on the designated hosts. [delivered] Both official profiles are scoped to the original composed native evidence. The final Node head and final Design heads passed independent review and all required native checks. [complete] Pinned evidence and genuine missing-prerequisite refusal verified on each native host. Windows external selected TCP/UDP stays unverified and does not block CORE-01.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/97",
+          "https://github.com/ArcForges/ArcForges-Design/pull/80",
+          "https://github.com/ArcForges/ArcForges-Design/pull/81"
+        ],
+        "merges": [
+          "ArcForges@64f6e8a27c147f975599a2049f33e02d2a092c2d",
+          "ArcForges-Design@6aa869670f8e1acbe8578d5ed231f3e4c17d1c3e"
+        ],
         "publications": [],
         "ledger": null
       },

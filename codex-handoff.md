@@ -1,5 +1,27 @@
 # Codex handoff — ArcForges V2
 
+## MXC-04 delivered · CORE-01 ready
+
+Node PR97 merged at 64f6e8a27c147f975599a2049f33e02d2a092c2d with the same tree as independently reviewed fd50c5f3ae48f18f748485531c30c4203b3299cd. Unchanged formal verification passed Windows 15/15 (20261118-182454-fd50c5f3ae48-win, SHA-256 1643a55ba7be6b2a0508696ace8ae462e7e968a926d2f02e77d5a5134d975f4b) and H-22 Linux 20/20 (20261118-192641-fd50c5f3ae48-linux, SHA-256 e4e6078d151c0bba8e37f4e6e8b7027fdc03733e240b451ed8b5a4e68ffec5dd). Design PR80 and traceability PR81 merged through 6aa869670f8e1acbe8578d5ed231f3e4c17d1c3e after independent reviews and both host checks. Windows admission passed 13/13 and H-22 Linux 12/12. The original failed Windows run and both failed Linux attempts remain available. No public publication or deployment applied.
+
+The admission registry pins the Windows local and Linux Bubblewrap compositions and rejects missing or mismatched evidence and missing prerequisites. Windows external selected TCP/UDP remains `unverified`. Existing scope and process policy remain recorded in the Design capability register.
+
+The Plan has 11 completed and 29 planned tasks. The next task is row 10, `AFV2-CORE-01`, for durable ownership, private roots, and revisioned Sandbox configuration.
+
+[Node PR97](https://github.com/ArcForges/ArcForges/pull/97) · [Design PR80](https://github.com/ArcForges/ArcForges-Design/pull/80) · [Design PR81](https://github.com/ArcForges/ArcForges-Design/pull/81)
+
+## Earlier MXC-04 native verification checkpoint
+
+Plan PR168 activated MXC-04 at `1a781d9fe93130381960f807d3254fdd042de951`. Design PR80 merged at `adc9ca6fb1163166681f4ce32ce5b37f561f34dd` from reviewed `8abd068e05de768e615384a7b7a01cf97a13d67c`, with Windows 4/4 and H-22 Linux 4/4 required checks. Node PR97 remains open at independently reviewed `fd50c5f3ae48f18f748485531c30c4203b3299cd`.
+
+The final Node head passed all 13 Windows admission checks against the originating protected stage. The gate returned `EvidenceMissing`, `EvidenceMismatch` and `PrerequisiteMissing` for an absent private control path without invoking a workload. Windows external selected TCP/UDP remains `unverified`. The local admission log SHA-256 is `f157a05a70bedb54dbc213005550cab29f8783d48b07fc02bd5c82cfd3b75d63`.
+
+The required Node Windows run at `20261118-174816-fd50c5f3ae48-win` failed at `win-ci`. Its exact-head summary SHA-256 is `3ade0475a392aeef7ecf26c82b4024bbc8641fd1c0d7ddf78e61a7046bba20be`. The existing nested Job build test `BuildTests.ADotnetBuildRunsInNestedJobs` failed in the new fixture project restore at `NuGet.targets(784,5)` with a null `path1`. Targeted retries reproduced the error after supplying workstation directory variables. The same test also failed at unchanged Node main `269d04d0b985c62ffaa273356dbabe26c58df386` in a separate native worktree after successful locked restore and build. Logs remain in the Node repository Git directory.
+
+H-22 passed the Design gate earlier. Subsequent `ssh netcup` attempts from the workstation repeatedly timed out during SSH banner exchange. The Node candidate still needs its designated H-22 refusal test and both successful exact-head repository statuses. The graph remains at 10 completed tasks with MXC-04 active. CORE-01 starts after MXC-04 closure.
+
+[Design PR80](https://github.com/ArcForges/ArcForges-Design/pull/80) · [Node PR97](https://github.com/ArcForges/ArcForges/pull/97)
+
 ## MXC-02 delivered · Windows wrapper handoff
 
 The V2 platform runs general CLI workloads in persistent Sandboxes. Each
