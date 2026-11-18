@@ -1,5 +1,150 @@
 # AFV2-MXC-02 partial native evidence — 2026-11-17
 
+## One native Windows run covering the 59 workstation cases — 2026-11-18
+
+[Node draft PR95](https://github.com/ArcForges/ArcForges/pull/95) now collects
+the workstation cases before starting the external network peer. Previously
+an unavailable peer could stop the full profile before the CLI, lifecycle
+and six workstation network cases ran. The `--only local` selection runs
+those groups together without starting a remote peer. Full mode retains
+the original 68 case names, protocol assignments and admission checks.
+
+The author worktree is `.worktree/afv2-mxc-02-local-qualification`.
+Locked restore, Release build, formatting and `git diff --check` passed.
+The native Windows worker built commit
+`cb0396b3d93b9afaf0629630f2020358a353bf53` in detached worktree
+`.worktree/m02-local-cb0396b`. The Native AOT publish produced zero errors
+and warnings. The existing staging script verified the official Microsoft
+MXC 1.0.1 distribution and all ten staged files. The worker ran the
+published `--windows-profile` with a fresh work directory, manifest,
+report and `--only local`.
+
+| Artifact in `artifacts/native-cb0396b/` | SHA-256 |
+|---|---|
+| `local.json` | `d7708eae1ba1c11e31f5625343c38c89af3006791c13b2b588cb68edc0180eac` |
+| `local.json.events.jsonl` | `b5027b61d9b5b424e6d335aaa9476b3c5058756816b153b9a3f18caedaa02a0c` |
+| `stage-run.log` | `27243e7aebcdc852b7c50f57560aa15dba475f9302fa5a800b6e90f9d5a9a206` |
+| Published probe | `9c64c6531f3a1fb1b5af7d5b957358b892f07fd4a58c2b029f8fb22052c655d1` |
+| Stage manifest | `d085ab0dbdaba95b6038e695cbf066381e63124140ca2c7d69eb53943d85cb9f` |
+
+Run `232a29c0a9444c28963fa1da05f0ef6a` on deku passed 59 distinct cases
+in 59.851 seconds, with confirmed cleanup, observed driver Job context
+and matching stage identities before and after execution. The protocol
+counts were WIN01 7, WIN02 15, WIN03 9, WIN04 13 and WIN05 15.
+The probe returned 2 and recorded partial qualification.
+
+For host-loopback egress, ordinary TCP and UDP each advanced the peer's
+receive and match counters from 0 to 1. With host loopback denied, both
+counters stayed at 1 on each channel. The workload exit codes were 70 for
+TCP and 124 for UDP. In all four inbound cases the payload listener
+reported ready and default ingress was denied. With host loopback denied,
+neither listener observed a request and the host received no matching
+reply. With host loopback allowed, both listeners received the request and
+the host matched both replies.
+The six observations are retained with their SHA-256 digests in the receipt.
+An independent reviewer matched all six observation and policy files to the
+receipt, checked the ten stage files against the manifest and verified the
+59 cases against their original protocol assignments. The reviewer traced
+the source review from the earlier full PR review through both subsequent
+changes, including the final three-file delta and tree
+`3aeff44d353b016c9a2352262ac938b78c9f49b5`. The coordinator posted
+the [independent review and native results](https://github.com/ArcForges/ArcForges/pull/95#issuecomment-6969263914)
+on the draft.
+
+Seven external WIN04 cases and two same-Run WIN06 scenarios remain open.
+The previous direct-path and same-host measurements below apply to their
+original locations. Read-only workstation and H-22 inventory identified
+no additional controlled, independently reachable TCP/UDP peer. The
+current inventory cannot establish ownership or reachability of an opaque
+local virtual guest. The user identified no existing test endpoint.
+
+The reviewer also checked the exact requests from the prior same-host IPv6
+experiment against the pinned backend. Each selected request contained the
+observed destination, protocol, port and exact /128, denied default egress,
+denied ingress and denied host loopback. The backend derives the Internet
+client capability from the nonempty egress rule. Its documented direct
+egress model uses that policy shape. This rules out a missing explicit
+Internet client capability in those requests. The zero-receive outcomes
+do not identify the native layer responsible. See the [pinned helper
+source](https://github.com/microsoft/mxc/blob/fda29ac63bc306b7f97f3b86b4b63d44f7f40cf2/src/mxc-sdk/src/backends/process_container/common/network_policy_helpers.rs#L19-L90)
+and [official network model](https://github.com/microsoft/mxc/blob/fda29ac63bc306b7f97f3b86b4b63d44f7f40cf2/docs/backends/process-container/networking.md).
+
+### Repository checks for cb0396b
+
+Both designated hosts fetched the PR branch from GitHub, checked its exact
+commit and ran `python eng/verify.py run-and-report` from detached
+`.worktree/verify-mxc02-cb0396b` worktrees. Windows used the existing
+English CLI setting. On H-22 the coordinator used the documented process
+umask 0077 and redirected the detached reporter's output to its host-local
+launch log.
+
+Windows passed toolchain, toolchain tests, restore, base host and build.
+The CI step then failed after 412.6 seconds. The other nine steps did not
+run. Platform recorded 113 passes, one failure and one skip. It timed out
+while waiting for the 13-process fixture to form, before the test issued
+its termination request. Core recorded 743 passes, two failures and 105
+skips. The 3000 ms launch-fault test observed 5.0504235 seconds against
+its five-second cancellation deadline. The StopNode receipt test observed
+a broken local pipe and gRPC Unavailable. GitHub received
+`arcforges/windows=failure` (status 59217230792). The summary is
+`20261118-120445-cb0396b3d93b-win/summary.json`, SHA-256
+`bdaeafe5767b7de97d6ff61e9bcd97b10eebe8416125b495132eb36a0d496c88`.
+The adjacent `win-ci.log` has SHA-256
+`97f9be8c6cbe63c7d8e0bfbb6b83f9472f973d970f3fe3dd399838605410ad13`.
+
+The new StopNode failure occurred while reading the gRPC response body.
+The handler persists the receipt and signals shutdown before returning
+it. The host subsequently stops the RPC service. The original log does
+not establish which operation finished first. A targeted run of
+`NodeServiceTests.StopNodeReturnsAReceiptAndTheNodeShutsDownCleanly`
+on the same compiled Release binary passed 1/1 in 2.176 seconds with the
+original timeout. The worker observed no new surviving test process or
+test directory. The targeted summary is
+`artifacts/stopnode-single-20261118/summary.json` in the Windows
+verification worktree, SHA-256
+`a1d3887bf247d9d9a59cae6dc36f65641747b42d8692e1fa0f17ca22d3a42d3a`.
+
+H-22 passed all 20 steps in 2,087 seconds, including both exclusive suites
+and the startup gate. The detached reporter posted `arcforges/linux=success`
+(status 59218624276). The original receipt is
+`20261118-120447-cb0396b3d93b-linux/summary.json`, SHA-256
+`eb0b7da7830769532d412c59753fbb4c4379af3582e721a496b76d26dec3e2a1`.
+The launch log is `launches/mxc02-cb0396b-native-01/reporter.log` under
+the Git common directory's `arcforges-verify` directory.
+
+## Native Windows diagnostic groups at 32e2ac1 — 2026-11-18
+
+On deku, the coordinator's Windows worker rebuilt
+`32e2ac1b6c9645b75f607bfc7a58bcb0d552c274` in detached Node worktree
+`.worktree/m02-local-32e2ac1`. The locked Native AOT release build passed
+with zero warnings and errors. The repository staging command verified the
+official 1.0.1 package, release archive, signatures and ten staged files.
+The executable SHA-256 is
+`d33863e30358da137c014520d17eab04f310c1bae661b18615bdac69f6b1c590`
+and the manifest SHA-256 is
+`3e2e821b64e42406aca5e05b19718b475e43681b2e866ab8be8b5d158eaae043`.
+
+The worker ran the published `--windows-profile` command serially, changing
+only the diagnostic selection and the fresh work/report paths. The five
+receipts record the same executable identity. Each records verified stage,
+final identity, observed host Job context and confirmed cleanup. Each exited
+2 with a partial result.
+
+| Selection | Passed / run | Receipt SHA-256 |
+|---|---:|---|
+| terminal | 15/15 | `fa7b4ee6b07f7a50e3c775073050ae4790ff443f94cddd5524054e2433baddfa` |
+| resource | 9/9 | `4f2b692d742f467effe6864927de920841822e6eacfd8ac1ebdb155e20eefc8b` |
+| policy | 12/12 | `1bac37e3243021aaa5f5e1d22da7e84f5ca05fa096ebebfcf0ce49a2d689bc57` |
+| cli | 2/2 | `b9c1298e1c5459dc3c243f82985feb6a80f5b1f0250a18319b45e18ff56f8f3f` |
+| lifecycle | 15/15 | `9324ca406277473e88c7095257a03e645a4f0c414903d42ef1ea284e578a7595` |
+
+The original receipts are `artifacts/native-32e2ac1/<selection>.json` in
+that worktree, with adjacent launch records and event logs. The staging
+transcript `stage-run.log` has SHA-256
+`b1ae03c7f49086ca412a3f48042f30470db9bd37c7770c01419bc3a497704af9`.
+These five receipts cover 53 workstation cases. The external network and
+combined cases still require evidence in the full Windows receipt.
+
 ## Assigned IPv6 endpoint on the Windows host — 2026-11-18
 
 At Node `dcd91f63a8ce96863c4f9384d66292759550175d`, a bounded diagnostic used
