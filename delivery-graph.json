@@ -849,7 +849,7 @@
       "title": "Qualify Windows ProcessContainer terminal and resource composition",
       "milestone": "P1",
       "order": 5,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -960,10 +960,24 @@
       "blocked_by": [],
       "evidence": {
         "prs": [
-          "https://github.com/ArcForges/ArcForges/pull/95"
+          "https://github.com/ArcForges/ArcForges/pull/95",
+          "https://github.com/ArcForges/ArcForges-Design/pull/78",
+          "https://github.com/ArcForges/Plan/pull/164",
+          "https://github.com/ArcForges/ArcForges-Design/pull/79",
+          "https://github.com/ArcForges/Plan/pull/165",
+          "https://github.com/ArcForges/Plan/pull/166"
         ],
-        "merges": [],
-        "publications": [],
+        "merges": [
+          "ArcForges@269d04d0b985c62ffaa273356dbabe26c58df386",
+          "ArcForges-Design@529d3154317178fb7eed50f2a9192281bb2f4b2d",
+          "Plan@6a7ecc46c47c27fc9673b75b4023023bdebd6946",
+          "ArcForges-Design@0ce78f55465b15de82eb1d214b4c02d24809e80f",
+          "Plan@4b55f1fb36c0622297cd65371c980f2ad65ad727",
+          "Plan@3f987c08d7bc8543ccab187027c527084161b6bd"
+        ],
+        "publications": [
+          "Not applicable for the experimental probe and documents. Node has no main-push release or deployment."
+        ],
         "ledger": null
       },
       "removals": [
