@@ -1,6 +1,22 @@
 # Codex handoff — ArcForges V2
 
-## Current Windows qualification checkpoint — 2026-11-18
+## Official MXC wrapper boundary — 2026-11-18
+
+The owner authorized the official wrapper scope in [execution policy](execution-policy.md#official-mxc-wrapper-boundary-2026-11-18).
+[Design PR78](https://github.com/ArcForges/ArcForges-Design/pull/78) merged
+at `529d3154317178fb7eed50f2a9192281bb2f4b2d` after independent review and both native repository checks.
+Finish the native Windows local composition, record upstream network support
+separately from local measurements, and carry any unverified external cases
+forward with their original outcomes. The mandatory local wrapper is under
+AFV2-MXC-02. AFV2-MXC-04 consumes the Windows and Linux receipts before
+row 10 (AFV2-CORE-01). Rows 10–40 remain authorized in dependency order.
+
+The limited test-scope extension in MXC-02 covers timing-sensitive Windows
+Job and Core cancellation cases identified in the PR95 repository checks.
+Keep their deadlines and assertions in the existing exclusive verification
+suites. Public activation retains its separate owner decision.
+
+## Earlier Windows qualification checkpoint at cb0396b — 2026-11-18
 
 Node draft PR95 head `cb0396b3d93b9afaf0629630f2020358a353bf53` has one
 59/59 workstation diagnostic receipt from native Windows. The probe now
