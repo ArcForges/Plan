@@ -12,7 +12,15 @@ The authorized prerequisite installations may continue with verified artifacts a
 
 Implementation requires an explicit user-authorized list or range of AFV2 task IDs. Record that list as a PLAN ledger note before starting. The design/plan migration alone is not implementation authorization. Never resume any archived task or roadmap item. `plan.py next` names the global next eligible task; the coordinator must still intersect it with the authorized IDs.
 
-Exactly one task is active. Within the authorized range, start the first planned task in graph order whose real dependencies are delivered or complete. Superseded dependencies do not silently count as delivered: update the dependency graph through a reviewed decision. Blocked tasks do not occupy the active slot, and independent eligible work may continue. A failed mandatory MXC profile blocks its admission and dependent Core work; negative probe results are evidence, not permission to weaken the product.
+Exactly one task is active. Within the authorized range, start the first planned task whose dependencies are delivered or complete. When a prerequisite is superseded, update its dependency through a reviewed decision. A blocked task frees the active slot for independent eligible work.
+
+### Official MXC wrapper boundary (2026-11-18)
+
+ArcForges submits policies through the pinned official MXC interface. The wrapper is responsible for faithful policy translation, native launch, terminal and resource supervision, and truthful error and cleanup reporting. A backend rejection must reach the caller. A known unsupported or unenforceable request must fail without a weaker launch.
+
+Keep the upstream capability declaration, the actual native result and its scope in the receipt. A missing external observation is recorded as unverified. Windows external selected egress and the experiments that require its controlled peer can remain unverified through MXC-02, MXC-04, Core and final acceptance. Claims of tested external connectivity require actual evidence. Local mandatory isolation, Run ownership, local same-Run composition and data safety retain their native acceptance requirements.
+
+The native venues are the owner's local Windows workstation and the designated Linux host accessed with `ssh netcup`. Both hosts fetch the exact candidate from GitHub and report their own repository checks.
 
 Owner-approved [local process boundary](https://github.com/ArcForges/ArcForges-Design/blob/main/docs/decisions/AD-0022-cli-sandbox-platform-pivot.md#local-process-visibility--2026-11-17-amendment) (2026-11-17): intentionally supplied workload
 arguments/environment visible to the trusted local host owner or administrator in OS

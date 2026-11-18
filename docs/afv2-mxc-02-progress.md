@@ -1,5 +1,15 @@
 # AFV2-MXC-02 partial native evidence — 2026-11-17
 
+## Owner decision on external network evidence — 2026-11-18
+
+AFV2-MXC-02 now qualifies the wrapper around the official Windows executor.
+Its mandatory native run exercises local terminal, file, network, resource
+and lifetime behavior together. Preserve the exact policy supplied to MXC,
+its actual errors and owned cleanup observations. Record the availability
+of independent external TCP/UDP measurements separately. The original
+68-case protocol and all historical diagnostics below retain their original
+results. A wrapper pass qualifies only the scope named in its receipt.
+
 ## One native Windows run covering the 59 workstation cases — 2026-11-18
 
 [Node draft PR95](https://github.com/ArcForges/ArcForges/pull/95) now collects

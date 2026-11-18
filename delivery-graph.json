@@ -29,7 +29,7 @@
     {
       "id": "P1",
       "title": "Official MXC qualification",
-      "outcome": "Both full native backend profiles are admitted by real composed evidence, or a precise blocker prevents dependent implementation."
+      "outcome": "Both official MXC wrappers have native local composition evidence. Network capability records distinguish upstream support, observed behavior and unverified external egress."
     },
     {
       "id": "P2",
@@ -849,7 +849,7 @@
       "title": "Qualify Windows ProcessContainer terminal and resource composition",
       "milestone": "P1",
       "order": 5,
-      "state": "blocked",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -858,7 +858,10 @@
             "tests/ArcForges.MxcProbe.Tests/**",
             "eng/mxc/profiles/**",
             "tools/ArcForges.MxcProbe/Program.cs",
-            "tools/ArcForges.MxcProbe/WindowsLauncher.cs"
+            "tools/ArcForges.MxcProbe/WindowsLauncher.cs",
+            "tests/ArcForges.Node.Platform.Windows.Tests/JobTests.cs",
+            "tests/ArcForges.Node.Core.Tests/LaunchFaultTests.cs",
+            "tests/ArcForges.Node.Core.Tests/LaunchFaultTests.RootRundown.cs"
           ]
         },
         {
@@ -873,11 +876,12 @@
         "AFV2-BASE-01",
         "AFV2-MXC-01"
       ],
-      "objective": "Qualify Windows ProcessContainer terminal and resource composition. A single windows-process-executor-v1 receipt records terminal+filesystem+network+resource+lifetime combination on exact OS/cohort",
+      "objective": "Qualify the ArcForges wrapper around the unchanged official Windows ProcessContainer executor on the exact host and cohort. Record external network observations independently.",
       "scope": [
-        "Execute MXC-WIN-01..06 with official executor, Native AOT ConPTY broker and resource-before-exec outer Job",
+        "Run MXC-WIN-01 through WIN-06 for the local wrapper with the official executor, Native AOT ConPTY broker and pre-execution outer Job. Preserve the optional external network experiments.",
         "Test strict native denied control path plus allowDaclMutation=false; force real unsupported-host/policy rejection without altering source",
-        "Exercise quoting, resize, Ctrl+C, lease detach, descendants, broker/Node loss, output overload and cleanup uncertainty"
+        "Exercise quoting, resize, Ctrl+C, lease detach, descendants, broker/Node loss, output overload and cleanup uncertainty",
+        "Run the observed 13-process Job and two launch-cancellation timing methods in the existing mandatory exclusive suites, with their original workloads, deadlines and assertions."
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -898,14 +902,14 @@
         "R-PERF-001"
       ],
       "deliverables": [
-        "Execute MXC-WIN-01..06 with official executor, Native AOT ConPTY broker and resource-before-exec outer Job",
+        "Run MXC-WIN-01 through WIN-06 for the local wrapper with the official executor, Native AOT ConPTY broker and pre-execution outer Job. Preserve the optional external network experiments.",
         "Test strict native denied control path plus allowDaclMutation=false; force real unsupported-host/policy rejection without altering source",
         "Exercise quoting, resize, Ctrl+C, lease detach, descendants, broker/Node loss, output overload and cleanup uncertainty"
       ],
       "acceptance": [
-        "A single windows-process-executor-v1 receipt records terminal+filesystem+network+resource+lifetime combination on exact OS/cohort",
+        "One local wrapper qualification receipt binds the official artifacts and host. It covers actual terminal, filesystem, local network controls, resource enforcement, lifetime and a same-Run composition with verified cleanup.",
         "Outer Job membership/limits exist before payload execution; inner MXC Job ownership and ancestor restrictions are verified",
-        "A failed mandatory probe is a reported failing qualification and blocks MXC-04; passing pipes-only execution never counts"
+        "A mandatory wrapper failure blocks admission. External selected egress and dependent experiments with no valid measurement are recorded as unverified for that capability. Retain original failed observations."
       ],
       "verification": {
         "author": [
@@ -936,20 +940,18 @@
       "risks": [
         {
           "risk": "A failed replacement, migration or native prerequisite invalidates the observable result of AFV2-MXC-02",
-          "mitigation": "Remove only probe-owned groups/data after identity checks; on unsupported combination record upstream blocker and leave profile disabled.",
+          "mitigation": "Retain owned cleanup observations and refuse unsafe wrapper admission. Report an unavailable external measurement under its capability.",
           "owner": "AFV2-MXC-02"
         },
         {
           "risk": "F-MXC-01 is not yet proven for the actual admitted cohort",
-          "mitigation": "Execute F-MXC-01 in its designated venue and attach raw evidence; block capability-dependent delivery or final completion if it fails. Never reuse historical V1 evidence as V2 proof.",
+          "mitigation": "Bind actual local composition to the exact cohort and host. Keep upstream network declarations and external measurements separate.",
           "owner": "AFV2-MXC-02"
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Windows/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. Source-audited continuation scope2026-11-17: permit only the existing Program.cs entry/manifest/report dispatch and WindowsLauncher.cs native launcher helpers alongside Windows/** so WIN01..06 can reuse the admitted probe and exact launcher contract. This adds no requirement, product runtime or alternate entry framework; it does not authorize old product executor removal. MXC02 remains planned until MXC01 shared completion; existing owner authorization covers its ordinary implementation. [active] Continue existing owner-authorized graph after actual MXC01 shared completion Plan148. Qualify only WIN01..06 same official1.0.1 Windows ProcessContainer+ConPTY+outerJob/lifetime combination using the existing isolated admitted probe. Preserve old product launchers, data and shared consumers; exact Program.cs/WindowsLauncher.cs integration paths were reviewed/merged in Plan148. No product runtime cutover or public activation. [blocked] Preserved draft14886bf and partial native evidence. H22 peer self-calibration and SSH are healthy; ordinary Windows data-path calibration has no peer receives even at15s. Keep existing network/proxy settings; selected-egress/full combination awaits a reachable controlled endpoint. This does not block MXC03 or normal host checks. [planned] Owner clarified no additional Windows-to-VPS direct data channel is required; GitHub exact fetch over healthy ssh netcup is the development/host-verification transport. Retire H06 as a human/development prerequisite and stop cross-host data probes. Preserve PR95 and all negative measurements. Windows selected-egress/full native qualification remains unfinished and will use a scoped controlled experiment when this task resumes; no acceptance waived. MXC03 remains the sole active task. [active] Resume existing authorized Windows WIN01..06 qualification after MXC03 completed and Plan155 merged. Reuse preserved PR95 at14886bf in a new isolated resume worktree, retaining old working-directory Program.cs status untouched. Integrate actual Node main687eb3a and existing Linux qualification only as shared entry compatibility. Retired H06 direct Windows-to-VPS testing is not revived. Complete one Windows same-cohort profile with controlled local native experiment, necessary diagnostics and normal delivery; no product cutover, old executor removal, dependency upgrade or public activation. [blocked] Exact Node dcd91f63a8ce96863c4f9384d66292759550175d required profiles passed Windows15/15 and H22Linux20/20; the original Linux failure remains preserved with cause UNKNOWN after unchanged targeted/full retry passes. Original WIN04/06 Windows qualification is still unmet: measured controlled-peer calibration fails before contained network cases, and the concrete prior local assigned-IP/exact-rule combination also failed. Full68-case receipt is absent. Preserve draft PR95 and exact artifacts. This is existing AR-01 native acceptance, not an SSH outage, missing development authorization, revived H06 or endpoint-approval requirement. Continue only independent tasks with satisfied dependencies; resume qualification when concrete new controlled-endpoint evidence permits the original scoped tests. [active] Resume bounded native network diagnosis and the confirmed fixture correction at CalibrateAsync. A matching echo currently succeeds without requiring independent peer receive and match deltas. Preserve the original AR-01, ingress and host-loopback policies, and both prior host status receipts. [blocked] The assigned IPv6 control on dcd91f6 passed TCP, same-port UDP and alternate TCP before and after the native attempts. Exact selected and default-deny effects were identical. Node PR95 at 32e2ac1 fixes independent calibration counters, but no measured endpoint has demonstrated strict selected egress in WIN04/06. One same-candidate 68-case receipt remains outstanding. Restore with a concrete controlled direct endpoint compatible with the original ingress policy. Do not require any particular topology or a new human approval. [active] Resume owned Windows-only diagnostics after confirming the original five local groups have no native receipts at the exact current PR95 head. Separate the six existing local loopback and ingress checks from external peer startup and preserve actual results in the native harness without changing the 68-case requirement. Record complete independent groups before any failed external prerequisite. Linux work remains on the designated H-22 via ssh netcup. [blocked] Node PR95 cb0396b passed all 59 native workstation cases in one diagnostic run. Seven controlled external TCP/UDP cases, two same-Run scenarios and one complete 68-case receipt remain open. Current inventories and native controls have not identified a peer on which the original strict selected-egress effects can be measured. H-06 remains retired.",
-      "blocked_by": [
-        "AR-01"
-      ],
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tools/ArcForges.MxcProbe/Windows/**; ArcForges:tests/ArcForges.MxcProbe.Tests/**; ArcForges:eng/mxc/profiles/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. Source-audited continuation scope2026-11-17: permit only the existing Program.cs entry/manifest/report dispatch and WindowsLauncher.cs native launcher helpers alongside Windows/** so WIN01..06 can reuse the admitted probe and exact launcher contract. This adds no requirement, product runtime or alternate entry framework; it does not authorize old product executor removal. MXC02 remains planned until MXC01 shared completion; existing owner authorization covers its ordinary implementation. [active] Continue existing owner-authorized graph after actual MXC01 shared completion Plan148. Qualify only WIN01..06 same official1.0.1 Windows ProcessContainer+ConPTY+outerJob/lifetime combination using the existing isolated admitted probe. Preserve old product launchers, data and shared consumers; exact Program.cs/WindowsLauncher.cs integration paths were reviewed/merged in Plan148. No product runtime cutover or public activation. [blocked] Preserved draft14886bf and partial native evidence. H22 peer self-calibration and SSH are healthy; ordinary Windows data-path calibration has no peer receives even at15s. Keep existing network/proxy settings; selected-egress/full combination awaits a reachable controlled endpoint. This does not block MXC03 or normal host checks. [planned] Owner clarified no additional Windows-to-VPS direct data channel is required; GitHub exact fetch over healthy ssh netcup is the development/host-verification transport. Retire H06 as a human/development prerequisite and stop cross-host data probes. Preserve PR95 and all negative measurements. Windows selected-egress/full native qualification remains unfinished and will use a scoped controlled experiment when this task resumes; no acceptance waived. MXC03 remains the sole active task. [active] Resume existing authorized Windows WIN01..06 qualification after MXC03 completed and Plan155 merged. Reuse preserved PR95 at14886bf in a new isolated resume worktree, retaining old working-directory Program.cs status untouched. Integrate actual Node main687eb3a and existing Linux qualification only as shared entry compatibility. Retired H06 direct Windows-to-VPS testing is not revived. Complete one Windows same-cohort profile with controlled local native experiment, necessary diagnostics and normal delivery; no product cutover, old executor removal, dependency upgrade or public activation. [blocked] Exact Node dcd91f63a8ce96863c4f9384d66292759550175d required profiles passed Windows15/15 and H22Linux20/20; the original Linux failure remains preserved with cause UNKNOWN after unchanged targeted/full retry passes. Original WIN04/06 Windows qualification is still unmet: measured controlled-peer calibration fails before contained network cases, and the concrete prior local assigned-IP/exact-rule combination also failed. Full68-case receipt is absent. Preserve draft PR95 and exact artifacts. This is existing AR-01 native acceptance, not an SSH outage, missing development authorization, revived H06 or endpoint-approval requirement. Continue only independent tasks with satisfied dependencies; resume qualification when concrete new controlled-endpoint evidence permits the original scoped tests. [active] Resume bounded native network diagnosis and the confirmed fixture correction at CalibrateAsync. A matching echo currently succeeds without requiring independent peer receive and match deltas. Preserve the original AR-01, ingress and host-loopback policies, and both prior host status receipts. [blocked] The assigned IPv6 control on dcd91f6 passed TCP, same-port UDP and alternate TCP before and after the native attempts. Exact selected and default-deny effects were identical. Node PR95 at 32e2ac1 fixes independent calibration counters, but no measured endpoint has demonstrated strict selected egress in WIN04/06. One same-candidate 68-case receipt remains outstanding. Restore with a concrete controlled direct endpoint compatible with the original ingress policy. Do not require any particular topology or a new human approval. [active] Resume owned Windows-only diagnostics after confirming the original five local groups have no native receipts at the exact current PR95 head. Separate the six existing local loopback and ingress checks from external peer startup and preserve actual results in the native harness without changing the 68-case requirement. Record complete independent groups before any failed external prerequisite. Linux work remains on the designated H-22 via ssh netcup. [blocked] Node PR95 cb0396b passed all 59 native workstation cases in one diagnostic run. Seven controlled external TCP/UDP cases, two same-Run scenarios and one complete 68-case receipt remain open. Current inventories and native controls have not identified a peer on which the original strict selected-egress effects can be measured. H-06 remains retired. [active] Resume Windows wrapper qualification under the owner's requested official MXC boundary. Verify local composition and report external evidence separately. Preserve the original diagnostics and proceed through MXC-04 to Core.",
+      "blocked_by": [],
       "evidence": {
         "prs": [
           "https://github.com/ArcForges/ArcForges/pull/95"
@@ -965,11 +967,11 @@
         "Experiments run in isolated owned directories/Jobs; no real host files or unrelated process adoption."
       ],
       "rollback": [
-        "Remove only probe-owned groups/data after identity checks; on unsupported combination record upstream blocker and leave profile disabled."
+        "Reconcile owned probe resources by identity. Disable an unsafe local wrapper and preserve its evidence. Scope any unavailable optional network behavior to the affected capability."
       ],
       "native_validation": {
         "windows": [
-          "Run all six native Windows protocols with real TUI, denied writes/network and process tree observations"
+          "Run the six protocol groups for the official wrapper, including a same-Run terminal, file, resource, local network and lifetime experiment. Record the seven external network cases and two external-peer compositions separately."
         ],
         "linux": [
           "Compile shared probe contract only; Windows qualification cannot be replaced by Linux"
@@ -1127,7 +1129,7 @@
     },
     {
       "id": "AFV2-MXC-04",
-      "title": "Admit complete backend profiles or record a blocking gap",
+      "title": "Admit the official MXC wrappers and record capability evidence",
       "milestone": "P1",
       "order": 7,
       "state": "planned",
@@ -1152,11 +1154,11 @@
         "AFV2-MXC-02",
         "AFV2-MXC-03"
       ],
-      "objective": "Admit complete backend profiles or record a blocking gap. Both mandatory complete profiles pass before this task becomes delivered; all downstream core implementation depends on this gate",
+      "objective": "Admit the Windows local wrapper and the Linux Bubblewrap profile using native composition evidence. Publish independent support and observation facts for network capabilities.",
       "scope": [
-        "Produce immutable profile receipts consumed by the future Core with exact OS/SDK/schema/terminal/files/network/resource/recovery predicates",
-        "Reject unsupported combinations at capability evaluation and define supported machine prerequisites",
-        "If required properties fail, set this task blocked with the corresponding AR entry and precise official stable upstream dependency; do not call a negative feasibility result admission"
+        "Produce immutable receipts for the official wrappers, including OS, SDK, schema, terminal, files, resources, recovery and network capability evidence.",
+        "Distinguish the official backend contract, native observations and capabilities that lack a measurement. Preserve unsupported reasons and exact native outcomes.",
+        "Refuse a mandatory local wrapper failure or an unsupported policy before launch. An unmeasured Windows external allow affects claims about that capability only."
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -1173,12 +1175,12 @@
         "R-TEST-003"
       ],
       "deliverables": [
-        "Produce immutable profile receipts consumed by the future Core with exact OS/SDK/schema/terminal/files/network/resource/recovery predicates",
-        "Reject unsupported combinations at capability evaluation and define supported machine prerequisites",
-        "If required properties fail, set this task blocked with the corresponding AR entry and precise official stable upstream dependency; do not call a negative feasibility result admission"
+        "Produce immutable receipts for the official wrappers, including OS, SDK, schema, terminal, files, resources, recovery and network capability evidence.",
+        "Distinguish the official backend contract, native observations and capabilities that lack a measurement. Preserve unsupported reasons and exact native outcomes.",
+        "Refuse a mandatory local wrapper failure or an unsupported policy before launch. An unmeasured Windows external allow affects claims about that capability only."
       ],
       "acceptance": [
-        "Both mandatory complete profiles pass before this task becomes delivered; all downstream core implementation depends on this gate",
+        "Required local Windows wrapper composition and the native Linux profile are verified. Downstream Core can consume both profiles with unverified Windows external egress recorded explicitly.",
         "Capability regression tests reject stale/missing/mismatched receipts and any weaker automatic fallback",
         "Source inspection and separate per-feature passes cannot replace same-profile composed evidence"
       ],
@@ -1209,7 +1211,7 @@
       "risks": [
         {
           "risk": "A failed replacement, migration or native prerequisite invalidates the observable result of AFV2-MXC-04",
-          "mitigation": "Keep task blocked and profile disabled until an admitted official stable solution passes; preserve evidence and existing essential executor.",
+          "mitigation": "Keep unsafe local wrappers disabled and preserve the available evidence and essential executor. Keep optional external network measurements scoped to their capability.",
           "owner": "AFV2-MXC-04"
         }
       ],
@@ -1229,7 +1231,7 @@
         "Admission receipts are versioned and tied to a full artifact/OS predicate; upgraded versions invalidate qualification."
       ],
       "rollback": [
-        "Keep task blocked and profile disabled until an admitted official stable solution passes; preserve evidence and existing essential executor."
+        "Retain the existing executor and disable a wrapper with a mandatory safety failure. Scope an unverified optional behavior to its capability entry."
       ],
       "native_validation": {
         "windows": [
@@ -1532,7 +1534,7 @@
       "objective": "Implement persistent Sandbox Core and qualified policy profiles. Create/rename/reenter preserves data and never uses display name as filesystem identity",
       "scope": [
         "Implement Create/Configure/List/Inspect with owner identity, private root manifest and revision CAS",
-        "Translate only qualified complete backend profiles; explicit path/network/environment/resource ceilings; access changes require quiescence",
+        "Translate admitted official MXC profiles with explicit path, network, environment and resource ceilings. Require quiescence for access changes. Expose upstream support and the observed qualification separately.",
         "Bind Sandbox admission and deletion to one ownership lock; expose actual capabilities and unsupported reasons"
       ],
       "out_of_scope": [
@@ -1554,13 +1556,13 @@
       ],
       "deliverables": [
         "Implement Create/Configure/List/Inspect with owner identity, private root manifest and revision CAS",
-        "Translate only qualified complete backend profiles; explicit path/network/environment/resource ceilings; access changes require quiescence",
+        "Translate admitted official MXC profiles with explicit path, network, environment and resource ceilings. Require quiescence for access changes. Expose upstream support and the observed qualification separately.",
         "Bind Sandbox admission and deletion to one ownership lock; expose actual capabilities and unsupported reasons"
       ],
       "acceptance": [
         "Create/rename/reenter preserves data and never uses display name as filesystem identity",
         "Concurrent configure/delete/start fixtures prove consistent revisions and no partial authorization change",
-        "Unsupported profile/policy combinations reject before a process can run",
+        "Unsupported or unenforceable policies reject before launch. Retain accepted official rules exactly and report unverified external behavior without claiming a measured result.",
         "Sandbox display-name rename is a typed Configure revision update; it preserves Sandbox identity/private-root identity and never broadens local grant or policy"
       ],
       "verification": {
@@ -5300,7 +5302,7 @@
         "AFV2-FILE-02",
         "AFV2-RES-03"
       ],
-      "objective": "Accept the full native local Sandbox product. All mandatory Windows and Linux combinations pass; partial backend support cannot become full V2 acceptance",
+      "objective": "Accept the native local Sandbox product against the admitted wrapper guarantees. Record the status of optional capabilities on the release candidate.",
       "scope": [
         "Execute full native CLI/script/TUI/service/child/offline/resource/data/recovery journeys on the same release candidate",
         "Include mandatory negative file/network/unsupported-host/pressure/unknown-cleanup cases and collect real engine/resource receipts",
@@ -5329,7 +5331,7 @@
         "Audit every product claim against actual profile capabilities and measured overhead"
       ],
       "acceptance": [
-        "All mandatory Windows and Linux combinations pass; partial backend support cannot become full V2 acceptance",
+        "Both native local product journeys meet their mandatory safety and composition criteria. Windows external egress may remain unverified with an explicit capability record.",
         "The entire local journey works with no account, official service outage and subscription expiry",
         "No unresolved identity/containment/data-safety defect or cancelled feature remains active"
       ],
@@ -5389,7 +5391,7 @@
       ],
       "native_validation": {
         "windows": [
-          "Full native Windows acceptance matrix including TUI and owned descendants"
+          "Run the admitted Windows wrapper matrix, including TUI, local network enforcement, owned descendants and unsupported-policy refusals. Carry external selected-egress observations separately."
         ],
         "linux": [
           "Full native Linux acceptance matrix including PTY/cgroup/deletion"
