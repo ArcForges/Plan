@@ -1535,7 +1535,7 @@
       "title": "Implement persistent Sandbox Core and qualified policy profiles",
       "milestone": "P2",
       "order": 10,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1620,7 +1620,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Sandboxes/**; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs; ArcForges:src/ArcForges.Node.Platform/Capabilities/**; ArcForges:tests/**/Sandbox*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Sandboxes/**; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs; ArcForges:src/ArcForges.Node.Platform/Capabilities/**; ArcForges:tests/**/Sandbox*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] MXC-04, API-01 and DATA-01 are complete. Deliver the persistent Sandbox registry and revisioned policy with native ownership and admission checks.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
