@@ -1550,6 +1550,12 @@
             "tests/ArcForges.Node.Core.Tests/**",
             "src/ArcForges.Node.Store/**",
             "src/ArcForges.Node.Core/NodeCapabilities.cs",
+            "src/ArcForges.Node.Core/Execution/ExecutionSupervisor.cs",
+            "src/ArcForges.Node.Platform/AttemptFiles.cs",
+            "src/ArcForges.Node.Platform/HelperFormats.cs",
+            "src/ArcForges.Node.Platform.Linux/GuardRole.cs",
+            "src/ArcForges.Node.Platform.Linux/LinuxAttemptHandle.cs",
+            "src/ArcForges.Node.Platform.Linux/UnitControl.cs",
             "tests/ArcForges.ClosedLoop.Tests/LinuxExecutionTests.cs"
           ]
         }
@@ -1564,7 +1570,7 @@
         "Implement Create/Configure/List/Inspect with owner identity, private root manifest and revision CAS",
         "Translate admitted official MXC profiles with explicit path, network, environment and resource ceilings. Require quiescence for access changes. Expose upstream support and the observed qualification separately.",
         "Bind Sandbox admission and deletion to one ownership lock; expose actual capabilities and unsupported reasons",
-        "Correct the legacy Linux 300 ms restart fixture's stop attribution when independently recorded evidence proves the Node committed its output-limit intent before a later Guard event. Preserve the workload, timeout and overshoot bounds, termination reason, and the strict 40 ms Guard case."
+        "Correct legacy Linux output-limit attribution when a Node commits the stop reason and the Guard subsequently performs the native stop. Preserve the first recorded termination reason, published V1 fields, existing stop bounds, and the 300 ms and 40 ms assertions. Bind Guard attribution to positive native evidence for the same attempt and cover the observed restart sequence with a native regression."
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
