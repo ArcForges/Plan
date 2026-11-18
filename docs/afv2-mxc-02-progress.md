@@ -1,4 +1,111 @@
-# AFV2-MXC-02 partial native evidence — 2026-11-17
+# AFV2-MXC-02 native Windows wrapper qualification and delivery
+
+## Final delivery of AFV2-MXC-02
+
+[Node PR95](https://github.com/ArcForges/ArcForges/pull/95) merged the reviewed head `da7f5bfcfe497a35cece41f0e97b5863481bcc56` at
+`269d04d0b985c62ffaa273356dbabe26c58df386` on 2026-11-18T09:29:30Z. Its merge tree matches the reviewed commit.
+The final Windows local wrapper receipt passed 60/60, SHA-256 `f7f9914550d3f9cbf0933735e8703a36e8b16312ac9c6521f1f9dd3dedceb1ef`.
+External selected egress is unverified. The probe and evidence changes have
+no main-push release or deployment. The original failed checks and
+targeted diagnostics are recorded below.
+
+| Host | Original successful full summary | Steps | Elapsed | SHA-256 |
+|---|---|---:|---:|---|
+| deku | `20261118-164308-da7f5bfcfe49-win/summary.json` | 15/15 | 2689 s | `db2a118b4a83cd5229fc7ebcb99f597403fa72aeea1d4c6bf28ec4971f57c142` |
+| v2202601329473427941 | `20261118-151938-da7f5bfcfe49-linux/summary.json` | 20/20 | 2110 s | `6977387fec127ef1eb704cc0ea78b47cdfdaa771d4727efaa79e143208476489` |
+
+Both hosts fetched the same head from GitHub and ran their stock reporter.
+
+## Final-candidate native Windows receipts — 2026-11-18
+
+Node `da7f5bfcfe497a35cece41f0e97b5863481bcc56` ran on DEKU against
+Design `0ce78f55465b15de82eb1d214b4c02d24809e80f` and Plan
+`3f987c08d7bc8543ccab187027c527084161b6bd`. Both invocations used the
+same fresh exact-head AOT probe and verified official MXC 1.0.1 stage.
+The [source review record](https://github.com/ArcForges/ArcForges/pull/95#issuecomment-6971921704)
+identifies the reviewed runner change separately.
+
+| Identity under `.worktree/m02-wrapper-da7f5bf/artifacts/` | SHA-256 |
+|---|---|
+| `native-da7f5bf/wrapper.json`, first invocation | `033c5d476f0dd337280cb281ec6a6a07fe0501aaffa4ea4cdf6f6789d014774a` |
+| `native-da7f5b2/wrapper.json`, retry | `f7f9914550d3f9cbf0933735e8703a36e8b16312ac9c6521f1f9dd3dedceb1ef` |
+| Reused official stage manifest | `e410036bce3097242d2daa07236dbf7b36b553b71b99a8f4a95e1d2c625a1e06` |
+| Reused AOT probe | `ff573694e4aeae1b9577e11b574fab23ffae6853be79f839422dcfc6de42df0b` |
+| Retry combined observation | `72c6ec5ec613ffb1f36630296b55e5748af20d48cedd6ec64c78f8b3207be93e` |
+
+The first invocation exited 1 in 52.967 seconds with 37 passes, one
+failure and 22 cases unrun. `cli-native-compile-link-test` lacked the
+expected completion event. The fixture recorded compiler and linker
+exit 0, with no test-child creation or completion event recorded.
+The official executor reported `backend_error: script timed out after
+10000ms` before the wrapper's 20-second wait reported the missing
+event. The `terminal-output.bin` SHA-256 is
+`be6ff15eedee057a0fe667dc9586a74a6f908eab105c26c249d872248b7762c1`.
+Before cleanup, the executor had exited with raw status `0xffffffff`
+and the Job had zero active processes. Cleanup was confirmed. The cause
+of the delay before the official timeout remains unknown.
+
+The retry used new work and report paths with the same stage and
+inputs. Run `423f8c4c5456443da4b9c10be3d744c4` passed 60/60 in 62.804
+seconds, exited 0 and confirmed cleanup. In the combined Run, the
+calibrated local peer received no additional request after Winsock
+10013. The same payload touched 32 MiB and started two children before
+network and filesystem observations. All 16 ACL observations matched
+and the workload produced all ten file observations. Reconnect kept
+the same owner, resize and Unicode output were observed, and 171 bytes
+appeared in the 84.4576 ms replay window. Stop and cleanup took 58.5143
+ms with executor exit 125, an empty Job and the peer released. External
+selected egress remains unverified. The [independent native review](https://github.com/ArcForges/ArcForges/pull/95#issuecomment-6972119813)
+matched the original failed and successful reports, real child exits,
+same-Run effects and persistent data across two distinct Runs.
+
+On the earlier Node `5f6f211`, the H-22 repository retry passed 20/20
+in 1,976 seconds. Its original
+`20261118-144101-5f6f211b7b40-linux/summary.json` has SHA-256
+`ddc96232988e7850e6dc3072dfcff80648cb97f1c59f58bc149f66784dfb4add`.
+
+### First Windows repository report at da7f5bf
+
+The full report `20261118-152635-da7f5bfcfe49-win/summary.json`
+(SHA-256 `ed4943d252569aa6f00ab37fa0c90fae56a2dc0cccca71787f8923baae93329b`)
+passed 13 steps in a run lasting 2,803 seconds. Regular CI completed all
+nine projects. Core ran with nine workers and passed 741 cases with 105
+expected skips. The regular exclusive suite passed. Native exclusive
+had one failure in an existing NodeGapMemory theory, with a 272 MiB target,
+256 MiB notification and successful-exit configuration. The attempt had
+reported Running when the 60-second wait for its PowerShell ready file
+expired. The memory workload and recovery assertions for that vector had
+not yet run. The PowerShell process still held the fixture directory when
+the cleanup check ran. A later read-only check found the process gone.
+The startup gate did not run in this report.
+
+The unchanged five-vector theory then passed all five in 37.202 seconds
+with the same Native AOT host, exclusive filters and original time limits.
+The diagnostic in `artifacts/gap-memory-native-diagnostic/` contains
+the raw stdout (SHA-256 `bce9e36fe8acf809fe3ff4517caf876bdbca1108d326e546191c31c258a2930b`),
+fixture marker observations and its separate summary
+(`bbc6db5abdab59dcc4c3c9fda26e5e3ab4bb8d47cf229381c4b3413fedded8d1`).
+The original pre-ramp delay remains unexplained.
+
+The second Windows report `20261118-161840-da7f5bfcfe49-win/summary.json`
+(SHA-256 `2bc6210884e3fcd8de2cfb0306e4e4ae17fc1803d56458110990e90bf514df08`)
+passed the first five steps. Regular CI again ran all 846 selected Core
+cases with nine workers and passed 741 with 105 existing skips. Two
+Windows Platform tests reached their 60-second fixture-readiness deadlines
+before their assertions. Platform recorded 112 passes and two failures.
+The first report at this same commit had 113 passes and one skip in
+Platform. The second report stopped at CI.
+
+An ordinary host diagnostic ran the system Windows PowerShell with
+`-NoProfile -NonInteractive` to print a constant. All three launches
+completed, in 14.178, 0.230 and 20.338 seconds. The two slow samples
+spent 13.915 and 20.152 seconds between PowerShell initialization events
+40961 and 40962. Three separate read-only OS version queries returned
+the installed build in under 0.9 seconds each. WMI was running before
+and after the sample. These observations confirm variable host startup
+time. The exact cause of the two CI readiness timeouts remains unknown.
+The diagnostic summary SHA-256 is
+`7d54bd926253fab6a665ef2480ae68b0f5f3ccfc5e617f3f02f5ed3b709d0bb6`.
 
 ## Native Windows wrapper qualification at fac982f — 2026-11-18
 

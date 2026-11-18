@@ -1,5 +1,33 @@
 # Codex handoff — ArcForges V2
 
+## MXC-02 delivered · Windows wrapper handoff
+
+The V2 platform runs general CLI workloads in persistent Sandboxes. Each
+Run owns its terminal, process tree, limits and cleanup. The offline Node
+and CLI use the official MXC backend. The optional Center and Web use the
+same local Core and authorization.
+
+Run Windows work on the native workstation under `C:\MyFile\Projects\ArcForges`.
+Run Linux work through `ssh netcup` on H-22 (`sammiller@v2202601329473427941`,
+`/home/sammiller/arcforges/`). H-22 supplies Linux verification.
+
+[PR95](https://github.com/ArcForges/ArcForges/pull/95) merged at `269d04d0b985c62ffaa273356dbabe26c58df386`. Windows passed the 60-case
+local wrapper qualification. The same final commit passed all 15 Windows
+and 20 Linux repository checks. [Source, raw receipts and earlier failures](docs/afv2-mxc-02-progress.md)
+document the scope. The Linux native wrapper has its separate 72-case receipt in AR-02.
+
+ArcForges wraps the pinned official MXC SDK and executor. Retain supported
+policy semantics and report native refusals. Reject a request whose
+necessary constraints the backend cannot enforce. Record unsupported and
+unmeasured capabilities separately. The unverified Windows external
+selected egress affects claims about that capability only. It requires no
+replacement network implementation, external endpoint or owner decision.
+
+The session ends at this delivery with MXC-04 available. Its admission
+records are the dependency for row 10, CORE-01. Use `python tools/plan.py next`
+to select work in the next session.
+
+
 ## Windows Core CI scheduling investigation at 5f6f211
 
 The Windows wrapper passed 60/60 at `5f6f211`, and MXC-02 remains active
