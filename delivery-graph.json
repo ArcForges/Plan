@@ -1549,7 +1549,8 @@
             "src/ArcForges.Node.Api/NodeHost.cs",
             "tests/ArcForges.Node.Core.Tests/**",
             "src/ArcForges.Node.Store/**",
-            "src/ArcForges.Node.Core/NodeCapabilities.cs"
+            "src/ArcForges.Node.Core/NodeCapabilities.cs",
+            "tests/ArcForges.ClosedLoop.Tests/LinuxExecutionTests.cs"
           ]
         }
       ],
@@ -1562,7 +1563,8 @@
       "scope": [
         "Implement Create/Configure/List/Inspect with owner identity, private root manifest and revision CAS",
         "Translate admitted official MXC profiles with explicit path, network, environment and resource ceilings. Require quiescence for access changes. Expose upstream support and the observed qualification separately.",
-        "Bind Sandbox admission and deletion to one ownership lock; expose actual capabilities and unsupported reasons"
+        "Bind Sandbox admission and deletion to one ownership lock; expose actual capabilities and unsupported reasons",
+        "Correct the legacy Linux 300 ms restart fixture's stop attribution when independently recorded evidence proves the Node committed its output-limit intent before a later Guard event. Preserve the workload, timeout and overshoot bounds, termination reason, and the strict 40 ms Guard case."
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
