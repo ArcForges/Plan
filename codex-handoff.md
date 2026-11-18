@@ -1,6 +1,35 @@
 # Codex handoff — ArcForges V2
 
-## Current Windows network qualification checkpoint — 2026-11-18
+## Current Windows qualification checkpoint — 2026-11-18
+
+Node draft PR95 head `cb0396b3d93b9afaf0629630f2020358a353bf53` has one
+59/59 workstation diagnostic receipt from native Windows. The probe now
+collects all workstation groups before reaching its external peer. The new
+receipt includes the six local TCP/UDP egress and ingress cases. Its exit
+code is 2 and its qualification status is partial. The [experiment
+record](docs/afv2-mxc-02-progress.md) identifies the author and native
+worktrees, original report, build and per-case observations.
+
+The outstanding acceptance consists of seven external network cases,
+two combined scenarios and a single successful 68-case run. The existing
+ordinary-host controls and strict selected-egress measurements are below.
+Current inventory on the workstation and H-22 identified no additional
+controlled listener that can measure direct TCP and UDP under this policy.
+The remaining task range is authorized. CORE-01 at row 10 depends on
+MXC-04, which requires both native profiles.
+
+At the same head the Linux repository check passed all 20 steps on H-22.
+Windows passed its first five steps and failed the CI test step. The
+experiment record identifies both formal receipts and the focused Windows
+StopNode reproduction attempt. Node PR95 remains a draft. The owner
+confirmed the original task order. MXC-02 is blocked by AR-01, 9 tasks
+are complete, 30 are planned and `python tools/plan.py next` returns
+`null`. Resume with a controlled, reachable test location that can
+measure the original direct allowed and denied traffic under strict policy.
+Calibrate normal TCP and UDP there before running the contained network
+cases and the full profile.
+
+## Previous Windows network qualification checkpoint at 32e2ac1 — 2026-11-18
 
 Node draft PR95 has advanced to `32e2ac1b6c9645b75f607bfc7a58bcb0d552c274`.
 Ordinary calibration now verifies that the controlled peer received and
