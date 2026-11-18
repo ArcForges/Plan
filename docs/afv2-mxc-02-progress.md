@@ -1,5 +1,130 @@
 # AFV2-MXC-02 partial native evidence — 2026-11-17
 
+## Native Windows wrapper qualification at fac982f — 2026-11-18
+
+The `windows-process-executor-v1` local wrapper revision
+`win-wrapper-local-v1` passed all 60 required cases on native x64 Windows
+build 26300. The six protocol counts were 7, 15, 9, 13, 15 and 1. The
+published probe returned 0, recorded `wrapper_passed`, confirmed cleanup
+and verified the official stage before and after execution. The seven
+external network cases and two original external-peer combinations have
+their historical results below. External selected egress remains unverified.
+
+| Source or artifact | Identity |
+|---|---|
+| Node | `fac982f628799c8905ea911bd949355072a4d2a7` |
+| Design / Plan at invocation | `529d3154317178fb7eed50f2a9192281bb2f4b2d` / `6a7ecc46c47c27fc9673b75b4023023bdebd6946` |
+| Run | `af8b9d5949f541f78397a1264119c2a7` |
+| Wrapper receipt SHA-256 | `d822ef2c65d8f6c12bb57d1d2b1f638a5be88b4d8de5618fbb614bd6c1dcbca4` |
+| Local combined observation SHA-256 | `9e00538979494621f53b42304253897bfa82ffb1e82d6987e108de22e255302f` |
+| Exact combined policy SHA-256 | `136052983aa167c3a3c9162376952451e8080d3b417e7702ff2c48917e4567f0` |
+| Stage manifest / AOT probe SHA-256 | `9eec347151404510831bc05d5c67c522c17da608c52831b1164527fc9e8ea60e` / `79ca3c1e4f107dd96ac2f2a0a7f41965a4f9a92115c32d11fccb4d725a9f891f` |
+
+The author used detached Node worktree `.worktree/m02-wrapper-fac982f`.
+Its `artifacts/native-fac982f/` directory contains the original
+`wrapper.json`, driver context, events, launch log, official stage,
+combined observation, policy and fixture records. The Native AOT publish
+had zero warnings and errors. The published `--windows-profile` command
+used the verified manifest, new work and report paths, and the three
+source identities above. It used the workstation without an external peer.
+
+Under the same held outer Job, the workload had touched 32 MiB and started
+two children before its network attempt. With default-deny egress, ingress
+and host loopback, ordinary host calibration advanced both counters from
+zero to one. The contained TCP attempt returned Winsock 10013 and both
+counters stayed at one. The same workload exercised ten filesystem
+effects. A writable sentinel persisted, restricted reads/writes were
+denied and the sixteen observed ACLs retained their original digests.
+Unicode output, resize to 120 by 40, same-owner reconnect and replay
+worked. The observer measured 171 output bytes across an 81.68 ms replay
+window. The first two observed executor launches took 4.34 and 3.28 ms
+through resume on the running workstation. Stop and cleanup took 59.72 ms.
+The Job was empty and the test peer had been disposed. Lower-capability
+hardware was unavailable. The concrete official-policy refusals and the
+limits of inherited ancestor Job observation remain in the receipt.
+
+An independent nonauthor reviewer verified the complete source review
+chain, all 60 case names and protocol assignments, the ten staged files,
+the driver context/events, request, observation and native owner records.
+The original configuration rejection has its own executor identity and
+cleanup criterion. [Design PR79](https://github.com/ArcForges/ArcForges-Design/pull/79)
+records native wrapper qualification independently of repository delivery.
+
+### First repository runs at fac982f
+
+Both designated hosts fetched the same candidate from GitHub. On Windows
+the reporter passed five steps before the CI suite failed. The Core
+launch/root/end-steps test observed a successful task and then failed to
+read one of its expected marker entries. The original log did not identify
+which marker was empty. Core recorded 741 passes, one failure and 105
+skips. Windows Platform recorded 113 passes and one expected skip.
+The summary `20261118-132629-fac982f62879-win/summary.json` has SHA-256
+`0c1c437a0e79e8a94dcd47b4d883a7f0dd6c27b3797af9bda5ad73e3bd127f21`.
+On the same compiled Release binary, a single targeted run passed in
+2.768 seconds. A read-only observer saw all three complete marker entries
+in order. The stock end-step runner has its own ten-second budget and
+the task result can follow the root exit even if an end step misses its
+marker. The first formal result does not identify which path occurred.
+The original Core test log and targeted diagnostic are in
+`artifacts/windows-ci-marker-diagnostics-20261118` in the native author
+worktree. Its diagnostic summary SHA-256 is
+`3fe88015d48bca34a66080d10d59b9ed077b9eef916c89f5eb862eff7da08560`.
+
+The second unchanged Windows repository run again failed this method.
+A read-only observer saw the launch and root markers. It observed no end
+marker before the test cleaned up. The Core suite recorded 739 passes,
+three failures and 105 skips. Windows Platform recorded 110 passes,
+three failures and one skip. The other failures involved a remaining
+child marker, exit publication or bounded waits in separate test cases.
+The second summary `20261118-133950-fac982f62879-win/summary.json` has
+SHA-256 `2e31c6d2d7fa74772081ea0cd15a2b126e33c4407f11d68a25d502559697243c`.
+Both runs stopped before the required exclusive suites. Preserve the
+original deadlines and assertions in the existing exclusive scheduling
+of the launch/root/end order test.
+
+H-22 passed ten steps and failed the CI suite. In the approved-file
+refusal theory, reopening the private stage returned errno 11 before
+the test reached its refusal/replay checks. The summary
+`20261118-132610-fac982f62879-linux/summary.json` has SHA-256
+`414352a001a0d80e6013dadd8c0cfd150235b1b8511e40d942f1e5cb07383f18`.
+Under the same Release binary on H-22 all four theory inputs passed in
+2.087 seconds when selected alone. The targeted diagnostic log under
+`launches/mxc-delivery-fac982f62879-1/file-approved-refusal-diagnostic-01`
+has SHA-256 `d35570f148f488e1e6a41c5a4f2a005a0f6abb4fe595466f329d8b084b3f5d09`.
+
+### Windows CI project concurrency comparison at fac982f
+
+The two formal Windows runs above used the stock default of two concurrent
+projects and failed at `win-ci`. Before the comparison, the second run's
+summary and nine project logs were archived. The comparison used the same
+Release binaries at `fac982f628799c8905ea911bd949355072a4d2a7` and ran
+`./eng/test.ps1 -Suite ci -NoBuild -Parallel 1` with the original selection,
+in-project behavior and 1,200-second outer budget. Recorded binary hashes
+matched before and after the comparison. It exited 0 in 629.012 seconds
+with 2,166 passes, zero failures and 189 skips. This diagnostic did not
+report a commit status.
+
+The formal runs used English .NET CLI output and per-project redirection.
+The comparison emitted Chinese .NET test output live into a combined log.
+The host resource sampling also differed. These observations support a
+bounded change to the runner default. They leave the cause of the marker
+failure open.
+
+Original evidence is under `.worktree/m02-wrapper-fac982f/artifacts/windows-ci-ab-serial-20261118/`.
+The `summary.json` SHA-256 is
+`92a3420546f7bf0427acae0614f912d92aec189ac63de0697bbf5eeadca8e58d`.
+The `serial-ci.log` SHA-256 is
+`c206931c5a18ce01ffea9afbd9c2e22f7df067d6630d8c83219ea4ee61d7510f`.
+
+Scope the default of one concurrent project to Windows calls that omit
+`-Parallel` and select only `ci`, or `ci` with the already serial
+`exclusive` suite. Preserve explicit overrides, Linux and all other
+suite combinations, as well as the test selection, assertions, deadlines,
+native host profiles and protected workflows. This checkpoint records
+native wrapper evidence and the scope of the runner edit. MXC-02
+delivery still requires formal repository checks, independent review and
+merge.
+
 ## Owner decision on external network evidence — 2026-11-18
 
 AFV2-MXC-02 now qualifies the wrapper around the official Windows executor.

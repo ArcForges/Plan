@@ -1,5 +1,32 @@
 # Codex handoff — ArcForges V2
 
+## Native Windows wrapper passed on 2026-11-18
+
+Node PR95 candidate `fac982f628799c8905ea911bd949355072a4d2a7`
+passed all 60 required Windows local cases, including a single composed
+Run with an independently measured loopback outcome. The native report
+binds source, official stage, host, Design and Plan. The external mode
+is recorded as unverified. [Design PR79](https://github.com/ArcForges/ArcForges-Design/pull/79)
+merged the scoped native evidence at `0ce78f55465b15de82eb1d214b4c02d24809e80f`.
+The [Plan evidence](docs/afv2-mxc-02-progress.md) gives artifact identities,
+original host paths and repository test results.
+
+Two Windows repository CI runs at fac982f failed the same launch/root/end
+marker-order test under concurrent project load. The test passed alone.
+During the second formal run an independent observer saw the launch and
+root markers and no end marker before cleanup. The success path needs
+the end helper to run within the existing budget. Apply the established
+exclusive-suite scheduling rule to this method and preserve its complete
+test body. A separate run of the Windows CI suite on the same Release
+binaries passed 2,166 cases with 189 skips when projects ran one at a time.
+The comparison supports trying the narrower default, with output language
+and redirection differences recorded in the [comparison evidence](docs/afv2-mxc-02-progress.md#windows-ci-project-concurrency-comparison-at-fac982f).
+The runner change applies to Windows calls selecting only
+`ci`, or `ci` with `exclusive`, when `-Parallel` is omitted. Explicit
+settings and other selections keep their existing behavior. MXC-02
+remains active pending ordinary repository verification and delivery.
+MXC-04 follows it in dependency order.
+
 ## Official MXC wrapper boundary — 2026-11-18
 
 The owner authorized the official wrapper scope in [execution policy](execution-policy.md#official-mxc-wrapper-boundary-2026-11-18).
