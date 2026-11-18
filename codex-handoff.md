@@ -1,5 +1,17 @@
 # Codex handoff — ArcForges V2
 
+## MXC-04 active · native verification checkpoint
+
+Plan PR168 activated MXC-04 at `1a781d9fe93130381960f807d3254fdd042de951`. Design PR80 merged at `adc9ca6fb1163166681f4ce32ce5b37f561f34dd` from reviewed `8abd068e05de768e615384a7b7a01cf97a13d67c`, with Windows 4/4 and H-22 Linux 4/4 required checks. Node PR97 remains open at independently reviewed `fd50c5f3ae48f18f748485531c30c4203b3299cd`.
+
+The final Node head passed all 13 Windows admission checks against the originating protected stage. The gate returned `EvidenceMissing`, `EvidenceMismatch` and `PrerequisiteMissing` for an absent private control path without invoking a workload. Windows external selected TCP/UDP remains `unverified`. The local admission log SHA-256 is `f157a05a70bedb54dbc213005550cab29f8783d48b07fc02bd5c82cfd3b75d63`.
+
+The required Node Windows run at `20261118-174816-fd50c5f3ae48-win` failed at `win-ci`. Its exact-head summary SHA-256 is `3ade0475a392aeef7ecf26c82b4024bbc8641fd1c0d7ddf78e61a7046bba20be`. The existing nested Job build test `BuildTests.ADotnetBuildRunsInNestedJobs` failed in the new fixture project restore at `NuGet.targets(784,5)` with a null `path1`. Targeted retries reproduced the error after supplying workstation directory variables. The same test also failed at unchanged Node main `269d04d0b985c62ffaa273356dbabe26c58df386` in a separate native worktree after successful locked restore and build. Logs remain in the Node repository Git directory.
+
+H-22 passed the Design gate earlier. Subsequent `ssh netcup` attempts from the workstation repeatedly timed out during SSH banner exchange. The Node candidate still needs its designated H-22 refusal test and both successful exact-head repository statuses. The graph remains at 10 completed tasks with MXC-04 active. CORE-01 starts after MXC-04 closure.
+
+[Design PR80](https://github.com/ArcForges/ArcForges-Design/pull/80) · [Node PR97](https://github.com/ArcForges/ArcForges/pull/97)
+
 ## MXC-02 delivered · Windows wrapper handoff
 
 The V2 platform runs general CLI workloads in persistent Sandboxes. Each
