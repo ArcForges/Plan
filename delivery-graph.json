@@ -1152,7 +1152,7 @@
       "title": "Admit the official MXC wrappers and record capability evidence",
       "milestone": "P1",
       "order": 7,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1236,7 +1236,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/mxc/profiles/**; ArcForges:src/ArcForges.Node.Platform/Capabilities/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/mxc/profiles/**; ArcForges:src/ArcForges.Node.Platform/Capabilities/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] MXC-02/03 complete and AR-01/02/03 available. Qualify the exact official Windows local and Linux Bubblewrap profiles and verify distinct fail-closed refusals on the designated hosts.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
