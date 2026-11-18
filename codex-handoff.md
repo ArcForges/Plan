@@ -1,5 +1,16 @@
 # Codex handoff — ArcForges V2
 
+## Windows Core CI scheduling investigation at 5f6f211
+
+The Windows wrapper passed 60/60 at `5f6f211`, and MXC-02 remains active
+for repository delivery. Two stock Windows CI runs failed different
+Core setup operations. One same-binary Core-only run passed the full
+846-case selection with `--max-threads 9`. The cause of the failures
+remains open. The coordinator selected a bounded Windows Core scheduling
+default for independent engineering review. Preserve the native receipt,
+all required host checks and the existing MXC-04 dependency.
+[Original observations and scope](docs/afv2-mxc-02-progress.md#windows-core-collection-concurrency-comparison-at-5f6f211)
+
 ## Native Windows wrapper passed on 2026-11-18
 
 Node PR95 candidate `fac982f628799c8905ea911bd949355072a4d2a7`

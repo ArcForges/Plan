@@ -92,6 +92,12 @@ Under the same Release binary on H-22 all four theory inputs passed in
 `launches/mxc-delivery-fac982f62879-1/file-approved-refusal-diagnostic-01`
 has SHA-256 `d35570f148f488e1e6a41c5a4f2a005a0f6abb4fe595466f329d8b084b3f5d09`.
 
+The same-source H-22 repository retry passed all 20 steps in 2,048
+seconds. Core passed 28 cases with zero failures and 15 skips in each
+of the regular and Native AOT exclusive suites. The original receipt
+`20261118-133521-fac982f62879-linux/summary.json` has SHA-256
+`f54304f5c242ada66d7e9e9ea07d4c956b2444dd55acc7df64e244821ed99ffc`.
+
 ### Windows CI project concurrency comparison at fac982f
 
 The two formal Windows runs above used the stock default of two concurrent
@@ -124,6 +130,99 @@ native host profiles and protected workflows. This checkpoint records
 native wrapper evidence and the scope of the runner edit. MXC-02
 delivery still requires formal repository checks, independent review and
 merge.
+
+### Final candidate at 5f6f211
+
+[Plan PR165](https://github.com/ArcForges/Plan/pull/165) merged the runner
+scope at `4b55f1fb36c0622297cd65371c980f2ad65ad727`.
+[Independent source review](https://github.com/ArcForges/ArcForges/pull/95#issuecomment-6970793928)
+covers Node `5f6f211b7b407d851ad29841c9dad923a72a9db0`. Nine checks of the
+PowerShell scheduling logic verified the Windows default for `ci` alone
+and for `ci,exclusive`, including the reversed input `exclusive,ci`.
+Both combined inputs scheduled regular CI before exclusive. The checks
+also covered other mixed suites, exclusive alone, explicit overrides
+and Linux. The marker-order test moved to the required Windows exclusive
+suites with its original 120-second timeout, workload and assertions.
+
+On DEKU, the default exact-source Windows wrapper passed 60/60 in
+63.034 seconds with exit 0, final stage identity verified and cleanup
+confirmed. Run `3e8bf7602c05412e9f741892e15d4db0` binds that Node head to
+Design `0ce78f55465b15de82eb1d214b4c02d24809e80f` and the Plan PR165 merge.
+The original `.worktree/m02-wrapper-5f6f211/artifacts/native-5f6f211/`
+contains the following artifacts.
+
+| Artifact | SHA-256 |
+|---|---|
+| `wrapper.json` | `5409dd20d8bf4fe1e12cae906fd09249c46271848f22d64b55b96879a9ab91a7` |
+| Stage manifest | `3ecd091ca0aa12b864eb12e3867ba26dbb868e717c18b4c57be5308d6c126449` |
+| Published AOT probe | `9368df6bc5670aec9b4882f4de576087db631ff69e6d3b15277345dc124781ff` |
+| Combined local observation | `9968430f56b4aed993cfa98820762cd430864a64af77c3ab13eae2e8f4af8859` |
+
+The combined Run touched 32 MiB and started two children before its
+network attempt. The TCP attempt returned Winsock 10013 against the
+calibrated loopback peer. Ten filesystem effects were observed and all
+16 ACL observations matched. The reconnect retained the same owner.
+Its 81.939 ms replay window recorded zero additional bytes. The earlier
+`fac982f` run recorded 171 bytes in its own replay window. The first
+and subsequent executor launches took 4.2486 and 3.5877 ms through
+resume. Stop and cleanup took 60.2314 ms, with executor exit 125, the
+Job empty and the peer released. External selected egress remains
+unverified. The [independent native review](https://github.com/ArcForges/ArcForges/pull/95#issuecomment-6970908060)
+also verified 7,042 terminal bytes in the combined case, an explicit gap
+and 1,192,399 output bytes in the dedicated bounded-replay case, and the
+persistent file read by a second Run.
+
+### First repository runs at 5f6f211
+
+Both hosts fetched the reviewed commit and retained their original reports.
+
+| Host | First formal result | Same-binary diagnostic |
+|---|---|---|
+| Windows | `20261118-141812-5f6f211b7b40-win` passed five steps. The sole CI failure was a local `UpdatePolicy` RPC deadline in `RoutedAuditReviewTests.NewAndRepeatedApprovalsAndAgentDenialsEachHaveOneAudit`. Windows Platform passed. The exclusive phase containing the marker-order test had not run. Summary SHA-256 `14b08f4b8d7bf85e11d0e08e4a09532c6fbe478da8dfeae558f6da3b7fa9ba21`. | The original CI filters and binary passed the method 1/1 in 2.639 s and its class 8/8 in 6.953 s. The logs in `artifacts/routed-audit-diagnostic/` have SHA-256 `702f0b6d55dd137cfb3285ea7481ae684f50f41cdbd6f73fbbab07486d674877` and `b38f75937798399730bb931968a2059c801910c85f8db1966e31384e5f4ae2a5`. |
+| Linux | `20261118-141532-5f6f211b7b40-linux` passed 17 steps. The CloudLink loopback receiver test reached 114 connections during its setup window and stopped before its cap/browser assertions. Summary SHA-256 `89d0dc2b4aa59e222100029ac5366a7bce0384a99c9cf7a7499657be649ecc30`. | The unchanged exclusive method passed 1/1 in 3.605 s with its real loopback fixture. The log is under `launches/mxc-delivery-5f6f211b7b40-1/loopback-receiver-diagnostic-01/`, SHA-256 `ed3db1b1a445b88137ccb18b41d2f101bcf66634a7de90845ead17a33a4c221a`. |
+
+### Windows Core collection concurrency comparison at 5f6f211
+
+Both stock Windows reports at `5f6f211` ran the Core CI selection with
+the default per-test ceiling of 18 on DEKU. Each recorded 740 passes,
+one failure and 105 skips. In the second run, `ListNodeDirectory` timed
+out at the initial producer rendezvous in `PrivateStageConcurrencyTests.cs:75`.
+The three-second wait expired before the actual reader phase. The retry
+receipt `20261118-143926-5f6f211b7b40-win/summary.json` has SHA-256
+`18dc98d2fcd860fe32855172b2653a91ef1e1f80d72c186253339534a33ab679`.
+During its Core run, median system CPU use was 86.45 percent and median
+Core process CPU use was 71.81 percent.
+
+One same-binary diagnostic ran the entire 846-case Core CI selection
+with `--max-threads 9`. It retained `ParallelMode.All`, the CI filters,
+the stock outer budget and the original test deadlines. It passed 741
+cases with zero failures and 105 skips. Core test duration was 371.191
+seconds, compared with 403.041 and 380.060 seconds in the stock runs.
+Median system CPU use during Core was 54.43 percent. The diagnostic
+covered Core alone on one run. The measurements support trying the
+bounded default and leave the cause of either failure open. Neither
+the original failures nor this diagnostic close the required checks.
+
+Original files are under
+`.worktree/m02-wrapper-5f6f211/artifacts/core-collection-concurrency-5f6f211/`.
+
+| Diagnostic file | SHA-256 |
+|---|---|
+| `summary.json` | `cc328eb9508ae82e3bd4dbd933c6e3bae57b5322ac855bbe72a4b69a857849d3` |
+| `core-max-threads-9.log` | `8902c38ec199a5ab547e7b743c237f0f332d1859bee64b6ccc11f7926e499db7` |
+| `core-max-threads-9-host.jsonl` | `36ed11e70d22fde0aac32650c38b53e5bbf621b8c92d79d712a45baf159ac83b` |
+
+Within the authorized migration, the coordinator selected an engineering
+change confined to the default Windows `ci` run of `ArcForges.Node.Core.Tests`.
+Cap xUnit concurrency at nine when the caller provides neither `-Parallel`
+nor an explicit per-test parallelism setting. On a smaller host retain
+any lower default. Preserve `ParallelMode.All`, case-internal races,
+assertions, deadlines, case selection, other assemblies and suites, Linux,
+explicit settings, mandatory exclusive runs and the formal reporter.
+Limit code changes to the existing runner and affected scheduling
+guidance and obtain independent engineering review. AR-01 stays scoped
+to the actual `5f6f211` native wrapper receipt. This record leaves MXC-02
+active for delivery and keeps MXC-04 in its existing dependency order.
 
 ## Owner decision on external network evidence — 2026-11-18
 
