@@ -1,10 +1,12 @@
 # Codex handoff — ArcForges V2
 
-## REC-01 active
+## REC-01 complete · CLI-01 ready
 
-REC-01 is the sole active product task. Eighteen of 40 tasks are complete. Recover the original authenticated Run owner under the pinned official profile, retain the original live scope and command epoch, and keep ambiguous effects or cleanup held. Use the existing host-local native acceptance. Preserve protected control material, old terminal uncertainty and recovery receipts. Reserve real Stop and revocation under journal capacity, and keep incomplete backup authority in maintenance.
+Nineteen of 40 tasks are complete and 21 are planned. Node PR108 merged at `1b9bdb5288964ff763cd3f7da6260bdf39742466` with the same tree `452bddb6405a47f46bd31e46dab05100df2a3dda` as the independently reviewed `648fb7c0c9b2cefec03939e257b0e37734059b78`. REC-01 restores only verified original Run ownership after Node loss, preserves the original Start and pending Stop, and retains unknown effects until justified by native evidence. It also adds guarded repair and delete-journal successor linkage, safety capacity for existing Stop and revoke, and coherent restore admission.
 
-Scope local repair and explicit deletion successor linkage to the original held root, phase and journal. Destructive filesystem execution remains with FILE-02. Public activation retains its separate PROD-01 approval.
+Windows passed 15/15 and H-22 passed 20/20. Each exact installed package passed 32/32 with zero skips. The same H-22 package passed the distinct native user-manager case 1/1. The [REC-01 evidence](docs/afv2-rec-01-summary.md) records original receipts, failed attempts, the verified old-boot identity fixtures, and the scope of each claim.
+
+CLI-01 is the next eligible task for offline core and administration commands. Destructive filesystem execution remains with FILE-02. Public activation retains its separate PROD-01 approval.
 
 ## RES-03 complete · REC-01 ready
 
