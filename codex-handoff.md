@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## RES-03 active
+
+RES-03 is the sole active product task at 17 of 40 complete. Use the delivered exact Node resource scope from RES-02. RES-03 adds immediate concurrent resident reservation, weighted CPU allocation across active Sandboxes and Runs, and bounded pressure action under explicit committed authority. Observe the original owned scopes and require confirmed drain and a newer coherent sample before another pressure stop.
+
+Use the scoped existing Start admission, Run policy and lifecycle, and held resource observation paths. Validate both native operating systems with bounded test-owned workloads. Official public activation retains its separate PROD-01 approval.
+
 ## RES-02 complete · RES-03 ready
 
 Node PR106 merged at `84b6c3a4227a9eab5d7846673109f6192561db89` with independently reviewed head `448aba416dc0194bfcc7c87ece097509e2b73cb6` and tree `441c0788d9da6132982d86fedee32cb834c306b6`. The owner-scoped typed API records requested, applied and native readback state for the original Job or delegated cgroup. Hard grants are charged before workload release. The native tests verify ordered changes, typed aggregate refusals, existing cap retention after an unsafe decrease, and owned-boundary drain.
