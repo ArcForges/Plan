@@ -1668,7 +1668,7 @@
       "title": "Implement per-Run supervisor and official MXC execution",
       "milestone": "P2",
       "order": 11,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1772,11 +1772,15 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Runs/**; ArcForges:src/ArcForges.RunSupervisor/**; ArcForges:src/ArcForges.Node.Platform.Windows/Mxc/**; ArcForges:src/ArcForges.Node.Platform.Linux/Mxc/**; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/Mxc*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] The persistent Sandbox Core is complete. Start the per-Run supervisor and official MXC execution task with explicit production staging and package verification.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Runs/**; ArcForges:src/ArcForges.RunSupervisor/**; ArcForges:src/ArcForges.Node.Platform.Windows/Mxc/**; ArcForges:src/ArcForges.Node.Platform.Linux/Mxc/**; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/Mxc*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] The persistent Sandbox Core is complete. Start the per-Run supervisor and official MXC execution task with explicit production staging and package verification. [delivered] Node PR 102 merged as 2b5189e0c553a031067126681a2304fe2467cd04 with the independently reviewed and natively verified c1d0dc6ba0a0ca4e3bf57b6acf0b4ee3d8a71ebe tree caaabe7b8de27c227fb9239d3bc951ba87cd3591. Windows deku passed 15/15 and H-22 passed 21/21 with stock run-and-report. [complete] Delivered separate per-Run Native AOT supervisors using official MXC 1.0.1 and exact product packages on the two qualified x64 hosts. Non-author reviewers verified the exact head and resolved release ordering, owned-scope draining, uncertain Start versus proven Stop, immutable handoff binding, and existing private ACL integration. Live-Run rebind belongs to REC-01. Windows external selected egress remains unverified. This task delivered development packages and native verification.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/102"
+        ],
+        "merges": [
+          "ArcForges@2b5189e0c553a031067126681a2304fe2467cd04"
+        ],
         "publications": [],
         "ledger": null
       },
