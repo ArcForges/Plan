@@ -2235,7 +2235,7 @@
       "title": "Apply and verify per-Run and aggregate resource limits",
       "milestone": "P3",
       "order": 15,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2337,11 +2337,15 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Platform.Windows/Mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] The owner resumed the remaining V2 tasks. Complete scoped native limit application and readback after the verified RES-01 delivery.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Platform.Windows/Mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] The owner resumed the remaining V2 tasks. Complete scoped native limit application and readback after the verified RES-01 delivery. [delivered] Node PR106 merged at the independently reviewed native cohort with actual Windows and H-22 required statuses and verified installed packages. [complete] AR-06 and F-RES-01 qualify real CPU and memory saturation, ordered reductions and increases, desired/applied/readback failures and aggregate refusal on both original official MXC profiles.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/106"
+        ],
+        "merges": [
+          "ArcForges@84b6c3a4227a9eab5d7846673109f6192561db89"
+        ],
         "publications": [],
         "ledger": null
       },

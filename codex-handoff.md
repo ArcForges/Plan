@@ -1,6 +1,16 @@
 # Codex handoff — ArcForges V2
 
-## RES-02 active
+## RES-02 complete · RES-03 ready
+
+Node PR106 merged at `84b6c3a4227a9eab5d7846673109f6192561db89` with independently reviewed head `448aba416dc0194bfcc7c87ece097509e2b73cb6` and tree `441c0788d9da6132982d86fedee32cb834c306b6`. The owner-scoped typed API records requested, applied and native readback state for the original Job or delegated cgroup. Hard grants are charged before workload release. The native tests verify ordered changes, typed aggregate refusals, existing cap retention after an unsafe decrease, and owned-boundary drain.
+
+Windows deku passed 15/15 and H-22 passed 20/20 at the same exact head. Each installed package passed 11/11 with zero skips. Node host summaries are `20261120-012245-448aba416dc0-win/summary.json` (SHA-256 `9d6a5e7123fd1ae1126c210e5c192ab8fff6b7112d25dc37c027c16c5f633b8c`) and `20261120-004941-448aba416dc0-linux/summary.json` (SHA-256 `2986113e5476246bfdb3b7eca0c2d2ddfdfb694503883e04212a277087f91441`). Earlier failures and the exact unchanged Windows retry are preserved in the [RES-02 acceptance evidence](docs/afv2-res-02-summary.md). AR-06 and F-RES-01 qualify this installed cohort.
+
+This checkpoint has 17 tasks complete and 23 planned. RES-03 follows for multi-Sandbox priority and bounded pressure response. The separate approval for official public activation remains assigned to PROD-01.
+
+[Node PR106](https://github.com/ArcForges/ArcForges/pull/106) · [RES-02 activation](https://github.com/ArcForges/Plan/pull/186) · [Terminal fixture scope](https://github.com/ArcForges/Plan/pull/187)
+
+## RES-02 activation record
 
 The owner resumed the remaining ArcForges V2 migration on 2026-11-20. The graph has 16 completed tasks, one active and 23 planned. RES-02 is the sole active product task. Official activation retains the specific approval in PROD-01.
 
