@@ -2377,7 +2377,7 @@
       "title": "Coordinate multi-Sandbox priority and bounded pressure response",
       "milestone": "P3",
       "order": 16,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2389,7 +2389,14 @@
             "tests/**/Pressure*",
             "src/ArcForges.Node.Store/**",
             "src/ArcForges.Node.Core/NodeRuntime.cs",
-            "tests/ArcForges.Node.Core.Tests/**"
+            "tests/ArcForges.Node.Core.Tests/**",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.Runs.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.RunPolicy.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.RunOwner.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.RunViews.cs",
+            "src/ArcForges.Node.Platform/ResourceSampling.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunCgroup.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunLauncher.cs"
           ]
         }
       ],
@@ -2452,7 +2459,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Runs/Admission*; ArcForges:tests/**/Pressure*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Runs/Admission*; ArcForges:tests/**/Pressure*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Begin the authorized bounded allocation and pressure task after RES-02 native delivery and acceptance.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
