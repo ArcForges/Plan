@@ -1814,7 +1814,7 @@
       "title": "Implement real terminal broker and bounded output streams",
       "milestone": "P2",
       "order": 12,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1918,11 +1918,15 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/Terminal/**; ArcForges:src/ArcForges.Node.Platform.Windows/Terminal/**; ArcForges:src/ArcForges.Node.Platform.Linux/Terminal/**; ArcForges:src/ArcForges.Node.Core/Runs/Output*; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/Terminal*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] CORE-02 is verified and registered. Start the native terminal broker and bounded output work against the qualified Run owners.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/Terminal/**; ArcForges:src/ArcForges.Node.Platform.Windows/Terminal/**; ArcForges:src/ArcForges.Node.Platform.Linux/Terminal/**; ArcForges:src/ArcForges.Node.Core/Runs/Output*; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/Terminal*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] CORE-02 is verified and registered. Start the native terminal broker and bounded output work against the qualified Run owners. [delivered] Node PR103 merged as f09c910342528629823ee4615a734dbabe321e93 with exact reviewed head 1d7fc8c6df75018414cb19aa5268bf9c6cbea18b and tree c4945d7962c9684b8860bd665cf60f562a7c0fa5. Windows deku passed 15/15 and H-22 passed 20/20 using stock native run-and-report. [complete] The supervisor owns the real terminal, bounds output retention and keeps writer acknowledgement state in memory only. Independent review of the exact head covered revocation, native write fencing, scoped Stop and protected output authority. The delivery produced development packages and native verification.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/103"
+        ],
+        "merges": [
+          "ArcForges@f09c910342528629823ee4615a734dbabe321e93"
+        ],
         "publications": [],
         "ledger": null
       },
