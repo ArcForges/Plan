@@ -1683,6 +1683,7 @@
             "src/ArcForges.Node.Platform.Linux/ArcForges.Node.Platform.Linux.csproj",
             "src/ArcForges.Node.Api/RunServiceHandler.cs",
             "tests/**/Mxc*",
+            "tests/ArcForges.Repository.Tests/CenterSeamPolicyTests.cs",
             "ArcForges.slnx",
             "eng/package.ps1",
             "eng/publish.ps1",
