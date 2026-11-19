@@ -1958,7 +1958,7 @@
       "title": "Implement local ownership and bounded remote grant policy",
       "milestone": "P2",
       "order": 13,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2067,11 +2067,15 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tests/**/Security*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] CORE-03 is verified and registered. Begin local OS ownership and bounded remote grants.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tests/**/Security*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] CORE-03 is verified and registered. Begin local OS ownership and bounded remote grants. [delivered] Node PR104 merged as 5ef61ec9cf149a210fa21236cff606cf09303b6f with independently reviewed head b276d222fd06e495ec223d54ef3240bf6c8186a0 and exact tree 7f62221f7f17d9c440b885d12880bf22bb13a4bc. Stock native verification passed 15/15 on Windows deku and 20/20 on H-22. Both fresh installed packages passed all ten cases with zero skips. [complete] Offline V2 actions use the verified operating-system owner with no V1 origin or login dependency. The exact typed verified V2 enrollment boundary was exercised using real LocalRpc, SQLite, native qualified policy and private roots. The retained V1 installation identifier is distinct from the V2 enrollment and its protocol epoch. Standalone installed Nodes refuse grant creation without that verified V2 binding. Actual live V2 Center enrollment and signed transport attachment are scheduled in CENTER-02/03. Local grants never confer implicit authority from an old enrollment. The verified scope includes exact typed set/list/revoke, bounded provisioning and current parent/child revocation. The delivery produced development artifacts and verification.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/104"
+        ],
+        "merges": [
+          "ArcForges@5ef61ec9cf149a210fa21236cff606cf09303b6f"
+        ],
         "publications": [],
         "ledger": null
       },

@@ -1,5 +1,15 @@
 # Codex handoff — ArcForges V2
 
+## SEC-01 complete · RES-01 ready
+
+Node PR104 merged at `5ef61ec9cf149a210fa21236cff606cf09303b6f` with the reviewed `b276d222fd06e495ec223d54ef3240bf6c8186a0` tree. The existing typed V2 Sandbox Core now binds local calls to the verified OS owner and implements bounded grant creation, listing, revocation and child provisioning. The original parent revision and child identity survive uncertain creation receipts. Run input uses the authenticated private supervisor link. On Windows the official executor still uses its protected configuration file and the stock installed test verifies that the contained workload cannot read it.
+
+The exact Node candidate passed Windows 15/15 and H-22 Linux 20/20. Each stock installed package passed 10/10, with no skipped cases. Node host summaries are `20261119-174632-b276d222fd06-win/summary.json` (SHA-256 `2567320bba0576b0d120b843c479b1eef23b4670ba3fd5d08de30ab890b92128`) and `20261119-175024-b276d222fd06-linux/summary.json` (SHA-256 `ee4ed20be67cfcbe1b0b44b54dcf92127c3d30630879066e2f63fe3068d4d45e`). Private supplemental Windows and H-22 identity receipts have SHA-256 `6043a6cb52c6910eec2e86d436a305e272a6fc797c112689039b83e228743396` and `19a93d1c0e3a2b831bc5d40e5b008d75405f12eaf05d927175e7904a66e01492`. The Windows proof uses an actual anonymous effective SID. A second authenticated named Windows account remains unmeasured. H-22 verified a genuine distinct native UID. The Plan ledger retains both earlier H-22 failures, the fixture correction and earlier exact Windows evidence.
+
+The graph has 15 complete and 25 planned tasks. RES-01 is next for resource observation and host headroom. Live V2 Center enrollment and transport remain assigned to CENTER-02/03. Standalone Nodes require verified V2 enrollment before accepting a new grant. Windows selected external TCP/UDP egress remains `unverified`.
+
+[Node PR104](https://github.com/ArcForges/ArcForges/pull/104) · [SEC-01 scope PR180](https://github.com/ArcForges/Plan/pull/180) · [Native guard scope PR181](https://github.com/ArcForges/Plan/pull/181) · [Loopback fixture scope PR182](https://github.com/ArcForges/Plan/pull/182)
+
 ## SEC-01 active
 
 The graph has 14 completed tasks, SEC-01 active and 25 other planned tasks. The next delivery works through the existing OS-authenticated local V2 Sandbox Core, the bounded grant registry and the typed authorization boundary for Center. Native receipts will distinguish the OS connection, payload isolation and transport-ready authorization tests.
