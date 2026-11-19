@@ -1996,6 +1996,7 @@
             "src/ArcForges.Node.Api/ClientImages.cs",
             "tests/ArcForges.Client.Tests/PipeOwnershipTests.cs",
             "tests/ArcForges.Repository.Tests/CenterSeamPolicyTests.cs",
+            "tests/ArcForges.Node.CloudLink.Tests/LoopbackReceiverTests.cs",
             "eng/verify_steps.py"
           ]
         }
