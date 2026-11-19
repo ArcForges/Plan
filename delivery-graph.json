@@ -2513,6 +2513,7 @@
             "src/ArcForges.RunSupervisor/**",
             "src/ArcForges.Node.Store/**",
             "tests/**/Recovery*",
+            "tests/ArcForges.Node.Store.Tests/ResourcePolicyDurableCapacityTests.cs",
             "eng/systemd/**",
             "src/ArcForges.Node.Api/NodeHost.cs",
             "src/ArcForges.Node.Api/NodeApiServer.cs",
