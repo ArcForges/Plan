@@ -1,5 +1,9 @@
 # Codex handoff — ArcForges V2
 
+## RES-01 active
+
+The graph has 15 completed tasks, RES-01 active and 24 other planned tasks. RES-01 reuses the established budget and pressure math and reads exact V2 Job and cgroup resource observations. The typed local budget and usage surfaces will distinguish current, stale and unavailable observations. Existing V1 callers retain their resource semantics.
+
 ## SEC-01 complete · RES-01 ready
 
 Node PR104 merged at `5ef61ec9cf149a210fa21236cff606cf09303b6f` with the reviewed `b276d222fd06e495ec223d54ef3240bf6c8186a0` tree. The existing typed V2 Sandbox Core now binds local calls to the verified OS owner and implements bounded grant creation, listing, revocation and child provisioning. The original parent revision and child identity survive uncertain creation receipts. Run input uses the authenticated private supervisor link. On Windows the official executor still uses its protected configuration file and the stock installed test verifies that the contained workload cannot read it.
