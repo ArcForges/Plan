@@ -2503,7 +2503,7 @@
       "title": "Reconcile Node and Run ownership after failures",
       "milestone": "P3",
       "order": 17,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2633,11 +2633,15 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/**; ArcForges:tests/**/Recovery*; ArcForges:src/ArcForges.Node.Core/Sandboxes/**; ArcForges:src/ArcForges.Node.Core/SandboxData/**; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Begin after RES-03 accepted native delivery. Rebind only the original authenticated owner and native Run scope. Retain original command epoch, durable Stop and reconciliation capacity, and ownership and effect certainty across Node failure.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/**; ArcForges:tests/**/Recovery*; ArcForges:src/ArcForges.Node.Core/Sandboxes/**; ArcForges:src/ArcForges.Node.Core/SandboxData/**; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Begin after RES-03 accepted native delivery. Rebind only the original authenticated owner and native Run scope. Retain original command epoch, durable Stop and reconciliation capacity, and ownership and effect certainty across Node failure. [delivered] Exact Node PR108 merged after independent review and native full verification. [complete] AR-04 and F-REC-01 passed for the verified development cohort with actual original-scope and recovery evidence.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/108"
+        ],
+        "merges": [
+          "ArcForges@1b9bdb5288964ff763cd3f7da6260bdf39742466"
+        ],
         "publications": [],
         "ledger": null
       },
