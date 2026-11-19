@@ -2692,6 +2692,7 @@
             "tests/ArcForges.ClosedLoop.Tests/ArcForges.ClosedLoop.Tests.csproj",
             "tests/ArcForges.ClosedLoop.Tests/packages.lock.json",
             "tests/ArcForges.ClosedLoop.Tests/CliMxcRunServiceTests.cs",
+            "tests/ArcForges.ClosedLoop.Tests/CloudSignInHostTests.cs",
             "tests/ArcForges.ClosedLoop.Tests/TestNode.cs",
             "tests/ArcForges.ClosedLoop.Tests/TestNodeArgumentTests.cs",
             "tests/ArcForges.ClosedLoop.Tests/RealCenterRoutedTests.cs",
@@ -2705,7 +2706,8 @@
             "tests/ArcForges.Node.CloudLink.Tests/FileOperationCliTests.cs",
             "tests/ArcForges.Node.Core.Tests/packages.lock.json",
             "tests/ArcForges.Node.Platform.Linux.Tests/packages.lock.json",
-            "tests/ArcForges.Node.Platform.Windows.Tests/packages.lock.json"
+            "tests/ArcForges.Node.Platform.Windows.Tests/packages.lock.json",
+            "tests/ArcForges.Repository.Tests/OsSecretStoreGuardPolicyTests.cs"
           ]
         }
       ],
