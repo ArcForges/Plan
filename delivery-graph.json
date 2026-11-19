@@ -2247,6 +2247,7 @@
             "src/ArcForges.Node.Platform.Linux/UnitControl.cs",
             "src/ArcForges.Node.Api/ResourceServiceHandler.cs",
             "tests/**/Resource*",
+            "tests/ArcForges.ClosedLoop.Tests/TerminalMxcRunServiceTests.cs",
             "src/ArcForges.Node.Api/NodeApiServer.cs",
             "src/ArcForges.Node.Api/NodeHost.cs",
             "src/ArcForges.Node.Core/NodeRuntime.cs",
