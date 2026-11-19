@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## CLI-01 active
+
+CLI-01 is the sole active product task. Nineteen of 40 tasks are complete and 20 are planned. Deliver the offline Sandbox, Run, resource, grant, operation and status/doctor CLI through the typed local Node APIs. Preserve arguments at the explicit program boundary, the original mutation identity and owner epoch, truthful capability and exit views, and JSON output. Test the enrolled, signed-out and offline boundaries through real local Core and the qualified native profiles.
+
+Keep the FILE-01/02 and CENTER-02 command ownership in the delivery graph. Verify local replacement behavior before retiring the old public Task, Queue and Job routes.
+
 ## REC-01 complete · CLI-01 ready
 
 Nineteen of 40 tasks are complete and 21 are planned. Node PR108 merged at `1b9bdb5288964ff763cd3f7da6260bdf39742466` with the same tree `452bddb6405a47f46bd31e46dab05100df2a3dda` as the independently reviewed `648fb7c0c9b2cefec03939e257b0e37734059b78`. REC-01 restores only verified original Run ownership after Node loss, preserves the original Start and pending Stop, and retains unknown effects until justified by native evidence. It also adds guarded repair and delete-journal successor linkage, safety capacity for existing Stop and revoke, and coherent restore admission.
