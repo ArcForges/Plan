@@ -1,10 +1,15 @@
 # Codex handoff — ArcForges V2
 
-## RES-03 active
+## RES-03 complete · REC-01 ready
 
-RES-03 is the sole active product task at 17 of 40 complete. Use the delivered exact Node resource scope from RES-02. RES-03 adds immediate concurrent resident reservation, weighted CPU allocation across active Sandboxes and Runs, and bounded pressure action under explicit committed authority. Observe the original owned scopes and require confirmed drain and a newer coherent sample before another pressure stop.
+Node PR107 merged at `8584ef28c2666d8d809cbe842b006889b36b9e0a`. Its tree `2dc78a7d02ce2c6e93cd89a3a642b0f86a6b6c86` matches the independently reviewed head `96ce91e7d561c45068e5ec54dad779d587abc365`. RES-03 adds durable concurrent admission and resident reservations, weighted CPU readback on the original Windows Job and Linux cgroup, and a bounded pressure Stop with verified drain.
 
-Use the scoped existing Start admission, Run policy and lifecycle, and held resource observation paths. Validate both native operating systems with bounded test-owned workloads. Official public activation retains its separate PROD-01 approval.
+Windows deku passed 15/15 and Linux H-22 passed 20/20. Each verified development package passed 14/14 installed tests with zero skips. The host summaries are `20261120-030545-96ce91e7d561-win/summary.json` (SHA-256 `469ae9da324236471571da00b35cce064a4ed0c61f2370c0290a9d72220dd428`) and `20261120-030610-96ce91e7d561-linux/summary.json` (SHA-256 `65e90721177c3900eee1c6dd7881b4c52c7346e1b2fc43b19358889cd632f117`). The [RES-03 evidence](docs/afv2-res-03-summary.md) includes package digests, native observations, earlier failures and exact retests.
+
+This checkpoint has 18 of 40 tasks complete and 22 planned. REC-01 is next for native Run ownership reconciliation and recovery. Official public activation retains its separate PROD-01 approval.
+
+[Node PR107](https://github.com/ArcForges/ArcForges/pull/107) · [Plan activation](https://github.com/ArcForges/Plan/pull/189) · [Recovery and EOF fixture scope](https://github.com/ArcForges/Plan/pull/190) · [Restart fixture scope](https://github.com/ArcForges/Plan/pull/191)
+
 
 ## RES-02 complete · RES-03 ready
 

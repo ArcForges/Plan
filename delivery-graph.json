@@ -2377,7 +2377,7 @@
       "title": "Coordinate multi-Sandbox priority and bounded pressure response",
       "milestone": "P3",
       "order": 16,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2463,11 +2463,15 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Runs/Admission*; ArcForges:tests/**/Pressure*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Begin the authorized bounded allocation and pressure task after RES-02 native delivery and acceptance.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Runs/Admission*; ArcForges:tests/**/Pressure*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Begin the authorized bounded allocation and pressure task after RES-02 native delivery and acceptance. [delivered] Independent source approval and exact Windows 15/15 and H-22 20/20 at Node 96ce91e7d561c45068e5ec54dad779d587abc365, with 14/14 installed each and no skips. Merge tree matches. See docs/afv2-res-03-summary.md for the raw evidence and retained earlier results. [complete] Native closed loops verified bounded concurrency and distinct resident capacity, durable refusals and exact replay, weighted native CPU reductions and recovery, authorized persistent-pressure Stop with verified drain, and protection of nonpreemptible Runs.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/107"
+        ],
+        "merges": [
+          "ArcForges@8584ef28c2666d8d809cbe842b006889b36b9e0a"
+        ],
         "publications": [],
         "ledger": null
       },
