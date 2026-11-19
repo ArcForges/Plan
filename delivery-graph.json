@@ -1668,7 +1668,7 @@
       "title": "Implement per-Run supervisor and official MXC execution",
       "milestone": "P2",
       "order": 11,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1683,6 +1683,10 @@
             "eng/package.ps1",
             "eng/publish.ps1",
             "eng/verify_linux.py",
+            "eng/verify_steps.py",
+            ".github/workflows/ci.yml",
+            "eng/policy/dependency-admissions.json",
+            "eng/mxc/stage.py",
             "packaging/**",
             "src/ArcForges.Node.Api/NodeApiServer.cs",
             "src/ArcForges.Node.Api/NodeHost.cs",
@@ -1703,7 +1707,8 @@
       "scope": [
         "Launch one supervisor per Run with durable epoch and protected control endpoint; keep official SDK/executor inside admitted resource/confinement profile",
         "Apply initial resource boundary before payload execution and persist Start receipt/snapshot; implement bounded group Stop and DRAINING",
-        "Record payload_started and raw exit provenance independently; no terminal-output status parser or automatic Run retry"
+        "Record payload_started and raw exit provenance independently; no terminal-output status parser or automatic Run retry",
+        "Publish and package the separate x64 Run supervisor and the exact official MXC stage. Update explicit verification component selection, admit the pinned SDK for this product use, and reuse stage provenance checks while preserving the probe entrypoint and V1 package components."
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -1762,7 +1767,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Runs/**; ArcForges:src/ArcForges.RunSupervisor/**; ArcForges:src/ArcForges.Node.Platform.Windows/Mxc/**; ArcForges:src/ArcForges.Node.Platform.Linux/Mxc/**; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/Mxc*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Runs/**; ArcForges:src/ArcForges.RunSupervisor/**; ArcForges:src/ArcForges.Node.Platform.Windows/Mxc/**; ArcForges:src/ArcForges.Node.Platform.Linux/Mxc/**; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/Mxc*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] The persistent Sandbox Core is complete. Start the per-Run supervisor and official MXC execution task with explicit production staging and package verification.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
