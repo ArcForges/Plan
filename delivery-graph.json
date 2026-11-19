@@ -1674,6 +1674,7 @@
           "repo": "ArcForges",
           "paths": [
             "src/ArcForges.Node.Core/Runs/**",
+            "src/ArcForges.Node.Core/Sandboxes/SandboxPolicyAdmission.cs",
             "src/ArcForges.RunSupervisor/**",
             "src/ArcForges.Node.Platform.Windows/Mxc/**",
             "src/ArcForges.Node.Platform.Linux/Mxc/**",
