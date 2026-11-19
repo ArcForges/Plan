@@ -2396,7 +2396,9 @@
             "src/ArcForges.Node.Core/Runs/SandboxManager.RunViews.cs",
             "src/ArcForges.Node.Platform/ResourceSampling.cs",
             "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunCgroup.cs",
-            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunLauncher.cs"
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunLauncher.cs",
+            "tests/ArcForges.ClosedLoop.Tests/MxcRunServiceTests.cs",
+            "tests/ArcForges.ClosedLoop.Tests/TerminalMxcRunServiceTests.cs"
           ]
         }
       ],
