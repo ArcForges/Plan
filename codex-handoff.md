@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## RES-02 active
+
+The owner resumed the remaining ArcForges V2 migration on 2026-11-20. The graph has 16 completed tasks, one active and 23 planned. RES-02 is the sole active product task. Official activation retains the specific approval in PROD-01.
+
+RES-02 applies and observes the existing owned outer Job and delegated cgroup controls. Verify exact native readback, conservative grant bounds across Sandbox and Node, and reductions before increases. The original pinned official executor and checkout identities remain the basis of acceptance. AR-06 and F-RES-01 require the matching native evidence from both designated hosts.
+
 ## RES-01 complete · stop at 16 of 40
 
 The graph has 16 complete, 24 planned and zero active tasks. The owner set a stopping point of 16 completed tasks. RES-02 is the next eligible planned task.

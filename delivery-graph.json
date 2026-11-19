@@ -2235,7 +2235,7 @@
       "title": "Apply and verify per-Run and aggregate resource limits",
       "milestone": "P3",
       "order": 15,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2255,7 +2255,15 @@
             "src/ArcForges.Node.Platform.Windows/Native.cs",
             "src/ArcForges.Node.Platform.Linux/Libc.cs",
             "tests/ArcForges.Node.Platform.Windows.Tests/**",
-            "tests/ArcForges.Node.Platform.Linux.Tests/**"
+            "tests/ArcForges.Node.Platform.Linux.Tests/**",
+            "src/ArcForges.Node.Platform/ResourceSampling.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunCgroup.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunLauncher.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunSystemd.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.Runs.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.RunPolicy.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.RunOwner.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.RunViews.cs"
           ]
         }
       ],
@@ -2328,7 +2336,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Platform.Windows/Mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Platform.Windows/Mxc/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] The owner resumed the remaining V2 tasks. Complete scoped native limit application and readback after the verified RES-01 delivery.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
