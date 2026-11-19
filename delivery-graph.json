@@ -2685,7 +2685,27 @@
             "tests/ArcForges.Client.Tests/**",
             "README.md",
             "docs/cli/**",
-            "src/ArcForges.Host/Program.cs"
+            "src/ArcForges.Host/Program.cs",
+            "src/ArcForges.Host/packages.lock.json",
+            "ArcForges.slnx",
+            "tests/Shared/LegacyCliFixture/**",
+            "tests/ArcForges.ClosedLoop.Tests/ArcForges.ClosedLoop.Tests.csproj",
+            "tests/ArcForges.ClosedLoop.Tests/packages.lock.json",
+            "tests/ArcForges.ClosedLoop.Tests/CliMxcRunServiceTests.cs",
+            "tests/ArcForges.ClosedLoop.Tests/TestNode.cs",
+            "tests/ArcForges.ClosedLoop.Tests/TestNodeArgumentTests.cs",
+            "tests/ArcForges.ClosedLoop.Tests/RealCenterRoutedTests.cs",
+            "tests/ArcForges.ClosedLoop.Tests/Benchmarks.cs",
+            "tests/ArcForges.ClosedLoop.Tests/ResourceTests.cs",
+            "tests/ArcForges.Node.CloudLink.Tests/ArcForges.Node.CloudLink.Tests.csproj",
+            "tests/ArcForges.Node.CloudLink.Tests/packages.lock.json",
+            "tests/ArcForges.Node.CloudLink.Tests/CloudNode.cs",
+            "tests/ArcForges.Node.CloudLink.Tests/RoutedCliTests.cs",
+            "tests/ArcForges.Node.CloudLink.Tests/WorkspaceCliTests.cs",
+            "tests/ArcForges.Node.CloudLink.Tests/FileOperationCliTests.cs",
+            "tests/ArcForges.Node.Core.Tests/packages.lock.json",
+            "tests/ArcForges.Node.Platform.Linux.Tests/packages.lock.json",
+            "tests/ArcForges.Node.Platform.Windows.Tests/packages.lock.json"
           ]
         }
       ],
@@ -2701,7 +2721,8 @@
         "Implement Sandbox create/configure/list/inspect including Configure display-name updates, and Run start/list/inspect/stop through typed Core clients",
         "Implement resources show/watch/set, grants set/list/revoke, operations inspect, node status and doctor with exact CLI-to-method mapping and local ownership checks",
         "Reuse useful parsing/output/error/config code; stable --json, explicit argv boundaries, original owner_epoch/command identity and truthful capabilities, limits and exit provenance",
-        "Do not register unimplemented data/delete or center-control placeholders: FILE-01/02 own data/delete CLI integration, and CENTER-02 owns actual center connect/disconnect/status/cancel/signout"
+        "Do not register unimplemented data/delete or center-control placeholders: FILE-01/02 own data/delete CLI integration, and CENTER-02 owns actual center connect/disconnect/status/cancel/signout",
+        "Exercise the installed V2 CLI through the existing native package selector. Keep carried native V1 execution and routed regressions against the current Node using retained typed RPC or a strictly test-only client for old subprocess contracts. The shipped binary has no legacy parser selector."
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -2724,7 +2745,8 @@
         "Implement Sandbox create/configure/list/inspect including Configure display-name updates, and Run start/list/inspect/stop through typed Core clients",
         "Implement resources show/watch/set, grants set/list/revoke, operations inspect, node status and doctor with exact CLI-to-method mapping and local ownership checks",
         "Reuse useful parsing/output/error/config code; stable --json, explicit argv boundaries, original owner_epoch/command identity and truthful capabilities, limits and exit provenance",
-        "Do not register unimplemented data/delete or center-control placeholders: FILE-01/02 own data/delete CLI integration, and CENTER-02 owns actual center connect/disconnect/status/cancel/signout"
+        "Do not register unimplemented data/delete or center-control placeholders: FILE-01/02 own data/delete CLI integration, and CENTER-02 owns actual center connect/disconnect/status/cancel/signout",
+        "Exercise the installed V2 CLI through the existing native package selector. Keep carried native V1 execution and routed regressions against the current Node using retained typed RPC or a strictly test-only client for old subprocess contracts. The shipped binary has no legacy parser selector."
       ],
       "acceptance": [
         "An unenrolled offline user completes local create/start/stop/inspect and resource configuration",
