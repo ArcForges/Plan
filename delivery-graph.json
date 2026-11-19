@@ -2675,7 +2675,7 @@
       "title": "Deliver offline core and administration CLI commands",
       "milestone": "P4",
       "order": 18,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2761,7 +2761,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/cli/**. Scope text must say core/admin CLI, not completion of data/delete/Center commands. FILE01/02 own their own client and command integration; CENTER02 owns actual connection flow commands and depends on CLI01.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/cli/**. Scope text must say core/admin CLI, not completion of data/delete/Center commands. FILE01/02 own their own client and command integration; CENTER02 owns actual connection flow commands and depends on CLI01. [active] Begin after REC-01 qualified and registered. Deliver only the typed offline Core and administration CLI slice.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
