@@ -1,5 +1,15 @@
 # Codex handoff — ArcForges V2
 
+## CORE-03 complete · SEC-01 ready
+
+Node PR103 merged at `f09c910342528629823ee4615a734dbabe321e93` with the reviewed `1d7fc8c6df75018414cb19aa5268bf9c6cbea18b` tree. The existing typed RunService now exposes native ConPTY and Bubblewrap PTY operations and explicit pipes. The supervisor owns volatile input leases and acknowledgement windows. Output is stored independently with bounded byte retention and verified GAPs.
+
+The exact Node candidate passed Windows 15/15 and H-22 Linux 20/20. Each freshly extracted native package passed 9/9 cases, including resize and foreground Ctrl+C, binary EOF, a slow viewer, memory-only acknowledgements and native owner loss. The raw Node summaries are `20261119-154817-1d7fc8c6df75-win/summary.json` (SHA-256 `f06998da7eff29c3334a8b1d79e4d327d851dc1a61a0ebdaa157395c1cb5b91a`) and `20261119-155107-1d7fc8c6df75-linux/summary.json` (SHA-256 `75de892f1765af5585ca0b39100cb9ad6c5010ca381bbb5c5366b434694dec98`). The ledger contains the first H-22 author failures and targeted retests. The delivery produced development packages and native verification.
+
+The graph has 14 completed and 26 planned tasks. SEC-01, row 13, is next for local ownership and bounded remote grant policy. Existing Windows selected external TCP/UDP egress is recorded as `unverified`.
+
+[Node PR103](https://github.com/ArcForges/ArcForges/pull/103) · [CORE-03 scope PR178](https://github.com/ArcForges/Plan/pull/178)
+
 ## CORE-02 complete · CORE-03 active
 
 Node PR102 merged at `2b5189e0c553a031067126681a2304fe2467cd04` with the same tree as the independently reviewed `c1d0dc6ba0a0ca4e3bf57b6acf0b4ee3d8a71ebe`. Each durable Run now has an independent Native AOT supervisor bound to the pinned official MXC backend and the verified native process boundary. The installed typed API exercised foreground children, Node and client loss, verified group Stop, and settled Start replay after response compaction and a cold Node restart.
