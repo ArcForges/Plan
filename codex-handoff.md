@@ -1,8 +1,14 @@
 # Codex handoff — ArcForges V2
 
-## RES-01 active
+## RES-01 complete · stop at 16 of 40
 
-The graph has 15 completed tasks, RES-01 active and 24 other planned tasks. RES-01 reuses the established budget and pressure math and reads exact V2 Job and cgroup resource observations. The typed local budget and usage surfaces will distinguish current, stale and unavailable observations. Existing V1 callers retain their resource semantics.
+The graph has 16 complete, 24 planned and zero active tasks. The owner set a stopping point of 16 completed tasks. RES-02 is the next eligible planned task.
+
+Node PR105 merged as 3bbcf55238258d642dac29b19bff65264abac54d with independently reviewed head a530c349cef87464f4034754fe6cf88d6e5f9829 and exact tree cf910bb7b0dfc355c113cd6fe9befe9f88948e4a. Stock native verification passed 15/15 on Windows deku and 20/20 on H-22, with 11/11 installed cases and zero skips on each host. The exact host summaries are `20261119-190147-a530c349cef8-win/summary.json` (SHA-256 `a5dbddea195ad94b05fba526ec0cd96fe815b71b7f5fb97ea1eea8416a0812b9`) and `20261119-191234-a530c349cef8-linux/summary.json` (SHA-256 `7b74212a7a8c00b9e73b76e9295f5b428cec113731cbc8d821b7a5ab8b2fe716`). The ledger retains both independently reviewed test fixture corrections, original failures, package identities and native observation timings.
+
+The local V2 resource API reports host headroom and owner-scoped Run and Sandbox usage. The official Windows Job observation preserves peak commit and separately measured resident usage. Current Job commit remains unavailable. The official Linux cgroup reports actual charge, a separate resident estimate and available PSI. Desired/applied readback and transactional admission are scheduled in RES-02.
+
+[Node PR105](https://github.com/ArcForges/ArcForges/pull/105) · [RES-01 scope PR184](https://github.com/ArcForges/Plan/pull/184)
 
 ## SEC-01 complete · RES-01 ready
 

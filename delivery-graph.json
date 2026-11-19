@@ -2107,7 +2107,7 @@
       "title": "Extract resource observation and host-headroom budgeting",
       "milestone": "P3",
       "order": 14,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2195,11 +2195,15 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] SEC-01 is verified and registered. Extract native host and Run observations and preserve resource budgeting semantics.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] SEC-01 is verified and registered. Extract native host and Run observations and preserve resource budgeting semantics. [delivered] Node PR105 merged as 3bbcf55238258d642dac29b19bff65264abac54d with independently reviewed head a530c349cef87464f4034754fe6cf88d6e5f9829 and exact tree cf910bb7b0dfc355c113cd6fe9befe9f88948e4a. Stock native verification passed 15/15 on Windows deku and 20/20 on H-22, with 11/11 installed cases and zero skips on each host. [complete] Reuse established pressure thresholds and asymmetric smoothing with conservative reserve normalization and independent host, unmanaged, Node and managed resident attribution. The historical V1 resource math cases passed their original expectations. Missing or stale data stays explicit. Windows current Run Job commit is unavailable while native peak commit and resident measurement stay distinct. Preserve the max(expected, observed resident peak) calculation. The V2 reservation field remains absent until transactional admission supplies an authoritative expected value. RES-02 owns applying and reading back limits and admission. RES-03 qualifies real multi-Run control and pressure recovery. Verification produced development artifacts.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/105"
+        ],
+        "merges": [
+          "ArcForges@3bbcf55238258d642dac29b19bff65264abac54d"
+        ],
         "publications": [],
         "ledger": null
       },
