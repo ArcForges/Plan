@@ -1993,7 +1993,9 @@
             "tests/ArcForges.Node.Core.Tests/**",
             "src/ArcForges.Node.Store/**",
             "src/ArcForges.Node.Api/ClientImages.cs",
-            "tests/ArcForges.Client.Tests/PipeOwnershipTests.cs"
+            "tests/ArcForges.Client.Tests/PipeOwnershipTests.cs",
+            "tests/ArcForges.Repository.Tests/CenterSeamPolicyTests.cs",
+            "eng/verify_steps.py"
           ]
         }
       ],
