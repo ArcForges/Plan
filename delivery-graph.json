@@ -1979,6 +1979,7 @@
             "src/ArcForges.RunSupervisor/Protocol/RunControlClient.cs",
             "src/ArcForges.RunSupervisor/Windows/WindowsRunPolicy.cs",
             "src/ArcForges.RunSupervisor/Windows/WindowsRunEvidence.cs",
+            "src/ArcForges.Node.Platform.Windows/ArcForges.Node.Platform.Windows.csproj",
             "src/ArcForges.RunSupervisor/Windows/WindowsRunWorker.cs",
             "src/ArcForges.RunSupervisor/Windows/WindowsRunSession.cs",
             "src/ArcForges.RunSupervisor/Windows/WindowsMxcPreflight.cs",
@@ -1993,7 +1994,9 @@
             "tests/ArcForges.Node.Core.Tests/**",
             "src/ArcForges.Node.Store/**",
             "src/ArcForges.Node.Api/ClientImages.cs",
-            "tests/ArcForges.Client.Tests/PipeOwnershipTests.cs"
+            "tests/ArcForges.Client.Tests/PipeOwnershipTests.cs",
+            "tests/ArcForges.Repository.Tests/CenterSeamPolicyTests.cs",
+            "eng/verify_steps.py"
           ]
         }
       ],
