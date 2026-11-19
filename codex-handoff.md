@@ -6,6 +6,8 @@ CLI-01 is the sole active product task. Nineteen of 40 tasks are complete and 20
 
 Keep the FILE-01/02 and CENTER-02 command ownership in the delivery graph. Verify local replacement behavior before retiring the old public Task, Queue and Job routes.
 
+Verify the actual installed V2 CLI in the existing package test class. The separately scoped, unshipped client fixture preserves carried V1 subprocess, terminal and routed tests against the current Node during the migration. Only a verified replacement can retire the old public parser. Keep the required profiles and package contents unchanged.
+
 ## REC-01 complete · CLI-01 ready
 
 Nineteen of 40 tasks are complete and 21 are planned. Node PR108 merged at `1b9bdb5288964ff763cd3f7da6260bdf39742466` with the same tree `452bddb6405a47f46bd31e46dab05100df2a3dda` as the independently reviewed `648fb7c0c9b2cefec03939e257b0e37734059b78`. REC-01 restores only verified original Run ownership after Node loss, preserves the original Start and pending Stop, and retains unknown effects until justified by native evidence. It also adds guarded repair and delete-journal successor linkage, safety capacity for existing Stop and revoke, and coherent restore admission.
