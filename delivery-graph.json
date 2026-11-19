@@ -2107,12 +2107,19 @@
       "title": "Extract resource observation and host-headroom budgeting",
       "milestone": "P3",
       "order": 14,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
           "paths": [
             "src/ArcForges.Node.Core/Resources/**",
+            "src/ArcForges.Node.Api/NodeHost.cs",
+            "src/ArcForges.Node.Core/Execution/ExecutionSupport.cs",
+            "src/ArcForges.Node.Platform.Windows/Mxc/WindowsRunLauncher.cs",
+            "src/ArcForges.Node.Platform.Windows/Mxc/WindowsMxcJob.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunLauncher.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunCgroup.cs",
+            "eng/verify_steps.py",
             "src/ArcForges.Node.Platform.Windows/WindowsResourceSampler.cs",
             "src/ArcForges.Node.Platform.Linux/LinuxResourceSampler.cs",
             "src/ArcForges.Node.Platform.Linux/ProcFs.cs",
@@ -2188,7 +2195,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] SEC-01 is verified and registered. Extract native host and Run observations and preserve resource budgeting semantics.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
