@@ -1,5 +1,15 @@
 # Codex handoff — ArcForges V2
 
+## CORE-01 complete · CORE-02 ready
+
+Node PR98 merged at `65cf6e9ad76c6bdc536049a63538755892e5d247` with the tree reviewed at `9ad8c90c22e596ee6e2ea4553a77bc812f361d99`. The Sandbox Core creates and reopens persistent private roots, binds local owner identity, serializes ownership transitions, and persists policy revisions and durable operation receipts. Qualified official MXC profiles retain exact accepted policy and refuse missing or incompatible prerequisites before launch.
+
+The exact Node candidate passed Windows 15/15 and H-22 Linux 20/20. The private host-local summaries are `20261119-130956-9ad8c90c22e5-win/summary.json` with SHA-256 `4dc833ab9c95dc5009ad0fe49b4c6fc4937c6f3a093d7cbab9aed5f605646afc` and `20261119-123148-9ad8c90c22e5-linux/summary.json` with SHA-256 `339e273a51768748780a631ece7cd6b3f9d36486b274f16a9634aa70ee331142`. The protected-stage Windows author run and the H-22 focused run at `b5998b4` each passed 22 Sandbox and native ownership cases, with two platform-specific skips. The final candidate retains the Sandbox source validated by these cases. The H-22 Native AOT attribution regression and the existing 40 ms and 300 ms cases passed 3/3 at the final head. The ledger preserves the original failures and scope of the retests.
+
+Windows selected external TCP/UDP egress remains `unverified`. The graph has 12 completed and 28 planned tasks. CORE-02, row 11, is next.
+
+[Node PR98](https://github.com/ArcForges/ArcForges/pull/98) · [Plan scope PR171](https://github.com/ArcForges/Plan/pull/171)
+
 ## MXC-04 delivered · CORE-01 ready
 
 Node PR97 merged at 64f6e8a27c147f975599a2049f33e02d2a092c2d with the same tree as independently reviewed fd50c5f3ae48f18f748485531c30c4203b3299cd. Unchanged formal verification passed Windows 15/15 (20261118-182454-fd50c5f3ae48-win, SHA-256 1643a55ba7be6b2a0508696ace8ae462e7e968a926d2f02e77d5a5134d975f4b) and H-22 Linux 20/20 (20261118-192641-fd50c5f3ae48-linux, SHA-256 e4e6078d151c0bba8e37f4e6e8b7027fdc03733e240b451ed8b5a4e68ffec5dd). Design PR80 and traceability PR81 merged through 6aa869670f8e1acbe8578d5ed231f3e4c17d1c3e after independent reviews and both host checks. Windows admission passed 13/13 and H-22 Linux 12/12. The original failed Windows run and both failed Linux attempts remain available. No public publication or deployment applied.
