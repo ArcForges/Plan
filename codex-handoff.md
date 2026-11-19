@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## REC-01 active
+
+REC-01 is the sole active product task. Eighteen of 40 tasks are complete. Recover the original authenticated Run owner under the pinned official profile, retain the original live scope and command epoch, and keep ambiguous effects or cleanup held. Use the existing host-local native acceptance. Preserve protected control material, old terminal uncertainty and recovery receipts. Reserve real Stop and revocation under journal capacity, and keep incomplete backup authority in maintenance.
+
+Scope local repair and explicit deletion successor linkage to the original held root, phase and journal. Destructive filesystem execution remains with FILE-02. Public activation retains its separate PROD-01 approval.
+
 ## RES-03 complete · REC-01 ready
 
 Node PR107 merged at `8584ef28c2666d8d809cbe842b006889b36b9e0a`. Its tree `2dc78a7d02ce2c6e93cd89a3a642b0f86a6b6c86` matches the independently reviewed head `96ce91e7d561c45068e5ec54dad779d587abc365`. RES-03 adds durable concurrent admission and resident reservations, weighted CPU readback on the original Windows Job and Linux cgroup, and a bounded pressure Stop with verified drain.

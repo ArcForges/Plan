@@ -2503,7 +2503,7 @@
       "title": "Reconcile Node and Run ownership after failures",
       "milestone": "P3",
       "order": 17,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2523,7 +2523,27 @@
             "packaging/linux/**",
             "tests/ArcForges.Node.Core.Tests/**",
             "tests/ArcForges.Node.Platform.Windows.Tests/**",
-            "tests/ArcForges.Node.Platform.Linux.Tests/**"
+            "tests/ArcForges.Node.Platform.Linux.Tests/**",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.Runs.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.RunOwner.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.RunViews.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.RunPolicy.cs",
+            "src/ArcForges.Node.Core/Runs/OutputTerminal.cs",
+            "src/ArcForges.Node.Core/Runs/OutputWatch.cs",
+            "src/ArcForges.Node.Core/Resources/SandboxManager.ResourceGrants.cs",
+            "src/ArcForges.Node.Core/Resources/SandboxManager.ResourcePolicy.cs",
+            "src/ArcForges.Node.Core/Resources/SandboxManager.ResourcePressure.cs",
+            "src/ArcForges.Node.Core/Resources/SandboxManager.ResourceRebalance.cs",
+            "src/ArcForges.Node.Core/Resources/SandboxManager.ResourceReadback.cs",
+            "src/ArcForges.Node.Core/Resources/SandboxManager.Resources.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunLauncher.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunSystemd.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunCgroup.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunMxcAssets.cs",
+            "src/ArcForges.Node.Platform.Windows/Mxc/WindowsRunLauncher.cs",
+            "src/ArcForges.Node.Platform.Windows/Mxc/WindowsMxcJob.cs",
+            "src/ArcForges.Node.Platform.Windows/Mxc/WindowsMxcProcess.cs",
+            "src/ArcForges.Node.Platform.Windows/Native.cs"
           ]
         }
       ],
@@ -2610,7 +2630,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/**; ArcForges:tests/**/Recovery*; ArcForges:src/ArcForges.Node.Core/Sandboxes/**; ArcForges:src/ArcForges.Node.Core/SandboxData/**; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/**; ArcForges:tests/**/Recovery*; ArcForges:src/ArcForges.Node.Core/Sandboxes/**; ArcForges:src/ArcForges.Node.Core/SandboxData/**; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Begin after RES-03 accepted native delivery. Rebind only the original authenticated owner and native Run scope. Retain original command epoch, durable Stop and reconciliation capacity, and ownership and effect certainty across Node failure.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
