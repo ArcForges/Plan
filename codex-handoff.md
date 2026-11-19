@@ -1,5 +1,15 @@
 # Codex handoff — ArcForges V2
 
+## CORE-02 complete · CORE-03 active
+
+Node PR102 merged at `2b5189e0c553a031067126681a2304fe2467cd04` with the same tree as the independently reviewed `c1d0dc6ba0a0ca4e3bf57b6acf0b4ee3d8a71ebe`. Each durable Run now has an independent Native AOT supervisor bound to the pinned official MXC backend and the verified native process boundary. The installed typed API exercised foreground children, Node and client loss, verified group Stop, and settled Start replay after response compaction and a cold Node restart.
+
+The exact Node candidate passed Windows 15/15 and H-22 Linux 21/21. Both native package stages passed their two installed Run cases. The host-local summaries under Node `.git/arcforges-verify/logs/` are `20261119-144229-c1d0dc6ba0a0-win/summary.json` (SHA-256 `4467a1e70b80e37c1739aa8d93887d5082da627661639cdf73091083fcd459fd`) and `20261119-143300-c1d0dc6ba0a0-linux/summary.json` (SHA-256 `95637e5ddcf20400229c09a0aa8b68e57b1e7197f0db68d551aefed2606b5b2c`). The Plan ledger preserves the original failures and the boundaries of each repeat. The task produced development packages and native verification. Windows selected external TCP/UDP egress is recorded as `unverified`, and live Run rebind is tracked in REC-01.
+
+The graph has 13 completed tasks, CORE-03 active and 26 planned. CORE-03 uses the existing official ConPTY and Bubblewrap execution paths for the terminal broker, memory-only writer acknowledgments and bounded output.
+
+[Node PR102](https://github.com/ArcForges/ArcForges/pull/102) · [Plan closure PR177](https://github.com/ArcForges/Plan/pull/177)
+
 ## CORE-01 complete · CORE-02 ready
 
 Node PR98 merged at `65cf6e9ad76c6bdc536049a63538755892e5d247` with the tree reviewed at `9ad8c90c22e596ee6e2ea4553a77bc812f361d99`. The Sandbox Core creates and reopens persistent private roots, binds local owner identity, serializes ownership transitions, and persists policy revisions and durable operation receipts. Qualified official MXC profiles retain exact accepted policy and refuse missing or incompatible prerequisites before launch.
