@@ -2398,7 +2398,9 @@
             "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunCgroup.cs",
             "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunLauncher.cs",
             "tests/ArcForges.ClosedLoop.Tests/MxcRunServiceTests.cs",
-            "tests/ArcForges.ClosedLoop.Tests/TerminalMxcRunServiceTests.cs"
+            "tests/ArcForges.ClosedLoop.Tests/TerminalMxcRunServiceTests.cs",
+            "tests/ArcForges.ClosedLoop.Tests/LinuxWorkerInterruptionHostTests.cs",
+            "tests/ArcForges.ClosedLoop.Tests/PlanRemovalInputAuditHostTests.cs"
           ]
         }
       ],
