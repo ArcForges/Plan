@@ -1958,7 +1958,7 @@
       "title": "Implement local ownership and bounded remote grant policy",
       "milestone": "P2",
       "order": 13,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -1966,6 +1966,16 @@
             "src/ArcForges.Node.Core/Security/**",
             "src/ArcForges.Node.Api/ClientSessions.cs",
             "src/ArcForges.Node.Api/NodeServiceHandler.cs",
+            "src/ArcForges.Node.Api/SandboxServiceHandler.cs",
+            "src/ArcForges.Node.Core/Sandboxes/SandboxManager.cs",
+            "src/ArcForges.Node.Core/Sandboxes/SandboxManager.Views.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.RunPolicy.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.Runs.cs",
+            "src/ArcForges.RunSupervisor/Protocol/RunProtocol.cs",
+            "src/ArcForges.RunSupervisor/Protocol/RunWire.cs",
+            "src/ArcForges.RunSupervisor/RunWorkerController.cs",
+            "tools/ArcForges.TestLoad/Program.cs",
+            "tools/ArcForges.TestLoad/SecurityScenario.cs",
             "src/ArcForges.Node.Core/LocalSubmission.cs",
             "src/ArcForges.Node.Core/Security/CenterRouting.cs",
             "tests/**/Security*",
@@ -2045,7 +2055,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tests/**/Security*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:tests/**/Security*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] CORE-03 is verified and registered. Begin local OS ownership and bounded remote grants.",
       "blocked_by": [],
       "evidence": {
         "prs": [],

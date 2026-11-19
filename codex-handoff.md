@@ -1,5 +1,9 @@
 # Codex handoff — ArcForges V2
 
+## SEC-01 active
+
+The graph has 14 completed tasks, SEC-01 active and 25 other planned tasks. The next delivery works through the existing OS-authenticated local V2 Sandbox Core, the bounded grant registry and the typed authorization boundary for Center. Native receipts will distinguish the OS connection, payload isolation and transport-ready authorization tests.
+
 ## CORE-03 complete · SEC-01 ready
 
 Node PR103 merged at `f09c910342528629823ee4615a734dbabe321e93` with the reviewed `1d7fc8c6df75018414cb19aa5268bf9c6cbea18b` tree. The existing typed RunService now exposes native ConPTY and Bubblewrap PTY operations and explicit pipes. The supervisor owns volatile input leases and acknowledgement windows. Output is stored independently with bounded byte retention and verified GAPs.
