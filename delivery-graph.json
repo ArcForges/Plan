@@ -1814,12 +1814,28 @@
       "title": "Implement real terminal broker and bounded output streams",
       "milestone": "P2",
       "order": 12,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
           "paths": [
             "src/ArcForges.RunSupervisor/Terminal/**",
+            "src/ArcForges.RunSupervisor/RunWorkerController.cs",
+            "src/ArcForges.RunSupervisor/Protocol/RunProtocol.cs",
+            "src/ArcForges.RunSupervisor/Protocol/RunWire.cs",
+            "src/ArcForges.RunSupervisor/Protocol/RunControlClient.cs",
+            "src/ArcForges.RunSupervisor/Protocol/RunOutputSpool.cs",
+            "src/ArcForges.RunSupervisor/Windows/WindowsRunIo.cs",
+            "src/ArcForges.RunSupervisor/Windows/WindowsRunSession.cs",
+            "src/ArcForges.RunSupervisor/Windows/WindowsRunWorker.cs",
+            "src/ArcForges.RunSupervisor/Linux/LinuxSdkWorkerSession.cs",
+            "src/ArcForges.Node.Platform.Windows/Mxc/WindowsRunLauncher.cs",
+            "src/ArcForges.Node.Platform.Linux/Mxc/LinuxRunLauncher.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.RunOwner.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.Runs.cs",
+            "tools/ArcForges.TestLoad/Program.cs",
+            "tools/ArcForges.TestLoad/TerminalScenario.cs",
+            "eng/verify_steps.py",
             "src/ArcForges.Node.Platform.Windows/Terminal/**",
             "src/ArcForges.Node.Platform.Linux/Terminal/**",
             "src/ArcForges.Node.Core/Runs/Output*",
@@ -1902,7 +1918,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/Terminal/**; ArcForges:src/ArcForges.Node.Platform.Windows/Terminal/**; ArcForges:src/ArcForges.Node.Platform.Linux/Terminal/**; ArcForges:src/ArcForges.Node.Core/Runs/Output*; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/Terminal*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/Terminal/**; ArcForges:src/ArcForges.Node.Platform.Windows/Terminal/**; ArcForges:src/ArcForges.Node.Platform.Linux/Terminal/**; ArcForges:src/ArcForges.Node.Core/Runs/Output*; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/Terminal*. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] CORE-02 is verified and registered. Start the native terminal broker and bounded output work against the qualified Run owners.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
