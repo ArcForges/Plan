@@ -1674,10 +1674,13 @@
           "repo": "ArcForges",
           "paths": [
             "src/ArcForges.Node.Core/Runs/**",
+            "src/ArcForges.Node.Core/ArcForges.Node.Core.csproj",
             "src/ArcForges.Node.Core/Sandboxes/SandboxPolicyAdmission.cs",
             "src/ArcForges.RunSupervisor/**",
             "src/ArcForges.Node.Platform.Windows/Mxc/**",
+            "src/ArcForges.Node.Platform.Windows/ArcForges.Node.Platform.Windows.csproj",
             "src/ArcForges.Node.Platform.Linux/Mxc/**",
+            "src/ArcForges.Node.Platform.Linux/ArcForges.Node.Platform.Linux.csproj",
             "src/ArcForges.Node.Api/RunServiceHandler.cs",
             "tests/**/Mxc*",
             "ArcForges.slnx",
