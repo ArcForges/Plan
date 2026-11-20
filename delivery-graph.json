@@ -2950,15 +2950,18 @@
       "title": "Implement private data usage import and export",
       "milestone": "P4",
       "order": 20,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
           "paths": [
             "src/ArcForges.Node.Core/SandboxData/**",
+            "src/ArcForges.Node.Core/Sandboxes/SandboxPrivateRoots.cs",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.Runs.cs",
             "src/ArcForges.Node.Api/DataServiceHandler.cs",
             "src/ArcForges.Node.Core/Platform/**",
             "src/ArcForges.CommandLine/DataCommands.cs",
+            "src/ArcForges.CommandLine/V2CliSession.cs",
             "tests/**/SandboxData*",
             "src/ArcForges.Node.Api/NodeApiServer.cs",
             "src/ArcForges.Node.Api/NodeHost.cs",
@@ -3045,7 +3048,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/SandboxData/**; ArcForges:src/ArcForges.Node.Api/DataServiceHandler.cs; ArcForges:src/ArcForges.CommandLine/DataCommands.cs; ArcForges:tests/**/SandboxData*; ArcForges:docs/cli/**. WorkspacePath is an existing Node.Core/Platform partial class, with WorkspaceWriteGuard/FileLinks/LinuxFile* siblings. Rework these proved primitives rather than create a replacement in Node.Platform. DataCommands.cs is a legitimate new command file; add real CLI root/client/test integration.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/SandboxData/**; ArcForges:src/ArcForges.Node.Api/DataServiceHandler.cs; ArcForges:src/ArcForges.CommandLine/DataCommands.cs; ArcForges:tests/**/SandboxData*; ArcForges:docs/cli/**. WorkspacePath is an existing Node.Core/Platform partial class, with WorkspaceWriteGuard/FileLinks/LinuxFile* siblings. Rework these proved primitives rather than create a replacement in Node.Platform. DataCommands.cs is a legitimate new command file; add real CLI root/client/test integration. [active] CLI-02 is complete. Add the exact verified private-root lease, existing Run admission and authenticated V2 CLI session integration points needed by the published DataService.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
