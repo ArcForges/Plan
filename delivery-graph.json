@@ -3541,7 +3541,7 @@
       "title": "Adapt enrollment and outbound node channels to V2 capabilities",
       "milestone": "P5",
       "order": 24,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "Cloud",
@@ -3734,12 +3734,24 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; ArcForges:src/ArcForges.Node.Api/CenterControlServiceHandler.cs; ArcForges:docs/cli/**. Retain Node.CloudLink project for actual CloudLinkService/SignInOrchestrator/key and credential stores. New CenterControlServiceHandler is an explicit future path. Local connect/disconnect/status/cancel/signout uses new typed CenterControlService, with existing CLI root and Client project wiring; no legacy Node.v1 dispatcher dependency remains. Explicit schema/store/real-PostgreSQL fixture scope carries node_owner_epoch binding through enrollment/channel replacement and durable routed receipt/stream reconciliation; retain the original operation identity instead of rebasing to a new Handshake. [active] After Plan PR 208 records FILE-02 blocked by AR-05, CENTER-02 is the first independent eligible task with all four prerequisites complete.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; ArcForges:src/ArcForges.Node.Api/CenterControlServiceHandler.cs; ArcForges:docs/cli/**. Retain Node.CloudLink project for actual CloudLinkService/SignInOrchestrator/key and credential stores. New CenterControlServiceHandler is an explicit future path. Local connect/disconnect/status/cancel/signout uses new typed CenterControlService, with existing CLI root and Client project wiring; no legacy Node.v1 dispatcher dependency remains. Explicit schema/store/real-PostgreSQL fixture scope carries node_owner_epoch binding through enrollment/channel replacement and durable routed receipt/stream reconciliation; retain the original operation identity instead of rebasing to a new Handshake. [active] After Plan PR 208 records FILE-02 blocked by AR-05, CENTER-02 is the first independent eligible task with all four prerequisites complete. [delivered] All four repository merges preserve the independently reviewed trees. Formal Windows and H-22 profiles and exact package interoperability passed. [complete] Exact Node and Cloud native profiles, pinned installed packages, actual private Center browser and device-code flows, reconnection, outage, rotation and bounded revocation behavior passed on deku and H-22. Evidence and original failed attempts are retained in docs/afv2-center-02-evidence.md.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/113",
+          "https://github.com/ArcForges/Cloud/pull/167",
+          "https://github.com/ArcForges/ArcForges-Design/pull/84",
+          "https://github.com/ArcForges/Contracts/pull/141"
+        ],
+        "merges": [
+          "ArcForges@77961d70e0349ba6b73a30cee43b569b5d303740",
+          "Cloud@d2166b56f39ebcf56f67f4285133d07acf50f90f",
+          "ArcForges-Design@28f73b99b157cfe34ca183d1bbf8c92a6bfd10fe",
+          "Contracts@0cd178ac8bec8c32f06366dcb30fea6dd6566bf3"
+        ],
+        "publications": [
+          "Contracts 1.0.0-ci.486.1 published Foundation and Sandbox.V2 on NuGet. The registered npm job and go/v1.0.0-ci.486.1 also succeeded in https://github.com/ArcForges/Contracts/actions/runs/44682314105."
+        ],
         "ledger": null
       },
       "removals": [
