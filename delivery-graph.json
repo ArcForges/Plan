@@ -3782,7 +3782,7 @@
       "title": "Route typed remote control through the same Sandbox Core",
       "milestone": "P5",
       "order": 25,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Cloud",
@@ -3895,7 +3895,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; ArcForges:tests/**/RemoteManagement*. Explicit schema/store/real-PostgreSQL fixture scope carries node_owner_epoch binding through enrollment/channel replacement and durable routed receipt/stream reconciliation; retain the original operation identity instead of rebasing to a new Handshake.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; ArcForges:tests/**/RemoteManagement*. Explicit schema/store/real-PostgreSQL fixture scope carries node_owner_epoch binding through enrollment/channel replacement and durable routed receipt/stream reconciliation; retain the original operation identity instead of rebasing to a new Handshake. [active] CENTER-02 completed at Plan PR 220. Activate the next independent eligible product task for fixed typed remote control through the existing Sandbox Core, with exact owner scope and durable request identity.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
