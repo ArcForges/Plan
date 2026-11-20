@@ -3099,6 +3099,7 @@
             "src/ArcForges.CommandLine/SandboxCommands.cs",
             "src/ArcForges.Node.Store/**",
             "tests/**/SandboxDelete*",
+            "tests/ArcForges.ClosedLoop.Tests/TestNode.cs",
             "src/ArcForges.Node.Api/NodeApiServer.cs",
             "src/ArcForges.Node.Api/NodeHost.cs",
             "src/ArcForges.Node.Core/NodeRuntime.cs",
