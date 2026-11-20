@@ -2837,7 +2837,9 @@
             "docs/cli/**",
             "src/ArcForges.CommandLine/CliApplication.cs",
             "tests/ArcForges.Client.Tests/**",
-            "tests/ArcForges.ClosedLoop.Tests/**"
+            "tests/ArcForges.ClosedLoop.Tests/**",
+            "tools/ArcForges.TestLoad/Program.cs",
+            "tools/ArcForges.TestLoad/TerminalScenario.cs"
           ]
         }
       ],
