@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## FILE-02 blocked · CENTER-02 ready
+
+Twenty-two of 40 tasks are complete. FILE-02 is blocked by AR-05 and has a preserved candidate in [Node PR 112](https://github.com/ArcForges/ArcForges/pull/112). The [native evidence](docs/afv2-file-02-evidence.md) covers the Windows deletion and the H-22 refusal before changing data or admitting Delete. The required Linux positive deletion and recovery still need a qualified native operation that binds the effect to the verified directory identity.
+
+CENTER-02 is the next eligible product task. Its dependencies are complete and independent of FILE-02. Use the published V2 enrollment and local CenterControl contracts with the existing Cloud and Node adapters. Keep product activation in PROD-01.
+
 ## CLI-02 active
 
 CLI-02 is the sole active product task. Twenty of 40 tasks are complete and 19 are planned. Connect the installed CLI's local caller terminal, byte streams and exit handling to the actual Run terminal protocol. Preserve original Start and Stop receipts, enforce the binding of each transient terminal acknowledgment, and verify Windows and Linux terminal restoration and exact output through the native package profiles.

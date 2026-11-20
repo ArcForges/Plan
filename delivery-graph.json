@@ -3088,7 +3088,7 @@
       "title": "Implement safe whole-Sandbox deletion and interrupted cleanup",
       "milestone": "P4",
       "order": 21,
-      "state": "active",
+      "state": "blocked",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -3187,8 +3187,10 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/SandboxData/Delete*; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs; ArcForges:src/ArcForges.CommandLine/SandboxCommands.cs; ArcForges:tests/**/SandboxDelete*; ArcForges:docs/cli/**; ArcForges:src/ArcForges.Node.Core/Sandboxes/**. SandboxCommands.cs and SandboxData/Delete* are legitimate planned paths created by V2. Existing proven Files/Platform primitives and actual CLI/client integration need explicit scope; preserve unresolved old journals until finite cutover. [active] FILE-01 is complete. Start native whole-Sandbox deletion, the current Store hold handoff, and exact interrupted cleanup.",
-      "blocked_by": [],
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/SandboxData/Delete*; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs; ArcForges:src/ArcForges.CommandLine/SandboxCommands.cs; ArcForges:tests/**/SandboxDelete*; ArcForges:docs/cli/**; ArcForges:src/ArcForges.Node.Core/Sandboxes/**. SandboxCommands.cs and SandboxData/Delete* are legitimate planned paths created by V2. Existing proven Files/Platform primitives and actual CLI/client integration need explicit scope; preserve unresolved old journals until finite cutover. [active] FILE-01 is complete. Start native whole-Sandbox deletion, the current Store hold handoff, and exact interrupted cleanup. [blocked] Required Linux positive owned-root deletion and interrupted recovery await a qualified native guard that binds the effect to the verified directory identity. H-22 observed an exact pre-effect refusal.",
+      "blocked_by": [
+        "AR-05"
+      ],
       "evidence": {
         "prs": [],
         "merges": [],
