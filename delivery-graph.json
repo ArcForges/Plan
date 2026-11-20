@@ -2825,7 +2825,7 @@
       "title": "Deliver interactive CLI attach detach and terminal ergonomics",
       "milestone": "P4",
       "order": 19,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2908,7 +2908,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.CommandLine/Terminal/**; ArcForges:tests/**/Terminal*; ArcForges:docs/cli/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.CommandLine/Terminal/**; ArcForges:tests/**/Terminal*; ArcForges:docs/cli/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Begin the attached terminal, detach and log UX after both CLI-01 native packages and the offline CLI delivery were registered.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
