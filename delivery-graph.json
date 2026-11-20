@@ -4156,7 +4156,23 @@
             "center/internal/workertables/**",
             "center/cmd/center-gen/**",
             "worker/tables/center-tables.generated.ts",
-            "center/internal/hub/**"
+            "center/internal/hub/**",
+            "center/internal/pages/center02_native_integration_test.go",
+            "center/internal/pages/host01_native_integration_test.go",
+            "center/internal/store/migrate/management_backup.go",
+            "center/internal/store/migrate/hosted_entitlement_backup_catalogue.go",
+            "center/internal/store/migrate/lifecycle_inventory_test.go",
+            "center/internal/store/migrate/management_restore_test.go",
+            "center/internal/store/migrate/hosted_entitlement_schema_test.go",
+            "docs/center.md",
+            "eng/provenance/artifact-profiles/cloud-release-r144.json",
+            "eng/provenance/records/center-runtime-afv2-host-01-r1.json",
+            "eng/provenance/records/center-worker-afv2-host-01-r1.json",
+            "eng/provenance/files.json",
+            "eng/provenance/NOTICE.txt",
+            "eng/policy/dependency-policy.json",
+            "eng/policy/dependency-reviews/afv2-host-01-r1.json",
+            "center/internal/quota/quota_integration_test.go"
           ]
         }
       ],
@@ -4232,7 +4248,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] The owner resumed the authorized sequence after the CENTER-04 checkpoint. Begin the Cloud-only official hosting entitlement and self-host independence slice with native F-HOST-01 qualification.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] The owner resumed the authorized sequence after the CENTER-04 checkpoint. Begin the Cloud-only official hosting entitlement and self-host independence slice with native F-HOST-01 qualification. HOST-01 current-source qualification scope: reuse the exact installed Node CENTER-02 fixture through two Cloud Go test files for F-HOST-01. Extend the existing PostgreSQL archive catalogue and positive restore/upgrade checks for the forward entitlement projection. Facts link unchanged canonical grants and original terms without creating a new grant. Align the live Center feature documentation and add only the exact append-only r144 provenance and dependency admission for changed shipping inputs. Preserve prior migration bytes, archive versions, published contracts and existing host gates. Explicit planned new targets: Cloud:center/internal/pages/host01_native_integration_test.go; Cloud:center/internal/store/migrate/hosted_entitlement_backup_catalogue.go; Cloud:center/internal/store/migrate/hosted_entitlement_schema_test.go; Cloud:eng/provenance/artifact-profiles/cloud-release-r144.json; Cloud:eng/provenance/records/center-runtime-afv2-host-01-r1.json; Cloud:eng/provenance/records/center-worker-afv2-host-01-r1.json; Cloud:eng/policy/dependency-reviews/afv2-host-01-r1.json. The existing quota integration fixture remains a negative witness for retired MCP and push route groups and uses the explicitly retained V1 row for submission.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
