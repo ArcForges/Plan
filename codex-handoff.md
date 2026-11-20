@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## HOST-01 active
+
+The owner resumed from the CENTER-04 checkpoint. HOST-01 is the sole active product task. Twenty-five of 40 tasks are complete, 13 are planned, and FILE-02 is blocked by AR-05.
+
+Use the existing Go Center and PostgreSQL entitlement resolver to qualify official hosting and independent self-host operation. Preserve historical entitlement facts, retain self-host operator limits, and verify that hosted expiry leaves the installed Node's local Runs, data and CLI usable. F-HOST-01 records the native outcomes. External qualification and public activation remain under AR-10 and PROD-01.
+
 ## CENTER-04 complete · stopped at 25 of 40
 
 Twenty-five of 40 tasks are complete, one is blocked by AR-05, 14 are planned, and no product task is active. [Node PR 115](https://github.com/ArcForges/ArcForges/pull/115) and [Cloud PR 169](https://github.com/ArcForges/Cloud/pull/169) deliver typed remote output, events, usage and bounded single-file transfers for eligible V2 enrollments. The [CENTER-04 evidence](docs/afv2-center-04-evidence.md) records exact merged trees, native stock reports and live installed cross-checks on Windows and H-22.
