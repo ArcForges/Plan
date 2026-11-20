@@ -3805,6 +3805,7 @@
             "center/internal/pgtest/**",
             "center/internal/pages/center03_native_integration_test.go",
             "center/cmd/arcforges-center/lifecycle_cleanup.go",
+            "tests/ArchitectureTests/WorkerAdapter/WorkerLiteralScan.cs",
             "center/internal/identityapi/access_integration_test.go",
             "center/internal/identityapi/commits_integration_test.go",
             "center/internal/identityapi/stepup_integration_test.go",
