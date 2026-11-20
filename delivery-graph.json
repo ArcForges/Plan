@@ -3977,6 +3977,7 @@
             "center/internal/ingress/**",
             "worker/ingress/**",
             "tests/worker/ingress-routes.test.ts",
+              "tests/worker/ingress-surfaces.test.ts",
             "center/internal/schema/**",
             "center/internal/store/**",
             "center/internal/pgtest/**",
