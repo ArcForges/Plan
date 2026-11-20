@@ -3978,6 +3978,8 @@
             "worker/ingress/**",
             "tests/worker/ingress-routes.test.ts",
               "tests/worker/ingress-surfaces.test.ts",
+            "tooling/generated-replies.ts",
+            "tests/worker/generated-replies.test.ts",
             "center/internal/schema/**",
             "center/internal/store/**",
             "center/internal/pgtest/**",
