@@ -4458,7 +4458,7 @@
       "title": "Deliver self-host deployment infrastructure and official operational controls",
       "milestone": "P6",
       "order": 29,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Cloud",
@@ -4567,7 +4567,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:docs/operations/**; Web:docs/self-host/**. Cloud deploy/** currently contains monitoring only. Actual guarded deployment/candidate implementation is tooling/{cloudflare,project,postgres-deploy,neon-runtime,...}, Dockerfile, wrangler.json and Worker. New deploy/self-host infrastructure is legitimate. This task cannot accept a completed V2 Dashboard before WEB04; final assembly belongs DIST01.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:docs/operations/**; Web:docs/self-host/**. Cloud deploy/** currently contains monitoring only. Actual guarded deployment/candidate implementation is tooling/{cloudflare,project,postgres-deploy,neon-runtime,...}, Dockerfile, wrangler.json and Worker. New deploy/self-host infrastructure is legitimate. This task cannot accept a completed V2 Dashboard before WEB04; final assembly belongs DIST01. [active] HOST-02 is complete and HOST-03 is the sole eligible task being implemented. The development scope is clean self-host installation, real restoration and Node continuity, plus guarded operational tooling and static asset integration. Live production and destructive operations remain under H-03.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
