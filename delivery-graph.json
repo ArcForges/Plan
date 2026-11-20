@@ -3568,6 +3568,7 @@
             "center/dependencies.json",
             "center/internal/quota/quota_integration_test.go",
             "center/internal/identityapi/access_integration_test.go",
+            "center/internal/identityapi/harness_test.go",
             "center/internal/identityapi/stepup_integration_test.go",
             "center/internal/identityapi/writes_integration_test.go",
             "tests/worker/channel-upgrade.test.ts",
