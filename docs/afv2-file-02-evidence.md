@@ -56,4 +56,70 @@ The Node PR stays draft. The full Node delivery profiles and merge remain pendin
 
 ## Required Linux qualification
 
-The candidate checks the held private parent and the exact owned child before reporting the capability unavailable. The available Linux operations have name-based effects. The qualified H-22 profile has no operation that binds these effects to the verified native child identity. The next positive acceptance requires a supported native guard for the exact quarantine move and bounded removal, followed by the specified real deletion and recovery runs. Until then the candidate refuses the effect, and AR-05 is open for FILE-02. See [Linux rename semantics](https://man7.org/linux/man-pages/man2/rename.2.html) and [Linux unlink semantics](https://man7.org/linux/man-pages/man2/unlink.2.html).
+The preserved candidate checks the held private parent and the exact owned child before reporting the capability unavailable. The available Linux operations have name-based effects. The original H-22 configuration has no operation that binds these effects to the verified native child identity. The default configuration keeps its pre-effect refusal. See [Linux rename semantics](https://man7.org/linux/man-pages/man2/rename.2.html) and [Linux unlink semantics](https://man7.org/linux/man-pages/man2/unlink.2.html).
+
+## Protected storage candidate
+
+[Plan PR264](https://github.com/ArcForges/Plan/pull/264), merge `568077e5c555dbe97115ea761d0e3f82d9b991ad`, reopened FILE-02 as the only active task. [Design PR86](https://github.com/ArcForges/ArcForges-Design/pull/86), merge `65c50ea74c2a433bba890c51ae237d2a211e5edd`, defines the optional protected Linux configuration. [Plan PR265](https://github.com/ArcForges/Plan/pull/265), merge `052dd8a814e34d049d2ade656b9338e4212f4dc6`, admits the existing test fixture path used to qualify disposable protected storage. Both Plan profiles passed 5/5 for each Plan PR, and the Design profiles passed 4/4 on each native host.
+
+[Node PR112](https://github.com/ArcForges/ArcForges/pull/112) retains `b941e1baeab2aed5e72773be0ef21689e02ceca3` and the prior evidence above. The candidate is `e53c23b36ede29eea4bd07fb2c7dacb6e24ed91b`, tree `c34cd17b2afec36c795bfdae75a6f5c3ac466d1e`, based on current Node main `0c7c869237e0c4e2b934a0da02b7d28bfcf467e9`. Its production source is the same as `7c1a77837af264163805651eea4ff6767556c711`. Its two subsequent commits adjust existing native test fixtures. Independent review approved both test changes and the fixes for interruption during startup provenance publication and the Center shutdown-order invariant in the ordinary profile. Both native hosts reported the Center seam assertion at `1fbf9e6d995939fa5c0da7d17b9c63628dbf6976`. After the source fix, the existing Center seam suite passed 35/35 on `deku`.
+
+The new profile requires explicit selection and root-controlled provisioning. A filesystem identity stamp binds its fresh data root and lock. Node rechecks custody at each effect while the existing managed-use gate and durable journal govern admission, recovery and confirmation.
+
+### Windows installed deletion and restart witness
+
+The separately installed `7c1a77837af264163805651eea4ff6767556c711` package passed its 93-file integrity check. The archive SHA-256 was `59d4b9aea5996b1533b3a5bc2486ce55f13bfdb768313ab07f1eb17a15d46db6`. Both installed deletion cases passed, with zero skips. They covered normal removed data and all five interruption checkpoints, including `UNKNOWN` when durable removal proof had not been recorded.
+
+The same candidate's full profile reported one existing Cloud Channel restart fixture failure. The fixture started the replacement after observing the original endpoint stop but before its process released the native instance guard. The replacement exited with code 3 before starting Cloud Link. The isolated original case passed on rerun. [Plan PR266](https://github.com/ArcForges/Plan/pull/266), merge `69f00f5bac27ef35ea0509bf4a7bc5072d96c4c9`, approved the narrow test scope. The candidate captures the original process handle and requires its actual exit before the replacement starts. The corrected case passed against the Native AOT Host, and independent review confirmed that the original endpoint, payload and credential assertions remain.
+
+### H-22 installed configuration observations
+
+On H-22 the exact candidate built and published Native AOT. The initial full profile stopped at packaging because the official MXC release asset was absent from the verifier's default path. The retained host-local GitHub asset matched the pinned SHA-256 `0e832239454ba7fcd338ff56218a287eef4c0a01c1484084b869f55feff8abe9`. Windows acquired the same official version directly from GitHub and matched that digest independently. A fresh H-22 install passed its 88-file integrity check. The installed archive SHA-256 was `bc240a000f133d0d66658bf9619bdce1991de327a32ca47cb3dcf763816cbccb`, and the installed Host SHA-256 was `175af81b322e5de47b7de4bff1af94fb8690a273bb8db797c05d415cbcaf6205`. The installed `InstalledNodeRefusesMissingLinuxCustodyBeforeCreatingState` test passed 1/1 with zero skips and verified that the missing configuration created neither data nor endpoint state.
+
+| Earlier summary under `.git/arcforges-verify/logs/` | Failure | SHA-256 |
+| --- | --- | --- |
+| `20261121-063612-1fbf9e6d9959-win/summary.json` | Center shutdown seam | `b5286713fc2a39d8c506f07bc67aa2d9dd6262236b980b973ead8d4dc684b77a` |
+| `20261121-063612-1fbf9e6d9959-linux/summary.json` | Center shutdown seam | `41712515222eef54dfd28917130de90e64003c088204d1fb04ad0067356850d4` |
+| `20261121-064417-7c1a77837af2-linux/summary.json` | Missing local MXC asset input | `2ebba8e293c6daedb20eee48e2731ffcaeeb2d68fa55278ef88372ba782568c0` |
+| `20261121-064700-7c1a77837af2-win/summary.json` | Cloud Channel fixture restart before guard release | `113107610d6bddc07bd7214ab04790540d0be24c6714534fb8d70f9cef689c1b` |
+| `20261121-065435-7c1a77837af2-linux/summary.json` | Installed resource fixture observed 300 vs 340 millicores | `613d1029bfd3bb0998272dfc1ce566d3b0323aae24118f4801ddaffe9f74095b` |
+
+The second H-22 full attempt for `7c1a778` passed 51/52 installed tests with zero skips. The remaining resource fixture compared two separate readings across an allowed weighted rebalance. The failed assertion observed 300 millicores in place of its earlier 340 reading. The isolated original test passed on the same installed Host. [Plan PR267](https://github.com/ArcForges/Plan/pull/267), merge `af2a538a9f72849f7ae77d30eb533e33c7dab97f`, approved the narrow fixture input repair. The Linux fixture now reserves the configured 500 millicores at admission, so the intervening allocator no longer treats the later explicit increase as growth above an older 450 budget. The exact native and rejection assertions, Windows inputs, and production resource controller remain unchanged.
+
+A disposable local ext4 fixture used the unprivileged numeric UID 60014 for the exact installed Node. The regular `sammiller` account received `Permission denied` when creating a sentinel in the selected data root. Node resumed startup from a partial provisioning stage, published the complete stamp, and restarted with the same stamp. An attempted unselected restart returned `linux_protected_storage_selection_required` before opening its endpoint. The first probe hit the Unix socket path-length limit. The successful probe used shorter temporary paths and removed the disposable root after teardown. It used no dedicated systemd user manager and covers startup, configuration, and host-account exclusion.
+
+The successful raw records are in `/home/sammiller/file02-custody-startup-7c1a778.EKhjPg/`. The earlier failed probe remains in `/home/sammiller/file02-custody-startup-7c1a778.JcQPvt/`.
+
+| Raw file | SHA-256 |
+| --- | --- |
+| `ordinary-denial.log` | `f77530dd30decd517fa1ccb0e7b4a0ed10a67c590b1cbe41f7a7a0efd8d7552c` |
+| `first.status.json` | `e9006f2abf1e8b3cc745df675749dfd6a65fcbc4ca23376c142e6aa74fd2dc8c` |
+| `second.status.json` | `1ba0f4ab8d5cbcd1307d8cca4bc0ecda1cbbd0e3c5773a956bb8d93b2e894e08` |
+| `first-stamp.sha256`, `second-stamp.sha256` | `6453ee49f28b7a9cc5cdeb20848c13017bdaed6d3a9db9df7eea30239b40d2ce` |
+| `omit-selection.stderr.log` | `f77f756b1dbb5a93d31b9e3770639774db4aa87bb54a0b4560aef9d0c68c0b36` |
+
+### H-22 native whole-directory component observations
+
+An isolated ext4 component fixture called the actual Node Core methods from the `7c1a778` build under the reserved numeric UID. It created two owned roots, one external sentinel, 150 private files and a symlink to the external location. The first process moved the exact selected root into quarantine and exited. A new process recovered that same quarantined identity. During a bounded removal pass the fixture revoked the profile's storage protection after the first effect. Node Core refused before the second effect. Restoring the valid fixture configuration allowed a fresh process to complete removal in five bounded passes and confirm actual absence. The sibling and external bytes survived. The disposable directory was removed after testing.
+
+The successful raw records and probe source are under `/home/sammiller/file02-native-component.IifWhA/`. Core assembly SHA-256 was `dc86f692ddfbd15cd32daa82016061a6dc4ed894a15e0e28a9b5bcc04076d18b`. This is native filesystem evidence from the component. It observes process replacement and guard loss without an installed CLI receipt, a Node deletion journal, or an admitted MXC Run.
+
+| Raw file | SHA-256 |
+| --- | --- |
+| `01-quarantine.log` | `3223101164902df70229d8b781090547690de56874be99b62f5ccfc57b3026e9` |
+| `02-guard-loss.log` | `87f69395ae750f7aeb607601c3f2e2799a00cc63b3e096cd7e938617be484caf` |
+| `03-removal.log` | `9339db40be32bca508d44806ea03838486dec66ec365bd1981e9633bfd100d33` |
+
+### Remaining protected Linux acceptance
+
+H-22 retains working native systemd and cgroup v2 for its normal account. The protected acceptance requires a separate host-owner-provisioned non-login identity with the normal native `user@UID` manager and fresh ext4 test roots. The installed optional tier is `ArcForges.ClosedLoop.Tests.SandboxDeleteLinuxCustodyTests`. Until it and the distinct denial observations pass, AR-05 and F-FILE-01 stay open and Node PR112 stays draft.
+
+For the protected installed tier, use independent disposable instances `file02-<runid>-<case>` with a fresh eligible `data` root for each case. The cases are `normal`, `after-lock`, `after-quarantine`, `during-removal`, `before-removal-proof` and `before-tombstone`. The selected unprovisioned case must have no instance directory. Run the exact installed Node and official MXC bundle under the dedicated UID with the normal control groups delegated by its user manager. Set a private `TMPDIR` on ext4 and use `umask 0077` for evidence. Set `ARCFORGES_MXC_DELETE_CUSTODY_RUN_ID` to the 32-character lowercase hex run ID and opt in with `ARCFORGES_LINUX_PROTECTED_STORAGE=1`. The existing package path and TestLoad inputs still apply.
+
+```sh
+dotnet test --project tests/ArcForges.ClosedLoop.Tests/ArcForges.ClosedLoop.Tests.csproj -c Release --no-build \
+  --filter-class ArcForges.ClosedLoop.Tests.SandboxDeleteLinuxCustodyTests \
+  --minimum-expected-tests 3 --fail-skips on
+```
+
+Record the ordinary host account's denial on the applicable protected parent and the behavior when custody is revoked during an accepted deletion, along with the exact installed suite results. Separate these from the normal H-22 per-user refusal and the required repository host reports.
