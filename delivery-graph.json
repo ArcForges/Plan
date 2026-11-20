@@ -3960,7 +3960,7 @@
       "title": "Deliver bounded remote logs resources and Sandbox data transfer",
       "milestone": "P5",
       "order": 26,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Cloud",
