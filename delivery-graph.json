@@ -4625,7 +4625,7 @@
       "title": "Build responsive Blazor shell identity and device overview",
       "milestone": "P7",
       "order": 30,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Web",
@@ -4642,7 +4642,8 @@
             "worker/index.ts",
             "wrangler.json",
             "win.slnx",
-            "package.json"
+            "package.json",
+            ".github/workflows/ci.yml"
           ]
         }
       ],
@@ -4706,7 +4707,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] HOST-03 is complete and WEB-01 is the sole eligible active implementation. Use the existing Blazor shell, typed Center identity and device APIs, and isolated native browser acceptance. Keep hosted deployment dark pending PROD-01. Scope only the existing Web deployment job condition so a newly merged development candidate cannot trigger public deployment or its coupled public prerelease before PROD-01. Retain the exact candidate build, private artifact handoff, release metadata and already published historical bytes. Use the established Cloud closed job condition.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
