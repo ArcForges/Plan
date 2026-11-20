@@ -4302,7 +4302,7 @@
       "title": "Implement official web commerce lifecycle and reconciliation",
       "milestone": "P6",
       "order": 28,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Cloud",
@@ -4393,7 +4393,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/commerce/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/commerce/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] The owner resumed the remaining V2 range. HOST-01 is complete and HOST-02 is the sole eligible task being implemented. Real provider sandbox and public sale activation remain AR-10/H-04 under PROD-01.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
