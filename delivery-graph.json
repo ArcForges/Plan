@@ -3597,6 +3597,7 @@
             "src/ArcForges.CommandLine/CenterCommands.cs",
             "src/ArcForges.CommandLine/LoginCommands.cs",
             "tests/**/CloudLink*",
+            "tests/ArcForges.ClosedLoop.Tests/TerminalMxcRunServiceTests.cs",
             "src/ArcForges.Client/**",
             "src/ArcForges.CommandLine/CliApplication.cs",
             "src/ArcForges.CommandLine/V2CliSession.cs",
