@@ -3960,7 +3960,7 @@
       "title": "Deliver bounded remote logs resources and Sandbox data transfer",
       "milestone": "P5",
       "order": 26,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "Cloud",
@@ -3977,7 +3977,7 @@
             "center/internal/ingress/**",
             "worker/ingress/**",
             "tests/worker/ingress-routes.test.ts",
-              "tests/worker/ingress-surfaces.test.ts",
+            "tests/worker/ingress-surfaces.test.ts",
             "tooling/generated-replies.ts",
             "tests/worker/generated-replies.test.ts",
             "center/internal/schema/**",
@@ -4098,11 +4098,17 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; ArcForges:src/ArcForges.Node.Api/DataServiceHandler.cs; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/RemoteStream*. Explicit schema/store/real-PostgreSQL fixture scope carries node_owner_epoch binding through enrollment/channel replacement and durable routed receipt/stream reconciliation; retain the original operation identity instead of rebasing to a new Handshake.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; ArcForges:src/ArcForges.Node.Api/DataServiceHandler.cs; ArcForges:src/ArcForges.Node.Api/RunServiceHandler.cs; ArcForges:tests/**/RemoteStream*. Explicit schema/store/real-PostgreSQL fixture scope carries node_owner_epoch binding through enrollment/channel replacement and durable routed receipt/stream reconciliation; retain the original operation identity instead of rebasing to a new Handshake. [delivered] Both merged source trees match the independently reviewed heads and passed both stock host profiles. The native installation and local delivery evidence is in docs/afv2-center-04-evidence.md. [complete] The Windows and H-22 installed pairs passed with real Go and PostgreSQL. H-22 verified natural transfer expiry. The supplemental Windows post-expiry query remains unverified after the one-hour channel-readiness failure. The requested checkpoint stops at 25 of 40.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/115",
+          "https://github.com/ArcForges/Cloud/pull/169"
+        ],
+        "merges": [
+          "ArcForges@0c7c869237e0c4e2b934a0da02b7d28bfcf467e9",
+          "Cloud@9ece7f96788a5b2dfdf8fbb9cb5743c0980c7c35"
+        ],
         "publications": [],
         "ledger": null
       },
