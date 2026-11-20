@@ -2950,7 +2950,7 @@
       "title": "Implement private data usage import and export",
       "milestone": "P4",
       "order": 20,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -3018,7 +3018,7 @@
         "Import crash at each commit boundary preserves known/unknown effect and cannot overwrite a changed target",
         "Export bytes come from the bound private snapshot; no file operation escapes owned root",
         "The delivered CLI performs real owned-data usage/import/export end to end, including interrupted chunks, retained export snapshot reread until explicit close/expiry and truthful cancellation; no parser-only or mock-only command",
-        "Actual CLI and typed client inspect transfer progress/final digest/closed_at without another BeginExport; losing the final chunk response permits the same snapshot range read until CloseTransfer/expiry, and Sandbox deletion stays blocked while that export is retained"
+        "Actual CLI and typed client inspect transfer progress/final digest/closed_at without another BeginExport. Losing the final chunk response permits the same snapshot range read until CloseTransfer or expiry. A retained native export holds the Store managed-use predicate until verified release. FILE-02 exercises that same hold through fresh PlanDelete and Delete under AR-05."
       ],
       "verification": {
         "author": [
@@ -3048,11 +3048,15 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/SandboxData/**; ArcForges:src/ArcForges.Node.Api/DataServiceHandler.cs; ArcForges:src/ArcForges.CommandLine/DataCommands.cs; ArcForges:tests/**/SandboxData*; ArcForges:docs/cli/**. WorkspacePath is an existing Node.Core/Platform partial class, with WorkspaceWriteGuard/FileLinks/LinuxFile* siblings. Rework these proved primitives rather than create a replacement in Node.Platform. DataCommands.cs is a legitimate new command file; add real CLI root/client/test integration. [active] CLI-02 is complete. Add the exact verified private-root lease, existing Run admission and authenticated V2 CLI session integration points needed by the published DataService.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/SandboxData/**; ArcForges:src/ArcForges.Node.Api/DataServiceHandler.cs; ArcForges:src/ArcForges.CommandLine/DataCommands.cs; ArcForges:tests/**/SandboxData*; ArcForges:docs/cli/**. WorkspacePath is an existing Node.Core/Platform partial class, with WorkspaceWriteGuard/FileLinks/LinuxFile* siblings. Rework these proved primitives rather than create a replacement in Node.Platform. DataCommands.cs is a legitimate new command file; add real CLI root/client/test integration. [active] CLI-02 is complete. Add the exact verified private-root lease, existing Run admission and authenticated V2 CLI session integration points needed by the published DataService. [delivered] Node PR 111 merged at the independently reviewed and verified candidate tree. [complete] Native owned-data and retained snapshot acceptance is recorded for the exact Windows and H-22 package candidate.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/111"
+        ],
+        "merges": [
+          "ArcForges@d78172739b73c5763ecc58c5b446acd85c495125"
+        ],
         "publications": [],
         "ledger": null
       },
