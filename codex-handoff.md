@@ -1,5 +1,13 @@
 # Codex handoff — ArcForges V2
 
+## CENTER-04 complete · stopped at 25 of 40
+
+Twenty-five of 40 tasks are complete, one is blocked by AR-05, 14 are planned, and no product task is active. [Node PR 115](https://github.com/ArcForges/ArcForges/pull/115) and [Cloud PR 169](https://github.com/ArcForges/Cloud/pull/169) deliver typed remote output, events, usage and bounded single-file transfers for eligible V2 enrollments. The [CENTER-04 evidence](docs/afv2-center-04-evidence.md) records exact merged trees, native stock reports and live installed cross-checks on Windows and H-22.
+
+H-22 verified natural export expiry, release of the snapshot and retention of the source. The supplemental Windows expiry fixture could not requalify an active V2 peer for the original enrollment after the one-hour wait, before it sent the post-deadline query. Its receipt remains in the evidence record. Public activation remains with PROD-01. FILE-02 remains blocked under AR-05.
+
+The requested pause begins at this checkpoint.
+
 ## CENTER-03 complete · CENTER-04 ready
 
 Twenty-four of 40 tasks are complete, one is blocked by AR-05 and 15 are planned. [Node PR 114](https://github.com/ArcForges/ArcForges/pull/114) and [Cloud PR 168](https://github.com/ArcForges/Cloud/pull/168) merged verified source trees. The [CENTER-03 evidence](docs/afv2-center-03-evidence.md) records exact native reports, official installed cross-checks, and the scoped AR-08 result for authorized typed remote control and original-operation reconciliation.
