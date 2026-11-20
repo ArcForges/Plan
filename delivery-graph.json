@@ -2675,7 +2675,7 @@
       "title": "Deliver offline core and administration CLI commands",
       "milestone": "P4",
       "order": 18,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2785,11 +2785,15 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/cli/**. Scope text must say core/admin CLI, not completion of data/delete/Center commands. FILE01/02 own their own client and command integration; CENTER02 owns actual connection flow commands and depends on CLI01. [active] Begin after REC-01 qualified and registered. Deliver only the typed offline Core and administration CLI slice.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/cli/**. Scope text must say core/admin CLI, not completion of data/delete/Center commands. FILE01/02 own their own client and command integration; CENTER02 owns actual connection flow commands and depends on CLI01. [active] Begin after REC-01 qualified and registered. Deliver only the typed offline Core and administration CLI slice. [delivered] Both full native profiles and installed package suites passed at the independently reviewed head. The Node merge tree is identical. [complete] The typed offline Core and administration slice passed all task-scope requirements. The record preserves earlier failures and the distinct official entitlement expiry scenarios in ACC-01 and ACC-02.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/109"
+        ],
+        "merges": [
+          "ArcForges@f8b500dd299d1738e2f9c9daef3f674c519aa15e"
+        ],
         "publications": [],
         "ledger": null
       },
@@ -2826,7 +2830,7 @@
         {
           "repo": "ArcForges",
           "paths": [
-            "src/ArcForges.CommandLine/RunCommand.cs",
+            "src/ArcForges.CommandLine/SandboxRunCommands.cs",
             "src/ArcForges.CommandLine/Terminal/**",
             "src/ArcForges.Client/**",
             "tests/**/Terminal*",

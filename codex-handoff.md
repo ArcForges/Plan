@@ -1,8 +1,16 @@
 # Codex handoff — ArcForges V2
 
-## CLI-01 active
+## CLI-01 complete · CLI-02 ready
 
-CLI-01 is the sole active product task. Nineteen of 40 tasks are complete and 20 are planned. Deliver the offline Sandbox, Run, resource, grant, operation and status/doctor CLI through the typed local Node APIs. Preserve arguments at the explicit program boundary, the original mutation identity and owner epoch, truthful capability and exit views, and JSON output. Test the enrolled, signed-out and offline boundaries through real local Core and the qualified native profiles.
+Twenty of 40 tasks are complete and 20 are planned. Node PR109 merged at f8b500dd299d1738e2f9c9daef3f674c519aa15e with the same tree 6cc53cd03d47d4f33f74d16227a105fcee02fe40 as independently reviewed 3adb905a324eae76b29c9053273c00ee53b37d70. The typed offline Sandbox and Run CLI, resource policies, grants, operation inspection and local Node diagnostics are delivered. The superseded product execution parser was retired after the positive installed proof. Carried regressions use the test-only client with the real Node.
+
+Windows passed 15/15 and H-22 passed 20/20. Both installed packages passed 35/35 with zero skips. The [CLI-01 evidence](docs/afv2-cli-01-summary.md) records exact raw summaries, original failures, scoped repeats and official expiry as a separate ACC-01 and ACC-02 scenario.
+
+CLI-02 is the next eligible task. Its Run integration path is the current SandboxRunCommands.cs. CLI-02 owns actual terminal attachment and output UX. FILE-01, FILE-02 and CENTER-02 keep their previously assigned command slices.
+
+## CLI-01 activation record
+
+At activation, CLI-01 was the sole active product task with 19 completed and 20 planned. It covered offline Sandbox, Run, resource, grant, operation and status/doctor commands through the typed local APIs, preserving the exact program boundary and original mutation identity.
 
 Keep the FILE-01/02 and CENTER-02 command ownership in the delivery graph. Verify local replacement behavior before retiring the old public Task, Queue and Job routes.
 
