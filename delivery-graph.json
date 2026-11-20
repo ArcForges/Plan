@@ -3590,6 +3590,8 @@
             "src/ArcForges.CommandLine/V2NodeCommands.cs",
             "Directory.Packages.props",
             "eng/policy/dependency-admissions.json",
+            "src/ArcForges.Node.Core/ArcForges.Node.Core.csproj",
+            "tests/ArcForges.Repository.Tests/CenterSeamPolicyTests.cs",
             "src/ArcForges.CommandLine/packages.lock.json",
             "src/ArcForges.Host/packages.lock.json",
             "src/ArcForges.Node.Api/packages.lock.json",
