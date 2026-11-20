@@ -3979,7 +3979,21 @@
             "tests/worker/ingress-routes.test.ts",
             "center/internal/schema/**",
             "center/internal/store/**",
-            "center/internal/pgtest/**"
+            "center/internal/pgtest/**",
+            "center/internal/pages/center04_native_integration_test.go",
+            "center/internal/identityapi/stepup_integration_test.go",
+            "center/internal/identityapi/commits_integration_test.go",
+            "tests/ArchitectureTests/WorkerAdapter/WorkerLiteralScan.cs",
+            "eng/provenance/artifact-profiles/cloud-release-r142.json",
+            "eng/provenance/records/center-runtime-afv2-center-04-r1.json",
+            "eng/provenance/records/center-worker-afv2-center-04-r1.json",
+            "eng/provenance/files.json",
+            "eng/provenance/NOTICE.txt",
+            "eng/policy/dependency-policy.json",
+            "eng/policy/dependency-reviews/afv2-center-04-r1.json",
+            "eng/policy/dependency-reviews/afv2-center-04-r2.json",
+            ".gitleaks.toml",
+            "tests/worker/provenance.test.ts"
           ]
         },
         {
@@ -3994,6 +4008,18 @@
             "tests/ArcForges.Node.CloudLink.Tests/**",
             "tests/ArcForges.Node.Core.Tests/**",
             "src/ArcForges.Node.Api/ResourceServiceHandler.cs",
+            "src/ArcForges.Node.Api/RoutedDispatcher.cs",
+            "src/ArcForges.Node.Api/SandboxServiceHandler.cs",
+            "src/ArcForges.Node.Core/Events/SandboxManager.EventWatch.cs",
+            "src/ArcForges.Node.Core/Runs/OutputWatch.cs",
+            "src/ArcForges.Node.Core/Security/SandboxCenterCalls.cs",
+            "src/ArcForges.Node.Core/Security/SandboxRemoteGrants.cs",
+            "src/ArcForges.Node.Core/SandboxData/SandboxManager.DataCenter.cs",
+            "src/ArcForges.Node.Core/SandboxData/SandboxManager.DataTransfers.cs",
+            "src/ArcForges.Node.Core/SandboxData/SandboxManager.DataImport.cs",
+            "src/ArcForges.Node.Core/SandboxData/SandboxManager.DataExport.cs",
+            "src/ArcForges.Node.Core/SandboxData/SandboxManager.DataClose.cs",
+            "src/ArcForges.Node.Core/SandboxData/SandboxManager.DataReads.cs",
             "src/ArcForges.Node.Store/**",
             "tests/ArcForges.Node.Store.Tests/**"
           ]
