@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## CENTER-02 active
+
+CENTER-02 is the sole active product task. Twenty-two of 40 tasks are complete, one is blocked by AR-05 and 16 are planned. Adapt the published V2 enrollment and owner-authenticated local CenterControl methods on the existing Cloud and Node adapters. Verify the same exact isolated Go/PostgreSQL Center on designated native Windows and Linux Nodes, including reconnect and rotation, stale epoch and owner refusals, and continued local Sandbox work while disconnected.
+
+Consume the published API-01 Go module with its exact pinned Cloud dependency provenance. CENTER-03 owns typed remote effects and CENTER-04 owns remote streams/data. Public activation remains with PROD-01.
+
 ## FILE-02 blocked · CENTER-02 ready
 
 Twenty-two of 40 tasks are complete. FILE-02 is blocked by AR-05 and has a preserved candidate in [Node PR 112](https://github.com/ArcForges/ArcForges/pull/112). The [native evidence](docs/afv2-file-02-evidence.md) covers the Windows deletion and the H-22 refusal before changing data or admitting Delete. The required Linux positive deletion and recovery still need a qualified native operation that binds the effect to the verified directory identity.
