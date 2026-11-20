@@ -3636,6 +3636,7 @@
             "eng/policy/dependency-policy.json",
             "eng/policy/dependency-reviews/afv2-center-02-r1.json",
             ".gitleaks.toml",
+            "tests/tooling/test_dependency_admission.py",
             "eng/provenance/files.json",
             "eng/provenance/NOTICE.txt",
             "eng/provenance/records/afv2-api-01-design-specs-r2.json",
