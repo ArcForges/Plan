@@ -90,7 +90,7 @@ Outcome: All specified responsive accessible management/account pages use actual
 
 | # | Task | Title | Repositories | Depends on | Size | State |
 |---|---|---|---|---|---|---|
-| 30 | AFV2-WEB-01 | Build responsive Blazor shell identity and device overview | Web | AFV2-CENTER-02, AFV2-HOST-01 | M | active |
+| 30 | AFV2-WEB-01 | Build responsive Blazor shell identity and device overview | Web, ArcForges-Design | AFV2-CENTER-02, AFV2-HOST-01 | M | active |
 | 31 | AFV2-WEB-02 | Deliver Sandbox Run and resource management journeys | Web | AFV2-WEB-01, AFV2-CENTER-03, AFV2-CENTER-04, AFV2-FILE-02 | M | planned |
 | 32 | AFV2-WEB-03 | Deliver security account and subscription management pages | Web | AFV2-WEB-02, AFV2-ID-01, AFV2-HOST-02 | M | planned |
 | 33 | AFV2-WEB-04 | Qualify responsive accessibility offline and reconnect behavior | Web | AFV2-WEB-03 | M | planned |
