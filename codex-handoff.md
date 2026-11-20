@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## HOST-01 complete · HOST-02 ready
+
+Twenty-six of 40 tasks are complete, 13 are planned and FILE-02 remains blocked by AR-05. [Cloud PR 170](https://github.com/ArcForges/Cloud/pull/170) delivered the existing published entitlement snapshot, the three V2 service gates and the forward schema 15 audit projection. The [HOST-01 evidence](docs/afv2-host-01-evidence.md) records verified native profiles, real PostgreSQL migration and restore, and both installed F-HOST-01 pairs.
+
+The official fixtures observed actual hosted expiry and closure of the original V2 channel while local Runs, data and CLI continued. Self-hosted fixtures worked independently of official services. AR-10 retains separate external provider and public activation evidence. HOST-02 is the next eligible task for official commerce development after this record is merged.
+
 ## HOST-01 active
 
 The owner resumed from the CENTER-04 checkpoint. HOST-01 is the sole active product task. Twenty-five of 40 tasks are complete, 13 are planned, and FILE-02 is blocked by AR-05.
