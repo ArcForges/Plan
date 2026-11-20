@@ -4102,10 +4102,10 @@
         "ledger": null
       },
       "removals": [
-        "Obsolete Center host-file search/edit/workspace routes and transfer adapters after the Sandbox-only replacement is proven"
+        "Exclude obsolete Center host-file, editor, search and workspace routes and all V1 relay fallback from the qualified epoch-bound V2 cohort. Use the published typed Sandbox data adapters for that cohort."
       ],
       "migration": [
-        "Retain unknown legacy routed-file receipts in read-only reconciliation storage until safely settled."
+        "CENTER-01 promotion already fences fresh legacy routed-file writes. Retain original unresolved legacy routed-file receipt identities and delivery lineage in read-only reconciliation storage, and preserve immutable historical descriptors. AFV2-MIG-01 retires the finite V1-only bridge and adapters globally after its existing consumer cutover gates."
       ],
       "rollback": [
         "Close affected stream or mark transfer recovery-required; do not reset offsets/identity to conceal lost bytes."
