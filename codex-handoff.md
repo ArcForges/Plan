@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## HOST-02 complete · HOST-03 ready
+
+Twenty-seven of 40 tasks are complete, 12 are planned and FILE-02 remains blocked by AR-05. [Cloud PR 171](https://github.com/ArcForges/Cloud/pull/171) delivered the official hosted Paddle Billing v1 adapter, exact published typed account billing methods and versioned PostgreSQL commerce facts. The [HOST-02 evidence](docs/afv2-host-02-evidence.md) records the preserved migration and archive history, native delivery checks and the bounded external provider test peer.
+
+The native fixtures observed the original checkout identity after a lost Paddle checkout-create response and later catalogue change, signed event admission and deduplication, paid terms and adjustments, and verified account cleanup. Self-host remains independent of payment service. Provider sandbox, real merchant configuration and public activation remain AR-10/H-04 under PROD-01. HOST-03 is the next eligible infrastructure task.
+
 ## HOST-01 complete · HOST-02 ready
 
 Twenty-six of 40 tasks are complete, 13 are planned and FILE-02 remains blocked by AR-05. [Cloud PR 170](https://github.com/ArcForges/Cloud/pull/170) delivered the existing published entitlement snapshot, the three V2 service gates and the forward schema 15 audit projection. The [HOST-01 evidence](docs/afv2-host-01-evidence.md) records verified native profiles, real PostgreSQL migration and restore, and both installed F-HOST-01 pairs.
