@@ -6,7 +6,7 @@ Twenty-nine of 40 tasks are complete. FILE-02 is the sole active task. The remai
 
 [Design PR86](https://github.com/ArcForges/ArcForges-Design/pull/86) defines an optional Linux protected storage profile on a fresh ext4 root. Its separate trusted UID provides directory mutation exclusion while the existing owner-only endpoint and official MXC execution path remain in use. [Plan PR265](https://github.com/ArcForges/Plan/pull/265) adds one existing ClosedLoop fixture to the task scope.
 
-[Node PR112](https://github.com/ArcForges/ArcForges/pull/112) contains the integrated guarded deletion candidate, currently `e53c23b36ede29eea4bd07fb2c7dacb6e24ed91b`. Its draft status reflects pending protected Linux acceptance. Use the [FILE-02 evidence](docs/afv2-file-02-evidence.md) for the exact candidate, prior receipts and qualification scope.
+[Node PR112](https://github.com/ArcForges/ArcForges/pull/112) contains the integrated guarded deletion candidate, currently `ea81178988700f8df7fc0078b3b615762670dc0c`. Its draft status reflects pending protected Linux acceptance. Use the [FILE-02 evidence](docs/afv2-file-02-evidence.md) for the exact candidate, prior receipts and qualification scope.
 
 ## WEB-01 complete · FILE-02 is the remaining independent blocker
 
