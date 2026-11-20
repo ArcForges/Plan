@@ -3566,6 +3566,8 @@
             "center/go.mod",
             "center/go.sum",
             "center/dependencies.json",
+            "center/internal/quota/quota_integration_test.go",
+            "tests/worker/channel-upgrade.test.ts",
             "center/internal/schema/**",
             "center/internal/store/**",
             "center/internal/pgtest/**"
@@ -3585,12 +3587,57 @@
             "src/ArcForges.Node.Api/NodeApiServer.cs",
             "src/ArcForges.Node.Api/NodeHost.cs",
             "src/ArcForges.Node.Core/Sandboxes/SandboxManager.cs",
+            "src/ArcForges.CommandLine/V2NodeCommands.cs",
+            "Directory.Packages.props",
+            "eng/policy/dependency-admissions.json",
+            "src/ArcForges.CommandLine/packages.lock.json",
+            "src/ArcForges.Host/packages.lock.json",
+            "src/ArcForges.Node.Api/packages.lock.json",
+            "src/ArcForges.Node.Core/packages.lock.json",
+            "src/ArcForges.Node.Platform.Linux/packages.lock.json",
+            "src/ArcForges.Node.Platform.Windows/packages.lock.json",
+            "src/ArcForges.Node.Platform/packages.lock.json",
+            "src/ArcForges.RunSupervisor/packages.lock.json",
+            "tests/ArcForges.ClosedLoop.Tests/packages.lock.json",
+            "tests/ArcForges.Node.Platform.Linux.Tests/packages.lock.json",
+            "tests/ArcForges.Node.Platform.Windows.Tests/packages.lock.json",
+            "tests/ArcForges.OsSecretStoreTier/packages.lock.json",
+            "tests/ArcForges.Tools.Tests/packages.lock.json",
+            "tests/Shared/LegacyCliFixture/packages.lock.json",
+            "tools/ArcForges.Bench/packages.lock.json",
             "tests/ArcForges.Node.CloudLink.Tests/**",
             "tests/ArcForges.Client.Tests/**",
             "tests/ArcForges.Node.Core.Tests/**",
             "docs/cli/**",
             "src/ArcForges.Node.Store/**",
             "tests/ArcForges.Node.Store.Tests/**"
+          ]
+        },
+        {
+          "repo": "ArcForges-Design",
+          "paths": [
+            "docs/contracts/proto/arcforges/sandbox/v2/center_control.proto"
+          ]
+        },
+        {
+          "repo": "Contracts",
+          "paths": [
+            "go/arcforges/sandbox/v2/center_control.pb.go",
+            "go/arcforges/sandbox/v2/validation.go",
+            "public/proto/arcforges/sandbox/v2/center_control.proto",
+            "public/proto/constraints.json",
+            "public/proto/constraints/afv2-api-01-sandbox.json",
+            "src/public/dotnet/ArcForges.Contracts.Sandbox.V2/Generated/Proto/CenterControl.cs",
+            "src/public/dotnet/ArcForges.Contracts.Sandbox.V2/Generated/Shapes/ProtoValidation.g.cs",
+            "eng/afv2-contracts.json",
+            "eng/policy/contract-access.json",
+            "eng/policy/dependency-policy.json",
+            "eng/policy/dependency-reviews/afv2-center-02-r1.json",
+            "eng/provenance/files.json",
+            "eng/provenance/NOTICE.txt",
+            "eng/provenance/records/afv2-api-01-design-specs-r2.json",
+            "eng/provenance/records/contract-bindings-afv2-api-01-r2.json",
+            "eng/provenance/records/go-bindings-afv2-api-01-r3.json"
           ]
         }
       ],

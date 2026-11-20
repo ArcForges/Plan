@@ -70,7 +70,7 @@ Outcome: PostgreSQL/identity/enrollment/routing and bounded remote observation u
 |---|---|---|---|---|---|---|
 | 22 | AFV2-CENTER-01 | Migrate PostgreSQL safely to V2 management storage | Cloud | AFV2-BASE-01, AFV2-API-01 | M | complete |
 | 23 | AFV2-ID-01 | Complete bounded account recovery export and deletion lifecycle | Cloud | AFV2-CENTER-01 | M | complete |
-| 24 | AFV2-CENTER-02 | Adapt enrollment and outbound node channels to V2 capabilities | Cloud, ArcForges | AFV2-CENTER-01, AFV2-API-01, AFV2-SEC-01, AFV2-CLI-01 | M | active |
+| 24 | AFV2-CENTER-02 | Adapt enrollment and outbound node channels to V2 capabilities | Cloud, ArcForges, ArcForges-Design, Contracts | AFV2-CENTER-01, AFV2-API-01, AFV2-SEC-01, AFV2-CLI-01 | M | active |
 | 25 | AFV2-CENTER-03 | Route typed remote control through the same Sandbox Core | Cloud, ArcForges | AFV2-CENTER-02, AFV2-CORE-02, AFV2-SEC-01, AFV2-RES-03 | M | planned |
 | 26 | AFV2-CENTER-04 | Deliver bounded remote logs resources and Sandbox data transfer | Cloud, ArcForges | AFV2-CENTER-03, AFV2-FILE-01, AFV2-REC-01 | M | planned |
 
