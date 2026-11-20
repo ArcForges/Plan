@@ -4140,7 +4140,7 @@
       "title": "Enforce official hosting entitlements and self-host independence",
       "milestone": "P6",
       "order": 27,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Cloud",
@@ -4232,7 +4232,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] The owner resumed the authorized sequence after the CENTER-04 checkpoint. Begin the Cloud-only official hosting entitlement and self-host independence slice with native F-HOST-01 qualification.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
