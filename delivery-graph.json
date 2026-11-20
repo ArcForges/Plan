@@ -2825,7 +2825,7 @@
       "title": "Deliver interactive CLI attach detach and terminal ergonomics",
       "milestone": "P4",
       "order": 19,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -2910,11 +2910,15 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.CommandLine/Terminal/**; ArcForges:tests/**/Terminal*; ArcForges:docs/cli/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Begin the attached terminal, detach and log UX after both CLI-01 native packages and the offline CLI delivery were registered.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.CommandLine/Terminal/**; ArcForges:tests/**/Terminal*; ArcForges:docs/cli/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Begin the attached terminal, detach and log UX after both CLI-01 native packages and the offline CLI delivery were registered. [delivered] Node PR 110 merged at the same tree as the reviewed and verified 41a9e1b head. Both required GitHub native statuses succeeded. [complete] Windows 15/15 and H-22 20/20. The exact installed suites passed 42/42 with zero skips on each host and both same-head operator terminal samples passed. The original refusals, uncertainty and preview failures remain in docs/afv2-cli-02-summary.md.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/110"
+        ],
+        "merges": [
+          "ArcForges@402ddf9a83478eeddb29b049daa940b7151bab0d"
+        ],
         "publications": [],
         "ledger": null
       },
