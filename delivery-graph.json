@@ -3101,6 +3101,7 @@
             "tests/**/SandboxDelete*",
             "tests/ArcForges.ClosedLoop.Tests/TestNode.cs",
             "tests/ArcForges.ClosedLoop.Tests/CloudChannelTests.cs",
+            "tests/ArcForges.ClosedLoop.Tests/ResourceMxcLimitTests.cs",
             "src/ArcForges.Node.Api/NodeApiServer.cs",
             "src/ArcForges.Node.Api/NodeHost.cs",
             "src/ArcForges.Node.Core/NodeRuntime.cs",
