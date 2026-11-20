@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## CLI-02 active
+
+CLI-02 is the sole active product task. Twenty of 40 tasks are complete and 19 are planned. Connect the installed CLI's local caller terminal, byte streams and exit handling to the actual Run terminal protocol. Preserve original Start and Stop receipts, enforce the binding of each transient terminal acknowledgment, and verify Windows and Linux terminal restoration and exact output through the native package profiles.
+
+Use the current SandboxRunCommands integration path and the existing pinned V2 cohort. Record any required terminal contract clarification through the existing review process. Keep the FILE and CENTER command slices in their assigned tasks.
+
 ## CLI-01 complete · CLI-02 ready
 
 Twenty of 40 tasks are complete and 20 are planned. Node PR109 merged at f8b500dd299d1738e2f9c9daef3f674c519aa15e with the same tree 6cc53cd03d47d4f33f74d16227a105fcee02fe40 as independently reviewed 3adb905a324eae76b29c9053273c00ee53b37d70. The typed offline Sandbox and Run CLI, resource policies, grants, operation inspection and local Node diagnostics are delivered. The superseded product execution parser was retired after the positive installed proof. Carried regressions use the test-only client with the real Node.
