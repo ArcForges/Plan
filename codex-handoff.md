@@ -1,5 +1,13 @@
 # Codex handoff — ArcForges V2
 
+## WEB-01 complete · FILE-02 is the remaining independent blocker
+
+Twenty-nine of 40 tasks are complete. FILE-02 remains blocked under AR-05. Ten planned tasks depend on FILE-02 through the delivery graph, and no product task is active.
+
+[Web PR 61](https://github.com/ArcForges/Web/pull/61) merged an identical tree to the exact head that passed Windows 12/12 and H-22 17/17. The [WEB-01 evidence](docs/afv2-web-01-evidence.md) records the real browser and installed Node journey, H-22 native API receipt, measured Dashboard budget and archived failures. [Web CI run 44802148565](https://github.com/ArcForges/Web/actions/runs/44802148565) built the candidates and skipped Cloudflare deployment and its coupled prerelease.
+
+The next independent acceptance requires a supported Linux guard that binds quarantine and removal to the verified owned directory. The existing H-22 refusal remains in the [FILE-02 evidence](docs/afv2-file-02-evidence.md). Whole-Sandbox deletion and interrupted recovery must both pass on the designated Linux profile before WEB-02 and its dependents can start.
+
 ## HOST-03 complete · WEB-01 ready
 
 Twenty-eight of 40 tasks are complete, 11 are planned and FILE-02 remains blocked by AR-05. [Cloud PR 172](https://github.com/ArcForges/Cloud/pull/172) delivered the self-host install and recovery inputs, static-origin admission, guarded official preflight and bounded operational signals. The [HOST-03 evidence](docs/afv2-host-03-evidence.md) records clean Go/PostgreSQL and installed Node recovery, the preserved earlier bridge receipts and exact native delivery checks.
