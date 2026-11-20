@@ -4645,7 +4645,9 @@
             "package.json",
             ".github/workflows/ci.yml",
             "src/ArcForges.Web.Operations/packages.lock.json",
-            "tools/ArcForges.Web.Tooling/packages.lock.json"
+            "tools/ArcForges.Web.Tooling/packages.lock.json",
+            "tooling/licence-boundary.ts",
+            "README.md"
           ]
         }
       ],
@@ -4709,7 +4711,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] HOST-03 is complete and WEB-01 is the sole eligible active implementation. Use the existing Blazor shell, typed Center identity and device APIs, and isolated native browser acceptance. Keep hosted deployment dark pending PROD-01. Scope only the existing Web deployment job condition so a newly merged development candidate cannot trigger public deployment or its coupled public prerelease before PROD-01. Retain the exact candidate build, private artifact handoff, release metadata and already published historical bytes. Use the established Cloud closed job condition. Official NuGet publishes the exact 1.0.0-ci.481.1 PublicApi, Management.V2, Sandbox.V2 and Foundation cohort matching the qualified Center. The shared public package necessarily changes two existing transitive lock files. Scope only the exact Operations and Web.Tooling lockfiles for the corresponding transitive package input. Preserve both consumers' source, UI, projects and independent behavior.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] HOST-03 is complete and WEB-01 is the sole eligible active implementation. Use the existing Blazor shell, typed Center identity and device APIs, and isolated native browser acceptance. Keep hosted deployment dark pending PROD-01. Scope only the existing Web deployment job condition so a newly merged development candidate cannot trigger public deployment or its coupled public prerelease before PROD-01. Retain the exact candidate build, private artifact handoff, release metadata and already published historical bytes. Use the established Cloud closed job condition. Official NuGet publishes the exact 1.0.0-ci.481.1 PublicApi, Management.V2, Sandbox.V2 and Foundation cohort matching the qualified Center. The shared public package necessarily changes two existing transitive lock files. Scope only the exact Operations and Web.Tooling lockfiles for the corresponding transitive package input. Preserve both consumers' source, UI, projects and independent behavior. The existing language-boundary tool and its in-scope C# peer enumerate the admitted public NuGet names exactly. Scope only the exact TypeScript companion for Management.V2 and Sandbox.V2. Scope the README's current package version statement only, with archived proof records kept intact.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
