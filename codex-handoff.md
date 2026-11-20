@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## HOST-03 complete · WEB-01 ready
+
+Twenty-eight of 40 tasks are complete, 11 are planned and FILE-02 remains blocked by AR-05. [Cloud PR 172](https://github.com/ArcForges/Cloud/pull/172) delivered the self-host install and recovery inputs, static-origin admission, guarded official preflight and bounded operational signals. The [HOST-03 evidence](docs/afv2-host-03-evidence.md) records clean Go/PostgreSQL and installed Node recovery, the preserved earlier bridge receipts and exact native delivery checks.
+
+Windows observed the same native Run and private data across Center outage and restart. H-22 also restored real PostgreSQL into a fresh target, refused the old browser and Node authorities, and observed typed control after new approval. The static profile is infrastructure qualification. Finished Dashboard assembly remains DIST-01 via WEB-04 and MIG-01, and actual provider and production actions remain under H-03 and PROD-01. WEB-01 is the next eligible implementation task.
+
 ## HOST-02 complete · HOST-03 ready
 
 Twenty-seven of 40 tasks are complete, 12 are planned and FILE-02 remains blocked by AR-05. [Cloud PR 171](https://github.com/ArcForges/Cloud/pull/171) delivered the official hosted Paddle Billing v1 adapter, exact published typed account billing methods and versioned PostgreSQL commerce facts. The [HOST-02 evidence](docs/afv2-host-02-evidence.md) records the preserved migration and archive history, native delivery checks and the bounded external provider test peer.
