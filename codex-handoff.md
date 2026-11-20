@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## CENTER-03 complete · CENTER-04 ready
+
+Twenty-four of 40 tasks are complete, one is blocked by AR-05 and 15 are planned. [Node PR 114](https://github.com/ArcForges/ArcForges/pull/114) and [Cloud PR 168](https://github.com/ArcForges/Cloud/pull/168) merged verified source trees. The [CENTER-03 evidence](docs/afv2-center-03-evidence.md) records exact native reports, official installed cross-checks, and the scoped AR-08 result for authorized typed remote control and original-operation reconciliation.
+
+CENTER-04 is next. Extend the established typed channel to bounded output, events, current usage snapshots and one-file transfers. Follow the scoped owner-grant and original-transfer rules and verify both native hosts. FILE-02's required Linux deletion and recovery remain recorded under AR-05.
+
 ## CENTER-02 active
 
 CENTER-02 is the sole active product task. Twenty-two of 40 tasks are complete, one is blocked by AR-05 and 16 are planned. Adapt the published V2 enrollment and owner-authenticated local CenterControl methods on the existing Cloud and Node adapters. Verify the same exact isolated Go/PostgreSQL Center on designated native Windows and Linux Nodes, including reconnect and rotation, stale epoch and owner refusals, and continued local Sandbox work while disconnected.

@@ -3782,7 +3782,7 @@
       "title": "Route typed remote control through the same Sandbox Core",
       "milestone": "P5",
       "order": 25,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "Cloud",
@@ -3918,11 +3918,17 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; ArcForges:tests/**/RemoteManagement*. Explicit schema/store/real-PostgreSQL fixture scope carries node_owner_epoch binding through enrollment/channel replacement and durable routed receipt/stream reconciliation; retain the original operation identity instead of rebasing to a new Handshake. [active] CENTER-02 completed at Plan PR 220. Activate the next independent eligible product task for fixed typed remote control through the existing Sandbox Core, with exact owner scope and durable request identity.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Cloud:center/internal/management/**; ArcForges:tests/**/RemoteManagement*. Explicit schema/store/real-PostgreSQL fixture scope carries node_owner_epoch binding through enrollment/channel replacement and durable routed receipt/stream reconciliation; retain the original operation identity instead of rebasing to a new Handshake. [active] CENTER-02 completed at Plan PR 220. Activate the next independent eligible product task for fixed typed remote control through the existing Sandbox Core, with exact owner scope and durable request identity. [complete] F-REMOTE-01 and the isolated CENTER-03 AR-08 cohort passed on the independently reviewed and merged exact Node and Cloud trees. See docs/afv2-center-03-evidence.md.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/114",
+          "https://github.com/ArcForges/Cloud/pull/168"
+        ],
+        "merges": [
+          "ArcForges@34d8e1be3cab8a1ff182a93c3958bf7682f98c39",
+          "Cloud@f8434c8b1c8f4eec69d21bdcad6e9b8214373edb"
+        ],
         "publications": [],
         "ledger": null
       },
