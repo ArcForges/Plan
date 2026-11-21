@@ -8,6 +8,8 @@ F-WEB-01 and AR-09 retain the actual connected and manual assistive qualificatio
 
 Initial MIG-01 origins after fetch are Node `237e5cccbbdc8d01eff4579b29d2882214cbdad9`, Cloud `9b8796eac760982d9814f371b820b736ddd945c4` and Contracts `0cd178ac8bec8c32f06366dcb30fea6dd6566bf3`. Work from isolated trees and preserve the existing main checkouts.
 
+The retained consumer inventory is merged. The staged Node and Cloud candidates, preliminary checks and original diagnostics are recorded in [MIG-01 cutover evidence](docs/afv2-mig-01-evidence.md).
+
 ## WEB-03 development delivered · WEB-04 active
 
 Twenty-nine of 40 tasks are complete. FILE-02, WEB-02 and WEB-03 are delivered for development. WEB-04 is the sole active task. [Web PR63](https://github.com/ArcForges/Web/pull/63) merged as `9b8ae6a954e3a8166a1d756037bcdda64a4e851d` with the same tree as reviewed `bdc900d93e618fa41df11b9a0d44293c6c685691`. Windows 12/12 and H-22 16/16 passed, including 155/155 App tests on each host and 13 targeted typed mocks. The unchanged profile limits, two offline archive checks and both merged-main artifacts passed. See [WEB-03 evidence](docs/afv2-web-03-evidence.md).
