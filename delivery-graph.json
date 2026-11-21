@@ -4908,7 +4908,8 @@
           "paths": [
             "src/ArcForges.Web.Ui/**",
             "tests/**",
-            "src/ArcForges.Web.App/**"
+            "src/ArcForges.Web.App/**",
+            "eng/provenance/files.json"
           ]
         }
       ],
@@ -4920,7 +4921,7 @@
       "objective": "Deliver security account and subscription management pages. Remote UI cannot broaden paths/network/creation templates or decrease local reserve",
       "scope": [
         "Implement device security/grant visibility and revocation while clearly directing grant expansion to local CLI",
-        "Implement supported recovery/export/deletion flows with fresh confirmation and operation reconciliation",
+        "Use the existing same-origin Center recovery, export and deletion ceremonies and preserve their confirmation and original-operation semantics",
         "Render official subscription/checkout/renew/cancel states from actual API; self-host mode hides purchase requirement and explains operator quotas"
       ],
       "out_of_scope": [
@@ -4939,17 +4940,19 @@
       ],
       "deliverables": [
         "Implement device security/grant visibility and revocation while clearly directing grant expansion to local CLI",
-        "Implement supported recovery/export/deletion flows with fresh confirmation and operation reconciliation",
+        "Use the existing same-origin Center recovery, export and deletion ceremonies and preserve their confirmation and original-operation semantics",
         "Render official subscription/checkout/renew/cancel states from actual API; self-host mode hides purchase requirement and explains operator quotas"
       ],
       "acceptance": [
         "Remote UI cannot broaden paths/network/creation templates or decrease local reserve",
         "Account deletion/recovery updates server auth while local Runs/data remain untouched",
-        "No guessed price or unconfigured checkout link is presented as purchasable"
+        "No guessed price or unconfigured checkout link is presented as purchasable",
+        "Show only shipped cookie-bound account and grant controls, route protected ceremonies to the same-origin Center, and show refused and uncertain results without guessing success",
+        "For development, exercise production typed requests and rendered states with deterministic responses and wire failures, and retain integrated browser and real business effects for ACC-02"
       ],
       "verification": {
         "author": [
-          "Run the targeted checks named by acceptance and native_validation, preserving exact commands, environment, source/artifact identity and negative cases",
+          "Run deterministic component and typed transport tests for signed-out/recovery guidance, session and grant scope and revocation, stale and unknown observations, self-host isolation, official dark and denied state, and exact original operation reconciliation.",
           "Run the affected build/locked restore/format/AOT/contract checks from each touched repository; no unsupported suppressions"
         ],
         "reviewer_distinct": [
@@ -4962,10 +4965,12 @@
         ]
       },
       "fakes_allowed": [
-        "Typed rendering fixtures may show recovery/export/deletion/subscription pending/error/unconfigured states; completed business journeys run real identity/entitlement/commerce/PostgreSQL with only ID-01/HOST-02 external transport fixtures, never fake authorization or successful payments"
+        "Typed browser response fixtures and scripted wire failures exercise only WEB-03 development requests and rendering. Previous real ID-01/HOST-02 account, proof, commerce and PostgreSQL results keep their source scope. Integrated browser effects and business outcomes remain real final ACC-02 evidence."
       ],
       "future_validation": [],
-      "acceptance_register": [],
+      "acceptance_register": [
+        "AR-12"
+      ],
       "human_prerequisites": [],
       "risks": [
         {
@@ -4975,7 +4980,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope. [active] Begin the next eligible Dashboard task from Web main 6d090f2dab401eb393ebf18aea6f49043675c5eb. Use shipped Center authority and account and billing interfaces. Preserve the mock-first instruction and earlier independent identity and commerce evidence.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope. [active] Begin the next eligible Dashboard task from Web main 6d090f2dab401eb393ebf18aea6f49043675c5eb. Use shipped Center authority and account and billing interfaces. Preserve the mock-first instruction and earlier independent identity and commerce evidence. The owner authorizes mock-first browser development. Existing Center ceremonies keep their actual proof and data authority. Source provenance changes are limited to the first-party WEB-03 inventory.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4994,14 +4999,14 @@
       ],
       "native_validation": {
         "windows": [
-          "Manual accessible account/security flows with real Windows node continuity"
+          "Use the unchanged Web repository profile and deterministic component/transport tests for development. Integrated browser and native Node continuity remain final qualification."
         ],
         "linux": [
-          "Real Center identity/billing projection plus offline component/error state tests"
+          "Use the unchanged designated Web repository profile and independent review. Preserve the original real ID-01 and HOST-02 evidence; final integrated business and PostgreSQL effects remain with ACC-02."
         ]
       },
       "definition_of_done": [
-        "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
+        "Sufficient scoped typed mock tests, both unchanged host checks, and independent review permit development delivery. Complete requires the integrated browser and actual business effects under ACC-02 and AR-12.",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
         "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
         "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"

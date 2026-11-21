@@ -6,6 +6,8 @@ Twenty-nine of 40 tasks are complete, FILE-02 and WEB-02 are delivered for devel
 
 The staged Dashboard uses the shipped typed Center routes and directs the local owner to authoritative configuration and deletion controls. AR-12 and ACC-02 retain integrated effects for final qualification. WEB-04 retains its own browser obligations. AR-05 and F-FILE-01 remain open for FILE-02 protected Linux qualification. WEB-03 starts from the current Web main for security, account and subscription work.
 
+WEB-03 uses production identity and subscription routes, shipped same-origin account ceremonies, and deterministic development mocks. Final integrated browser and real business effects remain in ACC-02 and AR-12. Existing native ID-01 and HOST-02 results keep their exact source and provider-fixture scope.
+
 ## FILE-02 development delivered · WEB-02 active
 
 Twenty-nine of 40 tasks are complete. FILE-02 is delivered for development and WEB-02 is the sole active task. [Node PR112](https://github.com/ArcForges/ArcForges/pull/112) merged as `237e5cccbbdc8d01eff4579b29d2882214cbdad9` from reviewed `2f4c85d04702479ab43703ad068feda806b20a21`. The exact stock profiles passed Windows 15/15 and H-22 20/20. Both native packages passed 52/52 and both hosts passed the 12 focused deterministic cases, with zero skips in the installed and focused suites. See the [FILE-02 evidence](docs/afv2-file-02-evidence.md).
