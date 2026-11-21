@@ -143,7 +143,7 @@ The exact `7c158a3` Windows profile reported 15/15 passing checks. Its raw `2026
 
 ### Remaining protected Linux acceptance
 
-H-22 retains working native systemd and cgroup v2 for its normal account. The protected acceptance requires a separate host-owner-provisioned non-login identity with the normal native `user@UID` manager and fresh ext4 test roots. The installed optional tier is `ArcForges.ClosedLoop.Tests.SandboxDeleteLinuxCustodyTests`. Until it and the distinct denial observations pass, AR-05 and F-FILE-01 stay open and Node PR112 stays draft.
+H-22 retains working native systemd and cgroup v2 for its normal account. The protected acceptance requires a separate host-owner-provisioned non-login identity with the normal native `user@UID` manager and fresh ext4 test roots. The installed optional tier is `ArcForges.ClosedLoop.Tests.SandboxDeleteLinuxCustodyTests`. Until it and the distinct denial observations pass, AR-05 and F-FILE-01 stay open. Development delivery follows the scoped evidence below.
 
 For the protected installed tier, use independent disposable instances `file02-<runid>-<case>` with a fresh eligible `data` root for each case. The cases are `normal`, `after-lock`, `after-quarantine`, `during-removal`, `before-removal-proof` and `before-tombstone`. The selected unprovisioned case must have no instance directory. Run the exact installed Node and official MXC bundle under the dedicated UID with the normal control groups delegated by its user manager. Set a private `TMPDIR` on ext4 and use `umask 0077` for evidence. Set `ARCFORGES_MXC_DELETE_CUSTODY_RUN_ID` to the 32-character lowercase hex run ID and opt in with `ARCFORGES_LINUX_PROTECTED_STORAGE=1`. The existing package path and TestLoad inputs still apply.
 
@@ -154,3 +154,16 @@ dotnet test --project tests/ArcForges.ClosedLoop.Tests/ArcForges.ClosedLoop.Test
 ```
 
 Record the ordinary host account's denial on the applicable protected parent and the behavior when custody is revoked during an accepted deletion, along with the exact installed suite results. Separate these from the normal H-22 per-user refusal and the required repository host reports.
+
+## Deterministic development delivery
+
+[Design PR87](https://github.com/ArcForges/ArcForges-Design/pull/87), merged as `a4a93b3c207d14b5c356754e19901a56fad8b24a`, and [Plan PR271](https://github.com/ArcForges/Plan/pull/271), merged as `c81e500b402f565851a53b168c93f0761778d08c`, scope the owner's development qualification decision. The [Node PR112](https://github.com/ArcForges/ArcForges/pull/112) candidate `6d9c096bea0238154d81115cea3b3a03a1f69994`, tree `eac73ad960e5bea7e433f183698b298e759965e0`, uses a deterministic double for protected filesystem effects in tests. Production construction uses the existing guarded native implementation. The real Node admission, SQLite Store, durable journal, receipts, worker transitions and explicit successor run in the fixtures.
+
+- The Core suite passed 9/9 with zero skips. It covers Run and retained-export blockers after preview, a borrowed preview, ordered quarantine and bounded batches, guard absence and loss, sibling and external sentinels, interruption at five durable observations, exact successor and replay, and the distinction between unverified absence and a verified witness before tombstone.
+- The Store suite passed 3/3 with zero skips. It covers missing or faulted observation rollback, a wrong successor, exact removal evidence across reopen, and atomic tombstone and receipt settlement for the original and its successor lineage.
+
+The focused Windows raw files are in `.git/arcforges-verify/launches/file02-mock-author-20261121-121347/`. `core.log` SHA-256 is `3148fe509265a625c85fb7fade98b4ce3223beb816d425aea606870e971b2c4d`. `store.log` SHA-256 is `d69d8c006db383508f5d4dfb7e3e57e08212c9e60af93967dfdb6302a74b63ac`. These are workflow and durable-state observations. Protected Linux installed end-to-end remains unverified.
+
+At `6d9c096`, H-22 recorded 793 passing Core CI cases and one failure in the inherited `PrivateStageApprovalTerminalTests` scenario 4. The synthetic `APPROVED` record from the fixture could be seen by a delayed startup recovery task. On Linux the in-process fixture's real approved-file executor correctly refused with `enforcement_unavailable/file_guard_unavailable`. The raw `20261121-121429-6d9c096bea02-linux/linux-ci.log` has SHA-256 `e30c8ac52de6cf8c77ac2364b1dd1b78b37c9970e4f4bbc110589240ca925d53`.
+
+The current `c692c43f520b7497a206353252ac5d20e0071062` candidate, tree `1a35599b88881b51c0b80c2a91fb2ae56c6fe1fe`, limits the synthetic decision and its recovery observations to a single FULL transaction and rolls it back after the assertions. The fixture verified all five approval scenarios on Windows with zero skips. The raw `.git/arcforges-verify/launches/file02-approval-fixture-20261121-122320/native.log` has SHA-256 `be2579f861bd43da55a6a74bcf567044470a72e9732757cb823bd68e863d3f5c`.
