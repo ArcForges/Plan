@@ -5395,6 +5395,7 @@
             "src/ArcForges.Node.Store/**",
             "eng/v2-migration/**",
             "tests/**/Migration*",
+            "tests/ArcForges.ClosedLoop.Tests/RecoveryFinalMxcRunServiceTests.cs",
             "tests/ArcForges.Node.Store.Tests/StoreTestSupport.cs",
             "tests/ArcForges.Node.Store.Tests/StoreCreationTests.cs",
             "tests/ArcForges.Node.Store.Tests/SchemaExpandOnlyTests.cs",
