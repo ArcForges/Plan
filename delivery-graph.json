@@ -4901,7 +4901,7 @@
       "title": "Deliver security account and subscription management pages",
       "milestone": "P7",
       "order": 32,
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "Web",
@@ -4982,12 +4982,18 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope. [active] Begin the next eligible Dashboard task from Web main 6d090f2dab401eb393ebf18aea6f49043675c5eb. Use shipped Center authority and account and billing interfaces. Preserve the mock-first instruction and earlier independent identity and commerce evidence. The owner authorizes mock-first browser development. Existing Center ceremonies keep their actual proof and data authority. Source provenance changes are limited to the first-party WEB-03 inventory. The unchanged H-22 source gate at Web 0f25ad7 requires the exact App project input hash and an append-only dependency review for its browser-only diagnostic link configuration. Scope only the active dependency policy input/review selectors, the new AFV2-WEB-03 receipt and its existing inventory. Preserve the package cohort, lockfiles, published package bytes, old records, validator and profile budgets.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope. [active] Begin the next eligible Dashboard task from Web main 6d090f2dab401eb393ebf18aea6f49043675c5eb. Use shipped Center authority and account and billing interfaces. Preserve the mock-first instruction and earlier independent identity and commerce evidence. The owner authorizes mock-first browser development. Existing Center ceremonies keep their actual proof and data authority. Source provenance changes are limited to the first-party WEB-03 inventory. The unchanged H-22 source gate at Web 0f25ad7 requires the exact App project input hash and an append-only dependency review for its browser-only diagnostic link configuration. Scope only the active dependency policy input/review selectors, the new AFV2-WEB-03 receipt and its existing inventory. Preserve the package cohort, lockfiles, published package bytes, old records, validator and profile budgets. [delivered] Independently reviewed WEB-03 development delivery. Exact Windows 12/12, H-22 16/16, App 155/155 each with zero skips and 13 focused mocks. Unchanged package budgets and offline archive 2/2 passed. Final integrated browser/business effects stay open under ACC-02 and AR-12. Evidence: docs/afv2-web-03-evidence.md.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/Web/pull/63"
+        ],
+        "merges": [
+          "Web@9b8ae6a954e3a8166a1d756037bcdda64a4e851d"
+        ],
+        "publications": [
+          "https://github.com/ArcForges/Web/actions/runs/44876273133: candidate 14696002688 and profile 14696032672 uploaded. Cloudflare deployment and coupled prerelease skipped."
+        ],
         "ledger": null
       },
       "removals": [
@@ -5019,7 +5025,7 @@
       "title": "Qualify responsive accessibility offline and reconnect behavior",
       "milestone": "P7",
       "order": 33,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Web",
@@ -5101,7 +5107,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Web:docs/ux-acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Web:docs/ux-acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Start the next eligible Dashboard task from Web main 9b8ae6a954e3a8166a1d756037bcdda64a4e851d. Check responsive accessibility and reconnect with sufficient deterministic mocks in the current development tranche. Keep actual integrated qualification evidence separate.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
