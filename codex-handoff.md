@@ -6,6 +6,8 @@ Twenty-nine of 40 tasks are complete. FILE-02 is delivered for development and W
 
 AR-05 and F-FILE-01 remain open for the protected Linux installed native profile and final ACC-01. WEB-02 starts from Web main `2e3c6df8c481d59867fbc3a56c0180aa009ac467` and uses the shipped typed Center routes. The current Center allowlist leaves Sandbox deletion and its preview owner-local. Preserve that authority when checking the WEB-02 deletion experience.
 
+The owner authorized mock-first WEB-02 development and deferred browser end-to-end journeys. Exercise typed request construction and deterministic failure and recovery through the Dashboard, then use both unchanged repository checks and independent review. Record integrated browser and real Node qualification separately under ACC-02 and AR-12. Config reading redacts private policy, so the Dashboard directs the owner to the local CLI for complete changes.
+
 ## Earlier staging decision · FILE-02 development qualification
 
 The owner authorized deterministic protected Linux effect coverage for FILE-02 development delivery and downstream development. The tests exercise actual admission, durable Store and explicit recovery. AR-05 and F-FILE-01 remain open for the protected installed native qualification and final ACC-01 acceptance. Continue to use the pinned official MXC and existing production guards. [Design PR87](https://github.com/ArcForges/ArcForges-Design/pull/87)

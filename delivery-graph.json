@@ -4780,7 +4780,8 @@
           "paths": [
             "src/ArcForges.Web.Ui/**",
             "tests/**",
-            "src/ArcForges.Web.App/**"
+            "src/ArcForges.Web.App/**",
+            "eng/provenance/files.json"
           ]
         }
       ],
@@ -4790,12 +4791,13 @@
         "AFV2-CENTER-04",
         "AFV2-FILE-02"
       ],
-      "objective": "Deliver Sandbox Run and resource management journeys. Every main control is wired to its typed API and actual node outcome; no mock-only finished page",
+      "objective": "Deliver Sandbox, Run, resource and regular-file transfer pages through the shipped typed Center routes. Separate browser development checks from live integrated qualification.",
       "scope": [
-        "Implement Sandboxes list/detail/template-bounded Create/configure/delete-preview and Runs list/detail/start/stop/log output",
-        "Implement live resource plots/tables with units, pressure, requested/applied/readback limits and stale sample labels",
-        "Bind all mutations to original command IDs/revisions, show accepted/unknown/reconciled states and destructive confirmation",
-        "Poll InspectTransfer for asynchronous preparation/final digest and explicit closure; show COMPLETE separately from released snapshot and keep delete unavailable while an export lease remains"
+        "Implement grant-scoped Sandbox list/detail, cursor-paged Run list/detail, template-bounded Create, scoped Run Start/Stop and bounded output",
+        "Present owner-local Configure and deletion preview guidance where the browser lacks a complete policy or shipped route",
+        "Implement scoped resource observations with units, pressure, requested/applied/readback limits and stale labels, and allow only fully specified safe updates within the local grant",
+        "Bind mutations to their original command, owner epoch and revision, and expose read-only reconciliation of uncertain outcomes",
+        "Inspect asynchronous transfer preparation and final digest and show COMPLETE separately from release or expiry"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -4813,21 +4815,22 @@
         "R-FILE-003"
       ],
       "deliverables": [
-        "Implement Sandboxes list/detail/template-bounded Create/configure/delete-preview and Runs list/detail/start/stop/log output",
-        "Implement live resource plots/tables with units, pressure, requested/applied/readback limits and stale sample labels",
-        "Bind all mutations to original command IDs/revisions, show accepted/unknown/reconciled states and destructive confirmation",
-        "Poll InspectTransfer for asynchronous preparation/final digest and explicit closure; show COMPLETE separately from released snapshot and keep delete unavailable while an export lease remains"
+        "Implement grant-scoped Sandbox list/detail, cursor-paged Run list/detail, template-bounded Create, scoped Run Start/Stop and bounded output",
+        "Present owner-local Configure and deletion preview guidance where the browser lacks a complete policy or shipped route",
+        "Implement scoped resource observations with units, pressure, requested/applied/readback limits and stale labels, and allow only fully specified safe updates within the local grant",
+        "Bind mutations to their original command, owner epoch and revision, and expose read-only reconciliation of uncertain outcomes",
+        "Inspect asynchronous transfer preparation and final digest and show COMPLETE separately from release or expiry"
       ],
       "acceptance": [
-        "Every main control is wired to its typed API and actual node outcome; no mock-only finished page",
-        "Deletion shows owned data/excluded host grants and revalidates preview; unsupported policies explain exact reason",
+        "Available browser actions use the shipped typed production routes and render the returned outcome, including unsupported policy, conflict, timeout, and stale observations",
+        "Deletion preview and execution use the owner-local CLI. The browser offers the exact scoped preview command and keeps native plan facts and safety decisions with the Node",
         "Logs are escaped untrusted text, bounded and gap-aware; no remote terminal input is exposed",
-        "Sandbox rename uses Configure display_name/revision; Run detail shows safe_command_display, immutable sandbox_revision and exact profile_version; Device rename is absent from delivered controls",
-        "Transfer UI distinguishes preparing, materialized COMPLETE and released/expired, obtains progress through InspectTransfer and never retries BeginExport or makes Sandbox deletion available merely because all bytes were received"
+        "Sandbox and Run details preserve authoritative identifier and revision observations. Incomplete read projections cannot be submitted as a full policy or rename; explain local editing",
+        "Transfer UI distinguishes preparing, materialized COMPLETE and released/expired, uses InspectTransfer and original-operation reconciliation, and never treats byte receipt as released storage"
       ],
       "verification": {
         "author": [
-          "Run the targeted checks named by acceptance and native_validation, preserving exact commands, environment, source/artifact identity and negative cases",
+          "Run deterministic component and browser transport tests over typed responses and production request construction, preserving exact inputs, failure results and test counts. Integrated native browser journeys remain deferred for final acceptance.",
           "Run the affected build/locked restore/format/AOT/contract checks from each touched repository; no unsupported suppressions"
         ],
         "reviewer_distinct": [
@@ -4840,10 +4843,12 @@
         ]
       },
       "fakes_allowed": [
-        "Typed component response fixtures may render unsupported policy, conflicts, uncertain mutation, log gaps and resource samples; they never prove Core authorization, mutation effects, filesystem/resource safety or completed end-to-end pages"
+        "Typed component/transport mocks for this development tranche cover outbound request metadata and scope, unsupported policy, stale and reordered responses, conflicts, uncertain mutation and reconciliation, log gaps, transfer receipts and resource samples. They never establish a real browser-to-Core effect, native safety, provider behavior or completed integrated qualification."
       ],
       "future_validation": [],
-      "acceptance_register": [],
+      "acceptance_register": [
+        "AR-12"
+      ],
       "human_prerequisites": [],
       "risks": [
         {
@@ -4853,7 +4858,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope. [active] Start the next eligible Dashboard task after FILE-02 development delivery. Use the shipped typed Center routes and preserve the owner-local control boundary.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope. [active] Start the next eligible Dashboard task after FILE-02 development delivery. Use the shipped typed Center routes and preserve the owner-local control boundary. Owner authorizes mock-first development and defers live integrated browser journeys. The verification inventory is limited to first-party WEB-02 files.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -4872,14 +4877,14 @@
       ],
       "native_validation": {
         "windows": [
-          "Manual Windows-hosted browser journeys against real Windows Node as explicitly approved local tests"
+          "Run the unchanged Windows repository profile for development delivery. Defer the manual browser and real Windows Node integrated journey to final ACC-02 qualification."
         ],
         "linux": [
-          "Manual browser/real Linux Node remote journeys; automated offline UI state/component tests only"
+          "Run the unchanged designated H-22 repository profile for development delivery. Defer the manual browser and real Linux Node integrated journey to final ACC-02 qualification."
         ]
       },
       "definition_of_done": [
-        "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
+        "Development delivery requires sufficient deterministic typed tests, both original repository host checks and independent review. Complete requires integrated browser and real Node evidence under final ACC-02 and AR-12.",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
         "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
         "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"
