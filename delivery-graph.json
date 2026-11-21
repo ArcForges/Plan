@@ -5584,6 +5584,7 @@
             "deploy/**",
             "docs/self-host/**",
             "tooling/**",
+            "eng/provenance/files.json",
             "worker/**",
             "Dockerfile",
             ".dockerignore",
