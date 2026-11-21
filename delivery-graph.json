@@ -5561,7 +5561,7 @@
       "title": "Package coherent signed native and self-host distributions",
       "milestone": "P8",
       "order": 36,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -5676,7 +5676,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/install/**; Cloud:docs/self-host/**; Web:docs/self-host/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/install/**; Cloud:docs/self-host/**; Web:docs/self-host/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Start the next owner-authorized packaging task after the separately recorded MIG-02 completion. Build coherent native and real self-host candidates in isolated fixtures. Keep F-DIST-01 and AR-11 pending until their actual signed-artifact and installation checks pass. Public activation remains outside this task.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
