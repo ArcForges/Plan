@@ -5394,7 +5394,12 @@
           "paths": [
             "src/ArcForges.Node.Store/**",
             "eng/v2-migration/**",
-            "tests/**/Migration*"
+            "tests/**/Migration*",
+            "tests/ArcForges.Node.Store.Tests/StoreTestSupport.cs",
+            "tests/ArcForges.Node.Store.Tests/StoreCreationTests.cs",
+            "tests/ArcForges.Node.Store.Tests/SchemaExpandOnlyTests.cs",
+            "tests/ArcForges.Node.Store.Tests/DurableBackupClosureTests.cs",
+            "tools/ArcForges.Bench/StoreGrowthBenchmark.cs"
           ]
         },
         {
@@ -5408,7 +5413,15 @@
             "center/internal/dbtest/**",
             "center/internal/pgtest/**",
             "center/internal/hub/hub.go",
-            "center/internal/server/server.go"
+            "center/internal/server/server.go",
+            "center/internal/provision/provision.go",
+            "eng/provenance/artifact-profiles/cloud-release-r151.json",
+            "eng/provenance/records/center-runtime-afv2-mig-02-r1.json",
+            "eng/provenance/records/center-worker-afv2-mig-02-r1.json",
+            "eng/provenance/files.json",
+            "eng/provenance/NOTICE.txt",
+            "eng/policy/dependency-reviews/afv2-mig-02-r1.json",
+            "eng/policy/dependency-policy.json"
           ]
         },
         {
