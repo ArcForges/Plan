@@ -5406,7 +5406,9 @@
             "center/cmd/arcforges-center/**",
             "center/internal/bridgeproof/**",
             "center/internal/dbtest/**",
-            "center/internal/pgtest/**"
+            "center/internal/pgtest/**",
+            "center/internal/hub/hub.go",
+            "center/internal/server/server.go"
           ]
         },
         {
