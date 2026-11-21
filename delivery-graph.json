@@ -5033,7 +5033,8 @@
             "src/ArcForges.Web.App/**",
             "src/ArcForges.Web.Ui/**",
             "tests/**",
-            "docs/ux-acceptance/**"
+            "docs/ux-acceptance/**",
+            "eng/provenance/files.json"
           ]
         }
       ],
@@ -5044,7 +5045,7 @@
       "scope": [
         "Complete keyboard/focus/labels/contrast/reduced-motion and narrow/wide viewport states across all seven page areas",
         "Exercise offline/reconnect/token expiry/unknown command/slow stream scenarios and fix actual UX defects",
-        "Record manual screenshots/accessibility observations and exact API fixtures; no new browser/live-service CI policy"
+        "Record the typed fixture and optional fully intercepted local browser viewport and keyboard observations. Preserve real assistive and connected journey qualification for F-WEB-01 and AR-09, and add no browser CI policy"
       ],
       "out_of_scope": [
         "Product MCP/AI-specific routing, cache platform, GUI/mobile/desktop clients and speculative extension interfaces",
@@ -5063,7 +5064,7 @@
       "deliverables": [
         "Complete keyboard/focus/labels/contrast/reduced-motion and narrow/wide viewport states across all seven page areas",
         "Exercise offline/reconnect/token expiry/unknown command/slow stream scenarios and fix actual UX defects",
-        "Record manual screenshots/accessibility observations and exact API fixtures; no new browser/live-service CI policy"
+        "Record the typed fixture and optional fully intercepted local browser viewport and keyboard observations. Preserve real assistive and connected journey qualification for F-WEB-01 and AR-09, and add no browser CI policy"
       ],
       "acceptance": [
         "No destructive action depends on color alone or loses focus/confirmation context",
@@ -5072,7 +5073,7 @@
       ],
       "verification": {
         "author": [
-          "Run the targeted checks named by acceptance and native_validation, preserving exact commands, environment, source/artifact identity and negative cases",
+          "Run the deterministic component/transport cases and any compiled frontend rendering through an entirely intercepted local fixture. Record exact source, artifact, browser and fixture inputs, and keep actual assisted and connected outcomes separately unverified.",
           "Run the affected build/locked restore/format/AOT/contract checks from each touched repository; no unsupported suppressions"
         ],
         "reviewer_distinct": [
@@ -5085,7 +5086,7 @@
         ]
       },
       "fakes_allowed": [
-        "Typed view-model/transport-response fixtures may produce deterministic loading/offline/error/slow/stale states for component and visual checks; final responsive/reconnect/unknown-operation journeys use actual Blazor/Go/PostgreSQL/Node code and real native containment"
+        "Use typed component and transport fixtures for WEB-04 development. Optional local browser viewport/keyboard checks use the compiled App with all requests intercepted and synthetic, no server listener or external endpoint and no real Center/PostgreSQL/Node. These fixtures do not establish connected, native or assistive outcomes."
       ],
       "future_validation": [
         "F-WEB-01"
@@ -5102,12 +5103,12 @@
         },
         {
           "risk": "F-WEB-01 is not yet proven for the actual admitted cohort",
-          "mitigation": "Execute F-WEB-01 in its designated venue and attach raw evidence; block capability-dependent delivery or final completion if it fails. Never reuse historical V1 evidence as V2 proof.",
+          "mitigation": "Require actual designated-browser and connected evidence for completion and ACC-02 under F-WEB-01 and AR-09. Development delivery uses the scoped mock evidence and unchanged repository checks.",
           "owner": "AFV2-WEB-04"
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Web:docs/ux-acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Start the next eligible Dashboard task from Web main 9b8ae6a954e3a8166a1d756037bcdda64a4e851d. Check responsive accessibility and reconnect with sufficient deterministic mocks in the current development tranche. Keep actual integrated qualification evidence separate.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Web:docs/ux-acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Start the next eligible Dashboard task from Web main 9b8ae6a954e3a8166a1d756037bcdda64a4e851d. Check responsive accessibility and reconnect with sufficient deterministic mocks in the current development tranche. Keep actual integrated qualification evidence separate. Owner requests mock-first WEB-04 development. Real assisted/connected qualification remains open under F-WEB-01 and AR-09. Scope the first-party provenance inventory only for the actual WEB-04 sources and tests.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
@@ -5126,14 +5127,14 @@
       ],
       "native_validation": {
         "windows": [
-          "Explicit local manual browser/assistive checks; no browser CI added"
+          "Use the unchanged native Web repository profile. Local compiled UI may exercise fully intercepted mocks with no listening service or network endpoint. Real browser/assistive and connected outcomes stay open under F-WEB-01/AR-09."
         ],
         "linux": [
-          "Component/static tests and approved manual responsive browser checks"
+          "Use the unchanged native H-22 Web repository profile and existing component/static checks. Final native connected browser effects remain with F-WEB-01/AR-09 and ACC-02."
         ]
       },
       "definition_of_done": [
-        "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
+        "The development state requires sufficient deterministic mocks, both unchanged repository checks and independent review. Complete requires actual responsive, assistive and connected evidence under F-WEB-01 and AR-09. Fixture evidence does not close the final acceptance.",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
         "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py",
         "Every external fixture is named and confined to its allowed transport/input/rendering boundary; actual crypto/business/database/native evidence and remaining provider/live qualification are recorded separately"
