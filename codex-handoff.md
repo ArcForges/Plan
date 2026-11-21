@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## WEB-02 development delivered · WEB-03 active
+
+Twenty-nine of 40 tasks are complete, FILE-02 and WEB-02 are delivered for development, and WEB-03 is the sole active task. [Web PR62](https://github.com/ArcForges/Web/pull/62) merged as `6d090f2dab401eb393ebf18aea6f49043675c5eb` with the same tree as reviewed `0500aa6524dd5d5abf4fbbcd6a9fea03ae1d8890`. Windows 12/12 and H-22 16/16 passed, with 142/142 App tests and 15 targeted mock cases. The adjusted Dashboard passed the unchanged package budget and two offline archive cases. The merged-main candidate and profile artifacts are retained. See the [WEB-02 evidence](docs/afv2-web-02-evidence.md).
+
+The staged Dashboard uses the shipped typed Center routes and directs the local owner to authoritative configuration and deletion controls. AR-12 and ACC-02 retain integrated effects for final qualification. WEB-04 retains its own browser obligations. AR-05 and F-FILE-01 remain open for FILE-02 protected Linux qualification. WEB-03 starts from the current Web main for security, account and subscription work.
+
 ## FILE-02 development delivered · WEB-02 active
 
 Twenty-nine of 40 tasks are complete. FILE-02 is delivered for development and WEB-02 is the sole active task. [Node PR112](https://github.com/ArcForges/ArcForges/pull/112) merged as `237e5cccbbdc8d01eff4579b29d2882214cbdad9` from reviewed `2f4c85d04702479ab43703ad068feda806b20a21`. The exact stock profiles passed Windows 15/15 and H-22 20/20. Both native packages passed 52/52 and both hosts passed the 12 focused deterministic cases, with zero skips in the installed and focused suites. See the [FILE-02 evidence](docs/afv2-file-02-evidence.md).

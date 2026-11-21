@@ -4773,7 +4773,7 @@
       "title": "Deliver Sandbox Run and resource management journeys",
       "milestone": "P7",
       "order": 31,
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "Web",
@@ -4858,12 +4858,18 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope. [active] Start the next eligible Dashboard task after FILE-02 development delivery. Use the shipped typed Center routes and preserve the owner-local control boundary. Owner authorizes mock-first development and defers live integrated browser journeys. The verification inventory is limited to first-party WEB-02 files.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope. [active] Start the next eligible Dashboard task after FILE-02 development delivery. Use the shipped typed Center routes and preserve the owner-local control boundary. Owner authorizes mock-first development and defers live integrated browser journeys. The verification inventory is limited to first-party WEB-02 files. [delivered] Independently reviewed typed Dashboard development delivery. Exact Windows 12/12, H-22 16/16, App 142/142 with zero skips on each, including 15 targeted typed mocks; offline archive 2/2 and original budget passed. Integrated results remain open under ACC-02 and AR-12. Evidence: docs/afv2-web-02-evidence.md.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/Web/pull/62"
+        ],
+        "merges": [
+          "Web@6d090f2dab401eb393ebf18aea6f49043675c5eb"
+        ],
+        "publications": [
+          "https://github.com/ArcForges/Web/actions/runs/44874344286: candidate 14695600805 and profile 14695003782 uploaded; public deployment and coupled prerelease skipped"
+        ],
         "ledger": null
       },
       "removals": [
@@ -4895,7 +4901,7 @@
       "title": "Deliver security account and subscription management pages",
       "milestone": "P7",
       "order": 32,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "Web",
@@ -4969,7 +4975,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Pages/** alone omits App-level typed API clients, state/view models, auth session handling and Program.cs wiring; the existing App project is the bounded module scope. [active] Begin the next eligible Dashboard task from Web main 6d090f2dab401eb393ebf18aea6f49043675c5eb. Use shipped Center authority and account and billing interfaces. Preserve the mock-first instruction and earlier independent identity and commerce evidence.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
