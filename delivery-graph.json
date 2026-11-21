@@ -5583,6 +5583,7 @@
           "paths": [
             "deploy/**",
             "docs/self-host/**",
+            "docs/operations/self-host-install.md",
             "tooling/**",
             "eng/provenance/files.json",
             "eng/policy/dependency-policy.json",
