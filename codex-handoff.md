@@ -1,5 +1,13 @@
 # Codex handoff — ArcForges V2
 
+## MIG-01 complete · MIG-02 next
+
+Thirty of 40 tasks are complete. FILE-02, WEB-02, WEB-03 and WEB-04 are delivered for development. The next eligible task is MIG-02. [Node PR119](https://github.com/ArcForges/ArcForges/pull/119) merged at `ca7f1eb217716816282b240093967dbfaaa5b7f3`, with the same tree `2fce1399f04c2b38accad5a0fd7894bb9e44ba46` as the reviewed candidate `92a33895aaf61b45d3f225247eb96d7a01b75947`. Windows deku passed 15/15, H-22 passed 20/20, and both ran the 52 installed official MXC cases with zero skips.
+
+Node now serves the V2 execution surface and the required shared control APIs. Qualified original native drain receipts and the isolated data tests cover predecessor refusal, preserved SQLite and WAL bytes, and authenticated restoration of legacy custody. The old Task/Attempt executors and the old C# Center serving path are removed from current sources. The original evidence, immutable migrations and independent package consumers are retained. See the [MIG-01 completion evidence](docs/afv2-mig-01-evidence.md#node-final-source-retirement).
+
+MIG-02 starts from the qualified Node and Go-only Cloud main branches. Append SQLite and PostgreSQL contraction only after isolated drain, backup and unresolved-effect checks. Preserve original IDs and applied migration bytes. Published contract cohorts and independent products remain protected. Real production data admission and public activation stay under their existing separate authority.
+
 ## WEB-04 development delivered · MIG-01 active
 
 Twenty-nine of 40 tasks are complete. FILE-02, WEB-02, WEB-03 and WEB-04 are delivered for development. MIG-01 is the sole active task, with six tasks planned after it. [Web PR64](https://github.com/ArcForges/Web/pull/64) merged as `d517bc45fc50e3143a25c7987726f37a24a4999b` from reviewed `ff932b6b082584deb4897837ea462566b1c05209`. Windows passed 12/12 and H-22 passed 16/16, with 165/165 App tests on each host. The local visual mock passed 4/4 and the exact H-22 archive checks passed 2/2. See [WEB-04 evidence](docs/afv2-web-04-evidence.md).
