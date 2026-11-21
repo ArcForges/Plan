@@ -5436,7 +5436,9 @@
             "eng/provenance/files.json",
             "eng/provenance/NOTICE.txt",
             "eng/policy/dependency-reviews/afv2-mig-02-r1.json",
-            "eng/policy/dependency-policy.json"
+            "eng/policy/dependency-policy.json",
+            ".gitleaks.toml",
+            "tests/worker/provenance.test.ts"
           ]
         },
         {
