@@ -5238,7 +5238,8 @@
             "global.json",
             "NOTICE",
             "README.md",
-            ".github/workflows/ci.yml"
+            ".github/workflows/ci.yml",
+            ".gitleaks.toml"
           ]
         },
         {
