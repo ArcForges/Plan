@@ -5238,9 +5238,14 @@
             "Directory.Build.targets",
             "global.json",
             "NOTICE",
+            "AGENTS.md",
             "README.md",
+            "docs/center.md",
             "docs/d1-physical-schema.md",
             "docs/engineering-controls.md",
+            "docs/harness-proofs.md",
+            "docs/shared-families.md",
+            "docs/storage-plans.md",
             ".github/workflows/ci.yml",
             ".gitleaks.toml"
           ]
