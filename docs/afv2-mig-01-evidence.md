@@ -1,6 +1,6 @@
 # AFV2-MIG-01 cutover evidence
 
-The migration remains active. The candidates below cover preparation for retirement. The current record leaves final cutover, native ownership drain and removal of the legacy runtime open.
+The completion record is in [Node final source retirement](#node-final-source-retirement). The earlier sections preserve the original consumer inventory, predecessor qualification, drain results and candidate diagnostics.
 
 ## Shared consumers
 
@@ -286,3 +286,49 @@ H-22 finished the complete `8bb5956` profile with 20/20 steps in 1,571 seconds a
 Windows deku finished the complete `8bb5956` profile with 15/15 steps in 1,875 seconds and reported `arcforges/windows=success` on the same GitHub commit.
 
 [Node PR118](https://github.com/ArcForges/ArcForges/pull/118) merged at `076e9e67730f948d50b2b17b57dd904c57ec6a1d` with reviewed and qualified tree `8ffd74ad8986600ed7e869812d1b38e1aaf3af46`. The nonauthor source review and exact host results were recorded on the PR. The existing original recovery and drain callbacks continue to serve unresolved Task, FILE and native process ownership. AFV2-MIG-01 remains active for the verified drain, coherent owned-path backup/restore evidence and withdrawal of those remaining legacy runtime paths. The successor packages were installed only in the isolated verification fixtures.
+
+## Node final source retirement
+
+[Node PR119](https://github.com/ArcForges/ArcForges/pull/119) starts from the qualified PR118 merge. Its candidate `65dae79d53b7170fad4fc9c09e9d5aec5fdc1ece` has tree `24b0cf17394e7c53d301386e98272992df8353e0`. The independent review of this head covered native Run ownership and reconciliation, the shared control routes, the actual command-queue watchdog probe and the pre-write database inspector. It confirmed that the literal database path is preserved, the main database and WAL are inspected together when needed, and the private working copy is cleaned before an admitted writer opens the original store.
+
+| Area | Withdrawn | Retained |
+| --- | --- | --- |
+| Node execution | Task and Attempt scheduling, launch, recovery, adoption, retry, task-secret preparation, FILE workers, and their hidden executable commands | Official MXC `1.0.1`, V2 Sandbox and Run custody and recovery, Node health/watchdog and the V2 Run supervisor |
+| Windows and Linux | Old native launch, handle/guard and worker helpers, plus `arcforges-guard.service` and `arcforges.slice` | Windows Job and process identity, Linux cgroups, systemd and PTYs, `arcforges-node.service`, per-user Node lifecycle and V2 native resource sampling |
+| CLI, local and routed interfaces | Old Task, Queue, File, Workspace, Fleet and Policy routes and their commands, plus the old CloudLink business dispatcher and forwarding | Typed V2 Sandbox, Run, Data, Resource and Center control, shared Node/approval/identity/account APIs and the existing enrollment channel |
+| Data and supply chain | Live old producer and reconciliation wiring, retired executables, dead package references | Published migrations `0001` through `0019`, original backup and migration evidence, shared contracts and their consumer versions |
+
+The predecessor package and native platform receipts above remain the evidence for stopping test-owned original Windows Job and Linux systemd scopes. The final Node host refuses a schema-15 root before opening a writer or listening. An expanded store with legacy execution, file custody or unresolved approvals also requires offline cutover. The isolated backup witness authenticates and restores database records, epoch keys, fences and the known and unknown receipts together. The original and restored roots both fail the successor admission check and keep all original file paths and bytes. Test-owned current V2 authority uses its separate root and can recover committed state from WAL. A process drain, backup and restore of any real original installation requires that installation's own approved evidence under H-03.
+
+The initial Windows subprocess test exposed that SQLite's regular read-only connection created original `-wal` and `-shm` files on a rejected historical root. The original failure is in `mig01-v2-only-integrated-author-win/closed-loop-author.log`, SHA-256 `8d6cfc64dd992f4b94aca1faf74f5b828241c755dff17ef9557d3e8290f643e8`. The corrected preflight identifies checkpointed files through a percent-safe immutable SQLite URI and reads pending WAL through a private copy. The original subprocess refusal and heartbeat cases passed together after that sidecar fix. The final Windows targeted store selection passed 15 applicable cases with one Linux-only skip. It includes a Task committed only in WAL, a valid V2 setting committed only in WAL, a store with a literal percent sequence and a distinct neighboring store, and the restored legacy custody check.
+
+| Windows author receipt in `mig01-v2-only-integrated-author-win/` | SHA-256 |
+| --- | --- |
+| `build-complete.log` at `65dae79`, zero warnings and zero errors | `038238f8cc891ab91e37c9a0043e671f2129658f85cc9b8171a2b77c04874e94` |
+| `store-final-65dae79.log` | `7459c2ae8691c7436fb24d0aa0c226829e8b5254bd9743c54ffa95fe5e04f303` |
+| `closed-loop-preflight-no-sidecar.log`, focused intermediate | `14d4706d18687aa0212eeb24180b53b35f0d4fff11d979ea7603d147e0bf8660` |
+
+The H-22 `65dae79` profile passed toolchain, native prerequisites, locked restore, format, build and the unchanged base-host gate. `linux-ci` stopped in Core with 384 passes, two failures and 39 skips. The route test passed its API assertions but left a fixture key behind. A retained Linux worker self-test expected exit zero in test mode after its command was removed. The original `20261122-050425-65dae79d53b7-linux/summary.json` has SHA-256 `520ee327fccd05dcd461c21e68341301b737b646ceba26c3bec47fc9a0392144`. The copied raw `linux-ci-core-detail.log` in the same receipt has SHA-256 `9f9f853d7996bdf55b5db01cf3a0b1fa32ba8497a7689303b3c5e6e032c57e14`.
+
+The Windows `65dae79` profile passed the toolchain, locked restore, Release build and base-host gate. `win-ci` failed because two positive V2 handshake tests used inherited Windows permissions on their private roots and because the installed-version test kept a raw SQLite writer open across a Node restart. Preserve `20261122-050414-65dae79d53b7-win/summary.json` (SHA-256 `1e85689ad58d31bb50653f4d54ed289f5fa230071effbbfacc2509500fba511c`) and `win-ci.log` (`cd38a93fd6de2784ac3c1ca1ab261f06fdab79591cdd3dfcf367f74e1dbef831`).
+
+Successor `92a33895aaf61b45d3f225247eb96d7a01b75947` has tree `2fce1399f04c2b38accad5a0fd7894bb9e44ba46`. Its delta consists of five test-fixture files. The route test now creates an owner-only Windows root and deletes exactly its V2 epoch key after Node exit. The Linux worker checks require the real Host to reject each withdrawn command in ordinary and test mode. The native closed-loop fixtures use the established owner-only directory setup and close their offline store handle before starting Node. The affected Windows closed-loop selection passed 3/3 with no skips at the intermediate test head. Preserve `mig01-v2-only-integrated-author-win/closed-loop-fixture-fixes.log` (SHA-256 `01642569f183b9be48c3213c93388bb4cac90ad2eb5a702450faa44c0bd3b631`). The final Windows author route selection passed 1/1 with all seven rejection calls and the V2 handshake.
+
+The successor's full profiles fetched the same exact GitHub commit on Windows deku and H-22. Both passed their native closed-loop tests and the 52 installed Run, CLI and resource cases with zero skips. The verified MXC `1.0.1` input archive on both hosts had SHA-256 `0e832239454ba7fcd338ff56218a287eef4c0a01c1484084b869f55feff8abe9`. The Windows archive contained 93 verified files, SHA-256 `5b544acc706ab7555df44ef653e4bd86349320ddae1c106b52b29f5dc1e5e455`. The H-22 archive contained 86 verified files, SHA-256 `17130a4efc233f072e362f472f9ed10f3bd62fd1984efcf8b2ce2a069750c136`. The two old Linux units account for the file-count reduction from the qualified predecessor. The archives were installed in the isolated verification fixtures.
+
+| Successor native receipt | SHA-256 |
+| --- | --- |
+| `20261122-051050-92a33895aaf6-win/win-closed-loop-native.log` | `7bfa32aa145380a887136853cc548757a73adc68ca768de92dde5d993dbf7d0b` |
+| `20261122-051050-92a33895aaf6-win/win-package.log` | `edb3b5faccbd03f7a3bc11a84839b51972f6fcfe7484eb9e78c1dbe932f25c52` |
+| `20261122-051050-92a33895aaf6-win/win-exclusive-native.log` | `a9b76e9326dc5f98187f1a9e03f7a9c39b63d1000890aec349b0222ac1f05e5f` |
+| `20261122-051050-92a33895aaf6-win/summary.json` | `9170d6d83df7c28de716c942f3101e0851d7b5a831878d6ca4bd0f05470a5e63` |
+| `20261122-051101-92a33895aaf6-linux/linux-closed-loop-native.log` | `e0f51aa14760c82b61a26f4b8ca7222eff91e4fd79066a593ea52c5d7a662c68` |
+| `20261122-051101-92a33895aaf6-linux/linux-package.log` | `6445d44780e73db16934491540694e38e195ece4521c91adbc45c95a91ba81d8` |
+| `20261122-051101-92a33895aaf6-linux/linux-exclusive-native.log` | `350146ffc516c73fd96f00f2bf3f1dc1184bf9b0575c6c3ceb5e0b2104d00092` |
+| `20261122-051101-92a33895aaf6-linux/summary.json` | `2ca507600137fbb4a75c0e84a92de2b8562c95e9e4617b6aebb7d768a7967daf` |
+
+H-22 reported `arcforges/linux=success` for `92a33895aaf6` after all 20 native profile steps passed in 989 seconds. The final summary and logs were written with owner-only permissions.
+
+Windows deku reported `arcforges/windows=success` on the same candidate after all 15 native profile steps passed in 1,166 seconds. The final [independent review record](https://github.com/ArcForges/ArcForges/pull/119#issuecomment-7069526280) identifies both checks, the isolated data boundary and the scope of the source review.
+
+Node PR119 merged at `ca7f1eb217716816282b240093967dbfaaa5b7f3`. A fresh fetch of Node main matched the reviewed and qualified tree `2fce1399f04c2b38accad5a0fd7894bb9e44ba46`. Together with the reviewed Go-only [Cloud PR174](https://github.com/ArcForges/Cloud/pull/174) and the retained-consumer inventory in [Contracts PR146](https://github.com/ArcForges/Contracts/pull/146), this closes the isolated MIG-01 source cutover. The exact native packages are verification artifacts. MIG-02 owns contraction, offline export and historical retention. Real installation admission and official release-channel activation remain governed by H-03 and PROD-01.

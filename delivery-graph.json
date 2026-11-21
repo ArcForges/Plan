@@ -5151,7 +5151,7 @@
       "title": "Cut over consumers and remove the old execution and Center runtimes",
       "milestone": "P8",
       "order": 34,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -5341,11 +5341,19 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/**. Cloud C# host is src/ArcForges.Cloud and Dockerfile ENTRYPOINT currently defaults to it; all listed Modules.* and Storage.D1 projects are real. Remove only the retired Go fleet task/file/mobile paths, preserving migrated enrollment/session/key/authorization behavior. Worker foundation still has required Go Container transport: rework it, do not delete that whole directory blindly. Immutable D1/applied migration source must be archived before removal, not edited. ArcForges src/** is narrowed to the explicitly named Node.Core, Node.Api, Node.Store, Node.CloudLink, Node.Platform, Node.Platform.Windows, Node.Platform.Linux, CommandLine, Client, Host, Supervisor and new RunSupervisor projects; Desktop was handled by BASE02. DesktopPlatform is a read-only consumer check unless a concrete necessary adaptation is separately declared; avoid a generic eng/** write authority merely to inspect shared consumers. Recommendation removes DesktopPlatform write scope: this graph only requires read-only consumer verification here. Declare a separate concrete change if inventory proves one necessary; existing independent API code and published packages remain intact. [active] Start with actual runtime and consumer inventories and drain, backup and rollback guards. Preserve critical execution, data and deployed state until the real replacement is verified. Current composition scope includes the exact Node Linux package units, installed package verifier and current README that still reference the retired launcher; keep Node auto-start and V2 Run supervisor verification. Cloud CI explicitly builds and packages the retired C# runtime. Its exact workflow must switch current builds to the qualified Go runtime while preserving ordinary verification and guarded publication. Verify historical CTR06 from its original evidence and source inputs. Preserve applied D1 and PostgreSQL bytes and all existing activation authority.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/**. Cloud C# host is src/ArcForges.Cloud and Dockerfile ENTRYPOINT currently defaults to it; all listed Modules.* and Storage.D1 projects are real. Remove only the retired Go fleet task/file/mobile paths, preserving migrated enrollment/session/key/authorization behavior. Worker foundation still has required Go Container transport: rework it, do not delete that whole directory blindly. Immutable D1/applied migration source must be archived before removal, not edited. ArcForges src/** is narrowed to the explicitly named Node.Core, Node.Api, Node.Store, Node.CloudLink, Node.Platform, Node.Platform.Windows, Node.Platform.Linux, CommandLine, Client, Host, Supervisor and new RunSupervisor projects; Desktop was handled by BASE02. DesktopPlatform is a read-only consumer check unless a concrete necessary adaptation is separately declared; avoid a generic eng/** write authority merely to inspect shared consumers. Recommendation removes DesktopPlatform write scope: this graph only requires read-only consumer verification here. Declare a separate concrete change if inventory proves one necessary; existing independent API code and published packages remain intact. [active] Start with actual runtime and consumer inventories and drain, backup and rollback guards. Preserve critical execution, data and deployed state until the real replacement is verified. Current composition scope includes the exact Node Linux package units, installed package verifier and current README that still reference the retired launcher; keep Node auto-start and V2 Run supervisor verification. Cloud CI explicitly builds and packages the retired C# runtime. Its exact workflow must switch current builds to the qualified Go runtime while preserving ordinary verification and guarded publication. Verify historical CTR06 from its original evidence and source inputs. Preserve applied D1 and PostgreSQL bytes and all existing activation authority. [delivered] Retired the old execution and Center runtime sources after qualifying both V2 native profiles. [complete] Exact current Node passed Windows 15/15 and H-22 20/20 with installed official MXC 52/52 on each. Isolated predecessor refusal, WAL preservation, backup restore and current Run recovery passed. Applied migrations and independent consumers remain protected.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/119",
+          "https://github.com/ArcForges/Cloud/pull/174",
+          "https://github.com/ArcForges/Contracts/pull/146"
+        ],
+        "merges": [
+          "ArcForges@ca7f1eb217716816282b240093967dbfaaa5b7f3",
+          "Cloud@748d31cd0bcdd3d31ac2a6c47f47a0204672afcb",
+          "Contracts@1a601dcfd71d158a8006be1f728a5c14d6dd206e"
+        ],
         "publications": [],
         "ledger": null
       },
