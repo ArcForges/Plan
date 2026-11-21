@@ -5172,6 +5172,7 @@
             "ArcForges.slnx",
             "Directory.Packages.props",
             "eng/**",
+            "AGENTS.md",
             "packaging/linux/arcforges-node.service",
             "packaging/linux/arcforges-guard.service",
             "packaging/linux/arcforges.slice",
@@ -5238,6 +5239,8 @@
             "global.json",
             "NOTICE",
             "README.md",
+            "docs/d1-physical-schema.md",
+            "docs/engineering-controls.md",
             ".github/workflows/ci.yml",
             ".gitleaks.toml"
           ]
