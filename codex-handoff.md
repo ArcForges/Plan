@@ -1,8 +1,16 @@
 # Codex handoff — ArcForges V2
 
-## WEB-01 complete · FILE-02 is the remaining independent blocker
+## FILE-02 blocked · protected Linux installed acceptance
 
-Twenty-nine of 40 tasks are complete. FILE-02 remains blocked under AR-05. Ten planned tasks depend on FILE-02 through the delivery graph, and no product task is active.
+Twenty-nine of 40 tasks are complete. FILE-02 is blocked by AR-05. No product task is active. The ten planned tasks depend on its delivery. [Plan PR264](https://github.com/ArcForges/Plan/pull/264) reopened FILE-02 and preserved its earlier observations.
+
+[Design PR86](https://github.com/ArcForges/ArcForges-Design/pull/86) defines an optional Linux protected storage profile on a fresh ext4 root. Its separate trusted UID provides directory mutation exclusion while the existing owner-only endpoint and official MXC execution path remain in use. [Plan PR265](https://github.com/ArcForges/Plan/pull/265) adds one existing ClosedLoop fixture to the task scope.
+
+[Node PR112](https://github.com/ArcForges/ArcForges/pull/112) contains the independently reviewed guarded deletion candidate `7c158a3a6d3af7a08ffeb2aea0222c22394f629a`. The exact regular profiles passed Windows 15/15 and H-22 20/20. Both native packages passed 52/52 with zero skips. The protected installed qualification still needs a host-owner-provisioned locked service UID and its native delegated user manager. Node PR112 remains draft. Use the [FILE-02 evidence](docs/afv2-file-02-evidence.md) for the exact candidate, prior receipts and reproduction inputs.
+
+## Earlier checkpoint · WEB-01 complete
+
+At WEB-01 closure, twenty-nine of 40 tasks were complete. FILE-02 was blocked under AR-05. Ten planned tasks depended on FILE-02 through the delivery graph, and no product task was active.
 
 [Web PR 61](https://github.com/ArcForges/Web/pull/61) merged an identical tree to the exact head that passed Windows 12/12 and H-22 17/17. The [WEB-01 evidence](docs/afv2-web-01-evidence.md) records the real browser and installed Node journey, H-22 native API receipt, measured Dashboard budget and archived failures. [Web CI run 44802148565](https://github.com/ArcForges/Web/actions/runs/44802148565) built the candidates and skipped Cloudflare deployment and its coupled prerelease.
 
