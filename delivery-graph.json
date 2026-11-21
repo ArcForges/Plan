@@ -3088,7 +3088,7 @@
       "title": "Implement safe whole-Sandbox deletion and interrupted cleanup",
       "milestone": "P4",
       "order": 21,
-      "state": "blocked",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -3153,7 +3153,8 @@
         "Active Run/transfer blocks delete; concurrent Start cannot enter after deletion lock",
         "Crash/replay/changed path/quarantine identity tests preserve truthful effect and never delete foreign data",
         "Actual owned data is removed after guards pass; blanket refusal is not a substitute for functionality",
-        "The actual CLI previews/deletes owned data and resumes only with a fresh successor command/revision bound to the original journal/root/quarantine phase; preview abandonment has no effect, accepted deletion offers no cancellation, and resume never broadens the deletion or infers success from a pathname"
+        "The actual CLI previews/deletes owned data and resumes only with a fresh successor command/revision bound to the original journal/root/quarantine phase; preview abandonment has no effect, accepted deletion offers no cancellation, and resume never broadens the deletion or infers success from a pathname",
+        "For development delivery, retain the actual Windows positive and Linux pre-effect refusal evidence and run deterministic protected Linux filesystem outcomes through actual admission, durable deletion and explicit successor recovery. Native protected Linux qualification remains open under AR-05 and F-FILE-01."
       ],
       "verification": {
         "author": [
@@ -3170,7 +3171,7 @@
         ]
       },
       "fakes_allowed": [
-        "none; native behavior is never mocked for acceptance"
+        "Protected Linux filesystem effects and guard observations in deterministic FILE-02 development tests only. Use actual Store, admission, journal, receipt and successor code and preserve native results separately."
       ],
       "future_validation": [
         "F-FILE-01"
@@ -3187,15 +3188,13 @@
         },
         {
           "risk": "F-FILE-01 is not yet proven for the actual admitted cohort",
-          "mitigation": "Execute F-FILE-01 in its designated venue and attach raw evidence; block capability-dependent delivery or final completion if it fails. Never reuse historical V1 evidence as V2 proof.",
+          "mitigation": "Keep the protected profile unverified and require designated-host raw evidence for native qualification and final acceptance. Development delivery may proceed with the scoped deterministic evidence.",
           "owner": "AFV2-FILE-02"
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/SandboxData/Delete*; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs; ArcForges:src/ArcForges.CommandLine/SandboxCommands.cs; ArcForges:tests/**/SandboxDelete*; ArcForges:docs/cli/**; ArcForges:src/ArcForges.Node.Core/Sandboxes/**. SandboxCommands.cs and SandboxData/Delete* are legitimate planned paths created by V2. Existing proven Files/Platform primitives and actual CLI/client integration need explicit scope; preserve unresolved old journals until finite cutover. [active] FILE-01 is complete. Start native whole-Sandbox deletion, the current Store hold handoff, and exact interrupted cleanup. [blocked] Required Linux positive owned-root deletion and interrupted recovery await a qualified native guard that binds the effect to the verified directory identity. H-22 observed an exact pre-effect refusal. [active] Resume the owner-authorized V2 migration after WEB-01. Preserve the native refusal and original draft, integrate current Node main, and qualify guarded Linux owned-root deletion and exact interrupted recovery under AR-05. [blocked] The protected H-22 installed deletion and interruption-recovery acceptance requires a host-owner-provisioned locked service UID and its native delegated user manager. Preserve the independently reviewed Node PR112 candidate and exact host receipts while this profile awaits provisioning.",
-      "blocked_by": [
-        "AR-05"
-      ],
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/SandboxData/Delete*; ArcForges:src/ArcForges.Node.Api/SandboxServiceHandler.cs; ArcForges:src/ArcForges.CommandLine/SandboxCommands.cs; ArcForges:tests/**/SandboxDelete*; ArcForges:docs/cli/**; ArcForges:src/ArcForges.Node.Core/Sandboxes/**. SandboxCommands.cs and SandboxData/Delete* are legitimate planned paths created by V2. Existing proven Files/Platform primitives and actual CLI/client integration need explicit scope; preserve unresolved old journals until finite cutover. [active] FILE-01 is complete. Start native whole-Sandbox deletion, the current Store hold handoff, and exact interrupted cleanup. [blocked] Required Linux positive owned-root deletion and interrupted recovery await a qualified native guard that binds the effect to the verified directory identity. H-22 observed an exact pre-effect refusal. [active] Resume the owner-authorized V2 migration after WEB-01. Preserve the native refusal and original draft, integrate current Node main, and qualify guarded Linux owned-root deletion and exact interrupted recovery under AR-05. [blocked] The protected H-22 installed deletion and interruption-recovery acceptance requires a host-owner-provisioned locked service UID and its native delegated user manager. Preserve the independently reviewed Node PR112 candidate and exact host receipts while this profile awaits provisioning. [active] Owner authorizes scoped mocked development delivery and dependent development before the protected Linux installed end-to-end run. Retain exact native evidence and final AR-05 and F-FILE-01 qualification.",
+      "blocked_by": [],
       "evidence": {
         "prs": [],
         "merges": [],
@@ -3220,7 +3219,7 @@
         ]
       },
       "definition_of_done": [
-        "Every observable acceptance item has evidence or a specifically permitted external activation deferral; core engine/data-safety failures cannot be deferred as passed",
+        "Development delivery requires the scoped deterministic protected-effects tests plus actual normal Windows and Linux checks. Complete requires the native protected Linux qualification under AR-05 and F-FILE-01. Record native and deterministic results separately.",
         "All declared removals and dependency/build/schema references in this task are resolved; no TODO shell or permanent dual runtime",
         "Independent review resolves blocking findings at the final head, required host statuses pass, and merged/publication identifiers are recorded through plan.py"
       ]
@@ -5824,6 +5823,7 @@
         "F-ACC-01"
       ],
       "acceptance_register": [
+        "AR-05",
         "AR-12"
       ],
       "human_prerequisites": [],
