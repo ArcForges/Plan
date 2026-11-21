@@ -1,6 +1,10 @@
 # Codex handoff — ArcForges V2
 
-## FILE-02 blocked · protected Linux installed acceptance
+## FILE-02 active · staged development qualification
+
+The owner authorized deterministic protected Linux effect coverage for FILE-02 development delivery and downstream development. The tests exercise actual admission, durable Store and explicit recovery. AR-05 and F-FILE-01 remain open for the protected installed native qualification and final ACC-01 acceptance. Continue to use the pinned official MXC and existing production guards. [Design PR87](https://github.com/ArcForges/ArcForges-Design/pull/87)
+
+## Earlier checkpoint · protected Linux installed acceptance
 
 Twenty-nine of 40 tasks are complete. FILE-02 is blocked by AR-05. No product task is active. The ten planned tasks depend on its delivery. [Plan PR264](https://github.com/ArcForges/Plan/pull/264) reopened FILE-02 and preserved its earlier observations.
 
