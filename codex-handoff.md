@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## MIG-02 complete · DIST-01 next
+
+Thirty-one of 40 tasks are complete. FILE-02, WEB-02, WEB-03 and WEB-04 remain delivered for development. DIST-01 is the next eligible task. [Node PR120](https://github.com/ArcForges/ArcForges/pull/120) merged at `24c557664319d68831497043aa8c7ba5b498548c`, with Windows 15/15, H-22 20/20 and 52/52 installed cases on each host at the reviewed tree. [Cloud PR177](https://github.com/ArcForges/Cloud/pull/177) merged at `8f9833a551007df406d5a33e23d268db0a89d5de`, with Windows 10/10 and H-22 17/17, including the real PostgreSQL restore drill and the local sealed candidate.
+
+The isolated Node migration authenticated its archive and staged schema 15 → 19 → 20 while keeping the original database bytes and Node ID. The isolated PostgreSQL tests independently exercised schema 10 and 11 through schema 17, restored verified backup data, and checked native ownership, reader fences and rollback. The source trees remove the obsolete live tables and preserve applied migration bytes and independent consumers. Production installation selection and public activation retain their existing task boundaries. [MIG-02 completion evidence](docs/afv2-mig-02-evidence.md)
+
 ## MIG-01 complete · MIG-02 next
 
 Thirty of 40 tasks are complete. FILE-02, WEB-02, WEB-03 and WEB-04 are delivered for development. The next eligible task is MIG-02. [Node PR119](https://github.com/ArcForges/ArcForges/pull/119) merged at `ca7f1eb217716816282b240093967dbfaaa5b7f3`, with the same tree `2fce1399f04c2b38accad5a0fd7894bb9e44ba46` as the reviewed candidate `92a33895aaf61b45d3f225247eb96d7a01b75947`. Windows deku passed 15/15, H-22 passed 20/20, and both ran the 52 installed official MXC cases with zero skips.
