@@ -1,6 +1,12 @@
 # Codex handoff — ArcForges V2
 
-## FILE-02 active · staged development qualification
+## FILE-02 development delivered · WEB-02 active
+
+Twenty-nine of 40 tasks are complete. FILE-02 is delivered for development and WEB-02 is the sole active task. [Node PR112](https://github.com/ArcForges/ArcForges/pull/112) merged as `237e5cccbbdc8d01eff4579b29d2882214cbdad9` from reviewed `2f4c85d04702479ab43703ad068feda806b20a21`. The exact stock profiles passed Windows 15/15 and H-22 20/20. Both native packages passed 52/52 and both hosts passed the 12 focused deterministic cases, with zero skips in the installed and focused suites. See the [FILE-02 evidence](docs/afv2-file-02-evidence.md).
+
+AR-05 and F-FILE-01 remain open for the protected Linux installed native profile and final ACC-01. WEB-02 starts from Web main `2e3c6df8c481d59867fbc3a56c0180aa009ac467` and uses the shipped typed Center routes. The current Center allowlist leaves Sandbox deletion and its preview owner-local. Preserve that authority when checking the WEB-02 deletion experience.
+
+## Earlier staging decision · FILE-02 development qualification
 
 The owner authorized deterministic protected Linux effect coverage for FILE-02 development delivery and downstream development. The tests exercise actual admission, durable Store and explicit recovery. AR-05 and F-FILE-01 remain open for the protected installed native qualification and final ACC-01 acceptance. Continue to use the pinned official MXC and existing production guards. [Design PR87](https://github.com/ArcForges/ArcForges-Design/pull/87)
 
