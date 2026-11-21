@@ -1,12 +1,12 @@
 # Codex handoff — ArcForges V2
 
-## FILE-02 active · protected Linux storage candidate
+## FILE-02 blocked · protected Linux installed acceptance
 
-Twenty-nine of 40 tasks are complete. FILE-02 is the sole active task. The remaining ten planned tasks depend on its delivery. [Plan PR264](https://github.com/ArcForges/Plan/pull/264) reopened FILE-02 and preserved its earlier observations.
+Twenty-nine of 40 tasks are complete. FILE-02 is blocked by AR-05. No product task is active. The ten planned tasks depend on its delivery. [Plan PR264](https://github.com/ArcForges/Plan/pull/264) reopened FILE-02 and preserved its earlier observations.
 
 [Design PR86](https://github.com/ArcForges/ArcForges-Design/pull/86) defines an optional Linux protected storage profile on a fresh ext4 root. Its separate trusted UID provides directory mutation exclusion while the existing owner-only endpoint and official MXC execution path remain in use. [Plan PR265](https://github.com/ArcForges/Plan/pull/265) adds one existing ClosedLoop fixture to the task scope.
 
-[Node PR112](https://github.com/ArcForges/ArcForges/pull/112) contains the integrated guarded deletion candidate, currently `ea81178988700f8df7fc0078b3b615762670dc0c`. Its draft status reflects pending protected Linux acceptance. Use the [FILE-02 evidence](docs/afv2-file-02-evidence.md) for the exact candidate, prior receipts and qualification scope.
+[Node PR112](https://github.com/ArcForges/ArcForges/pull/112) contains the integrated guarded deletion candidate, currently `678d34749749494485848d2812105f9576a6cd6f`. The preceding `ea81178` passed H-22's regular native profile 20/20 and Windows's repeat stock package 52/52. The current candidate repairs the shared foreground-process stop fixture under [Plan PR269](https://github.com/ArcForges/Plan/pull/269) and receives fresh dual-host profiles. The protected installed qualification still needs a host-owner-provisioned locked service UID and its normal delegated user manager. Node PR112 remains draft. Use the [FILE-02 evidence](docs/afv2-file-02-evidence.md) for the exact candidate, prior receipts and reproduction inputs.
 
 ## Earlier checkpoint · WEB-01 complete
 
