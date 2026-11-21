@@ -5387,7 +5387,7 @@
       "title": "Contract live schemas and finalize retention of historical evidence",
       "milestone": "P8",
       "order": 35,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -5486,7 +5486,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Replace nonexistent Contracts proto/** with actual roots if source retirement is still in this slice; otherwise restrict Contracts writes to its v2 consumer inventory. No field/enum reinterpretation or published artifact deletion. Actual SQLite/PostgreSQL contraction remains in Node.Store and center/internal/schema/store. Recommendation chooses the bounded inventory-only Contracts alternative: DB contraction needs no public/internal proto write authority; MIG01 already owns approved current-source consumer retirement after its inventory gate.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:eng/v2-migration/**; Cloud:eng/v2-migration/**; Contracts:eng/v2-consumers/**. Replace nonexistent Contracts proto/** with actual roots if source retirement is still in this slice; otherwise restrict Contracts writes to its v2 consumer inventory. No field/enum reinterpretation or published artifact deletion. Actual SQLite/PostgreSQL contraction remains in Node.Store and center/internal/schema/store. Recommendation chooses the bounded inventory-only Contracts alternative: DB contraction needs no public/internal proto write authority; MIG01 already owns approved current-source consumer retirement after its inventory gate. [active] The owner approved continuing in order after MIG-01. Implement isolated SQLite and PostgreSQL contraction, protect original records and use verified backup and recovery evidence.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
