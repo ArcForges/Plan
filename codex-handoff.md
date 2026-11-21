@@ -8,9 +8,9 @@ Twenty-nine of 40 tasks are complete. FILE-02 is the sole active task. The remai
 
 [Node PR112](https://github.com/ArcForges/ArcForges/pull/112) contains the integrated guarded deletion candidate, currently `ea81178988700f8df7fc0078b3b615762670dc0c`. Its draft status reflects pending protected Linux acceptance. Use the [FILE-02 evidence](docs/afv2-file-02-evidence.md) for the exact candidate, prior receipts and qualification scope.
 
-## WEB-01 complete · FILE-02 is the remaining independent blocker
+## Earlier checkpoint · WEB-01 complete
 
-Twenty-nine of 40 tasks are complete. FILE-02 remains blocked under AR-05. Ten planned tasks depend on FILE-02 through the delivery graph, and no product task is active.
+At WEB-01 closure, twenty-nine of 40 tasks were complete. FILE-02 was blocked under AR-05. Ten planned tasks depended on FILE-02 through the delivery graph, and no product task was active.
 
 [Web PR 61](https://github.com/ArcForges/Web/pull/61) merged an identical tree to the exact head that passed Windows 12/12 and H-22 17/17. The [WEB-01 evidence](docs/afv2-web-01-evidence.md) records the real browser and installed Node journey, H-22 native API receipt, measured Dashboard budget and archived failures. [Web CI run 44802148565](https://github.com/ArcForges/Web/actions/runs/44802148565) built the candidates and skipped Cloudflare deployment and its coupled prerelease.
 
