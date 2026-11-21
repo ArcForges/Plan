@@ -1,5 +1,11 @@
 # Codex handoff — ArcForges V2
 
+## WEB-03 development delivered · WEB-04 active
+
+Twenty-nine of 40 tasks are complete. FILE-02, WEB-02 and WEB-03 are delivered for development. WEB-04 is the sole active task. [Web PR63](https://github.com/ArcForges/Web/pull/63) merged as `9b8ae6a954e3a8166a1d756037bcdda64a4e851d` with the same tree as reviewed `bdc900d93e618fa41df11b9a0d44293c6c685691`. Windows 12/12 and H-22 16/16 passed, including 155/155 App tests on each host and 13 targeted typed mocks. The unchanged profile limits, two offline archive checks and both merged-main artifacts passed. See [WEB-03 evidence](docs/afv2-web-03-evidence.md).
+
+WEB-04 starts from current Web main and addresses keyboard, focus, responsive tables and explicit offline or uncertain operation states. Use sufficient controlled mocks for the development work. Keep actual integrated browser and product effects in their later acceptance records. The earlier native ID-01 and HOST-02 evidence, FILE-02 open protected Linux qualification, and public activation boundaries retain their exact scope.
+
 ## WEB-02 development delivered · WEB-03 active
 
 Twenty-nine of 40 tasks are complete, FILE-02 and WEB-02 are delivered for development, and WEB-03 is the sole active task. [Web PR62](https://github.com/ArcForges/Web/pull/62) merged as `6d090f2dab401eb393ebf18aea6f49043675c5eb` with the same tree as reviewed `0500aa6524dd5d5abf4fbbcd6a9fea03ae1d8890`. Windows 12/12 and H-22 16/16 passed, with 142/142 App tests and 15 targeted mock cases. The adjusted Dashboard passed the unchanged package budget and two offline archive cases. The merged-main candidate and profile artifacts are retained. See the [WEB-02 evidence](docs/afv2-web-02-evidence.md).
