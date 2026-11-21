@@ -3104,6 +3104,7 @@
             "tests/ArcForges.ClosedLoop.Tests/ResourceMxcLimitTests.cs",
             "tests/ArcForges.ClosedLoop.Tests/AdmissionMxcRunServiceTests.cs",
             "tests/ArcForges.ClosedLoop.Tests/SandboxDataMxcRunServiceTests.cs",
+            "tests/ArcForges.ClosedLoop.Tests/CliMxcRunServiceTests.cs",
             "src/ArcForges.Node.Api/NodeApiServer.cs",
             "src/ArcForges.Node.Api/NodeHost.cs",
             "src/ArcForges.Node.Core/NodeRuntime.cs",
