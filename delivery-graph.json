@@ -5411,6 +5411,7 @@
             "tests/ArcForges.Node.Core.Tests/FileMutationJournalTests.TargetHold.cs",
             "tests/ArcForges.Node.Core.Tests/AttemptDirectoryTrackingObservationTests.cs",
             "tests/ArcForges.Node.Core.Tests/WorkspaceWindowsNamedStageRecoveryTests.cs",
+            "tests/ArcForges.Node.Core.Tests/WorkspaceCommandTransactionTests.cs",
             "tests/ArcForges.Node.CloudLink.Tests/RoutedResultTests.cs",
             "tests/ArcForges.OsSecretStoreTier/NodeDataKeyTierTests.cs",
             "tools/ArcForges.Bench/StoreGrowthBenchmark.cs"
