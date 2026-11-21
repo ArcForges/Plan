@@ -5585,6 +5585,8 @@
             "docs/self-host/**",
             "tooling/**",
             "eng/provenance/files.json",
+            "eng/policy/dependency-policy.json",
+            "eng/policy/dependency-reviews/afv2-dist-01-r1.json",
             "worker/**",
             "Dockerfile",
             ".dockerignore",
