@@ -1,5 +1,13 @@
 # Codex handoff — ArcForges V2
 
+## WEB-04 development delivered · MIG-01 active
+
+Twenty-nine of 40 tasks are complete. FILE-02, WEB-02, WEB-03 and WEB-04 are delivered for development. MIG-01 is the sole active task, with six tasks planned after it. [Web PR64](https://github.com/ArcForges/Web/pull/64) merged as `d517bc45fc50e3143a25c7987726f37a24a4999b` from reviewed `ff932b6b082584deb4897837ea462566b1c05209`. Windows passed 12/12 and H-22 passed 16/16, with 165/165 App tests on each host. The local visual mock passed 4/4 and the exact H-22 archive checks passed 2/2. See [WEB-04 evidence](docs/afv2-web-04-evidence.md).
+
+F-WEB-01 and AR-09 retain the actual connected and manual assistive qualification required for WEB-04 completion and ACC-02. MIG-01 starts with the current runtime and retained-consumer inventory, bounded drain and rollback guards, and the actual replacement receipts. Keep independent consumers, published cohorts, existing data and applied history intact. Verify replacement before removing critical execution, service or data-safety paths. The Dashboard mock evidence qualifies its development handoff. Native cutover acceptance retains the prerequisites in MIG-01 and Design.
+
+Initial MIG-01 origins after fetch are Node `237e5cccbbdc8d01eff4579b29d2882214cbdad9`, Cloud `9b8796eac760982d9814f371b820b736ddd945c4` and Contracts `0cd178ac8bec8c32f06366dcb30fea6dd6566bf3`. Work from isolated trees and preserve the existing main checkouts.
+
 ## WEB-03 development delivered · WEB-04 active
 
 Twenty-nine of 40 tasks are complete. FILE-02, WEB-02 and WEB-03 are delivered for development. WEB-04 is the sole active task. [Web PR63](https://github.com/ArcForges/Web/pull/63) merged as `9b8ae6a954e3a8166a1d756037bcdda64a4e851d` with the same tree as reviewed `bdc900d93e618fa41df11b9a0d44293c6c685691`. Windows 12/12 and H-22 16/16 passed, including 155/155 App tests on each host and 13 targeted typed mocks. The unchanged profile limits, two offline archive checks and both merged-main artifacts passed. See [WEB-03 evidence](docs/afv2-web-03-evidence.md).

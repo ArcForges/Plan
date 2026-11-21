@@ -5025,7 +5025,7 @@
       "title": "Qualify responsive accessibility offline and reconnect behavior",
       "milestone": "P7",
       "order": 33,
-      "state": "active",
+      "state": "delivered",
       "repositories": [
         {
           "repo": "Web",
@@ -5108,12 +5108,18 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Web:docs/ux-acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Start the next eligible Dashboard task from Web main 9b8ae6a954e3a8166a1d756037bcdda64a4e851d. Check responsive accessibility and reconnect with sufficient deterministic mocks in the current development tranche. Keep actual integrated qualification evidence separate. Owner requests mock-first WEB-04 development. Real assisted/connected qualification remains open under F-WEB-01 and AR-09. Scope the first-party provenance inventory only for the actual WEB-04 sources and tests.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: Web:docs/ux-acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] Start the next eligible Dashboard task from Web main 9b8ae6a954e3a8166a1d756037bcdda64a4e851d. Check responsive accessibility and reconnect with sufficient deterministic mocks in the current development tranche. Keep actual integrated qualification evidence separate. Owner requests mock-first WEB-04 development. Real assisted/connected qualification remains open under F-WEB-01 and AR-09. Scope the first-party provenance inventory only for the actual WEB-04 sources and tests. [delivered] Mock-first Dashboard development delivered with both native repository profiles, independent review, intercepted browser cases and exact main artifacts. F-WEB-01 and AR-09 retain actual responsive, assistive and connected qualification.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
-        "publications": [],
+        "prs": [
+          "https://github.com/ArcForges/Web/pull/64"
+        ],
+        "merges": [
+          "Web@d517bc45fc50e3143a25c7987726f37a24a4999b"
+        ],
+        "publications": [
+          "https://github.com/ArcForges/Web/actions/runs/44878070038"
+        ],
         "ledger": null
       },
       "removals": [
@@ -5145,7 +5151,7 @@
       "title": "Cut over consumers and remove the old execution and Center runtimes",
       "milestone": "P8",
       "order": 34,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -5315,7 +5321,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/**. Cloud C# host is src/ArcForges.Cloud and Dockerfile ENTRYPOINT currently defaults to it; all listed Modules.* and Storage.D1 projects are real. Remove only the retired Go fleet task/file/mobile paths, preserving migrated enrollment/session/key/authorization behavior. Worker foundation still has required Go Container transport: rework it, do not delete that whole directory blindly. Immutable D1/applied migration source must be archived before removal, not edited. ArcForges src/** is narrowed to the explicitly named Node.Core, Node.Api, Node.Store, Node.CloudLink, Node.Platform, Node.Platform.Windows, Node.Platform.Linux, CommandLine, Client, Host, Supervisor and new RunSupervisor projects; Desktop was handled by BASE02. DesktopPlatform is a read-only consumer check unless a concrete necessary adaptation is separately declared; avoid a generic eng/** write authority merely to inspect shared consumers. Recommendation removes DesktopPlatform write scope: this graph only requires read-only consumer verification here. Declare a separate concrete change if inventory proves one necessary; existing independent API code and published packages remain intact.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.RunSupervisor/**. Cloud C# host is src/ArcForges.Cloud and Dockerfile ENTRYPOINT currently defaults to it; all listed Modules.* and Storage.D1 projects are real. Remove only the retired Go fleet task/file/mobile paths, preserving migrated enrollment/session/key/authorization behavior. Worker foundation still has required Go Container transport: rework it, do not delete that whole directory blindly. Immutable D1/applied migration source must be archived before removal, not edited. ArcForges src/** is narrowed to the explicitly named Node.Core, Node.Api, Node.Store, Node.CloudLink, Node.Platform, Node.Platform.Windows, Node.Platform.Linux, CommandLine, Client, Host, Supervisor and new RunSupervisor projects; Desktop was handled by BASE02. DesktopPlatform is a read-only consumer check unless a concrete necessary adaptation is separately declared; avoid a generic eng/** write authority merely to inspect shared consumers. Recommendation removes DesktopPlatform write scope: this graph only requires read-only consumer verification here. Declare a separate concrete change if inventory proves one necessary; existing independent API code and published packages remain intact. [active] Start with actual runtime and consumer inventories and drain, backup and rollback guards. Preserve critical execution, data and deployed state until the real replacement is verified.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
