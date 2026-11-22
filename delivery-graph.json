@@ -5766,6 +5766,7 @@
             "eng/provenance/records/center-worker-afv2-dist-02-r1.json",
             "eng/provenance/NOTICE.txt",
             "center/internal/server/server.go",
+            ".gitleaks.toml",
             "tests/worker/**"
           ]
         }
