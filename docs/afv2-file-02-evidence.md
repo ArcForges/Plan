@@ -1,6 +1,12 @@
 # AFV2-FILE-02 native deletion evidence
 
-## Candidate and acceptance scope
+## Final native qualification — 2026-11-22
+
+AR-05 and F-FILE-01 passed independent native evidence review for the signed `e4c41f68e14d17a8d488e54266cfe8efbb592642` cohort, tree `abd1738d4dc6d32ac623ffabc27ef9d0b87dd0e7`, canonical main `8705683ba7aa0e115869c122dcf899dc8d05b0ae`. Windows passed the original signed 53 cases and five deletion interruptions. H-22's locked UID927/protected ext4 profile passed actual managed-use deletion, all five original interruption outcomes and missing-custody refusal (3/3), ordinary mutation exclusion, and accepted-operation guard loss (1/1). The original UNKNOWN gaps, revoked guard, foreign sentinels and journals remain intact. The reviewer independently verified actual signature, identities, native image, process/socket cleanup and raw results. [Exact final source/artifact/profile/command and evidence hashes](afv2-acc-01-evidence.md#protected-linux-final-native-qualification)
+
+FILE-02 is complete for those qualified native profiles. The unrelated H-22 terminal ACK failure and full current local candidate acceptance remain under ACC-01. The original candidate and failed/development evidence below remain unchanged.
+
+## Original candidate and acceptance scope
 
 [Node PR 112](https://github.com/ArcForges/ArcForges/pull/112) is the preserved work for preview, guarded admission, quarantine, bounded removal, durable uncertainty and explicit successor recovery. It uses the published Sandbox V2 contract and the existing Store schema. Only the owner-local command can initiate it. No package was publicly published or deployed.
 
