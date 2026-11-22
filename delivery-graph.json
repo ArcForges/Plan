@@ -5729,6 +5729,8 @@
           "repo": "ArcForges",
           "paths": [
             "src/ArcForges.Node.Core/Updates/**",
+            "src/ArcForges.Node.Core/Runs/SandboxManager.Runs.cs",
+            "src/ArcForges.Host/Program.cs",
             "src/ArcForges.CommandLine/UpdateCommands.cs",
             "eng/package.ps1",
             "eng/publish.ps1",
@@ -5756,6 +5758,9 @@
             "tooling/cloudflare.ts",
             "center/cmd/arcforges-center/**",
             "center/internal/store/migrate/**",
+            "eng/provenance/files.json",
+            "eng/policy/dependency-policy.json",
+            "eng/policy/dependency-reviews/afv2-dist-02-r1.json",
             "tests/worker/**"
           ]
         }
