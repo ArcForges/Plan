@@ -5723,7 +5723,7 @@
       "title": "Implement safe updates migration-aware rollback and supervisor drain",
       "milestone": "P8",
       "order": 37,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -5834,11 +5834,19 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Updates/**; ArcForges:src/ArcForges.CommandLine/UpdateCommands.cs; ArcForges:tests/**/Update*; Cloud:docs/operations/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] DIST-01 completed and recorded at Plan PR302. Start migration-aware verified staging, admission fencing, safe supervisor handoff or complete drain, candidate readiness and compatible rollback from exact current Node and Cloud. Use isolated backed-up data, designated native hosts and unchanged profiles. Keep signed selected cohorts, applied schema history and shared product contracts.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Updates/**; ArcForges:src/ArcForges.CommandLine/UpdateCommands.cs; ArcForges:tests/**/Update*; Cloud:docs/operations/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] DIST-01 completed and recorded at Plan PR302. Start migration-aware verified staging, admission fencing, safe supervisor handoff or complete drain, candidate readiness and compatible rollback from exact current Node and Cloud. Use isolated backed-up data, designated native hosts and unchanged profiles. Keep signed selected cohorts, applied schema history and shared product contracts. [delivered] The canonical Node and Cloud trees match the independently reviewed trees and both required native receipts. Prior exact source and native observations are preserved in docs/afv2-dist-02-evidence.md. [complete] Exact main-qualified signed Node native Windows and H-22 managed handoff, drain, rollback and interruption recovery passed. Actual signed H-22 Center contraction, failure recovery and authenticated database restore passed. See docs/afv2-dist-02-evidence.md.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/122",
+          "https://github.com/ArcForges/ArcForges/pull/123",
+          "https://github.com/ArcForges/ArcForges/pull/124",
+          "https://github.com/ArcForges/Cloud/pull/182"
+        ],
+        "merges": [
+          "ArcForges@1e53e35160343c39dcb24aca5297789a6287418d",
+          "Cloud@28f72a0e4f7b788aaabd0baa819fa7a20c3f25d2"
+        ],
         "publications": [],
         "ledger": null
       },
@@ -5870,7 +5878,7 @@
       "title": "Accept the full native local Sandbox product",
       "milestone": "P8",
       "order": 38,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -5965,7 +5973,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] DIST-02 completed the previous native signed gate. Start the sole local acceptance task with exact signed Windows and H-22 Node artifacts. Run eligible native journeys and retain the separate AR-05 protected Linux provisioning prerequisite.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
