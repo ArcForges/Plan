@@ -5886,7 +5886,8 @@
             "tests/**",
             "tools/ArcForges.TestLoad/**",
             "tools/ArcForges.Bench/**",
-            "docs/acceptance/**"
+            "docs/acceptance/**",
+            "src/ArcForges.Node.Core/Platform/WorkspacePath.SandboxRemovalWindows.cs"
           ]
         },
         {
@@ -5973,7 +5974,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] DIST-02 completed the previous native signed gate. Start the sole local acceptance task with exact signed Windows and H-22 Node artifacts. Run eligible native journeys and retain the separate AR-05 protected Linux provisioning prerequisite.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] DIST-02 completed the previous native signed gate. Start the sole local acceptance task with exact signed Windows and H-22 Node artifacts. Run eligible native journeys and retain the separate AR-05 protected Linux provisioning prerequisite. [scope] The final signed Windows installation repeatedly left a native deletion in removing with an accepted receipt. The independently matched native stack is blocked inside the Windows file disposition call in the exact sandbox removal module. Allow only this Windows removal module for the correction and the current scoped tests and evidence. Retain original root and owner identity, live mapping checks, guarded handles, confirmed removal and durable receipt semantics.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
