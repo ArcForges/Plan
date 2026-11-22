@@ -160,3 +160,19 @@ Under `proof/guard-loss-run/`, accepted/admin/observed/cleanup/XML SHA-256 value
 
 Current ordinary-user mutation refusal is `run2-ordinary-denials.json` SHA-256 `2ae17fc12c0ff1a442e595961339f4fbb162363a4216cb31bc7f40af6339adaf`; post-run identity/process snapshot is `7ddfe441ee7bfad6b0f67ffa7b62895352a83cdd5409df91da9269a0013ee5e5`. UID1000 received EACCES for protected parent creation, private data traversal and owner-record writable open, with before/after identities and bytes unchanged. The reviewer also independently confirmed read-only quarantine open returns EACCES on ext4 mount 30, mode 0700. Only the dedicated user manager and PAM companion remain; Node, payload, wrapper and private endpoint are absent. Source/receipt review closes the qualified FILE-02 native gate. It does not close ACC-01, relabel the separate Linux terminal failure, or qualify optional Windows external egress.
 
+Actual H-22 controller commands ran with `umask 0077`, fixed host verification and private reports. The root-owned script filenames below are their independently reviewed SHA-256 values. The actual protected input manifest is `062377010cbe77f2db4fc9345d2c445d3cc129308a2d7c6c7cdd437385aeb22b`; final signed-custody pins are `dfd800daf20d95f351501a1dea3909aa65432a2ca6c5d989f9ce9486a665d6e7`; guard overlay-input pins are `c216d90d042b059bbcbc68f607cb0c99d6dd9c417d30ca4fc2f57ab4697c6c27`.
+
+```bash
+umask 0077
+sudo -n /usr/bin/env -i PATH=/usr/sbin:/usr/bin LANG=C.UTF-8 /usr/bin/python3 -I -B \
+  /usr/local/lib/arcforges-acc01-witness/e779bc4a55725858397b2a8f7b5e7fbaa00cf63ce0f037183ad8ea2dcaaf9690.py --run
+sudo -n /usr/bin/env -i PATH=/usr/sbin:/usr/bin LANG=C.UTF-8 /usr/bin/python3 -I -B \
+  /usr/local/lib/arcforges-acc01-witness/128c0ebec5981ab7d369d5d2e47b4d2a1bba631c305a8d3c5a81a725e5b3b12b.py \
+  --run-reviewed-witness \
+  --extension-file /usr/local/lib/arcforges-acc01-witness/e779bc4a55725858397b2a8f7b5e7fbaa00cf63ce0f037183ad8ea2dcaaf9690.py \
+  --revoker-file /usr/local/lib/arcforges-acc01-witness/414c59b77b269d82b6290188f4c67bffafa79d6ca0a36e6eab8a8282eec84943.py \
+  --expected-host-sha256 ae80ac9ca00363a7d5a7a0066472b6b8afb54e8b119d39f800977b87f715d075 \
+  --expected-overlay-inventory-sha256 c216d90d042b059bbcbc68f607cb0c99d6dd9c417d30ca4fc2f57ab4697c6c27
+```
+
+The first controller drops to UID/GID927 and the verified shared runtime, then directly executes the installed managed test DLL with `-class ArcForges.ClosedLoop.Tests.SandboxDeleteLinuxCustodyTests -result-xml <RUN2 scratch>/custody-suite.xml`. Its exact methods are `InstalledSandboxDeletePreservesSiblingAndHostGrantInLinuxCustody`, `InstalledSandboxDeleteReconcilesInterruptedOwnedBoundariesInLinuxCustody`, and `InstalledNodeRefusesMissingLinuxCustodyBeforeCreatingState`. The guard controller executes the separate verified overlay with `-class ArcForges.ClosedLoop.Tests.LinuxProtectedGuardLossWitness`, sole method `AcceptedDeleteStopsWhenAdministratorRevokesExactGuard`, and independently parses its native XML. Both set the isolated selector, `ARCFORGES_LINUX_PROTECTED_STORAGE=1`, exact signed Host/TestLoad, the private native user-manager bus and dedicated HOME/TMPDIR. Root provisions/revokes only the exact fixture; Node, CLI and native test actions remain non-root.
