@@ -1,6 +1,16 @@
 # Codex handoff — ArcForges V2
 
-## FILE-02 complete · ACC-01 active, then owner-requested stop
+## ACC-01 complete · stopped at 35/40 by owner instruction
+
+Thirty-five of 40 tasks are complete after this registration. WEB-02, WEB-03 and WEB-04 remain delivered for their final qualification; ACC-02 and PROD-01 remain planned. No task is active. The owner explicitly requests stopping after ACC-01 completion and Plan registration. Do not start ACC-02 or PROD-01 until a later instruction to continue.
+
+The final local candidate is signed Node `2e7bef628bcf23263dc3c9773b13f362f37a9a83`, tree `2827f24db67bb736fe89d8ff25402748bb49fd76`, merged by [Node PR127](https://github.com/ArcForges/ArcForges/pull/127) as `708bc0d74d8973bcf004d72c3967dd0fed730736` with the same tree. Windows15/15 and H-22Linux20/20 unchanged formal profiles passed. Both original signed installed suites passed53/53, zero skips. Both same-Run terminal/pressure/file-control/local-network/recovery witnesses, actual local/self-host/expiry continuity and extended performance/native ConPTY/PTY slow-reader supplements passed. Fresh H-22 RUN3 custody3/3 plus guard-loss1/1 requalified the actual final schema/cohort, including all five original interruption outcomes, ordinary mutation EACCES, retained UNKNOWN/native_13 and exact process/socket cleanup. Independent nonauthor source/tool/raw-evidence review passed. [Final local evidence and limits](docs/afv2-acc-01-final-cohort.md)
+
+[Design PR92](https://github.com/ArcForges/ArcForges-Design/pull/92) merged `aea33fb5b3b041999a1baecfb68b28a18e915140`, identical to reviewed495eb885/tree7ec652fc, after both native4/4 profiles and independent review. This [Plan PR310](https://github.com/ArcForges/Plan/pull/310) registers ACC-01 after those actual results and must pass both unchanged5-step profiles against that exact Design main before merge. The graph and explicit ledger record the product PR/merge evidence; this Plan merge's exact head/statuses/summary hashes are recorded in its final review comment.
+
+Windows external selected TCP/UDP and fresh post-expiry WebSocket admission retain their UNVERIFIED scope; the observed typed expiry refusal and4403 are separately recorded. Earlier52/53 failures, auxiliary path/anchor errors, reporter lock, protected preparation failures, UNKNOWN stores and revoked guard records remain preserved. No public service, sale or release channel was activated. Historical actual DIST-02 updater evidence remains distinct from the final signed update-fence fixture and real isolated SQLite15→19→20/restore checks. The final candidate's ordinary fixture processes/endpoints were verified cleaned; native UID927 user manager/PAM and all preserved evidence remain.
+
+## Earlier FILE-02 completion · ACC-01 active checkpoint
 
 Thirty-four of 40 tasks are complete. WEB-02, WEB-03 and WEB-04 remain delivered for their final qualification. ACC-01 is the sole active task. The owner explicitly instructs this run to stop after ACC-01 acceptance and Plan registration; do not activate ACC-02 or PROD-01 until a later instruction to continue.
 

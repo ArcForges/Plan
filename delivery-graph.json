@@ -5882,7 +5882,7 @@
       "title": "Accept the full native local Sandbox product",
       "milestone": "P8",
       "order": 38,
-      "state": "active",
+      "state": "complete",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -5978,11 +5978,22 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] DIST-02 completed the previous native signed gate. Start the sole local acceptance task with exact signed Windows and H-22 Node artifacts. Run eligible native journeys and retain the separate AR-05 protected Linux provisioning prerequisite. [scope] The final signed Windows installation repeatedly left a native deletion in removing with an accepted receipt. The independently matched native stack is blocked inside the Windows file disposition call in the exact sandbox removal module. Allow only this Windows removal module for the correction and the current scoped tests and evidence. Retain original root and owner identity, live mapping checks, guarded handles, confirmed removal and durable receipt semantics.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:docs/acceptance/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] DIST-02 completed the previous native signed gate. Start the sole local acceptance task with exact signed Windows and H-22 Node artifacts. Run eligible native journeys and retain the separate AR-05 protected Linux provisioning prerequisite. [scope] The final signed Windows installation repeatedly left a native deletion in removing with an accepted receipt. The independently matched native stack is blocked inside the Windows file disposition call in the exact sandbox removal module. Allow only this Windows removal module for the correction and the current scoped tests and evidence. Retain original root and owner identity, live mapping checks, guarded handles, confirmed removal and durable receipt semantics. [delivered] Final signed2e7/tree2827/main708bc0d native qualification and nonauthor review PASS: Windows15/H22Linux20 formal, both signed53 zero skips, both same-Run composition, actual continuity and native-terminal performance; fresh H22 custody3+guard1. Product PR125/126/127 and Design92 merged with exact-tree required checks. No publication or activation applicable. Plan310 registers closure against actual Design mainaea33fb5. [complete] F-ACC-01 native local qualification satisfied on the admitted final signed cohort; final-schema real isolated SQLite contraction/restore and signed deletion/guard covered, legacy runtime/SCRIPT bypass absent, native owner/authorization/signature/cleanup boundaries retained. All historical failures and UNKNOWN stores remain. Windows external selected TCP/UDP and fresh post-expiry WebSocket admission unverified within their explicit scope. Complete35/40 and stop after Plan310 registration per latest owner instruction; no further task activated.",
       "blocked_by": [],
       "evidence": {
-        "prs": [],
-        "merges": [],
+        "prs": [
+          "https://github.com/ArcForges/ArcForges/pull/125",
+          "https://github.com/ArcForges/ArcForges/pull/126",
+          "https://github.com/ArcForges/ArcForges/pull/127",
+          "https://github.com/ArcForges/ArcForges-Design/pull/92",
+          "https://github.com/ArcForges/Plan/pull/310"
+        ],
+        "merges": [
+          "ArcForges@10d8515cfdef2eb22b97a4c384eb6c58b4f0d70e",
+          "ArcForges@8705683ba7aa0e115869c122dcf899dc8d05b0ae",
+          "ArcForges@708bc0d74d8973bcf004d72c3967dd0fed730736",
+          "ArcForges-Design@aea33fb5b3b041999a1baecfb68b28a18e915140"
+        ],
         "publications": [],
         "ledger": null
       },
