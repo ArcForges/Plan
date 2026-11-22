@@ -5761,6 +5761,11 @@
             "eng/provenance/files.json",
             "eng/policy/dependency-policy.json",
             "eng/policy/dependency-reviews/afv2-dist-02-r1.json",
+            "eng/provenance/artifact-profiles/cloud-release-r152.json",
+            "eng/provenance/records/center-runtime-afv2-dist-02-r1.json",
+            "eng/provenance/records/center-worker-afv2-dist-02-r1.json",
+            "eng/provenance/NOTICE.txt",
+            "center/internal/server/server.go",
             "tests/worker/**"
           ]
         }
