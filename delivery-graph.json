@@ -5723,7 +5723,7 @@
       "title": "Implement safe updates migration-aware rollback and supervisor drain",
       "milestone": "P8",
       "order": 37,
-      "state": "planned",
+      "state": "active",
       "repositories": [
         {
           "repo": "ArcForges",
@@ -5823,7 +5823,7 @@
         }
       ],
       "size": "M",
-      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Updates/**; ArcForges:src/ArcForges.CommandLine/UpdateCommands.cs; ArcForges:tests/**/Update*; Cloud:docs/operations/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob.",
+      "notes": "New V2 work; no historical task completion is inherited. Source-scope audit: repository paths were checked against the immutable source revisions in Design docs/research/baseline.json; they distinguish existing integration points from planned V2 targets. Explicit planned new targets: ArcForges:src/ArcForges.Node.Core/Updates/**; ArcForges:src/ArcForges.CommandLine/UpdateCommands.cs; ArcForges:tests/**/Update*; Cloud:docs/operations/**. Recommended scope maps to existing pinned modules and explicitly planned V2 paths; future_new_paths enumerates every unmatched source glob. [active] DIST-01 completed and recorded at Plan PR302. Start migration-aware verified staging, admission fencing, safe supervisor handoff or complete drain, candidate readiness and compatible rollback from exact current Node and Cloud. Use isolated backed-up data, designated native hosts and unchanged profiles. Keep signed selected cohorts, applied schema history and shared product contracts.",
       "blocked_by": [],
       "evidence": {
         "prs": [],
